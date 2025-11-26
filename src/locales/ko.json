@@ -1,0 +1,94 @@
+{
+  "sidebar": {
+    "introduction": "소개",
+    "cheatsheet": "치트 시트",
+    "gettingStarted": "시작하기"
+  },
+  "navbar": {
+    "repositoryLink": "Python 치트 시트 저장소",
+    "cheatsheets": "치트 시트"
+  },
+  "mobile": {
+    "openNavigation": "네비게이션 열기",
+    "closeNavigation": "네비게이션 닫기",
+    "navigation": "네비게이션"
+  },
+  "common": {
+    "language": "언어",
+    "practiceInLabexVm": "LabEx VM 에서 연습하기",
+    "downloadPdf": "PDF 다운로드",
+    "previousPage": "이전 페이지",
+    "nextPage": "다음 페이지",
+    "localeNames": {
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "ja": "日本語",
+      "ru": "Русский",
+      "ko": "한국어",
+      "pt": "Português"
+    }
+  },
+  "error404": {
+    "title": "404 찾을 수 없음",
+    "error": "404 오류",
+    "pageNotFound": "페이지를 찾을 수 없습니다.",
+    "description": "죄송합니다. 찾고 계신 페이지를 찾을 수 없습니다.",
+    "goBackHome": "홈으로 돌아가기"
+  },
+  "home": {
+    "title": "LabEx 치트 시트",
+    "description": "LabEx 치트 시트는 Linux, DevOps, 사이버 보안, 데이터베이스, 데이터 과학, Docker, Kubernetes, Python, Git, Java, Go, C++ 및 기타 많은 기술을 다루는 포괄적인 기술 참조 가이드를 제공합니다. 오프라인 액세스를 위해 PDF 버전을 다운로드할 수 있습니다.",
+    "cardLinks": {
+      "linux": "Linux",
+      "linuxDesc": "포괄적인 Linux 명령 참조 및 시스템 관리 가이드.",
+      "devops": "DevOps",
+      "devopsDesc": "필수 DevOps 도구, 관행 및 자동화 기술.",
+      "cybersecurity": "사이버 보안",
+      "cybersecurityDesc": "시스템을 보호하기 위한 보안 도구, 기술 및 모범 사례.",
+      "viewOnGithub": "GitHub 에서 보기",
+      "viewOnGithubDesc": "이 프로젝트가 유용하다고 생각되면 GitHub 에서 별표를 남겨주세요."
+    }
+  },
+  "navigation": {
+    "cheatsheet": {
+      "basics": "기초",
+      "built-in-functions": "내장 함수",
+      "control-flow": "제어 흐름",
+      "functions": "함수",
+      "lists-and-tuples": "리스트와 튜플",
+      "dictionaries": "딕셔너리",
+      "sets": "세트",
+      "comprehensions": "컴프리헨션",
+      "manipulating-strings": "문자열 조작",
+      "string-formatting": "문자열 포맷팅",
+      "regular-expressions": "정규 표현식",
+      "file-directory-path": "파일 및 디렉토리 경로",
+      "reading-and-writing-files": "파일 읽기 및 쓰기",
+      "json-yaml": "JSON 및 YAML",
+      "exception-handling": "예외 처리",
+      "debugging": "디버깅",
+      "args-and-kwargs": "Args 및 kwargs",
+      "decorators": "데코레이터",
+      "context-manager": "컨텍스트 매니저",
+      "oop-basics": "OOP",
+      "dataclasses": "데이터 클래스",
+      "setup-py": "setup.py",
+      "main": "메인: 최상위 스크립트",
+      "virtual-environments": "가상 환경"
+    }
+  },
+  "codeBlock": {
+    "copy": "복사",
+    "copied": "복사됨",
+    "expand": "펼치기",
+    "collapse": "접기"
+  },
+  "meta": {
+    "title": "LabEx 치트 시트",
+    "description": "Linux, DevOps, 사이버 보안, 데이터베이스, 데이터 과학, Docker, Kubernetes, Python, Git, Java, Go, C++ 등의 기술 참조 가이드. 오프라인 액세스를 위해 PDF 버전을 다운로드할 수 있습니다.",
+    "keywords": "labex 치트 시트, 기술 치트 시트, linux 치트 시트, devops 치트 시트, 사이버 보안 치트 시트, 데이터베이스 치트 시트, docker 치트 시트, kubernetes 치트 시트, python 치트 시트, git 치트 시트, 프로그래밍 참조 가이드"
+  }
+}

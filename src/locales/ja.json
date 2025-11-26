@@ -1,0 +1,94 @@
+{
+  "sidebar": {
+    "introduction": "はじめに",
+    "cheatsheet": "チートシート",
+    "gettingStarted": "はじめに"
+  },
+  "navbar": {
+    "repositoryLink": "Python チートシートリポジトリ",
+    "cheatsheets": "チートシート"
+  },
+  "mobile": {
+    "openNavigation": "ナビゲーションを開く",
+    "closeNavigation": "ナビゲーションを閉じる",
+    "navigation": "ナビゲーション"
+  },
+  "common": {
+    "language": "言語",
+    "practiceInLabexVm": "LabEx VM で練習する",
+    "downloadPdf": "PDF をダウンロード",
+    "previousPage": "前のページ",
+    "nextPage": "次のページ",
+    "localeNames": {
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "ja": "日本語",
+      "ru": "Русский",
+      "ko": "한국어",
+      "pt": "Português"
+    }
+  },
+  "error404": {
+    "title": "404 見つかりません",
+    "error": "404 エラー",
+    "pageNotFound": "ページが見つかりません。",
+    "description": "申し訳ございませんが、お探しのページが見つかりませんでした。",
+    "goBackHome": "ホームに戻る"
+  },
+  "home": {
+    "title": "LabEx チートシート",
+    "description": "LabEx チートシートは、Linux、DevOps、サイバーセキュリティ、データベース、データサイエンス、Docker、Kubernetes、Python、Git、Java、Go、C++ など、多くの技術をカバーする包括的な技術リファレンスガイドを提供します。オフラインアクセスのために PDF 版をダウンロードできます。",
+    "cardLinks": {
+      "linux": "Linux",
+      "linuxDesc": "包括的な Linux コマンドリファレンスとシステム管理ガイド。",
+      "devops": "DevOps",
+      "devopsDesc": "DevOps ツール、実践、自動化技術の要点。",
+      "cybersecurity": "サイバーセキュリティ",
+      "cybersecurityDesc": "システムを保護するためのセキュリティツール、技術、ベストプラクティス。",
+      "viewOnGithub": "GitHub で見る",
+      "viewOnGithubDesc": "このプロジェクトが役立つと思ったら、GitHub でスターを付けてください。"
+    }
+  },
+  "navigation": {
+    "cheatsheet": {
+      "basics": "基礎",
+      "built-in-functions": "組み込み関数",
+      "control-flow": "制御フロー",
+      "functions": "関数",
+      "lists-and-tuples": "リストとタプル",
+      "dictionaries": "辞書",
+      "sets": "セット",
+      "comprehensions": "内包表記",
+      "manipulating-strings": "文字列操作",
+      "string-formatting": "文字列フォーマット",
+      "regular-expressions": "正規表現",
+      "file-directory-path": "ファイルとディレクトリパス",
+      "reading-and-writing-files": "ファイルの読み書き",
+      "json-yaml": "JSON と YAML",
+      "exception-handling": "例外処理",
+      "debugging": "デバッグ",
+      "args-and-kwargs": "Args と kwargs",
+      "decorators": "デコレータ",
+      "context-manager": "コンテキストマネージャ",
+      "oop-basics": "OOP",
+      "dataclasses": "データクラス",
+      "setup-py": "setup.py",
+      "main": "メイン：トップレベルスクリプト",
+      "virtual-environments": "仮想環境"
+    }
+  },
+  "codeBlock": {
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "expand": "展開",
+    "collapse": "折りたたむ"
+  },
+  "meta": {
+    "title": "LabEx チートシート",
+    "description": "Linux、DevOps、サイバーセキュリティ、データベース、データサイエンス、Docker、Kubernetes、Python、Git、Java、Go、C++ などの技術リファレンスガイド。オフラインアクセスのために PDF 版をダウンロードできます。",
+    "keywords": "labex チートシート，技術チートシート，linux チートシート，devops チートシート，サイバーセキュリティ チートシート，データベース チートシート，docker チートシート，kubernetes チートシート，python チートシート，git チートシート，プログラミング リファレンス"
+  }
+}

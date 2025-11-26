@@ -1,0 +1,94 @@
+{
+  "sidebar": {
+    "introduction": "Introduction",
+    "cheatsheet": "Cheatsheet",
+    "gettingStarted": "Getting Started"
+  },
+  "navbar": {
+    "repositoryLink": "python cheatsheet repository",
+    "cheatsheets": "Cheatsheets"
+  },
+  "mobile": {
+    "openNavigation": "Open navigation",
+    "closeNavigation": "Close navigation",
+    "navigation": "Navigation"
+  },
+  "common": {
+    "language": "Language",
+    "practiceInLabexVm": "Practice in LabEx VM",
+    "downloadPdf": "Download PDF",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "localeNames": {
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "ja": "日本語",
+      "ru": "Русский",
+      "ko": "한국어",
+      "pt": "Português"
+    }
+  },
+  "error404": {
+    "title": "404 Not Found",
+    "error": "404 error",
+    "pageNotFound": "Page not found.",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "goBackHome": "Go back home"
+  },
+  "home": {
+    "title": "LabEx Cheatsheets",
+    "description": "LabEx Cheatsheets provides comprehensive technical reference guides covering Linux, DevOps, Cybersecurity, Database, Data Science, Docker, Kubernetes, Python, Git, Java, Go, C++, and many more technologies. Download PDF versions for offline access.",
+    "cardLinks": {
+      "linux": "Linux",
+      "linuxDesc": "Comprehensive Linux command reference and system administration guide.",
+      "devops": "DevOps",
+      "devopsDesc": "Essential DevOps tools, practices, and automation techniques.",
+      "cybersecurity": "Cybersecurity",
+      "cybersecurityDesc": "Security tools, techniques, and best practices for protecting systems.",
+      "viewOnGithub": "View on GitHub",
+      "viewOnGithubDesc": "Drop a star on GitHub if you find this project useful."
+    }
+  },
+  "navigation": {
+    "cheatsheet": {
+      "basics": "Basics",
+      "built-in-functions": "Built-in Functions",
+      "control-flow": "Control Flow",
+      "functions": "Functions",
+      "lists-and-tuples": "Lists and Tuples",
+      "dictionaries": "Dictionaries",
+      "sets": "Sets",
+      "comprehensions": "Comprehensions",
+      "manipulating-strings": "Manipulating Strings",
+      "string-formatting": "String Formatting",
+      "regular-expressions": "Regular Expressions",
+      "file-directory-path": "Files and Directory Paths",
+      "reading-and-writing-files": "Reading and Writing Files",
+      "json-yaml": "JSON and YAML",
+      "exception-handling": "Exception Handling",
+      "debugging": "Debugging",
+      "args-and-kwargs": "Args and kwargs",
+      "decorators": "Decorators",
+      "context-manager": "Context Manager",
+      "oop-basics": "OOP",
+      "dataclasses": "Dataclasses",
+      "setup-py": "setup.py",
+      "main": "Main: Top-Level Script",
+      "virtual-environments": "Virtual Environments"
+    }
+  },
+  "codeBlock": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "expand": "Expand",
+    "collapse": "Collapse"
+  },
+  "meta": {
+    "title": "LabEx Cheatsheets",
+    "description": "Technical reference guides for Linux, DevOps, Cybersecurity, Database, Data Science, Docker, Kubernetes, Python, Git, Java, Go, C++. Download PDF for offline access.",
+    "keywords": "labex cheatsheets, technical cheatsheets, linux cheatsheet, devops cheatsheet, cybersecurity cheatsheet, database cheatsheet, docker cheatsheet, kubernetes cheatsheet, python cheatsheet, git cheatsheet, programming reference"
+  }
+}

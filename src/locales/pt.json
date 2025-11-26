@@ -1,0 +1,94 @@
+{
+  "sidebar": {
+    "introduction": "Introdução",
+    "cheatsheet": "Folha de referência",
+    "gettingStarted": "Primeiros passos"
+  },
+  "navbar": {
+    "repositoryLink": "repositório da folha de referência Python",
+    "cheatsheets": "Folhas de Referência"
+  },
+  "mobile": {
+    "openNavigation": "Abrir navegação",
+    "closeNavigation": "Fechar navegação",
+    "navigation": "Navegação"
+  },
+  "common": {
+    "language": "Idioma",
+    "practiceInLabexVm": "Praticar no LabEx VM",
+    "downloadPdf": "Baixar PDF",
+    "previousPage": "Página anterior",
+    "nextPage": "Próxima página",
+    "localeNames": {
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "ja": "日本語",
+      "ru": "Русский",
+      "ko": "한국어",
+      "pt": "Português"
+    }
+  },
+  "error404": {
+    "title": "404 Não encontrado",
+    "error": "Erro 404",
+    "pageNotFound": "Página não encontrada.",
+    "description": "Desculpe, não conseguimos encontrar a página que você está procurando.",
+    "goBackHome": "Voltar para o início"
+  },
+  "home": {
+    "title": "LabEx Folhas de Referência",
+    "description": "LabEx Folhas de Referência fornece guias de referência técnica abrangentes que cobrem Linux, DevOps, Segurança Cibernética, Banco de Dados, Ciência de Dados, Docker, Kubernetes, Python, Git, Java, Go, C++ e muitas outras tecnologias. Baixe versões em PDF para acesso offline.",
+    "cardLinks": {
+      "linux": "Linux",
+      "linuxDesc": "Guia completo de referência de comandos Linux e administração do sistema.",
+      "devops": "DevOps",
+      "devopsDesc": "Ferramentas essenciais de DevOps, práticas e técnicas de automação.",
+      "cybersecurity": "Segurança Cibernética",
+      "cybersecurityDesc": "Ferramentas de segurança, técnicas e melhores práticas para proteger sistemas.",
+      "viewOnGithub": "Ver no GitHub",
+      "viewOnGithubDesc": "Deixe uma estrela no GitHub se você achar este projeto útil."
+    }
+  },
+  "navigation": {
+    "cheatsheet": {
+      "basics": "Básicos",
+      "built-in-functions": "Funções integradas",
+      "control-flow": "Fluxo de controle",
+      "functions": "Funções",
+      "lists-and-tuples": "Listas e tuplas",
+      "dictionaries": "Dicionários",
+      "sets": "Conjuntos",
+      "comprehensions": "Compreensões",
+      "manipulating-strings": "Manipulação de strings",
+      "string-formatting": "Formatação de strings",
+      "regular-expressions": "Expressões regulares",
+      "file-directory-path": "Arquivos e caminhos de diretório",
+      "reading-and-writing-files": "Leitura e escrita de arquivos",
+      "json-yaml": "JSON e YAML",
+      "exception-handling": "Tratamento de exceções",
+      "debugging": "Depuração",
+      "args-and-kwargs": "Args e kwargs",
+      "decorators": "Decoradores",
+      "context-manager": "Gerenciador de contexto",
+      "oop-basics": "OOP",
+      "dataclasses": "Classes de dados",
+      "setup-py": "setup.py",
+      "main": "Principal: Script de nível superior",
+      "virtual-environments": "Ambientes virtuais"
+    }
+  },
+  "codeBlock": {
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "expand": "Expandir",
+    "collapse": "Recolher"
+  },
+  "meta": {
+    "title": "LabEx Folhas de Referência",
+    "description": "Guias de referência técnica para Linux, DevOps, Segurança Cibernética, Banco de Dados, Ciência de Dados, Docker, Kubernetes, Python, Git, Java, Go, C++ e mais. Baixe PDF para acesso offline.",
+    "keywords": "labex folhas de referência, folhas de referência técnica, folha de referência linux, folha de referência devops, folha de referência segurança cibernética, folha de referência banco de dados, folha de referência docker, folha de referência kubernetes, folha de referência python, folha de referência git, guia referência programação"
+  }
+}

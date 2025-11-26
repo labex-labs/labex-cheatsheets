@@ -1,0 +1,94 @@
+{
+  "sidebar": {
+    "introduction": "Einführung",
+    "cheatsheet": "Spickzettel",
+    "gettingStarted": "Erste Schritte"
+  },
+  "navbar": {
+    "repositoryLink": "Python Spickzettel Repository",
+    "cheatsheets": "Spickzettel"
+  },
+  "mobile": {
+    "openNavigation": "Navigation öffnen",
+    "closeNavigation": "Navigation schließen",
+    "navigation": "Navigation"
+  },
+  "common": {
+    "language": "Sprache",
+    "practiceInLabexVm": "In LabEx VM üben",
+    "downloadPdf": "PDF herunterladen",
+    "previousPage": "Vorherige Seite",
+    "nextPage": "Nächste Seite",
+    "localeNames": {
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "ja": "日本語",
+      "ru": "Русский",
+      "ko": "한국어",
+      "pt": "Português"
+    }
+  },
+  "error404": {
+    "title": "404 Nicht gefunden",
+    "error": "404 Fehler",
+    "pageNotFound": "Seite nicht gefunden.",
+    "description": "Entschuldigung, wir konnten die von Ihnen gesuchte Seite nicht finden.",
+    "goBackHome": "Zurück zur Startseite"
+  },
+  "home": {
+    "title": "LabEx Spickzettel",
+    "description": "LabEx Spickzettel bietet umfassende technische Referenzleitfäden, die Linux, DevOps, Cybersicherheit, Datenbank, Data Science, Docker, Kubernetes, Python, Git, Java, Go, C++ und viele weitere Technologien abdecken. Laden Sie PDF-Versionen für den Offline-Zugriff herunter.",
+    "cardLinks": {
+      "linux": "Linux",
+      "linuxDesc": "Umfassendes Linux-Befehlsreferenz- und Systemverwaltungsleitfaden.",
+      "devops": "DevOps",
+      "devopsDesc": "Wesentliche DevOps-Tools, Praktiken und Automatisierungstechniken.",
+      "cybersecurity": "Cybersicherheit",
+      "cybersecurityDesc": "Sicherheitstools, Techniken und Best Practices zum Schutz von Systemen.",
+      "viewOnGithub": "Auf GitHub anzeigen",
+      "viewOnGithubDesc": "Hinterlassen Sie einen Stern auf GitHub, wenn Sie dieses Projekt nützlich finden."
+    }
+  },
+  "navigation": {
+    "cheatsheet": {
+      "basics": "Grundlagen",
+      "built-in-functions": "Integrierte Funktionen",
+      "control-flow": "Kontrollfluss",
+      "functions": "Funktionen",
+      "lists-and-tuples": "Listen und Tupel",
+      "dictionaries": "Wörterbücher",
+      "sets": "Mengen",
+      "comprehensions": "List-Comprehensions",
+      "manipulating-strings": "Zeichenketten-Manipulation",
+      "string-formatting": "Zeichenketten-Formatierung",
+      "regular-expressions": "Reguläre Ausdrücke",
+      "file-directory-path": "Dateien und Verzeichnispfade",
+      "reading-and-writing-files": "Lesen und Schreiben von Dateien",
+      "json-yaml": "JSON und YAML",
+      "exception-handling": "Ausnahmebehandlung",
+      "debugging": "Debugging",
+      "args-and-kwargs": "Args und kwargs",
+      "decorators": "Dekoratoren",
+      "context-manager": "Kontext-Manager",
+      "oop-basics": "OOP",
+      "dataclasses": "Datenklassen",
+      "setup-py": "setup.py",
+      "main": "Hauptprogramm: Top-Level-Skript",
+      "virtual-environments": "Virtuelle Umgebungen"
+    }
+  },
+  "codeBlock": {
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "expand": "Erweitern",
+    "collapse": "Einklappen"
+  },
+  "meta": {
+    "title": "LabEx Spickzettel",
+    "description": "Technische Referenzleitfäden für Linux, DevOps, Cybersicherheit, Datenbank, Data Science, Docker, Kubernetes, Python, Git, Java, Go, C++ und mehr. PDF-Versionen für Offline-Zugriff herunterladen.",
+    "keywords": "labex spickzettel, technische spickzettel, linux spickzettel, devops spickzettel, cybersicherheit spickzettel, datenbank spickzettel, docker spickzettel, kubernetes spickzettel, python spickzettel, git spickzettel, programmierung referenz"
+  }
+}

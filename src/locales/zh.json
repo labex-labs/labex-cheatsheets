@@ -1,0 +1,94 @@
+{
+  "sidebar": {
+    "introduction": "简介",
+    "cheatsheet": "速查表",
+    "gettingStarted": "入门指南"
+  },
+  "navbar": {
+    "repositoryLink": "Python 速查表仓库",
+    "cheatsheets": "速查表"
+  },
+  "mobile": {
+    "openNavigation": "打开导航",
+    "closeNavigation": "关闭导航",
+    "navigation": "导航"
+  },
+  "common": {
+    "language": "语言",
+    "practiceInLabexVm": "在 LabEx VM 中练习",
+    "downloadPdf": "下载 PDF",
+    "previousPage": "上一页",
+    "nextPage": "下一页",
+    "localeNames": {
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "ja": "日本語",
+      "ru": "Русский",
+      "ko": "한국어",
+      "pt": "Português"
+    }
+  },
+  "error404": {
+    "title": "404 未找到",
+    "error": "404 错误",
+    "pageNotFound": "页面未找到。",
+    "description": "抱歉，我们找不到您要查找的页面。",
+    "goBackHome": "返回首页"
+  },
+  "home": {
+    "title": "LabEx 速查表",
+    "description": "LabEx 速查表提供全面的技术参考指南，涵盖 Linux、DevOps、网络安全、数据库、数据科学、Docker、Kubernetes、Python、Git、Java、Go、C++ 以及更多技术。可下载 PDF 版本以便离线访问。",
+    "cardLinks": {
+      "linux": "Linux",
+      "linuxDesc": "全面的 Linux 命令参考和系统管理指南。",
+      "devops": "DevOps",
+      "devopsDesc": "DevOps 工具、实践和自动化技术要点。",
+      "cybersecurity": "网络安全",
+      "cybersecurityDesc": "保护系统的安全工具、技术和最佳实践。",
+      "viewOnGithub": "在 GitHub 上查看",
+      "viewOnGithubDesc": "如果您觉得这个项目有用，请在 GitHub 上点个星标。"
+    }
+  },
+  "navigation": {
+    "cheatsheet": {
+      "basics": "基础",
+      "built-in-functions": "内置函数",
+      "control-flow": "控制流",
+      "functions": "函数",
+      "lists-and-tuples": "列表和元组",
+      "dictionaries": "字典",
+      "sets": "集合",
+      "comprehensions": "推导式",
+      "manipulating-strings": "字符串操作",
+      "string-formatting": "字符串格式化",
+      "regular-expressions": "正则表达式",
+      "file-directory-path": "文件和目录路径",
+      "reading-and-writing-files": "读写文件",
+      "json-yaml": "JSON 和 YAML",
+      "exception-handling": "异常处理",
+      "debugging": "调试",
+      "args-and-kwargs": "Args 和 kwargs",
+      "decorators": "装饰器",
+      "context-manager": "上下文管理器",
+      "oop-basics": "面向对象编程",
+      "dataclasses": "数据类",
+      "setup-py": "setup.py",
+      "main": "主程序：顶层脚本",
+      "virtual-environments": "虚拟环境"
+    }
+  },
+  "codeBlock": {
+    "copy": "复制",
+    "copied": "已复制",
+    "expand": "展开",
+    "collapse": "折叠"
+  },
+  "meta": {
+    "title": "LabEx 速查表",
+    "description": "技术参考指南，涵盖 Linux、DevOps、网络安全、数据库、数据科学、Docker、Kubernetes、Python、Git、Java、Go、C++ 等技术。可下载 PDF 版本以便离线访问。",
+    "keywords": "labex 速查表，技术速查表，linux 速查表，devops 速查表，网络安全速查表，数据库速查表，docker 速查表，kubernetes 速查表，python 速查表，git 速查表，编程参考指南"
+  }
+}

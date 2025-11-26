@@ -1,0 +1,222 @@
+/* https://github.com/antfu/prism-theme-vars */
+@import 'prism-theme-vars/base.css';
+
+.prose {
+  --prism-font-family: 'DM Mono', monospace;
+}
+
+.prose img {
+  width: 100%;
+}
+
+html .prose {
+  --prism-foreground: #f8fafc;
+  --prism-background: #2f2f2f;
+  --prism-comment: #94a3b8;
+  --prism-string: #a5e844;
+  --prism-interpolation: #ff6666;
+  --prism-literal: #429988;
+  --prism-keyword: #7bddff;
+  --prism-operator: #7bddff;
+  --prism-boolean: #7bddff;
+  --prism-number: #fd9170;
+  --prism-variable: #ff6666;
+  --prism-function: #c792ea;
+  --prism-deleted: #a14f55;
+  --prism-class: #ffcb6b;
+  --prism-builtin: #82aaff;
+  --prism-property: #80cbc4;
+  --prism-namespace: #db889a;
+  --prism-punctuation: #89ddff;
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #f2ff00;
+  --prism-json-property: #6b8b9e;
+  --prism-line-number: #888888;
+  --prism-line-number-gutter: #eeeeee;
+  --prism-line-highlight-background: #444444;
+  --prism-selection-background: #444444;
+  --prism-font-size: 0.9em;
+  --prism-tab-size: 4;
+}
+
+/* Code block language label as a separate line above code */
+.prose pre[class*='language-'] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+/* Code block header with language label and copy button */
+.prose pre[class*='language-'] .code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgb(148 163 184);
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  z-index: 10;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  opacity: 0.8;
+  line-height: 1.4;
+  user-select: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.prose pre[class*='language-'] .code-block-label {
+  flex: 1;
+}
+
+.prose pre[class*='language-'] .code-block-copy-button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgb(148 163 184);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  opacity: 0.8;
+}
+
+.prose pre[class*='language-'] .code-block-copy-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+}
+
+.prose pre[class*='language-'] .code-block-copy-button:active {
+  transform: scale(0.95);
+}
+
+.prose pre[class*='language-'] .code-block-copy-button.copied {
+  background-color: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: rgb(74, 222, 128);
+}
+
+.prose pre[class*='language-'] > code {
+  display: block;
+  padding: 1rem !important;
+  margin: 0 !important;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.dark .prose pre[class*='language-'] .code-block-header {
+  color: rgb(148 163 184);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  opacity: 0.8;
+}
+
+.dark .prose pre[class*='language-'] .code-block-copy-button {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: rgb(148 163 184);
+}
+
+.dark .prose pre[class*='language-'] .code-block-copy-button:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.dark .prose pre[class*='language-'] .code-block-copy-button.copied {
+  background-color: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: rgb(74, 222, 128);
+}
+
+/* Output block styles */
+.prose pre[class*='language-'].output-block .code-block-header {
+  background-color: rgba(46, 126, 238, 0.15);
+  border-bottom-color: rgba(46, 126, 238, 0.3);
+}
+
+.dark .prose pre[class*='language-'].output-block .code-block-header {
+  background-color: rgba(129, 153, 249, 0.15);
+  border-bottom-color: rgba(129, 153, 249, 0.3);
+}
+
+.prose pre[class*='language-'].output-block.output-collapsed > code {
+  display: none;
+}
+
+.prose pre[class*='language-'] .code-block-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.prose pre[class*='language-'] .code-block-toggle-button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgb(148 163 184);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  opacity: 0.8;
+}
+
+.prose pre[class*='language-'] .code-block-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+}
+
+.prose pre[class*='language-'] .code-block-toggle-button:active {
+  transform: scale(0.95);
+}
+
+.dark .prose pre[class*='language-'] .code-block-toggle-button {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: rgb(148 163 184);
+}
+
+.dark .prose pre[class*='language-'] .code-block-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Fix YAML key.atrule token color */
+.prose pre[class*='language-'] code .token.key.atrule,
+.prose pre[class*='language-'] .token.key.atrule {
+  color: var(--prism-property, #80cbc4) !important;
+}
+
+/* Fix selector token color */
+.prose pre[class*='language-'] code .token.selector,
+.prose pre[class*='language-'] .token.selector {
+  color: var(--prism-class, #ffcb6b) !important;
+}
+
+/* Fix attr-value token color */
+.prose pre[class*='language-'] code .token.attr-value,
+.prose pre[class*='language-'] .token.attr-value {
+  color: var(--prism-string, #a5e844) !important;
+}

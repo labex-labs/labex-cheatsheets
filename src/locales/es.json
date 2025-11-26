@@ -1,0 +1,94 @@
+{
+  "sidebar": {
+    "introduction": "Introducción",
+    "cheatsheet": "Hoja de referencia",
+    "gettingStarted": "Primeros pasos"
+  },
+  "navbar": {
+    "repositoryLink": "repositorio de hoja de referencia Python",
+    "cheatsheets": "Hojas de Referencia"
+  },
+  "mobile": {
+    "openNavigation": "Abrir navegación",
+    "closeNavigation": "Cerrar navegación",
+    "navigation": "Navegación"
+  },
+  "common": {
+    "language": "Idioma",
+    "practiceInLabexVm": "Practicar en LabEx VM",
+    "downloadPdf": "Descargar PDF",
+    "previousPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "localeNames": {
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "ja": "日本語",
+      "ru": "Русский",
+      "ko": "한국어",
+      "pt": "Português"
+    }
+  },
+  "error404": {
+    "title": "404 No encontrado",
+    "error": "Error 404",
+    "pageNotFound": "Página no encontrada.",
+    "description": "Lo sentimos, no pudimos encontrar la página que buscas.",
+    "goBackHome": "Volver al inicio"
+  },
+  "home": {
+    "title": "LabEx Hojas de Referencia",
+    "description": "LabEx Hojas de Referencia proporciona guías de referencia técnica completas que cubren Linux, DevOps, Ciberseguridad, Base de Datos, Ciencia de Datos, Docker, Kubernetes, Python, Git, Java, Go, C++ y muchas más tecnologías. Descarga versiones PDF para acceso sin conexión.",
+    "cardLinks": {
+      "linux": "Linux",
+      "linuxDesc": "Guía completa de referencia de comandos Linux y administración del sistema.",
+      "devops": "DevOps",
+      "devopsDesc": "Herramientas esenciales de DevOps, prácticas y técnicas de automatización.",
+      "cybersecurity": "Ciberseguridad",
+      "cybersecurityDesc": "Herramientas de seguridad, técnicas y mejores prácticas para proteger sistemas.",
+      "viewOnGithub": "Ver en GitHub",
+      "viewOnGithubDesc": "Deja una estrella en GitHub si encuentras útil este proyecto."
+    }
+  },
+  "navigation": {
+    "cheatsheet": {
+      "basics": "Básicos",
+      "built-in-functions": "Funciones integradas",
+      "control-flow": "Flujo de control",
+      "functions": "Funciones",
+      "lists-and-tuples": "Listas y tuplas",
+      "dictionaries": "Diccionarios",
+      "sets": "Conjuntos",
+      "comprehensions": "Comprensiones",
+      "manipulating-strings": "Manipulación de cadenas",
+      "string-formatting": "Formato de cadenas",
+      "regular-expressions": "Expresiones regulares",
+      "file-directory-path": "Archivos y rutas de directorio",
+      "reading-and-writing-files": "Lectura y escritura de archivos",
+      "json-yaml": "JSON y YAML",
+      "exception-handling": "Manejo de excepciones",
+      "debugging": "Depuración",
+      "args-and-kwargs": "Args y kwargs",
+      "decorators": "Decoradores",
+      "context-manager": "Administrador de contexto",
+      "oop-basics": "POO",
+      "dataclasses": "Clases de datos",
+      "setup-py": "setup.py",
+      "main": "Principal: Script de nivel superior",
+      "virtual-environments": "Entornos virtuales"
+    }
+  },
+  "codeBlock": {
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "expand": "Expandir",
+    "collapse": "Contraer"
+  },
+  "meta": {
+    "title": "LabEx Hojas de Referencia",
+    "description": "Guías de referencia técnica para Linux, DevOps, Ciberseguridad, Base de Datos, Ciencia de Datos, Docker, Kubernetes, Python, Git, Java, Go, C++ y más. Descarga PDF para acceso sin conexión.",
+    "keywords": "labex hojas de referencia, hojas de referencia técnica, hoja de referencia linux, hoja de referencia devops, hoja de referencia ciberseguridad, hoja de referencia base de datos, hoja de referencia docker, hoja de referencia kubernetes, hoja de referencia python, hoja de referencia git, guía de referencia programación"
+  }
+}

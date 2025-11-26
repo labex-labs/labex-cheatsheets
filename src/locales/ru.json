@@ -1,0 +1,94 @@
+{
+  "sidebar": {
+    "introduction": "Введение",
+    "cheatsheet": "Шпаргалка",
+    "gettingStarted": "Начало работы"
+  },
+  "navbar": {
+    "repositoryLink": "репозиторий шпаргалки Python",
+    "cheatsheets": "Шпаргалки"
+  },
+  "mobile": {
+    "openNavigation": "Открыть навигацию",
+    "closeNavigation": "Закрыть навигацию",
+    "navigation": "Навигация"
+  },
+  "common": {
+    "language": "Язык",
+    "practiceInLabexVm": "Практиковаться в LabEx VM",
+    "downloadPdf": "Скачать PDF",
+    "previousPage": "Предыдущая страница",
+    "nextPage": "Следующая страница",
+    "localeNames": {
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "ja": "日本語",
+      "ru": "Русский",
+      "ko": "한국어",
+      "pt": "Português"
+    }
+  },
+  "error404": {
+    "title": "404 Не найдено",
+    "error": "Ошибка 404",
+    "pageNotFound": "Страница не найдена.",
+    "description": "Извините, мы не смогли найти страницу, которую вы ищете.",
+    "goBackHome": "Вернуться на главную"
+  },
+  "home": {
+    "title": "LabEx Шпаргалки",
+    "description": "LabEx Шпаргалки предоставляет комплексные технические справочники, охватывающие Linux, DevOps, Кибербезопасность, Базы данных, Науку о данных, Docker, Kubernetes, Python, Git, Java, Go, C++ и многие другие технологии. Скачайте PDF-версии для офлайн-доступа.",
+    "cardLinks": {
+      "linux": "Linux",
+      "linuxDesc": "Комплексное руководство по командам Linux и системному администрированию.",
+      "devops": "DevOps",
+      "devopsDesc": "Основные инструменты DevOps, практики и методы автоматизации.",
+      "cybersecurity": "Кибербезопасность",
+      "cybersecurityDesc": "Инструменты безопасности, техники и лучшие практики для защиты систем.",
+      "viewOnGithub": "Посмотреть на GitHub",
+      "viewOnGithubDesc": "Поставьте звезду на GitHub, если вы считаете этот проект полезным."
+    }
+  },
+  "navigation": {
+    "cheatsheet": {
+      "basics": "Основы",
+      "built-in-functions": "Встроенные функции",
+      "control-flow": "Управление потоком",
+      "functions": "Функции",
+      "lists-and-tuples": "Списки и кортежи",
+      "dictionaries": "Словари",
+      "sets": "Множества",
+      "comprehensions": "Генераторы",
+      "manipulating-strings": "Работа со строками",
+      "string-formatting": "Форматирование строк",
+      "regular-expressions": "Регулярные выражения",
+      "file-directory-path": "Файлы и пути к директориям",
+      "reading-and-writing-files": "Чтение и запись файлов",
+      "json-yaml": "JSON и YAML",
+      "exception-handling": "Обработка исключений",
+      "debugging": "Отладка",
+      "args-and-kwargs": "Args и kwargs",
+      "decorators": "Декораторы",
+      "context-manager": "Менеджер контекста",
+      "oop-basics": "ООП",
+      "dataclasses": "Классы данных",
+      "setup-py": "setup.py",
+      "main": "Главный: Скрипт верхнего уровня",
+      "virtual-environments": "Виртуальные окружения"
+    }
+  },
+  "codeBlock": {
+    "copy": "Копировать",
+    "copied": "Скопировано",
+    "expand": "Развернуть",
+    "collapse": "Свернуть"
+  },
+  "meta": {
+    "title": "LabEx Шпаргалки",
+    "description": "Технические справочники для Linux, DevOps, Кибербезопасности, Базы данных, Науки о данных, Docker, Kubernetes, Python, Git, Java, Go, C++ и более. Скачайте PDF-версии для офлайн-доступа.",
+    "keywords": "labex шпаргалки, технические шпаргалки, шпаргалка linux, шпаргалка devops, шпаргалка кибербезопасность, шпаргалка база данных, шпаргалка docker, шпаргалка kubernetes, шпаргалка python, шпаргалка git, справочник программирование"
+  }
+}

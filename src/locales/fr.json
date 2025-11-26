@@ -1,0 +1,94 @@
+{
+  "sidebar": {
+    "introduction": "Introduction",
+    "cheatsheet": "Aide-mémoire",
+    "gettingStarted": "Pour commencer"
+  },
+  "navbar": {
+    "repositoryLink": "dépôt de l'aide-mémoire Python",
+    "cheatsheets": "Aides-mémoire"
+  },
+  "mobile": {
+    "openNavigation": "Ouvrir la navigation",
+    "closeNavigation": "Fermer la navigation",
+    "navigation": "Navigation"
+  },
+  "common": {
+    "language": "Langue",
+    "practiceInLabexVm": "Pratiquer dans LabEx VM",
+    "downloadPdf": "Télécharger PDF",
+    "previousPage": "Page précédente",
+    "nextPage": "Page suivante",
+    "localeNames": {
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "ja": "日本語",
+      "ru": "Русский",
+      "ko": "한국어",
+      "pt": "Português"
+    }
+  },
+  "error404": {
+    "title": "404 Non trouvé",
+    "error": "Erreur 404",
+    "pageNotFound": "Page non trouvée.",
+    "description": "Désolé, nous n'avons pas pu trouver la page que vous recherchez.",
+    "goBackHome": "Retour à l'accueil"
+  },
+  "home": {
+    "title": "LabEx Aides-mémoire",
+    "description": "LabEx Aides-mémoire fournit des guides de référence technique complets couvrant Linux, DevOps, Cybersécurité, Base de données, Science des données, Docker, Kubernetes, Python, Git, Java, Go, C++ et bien d'autres technologies. Téléchargez les versions PDF pour un accès hors ligne.",
+    "cardLinks": {
+      "linux": "Linux",
+      "linuxDesc": "Guide complet de référence des commandes Linux et d'administration système.",
+      "devops": "DevOps",
+      "devopsDesc": "Outils DevOps essentiels, pratiques et techniques d'automatisation.",
+      "cybersecurity": "Cybersécurité",
+      "cybersecurityDesc": "Outils de sécurité, techniques et meilleures pratiques pour protéger les systèmes.",
+      "viewOnGithub": "Voir sur GitHub",
+      "viewOnGithubDesc": "Laissez une étoile sur GitHub si vous trouvez ce projet utile."
+    }
+  },
+  "navigation": {
+    "cheatsheet": {
+      "basics": "Bases",
+      "built-in-functions": "Fonctions intégrées",
+      "control-flow": "Flux de contrôle",
+      "functions": "Fonctions",
+      "lists-and-tuples": "Listes et tuples",
+      "dictionaries": "Dictionnaires",
+      "sets": "Ensembles",
+      "comprehensions": "Compréhensions",
+      "manipulating-strings": "Manipulation de chaînes",
+      "string-formatting": "Formatage de chaînes",
+      "regular-expressions": "Expressions régulières",
+      "file-directory-path": "Fichiers et chemins de répertoire",
+      "reading-and-writing-files": "Lecture et écriture de fichiers",
+      "json-yaml": "JSON et YAML",
+      "exception-handling": "Gestion des exceptions",
+      "debugging": "Débogage",
+      "args-and-kwargs": "Args et kwargs",
+      "decorators": "Décorateurs",
+      "context-manager": "Gestionnaire de contexte",
+      "oop-basics": "POO",
+      "dataclasses": "Classes de données",
+      "setup-py": "setup.py",
+      "main": "Principal : Script de niveau supérieur",
+      "virtual-environments": "Environnements virtuels"
+    }
+  },
+  "codeBlock": {
+    "copy": "Copier",
+    "copied": "Copié",
+    "expand": "Développer",
+    "collapse": "Réduire"
+  },
+  "meta": {
+    "title": "LabEx Aides-mémoire",
+    "description": "Guides de référence technique pour Linux, DevOps, Cybersécurité, Base de données, Science des données, Docker, Kubernetes, Python, Git, Java, Go, C++ et plus. Téléchargez PDF pour accès hors ligne.",
+    "keywords": "labex aides-mémoire, aides-mémoire technique, aide-mémoire linux, aide-mémoire devops, aide-mémoire cybersécurité, aide-mémoire base de données, aide-mémoire docker, aide-mémoire kubernetes, aide-mémoire python, aide-mémoire git, guide référence programmation"
+  }
+}
