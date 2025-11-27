@@ -126,6 +126,63 @@ export default defineConfig(({ mode }) => {
       VitePWA({
         registerType: 'autoUpdate',
         includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
+        workbox: {
+          // 使用 NetworkFirst 策略处理导航请求（HTML 页面），确保优先从网络获取最新内容
+          runtimeCaching: [
+            {
+              // 匹配所有 HTML 页面请求（包括根路径和所有路由）
+              // 使用 NetworkFirst 确保优先从网络获取最新内容
+              urlPattern: ({ request, url }: { request: Request; url: URL }) =>
+                request.mode === 'navigate' ||
+                request.destination === 'document' ||
+                url.pathname.endsWith('.html') ||
+                (!url.pathname.includes('.') && request.headers.get('accept')?.includes('text/html')),
+              handler: 'NetworkFirst',
+              options: {
+                cacheName: 'html-cache',
+                expiration: {
+                  maxEntries: 10,
+                  maxAgeSeconds: 60 * 60, // 1 小时，确保 HTML 不会缓存太久
+                },
+                networkTimeoutSeconds: 3, // 3 秒超时后使用缓存
+              },
+            },
+            // 对于静态资源（JS/CSS），使用 StaleWhileRevalidate，优先使用缓存但后台更新
+            {
+              urlPattern: ({ request }: { request: Request }) =>
+                request.destination === 'script' || request.destination === 'style',
+              handler: 'StaleWhileRevalidate',
+              options: {
+                cacheName: 'static-resources',
+                expiration: {
+                  maxEntries: 50,
+                  maxAgeSeconds: 60 * 60 * 24 * 7, // 7 天
+                },
+              },
+            },
+            // 对于图片和其他静态资源，使用 CacheFirst
+            {
+              urlPattern: ({ request }: { request: Request }) =>
+                request.destination === 'image' ||
+                request.destination === 'font' ||
+                /\.(png|jpg|jpeg|svg|gif|webp|ico|woff|woff2|ttf|eot)$/i.test(request.url),
+              handler: 'CacheFirst',
+              options: {
+                cacheName: 'images-cache',
+                expiration: {
+                  maxEntries: 100,
+                  maxAgeSeconds: 60 * 60 * 24 * 30, // 30 天
+                },
+              },
+            },
+          ],
+          // 跳过等待，立即激活新的 Service Worker
+          skipWaiting: true,
+          // 立即控制所有客户端
+          clientsClaim: true,
+          // 清理旧的缓存
+          cleanupOutdatedCaches: true,
+        },
         manifest: {
           name: 'Python Cheatsheet',
           short_name: 'Python Cheatsheet',
