@@ -1,6 +1,6 @@
 ---
-title: 'Ansible Cheatsheet'
-description: 'Learn Ansible with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Ansible Cheatsheet | LabEx'
+description: 'Learn Ansible automation with this comprehensive cheatsheet. Quick reference for Ansible playbooks, modules, inventory management, configuration management, and infrastructure automation.'
 pdfUrl: '/cheatsheets/pdf/ansible-cheatsheet.pdf'
 ---
 

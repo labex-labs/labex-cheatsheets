@@ -1,6 +1,6 @@
 ---
-title: 'Cybersecurity Cheatsheet'
-description: 'Learn Cybersecurity with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Cybersecurity Cheatsheet | LabEx'
+description: 'Learn cybersecurity with this comprehensive cheatsheet. Quick reference for security concepts, threat detection, vulnerability assessment, penetration testing, and information security best practices.'
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: 'CompTIA Cheatsheet'
-description: 'Learn CompTIA with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'CompTIA Cheatsheet | LabEx'
+description: 'Learn CompTIA IT certifications with this comprehensive cheatsheet. Quick reference for CompTIA A+, Network+, Security+, Linux+, and IT fundamentals for certification exam preparation.'
 pdfUrl: '/cheatsheets/pdf/comptia-cheatsheet.pdf'
 ---
 

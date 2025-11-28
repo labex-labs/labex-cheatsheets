@@ -1,6 +1,6 @@
 ---
-title: 'Linux Cheatsheet'
-description: 'Learn Linux with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Linux Cheatsheet | LabEx'
+description: 'Learn Linux administration with this comprehensive cheatsheet. Quick reference for Linux commands, file management, system administration, networking, and shell scripting.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 

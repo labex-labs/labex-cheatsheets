@@ -1,6 +1,6 @@
 ---
-title: 'Golang Cheatsheet'
-description: 'Learn Golang with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Golang Cheatsheet | LabEx'
+description: 'Learn Go programming with this comprehensive cheatsheet. Quick reference for Go syntax, goroutines, channels, interfaces, error handling, and concurrent programming for backend developers.'
 pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 ---
 

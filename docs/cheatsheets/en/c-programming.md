@@ -1,6 +1,6 @@
 ---
-title: 'C Programming Cheatsheet'
-description: 'Learn C Programming with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'C Programming Cheatsheet | LabEx'
+description: 'Learn C programming with this comprehensive cheatsheet. Quick reference for C syntax, pointers, memory management, data structures, and system programming essentials for developers.'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 

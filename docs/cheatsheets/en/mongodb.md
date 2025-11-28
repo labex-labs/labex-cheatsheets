@@ -1,6 +1,6 @@
 ---
-title: 'MongoDB Cheatsheet'
-description: 'Learn MongoDB with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'MongoDB Cheatsheet | LabEx'
+description: 'Learn MongoDB NoSQL database with this comprehensive cheatsheet. Quick reference for MongoDB queries, aggregation, indexing, sharding, replication, and document database management.'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 

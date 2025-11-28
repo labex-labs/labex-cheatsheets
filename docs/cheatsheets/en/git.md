@@ -1,6 +1,6 @@
 ---
-title: 'Git Cheatsheet'
-description: 'Learn Git with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Git Cheatsheet | LabEx'
+description: 'Learn Git version control with this comprehensive cheatsheet. Quick reference for Git commands, branching, merging, rebasing, GitHub workflows, and collaborative development.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 

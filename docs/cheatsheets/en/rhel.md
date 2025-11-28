@@ -1,6 +1,6 @@
 ---
-title: 'Red Hat Enterprise Linux Cheatsheet'
-description: 'Learn Red Hat Enterprise Linux with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Red Hat Enterprise Linux Cheatsheet | LabEx'
+description: 'Learn Red Hat Enterprise Linux (RHEL) administration with this comprehensive cheatsheet. Quick reference for RHEL commands, system management, SELinux, package management, and enterprise Linux administration.'
 pdfUrl: '/cheatsheets/pdf/red-hat-linux-cheatsheet.pdf'
 ---
 

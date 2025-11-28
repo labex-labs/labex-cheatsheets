@@ -1,6 +1,6 @@
 ---
-title: 'PostgreSQL Cheatsheet'
-description: 'Learn PostgreSQL with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'PostgreSQL Cheatsheet | LabEx'
+description: 'Learn PostgreSQL database management with this comprehensive cheatsheet. Quick reference for SQL queries, advanced features, JSON support, full-text search, and enterprise database administration.'
 pdfUrl: '/cheatsheets/pdf/postgresql-cheatsheet.pdf'
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: 'Hydra Cheatsheet'
-description: 'Learn Hydra with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Hydra Cheatsheet | LabEx'
+description: 'Learn Hydra password cracking with this comprehensive cheatsheet. Quick reference for brute-force attacks, password auditing, security testing, authentication protocols, and penetration testing tools.'
 pdfUrl: '/cheatsheets/pdf/hydra-cheatsheet.pdf'
 ---
 

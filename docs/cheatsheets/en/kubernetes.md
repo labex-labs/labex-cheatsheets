@@ -1,6 +1,6 @@
 ---
-title: 'Kubernetes Cheatsheet'
-description: 'Learn Kubernetes with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Kubernetes Cheatsheet | LabEx'
+description: 'Learn Kubernetes orchestration with this comprehensive cheatsheet. Quick reference for kubectl commands, pods, deployments, services, ingress, and cloud-native container management.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 

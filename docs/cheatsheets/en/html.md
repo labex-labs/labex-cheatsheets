@@ -1,6 +1,6 @@
 ---
-title: 'HTML Cheatsheet'
-description: 'Learn HTML with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'HTML Cheatsheet | LabEx'
+description: 'Learn HTML5 with this comprehensive cheatsheet. Quick reference for HTML tags, semantic elements, forms, accessibility, and modern web development standards for frontend developers.'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 

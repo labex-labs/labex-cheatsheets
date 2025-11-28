@@ -1,6 +1,6 @@
 ---
-title: 'Shell Cheatsheet'
-description: 'Learn Shell with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Shell Cheatsheet | LabEx'
+description: 'Learn shell scripting with this comprehensive cheatsheet. Quick reference for bash commands, shell scripting, automation, command-line tools, and Linux/Unix system administration.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 

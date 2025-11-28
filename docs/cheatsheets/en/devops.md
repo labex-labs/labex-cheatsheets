@@ -1,6 +1,6 @@
 ---
-title: 'DevOps Cheatsheet'
-description: 'Learn DevOps with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'DevOps Cheatsheet | LabEx'
+description: 'Learn DevOps practices with this comprehensive cheatsheet. Quick reference for CI/CD, automation, infrastructure as code, monitoring, containerization, and modern software delivery workflows.'
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---
 

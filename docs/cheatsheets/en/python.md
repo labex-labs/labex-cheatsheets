@@ -1,6 +1,6 @@
 ---
-title: 'Python Cheatsheet'
-description: 'Learn Python with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Python Cheatsheet | LabEx'
+description: 'Learn Python programming with this comprehensive cheatsheet. Quick reference for Python syntax, data structures, functions, classes, libraries, and best practices for Python developers.'
 pdfUrl: '/cheatsheets/pdf/python-cheatsheet.pdf'
 ---
 

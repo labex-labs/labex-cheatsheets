@@ -1,6 +1,6 @@
 ---
-title: 'Docker Cheatsheet'
-description: 'Learn Docker with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Docker Cheatsheet | LabEx'
+description: 'Learn Docker containerization with this comprehensive cheatsheet. Quick reference for Docker commands, images, containers, Dockerfile, Docker Compose, and container orchestration.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 

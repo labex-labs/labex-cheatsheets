@@ -1,6 +1,6 @@
 ---
-title: 'NumPy Cheatsheet'
-description: 'Learn NumPy with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'NumPy Cheatsheet | LabEx'
+description: 'Learn NumPy numerical computing with this comprehensive cheatsheet. Quick reference for arrays, linear algebra, mathematical operations, broadcasting, and Python scientific computing.'
 pdfUrl: '/cheatsheets/pdf/numpy-cheatsheet.pdf'
 ---
 

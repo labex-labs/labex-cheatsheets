@@ -1,6 +1,6 @@
 ---
-title: 'Jenkins Cheatsheet'
-description: 'Learn Jenkins with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Jenkins Cheatsheet | LabEx'
+description: 'Learn Jenkins CI/CD with this comprehensive cheatsheet. Quick reference for Jenkins pipelines, jobs, plugins, automation, continuous integration, and DevOps workflows.'
 pdfUrl: '/cheatsheets/pdf/jenkins-cheatsheet.pdf'
 ---
 

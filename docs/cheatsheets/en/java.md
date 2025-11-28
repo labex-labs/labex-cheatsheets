@@ -1,6 +1,6 @@
 ---
-title: 'Java Cheatsheet'
-description: 'Learn Java with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Java Cheatsheet | LabEx'
+description: 'Learn Java programming with this comprehensive cheatsheet. Quick reference for Java syntax, OOP, collections, streams, Spring framework, and enterprise development essentials.'
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 

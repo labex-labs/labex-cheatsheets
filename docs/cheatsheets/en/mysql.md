@@ -1,6 +1,6 @@
 ---
-title: 'MySQL Cheatsheet'
-description: 'Learn MySQL with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'MySQL Cheatsheet | LabEx'
+description: 'Learn MySQL database management with this comprehensive cheatsheet. Quick reference for SQL queries, joins, indexes, transactions, stored procedures, and database administration.'
 pdfUrl: '/cheatsheets/pdf/mysql-cheatsheet.pdf'
 ---
 

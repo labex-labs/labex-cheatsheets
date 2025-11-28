@@ -1,6 +1,6 @@
 ---
-title: 'Kali Linux Cheatsheet'
-description: 'Learn Kali Linux with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Kali Linux Cheatsheet | LabEx'
+description: 'Learn Kali Linux penetration testing with this comprehensive cheatsheet. Quick reference for security tools, ethical hacking, vulnerability scanning, exploitation, and cybersecurity testing.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 

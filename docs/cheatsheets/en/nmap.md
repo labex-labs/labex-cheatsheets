@@ -1,6 +1,6 @@
 ---
-title: 'Nmap Cheatsheet'
-description: 'Learn Nmap with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Nmap Cheatsheet | LabEx'
+description: 'Learn Nmap network scanning with this comprehensive cheatsheet. Quick reference for port scanning, network discovery, vulnerability detection, security auditing, and network reconnaissance.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 

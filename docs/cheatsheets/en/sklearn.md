@@ -1,6 +1,6 @@
 ---
-title: 'scikit-learn Cheatsheet'
-description: 'Learn scikit-learn with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'scikit-learn Cheatsheet | LabEx'
+description: 'Learn scikit-learn machine learning with this comprehensive cheatsheet. Quick reference for ML algorithms, model training, preprocessing, evaluation, and Python machine learning workflows.'
 pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: 'JavaScript Cheatsheet'
-description: 'Learn JavaScript with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'JavaScript Cheatsheet | LabEx'
+description: 'Learn JavaScript programming with this comprehensive cheatsheet. Quick reference for JS syntax, ES6+, DOM manipulation, async/await, Node.js, and modern web development.'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 

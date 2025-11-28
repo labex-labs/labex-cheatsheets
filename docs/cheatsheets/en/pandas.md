@@ -1,6 +1,6 @@
 ---
-title: 'Pandas Cheatsheet'
-description: 'Learn Pandas with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Pandas Cheatsheet | LabEx'
+description: 'Learn Pandas data manipulation with this comprehensive cheatsheet. Quick reference for DataFrame operations, data cleaning, filtering, grouping, merging, and Python data analysis.'
 pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 ---
 

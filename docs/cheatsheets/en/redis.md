@@ -1,6 +1,6 @@
 ---
-title: 'Redis Cheatsheet'
-description: 'Learn Redis with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Redis Cheatsheet | LabEx'
+description: 'Learn Redis in-memory data store with this comprehensive cheatsheet. Quick reference for Redis commands, data structures, caching, pub/sub, persistence, and high-performance caching solutions.'
 pdfUrl: '/cheatsheets/pdf/redis-cheatsheet.pdf'
 ---
 

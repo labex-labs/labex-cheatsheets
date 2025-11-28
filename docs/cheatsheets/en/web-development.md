@@ -1,6 +1,6 @@
 ---
-title: 'Web Development Cheatsheet'
-description: 'Learn Web Development with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Web Development Cheatsheet | LabEx'
+description: 'Learn web development with this comprehensive cheatsheet. Quick reference for HTML, CSS, JavaScript, APIs, responsive design, performance optimization, and full-stack development essentials.'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 

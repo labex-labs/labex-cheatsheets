@@ -1,6 +1,6 @@
 ---
-title: 'Database Cheatsheet'
-description: 'Learn Database with our comprehensive cheatsheet covering essential commands, concepts, and best practices.'
+title: 'Database Cheatsheet | LabEx'
+description: 'Learn database management with this comprehensive cheatsheet. Quick reference for SQL queries, database design, normalization, indexing, transactions, and relational database administration.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
