@@ -4,6 +4,10 @@
 
 <h1 align="center">LabEx Cheatsheets</h1>
 
+<p align="center">
+  Cheatsheets for Programming Beginners
+</div>
+
 <div align="center">
   <a href="https://labex.io/cheatsheets">labex.io/cheatsheets</a>
 </div>
