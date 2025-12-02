@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Dicas Linux'
-description: 'Aprenda Linux com nosso guia completo cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola Linux | LabEx'
+description: 'Aprenda administração Linux com esta folha de cola abrangente. Referência rápida para comandos Linux, gerenciamento de arquivos, administração de sistema, rede e scripting shell.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
@@ -147,6 +147,21 @@ pwd
 cd -
 ```
 
+<BaseQuiz id="linux-cd-pwd-1" correct="B">
+  <template #question>
+    Qual comando mostra o diretório de trabalho atual?
+  </template>
+  
+  <BaseQuizOption value="A">cd</BaseQuizOption>
+  <BaseQuizOption value="B" correct>pwd</BaseQuizOption>
+  <BaseQuizOption value="C">ls</BaseQuizOption>
+  <BaseQuizOption value="D">whoami</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O comando `pwd` (print working directory) exibe o caminho completo do diretório atual em que você está.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Criar e Remover: `mkdir`, `rmdir`, `rm`
 
 Cria e exclui arquivos e diretórios.
@@ -200,7 +215,7 @@ cp -p arquivo.txt backup.txt
 
 ### Encontrar Arquivos: `find`, `locate`
 
-Procura por arquivos e diretórios por nome, tipo ou propriedades.
+Pesquisa por arquivos e diretórios por nome, tipo ou propriedades.
 
 ```bash
 # Encontrar por nome
@@ -231,6 +246,21 @@ chown -R usuario:grupo diretorio/
 # Visualizar permissões do arquivo
 ls -l nome_arquivo
 ```
+
+<BaseQuiz id="linux-chmod-1" correct="C">
+  <template #question>
+    O que `chmod 755 nome_arquivo` define como permissão?
+  </template>
+  
+  <BaseQuizOption value="A">Leitura, escrita, execução para o proprietário; leitura para grupo e outros</BaseQuizOption>
+  <BaseQuizOption value="B">Leitura, escrita para o proprietário; leitura, execução para grupo e outros</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Leitura, escrita, execução para o proprietário; leitura, execução para grupo e outros</BaseQuizOption>
+  <BaseQuizOption value="D">Leitura, escrita para o proprietário; leitura para grupo e outros</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` define: proprietário = 7 (rwx), grupo = 5 (r-x), outros = 5 (r-x). Este é um conjunto de permissões comum para arquivos e diretórios executáveis.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Gerenciamento de Processos
 
@@ -267,6 +297,21 @@ kill -l
 # Enviar sinal específico
 kill -HUP 1234
 ```
+
+<BaseQuiz id="linux-kill-1" correct="D">
+  <template #question>
+    Qual sinal o comando `kill -9` envia para um processo?
+  </template>
+  
+  <BaseQuizOption value="A">SIGTERM (terminar graciosamente)</BaseQuizOption>
+  <BaseQuizOption value="B">SIGHUP (desligar)</BaseQuizOption>
+  <BaseQuizOption value="C">SIGINT (interromper)</BaseQuizOption>
+  <BaseQuizOption value="D" correct>SIGKILL (matar à força, não pode ser ignorado)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kill -9` envia SIGKILL, que termina um processo à força imediatamente. Este sinal não pode ser capturado ou ignorado pelo processo, sendo útil para matar processos que não respondem.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Tarefas em Segundo Plano: `jobs`, `bg`, `fg`
 
@@ -336,14 +381,29 @@ traceroute google.com
 mtr google.com
 ```
 
+<BaseQuiz id="linux-ping-1" correct="B">
+  <template #question>
+    O que o comando `ping -c 4` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Pingar com tempo limite de 4 segundos</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Enviar 4 pacotes ping e parar</BaseQuizOption>
+  <BaseQuizOption value="C">Pingar 4 hosts diferentes</BaseQuizOption>
+  <BaseQuizOption value="D">Esperar 4 segundos entre os pings</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A opção `-c` especifica a contagem de pacotes a serem enviados. `ping -c 4` enviará exatamente 4 pacotes de solicitação de eco ICMP e depois parará, exibindo os resultados.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Análise de Porta e Conexão: `netstat`, `ss`
 
-Exibe conexões de rede e portas em escuta.
+Exibe conexões de rede e portas de escuta.
 
 ```bash
 # Mostrar todas as conexões
 netstat -tuln
-# Mostrar portas em escuta
+# Mostrar portas de escuta
 netstat -tuln | grep LISTEN
 # Substituição moderna para netstat
 ss -tuln
@@ -363,29 +423,44 @@ scp arquivo.txt usuario@host:/caminho/
 # Copiar de host remoto
 scp usuario@host:/caminho/arquivo.txt ./
 # Sincronizar diretórios
-rsync -avz dir_local/ usuario@host:/dir_remoto/
+rsync -avz localdir/ usuario@host:/remotedir/
 # Rsync com progresso
 rsync -avz --progress origem/ destino/
 ```
 
-## Processamento e Busca de Texto
+## Processamento e Pesquisa de Texto
 
-### Busca de Texto: `grep`
+### Pesquisa de Texto: `grep`
 
-Procura por padrões em arquivos e saída de comandos.
+Pesquisa por padrões em arquivos e saída de comandos.
 
 ```bash
-# Procurar por padrão em arquivo
+# Pesquisar por padrão em arquivo
 grep "padrao" nome_arquivo
-# Busca sem distinção entre maiúsculas e minúsculas
+# Pesquisa insensível a maiúsculas/minúsculas
 grep -i "padrao" nome_arquivo
-# Busca recursiva em diretórios
+# Pesquisa recursiva em diretórios
 grep -r "padrao" /caminho/
 # Mostrar números de linha
 grep -n "padrao" nome_arquivo
 # Contar linhas correspondentes
 grep -c "padrao" nome_arquivo
 ```
+
+<BaseQuiz id="linux-grep-1" correct="A">
+  <template #question>
+    Qual opção do `grep` realiza uma pesquisa insensível a maiúsculas/minúsculas?
+  </template>
+  
+  <BaseQuizOption value="A" correct>-i</BaseQuizOption>
+  <BaseQuizOption value="B">-c</BaseQuizOption>
+  <BaseQuizOption value="C">-n</BaseQuizOption>
+  <BaseQuizOption value="D">-r</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A opção `-i` torna o grep insensível a maiúsculas/minúsculas, então ele corresponderá a letras maiúsculas e minúsculas. Por exemplo, `grep -i "erro" arquivo.txt` corresponderá a "Erro", "ERRO" e "erro".
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Manipulação de Texto: `sed`, `awk`
 
@@ -394,11 +469,11 @@ Edita e processa texto usando editores de fluxo e scanners de padrões.
 ```bash
 # Substituir texto em arquivo
 sed 's/antigo/novo/g' nome_arquivo
-# Deletar linhas contendo padrão
+# Excluir linhas contendo padrão
 sed '/padrao/d' nome_arquivo
 # Imprimir campos específicos
 awk '{print $1, $3}' nome_arquivo
-# Somar valores em coluna
+# Somar valores em uma coluna
 awk '{soma += $1} END {print soma}' nome_arquivo
 ```
 
@@ -472,16 +547,16 @@ unzip arquivo.zip
 unzip -l arquivo.zip
 ```
 
-### Arquivos Avançados: `tar` Opções
+### Arquivos Avançados: Opções `tar`
 
-Operações tar avançadas para backup e restauração.
+Operações avançadas de tar para backup e restauração.
 
 ```bash
 # Criar arquivo com compressão
 tar -czvf backup.tar.gz /home/usuario/
 # Extrair para diretório específico
 tar -xzf arquivo.tar.gz -C /destino/
-# Adicionar arquivos a arquivo existente
+# Adicionar arquivos a um arquivo existente
 tar -rf arquivo.tar novoarquivo.txt
 # Atualizar arquivo com arquivos mais recentes
 tar -uf arquivo.tar arquivos/
@@ -489,7 +564,7 @@ tar -uf arquivo.tar arquivos/
 
 ### Espaço em Disco: `du`
 
-Analisa o uso de espaço em disco e tamanhos de diretório.
+Analisa o uso do disco e os tamanhos dos diretórios.
 
 ```bash
 # Mostrar tamanhos de diretório
@@ -502,7 +577,7 @@ du -h --max-depth=1 /caminho/
 du -h | sort -hr | head -10
 ```
 
-## Monitoramento do Sistema e Desempenho
+## Monitoramento de Sistema e Desempenho
 
 ### Uso de Memória: `free`, `vmstat`
 
@@ -538,7 +613,7 @@ iostat -x /dev/sda
 
 ### Carga do Sistema: `top`, `htop`
 
-Monitora a carga do sistema, uso de CPU e processos em execução.
+Monitora a carga do sistema, uso da CPU e processos em execução.
 
 ```bash
 # Monitor de processos em tempo real
@@ -570,7 +645,7 @@ dmesg
 dmesg | tail
 ```
 
-## Gerenciamento de Usuários e Permissões
+## Gerenciamento de Usuário e Permissões
 
 ### Operações de Usuário: `useradd`, `usermod`, `userdel`
 
@@ -583,9 +658,9 @@ useradd nome_usuario
 useradd -m nome_usuario
 # Modificar conta de usuário
 usermod -aG grupo_nome nome_usuario
-# Excluir usuário
+# Excluir conta de usuário
 userdel nome_usuario
-# Excluir usuário com diretório home
+# Excluir conta de usuário com diretório home
 userdel -r nome_usuario
 ```
 
@@ -601,12 +676,12 @@ groups nome_usuario
 # Mostrar todos os grupos
 cat /etc/group
 # Adicionar usuário ao grupo
-usermod -aG nome_grupo nome_usuario
+usermod -aG grupo_nome nome_usuario
 # Mudar grupo primário do usuário
-usermod -g nome_grupo nome_usuario
+usermod -g grupo_nome nome_usuario
 ```
 
-### Mudar Usuário: `su`, `sudo`
+### Mudar Usuários: `su`, `sudo`
 
 Muda de usuário e executa comandos com privilégios elevados.
 
@@ -655,7 +730,7 @@ apt upgrade
 apt install nome_pacote
 # Remover pacote
 apt remove nome_pacote
-# Procurar por pacotes
+# Pesquisar por pacotes
 apt search nome_pacote
 # Mostrar informações do pacote
 apt show nome_pacote
@@ -672,7 +747,7 @@ yum install nome_pacote
 yum update
 # Remover pacote
 yum remove nome_pacote
-# Procurar por pacotes
+# Pesquisar por pacotes
 yum search nome_pacote
 # Listar pacotes instalados
 yum list installed
@@ -691,7 +766,7 @@ snap list
 snap refresh
 # Remover pacote snap
 snap remove nome_pacote
-# Procurar pacotes snap
+# Pesquisar pacotes snap
 snap find nome_pacote
 ```
 
@@ -706,9 +781,9 @@ flatpak install nome_pacote
 flatpak list
 # Atualizar pacotes flatpak
 flatpak update
-# Remover flatpak
+# Desinstalar flatpak
 flatpak uninstall nome_pacote
-# Procurar pacotes flatpak
+# Pesquisar pacotes flatpak
 flatpak search nome_pacote
 ```
 
@@ -733,7 +808,7 @@ Ctrl+R
 
 ### Aliases e Funções: `alias`
 
-Cria atalhos para comandos usados frequentemente.
+Cria atalhos para comandos frequentemente usados.
 
 ```bash
 # Criar alias
@@ -742,7 +817,7 @@ alias ll='ls -la'
 alias
 # Remover alias
 unalias ll
-# Tornar alias permanente (adicionar a .bashrc)
+# Tornar alias permanente (adicionar ao .bashrc)
 echo "alias ll='ls -la'" >> ~/.bashrc
 ```
 
@@ -759,7 +834,7 @@ comando >> saida.txt
 comando < entrada.txt
 # Redirecionar stdout e stderr
 comando &> saida.txt
-# Encanear saída para outro comando
+# Enviar saída para outro comando
 comando1 | comando2
 ```
 
@@ -787,7 +862,7 @@ printenv
 Escolhe e instala distribuições Linux para diferentes casos de uso.
 
 ```bash
-# Ubuntu Server
+# Servidor Ubuntu
 wget ubuntu-server.iso
 # CentOS Stream
 wget centos-stream.iso
@@ -797,7 +872,7 @@ wget debian.iso
 sha256sum linux.iso
 ```
 
-### Boot e Instalação: USB, Rede
+### Inicialização e Instalação: USB, Rede
 
 Cria mídia inicializável e realiza a instalação do sistema.
 
@@ -805,7 +880,7 @@ Cria mídia inicializável e realiza a instalação do sistema.
 # Criar USB inicializável (Linux)
 dd if=linux.iso of=/dev/sdX bs=4M
 # Criar USB inicializável (multiplataforma)
-# Usar ferramentas como Rufus, Etcher ou UNetbootin
+# Use ferramentas como Rufus, Etcher ou UNetbootin
 # Instalação em rede
 # Configurar boot PXE para instalações em rede
 ```
@@ -889,7 +964,7 @@ tail -f /var/log/auth.log
 grep "Failed password" /var/log/auth.log
 # Monitorar logs do sistema
 tail -f /var/log/syslog
-# Ver histórico de login
+# Verificar histórico de login
 last
 # Verificar atividades suspeitas
 journalctl -p err
@@ -897,13 +972,13 @@ journalctl -p err
 
 ## Solução de Problemas e Recuperação
 
-### Problemas de Boot: Recuperação do GRUB
+### Problemas de Inicialização: Recuperação do GRUB
 
-Recupera-se de problemas no carregador de boot e no kernel.
+Recupera-se de problemas no carregador de inicialização e no kernel.
 
 ```bash
-# Bootar do modo de resgate
-# Acessar menu GRUB durante a inicialização
+# Inicializar a partir do modo de resgate
+# Acessar o menu GRUB durante a inicialização
 # Montar sistema de arquivos root
 mount /dev/sda1 /mnt
 # Chroot para o sistema
@@ -921,7 +996,7 @@ Verifica e repara corrupção do sistema de arquivos.
 ```bash
 # Verificar sistema de arquivos
 fsck /dev/sda1
-# Forçar verificação do sistema de arquivos
+# Verificação forçada do sistema de arquivos
 fsck -f /dev/sda1
 # Reparo automático
 fsck -y /dev/sda1

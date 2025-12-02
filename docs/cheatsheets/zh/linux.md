@@ -1,11 +1,11 @@
 ---
-title: 'Linux 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，学习 Linux。'
+title: 'Linux 速查表 | LabEx'
+description: '使用这份全面的速查表学习 Linux 管理。快速参考 Linux 命令、文件管理、系统管理、网络和 Shell 脚本。'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Linux 速查表
+Linux 备忘单
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,7 +15,7 @@ Linux 速查表
 <a href="https://linux-commands.labex.io/" target="_blank">访问 Linux 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-有关全面的 Linux 命令参考材料、语法示例和详细文档，请访问 <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>。该独立网站提供广泛的 Linux 速查表，涵盖了 Linux 管理员和开发人员的基本命令、概念和最佳实践。
+有关全面的 Linux 命令参考材料、语法示例和详细文档，请访问 <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>。这个独立网站提供了丰富的 Linux 备忘单，涵盖了 Linux 管理员和开发人员的基本命令、概念和最佳实践。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -49,20 +49,20 @@ lscpu
 lsblk
 # 内存信息
 free -h
-# 按文件系统划分的磁盘使用情况
+# 文件系统磁盘使用情况
 df -h
 ```
 
-### 系统运行时间：`uptime`
+### 系统正常运行时间：`uptime`
 
-显示系统运行时间和负载平均值。
+显示系统正常运行时间和负载平均值。
 
 ```bash
-# 系统运行时间和负载
+# 系统正常运行时间和负载
 uptime
-# 更详细的运行时间信息
+# 更详细的正常运行时间信息
 uptime -p
-# 显示自特定日期以来的运行时间
+# 显示自特定日期以来的正常运行时间
 uptime -s
 ```
 
@@ -118,9 +118,9 @@ timedatectl set-timezone America/New_York
 以各种格式选项显示文件和目录。
 
 ```bash
-# 在当前目录列出文件
+# 在当前目录中列出文件
 ls
-# 详细列表，包含权限
+# 详细列表和权限
 ls -l
 # 显示隐藏文件
 ls -la
@@ -146,6 +146,21 @@ pwd
 # 转到上一个目录
 cd -
 ```
+
+<BaseQuiz id="linux-cd-pwd-1" correct="B">
+  <template #question>
+    哪个命令显示当前工作目录？
+  </template>
+  
+  <BaseQuizOption value="A">cd</BaseQuizOption>
+  <BaseQuizOption value="B" correct>pwd</BaseQuizOption>
+  <BaseQuizOption value="C">ls</BaseQuizOption>
+  <BaseQuizOption value="D">whoami</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pwd` 命令（print working directory）显示您当前所在目录的完整路径。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 创建与删除：`mkdir`, `rmdir`, `rm`
 
@@ -205,7 +220,7 @@ cp -p file.txt backup.txt
 ```bash
 # 按名称查找
 find /path -name "filename"
-# 查找过去 7 天修改的文件
+# 查找过去 7 天内修改过的文件
 find /path -mtime -7
 # 按文件类型查找
 find /path -type f -name "*.txt"
@@ -220,7 +235,7 @@ find /path -name "*.log" -exec rm {} \;
 修改文件权限和所有权。
 
 ```bash
-# 更改权限（数字）
+# 更改权限（数字模式）
 chmod 755 filename
 # 添加执行权限
 chmod +x script.sh
@@ -231,6 +246,21 @@ chown -R user:group directory/
 # 查看文件权限
 ls -l filename
 ```
+
+<BaseQuiz id="linux-chmod-1" correct="C">
+  <template #question>
+    `chmod 755 filename` 设置的权限是什么？
+  </template>
+  
+  <BaseQuizOption value="A">所有者读、写、执行；组和其他人读</BaseQuizOption>
+  <BaseQuizOption value="B">所有者读、写；组和其他人读、执行</BaseQuizOption>
+  <BaseQuizOption value="C" correct>所有者读、写、执行；组和其他人读、执行</BaseQuizOption>
+  <BaseQuizOption value="D">所有者读、写；组和其他人读</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` 设置为：所有者 = 7 (rwx)，组 = 5 (r-x)，其他人 = 5 (r-x)。这是可执行文件和目录的常见权限设置。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 进程管理
 
@@ -251,22 +281,37 @@ ps -u username
 
 ### 终止进程：`kill`, `killall`
 
-按 PID 或名称终止进程。
+通过 PID 或名称终止进程。
 
 ```bash
 # 实时进程监视器
 top
-# 按 PID 终止进程
+# 通过 PID 终止进程
 kill 1234
 # 强制终止进程
 kill -9 1234
-# 按进程名称终止
+# 通过进程名称终止
 killall processname
 # 列出所有信号
 kill -l
 # 发送特定信号
 kill -HUP 1234
 ```
+
+<BaseQuiz id="linux-kill-1" correct="D">
+  <template #question>
+    `kill -9` 命令向进程发送什么信号？
+  </template>
+  
+  <BaseQuizOption value="A">SIGTERM (优雅终止)</BaseQuizOption>
+  <BaseQuizOption value="B">SIGHUP (挂断)</BaseQuizOption>
+  <BaseQuizOption value="C">SIGINT (中断)</BaseQuizOption>
+  <BaseQuizOption value="D" correct>SIGKILL (强制终止，不可忽略)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kill -9` 发送 SIGKILL，它会立即强制终止进程。该信号不能被进程捕获或忽略，因此可用于终止无响应的进程。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 后台作业：`jobs`, `bg`, `fg`
 
@@ -281,13 +326,13 @@ bg %1
 fg %1
 # 在后台运行命令
 command &
-# 从终端分离
+# 与终端分离
 nohup command &
 ```
 
 ### 系统监视器：`htop`, `systemctl`
 
-监视系统资源并管理服务。
+监视系统资源和管理服务。
 
 ```bash
 # 增强型进程查看器（如果已安装）
@@ -296,7 +341,7 @@ htop
 systemctl status servicename
 # 启动服务
 systemctl start servicename
-# 设置服务在启动时启用
+# 在启动时启用服务
 systemctl enable servicename
 # 查看系统日志
 journalctl -f
@@ -336,6 +381,21 @@ traceroute google.com
 mtr google.com
 ```
 
+<BaseQuiz id="linux-ping-1" correct="B">
+  <template #question>
+    `ping -c 4` 命令的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">以 4 秒的超时时间 Ping</BaseQuizOption>
+  <BaseQuizOption value="B" correct>发送 4 个 Ping 数据包后停止</BaseQuizOption>
+  <BaseQuizOption value="C">Ping 4 个不同的主机</BaseQuizOption>
+  <BaseQuizOption value="D">Ping 之间等待 4 秒</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-c` 选项指定要发送的数据包数量。`ping -c 4` 将发送正好 4 个 ICMP 回显请求数据包，然后停止并显示结果。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 端口与连接分析：`netstat`, `ss`
 
 显示网络连接和监听端口。
@@ -355,7 +415,7 @@ netstat -tuln | grep :80
 
 ### 文件传输：`scp`, `rsync`
 
-在系统之间安全地传输文件。
+在系统间安全地传输文件。
 
 ```bash
 # 将文件复制到远程主机
@@ -377,7 +437,7 @@ rsync -avz --progress src/ dest/
 ```bash
 # 在文件中搜索模式
 grep "pattern" filename
-# 忽略大小写的搜索
+# 不区分大小写的搜索
 grep -i "pattern" filename
 # 在目录中递归搜索
 grep -r "pattern" /path/
@@ -386,6 +446,21 @@ grep -n "pattern" filename
 # 统计匹配的行数
 grep -c "pattern" filename
 ```
+
+<BaseQuiz id="linux-grep-1" correct="A">
+  <template #question>
+    哪个 `grep` 选项执行不区分大小写的搜索？
+  </template>
+  
+  <BaseQuizOption value="A" correct>-i</BaseQuizOption>
+  <BaseQuizOption value="B">-c</BaseQuizOption>
+  <BaseQuizOption value="C">-n</BaseQuizOption>
+  <BaseQuizOption value="D">-r</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-i` 选项使 grep 不区分大小写，因此它会匹配大写和小写字母。例如，`grep -i "error" file.txt` 将匹配 "Error"、"ERROR" 和 "error"。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 文本操作：`sed`, `awk`
 
@@ -398,13 +473,13 @@ sed 's/old/new/g' filename
 sed '/pattern/d' filename
 # 打印特定字段
 awk '{print $1, $3}' filename
-# 计算列中的值总和
+# 计算第一列的总和
 awk '{sum += $1} END {print sum}' filename
 ```
 
 ### 排序与计数：`sort`, `uniq`, `wc`
 
-排序数据，删除重复项，并计算行数、单词数或字符数。
+排序数据、删除重复项以及计算行数、单词数或字符数。
 
 ```bash
 # 排序文件内容
@@ -460,7 +535,7 @@ tar -tf archive.tar
 使用各种算法压缩和解压缩文件。
 
 ```bash
-# 使用 gzip 压缩文件
+# 用 gzip 压缩文件
 gzip filename
 # 解压缩 gzip 文件
 gunzip filename.gz
@@ -481,9 +556,9 @@ unzip -l archive.zip
 tar -czvf backup.tar.gz /home/user/
 # 提取到特定目录
 tar -xzf archive.tar.gz -C /destination/
-# 向现有归档添加文件
+# 将文件添加到现有归档
 tar -rf archive.tar newfile.txt
-# 使用更新的文件更新归档
+# 用较新文件更新归档
 tar -uf archive.tar files/
 ```
 
@@ -498,13 +573,13 @@ du -h /path/
 du -sh /path/
 # 显示所有子目录的大小
 du -h --max-depth=1 /path/
-# 按大小排序，最大的在前 10 个
+# 按大小排序（最大的在前）
 du -h | sort -hr | head -10
 ```
 
 ## 系统监视与性能
 
-### 内存使用：`free`, `vmstat`
+### 内存使用情况：`free`, `vmstat`
 
 监视内存使用情况和虚拟内存统计信息。
 
@@ -515,7 +590,7 @@ free -h
 cat /proc/meminfo
 # 虚拟内存统计
 vmstat
-# 每 2 秒显示内存统计
+# 每 2 秒内存统计
 vmstat 2
 # 显示交换空间使用情况
 swapon --show
@@ -528,7 +603,7 @@ swapon --show
 ```bash
 # I/O 统计信息（需要 sysstat）
 iostat
-# 每 2 秒显示 I/O 统计信息
+# 每 2 秒 I/O 统计信息
 iostat 2
 # 按进程监视磁盘 I/O
 iotop
@@ -538,7 +613,7 @@ iostat -x /dev/sda
 
 ### 系统负载：`top`, `htop`
 
-监视系统负载、CPU 使用率和正在运行的进程。
+监视系统负载、CPU 使用率和运行进程。
 
 ```bash
 # 实时进程监视器
@@ -630,13 +705,13 @@ visudo
 ```bash
 # 更改密码
 passwd
-# 更改其他用户的密码（需要 root 权限）
+# 更改另一个用户的密码（需要 root 权限）
 passwd username
 # 显示密码过期信息
 chage -l username
 # 设置密码有效期为 90 天
 chage -M 90 username
-# 强制下次登录时更改密码
+# 强制用户下次登录时更改密码
 passwd -e username
 ```
 
@@ -644,7 +719,7 @@ passwd -e username
 
 ### APT (Debian/Ubuntu): `apt`, `apt-get`
 
-在基于 Debian 的系统上管理软件包。
+管理基于 Debian 的系统上的软件包。
 
 ```bash
 # 更新软件包列表
@@ -663,7 +738,7 @@ apt show packagename
 
 ### YUM/DNF (RHEL/Fedora): `yum`, `dnf`
 
-在基于 Red Hat 的系统上管理软件包。
+管理基于 Red Hat 的系统上的软件包。
 
 ```bash
 # 安装软件包
@@ -680,35 +755,35 @@ yum list installed
 
 ### Snap 包：`snap`
 
-在各种发行版上安装和管理 snap 包。
+在各种发行版中安装和管理 snap 软件包。
 
 ```bash
-# 安装 snap 包
+# 安装 snap 软件包
 snap install packagename
 # 列出已安装的 snap
 snap list
-# 刷新 snap 包
+# 刷新 snap 软件包
 snap refresh
-# 移除 snap 包
+# 移除 snap 软件包
 snap remove packagename
-# 搜索 snap 包
+# 搜索 snap 软件包
 snap find packagename
 ```
 
 ### Flatpak 包：`flatpak`
 
-管理 Flatpak 应用程序以实现沙盒软件。
+管理用于沙盒软件的 Flatpak 应用程序。
 
 ```bash
 # 安装 flatpak
 flatpak install packagename
 # 列出已安装的 flatpak
 flatpak list
-# 更新 flatpak 包
+# 更新 flatpak 软件包
 flatpak update
 # 移除 flatpak
 flatpak uninstall packagename
-# 搜索 flatpak 包
+# 搜索 flatpak 软件包
 flatpak search packagename
 ```
 
@@ -753,7 +828,7 @@ echo "alias ll='ls -la'" >> ~/.bashrc
 ```bash
 # 将输出重定向到文件
 command > output.txt
-# 追加输出到文件
+# 将输出追加到文件
 command >> output.txt
 # 从文件重定向输入
 command < input.txt
@@ -784,14 +859,14 @@ printenv
 
 ### 发行版选项：Ubuntu, CentOS, Debian
 
-为不同用例选择和安装 Linux 发行版。
+为不同用途选择和安装 Linux 发行版。
 
 ```bash
-# Ubuntu Server
+# Ubuntu 服务器
 wget ubuntu-server.iso
 # CentOS Stream
 wget centos-stream.iso
-# Debian Stable
+# Debian 稳定版
 wget debian.iso
 # 验证 ISO 完整性
 sha256sum linux.iso
@@ -799,7 +874,7 @@ sha256sum linux.iso
 
 ### 启动与安装：USB, 网络
 
-创建可启动介质并执行系统安装。
+创建可启动媒体并执行系统安装。
 
 ```bash
 # 创建可启动 USB（Linux）
@@ -838,11 +913,11 @@ ufw allow ssh
 ufw enable
 # 允许特定端口
 ufw allow 22/tcp
-# 按服务名称允许
+# 按名称允许服务
 ufw allow ssh
 # 拒绝访问
 ufw deny 23
-# 显示防火墙状态
+# 查看防火墙状态
 ufw status verbose
 # 高级规则使用 iptables
 iptables -L
@@ -878,7 +953,7 @@ yum update --security
 apt list --upgradable
 ```
 
-### 日志监视：安全事件
+### 日志监控：安全事件
 
 监视系统日志中的安全事件和异常情况。
 
@@ -940,7 +1015,7 @@ systemctl status servicename
 journalctl -u servicename
 # 重启失败的服务
 systemctl restart servicename
-# 设置服务在启动时启用
+# 在启动时启用服务
 systemctl enable servicename
 # 列出失败的服务
 systemctl --failed
@@ -965,11 +1040,11 @@ lsof
 
 ## 相关链接
 
-- <router-link to="/shell">Shell 速查表</router-link>
-- <router-link to="/rhel">Red Hat Enterprise Linux 速查表</router-link>
-- <router-link to="/docker">Docker 速查表</router-link>
-- <router-link to="/kubernetes">Kubernetes 速查表</router-link>
-- <router-link to="/git">Git 速查表</router-link>
-- <router-link to="/ansible">Ansible 速查表</router-link>
-- <router-link to="/devops">DevOps 速查表</router-link>
-- <router-link to="/cybersecurity">网络安全速查表</router-link>
+- <router-link to="/shell">Shell 备忘单</router-link>
+- <router-link to="/rhel">Red Hat 企业 Linux 备忘单</router-link>
+- <router-link to="/docker">Docker 备忘单</router-link>
+- <router-link to="/kubernetes">Kubernetes 备忘单</router-link>
+- <router-link to="/git">Git 备忘单</router-link>
+- <router-link to="/ansible">Ansible 备忘单</router-link>
+- <router-link to="/devops">DevOps 备忘单</router-link>
+- <router-link to="/cybersecurity">网络安全备忘单</router-link>

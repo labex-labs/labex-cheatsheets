@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Linux'
-description: 'Aprenda Linux con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Linux | LabEx'
+description: 'Aprenda administración de Linux con esta hoja de trucos completa. Referencia rápida de comandos de Linux, gestión de archivos, administración de sistemas, redes y scripting de shell.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Hoja de Trucos de Linux
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Visitar Comandos de Linux</a>
+<a href="https://linux-commands.labex.io/" target="_blank">Visite Comandos de Linux</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Para materiales de referencia completos de comandos de Linux, ejemplos de sintaxis y documentación detallada, visite <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Este sitio independiente proporciona hojas de trucos extensas de Linux que cubren comandos esenciales, conceptos y mejores prácticas para administradores y desarrolladores de Linux.
+Para obtener materiales de referencia completos de comandos de Linux, ejemplos de sintaxis y documentación detallada, visite <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Este sitio independiente proporciona amplias hojas de trucos de Linux que cubren comandos esenciales, conceptos y mejores prácticas para administradores y desarrolladores de Linux.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Para materiales de referencia completos de comandos de Linux, ejemplos de sintax
 
 ### Información del Sistema: `uname`
 
-Muestra información del sistema incluyendo el kernel y la arquitectura.
+Muestra información del sistema, incluido el kernel y la arquitectura.
 
 ```bash
 # Mostrar nombre del kernel
@@ -38,9 +38,9 @@ uname -m
 uname -o
 ```
 
-### Información de Hardware: `lscpu`, `lsblk`
+### Información del Hardware: `lscpu`, `lsblk`
 
-Ver especificaciones detalladas de hardware y dispositivos de bloque.
+Ver especificaciones detalladas del hardware y dispositivos de bloque.
 
 ```bash
 # Información de la CPU
@@ -147,6 +147,21 @@ pwd
 cd -
 ```
 
+<BaseQuiz id="linux-cd-pwd-1" correct="B">
+  <template #question>
+    ¿Qué comando muestra el directorio de trabajo actual?
+  </template>
+  
+  <BaseQuizOption value="A">cd</BaseQuizOption>
+  <BaseQuizOption value="B" correct>pwd</BaseQuizOption>
+  <BaseQuizOption value="C">ls</BaseQuizOption>
+  <BaseQuizOption value="D">whoami</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El comando `pwd` (print working directory) muestra la ruta completa del directorio actual en el que se encuentra.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Crear y Eliminar: `mkdir`, `rmdir`, `rm`
 
 Crear y eliminar archivos y directorios.
@@ -203,11 +218,11 @@ cp -p file.txt backup.txt
 Buscar archivos y directorios por nombre, tipo o propiedades.
 
 ```bash
-# Encontrar por nombre
+# Buscar por nombre
 find /path -name "filename"
 # Encontrar archivos modificados en los últimos 7 días
 find /path -mtime -7
-# Encontrar por tipo de archivo
+# Buscar por tipo de archivo
 find /path -type f -name "*.txt"
 # Localizar archivos rápidamente (requiere updatedb)
 locate filename
@@ -232,14 +247,29 @@ chown -R user:group directory/
 ls -l filename
 ```
 
+<BaseQuiz id="linux-chmod-1" correct="C">
+  <template #question>
+    ¿Qué establece `chmod 755 filename` para los permisos?
+  </template>
+  
+  <BaseQuizOption value="A">Lectura, escritura, ejecución para el propietario; lectura para grupo y otros</BaseQuizOption>
+  <BaseQuizOption value="B">Lectura, escritura para el propietario; lectura, ejecución para grupo y otros</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lectura, escritura, ejecución para el propietario; lectura, ejecución para grupo y otros</BaseQuizOption>
+  <BaseQuizOption value="D">Lectura, escritura para el propietario; lectura para grupo y otros</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` establece: propietario = 7 (rwx), grupo = 5 (r-x), otros = 5 (r-x). Este es un conjunto de permisos común para archivos ejecutables y directorios.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Gestión de Procesos
 
 ### Listado de Procesos: `ps`
 
-Muestra los procesos en ejecución y sus detalles.
+Muestra procesos en ejecución y sus detalles.
 
 ```bash
-# Mostrar procesos del usuario
+# Mostrar procesos de usuario
 ps
 # Mostrar todos los procesos con detalles
 ps aux
@@ -249,24 +279,39 @@ ps -ef --forest
 ps -u username
 ```
 
-### Matar Procesos: `kill`, `killall`
+### Terminar Procesos: `kill`, `killall`
 
 Terminar procesos por PID o nombre.
 
 ```bash
 # Monitor de procesos en tiempo real
 top
-# Matar proceso por PID
+# Terminar proceso por PID
 kill 1234
-# Matar proceso forzadamente
+# Terminar proceso forzadamente
 kill -9 1234
-# Matar por nombre de proceso
+# Terminar por nombre de proceso
 killall processname
 # Listar todas las señales
 kill -l
 # Enviar señal específica
 kill -HUP 1234
 ```
+
+<BaseQuiz id="linux-kill-1" correct="D">
+  <template #question>
+    ¿Qué señal envía el comando `kill -9` a un proceso?
+  </template>
+  
+  <BaseQuizOption value="A">SIGTERM (terminar elegantemente)</BaseQuizOption>
+  <BaseQuizOption value="B">SIGHUP (colgar)</BaseQuizOption>
+  <BaseQuizOption value="C">SIGINT (interrumpir)</BaseQuizOption>
+  <BaseQuizOption value="D" correct>SIGKILL (terminación forzosa, no se puede ignorar)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kill -9` envía SIGKILL, que termina un proceso por la fuerza inmediatamente. Esta señal no puede ser capturada o ignorada por el proceso, lo que la hace útil para matar procesos que no responden.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Trabajos en Segundo Plano: `jobs`, `bg`, `fg`
 
@@ -281,13 +326,13 @@ bg %1
 fg %1
 # Ejecutar comando en segundo plano
 command &
-# Desvincularse de la terminal
+# Desvincularse del terminal
 nohup command &
 ```
 
 ### Monitor del Sistema: `htop`, `systemctl`
 
-Monitorear recursos del sistema y gestionar servicios.
+Monitorizar recursos del sistema y gestionar servicios.
 
 ```bash
 # Visor de procesos mejorado (si está instalado)
@@ -315,7 +360,7 @@ ip addr show
 ip route show
 # Configurar interfaz (temporal)
 ip addr add 192.168.1.10/24 dev eth0
-# Levantar/bajar interfaz
+# Poner interfaz arriba/abajo
 ip link set eth0 up
 # Configuración de interfaz heredada
 ifconfig
@@ -335,6 +380,21 @@ traceroute google.com
 # MTR - herramienta de diagnóstico de red
 mtr google.com
 ```
+
+<BaseQuiz id="linux-ping-1" correct="B">
+  <template #question>
+    ¿Qué hace el comando `ping -c 4`?
+  </template>
+  
+  <BaseQuizOption value="A">Hacer ping con un tiempo de espera de 4 segundos</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Enviar 4 paquetes de ping y detenerse</BaseQuizOption>
+  <BaseQuizOption value="C">Hacer ping a 4 hosts diferentes</BaseQuizOption>
+  <BaseQuizOption value="D">Esperar 4 segundos entre pings</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La opción `-c` especifica el número de paquetes a enviar. `ping -c 4` enviará exactamente 4 paquetes de solicitud de eco ICMP y luego se detendrá, mostrando los resultados.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Análisis de Puertos y Conexiones: `netstat`, `ss`
 
@@ -377,7 +437,7 @@ Buscar patrones en archivos y salida de comandos.
 ```bash
 # Buscar patrón en archivo
 grep "pattern" filename
-# Búsqueda insensible a mayúsculas y minúsculas
+# Búsqueda sin distinguir mayúsculas y minúsculas
 grep -i "pattern" filename
 # Búsqueda recursiva en directorios
 grep -r "pattern" /path/
@@ -386,6 +446,21 @@ grep -n "pattern" filename
 # Contar líneas coincidentes
 grep -c "pattern" filename
 ```
+
+<BaseQuiz id="linux-grep-1" correct="A">
+  <template #question>
+    ¿Qué opción de `grep` realiza una búsqueda sin distinguir entre mayúsculas y minúsculas?
+  </template>
+  
+  <BaseQuizOption value="A" correct>-i</BaseQuizOption>
+  <BaseQuizOption value="B">-c</BaseQuizOption>
+  <BaseQuizOption value="C">-n</BaseQuizOption>
+  <BaseQuizOption value="D">-r</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La opción `-i` hace que grep no distinga entre mayúsculas y minúsculas, por lo que coincidirá con letras mayúsculas y minúsculas. Por ejemplo, `grep -i "error" file.txt` coincidirá con "Error", "ERROR" y "error".
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Manipulación de Texto: `sed`, `awk`
 
@@ -398,7 +473,7 @@ sed 's/old/new/g' filename
 sed '/pattern/d' filename
 # Imprimir campos específicos
 awk '{print $1, $3}' filename
-# Sumar valores en columna
+# Sumar valores en una columna
 awk '{sum += $1} END {print sum}' filename
 ```
 
@@ -489,7 +564,7 @@ tar -uf archive.tar files/
 
 ### Espacio en Disco: `du`
 
-Analizar el uso del espacio en disco y los tamaños de directorios.
+Analizar el uso del disco y los tamaños de los directorios.
 
 ```bash
 # Mostrar tamaños de directorio
@@ -502,11 +577,11 @@ du -h --max-depth=1 /path/
 du -h | sort -hr | head -10
 ```
 
-## Monitoreo y Rendimiento del Sistema
+## Monitorización del Sistema y Rendimiento
 
 ### Uso de Memoria: `free`, `vmstat`
 
-Monitorear el uso de memoria y las estadísticas de memoria virtual.
+Monitorizar el uso de memoria y las estadísticas de memoria virtual.
 
 ```bash
 # Resumen del uso de memoria
@@ -523,22 +598,22 @@ swapon --show
 
 ### E/S de Disco: `iostat`, `iotop`
 
-Monitorear el rendimiento de entrada/salida del disco e identificar cuellos de botella.
+Monitorizar el rendimiento de entrada/salida del disco e identificar cuellos de botella.
 
 ```bash
 # Estadísticas de E/S (requiere sysstat)
 iostat
 # Estadísticas de E/S cada 2 segundos
 iostat 2
-# Monitorear E/S de disco por proceso
+# Monitorizar E/S de disco por proceso
 iotop
-# Mostrar uso de E/S para dispositivo específico
+# Mostrar uso de E/S para un dispositivo específico
 iostat -x /dev/sda
 ```
 
 ### Carga del Sistema: `top`, `htop`
 
-Monitorear la carga del sistema, el uso de CPU y los procesos en ejecución.
+Monitorizar la carga del sistema, el uso de CPU y los procesos en ejecución.
 
 ```bash
 # Monitor de procesos en tiempo real
@@ -549,7 +624,7 @@ htop
 uptime
 # Mostrar información de la CPU
 lscpu
-# Monitorear proceso específico
+# Monitorizar proceso específico
 top -p PID
 ```
 
@@ -562,7 +637,7 @@ Ver y analizar registros del sistema para solución de problemas.
 journalctl
 # Seguir registros en tiempo real
 journalctl -f
-# Mostrar registros para servicio específico
+# Ver registros para un servicio específico
 journalctl -u servicename
 # Mensajes del kernel
 dmesg
@@ -613,7 +688,7 @@ Cambiar de usuario y ejecutar comandos con privilegios elevados.
 ```bash
 # Cambiar a usuario root
 su -
-# Cambiar a usuario específico
+# Cambiar a un usuario específico
 su - username
 # Ejecutar comando como root
 sudo command
@@ -636,7 +711,7 @@ passwd username
 chage -l username
 # Establecer caducidad de contraseña
 chage -M 90 username
-# Forzar cambio de contraseña al próximo inicio de sesión
+# Forzar cambio de contraseña en el próximo inicio de sesión
 passwd -e username
 ```
 
@@ -697,7 +772,7 @@ snap find packagename
 
 ### Paquetes Flatpak: `flatpak`
 
-Gestionar aplicaciones Flatpak para software en contenedores (sandboxed).
+Gestionar aplicaciones Flatpak para software en contenedores.
 
 ```bash
 # Instalar flatpak
@@ -706,7 +781,7 @@ flatpak install packagename
 flatpak list
 # Actualizar paquetes flatpak
 flatpak update
-# Desinstalar flatpak
+# Eliminar flatpak
 flatpak uninstall packagename
 # Buscar paquetes flatpak
 flatpak search packagename
@@ -878,16 +953,16 @@ yum update --security
 apt list --upgradable
 ```
 
-### Monitoreo de Registros: Eventos de Seguridad
+### Monitorización de Registros: Eventos de Seguridad
 
-Monitorear los registros del sistema para eventos de seguridad y anomalías.
+Monitorizar registros del sistema para eventos de seguridad y anomalías.
 
 ```bash
-# Monitorear registros de autenticación
+# Monitorizar registros de autenticación
 tail -f /var/log/auth.log
-# Revisar intentos de inicio de sesión fallidos
+# Verificar intentos de inicio de sesión fallidos
 grep "Failed password" /var/log/auth.log
-# Monitorear registros del sistema
+# Monitorizar registros del sistema
 tail -f /var/log/syslog
 # Ver historial de inicio de sesión
 last
@@ -921,7 +996,7 @@ Verificar y reparar la corrupción del sistema de archivos.
 ```bash
 # Verificar sistema de archivos
 fsck /dev/sda1
-# Verificación forzada del sistema de archivos
+# Forzar verificación del sistema de archivos
 fsck -f /dev/sda1
 # Reparación automática
 fsck -y /dev/sda1
@@ -953,7 +1028,7 @@ Identificar y resolver cuellos de botella en el rendimiento del sistema.
 ```bash
 # Verificar espacio en disco
 df -h
-# Monitorear uso de E/S
+# Monitorizar uso de E/S
 iotop
 # Verificar uso de memoria
 free -h

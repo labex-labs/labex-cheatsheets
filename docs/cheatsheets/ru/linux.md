@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по Linux'
-description: 'Изучите Linux с нашей подробной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Linux | LabEx'
+description: 'Изучите администрирование Linux с помощью этой исчерпывающей шпаргалки. Быстрый справочник по командам Linux, управлению файлами, системному администрированию, сетям и написанию сценариев оболочки.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 <a href="https://linux-commands.labex.io/" target="_blank">Посетите Linux Commands</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Для получения исчерпывающих справочных материалов по командам Linux, примеров синтаксиса и подробной документации, пожалуйста, посетите <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Этот независимый сайт предоставляет обширные шпаргалки по Linux, охватывающие основные команды, концепции и лучшие практики для администраторов и разработчиков Linux.
+Для получения исчерпывающих справочных материалов по командам Linux, примеров синтаксиса и подробной документации посетите сайт <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Этот независимый сайт предоставляет обширные шпаргалки по Linux, охватывающие основные команды, концепции и лучшие практики для администраторов и разработчиков Linux.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -68,7 +68,7 @@ uptime -s
 
 ### Текущие пользователи: `who`, `w`
 
-Отображение вошедших пользователей и их активности.
+Отображение вошедших в систему пользователей и их активности.
 
 ```bash
 # Показать вошедших пользователей
@@ -113,20 +113,20 @@ timedatectl set-timezone America/New_York
 
 ## Операции с файлами и каталогами
 
-### Список файлов: `ls`
+### Листинг файлов: `ls`
 
 Отображение файлов и каталогов с различными опциями форматирования.
 
 ```bash
-# Список файлов в текущем каталоге
+# Листинг файлов в текущем каталоге
 ls
-# Подробный список с правами доступа
+# Подробный листинг с правами доступа
 ls -l
 # Показать скрытые файлы
 ls -la
-# Файловые размеры в человекочитаемом формате
+# Размеры файлов в человекочитаемом формате
 ls -lh
-# Сортировать по времени изменения
+# Сортировка по времени изменения
 ls -lt
 ```
 
@@ -139,13 +139,28 @@ ls -lt
 cd
 # Перейти в указанный каталог
 cd /path/to/directory
-# Перейти на один уровень вверх
+# Подняться на один уровень вверх
 cd ..
 # Показать текущий каталог
 pwd
 # Перейти в предыдущий каталог
 cd -
 ```
+
+<BaseQuiz id="linux-cd-pwd-1" correct="B">
+  <template #question>
+    Какая команда показывает текущий рабочий каталог?
+  </template>
+  
+  <BaseQuizOption value="A">cd</BaseQuizOption>
+  <BaseQuizOption value="B" correct>pwd</BaseQuizOption>
+  <BaseQuizOption value="C">ls</BaseQuizOption>
+  <BaseQuizOption value="D">whoami</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Команда `pwd` (print working directory) отображает полный путь к каталогу, в котором вы находитесь.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Создание и удаление: `mkdir`, `rmdir`, `rm`
 
@@ -166,7 +181,7 @@ rm -rf dirname
 
 ### Просмотр содержимого файла: `cat`, `less`, `head`, `tail`
 
-Отображение содержимого файла различными методами и постранично.
+Отображение содержимого файла различными методами и постраничным просмотром.
 
 ```bash
 # Отобразить весь файл
@@ -203,11 +218,11 @@ cp -p file.txt backup.txt
 Поиск файлов и каталогов по имени, типу или свойствам.
 
 ```bash
-# Найти по имени
+# Поиск по имени
 find /path -name "filename"
 # Найти файлы, измененные за последние 7 дней
 find /path -mtime -7
-# Найти по типу файла
+# Поиск по типу файла
 find /path -type f -name "*.txt"
 # Быстрый поиск файлов (требует обновления базы)
 locate filename
@@ -220,7 +235,7 @@ find /path -name "*.log" -exec rm {} \;
 Изменение прав доступа и владельца файлов.
 
 ```bash
-# Изменить права доступа (цифровой код)
+# Изменить права доступа (числовой метод)
 chmod 755 filename
 # Добавить право на выполнение
 chmod +x script.sh
@@ -232,9 +247,24 @@ chown -R user:group directory/
 ls -l filename
 ```
 
+<BaseQuiz id="linux-chmod-1" correct="C">
+  <template #question>
+    Что устанавливает `chmod 755 filename` для прав доступа?
+  </template>
+  
+  <BaseQuizOption value="A">Чтение, запись, выполнение для владельца; чтение для группы и остальных</BaseQuizOption>
+  <BaseQuizOption value="B">Чтение, запись для владельца; чтение, выполнение для группы и остальных</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Чтение, запись, выполнение для владельца; чтение, выполнение для группы и остальных</BaseQuizOption>
+  <BaseQuizOption value="D">Чтение, запись для владельца; чтение для группы и остальных</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` устанавливает: владелец = 7 (rwx), группа = 5 (r-x), остальные = 5 (r-x). Это распространенный набор прав для исполняемых файлов и каталогов.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Управление процессами
 
-### Список процессов: `ps`
+### Листинг процессов: `ps`
 
 Отображение запущенных процессов и их деталей.
 
@@ -264,16 +294,31 @@ kill -9 1234
 killall processname
 # Показать все сигналы
 kill -l
-# Отправить конкретный сигнал
+# Отправить определенный сигнал
 kill -HUP 1234
 ```
+
+<BaseQuiz id="linux-kill-1" correct="D">
+  <template #question>
+    Какой сигнал отправляет команда `kill -9` процессу?
+  </template>
+  
+  <BaseQuizOption value="A">SIGTERM (мягкое завершение)</BaseQuizOption>
+  <BaseQuizOption value="B">SIGHUP (повесить трубку)</BaseQuizOption>
+  <BaseQuizOption value="C">SIGINT (прерывание)</BaseQuizOption>
+  <BaseQuizOption value="D" correct>SIGKILL (принудительное завершение, нельзя игнорировать)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kill -9` отправляет SIGKILL, который принудительно немедленно завершает процесс. Этот сигнал не может быть перехвачен или проигнорирован процессом, что полезно для завершения зависших процессов.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Фоновые задачи: `jobs`, `bg`, `fg`
 
 Управление фоновыми и активными процессами.
 
 ```bash
-# Список активных задач
+# Листинг активных задач
 jobs
 # Отправить задачу в фон
 bg %1
@@ -313,7 +358,7 @@ journalctl -f
 ip addr show
 # Показать таблицу маршрутизации
 ip route show
-# Настройка интерфейса (временно)
+# Настроить интерфейс (временно)
 ip addr add 192.168.1.10/24 dev eth0
 # Активировать/деактивировать интерфейс
 ip link set eth0 up
@@ -328,13 +373,28 @@ ifconfig
 ```bash
 # Проверить подключение
 ping google.com
-# Ping с ограничением количества
+# Ping с ограничением по количеству
 ping -c 4 192.168.1.1
 # Трассировка маршрута до цели
 traceroute google.com
 # MTR - инструмент диагностики сети
 mtr google.com
 ```
+
+<BaseQuiz id="linux-ping-1" correct="B">
+  <template #question>
+    Что делает команда `ping -c 4`?
+  </template>
+  
+  <BaseQuizOption value="A">Пинговать с таймаутом 4 секунды</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Отправить 4 пакета ping и остановиться</BaseQuizOption>
+  <BaseQuizOption value="C">Пинговать 4 разных хоста</BaseQuizOption>
+  <BaseQuizOption value="D">Ждать 4 секунды между пингами</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Опция `-c` указывает количество отправляемых пакетов. `ping -c 4` отправит ровно 4 пакета ICMP echo request и затем остановится, отобразив результаты.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Анализ портов и соединений: `netstat`, `ss`
 
@@ -387,9 +447,24 @@ grep -n "pattern" filename
 grep -c "pattern" filename
 ```
 
+<BaseQuiz id="linux-grep-1" correct="A">
+  <template #question>
+    Какая опция `grep` выполняет поиск без учета регистра?
+  </template>
+  
+  <BaseQuizOption value="A" correct>-i</BaseQuizOption>
+  <BaseQuizOption value="B">-c</BaseQuizOption>
+  <BaseQuizOption value="C">-n</BaseQuizOption>
+  <BaseQuizOption value="D">-r</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Опция `-i` делает grep нечувствительным к регистру, поэтому она будет соответствовать как заглавным, так и строчным буквам. Например, `grep -i "error" file.txt` найдет "Error", "ERROR" и "error".
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Манипуляции с текстом: `sed`, `awk`
 
-Редактирование и обработка текста с помощью потокового редактора и сканера шаблонов.
+Редактирование и обработка текста с помощью потоковых редакторов и сканеров шаблонов.
 
 ```bash
 # Заменить текст в файле
@@ -407,17 +482,17 @@ awk '{sum += $1} END {print sum}' filename
 Сортировка данных, удаление дубликатов и подсчет строк, слов или символов.
 
 ```bash
-# Сортировать содержимое файла
+# Сортировка содержимого файла
 sort filename
-# Сортировать численно
+# Числовая сортировка
 sort -n numbers.txt
 # Удалить повторяющиеся строки
 uniq filename
-# Сортировать и удалить дубликаты
+# Сортировка и удаление дубликатов
 sort filename | uniq
-# Посчитать строки, слова, символы
+# Подсчет строк, слов, символов
 wc filename
-# Посчитать только строки
+# Подсчет только строк
 wc -l filename
 ```
 
@@ -436,7 +511,7 @@ paste file1.txt file2.txt
 cut -d':' -f1,3 /etc/passwd
 ```
 
-## Архивация и сжатие
+## Архивы и сжатие
 
 ### Создание архивов: `tar`
 
@@ -451,7 +526,7 @@ tar -czf archive.tar.gz files/
 tar -xf archive.tar
 # Извлечь сжатый архив
 tar -xzf archive.tar.gz
-# Вывести содержимое архива
+# Листинг содержимого архива
 tar -tf archive.tar
 ```
 
@@ -466,9 +541,9 @@ gzip filename
 gunzip filename.gz
 # Создать архив zip
 zip archive.zip file1 file2
-# Извлечь архив zip
+# Распаковать архив zip
 unzip archive.zip
-# Вывести содержимое zip
+# Листинг содержимого zip
 unzip -l archive.zip
 ```
 
@@ -477,13 +552,13 @@ unzip -l archive.zip
 Расширенные операции tar для резервного копирования и восстановления.
 
 ```bash
-# Создать архив с сжатием
+# Создать архив со сжатием
 tar -czvf backup.tar.gz /home/user/
 # Извлечь в указанный каталог
 tar -xzf archive.tar.gz -C /destination/
 # Добавить файлы в существующий архив
 tar -rf archive.tar newfile.txt
-# Обновить архив новыми файлами
+# Обновить архив более новыми файлами
 tar -uf archive.tar files/
 ```
 
@@ -498,7 +573,7 @@ du -h /path/
 du -sh /path/
 # Показать размеры всех подкаталогов
 du -h --max-depth=1 /path/
-# Крупнейшие каталоги первыми
+# Сначала самые большие каталоги
 du -h | sort -hr | head -10
 ```
 
@@ -517,7 +592,7 @@ cat /proc/meminfo
 vmstat
 # Использование памяти каждые 2 секунды
 vmstat 2
-# Показать использование swap
+# Показать использование подкачки (swap)
 swapon --show
 ```
 
@@ -538,7 +613,7 @@ iostat -x /dev/sda
 
 ### Нагрузка системы: `top`, `htop`
 
-Мониторинг системной нагрузки, использования ЦП и запущенных процессов.
+Мониторинг нагрузки системы, использования ЦП и запущенных процессов.
 
 ```bash
 # Монитор процессов в реальном времени
@@ -570,7 +645,7 @@ dmesg
 dmesg | tail
 ```
 
-## Управление пользователями и разрешениями
+## Управление пользователями и правами доступа
 
 ### Операции с пользователями: `useradd`, `usermod`, `userdel`
 
@@ -585,7 +660,7 @@ useradd -m username
 usermod -aG groupname username
 # Удалить учетную запись пользователя
 userdel username
-# Удалить учетную запись пользователя с домашним каталогом
+# Удалить учетную запись с домашним каталогом
 userdel -r username
 ```
 
@@ -634,7 +709,7 @@ passwd
 passwd username
 # Показать информацию о сроке действия пароля
 chage -l username
-# Установить срок действия пароля
+# Установить срок действия пароля (90 дней)
 chage -M 90 username
 # Принудительно сменить пароль при следующем входе
 passwd -e username
@@ -674,7 +749,7 @@ yum update
 yum remove packagename
 # Поиск пакетов
 yum search packagename
-# Показать установленные пакеты
+# Листинг установленных пакетов
 yum list installed
 ```
 
@@ -685,7 +760,7 @@ yum list installed
 ```bash
 # Установить пакет snap
 snap install packagename
-# Список установленных snap
+# Листинг установленных snap
 snap list
 # Обновить пакеты snap
 snap refresh
@@ -697,12 +772,12 @@ snap find packagename
 
 ### Пакеты Flatpak: `flatpak`
 
-Управление приложениями Flatpak для изолированного программного обеспечения.
+Управление приложениями Flatpak для программного обеспечения в песочнице.
 
 ```bash
 # Установить flatpak
 flatpak install packagename
-# Список установленных flatpak
+# Листинг установленных flatpak
 flatpak list
 # Обновить пакеты flatpak
 flatpak update
@@ -757,9 +832,9 @@ command > output.txt
 command >> output.txt
 # Перенаправить ввод из файла
 command < input.txt
-# Перенаправить и stdout, и stderr
+# Перенаправить stdout и stderr
 command &> output.txt
-# Передать вывод одной команды другой
+# Передать вывод другой команде
 command1 | command2
 ```
 
@@ -780,7 +855,7 @@ export PATH=$PATH:/new/path
 printenv
 ```
 
-## Установка системы и настройка
+## Установка и настройка системы
 
 ### Варианты дистрибутивов: Ubuntu, CentOS, Debian
 
@@ -807,10 +882,10 @@ dd if=linux.iso of=/dev/sdX bs=4M
 # Создать загрузочную USB (кроссплатформенная)
 # Используйте такие инструменты, как Rufus, Etcher или UNetbootin
 # Сетевая установка
-# Настройка PXE-загрузки для сетевых установок
+# Настройка PXE загрузки для сетевых установок
 ```
 
-### Начальная конфигурация: Пользователи, Сеть, SSH
+### Начальная настройка: Пользователи, Сеть, SSH
 
 Настройка базовой конфигурации системы после установки.
 
@@ -818,7 +893,7 @@ dd if=linux.iso of=/dev/sdX bs=4M
 # Установить имя хоста
 hostnamectl set-hostname newname
 # Настроить статический IP
-# Отредактировать /etc/netplan/ (Ubuntu) или /etc/network/interfaces
+# Редактировать /etc/netplan/ (Ubuntu) или /etc/network/interfaces
 # Включить службу SSH
 systemctl enable ssh
 systemctl start ssh
@@ -829,7 +904,7 @@ ufw allow ssh
 
 ## Безопасность и лучшие практики
 
-### Конфигурация брандмауэра: `ufw`, `iptables`
+### Настройка брандмауэра: `ufw`, `iptables`
 
 Настройка правил брандмауэра для защиты системы от сетевых угроз.
 
@@ -865,7 +940,7 @@ sha256sum *.txt > checksums.txt
 
 ### Обновления системы: Патчи безопасности
 
-Поддержание безопасности системы с помощью регулярных обновлений и патчей безопасности.
+Поддержание безопасности системы с помощью регулярных обновлений и исправлений безопасности.
 
 ```bash
 # Обновления безопасности Ubuntu
@@ -889,7 +964,7 @@ tail -f /var/log/auth.log
 grep "Failed password" /var/log/auth.log
 # Мониторинг системных журналов
 tail -f /var/log/syslog
-# Посмотреть историю входов
+# Просмотреть историю входов
 last
 # Проверить на подозрительную активность
 journalctl -p err
@@ -916,14 +991,14 @@ update-grub
 
 ### Ремонт файловой системы: `fsck`
 
-Проверка и восстановление поврежденных файловых систем.
+Проверка и исправление повреждений файловой системы.
 
 ```bash
 # Проверить файловую систему
 fsck /dev/sda1
 # Принудительная проверка файловой системы
 fsck -f /dev/sda1
-# Автоматическое восстановление
+# Автоматическое исправление
 fsck -y /dev/sda1
 # Проверить все смонтированные файловые системы
 fsck -A
@@ -938,17 +1013,17 @@ fsck -A
 systemctl status servicename
 # Посмотреть журналы службы
 journalctl -u servicename
-# Перезапустить неисправную службу
+# Перезапустить сбойную службу
 systemctl restart servicename
 # Включить службу при загрузке
 systemctl enable servicename
-# Показать неисправные службы
+# Показать сбойные службы
 systemctl --failed
 ```
 
 ### Проблемы с производительностью: Анализ ресурсов
 
-Выявление и устранение узких мест в производительности системы.
+Выявление и устранение узких мест производительности системы.
 
 ```bash
 # Проверить свободное место на диске
@@ -959,7 +1034,7 @@ iotop
 free -h
 # Выявить использование ЦП
 top
-# Показать открытые файлы
+# Листинг открытых файлов
 lsof
 ```
 

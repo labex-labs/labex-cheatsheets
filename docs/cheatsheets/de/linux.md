@@ -1,6 +1,6 @@
 ---
-title: 'Linux Spickzettel'
-description: 'Lernen Sie Linux mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Linux Spickzettel | LabEx'
+description: 'Lernen Sie Linux-Administration mit diesem umfassenden Spickzettel. Schnelle Referenz für Linux-Befehle, Dateiverwaltung, Systemadministration, Netzwerk und Shell-Skripte.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Linux Spickzettel
 <a href="https://linux-commands.labex.io/" target="_blank">Besuchen Sie Linux Commands</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Für umfassende Nachschlagewerke zu Linux-Befehlen, Syntaxbeispielen und detaillierter Dokumentation besuchen Sie bitte <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Diese unabhängige Seite bietet umfangreiche Linux-Spickzettel, die wesentliche Befehle, Konzepte und Best Practices für Linux-Administratoren und Entwickler abdecken.
+Für umfassende Nachschlagewerke zu Linux-Befehlen, Syntaxbeispielen und detaillierten Dokumentationen besuchen Sie bitte <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Diese unabhängige Seite bietet umfangreiche Linux-Spickzettel, die wesentliche Befehle, Konzepte und Best Practices für Linux-Administratoren und Entwickler abdecken.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Für umfassende Nachschlagewerke zu Linux-Befehlen, Syntaxbeispielen und detaill
 
 ### Systeminformationen: `uname`
 
-Anzeige von Systeminformationen einschließlich Kernel und Architektur.
+Anzeige von Systeminformationen, einschließlich Kernel und Architektur.
 
 ```bash
 # Kernelnamen anzeigen
@@ -53,16 +53,16 @@ free -h
 df -h
 ```
 
-### Systemlaufzeit: `uptime`
+### System-Betriebszeit: `uptime`
 
-Anzeige der Systemlaufzeit und der Lastdurchschnitte.
+Anzeige der System-Betriebszeit und der Lastdurchschnitte.
 
 ```bash
-# Systemlaufzeit und Last
+# System-Betriebszeit und Last
 uptime
-# Detailliertere Laufzeitanzeige
+# Detailliertere Betriebszeitinformationen
 uptime -p
-# Laufzeit seit einem bestimmten Datum anzeigen
+# Betriebszeit seit einem bestimmten Datum anzeigen
 uptime -s
 ```
 
@@ -77,7 +77,7 @@ who
 w
 # Aktuellen Benutzernamen anzeigen
 whoami
-# Anmeldehistorie anzeigen
+# Anmeldeverlauf anzeigen
 last
 ```
 
@@ -126,13 +126,13 @@ ls -l
 ls -la
 # Dateigrößen in menschenlesbarem Format
 ls -lh
-# Nach Änderungszeit sortieren
+# Sortieren nach Änderungszeit
 ls -lt
 ```
 
 ### Verzeichnisse navigieren: `cd`, `pwd`
 
-Verzeichnis wechseln und aktuellen Speicherort anzeigen.
+Verzeichnis wechseln und aktuellen Standort anzeigen.
 
 ```bash
 # Zum Home-Verzeichnis wechseln
@@ -146,6 +146,21 @@ pwd
 # Zum vorherigen Verzeichnis wechseln
 cd -
 ```
+
+<BaseQuiz id="linux-cd-pwd-1" correct="B">
+  <template #question>
+    Welcher Befehl zeigt das aktuelle Arbeitsverzeichnis an?
+  </template>
+  
+  <BaseQuizOption value="A">cd</BaseQuizOption>
+  <BaseQuizOption value="B" correct>pwd</BaseQuizOption>
+  <BaseQuizOption value="C">ls</BaseQuizOption>
+  <BaseQuizOption value="D">whoami</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Der Befehl `pwd` (print working directory) zeigt den vollständigen Pfad des aktuellen Verzeichnisses an, in dem Sie sich befinden.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Erstellen & Entfernen: `mkdir`, `rmdir`, `rm`
 
@@ -166,7 +181,7 @@ rm -rf dirname
 
 ### Dateiinhalt anzeigen: `cat`, `less`, `head`, `tail`
 
-Anzeige von Dateiinhalt mit verschiedenen Methoden und Paginierung.
+Anzeige des Dateiinhaltes mit verschiedenen Methoden und Paginierung.
 
 ```bash
 # Gesamte Datei anzeigen
@@ -205,7 +220,7 @@ Nach Dateien und Verzeichnissen nach Name, Typ oder Eigenschaften suchen.
 ```bash
 # Nach Namen suchen
 find /path -name "filename"
-# Dateien suchen, die in den letzten 7 Tagen geändert wurden
+# Dateien finden, die in den letzten 7 Tagen geändert wurden
 find /path -mtime -7
 # Nach Dateityp suchen
 find /path -type f -name "*.txt"
@@ -217,20 +232,35 @@ find /path -name "*.log" -exec rm {} \;
 
 ### Dateiberechtigungen: `chmod`, `chown`
 
-Dateiberechtigungen und Besitzverhältnisse ändern.
+Dateiberechtigungen und Eigentümerschaft ändern.
 
 ```bash
 # Berechtigungen ändern (numerisch)
 chmod 755 filename
 # Ausführungsberechtigung hinzufügen
 chmod +x script.sh
-# Besitzverhältnis ändern
+# Eigentümerschaft ändern
 chown user:group filename
-# Besitzverhältnis rekursiv ändern
+# Eigentümerschaft rekursiv ändern
 chown -R user:group directory/
 # Dateiberechtigungen anzeigen
 ls -l filename
 ```
+
+<BaseQuiz id="linux-chmod-1" correct="C">
+  <template #question>
+    Was bewirkt `chmod 755 filename` für Berechtigungen?
+  </template>
+  
+  <BaseQuizOption value="A">Lesen, Schreiben, Ausführen für Eigentümer; Lesen für Gruppe und andere</BaseQuizOption>
+  <BaseQuizOption value="B">Lesen, Schreiben für Eigentümer; Lesen, Ausführen für Gruppe und andere</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lesen, Schreiben, Ausführen für Eigentümer; Lesen, Ausführen für Gruppe und andere</BaseQuizOption>
+  <BaseQuizOption value="D">Lesen, Schreiben für Eigentümer; Lesen für Gruppe und andere</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` setzt: Eigentümer = 7 (rwx), Gruppe = 5 (r-x), andere = 5 (r-x). Dies ist eine übliche Berechtigungseinstellung für ausführbare Dateien und Verzeichnisse.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Prozessverwaltung
 
@@ -251,7 +281,7 @@ ps -u username
 
 ### Prozesse beenden: `kill`, `killall`
 
-Prozesse nach PID oder Namen beenden.
+Prozesse nach PID oder Name beenden.
 
 ```bash
 # Prozessüberwachung in Echtzeit
@@ -268,6 +298,21 @@ kill -l
 kill -HUP 1234
 ```
 
+<BaseQuiz id="linux-kill-1" correct="D">
+  <template #question>
+    Welches Signal sendet `kill -9` an einen Prozess?
+  </template>
+  
+  <BaseQuizOption value="A">SIGTERM (sanftes Beenden)</BaseQuizOption>
+  <BaseQuizOption value="B">SIGHUP (Auflegen)</BaseQuizOption>
+  <BaseQuizOption value="C">SIGINT (Unterbrechung)</BaseQuizOption>
+  <BaseQuizOption value="D" correct>SIGKILL (erzwungenes Beenden, kann nicht ignoriert werden)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kill -9` sendet SIGKILL, das einen Prozess sofort und zwangsweise beendet. Dieses Signal kann vom Prozess nicht abgefangen oder ignoriert werden, was es nützlich für das Beenden nicht reagierender Prozesse macht.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Hintergrundjobs: `jobs`, `bg`, `fg`
 
 Hintergrund- und Vordergrundprozesse verwalten.
@@ -281,7 +326,7 @@ bg %1
 fg %1
 # Befehl im Hintergrund ausführen
 command &
-# Vom Terminal trennen
+# Von Terminal trennen
 nohup command &
 ```
 
@@ -328,13 +373,28 @@ Netzwerkkonnektivität testen und Paketrouten verfolgen.
 ```bash
 # Konnektivität testen
 ping google.com
-# Ping mit begrenzter Anzahl
+# Ping mit Begrenzung der Anzahl
 ping -c 4 192.168.1.1
 # Route zum Ziel verfolgen
 traceroute google.com
-# MTR - Netzwerkdiagnosetool
+# MTR - Netzwerkdiagnosewerkzeug
 mtr google.com
 ```
+
+<BaseQuiz id="linux-ping-1" correct="B">
+  <template #question>
+    Was bewirkt der Befehl `ping -c 4`?
+  </template>
+  
+  <BaseQuizOption value="A">4 Sekunden lang pingen</BaseQuizOption>
+  <BaseQuizOption value="B" correct>4 Ping-Pakete senden und stoppen</BaseQuizOption>
+  <BaseQuizOption value="C">4 verschiedene Hosts anpingen</BaseQuizOption>
+  <BaseQuizOption value="D">4 Sekunden zwischen den Pings warten</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Option `-c` gibt die Anzahl der zu sendenden Pakete an. `ping -c 4` sendet genau 4 ICMP-Echo-Anforderungspakete und stoppt dann, um die Ergebnisse anzuzeigen.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Port- & Verbindungsanalyse: `netstat`, `ss`
 
@@ -372,7 +432,7 @@ rsync -avz --progress src/ dest/
 
 ### Textsuche: `grep`
 
-Muster in Dateien und Befehlsausgaben suchen.
+Nach Mustern in Dateien und Befehlsausgaben suchen.
 
 ```bash
 # Nach Muster in Datei suchen
@@ -387,6 +447,21 @@ grep -n "pattern" filename
 grep -c "pattern" filename
 ```
 
+<BaseQuiz id="linux-grep-1" correct="A">
+  <template #question>
+    Welche `grep`-Option führt eine Suche durch, die die Groß-/Kleinschreibung ignoriert?
+  </template>
+  
+  <BaseQuizOption value="A" correct>-i</BaseQuizOption>
+  <BaseQuizOption value="B">-c</BaseQuizOption>
+  <BaseQuizOption value="C">-n</BaseQuizOption>
+  <BaseQuizOption value="D">-r</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Option `-i` macht grep unabhängig von Groß-/Kleinschreibung, sodass sowohl Groß- als auch Kleinbuchstaben gefunden werden. Zum Beispiel findet `grep -i "error" file.txt` sowohl "Error", "ERROR" als auch "error".
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Textmanipulation: `sed`, `awk`
 
 Text mit Stream-Editoren und Muster-Scannern bearbeiten und verarbeiten.
@@ -394,11 +469,11 @@ Text mit Stream-Editoren und Muster-Scannern bearbeiten und verarbeiten.
 ```bash
 # Text in Datei ersetzen
 sed 's/old/new/g' filename
-# Zeilen löschen, die Muster enthalten
+# Zeilen, die Muster enthalten, löschen
 sed '/pattern/d' filename
 # Spezifische Felder ausgeben
 awk '{print $1, $3}' filename
-# Werte in einer Spalte summieren
+# Werte in Spalte summieren
 awk '{sum += $1} END {print sum}' filename
 ```
 
@@ -423,7 +498,7 @@ wc -l filename
 
 ### Ausschneiden & Einfügen: `cut`, `paste`
 
-Spezifische Spalten extrahieren und Dateien kombinieren.
+Bestimmte Spalten extrahieren und Dateien kombinieren.
 
 ```bash
 # Erste Spalte extrahieren
@@ -432,7 +507,7 @@ cut -d',' -f1 file.csv
 cut -c1-10 filename
 # Dateien nebeneinander zusammenfügen
 paste file1.txt file2.txt
-# Benutzerdefinierten Trennwert verwenden
+# Benutzerdefinierten Trennzeichen verwenden
 cut -d':' -f1,3 /etc/passwd
 ```
 
@@ -440,7 +515,7 @@ cut -d':' -f1,3 /etc/passwd
 
 ### Archive erstellen: `tar`
 
-Komprimierte Archive erstellen und extrahieren.
+Archive erstellen und dekomprimieren.
 
 ```bash
 # Tar-Archiv erstellen
@@ -489,12 +564,12 @@ tar -uf archive.tar files/
 
 ### Speicherplatz: `du`
 
-Festplattennutzung und Verzeichnisgrößen analysieren.
+Festplattennutzung analysieren und Verzeichnisgrößen anzeigen.
 
 ```bash
 # Verzeichnisgrößen anzeigen
 du -h /path/
-# Zusammenfassung der Gesamtgröße
+# Gesamtgröße als Zusammenfassung
 du -sh /path/
 # Größen aller Unterverzeichnisse anzeigen
 du -h --max-depth=1 /path/
@@ -509,7 +584,7 @@ du -h | sort -hr | head -10
 Speichernutzung und virtuelle Speicherstatistiken überwachen.
 
 ```bash
-# Speicherbelegung Zusammenfassung
+# Speicherzusammenfassung
 free -h
 # Detaillierte Speicherstatistiken
 cat /proc/meminfo
@@ -566,7 +641,7 @@ journalctl -f
 journalctl -u servicename
 # Kernelmeldungen
 dmesg
-# Letzte Boot-Meldungen
+# Letzte Bootmeldungen
 dmesg | tail
 ```
 
@@ -600,7 +675,7 @@ groupadd groupname
 groups username
 # Alle Gruppen anzeigen
 cat /etc/group
-# Benutzer zur Gruppe hinzufügen
+# Benutzer zu Gruppe hinzufügen
 usermod -aG groupname username
 # Primäre Gruppe des Benutzers ändern
 usermod -g groupname username
@@ -625,7 +700,7 @@ visudo
 
 ### Passwortverwaltung: `passwd`, `chage`
 
-Benutzerpasswörter und Kontenrichtlinien verwalten.
+Benutzerpasswörter und Kontolebensdauern verwalten.
 
 ```bash
 # Passwort ändern
@@ -636,7 +711,7 @@ passwd username
 chage -l username
 # Passwortablauf auf 90 Tage festlegen
 chage -M 90 username
-# Passwortwechsel beim nächsten Login erzwingen
+# Passwortänderung beim nächsten Login erzwingen
 passwd -e username
 ```
 
@@ -706,7 +781,7 @@ flatpak install packagename
 flatpak list
 # Flatpak-Pakete aktualisieren
 flatpak update
-# Flatpak deinstallieren
+# Flatpak entfernen
 flatpak uninstall packagename
 # Nach Flatpak-Paketen suchen
 flatpak search packagename
@@ -716,7 +791,7 @@ flatpak search packagename
 
 ### Befehlshistorie: `history`
 
-Auf die Befehlszeilenhistorie zugreifen und diese verwalten.
+Auf den Befehlsverlauf der Kommandozeile zugreifen und diesen verwalten.
 
 ```bash
 # Befehlshistorie anzeigen
@@ -733,7 +808,7 @@ Ctrl+R
 
 ### Aliase & Funktionen: `alias`
 
-Verknüpfungen für häufig verwendete Befehle erstellen.
+Abkürzungen für häufig verwendete Befehle erstellen.
 
 ```bash
 # Alias erstellen
@@ -742,7 +817,7 @@ alias ll='ls -la'
 alias
 # Alias entfernen
 unalias ll
-# Alias permanent machen (zu .bashrc hinzufügen)
+# Alias dauerhaft machen (zu .bashrc hinzufügen)
 echo "alias ll='ls -la'" >> ~/.bashrc
 ```
 
@@ -859,13 +934,13 @@ md5sum filename
 sha256sum filename
 # Prüfsumme verifizieren
 sha256sum -c checksums.txt
-# Prüfsummen-Datei erstellen
+# Prüfsummendatei erstellen
 sha256sum *.txt > checksums.txt
 ```
 
 ### System-Updates: Sicherheitspatches
 
-System durch regelmäßige Updates und Sicherheitspatches sicher halten.
+Das System durch regelmäßige Updates und Sicherheitspatches aktuell halten.
 
 ```bash
 # Ubuntu Sicherheitsupdates
@@ -889,7 +964,7 @@ tail -f /var/log/auth.log
 grep "Failed password" /var/log/auth.log
 # Systemprotokolle überwachen
 tail -f /var/log/syslog
-# Anmeldehistorie prüfen
+# Anmeldeverlauf prüfen
 last
 # Nach verdächtigen Aktivitäten suchen
 journalctl -p err
@@ -902,8 +977,8 @@ journalctl -p err
 Probleme mit dem Bootloader und dem Kernel beheben.
 
 ```bash
-# Aus dem Rettungsmodus booten
-# GRUB-Menü beim Booten aufrufen
+# Im Rettungsmodus booten
+# GRUB-Menü während des Bootens aufrufen
 # Root-Dateisystem einbinden
 mount /dev/sda1 /mnt
 # In das System wechseln (chroot)
@@ -955,7 +1030,7 @@ Systemleistungsengpässe identifizieren und beheben.
 df -h
 # I/O-Nutzung überwachen
 iotop
-# Speicherbelegung prüfen
+# Speichernutzung prüfen
 free -h
 # CPU-Auslastung identifizieren
 top

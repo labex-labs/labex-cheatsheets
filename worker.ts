@@ -24,8 +24,8 @@ export default {
   async fetch(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace; ASSETS?: { fetch: (_req: Request) => Promise<Response> } }): Promise<Response> {
     const url = new URL(request.url)
 
-    // Handle quiz API routes (support both /api/quiz/ and /cheatsheets/api/quiz/)
-    if (url.pathname.startsWith('/api/quiz/') || url.pathname.startsWith('/cheatsheets/api/quiz/')) {
+    // Handle quiz API routes
+    if (url.pathname.startsWith('/cheatsheets/api/quiz/')) {
       return handleQuizAPI(request, env)
     }
 
@@ -43,12 +43,6 @@ export default {
 async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<Response> {
   const url = new URL(request.url)
 
-  // Normalize pathname by removing /cheatsheets prefix if present
-  let pathname = url.pathname
-  if (pathname.startsWith('/cheatsheets')) {
-    pathname = pathname.slice('/cheatsheets'.length) || '/'
-  }
-
   // Handle CORS preflight
   if (request.method === 'OPTIONS') {
     return new Response(null, {
@@ -61,13 +55,13 @@ async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: 
     })
   }
 
-  // Handle POST /api/quiz/record
-  if (pathname === '/api/quiz/record' && request.method === 'POST') {
+  // Handle POST /cheatsheets/api/quiz/record
+  if (url.pathname === '/cheatsheets/api/quiz/record' && request.method === 'POST') {
     return handleRecordQuiz(request, env)
   }
 
-  // Handle GET /api/quiz/stats
-  if (pathname === '/api/quiz/stats' && request.method === 'GET') {
+  // Handle GET /cheatsheets/api/quiz/stats
+  if (url.pathname === '/cheatsheets/api/quiz/stats' && request.method === 'GET') {
     return handleGetStats(request, env)
   }
 

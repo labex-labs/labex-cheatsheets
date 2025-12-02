@@ -1,6 +1,6 @@
 ---
-title: 'Linux チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Linux を学習しましょう。'
+title: 'Linux チートシート | LabEx'
+description: 'この包括的なチートシートで Linux 管理を習得。Linux コマンド、ファイル管理、システム管理、ネットワーキング、シェルスクリプトのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Linux チートシート
 <a href="https://linux-commands.labex.io/" target="_blank">Linux コマンドにアクセス</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-包括的な Linux コマンドリファレンス資料、構文例、および詳細なドキュメントについては、<a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>をご覧ください。この独立したサイトでは、Linux 管理者および開発者向けの必須コマンド、概念、ベストプラクティスを網羅した広範な Linux チートシートを提供しています。
+包括的な Linux コマンドリファレンス資料、構文例、詳細なドキュメントについては、<a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>をご覧ください。この独立したサイトでは、Linux 管理者および開発者向けに、必須コマンド、概念、ベストプラクティスを網羅した広範な Linux チートシートを提供しています。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -55,10 +55,10 @@ df -h
 
 ### システム稼働時間：`uptime`
 
-システムの稼働時間と負荷平均を表示します。
+システムの稼働時間とロードアベレージを表示します。
 
 ```bash
-# システム稼働時間と負荷
+# システム稼働時間とロード
 uptime
 # より詳細な稼働時間情報
 uptime -p
@@ -118,7 +118,7 @@ timedatectl set-timezone America/New_York
 様々なフォーマットオプションでファイルとディレクトリを表示します。
 
 ```bash
-# 現在のディレクトリのファイルを一覧表示
+# カレントディレクトリのファイルを一覧表示
 ls
 # 権限付きの詳細リスト
 ls -l
@@ -139,13 +139,28 @@ ls -lt
 cd
 # 特定のディレクトリに移動
 cd /path/to/directory
-# 1レベル上に移動
+# 一つ上の階層に移動
 cd ..
 # 現在のディレクトリを表示
 pwd
 # 前のディレクトリに移動
 cd -
 ```
+
+<BaseQuiz id="linux-cd-pwd-1" correct="B">
+  <template #question>
+    カレントワーキングディレクトリを表示するコマンドはどれですか？
+  </template>
+  
+  <BaseQuizOption value="A">cd</BaseQuizOption>
+  <BaseQuizOption value="B" correct>pwd</BaseQuizOption>
+  <BaseQuizOption value="C">ls</BaseQuizOption>
+  <BaseQuizOption value="D">whoami</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pwd` コマンド（print working directory）は、現在いるディレクトリのフルパスを表示します。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 作成と削除：`mkdir`, `rmdir`, `rm`
 
@@ -171,7 +186,7 @@ rm -rf dirname
 ```bash
 # ファイル全体を表示
 cat filename
-# ページネーション付きで表示
+# ページネーション付きでファイルを表示
 less filename
 # 最初の10行を表示
 head filename
@@ -190,7 +205,7 @@ tail -f logfile
 cp source.txt destination.txt
 # ディレクトリを再帰的にコピー
 cp -r sourcedir/ destdir/
-# ファイルを移動/名前変更
+# ファイルの移動/名前変更
 mv oldname.txt newname.txt
 # 別のディレクトリに移動
 mv file.txt /path/to/destination/
@@ -200,12 +215,12 @@ cp -p file.txt backup.txt
 
 ### ファイル検索：`find`, `locate`
 
-名前、タイプ、またはプロパティでファイルとディレクトリを検索します。
+名前、タイプ、プロパティでファイルとディレクトリを検索します。
 
 ```bash
 # 名前で検索
 find /path -name "filename"
-# 過去7日間に変更されたファイルを検索
+# 過去7日間に変更されたファイルを見つける
 find /path -mtime -7
 # ファイルタイプで検索
 find /path -type f -name "*.txt"
@@ -215,12 +230,12 @@ locate filename
 find /path -name "*.log" -exec rm {} \;
 ```
 
-### ファイルパーミッション：`chmod`, `chown`
+### ファイル権限：`chmod`, `chown`
 
-ファイルパーミッションと所有権を変更します。
+ファイル権限と所有権を変更します。
 
 ```bash
-# パーミッションの変更（数値）
+# 権限の変更（数値）
 chmod 755 filename
 # 実行権限の追加
 chmod +x script.sh
@@ -228,9 +243,24 @@ chmod +x script.sh
 chown user:group filename
 # 所有権の再帰的な変更
 chown -R user:group directory/
-# ファイルパーミッションの表示
+# ファイル権限の表示
 ls -l filename
 ```
+
+<BaseQuiz id="linux-chmod-1" correct="C">
+  <template #question>
+    `chmod 755 filename` は権限をどのように設定しますか？
+  </template>
+  
+  <BaseQuizOption value="A">所有者には読み取り、書き込み、実行。グループとその他には読み取り</BaseQuizOption>
+  <BaseQuizOption value="B">所有者には読み取り、書き込み。グループとその他には読み取り、実行</BaseQuizOption>
+  <BaseQuizOption value="C" correct>所有者には読み取り、書き込み、実行。グループとその他には読み取り、実行</BaseQuizOption>
+  <BaseQuizOption value="D">所有者には読み取り、書き込み。グループとその他には読み取り</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` は以下を設定します：所有者 = 7 (rwx)、グループ = 5 (r-x)、その他 = 5 (r-x)。これは実行可能ファイルとディレクトリの一般的な権限設定です。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## プロセス管理
 
@@ -251,7 +281,7 @@ ps -u username
 
 ### プロセスの終了：`kill`, `killall`
 
-PID または名前でプロセスを終了します。
+PID または名前でプロセスを終了させます。
 
 ```bash
 # リアルタイムプロセスモニター
@@ -268,6 +298,21 @@ kill -l
 kill -HUP 1234
 ```
 
+<BaseQuiz id="linux-kill-1" correct="D">
+  <template #question>
+    `kill -9` はプロセスにどのシグナルを送信しますか？
+  </template>
+  
+  <BaseQuizOption value="A">SIGTERM (優雅な終了)</BaseQuizOption>
+  <BaseQuizOption value="B">SIGHUP (ハングアップ)</BaseQuizOption>
+  <BaseQuizOption value="C">SIGINT (割り込み)</BaseQuizOption>
+  <BaseQuizOption value="D" correct>SIGKILL (強制終了、無視不可)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kill -9` は SIGKILL を送信し、プロセスを即座に強制終了させます。このシグナルはプロセスによって捕捉または無視されることはなく、応答しないプロセスを終了させるのに役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### バックグラウンドジョブ：`jobs`, `bg`, `fg`
 
 バックグラウンドおよびフォアグラウンドのプロセスを管理します。
@@ -277,7 +322,7 @@ kill -HUP 1234
 jobs
 # ジョブをバックグラウンドに送信
 bg %1
-# ジョブをフォアグラウンドに移動
+# ジョブをフォアグラウンドに持ってくる
 fg %1
 # コマンドをバックグラウンドで実行
 command &
@@ -287,7 +332,7 @@ nohup command &
 
 ### システムモニター: `htop`, `systemctl`
 
-システムリソースを監視し、サービスを管理します。
+システムリソースとサービスを監視および管理します。
 
 ```bash
 # 強化されたプロセスビューア（インストールされている場合）
@@ -323,7 +368,7 @@ ifconfig
 
 ### ネットワークテスト：`ping`, `traceroute`
 
-ネットワーク接続をテストし、パケットルートをトレースします。
+ネットワーク接続をテストし、パケットのルートをトレースします。
 
 ```bash
 # 接続性をテスト
@@ -336,9 +381,24 @@ traceroute google.com
 mtr google.com
 ```
 
+<BaseQuiz id="linux-ping-1" correct="B">
+  <template #question>
+    `ping -c 4` コマンドは何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">4 秒のタイムアウトで ping を実行</BaseQuizOption>
+  <BaseQuizOption value="B" correct>4 つの ping パケットを送信して停止</BaseQuizOption>
+  <BaseQuizOption value="C">4 つの異なるホストに ping を実行</BaseQuizOption>
+  <BaseQuizOption value="D">ping ごとに 4 秒待機</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-c` オプションは送信するパケット数を指定します。`ping -c 4`は正確に 4 つの ICMP エコーリクエストパケットを送信し、停止して結果を表示します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ポートと接続分析：`netstat`, `ss`
 
-ネットワーク接続とリッスンポートを表示します。
+ネットワーク接続とリッスン中のポートを表示します。
 
 ```bash
 # すべての接続を表示
@@ -377,15 +437,30 @@ rsync -avz --progress src/ dest/
 ```bash
 # ファイル内のパターンを検索
 grep "pattern" filename
-# 大文字・小文字を区別しない検索
+# 大文字と小文字を区別しない検索
 grep -i "pattern" filename
-# ディレクトリ内での再帰的検索
+# ディレクトリ内で再帰的に検索
 grep -r "pattern" /path/
 # 行番号を表示
 grep -n "pattern" filename
 # 一致した行数をカウント
 grep -c "pattern" filename
 ```
+
+<BaseQuiz id="linux-grep-1" correct="A">
+  <template #question>
+    大文字と小文字を区別しない検索を行う `grep` オプションはどれですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>-i</BaseQuizOption>
+  <BaseQuizOption value="B">-c</BaseQuizOption>
+  <BaseQuizOption value="C">-n</BaseQuizOption>
+  <BaseQuizOption value="D">-r</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-i` オプションは grep を大文字と小文字を区別しないようにするため、「Error」、「ERROR」、「error」のすべてに一致します。例：`grep -i "error" file.txt`。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### テキスト操作：`sed`, `awk`
 
@@ -415,9 +490,9 @@ sort -n numbers.txt
 uniq filename
 # ソートして重複を削除
 sort filename | uniq
-# ファイルの行数、単語数、文字数をカウント
+# 行、単語、文字をカウント
 wc filename
-# 行数のみカウント
+# 行のみをカウント
 wc -l filename
 ```
 
@@ -430,7 +505,7 @@ wc -l filename
 cut -d',' -f1 file.csv
 # 文字範囲を抽出
 cut -c1-10 filename
-# ファイルを並べて結合
+# ファイルを横に結合
 paste file1.txt file2.txt
 # カスタム区切り文字を使用
 cut -d':' -f1,3 /etc/passwd
@@ -477,7 +552,7 @@ unzip -l archive.zip
 バックアップとリストアのための高度な tar 操作。
 
 ```bash
-# 圧縮付きでアーカイブを作成
+# 圧縮付きアーカイブを作成
 tar -czvf backup.tar.gz /home/user/
 # 特定のディレクトリに展開
 tar -xzf archive.tar.gz -C /destination/
@@ -489,16 +564,16 @@ tar -uf archive.tar files/
 
 ### ディスク使用量：`du`
 
-ディスク使用量を分析し、ディレクトリサイズを確認します。
+ディスク使用量を分析し、ディレクトリサイズを把握します。
 
 ```bash
 # ディレクトリサイズを表示
 du -h /path/
-# 合計サイズ
+# 合計サイズを要約
 du -sh /path/
 # すべてのサブディレクトリのサイズを表示
 du -h --max-depth=1 /path/
-# 降順で上位10件のディレクトリを表示
+# 降順で上位10ディレクトリを表示
 du -h | sort -hr | head -10
 ```
 
@@ -509,7 +584,7 @@ du -h | sort -hr | head -10
 メモリ使用量と仮想メモリ統計を監視します。
 
 ```bash
-# メモリ使用量の概要
+# メモリ使用量の要約
 free -h
 # 詳細なメモリ統計
 cat /proc/meminfo
@@ -523,7 +598,7 @@ swapon --show
 
 ### ディスク I/O: `iostat`, `iotop`
 
-ディスクの入出力パフォーマンスを監視し、ボトルネックを特定します。
+ディスク入出力パフォーマンスを監視し、ボトルネックを特定します。
 
 ```bash
 # I/O統計（sysstatが必要）
@@ -536,16 +611,16 @@ iotop
 iostat -x /dev/sda
 ```
 
-### システム負荷：`top`, `htop`
+### システムロード：`top`, `htop`
 
-システム負荷、CPU 使用率、実行中のプロセスを監視します。
+システムロード、CPU 使用率、実行中のプロセスを監視します。
 
 ```bash
 # リアルタイムプロセスモニター
 top
 # 強化されたプロセスビューア
 htop
-# 負荷平均を表示
+# ロードアベレージを表示
 uptime
 # CPU情報を表示
 lscpu
@@ -570,7 +645,7 @@ dmesg
 dmesg | tail
 ```
 
-## ユーザーとパーミッションの管理
+## ユーザーと権限の管理
 
 ### ユーザー操作：`useradd`, `usermod`, `userdel`
 
@@ -608,7 +683,7 @@ usermod -g groupname username
 
 ### ユーザーの切り替え：`su`, `sudo`
 
-ユーザーを切り替え、特権付きでコマンドを実行します。
+ユーザーを切り替えたり、昇格した権限でコマンドを実行したりします。
 
 ```bash
 # rootユーザーに切り替え
@@ -685,7 +760,7 @@ yum list installed
 ```bash
 # snapパッケージをインストール
 snap install packagename
-# インストール済みsnapを一覧表示
+# インストールされているsnapを一覧表示
 snap list
 # snapパッケージを更新
 snap refresh
@@ -697,12 +772,12 @@ snap find packagename
 
 ### Flatpak パッケージ：`flatpak`
 
-サンドボックス化されたソフトウェアのために Flatpak アプリケーションを管理します。
+サンドボックス化されたソフトウェアのための Flatpak アプリケーションを管理します。
 
 ```bash
 # flatpakをインストール
 flatpak install packagename
-# インストール済みflatpakを一覧表示
+# インストールされているflatpakを一覧表示
 flatpak list
 # flatpakパッケージを更新
 flatpak update
@@ -755,7 +830,7 @@ echo "alias ll='ls -la'" >> ~/.bashrc
 command > output.txt
 # 出力をファイルに追加
 command >> output.txt
-# 入力をファイルからリダイレクト
+# ファイルから入力をリダイレクト
 command < input.txt
 # stdoutとstderrの両方をリダイレクト
 command &> output.txt
@@ -784,7 +859,7 @@ printenv
 
 ### ディストリビューションの選択肢：Ubuntu, CentOS, Debian
 
-異なるユースケースのために Linux ディストリビューションを選択しインストールします。
+異なるユースケースのために Linux ディストリビューションを選択し、インストールします。
 
 ```bash
 # Ubuntu Server
@@ -819,7 +894,8 @@ dd if=linux.iso of=/dev/sdX bs=4M
 hostnamectl set-hostname newname
 # 静的IPを設定
 # Ubuntuでは /etc/netplan/ を編集
-# ネットワークサービスを有効化
+# ネットワークインターフェースを設定するには /etc/network/interfaces を編集
+# SSHサービスを有効化
 systemctl enable ssh
 systemctl start ssh
 # ファイアウォールを設定
@@ -831,14 +907,14 @@ ufw allow ssh
 
 ### ファイアウォール設定：`ufw`, `iptables`
 
-ネットワークの脅威からシステムを保護するためにファイアウォールルールを設定します。
+ネットワーク脅威からシステムを保護するためにファイアウォールルールを設定します。
 
 ```bash
 # UFWファイアウォールを有効化
 ufw enable
 # 特定のポートを許可
 ufw allow 22/tcp
-# サービス名でSSHを許可
+# サービス名で許可
 ufw allow ssh
 # アクセスを拒否
 ufw deny 23
@@ -848,9 +924,9 @@ ufw status verbose
 iptables -L
 ```
 
-### ファイルの整合性：`checksums`
+### ファイル整合性：`checksums`
 
-ファイルの整合性を検証し、不正な変更を検出します。
+ファイル整合性を検証し、不正な変更を検出します。
 
 ```bash
 # MD5チェックサムを生成
@@ -880,18 +956,18 @@ apt list --upgradable
 
 ### ログ監視：セキュリティイベント
 
-セキュリティイベントと異常を検出するためにシステムログを監視します。
+セキュリティイベントと異常を監視するためにシステムログを分析します。
 
 ```bash
 # 認証ログを監視
 tail -f /var/log/auth.log
-# ログイン失敗を検索
+# ログイン失敗をチェック
 grep "Failed password" /var/log/auth.log
 # システムログを監視
 tail -f /var/log/syslog
 # ログイン履歴を確認
 last
-# 不審なアクティビティを確認
+# 疑わしいアクティビティをチェック
 journalctl -p err
 ```
 
@@ -902,7 +978,7 @@ journalctl -p err
 ブートローダーとカーネルの問題から復旧します。
 
 ```bash
-# リスキューモードで起動
+# リカバリモードから起動
 # ブート中にGRUBメニューにアクセス
 # ルートファイルシステムをマウント
 mount /dev/sda1 /mnt
@@ -948,7 +1024,7 @@ systemctl --failed
 
 ### パフォーマンスの問題：リソース分析
 
-システムパフォーマンスのボトルネックを特定し解決します。
+システムのパフォーマンスのボトルネックを特定し、解決します。
 
 ```bash
 # ディスク空き容量を確認

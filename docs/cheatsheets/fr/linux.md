@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo Linux'
-description: 'Apprenez Linux avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo Linux | LabEx'
+description: "Apprenez l'administration Linux avec cette fiche mémo complète. Référence rapide des commandes Linux, gestion des fichiers, administration système, réseau et scripts shell."
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Feuille de triche Linux
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Visiter Commandes Linux</a>
+<a href="https://linux-commands.labex.io/" target="_blank">Visiter les Commandes Linux</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Pour obtenir des documents de référence complets sur les commandes Linux, des exemples de syntaxe et une documentation détaillée, veuillez visiter <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Ce site indépendant fournit des feuilles de triche Linux complètes couvrant les commandes essentielles, les concepts et les meilleures pratiques pour les administrateurs et développeurs Linux.
+Pour obtenir des références complètes sur les commandes Linux, des exemples de syntaxe et une documentation détaillée, veuillez visiter <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Ce site indépendant fournit des feuilles de triche Linux complètes couvrant les commandes essentielles, les concepts et les meilleures pratiques pour les administrateurs et développeurs Linux.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -58,7 +58,7 @@ df -h
 Afficher le temps de fonctionnement du système et les moyennes de charge.
 
 ```bash
-# Temps de fonctionnement et charge du système
+# Temps de fonctionnement et charges du système
 uptime
 # Informations de temps de fonctionnement plus détaillées
 uptime -p
@@ -73,7 +73,7 @@ Afficher les utilisateurs actuellement connectés et leurs activités.
 ```bash
 # Afficher les utilisateurs connectés
 who
-# Informations utilisateur détaillées avec activités
+# Informations détaillées sur les utilisateurs avec activités
 w
 # Afficher le nom d'utilisateur actuel
 whoami
@@ -147,21 +147,36 @@ pwd
 cd -
 ```
 
+<BaseQuiz id="linux-cd-pwd-1" correct="B">
+  <template #question>
+    Quelle commande affiche le répertoire de travail actuel ?
+  </template>
+  
+  <BaseQuizOption value="A">cd</BaseQuizOption>
+  <BaseQuizOption value="B" correct>pwd</BaseQuizOption>
+  <BaseQuizOption value="C">ls</BaseQuizOption>
+  <BaseQuizOption value="D">whoami</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La commande `pwd` (print working directory) affiche le chemin complet du répertoire courant dans lequel vous vous trouvez.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Créer et Supprimer : `mkdir`, `rmdir`, `rm`
 
 Créer et supprimer des fichiers et des répertoires.
 
 ```bash
 # Créer un répertoire
-mkdir nouveau_repertoire
+mkdir nouveau_dir
 # Créer des répertoires imbriqués
 mkdir -p chemin/vers/repertoire/imbrique
 # Supprimer un répertoire vide
-rmdir nom_repertoire
+rmdir nom_dir
 # Supprimer un fichier
-rm nom_fichier
+rm fichier
 # Supprimer un répertoire récursivement
-rm -rf nom_repertoire
+rm -rf nom_dir
 ```
 
 ### Voir le Contenu des Fichiers : `cat`, `less`, `head`, `tail`
@@ -170,15 +185,15 @@ Afficher le contenu des fichiers en utilisant diverses méthodes et pagination.
 
 ```bash
 # Afficher le fichier entier
-cat nom_fichier
+cat fichier
 # Voir le fichier avec pagination
-less nom_fichier
+less fichier
 # Afficher les 10 premières lignes
-head nom_fichier
+head fichier
 # Afficher les 10 dernières lignes
-tail nom_fichier
+tail fichier
 # Suivre les changements de fichier en temps réel
-tail -f fichier_log
+tail -f journal.log
 ```
 
 ### Copier et Déplacer : `cp`, `mv`
@@ -194,43 +209,58 @@ cp -r repertoire_source/ repertoire_destination/
 mv ancien_nom.txt nouveau_nom.txt
 # Déplacer vers un répertoire différent
 mv fichier.txt /chemin/vers/destination/
-# Copier avec préservation des attributs
+# Copier en préservant les attributs
 cp -p fichier.txt sauvegarde.txt
 ```
 
-### Rechercher des Fichiers : `find`, `locate`
+### Trouver des Fichiers : `find`, `locate`
 
 Rechercher des fichiers et des répertoires par nom, type ou propriétés.
 
 ```bash
-# Rechercher par nom
+# Trouver par nom
 find /chemin -name "nom_fichier"
 # Trouver les fichiers modifiés dans les 7 derniers jours
 find /chemin -mtime -7
-# Rechercher par type de fichier
+# Trouver par type de fichier
 find /chemin -type f -name "*.txt"
-# Localiser rapidement les fichiers (nécessite updatedb)
+# Localiser les fichiers rapidement (nécessite updatedb)
 locate nom_fichier
 # Trouver et exécuter une commande
 find /chemin -name "*.log" -exec rm {} \;
 ```
 
-### Permissions de Fichier : `chmod`, `chown`
+### Permissions des Fichiers : `chmod`, `chown`
 
 Modifier les permissions et la propriété des fichiers.
 
 ```bash
 # Changer les permissions (numérique)
-chmod 755 nom_fichier
+chmod 755 fichier
 # Ajouter la permission d'exécution
 chmod +x script.sh
 # Changer la propriété
-chown utilisateur:groupe nom_fichier
+chown utilisateur:groupe fichier
 # Changer la propriété récursivement
 chown -R utilisateur:groupe repertoire/
 # Voir les permissions du fichier
-ls -l nom_fichier
+ls -l fichier
 ```
+
+<BaseQuiz id="linux-chmod-1" correct="C">
+  <template #question>
+    Que définit `chmod 755 fichier` comme permissions ?
+  </template>
+  
+  <BaseQuizOption value="A">Lecture, écriture, exécution pour le propriétaire ; lecture pour le groupe et les autres</BaseQuizOption>
+  <BaseQuizOption value="B">Lecture, écriture pour le propriétaire ; lecture, exécution pour le groupe et les autres</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lecture, écriture, exécution pour le propriétaire ; lecture, exécution pour le groupe et les autres</BaseQuizOption>
+  <BaseQuizOption value="D">Lecture, écriture pour le propriétaire ; lecture pour le groupe et les autres</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` définit : propriétaire = 7 (rwx), groupe = 5 (r-x), autres = 5 (r-x). C'est un ensemble de permissions courant pour les fichiers et répertoires exécutables.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Gestion des Processus
 
@@ -239,7 +269,7 @@ ls -l nom_fichier
 Afficher les processus en cours d'exécution et leurs détails.
 
 ```bash
-# Afficher les processus de l'utilisateur
+# Afficher les processus utilisateur
 ps
 # Afficher tous les processus avec détails
 ps aux
@@ -268,6 +298,21 @@ kill -l
 kill -HUP 1234
 ```
 
+<BaseQuiz id="linux-kill-1" correct="D">
+  <template #question>
+    Quel signal `kill -9` envoie-t-il à un processus ?
+  </template>
+  
+  <BaseQuizOption value="A">SIGTERM (terminer gracieusement)</BaseQuizOption>
+  <BaseQuizOption value="B">SIGHUP (raccrocher)</BaseQuizOption>
+  <BaseQuizOption value="C">SIGINT (interruption)</BaseQuizOption>
+  <BaseQuizOption value="D" correct>SIGKILL (tuer de force, ne peut être ignoré)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kill -9` envoie SIGKILL, qui termine un processus de force immédiatement. Ce signal ne peut être intercepté ou ignoré par le processus, ce qui le rend utile pour tuer les processus qui ne répondent pas.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Tâches d'Arrière-plan : `jobs`, `bg`, `fg`
 
 Gérer les processus d'arrière-plan et de premier plan.
@@ -275,11 +320,11 @@ Gérer les processus d'arrière-plan et de premier plan.
 ```bash
 # Lister les tâches actives
 jobs
-# Envoyer une tâche à l'arrière-plan
+# Envoyer la tâche à l'arrière-plan
 bg %1
-# Ramener une tâche au premier plan
+# Ramener la tâche au premier plan
 fg %1
-# Exécuter une commande en arrière-plan
+# Exécuter la commande en arrière-plan
 commande &
 # Détacher du terminal
 nohup commande &
@@ -290,7 +335,7 @@ nohup commande &
 Surveiller les ressources système et gérer les services.
 
 ```bash
-# Visionneuse de processus améliorée (si installé)
+# Visionneuse de processus améliorée (si installée)
 htop
 # Vérifier l'état du service
 systemctl status nom_service
@@ -336,6 +381,21 @@ traceroute google.com
 mtr google.com
 ```
 
+<BaseQuiz id="linux-ping-1" correct="B">
+  <template #question>
+    Que fait la commande `ping -c 4` ?
+  </template>
+  
+  <BaseQuizOption value="A">Ping avec un délai d'attente de 4 secondes</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Envoie 4 paquets ping et s'arrête</BaseQuizOption>
+  <BaseQuizOption value="C">Ping 4 hôtes différents</BaseQuizOption>
+  <BaseQuizOption value="D">Attend 4 secondes entre les pings</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'option `-c` spécifie le nombre de paquets à envoyer. `ping -c 4` enverra exactement 4 paquets de requête ICMP et s'arrêtera ensuite, affichant les résultats.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Analyse des Ports et Connexions : `netstat`, `ss`
 
 Afficher les connexions réseau et les ports en écoute.
@@ -365,7 +425,7 @@ scp utilisateur@hote:/chemin/fichier.txt ./
 # Synchroniser les répertoires
 rsync -avz repertoire_local/ utilisateur@hote:/repertoire_distant/
 # Rsync avec progression
-rsync -avz --progress source/ destination/
+rsync -avz --progress src/ dest/
 ```
 
 ## Traitement de Texte et Recherche
@@ -376,30 +436,45 @@ Rechercher des motifs dans le contenu des fichiers et la sortie des commandes.
 
 ```bash
 # Rechercher un motif dans un fichier
-grep "motif" nom_fichier
+grep "motif" fichier
 # Recherche insensible à la casse
-grep -i "motif" nom_fichier
+grep -i "motif" fichier
 # Recherche récursive dans les répertoires
 grep -r "motif" /chemin/
 # Afficher les numéros de ligne
-grep -n "motif" nom_fichier
+grep -n "motif" fichier
 # Compter les lignes correspondantes
-grep -c "motif" nom_fichier
+grep -c "motif" fichier
 ```
+
+<BaseQuiz id="linux-grep-1" correct="A">
+  <template #question>
+    Quelle option `grep` effectue-t-elle une recherche insensible à la casse ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>-i</BaseQuizOption>
+  <BaseQuizOption value="B">-c</BaseQuizOption>
+  <BaseQuizOption value="C">-n</BaseQuizOption>
+  <BaseQuizOption value="D">-r</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'option `-i` rend grep insensible à la casse, il correspondra donc aux lettres majuscules et minuscules. Par exemple, `grep -i "erreur" fichier.txt` correspondra à "Erreur", "ERREUR" et "erreur".
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Manipulation de Texte : `sed`, `awk`
 
-Éditer et traiter du texte à l'aide d'éditeurs de flux et d'analyseurs de motifs.
+Modifier et traiter le texte à l'aide d'éditeurs de flux et d'analyseurs de motifs.
 
 ```bash
 # Remplacer le texte dans le fichier
-sed 's/ancien/nouveau/g' nom_fichier
+sed 's/ancien/nouveau/g' fichier
 # Supprimer les lignes contenant un motif
-sed '/motif/d' nom_fichier
+sed '/motif/d' fichier
 # Afficher des champs spécifiques
-awk '{print $1, $3}' nom_fichier
-# Sommer les valeurs dans une colonne
-awk '{somme += $1} END {print somme}' nom_fichier
+awk '{print $1, $3}' fichier
+# Somme des valeurs dans une colonne
+awk '{sum += $1} END {print sum}' fichier
 ```
 
 ### Trier et Compter : `sort`, `uniq`, `wc`
@@ -408,17 +483,17 @@ Trier les données, supprimer les doublons et compter les lignes, les mots ou le
 
 ```bash
 # Trier le contenu du fichier
-sort nom_fichier
+sort fichier
 # Trier numériquement
 sort -n nombres.txt
 # Supprimer les lignes dupliquées
-uniq nom_fichier
+uniq fichier
 # Trier et supprimer les doublons
-sort nom_fichier | uniq
-# Compter les lignes, mots, caractères
-wc nom_fichier
+sort fichier | uniq
+# Compter les lignes, les mots, les caractères
+wc fichier
 # Compter uniquement les lignes
-wc -l nom_fichier
+wc -l fichier
 ```
 
 ### Couper et Coller : `cut`, `paste`
@@ -429,7 +504,7 @@ Extraire des colonnes spécifiques et combiner des fichiers.
 # Extraire la première colonne
 cut -d',' -f1 fichier.csv
 # Extraire une plage de caractères
-cut -c1-10 nom_fichier
+cut -c1-10 fichier
 # Combiner les fichiers côte à côte
 paste fichier1.txt fichier2.txt
 # Utiliser un délimiteur personnalisé
@@ -461,18 +536,18 @@ Compresser et décompresser des fichiers en utilisant divers algorithmes.
 
 ```bash
 # Compresser un fichier avec gzip
-gzip nom_fichier
+gzip fichier
 # Décompresser un fichier gzip
-gunzip nom_fichier.gz
+gunzip fichier.gz
 # Créer une archive zip
 zip archive.zip fichier1 fichier2
 # Extraire une archive zip
 unzip archive.zip
-# Lister le contenu zip
+# Lister le contenu d'un zip
 unzip -l archive.zip
 ```
 
-### Archives Avancées : `tar` Options
+### Archives Avancées : Options `tar`
 
 Opérations tar avancées pour la sauvegarde et la restauration.
 
@@ -489,7 +564,7 @@ tar -uf archive.tar fichiers/
 
 ### Espace Disque : `du`
 
-Analyser l'utilisation de l'espace disque et la taille des répertoires.
+Analyser l'utilisation de l'espace disque et les tailles de répertoires.
 
 ```bash
 # Afficher les tailles des répertoires
@@ -523,14 +598,14 @@ swapon --show
 
 ### E/S Disque : `iostat`, `iotop`
 
-Surveiller les performances d'entrée/sortie disque et identifier les goulots d'étranglement.
+Surveiller les performances d'entrée/sortie du disque et identifier les goulots d'étranglement.
 
 ```bash
 # Statistiques d'E/S (nécessite sysstat)
 iostat
 # Statistiques d'E/S toutes les 2 secondes
 iostat 2
-# Surveiller les E/S disque par processus
+# Surveiller les E/S du disque par processus
 iotop
 # Afficher l'utilisation des E/S pour un périphérique spécifique
 iostat -x /dev/sda
@@ -562,11 +637,11 @@ Visualiser et analyser les journaux système pour le dépannage.
 journalctl
 # Suivre les journaux en temps réel
 journalctl -f
-# Afficher les journaux pour un service spécifique
+# Voir les journaux pour un service spécifique
 journalctl -u nom_service
 # Messages du noyau
 dmesg
-# Messages du dernier démarrage
+# Derniers messages de démarrage
 dmesg | tail
 ```
 
@@ -585,7 +660,7 @@ useradd -m nom_utilisateur
 usermod -aG groupe_nom nom_utilisateur
 # Supprimer un compte utilisateur
 userdel nom_utilisateur
-# Supprimer un compte utilisateur avec répertoire personnel
+# Supprimer un utilisateur avec son répertoire personnel
 userdel -r nom_utilisateur
 ```
 
@@ -634,7 +709,7 @@ passwd
 passwd nom_utilisateur
 # Afficher les informations d'expiration du mot de passe
 chage -l nom_utilisateur
-# Définir l'expiration du mot de passe à 90 jours
+# Définir l'expiration du mot de passe
 chage -M 90 nom_utilisateur
 # Forcer le changement de mot de passe à la prochaine connexion
 passwd -e nom_utilisateur
@@ -680,7 +755,7 @@ yum list installed
 
 ### Paquets Snap : `snap`
 
-Installer et gérer les paquets snap sur différentes distributions.
+Installer et gérer les paquets snap sur diverses distributions.
 
 ```bash
 # Installer un paquet snap
@@ -697,16 +772,16 @@ snap find nom_paquet
 
 ### Paquets Flatpak : `flatpak`
 
-Gérer les applications Flatpak pour les logiciels sandboxed.
+Gérer les applications Flatpak pour les logiciels en bac à sable.
 
 ```bash
 # Installer flatpak
 flatpak install nom_paquet
-# Lister les flatpaks installés
+# Lister les paquets flatpak installés
 flatpak list
 # Mettre à jour les paquets flatpak
 flatpak update
-# Supprimer flatpak
+# Désinstaller flatpak
 flatpak uninstall nom_paquet
 # Rechercher des paquets flatpak
 flatpak search nom_paquet
@@ -797,9 +872,9 @@ wget debian.iso
 sha256sum linux.iso
 ```
 
-### Amorçage et Installation : USB, Réseau
+### Démarrage et Installation : USB, Réseau
 
-Créer des supports amorçables et effectuer l'installation du système.
+Créer des médias amorçables et effectuer l'installation du système.
 
 ```bash
 # Créer une clé USB amorçable (Linux)
@@ -844,7 +919,7 @@ ufw allow ssh
 ufw deny 23
 # Afficher l'état du pare-feu
 ufw status verbose
-# Règles avancées avec iptables
+# Règles iptables avancées
 iptables -L
 ```
 
@@ -854,9 +929,9 @@ Vérifier l'intégrité des fichiers et détecter les modifications non autoris�
 
 ```bash
 # Générer le checksum MD5
-md5sum nom_fichier
+md5sum fichier
 # Générer le checksum SHA256
-sha256sum nom_fichier
+sha256sum fichier
 # Vérifier le checksum
 sha256sum -c checksums.txt
 # Créer un fichier de checksum
@@ -872,7 +947,7 @@ Maintenir le système sécurisé avec des mises à jour régulières et des corr
 apt update && apt upgrade
 # Mises à jour de sécurité automatiques
 unattended-upgrades
-# Mises à jour RHEL/CentOS
+# Mises à jour CentOS/RHEL
 yum update --security
 # Lister les mises à jour disponibles
 apt list --upgradable
@@ -889,7 +964,7 @@ tail -f /var/log/auth.log
 grep "Failed password" /var/log/auth.log
 # Surveiller les journaux système
 tail -f /var/log/syslog
-# Voir l'historique de connexion
+# Voir l'historique des connexions
 last
 # Vérifier les activités suspectes
 journalctl -p err
@@ -899,7 +974,7 @@ journalctl -p err
 
 ### Problèmes de Démarrage : Récupération GRUB
 
-Récupérer à partir de problèmes de chargeur de démarrage et de noyau.
+Récupérer les problèmes de chargeur de démarrage et de noyau.
 
 ```bash
 # Démarrer en mode de secours
@@ -921,7 +996,7 @@ Vérifier et réparer la corruption du système de fichiers.
 ```bash
 # Vérifier le système de fichiers
 fsck /dev/sda1
-# Vérification forcée du système de fichiers
+# Forcer la vérification du système de fichiers
 fsck -f /dev/sda1
 # Réparation automatique
 fsck -y /dev/sda1
@@ -931,18 +1006,18 @@ fsck -A
 
 ### Problèmes de Service : `systemctl`
 
-Diagnostiquer et corriger les problèmes liés aux services.
+Diagnostiquer et résoudre les problèmes liés aux services.
 
 ```bash
 # Vérifier l'état du service
 systemctl status nom_service
 # Voir les journaux du service
 journalctl -u nom_service
-# Redémarrer le service défaillant
+# Redémarrer le service en échec
 systemctl restart nom_service
 # Activer le service au démarrage
 systemctl enable nom_service
-# Lister les services défaillants
+# Lister les services en échec
 systemctl --failed
 ```
 
