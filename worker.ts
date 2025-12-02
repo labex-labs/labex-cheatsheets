@@ -43,6 +43,12 @@ export default {
 async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<Response> {
   const url = new URL(request.url)
 
+  // Normalize pathname by removing /cheatsheets prefix if present
+  let pathname = url.pathname
+  if (pathname.startsWith('/cheatsheets')) {
+    pathname = pathname.slice('/cheatsheets'.length) || '/'
+  }
+
   // Handle CORS preflight
   if (request.method === 'OPTIONS') {
     return new Response(null, {
@@ -56,12 +62,12 @@ async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: 
   }
 
   // Handle POST /api/quiz/record
-  if (url.pathname === '/api/quiz/record' && request.method === 'POST') {
+  if (pathname === '/api/quiz/record' && request.method === 'POST') {
     return handleRecordQuiz(request, env)
   }
 
   // Handle GET /api/quiz/stats
-  if (url.pathname === '/api/quiz/stats' && request.method === 'GET') {
+  if (pathname === '/api/quiz/stats' && request.method === 'GET') {
     return handleGetStats(request, env)
   }
 
