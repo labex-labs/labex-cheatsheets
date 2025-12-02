@@ -147,6 +147,21 @@ pwd
 cd -
 ```
 
+<BaseQuiz id="linux-cd-pwd-1" correct="B">
+  <template #question>
+    Which command shows the current working directory?
+  </template>
+  
+  <BaseQuizOption value="A">cd</BaseQuizOption>
+  <BaseQuizOption value="B" correct>pwd</BaseQuizOption>
+  <BaseQuizOption value="C">ls</BaseQuizOption>
+  <BaseQuizOption value="D">whoami</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `pwd` command (print working directory) displays the full path of the current directory you are in.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Create & Remove: `mkdir`, `rmdir`, `rm`
 
 Create and delete files and directories.
@@ -232,6 +247,21 @@ chown -R user:group directory/
 ls -l filename
 ```
 
+<BaseQuiz id="linux-chmod-1" correct="C">
+  <template #question>
+    What does `chmod 755 filename` set for permissions?
+  </template>
+  
+  <BaseQuizOption value="A">Read, write, execute for owner; read for group and others</BaseQuizOption>
+  <BaseQuizOption value="B">Read, write for owner; read, execute for group and others</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Read, write, execute for owner; read, execute for group and others</BaseQuizOption>
+  <BaseQuizOption value="D">Read, write for owner; read for group and others</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` sets: owner = 7 (rwx), group = 5 (r-x), others = 5 (r-x). This is a common permission set for executable files and directories.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Process Management
 
 ### Process Listing: `ps`
@@ -267,6 +297,21 @@ kill -l
 # Send specific signal
 kill -HUP 1234
 ```
+
+<BaseQuiz id="linux-kill-1" correct="D">
+  <template #question>
+    What signal does `kill -9` send to a process?
+  </template>
+  
+  <BaseQuizOption value="A">SIGTERM (terminate gracefully)</BaseQuizOption>
+  <BaseQuizOption value="B">SIGHUP (hang up)</BaseQuizOption>
+  <BaseQuizOption value="C">SIGINT (interrupt)</BaseQuizOption>
+  <BaseQuizOption value="D" correct>SIGKILL (force kill, cannot be ignored)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kill -9` sends SIGKILL, which forcefully terminates a process immediately. This signal cannot be caught or ignored by the process, making it useful for killing unresponsive processes.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Background Jobs: `jobs`, `bg`, `fg`
 
@@ -336,6 +381,21 @@ traceroute google.com
 mtr google.com
 ```
 
+<BaseQuiz id="linux-ping-1" correct="B">
+  <template #question>
+    What does the `ping -c 4` command do?
+  </template>
+  
+  <BaseQuizOption value="A">Ping with 4-second timeout</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Send 4 ping packets and stop</BaseQuizOption>
+  <BaseQuizOption value="C">Ping 4 different hosts</BaseQuizOption>
+  <BaseQuizOption value="D">Wait 4 seconds between pings</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-c` option specifies the count of packets to send. `ping -c 4` will send exactly 4 ICMP echo request packets and then stop, displaying the results.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Port & Connection Analysis: `netstat`, `ss`
 
 Display network connections and listening ports.
@@ -386,6 +446,21 @@ grep -n "pattern" filename
 # Count matching lines
 grep -c "pattern" filename
 ```
+
+<BaseQuiz id="linux-grep-1" correct="A">
+  <template #question>
+    Which `grep` option performs a case-insensitive search?
+  </template>
+  
+  <BaseQuizOption value="A" correct>-i</BaseQuizOption>
+  <BaseQuizOption value="B">-c</BaseQuizOption>
+  <BaseQuizOption value="C">-n</BaseQuizOption>
+  <BaseQuizOption value="D">-r</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-i` option makes grep case-insensitive, so it will match both uppercase and lowercase letters. For example, `grep -i "error" file.txt` will match "Error", "ERROR", and "error".
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Text Manipulation: `sed`, `awk`
 

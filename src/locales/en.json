@@ -86,6 +86,15 @@
     "expand": "Expand",
     "collapse": "Collapse"
   },
+  "quiz": {
+    "label": "Quiz",
+    "correct": "Correct",
+    "wrong": "Wrong",
+    "correctAnswer": "Correct Answer",
+    "completions": "completions",
+    "completion": "completion",
+    "totalCompletions": "Total completions"
+  },
   "meta": {
     "title": "LabEx Cheatsheets",
     "description": "Technical reference guides for Linux, DevOps, Cybersecurity, Database, Data Science, Docker, Kubernetes, Python, Git, Java, Go, C++. Download PDF for offline access.",

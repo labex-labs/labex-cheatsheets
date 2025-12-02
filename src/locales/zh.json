@@ -86,6 +86,15 @@
     "expand": "展开",
     "collapse": "折叠"
   },
+  "quiz": {
+    "label": "测验",
+    "correct": "正确",
+    "wrong": "错误",
+    "correctAnswer": "正确答案",
+    "completions": "次完成",
+    "completion": "次完成",
+    "totalCompletions": "总完成次数"
+  },
   "meta": {
     "title": "LabEx 速查表",
     "description": "技术参考指南，涵盖 Linux、DevOps、网络安全、数据库、数据科学、Docker、Kubernetes、Python、Git、Java、Go、C++ 等技术。可下载 PDF 版本以便离线访问。",

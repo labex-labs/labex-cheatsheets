@@ -45,6 +45,9 @@ importers:
         specifier: ^4.6.3
         version: 4.6.3(vue@3.5.24(typescript@5.9.3))
     devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20251202.0
+        version: 4.20251202.0
       '@tailwindcss/forms':
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@3.4.18(tsx@4.20.6)(yaml@2.8.1))
@@ -170,7 +173,7 @@ importers:
         version: 2.2.12(typescript@5.9.3)
       wrangler:
         specifier: ^3.0.0
-        version: 3.114.15
+        version: 3.114.15(@cloudflare/workers-types@4.20251202.0)
 
 packages:
 
@@ -319,6 +322,9 @@ packages:
     engines: {node: '>=16'}
     cpu: [x64]
     os: [win32]
+
+  '@cloudflare/workers-types@4.20251202.0':
+    resolution: {integrity: sha512-Q7m1Ivu2fbKalOPm00KLpu6GfRaq4TlrPknqugvZgp/gDH96OYKINO4x7jvCIBvCz/aK9vVoOj8tlbSQBervVA==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -3528,6 +3534,8 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20250718.0':
     optional: true
 
+  '@cloudflare/workers-types@4.20251202.0': {}
+
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
@@ -6400,7 +6408,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20250718.0
       '@cloudflare/workerd-windows-64': 1.20250718.0
 
-  wrangler@3.114.15:
+  wrangler@3.114.15(@cloudflare/workers-types@4.20251202.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@cloudflare/unenv-preset': 2.0.2(unenv@2.0.0-rc.14)(workerd@1.20250718.0)
@@ -6413,6 +6421,7 @@ snapshots:
       unenv: 2.0.0-rc.14
       workerd: 1.20250718.0
     optionalDependencies:
+      '@cloudflare/workers-types': 4.20251202.0
       fsevents: 2.3.3
       sharp: 0.33.5
     transitivePeerDependencies:

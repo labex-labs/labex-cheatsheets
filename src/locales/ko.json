@@ -86,6 +86,15 @@
     "expand": "펼치기",
     "collapse": "접기"
   },
+  "quiz": {
+    "label": "퀴즈",
+    "correct": "정답",
+    "wrong": "오답",
+    "correctAnswer": "정답",
+    "completions": "회 완료",
+    "completion": "회 완료",
+    "totalCompletions": "총 완료 횟수"
+  },
   "meta": {
     "title": "LabEx 치트 시트",
     "description": "Linux, DevOps, 사이버 보안, 데이터베이스, 데이터 과학, Docker, Kubernetes, Python, Git, Java, Go, C++ 등의 기술 참조 가이드. 오프라인 액세스를 위해 PDF 버전을 다운로드할 수 있습니다.",

@@ -86,6 +86,15 @@
     "expand": "Развернуть",
     "collapse": "Свернуть"
   },
+  "quiz": {
+    "label": "Викторина",
+    "correct": "Правильно",
+    "wrong": "Неправильно",
+    "correctAnswer": "Правильный ответ",
+    "completions": "завершений",
+    "completion": "завершение",
+    "totalCompletions": "Всего завершений"
+  },
   "meta": {
     "title": "LabEx Шпаргалки",
     "description": "Технические справочники для Linux, DevOps, Кибербезопасности, Базы данных, Науки о данных, Docker, Kubernetes, Python, Git, Java, Go, C++ и более. Скачайте PDF-версии для офлайн-доступа.",

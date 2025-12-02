@@ -86,6 +86,15 @@
     "expand": "Erweitern",
     "collapse": "Einklappen"
   },
+  "quiz": {
+    "label": "Quiz",
+    "correct": "Richtig",
+    "wrong": "Falsch",
+    "correctAnswer": "Richtige Antwort",
+    "completions": "Abschlüsse",
+    "completion": "Abschluss",
+    "totalCompletions": "Gesamte Abschlüsse"
+  },
   "meta": {
     "title": "LabEx Spickzettel",
     "description": "Technische Referenzleitfäden für Linux, DevOps, Cybersicherheit, Datenbank, Data Science, Docker, Kubernetes, Python, Git, Java, Go, C++ und mehr. PDF-Versionen für Offline-Zugriff herunterladen.",

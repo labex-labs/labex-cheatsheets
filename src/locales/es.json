@@ -86,6 +86,15 @@
     "expand": "Expandir",
     "collapse": "Contraer"
   },
+  "quiz": {
+    "label": "Quiz",
+    "correct": "Correcto",
+    "wrong": "Incorrecto",
+    "correctAnswer": "Respuesta Correcta",
+    "completions": "completaciones",
+    "completion": "completación",
+    "totalCompletions": "Total de completaciones"
+  },
   "meta": {
     "title": "LabEx Hojas de Referencia",
     "description": "Guías de referencia técnica para Linux, DevOps, Ciberseguridad, Base de Datos, Ciencia de Datos, Docker, Kubernetes, Python, Git, Java, Go, C++ y más. Descarga PDF para acceso sin conexión.",

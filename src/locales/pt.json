@@ -86,6 +86,15 @@
     "expand": "Expandir",
     "collapse": "Recolher"
   },
+  "quiz": {
+    "label": "Quiz",
+    "correct": "Correto",
+    "wrong": "Incorreto",
+    "correctAnswer": "Resposta Correta",
+    "completions": "conclusões",
+    "completion": "conclusão",
+    "totalCompletions": "Total de conclusões"
+  },
   "meta": {
     "title": "LabEx Folhas de Referência",
     "description": "Guias de referência técnica para Linux, DevOps, Segurança Cibernética, Banco de Dados, Ciência de Dados, Docker, Kubernetes, Python, Git, Java, Go, C++ e mais. Baixe PDF para acesso offline.",

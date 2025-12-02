@@ -69,5 +69,26 @@ export default [
       'eslint-comments/no-unused-disable': 'off',
     },
   },
+  {
+    files: ['worker.ts'],
+    languageOptions: {
+      parser: tsparser,
+      parserOptions: {
+        ecmaVersion: 12,
+        sourceType: 'module',
+      },
+      globals: {
+        ...globals.node,
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tseslint,
+    },
+    rules: {
+      'no-undef': 'off', // TypeScript handles type checking
+      'no-unused-vars': 'off', // Turn off base rule
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    },
+  },
 ];
 
