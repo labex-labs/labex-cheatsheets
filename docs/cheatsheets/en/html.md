@@ -39,6 +39,21 @@ Every HTML document starts with a document type declaration and follows a standa
 </html>
 ```
 
+<BaseQuiz id="html-doctype-1" correct="A">
+  <template #question>
+    What is the purpose of `<!DOCTYPE html>`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>It declares the document type and HTML version</BaseQuizOption>
+  <BaseQuizOption value="B">It creates a new HTML element</BaseQuizOption>
+  <BaseQuizOption value="C">It links to an external stylesheet</BaseQuizOption>
+  <BaseQuizOption value="D">It sets the page title</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `<!DOCTYPE html>` declaration tells the browser which version of HTML the document is using. For HTML5, this simple declaration is sufficient and should be the first line of every HTML document.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Head Elements: `<head>`
 
 The head section contains metadata about the document.
@@ -101,6 +116,21 @@ Define the hierarchy and importance of content sections.
 <h5>Minor Heading</h5>
 <h6>Smallest Heading</h6>
 ```
+
+<BaseQuiz id="html-headings-1" correct="B">
+  <template #question>
+    What is the correct heading hierarchy?
+  </template>
+  
+  <BaseQuizOption value="A">h1 should be used multiple times on a page</BaseQuizOption>
+  <BaseQuizOption value="B" correct>h1 should be used once as the main title, followed by h2, h3, etc.</BaseQuizOption>
+  <BaseQuizOption value="C">All headings have the same importance</BaseQuizOption>
+  <BaseQuizOption value="D">h6 is the most important heading</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    HTML headings should follow a logical hierarchy: use one `h1` for the main page title, then `h2` for major sections, `h3` for subsections, and so on. This helps with accessibility and SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Paragraphs: `p`
 
@@ -231,6 +261,21 @@ Create hyperlinks and navigation structures.
 <h2 id="section1">Section 1</h2>
 ```
 
+<BaseQuiz id="html-links-1" correct="B">
+  <template #question>
+    What does `target="_blank"` do in an anchor tag?
+  </template>
+  
+  <BaseQuizOption value="A">Opens the link in the same window</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Opens the link in a new tab or window</BaseQuizOption>
+  <BaseQuizOption value="C">Closes the current window</BaseQuizOption>
+  <BaseQuizOption value="D">Downloads the link</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `target="_blank"` attribute opens the linked page in a new browser tab or window, allowing users to keep the original page open.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Forms & Input Elements
 
 ### Basic Form Structure: `<form>`
@@ -308,6 +353,21 @@ Built-in HTML form validation attributes.
 <input type="number" min="1" max="100" />
 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
 ```
+
+<BaseQuiz id="html-validation-1" correct="A">
+  <template #question>
+    What does the `required` attribute do in an HTML input?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Prevents form submission if the field is empty</BaseQuizOption>
+  <BaseQuizOption value="B">Makes the field read-only</BaseQuizOption>
+  <BaseQuizOption value="C">Hides the field</BaseQuizOption>
+  <BaseQuizOption value="D">Sets a default value</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `required` attribute makes an input field mandatory. If the field is empty when the form is submitted, the browser will prevent submission and show a validation message.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Media Elements
 

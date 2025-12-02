@@ -107,6 +107,21 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="sqlite-create-table-1" correct="A">
+  <template #question>
+    What does `INTEGER PRIMARY KEY AUTOINCREMENT` do in SQLite?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Creates an auto-incrementing integer primary key</BaseQuizOption>
+  <BaseQuizOption value="B">Creates a text primary key</BaseQuizOption>
+  <BaseQuizOption value="C">Creates a foreign key constraint</BaseQuizOption>
+  <BaseQuizOption value="D">Creates a unique index</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INTEGER PRIMARY KEY AUTOINCREMENT` creates an integer column that automatically increments for each new row and serves as the primary key. This ensures each row has a unique identifier.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Data Types: `INTEGER`, `TEXT`, `REAL`, `BLOB`
 
 SQLite uses dynamic typing with storage classes for flexible data storage.
@@ -177,6 +192,21 @@ UPDATE products SET price = price * 1.1
 WHERE category = 'Electronics';
 ```
 
+<BaseQuiz id="sqlite-update-1" correct="D">
+  <template #question>
+    What happens if you forget the WHERE clause in an UPDATE statement?
+  </template>
+  
+  <BaseQuizOption value="A">The update fails</BaseQuizOption>
+  <BaseQuizOption value="B">Only the first row is updated</BaseQuizOption>
+  <BaseQuizOption value="C">Nothing happens</BaseQuizOption>
+  <BaseQuizOption value="D" correct>All rows in the table are updated</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Without a WHERE clause, the UPDATE statement will modify all rows in the table. Always use WHERE to specify which rows should be updated to avoid accidentally changing unintended data.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Delete Data: `DELETE FROM`
 
 Remove records from tables based on specified conditions.
@@ -207,6 +237,21 @@ INSERT OR IGNORE INTO users (name, email)
 VALUES ('Duplicate', 'existing@email.com');
 ```
 
+<BaseQuiz id="sqlite-upsert-1" correct="A">
+  <template #question>
+    What is the difference between `INSERT OR REPLACE` and `INSERT OR IGNORE`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>REPLACE updates existing rows, IGNORE skips duplicates</BaseQuizOption>
+  <BaseQuizOption value="B">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="C">REPLACE deletes the row, IGNORE updates it</BaseQuizOption>
+  <BaseQuizOption value="D">REPLACE works with tables, IGNORE works with views</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INSERT OR REPLACE` will replace an existing row if there's a conflict (e.g., duplicate primary key). `INSERT OR IGNORE` will simply skip the insert if there's a conflict, leaving the existing row unchanged.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Data Querying & Selection
 
 ### Basic Queries: `SELECT`
@@ -226,6 +271,21 @@ SELECT name AS full_name, age AS years_old FROM users;
 -- Select unique values
 SELECT DISTINCT department FROM employees;
 ```
+
+<BaseQuiz id="sqlite-select-1" correct="B">
+  <template #question>
+    What does `SELECT DISTINCT` do?
+  </template>
+  
+  <BaseQuizOption value="A">Selects all rows</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Returns only unique values, removing duplicates</BaseQuizOption>
+  <BaseQuizOption value="C">Selects the first row only</BaseQuizOption>
+  <BaseQuizOption value="D">Orders the results</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SELECT DISTINCT` eliminates duplicate rows from the result set, returning only unique values. This is useful when you want to see all unique values in a column.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Filtering: `WHERE`
 

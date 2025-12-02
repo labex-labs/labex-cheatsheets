@@ -140,6 +140,21 @@ const Pi = 3.14159
 const Message = "Hello, Go!"
 ```
 
+<BaseQuiz id="golang-variables-1" correct="B">
+  <template #question>
+    What is the difference between `var name string = "Go"` and `name := "Go"`?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`:=` is short declaration that infers the type, `var` explicitly declares the type</BaseQuizOption>
+  <BaseQuizOption value="C">`:=` can only be used for constants</BaseQuizOption>
+  <BaseQuizOption value="D">`var` can only be used inside functions</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `:=` operator is shorthand for variable declaration and initialization, and Go infers the type automatically. `var` explicitly declares the variable type and can be used at package level or function level.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Basic Data Types
 
 Fundamental types available in Go.
@@ -222,6 +237,21 @@ for i, char := range "Hello" {
 }
 ```
 
+<BaseQuiz id="golang-range-1" correct="B">
+  <template #question>
+    What does `range` return when iterating over a slice in Go?
+  </template>
+  
+  <BaseQuizOption value="A">Only the value</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Both the index and the value</BaseQuizOption>
+  <BaseQuizOption value="C">Only the index</BaseQuizOption>
+  <BaseQuizOption value="D">The length of the slice</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    When using `range` with a slice, it returns two values: the index (position) and the value at that index. You can use `_` to ignore either value if you don't need it.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Control Statements: `break` / `continue`
 
 Control loop execution flow.
@@ -242,6 +272,21 @@ for i := 0; i < 5; i++ {
     fmt.Println(i)
 }
 ```
+
+<BaseQuiz id="golang-control-1" correct="C">
+  <template #question>
+    What is the difference between `break` and `continue` in Go loops?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B">break skips the current iteration, continue exits the loop</BaseQuizOption>
+  <BaseQuizOption value="C" correct>break exits the loop completely, continue skips to the next iteration</BaseQuizOption>
+  <BaseQuizOption value="D">Both exit the loop</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `break` immediately exits the loop and continues execution after the loop. `continue` skips the rest of the current iteration and moves to the next iteration of the loop.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Functions
 

@@ -36,6 +36,21 @@ dst host 192.168.1.100
 net 192.168.1.0/24
 ```
 
+<BaseQuiz id="wireshark-filter-1" correct="A">
+  <template #question>
+    What does `host 192.168.1.100` filter in Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A" correct>All traffic to or from 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="B">Only traffic from 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="C">Only traffic to 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="D">Traffic on port 192.168.1.100</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `host` filter captures all traffic where the specified IP address is either the source or destination. Use `src host` for source-only or `dst host` for destination-only filtering.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Port Filtering
 
 Capture traffic on specific ports.
@@ -52,6 +67,21 @@ port 53
 # Port range
 portrange 1000-2000
 ```
+
+<BaseQuiz id="wireshark-port-1" correct="D">
+  <template #question>
+    What does `port 80` filter in Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A">Only HTTP requests</BaseQuizOption>
+  <BaseQuizOption value="B">Only HTTP responses</BaseQuizOption>
+  <BaseQuizOption value="C">Only TCP packets</BaseQuizOption>
+  <BaseQuizOption value="D" correct>All traffic on port 80 (both source and destination)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `port` filter captures all traffic where port 80 is either the source or destination port. This includes both HTTP requests and responses, as well as any other traffic using port 80.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Protocol Filtering
 
@@ -82,6 +112,21 @@ host 192.168.1.100 and host 192.168.1.200
 # HTTP or HTTPS traffic
 port 80 or port 443
 ```
+
+<BaseQuiz id="wireshark-advanced-1" correct="B">
+  <template #question>
+    What does `tcp and not port 22` filter capture?
+  </template>
+  
+  <BaseQuizOption value="A">Only SSH traffic</BaseQuizOption>
+  <BaseQuizOption value="B" correct>All TCP traffic except SSH (port 22)</BaseQuizOption>
+  <BaseQuizOption value="C">UDP traffic on port 22</BaseQuizOption>
+  <BaseQuizOption value="D">All network traffic</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    This filter captures all TCP traffic but excludes packets on port 22 (SSH). The `and not` operator excludes the specified port while keeping all other TCP traffic.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Interface Selection
 

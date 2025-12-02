@@ -105,6 +105,21 @@ train_test_split(X_temp, y_temp,
 test_size=0.5, random_state=42)
 ```
 
+<BaseQuiz id="sklearn-split-1" correct="B">
+  <template #question>
+    Why is it important to split data into training and testing sets?
+  </template>
+  
+  <BaseQuizOption value="A">To reduce the dataset size</BaseQuizOption>
+  <BaseQuizOption value="B" correct>To evaluate model performance on unseen data and prevent overfitting</BaseQuizOption>
+  <BaseQuizOption value="C">To speed up model training</BaseQuizOption>
+  <BaseQuizOption value="D">To balance the dataset</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Splitting data allows you to train the model on one portion and test it on another. This helps evaluate how well the model generalizes to new, unseen data and prevents overfitting to the training data.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Feature Scaling: `StandardScaler()` / `MinMaxScaler()`
 
 Normalize features to similar scales.
@@ -125,6 +140,21 @@ minmax_scaler.fit_transform(X_train)
 X_test_minmax =
 minmax_scaler.transform(X_test)
 ```
+
+<BaseQuiz id="sklearn-scaling-1" correct="A">
+  <template #question>
+    Why is feature scaling important in machine learning?
+  </template>
+  
+  <BaseQuizOption value="A" correct>It ensures all features are on a similar scale, preventing some features from dominating</BaseQuizOption>
+  <BaseQuizOption value="B">It removes missing values</BaseQuizOption>
+  <BaseQuizOption value="C">It increases the number of features</BaseQuizOption>
+  <BaseQuizOption value="D">It removes duplicate rows</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Feature scaling is important because algorithms like SVM, KNN, and neural networks are sensitive to feature scales. Without scaling, features with larger ranges can dominate the model's learning process.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Encoding: `LabelEncoder()` / `OneHotEncoder()`
 
@@ -208,6 +238,21 @@ rf_clf = RandomForestClassifier(
     random_state=42
 )
 ```
+
+<BaseQuiz id="sklearn-randomforest-1" correct="A">
+  <template #question>
+    What does `n_estimators` control in RandomForestClassifier?
+  </template>
+  
+  <BaseQuizOption value="A" correct>The number of decision trees in the forest</BaseQuizOption>
+  <BaseQuizOption value="B">The maximum depth of each tree</BaseQuizOption>
+  <BaseQuizOption value="C">The number of features to consider</BaseQuizOption>
+  <BaseQuizOption value="D">The random seed</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `n_estimators` specifies how many decision trees to include in the random forest. More trees generally improve performance but increase computation time. The default is usually 100.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Support Vector Machine: `SVC()`
 

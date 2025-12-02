@@ -169,6 +169,21 @@ function Welcome({ name = 'Guest' }) {
 }
 ```
 
+<BaseQuiz id="react-props-1" correct="B">
+  <template #question>
+    How do you pass data from a parent component to a child component in React?
+  </template>
+  
+  <BaseQuizOption value="A">Using state variables</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Using props</BaseQuizOption>
+  <BaseQuizOption value="C">Using refs</BaseQuizOption>
+  <BaseQuizOption value="D">Using context API</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Props (short for properties) are the primary way to pass data from parent to child components in React. You pass props as attributes when rendering the child component.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### PropTypes: `Component.propTypes`
 
 Validate props passed to components (requires prop-types package).
@@ -237,6 +252,21 @@ function Form() {
 }
 ```
 
+<BaseQuiz id="react-usestate-1" correct="A">
+  <template #question>
+    What does `useState(0)` return?
+  </template>
+  
+  <BaseQuizOption value="A" correct>An array with the state value and a function to update it</BaseQuizOption>
+  <BaseQuizOption value="B">Just the state value</BaseQuizOption>
+  <BaseQuizOption value="C">A function to update the state</BaseQuizOption>
+  <BaseQuizOption value="D">Nothing, it just sets the state</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `useState` returns an array with two elements: the current state value and a function to update it. The initial value (0) is passed as an argument.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### useEffect Hook: `useEffect()`
 
 Perform side effects in functional components.
@@ -259,6 +289,21 @@ function Timer() {
   }, [])
 }
 ```
+
+<BaseQuiz id="react-useeffect-1" correct="D">
+  <template #question>
+    What does the empty dependency array `[]` in `useEffect(() => {...}, [])` mean?
+  </template>
+  
+  <BaseQuizOption value="A">The effect runs on every render</BaseQuizOption>
+  <BaseQuizOption value="B">The effect never runs</BaseQuizOption>
+  <BaseQuizOption value="C">The effect runs twice</BaseQuizOption>
+  <BaseQuizOption value="D" correct>The effect runs only once after the initial render</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    An empty dependency array means the effect has no dependencies, so it will only run once after the component mounts. This is useful for setup code that should only run once.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Class State: `this.state` / `setState()`
 
@@ -313,6 +358,21 @@ function Counter() {
 ```
 
 ## Event Handling
+
+<BaseQuiz id="react-props-2" correct="A">
+  <template #question>
+    What is the purpose of PropTypes in React?
+  </template>
+  
+  <BaseQuizOption value="A" correct>To validate the types of props passed to components</BaseQuizOption>
+  <BaseQuizOption value="B">To improve component performance</BaseQuizOption>
+  <BaseQuizOption value="C">To automatically style components</BaseQuizOption>
+  <BaseQuizOption value="D">To make components faster</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PropTypes help catch bugs by validating that components receive props of the correct type. They provide runtime type checking and are especially useful during development.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Click Events: `onClick`
 

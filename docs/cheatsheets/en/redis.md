@@ -82,6 +82,21 @@ SET session:123 "user_data" EX 3600
 SET mykey "new_value" NX
 ```
 
+<BaseQuiz id="redis-set-get-1" correct="C">
+  <template #question>
+    What does `SET mykey "value" EX 3600` do?
+  </template>
+  
+  <BaseQuizOption value="A">Sets the key with a 3600-byte value</BaseQuizOption>
+  <BaseQuizOption value="B">Sets the key only if it exists</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Sets the key with a value that expires after 3600 seconds</BaseQuizOption>
+  <BaseQuizOption value="D">Sets the key with 3600 different values</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `EX` option sets an expiration time in seconds. `SET mykey "value" EX 3600` stores the value and automatically deletes it after 3600 seconds (1 hour).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### String Manipulation: `APPEND` / `STRLEN`
 
 Modify and inspect string values.
@@ -111,6 +126,21 @@ INCRBY counter 5
 # Increment float
 INCRBYFLOAT price 0.1
 ```
+
+<BaseQuiz id="redis-incr-1" correct="A">
+  <template #question>
+    What happens if you use `INCR` on a key that doesn't exist?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Redis creates the key with value 1</BaseQuizOption>
+  <BaseQuizOption value="B">Redis returns an error</BaseQuizOption>
+  <BaseQuizOption value="C">Redis creates the key with value 0</BaseQuizOption>
+  <BaseQuizOption value="D">Nothing happens</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    If a key doesn't exist, `INCR` treats it as if it had a value of 0, increments it to 1, and creates the key. This makes `INCR` useful for initializing counters.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Multiple Operations: `MSET` / `MGET`
 
@@ -170,6 +200,21 @@ LINDEX mylist 0
 LLEN mylist
 ```
 
+<BaseQuiz id="redis-list-1" correct="B">
+  <template #question>
+    What does `LRANGE mylist 0 -1` return?
+  </template>
+  
+  <BaseQuizOption value="A">Only the first element</BaseQuizOption>
+  <BaseQuizOption value="B" correct>All elements in the list</BaseQuizOption>
+  <BaseQuizOption value="C">Only the last element</BaseQuizOption>
+  <BaseQuizOption value="D">An error</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `LRANGE` with `0 -1` returns all elements in the list. The `0` is the start index and `-1` represents the last element, so this retrieves everything from the first to the last element.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### List Utilities: `LSET` / `LTRIM`
 
 Modify list contents and structure.
@@ -198,6 +243,22 @@ SADD myset "apple" "banana" "cherry"
 SMEMBERS myset
 # Check if element exists
 SISMEMBER myset "apple"
+```
+
+<BaseQuiz id="redis-set-1" correct="C">
+  <template #question>
+    What happens if you try to add a duplicate element to a Redis set?
+  </template>
+  
+  <BaseQuizOption value="A">It creates an error</BaseQuizOption>
+  <BaseQuizOption value="B">It replaces the existing element</BaseQuizOption>
+  <BaseQuizOption value="C" correct>The duplicate is ignored, and the set remains unchanged</BaseQuizOption>
+  <BaseQuizOption value="D">It creates a list instead</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Redis sets only contain unique elements. If you try to add an element that already exists, Redis ignores it and returns 0 (indicating no elements were added). The set remains unchanged.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Get set size
 SCARD myset
 ```

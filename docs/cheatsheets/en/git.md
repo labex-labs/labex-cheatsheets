@@ -185,6 +185,21 @@ git commit --amend
 git commit --no-edit --amend
 ```
 
+<BaseQuiz id="git-commit-1" correct="A">
+  <template #question>
+    What does `git commit -m "message"` do?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Creates a new commit with the specified message</BaseQuizOption>
+  <BaseQuizOption value="B">Stages all changes in the working directory</BaseQuizOption>
+  <BaseQuizOption value="C">Pushes changes to the remote repository</BaseQuizOption>
+  <BaseQuizOption value="D">Creates a new branch</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `git commit -m` command creates a new commit with staged changes and saves them to the repository history with the provided message. It does not push to remote or create branches.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Unstage Files: `git reset`
 
 Remove files from the staging area or undo commits.
@@ -247,6 +262,21 @@ git checkout main
 git switch main
 ```
 
+<BaseQuiz id="git-branch-1" correct="B">
+  <template #question>
+    What does `git checkout -b feature-branch` do?
+  </template>
+  
+  <BaseQuizOption value="A">Deletes the feature-branch</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Creates a new branch called feature-branch and switches to it</BaseQuizOption>
+  <BaseQuizOption value="C">Merges feature-branch into the current branch</BaseQuizOption>
+  <BaseQuizOption value="D">Shows the commit history of feature-branch</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-b` flag creates a new branch, and `checkout` switches to it. This command combines both operations: creating the branch and immediately switching to it.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Merge Branches: `git merge`
 
 Combine changes from different branches.
@@ -305,6 +335,21 @@ git pull --rebase
 git pull --ff-only
 ```
 
+<BaseQuiz id="git-pull-1" correct="C">
+  <template #question>
+    What is the difference between `git fetch` and `git pull`?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference; they do the same thing</BaseQuizOption>
+  <BaseQuizOption value="B">git fetch pushes changes, git pull downloads changes</BaseQuizOption>
+  <BaseQuizOption value="C" correct>git fetch downloads changes without merging, git pull downloads and merges changes</BaseQuizOption>
+  <BaseQuizOption value="D">git fetch works with local repos, git pull works with remote repos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` downloads changes from the remote repository but does not merge them into your current branch. `git pull` performs both operations: it fetches the changes and then merges them into your current branch.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Push Changes: `git push`
 
 Upload local commits to remote repository.
@@ -319,6 +364,21 @@ git push -u origin feature
 # Force push safely
 git push --force-with-lease
 ```
+
+<BaseQuiz id="git-push-1" correct="D">
+  <template #question>
+    What does `git push -u origin feature` do?
+  </template>
+  
+  <BaseQuizOption value="A">Deletes the feature branch from remote</BaseQuizOption>
+  <BaseQuizOption value="B">Pulls changes from the feature branch</BaseQuizOption>
+  <BaseQuizOption value="C">Merges the feature branch into main</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Pushes the feature branch to origin and sets up tracking</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-u` flag (or `--set-upstream`) pushes the branch to the remote repository and sets up tracking, so future `git push` and `git pull` commands know which remote branch to use.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Track Remote Branches: `git branch --track`
 
@@ -379,6 +439,21 @@ git stash branch new-branch stash@{1}
 # Delete all stashes
 git stash clear
 ```
+
+<BaseQuiz id="git-stash-1" correct="B">
+  <template #question>
+    What is the difference between `git stash apply` and `git stash pop`?
+  </template>
+  
+  <BaseQuizOption value="A">git stash apply removes the stash, git stash pop keeps it</BaseQuizOption>
+  <BaseQuizOption value="B" correct>git stash apply keeps the stash, git stash pop removes it after applying</BaseQuizOption>
+  <BaseQuizOption value="C">git stash apply works with remote repos, git stash pop works locally</BaseQuizOption>
+  <BaseQuizOption value="D">There is no difference; they do the same thing</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git stash apply` restores the stashed changes but keeps the stash in the stash list. `git stash pop` applies the stash and then removes it from the stash list, which is useful when you no longer need the stash.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## History & Log Analysis
 

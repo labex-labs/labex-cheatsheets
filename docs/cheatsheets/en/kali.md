@@ -94,6 +94,21 @@ export WORDLIST=/usr/share/wordlists/rockyou.txt
 env | grep TARGET
 ```
 
+<BaseQuiz id="kali-env-1" correct="C">
+  <template #question>
+    What happens to environment variables set with `export`?
+  </template>
+  
+  <BaseQuizOption value="A">They persist across system reboots</BaseQuizOption>
+  <BaseQuizOption value="B">They are only available in the current file</BaseQuizOption>
+  <BaseQuizOption value="C" correct>They are available to the current shell and child processes</BaseQuizOption>
+  <BaseQuizOption value="D">They are global system variables</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Environment variables set with `export` are available to the current shell session and all child processes spawned from it. They are lost when the shell session ends unless added to shell configuration files like `.bashrc`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Tool Installation: `apt install`
 
 Install additional security tools and dependencies.
@@ -139,6 +154,21 @@ nmap -sU 192.168.1.1
 nmap -sS 192.168.1.1
 ```
 
+<BaseQuiz id="kali-nmap-1" correct="B">
+  <template #question>
+    What does `nmap -sS` do?
+  </template>
+  
+  <BaseQuizOption value="A">Performs a UDP scan</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Performs a stealth SYN scan (half-open scan)</BaseQuizOption>
+  <BaseQuizOption value="C">Scans all ports</BaseQuizOption>
+  <BaseQuizOption value="D">Performs OS detection</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-sS` flag performs a SYN scan (also called half-open scan) because it never completes the TCP handshake. It sends SYN packets and analyzes responses, making it stealthier than a full TCP connect scan.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Service Enumeration: `nmap -sV`
 
 Identify service versions and potential vulnerabilities.
@@ -148,6 +178,22 @@ Identify service versions and potential vulnerabilities.
 nmap -sV 192.168.1.1
 # OS detection
 nmap -O 192.168.1.1
+```
+
+<BaseQuiz id="kali-enumeration-1" correct="A">
+  <template #question>
+    What does `nmap -sV` do?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Detects service versions running on open ports</BaseQuizOption>
+  <BaseQuizOption value="B">Scans only version control ports</BaseQuizOption>
+  <BaseQuizOption value="C">Shows only vulnerable services</BaseQuizOption>
+  <BaseQuizOption value="D">Performs OS detection only</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-sV` flag enables version detection, which probes open ports to determine what service and version is running. This is useful for identifying potential vulnerabilities associated with specific software versions.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Script scanning
 nmap -sC 192.168.1.1
 # Comprehensive scan

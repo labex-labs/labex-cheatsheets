@@ -132,6 +132,21 @@ namespace
 kubectl get all -n my-namespace
 ```
 
+<BaseQuiz id="kubernetes-namespace-1" correct="B">
+  <template #question>
+    What is the primary purpose of Kubernetes namespaces?
+  </template>
+  
+  <BaseQuizOption value="A">To improve cluster performance</BaseQuizOption>
+  <BaseQuizOption value="B" correct>To organize and isolate resources within a cluster</BaseQuizOption>
+  <BaseQuizOption value="C">To connect clusters together</BaseQuizOption>
+  <BaseQuizOption value="D">To store container images</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Namespaces provide a way to divide cluster resources between multiple users or teams. They help organize resources and provide scope for names, allowing you to have resources with the same name in different namespaces.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Pod Management
 
 ### Create & Run Pods: `kubectl run` / `kubectl create`
@@ -165,6 +180,21 @@ kubectl get pods --all-namespaces
 # Watch pod status changes
 kubectl get pods --watch
 ```
+
+<BaseQuiz id="kubernetes-pods-1" correct="C">
+  <template #question>
+    What does `kubectl get pods --all-namespaces` do?
+  </template>
+  
+  <BaseQuizOption value="A">Lists only running pods</BaseQuizOption>
+  <BaseQuizOption value="B">Lists pods in the default namespace</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lists pods across all namespaces in the cluster</BaseQuizOption>
+  <BaseQuizOption value="D">Deletes all pods</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `--all-namespaces` flag (or `-A`) shows pods from all namespaces, not just the default namespace. This is useful for cluster-wide visibility.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Pod Details: `kubectl describe pod`
 
@@ -215,6 +245,21 @@ kubectl expose deployment nginx --port=80 --
 type=LoadBalancer
 ```
 
+<BaseQuiz id="kubernetes-deployment-1" correct="A">
+  <template #question>
+    What is the main purpose of a Kubernetes Deployment?
+  </template>
+  
+  <BaseQuizOption value="A" correct>To manage and maintain a desired number of pod replicas</BaseQuizOption>
+  <BaseQuizOption value="B">To expose pods to external traffic</BaseQuizOption>
+  <BaseQuizOption value="C">To store configuration data</BaseQuizOption>
+  <BaseQuizOption value="D">To manage cluster nodes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A Deployment manages a ReplicaSet, which ensures a specified number of pod replicas are running. It provides declarative updates, rolling updates, and rollback capabilities.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Manage Deployments: `kubectl get deployments`
 
 View and control deployment status and configuration.
@@ -243,6 +288,21 @@ kubectl scale rs  --replicas=3
 kubectl autoscale deployment nginx --min=2 --max=10 --
 cpu-percent=80
 ```
+
+<BaseQuiz id="kubernetes-scale-1" correct="B">
+  <template #question>
+    What does `kubectl scale deployment nginx --replicas=5` do?
+  </template>
+  
+  <BaseQuizOption value="A">Creates 5 new deployments</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Scales the nginx deployment to run 5 pod replicas</BaseQuizOption>
+  <BaseQuizOption value="C">Deletes 5 pods from the deployment</BaseQuizOption>
+  <BaseQuizOption value="D">Updates the deployment image</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `scale` command adjusts the number of replicas for a deployment. This command ensures the nginx deployment runs exactly 5 pod replicas, creating or deleting pods as needed.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Rolling Updates: `kubectl rollout`
 
@@ -277,6 +337,21 @@ type=LoadBalancer
 # Create service from YAML
 kubectl apply -f service.yaml
 ```
+
+<BaseQuiz id="kubernetes-service-1" correct="A">
+  <template #question>
+    What is the default service type when using `kubectl expose`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>
+  <BaseQuizOption value="B">NodePort</BaseQuizOption>
+  <BaseQuizOption value="C">LoadBalancer</BaseQuizOption>
+  <BaseQuizOption value="D">ExternalName</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ClusterIP is the default service type. It exposes the service on a cluster-internal IP, making it only accessible within the cluster. NodePort and LoadBalancer types provide external access.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Service Discovery: `kubectl get services`
 

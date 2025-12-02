@@ -135,6 +135,21 @@ cd -
 cd /path/to/directory
 ```
 
+<BaseQuiz id="shell-cd-1" correct="A">
+  <template #question>
+    What does `cd ~` do?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Changes to the home directory</BaseQuizOption>
+  <BaseQuizOption value="B">Changes to the root directory</BaseQuizOption>
+  <BaseQuizOption value="C">Changes to the parent directory</BaseQuizOption>
+  <BaseQuizOption value="D">Creates a new directory</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `~` symbol is a shortcut for the home directory. `cd ~` navigates to your home directory, which is equivalent to `cd $HOME` or `cd /home/username`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Directory Tree: `tree`
 
 Display directory structure in tree format.
@@ -185,6 +200,21 @@ grep -n "pattern" file.txt
 # Count matching lines
 grep -c "pattern" file.txt
 ```
+
+<BaseQuiz id="shell-grep-1" correct="B">
+  <template #question>
+    What does `grep -r "pattern" directory/` do?
+  </template>
+  
+  <BaseQuizOption value="A">Searches only in the current file</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Searches recursively through all files in the directory</BaseQuizOption>
+  <BaseQuizOption value="C">Replaces the pattern in files</BaseQuizOption>
+  <BaseQuizOption value="D">Deletes files containing the pattern</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-r` flag makes grep search recursively through all files and subdirectories. This is useful for finding text patterns across an entire directory tree.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Find Files: `find`
 
@@ -248,6 +278,21 @@ chmod go-w file.txt
 # Recursive permission change
 chmod -R 644 directory/
 ```
+
+<BaseQuiz id="shell-chmod-1" correct="C">
+  <template #question>
+    What does `chmod 755 file.txt` set?
+  </template>
+  
+  <BaseQuizOption value="A">Read, write, execute for all users</BaseQuizOption>
+  <BaseQuizOption value="B">Read and write for owner, read for others</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Read, write, execute for owner; read, execute for group and others</BaseQuizOption>
+  <BaseQuizOption value="D">Read only for all users</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` sets permissions as: owner = 7 (rwx), group = 5 (r-x), others = 5 (r-x). This is a common permission set for executable files and directories.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Change Ownership: `chown` / `chgrp`
 
@@ -361,6 +406,21 @@ command > output.txt 2>&1
 # Discard output
 command > /dev/null
 ```
+
+<BaseQuiz id="shell-redirect-1" correct="B">
+  <template #question>
+    What is the difference between `>` and `>>` in shell redirection?
+  </template>
+  
+  <BaseQuizOption value="A">`>` appends, `>>` overwrites</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`>` overwrites the file, `>>` appends to the file</BaseQuizOption>
+  <BaseQuizOption value="C">`>` redirects stdout, `>>` redirects stderr</BaseQuizOption>
+  <BaseQuizOption value="D">There is no difference</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `>` operator overwrites the target file if it exists, while `>>` appends output to the end of the file. Use `>>` when you want to preserve existing content.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Pipes: `|`
 

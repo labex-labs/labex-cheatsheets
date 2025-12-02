@@ -59,6 +59,21 @@ public static void main(String[] args) {
 }
 ```
 
+<BaseQuiz id="java-main-1" correct="C">
+  <template #question>
+    What is the correct signature for the main method in Java?
+  </template>
+  
+  <BaseQuizOption value="A">public void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="B">static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>public static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The main method must be `public static void main(String[] args)`. `public` allows JVM to access it, `static` means it belongs to the class, `void` means it returns nothing, and `String[] args` receives command-line arguments.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Comments: Code Documentation
 
 Use single-line (`//`) and multi-line (`/* */`) comments to make code more understandable and maintainable.
@@ -156,6 +171,21 @@ boolean isEmpty = message.isEmpty();
 String uppercase = message.toUpperCase();
 ```
 
+<BaseQuiz id="java-string-1" correct="A">
+  <template #question>
+    What does it mean that Java strings are immutable?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Once created, a string's value cannot be changed</BaseQuizOption>
+  <BaseQuizOption value="B">Strings cannot be created</BaseQuizOption>
+  <BaseQuizOption value="C">Strings can only store numbers</BaseQuizOption>
+  <BaseQuizOption value="D">Strings are automatically deleted</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Immutability means that once a String object is created, its value cannot be modified. Operations like `toUpperCase()` return a new String object rather than modifying the original.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Control Flow Statements
 
 ### Conditional Statements: `if`, `else if`, `else`
@@ -213,6 +243,21 @@ for (int num : numbers) {
 }
 ```
 
+<BaseQuiz id="java-for-loop-1" correct="C">
+  <template #question>
+    What is the enhanced for loop (for-each) used for?
+  </template>
+  
+  <BaseQuizOption value="A">Iterating with a counter variable</BaseQuizOption>
+  <BaseQuizOption value="B">Infinite loops</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Iterating through arrays and collections without an index</BaseQuizOption>
+  <BaseQuizOption value="D">Nested loops only</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The enhanced for loop (for-each) simplifies iteration through arrays and collections by automatically handling the index, making code more readable and less error-prone.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### While & Do-While Loops
 
 Repeat code while a condition is true.
@@ -232,6 +277,21 @@ do {
     j++;
 } while (j < 3);
 ```
+
+<BaseQuiz id="java-while-1" correct="B">
+  <template #question>
+    What is the key difference between `while` and `do-while` loops?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B" correct>do-while executes at least once, while may not execute at all</BaseQuizOption>
+  <BaseQuizOption value="C">while is faster</BaseQuizOption>
+  <BaseQuizOption value="D">do-while only works with arrays</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `do-while` loop checks the condition after executing the loop body, so it always runs at least once. The `while` loop checks the condition first, so it may not execute if the condition is false initially.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Object-Oriented Programming
 

@@ -48,6 +48,21 @@ use newdb
 db.users.insertOne({name: "John"})
 ```
 
+<BaseQuiz id="mongodb-use-1" correct="B">
+  <template #question>
+    What happens when you run `use newdb` in MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">It immediately creates the database</BaseQuizOption>
+  <BaseQuizOption value="B" correct>It switches to the database (creates it when you first insert data)</BaseQuizOption>
+  <BaseQuizOption value="C">It deletes the database</BaseQuizOption>
+  <BaseQuizOption value="D">It shows all collections in the database</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `use` command switches to a database, but MongoDB doesn't create the database until you insert the first document. This is a lazy creation approach.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Drop Database: `db.dropDatabase()`
 
 Delete the current database and all its collections.
@@ -161,6 +176,21 @@ db.users.insertOne({
 })
 ```
 
+<BaseQuiz id="mongodb-insert-1" correct="A">
+  <template #question>
+    What does `db.users.insertOne()` return?
+  </template>
+  
+  <BaseQuizOption value="A" correct>An acknowledgment object with the inserted document's _id</BaseQuizOption>
+  <BaseQuizOption value="B">The inserted document</BaseQuizOption>
+  <BaseQuizOption value="C">Nothing</BaseQuizOption>
+  <BaseQuizOption value="D">The number of documents inserted</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `insertOne()` returns an acknowledgment object containing `acknowledged: true` and `insertedId` with the `_id` of the inserted document (or the custom `_id` if provided).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Insert Many: `db.collection.insertMany()`
 
 Add multiple documents in a single operation.
@@ -258,6 +288,21 @@ db.users.find({ status: { $ne: 'inactive' } })
 db.users.find({ email: { $exists: true } })
 ```
 
+<BaseQuiz id="mongodb-query-1" correct="B">
+  <template #question>
+    What does `$gt` mean in MongoDB queries?
+  </template>
+  
+  <BaseQuizOption value="A">Greater than or equal to</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Greater than</BaseQuizOption>
+  <BaseQuizOption value="C">Group by</BaseQuizOption>
+  <BaseQuizOption value="D">Get total</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$gt` is a comparison operator that means "greater than". It's used in queries like `{ age: { $gt: 25 } }` to find documents where the age field is greater than 25.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Text Search: `$text`, `$regex`
 
 Search documents using text and pattern matching.
@@ -316,6 +361,24 @@ db.users.updateOne(
 )
 // Push to array
 db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
+```
+
+<BaseQuiz id="mongodb-update-1" correct="C">
+  <template #question>
+    What does `$set` do in MongoDB update operations?
+  </template>
+  
+  <BaseQuizOption value="A">Deletes a field</BaseQuizOption>
+  <BaseQuizOption value="B">Adds an element to an array</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Sets the value of a field</BaseQuizOption>
+  <BaseQuizOption value="D">Removes an element from an array</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `$set` operator sets the value of a field in a document. If the field doesn't exist, it creates it. If it exists, it updates the value.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```javascript
 // Pull from array
 db.users.updateOne({ name: 'John' }, { $pull: { hobbies: 'reading' } })
 ```

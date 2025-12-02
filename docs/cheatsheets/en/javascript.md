@@ -40,6 +40,21 @@ user.age = 30 // Object properties can be modified
 var oldVariable = 'legacy'
 ```
 
+<BaseQuiz id="javascript-let-const-1" correct="B">
+  <template #question>
+    What is the main difference between `let` and `const`?
+  </template>
+  
+  <BaseQuizOption value="A">let is function-scoped, const is block-scoped</BaseQuizOption>
+  <BaseQuizOption value="B" correct>let allows reassignment, const does not allow reassignment</BaseQuizOption>
+  <BaseQuizOption value="C">const can only be used for numbers, let can be used for any type</BaseQuizOption>
+  <BaseQuizOption value="D">There is no difference</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Both `let` and `const` are block-scoped, but `let` allows you to reassign the variable, while `const` prevents reassignment. However, `const` objects can still have their properties modified.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Primitive Types
 
 Basic data types in JavaScript.
@@ -147,6 +162,21 @@ const processData = (data) => {
 }
 ```
 
+<BaseQuiz id="javascript-arrow-1" correct="C">
+  <template #question>
+    What is a key characteristic of arrow functions?
+  </template>
+  
+  <BaseQuizOption value="A">They are hoisted like function declarations</BaseQuizOption>
+  <BaseQuizOption value="B">They have their own `this` binding</BaseQuizOption>
+  <BaseQuizOption value="C" correct>They inherit `this` from the enclosing scope</BaseQuizOption>
+  <BaseQuizOption value="D">They cannot return values</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Arrow functions do not have their own `this` binding. Instead, they inherit `this` from the lexical (enclosing) scope, which makes them useful for callbacks and event handlers where you want to preserve the context.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Higher-Order Functions
 
 Functions that take or return other functions.
@@ -193,6 +223,21 @@ const result = numbers
   .map((x) => x * 3)
   .reduce((a, b) => a + b, 0)
 ```
+
+<BaseQuiz id="javascript-array-1" correct="A">
+  <template #question>
+    What does `filter()` return?
+  </template>
+  
+  <BaseQuizOption value="A" correct>A new array with elements that pass the test</BaseQuizOption>
+  <BaseQuizOption value="B">The first element that passes the test</BaseQuizOption>
+  <BaseQuizOption value="C">A single value reduced from the array</BaseQuizOption>
+  <BaseQuizOption value="D">The original array modified in place</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `filter()` method creates a new array containing all elements that pass the test implemented by the provided function. It does not modify the original array.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Array Utilities: `find()`, `includes()`, `sort()`
 
@@ -278,6 +323,21 @@ const listItems = document.querySelectorAll('li')
 // Convert NodeList to Array
 const buttonsArray = Array.from(allButtons)
 ```
+
+<BaseQuiz id="javascript-dom-1" correct="C">
+  <template #question>
+    What is the difference between `querySelector()` and `querySelectorAll()`?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B">querySelector is faster</BaseQuizOption>
+  <BaseQuizOption value="C" correct>querySelector returns the first matching element, querySelectorAll returns all matching elements</BaseQuizOption>
+  <BaseQuizOption value="D">querySelector works with IDs, querySelectorAll works with classes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `querySelector()` returns the first element that matches the CSS selector, while `querySelectorAll()` returns a NodeList containing all matching elements. Use `querySelector()` when you need one element, and `querySelectorAll()` when you need multiple.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Element Modification
 

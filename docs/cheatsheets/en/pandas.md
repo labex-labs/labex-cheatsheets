@@ -37,6 +37,21 @@ df = pd.read_csv('data.csv', sep=';')
 df = pd.read_csv('data.csv', parse_dates=['Date'])
 ```
 
+<BaseQuiz id="pandas-read-csv-1" correct="B">
+  <template #question>
+    What does `pd.read_csv('data.csv')` return?
+  </template>
+  
+  <BaseQuizOption value="A">A list of dictionaries</BaseQuizOption>
+  <BaseQuizOption value="B" correct>A pandas DataFrame</BaseQuizOption>
+  <BaseQuizOption value="C">A NumPy array</BaseQuizOption>
+  <BaseQuizOption value="D">A string</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pd.read_csv()` reads a CSV file and returns a pandas DataFrame, which is a two-dimensional labeled data structure with columns and rows.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Read Excel: `pd.read_excel()`
 
 Load data from an Excel file.
@@ -160,6 +175,21 @@ df.dropna()
 df.dropna(axis=1)
 ```
 
+<BaseQuiz id="pandas-missing-1" correct="B">
+  <template #question>
+    What does `df.dropna(axis=1)` do?
+  </template>
+  
+  <BaseQuizOption value="A">Drops rows with missing values</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Drops columns with missing values</BaseQuizOption>
+  <BaseQuizOption value="C">Fills missing values with 0</BaseQuizOption>
+  <BaseQuizOption value="D">Counts missing values</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `axis=1` parameter means "columns", so `df.dropna(axis=1)` removes columns that contain any missing values. Use `axis=0` (default) to drop rows.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Duplicates: `duplicated()` / `drop_duplicates()`
 
 Identify and remove duplicate rows.
@@ -172,6 +202,21 @@ df.drop_duplicates()
 # Remove based on specific columns
 df.drop_duplicates(subset=['col1', 'col2'])
 ```
+
+<BaseQuiz id="pandas-duplicates-1" correct="A">
+  <template #question>
+    What does `df.drop_duplicates()` do by default?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Removes duplicate rows, keeping the first occurrence</BaseQuizOption>
+  <BaseQuizOption value="B">Removes all rows</BaseQuizOption>
+  <BaseQuizOption value="C">Keeps only duplicate rows</BaseQuizOption>
+  <BaseQuizOption value="D">Removes the first occurrence of duplicates</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    By default, `drop_duplicates()` keeps the first occurrence of each duplicate row and removes subsequent duplicates. You can use `keep='last'` to keep the last occurrence instead.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Data Types: `astype()`
 
@@ -200,6 +245,21 @@ df.replace('old_val', 'new_val')
 # Replace multiple values
 df.replace(['A', 'B'], ['C', 'D'])
 ```
+
+<BaseQuiz id="pandas-apply-1" correct="A">
+  <template #question>
+    What does `df['col'].apply(lambda x: x*2)` do?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Applies a function to each element in the column, multiplying each by 2</BaseQuizOption>
+  <BaseQuizOption value="B">Multiplies the entire column by 2 once</BaseQuizOption>
+  <BaseQuizOption value="C">Replaces the column with 2</BaseQuizOption>
+  <BaseQuizOption value="D">Counts elements in the column</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `apply()` method applies a function to each element in a Series. The lambda function `lambda x: x*2` multiplies each value by 2, returning a new Series with the transformed values.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## DataFrame Inspection
 

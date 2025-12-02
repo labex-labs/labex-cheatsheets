@@ -153,6 +153,21 @@ java -jar jenkins-cli.jar -auth user:token build my-job -s -v
 java -jar jenkins-cli.jar -auth user:token build my-job -f
 ```
 
+<BaseQuiz id="jenkins-build-1" correct="B">
+  <template #question>
+    What does the `-s` flag do in `jenkins-cli.jar build my-job -s`?
+  </template>
+  
+  <BaseQuizOption value="A">Skips the build</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Waits for the build to complete (synchronous)</BaseQuizOption>
+  <BaseQuizOption value="C">Shows build status</BaseQuizOption>
+  <BaseQuizOption value="D">Stops the build</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-s` flag makes the build command synchronous, meaning it waits for the build to complete before returning. Without it, the command returns immediately after triggering the build.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Job Control: `enable-job` / `disable-job`
 
 Enable or disable jobs.
@@ -166,6 +181,21 @@ java -jar jenkins-cli.jar -auth user:token disable-job my-job
 # Navigate to job dashboard
 # Look for "Disable/Enable" button
 ```
+
+<BaseQuiz id="jenkins-job-control-1" correct="B">
+  <template #question>
+    What happens when you disable a Jenkins job?
+  </template>
+  
+  <BaseQuizOption value="A">The job is deleted permanently</BaseQuizOption>
+  <BaseQuizOption value="B" correct>The job configuration is preserved but it won't run automatically</BaseQuizOption>
+  <BaseQuizOption value="C">The job is moved to a different folder</BaseQuizOption>
+  <BaseQuizOption value="D">All build history is deleted</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Disabling a job prevents it from running automatically (scheduled builds, triggers, etc.) but preserves the job configuration and build history. You can re-enable it later.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Job Deletion: `delete-job`
 
@@ -192,6 +222,21 @@ java -jar jenkins-cli.jar -auth user:token console my-job 15
 # Follow console output in real-time
 java -jar jenkins-cli.jar -auth user:token console my-job -f
 ```
+
+<BaseQuiz id="jenkins-console-1" correct="C">
+  <template #question>
+    What does the `-f` flag do in `jenkins-cli.jar console my-job -f`?
+  </template>
+  
+  <BaseQuizOption value="A">Forces the build to stop</BaseQuizOption>
+  <BaseQuizOption value="B">Shows only failed builds</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Follows the console output in real-time</BaseQuizOption>
+  <BaseQuizOption value="D">Formats the output as JSON</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-f` flag follows the console output in real-time, similar to `tail -f` in Linux. This is useful for monitoring builds as they execute.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Pipeline Management
 

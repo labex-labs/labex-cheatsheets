@@ -72,6 +72,21 @@ df.groupby('column').mean()
 df.fillna(df.mean())  # Handle missing values
 ```
 
+<BaseQuiz id="datascience-pandas-1" correct="C">
+  <template #question>
+    What does `df.head()` return in Pandas?
+  </template>
+  
+  <BaseQuizOption value="A">The last 5 rows of the DataFrame</BaseQuizOption>
+  <BaseQuizOption value="B">A summary of the DataFrame</BaseQuizOption>
+  <BaseQuizOption value="C" correct>The first 5 rows of the DataFrame</BaseQuizOption>
+  <BaseQuizOption value="D">All rows of the DataFrame</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `df.head()` displays the first 5 rows of the DataFrame by default. You can specify a different number, like `df.head(10)` to see the first 10 rows. It's useful for quickly inspecting your data.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Matplotlib & Seaborn: Visualization
 
 Create statistical visualizations and plots.
@@ -160,6 +175,21 @@ imputer = SimpleImputer(strategy='median')
 df_filled = pd.DataFrame(imputer.fit_transform(df))
 ```
 
+<BaseQuiz id="datascience-missing-1" correct="B">
+  <template #question>
+    What is forward fill (`method='forward'`) used for?
+  </template>
+  
+  <BaseQuizOption value="A">Filling missing values with the mean</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Filling missing values with the previous non-null value</BaseQuizOption>
+  <BaseQuizOption value="C">Filling missing values with random values</BaseQuizOption>
+  <BaseQuizOption value="D">Removing missing values</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Forward fill propagates the last valid observation forward to fill missing values. This is useful for time series data where you want to maintain the previous value until new data is available.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Data Transformation
 
 Data normalization (scaling data to a standard range like [0, 1]) helps avoid biases due to differences in feature magnitude.
@@ -180,6 +210,21 @@ from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 df['encoded'] = le.fit_transform(df['category'])
 ```
+
+<BaseQuiz id="datascience-scaling-1" correct="C">
+  <template #question>
+    What is the difference between StandardScaler and MinMaxScaler?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B">StandardScaler scales to [0,1], MinMaxScaler scales to mean=0, std=1</BaseQuizOption>
+  <BaseQuizOption value="C" correct>StandardScaler normalizes to mean=0 and std=1, MinMaxScaler scales to [0,1] range</BaseQuizOption>
+  <BaseQuizOption value="D">StandardScaler is faster</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    StandardScaler transforms data to have a mean of 0 and standard deviation of 1 (z-score normalization). MinMaxScaler scales data to a fixed range, typically [0, 1]. Both are useful but for different scenarios.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Outlier Detection & Treatment
 

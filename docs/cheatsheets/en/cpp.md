@@ -79,6 +79,21 @@ int main(int argc, char* argv[]) {
 }
 ```
 
+<BaseQuiz id="cpp-main-1" correct="B">
+  <template #question>
+    What is the difference between C and C++ output statements?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B" correct>C uses printf(), C++ uses cout with << operator</BaseQuizOption>
+  <BaseQuizOption value="C">C++ doesn't support output</BaseQuizOption>
+  <BaseQuizOption value="D">C uses cout, C++ uses printf</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C uses `printf()` from stdio.h, while C++ uses `cout` from iostream with the stream insertion operator `<<`. C++ also supports printf for compatibility.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Basic Output
 
 Display text and variables to console.
@@ -138,6 +153,21 @@ int matrix[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
 vector<int> dynamic_array = {10, 20, 30};
 vector<string> names(5); // Size 5, empty strings
 ```
+
+<BaseQuiz id="cpp-vector-1" correct="B">
+  <template #question>
+    What is the main advantage of `vector` over regular arrays in C++?
+  </template>
+  
+  <BaseQuizOption value="A">Vectors are faster</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Vectors can dynamically resize, while arrays have fixed size</BaseQuizOption>
+  <BaseQuizOption value="C">Vectors use less memory</BaseQuizOption>
+  <BaseQuizOption value="D">There is no advantage</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `vector` is a dynamic array that can grow or shrink at runtime, unlike regular arrays which have a fixed size determined at compile time. This makes vectors more flexible for many use cases.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Constants & Auto
 
@@ -205,6 +235,21 @@ for (auto& item : container) {
     // Process item
 }
 ```
+
+<BaseQuiz id="cpp-range-for-1" correct="B">
+  <template #question>
+    What is a range-based for loop in C++?
+  </template>
+  
+  <BaseQuizOption value="A">A loop that only works with arrays</BaseQuizOption>
+  <BaseQuizOption value="B" correct>A loop that iterates over all elements in a container automatically</BaseQuizOption>
+  <BaseQuizOption value="C">A loop that runs forever</BaseQuizOption>
+  <BaseQuizOption value="D">A loop that requires manual index management</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Range-based for loops (introduced in C++11) automatically iterate over all elements in a container (like vectors, arrays, strings) without needing to manage indices manually. The syntax is `for (auto item : container)`.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### While Loops
 

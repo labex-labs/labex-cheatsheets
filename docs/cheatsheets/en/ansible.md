@@ -172,6 +172,21 @@ ansible all -m command -a "uptime"
 ansible all -m command -a "systemctl status nginx" --become
 ```
 
+<BaseQuiz id="ansible-command-1" correct="C">
+  <template #question>
+    What does `ansible all -m ping` do?
+  </template>
+  
+  <BaseQuizOption value="A">Tests network connectivity using ICMP ping</BaseQuizOption>
+  <BaseQuizOption value="B">Installs the ping package on all hosts</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Tests Ansible connectivity to all hosts in the inventory</BaseQuizOption>
+  <BaseQuizOption value="D">Checks if hosts are online</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `ping` module in Ansible doesn't use ICMP. It's a test module that verifies Ansible can connect to hosts, execute Python, and return results. It's used to verify connectivity and configuration.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### File Operations
 
 Create directories, files, and symbolic links on hosts.
@@ -261,6 +276,21 @@ ansible-playbook site.yml --limit webservers
 ansible-playbook site.yml --extra-vars "nginx_port=8080"
 ```
 
+<BaseQuiz id="ansible-playbook-1" correct="B">
+  <template #question>
+    What does `ansible-playbook site.yml --check` do?
+  </template>
+  
+  <BaseQuizOption value="A">Runs the playbook twice</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Runs the playbook in check mode (dry-run) without making changes</BaseQuizOption>
+  <BaseQuizOption value="C">Checks the syntax of the playbook</BaseQuizOption>
+  <BaseQuizOption value="D">Runs only the first task</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `--check` flag runs Ansible in check mode (dry-run), which simulates what would happen without actually making changes. This is useful for testing playbooks before applying them.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Task Options & Conditionals
 
 Add conditions, loops, and error handling to tasks.
@@ -306,6 +336,21 @@ handlers:
       name: nginx
       state: restarted
 ```
+
+<BaseQuiz id="ansible-handlers-1" correct="C">
+  <template #question>
+    When do Ansible handlers execute?
+  </template>
+  
+  <BaseQuizOption value="A">Immediately after being defined</BaseQuizOption>
+  <BaseQuizOption value="B">At the start of the playbook</BaseQuizOption>
+  <BaseQuizOption value="C" correct>At the end of the playbook, only if notified by a task</BaseQuizOption>
+  <BaseQuizOption value="D">Every time a task runs</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Handlers run at the end of the playbook, and only if they are notified by a task that has changed something. This ensures services are restarted only when configuration files are actually modified.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Variables & Templates
 

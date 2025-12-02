@@ -82,6 +82,21 @@ p.intro {
 }
 ```
 
+<BaseQuiz id="css-class-1" correct="B">
+  <template #question>
+    How do you select an element with class="highlight" in CSS?
+  </template>
+  
+  <BaseQuizOption value="A">highlight { }</BaseQuizOption>
+  <BaseQuizOption value="B" correct>.highlight { }</BaseQuizOption>
+  <BaseQuizOption value="C">#highlight { }</BaseQuizOption>
+  <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Class selectors use a dot (`.`) prefix. `.highlight` selects all elements with `class="highlight"`. ID selectors use `#`, and element selectors use no prefix.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ID Selectors
 
 Target elements with specific ID attributes.
@@ -200,6 +215,22 @@ div {
 }
 ```
 
+<BaseQuiz id="css-padding-1" correct="C">
+  <template #question>
+    What does `padding: 10px 20px` set?
+  </template>
+  
+  <BaseQuizOption value="A">10px top/bottom, 20px left/right</BaseQuizOption>
+  <BaseQuizOption value="B">10px all sides</BaseQuizOption>
+  <BaseQuizOption value="C" correct>10px top/bottom, 20px left/right</BaseQuizOption>
+  <BaseQuizOption value="D">10px top, 20px bottom</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    When two values are provided, the first applies to top and bottom, and the second applies to left and right. So `padding: 10px 20px` means 10px vertical padding and 20px horizontal padding.
+  </BaseQuizAnswer>
+</BaseQuiz>
+```
+
 ### Border: `border`
 
 Borders provide a frame for elements with customizable size, style and color.
@@ -249,6 +280,21 @@ div {
   margin-left: -20px;
 }
 ```
+
+<BaseQuiz id="css-margin-1" correct="C">
+  <template #question>
+    What does `margin: 0 auto` do?
+  </template>
+  
+  <BaseQuizOption value="A">Removes all margins</BaseQuizOption>
+  <BaseQuizOption value="B">Adds equal margins on all sides</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Centers a block element horizontally</BaseQuizOption>
+  <BaseQuizOption value="D">Centers a block element vertically</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `margin: 0 auto` sets top and bottom margins to 0 and left/right margins to auto, which centers a block-level element horizontally within its container.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Text & Typography
 
@@ -351,6 +397,22 @@ p {
 div {
   background-color: #ff5733;
 }
+```
+
+<BaseQuiz id="css-colors-1" correct="D">
+  <template #question>
+    Which CSS color format is most commonly used for web design?
+  </template>
+  
+  <BaseQuizOption value="A">RGB only</BaseQuizOption>
+  <BaseQuizOption value="B">Named colors only</BaseQuizOption>
+  <BaseQuizOption value="C">HSL only</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Hex codes (#RRGGBB) are very common, along with named colors and RGB</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Hex color codes (#RRGGBB) are widely used because they're concise and easy to copy from design tools. Named colors and RGB/rgba are also common. The choice depends on the specific use case and preference.
+  </BaseQuizAnswer>
+</BaseQuiz>
 span {
   color: rgb(255, 87, 51);
 }
@@ -358,19 +420,20 @@ section {
   background-color: rgba(255, 87, 51, 0.8);
 }
 
-/* HSL colors */
+/_ HSL colors _/
 header {
-  background-color: hsl(200, 100%, 50%);
+background-color: hsl(200, 100%, 50%);
 }
 
-/* CSS Variables for colors */
+/_ CSS Variables for colors _/
 :root {
-  --primary-color: #3498db;
+--primary-color: #3498db;
 }
 .button {
-  background-color: var(--primary-color);
+background-color: var(--primary-color);
 }
-```
+
+````
 
 ## Flexbox Layout
 
@@ -405,7 +468,7 @@ Properties applied to the parent container.
   align-items: center;
   align-items: flex-start;
 }
-```
+````
 
 ### Flex Item Properties
 

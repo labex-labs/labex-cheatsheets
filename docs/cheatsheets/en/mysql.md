@@ -51,6 +51,21 @@ USE company_db;
 DROP DATABASE old_database;
 ```
 
+<BaseQuiz id="mysql-database-1" correct="C">
+  <template #question>
+    What does `USE database_name` do?
+  </template>
+  
+  <BaseQuizOption value="A">Creates a new database</BaseQuizOption>
+  <BaseQuizOption value="B">Deletes the database</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Selects the database for subsequent operations</BaseQuizOption>
+  <BaseQuizOption value="D">Shows all tables in the database</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `USE` statement selects a database, making it the active database for all subsequent SQL statements. This is equivalent to selecting a database when connecting with `mysql -u user -p database_name`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Export Data: `mysqldump`
 
 Backup database data to SQL file.
@@ -177,6 +192,21 @@ INSERT INTO users (username, email, age) VALUES
 INSERT INTO users_backup SELECT * FROM users;
 ```
 
+<BaseQuiz id="mysql-insert-1" correct="A">
+  <template #question>
+    What is the correct syntax for inserting a single record?
+  </template>
+  
+  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The correct syntax is `INSERT INTO table_name (columns) VALUES (values)`. The `INTO` keyword is required, and you must specify both the column names and corresponding values.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Update Data: `UPDATE`
 
 Modify existing records in tables.
@@ -237,6 +267,21 @@ SELECT * FROM users WHERE age > 25;
 # Select with multiple conditions
 SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 ```
+
+<BaseQuiz id="mysql-select-1" correct="D">
+  <template #question>
+    What does `SELECT * FROM users` return?
+  </template>
+  
+  <BaseQuizOption value="A">Only the first row from the users table</BaseQuizOption>
+  <BaseQuizOption value="B">Only the username column</BaseQuizOption>
+  <BaseQuizOption value="C">The table structure</BaseQuizOption>
+  <BaseQuizOption value="D" correct>All columns and all rows from the users table</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `*` wildcard selects all columns, and without a WHERE clause, it returns all rows. This is useful for viewing all data but should be used carefully with large tables.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Sorting & Limiting: `ORDER BY` / `LIMIT`
 
@@ -304,6 +349,21 @@ FROM users u
 JOIN orders o ON u.id = o.user_id
 JOIN products p ON o.product_id = p.id;
 ```
+
+<BaseQuiz id="mysql-join-1" correct="B">
+  <template #question>
+    What is the difference between INNER JOIN and LEFT JOIN?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B" correct>INNER JOIN returns only matching rows, LEFT JOIN returns all rows from the left table</BaseQuizOption>
+  <BaseQuizOption value="C">INNER JOIN is faster</BaseQuizOption>
+  <BaseQuizOption value="D">LEFT JOIN only works with two tables</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    INNER JOIN returns only rows where there's a match in both tables. LEFT JOIN returns all rows from the left table and matching rows from the right table, with NULL values for non-matching right table rows.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Subqueries: `SELECT` within `SELECT`
 

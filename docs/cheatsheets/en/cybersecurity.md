@@ -53,6 +53,21 @@ chmod -R 755 directory/
 ls -la
 ```
 
+<BaseQuiz id="cybersecurity-chmod-1" correct="C">
+  <template #question>
+    What does `chmod 644 file.txt` set for file permissions?
+  </template>
+  
+  <BaseQuizOption value="A">Read, write, execute for all users</BaseQuizOption>
+  <BaseQuizOption value="B">Read, write, execute for owner; read for others</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Read, write for owner; read for group and others</BaseQuizOption>
+  <BaseQuizOption value="D">Read only for all users</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 644` sets: owner = 6 (rw-), group = 4 (r--), others = 4 (r--). This is a common permission set for files that should be readable by all but only writable by the owner.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Network Security Configuration
 
 Secure network connections and services.
@@ -66,6 +81,21 @@ sudo ufw deny 23/tcp
 netstat -tuln
 sudo ss -tuln
 ```
+
+<BaseQuiz id="cybersecurity-firewall-1" correct="B">
+  <template #question>
+    What does `sudo ufw allow 22/tcp` do?
+  </template>
+  
+  <BaseQuizOption value="A">Blocks port 22</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Allows TCP traffic on port 22 (SSH)</BaseQuizOption>
+  <BaseQuizOption value="C">Enables UDP on port 22</BaseQuizOption>
+  <BaseQuizOption value="D">Shows firewall status</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ufw allow 22/tcp` creates a firewall rule that permits incoming TCP connections on port 22, which is the default SSH port. This is essential for remote server access.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### System Updates & Patches
 
@@ -106,6 +136,21 @@ sudo journalctl -f
 # Search for failed logins
 grep "Failed password" /var/log/auth.log
 ```
+
+<BaseQuiz id="cybersecurity-logs-1" correct="A">
+  <template #question>
+    What does `tail -f /var/log/auth.log` do?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Follows the authentication log file in real-time</BaseQuizOption>
+  <BaseQuizOption value="B">Shows only failed login attempts</BaseQuizOption>
+  <BaseQuizOption value="C">Deletes old log entries</BaseQuizOption>
+  <BaseQuizOption value="D">Archives the log file</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-f` flag makes `tail` follow the file, displaying new log entries as they are written. This is useful for real-time monitoring of authentication events and security incidents.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Password Security & Authentication
 

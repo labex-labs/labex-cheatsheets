@@ -47,6 +47,21 @@ Foundation certifications for IT career success.
 - Governance, risk, and compliance
 ```
 
+<BaseQuiz id="comptia-core-1" correct="B">
+  <template #question>
+    Which CompTIA certification focuses on network fundamentals and troubleshooting?
+  </template>
+  
+  <BaseQuizOption value="A">CompTIA A+</BaseQuizOption>
+  <BaseQuizOption value="B" correct>CompTIA Network+</BaseQuizOption>
+  <BaseQuizOption value="C">CompTIA Security+</BaseQuizOption>
+  <BaseQuizOption value="D">CompTIA Linux+</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    CompTIA Network+ (N10-008) focuses on network fundamentals, implementations, operations, security, and troubleshooting. It's designed for network administrators and technicians.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Specialized Certifications
 
 Advanced and specialized IT credentials.
@@ -188,6 +203,21 @@ Layer 1: Physical (Cables, Hubs)
 - ARP and ICMP protocols
 ```
 
+<BaseQuiz id="comptia-osi-1" correct="C">
+  <template #question>
+    At which OSI layer does TCP operate?
+  </template>
+  
+  <BaseQuizOption value="A">Layer 3 (Network)</BaseQuizOption>
+  <BaseQuizOption value="B">Layer 5 (Session)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Layer 4 (Transport)</BaseQuizOption>
+  <BaseQuizOption value="D">Layer 7 (Application)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    TCP (Transmission Control Protocol) operates at Layer 4 (Transport) of the OSI model. This layer is responsible for reliable data transmission, error checking, and flow control.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Network Devices
 
 Routers, switches, and networking equipment.
@@ -264,6 +294,21 @@ Something you do: Behavior patterns
 Somewhere you are: Location-based
 ```
 
+<BaseQuiz id="comptia-cia-1" correct="A">
+  <template #question>
+    What does the CIA triad represent in cybersecurity?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Confidentiality, Integrity, and Availability - the three core security principles</BaseQuizOption>
+  <BaseQuizOption value="B">A government agency</BaseQuizOption>
+  <BaseQuizOption value="C">Three types of attacks</BaseQuizOption>
+  <BaseQuizOption value="D">Three authentication methods</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The CIA triad represents the three fundamental principles of information security: Confidentiality (protecting data from unauthorized access), Integrity (ensuring data accuracy and authenticity), and Availability (ensuring systems and data are accessible when needed).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Threat Landscape
 
 Common attacks and threat actors.
@@ -302,6 +347,21 @@ Digital Signatures: Non-repudiation
 - Certificate authorities (CA)
 - Public Key Infrastructure (PKI)
 ```
+
+<BaseQuiz id="comptia-crypto-1" correct="B">
+  <template #question>
+    What is the main difference between symmetric and asymmetric encryption?
+  </template>
+  
+  <BaseQuizOption value="A">Symmetric is faster, asymmetric is slower</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Symmetric uses one key for encryption/decryption, asymmetric uses a key pair</BaseQuizOption>
+  <BaseQuizOption value="C">Symmetric is for emails, asymmetric is for files</BaseQuizOption>
+  <BaseQuizOption value="D">There is no difference</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Symmetric encryption uses the same key for both encryption and decryption, making it faster but requiring secure key distribution. Asymmetric encryption uses a public/private key pair, solving the key distribution problem but being computationally more expensive.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Access Control
 

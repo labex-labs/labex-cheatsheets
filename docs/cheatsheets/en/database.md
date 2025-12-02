@@ -36,6 +36,21 @@ COLLATE utf8mb4_general_ci;
 USE company_db;
 ```
 
+<BaseQuiz id="database-create-1" correct="A">
+  <template #question>
+    What does `CREATE DATABASE company_db` do?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Creates a new empty database named company_db</BaseQuizOption>
+  <BaseQuizOption value="B">Creates a table in the database</BaseQuizOption>
+  <BaseQuizOption value="C">Deletes the database</BaseQuizOption>
+  <BaseQuizOption value="D">Backs up the database</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `CREATE DATABASE` creates a new, empty database. After creation, you need to use `USE` to select it and then create tables within it.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Show Databases: `SHOW DATABASES`
 
 List all available databases on the server.
@@ -139,6 +154,21 @@ COLUMN phone;
 -- Rename table
 RENAME TABLE employees TO staff;
 ```
+
+<BaseQuiz id="database-alter-1" correct="C">
+  <template #question>
+    What does `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)` do?
+  </template>
+  
+  <BaseQuizOption value="A">Deletes the phone column</BaseQuizOption>
+  <BaseQuizOption value="B">Modifies the phone column</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Adds a new column named phone to the employees table</BaseQuizOption>
+  <BaseQuizOption value="D">Renames the table</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ALTER TABLE ... ADD COLUMN` adds a new column to an existing table. The new column will be added with the specified data type and will be NULL for existing rows unless you specify a default value.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Table Information: `SHOW`
 
@@ -260,6 +290,24 @@ SELECT * FROM employees
 WHERE department = 'Engineering' AND salary > 75000;
 -- Pattern matching
 SELECT * FROM employees WHERE name LIKE 'John%';
+```
+
+<BaseQuiz id="database-where-1" correct="C">
+  <template #question>
+    What does `LIKE 'John%'` match in a WHERE clause?
+  </template>
+  
+  <BaseQuizOption value="A">Only exact matches to "John"</BaseQuizOption>
+  <BaseQuizOption value="B">Values ending with "John"</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Values starting with "John"</BaseQuizOption>
+  <BaseQuizOption value="D">Values containing "John" anywhere</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `%` wildcard in SQL matches any sequence of characters. `LIKE 'John%'` matches any value that starts with "John", such as "John", "Johnny", "Johnson", etc.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```sql
 -- Range queries
 SELECT * FROM employees
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-

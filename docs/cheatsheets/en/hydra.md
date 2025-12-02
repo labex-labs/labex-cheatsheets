@@ -49,6 +49,21 @@ hydra -L users.txt -P passwords.txt target.com ssh
 hydra -l admin -p password123 192.168.1.100 ftp
 ```
 
+<BaseQuiz id="hydra-syntax-1" correct="B">
+  <template #question>
+    What is the difference between `-l` and `-L` in Hydra?
+  </template>
+  
+  <BaseQuizOption value="A">`-l` is for passwords, `-L` is for usernames</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`-l` specifies a single username, `-L` specifies a username list file</BaseQuizOption>
+  <BaseQuizOption value="C">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="D">`-l` is lowercase, `-L` is uppercase</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-l` option is used for a single username, while `-L` is used for a file containing a list of usernames. Similarly, `-p` is for a single password and `-P` is for a password list file.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Core Options: `-l`, `-L`, `-p`, `-P`
 
 Specify usernames and passwords for brute force attacks.
@@ -78,6 +93,21 @@ hydra -l admin -P passwords.txt target.com ssh -b json
 hydra -l admin -P passwords.txt target.com ssh -V
 ```
 
+<BaseQuiz id="hydra-output-1" correct="A">
+  <template #question>
+    What does `hydra -V` do?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Enables verbose output showing detailed progress</BaseQuizOption>
+  <BaseQuizOption value="B">Validates the wordlist file</BaseQuizOption>
+  <BaseQuizOption value="C">Shows the version of Hydra</BaseQuizOption>
+  <BaseQuizOption value="D">Runs in verbose mode only</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-V` flag enables verbose mode, which shows detailed output including each login attempt, making it easier to monitor progress and debug issues during password attacks.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Protocol-Specific Attacks
 
 ### SSH: `hydra target ssh`
@@ -94,6 +124,21 @@ hydra -l admin -P passwords.txt 192.168.1.100 -s 2222 ssh
 # With threading
 hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 ```
+
+<BaseQuiz id="hydra-ssh-1" correct="C">
+  <template #question>
+    What does the `-s` flag do in Hydra?
+  </template>
+  
+  <BaseQuizOption value="A">Sets the service type</BaseQuizOption>
+  <BaseQuizOption value="B">Enables stealth mode</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Specifies a custom port number</BaseQuizOption>
+  <BaseQuizOption value="D">Sets the number of threads</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-s` flag specifies a custom port number when the service is running on a non-standard port. For example, `-s 2222` targets SSH on port 2222 instead of the default port 22.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### FTP: `hydra target ftp`
 

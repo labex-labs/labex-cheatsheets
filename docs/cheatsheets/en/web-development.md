@@ -65,6 +65,21 @@ Use meaningful HTML5 semantic elements for better structure.
 </footer>
 ```
 
+<BaseQuiz id="webdev-semantic-1" correct="B">
+  <template #question>
+    What is the main benefit of using semantic HTML elements like `header`, `main`, and `footer`?
+  </template>
+  
+  <BaseQuizOption value="A">They make the page load faster</BaseQuizOption>
+  <BaseQuizOption value="B" correct>They improve accessibility and SEO by providing meaning to the structure</BaseQuizOption>
+  <BaseQuizOption value="C">They automatically style the page</BaseQuizOption>
+  <BaseQuizOption value="D">They are required for JavaScript to work</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Semantic HTML elements provide meaning to the document structure, making it easier for screen readers, search engines, and developers to understand the content organization. This improves accessibility and SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Text Elements: `<h1>` to `<h6>` / `<p>`
 
 Structure content with proper heading hierarchy and paragraphs.
@@ -246,6 +261,21 @@ Control spacing and layout with the CSS box model.
 }
 ```
 
+<BaseQuiz id="webdev-boxmodel-1" correct="B">
+  <template #question>
+    What is the difference between `margin` and `padding` in CSS?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Margin is space outside the element, padding is space inside the element</BaseQuizOption>
+  <BaseQuizOption value="C">Margin is for horizontal spacing, padding is for vertical spacing</BaseQuizOption>
+  <BaseQuizOption value="D">Margin is for borders, padding is for content</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Margin creates space outside the element's border (between elements), while padding creates space inside the element between the content and the border. Both affect spacing but in different areas.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Flexbox: `display: flex`
 
 Create flexible and responsive layouts easily.
@@ -268,6 +298,21 @@ Create flexible and responsive layouts easily.
   flex-direction: column;
 }
 ```
+
+<BaseQuiz id="webdev-flexbox-1" correct="A">
+  <template #question>
+    What does `justify-content: center` do in Flexbox?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Centers flex items along the main axis (horizontally by default)</BaseQuizOption>
+  <BaseQuizOption value="B">Centers items vertically</BaseQuizOption>
+  <BaseQuizOption value="C">Spaces items evenly</BaseQuizOption>
+  <BaseQuizOption value="D">Stretches items to fill space</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `justify-content` controls alignment along the main axis (horizontal by default). `center` centers all flex items in the container. Use `align-items` to control cross-axis (vertical) alignment.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Grid Layout: `display: grid`
 

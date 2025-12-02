@@ -76,6 +76,21 @@ int main(int argc, char *argv[]) {
 }
 ```
 
+<BaseQuiz id="c-main-1" correct="C">
+  <template #question>
+    What does `return 0` in the main function indicate?
+  </template>
+  
+  <BaseQuizOption value="A">The program failed</BaseQuizOption>
+  <BaseQuizOption value="B">The program is still running</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Program executed successfully</BaseQuizOption>
+  <BaseQuizOption value="D">The program returned no value</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    In C, `return 0` from the main function indicates successful program execution. Non-zero return values typically indicate errors or abnormal termination.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Basic Output
 
 Display text and variables to console.
@@ -136,6 +151,21 @@ char buffer[100];  // Uninitialized
 int len = strlen(name);
 int size = sizeof(buffer);
 ```
+
+<BaseQuiz id="c-arrays-1" correct="C">
+  <template #question>
+    How are strings represented in C?
+  </template>
+  
+  <BaseQuizOption value="A">As a special string type</BaseQuizOption>
+  <BaseQuizOption value="B">As integers</BaseQuizOption>
+  <BaseQuizOption value="C" correct>As arrays of characters</BaseQuizOption>
+  <BaseQuizOption value="D">As pointers only</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    In C, strings are represented as arrays of characters (`char`). The string is terminated by a null character (`\0`), which marks the end of the string.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Constants & Modifiers
 
@@ -207,6 +237,21 @@ for (int i = 0; i < 3; i++) {
     }
 }
 ```
+
+<BaseQuiz id="c-for-loop-1" correct="A">
+  <template #question>
+    What does `sizeof(numbers) / sizeof(numbers[0])` calculate?
+  </template>
+  
+  <BaseQuizOption value="A" correct>The number of elements in the array</BaseQuizOption>
+  <BaseQuizOption value="B">The total memory size of the array</BaseQuizOption>
+  <BaseQuizOption value="C">The index of the last element</BaseQuizOption>
+  <BaseQuizOption value="D">The size of one element</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    This expression calculates the array length by dividing the total size of the array by the size of one element. This is a common C idiom since arrays don't store their length.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### While Loops
 

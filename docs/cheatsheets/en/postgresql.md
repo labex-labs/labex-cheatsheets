@@ -131,6 +131,21 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="postgresql-create-table-1" correct="A">
+  <template #question>
+    What does `SERIAL PRIMARY KEY` do in PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Creates an auto-incrementing integer column that serves as the primary key</BaseQuizOption>
+  <BaseQuizOption value="B">Creates a text column</BaseQuizOption>
+  <BaseQuizOption value="C">Creates a foreign key constraint</BaseQuizOption>
+  <BaseQuizOption value="D">Creates a unique index</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SERIAL` is a PostgreSQL-specific data type that creates an auto-incrementing integer. Combined with `PRIMARY KEY`, it creates a unique identifier for each row that automatically increments.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Modify Tables: `ALTER TABLE`
 
 Add, modify, or remove columns and constraints from existing tables.
@@ -219,6 +234,21 @@ CREATE INDEX idx_active_users
 DROP INDEX IF EXISTS idx_username;
 ```
 
+<BaseQuiz id="postgresql-index-1" correct="A">
+  <template #question>
+    What is the main purpose of creating an index in PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>To improve query performance by speeding up data retrieval</BaseQuizOption>
+  <BaseQuizOption value="B">To reduce database size</BaseQuizOption>
+  <BaseQuizOption value="C">To encrypt data</BaseQuizOption>
+  <BaseQuizOption value="D">To prevent duplicate entries</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Indexes create a data structure that allows the database to find rows quickly without scanning the entire table. This significantly speeds up SELECT queries, especially on large tables.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Sequences: `CREATE SEQUENCE`
 
 Generate unique numeric values automatically.
@@ -257,6 +287,21 @@ RETURNING id, created_at;
 INSERT INTO archive_users
 SELECT * FROM users WHERE active = false;
 ```
+
+<BaseQuiz id="postgresql-insert-1" correct="C">
+  <template #question>
+    What does `RETURNING` do in a PostgreSQL INSERT statement?
+  </template>
+  
+  <BaseQuizOption value="A">It rolls back the insert</BaseQuizOption>
+  <BaseQuizOption value="B">It prevents the insert</BaseQuizOption>
+  <BaseQuizOption value="C" correct>It returns the inserted row data</BaseQuizOption>
+  <BaseQuizOption value="D">It updates existing rows</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `RETURNING` clause in PostgreSQL allows you to retrieve the inserted row data (or specific columns) immediately after insertion, which is useful for getting auto-generated IDs or timestamps.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Update Data: `UPDATE`
 

@@ -38,6 +38,21 @@ arr = np.array([1, 2, 3], dtype=float)
 arr_str = np.array(['a', 'b', 'c'])
 ```
 
+<BaseQuiz id="numpy-array-1" correct="C">
+  <template #question>
+    What is the main advantage of NumPy arrays over Python lists?
+  </template>
+  
+  <BaseQuizOption value="A">They can store strings</BaseQuizOption>
+  <BaseQuizOption value="B">They are easier to create</BaseQuizOption>
+  <BaseQuizOption value="C" correct>They are faster and more memory-efficient for numerical operations</BaseQuizOption>
+  <BaseQuizOption value="D">They can store mixed data types</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    NumPy arrays are optimized for numerical computations, providing faster operations and more efficient memory usage compared to Python lists, especially for large datasets and mathematical operations.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Zeros and Ones: `np.zeros()` / `np.ones()`
 
 Create arrays filled with zeros or ones.
@@ -187,6 +202,21 @@ mask = arr > 3
 filtered = arr[mask]
 ```
 
+<BaseQuiz id="numpy-boolean-1" correct="C">
+  <template #question>
+    What does boolean indexing `arr[arr > 5]` return?
+  </template>
+  
+  <BaseQuizOption value="A">A boolean array</BaseQuizOption>
+  <BaseQuizOption value="B">The original array</BaseQuizOption>
+  <BaseQuizOption value="C" correct>An array with only elements greater than 5</BaseQuizOption>
+  <BaseQuizOption value="D">An error</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Boolean indexing filters the array, returning only elements where the condition is true. `arr[arr > 5]` returns a new array containing only values greater than 5.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Advanced Indexing: Fancy Indexing
 
 Use arrays of indices to access multiple elements.
@@ -230,6 +260,36 @@ arr.resize((2, 3))
 arr.flatten()  # Returns copy
 arr.ravel()  # Returns view if possible
 ```
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    What does `-1` mean in `arr.reshape(-1, 1)`?
+  </template>
+  
+  <BaseQuizOption value="A">It creates an error</BaseQuizOption>
+  <BaseQuizOption value="B" correct>It infers the dimension automatically based on array size</BaseQuizOption>
+  <BaseQuizOption value="C">It creates a 1D array</BaseQuizOption>
+  <BaseQuizOption value="D">It reverses the array</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Using `-1` in reshape tells NumPy to automatically calculate that dimension based on the array's total size and the other specified dimensions. This is useful when you know one dimension but want NumPy to figure out the other.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    What does `-1` mean in `arr.reshape(-1, 1)`?
+  </template>
+  
+  <BaseQuizOption value="A">It creates an error</BaseQuizOption>
+  <BaseQuizOption value="B" correct>NumPy infers the dimension automatically</BaseQuizOption>
+  <BaseQuizOption value="C">It removes that dimension</BaseQuizOption>
+  <BaseQuizOption value="D">It sets the dimension to 1</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Using `-1` in reshape tells NumPy to automatically calculate that dimension based on the array's total size and the other specified dimensions. This is useful when you know one dimension but want NumPy to figure out the other.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Transposing: `T` / `transpose()`
 

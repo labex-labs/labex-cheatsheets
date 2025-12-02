@@ -85,6 +85,21 @@ nmap 192.168.1.1 192.168.1.5
 192.168.1.10
 ```
 
+<BaseQuiz id="nmap-scan-1" correct="A">
+  <template #question>
+    What does a basic `nmap 192.168.1.1` scan do by default?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Scans the 1000 most common TCP ports</BaseQuizOption>
+  <BaseQuizOption value="B">Scans all 65535 ports</BaseQuizOption>
+  <BaseQuizOption value="C">Only performs host discovery</BaseQuizOption>
+  <BaseQuizOption value="D">Scans only port 80</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    By default, Nmap scans the 1000 most common TCP ports. To scan all ports, use `-p-`, or specify specific ports with `-p 80,443,22`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Network Range Scan
 
 Nmap allows hostnames, IP addresses, subnets.
@@ -128,6 +143,21 @@ nmap -Pn 192.168.1.1
 nmap -PE 192.168.1.0/24
 ```
 
+<BaseQuiz id="nmap-ping-1" correct="A">
+  <template #question>
+    What does `nmap -sn` do?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Performs host discovery only, without port scanning</BaseQuizOption>
+  <BaseQuizOption value="B">Scans all ports on the target</BaseQuizOption>
+  <BaseQuizOption value="C">Performs a stealth scan</BaseQuizOption>
+  <BaseQuizOption value="D">Scans UDP ports only</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `-sn` flag tells Nmap to perform host discovery (ping scan) only, without scanning ports. This is useful for quickly identifying which hosts are online on a network.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### TCP Ping Techniques
 
 Use TCP packets for host discovery.
@@ -148,6 +178,22 @@ Use UDP packets for host discovery.
 ```bash
 # UDP ping to common ports
 nmap -PU53,67,68,137 192.168.1.0/24
+```
+
+<BaseQuiz id="nmap-udp-1" correct="B">
+  <template #question>
+    Why might you use UDP ping instead of ICMP ping?
+  </template>
+  
+  <BaseQuizOption value="A">UDP ping is always faster</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Some networks block ICMP but allow UDP packets</BaseQuizOption>
+  <BaseQuizOption value="C">UDP ping scans ports automatically</BaseQuizOption>
+  <BaseQuizOption value="D">UDP ping works only on local networks</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    UDP ping can be useful when ICMP is blocked by firewalls. Many networks allow UDP packets to common ports (like DNS port 53) even when ICMP is filtered, making UDP ping effective for host discovery.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # UDP ping to default ports
 nmap -PU 192.168.1.0/24
 ```
