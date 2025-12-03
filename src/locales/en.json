@@ -95,7 +95,9 @@
     "correctAnswer": "Correct Answer",
     "completions": "completions",
     "completion": "completion",
-    "totalCompletions": "Total completions"
+    "totalCompletions": "Total completions",
+    "completed": "Completed",
+    "loginToUnlockDesc": "Sign in to answer this quiz and track your learning progress"
   },
   "meta": {
     "title": "LabEx Cheatsheets",

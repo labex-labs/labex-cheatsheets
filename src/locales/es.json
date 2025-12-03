@@ -95,7 +95,9 @@
     "correctAnswer": "Respuesta Correcta",
     "completions": "completaciones",
     "completion": "completación",
-    "totalCompletions": "Total de completaciones"
+    "totalCompletions": "Total de completaciones",
+    "completed": "Completado",
+    "loginToUnlockDesc": "Inicia sesión para responder este quiz y rastrear tu progreso de aprendizaje"
   },
   "meta": {
     "title": "LabEx Hojas de Referencia",

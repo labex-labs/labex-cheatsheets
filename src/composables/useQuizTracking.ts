@@ -8,6 +8,14 @@ interface QuizAPIResponse {
   count: number
 }
 
+interface UserStatusResponse {
+  success: boolean
+  quizId: string
+  pagePath: string
+  userId: number
+  completed: boolean
+}
+
 /**
  * Normalize path to English version by removing language prefix
  * This ensures all language versions of the same page share the same quiz data
@@ -32,6 +40,7 @@ export function useQuizTracking() {
 
       const response = await fetch(apiPath, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -83,9 +92,43 @@ export function useQuizTracking() {
     }
   }
 
+  const getUserQuizStatus = async (quizId: string): Promise<boolean | null> => {
+    try {
+      const pagePath = normalizePathToEnglish(route.path)
+      const basePath = import.meta.env.BASE_URL || '/cheatsheets/'
+      const apiPath = basePath.endsWith('/') ? `${basePath}api/quiz/user-status` : `${basePath}/api/quiz/user-status`
+      const url = new URL(apiPath, window.location.origin)
+      url.searchParams.set('quizId', quizId)
+      url.searchParams.set('pagePath', pagePath)
+
+      const response = await fetch(url.toString(), {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          return null
+        }
+        console.error('Failed to fetch user quiz status:', response.statusText)
+        return null
+      }
+
+      const data = await response.json() as UserStatusResponse
+      return data.completed || false
+    } catch (error) {
+      console.error('Error fetching user quiz status:', error)
+      return null
+    }
+  }
+
   return {
     recordQuizCompletion,
     getQuizStats,
+    getUserQuizStatus,
   }
 }
 

@@ -123,8 +123,8 @@ onMounted(() => {
             </a>
             <button
               v-else
-              @click="login"
               class="inline-flex items-center rounded-md border border-transparent bg-primary-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
+              @click="login"
             >
               {{ t('navbar.login') }}
             </button>

@@ -95,7 +95,9 @@
     "correctAnswer": "Bonne Réponse",
     "completions": "complétions",
     "completion": "complétion",
-    "totalCompletions": "Total des complétions"
+    "totalCompletions": "Total des complétions",
+    "completed": "Terminé",
+    "loginToUnlockDesc": "Connectez-vous pour répondre à ce quiz et suivre votre progression d'apprentissage"
   },
   "meta": {
     "title": "LabEx Aides-mémoire",

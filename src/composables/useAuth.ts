@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 
 interface UserInfo {
+  id?: number
   name?: string
   nick_name?: string
   email?: string

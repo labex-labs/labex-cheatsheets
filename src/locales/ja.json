@@ -95,7 +95,9 @@
     "correctAnswer": "正解",
     "completions": "回完了",
     "completion": "回完了",
-    "totalCompletions": "総完了回数"
+    "totalCompletions": "総完了回数",
+    "completed": "完了済み",
+    "loginToUnlockDesc": "ログインしてこのクイズに回答し、学習の進捗を追跡できます"
   },
   "meta": {
     "title": "LabEx チートシート",

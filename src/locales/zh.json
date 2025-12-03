@@ -95,7 +95,9 @@
     "correctAnswer": "正确答案",
     "completions": "次完成",
     "completion": "次完成",
-    "totalCompletions": "总完成次数"
+    "totalCompletions": "总完成次数",
+    "completed": "已完成",
+    "loginToUnlockDesc": "登录后即可答题并追踪学习进度"
   },
   "meta": {
     "title": "LabEx 速查表",

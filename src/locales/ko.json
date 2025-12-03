@@ -95,7 +95,9 @@
     "correctAnswer": "정답",
     "completions": "회 완료",
     "completion": "회 완료",
-    "totalCompletions": "총 완료 횟수"
+    "totalCompletions": "총 완료 횟수",
+    "completed": "완료됨",
+    "loginToUnlockDesc": "로그인하여 이 퀴즈에 답하고 학습 진행 상황을 추적하세요"
   },
   "meta": {
     "title": "LabEx 치트 시트",

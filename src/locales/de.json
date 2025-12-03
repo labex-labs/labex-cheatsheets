@@ -95,7 +95,9 @@
     "correctAnswer": "Richtige Antwort",
     "completions": "Abschlüsse",
     "completion": "Abschluss",
-    "totalCompletions": "Gesamte Abschlüsse"
+    "totalCompletions": "Gesamte Abschlüsse",
+    "completed": "Abgeschlossen",
+    "loginToUnlockDesc": "Melden Sie sich an, um dieses Quiz zu beantworten und Ihren Lernfortschritt zu verfolgen"
   },
   "meta": {
     "title": "LabEx Spickzettel",

@@ -5,6 +5,20 @@ const SUPPORTED_LOCALES = ['en', 'zh', 'es', 'fr', 'de', 'ja', 'ru', 'ko', 'pt']
 interface QuizRecordRequest {
   quizId: string
   pagePath: string
+  userId?: number
+}
+
+interface UserInfo {
+  id?: number
+  name?: string
+  nick_name?: string
+  email?: string
+  [key: string]: unknown
+}
+
+interface UserData {
+  user?: UserInfo
+  [key: string]: unknown
 }
 
 /**
@@ -65,6 +79,11 @@ async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: 
     return handleGetStats(request, env)
   }
 
+  // Handle GET /cheatsheets/api/quiz/user-status
+  if (url.pathname === '/cheatsheets/api/quiz/user-status' && request.method === 'GET') {
+    return handleGetUserStatus(request, env)
+  }
+
   return new Response(
     JSON.stringify({ error: 'Not found' }),
     {
@@ -74,8 +93,49 @@ async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: 
   )
 }
 
+async function getUserFromCookies(request: Request): Promise<UserInfo | null> {
+  try {
+    const cookies = request.headers.get('Cookie')
+    if (!cookies) {
+      return null
+    }
+
+    const response = await fetch('https://labex.io/api/v2/users/me', {
+      method: 'GET',
+      headers: {
+        'Cookie': cookies,
+        'User-Agent': request.headers.get('User-Agent') || 'Cloudflare Worker',
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (response.ok) {
+      const userData = await response.json() as UserData
+      return userData.user || null
+    }
+    return null
+  } catch (error) {
+    console.error('Error fetching user from cookies:', error)
+    return null
+  }
+}
+
 async function handleRecordQuiz(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<Response> {
   try {
+    const user = await getUserFromCookies(request)
+    if (!user || !user.id) {
+      return new Response(
+        JSON.stringify({ error: 'Authentication required' }),
+        {
+          status: 401,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      )
+    }
+
     const body = await request.json() as QuizRecordRequest
     const { quizId, pagePath } = body
 
@@ -93,19 +153,25 @@ async function handleRecordQuiz(request: Request, env: { PYTHONCHEATSHEET_QUIZ_K
     }
 
     const normalizedPath = normalizePathToEnglish(pagePath)
-    const key = `quiz:${normalizedPath}:${quizId}`
 
-    const currentCount = await env.PYTHONCHEATSHEET_QUIZ_KV.get(key)
+    // Store user completion status: user:{userId}:quiz:{quizId}
+    const userKey = `user:${user.id}:quiz:${normalizedPath}:${quizId}`
+    await env.PYTHONCHEATSHEET_QUIZ_KV.put(userKey, '1')
+
+    // Also maintain global count for stats
+    const globalKey = `quiz:${normalizedPath}:${quizId}`
+    const currentCount = await env.PYTHONCHEATSHEET_QUIZ_KV.get(globalKey)
     const count = currentCount ? parseInt(currentCount, 10) : 0
     const newCount = count + 1
-
-    await env.PYTHONCHEATSHEET_QUIZ_KV.put(key, newCount.toString())
+    await env.PYTHONCHEATSHEET_QUIZ_KV.put(globalKey, newCount.toString())
 
     return new Response(
       JSON.stringify({
         success: true,
         quizId,
         pagePath: normalizedPath,
+        userId: user.id,
+        completed: true,
         count: newCount,
       }),
       {
@@ -180,6 +246,79 @@ async function handleGetStats(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV:
     )
   } catch (error) {
     console.error('Error fetching quiz stats:', error)
+    return new Response(
+      JSON.stringify({ error: 'Internal server error' }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'no-store, no-cache, must-revalidate',
+        },
+      }
+    )
+  }
+}
+
+async function handleGetUserStatus(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<Response> {
+  try {
+    const user = await getUserFromCookies(request)
+    if (!user || !user.id) {
+      return new Response(
+        JSON.stringify({ error: 'Authentication required' }),
+        {
+          status: 401,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      )
+    }
+
+    const url = new URL(request.url)
+    const quizId = url.searchParams.get('quizId')
+    const pagePath = url.searchParams.get('pagePath')
+
+    if (!quizId || !pagePath) {
+      return new Response(
+        JSON.stringify({ error: 'Missing required query parameters: quizId and pagePath' }),
+        {
+          status: 400,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      )
+    }
+
+    const normalizedPath = normalizePathToEnglish(pagePath)
+    const userKey = `user:${user.id}:quiz:${normalizedPath}:${quizId}`
+
+    const completed = await env.PYTHONCHEATSHEET_QUIZ_KV.get(userKey)
+
+    return new Response(
+      JSON.stringify({
+        success: true,
+        quizId,
+        pagePath: normalizedPath,
+        userId: user.id,
+        completed: completed === '1',
+      }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Cache-Control': 'no-store, no-cache, must-revalidate',
+        },
+      }
+    )
+  } catch (error) {
+    console.error('Error fetching user quiz status:', error)
     return new Response(
       JSON.stringify({ error: 'Internal server error' }),
       {
