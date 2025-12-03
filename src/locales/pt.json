@@ -97,7 +97,9 @@
     "completion": "conclusão",
     "totalCompletions": "Total de conclusões",
     "completed": "Concluído",
-    "loginToUnlockDesc": "Faça login para responder este quiz e acompanhar seu progresso de aprendizagem"
+    "loginToUnlockDesc": "Faça login para responder este quiz e acompanhar seu progresso de aprendizagem",
+    "loginRefreshDesc": "Por favor, atualize esta página após fazer login para continuar",
+    "refresh": "Atualizar"
   },
   "meta": {
     "title": "LabEx Folhas de Referência",

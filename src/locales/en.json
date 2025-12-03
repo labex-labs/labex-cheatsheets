@@ -97,7 +97,9 @@
     "completion": "completion",
     "totalCompletions": "Total completions",
     "completed": "Completed",
-    "loginToUnlockDesc": "Sign in to answer this quiz and track your learning progress"
+    "loginToUnlockDesc": "Sign in to answer this quiz and track your learning progress",
+    "loginRefreshDesc": "Please refresh this page after signing in to continue",
+    "refresh": "Refresh"
   },
   "meta": {
     "title": "LabEx Cheatsheets",

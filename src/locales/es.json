@@ -97,7 +97,9 @@
     "completion": "completación",
     "totalCompletions": "Total de completaciones",
     "completed": "Completado",
-    "loginToUnlockDesc": "Inicia sesión para responder este quiz y rastrear tu progreso de aprendizaje"
+    "loginToUnlockDesc": "Inicia sesión para responder este quiz y rastrear tu progreso de aprendizaje",
+    "loginRefreshDesc": "Por favor, actualiza esta página después de iniciar sesión para continuar",
+    "refresh": "Actualizar"
   },
   "meta": {
     "title": "LabEx Hojas de Referencia",

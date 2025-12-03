@@ -97,7 +97,9 @@
     "completion": "次完成",
     "totalCompletions": "总完成次数",
     "completed": "已完成",
-    "loginToUnlockDesc": "登录后即可答题并追踪学习进度"
+    "loginToUnlockDesc": "登录后即可答题并追踪学习进度",
+    "loginRefreshDesc": "登录后请刷新当前页面以继续",
+    "refresh": "刷新"
   },
   "meta": {
     "title": "LabEx 速查表",

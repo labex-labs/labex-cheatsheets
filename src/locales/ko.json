@@ -97,7 +97,9 @@
     "completion": "회 완료",
     "totalCompletions": "총 완료 횟수",
     "completed": "완료됨",
-    "loginToUnlockDesc": "로그인하여 이 퀴즈에 답하고 학습 진행 상황을 추적하세요"
+    "loginToUnlockDesc": "로그인하여 이 퀴즈에 답하고 학습 진행 상황을 추적하세요",
+    "loginRefreshDesc": "로그인 후 이 페이지를 새로고침하여 계속하세요",
+    "refresh": "새로고침"
   },
   "meta": {
     "title": "LabEx 치트 시트",

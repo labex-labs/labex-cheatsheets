@@ -53,7 +53,7 @@ export function useAuth() {
 
   const login = () => {
     if (typeof window !== 'undefined') {
-      window.location.href = 'https://labex.io/login'
+      window.open('https://labex.io/login', '_blank')
     }
   }
 
