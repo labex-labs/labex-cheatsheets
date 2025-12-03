@@ -53,7 +53,7 @@ export function useAuth() {
 
   const login = () => {
     if (typeof window !== 'undefined') {
-      window.open('https://labex.io/login', '_blank')
+      window.open('https://labex.io/register?rd=/cheatsheets', '_blank')
     }
   }
 
