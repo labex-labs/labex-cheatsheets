@@ -7,8 +7,7 @@
   "navbar": {
     "repositoryLink": "Python Spickzettel Repository",
     "cheatsheets": "Spickzettel",
-    "login": "Anmelden",
-    "userMenu": "Benutzermenü"
+    "login": "Anmelden"
   },
   "mobile": {
     "openNavigation": "Navigation öffnen",
@@ -97,6 +96,7 @@
     "completion": "Abschluss",
     "totalCompletions": "Gesamte Abschlüsse",
     "completed": "Abgeschlossen",
+    "notCompleted": "Nicht Abgeschlossen",
     "loginToUnlockDesc": "Melden Sie sich an, um dieses Quiz zu beantworten und Ihren Lernfortschritt zu verfolgen",
     "loginRefreshDesc": "Bitte aktualisieren Sie diese Seite nach der Anmeldung, um fortzufahren",
     "refresh": "Aktualisieren"

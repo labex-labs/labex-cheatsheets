@@ -7,8 +7,7 @@
   "navbar": {
     "repositoryLink": "repositório da folha de referência Python",
     "cheatsheets": "Folhas de Referência",
-    "login": "Entrar",
-    "userMenu": "Menu do usuário"
+    "login": "Entrar"
   },
   "mobile": {
     "openNavigation": "Abrir navegação",
@@ -97,6 +96,7 @@
     "completion": "conclusão",
     "totalCompletions": "Total de conclusões",
     "completed": "Concluído",
+    "notCompleted": "Não Concluído",
     "loginToUnlockDesc": "Faça login para responder este quiz e acompanhar seu progresso de aprendizagem",
     "loginRefreshDesc": "Por favor, atualize esta página após fazer login para continuar",
     "refresh": "Atualizar"

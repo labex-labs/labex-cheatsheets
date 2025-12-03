@@ -7,8 +7,7 @@
   "navbar": {
     "repositoryLink": "python cheatsheet repository",
     "cheatsheets": "Cheatsheets",
-    "login": "Login",
-    "userMenu": "User menu"
+    "login": "Login"
   },
   "mobile": {
     "openNavigation": "Open navigation",
@@ -97,6 +96,7 @@
     "completion": "completion",
     "totalCompletions": "Total completions",
     "completed": "Completed",
+    "notCompleted": "Not Completed",
     "loginToUnlockDesc": "Sign in to answer this quiz and track your learning progress",
     "loginRefreshDesc": "Please refresh this page after signing in to continue",
     "refresh": "Refresh"

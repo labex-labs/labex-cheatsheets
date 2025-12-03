@@ -8,7 +8,12 @@ const { t } = useI18n()
 const slots = useSlots()
 const { recordQuizCompletion, getQuizStats, getUserQuizStatus } =
   useQuizTracking()
-const { isAuthenticated, isLoading: isAuthLoading, login, checkAuth } = useAuth()
+const {
+  isAuthenticated,
+  isLoading: isAuthLoading,
+  login,
+  checkAuth,
+} = useAuth()
 const selectedOption = ref<string | null>(null)
 const correctAnswer = ref<string | null>(null)
 const isAnswered = ref(false)
@@ -169,7 +174,7 @@ const completionText = computed(() => {
         {{ t('quiz.label') }}
       </div>
       <div
-        v-if="userCompleted === true"
+        v-if="isAuthenticated && userCompleted === true"
         class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-medium shadow-sm dark:bg-green-900/30 dark:text-green-400 flex items-center gap-1.5"
         :title="t('quiz.completed')"
       >
@@ -187,6 +192,26 @@ const completionText = computed(() => {
           />
         </svg>
         <span>{{ t('quiz.completed') }}</span>
+      </div>
+      <div
+        v-if="isAuthenticated && userCompleted === false"
+        class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-medium shadow-sm dark:bg-orange-900/30 dark:text-orange-400 flex items-center gap-1.5"
+        :title="t('quiz.notCompleted')"
+      >
+        <svg
+          class="w-3.5 h-3.5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>{{ t('quiz.notCompleted') }}</span>
       </div>
       <div
         v-if="completionCount !== null"
@@ -239,7 +264,11 @@ const completionText = computed(() => {
             />
           </svg>
           <p class="text-sm text-amber-900 dark:text-amber-200">
-            {{ hasClickedLogin ? t('quiz.loginRefreshDesc') : t('quiz.loginToUnlockDesc') }}
+            {{
+              hasClickedLogin
+                ? t('quiz.loginRefreshDesc')
+                : t('quiz.loginToUnlockDesc')
+            }}
           </p>
         </div>
         <button

@@ -104,7 +104,7 @@ onMounted(() => {
               :href="`https://labex.io/users/${user.name || user.nick_name || ''}`"
               target="_blank"
               class="flex items-center"
-              :title="t('navbar.userMenu')"
+              :title="user.nick_name || user.name || ''"
             >
               <img
                 v-if="user.img_url"

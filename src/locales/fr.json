@@ -7,8 +7,7 @@
   "navbar": {
     "repositoryLink": "dépôt de l'aide-mémoire Python",
     "cheatsheets": "Aides-mémoire",
-    "login": "Connexion",
-    "userMenu": "Menu utilisateur"
+    "login": "Connexion"
   },
   "mobile": {
     "openNavigation": "Ouvrir la navigation",
@@ -97,6 +96,7 @@
     "completion": "complétion",
     "totalCompletions": "Total des complétions",
     "completed": "Terminé",
+    "notCompleted": "Non Terminé",
     "loginToUnlockDesc": "Connectez-vous pour répondre à ce quiz et suivre votre progression d'apprentissage",
     "loginRefreshDesc": "Veuillez actualiser cette page après vous être connecté pour continuer",
     "refresh": "Actualiser"
