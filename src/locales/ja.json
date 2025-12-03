@@ -6,7 +6,9 @@
   },
   "navbar": {
     "repositoryLink": "Python チートシートリポジトリ",
-    "cheatsheets": "チートシート"
+    "cheatsheets": "チートシート",
+    "login": "ログイン",
+    "userMenu": "ユーザーメニュー"
   },
   "mobile": {
     "openNavigation": "ナビゲーションを開く",

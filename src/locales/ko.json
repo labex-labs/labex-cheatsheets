@@ -6,7 +6,9 @@
   },
   "navbar": {
     "repositoryLink": "Python 치트 시트 저장소",
-    "cheatsheets": "치트 시트"
+    "cheatsheets": "치트 시트",
+    "login": "로그인",
+    "userMenu": "사용자 메뉴"
   },
   "mobile": {
     "openNavigation": "네비게이션 열기",

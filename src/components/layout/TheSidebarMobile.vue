@@ -48,7 +48,7 @@ const cheatsheetNavigation = computed(() => {
 
   <TransitionRoot as="template" :show="isOpen">
     <Dialog
-      class="fixed inset-0 z-50 flex items-start overflow-y-auto bg-slate-900/50 pr-10 backdrop-blur lg:hidden"
+      class="fixed inset-0 z-50 flex items-start bg-slate-900/50 pr-10 backdrop-blur lg:hidden"
       @close="isOpen = false"
     >
       <TransitionChild
@@ -61,7 +61,7 @@ const cheatsheetNavigation = computed(() => {
         leave-to="-translate-x-full"
       >
         <DialogPanel
-          class="min-h-full w-full max-w-xs bg-white px-4 pb-12 pt-5 dark:bg-slate-900 sm:px-6"
+          class="flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white px-4 pt-5 dark:bg-slate-900 sm:px-6"
         >
           <DialogTitle class="sr-only">{{
             t('mobile.navigation')
@@ -86,7 +86,7 @@ const cheatsheetNavigation = computed(() => {
               </svg>
             </button>
           </div>
-          <nav class="mt-10">
+          <nav class="mt-10 flex-1 pb-20">
             <nav>
               <the-sidebar-navigation
                 :navigation="mainNavigation"
@@ -99,6 +99,24 @@ const cheatsheetNavigation = computed(() => {
               />
             </nav>
           </nav>
+
+          <!-- Fixed action buttons at bottom -->
+          <div
+            class="sticky bottom-0 mt-auto flex items-center justify-start gap-4 border-t border-slate-200 bg-white py-4 dark:border-slate-800 dark:bg-slate-900"
+          >
+            <base-reader-mode />
+            <a
+              target="_blank"
+              href="https://github.com/labex-labs/labex-cheatsheets"
+              rel="noreferrer"
+              class="flex items-center"
+              :title="t('navbar.repositoryLink')"
+            >
+              <github-icon />
+              <span class="sr-only">{{ t('navbar.repositoryLink') }}</span>
+            </a>
+            <base-theme-toggle />
+          </div>
         </DialogPanel>
       </TransitionChild>
     </Dialog>

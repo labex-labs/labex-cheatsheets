@@ -6,7 +6,9 @@
   },
   "navbar": {
     "repositoryLink": "репозиторий шпаргалки Python",
-    "cheatsheets": "Шпаргалки"
+    "cheatsheets": "Шпаргалки",
+    "login": "Войти",
+    "userMenu": "Меню пользователя"
   },
   "mobile": {
     "openNavigation": "Открыть навигацию",

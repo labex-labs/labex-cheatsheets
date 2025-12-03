@@ -6,7 +6,9 @@
   },
   "navbar": {
     "repositoryLink": "python cheatsheet repository",
-    "cheatsheets": "Cheatsheets"
+    "cheatsheets": "Cheatsheets",
+    "login": "Login",
+    "userMenu": "User menu"
   },
   "mobile": {
     "openNavigation": "Open navigation",

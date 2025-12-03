@@ -6,7 +6,9 @@
   },
   "navbar": {
     "repositoryLink": "Python Spickzettel Repository",
-    "cheatsheets": "Spickzettel"
+    "cheatsheets": "Spickzettel",
+    "login": "Anmelden",
+    "userMenu": "Benutzermenü"
   },
   "mobile": {
     "openNavigation": "Navigation öffnen",

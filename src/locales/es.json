@@ -6,7 +6,9 @@
   },
   "navbar": {
     "repositoryLink": "repositorio de hoja de referencia Python",
-    "cheatsheets": "Hojas de Referencia"
+    "cheatsheets": "Hojas de Referencia",
+    "login": "Iniciar sesión",
+    "userMenu": "Menú de usuario"
   },
   "mobile": {
     "openNavigation": "Abrir navegación",

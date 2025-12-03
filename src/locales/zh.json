@@ -6,7 +6,9 @@
   },
   "navbar": {
     "repositoryLink": "Python 速查表仓库",
-    "cheatsheets": "速查表"
+    "cheatsheets": "速查表",
+    "login": "登录",
+    "userMenu": "用户菜单"
   },
   "mobile": {
     "openNavigation": "打开导航",
