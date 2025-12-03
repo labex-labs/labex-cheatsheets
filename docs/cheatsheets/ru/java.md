@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по Java'
-description: 'Изучите Java с нашей полной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Java | LabEx'
+description: 'Изучайте программирование на Java с помощью этой исчерпывающей шпаргалки. Быстрый справочник по синтаксису Java, ООП, коллекциям, потокам, фреймворку Spring и основам корпоративной разработки.'
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 
@@ -12,16 +12,16 @@ pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/java">Изучайте Java с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/java">Изучите Java с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучайте программирование на Java с помощью практических лабораторий и сценариев из реального мира. LabEx предлагает комплексные курсы по Java, охватывающие основной синтаксис, объектно-ориентированное программирование, коллекции, обработку исключений и лучшие практики. Освойте основы разработки на Java и создавайте надежные приложения.
+Изучите программирование на Java с помощью практических лабораторий и сценариев из реального мира. LabEx предлагает комплексные курсы по Java, охватывающие основной синтаксис, объектно-ориентированное программирование, коллекции, обработку исключений и лучшие практики. Освойте основы разработки на Java и создавайте надежные приложения.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Структура Программы и Базовый Синтаксис
+## Структура программы и базовый синтаксис
 
-### Hello World: Базовая Программа
+### Hello World: Базовая программа
 
 Простейшая программа на Java, которая выводит "Hello, World!" на экран.
 
@@ -33,13 +33,13 @@ public class HelloWorld {
 }
 ```
 
-### Объявление Класса: `public class`
+### Объявление класса: `public class`
 
 Класс — это шаблон/проект, описывающий поведение/состояние, которое поддерживают объекты.
 
 ```java
 public class MyClass {
-    // Содержимое класса здесь
+    // Здесь находится содержимое класса
     int myVariable;
 
     public void myMethod() {
@@ -48,7 +48,7 @@ public class MyClass {
 }
 ```
 
-### Метод Main: Точка Входа Программы
+### Метод Main: Точка входа программы
 
 Метод `main` — это место, где начинается выполнение программы на Java.
 
@@ -59,7 +59,22 @@ public static void main(String[] args) {
 }
 ```
 
-### Комментарии: Документирование Кода
+<BaseQuiz id="java-main-1" correct="C">
+  <template #question>
+    Какова правильная сигнатура метода main в Java?
+  </template>
+  
+  <BaseQuizOption value="A">public void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="B">static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>public static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Метод main должен быть `public static void main(String[] args)`. `public` позволяет JVM получить к нему доступ, `static` означает, что он принадлежит классу, `void` означает, что он ничего не возвращает, а `String[] args` принимает аргументы командной строки.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Комментарии: Документация кода
 
 Используйте однострочные (`//`) и многострочные (`/* */`) комментарии, чтобы сделать код более понятным и удобным для сопровождения.
 
@@ -72,7 +87,7 @@ System.out.println("Hello");
    Используется для подробных объяснений */
 ```
 
-### Инструкции и Точки с Запятой
+### Инструкции и точки с запятой
 
 Каждая инструкция в Java должна заканчиваться точкой с запятой.
 
@@ -82,7 +97,7 @@ String name = "Java";
 System.out.println(name);
 ```
 
-### Блоки Кода: Фигурные Скобки
+### Блоки кода: Фигурные скобки
 
 Блоки кода заключаются в фигурные скобки `{}`, обозначая начало и конец секций кода.
 
@@ -96,11 +111,11 @@ public class Example {
 }
 ```
 
-## Типы Данных и Переменные
+## Типы данных и переменные
 
-### Примитивные Типы Данных
+### Примитивные типы данных
 
-Базовые типы данных, встроенные в язык Java.
+Основные типы данных, встроенные в язык Java.
 
 ```java
 // Целочисленные типы
@@ -118,9 +133,9 @@ char letter = 'A';          // Один символ
 boolean flag = true;        // true или false
 ```
 
-### Объявление и Инициализация Переменных
+### Объявление и инициализация переменных
 
-Создание и присвоение значений переменным.
+Создание переменных и присвоение им значений.
 
 ```java
 // Только объявление
@@ -138,9 +153,9 @@ int x = 10, y = 20, z = 30;
 final double PI = 3.14159;
 ```
 
-### Операции со Строками
+### Операции со строками
 
-Строки представляют собой последовательности символов и являются неизменяемыми (immutable), то есть после создания их значение изменить нельзя.
+Строки представляют собой последовательности символов и являются неизменяемыми (immutable), что означает, что после создания их значение изменить нельзя.
 
 ```java
 String greeting = "Hello";
@@ -156,9 +171,24 @@ boolean isEmpty = message.isEmpty();
 String uppercase = message.toUpperCase();
 ```
 
-## Операторы Управления Потоком
+<BaseQuiz id="java-string-1" correct="A">
+  <template #question>
+    Что означает, что строки в Java являются неизменяемыми (immutable)?
+  </template>
+  
+  <BaseQuizOption value="A" correct>После создания значение строки изменить нельзя</BaseQuizOption>
+  <BaseQuizOption value="B">Строки не могут быть созданы</BaseQuizOption>
+  <BaseQuizOption value="C">Строки могут хранить только числа</BaseQuizOption>
+  <BaseQuizOption value="D">Строки удаляются автоматически</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Неизменяемость означает, что после создания объекта String его значение не может быть изменено. Операции вроде `toUpperCase()` возвращают новый объект String, а не изменяют исходный.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-### Условные Операторы: `if`, `else if`, `else`
+## Операторы управления потоком
+
+### Условные операторы: `if`, `else if`, `else`
 
 Выполняют различные блоки кода в зависимости от условий.
 
@@ -177,7 +207,7 @@ if (score >= 90) {
 
 ### Оператор Switch
 
-Многопутевая ветвь, основанная на значениях переменных.
+Многопутевое ветвление на основе значений переменных.
 
 ```java
 int day = 3;
@@ -196,7 +226,7 @@ switch (day) {
 }
 ```
 
-### Цикл For: Повторение с Подсчетом
+### Цикл For: Повторение по счетчику
 
 Повторяет код определенное количество раз.
 
@@ -212,6 +242,21 @@ for (int num : numbers) {
     System.out.println("Number: " + num);
 }
 ```
+
+<BaseQuiz id="java-for-loop-1" correct="C">
+  <template #question>
+    Для чего используется улучшенный цикл for (for-each)?
+  </template>
+  
+  <BaseQuizOption value="A">Для итерации с переменной-счетчиком</BaseQuizOption>
+  <BaseQuizOption value="B">Для бесконечных циклов</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Для итерации по массивам и коллекциям без индекса</BaseQuizOption>
+  <BaseQuizOption value="D">Только для вложенных циклов</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Улучшенный цикл for (for-each) упрощает итерацию по массивам и коллекциям, автоматически управляя индексом, что делает код более читаемым и менее подверженным ошибкам.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Циклы While и Do-While
 
@@ -233,7 +278,22 @@ do {
 } while (j < 3);
 ```
 
-## Объектно-Ориентированное Программирование
+<BaseQuiz id="java-while-1" correct="B">
+  <template #question>
+    Каково ключевое различие между циклами `while` и `do-while`?
+  </template>
+  
+  <BaseQuizOption value="A">Различий нет</BaseQuizOption>
+  <BaseQuizOption value="B" correct>do-while выполняется как минимум один раз, в то время как while может не выполниться ни разу</BaseQuizOption>
+  <BaseQuizOption value="C">while работает быстрее</BaseQuizOption>
+  <BaseQuizOption value="D">do-while работает только с массивами</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Цикл `do-while` проверяет условие после выполнения тела цикла, поэтому он всегда выполняется как минимум один раз. Цикл `while` проверяет условие сначала, поэтому он может не выполниться, если условие изначально ложно.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+## Объектно-ориентированное программирование
 
 ### Классы и Объекты
 
@@ -311,11 +371,11 @@ public class Dog extends Animal {
 }
 
 Dog myDog = new Dog("Buddy");
-myDog.eat();  // Наследуемый метод
+myDog.eat();  // Унаследованный метод
 myDog.bark(); // Собственный метод
 ```
 
-### Модификаторы Доступа
+### Модификаторы доступа
 
 Модификаторы контролируют доступ к классам, методам и переменным.
 
@@ -332,11 +392,11 @@ public class Example {
 }
 ```
 
-## Методы и Функции
+## Методы и функции
 
-### Объявление Метода
+### Объявление метода
 
-Метод — это, по сути, поведение, в котором пишется логика, манипулируются данные и выполняются действия.
+Метод — это, по сути, поведение, в котором пишется логика, обрабатываются данные и выполняются действия.
 
 ```java
 public class Calculator {
@@ -358,7 +418,7 @@ public class Calculator {
 }
 ```
 
-### Перегрузка Методов (Method Overloading)
+### Перегрузка методов (Method Overloading)
 
 Несколько методов с одинаковым именем, но разными параметрами.
 
@@ -378,7 +438,7 @@ public class MathUtils {
 }
 ```
 
-### Параметры Методов и Возвращаемые Типы
+### Параметры метода и возвращаемые типы
 
 Передача данных в методы и возврат результатов.
 
@@ -402,7 +462,7 @@ public class StringHelper {
 }
 ```
 
-### Рекурсивные Методы
+### Рекурсивные методы
 
 Методы, которые вызывают сами себя для решения задач.
 
@@ -426,9 +486,9 @@ public class RecursiveExamples {
 }
 ```
 
-## Массивы и Коллекции
+## Массивы и коллекции
 
-### Объявление и Инициализация Массива
+### Объявление и инициализация массива
 
 Создание и инициализация массивов разных типов.
 
@@ -452,7 +512,7 @@ for (int i = 0; i < numbers.length; i++) {
 }
 ```
 
-### Многомерные Массивы
+### Многомерные массивы
 
 Массивы массивов для структур данных, похожих на матрицы.
 
@@ -476,7 +536,7 @@ for (int i = 0; i < matrix.length; i++) {
 }
 ```
 
-### ArrayList: Динамические Массивы
+### ArrayList: Динамические массивы
 
 Массивы с изменяемым размером, которые могут динамически расти и сжиматься.
 
@@ -504,7 +564,7 @@ for (String item : list) {
 }
 ```
 
-### HashMap: Пары Ключ-Значение
+### HashMap: Пары ключ-значение
 
 Хранение данных в виде пар ключ-значение для быстрого поиска.
 
@@ -528,7 +588,7 @@ if (ages.containsKey("Bob")) {
 }
 ```
 
-## Обработка Исключений
+## Обработка исключений
 
 ### Блоки Try-Catch
 
@@ -550,9 +610,9 @@ public class ExceptionExample {
 }
 ```
 
-### Несколько Блоков Catch
+### Несколько блоков Catch
 
-Отдельная обработка различных типов исключений.
+Обработка различных типов исключений по отдельности.
 
 ```java
 public void processArray(String[] arr, int index) {
@@ -570,9 +630,9 @@ public void processArray(String[] arr, int index) {
 }
 ```
 
-### Выброс Пользовательских Исключений
+### Генерация пользовательских исключений
 
-Создание и выбрасывание собственных исключений.
+Создание и генерация собственных исключений.
 
 ```java
 public class AgeValidator {
@@ -597,31 +657,31 @@ public class AgeValidator {
 }
 ```
 
-### Распространенные Типы Исключений
+### Общие типы исключений
 
 Часто встречающиеся исключения в программах на Java.
 
 ```java
 // NullPointerException
 String str = null;
-// str.length(); // Вызывает NullPointerException
+// str.length(); // Вызовет NullPointerException
 
 // ArrayIndexOutOfBoundsException
 int[] arr = {1, 2, 3};
-// int val = arr[5]; // Вызывает ArrayIndexOutOfBoundsException
+// int val = arr[5]; // Вызовет ArrayIndexOutOfBoundsException
 
 // NumberFormatException
-// int num = Integer.parseInt("abc"); // Вызывает NumberFormatException
+// int num = Integer.parseInt("abc"); // Вызовет NumberFormatException
 
 // FileNotFoundException (при работе с файлами)
 // IOException (общие операции ввода/вывода)
 ```
 
-## Операции Ввода/Вывода
+## Операции ввода/вывода
 
-### Ввод с Консоли: Класс Scanner
+### Ввод с консоли: Класс Scanner
 
-Чтение ввода с клавиатуры с использованием `Scanner`.
+Чтение ввода с клавиатуры с помощью `Scanner`.
 
 ```java
 import java.util.Scanner;
@@ -648,7 +708,7 @@ public class InputExample {
 }
 ```
 
-### Вывод на Консоль: System.out
+### Вывод на консоль: System.out
 
 Отображение вывода на консоли в различных форматах.
 
@@ -673,7 +733,7 @@ public class OutputExample {
 }
 ```
 
-### Чтение Файлов: BufferedReader
+### Чтение файла: BufferedReader
 
 Эффективное чтение текстовых файлов построчно.
 
@@ -697,7 +757,7 @@ public class FileReadExample {
 }
 ```
 
-### Запись Файлов: PrintWriter
+### Запись в файл: PrintWriter
 
 Запись текстовых данных в файлы с надлежащей обработкой исключений.
 
@@ -723,11 +783,11 @@ public class FileWriteExample {
 }
 ```
 
-## Среда Разработки Java
+## Среда разработки Java
 
 ### Установка JDK
 
-JDK (Java Development Kit) = JRE + Инструменты Разработки. Необходим для разработки Java-приложений.
+JDK (Java Development Kit) = JRE + Инструменты разработки. Необходим для разработки Java-приложений.
 
 ```bash
 # Скачать JDK с Oracle или OpenJDK
@@ -741,7 +801,7 @@ java -version
 javac -version
 ```
 
-### Компиляция и Запуск Программ на Java
+### Компиляция и запуск программ на Java
 
 Используйте `javac` для компиляции исходного кода Java и `java` для запуска скомпилированной программы.
 
@@ -749,19 +809,19 @@ javac -version
 # Скомпилировать исходный файл Java
 javac MyProgram.java
 
-# Запустить скомпилированную программу на Java
+# Запустить скомпилированную программу Java
 java MyProgram
 
-# Компиляция с classpath
+# Компиляция с указанием classpath
 javac -cp .:mylib.jar MyProgram.java
 
-# Запуск с classpath
+# Запуск с указанием classpath
 java -cp .:mylib.jar MyProgram
 ```
 
-### Настройка IDE и Разработка
+### Настройка и разработка в IDE
 
-Популярные интегрированные среды разработки (IDE) для Java.
+Популярные интегрированные среды разработки (IDE) для разработки на Java.
 
 ```bash
 # Популярные IDE для Java:
@@ -770,7 +830,7 @@ java -cp .:mylib.jar MyProgram
 # - Visual Studio Code с расширениями Java
 # - NetBeans
 
-# Компиляция через командную строку
+# Компиляция из командной строки
 javac -d bin src/*.java
 java -cp bin MainClass
 
@@ -778,9 +838,9 @@ java -cp bin MainClass
 jar cf myapp.jar -C bin .
 ```
 
-## Лучшие Практики и Общие Шаблоны
+## Лучшие практики и общие шаблоны
 
-### Соглашения об Именовании
+### Соглашения об именовании
 
 Следуйте стандартам именования Java для лучшей читаемости кода.
 
@@ -805,9 +865,9 @@ package utils.database;
 package com.example.myapp;
 ```
 
-### Организация Кода
+### Организация кода
 
-Структурируйте ваши Java-программы для удобства сопровождения.
+Структурирование программ на Java для удобства сопровождения.
 
 ```java
 import java.util.ArrayList;
@@ -844,9 +904,9 @@ public class WellOrganizedClass {
 }
 ```
 
-### Предотвращение Ошибок
+### Предотвращение ошибок
 
-Общие практики для избежания ошибок и улучшения качества кода.
+Общие практики для избежания ошибок и повышения качества кода.
 
 ```java
 public class BestPractices {
@@ -870,7 +930,7 @@ public class BestPractices {
     }
 
     public void safeArrayAccess(int[] array, int index) {
-        // Проверка границ
+        // Проверка границ массива
         if (array != null && index >= 0 && index < array.length) {
             System.out.println("Value: " + array[index]);
         } else {
@@ -880,9 +940,9 @@ public class BestPractices {
 }
 ```
 
-### Управление Ресурсами
+### Управление ресурсами
 
-Правильная обработка ресурсов для предотвращения утечек памяти.
+Надлежащая обработка ресурсов для предотвращения утечек памяти.
 
 ```java
 import java.io.*;
@@ -921,13 +981,13 @@ public class ResourceManagement {
 }
 ```
 
-## Соответствующие Ссылки
+## Соответствующие ссылки
 
 - <router-link to="/python">Шпаргалка по Python</router-link>
 - <router-link to="/javascript">Шпаргалка по JavaScript</router-link>
 - <router-link to="/cpp">Шпаргалка по C++</router-link>
 - <router-link to="/golang">Шпаргалка по Go</router-link>
-- <router-link to="/web-development">Шпаргалка по Веб-разработке</router-link>
+- <router-link to="/web-development">Шпаргалка по веб-разработке</router-link>
 - <router-link to="/devops">Шпаргалка по DevOps</router-link>
 - <router-link to="/docker">Шпаргалка по Docker</router-link>
 - <router-link to="/kubernetes">Шпаргалка по Kubernetes</router-link>

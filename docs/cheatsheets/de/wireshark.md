@@ -1,6 +1,6 @@
 ---
-title: 'Wireshark Spickzettel'
-description: 'Lernen Sie Wireshark mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Wireshark Spickzettel | LabEx'
+description: 'Lernen Sie die Wireshark-Netzwerkanalyse mit diesem umfassenden Spickzettel. Schnelle Referenz für Paketaufnahme, Netzwerkanalyse, Verkehrsinspektion, Fehlerbehebung und Netzwerksicherheitsüberwachung.'
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Wireshark Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/wireshark">Lernen Sie Wireshark mit praktischen Übungen</a>
+<a target="_blank" href="https://labex.io/de/learn/wireshark">Lernen Sie Wireshark mit Hands-On-Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie die Netzwerkanalyse von Paketen mit Wireshark durch praktische Übungen und reale Szenarien. LabEx bietet umfassende Wireshark-Kurse, die das wesentliche Paket-Capturing, Anzeigefilter, Protokollanalyse, Netzwerk-Fehlerbehebung und Sicherheitsüberwachung abdecken. Meistern Sie die Techniken zur Analyse des Netzwerkverkehrs und zur Paketinspektion.
+Lernen Sie die Netzwerkanalyse von Paketen mit Wireshark durch praktische Übungen und reale Szenarien. LabEx bietet umfassende Wireshark-Kurse, die sich mit dem wesentlichen Paket-Sniffing, Anzeigefiltern, Protokollanalyse, Netzwerk-Fehlerbehebung und Sicherheitsüberwachung befassen. Meistern Sie Techniken zur Analyse des Netzwerkverkehrs und zur Paketinspektion.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -26,19 +26,34 @@ Lernen Sie die Netzwerkanalyse von Paketen mit Wireshark durch praktische Übung
 Erfassen Sie den Verkehr zu/von bestimmten Hosts.
 
 ```bash
-# Erfassen Sie den Verkehr von/zu einer bestimmten IP
+# Erfassen von Verkehr von/zu spezifischer IP
 host 192.168.1.100
-# Erfassen Sie den Verkehr von einer bestimmten Quelle
+# Erfassen von Verkehr von spezifischer Quelle
 src host 192.168.1.100
-# Erfassen Sie den Verkehr zu einem bestimmten Ziel
+# Erfassen von Verkehr zu spezifischem Ziel
 dst host 192.168.1.100
-# Erfassen Sie den Verkehr von einem Subnetz
+# Erfassen von Verkehr aus Subnetz
 net 192.168.1.0/24
 ```
 
+<BaseQuiz id="wireshark-filter-1" correct="A">
+  <template #question>
+    Was filtert `host 192.168.1.100` in Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Jeglicher Verkehr zu oder von 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="B">Nur Verkehr von 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="C">Nur Verkehr zu 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="D">Verkehr auf Port 192.168.1.100</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Der `host`-Filter erfasst jeglichen Verkehr, bei dem die angegebene IP-Adresse entweder die Quelle oder das Ziel ist. Verwenden Sie `src host` für Quelle-nur oder `dst host` für Ziel-nur Filterung.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Port-Filterung
 
-Erfassen Sie den Verkehr auf bestimmten Ports.
+Erfassen Sie Verkehr auf bestimmten Ports.
 
 ```bash
 # HTTP-Verkehr (Port 80)
@@ -49,9 +64,24 @@ port 443
 port 22
 # DNS-Verkehr (Port 53)
 port 53
-# Portbereich
+# Port-Bereich
 portrange 1000-2000
 ```
+
+<BaseQuiz id="wireshark-port-1" correct="D">
+  <template #question>
+    Was filtert `port 80` in Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A">Nur HTTP-Anfragen</BaseQuizOption>
+  <BaseQuizOption value="B">Nur HTTP-Antworten</BaseQuizOption>
+  <BaseQuizOption value="C">Nur TCP-Pakete</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Jeglicher Verkehr auf Port 80 (sowohl Quelle als auch Ziel)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Der `port`-Filter erfasst jeglichen Verkehr, bei dem Port 80 entweder der Quell- oder Zielport ist. Dies schließt sowohl HTTP-Anfragen als auch Antworten ein, sowie jeglichen anderen Verkehr, der Port 80 verwendet.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Protokoll-Filterung
 
@@ -70,18 +100,33 @@ arp
 
 ### Erweiterte Erfassungsfilter
 
-Kombinieren Sie mehrere Bedingungen für eine präzise Erfassung.
+Kombinieren Sie mehrere Bedingungen für präzise Erfassung.
 
 ```bash
-# HTTP-Verkehr zu/von einem bestimmten Host
+# HTTP-Verkehr zu/von spezifischem Host
 host 192.168.1.100 and port 80
 # TCP-Verkehr außer SSH
 tcp and not port 22
 # Verkehr zwischen zwei Hosts
 host 192.168.1.100 and host 192.168.1.200
-# HTTP- oder HTTPS-Verkehr
+# HTTP oder HTTPS Verkehr
 port 80 or port 443
 ```
+
+<BaseQuiz id="wireshark-advanced-1" correct="B">
+  <template #question>
+    Was filtert `tcp and not port 22` an Verkehr?
+  </template>
+  
+  <BaseQuizOption value="A">Nur SSH-Verkehr</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Jeglicher TCP-Verkehr außer SSH (Port 22)</BaseQuizOption>
+  <BaseQuizOption value="C">UDP-Verkehr auf Port 22</BaseQuizOption>
+  <BaseQuizOption value="D">Jeglicher Netzwerkverkehr</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Dieser Filter erfasst jeglichen TCP-Verkehr, schließt jedoch Pakete auf Port 22 (SSH) aus. Der Operator `and not` schließt den angegebenen Port aus, behält aber den gesamten anderen TCP-Verkehr bei.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Schnittstellenauswahl
 
@@ -101,7 +146,7 @@ lo
 
 ### Erfassungsoptionen
 
-Konfigurieren Sie die Erfassungsparameter.
+Konfigurieren Sie Erfassungsparameter.
 
 ```bash
 # Erfassungsdateigröße begrenzen (MB)
@@ -140,30 +185,30 @@ icmp
 Filtern Sie Pakete nach Quell- und Ziel-IP-Adressen.
 
 ```bash
-# Verkehr von einer bestimmten IP
+# Verkehr von spezifischer IP
 ip.src == 192.168.1.100
-# Verkehr zu einer bestimmten IP
+# Verkehr zu spezifischer IP
 ip.dst == 192.168.1.200
 # Verkehr zwischen zwei IPs
 ip.addr == 192.168.1.100
-# Verkehr von einem Subnetz
+# Verkehr aus Subnetz
 ip.src_net == 192.168.1.0/24
-# Bestimmte IP ausschließen
+# Spezifische IP ausschließen
 not ip.addr == 192.168.1.1
 ```
 
 ### Port- & Protokollfilter
 
-Filtern nach bestimmten Ports und Protokolldetails.
+Filtern nach spezifischen Ports und Protokolldetails.
 
 ```bash
-# Verkehr auf einem bestimmten Port
+# Verkehr auf spezifischem Port
 tcp.port == 80
 # Quellport-Filter
 tcp.srcport == 443
 # Zielport-Filter
 tcp.dstport == 22
-# Portbereich
+# Port-Bereich
 tcp.port >= 1000 and tcp.port <=
 2000
 # Mehrere Ports
@@ -183,9 +228,9 @@ http.request.method == "GET"
 http.request.method == "POST"
 # Spezifische HTTP-Statuscodes
 http.response.code == 404
-# HTTP-Anfragen an einen bestimmten Host
+# HTTP-Anfragen an spezifischen Host
 http.host == "example.com"
-# HTTP-Anfragen, die eine Zeichenfolge enthalten
+# HTTP-Anfragen, die Zeichenfolge enthalten
 http contains "login"
 ```
 
@@ -198,11 +243,11 @@ Untersuchen Sie DNS-Abfragen und -Antworten.
 dns.flags.response == 0
 # Nur DNS-Antworten
 dns.flags.response == 1
-# DNS-Abfragen für eine bestimmte Domain
+# DNS-Abfragen für spezifische Domain
 dns.qry.name == "example.com"
-# DNS A-Record-Abfragen
+# DNS A-Record Abfragen
 dns.qry.type == 1
-# DNS-Fehler/Fehlschläge
+# DNS Fehler/Fehlschläge
 dns.flags.rcode != 0
 ```
 
@@ -232,7 +277,7 @@ Untersuchen Sie Details verschlüsselter Verbindungen.
 tls.handshake
 # TLS-Zertifikatsinformationen
 tls.handshake.certificate
-# TLS-Alarme und Fehler
+# TLS-Warnungen und Fehler
 tls.alert
 # Spezifische TLS-Version
 tls.handshake.version == 0x0303
@@ -242,7 +287,7 @@ tls.handshake.extensions_server_name
 
 ### Netzwerk-Fehlerbehebung
 
-Identifizieren Sie häufige Netzwerkprobleme.
+Identifizieren Sie gängige Netzwerkprobleme.
 
 ```bash
 # ICMP Unreachable Nachrichten
@@ -266,7 +311,7 @@ Filtern Sie Pakete nach Zeitstempel und Timing.
 frame.time >= "2024-01-01 10:00:00"
 # Pakete der letzten Stunde
 frame.time_relative >= -3600
-# Antwortzeitanalyse
+# Antwortzeit-Analyse
 tcp.time_delta > 1.0
 # Zeit zwischen Ankünften
 frame.time_delta > 0.1
@@ -276,13 +321,13 @@ frame.time_delta > 0.1
 
 ### Protokollhierarchie
 
-Zeigt die Protokollverteilung bei der Erfassung.
+Zeigt die Protokollverteilung in der Erfassung.
 
 ```bash
 # Zugriff über: Statistics > Protocol Hierarchy
 # Zeigt den Prozentsatz jedes Protokolls
 # Identifiziert die häufigsten Protokolle
-# Nützlich für Verkehrsübersicht
+# Nützlich für Verkehrsüberblick
 # Kommandozeilen-Äquivalent
 tshark -r capture.pcap -q -z io,phs
 ```
@@ -303,15 +348,15 @@ tshark -r capture.pcap -q -z conv,tcp
 
 ### I/O-Graphen
 
-Visualisiert Verkehrsmuster im Zeitverlauf.
+Visualisiert Verkehrsmuster über die Zeit.
 
 ```bash
 # Zugriff über: Statistics > I/O Graphs
-# Verkehrsvolumen im Zeitverlauf
+# Verkehrsvolumen über die Zeit
 # Pakete pro Sekunde
 # Bytes pro Sekunde
-# Filter für spezifischen Verkehr anwenden
-# Nützlich zur Identifizierung von Verkehrspitzen
+# Filter anwenden für spezifischen Verkehr
+# Nützlich zur Identifizierung von Verkehrsanstiegen
 ```
 
 ### Experteninformationen
@@ -328,28 +373,28 @@ Identifiziert potenzielle Netzwerkprobleme.
 tcp.analysis.flags
 ```
 
-### Flussgraphen
+### Flussdiagramme (Flow Graphs)
 
 Visualisiert den Paketfluss zwischen Endpunkten.
 
 ```bash
 # Zugriff über: Statistics > Flow Graph
-# Zeigt die Paketsequenz
+# Zeigt Paketsequenz
 # Zeitbasierte Visualisierung
 # Nützlich zur Fehlerbehebung
 # Identifiziert Kommunikationsmuster
 ```
 
-### Antwortzeitanalyse
+### Antwortzeit-Analyse
 
-Misst die Anwendungsantwortzeiten.
+Misst Anwendungsantwortzeiten.
 
 ```bash
 # HTTP-Antwortzeiten
 # Statistics > HTTP > Requests
 # DNS-Antwortzeiten
 # Statistics > DNS
-# TCP-Dienstantwortzeit
+# TCP-Dienst-Antwortzeit
 # Statistics > TCP Stream Graphs > Time Sequence
 ```
 
@@ -402,7 +447,7 @@ tshark -r capture.pcap -Y "tcp.port == 80"
 
 ### Stapelverarbeitung
 
-Verarbeiten Sie mehrere Erfassungsdateien automatisch.
+Verarbeiten Sie automatisch mehrere Erfassungsdateien.
 
 ```bash
 # Mehrere Dateien zusammenführen
@@ -424,9 +469,9 @@ Effizienter Umgang mit großen Erfassungsdateien.
 ```bash
 # Ringpuffer für kontinuierliche Erfassung verwenden
 -b filesize:100 -b files:10
-# Paketgröße bei der Erfassung begrenzen
+# Größe der Paketerfassung begrenzen
 -s 96  # Nur die ersten 96 Bytes erfassen
-# Erfassungsfilter verwenden, um Daten zu reduzieren
+# Speicherplatz durch Erfassungsfilter reduzieren
 host 192.168.1.100 and port 80
 # Protokolldekodierung zur Beschleunigung deaktivieren
 -d tcp.port==80,http
@@ -439,19 +484,19 @@ Verbessern Sie die GUI-Leistung bei großen Datensätzen.
 ```bash
 # Einstellungen zur Anpassung:
 # Edit > Preferences > Appearance
-# Farbschemaauswahl
+# Farbschema-Auswahl
 # Schriftgröße und -typ
-# Spaltenanzeigeoptionen
-# Zeitanzeigeformateinstellungen
+# Optionen für Spaltenanzeige
+# Einstellungen für das Zeitformat
 # View > Time Display Format
-# Sekunden seit Erfassungsbeginn
+# Seit Erfassungsbeginn vergangene Sekunden
 # Tageszeit
 # UTC-Zeit
 ```
 
 ### Effizienter Analyse-Workflow
 
-Bewährte Verfahren zur Analyse des Netzwerkverkehrs.
+Best Practices für die Analyse von Netzwerkverkehr.
 
 ```bash
 # 1. Mit Erfassungsfiltern beginnen
@@ -459,7 +504,7 @@ Bewährte Verfahren zur Analyse des Netzwerkverkehrs.
 # 2. Anzeigefilter schrittweise verwenden
 # Breit beginnen, dann eingrenzen
 # 3. Zuerst Statistiken verwenden
-# Überblick vor detaillierter Analyse gewinnen
+# Überblick gewinnen vor detaillierter Analyse
 # 4. Auf spezifische Flows konzentrieren
 # Rechtsklick auf Paket > Follow > TCP Stream
 ```
@@ -469,7 +514,7 @@ Bewährte Verfahren zur Analyse des Netzwerkverkehrs.
 Automatisieren Sie gängige Analyseaufgaben.
 
 ```bash
-# Benutzerdefinierte Anzeigefilter-Schaltflächen erstellen
+# Benutzerdefinierte Schaltflächen für Anzeigefilter erstellen
 # View > Display Filter Expression
 # Profile für verschiedene Szenarien verwenden
 # Edit > Configuration Profiles
@@ -529,15 +574,15 @@ brew install wireshark
 
 ## Konfiguration & Voreinstellungen
 
-### Schnittstelleneinstellungen
+### Schnittstellenvoreinstellungen
 
-Konfigurieren Sie Erfassungsschnittstellen und -optionen.
+Konfigurieren Sie Erfassungsschnittstellen und Optionen.
 
 ```bash
 # Edit > Preferences > Capture
 # Standard-Erfassungsschnittstelle
-# Promiscuous Mode Einstellungen
-# Puffergrößenkonfiguration
+# Einstellungen für Promiscuous Mode
+# Konfiguration der Puffergröße
 # Auto-Scroll bei Live-Erfassung
 # Schnittstellenspezifische Einstellungen
 # Capture > Options > Interface Details
@@ -553,22 +598,22 @@ Konfigurieren Sie Protokolldekodierer und Dekodierung.
 # Portzuweisungen konfigurieren
 # Entschlüsselungsschlüssel einstellen (TLS, WEP, etc.)
 # TCP-Wiederzusammensetzungsoptionen
-# Decode As Funktionalität
+# Decode As-Funktionalität
 # Analyze > Decode As
 ```
 
-### Anzeigeeinstellungen
+### Anzeigevoreinstellungen
 
 Passen Sie die Benutzeroberfläche und Anzeigeoptionen an.
 
 ```bash
 # Edit > Preferences > Appearance
-# Farbschemaauswahl
+# Auswahl des Farbschemas
 # Schriftgröße und -typ
-# Spaltenanzeigeoptionen
-# Zeitanzeigeformateinstellungen
+# Optionen für die Spaltenanzeige
+# Einstellungen für das Zeitformat
 # View > Time Display Format
-# Sekunden seit Erfassungsbeginn
+# Seit Erfassungsbeginn vergangene Sekunden
 # Tageszeit
 # UTC-Zeit
 ```
@@ -580,8 +625,8 @@ Konfigurieren Sie sicherheitsrelevante Optionen und Entschlüsselung.
 ```bash
 # TLS-Entschlüsselung einrichten
 # Edit > Preferences > Protocols > TLS
-# RSA-Schlüsselliste
-# Vorgeschlüsselte Schlüssel
+# Liste der RSA-Schlüssel
+# Pre-Shared Keys
 # Speicherort der Schlüsselprotokolldatei
 # Potenziell gefährliche Funktionen deaktivieren
 # Ausführung von Lua-Skripten
@@ -595,18 +640,18 @@ Konfigurieren Sie sicherheitsrelevante Optionen und Entschlüsselung.
 Kombinieren Sie mehrere Filterbedingungen.
 
 ```bash
-# UND-Operator
+# AND-Operator
 tcp.port == 80 and ip.src == 192.168.1.100
-# ODER-Operator
+# OR-Operator
 tcp.port == 80 or tcp.port == 443
-# NICHT-Operator
+# NOT-Operator
 not icmp
 # Klammern zur Gruppierung
 (tcp.port == 80 or tcp.port == 443) and ip.src ==
 192.168.1.0/24
 ```
 
-### Zeichenfolgensuche
+### Zeichenkettenabgleich
 
 Suchen Sie nach spezifischem Inhalt in Paketen.
 
@@ -657,12 +702,12 @@ tcp.analysis.window_full
 
 ### Netzwerk-Fehlerbehebung
 
-Identifizieren und beheben Sie Netzwerk-Konnektivitätsprobleme.
+Identifizieren und beheben Sie Netzwerkverbindungsprobleme.
 
 ```bash
 # Verbindungsabbrüche finden
 tcp.analysis.retransmission and tcp.analysis.rto
-# Langsame Verbindungen identifizieren
+# Langsame Verbindungen finden
 tcp.time_delta > 1.0
 # Netzwerküberlastung finden
 tcp.analysis.window_full
@@ -680,7 +725,7 @@ Erkennen potenzieller Sicherheitsbedrohungen und verdächtiger Aktivitäten.
 # Port-Scan-Erkennung
 tcp.flags.syn == 1 and tcp.flags.ack == 0
 # Große Anzahl von Verbindungen von einer einzelnen IP
-# Statistics > Conversations verwenden
+# Verwenden Sie Statistics > Conversations
 # Verdächtige DNS-Abfragen
 dns.qry.name contains "dga" or dns.qry.name matches
 "^[a-z]{8,}\.com$"
@@ -688,7 +733,7 @@ dns.qry.name contains "dga" or dns.qry.name matches
 http.request.method == "POST" and http.request.uri
 contains "/upload"
 # Ungewöhnliche Verkehrsmuster
-# I/O-Graphen auf Spitzen überprüfen
+# Überprüfen Sie I/O Graphs auf Spitzen
 ```
 
 ### Anwendungsleistung

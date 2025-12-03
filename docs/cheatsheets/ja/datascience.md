@@ -1,6 +1,6 @@
 ---
-title: 'データサイエンス チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートでデータサイエンスを習得しましょう。'
+title: 'データサイエンス チートシート | LabEx'
+description: 'この包括的なチートシートでデータサイエンスを学ぶ。データ分析、機械学習、統計、可視化、Python ライブラリ、データサイエンスワークフローのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 ---
 
@@ -48,7 +48,7 @@ matrix = np.array([[1, 2], [3, 4]])
 # 基本的な操作
 np.mean(arr)       # 平均
 np.std(arr)        # 標準偏差
-np.reshape(arr, (5, 1))  # 配列の形状変更
+np.reshape(arr, (5, 1))  # 配列の整形
 # データの生成
 np.random.normal(0, 1, 100)  # ランダムな正規分布
 ```
@@ -70,6 +70,21 @@ df.describe()      # 要約統計量
 df.groupby('column').mean()
 df.fillna(df.mean())  # 欠損値の処理
 ```
+
+<BaseQuiz id="datascience-pandas-1" correct="C">
+  <template #question>
+    Pandas で `df.head()` は何を返しますか？
+  </template>
+  
+  <BaseQuizOption value="A">DataFrame の最後の 5 行</BaseQuizOption>
+  <BaseQuizOption value="B">DataFrame の要約</BaseQuizOption>
+  <BaseQuizOption value="C" correct>DataFrame の最初の 5 行</BaseQuizOption>
+  <BaseQuizOption value="D">DataFrame のすべての行</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `df.head()`はデフォルトで DataFrame の最初の 5 行を表示します。`df.head(10)` のように異なる数値を指定して最初の 10 行を表示することもできます。データを素早く確認するのに役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Matplotlib & Seaborn: 視覚化
 
@@ -96,13 +111,13 @@ sns.pairplot(df)
 ```python
 # ビジネス上の問題の定義
 # - どのような質問に答えるのか？
-# - 成功を測定する指標は何か？
+# - 成功を測る指標は何か？
 # - どのようなデータが必要か？
 ```
 
 ### 2. データ収集とインポート
 
-様々なソースと形式からデータを収集します。
+さまざまなソースと形式からデータを収集します。
 
 ```python
 # 複数のデータソース
@@ -125,7 +140,7 @@ m/data')
 # 探索的データ分析 (EDA)
 df.shape              # 次元
 df.dtypes             # データ型
-df.isnull().sum()     # 欠損値
+df.isnull().sum()     # 欠損値の数
 df['column'].value_counts()  #
 度数分布
 df.corr()             # 相関行列
@@ -141,14 +156,14 @@ sns.heatmap(df.corr(), annot=True)
 
 ### 欠損値の処理
 
-分析を行う前に、データをクリーニングし準備する必要があります。これには、欠損値の処理、重複の削除、変数の正規化が含まれます。データクリーニングは、データサイエンスプロセスの中で最も時間のかかる、しかし最も重要な側面であることがよくあります。
+データを分析する前に、クリーニングと準備が必要です。これには、欠損値の処理、重複の削除、変数の正規化が含まれます。データクリーニングは、データサイエンスプロセスの中で最も時間のかかる、しかし最も重要な側面であることがよくあります。
 
 ```python
 # 欠損値の特定
 df.isnull().sum()
 df.isnull().sum() / len(df) * 100  # 欠損率 (%)
 # 欠損値の処理
-df.dropna()                    # NaN を含む行を削除
+df.dropna()                    # NaN のある行を削除
 df.fillna(df.mean())          # 平均値で埋める
 df.fillna(method='forward')   # 前方補完
 df.fillna(method='backward')  # 後方補完
@@ -158,9 +173,24 @@ imputer = SimpleImputer(strategy='median')
 df_filled = pd.DataFrame(imputer.fit_transform(df))
 ```
 
+<BaseQuiz id="datascience-missing-1" correct="B">
+  <template #question>
+    `method='forward'` による前方補完は何に使用されますか？
+  </template>
+  
+  <BaseQuizOption value="A">欠損値を平均値で埋める</BaseQuizOption>
+  <BaseQuizOption value="B" correct>欠損値を直前の非 null 値で埋める</BaseQuizOption>
+  <BaseQuizOption value="C">欠損値をランダムな値で埋める</BaseQuizOption>
+  <BaseQuizOption value="D">欠損値を削除する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    前方補完は、直前の有効な観測値を前方に伝播させて欠損値を埋めます。新しいデータが利用可能になるまで以前の値を維持したい時系列データに役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### データ変換
 
-データの正規化（データを[0, 1]のような標準範囲にスケーリングすること）は、特徴量の大きさの違いによるバイアスを避けるのに役立ちます。
+データの正規化（データを[0, 1]などの標準範囲にスケーリングすること）は、特徴量の大きさの違いによるバイアスを避けるのに役立ちます。
 
 ```python
 # スケーリングと正規化
@@ -179,9 +209,24 @@ le = LabelEncoder()
 df['encoded'] = le.fit_transform(df['category'])
 ```
 
+<BaseQuiz id="datascience-scaling-1" correct="C">
+  <template #question>
+    StandardScaler と MinMaxScaler の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはない</BaseQuizOption>
+  <BaseQuizOption value="B">StandardScaler は [0,1] にスケーリングし、MinMaxScaler は平均=0、標準偏差=1 にスケーリングする</BaseQuizOption>
+  <BaseQuizOption value="C" correct>StandardScaler は平均=0、標準偏差=1 に正規化し、MinMaxScaler は [0,1] の範囲にスケーリングする</BaseQuizOption>
+  <BaseQuizOption value="D">StandardScaler の方が速い</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    StandardScaler はデータを平均 0、標準偏差 1 に変換します（z スコア正規化）。MinMaxScaler はデータを固定範囲、通常は [0, 1] にスケーリングします。どちらも有用ですが、シナリオが異なります。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 外れ値の検出と処理
 
-分析結果を歪める可能性のある極端な値を特定し、処理します。
+分析を歪める可能性のある極端な値を特定し、処理します。
 
 ```python
 # 統計的外れ値の検出
@@ -220,9 +265,9 @@ df['age_group'] = pd.cut(df['age'], bins=[0, 18, 35, 50, 100],
 
 ## 統計分析
 
-### 記述統計
+### 記述統計量
 
-これらの中心傾向の尺度は、データの概要を把握し、その分布に関する洞察を提供します。これらは、あらゆるデータセットを理解するための基礎となります。平均は、データセット内のすべての値の平均です。外れ値に非常に敏感です。
+これらの中心傾向の尺度は、データを要約し、その分布に関する洞察を提供します。これらは、あらゆるデータセットを理解するための基礎となります。平均値は、データセット内のすべての値の平均です。外れ値に非常に敏感です。
 
 ```python
 # 中心傾向
@@ -283,7 +328,7 @@ correlation, p_value = pearsonr(df['var1'], df['var2'])
 分散と変数間の関係を分析します。
 
 ```python
-# 一元配置分散分析 (ANOVA)
+# 一元配置分散分析 (One-way ANOVA)
 from scipy.stats import f_oneway
 group_data = [df[df['group'] == g]['value'] for g in
 df['group'].unique()]
@@ -302,7 +347,7 @@ r2 = r2_score(y, y_pred)
 
 ### 教師あり学習 - 分類
 
-決定木：決定とそれらの可能な結果の木のようなモデル。各ノードは属性に対するテストを表し、各ブランチは結果を表します。分類タスクによく使用されます。
+決定木：意思決定とそれらの可能な結果の木のようなモデル。各ノードは属性に対するテストを表し、各ブランチは結果を表します。分類タスクによく使用されます。
 
 ```python
 # 訓練 - テスト分割
@@ -326,7 +371,7 @@ rf.fit(X_train, y_train)
 
 ### 教師あり学習 - 回帰
 
-連続するターゲット変数を予測します。
+連続する目的変数を予測します。
 
 ```python
 # 線形回帰
@@ -338,7 +383,7 @@ y_pred = lr.predict(X_test)
 from sklearn.preprocessing import PolynomialFeatures
 poly = PolynomialFeatures(degree=2)
 X_poly = poly.fit_transform(X)
-# Ridge & Lasso 回帰
+# Ridge および Lasso 回帰
 from sklearn.linear_model import Ridge, Lasso
 ridge = Ridge(alpha=1.0)
 lasso = Lasso(alpha=0.1)
@@ -348,7 +393,7 @@ lasso.fit(X_train, y_train)
 
 ### 教師なし学習
 
-ラベル付けされていない結果なしでデータ内のパターンを発見します。
+ラベル付けされた結果なしでデータ内のパターンを発見します。
 
 ```python
 # K 平均法クラスタリング
@@ -360,7 +405,7 @@ df['cluster'] = clusters
 from sklearn.decomposition import PCA
 pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X_scaled)
-#階層的クラスタリング
+# 階層的クラスタリング
 from scipy.cluster.hierarchy import dendrogram, linkage
 linkage_matrix = linkage(X_scaled, method='ward')
 dendrogram(linkage_matrix)
@@ -436,7 +481,7 @@ fig.show()
 
 ### 統計プロット
 
-統計的な関係やモデルの結果を視覚化します。
+統計的な関係とモデルの結果を視覚化します。
 
 ```python
 # 相関のためのペアプロット
@@ -468,7 +513,7 @@ plt.style.use('seaborn-v0_8')
 sns.set_palette("husl")
 # カスタム図の設定
 plt.figure(figsize=(12, 8))
-plt.title('プロフェッショナルなチャートタイトル', fontsize=16,
+plt.title('プロフェッショナルなグラフタイトル', fontsize=16,
 fontweight='bold')
 plt.xlabel('X 軸ラベル', fontsize=14)
 plt.ylabel('Y 軸ラベル', fontsize=14)
@@ -480,7 +525,7 @@ plt.savefig('analysis_plot.png', dpi=300,
 bbox_inches='tight')
 ```
 
-## モデルのデプロイと MLOps
+## モデルデプロイと MLOps
 
 ### モデルの永続化
 
@@ -498,19 +543,19 @@ with open('model.pkl', 'rb') as f:
 import joblib
 joblib.dump(trained_model, 'model.joblib')
 loaded_model = joblib.load('model.joblib')
-# タイムスタンプを使用したモデルのバージョン管理
+# タイムスタンプによるモデルのバージョン管理
 import datetime
 timestamp =
 datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 model_name = f'model_{timestamp}.pkl'
 ```
 
-### クロスバリデーションとハイパーパラメータチューニング
+### 交差検証とハイパーパラメータチューニング
 
 モデルのパフォーマンスを最適化し、過学習を防ぎます。
 
 ```python
-# クロスバリデーション
+# 交差検証
 from sklearn.model_selection import cross_val_score,
 StratifiedKFold
 cv_scores = cross_val_score(model, X, y, cv=5,
@@ -532,7 +577,7 @@ best_model = grid_search.best_estimator_
 
 ### パフォーマンス監視
 
-重要な概念とコマンドにすばやくアクセスできることは、ワークフローにおいて大きな違いを生みます。初心者の方でも、経験豊富な実務家の方でも、チートシートは非常に貴重なリファレンスとなります。
+重要な概念やコマンドにすぐにアクセスできることは、ワークフローにおいて大きな違いを生みます。初心者で足場を固めている場合でも、経験豊富な実務家が信頼できるリファレンスを探している場合でも、チートシートは非常に貴重な仲間となります。
 
 ```python
 # モデルパフォーマンスの追跡
@@ -540,7 +585,7 @@ import time
 start_time = time.time()
 predictions = model.predict(X_test)
 inference_time = time.time() - start_time
-print(f"推論時間：{inference_time:.4f} 秒")
+print(f"推論時間：{inference_time:.4f}秒")
 # メモリ使用量の監視
 import psutil
 process = psutil.Process()
@@ -583,9 +628,9 @@ with open('model_metadata.json', 'w') as f:
 
 ## ベストプラクティスとヒント
 
-### コードの構成
+### コードの整理
 
-再現性とコラボレーションのためにプロジェクトを構成します。
+再現性と共同作業のためにプロジェクトを構成します。
 
 ```python
 # プロジェクト構造
@@ -619,7 +664,7 @@ source ds_env/bin/activate  #
 Linux/Mac
 # ds_env\Scripts\activate   #
 Windows
-# requirementsファイル
+# requirements.txtファイル
 pip freeze > requirements.txt
 # Conda環境
 conda create -n ds_project
@@ -651,9 +696,9 @@ df.dtypes.to_dict()
 def data_quality_report(df):
     print(f"データセットの形状:
 {df.shape}")
-    print(f"欠損値:
+    print(f"欠損値の数:
 {df.isnull().sum().sum()}")
-    print(f"重複行:
+    print(f"重複行数:
 {df.duplicated().sum()}")
     print("\n列のデータ型：")
     print(df.dtypes)

@@ -1,11 +1,11 @@
 ---
-title: 'Шпаргалка по Golang'
-description: 'Изучите Golang с нашей подробной шпаргалкой по основным командам, концепциям и лучшим практикам.'
+title: 'Шпаргалка по Golang | LabEx'
+description: 'Изучите программирование на Go с помощью этой исчерпывающей шпаргалки. Быстрый справочник по синтаксису Go, горутинам, каналам, интерфейсам, обработке ошибок и конкурентному программированию для бэкенд-разработчиков.'
 pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Шпаргалка по Golang
+Golang Cheatsheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -19,96 +19,96 @@ pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Установка и Настройка
+## Installation & Setup
 
-### Установка Go: Загрузка и Распаковка
+### Install Go: Download & Extract
 
-Загрузите и установите Go с официального сайта.
+Скачайте и установите Go с официального сайта.
 
 ```bash
-# Загрузить с https://golang.org/dl/
-# Linux/macOS - распаковать в /usr/local
+# Download from https://golang.org/dl/
+# Linux/macOS - extract to /usr/local
 sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz
-# Добавить в PATH в ~/.bashrc или ~/.zshrc
+# Add to PATH in ~/.bashrc or ~/.zshrc
 export PATH=$PATH:/usr/local/go/bin
-# Проверить установку
+# Verify installation
 go version
 ```
 
-### Менеджер Пакетов: Использование Homebrew (macOS)
+### Package Manager: Using Homebrew (macOS)
 
-Установите Go с помощью Homebrew в macOS.
+Установите Go с помощью Homebrew на macOS.
 
 ```bash
-# Установить Go с помощью Homebrew
+# Install Go with Homebrew
 brew install go
-# Проверить установку
+# Verify installation
 go version
 go env GOPATH
 ```
 
-### Установка в Windows
+### Windows Installation
 
 Установка Go в системах Windows.
 
 ```bash
-# Загрузить .msi установщик с https://golang.org/dl/
-# Запустить установщик и следовать инструкциям
-# Проверить в Командной Строке
+# Download .msi installer from https://golang.org/dl/
+# Run installer and follow prompts
+# Verify in Command Prompt
 go version
 echo %GOPATH%
 ```
 
-### Настройка Рабочей Области: `go mod init`
+### Workspace Setup: `go mod init`
 
-Инициализация нового модуля Go и рабочей области.
+Инициализация нового модуля и рабочей области Go.
 
 ```bash
-# Создать новую директорию и инициализировать модуль
+# Create new directory and initialize module
 mkdir my-go-project
 cd my-go-project
 go mod init my-go-project
-# Создать main.go
+# Create main.go
 echo 'package main
 import "fmt"
 func main() {
     fmt.Println("Hello, World!")
 }' > main.go
-# Запустить программу
+# Run the program
 go run main.go
 ```
 
-### Переменные Окружения
+### Environment Variables
 
 Важные переменные окружения Go.
 
 ```bash
-# Просмотреть все переменные окружения Go
+# View all Go environment variables
 go env
-# Ключевые переменные
-go env GOROOT    # Директория установки Go
-go env GOPATH    # Директория рабочей области
-go env GOOS      # Операционная система
-go env GOARCH    # Архитектура
+# Key variables
+go env GOROOT    # Go installation directory
+go env GOPATH    # Workspace directory
+go env GOOS      # Operating system
+go env GOARCH    # Architecture
 ```
 
-### Настройка IDE: VS Code
+### IDE Setup: VS Code
 
 Настройка VS Code для разработки на Go.
 
 ```bash
-# Установить расширение Go в VS Code
+# Install Go extension in VS Code
 # Ctrl+Shift+P -> Go: Install/Update Tools
-# Включены ключевые функции:
-# - Подсветка синтаксиса
+# Key features enabled:
+# - Syntax highlighting
 # - IntelliSense
-# - Отладка
-# - Интеграция тестирования
+# - Debugging
+# - Testing integration
 ```
 
-## Базовый Синтаксис и Типы
+## Basic Syntax & Types
 
-### Пакет и Импорты
+### Package & Imports
 
 Каждый файл Go начинается с объявления пакета и импортов.
 
@@ -119,51 +119,66 @@ import (
     "strings"
     "time"
 )
-// Единичный импорт
+// Single import
 import "os"
 ```
 
-### Переменные и Константы
+### Variables & Constants
 
 Объявление и инициализация переменных и констант.
 
 ```go
-// Объявление переменных
+// Variable declarations
 var name string = "Go"
 var age int = 15
 var isOpen bool
-// Короткое объявление
+// Short declaration
 name := "Golang"
 count := 42
-// Константы
+// Constants
 const Pi = 3.14159
 const Message = "Hello, Go!"
 ```
 
-### Основные Типы Данных
+<BaseQuiz id="golang-variables-1" correct="B">
+  <template #question>
+    What is the difference between `var name string = "Go"` and `name := "Go"`?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`:=` is short declaration that infers the type, `var` explicitly declares the type</BaseQuizOption>
+  <BaseQuizOption value="C">`:=` can only be used for constants</BaseQuizOption>
+  <BaseQuizOption value="D">`var` can only be used inside functions</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `:=` operator is shorthand for variable declaration and initialization, and Go infers the type automatically. `var` explicitly declares the variable type and can be used at package level or function level.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Фундаментальные типы, доступные в Go.
+### Basic Data Types
+
+Основные типы данных, доступные в Go.
 
 ```go
-// Числовые типы
+// Numeric types
 var i int = 42
 var f float64 = 3.14
 var c complex64 = 1 + 2i
-// Текстовые типы
+// Text types
 var s string = "Hello"
 var r rune = 'A'
-// Булевы
+// Boolean
 var b bool = true
 ```
 
-## Управление Потоком
+## Control Flow
 
-### Условные Операторы: `if` / `else` / `switch`
+### Conditionals: `if` / `else` / `switch`
 
 Управление потоком программы с помощью условных операторов.
 
 ```go
-// Операторы If
+// If statements
 if age >= 18 {
     fmt.Println("Adult")
 } else if age >= 13 {
@@ -171,7 +186,7 @@ if age >= 18 {
 } else {
     fmt.Println("Child")
 }
-// Операторы Switch
+// Switch statements
 switch day {
 case "Monday":
     fmt.Println("Start of work week")
@@ -182,59 +197,74 @@ default:
 }
 ```
 
-### Циклы: `for` / `range`
+### Loops: `for` / `range`
 
 Итерация с использованием различных конструкций цикла.
 
 ```go
-// Традиционный цикл for
+// Traditional for loop
 for i := 0; i < 10; i++ {
     fmt.Println(i)
 }
-// Цикл в стиле While
+// While-style loop
 for condition {
-    // Тело цикла
+    // loop body
 }
-// Бесконечный цикл
+// Infinite loop
 for {
-    // прервать при необходимости
+    // break when needed
 }
 ```
 
-### Итерация Range
+### Range Iteration
 
-Итерация по срезам, массивам, картам и строкам.
+Итерация по срезам (slices), массивам (arrays), картам (maps) и строкам (strings).
 
 ```go
-// Итерация по срезу
+// Iterate over slice
 numbers := []int{1, 2, 3, 4, 5}
 for index, value := range numbers {
     fmt.Printf("Index: %d, Value: %d\n", index, value)
 }
-// Итерация по карте
+// Iterate over map
 colors := map[string]string{"red": "#FF0000", "green": "#00FF00"}
 for key, value := range colors {
     fmt.Printf("%s: %s\n", key, value)
 }
-// Итерация по строке
+// Iterate over string
 for i, char := range "Hello" {
     fmt.Printf("%d: %c\n", i, char)
 }
 ```
 
-### Операторы Управления: `break` / `continue`
+<BaseQuiz id="golang-range-1" correct="B">
+  <template #question>
+    What does `range` return when iterating over a slice in Go?
+  </template>
+  
+  <BaseQuizOption value="A">Only the value</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Both the index and the value</BaseQuizOption>
+  <BaseQuizOption value="C">Only the index</BaseQuizOption>
+  <BaseQuizOption value="D">The length of the slice</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    When using `range` with a slice, it returns two values: the index (position) and the value at that index. You can use `_` to ignore either value if you don't need it.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Control Statements: `break` / `continue`
 
 Управление потоком выполнения цикла.
 
 ```go
-// Выход из цикла
+// Break out of loop
 for i := 0; i < 10; i++ {
     if i == 5 {
         break
     }
     fmt.Println(i)
 }
-// Пропуск текущей итерации
+// Skip current iteration
 for i := 0; i < 5; i++ {
     if i == 2 {
         continue
@@ -243,22 +273,37 @@ for i := 0; i < 5; i++ {
 }
 ```
 
-## Функции
+<BaseQuiz id="golang-control-1" correct="C">
+  <template #question>
+    What is the difference between `break` and `continue` in Go loops?
+  </template>
+  
+  <BaseQuizOption value="A">There is no difference</BaseQuizOption>
+  <BaseQuizOption value="B">break skips the current iteration, continue exits the loop</BaseQuizOption>
+  <BaseQuizOption value="C" correct>break exits the loop completely, continue skips to the next iteration</BaseQuizOption>
+  <BaseQuizOption value="D">Both exit the loop</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `break` immediately exits the loop and continues execution after the loop. `continue` skips the rest of the current iteration and moves to the next iteration of the loop.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-### Объявление Функции: `func`
+## Functions
+
+### Function Declaration: `func`
 
 Определение функций с параметрами и возвращаемыми значениями.
 
 ```go
-// Базовая функция
+// Basic function
 func greet(name string) {
     fmt.Printf("Hello, %s!\n", name)
 }
-// Функция с возвращаемым значением
+// Function with return value
 func add(a, b int) int {
     return a + b
 }
-// Множественные возвращаемые значения
+// Multiple return values
 func divide(a, b float64) (float64, error) {
     if b == 0 {
         return 0, errors.New("division by zero")
@@ -267,18 +312,18 @@ func divide(a, b float64) (float64, error) {
 }
 ```
 
-### Именованные Возвращаемые Значения и Вариативные Функции
+### Named Returns & Variadic Functions
 
 Расширенные возможности функций и шаблоны.
 
 ```go
-// Именованные возвращаемые значения
+// Named return values
 func split(sum int) (x, y int) {
     x = sum * 4 / 9
     y = sum - x
-    return // голый возврат
+    return // naked return
 }
-// Вариативная функция
+// Variadic function
 func sum(nums ...int) int {
     total := 0
     for _, num := range nums {
@@ -286,25 +331,25 @@ func sum(nums ...int) int {
     }
     return total
 }
-// Использование
+// Usage
 result := sum(1, 2, 3, 4, 5)
 ```
 
-### Типы Функций и Замыкания (Closures)
+### Function Types & Closures
 
-Функции как объекты первого класса в Go.
+Функции как первоклассные объекты в Go.
 
 ```go
-// Функция как переменная
+// Function as variable
 var multiply func(int, int) int
 multiply = func(a, b int) int {
     return a * b
 }
-// Анонимная функция
+// Anonymous function
 square := func(x int) int {
     return x * x
 }
-// Замыкание
+// Closure
 func counter() func() int {
     count := 0
     return func() int {
@@ -312,13 +357,13 @@ func counter() func() int {
         return count
     }
 }
-// Использование
+// Usage
 c := counter()
 fmt.Println(c()) // 1
 fmt.Println(c()) // 2
 ```
 
-### Оператор Defer
+### Defer Statement
 
 Отложить выполнение функций до возврата окружающей функции.
 
@@ -328,96 +373,96 @@ func processFile(filename string) {
     if err != nil {
         log.Fatal(err)
     }
-    defer file.Close() // Выполняется при возврате функции
+    defer file.Close() // Executed when function returns
 
-    // Обработка содержимого файла
-    // file.Close() будет вызван автоматически
+    // Process file contents
+    // file.Close() will be called automatically
 }
 ```
 
-## Структуры Данных
+## Data Structures
 
-### Массивы и Срезы (Arrays & Slices)
+### Arrays & Slices
 
 Фиксированные и динамические последовательности элементов.
 
 ```go
-// Массивы (фиксированный размер)
+// Arrays (fixed size)
 var arr [5]int = [5]int{1, 2, 3, 4, 5}
 shortArr := [3]string{"a", "b", "c"}
-// Срезы (динамические)
+// Slices (dynamic)
 var slice []int
 slice = append(slice, 1, 2, 3)
-// Создать срез с емкостью
-numbers := make([]int, 5, 10) // длина 5, емкость 10
-// Операции со срезами
+// Make slice with capacity
+numbers := make([]int, 5, 10) // length 5, capacity 10
+// Slice operations
 slice2 := slice[1:3]  // [2, 3]
-copy(slice2, slice)   // Копировать элементы
+copy(slice2, slice)   // Copy elements
 ```
 
-### Карты (Maps)
+### Maps
 
 Пары ключ-значение для эффективного поиска.
 
 ```go
-// Объявление и инициализация карты
+// Map declaration and initialization
 var m map[string]int
 m = make(map[string]int)
-// Короткое объявление
+// Short declaration
 ages := map[string]int{
     "Alice": 30,
     "Bob":   25,
     "Carol": 35,
 }
-// Операции с картой
-ages["David"] = 40        // Добавить/обновить
-delete(ages, "Bob")       // Удалить
-age, exists := ages["Alice"] // Проверить существование
+// Map operations
+ages["David"] = 40        // Add/update
+delete(ages, "Bob")       // Delete
+age, exists := ages["Alice"] // Check existence
 ```
 
-### Структуры (Structs)
+### Structs
 
 Группировка связанных данных с пользовательскими типами.
 
 ```go
-// Определение структуры
+// Struct definition
 type Person struct {
     Name    string
     Age     int
     Email   string
 }
-// Создание экземпляров структуры
+// Create struct instances
 p1 := Person{
     Name:  "Alice",
     Age:   30,
     Email: "alice@example.com",
 }
 p2 := Person{"Bob", 25, "bob@example.com"}
-// Доступ к полям
+// Access fields
 fmt.Println(p1.Name)
 p1.Age = 31
 ```
 
-### Указатели (Pointers)
+### Pointers
 
 Ссылки на адреса памяти переменных.
 
 ```go
-// Объявление указателя
+// Pointer declaration
 var p *int
 num := 42
-p = &num  // Адрес num
-// Разыменование
-fmt.Println(*p) // Значение по адресу (42)
-*p = 100        // Изменить значение через указатель
-// Указатели со структурами
+p = &num  // Address of num
+// Dereferencing
+fmt.Println(*p) // Value at address (42)
+*p = 100        // Change value through pointer
+// Pointers with structs
 person := &Person{Name: "Alice", Age: 30}
-person.Age = 31  // Автоматическое разыменование
+person.Age = 31  // Automatic dereferencing
 ```
 
-## Методы и Интерфейсы
+## Methods & Interfaces
 
-### Методы
+### Methods
 
 Привязка функциональности к пользовательским типам.
 
@@ -425,58 +470,58 @@ person.Age = 31  // Автоматическое разыменование
 type Rectangle struct {
     Width, Height float64
 }
-// Метод с получателем (receiver)
+// Method with receiver
 func (r Rectangle) Area() float64 {
     return r.Width * r.Height
 }
-// Метод с указателем-получателем (может изменять)
+// Pointer receiver (can modify)
 func (r *Rectangle) Scale(factor float64) {
     r.Width *= factor
     r.Height *= factor
 }
-// Использование
+// Usage
 rect := Rectangle{Width: 10, Height: 5}
 fmt.Println(rect.Area()) // 50
-rect.Scale(2)            // Изменяет rect
+rect.Scale(2)            // Modifies rect
 ```
 
-### Интерфейсы
+### Interfaces
 
 Определение контрактов, которым должны соответствовать типы.
 
 ```go
-// Определение интерфейса
+// Interface definition
 type Shape interface {
     Area() float64
     Perimeter() float64
 }
-// Реализация интерфейса для Rectangle
+// Implement interface for Rectangle
 func (r Rectangle) Perimeter() float64 {
     return 2 * (r.Width + r.Height)
 }
-// Rectangle теперь реализует интерфейс Shape
+// Rectangle now implements Shape interface
 func printShapeInfo(s Shape) {
     fmt.Printf("Area: %.2f, Perimeter: %.2f\n",
                s.Area(), s.Perimeter())
 }
 ```
 
-### Пустой Интерфейс и Приведение Типов (Type Assertions)
+### Empty Interface & Type Assertions
 
 Работа со значениями неизвестных типов.
 
 ```go
-// Пустой интерфейс может хранить любое значение
+// Empty interface can hold any value
 var i interface{}
 i = 42
 i = "hello"
 i = []int{1, 2, 3}
-// Приведение типа
+// Type assertion
 str, ok := i.(string)
 if ok {
     fmt.Printf("String value: %s\n", str)
 }
-// Переключатель типов (Type switch)
+// Type switch
 switch v := i.(type) {
 case int:
     fmt.Printf("Integer: %d\n", v)
@@ -487,7 +532,7 @@ default:
 }
 ```
 
-### Встраивание (Embedding)
+### Embedding
 
 Компоновка типов путем встраивания других типов.
 
@@ -497,36 +542,36 @@ type Person struct {
     Age  int
 }
 type Employee struct {
-    Person    // Встроенная структура
+    Person    // Embedded struct
     Company   string
     Salary    float64
 }
-// Использование
+// Usage
 emp := Employee{
     Person:  Person{Name: "Alice", Age: 30},
     Company: "TechCorp",
     Salary:  75000,
 }
-// Прямой доступ к полям встроенного типа
+// Access embedded fields directly
 fmt.Println(emp.Name) // "Alice"
 ```
 
-## Обработка Ошибок
+## Error Handling
 
-### Базовая Обработка Ошибок
+### Basic Error Handling
 
-Использование встроенного интерфейса error для обработки ошибок.
+Использование встроенного интерфейса `error` для обработки ошибок.
 
 ```go
 import "errors"
-// Функция, возвращающая ошибку
+// Function that returns an error
 func divide(a, b float64) (float64, error) {
     if b == 0 {
         return 0, errors.New("division by zero")
     }
     return a / b, nil
 }
-// Проверка ошибок
+// Error checking
 result, err := divide(10, 2)
 if err != nil {
     log.Fatal(err)
@@ -534,12 +579,12 @@ if err != nil {
 fmt.Printf("Result: %.2f\n", result)
 ```
 
-### Пользовательские Ошибки
+### Custom Errors
 
 Создание пользовательских типов ошибок для специфических условий.
 
 ```go
-// Пользовательский тип ошибки
+// Custom error type
 type ValidationError struct {
     Field   string
     Message string
@@ -548,7 +593,7 @@ func (e ValidationError) Error() string {
     return fmt.Sprintf("validation error in %s: %s",
                        e.Field, e.Message)
 }
-// Функция, использующая пользовательскую ошибку
+// Function using custom error
 func validateAge(age int) error {
     if age < 0 {
         return ValidationError{
@@ -560,13 +605,13 @@ func validateAge(age int) error {
 }
 ```
 
-### Оборачивание Ошибок (Error Wrapping)
+### Error Wrapping
 
 Добавление контекста к ошибкам с сохранением исходной ошибки.
 
 ```go
 import "fmt"
-// Оборачивание ошибки с дополнительным контекстом
+// Wrap an error with additional context
 func processFile(filename string) error {
     file, err := os.Open(filename)
     if err != nil {
@@ -575,10 +620,10 @@ func processFile(filename string) error {
     }
     defer file.Close()
 
-    // Обработка файла...
+    // Process file...
     return nil
 }
-// Разворачивание ошибок
+// Unwrap errors
 err := processFile("missing.txt")
 if err != nil {
     var pathErr *os.PathError
@@ -588,12 +633,12 @@ if err != nil {
 }
 ```
 
-### Panic и Recovery
+### Panic & Recovery
 
-Обработка исключительных ситуаций с помощью panic и recover.
+Обработка исключительных ситуаций с помощью `panic` и `recover`.
 
 ```go
-// Функция, которая может вызвать panic
+// Function that might panic
 func riskyOperation() {
     defer func() {
         if r := recover(); r != nil {
@@ -601,14 +646,14 @@ func riskyOperation() {
         }
     }()
 
-    // Это вызовет panic
+    // This will cause a panic
     panic("something went wrong!")
 }
-// Использование
-riskyOperation() // Программа продолжает работу после panic
+// Usage
+riskyOperation() // Program continues after panic
 ```
 
-## Параллелизм (Concurrency)
+## Concurrency
 
 ### Goroutines
 
@@ -616,71 +661,71 @@ riskyOperation() // Программа продолжает работу пос�
 
 ```go
 import "time"
-// Простая goroutine
+// Simple goroutine
 func sayHello() {
     fmt.Println("Hello from goroutine!")
 }
 func main() {
-    // Запуск goroutine
+    // Start goroutine
     go sayHello()
 
-    // Анонимная goroutine
+    // Anonymous goroutine
     go func() {
         fmt.Println("Anonymous goroutine")
     }()
 
-    // Ожидание завершения goroutines
+    // Wait for goroutines to finish
     time.Sleep(time.Second)
 }
 ```
 
-### Каналы (Channels)
+### Channels
 
-Обмен данными между goroutines с использованием каналов.
+Обмен данными между горутинами с использованием каналов.
 
 ```go
-// Создание канала
+// Create channel
 ch := make(chan int)
-// Буферизованный канал
+// Buffered channel
 buffered := make(chan string, 3)
-// Отправка и получение
+// Send and receive
 go func() {
-    ch <- 42  // Отправить значение
+    ch <- 42  // Send value
 }()
-value := <-ch  // Получить значение
-// Закрытие канала
+value := <-ch  // Receive value
+// Close channel
 close(ch)
 ```
 
-### Шаблоны Каналов
+### Channel Patterns
 
 Общие шаблоны для коммуникации по каналам.
 
 ```go
-// Шаблон Рабочий (Worker)
+// Worker pattern
 func worker(id int, jobs <-chan int, results chan<- int) {
     for job := range jobs {
         fmt.Printf("Worker %d processing job %d\n", id, job)
         results <- job * 2
     }
 }
-// Шаблон Распределение (Fan-out)
+// Fan-out pattern
 jobs := make(chan int, 100)
 results := make(chan int, 100)
-// Запуск рабочих
+// Start workers
 for w := 1; w <= 3; w++ {
     go worker(w, jobs, results)
 }
-// Отправка заданий
+// Send jobs
 for j := 1; j <= 5; j++ {
     jobs <- j
 }
 close(jobs)
 ```
 
-### Оператор Select
+### Select Statement
 
-Обработка нескольких канальных операций одновременно.
+Обработка нескольких операций с каналами одновременно.
 
 ```go
 func main() {
@@ -697,7 +742,7 @@ func main() {
         ch2 <- "from ch2"
     }()
 
-    // Выбрать первый доступный канал
+    // Select first available channel
     select {
     case msg1 := <-ch1:
         fmt.Println(msg1)
@@ -709,9 +754,9 @@ func main() {
 }
 ```
 
-## Файловый Ввод/Вывод и JSON
+## File I/O & JSON
 
-### Файловые Операции
+### File Operations
 
 Чтение и запись файлов с использованием различных методов.
 
@@ -720,16 +765,16 @@ import (
     "io/ioutil"
     "os"
 )
-// Чтение всего файла
+// Read entire file
 data, err := ioutil.ReadFile("file.txt")
 if err != nil {
     log.Fatal(err)
 }
 content := string(data)
-// Запись в файл
+// Write to file
 text := "Hello, World!"
 err = ioutil.WriteFile("output.txt", []byte(text), 0644)
-// Открытие файла с большим контролем
+// Open file with more control
 file, err := os.Open("data.txt")
 if err != nil {
     log.Fatal(err)
@@ -737,21 +782,21 @@ if err != nil {
 defer file.Close()
 ```
 
-### Обработка CSV
+### CSV Handling
 
-Чтение и запись CSV файлов.
+Чтение и запись CSV-файлов.
 
 ```go
 import (
     "encoding/csv"
     "os"
 )
-// Чтение CSV
+// Read CSV
 file, _ := os.Open("data.csv")
 defer file.Close()
 reader := csv.NewReader(file)
 records, _ := reader.ReadAll()
-// Запись CSV
+// Write CSV
 file, _ = os.Create("output.csv")
 defer file.Close()
 writer := csv.NewWriter(file)
@@ -760,52 +805,52 @@ writer.Write([]string{"Name", "Age", "City"})
 writer.Write([]string{"Alice", "30", "NYC"})
 ```
 
-### Обработка JSON
+### JSON Processing
 
-Кодирование и декодирование данных JSON.
+Кодирование и декодирование JSON-данных.
 
 ```go
 import "encoding/json"
-// Структура для сопоставления с JSON
+// Struct for JSON mapping
 type Person struct {
     Name  string `json:"name"`
     Age   int    `json:"age"`
     Email string `json:"email,omitempty"`
 }
-// Маршалирование (Go в JSON)
+// Marshal (Go to JSON)
 person := Person{Name: "Alice", Age: 30}
 jsonData, err := json.Marshal(person)
 if err != nil {
     log.Fatal(err)
 }
-// Размаршалирование (JSON в Go)
+// Unmarshal (JSON to Go)
 var p Person
 err = json.Unmarshal(jsonData, &p)
 ```
 
-### HTTP Запросы
+### HTTP Requests
 
 Выполнение HTTP-запросов и обработка ответов.
 
 ```go
 import "net/http"
-// GET запрос
+// GET request
 resp, err := http.Get("https://api.github.com/users/octocat")
 if err != nil {
     log.Fatal(err)
 }
 defer resp.Body.Close()
 body, _ := ioutil.ReadAll(resp.Body)
-// POST запрос с JSON
+// POST request with JSON
 jsonData := []byte(`{"name":"Alice","age":30}`)
 resp, err = http.Post("https://api.example.com/users",
                       "application/json",
                       bytes.NewBuffer(jsonData))
 ```
 
-## Тестирование
+## Testing
 
-### Модульное Тестирование: `go test`
+### Unit Testing: `go test`
 
 Написание и запуск тестов с использованием фреймворка тестирования Go.
 
@@ -826,12 +871,12 @@ func TestAdd(t *testing.T) {
         t.Errorf("Add(2, 3) = %d; want %d", result, expected)
     }
 }
-// Запуск тестов
+// Run tests
 // go test
-// go test -v (подробный)
+// go test -v (verbose)
 ```
 
-### Табличные Тесты (Table-Driven Tests)
+### Table-Driven Tests
 
 Эффективное тестирование нескольких случаев.
 
@@ -858,7 +903,7 @@ func TestAddMultiple(t *testing.T) {
 }
 ```
 
-### Бенчмаркинг (Benchmarking)
+### Benchmarking
 
 Измерение производительности функций.
 
@@ -868,12 +913,12 @@ func BenchmarkAdd(b *testing.B) {
         Add(2, 3)
     }
 }
-// Запуск бенчмарков
+// Run benchmarks
 // go test -bench=.
 // go test -bench=BenchmarkAdd -benchmem
 ```
 
-### Тесты-Примеры (Example Tests)
+### Example Tests
 
 Создание исполняемых примеров, служащих документацией.
 
@@ -889,31 +934,31 @@ func ExampleAdd_negative() {
     fmt.Printf("(-1) + (-2) = %d", result)
     // Output: (-1) + (-2) = -3
 }
-// Запуск примеров
+// Run examples
 // go test -run Example
 ```
 
-## Go Модули и Пакеты
+## Go Modules & Packages
 
-### Управление Модулями
+### Module Management
 
 Инициализация и управление модулями Go для управления зависимостями.
 
 ```bash
-# Инициализировать новый модуль
+# Initialize new module
 go mod init github.com/username/project
-# Добавить зависимости
+# Add dependencies
 go get github.com/gorilla/mux
-go get -u github.com/gin-gonic/gin  # Обновить до последней версии
-# Удалить неиспользуемые зависимости
+go get -u github.com/gin-gonic/gin  # Update to latest
+# Remove unused dependencies
 go mod tidy
-# Загрузить зависимости
+# Download dependencies
 go mod download
-# Локально закешировать зависимости
+# Vendor dependencies locally
 go mod vendor
 ```
 
-### Файл go.mod
+### go.mod File
 
 Понимание файла определения модуля.
 
@@ -930,12 +975,12 @@ require (
 )
 ```
 
-### Создание Пакетов
+### Creating Packages
 
 Структурирование кода в многократно используемые пакеты.
 
 ```go
-// Структура пакета
+// Package structure
 // myproject/
 //   ├── go.mod
 //   ├── main.go
@@ -944,11 +989,11 @@ require (
 //       └── string.go
 // utils/math.go
 package utils
-// Экспортируемая функция (начинается с заглавной буквы)
+// Exported function (starts with capital letter)
 func Add(a, b int) int {
     return a + b
 }
-// Приватная функция (начинается с маленькой буквы)
+// Private function (starts with lowercase)
 func multiply(a, b int) int {
     return a * b
 }
@@ -964,33 +1009,33 @@ func main() {
 }
 ```
 
-### Общие Команды Go
+### Common Go Commands
 
 Основные команды для разработки на Go.
 
 ```bash
-# Запустить программу Go
+# Run Go program
 go run main.go
-# Скомпилировать исполняемый файл
+# Build executable
 go build
-go build -o myapp  # Пользовательское имя
-# Установить бинарный файл в GOPATH/bin
+go build -o myapp  # Custom name
+# Install binary to GOPATH/bin
 go install
-# Отформатировать код
+# Format code
 go fmt ./...
-# Проверить код на наличие проблем
+# Vet code for issues
 go vet ./...
-# Очистить кэш сборки
+# Clean build cache
 go clean -cache
 ```
 
-## Соответствующие Ссылки
+## Relevant Links
 
-- <router-link to="/linux">Шпаргалка по Linux</router-link>
-- <router-link to="/shell">Шпаргалка по Shell</router-link>
-- <router-link to="/devops">Шпаргалка по DevOps</router-link>
-- <router-link to="/docker">Шпаргалка по Docker</router-link>
-- <router-link to="/kubernetes">Шпаргалка по Kubernetes</router-link>
-- <router-link to="/python">Шпаргалка по Python</router-link>
-- <router-link to="/javascript">Шпаргалка по JavaScript</router-link>
-- <router-link to="/java">Шпаргалка по Java</router-link>
+- <router-link to="/linux">Linux Cheatsheet</router-link>
+- <router-link to="/shell">Shell Cheatsheet</router-link>
+- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/docker">Docker Cheatsheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
+- <router-link to="/python">Python Cheatsheet</router-link>
+- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
+- <router-link to="/java">Java Cheatsheet</router-link>

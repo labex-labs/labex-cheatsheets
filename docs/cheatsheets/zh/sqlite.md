@@ -1,6 +1,6 @@
 ---
-title: 'SQLite 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，快速掌握 SQLite。'
+title: 'SQLite 速查表 | LabEx'
+description: '使用此综合速查表学习 SQLite 数据库。SQLite SQL 语法、事务、触发器、视图和轻量级应用数据库管理的快速参考。'
 pdfUrl: '/cheatsheets/pdf/sqlite-cheatsheet.pdf'
 ---
 
@@ -32,7 +32,7 @@ sqlite3 mydata.db
 sqlite3 :memory:
 # 使用命令创建数据库
 .open mydata.db
-# 显示所有数据库
+# 显示所有已连接的数据库
 .databases
 # 显示所有表的结构
 .schema
@@ -86,7 +86,7 @@ DETACH DATABASE backup;
 
 ### 创建表：`CREATE TABLE`
 
-使用列和约束创建一个新的数据库表。
+使用列和约束创建一个新表。
 
 ```sql
 -- 基本表创建
@@ -106,6 +106,21 @@ CREATE TABLE orders (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 ```
+
+<BaseQuiz id="sqlite-create-table-1" correct="A">
+  <template #question>
+    `INTEGER PRIMARY KEY AUTOINCREMENT` 在 SQLite 中做什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>创建一个自动递增的整数主键</BaseQuizOption>
+  <BaseQuizOption value="B">创建一个文本主键</BaseQuizOption>
+  <BaseQuizOption value="C">创建一个外键约束</BaseQuizOption>
+  <BaseQuizOption value="D">创建一个唯一索引</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INTEGER PRIMARY KEY AUTOINCREMENT` 创建一个整数列，它为新行自动递增，并作为主键。这确保了每行都有一个唯一的标识符。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 数据类型：`INTEGER`, `TEXT`, `REAL`, `BLOB`
 
@@ -141,7 +156,7 @@ CREATE TABLE employees (
 
 ### 插入数据：`INSERT INTO`
 
-使用单行或多行语句向表中添加新记录。
+添加单行或多行新记录到表中。
 
 ```sql
 -- 插入单条记录
@@ -177,9 +192,24 @@ UPDATE products SET price = price * 1.1
 WHERE category = 'Electronics';
 ```
 
+<BaseQuiz id="sqlite-update-1" correct="D">
+  <template #question>
+    如果在 UPDATE 语句中忘记了 WHERE 子句会发生什么？
+  </template>
+  
+  <BaseQuizOption value="A">更新失败</BaseQuizOption>
+  <BaseQuizOption value="B">只有第一行被更新</BaseQuizOption>
+  <BaseQuizOption value="C">什么也不会发生</BaseQuizOption>
+  <BaseQuizOption value="D" correct>表中的所有行都被更新</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    如果没有 WHERE 子句，UPDATE 语句将修改表中的所有行。务必使用 WHERE 来指定要更新的行，以避免意外更改不需要的数据。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 删除数据：`DELETE FROM`
 
-根据指定条件从表中删除记录。
+根据指定的条件从表中删除记录。
 
 ```sql
 -- 删除特定记录
@@ -195,23 +225,38 @@ WHERE user_id IN (SELECT id FROM users WHERE active = 0);
 
 ### Upsert: `INSERT OR REPLACE`
 
-根据冲突情况插入新记录或更新现有记录。
+根据冲突插入新记录或更新现有记录。
 
 ```sql
 -- 冲突时插入或替换
 INSERT OR REPLACE INTO users (id, name, email)
 VALUES (1, 'Updated Name', 'updated@email.com');
 
--- 冲突时忽略
+-- 冲突时插入或忽略
 INSERT OR IGNORE INTO users (name, email)
 VALUES ('Duplicate', 'existing@email.com');
 ```
+
+<BaseQuiz id="sqlite-upsert-1" correct="A">
+  <template #question>
+    `INSERT OR REPLACE` 和 `INSERT OR IGNORE` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A" correct>REPLACE 更新现有行，IGNORE 跳过重复项</BaseQuizOption>
+  <BaseQuizOption value="B">没有区别</BaseQuizOption>
+  <BaseQuizOption value="C">REPLACE 删除该行，IGNORE 更新它</BaseQuizOption>
+  <BaseQuizOption value="D">REPLACE 用于表，IGNORE 用于视图</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    如果存在冲突（例如主键重复），`INSERT OR REPLACE` 将替换现有行。如果存在冲突，`INSERT OR IGNORE` 将简单地跳过插入，保持现有行不变。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 数据查询与选择
 
 ### 基本查询：`SELECT`
 
-使用带有各种选项的 SELECT 语句查询表数据。
+使用带有各种选项的 SELECT 语句查询表中的数据。
 
 ```sql
 -- 选择所有列
@@ -226,6 +271,21 @@ SELECT name AS full_name, age AS years_old FROM users;
 -- 选择唯一值
 SELECT DISTINCT department FROM employees;
 ```
+
+<BaseQuiz id="sqlite-select-1" correct="B">
+  <template #question>
+    `SELECT DISTINCT` 做什么？
+  </template>
+  
+  <BaseQuizOption value="A">选择所有行</BaseQuizOption>
+  <BaseQuizOption value="B" correct>仅返回唯一值，去除重复项</BaseQuizOption>
+  <BaseQuizOption value="C">仅选择第一行</BaseQuizOption>
+  <BaseQuizOption value="D">对结果进行排序</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SELECT DISTINCT` 从结果集中消除重复的行，只返回唯一值。当你想查看某一列中所有唯一值时，这很有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 过滤：`WHERE`
 
@@ -256,13 +316,13 @@ SELECT * FROM users ORDER BY age;
 -- 降序排序
 SELECT * FROM users ORDER BY age DESC;
 
--- 多重排序字段
+-- 多重排序
 SELECT * FROM users ORDER BY department, salary DESC;
 
 -- 限制结果
 SELECT * FROM users LIMIT 10;
 
--- 限制带偏移量（分页）
+-- 带偏移量的限制（分页）
 SELECT * FROM users LIMIT 10 OFFSET 20;
 ```
 
@@ -286,7 +346,7 @@ SELECT MIN(age), MAX(age) FROM users;
 
 ### 分组：`GROUP BY` / `HAVING`
 
-按指定标准对行进行分组，并过滤组以生成汇总报告。
+按指定标准对行进行分组，并过滤组以进行汇总报告。
 
 ```sql
 -- 按单列分组
@@ -308,7 +368,7 @@ HAVING avg_salary > 60000;
 
 ### 子查询
 
-使用嵌套查询来实现复杂的数据检索和条件逻辑。
+使用嵌套查询进行复杂的数据检索和条件逻辑。
 
 ```sql
 -- 在 WHERE 子句中使用子查询
@@ -353,7 +413,7 @@ LEFT JOIN employees e2 ON e1.manager_id = e2.id;
 
 ### 集合操作：`UNION` / `INTERSECT`
 
-使用集合操作组合来自多个查询的结果。
+使用集合操作组合多个查询的结果。
 
 ```sql
 -- Union（合并结果）
@@ -366,7 +426,7 @@ SELECT email FROM users
 INTERSECT
 SELECT email FROM newsletter_subscribers;
 
--- Except（差异）
+-- Except（差集）
 SELECT email FROM users
 EXCEPT
 SELECT email FROM unsubscribed;
@@ -396,8 +456,8 @@ CREATE INDEX idx_active_users ON users(name) WHERE active = 1;
 
 分析查询执行计划以识别性能瓶颈。
 
-```sql
--- 分析查询性能
+```bash
+# 分析查询性能
 EXPLAIN QUERY PLAN SELECT * FROM users WHERE email = 'test@example.com';
 
 -- 检查索引是否被使用
@@ -406,10 +466,10 @@ EXPLAIN QUERY PLAN SELECT * FROM orders WHERE user_id = 123;
 
 ### 数据库优化：`VACUUM` / `ANALYZE`
 
-优化数据库文件并更新统计信息以提高性能。
+优化数据库文件并更新统计信息以获得更好的性能。
 
-```sql
--- 重建数据库以回收空间
+```bash
+# 重建数据库以回收空间
 VACUUM;
 
 -- 更新索引统计信息
@@ -433,7 +493,7 @@ PRAGMA synchronous = NORMAL;
 -- 启用外键约束
 PRAGMA foreign_keys = ON;
 
--- 设置缓存大小（页数）
+-- 设置缓存大小（以页为单位）
 PRAGMA cache_size = 10000;
 ```
 
@@ -441,7 +501,7 @@ PRAGMA cache_size = 10000;
 
 ### 视图：`CREATE VIEW`
 
-创建表示存储查询的虚拟表，用于可重用的数据访问。
+创建代表存储查询的虚拟表，用于可重用的数据访问。
 
 ```sql
 -- 创建一个简单视图
@@ -450,7 +510,7 @@ SELECT id, name, email
 FROM users
 WHERE active = 1;
 
--- 复杂的带连接的视图
+-- 复杂视图带连接
 CREATE VIEW order_summary AS
 SELECT
     u.name,
@@ -481,14 +541,14 @@ SELECT * FROM order_summary WHERE total_spent > 1000;
 自动执行代码以响应数据库事件。
 
 ```sql
--- INSERT 上的触发器
+-- INSERT 触发器
 CREATE TRIGGER update_user_count
 AFTER INSERT ON users
 BEGIN
     UPDATE stats SET user_count = user_count + 1;
 END;
 
--- UPDATE 上的触发器
+-- UPDATE 触发器
 CREATE TRIGGER log_salary_changes
 AFTER UPDATE OF salary ON employees
 BEGIN
@@ -504,7 +564,7 @@ DROP TRIGGER IF EXISTS update_user_count;
 
 ### 日期与时间函数
 
-使用 SQLite 的内置函数处理日期和时间操作。
+使用 SQLite 内置函数处理日期和时间操作。
 
 ```sql
 -- 当前日期/时间
@@ -581,7 +641,7 @@ WHERE CASE WHEN category = 'Electronics' THEN price < 1000
 
 ### 事务控制
 
-SQLite 事务完全符合 ACID，可实现可靠的数据操作。
+SQLite 事务完全符合 ACID，确保可靠的数据操作。
 
 ```sql
 -- 基本事务
@@ -596,7 +656,7 @@ DELETE FROM orders WHERE amount < 10;
 -- 检查结果，如有需要则回滚
 ROLLBACK;
 
--- 用于嵌套事务的保存点
+-- 保存点用于嵌套事务
 BEGIN;
 SAVEPOINT sp1;
 INSERT INTO products (name) VALUES ('Product A');
@@ -608,14 +668,14 @@ COMMIT;
 
 管理数据库锁定和并发访问以确保数据完整性。
 
-```sql
--- 检查锁定状态
+```bash
+# 检查锁定状态
 PRAGMA locking_mode;
 
 -- 设置 WAL 模式以获得更好的并发性
 PRAGMA journal_mode = WAL;
 
--- 忙等待超时以等待锁
+-- 锁等待超时
 PRAGMA busy_timeout = 5000;
 
 -- 检查当前数据库连接
@@ -626,7 +686,7 @@ PRAGMA busy_timeout = 5000;
 
 ### 数据库命令：`.help`
 
-访问 SQLite 命令行帮助和文档，了解可用的点命令。
+访问 SQLite 命令行帮助和可用点命令的文档。
 
 ```bash
 # 显示所有可用命令
@@ -640,7 +700,7 @@ PRAGMA busy_timeout = 5000;
 
 ### 导入/导出：`.import` / `.export`
 
-在 SQLite 和外部文件之间以各种格式传输数据。
+在 SQLite 和外部文件之间传输各种格式的数据。
 
 ```bash
 # 导入 CSV 文件
@@ -749,8 +809,8 @@ PRAGMA integrity_check;
 
 ```bash
 # 从 sqlite.org 下载
-# 对于 Windows: sqlite-tools-win32-x86-*.zip
-# 对于 Linux/Mac: 使用包管理器
+# Windows: sqlite-tools-win32-x86-*.zip
+# Linux/Mac: 使用包管理器
 
 # Ubuntu/Debian
 sudo apt-get install sqlite3
@@ -783,7 +843,7 @@ VALUES ('John Doe', 'john@example.com');
 
 ### 编程语言集成
 
-通过内置或第三方库在各种编程语言中使用 SQLite。
+使用内置或第三方库在各种编程语言中使用 SQLite。
 
 ```python
 # Python (内置 sqlite3 模块)

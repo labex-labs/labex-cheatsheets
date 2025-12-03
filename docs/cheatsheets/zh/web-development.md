@@ -1,6 +1,6 @@
 ---
-title: 'Web 开发速查表'
-description: '使用我们涵盖关键命令、概念和最佳实践的综合速查表，学习 Web 开发。'
+title: 'Web 开发速查表 | LabEx'
+description: '使用本综合速查表学习 Web 开发。HTML、CSS、JavaScript、API、响应式设计、性能优化和全栈开发要点的快速参考。'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Web 开发速查表
 <a target="_blank" href="https://labex.io/zh/learn/web-development">通过实践实验室学习 Web 开发</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 Web 开发。LabEx 提供全面的 Web 开发课程，涵盖基本的 HTML、CSS、JavaScript、DOM 操作和响应式设计。掌握构建具有交互性和响应性的网站所需的现代 Web 开发工作流程。
+通过实践实验室和真实场景学习 Web 开发。LabEx 提供全面的 Web 开发课程，涵盖基本的 HTML、CSS、JavaScript、DOM 操作和响应式设计。掌握构建交互式和响应式网站所需的现代 Web 开发工作流程。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -65,16 +65,31 @@ Web 开发速查表
 </footer>
 ```
 
+<BaseQuiz id="webdev-semantic-1" correct="B">
+  <template #question>
+    使用 `header`、`main` 和 `footer` 等语义化 HTML 元素的主要好处是什么？
+  </template>
+  
+  <BaseQuizOption value="A">它们使页面加载速度更快</BaseQuizOption>
+  <BaseQuizOption value="B" correct>它们通过为结构提供意义来提高可访问性和 SEO</BaseQuizOption>
+  <BaseQuizOption value="C">它们会自动为页面设置样式</BaseQuizOption>
+  <BaseQuizOption value="D">它们是 JavaScript 工作的必需条件</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    语义化 HTML 元素为文档结构提供了意义，使屏幕阅读器、搜索引擎和开发人员更容易理解内容组织。这提高了可访问性和 SEO。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 文本元素：`<h1>` 到 `<h6>` / `<p>`
 
-使用正确的标题层级和段落来构建内容结构。
+使用正确的标题层级和段落来构建内容。
 
 ```html
 <h1>主标题</h1>
 <h2>章节标题</h2>
 <h3>子章节</h3>
-<p>这是一个带有<strong>粗体文本</strong>和<em>斜体文本</em>的段落。</p>
-<p>另一个带有<a href="https://example.com">链接</a>的段落。</p>
+<p>这是一个包含<strong>粗体文本</strong>和<em>斜体文本</em>的段落。</p>
+<p>另一个包含<a href="https://example.com">链接</a>的段落。</p>
 ```
 
 ### 列表：`<ul>` / `<ol>` / `<li>`
@@ -144,7 +159,7 @@ Web 开发速查表
 
 ### 表单结构：`<form>`
 
-为用户输入和控件创建容器。
+创建用户输入和控件的容器。
 
 ```html
 <form action="/submit" method="POST">
@@ -175,7 +190,7 @@ Web 开发速查表
 
 ### 表单控件：`<select>` / `<textarea>`
 
-为用户提供各种输入信息的方式。
+提供各种方式让用户输入信息。
 
 ```html
 <select name="country" id="country">
@@ -196,7 +211,7 @@ Web 开发速查表
 
 ### CSS 选择器：`element` / `.class` / `#id`
 
-使用不同类型的选择器定位 HTML 元素以进行样式设置。
+使用不同类型的选择器来定位 HTML 元素以进行样式设置。
 
 ```css
 /* 元素选择器 */
@@ -223,9 +238,9 @@ h1 {
 }
 ```
 
-### 盒模型：`margin` / `padding` / `border`
+### 盒子模型：`margin` / `padding` / `border`
 
-使用 CSS 盒模型控制间距和布局。
+使用 CSS 盒子模型控制间距和布局。
 
 ```css
 .box {
@@ -239,10 +254,25 @@ h1 {
 /* 简写属性 */
 .element {
   margin: 10px 20px; /* 上/下 左/右 */
-  padding: 10px 15px 20px 25px; /* 上 右下 左 */
+  padding: 10px 15px 20px 25px; /* 上 右 下 左 */
   border-radius: 5px; /* 圆角 */
 }
 ```
+
+<BaseQuiz id="webdev-boxmodel-1" correct="B">
+  <template #question>
+    CSS 中的 `margin` 和 `padding` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">没有区别</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Margin 是元素外部的空间，padding 是元素内部的空间</BaseQuizOption>
+  <BaseQuizOption value="C">Margin 用于水平间距，padding 用于垂直间距</BaseQuizOption>
+  <BaseQuizOption value="D">Margin 用于边框，padding 用于内容</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Margin 在元素边框外部创建空间（元素之间），而 padding 在元素内部内容和边框之间创建空间。两者都影响间距，但区域不同。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Flexbox: `display: flex`
 
@@ -267,6 +297,21 @@ h1 {
 }
 ```
 
+<BaseQuiz id="webdev-flexbox-1" correct="A">
+  <template #question>
+    Flexbox 中的 `justify-content: center` 是做什么的？
+  </template>
+  
+  <BaseQuizOption value="A" correct>沿主轴（默认为水平方向）居中对齐 flex 项目</BaseQuizOption>
+  <BaseQuizOption value="B">垂直居中对齐项目</BaseQuizOption>
+  <BaseQuizOption value="C">将项目均匀分布</BaseQuizOption>
+  <BaseQuizOption value="D">拉伸项目以填充空间</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `justify-content` 控制主轴（默认为水平方向）上的对齐方式。`center` 将所有 flex 项目居中到容器中。使用 `align-items` 控制交叉轴（垂直方向）的对齐。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Grid 布局：`display: grid`
 
 创建复杂的二维布局。
@@ -274,7 +319,7 @@ h1 {
 ```css
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 个等宽的列 */
+  grid-template-columns: repeat(3, 1fr); /* 3 个等宽列 */
   grid-gap: 20px;
   grid-template-areas:
     'header header header'
@@ -293,7 +338,7 @@ h1 {
 }
 ```
 
-## JavaScript 基础与编程核心概念
+## JavaScript 基础与编程原理
 
 ### 变量：`let` / `const` / `var`
 
@@ -303,7 +348,7 @@ h1 {
 // 现代变量声明
 let name = 'John' // 可以重新赋值
 const age = 25 // 不能重新赋值
-const colors = ['red', 'blue'] // 数组（内容可以更改）
+const colors = ['red', 'blue'] // 数组（内容可以改变）
 
 // 变量类型
 let message = 'Hello World' // 字符串 (String)
@@ -365,7 +410,7 @@ switch (day) {
     console.log('工作周开始')
     break
   case 'Friday':
-    console.log('周五啦！')
+    console.log('周五万岁！')
     break
   default:
     console.log('普通的一天')
@@ -374,7 +419,7 @@ switch (day) {
 
 ### 循环：`for` / `while` / 数组方法
 
-迭代数据并重复操作。
+遍历数据并重复操作。
 
 ```javascript
 // For 循环
@@ -511,7 +556,7 @@ img {
 
 ### 媒体查询：`@media`
 
-根据屏幕大小和设备能力应用不同的样式。
+根据屏幕大小和设备功能应用不同的样式。
 
 ```css
 /* 移动优先方法 */
@@ -538,7 +583,7 @@ img {
 
 ### 弹性单位：`rem` / `em` / `%` / `vw` / `vh`
 
-使用相对单位创建可扩展和响应式的设计。
+使用相对单位实现可扩展和响应式的设计。
 
 ```css
 /* 相对于根字体大小 */
@@ -598,7 +643,7 @@ h1 {
 console.log('Hello, world!')
 console.log('用户数据：', userData)
 
-// 不同级别的日志
+// 不同日志级别
 console.info('信息消息')
 console.warn('警告消息')
 console.error('错误消息')
@@ -617,7 +662,7 @@ console.groupEnd()
 ```javascript
 function calculateTotal(items) {
   let total = 0
-  debugger // 如果打开了开发者工具，代码将在此处暂停
+  debugger // 打开开发者工具时代码将在此处暂停
 
   for (let item of items) {
     total += item.price
@@ -640,7 +685,7 @@ try {
 
 ```javascript
 // 在控制台中检查元素
-$0 // Elements 标签页中当前选中的元素
+$0 // Elements 选项卡中当前选中的元素
 $1 // 上一个选中的元素
 
 // 从控制台查询元素
@@ -662,7 +707,7 @@ console.timeEnd('operation')
 
 ### 错误类型：`TypeError` / `ReferenceError`
 
-了解常见的 JavaScript 错误及其修复方法。
+了解常见的 JavaScript 错误以及如何修复它们。
 
 ## 相关链接
 

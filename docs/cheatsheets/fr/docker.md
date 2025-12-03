@@ -1,6 +1,6 @@
 ---
-title: 'Aide-mémoire Docker'
-description: 'Maîtrisez Docker avec notre aide-mémoire complet : commandes essentielles, concepts clés et meilleures pratiques.'
+title: 'Cheat Sheet Docker | LabEx'
+description: "Apprenez la conteneurisation Docker avec ce mémo complet. Référence rapide pour les commandes Docker, les images, les conteneurs, le Dockerfile, Docker Compose et l'orchestration de conteneurs."
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
@@ -23,7 +23,7 @@ Apprenez la conteneurisation Docker grâce à des laboratoires pratiques et des 
 
 ### Installation sous Linux
 
-Installez Docker sur les systèmes Ubuntu/Debian.
+Installer Docker sur les systèmes Ubuntu/Debian.
 
 ```bash
 # Mettre à jour le gestionnaire de paquets
@@ -46,7 +46,7 @@ sudo systemctl enable docker
 
 ### Windows et macOS
 
-Installez Docker Desktop pour une gestion basée sur une interface graphique.
+Installer Docker Desktop pour une gestion basée sur une interface graphique.
 
 ```bash
 # Windows : Télécharger Docker Desktop depuis docker.com
@@ -58,7 +58,7 @@ brew install --cask docker
 
 ### Configuration Post-Installation
 
-Configurez Docker pour une utilisation sans privilèges root et vérifiez l'installation.
+Configurer Docker pour une utilisation sans privilèges root et vérifier l'installation.
 
 ```bash
 # Ajouter l'utilisateur au groupe docker (Linux)
@@ -71,7 +71,7 @@ docker run hello-world
 
 ### Installation de Docker Compose
 
-Installez Docker Compose pour les applications multi-conteneurs.
+Installer Docker Compose pour les applications multi-conteneurs.
 
 ```bash
 # Linux : Installer via curl
@@ -89,12 +89,12 @@ docker-compose --version
 
 ### Informations Système : `docker version` / `docker system info`
 
-Vérifiez les détails de l'installation et de l'environnement Docker.
+Vérifier les détails de l'installation et de l'environnement Docker.
 
 ```bash
 # Afficher les informations de version de Docker
 docker version
-# Afficher les informations Docker à l'échelle du système
+# Afficher les informations système Docker
 information
 docker system info
 # Afficher l'aide pour les commandes Docker
@@ -104,29 +104,44 @@ docker <commande> --help
 
 ### Exécution de Conteneurs : `docker run`
 
-Créez et démarrez un conteneur à partir d'une image.
+Créer et démarrer un conteneur à partir d'une image.
 
 ```bash
 # Exécuter un conteneur de manière interactive
 docker run -it ubuntu:latest bash
 # Exécuter le conteneur en arrière-plan
-(détaché)
+(detached)
 docker run -d --name my-container
 nginx
 # Exécuter avec mappage de port
 docker run -p 8080:80 nginx
-# Exécuter avec suppression automatique après sortie
+# Exécuter avec suppression automatique après l'arrêt
 docker run --rm hello-world
 ```
 
+<BaseQuiz id="docker-run-1" correct="C">
+  <template #question>
+    Que fait `docker run -d` ?
+  </template>
+  
+  <BaseQuizOption value="A">Exécute le conteneur en mode débogage</BaseQuizOption>
+  <BaseQuizOption value="B">Supprime le conteneur après son arrêt</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Exécute le conteneur en mode détaché (arrière-plan)</BaseQuizOption>
+  <BaseQuizOption value="D">Exécute le conteneur avec les paramètres par défaut</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `-d` exécute le conteneur en mode détaché, ce qui signifie qu'il s'exécute en arrière-plan et rend immédiatement le contrôle au terminal. Ceci est utile pour les services de longue durée.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Lister les Conteneurs : `docker ps`
 
-Visualiser les conteneurs en cours d'exécution et arrêtés.
+Afficher les conteneurs en cours d'exécution et arrêtés.
 
 ```bash
 # Lister les conteneurs en cours d'exécution
 docker ps
-# Lister tous les conteneurs (y compris
+# Lister tous les conteneurs (y compris les
 arrêtés)
 docker ps -a
 # Lister uniquement les IDs des conteneurs
@@ -155,7 +170,7 @@ docker unpause nom_conteneur
 
 ### Exécuter des Commandes : `docker exec`
 
-Exécuter des commandes à l'intérieur des conteneurs en cours d'exécution.
+Exécuter des commandes à l'intérieur de conteneurs en cours d'exécution.
 
 ```bash
 # Exécuter un shell bash interactif
@@ -185,7 +200,7 @@ docker container prune
 
 ### Journaux des Conteneurs : `docker logs`
 
-Visualiser la sortie du conteneur et déboguer les problèmes.
+Afficher la sortie du conteneur et déboguer les problèmes.
 
 ```bash
 # Voir les journaux du conteneur
@@ -205,7 +220,7 @@ docker logs -t nom_conteneur
 Créer des images Docker à partir de Dockerfiles.
 
 ```bash
-# Construire l'image à partir du répertoire courant
+# Construire l'image depuis le répertoire courant
 docker build .
 # Construire et étiqueter une image
 docker build -t monapp:latest .
@@ -215,7 +230,22 @@ docker build --build-arg VERSION=1.0 -t monapp .
 docker build --no-cache -t monapp .
 ```
 
-### Inspection d'Images : `docker images` / `docker inspect`
+<BaseQuiz id="docker-build-1" correct="A">
+  <template #question>
+    Que fait `docker build -t monapp:latest .` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Construit une image Docker avec l'étiquette "monapp:latest" à partir du répertoire courant</BaseQuizOption>
+  <BaseQuizOption value="B">Exécute un conteneur nommé "monapp"</BaseQuizOption>
+  <BaseQuizOption value="C">Tire l'image "monapp:latest" depuis Docker Hub</BaseQuizOption>
+  <BaseQuizOption value="D">Supprime l'image "monapp:latest"</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `-t` étiquette l'image avec le nom "monapp:latest", et le `.` spécifie le contexte de construction (répertoire courant). Cette commande construit une nouvelle image à partir d'un Dockerfile dans le répertoire courant.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Inspection d'Image : `docker images` / `docker inspect`
 
 Lister et examiner les images Docker.
 
@@ -245,7 +275,7 @@ docker push monutilisateur/monapp:latest
 docker tag monapp:latest monutilisateur/monapp:v1.0
 ```
 
-### Nettoyage d'Images : `docker rmi` / `docker image prune`
+### Nettoyage d'Image : `docker rmi` / `docker image prune`
 
 Supprimer les images inutilisées pour libérer de l'espace disque.
 
@@ -260,7 +290,7 @@ docker image prune -a
 docker rmi -f nom_image
 ```
 
-## Bases de Dockerfile
+## Bases du Dockerfile
 
 ### Instructions Essentielles
 
@@ -270,7 +300,7 @@ Commandes Dockerfile fondamentales pour la construction d'images.
 # Image de base
 FROM ubuntu:20.04
 # Définir les informations du mainteneur
-LABEL maintainer="utilisateur@exemple.com"
+LABEL maintainer="user@example.com"
 # Installer des paquets
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -280,9 +310,24 @@ RUN apt-get update && apt-get install -y \
 COPY app.py /app/
 # Définir le répertoire de travail
 WORKDIR /app
-# Exposer un port
+# Exposer le port
 EXPOSE 8000
 ```
+
+<BaseQuiz id="dockerfile-1" correct="B">
+  <template #question>
+    Quel est le but de l'instruction `FROM` dans un Dockerfile ?
+  </template>
+  
+  <BaseQuizOption value="A">Elle copie des fichiers de l'hôte vers le conteneur</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Elle spécifie l'image de base sur laquelle construire</BaseQuizOption>
+  <BaseQuizOption value="C">Elle définit des variables d'environnement</BaseQuizOption>
+  <BaseQuizOption value="D">Elle définit la commande à exécuter lorsque le conteneur démarre</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'instruction `FROM` doit être la première instruction non commentée dans un Dockerfile. Elle spécifie l'image de base sur laquelle votre image sera construite, fournissant la fondation pour votre conteneur.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Configuration d'Exécution
 
@@ -324,6 +369,21 @@ docker-compose down
 docker-compose down -v
 ```
 
+<BaseQuiz id="docker-compose-1" correct="D">
+  <template #question>
+    Que fait `docker-compose up -d` ?
+  </template>
+  
+  <BaseQuizOption value="A">Arrête tous les conteneurs en cours d'exécution</BaseQuizOption>
+  <BaseQuizOption value="B">Construit les images sans démarrer les conteneurs</BaseQuizOption>
+  <BaseQuizOption value="C">Affiche les journaux de tous les services</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Démarre tous les services définis dans docker-compose.yml en mode détaché</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `-d` exécute les conteneurs en mode détaché (arrière-plan). `docker-compose up` lit le fichier docker-compose.yml et démarre tous les services définis, ce qui facilite la gestion des applications multi-conteneurs.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Gestion des Services
 
 Contrôler les services individuels dans les applications Compose.
@@ -341,7 +401,7 @@ docker-compose restart nom_service
 
 ### Exemple docker-compose.yml
 
-Configuration d'exemple pour une application multi-service.
+Configuration d'exemple pour une application multi-services.
 
 ```yaml
 version: '3.8'
@@ -385,7 +445,7 @@ docker network create monreseau
 docker run --network monreseau nginx
 # Connecter un conteneur en cours d'exécution au réseau
 docker network connect monreseau nom_conteneur
-# Examiner les détails du réseau
+# Inspecter les détails du réseau
 docker network inspect monreseau
 ```
 
@@ -396,6 +456,24 @@ Exposer les ports des conteneurs au système hôte.
 ```bash
 # Mapper un seul port
 docker run -p 8080:80 nginx
+```
+
+<BaseQuiz id="docker-port-1" correct="A">
+  <template #question>
+    Dans `docker run -p 8080:80 nginx`, que signifient les numéros de port ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>8080 est le port hôte, 80 est le port conteneur</BaseQuizOption>
+  <BaseQuizOption value="B">80 est le port hôte, 8080 est le port conteneur</BaseQuizOption>
+  <BaseQuizOption value="C">Les deux ports sont des ports conteneur</BaseQuizOption>
+  <BaseQuizOption value="D">Les deux ports sont des ports hôte</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le format est `-p port_hote:port_conteneur`. Le port 8080 sur votre machine hôte est mappé au port 80 à l'intérieur du conteneur, vous permettant d'accéder au serveur web nginx s'exécutant dans le conteneur via localhost:8080.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```bash
 # Mapper plusieurs ports
 docker run -p 8080:80 -p 8443:443 nginx
 # Mapper à une interface hôte spécifique
@@ -413,7 +491,7 @@ Persister et partager des données entre conteneurs.
 docker volume create monvolume
 # Lister tous les volumes
 docker volume ls
-# Examiner les détails du volume
+# Inspecter les détails du volume
 docker volume inspect monvolume
 # Supprimer un volume
 docker volume rm monvolume
@@ -423,17 +501,17 @@ docker volume prune
 
 ### Montage de Volumes
 
-Monter des volumes ou des répertoires hôtes dans les conteneurs.
+Monter des volumes et des répertoires hôtes dans les conteneurs.
 
 ```bash
 # Monter un volume nommé
 docker run -v monvolume:/data nginx
 # Monter un répertoire hôte (bind mount)
-docker run -v /chemin/sur/hote:/chemin/dans/conteneur nginx
+docker run -v /chemin/hote:/chemin/conteneur nginx
 # Monter le répertoire courant
 docker run -v $(pwd):/app nginx
 # Montage en lecture seule
-docker run -v /chemin/sur/hote:/chemin/dans/conteneur:ro nginx
+docker run -v /chemin/hote:/chemin/conteneur:ro nginx
 ```
 
 ## Inspection et Débogage de Conteneurs
@@ -460,7 +538,7 @@ docker inspect --format='{{.Mounts}}' nom_conteneur
 Surveiller l'utilisation des ressources et les performances des conteneurs.
 
 ```bash
-# Afficher les processus en cours dans le conteneur
+# Afficher les processus en cours d'exécution dans le conteneur
 docker top nom_conteneur
 # Afficher les statistiques d'utilisation des ressources en direct
 docker stats
@@ -512,7 +590,7 @@ S'authentifier et interagir avec Docker Hub.
 # Se connecter à Docker Hub
 docker login
 # Se connecter à un registre spécifique
-docker login registry.exemple.com
+docker login registry.example.com
 # Rechercher des images sur Docker Hub
 docker search nginx
 # Rechercher avec un filtre
@@ -525,13 +603,13 @@ Préparer et publier des images vers des registres.
 
 ```bash
 # Étiqueter l'image pour le registre
-docker tag monapp:latest utilisateur/monapp:v1.0
+docker tag monapp:latest nomutilisateur/monapp:v1.0
 docker tag monapp:latest
-registry.exemple.com/monapp:latest
+registry.example.com/monapp:latest
 # Pousser vers Docker Hub
-docker push utilisateur/monapp:v1.0
+docker push nomutilisateur/monapp:v1.0
 # Pousser vers un registre privé
-docker push registry.exemple.com/monapp:latest
+docker push registry.example.com/monapp:latest
 ```
 
 ### Registre Privé
@@ -540,7 +618,7 @@ Travailler avec des registres Docker privés.
 
 ```bash
 # Tirer depuis un registre privé
-docker pull registry.entreprise.com/monapp:latest
+docker pull registry.company.com/monapp:latest
 # Exécuter un registre local
 docker run -d -p 5000:5000 --name registry registry:2
 # Pousser vers le registre local
@@ -556,9 +634,9 @@ Vérifier l'intégrité et la sécurité des images.
 # Activer la confiance de contenu Docker
 export DOCKER_CONTENT_TRUST=1
 # Signer et pousser l'image
-docker push utilisateur/monapp:signed
+docker push nomutilisateur/monapp:signed
 # Vérifier les signatures d'image
-docker trust inspect utilisateur/monapp:signed
+docker trust inspect nomutilisateur/monapp:signed
 # Scanner les images pour les vulnérabilités
 docker scan monapp:latest
 ```
@@ -672,14 +750,14 @@ export DOCKER_BUILDKIT=1
 
 ### Optimisation des Performances
 
-Optimiser Docker pour de meilleures performances.
+Optimiser Docker pour une meilleure performance.
 
 ```bash
 # Activer les fonctionnalités expérimentales
 echo '{"experimental": true}' |
 sudo tee
 /etc/docker/daemon.json
-# Définir les options du pilote de stockage
+# Options du pilote de stockage
 {
   "storage-driver": "overlay2",
   "storage-opts": [
@@ -703,7 +781,7 @@ sudo tee
 Gardez vos conteneurs sécurisés et prêts pour la production.
 
 ```dockerfile
-# Exécuter en tant qu'utilisateur non-root dans Dockerfile
+# Exécuter en tant qu'utilisateur non-root dans le Dockerfile
 RUN groupadd -r appuser && useradd -r -g appuser
 appuser
 USER appuser

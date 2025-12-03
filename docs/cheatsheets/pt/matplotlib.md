@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Dicas Matplotlib'
-description: 'Aprenda Matplotlib com nossa folha de dicas abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Matplotlib Guia Rápido | LabEx'
+description: 'Aprenda visualização de dados com Matplotlib usando este guia rápido abrangente. Referência rápida para plotagem, gráficos, subplots, personalização e visualização de dados em Python.'
 pdfUrl: '/cheatsheets/pdf/matplotlib-cheatsheet.pdf'
 ---
 
@@ -44,9 +44,24 @@ plt.legend()
 plt.plot(x, y, 'r--', linewidth=2, marker='o')
 ```
 
+<BaseQuiz id="matplotlib-plot-1" correct="C">
+  <template #question>
+    O que faz `plt.show()` em Matplotlib?
+  </template>
+  
+  <BaseQuizOption value="A">Salva o gráfico em um arquivo</BaseQuizOption>
+  <BaseQuizOption value="B">Fecha a janela do gráfico</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Exibe o gráfico em uma janela</BaseQuizOption>
+  <BaseQuizOption value="D">Limpa o gráfico</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `plt.show()` exibe o gráfico em uma janela interativa. É necessário chamar esta função para ver a visualização. Sem ela, o gráfico não será exibido.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Gráfico de Dispersão: `plt.scatter()`
 
-Exibe relacionamentos entre duas variáveis.
+Exibe a relação entre duas variáveis.
 
 ```python
 # Gráfico de dispersão básico
@@ -58,6 +73,21 @@ sizes = [20, 50, 100, 200, 500]
 plt.scatter(x, y, c=colors, s=sizes, alpha=0.6)
 plt.colorbar()  # Adiciona barra de cores
 ```
+
+<BaseQuiz id="matplotlib-scatter-1" correct="D">
+  <template #question>
+    O que o parâmetro `alpha` controla em gráficos matplotlib?
+  </template>
+  
+  <BaseQuizOption value="A">A cor do gráfico</BaseQuizOption>
+  <BaseQuizOption value="B">O tamanho do gráfico</BaseQuizOption>
+  <BaseQuizOption value="C">A posição do gráfico</BaseQuizOption>
+  <BaseQuizOption value="D" correct>A transparência/opacidade dos elementos do gráfico</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O parâmetro `alpha` controla a transparência, com valores de 0 (completamente transparente) a 1 (completamente opaco). É útil para criar visualizações sobrepostas onde se deseja ver através dos elementos.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Gráfico de Barras: `plt.bar()` / `plt.barh()`
 
@@ -152,7 +182,7 @@ Personaliza a aparência visual dos elementos do gráfico.
 ```python
 # Opções de cor
 plt.plot(x, y, color='red')  # Cores nomeadas
-plt.plot(x, y, color='#FF5733')  # Cores Hexadecimais
+plt.plot(x, y, color='#FF5733')  # Cores Hex
 plt.plot(x, y, color=(0.1, 0.2, 0.5))  # Tupla RGB
 
 # Estilos de linha
@@ -166,7 +196,7 @@ plt.plot(x, y, marker='o', markersize=8, markerfacecolor='red')
 
 ### Legendas e Anotações: `plt.legend()` / `plt.annotate()`
 
-Adiciona legendas e anotações para explicar elementos do gráfico.
+Adiciona legendas e anotações para explicar os elementos do gráfico.
 
 ```python
 # Legenda básica
@@ -174,13 +204,28 @@ plt.plot(x, y1, label='Conjunto de Dados 1')
 plt.plot(x, y2, label='Conjunto de Dados 2')
 plt.legend()
 
-# Personalizar posição da legenda
+# Posição da legenda personalizada
 plt.legend(loc='upper right', fontsize=10, frameon=False)
 
 # Anotações
 plt.annotate('Ponto Importante', xy=(2, 4), xytext=(3, 6),
             arrowprops=dict(arrowstyle='->', color='red'))
 ```
+
+<BaseQuiz id="matplotlib-legend-1" correct="B">
+  <template #question>
+    O que é necessário para que `plt.legend()` exiba rótulos?
+  </template>
+  
+  <BaseQuizOption value="A">Nada, funciona automaticamente</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Cada plotagem deve ter um parâmetro `label` definido</BaseQuizOption>
+  <BaseQuizOption value="C">A legenda deve ser criada antes da plotagem</BaseQuizOption>
+  <BaseQuizOption value="D">Os rótulos devem ser definidos manualmente na legenda</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Para exibir uma legenda, você precisa definir o parâmetro `label` ao criar cada plotagem (ex: `plt.plot(x, y, label='Conjunto de Dados 1')`). Em seguida, chamar `plt.legend()` exibirá todos os rótulos.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Controle de Eixos e Layout
 
@@ -189,47 +234,47 @@ plt.annotate('Ponto Importante', xy=(2, 4), xytext=(3, 6),
 Controla o intervalo de valores exibidos em cada eixo.
 
 ```python
-# Definir limites do eixo
+# Define os limites do eixo
 plt.xlim(0, 10)
 plt.ylim(-5, 15)
 
-# Ajuste automático de limites com margem
+# Ajusta automaticamente os limites com margem
 plt.margins(x=0.1, y=0.1)
 
-# Inverter eixo
+# Inverte o eixo
 plt.gca().invert_yaxis()  # Inverte o eixo y
 ```
 
 ### Marcas e Rótulos dos Eixos: `plt.xticks()` / `plt.yticks()`
 
-Personaliza as marcas de tick dos eixos e seus rótulos.
+Personaliza as marcas de marcação dos eixos e seus rótulos.
 
 ```python
-# Posições de tick personalizadas
+# Posições personalizadas das marcas
 plt.xticks([0, 2, 4, 6, 8, 10])
 plt.yticks(np.arange(0, 101, 10))
 
-# Rótulos de tick personalizados
+# Rótulos personalizados das marcas
 plt.xticks([0, 1, 2, 3], ['Jan', 'Fev', 'Mar', 'Abr'])
 
-# Rotacionar rótulos de tick
+# Rotaciona os rótulos das marcas
 plt.xticks(rotation=45)
 
-# Remover ticks
+# Remove as marcas
 plt.xticks([])
 plt.yticks([])
 ```
 
-### Proporção de Aspecto: `plt.axis()`
+### Proporção do Eixo: `plt.axis()`
 
-Controla a proporção do aspecto e a aparência dos eixos.
+Controla a proporção do eixo e a aparência dos eixos.
 
 ```python
 # Proporção de aspecto igual
 plt.axis('equal')
 # Gráfico quadrado
 plt.axis('square')
-# Desligar eixo
+# Desliga o eixo
 plt.axis('off')
 # Proporção de aspecto personalizada
 plt.gca().set_aspect('equal', adjustable='box')
@@ -240,7 +285,7 @@ plt.gca().set_aspect('equal', adjustable='box')
 Controla o tamanho geral e a resolução dos seus gráficos.
 
 ```python
-# Definir tamanho da figura (largura, altura em polegadas)
+# Define o tamanho da figura (largura, altura em polegadas)
 plt.figure(figsize=(10, 6))
 
 # DPI alto para melhor qualidade
@@ -258,10 +303,10 @@ plt.plot(x, y2)
 Ajusta automaticamente o espaçamento dos subplots para uma melhor aparência.
 
 ```python
-# Prevenir sobreposição de elementos
+# Previne elementos sobrepostos
 plt.tight_layout()
 
-# Ajuste manual de espaçamento
+# Ajuste manual do espaçamento
 plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
 
 # Preenchimento ao redor dos subplots
@@ -276,12 +321,12 @@ Aplica estilos predefinidos para uma aparência de gráfico consistente.
 # Estilos disponíveis
 print(plt.style.available)
 
-# Usar estilos internos
+# Usa estilos internos
 plt.style.use('seaborn-v0_8')
 plt.style.use('ggplot')
 plt.style.use('bmh')
 
-# Retornar ao padrão
+# Restaura para o padrão
 plt.style.use('default')
 ```
 
@@ -292,10 +337,10 @@ plt.style.use('default')
 Cria múltiplos gráficos em uma única figura.
 
 ```python
-# Criar grade de subplot 2x2
+# Cria uma grade de subplot 2x2
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 
-# Plotar em cada subplot
+# Plota em cada subplot
 axes[0, 0].plot(x, y)
 axes[0, 1].scatter(x, y)
 axes[1, 0].bar(x, y)
@@ -313,12 +358,12 @@ plt.scatter(x, y)
 Vincula eixos entre subplots para dimensionamento consistente.
 
 ```python
-# Compartilhar eixo x entre subplots
+# Compartilha o eixo x entre os subplots
 fig, axes = plt.subplots(2, 1, sharex=True)
 axes[0].plot(x, y1)
 axes[1].plot(x, y2)
 
-# Compartilhar ambos os eixos
+# Compartilha ambos os eixos
 fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
 ```
 
@@ -329,7 +374,7 @@ Cria arranjos complexos de subplots com tamanhos variados.
 ```python
 import matplotlib.gridspec as gridspec
 
-# Criar grade personalizada
+# Cria grade personalizada
 gs = gridspec.GridSpec(3, 3)
 fig = plt.figure(figsize=(10, 8))
 
@@ -338,7 +383,7 @@ ax1 = fig.add_subplot(gs[0, :])  # Linha superior, todas as colunas
 ax2 = fig.add_subplot(gs[1, :-1])  # Linha do meio, primeiras 2 colunas
 ax3 = fig.add_subplot(gs[1:, -1])  # Última coluna, últimas 2 linhas
 ax4 = fig.add_subplot(gs[-1, 0])   # Canto inferior esquerdo
-ax5 = fig.add_subplot(gs[-1, 1])   # Canto inferior central
+ax5 = fig.add_subplot(gs[-1, 1])   # Meio inferior
 ```
 
 ### Espaçamento de Subplot: `hspace` / `wspace`
@@ -346,17 +391,17 @@ ax5 = fig.add_subplot(gs[-1, 1])   # Canto inferior central
 Controla o espaçamento entre subplots.
 
 ```python
-# Ajustar espaçamento ao criar subplots
+# Ajusta o espaçamento ao criar subplots
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 plt.subplots_adjust(hspace=0.4, wspace=0.3)
 
-# Ou usar tight_layout para ajuste automático
+# Ou use tight_layout para ajuste automático
 plt.tight_layout()
 ```
 
 ## Tipos de Visualização Avançados
 
-### Mapas de Calor (Heatmaps): `plt.imshow()` / `plt.pcolormesh()`
+### Mapas de Calor: `plt.imshow()` / `plt.pcolormesh()`
 
 Visualiza dados 2D como matrizes codificadas por cores.
 
@@ -435,12 +480,12 @@ plt.errorbar(x, y, yerr=[yerr_lower, yerr_upper], fmt='s-')
 Sombreia áreas entre curvas ou ao redor de linhas.
 
 ```python
-# Preencher entre duas curvas
+# Preenche entre duas curvas
 y1 = [2, 4, 6, 8, 10]
 y2 = [1, 3, 5, 7, 9]
 plt.fill_between(x, y1, y2, alpha=0.3, color='blue')
 
-# Preencher ao redor de uma linha com erro
+# Preenche ao redor de uma linha com erro
 plt.plot(x, y, 'k-', linewidth=2)
 plt.fill_between(x, y-yerr, y+yerr, alpha=0.2, color='gray')
 ```
@@ -453,7 +498,7 @@ Mostra a forma da distribuição juntamente com os quartis.
 # Usando pyplot
 parts = plt.violinplot([data1, data2, data3])
 
-# Personalizar cores
+# Personaliza as cores
 for pc in parts['bodies']:
     pc.set_facecolor('lightblue')
     pc.set_alpha(0.7)
@@ -466,7 +511,7 @@ for pc in parts['bodies']:
 Habilita gráficos interativos em notebooks Jupyter.
 
 ```python
-# Em notebook Jupyter
+# No notebook Jupyter
 %matplotlib widget
 
 # Ou para interatividade básica
@@ -475,10 +520,10 @@ Habilita gráficos interativos em notebooks Jupyter.
 
 ### Manipulação de Eventos: Mouse e Teclado
 
-Responde a interações do usuário com os gráficos.
+Responde às interações do usuário com os gráficos.
 
 ```python
-# Zoom interativo, panorâmica e passagem do mouse
+# Zoom interativo, pan e hover
 def onclick(event):
     if event.inaxes:
         print(f'Clicado em x={event.xdata}, y={event.ydata}')
@@ -557,7 +602,7 @@ plt.savefig('grafico.png', bbox_inches='tight', pad_inches=0.1)
 Lida com múltiplos gráficos e gerencia a memória de forma eficiente.
 
 ```python
-# Fechar figuras para liberar memória
+# Fecha figuras para liberar memória
 plt.close()  # Fecha a figura atual
 plt.close('all')  # Fecha todas as figuras
 
@@ -566,7 +611,7 @@ with plt.figure() as fig:
     plt.plot(x, y)
     plt.savefig('grafico.png')
 
-# Salvar lote de múltiplos gráficos
+# Salvar em lote múltiplos gráficos
 for i, data in enumerate(datasets):
     plt.figure()
     plt.plot(data)
@@ -574,98 +619,22 @@ for i, data in enumerate(datasets):
     plt.close()
 ```
 
-## Configuração e Melhores Práticas
-
-### Parâmetros RC: `plt.rcParams`
-
-Define o estilo e o comportamento padrão para todos os gráficos.
-
-```python
-# Parâmetros rc comuns
-plt.rcParams['figure.figsize'] = (10, 6)
-plt.rcParams['font.size'] = 12
-plt.rcParams['lines.linewidth'] = 2
-plt.rcParams['axes.grid'] = True
-
-# Salvar e restaurar configurações
-original_params = plt.rcParams.copy()
-# ... fazer alterações ...
-plt.rcParams.update(original_params)  # Restaurar
-```
-
-### Gerenciamento de Cores: Mapas de Cores e Paletas
-
-Trabalha efetivamente com cores e mapas de cores.
-
-```python
-# Listar mapas de cores disponíveis
-print(plt.colormaps())
-
-# Usar mapa de cores para múltiplas linhas
-colors = plt.cm.viridis(np.linspace(0, 1, len(datasets)))
-for i, (data, color) in enumerate(zip(datasets, colors)):
-    plt.plot(data, color=color, label=f'Conjunto de Dados {i+1}')
-
-# Mapa de cores personalizado
-from matplotlib.colors import LinearSegmentedColormap
-custom_cmap = LinearSegmentedColormap.from_list('custom', ['red', 'yellow', 'blue'])
-```
-
-### Otimização de Desempenho
-
-Melhora o desempenho da plotagem para grandes conjuntos de dados.
-
-```python
-# Usar blitting para animações
-ani = FuncAnimation(fig, animate, blit=True)
-
-# Rasterizar gráficos complexos
-plt.plot(x, y, rasterized=True)
-
-# Reduzir pontos de dados para grandes conjuntos de dados
-# Subamostragem de dados antes da plotagem
-indices = np.arange(0, len(large_data), step=10)
-plt.plot(large_data[indices])
-```
-
-### Uso de Memória: Plotagem Eficiente
-
-Gerencia a memória ao criar muitos gráficos ou visualizações grandes.
-
-```python
-# Limpar eixos em vez de criar novas figuras
-fig, ax = plt.subplots()
-for data in datasets:
-    ax.clear()  # Limpa o gráfico anterior
-    ax.plot(data)
-    plt.savefig(f'grafico_{i}.png')
-
-# Usar geradores para grandes conjuntos de dados
-def data_generator():
-    for i in range(1000):
-        yield np.random.randn(100)
-
-for i, data in enumerate(data_generator()):
-    if i > 10:  # Limitar o número de gráficos
-        break
-```
-
 ## Integração com Bibliotecas de Dados
 
 ### Integração Pandas: Plotagem Direta
 
-Usa métodos de DataFrame do Pandas para plotar.
+Usa métodos de DataFrame do Pandas.
 
 ```python
 import pandas as pd
 
 # Plotagem de DataFrame (usa backend matplotlib)
-df.plot(kind='line', x='date', y='value')
-df.plot.scatter(x='x_col', y='y_col')
+df.plot(kind='line', x='data', y='valor')
+df.plot.scatter(x='coluna_x', y='coluna_y')
 df.plot.hist(bins=30)
 df.plot.box()
 
-# Acessar objetos matplotlib subjacentes
+# Acessa objetos matplotlib subjacentes
 ax = df.plot(kind='line')
 ax.set_title('Título Personalizado')
 plt.show()
@@ -697,12 +666,12 @@ Combina Matplotlib com Seaborn para melhores estéticas padrão.
 ```python
 import seaborn as sns
 
-# Usar estilo seaborn com matplotlib
+# Usa estilo seaborn com matplotlib
 sns.set_style('whitegrid')
 plt.plot(x, y)
 plt.show()
 
-# Misturar seaborn e matplotlib
+# Mistura seaborn e matplotlib
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 sns.scatterplot(data=df, x='x', y='y', ax=axes[0,0])
 plt.plot(x, y, ax=axes[0,1])  # Matplotlib puro
@@ -720,7 +689,7 @@ Otimiza Matplotlib para ambientes de notebook Jupyter.
 # Exibições de alta DPI
 %config InlineBackend.figure_format = 'retina'
 
-# Dimensionamento automático de figuras
+# Dimensionamento automático de figura
 %matplotlib inline
 plt.rcParams['figure.dpi'] = 100
 ```
@@ -732,16 +701,16 @@ plt.rcParams['figure.dpi'] = 100
 Instalador de pacotes Python padrão para Matplotlib.
 
 ```bash
-# Instalar Matplotlib
+# Instala Matplotlib
 pip install matplotlib
 
-# Atualizar para a versão mais recente
+# Atualiza para a versão mais recente
 pip install matplotlib --upgrade
 
-# Instalar com backends adicionais
+# Instala com backends adicionais
 pip install matplotlib[qt5]
 
-# Mostrar informações do pacote
+# Mostra informações do pacote
 pip show matplotlib
 ```
 
@@ -750,16 +719,16 @@ pip show matplotlib
 Gerenciador de pacotes para ambientes Anaconda/Miniconda.
 
 ```bash
-# Instalar no ambiente atual
+# Instala no ambiente atual
 conda install matplotlib
 
-# Atualizar matplotlib
+# Atualiza matplotlib
 conda update matplotlib
 
-# Criar ambiente com matplotlib
+# Cria ambiente com matplotlib
 conda create -n dataviz matplotlib numpy pandas
 
-# Listar informações do matplotlib
+# Lista informações do matplotlib
 conda list matplotlib
 ```
 
@@ -768,18 +737,18 @@ conda list matplotlib
 Configura backends de exibição para diferentes ambientes.
 
 ```python
-# Verificar backends disponíveis
+# Verifica backends disponíveis
 import matplotlib
 print(matplotlib.get_backend())
 
-# Definir backend programaticamente
+# Define o backend programaticamente
 matplotlib.use('TkAgg')  # Para Tkinter
 matplotlib.use('Qt5Agg')  # Para PyQt5
 
 # Para servidores headless
 matplotlib.use('Agg')
 
-# Importar após definir o backend
+# Importa após definir o backend
 import matplotlib.pyplot as plt
 ```
 
@@ -789,4 +758,4 @@ import matplotlib.pyplot as plt
 - <router-link to="/numpy">Folha de Dicas NumPy</router-link>
 - <router-link to="/pandas">Folha de Dicas Pandas</router-link>
 - <router-link to="/sklearn">Folha de Dicas scikit-learn</router-link>
-- <router-link to="/datascience">Folha de Dicas de Ciência de Dados</router-link>
+- <router-link to="/datascience">Folha de Dicas Ciência de Dados</router-link>

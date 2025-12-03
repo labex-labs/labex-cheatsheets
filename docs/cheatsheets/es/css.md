@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de CSS'
-description: 'Aprenda CSS con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos CSS | LabEx'
+description: 'Aprenda CSS3 con esta hoja de trucos completa. Referencia rápida para selectores CSS, flexbox, grid, animaciones, diseño responsivo y técnicas modernas de estilo para desarrolladores web.'
 pdfUrl: '/cheatsheets/pdf/css-cheatsheet.pdf'
 ---
 
@@ -15,15 +15,15 @@ Hoja de Trucos de CSS
 <a target="_blank" href="https://labex.io/es/learn/css">Aprende CSS con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda el estilo web con CSS a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de CSS que cubren propiedades esenciales, selectores, técnicas de diseño, diseño responsivo y características modernas. Domine el estilo web eficiente y el diseño de maquetación para los flujos de trabajo de desarrollo web modernos.
+Aprende el estilo web con CSS a través de laboratorios prácticos y escenarios del mundo real. LabEx proporciona cursos completos de CSS que cubren propiedades esenciales, selectores, técnicas de diseño, diseño responsivo y características modernas. Domina el estilo web eficiente y el diseño de maquetación para flujos de trabajo de desarrollo web modernos.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Sintaxis y Selectores de CSS
+## Sintaxis CSS y Selectores
 
 ### Sintaxis Básica
 
-CSS consta de selectores y declaraciones. El selector apunta a elementos HTML, y las declaraciones establecen los valores de las propiedades.
+CSS consiste en selectores y declaraciones. El selector apunta a elementos HTML, y las declaraciones establecen valores de propiedad.
 
 ```css
 /* Sintaxis básica */
@@ -82,6 +82,21 @@ p.intro {
 }
 ```
 
+<BaseQuiz id="css-class-1" correct="B">
+  <template #question>
+    ¿Cómo seleccionas un elemento con class="highlight" en CSS?
+  </template>
+  
+  <BaseQuizOption value="A">highlight { }</BaseQuizOption>
+  <BaseQuizOption value="B" correct>.highlight { }</BaseQuizOption>
+  <BaseQuizOption value="C">#highlight { }</BaseQuizOption>
+  <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Los selectores de clase usan un prefijo de punto (`.`). `.highlight` selecciona todos los elementos con `class="highlight"`. Los selectores de ID usan `#`, y los selectores de elemento no usan prefijo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Selectores de ID
 
 Apuntan a elementos con atributos de ID específicos.
@@ -98,9 +113,9 @@ Apuntan a elementos con atributos de ID específicos.
 }
 ```
 
-### Selectores de Atributos
+### Selectores de Atributo
 
-Apuntan a elementos con ciertos atributos usando selectores de atributos.
+Apuntan a elementos con ciertos atributos usando selectores de atributo.
 
 ```css
 /* Elementos con atributo title */
@@ -200,6 +215,22 @@ div {
 }
 ```
 
+<BaseQuiz id="css-padding-1" correct="C">
+  <template #question>
+    ¿Qué establece `padding: 10px 20px`?
+  </template>
+  
+  <BaseQuizOption value="A">10px arriba/abajo, 20px izquierda/derecha</BaseQuizOption>
+  <BaseQuizOption value="B">10px en todos los lados</BaseQuizOption>
+  <BaseQuizOption value="C" correct>10px arriba/abajo, 20px izquierda/derecha</BaseQuizOption>
+  <BaseQuizOption value="D">10px arriba, 20px abajo</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Cuando se proporcionan dos valores, el primero se aplica a arriba y abajo, y el segundo a izquierda y derecha. Por lo tanto, `padding: 10px 20px` significa 10px de relleno vertical y 20px de relleno horizontal.
+  </BaseQuizAnswer>
+</BaseQuiz>
+```
+
 ### Borde (Border): `border`
 
 Los bordes proporcionan un marco para los elementos con tamaño, estilo y color personalizables.
@@ -249,6 +280,21 @@ div {
   margin-left: -20px;
 }
 ```
+
+<BaseQuiz id="css-margin-1" correct="C">
+  <template #question>
+    ¿Qué hace `margin: 0 auto`?
+  </template>
+  
+  <BaseQuizOption value="A">Elimina todos los márgenes</BaseQuizOption>
+  <BaseQuizOption value="B">Añade márgenes iguales en todos los lados</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Centra un elemento de bloque horizontalmente</BaseQuizOption>
+  <BaseQuizOption value="D">Centra un elemento de bloque verticalmente</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `margin: 0 auto` establece los márgenes superior e inferior en 0 y los márgenes izquierdo/derecho en auto, lo que centra un elemento de nivel de bloque horizontalmente dentro de su contenedor.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Texto y Tipografía
 
@@ -314,7 +360,7 @@ p {
 
 ### Estilo de Texto
 
-Añadir decoraciones y transformaciones al texto.
+Añaden decoraciones y transformaciones al texto.
 
 ```css
 /* Decoración de texto */
@@ -341,7 +387,7 @@ h1 {
 
 ### Colores
 
-CSS proporciona varias formas de especificar colores para diversas necesidades de estilo.
+CSS proporciona varias formas diferentes de especificar colores para diversas necesidades de estilo.
 
 ```css
 /* Formatos de color */
@@ -351,6 +397,22 @@ p {
 div {
   background-color: #ff5733;
 }
+```
+
+<BaseQuiz id="css-colors-1" correct="D">
+  <template #question>
+    ¿Qué formato de color CSS se utiliza más comúnmente para el diseño web?
+  </template>
+  
+  <BaseQuizOption value="A">Solo RGB</BaseQuizOption>
+  <BaseQuizOption value="B">Solo colores con nombre</BaseQuizOption>
+  <BaseQuizOption value="C">Solo HSL</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Los códigos Hex (#RRGGBB) son muy comunes, junto con colores con nombre y RGB</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Los códigos de color Hex (#RRGGBB) se utilizan ampliamente porque son concisos y fáciles de copiar desde las herramientas de diseño. Los colores con nombre y RGB/rgba también son comunes. La elección depende del caso de uso específico y la preferencia.
+  </BaseQuizAnswer>
+</BaseQuiz>
 span {
   color: rgb(255, 87, 51);
 }
@@ -358,19 +420,20 @@ section {
   background-color: rgba(255, 87, 51, 0.8);
 }
 
-/* Colores HSL */
+/_ Colores HSL _/
 header {
-  background-color: hsl(200, 100%, 50%);
+background-color: hsl(200, 100%, 50%);
 }
 
-/* Variables CSS para colores */
+/_ Variables CSS para colores _/
 :root {
-  --primary-color: #3498db;
+--primary-color: #3498db;
 }
 .button {
-  background-color: var(--primary-color);
+background-color: var(--primary-color);
 }
-```
+
+````
 
 ## Diseño Flexbox
 
@@ -384,7 +447,7 @@ Propiedades aplicadas al contenedor padre.
   display: flex;
 }
 
-/* Dirección flex */
+/* Dirección del flex */
 .container {
   flex-direction: row; /* por defecto */
   flex-direction: column;
@@ -405,14 +468,14 @@ Propiedades aplicadas al contenedor padre.
   align-items: center;
   align-items: flex-start;
 }
-```
+````
 
 ### Propiedades del Elemento Flex
 
 Propiedades aplicadas a los elementos hijos.
 
 ```css
-/* Crecer/encoger flex */
+/* Flex grow/shrink */
 .item {
   flex-grow: 1; /* crecer para llenar el espacio */
   flex-shrink: 1; /* encoger si es necesario */
@@ -437,14 +500,14 @@ Propiedades aplicadas a los elementos hijos.
 }
 ```
 
-## Diseño de Cuadrícula CSS (Grid)
+## Diseño CSS Grid
 
-### Contenedor de Cuadrícula
+### Contenedor Grid
 
-Definir la estructura y las propiedades de la cuadrícula.
+Define la estructura y las propiedades de la cuadrícula.
 
 ```css
-/* Habilitar cuadrícula */
+/* Habilitar grid */
 .grid-container {
   display: grid;
 }
@@ -455,7 +518,7 @@ Definir la estructura y las propiedades de la cuadrícula.
   grid-template-rows: 100px auto 50px;
 }
 
-/* Espacios de la cuadrícula (gaps) */
+/* Espacios de la cuadrícula */
 .grid-container {
   gap: 20px;
   column-gap: 30px;
@@ -471,12 +534,12 @@ Definir la estructura y las propiedades de la cuadrícula.
 }
 ```
 
-### Elementos de Cuadrícula
+### Elementos Grid
 
-Posicionar y dimensionar los elementos de la cuadrícula.
+Posicionan y dimensionan los elementos de la cuadrícula.
 
 ```css
-/* Posicionamiento de cuadrícula */
+/* Posicionamiento de la cuadrícula */
 .grid-item {
   grid-column: 1 / 3; /* abarcar columnas 1-2 */
   grid-row: 2 / 4; /* abarcar filas 2-3 */
@@ -484,7 +547,7 @@ Posicionar y dimensionar los elementos de la cuadrícula.
 
 /* Abreviatura */
 .grid-item {
-  grid-area: 2 / 1 / 4 / 3; /* fila-inicio / col-inicio / fila-fin / col-fin */
+  grid-area: 2 / 1 / 4 / 3; /* inicio-fila / inicio-col / fin-fila / fin-col */
 }
 
 /* Áreas con nombre */
@@ -509,7 +572,7 @@ Posicionar y dimensionar los elementos de la cuadrícula.
 
 ### Propiedad Position
 
-Controlar el comportamiento de posicionamiento del elemento.
+Controla el comportamiento de posicionamiento de los elementos.
 
 ```css
 /* Estático (por defecto) */
@@ -545,9 +608,9 @@ Controlar el comportamiento de posicionamiento del elemento.
 }
 ```
 
-### Z-Index y Apilamiento
+### Z-Index y Contexto de Apilamiento
 
-Controlar el orden en que los elementos se superponen usando z-index y contexto de apilamiento.
+Controla el orden en que los elementos se superponen usando z-index y contexto de apilamiento.
 
 ```css
 /* Orden de apilamiento */
@@ -580,17 +643,17 @@ Controlar el orden en que los elementos se superponen usando z-index y contexto 
 
 ## Diseño Responsivo
 
-### Consultas de Medios (Media Queries)
+### Media Queries
 
-Aplicar estilos basados en características del dispositivo.
+Aplican estilos basados en las características del dispositivo.
 
 ```css
-/* Enfoque móvil primero */
+/* Enfoque "mobile first" */
 .container {
   width: 100%;
 }
 
-/* Estilos para tableta */
+/* Estilos para tabletas */
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -624,16 +687,16 @@ Aplicar estilos basados en características del dispositivo.
 
 ### Unidades Responsivas
 
-Usar unidades relativas para diseños flexibles.
+Usan unidades relativas para diseños flexibles.
 
 ```css
-/* Unidades de vista (Viewport) */
+/* Unidades de viewport */
 .hero {
   height: 100vh;
-} /* altura completa de la vista */
+} /* altura completa del viewport */
 .sidebar {
   width: 25vw;
-} /* 25% del ancho de la vista */
+} /* 25% del ancho del viewport */
 
 /* Unidades relativas */
 p {
@@ -651,7 +714,7 @@ h1 {
   width: 50%;
 }
 
-/* Cuadrícula CSS responsiva */
+/* Grid responsivo */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -668,7 +731,7 @@ h1 {
 
 ### Transiciones CSS
 
-Cambios suaves entre valores de propiedades.
+Cambios suaves entre valores de propiedad.
 
 ```css
 /* Transición básica */
@@ -701,10 +764,10 @@ Cambios suaves entre valores de propiedades.
 
 ### Animaciones CSS
 
-Crear animaciones complejas con fotogramas clave (keyframes).
+Crear animaciones complejas con keyframes.
 
 ```css
-/* Definir fotogramas clave */
+/* Definir keyframes */
 @keyframes slideIn {
   0% {
     transform: translateX(-100%);
@@ -767,7 +830,7 @@ Definir y usar propiedades personalizadas para una tematización consistente.
   border-radius: var(--border-radius);
 }
 
-/* Valores de reserva (fallback) */
+/* Valores de reserva */
 .text {
   color: var(--text-color, #333);
 }
@@ -817,9 +880,9 @@ CSS tiene una gama de funciones integradas para cálculos y valores dinámicos.
 
 ## Mejores Prácticas y Organización
 
-### Organización de CSS
+### Organización CSS
 
-Estructurar su CSS para el mantenimiento.
+Estructura tu CSS para el mantenimiento.
 
 ```css
 /* Usar nombres de clase significativos */
@@ -900,7 +963,7 @@ body div.container > p {
 }
 ```
 
-## Depuración de CSS
+## Depuración CSS
 
 ### Herramientas de Desarrollo del Navegador
 
@@ -908,16 +971,16 @@ Inspeccionar y modificar CSS en tiempo real.
 
 ```css
 /* Pasos comunes de depuración */
-/* 1. Clic derecho → Inspeccionar elemento */
-/* 2. Revisar estilos calculados */
+/* 1. Clic derecho → Inspeccionar Elemento */
+/* 2. Revisar estilos Calculados */
 /* 3. Buscar propiedades anuladas */
 /* 4. Probar cambios en tiempo real */
-/* 5. Copiar el CSS modificado de vuelta a su archivo */
+/* 5. Copiar el CSS modificado de vuelta a tu archivo */
 ```
 
 ### Problemas Comunes de CSS
 
-Solucionar problemas frecuentemente encontrados.
+Solucionar problemas encontrados frecuentemente.
 
 ```css
 /* Problemas del modelo de caja */
@@ -925,7 +988,7 @@ Solucionar problemas frecuentemente encontrados.
   box-sizing: border-box;
 }
 
-/* Limpiar flotantes (floats) */
+/* Limpiar floats */
 .clearfix::after {
   content: '';
   display: table;
@@ -940,16 +1003,16 @@ Solucionar problemas frecuentemente encontrados.
 }
 ```
 
-### Validación de CSS
+### Validación CSS
 
-Asegurarse de que su CSS siga los estándares y las mejores prácticas.
+Asegurarse de que tu CSS sigue los estándares y las mejores prácticas.
 
 ```css
-/* Usar validadores de CSS */
-/* Validador de CSS W3C */
+/* Usar validadores CSS */
+/* Validador CSS W3C */
 /* Herramientas de compatibilidad del navegador */
 
-/* Comentar su código */
+/* Comentar tu código */
 /* ===== ESTILOS DEL ENCABEZADO ===== */
 .header {
 }
@@ -964,14 +1027,14 @@ Asegurarse de que su CSS siga los estándares y las mejores prácticas.
 }
 ```
 
-## Frameworks y Herramientas de CSS
+## Frameworks y Herramientas CSS
 
-### Preprocesadores de CSS
+### Preprocesadores CSS
 
-Extender CSS con variables, anidamiento y funciones.
+Extienden CSS con variables, anidamiento y funciones.
 
 ```scss
-/* Ejemplo de SCSS/Sass */
+/* Ejemplo SCSS/Sass */
 $primary-color: #3498db;
 $border-radius: 8px;
 
@@ -986,7 +1049,7 @@ $border-radius: 8px;
 ```
 
 ```less
-/* Ejemplo de Less */
+/* Ejemplo Less */
 @primary-color: #3498db;
 
 .button {
@@ -1003,7 +1066,7 @@ $border-radius: 8px;
 Enfoques modernos para el estilo en aplicaciones web.
 
 ```css
-/* Plugins de PostCSS */
+/* Plugins PostCSS */
 /* Autoprefixer - añade prefijos de proveedor */
 /* PurgeCSS - elimina el CSS no utilizado */
 
@@ -1015,7 +1078,7 @@ Enfoques modernos para el estilo en aplicaciones web.
 ```
 
 ```javascript
-/* CSS de primera utilidad (Tailwind) */
+/* CSS de utilidad primero (Tailwind) */
 ;<div class="flex items-center justify-center p-4 bg-blue-500">
   <span class="text-white font-bold">Button</span>
 </div>

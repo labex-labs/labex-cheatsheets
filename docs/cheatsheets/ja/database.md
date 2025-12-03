@@ -1,6 +1,6 @@
 ---
-title: 'データベースチートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートでデータベースを学習しましょう。'
+title: 'データベースチートシート | LabEx'
+description: 'この包括的なチートシートでデータベース管理を学習。SQL クエリ、データベース設計、正規化、インデックス、トランザクション、リレーショナルデータベース管理のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
@@ -36,6 +36,21 @@ COLLATE utf8mb4_general_ci;
 USE company_db;
 ```
 
+<BaseQuiz id="database-create-1" correct="A">
+  <template #question>
+    `CREATE DATABASE company_db`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>company_db という名前の新しい空のデータベースを作成する</BaseQuizOption>
+  <BaseQuizOption value="B">データベース内にテーブルを作成する</BaseQuizOption>
+  <BaseQuizOption value="C">データベースを削除する</BaseQuizOption>
+  <BaseQuizOption value="D">データベースをバックアップする</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `CREATE DATABASE`は新しい空のデータベースを作成します。作成後、`USE` を使用して選択し、その中にテーブルを作成する必要があります。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### データベースの表示：`SHOW DATABASES`
 
 サーバー上の利用可能なすべてのデータベースを一覧表示します。
@@ -66,7 +81,7 @@ DROP DATABASE IF EXISTS old_company_db;
 データベースのバックアップコピーを作成します。
 
 ```sql
--- コマンドラインでのバックアップ
+-- コマンドラインからのバックアップ
 mysqldump -u username -p database_name > backup.sql
 -- バックアップからのリストア
 mysql -u username -p database_name < backup.sql
@@ -140,6 +155,21 @@ COLUMN phone;
 RENAME TABLE employees TO staff;
 ```
 
+<BaseQuiz id="database-alter-1" correct="C">
+  <template #question>
+    `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">phone 列を削除する</BaseQuizOption>
+  <BaseQuizOption value="B">phone 列を変更する</BaseQuizOption>
+  <BaseQuizOption value="C" correct>employees テーブルに phone という新しい列を追加する</BaseQuizOption>
+  <BaseQuizOption value="D">テーブルの名前を変更する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ALTER TABLE ... ADD COLUMN`は既存のテーブルに新しい列を追加します。デフォルト値を指定しない限り、既存の行に対して新しい列は NULL になります。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### テーブル情報：`SHOW`
 
 テーブルとそのプロパティに関する詳細情報を取得します。
@@ -174,7 +204,7 @@ department) VALUES
 ('Jane Smith', 'jane@company.com', 80000.00,
 'Marketing'),
 ('Bob Johnson', 'bob@company.com', 65000.00, 'Sales');
--- 他のテーブルからの挿入
+-- 他のテーブルから挿入
 INSERT INTO backup_employees
 SELECT * FROM employees WHERE department =
 'Engineering';
@@ -207,7 +237,7 @@ SET e.salary = e.salary + d.bonus;
 -- 特定のレコードを削除
 DELETE FROM employees
 WHERE department = 'Temporary';
--- 条件付きでの削除
+-- 条件付きで削除
 DELETE FROM employees
 WHERE hire_date < '2020-01-01' AND salary < 50000;
 -- テーブル全体を切り詰める（すべてを削除する場合に高速）
@@ -219,7 +249,7 @@ TRUNCATE TABLE temp_employees;
 主キーに基づいてレコードを挿入または更新します。
 
 ```sql
--- レコードの置換（挿入または更新）
+-- レコードを置換（挿入または更新）
 REPLACE INTO employees (id, name, email, salary)
 VALUES (1, 'John Doe Updated',
 'john.new@company.com', 90000);
@@ -244,13 +274,13 @@ SELECT name, email, salary FROM employees;
 SELECT name AS employee_name, salary AS
 annual_salary
 FROM employees;
--- DISTINCT な値の選択
+-- 重複しない値を選択
 SELECT DISTINCT department FROM employees;
 ```
 
 ### データのフィルタリング：`WHERE`
 
-クエリ結果をフィルタリングするために条件を適用します。
+条件を適用してクエリ結果をフィルタリングします。
 
 ```sql
 -- 基本的な条件
@@ -260,6 +290,24 @@ SELECT * FROM employees
 WHERE department = 'Engineering' AND salary > 75000;
 -- パターンマッチング
 SELECT * FROM employees WHERE name LIKE 'John%';
+```
+
+<BaseQuiz id="database-where-1" correct="C">
+  <template #question>
+    WHERE 句で`LIKE 'John%'`は何に一致しますか？
+  </template>
+  
+  <BaseQuizOption value="A">"John"との完全一致のみ</BaseQuizOption>
+  <BaseQuizOption value="B">"John"で終わる値</BaseQuizOption>
+  <BaseQuizOption value="C" correct>"John"で始まる値</BaseQuizOption>
+  <BaseQuizOption value="D">どこかに"John"を含む値</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    SQL の `%` ワイルドカードは任意の文字列に一致します。`LIKE 'John%'`は、「John」、「Johnny」、「Johnson」など、「John」で始まる任意の値に一致します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```sql
 -- 範囲クエリ
 SELECT * FROM employees
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
@@ -283,10 +331,10 @@ ORDER BY hire_date DESC LIMIT 10;
 
 ### 結果の制限：`LIMIT`
 
-返されるレコード数を制御します。
+返されるレコードの数を制御します。
 
 ```sql
--- 結果の制限
+-- 結果の数を制限
 SELECT * FROM employees LIMIT 5;
 -- OFFSET を使用したページネーション
 SELECT * FROM employees
@@ -313,7 +361,7 @@ FROM employees;
 SELECT department, COUNT(*) as employee_count,
 AVG(salary) as avg_salary
 FROM employees GROUP BY department;
--- グループフィルタリングのための HAVING 句
+-- グループフィルタリングのための Having 句
 SELECT department, COUNT(*) as count
 FROM employees
 GROUP BY department
@@ -322,13 +370,13 @@ HAVING COUNT(*) > 5;
 
 ### サブクエリ：ネストされたクエリ
 
-複雑な操作のために他のクエリ内でクエリを使用します。
+複雑な操作のために、他のクエリ内にクエリを使用します。
 
 ```sql
 -- WHERE 句内のサブクエリ
 SELECT * FROM employees
 WHERE salary > (SELECT AVG(salary) FROM employees);
--- IN を使用したサブクエリ
+-- IN 句内のサブクエリ
 SELECT * FROM employees
 WHERE department IN (
     SELECT name FROM departments WHERE budget >
@@ -344,7 +392,7 @@ WHERE salary > (
 
 ### テーブル結合：`JOIN`
 
-複数のテーブルからデータを結合します。
+複数のテーブルからのデータを結合します。
 
 ```sql
 -- 内部結合
@@ -364,7 +412,7 @@ LEFT JOIN projects p ON e.id = p.employee_id;
 
 ### ウィンドウ関数：高度な分析
 
-関連する行全体に対して計算を実行します。
+関連する行全体で計算を実行します。
 
 ```sql
 -- 行番号付け
@@ -387,7 +435,7 @@ FROM employees;
 
 ### 主キー: `PRIMARY KEY`
 
-各レコードを一意に識別できるようにします。
+各レコードの一意な識別を保証します。
 
 ```sql
 -- 単一列の主キー
@@ -441,7 +489,7 @@ department);
 ビジネスルールとデータ検証を強制します。
 
 ```sql
--- 単純な CHECK 制約
+-- シンプルな CHECK 制約
 ALTER TABLE employees
 ADD CONSTRAINT check_salary CHECK (salary > 0);
 -- 複雑な CHECK 制約
@@ -491,11 +539,11 @@ JOIN departments d ON e.department = d.id;
 ```sql
 -- 実行中のプロセスを表示
 SHOW PROCESSLIST;
--- データベースの状態を表示
+-- データベースステータスを表示
 SHOW STATUS LIKE 'Slow_queries';
 -- クエリキャッシュ情報を表示
 SHOW STATUS LIKE 'Qcache%';
--- データベースサイズを表示
+-- データベースサイズを照会
 SELECT
     table_schema AS 'Database',
     SUM(data_length + index_length) / 1024 / 1024 AS 'Size
@@ -523,7 +571,7 @@ REPAIR TABLE employees;
 
 ### データのインポート：`LOAD DATA`
 
-外部ファイルからデータベーステーブルにデータをインポートします。
+外部ファイルからデータベーステーブルへデータをインポートします。
 
 ```sql
 -- CSV ファイルからのインポート
@@ -548,7 +596,7 @@ INTO OUTFILE 'employee_export.csv'
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 FROM employees;
--- mysqldump を使用したエクスポート
+-- mysqldump を使用
 mysqldump -u username -p --tab=/path/to/export
 database_name table_name
 ```
@@ -586,7 +634,7 @@ department = 'Sales';
 
 ### ユーザー管理：`CREATE USER`
 
-データベースユーザーアカウントを作成および管理します。
+データベースユーザーアカウントの作成と管理。
 
 ```sql
 -- パスワード付きでユーザーを作成
@@ -601,7 +649,7 @@ DROP USER 'old_user'@'localhost';
 
 ### 権限：`GRANT` & `REVOKE`
 
-データベースオブジェクトおよび操作へのアクセスを制御します。
+データベースオブジェクトと操作へのアクセスを制御します。
 
 ```sql
 -- 特定の権限を付与
@@ -610,10 +658,10 @@ GRANT SELECT, INSERT ON company_db.employees TO
 -- すべての権限を付与
 GRANT ALL PRIVILEGES ON company_db.* TO
 'admin_user'@'localhost';
--- 権限の取り消し
+-- 権限を取り消す
 REVOKE INSERT ON company_db.employees FROM
 'app_user'@'localhost';
--- ユーザーの権限を表示
+-- ユーザー権限を表示
 SHOW GRANTS FOR 'app_user'@'localhost';
 ```
 
@@ -622,13 +670,13 @@ SHOW GRANTS FOR 'app_user'@'localhost';
 データベースロールを使用して権限を整理します。
 
 ```sql
--- ロールの作成 (MySQL 8.0+)
+-- ロールの作成（MySQL 8.0+）
 CREATE ROLE 'app_read_role', 'app_write_role';
--- ロールへの権限付与
+-- ロールに権限を付与
 GRANT SELECT ON company_db.* TO 'app_read_role';
 GRANT INSERT, UPDATE, DELETE ON company_db.* TO
 'app_write_role';
--- ユーザーへのロールの割り当て
+-- ユーザーにロールを割り当て
 GRANT 'app_read_role' TO 'readonly_user'@'localhost';
 ```
 
@@ -640,9 +688,8 @@ GRANT 'app_read_role' TO 'readonly_user'@'localhost';
 -- プリペアドステートメントの使用（アプリケーションレベル）
 -- 悪い例：SELECT * FROM users WHERE id = ' + userInput
 -- 良い例：パラメータ化されたクエリを使用
--- 入力データの型検証
--- 可能な限りストアドプロシージャを使用
--- 最小権限の原則を適用
+-- 入力データ型を検証する
+-- 可能な限り最小権限の原則を適用する
 ```
 
 ## データベースのインストールとセットアップ
@@ -671,7 +718,7 @@ sudo mysql_secure_installation
 sudo apt update
 sudo apt install postgresql
 postgresql-contrib
-# postgresユーザーに切り替え
+# postgresユーザーに切り替える
 sudo -u postgres psql
 # データベースとユーザーの作成
 CREATE DATABASE myapp;
@@ -730,7 +777,7 @@ SET SESSION interactive_timeout = 600;
 
 ### バックアップ設定
 
-自動データベースバックアップを設定します。
+自動化されたデータベースバックアップを設定します。
 
 ```sql
 -- 自動バックアップスクリプト
@@ -749,10 +796,10 @@ backup_$DATE.sql
 ```sql
 -- ポイントインタイムリカバリの設定
 SET GLOBAL log_bin = ON;
--- スロークエリログの有効化
+-- スロークエリログを有効化
 SET GLOBAL slow_query_log = 'ON';
 SET GLOBAL long_query_time = 2;
--- データベースサイズを表示
+-- データベースサイズを照会
 SELECT
     table_schema AS 'Database',
     SUM(data_length + index_length) / 1024 / 1024 AS 'Size
@@ -772,9 +819,9 @@ GROUP BY table_schema;
 SELECT e.name, d.department_name
 FROM employees e
 JOIN departments d ON e.dept_id = d.id;
--- SELECT * ではなく列名を指定
+-- SELECT * ではなく列名を指定する
 SELECT name, email, salary FROM employees;
--- 適切なデータ型を使用
+-- 適切なデータ型を使用する
 CREATE TABLE products (
     id INT PRIMARY KEY,
     price DECIMAL(10,2) NOT NULL,
@@ -788,13 +835,13 @@ CURRENT_TIMESTAMP
 より良いデータベースパフォーマンスのためにクエリを最適化します。
 
 ```sql
--- 頻繁に照会される列にインデックスを使用
+-- 頻繁に照会される列にインデックスを使用する
 CREATE INDEX idx_employee_dept ON
 employees(department);
--- 可能な限り結果セットを制限
+-- 可能な限り結果セットを制限する
 SELECT name FROM employees WHERE active = 1 LIMIT
 100;
--- サブクエリには IN よりも EXISTS を使用
+-- サブクエリには IN の代わりに EXISTS を使用する
 SELECT * FROM customers c
 WHERE EXISTS (SELECT 1 FROM orders o WHERE
 o.customer_id = c.id);

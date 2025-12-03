@@ -1,6 +1,6 @@
 ---
-title: 'Java 速查表'
-description: '使用我们涵盖核心命令、概念和最佳实践的综合 Java 速查表，快速掌握 Java 编程。'
+title: 'Java 速查表 | LabEx'
+description: '使用这份全面的 Java 速查表学习 Java 编程。快速参考 Java 语法、OOP、集合、流、Spring 框架和企业开发要点。'
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 
@@ -21,7 +21,7 @@ Java 速查表
 
 ## 程序结构与基本语法
 
-### Hello World: 基本程序
+### Hello World：基本程序
 
 在屏幕上显示“Hello, World!”的最简单的 Java 程序。
 
@@ -39,7 +39,7 @@ public class HelloWorld {
 
 ```java
 public class MyClass {
-    // 类内容放在这里
+    // 类的内容放在这里
     int myVariable;
 
     public void myMethod() {
@@ -48,9 +48,9 @@ public class MyClass {
 }
 ```
 
-### 主方法：程序入口点
+### Main 方法：程序入口点
 
-主方法是 Java 程序执行开始的地方。
+main 方法是 Java 程序执行开始的地方。
 
 ```java
 public static void main(String[] args) {
@@ -58,6 +58,21 @@ public static void main(String[] args) {
     System.out.println("Program starts here");
 }
 ```
+
+<BaseQuiz id="java-main-1" correct="C">
+  <template #question>
+    Java 中 main 方法的正确签名是什么？
+  </template>
+  
+  <BaseQuizOption value="A">public void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="B">static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>public static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    main 方法必须是 `public static void main(String[] args)`。`public` 允许 JVM 访问它，`static` 表示它属于类，`void` 表示它不返回任何内容，`String[] args` 接收命令行参数。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 注释：代码文档
 
@@ -120,7 +135,7 @@ boolean flag = true;        // true 或 false
 
 ### 变量声明与初始化
 
-创建和赋值给变量。
+创建和给变量赋值。
 
 ```java
 // 仅声明
@@ -131,16 +146,16 @@ String name;
 int age = 25;
 String name = "John";
 
-// 多个声明
+// 多重声明
 int x = 10, y = 20, z = 30;
 
-// final 变量（常量）
+// Final 变量（常量）
 final double PI = 3.14159;
 ```
 
 ### 字符串操作
 
-字符串表示字符序列，并且是不可变的，一旦创建，其值就不能更改。
+字符串表示字符序列，并且是不可变的，意味着一旦创建，其值就不能更改。
 
 ```java
 String greeting = "Hello";
@@ -155,6 +170,21 @@ int length = message.length();
 boolean isEmpty = message.isEmpty();
 String uppercase = message.toUpperCase();
 ```
+
+<BaseQuiz id="java-string-1" correct="A">
+  <template #question>
+    Java 字符串不可变性意味着什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>一旦创建，字符串的值就不能更改</BaseQuizOption>
+  <BaseQuizOption value="B">字符串不能被创建</BaseQuizOption>
+  <BaseQuizOption value="C">字符串只能存储数字</BaseQuizOption>
+  <BaseQuizOption value="D">字符串会自动删除</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    不可变性意味着一旦创建了 String 对象，其值就不能被修改。像 `toUpperCase()` 这样的操作会返回一个新的 String 对象，而不是修改原始对象。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 控制流语句
 
@@ -213,6 +243,21 @@ for (int num : numbers) {
 }
 ```
 
+<BaseQuiz id="java-for-loop-1" correct="C">
+  <template #question>
+    增强型 for 循环（for-each）用于什么？
+  </template>
+  
+  <BaseQuizOption value="A">使用计数器变量进行迭代</BaseQuizOption>
+  <BaseQuizOption value="B">无限循环</BaseQuizOption>
+  <BaseQuizOption value="C" correct>在没有索引的情况下迭代数组和集合</BaseQuizOption>
+  <BaseQuizOption value="D">仅用于嵌套循环</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    增强型 for 循环（for-each）通过自动处理索引来简化对数组和集合的迭代，使代码更具可读性，并减少出错的可能性。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### While 和 Do-While 循环
 
 只要条件为真就重复执行代码。
@@ -225,13 +270,28 @@ while (i < 3) {
     i++;
 }
 
-// Do-while 循环 (至少执行一次)
+// Do-while 循环（至少执行一次）
 int j = 0;
 do {
     System.out.println("Do-while: " + j);
     j++;
 } while (j < 3);
 ```
+
+<BaseQuiz id="java-while-1" correct="B">
+  <template #question>
+    `while` 和 `do-while` 循环之间的主要区别是什么？
+  </template>
+  
+  <BaseQuizOption value="A">没有区别</BaseQuizOption>
+  <BaseQuizOption value="B" correct>do-while 至少执行一次，而 while 可能一次都不执行</BaseQuizOption>
+  <BaseQuizOption value="C">while 速度更快</BaseQuizOption>
+  <BaseQuizOption value="D">do-while 只适用于数组</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `do-while` 循环在执行循环体后检查条件，因此至少会运行一次。`while` 循环首先检查条件，如果条件一开始就为 false，则可能不会执行。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 面向对象编程
 
@@ -279,7 +339,7 @@ public class Person {
         age = 0;
     }
 
-    // 参数化构造函数
+    // 带参数的构造函数
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
@@ -289,7 +349,7 @@ public class Person {
 
 ### 继承：`extends`
 
-继承支持代码重用并在类之间创建层次结构关系。
+继承支持代码重用，并在类之间创建层次结构关系。
 
 ```java
 public class Animal {
@@ -321,13 +381,13 @@ myDog.bark(); // 自己的方法
 
 ```java
 public class Example {
-    public int publicVar;      // 处处可访问
-    private int privateVar;    // 仅在此类内部
-    protected int protectedVar; // 在包内 + 子类中
-    int defaultVar;            // 仅在包内
+    public int publicVar;      // 可以在任何地方访问
+    private int privateVar;    // 仅在当前类中访问
+    protected int protectedVar; // 在包内和子类中访问
+    int defaultVar;            // 仅在包内访问
 
     private void privateMethod() {
-        // 仅在此类内部可访问
+        // 仅在此类中可访问
     }
 }
 ```
@@ -336,7 +396,7 @@ public class Example {
 
 ### 方法声明
 
-方法基本上是编写逻辑、操作数据和执行动作的地方。
+方法基本上是编写逻辑、操作数据和执行操作的地方。
 
 ```java
 public class Calculator {
@@ -345,7 +405,7 @@ public class Calculator {
         return a + b;
     }
 
-    // 不带返回值的方
+    // 无返回值的方法
     public void printSum(int a, int b) {
         int result = add(a, b);
         System.out.println("Sum: " + result);
@@ -389,7 +449,7 @@ public class StringHelper {
         return firstName + " " + lastName;
     }
 
-    // 带数组参数的方
+    // 带数组参数的方法
     public int findMax(int[] numbers) {
         int max = numbers[0];
         for (int num : numbers) {
@@ -476,9 +536,9 @@ for (int i = 0; i < matrix.length; i++) {
 }
 ```
 
-### ArrayList: 动态数组
+### ArrayList：动态数组
 
-可以动态增长和收缩的可调整大小的数组。
+可动态增长和缩小的可调整大小的数组。
 
 ```java
 import java.util.ArrayList;
@@ -504,9 +564,9 @@ for (String item : list) {
 }
 ```
 
-### HashMap: 键值对
+### HashMap：键值对
 
-以键值对的形式存储数据，以便快速查找。
+以键值对形式存储数据，以便快速查找。
 
 ```java
 import java.util.HashMap;
@@ -599,7 +659,7 @@ public class AgeValidator {
 
 ### 常见异常类型
 
-Java 程序中经常遇到的异常。
+Java 程序中经常遇到的异常类型。
 
 ```java
 // NullPointerException
@@ -699,7 +759,7 @@ public class FileReadExample {
 
 ### 文件写入：PrintWriter
 
-使用适当的异常处理将文本数据写入文件。
+带有适当异常处理的将文本数据写入文件。
 
 ```java
 import java.io.*;
@@ -795,11 +855,11 @@ String firstName;
 public void calculateGrade() { }
 public boolean isValidEmail() { }
 
-// 常量：UPPER_CASE (全大写)
+// 常量：大写字母加下划线
 public static final int MAX_SIZE = 100;
 public static final String DEFAULT_NAME = "Unknown";
 
-// 包：lowercase (小写)
+// 包：小写
 package com.company.project;
 package utils.database;
 package com.example.myapp;
@@ -846,12 +906,12 @@ public class WellOrganizedClass {
 
 ### 错误预防
 
-避免错误的常见做法和提高代码质量的实践。
+避免错误的常见做法，提高代码质量。
 
 ```java
 public class BestPractices {
     public void safeDivision(int a, int b) {
-        // 检查除零
+        // 检查除零错误
         if (b == 0) {
             throw new IllegalArgumentException("Cannot divide by zero");
         }
@@ -888,7 +948,7 @@ public class BestPractices {
 import java.io.*;
 
 public class ResourceManagement {
-    // Try-with-resources (自动清理)
+    // Try-with-resources（自动清理）
     public void readFileProper(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine();
@@ -899,7 +959,7 @@ public class ResourceManagement {
         // Reader 会自动关闭
     }
 
-    // 手动资源清理 (不推荐)
+    // 手动资源清理（不推荐）
     public void readFileManual(String filename) {
         BufferedReader reader = null;
         try {

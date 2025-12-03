@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola C++'
-description: 'Aprenda C++ com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola C++ | LabEx'
+description: 'Aprenda programação C++ com esta folha de cola abrangente. Referência rápida para sintaxe C++, OOP, STL, templates, gestão de memória e recursos C++ modernos para desenvolvedores de software.'
 pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 ---
 
@@ -29,7 +29,7 @@ Estrutura básica de um programa C++.
 #include <iostream>
 using namespace std;
 int main() {
-    cout << "Olá, Mundo!" << endl;
+    cout << "Hello, World!" << endl;
     return 0;
 }
 ```
@@ -80,28 +80,43 @@ int main(int argc, char* argv[]) {
 }
 ```
 
+<BaseQuiz id="cpp-main-1" correct="B">
+  <template #question>
+    Qual é a diferença entre as instruções de saída C e C++?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="B" correct>C usa printf(), C++ usa cout com o operador &lt;&lt;</BaseQuizOption>
+  <BaseQuizOption value="C">C++ não suporta saída</BaseQuizOption>
+  <BaseQuizOption value="D">C usa cout, C++ usa printf</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C usa `printf()` de stdio.h, enquanto C++ usa `cout` de iostream com o operador de inserção de fluxo `<<`. C++ também suporta printf para compatibilidade.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Saída Básica
 
 Exibir texto e variáveis no console.
 
 ```cpp
-cout << "Olá" << endl;
-cout << "Valor: " << 42 << endl;
+cout << "Hello" << endl;
+cout << "Value: " << 42 << endl;
 // Múltiplos valores em uma linha
-cout << "Nome: " << nome << ", Idade: " << idade << endl;
+cout << "Name: " << name << ", Age: " << age << endl;
 ```
 
 ### Entrada Básica
 
-Ler entrada do usuário do console.
+Ler a entrada do usuário pelo console.
 
 ```cpp
-int idade;
-string nome;
-cin >> idade;
-cin >> nome;
+int age;
+string name;
+cin >> age;
+cin >> name;
 // Ler linha inteira com espaços
-getline(cin, nome);
+getline(cin, name);
 ```
 
 ## Tipos de Dados e Variáveis
@@ -112,16 +127,16 @@ Tipos de dados básicos para armazenar diferentes tipos de valores.
 
 ```cpp
 // Tipos inteiros
-int idade = 25;
-short num_pequeno = 100;
-long num_grande = 1000000L;
-long long num_enorme = 9223372036854775807LL;
+int age = 25;
+short small_num = 100;
+long large_num = 1000000L;
+long long huge_num = 9223372036854775807LL;
 // Tipos de ponto flutuante
-float preco = 19.99f;
-double preciso = 3.14159265359;
+float price = 19.99f;
+double precise = 3.14159265359;
 // Caractere e booleano
-char nota = 'A';
-bool eh_valido = true;
+char grade = 'A';
+bool is_valid = true;
 ```
 
 ### String e Arrays
@@ -130,15 +145,30 @@ Tipos de dados de texto e coleção.
 
 ```cpp
 // Strings
-string nome = "John Doe";
-string str_vazia;
+string name = "John Doe";
+string empty_str;
 // Arrays
-int numeros[5] = {1, 2, 3, 4, 5};
-int matriz[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
+int numbers[5] = {1, 2, 3, 4, 5};
+int matrix[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
 // Arrays dinâmicos (vetores)
-vector<int> array_dinamico = {10, 20, 30};
-vector<string> nomes(5); // Tamanho 5, strings vazias
+vector<int> dynamic_array = {10, 20, 30};
+vector<string> names(5); // Tamanho 5, strings vazias
 ```
+
+<BaseQuiz id="cpp-vector-1" correct="B">
+  <template #question>
+    Qual é a principal vantagem do `vector` sobre arrays regulares em C++?
+  </template>
+  
+  <BaseQuizOption value="A">Vectors são mais rápidos</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Vectors podem redimensionar dinamicamente, enquanto arrays têm tamanho fixo</BaseQuizOption>
+  <BaseQuizOption value="C">Vectors usam menos memória</BaseQuizOption>
+  <BaseQuizOption value="D">Não há vantagem</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `vector` é um array dinâmico que pode crescer ou encolher em tempo de execução, ao contrário dos arrays regulares cujo tamanho fixo é determinado em tempo de compilação. Isso torna os vetores mais flexíveis para muitos casos de uso.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Constantes e Auto
 
@@ -146,18 +176,18 @@ Valores imutáveis e dedução automática de tipo.
 
 ```cpp
 // Constantes
-const int TAMANHO_MAX = 100;
+const int MAX_SIZE = 100;
 const double PI = 3.14159;
 // Palavra-chave Auto (C++11+)
 auto x = 42;        // int
 auto y = 3.14;      // double
-auto nome = "John"; // const char*
+auto name = "John"; // const char*
 // Alias de tipo
 typedef unsigned int uint;
 using real = double;
 ```
 
-## Estruturas de Fluxo de Controle
+## Estruturas de Controle de Fluxo
 
 ### Declarações Condicionais
 
@@ -165,17 +195,17 @@ Tomar decisões com base em condições.
 
 ```cpp
 // Declaração If-else
-if (idade >= 18) {
+if (age >= 18) {
     cout << "Adulto" << endl;
-} else if (idade >= 13) {
+} else if (age >= 13) {
     cout << "Adolescente" << endl;
 } else {
     cout << "Criança" << endl;
 }
-// Operador Ternário
-string status = (idade >= 18) ? "Adulto" : "Menor";
+// Operador ternário
+string status = (age >= 18) ? "Adulto" : "Menor";
 // Declaração Switch
-switch (nota) {
+switch (grade) {
     case 'A':
         cout << "Excelente!" << endl;
         break;
@@ -197,8 +227,8 @@ for (int i = 0; i < 10; i++) {
     cout << i << " ";
 }
 // Loop for baseado em intervalo (C++11+)
-vector<int> numeros = {1, 2, 3, 4, 5};
-for (int num : numeros) {
+vector<int> numbers = {1, 2, 3, 4, 5};
+for (int num : numbers) {
     cout << num << " ";
 }
 // Auto com loop baseado em intervalo
@@ -207,23 +237,38 @@ for (auto& item : container) {
 }
 ```
 
+<BaseQuiz id="cpp-range-for-1" correct="B">
+  <template #question>
+    O que é um loop for baseado em intervalo em C++?
+  </template>
+  
+  <BaseQuizOption value="A">Um loop que só funciona com arrays</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Um loop que itera sobre todos os elementos em um contêiner automaticamente</BaseQuizOption>
+  <BaseQuizOption value="C">Um loop que roda para sempre</BaseQuizOption>
+  <BaseQuizOption value="D">Um loop que requer gerenciamento manual de índice</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Loops for baseados em intervalo (introduzidos no C++11) iteram automaticamente sobre todos os elementos em um contêiner (como vetores, arrays, strings) sem a necessidade de gerenciar índices manualmente. A sintaxe é `for (auto item : container)`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Loops While
 
 Iteração baseada em condição.
 
 ```cpp
 // Loop While
-int contador = 0;
-while (contador < 5) {
-    cout << contador << endl;
-    contador++;
+int count = 0;
+while (count < 5) {
+    cout << count << endl;
+    count++;
 }
 // Loop Do-while (executa pelo menos uma vez)
-int entrada;
+int input;
 do {
     cout << "Digite um número (0 para sair): ";
-    cin >> entrada;
-} while (entrada != 0);
+    cin >> input;
+} while (input != 0);
 ```
 
 ### Controle de Loop
@@ -257,18 +302,18 @@ Criar blocos de código reutilizáveis.
 
 ```cpp
 // Declaração de função (protótipo)
-int somar(int a, int b);
-void imprimirMensagem(string msg);
+int add(int a, int b);
+void printMessage(string msg);
 // Definição de função
-int somar(int a, int b) {
+int add(int a, int b) {
     return a + b;
 }
-void imprimirMensagem(string msg) {
+void printMessage(string msg) {
     cout << msg << endl;
 }
 // Chamada de função
-int resultado = somar(5, 3);
-imprimirMensagem("Olá, funções!");
+int result = add(5, 3);
+printMessage("Olá, funções!");
 ```
 
 ### Sobrecarga de Função (Function Overloading)
@@ -276,15 +321,15 @@ imprimirMensagem("Olá, funções!");
 Múltiplas funções com o mesmo nome.
 
 ```cpp
-// Diferentes tipos de parâmetros
-int multiplicar(int a, int b) {
+// Tipos de parâmetros diferentes
+int multiply(int a, int b) {
     return a * b;
 }
-double multiplicar(double a, double b) {
+double multiply(double a, double b) {
     return a * b;
 }
-// Diferente número de parâmetros
-int multiplicar(int a, int b, int c) {
+// Número diferente de parâmetros
+int multiply(int a, int b, int c) {
     return a * b * c;
 }
 ```
@@ -294,12 +339,12 @@ int multiplicar(int a, int b, int c) {
 Fornecer valores padrão para parâmetros de função.
 
 ```cpp
-void saudar(string nome, string saudacao = "Olá") {
-    cout << saudacao << ", " << nome << "!" << endl;
+void greet(string name, string greeting = "Hello") {
+    cout << greeting << ", " << name << "!" << endl;
 }
 // Chamadas de função
-saudar("Alice");              // Usa o padrão "Olá"
-saudar("Bob", "Bom dia"); // Usa saudação personalizada
+greet("Alice");              // Usa o padrão "Hello"
+greet("Bob", "Good morning"); // Usa saudação personalizada
 ```
 
 ### Passagem por Referência
@@ -308,15 +353,15 @@ Modificar variáveis através de parâmetros de função.
 
 ```cpp
 // Passagem por valor (cópia)
-void mudarValor(int x) {
+void changeValue(int x) {
     x = 100; // Variável original inalterada
 }
 // Passagem por referência
-void mudarReferencia(int& x) {
+void changeReference(int& x) {
     x = 100; // Variável original modificada
 }
 // Referência const (somente leitura, eficiente)
-void processarDadosGrandes(const vector<int>& dados) {
+void processLargeData(const vector<int>& data) {
     // Pode ler dados, mas não modificar
 }
 ```
@@ -328,29 +373,29 @@ void processarDadosGrandes(const vector<int>& dados) {
 Definir tipos de dados personalizados com atributos e métodos.
 
 ```cpp
-class Retangulo {
+class Rectangle {
 private:
-    double largura, altura;
+    double width, height;
 public:
     // Construtor
-    Retangulo(double l, double a) : largura(l), altura(a) {}
+    Rectangle(double w, double h) : width(w), height(h) {}
 
     // Construtor padrão
-    Retangulo() : largura(0), altura(0) {}
+    Rectangle() : width(0), height(0) {}
 
     // Funções membro
     double area() const {
-        return largura * altura;
+        return width * height;
     }
 
-    void setDimensões(double l, double a) {
-        largura = l;
-        altura = a;
+    void setDimensions(double w, double h) {
+        width = w;
+        height = h;
     }
 
     // Funções getter
-    double getLargura() const { return largura; }
-    double getAltura() const { return altura; }
+    double getWidth() const { return width; }
+    double getHeight() const { return height; }
 };
 ```
 
@@ -360,13 +405,13 @@ Instanciar e usar objetos de classe.
 
 ```cpp
 // Criar objetos
-Retangulo rect1(5.0, 3.0);
-Retangulo rect2; // Construtor padrão
+Rectangle rect1(5.0, 3.0);
+Rectangle rect2; // Construtor padrão
 // Usar funções membro
-cout << "Área: " << rect1.area() << endl;
-rect2.setDimensões(4.0, 2.0);
+cout << "Area: " << rect1.area() << endl;
+rect2.setDimensions(4.0, 2.0);
 // Alocação dinâmica
-Retangulo* rect3 = new Retangulo(6.0, 4.0);
+Rectangle* rect3 = new Rectangle(6.0, 4.0);
 cout << rect3->area() << endl;
 delete rect3; // Limpar memória
 ```
@@ -376,24 +421,24 @@ delete rect3; // Limpar memória
 Criar classes especializadas a partir de classes base.
 
 ```cpp
-class Forma {
+class Shape {
 protected:
-    string cor;
+    string color;
 
 public:
-    Forma(string c) : cor(c) {}
-    virtual double area() const = 0; // Virtual pura
-    string getColor() const { return cor; }
+    Shape(string c) : color(c) {}
+    virtual double area() const = 0; // Virtual puro
+    string getColor() const { return color; }
 };
-class Circulo : public Forma {
+class Circle : public Shape {
 private:
-    double raio;
+    double radius;
 
 public:
-    Circulo(double r, string c) : Forma(c), raio(r) {}
+    Circle(double r, string c) : Shape(c), radius(r) {}
 
     double area() const override {
-        return 3.14159 * raio * raio;
+        return 3.14159 * radius * radius;
     }
 };
 ```
@@ -404,12 +449,12 @@ Usar ponteiros de classe base para acessar objetos derivados.
 
 ```cpp
 // Funções virtuais e polimorfismo
-vector<Forma*> formas;
-formas.push_back(new Circulo(5.0, "vermelho"));
-formas.push_back(new Retangulo(4.0, 6.0));
-for (Forma* forma : formas) {
-    cout << "Área: " << forma->area() << endl;
-    // Chama o método da classe derivada apropriada
+vector<Shape*> shapes;
+shapes.push_back(new Circle(5.0, "red"));
+shapes.push_back(new Rectangle(4.0, 6.0));
+for (Shape* shape : shapes) {
+    cout << "Area: " << shape->area() << endl;
+    // Chama o método da classe derivada apropriado
 }
 ```
 
@@ -432,9 +477,9 @@ for (int i = 0; i < 10; i++) {
 }
 delete[] arr;
 // Verificar falha de alocação
-int* array_grande = new(nothrow) int[1000000];
-if (array_grande == nullptr) {
-    cout << "Falha na alocação!" << endl;
+int* large_array = new(nothrow) int[1000000];
+if (large_array == nullptr) {
+    cout << "Alocação falhou!" << endl;
 }
 ```
 
@@ -466,20 +511,20 @@ ref = 20;      // Altera x para 20
 int* ptr = &x; // Aponta para o endereço de x
 *ptr = 30;     // Desreferencia e altera x
 ptr = nullptr; // Pode apontar para nada
-// Variações Const
+// Variações const
 const int* ptr1 = &x;    // Não pode mudar o valor
 int* const ptr2 = &x;    // Não pode mudar o endereço
 const int* const ptr3 = &x; // Não pode mudar nenhum dos dois
 ```
 
-### Pilha (Stack) vs Heap
+### Pilha vs Heap
 
 Estratégias de alocação de memória.
 
 ```cpp
 // Alocação na Pilha (automática)
-int var_pilha = 42;
-int array_pilha[100];
+int stack_var = 42;
+int stack_array[100];
 // Alocação no Heap (dinâmica)
 int* heap_var = new int(42);
 int* heap_array = new int[100];
@@ -489,7 +534,7 @@ delete heap_var;
 delete[] heap_array;
 ```
 
-## Standard Template Library (STL)
+## Biblioteca Padrão de Templates (STL)
 
 ### Contêineres: Vector e String
 
@@ -505,11 +550,11 @@ nums.pop_back();          // Remover o último
 nums.insert(nums.begin() + 1, 10); // Inserir na posição
 nums.erase(nums.begin()); // Remover o primeiro
 // Operações com String
-string texto = "Olá";
-texto += " Mundo";         // Concatenação
-texto.append("!");         // Anexar
-cout << texto.substr(0, 5) << endl; // Substring
-texto.replace(6, 5, "C++"); // Substituir "Mundo" por "C++"
+string text = "Hello";
+text += " World";         // Concatenação
+text.append("!");         // Anexar
+cout << text.substr(0, 5) << endl; // Substring
+text.replace(6, 5, "C++"); // Substituir "World" por "C++"
 ```
 
 ### Contêineres: Map e Set
@@ -520,14 +565,14 @@ Contêineres associativos para pares chave-valor e elementos únicos.
 #include <map>
 #include <set>
 // Map (pares chave-valor)
-map<string, int> idades;
-idades["Alice"] = 25;
-idades["Bob"] = 30;
-idades.insert({"Charlie", 35});
+map<string, int> ages;
+ages["Alice"] = 25;
+ages["Bob"] = 30;
+ages.insert({"Charlie", 35});
 // Set (elementos únicos)
-set<int> nums_unicos = {3, 1, 4, 1, 5, 9};
-nums_unicos.insert(2);
-nums_unicos.erase(1);
+set<int> unique_nums = {3, 1, 4, 1, 5, 9};
+unique_nums.insert(2);
+unique_nums.erase(1);
 // Automaticamente ordenado: {2, 3, 4, 5, 9}
 ```
 
@@ -555,10 +600,10 @@ int count = count_if(nums.begin(), nums.end(),
 
 ### Iteradores
 
-Navegar por contêineres de forma eficiente.
+Navegar pelos contêineres de forma eficiente.
 
 ```cpp
-vector<string> palavras = {"olá", "mundo", "cpp"};
+vector<string> words = {"hello", "world", "cpp"};
 // Tipos de iterador
 vector<string>::iterator it;
 auto it2 = words.begin(); // Auto C++11
@@ -567,8 +612,8 @@ for (it = words.begin(); it != words.end(); ++it) {
     cout << *it << " ";
 }
 // Loop baseado em intervalo (preferido)
-for (const auto& palavra : palavras) {
-    cout << palavra << " ";
+for (const auto& word : words) {
+    cout << word << " ";
 }
 ```
 
@@ -582,22 +627,22 @@ Ler dados de arquivos de texto.
 #include <fstream>
 #include <sstream>
 // Ler arquivo inteiro
-ifstream arquivo("dados.txt");
-if (arquivo.is_open()) {
-    string linha;
-    while (getline(arquivo, linha)) {
-        cout << linha << endl;
+ifstream file("data.txt");
+if (file.is_open()) {
+    string line;
+    while (getline(file, line)) {
+        cout << line << endl;
     }
-    arquivo.close();
+    file.close();
 }
 // Ler palavra por palavra
-ifstream arquivo2("numeros.txt");
-int numero;
-while (arquivo2 >> numero) {
-    cout << numero << " ";
+ifstream file2("numbers.txt");
+int number;
+while (file2 >> number) {
+    cout << number << " ";
 }
 // Leitura com verificação de erro
-if (!arquivo.good()) {
+if (!file.good()) {
     cerr << "Erro ao ler o arquivo!" << endl;
 }
 ```
@@ -609,18 +654,18 @@ Analisar e manipular strings como fluxos.
 ```cpp
 #include <sstream>
 // Analisar valores separados por vírgula
-string dados = "maçã,banana,cereja";
-stringstream ss(dados);
+string data = "apple,banana,cherry";
+stringstream ss(data);
 string item;
-vector<string> frutas;
+vector<string> fruits;
 while (getline(ss, item, ',')) {
-    frutas.push_back(item);
+    fruits.push_back(item);
 }
 // Converter strings para números
 string num_str = "123";
 int num = stoi(num_str);
 double d = stod("3.14159");
-string de_volta_para_str = to_string(num);
+string back_to_str = to_string(num);
 ```
 
 ### Saída de Arquivo: Escrita de Arquivos
@@ -628,21 +673,21 @@ string de_volta_para_str = to_string(num);
 Escrever dados em arquivos de texto.
 
 ```cpp
-// Escrever em arquivo
-ofstream saida_arquivo("saida.txt");
-if (saida_arquivo.is_open()) {
-    saida_arquivo << "Olá, arquivo!" << endl;
-    saida_arquivo << "Número: " << 42 << endl;
-    saida_arquivo.close();
+// Escrever no arquivo
+ofstream outfile("output.txt");
+if (outfile.is_open()) {
+    outfile << "Hello, file!" << endl;
+    outfile << "Number: " << 42 << endl;
+    outfile.close();
 }
 // Anexar a arquivo existente
-ofstream arquivo_anexar("log.txt", ios::app);
-arquivo_anexar << "Nova entrada de log" << endl;
-// Escrever vetor em arquivo
-vector<int> numeros = {1, 2, 3, 4, 5};
-ofstream num_arquivo("numeros.txt");
-for (int num : numeros) {
-    num_arquivo << num << " ";
+ofstream appendfile("log.txt", ios::app);
+appendfile << "New log entry" << endl;
+// Escrever vetor no arquivo
+vector<int> numbers = {1, 2, 3, 4, 5};
+ofstream numfile("numbers.txt");
+for (int num : numbers) {
+    numfile << num << " ";
 }
 ```
 
@@ -654,8 +699,8 @@ Controlar o formato e a precisão da saída.
 #include <iomanip>
 double pi = 3.14159265;
 cout << fixed << setprecision(2) << pi << endl; // 3.14
-cout << setw(10) << "Direita" << endl;          // Alinhado à direita
-cout << left << setw(10) << "Esquerda" << endl;     // Alinhado à esquerda
+cout << setw(10) << "Right" << endl;          // Alinhado à direita
+cout << left << setw(10) << "Left" << endl;     // Alinhado à esquerda
 cout << hex << 255 << endl;                    // Hexadecimal: ff
 ```
 
@@ -667,7 +712,7 @@ Lidar com exceções que podem ocorrer durante a execução.
 
 ```cpp
 try {
-    int resultado = 10 / 0; // Isso pode lançar uma exceção
+    int result = 10 / 0; // Isso pode lançar uma exceção
     vector<int> vec(5);
     vec.at(10) = 100;    // Acesso fora dos limites
 
@@ -693,31 +738,31 @@ Criar e lançar suas próprias exceções.
 
 ```cpp
 // Classe de exceção personalizada
-class ExcecaoPersonalizada : public exception {
-    string mensagem;
+class CustomException : public exception {
+    string message;
 public:
-    ExcecaoPersonalizada(const string& msg) : mensagem(msg) {}
+    CustomException(const string& msg) : message(msg) {}
     const char* what() const noexcept override {
-        return mensagem.c_str();
+        return message.c_str();
     }
 };
 // Função que lança exceção
-void validarIdade(int idade) {
-    if (idade < 0 || idade > 150) {
-        throw ExcecaoPersonalizada("Faixa de idade inválida!");
+void validateAge(int age) {
+    if (age < 0 || age > 150) {
+        throw CustomException("Faixa de idade inválida!");
     }
 }
 // Uso
 try {
-    validarIdade(-5);
-} catch (const ExcecaoPersonalizada& e) {
+    validateAge(-5);
+} catch (const CustomException& e) {
     cout << e.what() << endl;
 }
 ```
 
 ### Padrão RAII
 
-Aquisição de Recurso é Inicialização para gerenciamento seguro de recursos.
+Aquisição de Recurso É Inicialização para gerenciamento seguro de recursos.
 
 ```cpp
 // RAII com ponteiros inteligentes
@@ -727,23 +772,23 @@ Aquisição de Recurso é Inicialização para gerenciamento seguro de recursos.
 }
 // RAII com manipulação de arquivos
 {
-    ifstream arquivo("dados.txt");
+    ifstream file("data.txt");
     // Arquivo fechado automaticamente ao sair do escopo
-    if (arquivo.is_open()) {
+    if (file.is_open()) {
         // Processar arquivo
     }
 }
 // Classe RAII personalizada
-class ManipuladorArquivo {
-    FILE* arquivo;
+class FileHandler {
+    FILE* file;
 public:
-    ManipuladorArquivo(const char* nome_arquivo) {
-        arquivo = fopen(nome_arquivo, "r");
+    FileHandler(const char* filename) {
+        file = fopen(filename, "r");
     }
-    ~ManipuladorArquivo() {
-        if (arquivo) fclose(arquivo);
+    ~FileHandler() {
+        if (file) fclose(file);
     }
-    FILE* get() { return arquivo; }
+    FILE* get() { return file; }
 };
 ```
 
@@ -754,9 +799,9 @@ Depurar e validar suposições do programa.
 ```cpp
 #include <cassert>
 #include <iostream>
-void processarArray(int* arr, int tamanho) {
+void processArray(int* arr, int size) {
     assert(arr != nullptr);  // Asserção de depuração
-    assert(tamanho > 0);        // Valida a suposição
+    assert(size > 0);        // Valida a suposição
 
     // Processar array...
 }
@@ -774,21 +819,21 @@ DBG_PRINT("Iniciando função");
 
 ### Compilação GCC/G++
 
-GNU Compiler Collection para C++.
+Coleção de Compiladores GNU para C++.
 
 ```bash
 # Compilação básica
-g++ -o programa main.cpp
+g++ -o program main.cpp
 # Com informações de depuração
-g++ -g -o programa main.cpp
+g++ -g -o program main.cpp
 # Níveis de otimização
-g++ -O2 -o programa main.cpp
+g++ -O2 -o program main.cpp
 # Múltiplos arquivos fonte
-g++ -o programa main.cpp utils.cpp math.cpp
+g++ -o program main.cpp utils.cpp math.cpp
 # Incluir diretórios adicionais
-g++ -I/usr/local/include -o programa main.cpp
+g++ -I/usr/local/include -o program main.cpp
 # Ligar bibliotecas
-g++ -o programa main.cpp -lm -lpthread
+g++ -o program main.cpp -lm -lpthread
 ```
 
 ### Padrões C++ Modernos
@@ -797,20 +842,20 @@ Compilar com versões de padrão C++ específicas.
 
 ```bash
 # Padrão C++11
-g++ -std=c++11 -o programa main.cpp
+g++ -std=c++11 -o program main.cpp
 # Padrão C++14
-g++ -std=c++14 -o programa main.cpp
+g++ -std=c++14 -o program main.cpp
 # Padrão C++17 (recomendado)
-g++ -std=c++17 -o programa main.cpp
+g++ -std=c++17 -o program main.cpp
 # Padrão C++20 (mais recente)
-g++ -std=c++20 -o programa main.cpp
+g++ -std=c++20 -o program main.cpp
 # Habilitar todos os avisos
-g++ -Wall -Wextra -std=c++17 -o programa main.cpp
+g++ -Wall -Wextra -std=c++17 -o program main.cpp
 ```
 
 ### Noções Básicas de Makefile
 
-Automatizar a compilação com o utilitário make.
+Automatizar a compilação com a utilidade make.
 
 ```makefile
 # Makefile Simples
@@ -833,22 +878,22 @@ A nomenclatura consistente torna o código mais legível.
 
 ```cpp
 // Variáveis e funções: snake_case ou camelCase
-int contagem_alunos;
-int contagemAlunos;
-void calcularMedia();
+int student_count;
+int studentCount;
+void calculateAverage();
 // Constantes: UPPER_CASE
-const int TAMANHO_MAX_BUFFER = 1024;
+const int MAX_BUFFER_SIZE = 1024;
 const double PI = 3.14159;
 // Classes: PascalCase
-class RegistroEstudante {
+class StudentRecord {
     // Variáveis membro: prefixo com m_ ou sufixo _
-    string m_nome;
-    int idade_;
+    string m_name;
+    int age_;
 
 public:
     // Interface pública
-    void setNome(const string& nome);
-    string getNome() const;
+    void setName(const string& name);
+    string getName() const;
 };
 ```
 
@@ -861,8 +906,8 @@ Prevenir bugs comuns relacionados à memória.
 auto ptr = make_unique<int>(42);
 auto shared = make_shared<vector<int>>(10);
 // Inicializar variáveis
-int contador = 0;        // Bom
-int contador;            // Perigoso - não inicializado
+int count = 0;        // Bom
+int count;            // Perigoso - não inicializado
 // Loops baseados em intervalo são mais seguros
 for (const auto& item : container) {
     // Processar item com segurança
@@ -879,7 +924,7 @@ Escrever código C++ eficiente.
 
 ```cpp
 // Passar objetos grandes por referência const
-void processarDados(const vector<int>& dados) {
+void processData(const vector<int>& data) {
     // Evitar copiar objetos grandes
 }
 // Usar pré-incremento para iteradores
@@ -887,12 +932,12 @@ for (auto it = vec.begin(); it != vec.end(); ++it) {
     // ++it é frequentemente mais rápido que it++
 }
 // Reservar capacidade do vetor quando o tamanho é conhecido
-vector<int> numeros;
-numeros.reserve(1000); // Evitar realocações
+vector<int> numbers;
+numbers.reserve(1000); // Evitar realocações
 // Usar emplace em vez de push para objetos
-vector<string> palavras;
-palavras.emplace_back("Olá"); // Constrói no local
-palavras.push_back(string("Mundo")); // Constrói e depois copia
+vector<string> words;
+words.emplace_back("Hello"); // Construir no local
+words.push_back(string("World")); // Construir e depois copiar
 ```
 
 ### Organização do Código
@@ -903,20 +948,20 @@ Estruturar o código para manutenção.
 // Arquivo de cabeçalho (utils.h)
 #ifndef UTILS_H
 #define UTILS_H
-class UtilitariosMatematicos {
+class MathUtils {
 public:
-    static double calcularArea(double raio);
+    static double calculateArea(double radius);
     static int fibonacci(int n);
 };
 #endif // UTILS_H
 // Arquivo de implementação (utils.cpp)
 #include "utils.h"
 #include <cmath>
-double UtilitariosMatematicos::calcularArea(double raio) {
-    return M_PI * raio * raio;
+double MathUtils::calculateArea(double radius) {
+    return M_PI * radius * radius;
 }
-// Usar funções membro const quando possível
-double getRaio() const { return raio; }
+// Usar funções membro const sempre que possível
+double getRadius() const { return radius; }
 ```
 
 ## Links Relevantes

@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola de Cibersegurança'
-description: 'Aprenda Cibersegurança com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola de Cibersegurança | LabEx'
+description: 'Aprenda cibersegurança com esta folha de cola abrangente. Referência rápida para conceitos de segurança, deteção de ameaças, avaliação de vulnerabilidades, testes de penetração e melhores práticas de segurança da informação.'
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 
@@ -53,6 +53,21 @@ chmod -R 755 directory/
 ls -la
 ```
 
+<BaseQuiz id="cybersecurity-chmod-1" correct="C">
+  <template #question>
+    O que `chmod 644 file.txt` define para as permissões do arquivo?
+  </template>
+  
+  <BaseQuizOption value="A">Leitura, escrita, execução para todos os usuários</BaseQuizOption>
+  <BaseQuizOption value="B">Leitura, escrita, execução para o proprietário; leitura para os outros</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Leitura, escrita para o proprietário; leitura para o grupo e outros</BaseQuizOption>
+  <BaseQuizOption value="D">Apenas leitura para todos os usuários</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 644` define: proprietário = 6 (rw-), grupo = 4 (r--), outros = 4 (r--). Este é um conjunto de permissões comum para arquivos que devem ser legíveis por todos, mas graváveis apenas pelo proprietário.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Configuração de Segurança de Rede
 
 Proteja conexões e serviços de rede.
@@ -67,7 +82,22 @@ netstat -tuln
 sudo ss -tuln
 ```
 
-### Atualizações e Patches do Sistema
+<BaseQuiz id="cybersecurity-firewall-1" correct="B">
+  <template #question>
+    O que `sudo ufw allow 22/tcp` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Bloqueia a porta 22</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Permite tráfego TCP na porta 22 (SSH)</BaseQuizOption>
+  <BaseQuizOption value="C">Habilita UDP na porta 22</BaseQuizOption>
+  <BaseQuizOption value="D">Mostra o status do firewall</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ufw allow 22/tcp` cria uma regra de firewall que permite conexões TCP de entrada na porta 22, que é a porta padrão do SSH. Isso é essencial para o acesso remoto ao servidor.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Atualizações de Sistema e Patches
 
 Mantenha os sistemas atualizados com os patches de segurança mais recentes.
 
@@ -107,9 +137,24 @@ sudo journalctl -f
 grep "Failed password" /var/log/auth.log
 ```
 
+<BaseQuiz id="cybersecurity-logs-1" correct="A">
+  <template #question>
+    O que `tail -f /var/log/auth.log` faz?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Segue o arquivo de log de autenticação em tempo real</BaseQuizOption>
+  <BaseQuizOption value="B">Mostra apenas tentativas de login falhas</BaseQuizOption>
+  <BaseQuizOption value="C">Exclui entradas de log antigas</BaseQuizOption>
+  <BaseQuizOption value="D">Arquiva o arquivo de log</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O flag `-f` faz com que o `tail` siga o arquivo, exibindo novas entradas de log à medida que são escritas. Isso é útil para monitoramento em tempo real de eventos de autenticação e incidentes de segurança.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Segurança de Senhas e Autenticação
 
-Implemente mecanismos fortes de autenticação e políticas de senha.
+Implemente mecanismos de autenticação fortes e políticas de senha.
 
 ### Criação de Senhas Fortes
 
@@ -134,7 +179,7 @@ Adicione camadas adicionais de autenticação além das senhas.
 sudo apt install libpam-googleauthenticator
 # Configurar MFA para SSH
 google-authenticator
-# Habilitar na configuração SSH
+# Habilitar na configuração do SSH
 sudo nano /etc/pam.d/sshd
 # Adicionar: auth required pam_google_authenticator.so
 ```
@@ -160,7 +205,7 @@ sudo apt install keepassxc
 Identifique portas abertas e serviços em execução.
 
 ```bash
-# Varredura de portas básica com Nmap
+# Varredura básica de portas com Nmap
 nmap -sT target_ip
 # Detecção de versão de serviço
 nmap -sV target_ip
@@ -284,7 +329,7 @@ Analise logs do sistema para identificar incidentes de segurança.
 ```bash
 # Procurar por atividades suspeitas
 grep -i "failed\|error\|denied" /var/log/auth.log
-# Contar tentativas de login falhadas
+# Contar tentativas de login falhas
 grep "Failed password" /var/log/auth.log | wc -l
 # Encontrar endereços IP exclusivos em logs
 awk '/Failed password/ {print $11}' /var/log/auth.log | sort | uniq -c
@@ -303,13 +348,13 @@ Investigue incidentes de segurança baseados em rede.
 sudo wireshark
 # Analisar arquivos capturados
 wireshark capture.pcap
-# Análise de linha de comando com tshark
+# Análise via linha de comando com tshark
 tshark -r capture.pcap -Y "http.request"
 ```
 
 ### Forense de Sistema
 
-Preservar e analisar evidências digitais.
+Preserve e analise evidências digitais.
 
 ```bash
 # Criar imagem de disco
@@ -328,7 +373,7 @@ find /home -mtime -7 -type f
 Documente adequadamente os incidentes de segurança para análise.
 
 ```bash
-# Checklist de resposta a incidentes:
+# Modelo de relatório de incidente de segurança:
 # 1. Isolar sistemas afetados
 # 2. Preservar evidências
 # 3. Documentar cronograma de eventos
@@ -340,7 +385,7 @@ Documente adequadamente os incidentes de segurança para análise.
 
 ## Inteligência de Ameaças
 
-Colete e analise informações sobre ameaças de segurança atuais e emergentes.
+Reúna e analise informações sobre ameaças de segurança atuais e emergentes.
 
 ### OSINT (Open Source Intelligence)
 
@@ -417,7 +462,7 @@ sudo cryptsetup luksFormat /dev/sdb
 sudo cryptsetup luksOpen /dev/sdb encrypted_drive
 # Gerar chaves SSH
 ssh-keygen -t rsa -b 4096
-# Configurar autenticação por chave SSH
+# Configurar autenticação de chave SSH
 ssh-copy-id user@server
 ```
 
@@ -436,7 +481,7 @@ sudo openvpn --config client.ovpn
 Gerencie certificados digitais para comunicações seguras.
 
 ```bash
-# Criar autoridade certificadora
+# Criar autoridade de certificação
 openssl genrsa -out ca-key.pem 4096
 openssl req -new -x509 -key ca-key.pem -out ca.pem
 # Gerar certificado de servidor
@@ -487,11 +532,11 @@ nikto -h $1 -o /var/log/nikto-$(date +%Y%m%d).txt
 Automatize a análise de logs e o alerta.
 
 ```bash
-# Monitoramento de login falhado
+# Monitoramento de login falho
 #!/bin/bash
 FAILED_LOGINS=$(grep "Failed password" /var/log/auth.log | tail -n 100 | wc -l)
 if [ $FAILED_LOGINS -gt 10 ]; then
-    echo "High number of failed logins detected: $FAILED_LOGINS" | mail -s "Security Alert" admin@company.com
+    echo "Alto número de logins falhos detectados: $FAILED_LOGINS" | mail -s "Alerta de Segurança" admin@company.com
 fi
 ```
 
@@ -506,9 +551,9 @@ SUSPICIOUS_IP=$1
 # Bloquear IP no firewall
 sudo ufw deny from $SUSPICIOUS_IP
 # Registrar a ação
-echo "$(date): Blocked suspicious IP $SUSPICIOUS_IP" >> /var/log/security-actions.log
+echo "$(date): IP suspeito $SUSPICIOUS_IP bloqueado" >> /var/log/security-actions.log
 # Enviar alerta
-echo "Blocked suspicious IP: $SUSPICIOUS_IP" | mail -s "IP Blocked" security@company.com
+echo "IP suspeito bloqueado: $SUSPICIOUS_IP" | mail -s "IP Bloqueado" security@company.com
 ```
 
 ### Gerenciamento de Configuração
@@ -518,14 +563,14 @@ Mantenha configurações de sistema seguras.
 ```bash
 # Exemplo de playbook Ansible
 ---
-- name: Harden SSH configuration
+- name: Endurecer configuração SSH
   hosts: all
   tasks:
-    - name: Disable root login
+    - name: Desabilitar login root
       lineinfile:
         path: /etc/ssh/sshd_config
         line: 'PermitRootLogin no'
-    - name: Restart SSH service
+    - name: Reiniciar serviço SSH
       service:
         name: sshd
         state: restarted
@@ -533,11 +578,9 @@ Mantenha configurações de sistema seguras.
 
 ## Conformidade e Gerenciamento de Riscos
 
-Implemente e mantenha políticas e procedimentos de segurança.
-
 ### Implementação de Política de Segurança
 
-Implemente e mantenha políticas e procedimentos de segurança.
+Implementar e manter políticas e procedimentos de segurança.
 
 ```bash
 # Aplicação de política de senha (PAM)
@@ -569,7 +612,7 @@ Avalie e quantifique riscos de segurança.
 # Baixo (1-3), Médio (4-6), Alto (7-9)
 # Priorização de vulnerabilidades
 # Cálculo da Pontuação CVSS
-# Pontuação Base = Impacto × Explicabilidade
+# Pontuação Base = Impacto × Explorabilidade
 ```
 
 ### Documentação e Relatórios
@@ -637,9 +680,9 @@ echo 'export PATH=$PATH:/opt/tools/bin' >> ~/.bashrc
 
 Aplique configurações de endurecimento de segurança em sistemas e aplicações.
 
-### Endurecimento do Sistema
+### Endurecimento de Sistema
 
-Proteja as configurações do sistema operacional.
+Configure configurações seguras do sistema operacional.
 
 ```bash
 # Desabilitar serviços desnecessários
@@ -667,10 +710,10 @@ echo "net.ipv4.conf.all.accept_redirects = 0" >> /etc/sysctl.conf
 
 ### Segurança de Aplicações
 
-Proteja as configurações de aplicações e serviços.
+Configure aplicações e serviços de forma segura.
 
 ```bash
-# Cabeçalhos de segurança do Apache
+# Cabeçalhos de segurança Apache
 Header always set X-Content-Type-Options nosniff
 Header always set X-Frame-Options DENY
 Header always set X-XSS-Protection "1; mode=block"
@@ -688,14 +731,14 @@ Implemente procedimentos seguros de backup e recuperação de desastres.
 rsync -av --password-file=/etc/rsyncd.secrets /data/ backup@server::backups/
 # Testar integridade do backup
 tar -tzf backup.tar.gz > /dev/null && echo "Backup OK"
-# Verificação de backup automatizada
+# Verificação automatizada de backup
 #!/bin/bash
 find /backups -name "*.tar.gz" -exec tar -tzf {} \; > /dev/null
 ```
 
 ## Técnicas Avançadas de Segurança
 
-Implemente medidas avançadas de segurança e estratégias de defesa.
+Implemente medidas de segurança avançadas e estratégias de defesa.
 
 ### Sistemas de Detecção de Intrusão
 
@@ -716,10 +759,10 @@ tail -f /var/log/suricata/fast.log
 
 ### Gerenciamento de Informações e Eventos de Segurança (SIEM)
 
-Centralize e analise logs e eventos de segurança.
+Centralize e analise logs de segurança e eventos.
 
 ```bash
-# Pilha ELK (Elasticsearch, Logstash, Kibana)
+# ELK Stack (Elasticsearch, Logstash, Kibana)
 # Instalar Elasticsearch
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
@@ -752,7 +795,7 @@ Construa uma cultura organizacional consciente da segurança.
 # - Sessões de treinamento regulares
 # - Testes de simulação de phishing
 # - Atualizações de política de segurança
-# - Procedimentos de relato de incidentes
+# - Procedimentos de relatório de incidentes
 # - Reconhecimento por boas práticas de segurança
 # Métricas a serem acompanhadas:
 # - Taxas de conclusão de treinamento

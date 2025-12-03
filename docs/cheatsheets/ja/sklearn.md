@@ -1,6 +1,6 @@
 ---
-title: 'scikit-learn チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで scikit-learn を習得しましょう。'
+title: 'scikit-learn チートシート | LabEx'
+description: 'この包括的なチートシートで scikit-learn 機械学習を学ぶ。ML アルゴリズム、モデルトレーニング、前処理、評価、Python 機械学習ワークフローのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ scikit-learn チートシート
 <a target="_blank" href="https://labex.io/ja/learn/sklearn">ハンズオンラボで scikit-learn を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、scikit-learn 機械学習を学びましょう。LabEx は、必須のデータ前処理、モデル選択、トレーニング、評価、特徴量エンジニアリングを網羅した包括的な scikit-learn コースを提供します。機械学習アルゴリズムを習得し、Python で予測モデルを構築します。
+LabEx では、必須のデータ前処理、モデル選択、トレーニング、評価、特徴量エンジニアリングを網羅した包括的な scikit-learn コースを提供しています。Python を使用して機械学習アルゴリズムを習得し、予測モデルを構築しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -88,7 +88,7 @@ n_features=20, n_informative=10, random_state=42)
 データを訓練セットとテストセットに分割します。
 
 ```python
-# 基本的な分割 (訓練 80%、テスト 20%)
+# 基本的な分割 (80% 訓練，20% テスト)
 X_train, X_test, y_train, y_test =
 train_test_split(X, y, test_size=0.2,
 random_state=42)
@@ -96,7 +96,7 @@ random_state=42)
 X_train, X_test, y_train, y_test =
 train_test_split(X, y, test_size=0.2,
 stratify=y, random_state=42)
-# 複数回の分割
+# 複数分割
 X_train, X_temp, y_train, y_temp =
 train_test_split(X, y, test_size=0.4,
 random_state=42)
@@ -104,6 +104,21 @@ X_val, X_test, y_val, y_test =
 train_test_split(X_temp, y_temp,
 test_size=0.5, random_state=42)
 ```
+
+<BaseQuiz id="sklearn-split-1" correct="B">
+  <template #question>
+    データを訓練セットとテストセットに分割することが重要なのはなぜですか？
+  </template>
+  
+  <BaseQuizOption value="A">データセットのサイズを減らすため</BaseQuizOption>
+  <BaseQuizOption value="B" correct>未見のデータに対するモデル性能を評価し、過学習を防ぐため</BaseQuizOption>
+  <BaseQuizOption value="C">モデルの訓練を高速化するため</BaseQuizOption>
+  <BaseQuizOption value="D">データセットのバランスを取るため</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    データを分割することで、一方のデータでモデルを訓練し、もう一方のデータでテストすることができます。これにより、モデルが新しい未見のデータにどれだけ汎化するかを評価し、訓練データへの過学習を防ぐのに役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 特徴量スケーリング：`StandardScaler()` / `MinMaxScaler()`
 
@@ -126,18 +141,33 @@ X_test_minmax =
 minmax_scaler.transform(X_test)
 ```
 
+<BaseQuiz id="sklearn-scaling-1" correct="A">
+  <template #question>
+    機械学習において特徴量スケーリングが重要なのはなぜですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>すべての特徴量が類似したスケールになり、特定の特徴量が支配的になるのを防ぐため</BaseQuizOption>
+  <BaseQuizOption value="B">欠損値を削除するため</BaseQuizOption>
+  <BaseQuizOption value="C">特徴量の数を増やすため</BaseQuizOption>
+  <BaseQuizOption value="D">重複行を削除するため</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    特徴量スケーリングは、SVM、KNN、ニューラルネットワークなどのアルゴリズムが特徴量のスケールに敏感であるため重要です。スケーリングがないと、範囲の広い特徴量がモデルの学習プロセスを支配してしまう可能性があります。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### エンコーディング：`LabelEncoder()` / `OneHotEncoder()`
 
 カテゴリ変数を数値形式に変換します。
 
 ```python
-# 目的変数に対するラベルエンコーディング
+# ターゲット変数のラベルエンコーディング
 from sklearn.preprocessing import
 LabelEncoder, OneHotEncoder
 label_encoder = LabelEncoder()
 y_encoded =
 label_encoder.fit_transform(y)
-# カテゴリ特徴量に対するワンホットエンコーディング
+# カテゴリ特徴量のワンホットエンコーディング
 from sklearn.preprocessing import
 OneHotEncoder
 encoder =
@@ -171,7 +201,7 @@ solver='liblinear')
 
 ### 決定木：`DecisionTreeClassifier()`
 
-分類タスクのための木ベースのモデル。
+分類タスクのためのツリーベースのモデル。
 
 ```python
 # 決定木分類器
@@ -208,6 +238,21 @@ rf_clf = RandomForestClassifier(
 )
 ```
 
+<BaseQuiz id="sklearn-randomforest-1" correct="A">
+  <template #question>
+    `RandomForestClassifier`における `n_estimators` は何を制御しますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>フォレスト内の決定木の数</BaseQuizOption>
+  <BaseQuizOption value="B">各木の最大深さ</BaseQuizOption>
+  <BaseQuizOption value="C">考慮する特徴量の数</BaseQuizOption>
+  <BaseQuizOption value="D">ランダムシード</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `n_estimators` は、ランダムフォレストに含まれる決定木の数を指定します。木の数が多いほど、通常は性能が向上しますが、計算時間も増加します。デフォルトは通常 100 です。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### サポートベクターマシン：`SVC()`
 
 カーネル法を用いた強力な分類器。
@@ -229,7 +274,7 @@ svm_rbf = SVC(kernel='rbf', gamma=0.1)
 
 ### 線形回帰：`LinearRegression()`
 
-連続的な目的変数に対する基本的な線形モデル。
+連続的なターゲット変数に対する基本的な線形モデル。
 
 ```python
 # 単純な線形回帰
@@ -253,7 +298,7 @@ from sklearn.linear_model import Ridge
 ridge_reg = Ridge(alpha=1.0)
 ridge_reg.fit(X_train, y_train)
 y_pred = ridge_reg.predict(X_test)
-# alpha 選択のための交差検証
+# alpha の選択のための交差検証
 from sklearn.linear_model import RidgeCV
 ridge_cv = RidgeCV(alphas=[0.1, 1.0, 10.0])
 ridge_cv.fit(X_train, y_train)
@@ -296,7 +341,7 @@ feature_importance = rf_reg.feature_importances_
 分類モデルの性能を評価します。
 
 ```python
-# 基本的な精度
+# 基本的な正解率
 from sklearn.metrics import accuracy_score,
 precision_score, recall_score, f1_score
 accuracy = accuracy_score(y_test, y_pred)
@@ -349,7 +394,7 @@ print(f"MAE: {mae:.4f}")
 print(f"R²: {r2:.4f}")
 ```
 
-### 交差検証
+### 交差検証 (Cross-Validation)
 
 交差検証を用いた堅牢なモデル評価。
 
@@ -359,7 +404,7 @@ from sklearn.model_selection import cross_val_score,
 StratifiedKFold
 cv_scores = cross_val_score(model, X, y, cv=5,
 scoring='accuracy')
-print(f"CV 精度: {cv_scores.mean():.4f} (+/-
+print(f"CV 正解率: {cv_scores.mean():.4f} (+/-
 {cv_scores.std() * 2:.4f})")
 # 不均衡データセットのための層化 K 分割
 skf = StratifiedKFold(n_splits=5, shuffle=True,
@@ -370,7 +415,7 @@ scoring='f1_weighted')
 
 ## 教師なし学習
 
-### K 平均法：`KMeans()`
+### K 平均法クラスタリング：`KMeans()`
 
 データを k 個のクラスターに分割します。
 
@@ -421,7 +466,7 @@ n_clusters = len(set(cluster_labels)) - (1 if -1 in
 cluster_labels else 0)
 n_noise = list(cluster_labels).count(-1)
 print(f"クラスター数：{n_clusters}")
-print(f"ノイズ点の数：{n_noise}")
+print(f"ノイズ点数：{n_noise}")
 ```
 
 ### 階層的クラスタリング：`AgglomerativeClustering()`
@@ -491,7 +536,7 @@ random_search.fit(X_train, y_train)
 前処理とモデリングのステップを連鎖させます。
 
 ```python
-# 前処理とモデリングのパイプラインを作成
+# 前処理とモデリングパイプラインの作成
 from sklearn.pipeline import Pipeline
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
@@ -499,7 +544,7 @@ pipeline = Pipeline([
 ])
 pipeline.fit(X_train, y_train)
 y_pred = pipeline.predict(X_test)
-# グリッドサーチとパイプライン
+# パイプラインとグリッドサーチ
 param_grid = {
     'classifier__n_estimators': [100, 200],
     'classifier__max_depth': [3, 5, None]
@@ -530,10 +575,10 @@ X_rfe = rfe.fit_transform(X_train, y_train)
 
 ### アンサンブル手法：`VotingClassifier()` / `BaggingClassifier()`
 
-より良い性能のために複数のモデルを組み合わせます。
+複数のモデルを組み合わせて性能を向上させます。
 
 ```python
-# Voting classifier (異なるアルゴリズムのアンサンブル)
+# 投票分類器 (異なるアルゴリズムのアンサンブル)
 from sklearn.ensemble import VotingClassifier
 voting_clf = VotingClassifier(
     estimators=[
@@ -544,7 +589,7 @@ voting_clf = VotingClassifier(
 )
 voting_clf.fit(X_train, y_train)
 y_pred = voting_clf.predict(X_test)
-# Bagging classifier
+# バギング分類器
 from sklearn.ensemble import BaggingClassifier
 bagging_clf = BaggingClassifier(DecisionTreeClassifier(),
 n_estimators=100, random_state=42)
@@ -609,7 +654,7 @@ y_pred = loaded_model.predict(X_test)
 joblib.dump(pipeline, 'preprocessing_pipeline.pkl')
 loaded_pipeline =
 joblib.load('preprocessing_pipeline.pkl')
-# pickle の使用 (代替手段)
+# pickle を使用した代替手段
 import pickle
 with open('model.pkl', 'wb') as f:
     pickle.dump(model, f)
@@ -631,10 +676,10 @@ train_sizes, train_scores, val_scores = learning_curve(
 )
 plt.figure(figsize=(10, 6))
 plt.plot(train_sizes, np.mean(train_scores, axis=1), 'o-',
-label='トレーニング スコア')
+label='訓練スコア')
 plt.plot(train_sizes, np.mean(val_scores, axis=1), 'o-',
 label='検証スコア')
-plt.xlabel('トレーニングセットサイズ')
+plt.xlabel('訓練セットサイズ')
 plt.ylabel('スコア')
 plt.legend()
 ```
@@ -654,27 +699,27 @@ param_range=param_range, cv=5
 )
 plt.figure(figsize=(10, 6))
 plt.plot(param_range, np.mean(train_scores, axis=1), 'o-',
-label='トレーニング')
+label='訓練')
 plt.plot(param_range, np.mean(val_scores, axis=1), 'o-',
 label='検証')
-plt.xlabel('推定器の数')
+plt.xlabel('推定器の数 (Number of Estimators)')
 plt.ylabel('スコア')
 ```
 
 ### 特徴量の重要度の可視化
 
-モデルの予測にどの特徴量が寄与しているかを理解します。
+どの特徴量がモデルの予測を駆動しているかを理解します。
 
 ```python
 # 特徴量の重要度のプロット
 importances = model.feature_importances_
 indices = np.argsort(importances)[::-1]
 plt.figure(figsize=(12, 8))
-plt.title("特徴量の重要度")
+plt.title("Feature Importance")
 plt.bar(range(X.shape[1]), importances[indices])
 plt.xticks(range(X.shape[1]), [X.columns[i] for i in indices],
 rotation=90)
-# モデル解釈のための SHAP 値
+# モデルの解釈可能性のための SHAP 値
 # pip install shap
 import shap
 explainer = shap.TreeExplainer(model)
@@ -682,12 +727,12 @@ shap_values = explainer.shap_values(X_test)
 shap.summary_plot(shap_values, X_test)
 ```
 
-### モデルの比較
+### モデル比較
 
 複数のアルゴリズムを体系的に比較します。
 
 ```python
-# 複数のモデルの比較
+# 複数のモデルを比較
 from sklearn.model_selection import cross_val_score
 models = {
     'ロジスティック回帰':
@@ -709,12 +754,12 @@ scoring='accuracy')
 
 ## 設定とベストプラクティス
 
-### ランダムシードと再現性
+### ランダムステートと再現性
 
 実行間で結果の一貫性を保証します。
 
 ```python
-# 再現性のためのランダムシードの設定
+# 再現性のためのランダムステートの設定
 import numpy as np
 np.random.seed(42)
 # すべての sklearn コンポーネントで random_state を設定
@@ -723,7 +768,7 @@ RandomForestClassifier(random
 _state=42)
 train_test_split(X, y,
 random_state=42)
-# 交差検証用
+# 交差検証のため
 cv = StratifiedKFold(n_splits=5,
 shuffle=True, random_state=42)
 ```
@@ -744,7 +789,7 @@ param_grid, n_jobs=-1)
 from sklearn.linear_model
 import SGDClassifier
 sgd = SGDClassifier()
-# チャンクごとにデータを処理
+# データをチャンクごとに処理
 for chunk in chunks:
     sgd.partial_fit(chunk_X,
 chunk_y)
@@ -755,10 +800,10 @@ chunk_y)
 一般的な問題の処理とモデルのデバッグ。
 
 ```python
-# 警告を抑制 (注意して使用)
+# 警告の抑制 (注意して使用)
 import warnings
 warnings.filterwarnings('ignore')
-# Jupyter でのデバッグ表示を強化するための sklearn の set_config
+# Jupyter でのデバッグのためのより良い表示のための sklearn の set_config
 from sklearn import set_config
 set_config(display='diagram')  #
 Jupyterでの表示を強化

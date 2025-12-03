@@ -1,6 +1,6 @@
 ---
-title: 'Cheat Sheet Golang'
-description: 'Apprenez Golang avec notre aide-mémoire complet couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de Référence Golang | LabEx'
+description: 'Apprenez la programmation Go avec cette fiche de référence complète. Référence rapide pour la syntaxe Go, les goroutines, les canaux, les interfaces, la gestion des erreurs et la programmation concurrente pour les développeurs backend.'
 pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Feuille de triche Golang
 <a target="_blank" href="https://labex.io/fr/learn/golang">Apprenez Golang avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la programmation Go grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Go complets couvrant la syntaxe essentielle, les modèles de concurrence, la gestion des erreurs et les techniques avancées. Maîtrisez les fonctionnalités uniques de Go telles que les goroutines, les canaux et les interfaces pour construire des applications concurrentes et efficaces.
+Apprenez la programmation Go grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Go complets couvrant la syntaxe essentielle, les modèles de concurrence, la gestion des erreurs et les techniques avancées. Maîtrisez les fonctionnalités uniques de Go telles que les goroutines, les canaux et les interfaces pour créer des applications concurrentes et efficaces.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -52,7 +52,7 @@ go env GOPATH
 Installer Go sur les systèmes Windows.
 
 ```bash
-# Télécharger l'installateur .msi depuis https://golang.org/dl/
+# Télécharger le programme d'installation .msi depuis https://golang.org/dl/
 # Exécuter l'installateur et suivre les instructions
 # Vérifier dans l'Invite de commandes
 go version
@@ -108,9 +108,9 @@ Configurer VS Code pour le développement Go.
 
 ## Syntaxe et Types de Base
 
-### Paquet et Imports
+### Package et Imports
 
-Chaque fichier Go commence par une déclaration de paquet et des imports.
+Chaque fichier Go commence par une déclaration de package et des imports.
 
 ```go
 package main
@@ -140,6 +140,21 @@ const Pi = 3.14159
 const Message = "Hello, Go!"
 ```
 
+<BaseQuiz id="golang-variables-1" correct="B">
+  <template #question>
+    Quelle est la différence entre `var name string = "Go"` et `name := "Go"` ?
+  </template>
+  
+  <BaseQuizOption value="A">Il n'y a aucune différence</BaseQuizOption>
+  <BaseQuizOption value="B" correct> `:=` est une déclaration courte qui infère le type, `var` déclare explicitement le type</BaseQuizOption>
+  <BaseQuizOption value="C">`:=` ne peut être utilisé que pour les constantes</BaseQuizOption>
+  <BaseQuizOption value="D">`var` ne peut être utilisé qu'à l'intérieur des fonctions</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'opérateur `:=` est un raccourci pour la déclaration et l'initialisation de variables, et Go en déduit automatiquement le type. `var` déclare explicitement le type de la variable et peut être utilisé au niveau du package ou de la fonction.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Types de Données de Base
 
 Types fondamentaux disponibles en Go.
@@ -160,7 +175,7 @@ var b bool = true
 
 ### Conditionnelles : `if` / `else` / `switch`
 
-Contrôler le flux du programme avec des instructions conditionnelles.
+Contrôler le flux d'exécution du programme avec des instructions conditionnelles.
 
 ```go
 // Instructions If
@@ -178,7 +193,7 @@ case "Lundi":
 case "Vendredi":
     fmt.Println("TGIF")
 default:
-    fmt.Println("Jour normal")
+    fmt.Println("Journée normale")
 }
 ```
 
@@ -222,6 +237,21 @@ for i, char := range "Hello" {
 }
 ```
 
+<BaseQuiz id="golang-range-1" correct="B">
+  <template #question>
+    Que retourne `range` lors de l'itération sur un slice en Go ?
+  </template>
+  
+  <BaseQuizOption value="A">Seulement la valeur</BaseQuizOption>
+  <BaseQuizOption value="B" correct>L'index et la valeur</BaseQuizOption>
+  <BaseQuizOption value="C">Seulement l'index</BaseQuizOption>
+  <BaseQuizOption value="D">La longueur du slice</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Lors de l'utilisation de `range` avec un slice, il retourne deux valeurs : l'index (position) et la valeur à cet index. Vous pouvez utiliser `_` pour ignorer l'une ou l'autre valeur si vous n'en avez pas besoin.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Instructions de Contrôle : `break` / `continue`
 
 Contrôler le flux d'exécution de la boucle.
@@ -234,7 +264,7 @@ for i := 0; i < 10; i++ {
     }
     fmt.Println(i)
 }
-// Sauter l'itération actuelle
+// Sauter l'itération courante
 for i := 0; i < 5; i++ {
     if i == 2 {
         continue
@@ -242,6 +272,21 @@ for i := 0; i < 5; i++ {
     fmt.Println(i)
 }
 ```
+
+<BaseQuiz id="golang-control-1" correct="C">
+  <template #question>
+    Quelle est la différence entre `break` et `continue` dans les boucles Go ?
+  </template>
+  
+  <BaseQuizOption value="A">Il n'y a aucune différence</BaseQuizOption>
+  <BaseQuizOption value="B">break saute l'itération courante, continue quitte la boucle</BaseQuizOption>
+  <BaseQuizOption value="C" correct>break quitte complètement la boucle, continue passe à l'itération suivante</BaseQuizOption>
+  <BaseQuizOption value="D">Les deux quittent la boucle</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `break` sort immédiatement de la boucle et continue l'exécution après la boucle. `continue` saute le reste de l'itération courante et passe à l'itération suivante de la boucle.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Fonctions
 
@@ -252,7 +297,7 @@ Définir des fonctions avec des paramètres et des valeurs de retour.
 ```go
 // Fonction de base
 func greet(name string) {
-    fmt.Printf("Bonjour, %s !\n", name)
+    fmt.Printf("Hello, %s!\n", name)
 }
 // Fonction avec valeur de retour
 func add(a, b int) int {
@@ -304,7 +349,7 @@ multiply = func(a, b int) int {
 square := func(x int) int {
     return x * x
 }
-// Fermeture (Closure)
+// Closure
 func counter() func() int {
     count := 0
     return func() int {
@@ -339,13 +384,13 @@ func processFile(filename string) {
 
 ### Tableaux et Slices
 
-Séquences fixes et dynamiques d'éléments.
+Séquences d'éléments fixes et dynamiques.
 
 ```go
 // Tableaux (taille fixe)
 var arr [5]int = [5]int{1, 2, 3, 4, 5}
 shortArr := [3]string{"a", "b", "c"}
-// Slices (dynamique)
+// Slices (dynamiques)
 var slice []int
 slice = append(slice, 1, 2, 3)
 // Créer un slice avec capacité
@@ -360,7 +405,7 @@ copy(slice2, slice)   // Copier les éléments
 Paires clé-valeur pour des recherches efficaces.
 
 ```go
-// Déclaration et initialisation de Map
+// Déclaration et initialisation de map
 var m map[string]int
 m = make(map[string]int)
 // Déclaration courte
@@ -377,16 +422,16 @@ age, exists := ages["Alice"] // Vérifier l'existence
 
 ### Structs
 
-Grouper des données connexes avec des types personnalisés.
+Regrouper des données connexes avec des types personnalisés.
 
 ```go
-// Définition de Struct
+// Définition de struct
 type Person struct {
     Name    string
     Age     int
     Email   string
 }
-// Création d'instances de struct
+// Créer des instances de struct
 p1 := Person{
     Name:  "Alice",
     Age:   30,
@@ -400,7 +445,7 @@ p1.Age = 31
 
 ### Pointeur
 
-Référencer les adresses mémoire des variables.
+Référence les adresses mémoire des variables.
 
 ```go
 // Déclaration de pointeur
@@ -456,7 +501,7 @@ func (r Rectangle) Perimeter() float64 {
 }
 // Rectangle implémente maintenant l'interface Shape
 func printShapeInfo(s Shape) {
-    fmt.Printf("Aire : %.2f, Périmètre : %.2f\n",
+    fmt.Printf("Aire: %.2f, Périmètre: %.2f\n",
                s.Area(), s.Perimeter())
 }
 ```
@@ -515,7 +560,7 @@ fmt.Println(emp.Name) // "Alice"
 
 ### Gestion des Erreurs de Base
 
-Utiliser l'interface error intégrée pour la gestion des erreurs.
+Utiliser l'interface d'erreur intégrée pour la gestion des erreurs.
 
 ```go
 import "errors"
@@ -531,7 +576,7 @@ result, err := divide(10, 2)
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("Résultat : %.2f\n", result)
+fmt.Printf("Résultat: %.2f\n", result)
 ```
 
 ### Erreurs Personnalisées
@@ -545,7 +590,7 @@ type ValidationError struct {
     Message string
 }
 func (e ValidationError) Error() string {
-    return fmt.Sprintf("erreur de validation dans %s : %s",
+    return fmt.Sprintf("erreur de validation dans %s: %s",
                        e.Field, e.Message)
 }
 // Fonction utilisant une erreur personnalisée
@@ -570,7 +615,7 @@ import "fmt"
 func processFile(filename string) error {
     file, err := os.Open(filename)
     if err != nil {
-        return fmt.Errorf("impossible d'ouvrir le fichier %s : %w",
+        return fmt.Errorf("impossible d'ouvrir le fichier %s: %w",
                           filename, err)
     }
     defer file.Close()
@@ -578,7 +623,7 @@ func processFile(filename string) error {
     // Traiter le fichier...
     return nil
 }
-// Développer les erreurs
+// Déballer les erreurs
 err := processFile("missing.txt")
 if err != nil {
     var pathErr *os.PathError
@@ -618,7 +663,7 @@ Threads légers gérés par le runtime Go.
 import "time"
 // Goroutine simple
 func sayHello() {
-    fmt.Println("Bonjour depuis la goroutine !")
+    fmt.Println("Hello depuis la goroutine !")
 }
 func main() {
     // Démarrer la goroutine
@@ -636,7 +681,7 @@ func main() {
 
 ### Canaux (Channels)
 
-Communication entre goroutines utilisant des canaux.
+Communication entre goroutines à l'aide de canaux.
 
 ```go
 // Créer un canal
@@ -657,7 +702,7 @@ close(ch)
 Modèles courants pour la communication par canaux.
 
 ```go
-// Modèle Worker
+// Modèle de travailleur (Worker pattern)
 func worker(id int, jobs <-chan int, results chan<- int) {
     for job := range jobs {
         fmt.Printf("Travailleur %d traitant la tâche %d\n", id, job)
@@ -737,7 +782,7 @@ if err != nil {
 defer file.Close()
 ```
 
-### Gestion CSV
+### Gestion des CSV
 
 Lire et écrire des fichiers CSV.
 
@@ -831,7 +876,7 @@ func TestAdd(t *testing.T) {
 // go test -v (verbeux)
 ```
 
-### Tests Pilotés par Tableaux
+### Tests Pilotés par Tableaux (Table-Driven Tests)
 
 Tester plusieurs cas efficacement.
 
@@ -893,7 +938,7 @@ func ExampleAdd_negative() {
 // go test -run Example
 ```
 
-## Modules Go et Paquets
+## Modules et Packages Go
 
 ### Gestion des Modules
 
@@ -909,7 +954,7 @@ go get -u github.com/gin-gonic/gin  # Mettre à jour vers la dernière version
 go mod tidy
 # Télécharger les dépendances
 go mod download
-# Vendre les dépendances localement
+# Dépendances locales (vendor)
 go mod vendor
 ```
 
@@ -930,12 +975,12 @@ require (
 )
 ```
 
-### Création de Paquets
+### Création de Packages
 
-Structurer le code en paquets réutilisables.
+Structurer le code en packages réutilisables.
 
 ```go
-// Structure du paquet
+// Structure du package
 // myproject/
 //   ├── go.mod
 //   ├── main.go
@@ -971,7 +1016,7 @@ Commandes essentielles pour le développement Go.
 ```bash
 # Exécuter un programme Go
 go run main.go
-# Construire un exécutable
+# Compiler l'exécutable
 go build
 go build -o myapp  # Nom personnalisé
 # Installer le binaire dans GOPATH/bin

@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по C++'
-description: 'Изучите C++ с нашей подробной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по C++ | LabEx'
+description: 'Изучите программирование на C++ с помощью этой исчерпывающей шпаргалки. Быстрый справочник по синтаксису C++, ООП, STL, шаблонам, управлению памятью и функциям современного C++ для разработчиков ПО.'
 pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 <a target="_blank" href="https://labex.io/ru/learn/cpp">Изучите C++ с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите программирование на C++ с помощью практических лабораторных работ и сценариев из реального мира. LabEx предлагает комплексные курсы по C++, охватывающие основной синтаксис, объектно-ориентированное программирование, контейнеры STL, управление памятью и продвинутые методы. Освойте мощные возможности C++ для создания высокопроизводительных приложений и системного программного обеспечения.
+Изучайте программирование на C++ с помощью практических лабораторных работ и сценариев из реального мира. LabEx предлагает комплексные курсы по C++, охватывающие основной синтаксис, объектно-ориентированное программирование, контейнеры STL, управление памятью и продвинутые методы. Освойте мощные возможности C++ для создания высокопроизводительных приложений и системного программного обеспечения.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -44,7 +44,7 @@ int main() {
 #include <string>    // Класс строки
 #include <algorithm> // Алгоритмы STL
 using namespace std;
-// Или указывать по отдельности:
+// Или указывать индивидуально:
 // using std::cout;
 // using std::cin;
 ```
@@ -57,7 +57,7 @@ using namespace std;
 // Однострочный комментарий
 /*
 Многострочный комментарий
-занимает несколько строк
+охватывает несколько строк
 */
 // TODO: Реализовать функцию
 /* FIXME: Ошибка в этом разделе */
@@ -78,6 +78,21 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 ```
+
+<BaseQuiz id="cpp-main-1" correct="B">
+  <template #question>
+    В чем разница между операторами вывода в C и C++?
+  </template>
+  
+  <BaseQuizOption value="A">Разницы нет</BaseQuizOption>
+  <BaseQuizOption value="B" correct>C использует printf(), C++ использует cout с оператором <<</BaseQuizOption>
+  <BaseQuizOption value="C">C++ не поддерживает вывод</BaseQuizOption>
+  <BaseQuizOption value="D">C использует cout, C++ использует printf</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C использует `printf()` из stdio.h, в то время как C++ использует `cout` из iostream с оператором вставки потока `<<`. C++ также поддерживает printf для совместимости.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Базовый вывод
 
@@ -107,7 +122,7 @@ getline(cin, name);
 
 ### Примитивные типы
 
-Основные типы данных для хранения различных значений.
+Основные типы данных для хранения различных видов значений.
 
 ```cpp
 // Целочисленные типы
@@ -138,6 +153,21 @@ int matrix[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
 vector<int> dynamic_array = {10, 20, 30};
 vector<string> names(5); // Размер 5, пустые строки
 ```
+
+<BaseQuiz id="cpp-vector-1" correct="B">
+  <template #question>
+    В чем основное преимущество `vector` перед обычными массивами в C++?
+  </template>
+  
+  <BaseQuizOption value="A">Векторы работают быстрее</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Векторы могут динамически изменять размер, в то время как массивы имеют фиксированный размер</BaseQuizOption>
+  <BaseQuizOption value="C">Векторы используют меньше памяти</BaseQuizOption>
+  <BaseQuizOption value="D">Преимуществ нет</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `vector` — это динамический массив, который может расти или уменьшаться во время выполнения, в отличие от обычных массивов, размер которых фиксируется на этапе компиляции. Это делает векторы более гибкими для многих сценариев использования.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Константы и Auto
 
@@ -206,6 +236,21 @@ for (auto& item : container) {
 }
 ```
 
+<BaseQuiz id="cpp-range-for-1" correct="B">
+  <template #question>
+    Что такое цикл for на основе диапазона в C++?
+  </template>
+  
+  <BaseQuizOption value="A">Цикл, который работает только с массивами</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Цикл, который автоматически перебирает все элементы в контейнере</BaseQuizOption>
+  <BaseQuizOption value="C">Цикл, который работает бесконечно</BaseQuizOption>
+  <BaseQuizOption value="D">Цикл, который требует ручного управления индексами</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Циклы for на основе диапазона (введенные в C++11) автоматически перебирают все элементы в контейнере (например, векторах, массивах, строках) без необходимости вручную управлять индексами. Синтаксис: `for (auto item : container)`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Циклы While
 
 Итерация на основе условия.
@@ -227,7 +272,7 @@ do {
 
 ### Управление циклами
 
-Операторы break и continue.
+Операторы `break` и `continue`.
 
 ```cpp
 for (int i = 0; i < 10; i++) {
@@ -235,14 +280,14 @@ for (int i = 0; i < 10; i++) {
         continue; // Пропустить итерацию
     }
     if (i == 7) {
-        break;    // Выход из цикла
+        break;    // Выйти из цикла
     }
     cout << i << " ";
 }
-// Вложенные циклы с помеченным break
+// Вложенные циклы с именованным break
 for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-        if (i == j) break; // Прерывание только внутреннего цикла
+        if (i == j) break; // Прерывается только внутренний цикл
         cout << i << "," << j << " ";
     }
 }
@@ -297,8 +342,8 @@ void greet(string name, string greeting = "Hello") {
     cout << greeting << ", " << name << "!" << endl;
 }
 // Вызовы функций
-greet("Alice");              // Использует по умолчанию "Hello"
-greet("Bob", "Good morning"); // Использует настраиваемое приветствие
+greet("Alice");              // Используется значение по умолчанию "Hello"
+greet("Bob", "Good morning"); // Используется настраиваемое приветствие
 ```
 
 ### Передача по ссылке
@@ -347,7 +392,7 @@ public:
         height = h;
     }
 
-    // Функции-получатели (Getter)
+    // Функции-получатели (геттеры)
     double getWidth() const { return width; }
     double getHeight() const { return height; }
 };
@@ -465,7 +510,7 @@ ref = 20;      // Изменяет x на 20
 int* ptr = &x; // Указывает на адрес x
 *ptr = 30;     // Разыменование и изменение x
 ptr = nullptr; // Может указывать на ничто
-// Вариации const
+// Вариации с const
 const int* ptr1 = &x;    // Нельзя изменять значение
 int* const ptr2 = &x;    // Нельзя изменять адрес
 const int* const ptr3 = &x; // Нельзя изменять ни то, ни другое
@@ -503,7 +548,7 @@ nums.push_back(4);        // Добавить элемент
 nums.pop_back();          // Удалить последний
 nums.insert(nums.begin() + 1, 10); // Вставить по позиции
 nums.erase(nums.begin()); // Удалить первый
-// Операции со строкой
+// Операции со строками
 string text = "Hello";
 text += " World";         // Конкатенация
 text.append("!");         // Добавить в конец
@@ -539,7 +584,7 @@ unique_nums.erase(1);
 vector<int> nums = {64, 34, 25, 12, 22, 11, 90};
 // Сортировка
 sort(nums.begin(), nums.end());
-sort(nums.rbegin(), nums.rend()); // Сортировка по убыванию
+sort(nums.rbegin(), nums.rend()); // Обратная сортировка
 // Поиск
 auto it = find(nums.begin(), nums.end(), 25);
 if (it != nums.end()) {
@@ -554,13 +599,13 @@ int count = count_if(nums.begin(), nums.end(),
 
 ### Итераторы
 
-Эффективная навигация по контейнерам.
+Навигация по контейнерам эффективно.
 
 ```cpp
 vector<string> words = {"hello", "world", "cpp"};
 // Типы итераторов
 vector<string>::iterator it;
-auto it2 = words.begin(); // C++11 auto
+auto it2 = words.begin(); // Auto в C++11
 // Итерация по контейнеру
 for (it = words.begin(); it != words.end(); ++it) {
     cout << *it << " ";
@@ -668,14 +713,14 @@ cout << hex << 255 << endl;                    // Шестнадцатеричн
 try {
     int result = 10 / 0; // Это может вызвать исключение
     vector<int> vec(5);
-    vec.at(10) = 100;    // Выход за пределы диапазона
+    vec.at(10) = 100;    // Доступ за пределами диапазона
 
 } catch (const exception& e) {
     cout << "Exception caught: " << e.what() << endl;
 } catch (...) {
     cout << "Unknown exception caught!" << endl;
 }
-// Типы конкретных исключений
+// Конкретные типы исключений
 try {
     string str = "abc";
     int num = stoi(str); // Вызывает invalid_argument
@@ -716,7 +761,7 @@ try {
 
 ### Паттерн RAII
 
-Инициализация при приобретении ресурса для безопасного управления ресурсами.
+Инициализация ресурсов при приобретении для безопасного управления ресурсами.
 
 ```cpp
 // RAII с умными указателями
@@ -724,7 +769,7 @@ try {
     unique_ptr<int[]> arr = make_unique<int[]>(1000);
     // Массив будет автоматически удален при выходе из области видимости
 }
-// RAII с файловыми операциями
+// RAII с файловым вводом/выводом
 {
     ifstream file("data.txt");
     // Файл будет автоматически закрыт при выходе из области видимости
@@ -778,13 +823,13 @@ GNU Compiler Collection для C++.
 ```bash
 # Базовая компиляция
 g++ -o program main.cpp
-# С информацией для отладки
+# С отладочной информацией
 g++ -g -o program main.cpp
 # Уровни оптимизации
 g++ -O2 -o program main.cpp
 # Несколько исходных файлов
 g++ -o program main.cpp utils.cpp math.cpp
-# Включение дополнительных директорий
+# Включение дополнительных каталогов
 g++ -I/usr/local/include -o program main.cpp
 # Линковка библиотек
 g++ -o program main.cpp -lm -lpthread
@@ -877,7 +922,7 @@ if (ptr != nullptr) {
 Пишите эффективный код на C++.
 
 ```cpp
-// Передавайте большие объекты по константной ссылке
+// Передавайте большие объекты по const-ссылке
 void processData(const vector<int>& data) {
     // Избегайте копирования больших объектов
 }
@@ -885,7 +930,7 @@ void processData(const vector<int>& data) {
 for (auto it = vec.begin(); it != vec.end(); ++it) {
     // ++it часто быстрее, чем it++
 }
-// Зарезервируйте емкость вектора, когда размер известен
+// Резервируйте емкость вектора, когда размер известен
 vector<int> numbers;
 numbers.reserve(1000); // Избегайте повторного выделения
 // Используйте emplace вместо push для объектов
@@ -896,7 +941,7 @@ words.push_back(string("World")); // Конструирование, затем 
 
 ### Организация кода
 
-Структурирование кода для удобства сопровождения.
+Структурируйте код для удобства сопровождения.
 
 ```cpp
 // Заголовочный файл (utils.h)
@@ -920,7 +965,7 @@ double getRadius() const { return radius; }
 
 ## Соответствующие ссылки
 
-- <router-link to="/c-programming">Шпаргалка по C</router-link>
+- <router-link to="/c-programming">Шпаргалка по программированию на C</router-link>
 - <router-link to="/java">Шпаргалка по Java</router-link>
 - <router-link to="/python">Шпаргалка по Python</router-link>
 - <router-link to="/javascript">Шпаргалка по JavaScript</router-link>

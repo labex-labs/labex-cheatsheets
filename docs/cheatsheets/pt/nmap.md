@@ -1,6 +1,6 @@
 ---
-title: 'Guia Rápido Nmap'
-description: 'Aprenda Nmap com nosso guia completo, cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Guia Rápido Nmap | LabEx'
+description: 'Aprenda a varredura de rede Nmap com este guia completo. Referência rápida para varredura de portas, descoberta de rede, detecção de vulnerabilidades, auditoria de segurança e reconhecimento de rede.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
@@ -47,7 +47,7 @@ brew install nmap
 
 ### Instalação no Windows
 
-Baixe e instale no site oficial.
+Baixe e instale a partir do site oficial.
 
 ```bash
 # Baixar instalador de
@@ -61,7 +61,7 @@ https://nmap.org/download.html
 Teste sua instalação e obtenha ajuda.
 
 ```bash
-# Exibir informações da versão
+# Exibir informações de versão
 nmap --version
 # Mostrar menu de ajuda
 nmap -h
@@ -85,6 +85,21 @@ nmap 192.168.1.1 192.168.1.5
 192.168.1.10
 ```
 
+<BaseQuiz id="nmap-scan-1" correct="A">
+  <template #question>
+    O que uma varredura básica `nmap 192.168.1.1` faz por padrão?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Varre as 1000 portas TCP mais comuns</BaseQuizOption>
+  <BaseQuizOption value="B">Varre todas as 65535 portas</BaseQuizOption>
+  <BaseQuizOption value="C">Apenas realiza descoberta de host</BaseQuizOption>
+  <BaseQuizOption value="D">Varre apenas a porta 80</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Por padrão, o Nmap varre as 1000 portas TCP mais comuns. Para varrer todas as portas, use `-p-`, ou especifique portas específicas com `-p 80,443,22`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Varredura de Intervalo de Rede
 
 O Nmap aceita nomes de host, endereços IP, sub-redes.
@@ -98,9 +113,9 @@ nmap 192.168.1.0/24
 nmap 192.168.1.0/24 10.0.0.0/8
 ```
 
-### Entrada de Arquivo
+### Entrada a Partir de Arquivo
 
-Varredura de alvos listados em um arquivo.
+Varre alvos listados em um arquivo.
 
 ```bash
 # Ler alvos do arquivo
@@ -117,16 +132,31 @@ exclude.txt
 
 ### Varredura Ping: `nmap -sn`
 
-A descoberta de host é uma maneira fundamental que muitos analistas e pentester usam o Nmap. Seu propósito é obter uma visão geral de quais sistemas estão online.
+A descoberta de host é uma maneira fundamental pela qual muitos analistas e pentesteres usam o Nmap. Seu propósito é obter uma visão geral de quais sistemas estão online.
 
 ```bash
-# Apenas varredura Ping (sem varredura de porta)
+# Apenas varredura ping (sem varredura de porta)
 nmap -sn 192.168.1.0/24
 # Pular descoberta de host (assumir que todos os hosts estão ativos)
 nmap -Pn 192.168.1.1
 # Ping echo ICMP
 nmap -PE 192.168.1.0/24
 ```
+
+<BaseQuiz id="nmap-ping-1" correct="A">
+  <template #question>
+    O que `nmap -sn` faz?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Realiza apenas a descoberta de host, sem varredura de porta</BaseQuizOption>
+  <BaseQuizOption value="B">Varre todas as portas no alvo</BaseQuizOption>
+  <BaseQuizOption value="C">Realiza uma varredura furtiva (stealth scan)</BaseQuizOption>
+  <BaseQuizOption value="D">Varre apenas portas UDP</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O flag `-sn` diz ao Nmap para realizar apenas a descoberta de host (varredura ping), sem varrer portas. Isso é útil para identificar rapidamente quais hosts estão online em uma rede.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Técnicas de Ping TCP
 
@@ -148,13 +178,29 @@ Use pacotes UDP para descoberta de host.
 ```bash
 # Ping UDP para portas comuns
 nmap -PU53,67,68,137 192.168.1.0/24
+```
+
+<BaseQuiz id="nmap-udp-1" correct="B">
+  <template #question>
+    Por que você usaria o ping UDP em vez do ping ICMP?
+  </template>
+  
+  <BaseQuizOption value="A">O ping UDP é sempre mais rápido</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Algumas redes bloqueiam ICMP, mas permitem pacotes UDP</BaseQuizOption>
+  <BaseQuizOption value="C">O ping UDP varre portas automaticamente</BaseQuizOption>
+  <BaseQuizOption value="D">O ping UDP funciona apenas em redes locais</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O ping UDP pode ser útil quando o ICMP é bloqueado por firewalls. Muitas redes permitem pacotes UDP para portas comuns (como a porta 53 do DNS) mesmo quando o ICMP é filtrado, tornando o ping UDP eficaz para descoberta de host.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Ping UDP para portas padrão
 nmap -PU 192.168.1.0/24
 ```
 
 ### Ping ARP: `nmap -PR`
 
-Use requisições ARP para descoberta de rede local.
+Use solicitações ARP para descoberta de rede local.
 
 ```bash
 # Ping ARP (padrão para redes locais)
@@ -167,7 +213,7 @@ nmap --disable-arp-ping 192.168.1.0/24
 
 ### Varredura SYN TCP: `nmap -sS`
 
-Esta varredura é mais furtiva, pois o Nmap envia um pacote RST, o que evita múltiplas requisições e encurta o tempo de varredura.
+Esta varredura é mais furtiva, pois o Nmap envia um pacote RST, o que evita múltiplas solicitações e encurta o tempo de varredura.
 
 ```bash
 # Varredura padrão (requer root)
@@ -191,7 +237,7 @@ nmap -sT -T3 192.168.1.1
 
 ### Varredura UDP: `nmap -sU`
 
-Varredura de portas UDP para serviços.
+Varre portas UDP em busca de serviços.
 
 ```bash
 # Varredura UDP (lenta, requer root)
@@ -202,7 +248,7 @@ nmap -sU -p 53,67,68,161 192.168.1.1
 nmap -sS -sU -p T:80,443,U:53,161 192.168.1.1
 ```
 
-### Varreduras Furtivas
+### Varreduras Furtivas (Stealth Scans)
 
 Técnicas avançadas de varredura para evasão.
 
@@ -215,9 +261,9 @@ nmap -sN 192.168.1.1
 nmap -sX 192.168.1.1
 ```
 
-## Especificação de Portas
+## Especificação de Porta
 
-### Intervalos de Portas: `nmap -p`
+### Intervalos de Porta: `nmap -p`
 
 Mire em portas específicas, intervalos ou combinações de portas TCP e UDP para varreduras mais precisas.
 
@@ -247,7 +293,7 @@ nmap -p T:80,U:53 192.168.1.1
 
 ### Conjuntos de Portas Comuns
 
-Varra conjuntos de portas frequentemente usados rapidamente.
+Varra portas frequentemente usadas rapidamente.
 
 ```bash
 # Top 1000 portas (padrão)
@@ -266,7 +312,7 @@ nmap -v 192.168.1.1
 
 ### Detecção de Serviço: `nmap -sV`
 
-Detecta quais serviços estão em execução e tenta identificar seu software, versões e configurações.
+Detecta quais serviços estão em execução e tenta identificar o software, suas versões e configurações.
 
 ```bash
 # Detecção de versão básica
@@ -284,7 +330,7 @@ nmap -sC -sV 192.168.1.1
 Use scripts para detecção de serviço aprimorada.
 
 ```bash
-# Captura de banner
+# Captura de banner (Banner grabbing)
 nmap --script banner 192.168.1.1
 # Enumeração de serviço HTTP
 nmap --script http-* 192.168.1.1
@@ -318,7 +364,7 @@ nmap -sS -sV -O -sC 192.168.1.1
 
 ### Modelos de Temporização: `nmap -T`
 
-Ajuste a velocidade da varredura e a furtividade com base no seu ambiente alvo e risco de detecção.
+Ajuste a velocidade da varredura e a furtividade com base no seu ambiente de destino e risco de detecção.
 
 ```bash
 # Paranoico (muito lento, furtivo)
@@ -350,7 +396,7 @@ nmap --min-hostgroup 10 192.168.1.0/24
 nmap --host-timeout 5m 192.168.1.1
 ```
 
-## Motor de Script Nmap (NSE)
+## Engine de Scripting Nmap (NSE)
 
 ### Categorias de Scripts: `nmap --script`
 
@@ -418,7 +464,7 @@ Salve os resultados em diferentes formatos.
 nmap -oN scan_results.txt 192.168.1.1
 # Saída XML
 nmap -oX scan_results.xml 192.168.1.1
-# Saída "grepável"
+# Saída Grepable
 nmap -oG scan_results.gnmap 192.168.1.1
 # Todos os formatos
 nmap -oA scan_results 192.168.1.1
@@ -444,7 +490,7 @@ Continue ou adicione a varreduras anteriores.
 ```bash
 # Retomar varredura interrompida
 nmap --resume scan_results.gnmap
-# Anexar a arquivo existente
+# Anexar ao arquivo existente
 nmap --append-output -oN existing_scan.txt 192.168.1.1
 ```
 
@@ -494,7 +540,7 @@ nmap -D 192.168.1.100,RND:3 192.168.1.1
 Falsificar informações de origem.
 
 ```bash
-# IP de origem falsificado
+# Falsificar IP de origem
 nmap -S 192.168.1.100 192.168.1.1
 # Porta de origem personalizada
 nmap --source-port 53 192.168.1.1
@@ -504,10 +550,10 @@ nmap --data-length 25 192.168.1.1
 
 ### Varredura Ociosa/Zombie: `nmap -sI`
 
-Use um host zumbi para ocultar a origem da varredura.
+Use um host zombie para esconder a origem da varredura.
 
 ```bash
-# Varredura zumbi (requer host ocioso)
+# Varredura zombie (requer host ocioso)
 nmap -sI zombie_host 192.168.1.1
 # Listar candidatos ociosos
 nmap --script ipidseq 192.168.1.0/24
@@ -517,7 +563,7 @@ nmap --script ipidseq 192.168.1.0/24
 
 ### Controle de Resolução DNS
 
-Controle como o Nmap lida com consultas DNS.
+Controle como o Nmap lida com pesquisas DNS.
 
 ```bash
 # Desativar resolução DNS
@@ -530,7 +576,7 @@ nmap --dns-servers 8.8.8.8,1.1.1.1 192.168.1.1
 
 ### Varredura IPv6: `nmap -6`
 
-Use estas flags do Nmap para funcionalidade adicional, como suporte a IPv6.
+Use estes flags do Nmap para funcionalidade adicional, como suporte a IPv6.
 
 ```bash
 # Varredura IPv6
@@ -554,14 +600,14 @@ nmap --traceroute 192.168.1.1
 
 ### Opções Diversas
 
-Bandeiras úteis adicionais.
+Flags úteis adicionais.
 
 ```bash
 # Imprimir versão e sair
 nmap --version
-# Enviar no nível ethernet
+# Enviar em nível ethernet
 nmap --send-eth 192.168.1.1
-# Enviar no nível IP
+# Enviar em nível IP
 nmap --send-ip 192.168.1.1
 ```
 
@@ -628,7 +674,7 @@ nmap -sS -f --mtu 8 -T1 192.168.1.1
 Otimize a velocidade da varredura para redes grandes.
 
 ```bash
-# Varredura de rede rápida
+# Varredura rápida de rede
 nmap -sS -T4 --min-rate 1000 --max-retries 1
 192.168.1.0/24
 # Varredura de host paralela

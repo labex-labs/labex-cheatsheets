@@ -1,6 +1,6 @@
 ---
-title: 'C++ Spickzettel'
-description: 'Lernen Sie C++ mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'C++ Spickzettel | LabEx'
+description: 'Lernen Sie C++ Programmierung mit diesem umfassenden Spickzettel. Schnelle Referenz für C++ Syntax, OOP, STL, Templates, Speichermanagement und moderne C++ Features für Softwareentwickler.'
 pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ C++ Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/cpp">C++ mit praktischen Übungen lernen</a>
+<a target="_blank" href="https://labex.io/de/learn/cpp">C++ mit praxisnahen Labs lernen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie die C++-Programmierung durch praktische Übungen und reale Szenarien. LabEx bietet umfassende C++-Kurse, die grundlegende Syntax, objektorientierte Programmierung, STL-Container, Speicherverwaltung und fortgeschrittene Techniken abdecken. Meistern Sie die leistungsstarken Funktionen von C++, um Hochleistungsanwendungen und Systemsoftware zu erstellen.
+Lernen Sie die C++-Programmierung durch praxisnahe Labs und reale Szenarien. LabEx bietet umfassende C++-Kurse, die wesentliche Syntax, objektorientierte Programmierung, STL-Container, Speicherverwaltung und fortgeschrittene Techniken abdecken. Meistern Sie die leistungsstarken Funktionen von C++, um Hochleistungsanwendungen und Systemsoftware zu erstellen.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Lernen Sie die C++-Programmierung durch praktische Übungen und reale Szenarien.
 
 ### Hallo Welt Programm
 
-Grundstruktur eines C++ Programms.
+Grundstruktur eines C++-Programms.
 
 ```cpp
 #include <iostream>
@@ -39,7 +39,7 @@ int main() {
 Bibliotheken einbinden und Namespaces verwalten.
 
 ```cpp
-#include <iostream>  // Eingabe-/Ausgabestrom
+#include <iostream>  // Eingabe-/Ausgabestream
 #include <vector>    // Dynamische Arrays
 #include <string>    // String-Klasse
 #include <algorithm> // STL-Algorithmen
@@ -60,7 +60,7 @@ Mehrzeiliger Kommentar
 erstreckt sich über mehrere Zeilen
 */
 // TODO: Funktion implementieren
-/* FIXME: Fehler in diesem Abschnitt */
+/* FIXME: Bug in diesem Abschnitt */
 ```
 
 ### Main Funktion
@@ -79,7 +79,22 @@ int main(int argc, char* argv[]) {
 }
 ```
 
-### Grundlegende Ausgabe
+<BaseQuiz id="cpp-main-1" correct="B">
+  <template #question>
+    Was ist der Unterschied zwischen C- und C++-Ausgabenanweisungen?
+  </template>
+  
+  <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="B" correct>C verwendet printf(), C++ verwendet cout mit dem << Operator</BaseQuizOption>
+  <BaseQuizOption value="C">C++ unterstützt keine Ausgabe</BaseQuizOption>
+  <BaseQuizOption value="D">C verwendet cout, C++ verwendet printf</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C verwendet `printf()` aus stdio.h, während C++ `cout` aus iostream mit dem Stream-Einfügeoperator `<<` verwendet. C++ unterstützt auch printf zur Kompatibilität.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Einfache Ausgabe
 
 Text und Variablen auf der Konsole anzeigen.
 
@@ -90,7 +105,7 @@ cout << "Wert: " << 42 << endl;
 cout << "Name: " << name << ", Alter: " << age << endl;
 ```
 
-### Grundlegende Eingabe
+### Einfache Eingabe
 
 Benutzereingaben von der Konsole lesen.
 
@@ -99,7 +114,7 @@ int age;
 string name;
 cin >> age;
 cin >> name;
-// Ganze Zeile mit Leerzeichen lesen
+// Ganze Zeile inklusive Leerzeichen lesen
 getline(cin, name);
 ```
 
@@ -107,10 +122,10 @@ getline(cin, name);
 
 ### Primitive Typen
 
-Grundlegende Datentypen zur Speicherung verschiedener Werte.
+Grundlegende Datentypen zur Speicherung verschiedener Wertarten.
 
 ```cpp
-// Ganzzahltypen
+// Integer-Typen
 int age = 25;
 short small_num = 100;
 long large_num = 1000000L;
@@ -118,7 +133,7 @@ long long huge_num = 9223372036854775807LL;
 // Gleitkommatypen
 float price = 19.99f;
 double precise = 3.14159265359;
-// Zeichen und boolesch
+// Zeichen und Boolescher Wert
 char grade = 'A';
 bool is_valid = true;
 ```
@@ -138,6 +153,21 @@ int matrix[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
 vector<int> dynamic_array = {10, 20, 30};
 vector<string> names(5); // Größe 5, leere Strings
 ```
+
+<BaseQuiz id="cpp-vector-1" correct="B">
+  <template #question>
+    Was ist der Hauptvorteil von `vector` gegenüber normalen Arrays in C++?
+  </template>
+  
+  <BaseQuizOption value="A">Vektoren sind schneller</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Vektoren können dynamisch in der Größe geändert werden, während Arrays eine feste Größe haben</BaseQuizOption>
+  <BaseQuizOption value="C">Vektoren verbrauchen weniger Speicher</BaseQuizOption>
+  <BaseQuizOption value="D">Es gibt keinen Vorteil</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `vector` ist ein dynamisches Array, das zur Laufzeit wachsen oder schrumpfen kann, im Gegensatz zu normalen Arrays, deren Größe zur Kompilierzeit festgelegt wird. Dies macht Vektoren für viele Anwendungsfälle flexibler.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Konstanten & Auto
 
@@ -163,7 +193,7 @@ using real = double;
 Entscheidungen basierend auf Bedingungen treffen.
 
 ```cpp
-// If-else Anweisung
+// If-else-Anweisung
 if (age >= 18) {
     cout << "Erwachsen" << endl;
 } else if (age >= 13) {
@@ -173,7 +203,7 @@ if (age >= 18) {
 }
 // Ternärer Operator
 string status = (age >= 18) ? "Erwachsen" : "Minderjährig";
-// Switch Anweisung
+// Switch-Anweisung
 switch (grade) {
     case 'A':
         cout << "Ausgezeichnet!" << endl;
@@ -186,7 +216,7 @@ switch (grade) {
 }
 ```
 
-### For Schleifen
+### For-Schleifen
 
 Iteration mit zählerbasierten Schleifen.
 
@@ -206,9 +236,24 @@ for (auto& item : container) {
 }
 ```
 
-### While Schleifen
+<BaseQuiz id="cpp-range-for-1" correct="B">
+  <template #question>
+    Was ist eine bereichsbasierte for-Schleife in C++?
+  </template>
+  
+  <BaseQuizOption value="A">Eine Schleife, die nur mit Arrays funktioniert</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Eine Schleife, die automatisch über alle Elemente in einem Container iteriert</BaseQuizOption>
+  <BaseQuizOption value="C">Eine Schleife, die ewig läuft</BaseQuizOption>
+  <BaseQuizOption value="D">Eine Schleife, die eine manuelle Indexverwaltung erfordert</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Bereichsbasierte for-Schleifen (eingeführt in C++11) iterieren automatisch über alle Elemente in einem Container (wie Vektoren, Arrays, Strings), ohne dass die Indizes manuell verwaltet werden müssen. Die Syntax lautet `for (auto item : container)`.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Bedingungsbasierte Iteration.
+### While-Schleifen
+
+Zustandsbasierte Iteration.
 
 ```cpp
 // While-Schleife
@@ -220,7 +265,7 @@ while (count < 5) {
 // Do-while-Schleife (wird mindestens einmal ausgeführt)
 int input;
 do {
-    cout << "Zahl eingeben (0 zum Beenden): ";
+    cout << "Geben Sie eine Zahl ein (0 zum Beenden): ";
     cin >> input;
 } while (input != 0);
 ```
@@ -239,7 +284,7 @@ for (int i = 0; i < 10; i++) {
     }
     cout << i << " ";
 }
-// Geschachtelte Schleifen mit gelabeltem Break
+// Geschachtelte Schleifen mit beschriftetem Break
 for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
         if (i == j) break; // Nur innere Schleife beenden
@@ -314,9 +359,9 @@ void changeValue(int x) {
 void changeReference(int& x) {
     x = 100; // Originalvariable modifiziert
 }
-// Const Referenz (nur lesend, effizient)
+// Konstante Referenz (schreibgeschützt, effizient)
 void processLargeData(const vector<int>& data) {
-    // Kann Daten lesen, aber nicht modifizieren
+    // Daten lesen, aber nicht modifizieren
 }
 ```
 
@@ -355,7 +400,7 @@ public:
 
 ### Objekterstellung & Verwendung
 
-Klasseninstanzen erstellen und verwenden.
+Klassenobjekte instanziieren und verwenden.
 
 ```cpp
 // Objekte erstellen
@@ -364,7 +409,7 @@ Rectangle rect2; // Standardkonstruktor
 // Memberfunktionen verwenden
 cout << "Fläche: " << rect1.area() << endl;
 rect2.setDimensions(4.0, 2.0);
-// Dynamische Zuweisung
+// Dynamische Allokation
 Rectangle* rect3 = new Rectangle(6.0, 4.0);
 cout << rect3->area() << endl;
 delete rect3; // Speicher freigeben
@@ -397,12 +442,12 @@ public:
 };
 ```
 
-### Polymorphie
+### Polymorphismus
 
 Basisklassenzeiger verwenden, um abgeleitete Objekte abzurufen.
 
 ```cpp
-// Virtuelle Funktionen und Polymorphie
+// Virtuelle Funktionen und Polymorphismus
 vector<Shape*> shapes;
 shapes.push_back(new Circle(5.0, "rot"));
 shapes.push_back(new Rectangle(4.0, 6.0));
@@ -460,12 +505,12 @@ Zwei Wege, um indirekt auf Objekte zuzugreifen.
 int x = 10;
 // Referenz (Alias)
 int& ref = x;  // Muss initialisiert werden
-ref = 20;      // Ändert x auf 20
+ref = 20;      // Ändert x zu 20
 // Zeiger
 int* ptr = &x; // Zeigt auf die Adresse von x
 *ptr = 30;     // Dereferenzieren und x ändern
 ptr = nullptr; // Kann auf nichts zeigen
-// Const-Variationen
+// Const-Varianten
 const int* ptr1 = &x;    // Wert kann nicht geändert werden
 int* const ptr2 = &x;    // Adresse kann nicht geändert werden
 const int* const ptr3 = &x; // Keines von beiden kann geändert werden
@@ -507,8 +552,8 @@ nums.erase(nums.begin()); // Erstes Element entfernen
 string text = "Hallo";
 text += " Welt";         // Konkatenation
 text.append("!");         // Anhängen
-cout << text.substr(0, 5) << endl; // Teilstring
-text.replace(6, 5, "C++"); // "World" durch "C++" ersetzen
+cout << text.substr(0, 5) << endl; // Substring
+text.replace(6, 5, "C++"); // "Welt" durch "C++" ersetzen
 ```
 
 ### Container: Map & Set
@@ -607,7 +652,7 @@ Strings als Streams parsen und manipulieren.
 
 ```cpp
 #include <sstream>
-// Komma-separierte Werte parsen
+// Kommagetrennte Werte parsen
 string data = "apfel,banane,kirsche";
 stringstream ss(data);
 string item;
@@ -660,7 +705,7 @@ cout << hex << 255 << endl;                    // Hexadezimal: ff
 
 ## Fehlerbehandlung
 
-### Try-Catch Blöcke
+### Try-Catch-Blöcke
 
 Ausnahmen behandeln, die während der Ausführung auftreten können.
 
@@ -686,7 +731,7 @@ try {
 }
 ```
 
-### Benutzerdefinierte Ausnahmen auslösen
+### Benutzerdefinierte Ausnahmen werfen
 
 Eigene Ausnahmen erstellen und auslösen.
 
@@ -714,9 +759,9 @@ try {
 }
 ```
 
-### RAII Muster
+### RAII-Muster
 
-Ressourcenakquise ist Initialisierung für sicheres Ressourcenmanagement.
+Resource Acquisition Is Initialization für sicheres Ressourcenmanagement.
 
 ```cpp
 // RAII mit Smart Pointern
@@ -748,7 +793,7 @@ public:
 
 ### Assertions & Debugging
 
-Annahmen im Programm überprüfen und debuggen.
+Annahmen des Programms debuggen und validieren.
 
 ```cpp
 #include <cassert>
@@ -885,9 +930,9 @@ void processData(const vector<int>& data) {
 for (auto it = vec.begin(); it != vec.end(); ++it) {
     // ++it ist oft schneller als it++
 }
-// Vektor-Kapazität reservieren, wenn Größe bekannt ist
+// Vektor-Kapazität reservieren, wenn die Größe bekannt ist
 vector<int> numbers;
-numbers.reserve(1000); // Neu-Zuweisungen vermeiden
+numbers.reserve(1000); // Neuallokationen vermeiden
 // emplace anstelle von push für Objekte verwenden
 vector<string> words;
 words.emplace_back("Hallo"); // In-Place konstruieren
@@ -914,7 +959,7 @@ public:
 double MathUtils::calculateArea(double radius) {
     return M_PI * radius * radius;
 }
-// Const Memberfunktionen verwenden, wann immer möglich
+// Memberfunktionen nach Möglichkeit als const deklarieren
 double getRadius() const { return radius; }
 ```
 

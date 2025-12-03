@@ -1,6 +1,6 @@
 ---
-title: '쿠버네티스 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 쿠버네티스 치트 시트로 학습하세요.'
+title: '쿠버네티스 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 쿠버네티스 오케스트레이션을 학습하세요. kubectl 명령어, 파드, 배포, 서비스, 인그레스 및 클라우드 네이티브 컨테이너 관리를 위한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Kubernetes 치트 시트
 <a target="_blank" href="https://labex.io/ko/learn/kubernetes">Hands-On Labs 로 Kubernetes 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Hands-On 랩 및 실제 시나리오를 통해 Kubernetes 컨테이너 오케스트레이션을 학습하세요. LabEx 는 필수적인 kubectl 명령어, 파드 관리, 배포, 서비스, 네트워킹 및 클러스터 관리를 다루는 포괄적인 Kubernetes 과정을 제공합니다. 컨테이너 오케스트레이션 및 클라우드 네이티브 애플리케이션 배포를 마스터하세요.
+핸즈온 랩과 실제 시나리오를 통해 Kubernetes 컨테이너 오케스트레이션을 학습하세요. LabEx 는 필수적인 kubectl 명령어, 파드 관리, 배포, 서비스, 네트워킹 및 클러스터 관리를 다루는 포괄적인 Kubernetes 과정을 제공합니다. 컨테이너 오케스트레이션 및 클라우드 네이티브 애플리케이션 배포를 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -40,7 +40,7 @@ choco install kubernetes-cli
 
 ### 설치 확인
 
-kubectl 버전 및 클러스터 연결을 확인합니다.
+kubectl 버전과 클러스터 연결을 확인합니다.
 
 ```bash
 # kubectl 버전 확인
@@ -69,7 +69,7 @@ namespace
 
 ### Minikube 설정
 
-개발을 위한 빠른 로컬 Kubernetes 클러스터.
+개발을 위한 빠른 로컬 Kubernetes 클러스터입니다.
 
 ```bash
 # Minikube 시작
@@ -86,7 +86,7 @@ minikube stop
 
 ### 클러스터 정보: `kubectl cluster-info`
 
-필수 클러스터 세부 정보 및 서비스 엔드포인트를 표시합니다.
+필수적인 클러스터 세부 정보 및 서비스 엔드포인트를 표시합니다.
 
 ```bash
 # 클러스터 정보 가져오기
@@ -106,7 +106,7 @@ kubectl api-versions
 ```bash
 # 모든 노드 나열
 kubectl get nodes
-# 자세한 노드 정보
+# 상세 노드 정보
 kubectl get nodes -o wide
 # 특정 노드 설명
 kubectl describe node
@@ -131,18 +131,33 @@ namespace
 kubectl get all -n my-namespace
 ```
 
+<BaseQuiz id="kubernetes-namespace-1" correct="B">
+  <template #question>
+    Kubernetes 네임스페이스의 주요 목적은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">클러스터 성능 향상</BaseQuizOption>
+  <BaseQuizOption value="B" correct>클러스터 내 리소스 구성 및 격리</BaseQuizOption>
+  <BaseQuizOption value="C">클러스터 연결</BaseQuizOption>
+  <BaseQuizOption value="D">컨테이너 이미지 저장</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    네임스페이스는 여러 사용자 또는 팀 간에 클러스터 리소스를 분할하는 방법을 제공합니다. 리소스를 구성하고 이름에 대한 범위를 제공하여 서로 다른 네임스페이스에서 동일한 이름을 가진 리소스를 가질 수 있도록 돕습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 파드 관리 (Pod Management)
 
 ### 파드 생성 및 실행: `kubectl run` / `kubectl create`
 
-컨테이너를 실행하고 수명 주기를 관리합니다.
+컨테이너를 시작하고 수명 주기를 관리합니다.
 
 ```bash
 # 간단한 파드 실행
 kubectl run nginx --image=nginx
 # YAML 파일에서 파드 생성
 kubectl create -f pod.yaml
-# 명령과 함께 파드 실행
+# 명령어를 사용하여 파드 실행
 kubectl run busybox --image=busybox -- echo "Hello
 World"
 # 작업 생성
@@ -157,13 +172,28 @@ kubectl create job hello --image=busybox:1.28 -- echo
 ```bash
 # 기본 네임스페이스의 모든 파드 나열
 kubectl get pods
-# 더 자세한 정보와 함께 파드 나열
+# 더 자세한 정보로 파드 나열
 kubectl get pods -o wide
 # 모든 네임스페이스의 파드 나열
 kubectl get pods --all-namespaces
 # 파드 상태 변경 감시
 kubectl get pods --watch
 ```
+
+<BaseQuiz id="kubernetes-pods-1" correct="C">
+  <template #question>
+    `kubectl get pods --all-namespaces`는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A">실행 중인 파드만 나열</BaseQuizOption>
+  <BaseQuizOption value="B">기본 네임스페이스의 파드 나열</BaseQuizOption>
+  <BaseQuizOption value="C" correct>클러스터의 모든 네임스페이스에 걸쳐 파드 나열</BaseQuizOption>
+  <BaseQuizOption value="D">모든 파드 삭제</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `--all-namespaces` 플래그 (또는 `-A`) 는 기본 네임스페이스뿐만 아니라 모든 네임스페이스의 파드를 표시합니다. 이는 클러스터 전체 가시성에 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 파드 세부 정보: `kubectl describe pod`
 
@@ -178,12 +208,12 @@ kubectl describe pod  -n
 
 ### 파드 작업: `kubectl exec` / `kubectl delete`
 
-파드에서 명령을 실행하고 파드 수명 주기를 관리합니다.
+파드 내에서 명령을 실행하고 파드 수명 주기를 관리합니다.
 
 ```bash
 # 파드 로그 가져오기
 kubectl logs
-# 실시간으로 로그 팔로우
+# 실시간으로 로그 추적
 kubectl logs -f
 # 파드 내에서 명령 실행
 kubectl exec -it  -- /bin/bash
@@ -204,15 +234,30 @@ kubectl delete pod  --grace-period=0 --force
 ```bash
 # 배포 생성
 kubectl create deployment nginx --image=nginx
-# 복제본을 사용하여 배포 생성
+# 복제본 수로 배포 생성
 kubectl create deployment webapp --image=nginx --
 replicas=3
 # YAML 파일에서 생성
 kubectl apply -f deployment.yaml
-# 서비스를 통한 배포 노출
+# 서비스를 통해 배포 노출
 kubectl expose deployment nginx --port=80 --
 type=LoadBalancer
 ```
+
+<BaseQuiz id="kubernetes-deployment-1" correct="A">
+  <template #question>
+    Kubernetes 배포 (Deployment) 의 주요 목적은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>원하는 수의 파드 복제본을 관리 및 유지</BaseQuizOption>
+  <BaseQuizOption value="B">파드를 외부 트래픽에 노출</BaseQuizOption>
+  <BaseQuizOption value="C">구성 데이터 저장</BaseQuizOption>
+  <BaseQuizOption value="D">클러스터 노드 관리</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    배포는 지정된 수의 파드 복제본이 실행되도록 보장하는 ReplicaSet 을 관리합니다. 선언적 업데이트, 롤링 업데이트 및 롤백 기능을 제공합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 배포 관리: `kubectl get deployments`
 
@@ -243,6 +288,21 @@ kubectl autoscale deployment nginx --min=2 --max=10 --
 cpu-percent=80
 ```
 
+<BaseQuiz id="kubernetes-scale-1" correct="B">
+  <template #question>
+    `kubectl scale deployment nginx --replicas=5`는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A">새 배포 5 개 생성</BaseQuizOption>
+  <BaseQuizOption value="B" correct>nginx 배포를 5 개의 파드 복제본으로 스케일 조정</BaseQuizOption>
+  <BaseQuizOption value="C">배포에서 파드 5 개 삭제</BaseQuizOption>
+  <BaseQuizOption value="D">배포 이미지 업데이트</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `scale` 명령어는 배포의 복제본 수를 조정합니다. 이 명령어는 필요에 따라 파드를 생성하거나 삭제하여 nginx 배포가 정확히 5 개의 파드 복제본을 실행하도록 보장합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 롤링 업데이트: `kubectl rollout`
 
 배포 업데이트 및 롤백을 관리합니다.
@@ -262,10 +322,10 @@ kubectl rollout undo deployment/nginx --to-revision=2
 
 ### 서비스 노출: `kubectl expose`
 
-네트워크 서비스를 통해 애플리케이션에 액세스할 수 있도록 합니다.
+네트워크 서비스를 통해 애플리케이션에 대한 액세스를 제공합니다.
 
 ```bash
-# ClusterIP 서비스로 배포 노출
+# 배포를 ClusterIP 서비스로 노출
 kubectl expose deployment nginx --port=80
 # NodePort 서비스로 노출
 kubectl expose deployment nginx --port=80 --
@@ -277,6 +337,21 @@ type=LoadBalancer
 kubectl apply -f service.yaml
 ```
 
+<BaseQuiz id="kubernetes-service-1" correct="A">
+  <template #question>
+    `kubectl expose`를 사용할 때 기본 서비스 유형은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>
+  <BaseQuizOption value="B">NodePort</BaseQuizOption>
+  <BaseQuizOption value="C">LoadBalancer</BaseQuizOption>
+  <BaseQuizOption value="D">ExternalName</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ClusterIP 가 기본 서비스 유형입니다. 이는 클러스터 내부 IP 에서 서비스를 노출하여 클러스터 내에서만 액세스할 수 있도록 합니다. NodePort 및 LoadBalancer 유형은 외부 액세스를 제공합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 서비스 검색: `kubectl get services`
 
 클러스터 내의 서비스를 나열하고 검사합니다.
@@ -284,7 +359,7 @@ kubectl apply -f service.yaml
 ```bash
 # 모든 서비스 나열
 kubectl get services
-# 더 자세한 정보와 함께 서비스 나열
+# 더 자세한 정보로 서비스 나열
 kubectl get svc -o wide
 # 특정 서비스 설명
 kubectl describe service
@@ -294,7 +369,7 @@ kubectl get endpoints
 
 ### 포트 포워딩: `kubectl port-forward`
 
-테스트 및 디버깅을 위해 로컬 머신에 애플리케이션을 액세스합니다.
+테스트 및 디버깅을 위해 로컬 머신에서 애플리케이션에 액세스합니다.
 
 ```bash
 # 파드 포트를 로컬 머신으로 포워딩
@@ -312,11 +387,11 @@ kubectl port-forward pod/ 8080:80 8443:443
 HTTP/HTTPS 경로를 통해 서비스에 대한 외부 액세스를 관리합니다.
 
 ```bash
-# Ingress 리소스 나열
+# ingress 리소스 나열
 kubectl get ingress
-# Ingress 설명
+# ingress 설명
 kubectl describe ingress
-# YAML에서 Ingress 생성
+# YAML에서 ingress 생성
 kubectl apply -f ingress.yaml
 ```
 
@@ -406,7 +481,7 @@ kubectl delete pv
 
 ### 영구 볼륨 클레임: `kubectl get pvc`
 
-파드에 대한 스토리지 리소스를 요청합니다.
+파드를 위한 스토리지 리소스를 요청합니다.
 
 ```bash
 # PVC 나열
@@ -421,7 +496,7 @@ kubectl delete pvc
 
 ### 스토리지 클래스: `kubectl get storageclass`
 
-다양한 속성을 가진 다른 유형의 스토리지를 정의합니다.
+다양한 속성을 가진 스토리지 유형을 정의합니다.
 
 ```bash
 # 스토리지 클래스 나열
@@ -436,12 +511,12 @@ class":"true"}}}'
 
 ### 볼륨 작업
 
-파드에서 다양한 볼륨 유형으로 작업합니다.
+파드에서 다양한 볼륨 유형 작업
 
 ```bash
 # 파드에서 볼륨 마운트 확인
 kubectl describe pod  | grep -A5 "Mounts:"
-# 파드에서 볼륨 나열
+# 파드의 볼륨 나열
 kubectl get pod  -o yaml | grep -A10 "volumes:"
 ```
 
@@ -449,12 +524,12 @@ kubectl get pod  -o yaml | grep -A10 "volumes:"
 
 ### 로그 및 이벤트: `kubectl logs` / `kubectl get events`
 
-디버깅을 위해 애플리케이션 로그 및 클러스터 이벤트를 검사합니다.
+애플리케이션 로그 및 클러스터 이벤트를 검사하여 디버깅합니다.
 
 ```bash
 # 파드 로그 보기
 kubectl logs
-# 실시간으로 로그 팔로우
+# 실시간으로 로그 추적
 kubectl logs -f
 # 이전 컨테이너 로그 보기
 kubectl logs  --previous
@@ -467,7 +542,7 @@ by=.metadata.creationTimestamp
 
 ### 리소스 검사: `kubectl describe`
 
-모든 Kubernetes 리소스에 대한 자세한 정보를 얻습니다.
+모든 Kubernetes 리소스에 대한 세부 정보를 얻습니다.
 
 ```bash
 # 파드 설명
@@ -482,7 +557,7 @@ kubectl describe node
 
 ### 리소스 사용량: `kubectl top`
 
-파드 및 노드 전반의 리소스 소비를 모니터링합니다.
+클러스터 전반의 파드 및 노드에 대한 실시간 리소스 사용량을 모니터링합니다.
 
 ```bash
 # 노드 리소스 사용량 보기
@@ -500,7 +575,7 @@ kubectl top pods --sort-by=cpu
 실행 중인 컨테이너에 액세스하여 수동 문제 해결을 수행합니다.
 
 ```bash
-# 대화형 셸 실행
+# 대화형 셸 액세스
 kubectl exec -it  -- /bin/bash
 # 임시 컨테이너로 디버깅 (K8s 1.23+)
 kubectl debug  -it --image=busybox
@@ -538,9 +613,8 @@ Kubernetes 리소스를 나열, 검사 및 제거합니다.
 kubectl get all
 # 사용자 지정 열로 리소스 가져오기
 kubectl get pods -o custom-
-columns=NAME:.metadata.name,STATUS:.status.phase,N
-ODE:.spec.nodeName
-# 리소스를 JSON/YAML로 가져오기
+columns=NAME:.metadata.name,STATUS:.status.phase
+# JSON/YAML로 리소스 가져오기
 kubectl get deployment nginx -o yaml
 kubectl get pod  -o json
 # 리소스 삭제
@@ -553,7 +627,7 @@ kubectl delete pod,service -l app=nginx
 기존 리소스를 직접 수정합니다.
 
 ```bash
-# 대화형으로 리소스 편집
+# 리소스 대화형 편집
 kubectl edit deployment
 # 전략적 병합으로 리소스 패치
 kubectl patch deployment nginx -p '{"spec":
@@ -561,7 +635,7 @@ kubectl patch deployment nginx -p '{"spec":
 # JSON 병합으로 패치
 kubectl patch pod  --type='json' -p='[{"op": "replace",
 "path": "/metadata/labels/env", "value": "prod"}]'
-# 리소스를 전체적으로 교체
+# 리소스를 완전히 교체
 kubectl replace -f updated-deployment.yaml
 ```
 
@@ -588,9 +662,9 @@ validate=true
 유지 관리 및 업데이트를 위해 노드 가용성을 관리합니다.
 
 ```bash
-# 노드를 예약 불가로 표시
+# 노드를 스케줄링 불가로 표시
 kubectl cordon
-# 노드를 예약 가능으로 표시
+# 노드를 스케줄링 가능으로 표시
 kubectl uncordon
 # 유지 관리를 위해 노드 비우기
 kubectl drain  --ignore-daemonsets --delete-emptydir-
@@ -603,7 +677,7 @@ kubectl taint nodes  key:NoSchedule-
 
 ### 레이블 지정 및 주석: `kubectl label` / `kubectl annotate`
 
-구성 및 선택을 위해 리소스에 메타데이터를 추가합니다.
+리소스에 메타데이터를 추가하여 구성 및 선택을 용이하게 합니다.
 
 ```bash
 # 리소스에 레이블 추가
@@ -623,7 +697,7 @@ kubectl get pods -l 'environment in (production,staging)'
 클러스터 API 에 액세스하고 인증을 관리합니다.
 
 ```bash
-# Kubernetes API에 프록시 시작
+# Kubernetes API 프록시 시작
 kubectl proxy --port=8080
 # 사용자가 작업을 수행할 수 있는지 확인
 kubectl auth can-i create pods
@@ -638,7 +712,7 @@ kubectl config view --raw -o jsonpath='{.users[*].name}'
 
 ### 유틸리티 명령어
 
-Kubernetes 작업을 위한 추가 유용한 명령어.
+Kubernetes 작업을 위한 추가 유용한 명령어입니다.
 
 ```bash
 # 조건 대기
@@ -646,7 +720,7 @@ kubectl wait --for=condition=Ready pod/ --timeout=300s
 # 테스트를 위해 임시 파드 실행
 kubectl run tmp-pod --rm -i --tty --image=busybox --
 /bin/sh
-# 생성하지 않고 리소스 YAML 생성
+# 생성 없이 리소스 YAML 생성
 kubectl create deployment nginx --image=nginx --dry-
 run=client -o yaml
 # 생성 타임스탬프별로 리소스 정렬
@@ -657,7 +731,7 @@ kubectl get pods --sort-by=.metadata.creationTimestamp
 
 ### 리소스 메트릭: `kubectl top`
 
-클러스터 전반의 실시간 리소스 사용량을 봅니다.
+클러스터 전반의 실시간 리소스 사용량을 확인합니다.
 
 ```bash
 # 노드 리소스 사용량
@@ -668,13 +742,13 @@ kubectl top pods --sort-by=cpu
 kubectl top pods --sort-by=memory -A
 # 컨테이너 리소스 사용량
 kubectl top pods --containers=true
-# 기록된 리소스 사용량 (metrics-server 필요)
+# 기록 리소스 사용량 (metrics-server 필요)
 kubectl top pods --previous
 ```
 
-### 상태 확인
+### 상태 확인 및 모니터링
 
-애플리케이션 및 클러스터 상태를 모니터링합니다.
+애플리케이션 및 클러스터 상태 모니터링.
 
 ```bash
 # 배포 롤아웃 상태 확인
@@ -690,10 +764,10 @@ kubectl get componentstatuses
 
 ### 성능 최적화
 
-클러스터 성능 최적화를 돕는 명령어.
+클러스터 성능 최적화에 도움이 되는 명령어.
 
 ```bash
-# 요청 및 제한 보기
+# 리소스 요청 및 제한 보기
 kubectl describe node  | grep -A5 "Allocated resources:"
 # 파드 중단 예산 확인
 kubectl get pdb
@@ -722,7 +796,7 @@ kubectl api-resources --verbs=list --namespaced -o name
 
 ### 컨텍스트 관리
 
-다양한 Kubernetes 클러스터 및 사용자 간에 전환합니다.
+다양한 Kubernetes 클러스터 및 사용자 간 전환.
 
 ```bash
 # 현재 컨텍스트 보기
@@ -740,7 +814,7 @@ namespace=development
 
 ### Kubeconfig 관리
 
-여러 클러스터에서 작동하도록 kubectl 을 구성합니다.
+여러 클러스터에서 kubectl 이 작동하도록 구성합니다.
 
 ```bash
 # 병합된 kubeconfig 보기
@@ -770,7 +844,7 @@ kubectl 작업에 대한 기본 네임스페이스 및 환경 설정을 설정�
 # 현재 컨텍스트에 대한 기본 네임스페이스 설정
 kubectl config set-context --
 current --namespace=
-# 기본 출력 형식으로 다른 형식 설정
+# 기본 출력 형식으로 다른 출력 형식 설정
 kubectl config set-context --
 current --output=yaml
 # 구성 세부 정보 보기
@@ -822,7 +896,7 @@ selector=status.phase=Running
 
 ### 출력 형식 지정
 
-가독성 및 처리를 위해 명령 출력을 사용자 지정합니다.
+가독성 및 처리를 위해 명령 출력 사용자 지정.
 
 ```bash
 # 다른 출력 형식
@@ -842,7 +916,7 @@ jsonpath='{.items[*].spec.containers[*].image}'
 
 ### 안전 및 유효성 검사
 
-안전한 작업을 보장하고 구성을 확인하는 명령어.
+안전한 작업 및 구성 유효성 검사를 위한 명령어.
 
 ```bash
 # 변경 사항 미리 보기 (드라이 런)
@@ -852,7 +926,7 @@ kubectl apply -f deployment.yaml --validate=true --dry-
 run=client
 # 적용 전 차이점 표시
 kubectl diff -f deployment.yaml
-# 유예 기간 포함 강제 삭제
+# 유예 기간을 두고 강제 삭제
 kubectl delete pod  --grace-period=0 --force
 ```
 

@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Red Hat Enterprise Linux'
-description: 'Aprenda Red Hat Enterprise Linux con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Red Hat Enterprise Linux | LabEx'
+description: 'Aprenda administración de Red Hat Enterprise Linux (RHEL) con esta hoja de trucos completa. Referencia rápida para comandos RHEL, gestión de sistemas, SELinux, gestión de paquetes y administración de Linux empresarial.'
 pdfUrl: '/cheatsheets/pdf/red-hat-linux-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Red Hat Enterprise Linux
 <a target="_blank" href="https://labex.io/es/learn/rhel">Aprenda Red Hat Enterprise Linux con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda Red Hat Enterprise Linux a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de RHEL que cubren administración esencial del sistema, gestión de paquetes, gestión de servicios, configuración de red, gestión de almacenamiento y seguridad. Domine las operaciones de Linux empresarial y las técnicas de administración de sistemas.
+Aprenda Red Hat Enterprise Linux a través de laboratorios prácticos y escenarios del mundo real. LabEx proporciona cursos completos de RHEL que cubren administración esencial del sistema, gestión de paquetes, gestión de servicios, configuración de red, gestión de almacenamiento y seguridad. Domine las operaciones de Linux empresarial y las técnicas de administración de sistemas.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Aprenda Red Hat Enterprise Linux a través de laboratorios prácticos y escenari
 
 ### Versión del Sistema: `cat /etc/redhat-release`
 
-Muestra la versión y la información de lanzamiento de RHEL.
+Muestra la información de versión y lanzamiento de RHEL.
 
 ```bash
 # Mostrar versión de RHEL
@@ -56,7 +56,7 @@ ps aux
 Muestra el uso y la disponibilidad de la memoria.
 
 ```bash
-# Mostrar uso de memoria en formato legible para humanos
+# Mostrar uso de memoria en formato legible por humanos
 free -h
 # Mostrar información detallada de la memoria
 cat /proc/meminfo
@@ -94,7 +94,7 @@ last
 
 ### Información de Hardware: `lscpu` / `lsblk`
 
-Muestra los componentes y la configuración del hardware.
+Muestra componentes y configuración de hardware.
 
 ```bash
 # Mostrar información de la CPU
@@ -120,10 +120,25 @@ sudo dnf install package-name
 sudo yum install package-name
 # Instalar archivo RPM local
 sudo rpm -i package.rpm
-# Instalar desde un repositorio específico
+# Instalar desde repositorio específico
 sudo dnf install --enablerepo=repo-
 name package
 ```
+
+<BaseQuiz id="rhel-package-1" correct="A">
+  <template #question>
+    ¿Cuál es la diferencia entre `dnf` y `yum` en RHEL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>dnf es el gestor de paquetes más nuevo para RHEL 8+, yum se usa en RHEL 7</BaseQuizOption>
+  <BaseQuizOption value="B">dnf es para paquetes de desarrollo, yum es para producción</BaseQuizOption>
+  <BaseQuizOption value="C">No hay diferencia, son lo mismo</BaseQuizOption>
+  <BaseQuizOption value="D">dnf está obsoleto, siempre se debe usar yum</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    DNF (Dandified YUM) es la versión de próxima generación de YUM y es el gestor de paquetes predeterminado en RHEL 8 y posteriores. YUM todavía se usa en RHEL 7. DNF proporciona mejor rendimiento y resolución de dependencias.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Actualización de Paquetes: `dnf update` / `yum update`
 
@@ -191,9 +206,24 @@ rm filename.txt
 rm -rf directory/
 ```
 
+<BaseQuiz id="rhel-file-ops-1" correct="B">
+  <template #question>
+    ¿Qué hace `cp -r`?
+  </template>
+  
+  <BaseQuizOption value="A">Copia solo archivos</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Copia directorios recursivamente, incluyendo todos los subdirectorios y archivos</BaseQuizOption>
+  <BaseQuizOption value="C">Elimina archivos</BaseQuizOption>
+  <BaseQuizOption value="D">Renombra archivos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El indicador `-r` (recursivo) permite a `cp` copiar directorios y su contenido, incluyendo todos los subdirectorios y archivos dentro de ellos. Sin `-r`, `cp` no puede copiar directorios.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Contenido de Archivos: `cat` / `less` / `head` / `tail`
 
-Ver y examinar el contenido de los archivos.
+Visualiza y examina el contenido de los archivos.
 
 ```bash
 # Mostrar contenido del archivo
@@ -207,6 +237,21 @@ tail filename.txt
 # Seguir archivo de registro en tiempo real
 tail -f /var/log/messages
 ```
+
+<BaseQuiz id="rhel-tail-1" correct="C">
+  <template #question>
+    ¿Qué hace `tail -f /var/log/messages`?
+  </template>
+  
+  <BaseQuizOption value="A">Muestra solo las primeras 10 líneas</BaseQuizOption>
+  <BaseQuizOption value="B">Elimina el archivo de registro</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Muestra las últimas 10 líneas y sigue las nuevas entradas en tiempo real</BaseQuizOption>
+  <BaseQuizOption value="D">Archiva el archivo de registro</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El indicador `-f` hace que `tail` siga el archivo, mostrando nuevas entradas de registro a medida que se escriben. Esto es esencial para el monitoreo de registros en tiempo real y la solución de problemas.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Permisos de Archivos: `chmod` / `chown` / `chgrp`
 
@@ -289,7 +334,7 @@ systemctl list-dependencies service-name
 
 ### Registros del Sistema: `journalctl`
 
-Visualiza y analiza los registros del sistema usando journald.
+Visualiza y analiza registros del sistema usando journald.
 
 ```bash
 # Ver todos los registros
@@ -315,7 +360,7 @@ ps aux
 kill 1234
 # Matar proceso por nombre
 killall process-name
-# Matar proceso forzosamente
+# Matar proceso forzadamente
 kill -9 1234
 # Mostrar jerarquía de procesos
 pstree
@@ -348,10 +393,10 @@ Crea, modifica y elimina grupos.
 ```bash
 # Añadir nuevo grupo
 sudo groupadd groupname
-# Añadir usuario a grupo
+# Añadir usuario al grupo
 sudo usermod -aG groupname
 username
-# Eliminar usuario de grupo
+# Eliminar usuario del grupo
 sudo gpasswd -d username
 groupname
 # Eliminar grupo
@@ -381,14 +426,14 @@ sudo -l
 
 ### Información de Red: `ip` / `nmcli`
 
-Muestra detalles de la interfaz y configuración de red.
+Muestra la interfaz de red y los detalles de configuración.
 
 ```bash
 # Mostrar interfaces de red
 ip addr show
 # Mostrar tabla de enrutamiento
 ip route show
-# Mostrar conexiones del administrador de red
+# Mostrar conexiones del gestor de red
 nmcli connection show
 # Mostrar estado del dispositivo
 nmcli device status
@@ -475,7 +520,7 @@ sudo fsck /dev/sda1
 
 ### Gestión de LVM: `pvcreate` / `vgcreate` / `lvcreate`
 
-Administra el Almacenamiento de Volumen Lógico (LVM).
+Administra el Almacenamiento Lógico (LVM).
 
 ```bash
 # Crear volumen físico
@@ -514,9 +559,9 @@ getenforce
 sudo setenforce 0
 # Establecer SELinux en forzando
 sudo setenforce 1
-# Verificar contexto SELinux
+# Verificar contexto de SELinux
 ls -Z filename
-# Cambiar contexto SELinux
+# Cambiar contexto de SELinux
 sudo chcon -t httpd_exec_t /path/to/file
 ```
 
@@ -538,7 +583,7 @@ sudo audit2allow -M mypolicy < /var/log/audit/audit.log
 Configura el demonio SSH para acceso remoto seguro.
 
 ```bash
-# Editar configuración SSH
+# Editar configuración de SSH
 sudo vi /etc/ssh/sshd_config
 # Reiniciar servicio SSH
 sudo systemctl restart sshd
@@ -570,19 +615,19 @@ sudo systemctl enable dnf-automatic.timer
 Monitorea el rendimiento del sistema y el uso de recursos.
 
 ```bash
-# Mostrar estadísticas de I/O
+# Mostrar estadísticas de E/S
 iostat -x 1
 # Mostrar estadísticas de memoria virtual
 vmstat 1
 # Mostrar estadísticas de red
 ss -tuln
-# Mostrar I/O de disco
+# Mostrar E/S de disco
 iotop
 ```
 
 ### Uso de Recursos: `sar` / `top`
 
-Analiza métricas históricas y en tiempo real del sistema.
+Analiza métricas del sistema históricas y en tiempo real.
 
 ```bash
 # Informe de actividad del sistema
@@ -591,7 +636,7 @@ sar -u 1 3
 sar -r
 # Informe de actividad de red
 sar -n DEV
-# Monitoreo del promedio de carga
+# Monitoreo de promedio de carga
 uptime
 ```
 
@@ -621,7 +666,7 @@ tuned-adm list
 tuned-adm active
 # Establecer perfil de rendimiento
 sudo tuned-adm profile throughput-performance
-# Crear perfil personalizado
+# Modo de perfil personalizado
 sudo tuned-adm profile_mode
 ```
 
@@ -700,7 +745,7 @@ dmesg | tail
 
 ### Diagnóstico de Hardware: `dmidecode` / `lshw`
 
-Examina la información y el estado de la salud del hardware.
+Examina la información y el estado del hardware.
 
 ```bash
 # Mostrar información de hardware
@@ -745,7 +790,7 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ## Automatización y Scripting
 
-### Tareas Cron: `crontab`
+### Trabajos Cron: `crontab`
 
 Programa tareas automatizadas y de mantenimiento.
 
@@ -769,7 +814,7 @@ Crea y ejecuta scripts de shell para automatización.
 # Script simple de respaldo
 DATE=$(date +%Y%m%d)
 tar -czf backup_$DATE.tar.gz /home/user/documents
-echo "Respaldo completado: backup_$DATE.tar.gz"
+echo "Copia de seguridad completada: backup_$DATE.tar.gz"
 ```
 
 ### Variables de Entorno: `export` / `env`

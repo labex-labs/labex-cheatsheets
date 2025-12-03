@@ -1,6 +1,6 @@
 ---
-title: 'DevOps 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 DevOps 를 학습하세요.'
+title: 'DevOps 치트 시트 | LabEx'
+description: '포괄적인 치트 시트로 DevOps 실습을 배우세요. CI/CD, 자동화, 코드형 인프라, 모니터링, 컨테이너화 및 최신 소프트웨어 제공 워크플로우를 위한 빠른 참조 가이드입니다.'
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ DevOps 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/devops">실습 랩을 통한 DevOps 학습</a>
+<a target="_blank" href="https://labex.io/ko/learn/devops">실습 랩을 통해 DevOps 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 DevOps 관행을 학습하십시오. LabEx 는 필수 운영, 인프라 관리, CI/CD 파이프라인, 컨테이너화, 모니터링 및 자동화를 다루는 포괄적인 DevOps 과정을 제공합니다. 애플리케이션 배포, 코드형 인프라 관리, 워크플로우 자동화 및 효율적인 소프트웨어 제공을 위한 최신 DevOps 관행 구현 방법을 학습합니다.
+실습 랩과 실제 시나리오를 통해 DevOps 관행을 학습하십시오. LabEx 는 필수 운영, 인프라 관리, CI/CD 파이프라인, 컨테이너화, 모니터링 및 자동화를 다루는 포괄적인 DevOps 과정을 제공합니다. 애플리케이션 배포, 코드형 인프라 관리, 워크플로 자동화 및 효율적인 소프트웨어 제공을 위한 최신 DevOps 관행 구현 방법을 학습합니다.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -39,6 +39,21 @@ terraform fmt
 # 구성 유효성 검사
 terraform validate
 ```
+
+<BaseQuiz id="devops-terraform-1" correct="B">
+  <template #question>
+    `terraform plan`은 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A">즉시 인프라 변경 사항을 적용합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>적용하지 않고 변경될 내용을 보여줍니다</BaseQuizOption>
+  <BaseQuizOption value="C">모든 인프라를 파괴합니다</BaseQuizOption>
+  <BaseQuizOption value="D">Terraform 을 초기화합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `terraform plan`은 `terraform apply`를 실행할 때 Terraform 이 수행할 작업을 보여주는 실행 계획을 생성합니다. 이는 적용 전에 변경 사항을 검토하는 데 도움이 되는 드라이런입니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Ansible: 구성 관리
 
@@ -104,6 +119,21 @@ kubectl logs pod_name
 kubectl delete -f deployment.yml
 ```
 
+<BaseQuiz id="devops-k8s-1" correct="A">
+  <template #question>
+    `kubectl apply -f deployment.yml`은 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>YAML 파일에 정의된 리소스를 생성하거나 업데이트합니다</BaseQuizOption>
+  <BaseQuizOption value="B">클러스터의 모든 리소스를 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="C">새 리소스만 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="D">적용하지 않고 생성될 내용을 보여줍니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kubectl apply`는 존재하지 않으면 리소스를 생성하고 존재하면 업데이트하는 선언적 명령입니다. 여러 번 안전하게 실행할 수 있는 멱등성을 가집니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Helm: Kubernetes 패키지 관리자
 
 차트를 사용하여 Kubernetes 애플리케이션을 관리합니다.
@@ -123,7 +153,7 @@ helm uninstall myrelease
 
 ### Jenkins: 빌드 자동화
 
-지속적인 통합 파이프라인을 설정하고 관리합니다.
+지속적 통합 파이프라인을 설정하고 관리합니다.
 
 ```groovy
 // Jenkinsfile 예시
@@ -151,7 +181,7 @@ pipeline {
 
 ### GitHub Actions: 클라우드 CI/CD
 
-GitHub 리포지토리에서 직접 워크플로우를 자동화합니다.
+GitHub 리포지토리에서 직접 워크플로를 자동화합니다.
 
 ```yaml
 # .github/workflows/ci.yml
@@ -172,7 +202,7 @@ jobs:
 
 ### GitLab CI: 통합된 DevOps
 
-완벽한 DevOps 워크플로우를 위해 GitLab 의 내장 CI/CD 기능을 사용합니다.
+GitLab 의 내장 CI/CD 기능을 사용하여 완전한 DevOps 워크플로를 구현합니다.
 
 ```yaml
 # .gitlab-ci.yml
@@ -211,6 +241,21 @@ git push origin main
 git pull origin main
 ```
 
+<BaseQuiz id="devops-git-1" correct="D">
+  <template #question>
+    `git pull`과 `git fetch`의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
+  <BaseQuizOption value="B">git pull 은 변경 사항을 푸시하고, git fetch 는 변경 사항을 가져옵니다</BaseQuizOption>
+  <BaseQuizOption value="C">git pull 은 로컬에서 작동하고, git fetch 는 원격에서 작동합니다</BaseQuizOption>
+  <BaseQuizOption value="D" correct>git fetch 는 병합 없이 변경 사항을 다운로드하고, git pull 은 변경 사항을 다운로드하고 병합합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch`는 원격 리포지토리에서 변경 사항을 다운로드하지만 현재 브랜치에 병합하지는 않습니다. `git pull`은 두 작업을 모두 수행합니다. 즉, 변경 사항을 가져온 다음 병합합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 브랜치 관리
 
 다양한 개발 스트림 및 릴리스를 관리합니다.
@@ -220,7 +265,7 @@ git pull origin main
 git checkout -b feature-branch
 # 브랜치 병합
 git merge feature-branch
-# 브랜치 목록 보기
+# 브랜치 나열
 git branch -a
 # 브랜치 전환
 git checkout main
@@ -252,12 +297,12 @@ git push -u origin feature-branch
 
 ### 코드 검토 및 품질
 
-동료 검토 및 자동화된 확인을 통해 코드 품질을 보장합니다.
+동료 검토 및 자동화된 검사를 통해 코드 품질을 보장합니다.
 
 ```bash
-# Pre-commit 훅 예시
+# 커밋 전 훅 예시
 #!/bin/sh
-# 커밋 전 테스트 실행
+# 커밋 전에 테스트 실행
 npm test
 if [ $? -ne 0 ]; then
   echo "Tests failed"
@@ -404,7 +449,7 @@ gcloud container clusters create my-cluster --num-nodes=3
 
 ### 멀티 클라우드 관리
 
-여러 클라우드 공급자 전반의 리소스를 관리하기 위한 도구.
+여러 클라우드 공급자에 걸쳐 리소스를 관리하기 위한 도구입니다.
 
 ```python
 # Pulumi (멀티 클라우드 IaC)
@@ -470,7 +515,7 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 ```bash
 # 비루트 사용자로 컨테이너 실행
 docker run --user 1000:1000 myapp
-# 취약점에 대해 이미지 스캔
+# 이미지 취약점 스캔
 docker scan myapp:latest
 ```
 
@@ -485,7 +530,7 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 
 ### 시스템 성능 모니터링
 
-서버를 관리하든, 배포를 설정하든, 프로덕션에서 방금 발생한 문제를 해결하든, 이 명령어들은 더 빠르고 스마트하게 작업하는 데 도움이 됩니다.
+서버 관리, 배포 설정 또는 프로덕션에서 방금 발생한 문제 해결 등, 이 명령어들은 더 빠르고 스마트하게 작업하는 데 도움이 됩니다.
 
 ```bash
 # CPU 및 메모리 사용량
@@ -708,9 +753,9 @@ WantedBy=multi-user.target
         dest: /var/www/html
 ```
 
-### 워크플로우 오케스트레이션
+### 워크플로 오케스트레이션
 
-복잡한 워크플로우 및 데이터 파이프라인을 오케스트레이션합니다.
+복잡한 워크플로 및 데이터 파이프라인을 오케스트레이션합니다.
 
 ```python
 # Apache Airflow DAG 예시

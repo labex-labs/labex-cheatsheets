@@ -1,11 +1,11 @@
 ---
-title: 'Fiche de Référence Programmation C'
-description: 'Apprenez la programmation C avec notre fiche complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de Référence C | LabEx'
+description: 'Apprenez la programmation C avec cette fiche de référence complète. Référence rapide pour la syntaxe C, les pointeurs, la gestion mémoire, les structures de données et les bases de la programmation système pour développeurs.'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Feuille de triche de programmation C
+Feuille de triche C
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -54,7 +54,8 @@ Commentaires sur une seule ligne et sur plusieurs lignes.
 // Commentaire sur une seule ligne
 /*
 Commentaire
-sur plusieurs lignes
+sur plusieurs
+lignes
 */
 // TODO: Implémenter la fonctionnalité
 /* FIXME: Bug dans cette section */
@@ -76,15 +77,30 @@ int main(int argc, char *argv[]) {
 }
 ```
 
+<BaseQuiz id="c-main-1" correct="C">
+  <template #question>
+    Que signifie `return 0` dans la fonction main ?
+  </template>
+  
+  <BaseQuizOption value="A">Le programme a échoué</BaseQuizOption>
+  <BaseQuizOption value="B">Le programme est toujours en cours d'exécution</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Le programme s'est exécuté avec succès</BaseQuizOption>
+  <BaseQuizOption value="D">Le programme n'a retourné aucune valeur</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    En C, `return 0` depuis la fonction main indique une exécution réussie du programme. Les valeurs de retour non nulles indiquent généralement des erreurs ou une terminaison anormale.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Sortie de Base
 
 Afficher du texte et des variables sur la console.
 
 ```c
 printf("Hello\n");
-printf("Valeur : %d\n", 42);
+printf("Valeur: %d\n", 42);
 // Plusieurs valeurs sur une seule ligne
-printf("Nom : %s, Âge : %d\n", name, age);
+printf("Nom: %s, Âge: %d\n", name, age);
 ```
 
 ### Entrée de Base
@@ -137,6 +153,21 @@ int len = strlen(name);
 int size = sizeof(buffer);
 ```
 
+<BaseQuiz id="c-arrays-1" correct="C">
+  <template #question>
+    Comment les chaînes sont-elles représentées en C ?
+  </template>
+  
+  <BaseQuizOption value="A">Comme un type chaîne spécial</BaseQuizOption>
+  <BaseQuizOption value="B">Comme des entiers</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Comme des tableaux de caractères</BaseQuizOption>
+  <BaseQuizOption value="D">Uniquement comme des pointeurs</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    En C, les chaînes sont représentées comme des tableaux de caractères (`char`). La chaîne est terminée par un caractère nul (`\0`), qui marque la fin de la chaîne.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Constantes et Modificateurs
 
 Valeurs immuables et modificateurs de stockage.
@@ -155,7 +186,7 @@ extern int global_var;    // Variable externe
 register int fast_var;    // Indice de registre
 ```
 
-## Structures de Contrôle de Flux
+## Structures de Flux de Contrôle
 
 ### Instructions Conditionnelles
 
@@ -208,6 +239,21 @@ for (int i = 0; i < 3; i++) {
 }
 ```
 
+<BaseQuiz id="c-for-loop-1" correct="A">
+  <template #question>
+    Que calcule `sizeof(numbers) / sizeof(numbers[0])` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Le nombre d'éléments dans le tableau</BaseQuizOption>
+  <BaseQuizOption value="B">La taille mémoire totale du tableau</BaseQuizOption>
+  <BaseQuizOption value="C">L'indice du dernier élément</BaseQuizOption>
+  <BaseQuizOption value="D">La taille d'un élément</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Cette expression calcule la longueur du tableau en divisant la taille totale du tableau par la taille d'un élément. C'est une idiome C courante car les tableaux ne stockent pas leur longueur.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Boucles While
 
 Itération basée sur une condition.
@@ -229,7 +275,7 @@ do {
 
 ### Contrôle de Boucle
 
-Instructions break et continue.
+Instructions `break` et `continue`.
 
 ```c
 for (int i = 0; i < 10; i++) {
@@ -244,7 +290,7 @@ for (int i = 0; i < 10; i++) {
 // Boucles imbriquées avec break
 for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-        if (i == j) break; // Sort de la boucle interne uniquement
+        if (i == j) break; // Ne brise que la boucle interne
         printf("%d,%d ", i, j);
     }
 }
@@ -367,7 +413,7 @@ for (int i = 0; i < 5; i++) {
 
 ### Allocation Dynamique de Mémoire
 
-Allouer et désallouer de la mémoire à l'exécution.
+Allouer et libérer de la mémoire à l'exécution.
 
 ```c
 #include <stdlib.h>
@@ -428,8 +474,8 @@ typedef struct {
 struct Rectangle rect1 = {5.0, 3.0};
 Student student1 = {"Alice", 20, 3.75};
 // Accéder aux membres de la structure
-printf("Aire : %.2f\n", rect1.width * rect1.height);
-printf("Étudiant : %s, Âge : %d\n", student1.name, student1.age);
+printf("Aire: %.2f\n", rect1.width * rect1.height);
+printf("Étudiant: %s, Âge: %d\n", student1.name, student1.age);
 ```
 
 ### Structures Imbriquées
@@ -462,9 +508,9 @@ Utiliser des pointeurs pour accéder et modifier des structures.
 
 ```c
 Student *student_ptr = &student1;
-// Accès via pointeur (deux méthodes)
-printf("Nom : %s\n", (*student_ptr).name);
-printf("Âge : %d\n", student_ptr->age);
+// Accès en utilisant un pointeur (deux méthodes)
+printf("Nom: %s\n", (*student_ptr).name);
+printf("Âge: %d\n", student_ptr->age);
 // Modification via pointeur
 student_ptr->age = 21;
 strcpy(student_ptr->name, "Alice Johnson");
@@ -491,7 +537,7 @@ union Data {
 };
 union Data data;
 data.integer = 42;
-printf("Entier : %d\n", data.integer);
+printf("Entier: %d\n", data.integer);
 // Énumération
 enum Weekday {
     MONDAY, TUESDAY, WEDNESDAY,
@@ -509,7 +555,7 @@ Lire des données à partir de fichiers texte.
 
 ```c
 #include <stdio.h>
-// Lire le fichier caractère par caractère
+// Lire le fichier entier caractère par caractère
 FILE *file = fopen("data.txt", "r");
 if (file != NULL) {
     int ch;
@@ -522,14 +568,14 @@ if (file != NULL) {
 FILE *file2 = fopen("lines.txt", "r");
 char buffer[256];
 while (fgets(buffer, sizeof(buffer), file2) != NULL) {
-    printf("Ligne : %s", buffer);
+    printf("Ligne: %s", buffer);
 }
 fclose(file2);
 // Lire des données formatées
 FILE *numbers = fopen("numbers.txt", "r");
 int num;
 while (fscanf(numbers, "%d", &num) == 1) {
-    printf("Nombre : %d\n", num);
+    printf("Nombre: %d\n", num);
 }
 fclose(numbers);
 ```
@@ -565,7 +611,7 @@ fclose(file);
 FILE *outfile = fopen("output.txt", "w");
 if (outfile != NULL) {
     fprintf(outfile, "Hello, file!\n");
-    fprintf(outfile, "Nombre : %d\n", 42);
+    fprintf(outfile, "Nombre: %d\n", 42);
     fclose(outfile);
 }
 // Ajouter à un fichier existant
@@ -617,11 +663,11 @@ char str2[] = "World";
 char dest[100];
 // Longueur de la chaîne
 int len = strlen(str1);
-printf("Longueur : %d\n", len);
+printf("Longueur: %d\n", len);
 // Copie de chaîne
 strcpy(dest, str1);
 strncpy(dest, str1, 10); // Copier les 10 premiers caractères
-// Concaténation de chaîne
+// Concaténation de chaînes
 strcat(dest, " ");
 strcat(dest, str2);
 strncat(dest, "!", 1);   // Ajouter 1 caractère
@@ -642,11 +688,11 @@ char *ptr;
 // Trouver la première occurrence d'un caractère
 ptr = strchr(text, 'q');
 if (ptr != NULL) {
-    printf("Trouvé 'q' à la position : %ld\n", ptr - text);
+    printf("Trouvé 'q' à la position: %ld\n", ptr - text);
 }
 // Trouver la dernière occurrence
 ptr = strrchr(text, 'o');
-printf("Dernier 'o' à la position : %ld\n", ptr - text);
+printf("Dernier 'o' à la position: %ld\n", ptr - text);
 // Trouver une sous-chaîne
 ptr = strstr(text, "brown");
 if (ptr != NULL) {
@@ -666,14 +712,14 @@ char float_str[] = "3.14159";
 int num = atoi(num_str);
 long long_num = atol(num_str);
 double float_num = atof(float_str);
-printf("Entier : %d\n", num);
-printf("Long : %ld\n", long_num);
-printf("Double : %.2f\n", float_num);
+printf("Entier: %d\n", num);
+printf("Long: %ld\n", long_num);
+printf("Double: %.2f\n", float_num);
 // Nombre en chaîne (en utilisant sprintf)
 char buffer[50];
 sprintf(buffer, "%d", 42);
 sprintf(buffer, "%.2f", 3.14159);
-printf("Chaîne : %s\n", buffer);
+printf("Chaîne: %s\n", buffer);
 ```
 
 ### Traitement Personnalisé de Chaînes
@@ -690,7 +736,7 @@ int countChar(char *str, char target) {
     }
     return count;
 }
-// Inverser la chaîne sur place
+// Inverser une chaîne sur place
 void reverseString(char *str) {
     int len = strlen(str);
     for (int i = 0; i < len/2; i++) {
@@ -766,7 +812,7 @@ Un nommage cohérent rend le code plus lisible.
 // Variables et fonctions : snake_case
 int student_count;
 double calculate_average(int scores[], int size);
-// Constantes : UPPER_CASE
+// Constantes : MAJUSCULES_AVEC_UNDERSCORES
 #define MAX_BUFFER_SIZE 1024
 #define PI 3.14159
 // Structures : PascalCase ou snake_case
@@ -782,7 +828,7 @@ void process_data(int *input_array, int array_size);
 
 ### Sécurité de la Mémoire
 
-Prévenir les bogues courants liés à la mémoire.
+Prévenir les bugs courants liés à la mémoire.
 
 ```c
 // Toujours initialiser les variables
@@ -797,7 +843,7 @@ if (ptr == NULL) {
 // Toujours libérer la mémoire allouée
 free(ptr);
 ptr = NULL;  // Empêcher la réutilisation accidentelle
-// Vérification des limites du tableau
+// Vérification des limites de tableau
 for (int i = 0; i < array_size; i++) {
     // Accès sécurisé au tableau
     array[i] = i;
@@ -836,7 +882,7 @@ Structurer le code pour la maintenabilité.
 // Prototypes de fonctions
 double calculate_area(double radius);
 int fibonacci(int n);
-// Définitions de structure
+// Définitions de structures
 typedef struct {
     int x, y;
 } Point;

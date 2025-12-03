@@ -1,6 +1,6 @@
 ---
-title: 'Guia Rápido Redis'
-description: 'Aprenda Redis com nosso guia completo cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Guia Rápido Redis | LabEx'
+description: 'Aprenda o Redis, o armazenamento de dados em memória, com este guia completo. Referência rápida para comandos Redis, estruturas de dados, cache, pub/sub, persistência e soluções de cache de alto desempenho.'
 pdfUrl: '/cheatsheets/pdf/redis-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Folha de Dicas do Redis
 <a target="_blank" href="https://labex.io/pt/learn/redis">Aprenda Redis com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda operações de estrutura de dados na memória do Redis através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de Redis cobrindo comandos essenciais, estruturas de dados, estratégias de cache, mensagens pub/sub e otimização de desempenho. Domine o cache de alto desempenho e o processamento de dados em tempo real.
+Aprenda operações de estrutura de dados na memória do Redis através de laboratórios práticos e cenários do mundo real. O LabEx fornece cursos abrangentes de Redis cobrindo comandos essenciais, estruturas de dados, estratégias de cache, mensagens pub/sub e otimização de desempenho. Domine o cache de alto desempenho e o processamento de dados em tempo real.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -39,14 +39,14 @@ docker run --name redis-persistent -p 6379:6379 -v redis-data:/data -d redis
 Instale o servidor Redis em sistemas Ubuntu/Debian.
 
 ```bash
-# Instale o Redis
+# Instalar Redis
 sudo apt update
 sudo apt install redis-server
-# Inicie o serviço Redis
+# Iniciar o serviço Redis
 sudo systemctl start redis-server
-# Habilite a inicialização automática na inicialização
+# Habilitar inicialização automática na inicialização
 sudo systemctl enable redis-server
-# Verifique o status
+# Verificar status
 sudo systemctl status redis
 ```
 
@@ -55,13 +55,13 @@ sudo systemctl status redis
 Conecte-se ao servidor Redis e verifique a instalação.
 
 ```bash
-# Conecte-se ao Redis local
+# Conectar ao Redis local
 redis-cli
-# Teste a conexão
+# Testar conexão
 redis-cli PING
-# Conecte-se ao Redis remoto
+# Conectar ao Redis remoto
 redis-cli -h hostname -p 6379 -a password
-# Execute um único comando
+# Executar comando único
 redis-cli SET mykey "Hello Redis"
 ```
 
@@ -72,56 +72,86 @@ redis-cli SET mykey "Hello Redis"
 Armazene valores simples (texto, números, JSON, etc.).
 
 ```redis
-# Defina um par chave-valor
+# Definir um par chave-valor
 SET mykey "Hello World"
-# Obtenha o valor pela chave
+# Obter valor pela chave
 GET mykey
-# Defina com expiração (em segundos)
+# Definir com expiração (em segundos)
 SET session:123 "user_data" EX 3600
-# Defina apenas se a chave não existir
+# Definir apenas se a chave não existir
 SET mykey "new_value" NX
 ```
+
+<BaseQuiz id="redis-set-get-1" correct="C">
+  <template #question>
+    O que faz `SET mykey "value" EX 3600`?
+  </template>
+  
+  <BaseQuizOption value="A">Define a chave com um valor de 3600 bytes</BaseQuizOption>
+  <BaseQuizOption value="B">Define a chave apenas se ela existir</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Define a chave com um valor que expira após 3600 segundos</BaseQuizOption>
+  <BaseQuizOption value="D">Define a chave com 3600 valores diferentes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A opção `EX` define um tempo de expiração em segundos. `SET mykey "value" EX 3600` armazena o valor e o exclui automaticamente após 3600 segundos (1 hora).
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Manipulação de String: `APPEND` / `STRLEN`
 
 Modifique e inspecione valores de string.
 
 ```redis
-# Anexe à string existente
+# Anexar à string existente
 APPEND mykey " - Welcome!"
-# Obtenha o comprimento da string
+# Obter o comprimento da string
 STRLEN mykey
-# Obtenha substring
+# Obter substring
 GETRANGE mykey 0 4
-# Defina substring
+# Definir substring
 SETRANGE mykey 6 "Redis"
 ```
 
 ### Operações Numéricas: `INCR` / `DECR`
 
-Incremente ou decremente valores inteiros armazenados no Redis.
+Incrementar ou decrementar valores inteiros armazenados no Redis.
 
 ```redis
-# Incremente em 1
+# Incrementar em 1
 INCR counter
-# Decremente em 1
+# Decrementar em 1
 DECR counter
-# Incremente por um valor específico
+# Incrementar por quantidade específica
 INCRBY counter 5
-# Incremente float
+# Incrementar float
 INCRBYFLOAT price 0.1
 ```
 
+<BaseQuiz id="redis-incr-1" correct="A">
+  <template #question>
+    O que acontece se você usar `INCR` em uma chave que não existe?
+  </template>
+  
+  <BaseQuizOption value="A" correct>O Redis cria a chave com o valor 1</BaseQuizOption>
+  <BaseQuizOption value="B">O Redis retorna um erro</BaseQuizOption>
+  <BaseQuizOption value="C">O Redis cria a chave com o valor 0</BaseQuizOption>
+  <BaseQuizOption value="D">Nada acontece</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Se uma chave não existir, `INCR` a trata como se tivesse o valor 0, a incrementa para 1 e cria a chave. Isso torna `INCR` útil para inicializar contadores.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Operações Múltiplas: `MSET` / `MGET`
 
-Trabalhe com vários pares chave-valor de forma eficiente.
+Trabalhe com múltiplos pares chave-valor de forma eficiente.
 
 ```redis
-# Defina várias chaves de uma vez
+# Definir múltiplas chaves de uma vez
 MSET key1 "value1" key2 "value2" key3 "value3"
-# Obtenha múltiplos valores
+# Obter múltiplos valores
 MGET key1 key2 key3
-# Defina múltiplos apenas se nenhum existir
+# Definir múltiplos apenas se nenhum existir
 MSETNX key1 "val1" key2 "val2"
 ```
 
@@ -160,26 +190,41 @@ BLPOP mylist 10
 Recupere elementos ou intervalos de listas.
 
 ```redis
-# Obtenha a lista inteira
+# Obter a lista inteira
 LRANGE mylist 0 -1
-# Obtenha os primeiros 3 elementos
+# Obter os 3 primeiros elementos
 LRANGE mylist 0 2
-# Obtenha um elemento específico pelo índice
+# Obter elemento específico pelo índice
 LINDEX mylist 0
-# Obtenha o comprimento da lista
+# Obter o comprimento da lista
 LLEN mylist
 ```
 
+<BaseQuiz id="redis-list-1" correct="B">
+  <template #question>
+    O que retorna `LRANGE mylist 0 -1`?
+  </template>
+  
+  <BaseQuizOption value="A">Apenas o primeiro elemento</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Todos os elementos na lista</BaseQuizOption>
+  <BaseQuizOption value="C">Apenas o último elemento</BaseQuizOption>
+  <BaseQuizOption value="D">Um erro</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `LRANGE` com `0 -1` retorna todos os elementos da lista. O `0` é o índice inicial e `-1` representa o último elemento, então isso recupera tudo do primeiro ao último elemento.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Utilitários de Lista: `LSET` / `LTRIM`
 
-Modifique o conteúdo e a estrutura da lista.
+Modificar o conteúdo e a estrutura da lista.
 
 ```redis
-# Defina o elemento no índice
+# Definir elemento no índice
 LSET mylist 0 "new_value"
-# Corte a lista para o intervalo
+# Aparar lista para intervalo
 LTRIM mylist 0 99
-# Encontre a posição do elemento
+# Encontrar posição do elemento
 LPOS mylist "search_value"
 ```
 
@@ -192,13 +237,29 @@ Conjuntos são coleções de elementos de string únicos e não ordenados.
 Adicione elementos únicos a conjuntos e recupere todos os membros.
 
 ```redis
-# Adicione elementos ao conjunto
+# Adicionar elementos ao conjunto
 SADD myset "apple" "banana" "cherry"
-# Obtenha todos os membros do conjunto
+# Obter todos os membros do conjunto
 SMEMBERS myset
-# Verifique se o elemento existe
+# Verificar se o elemento existe
 SISMEMBER myset "apple"
-# Obtenha o tamanho do conjunto
+```
+
+<BaseQuiz id="redis-set-1" correct="C">
+  <template #question>
+    O que acontece se você tentar adicionar um elemento duplicado a um conjunto Redis?
+  </template>
+  
+  <BaseQuizOption value="A">Cria um erro</BaseQuizOption>
+  <BaseQuizOption value="B">Substitui o elemento existente</BaseQuizOption>
+  <BaseQuizOption value="C" correct>O duplicado é ignorado e o conjunto permanece inalterado</BaseQuizOption>
+  <BaseQuizOption value="D">Cria uma lista em vez disso</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Os conjuntos Redis contêm apenas elementos únicos. Se você tentar adicionar um elemento que já existe, o Redis o ignora e retorna 0 (indicando que nenhum elemento foi adicionado). O conjunto permanece inalterado.
+  </BaseQuizAnswer>
+</BaseQuiz>
+# Obter tamanho do conjunto
 SCARD myset
 ```
 
@@ -207,11 +268,11 @@ SCARD myset
 Remova elementos de conjuntos de maneiras diferentes.
 
 ```redis
-# Remova elementos específicos
+# Remover elementos específicos
 SREM myset "banana"
-# Remova e retorne um elemento aleatório
+# Remover e retornar elemento aleatório
 SPOP myset
-# Obtenha um elemento aleatório sem remover
+# Obter elemento aleatório sem remover
 SRANDMEMBER myset
 ```
 
@@ -226,7 +287,7 @@ SINTER set1 set2
 SUNION set1 set2
 # Diferença de conjuntos
 SDIFF set1 set2
-# Armazene o resultado em um novo conjunto
+# Armazenar resultado em novo conjunto
 SINTERSTORE result set1 set2
 ```
 
@@ -235,28 +296,28 @@ SINTERSTORE result set1 set2
 Manipulação avançada de conjuntos e varredura.
 
 ```redis
-# Mova o elemento entre conjuntos
+# Mover elemento entre conjuntos
 SMOVE source_set dest_set "element"
-# Varra o conjunto incrementalmente
+# Varredura de conjunto incrementalmente
 SSCAN myset 0 MATCH "a*" COUNT 10
 ```
 
 ## Operações de Hash
 
-Hashes armazenam pares de campo-valor, como mini objetos JSON ou dicionários.
+Hashes armazenam pares campo-valor, como mini objetos JSON ou dicionários.
 
 ### Operações Básicas de Hash: `HSET` / `HGET`
 
 Defina e recupere campos de hash individuais.
 
 ```redis
-# Defina o campo do hash
+# Definir campo de hash
 HSET user:123 name "John Doe" age 30
-# Obtenha o campo do hash
+# Obter campo de hash
 HGET user:123 name
-# Defina múltiplos campos
+# Definir múltiplos campos
 HMSET user:123 email "john@example.com" city "NYC"
-# Obtenha múltiplos campos
+# Obter múltiplos campos
 HMGET user:123 name age email
 ```
 
@@ -265,13 +326,13 @@ HMGET user:123 name age email
 Examine a estrutura e o conteúdo do hash.
 
 ```redis
-# Obtenha todos os nomes de campo
+# Obter todos os nomes de campo
 HKEYS user:123
-# Obtenha todos os valores
+# Obter todos os valores
 HVALS user:123
-# Obtenha todos os campos e valores
+# Obter todos os campos e valores
 HGETALL user:123
-# Obtenha o número de campos
+# Obter número de campos
 HLEN user:123
 ```
 
@@ -280,43 +341,43 @@ HLEN user:123
 Verifique a existência e remova campos de hash.
 
 ```redis
-# Verifique se o campo existe
+# Verificar se o campo existe
 HEXISTS user:123 email
-# Exclua campos
-HDEL user:123 city
-# Incremente o campo do hash
+# Excluir campos
+HDEL user:123 age city
+# Incrementar campo de hash
 HINCRBY user:123 age 1
-# Incremente por float
+# Incrementar por float
 HINCRBYFLOAT user:123 balance 10.50
 ```
 
 ### Varredura de Hash: `HSCAN`
 
-Itere sobre hashes grandes incrementalmente.
+Iterar sobre hashes grandes incrementalmente.
 
 ```redis
-# Varra os campos do hash
+# Varredura de campos de hash
 HSCAN user:123 0
-# Varra com correspondência de padrão
+# Varredura com correspondência de padrão
 HSCAN user:123 0 MATCH "addr*" COUNT 10
 ```
 
 ## Operações de Conjunto Ordenado (Sorted Set)
 
-Conjuntos ordenados combinam a exclusividade de conjuntos com a ordenação baseada em pontuações.
+Conjuntos ordenados combinam a exclusividade de conjuntos com ordenação baseada em pontuações.
 
 ### Operações Básicas: `ZADD` / `ZRANGE`
 
 Adicione membros pontuados e recupere intervalos.
 
 ```redis
-# Adicione membros com pontuações
+# Adicionar membros com pontuações
 ZADD leaderboard 100 "player1" 200 "player2"
-# Obtenha membros por classificação (baseado em 0)
+# Obter membros por classificação (baseado em 0)
 ZRANGE leaderboard 0 -1
-# Obtenha com pontuações
+# Obter com pontuações
 ZRANGE leaderboard 0 -1 WITHSCORES
-# Obtenha por intervalo de pontuação
+# Obter por intervalo de pontuação
 ZRANGEBYSCORE leaderboard 100 200
 ```
 
@@ -325,13 +386,13 @@ ZRANGEBYSCORE leaderboard 100 200
 Obtenha informações sobre membros do conjunto ordenado.
 
 ```redis
-# Obtenha o tamanho do conjunto
+# Obter tamanho do conjunto
 ZCARD leaderboard
-# Obtenha a pontuação do membro
+# Obter pontuação do membro
 ZSCORE leaderboard "player1"
-# Obtenha a classificação do membro
+# Obter classificação do membro
 ZRANK leaderboard "player1"
-# Conte membros no intervalo de pontuação
+# Contar membros no intervalo de pontuação
 ZCOUNT leaderboard 100 200
 ```
 
@@ -340,13 +401,13 @@ ZCOUNT leaderboard 100 200
 Remova membros e modifique pontuações.
 
 ```redis
-# Remova membros
+# Remover membros
 ZREM leaderboard "player1"
-# Incremente a pontuação do membro
+# Incrementar pontuação do membro
 ZINCRBY leaderboard 10 "player2"
-# Remova por classificação
+# Remover por classificação
 ZREMRANGEBYRANK leaderboard 0 2
-# Remova por pontuação
+# Remover por pontuação
 ZREMRANGEBYSCORE leaderboard 0 100
 ```
 
@@ -370,7 +431,7 @@ ZUNIONSTORE result 2 set1 set2 AGGREGATE MAX
 Encontre chaves usando padrões e verifique a existência.
 
 ```redis
-# Obtenha todas as chaves (use com cuidado em produção)
+# Obter todas as chaves (use com cuidado em produção)
 KEYS *
 # Chaves com padrão
 KEYS user:*
@@ -378,7 +439,7 @@ KEYS user:*
 KEYS *:profile
 # Coringa de caractere único
 KEYS order:?
-# Verifique se a chave existe
+# Verificar se a chave existe
 EXISTS mykey
 ```
 
@@ -387,28 +448,28 @@ EXISTS mykey
 Obtenha metadados da chave e informações de expiração.
 
 ```redis
-# Obtenha o tipo de dados da chave
+# Obter tipo de dados da chave
 TYPE mykey
-# Obtenha o tempo de vida (segundos)
+# Obter tempo de vida (segundos)
 TTL mykey
-# Obtenha o TTL em milissegundos
+# Obter TTL em milissegundos
 PTTL mykey
-# Remova a expiração
+# Remover expiração
 PERSIST mykey
 ```
 
 ### Operações de Chave: `RENAME` / `DEL`
 
-Renomeie, exclua e mova chaves.
+Renomear, excluir e mover chaves.
 
 ```redis
-# Renomeie a chave
+# Renomear chave
 RENAME oldkey newkey
-# Renomeie apenas se a nova chave não existir
+# Renomear apenas se a nova chave não existir
 RENAMENX oldkey newkey
-# Exclua chaves
+# Excluir chaves
 DEL key1 key2 key3
-# Mova a chave para um banco de dados diferente
+# Mover chave para banco de dados diferente
 MOVE mykey 1
 ```
 
@@ -417,11 +478,11 @@ MOVE mykey 1
 Defina tempos de expiração de chave.
 
 ```redis
-# Defina a expiração em segundos
+# Definir expiração em segundos
 EXPIRE mykey 3600
-# Defina a expiração em um timestamp específico
+# Definir expiração em carimbo de data/hora específico
 EXPIREAT mykey 1609459200
-# Defina a expiração em milissegundos
+# Definir expiração em milissegundos
 PEXPIRE mykey 60000
 ```
 
@@ -432,13 +493,13 @@ PEXPIRE mykey 60000
 Gerencie múltiplos bancos de dados dentro do Redis.
 
 ```redis
-# Selecione o banco de dados (0-15 por padrão)
+# Selecionar banco de dados (0-15 por padrão)
 SELECT 0
-# Limpe o banco de dados atual
+# Limpar banco de dados atual
 FLUSHDB
-# Limpe todos os bancos de dados
+# Limpar todos os bancos de dados
 FLUSHALL
-# Obtenha o tamanho do banco de dados atual
+# Obter tamanho do banco de dados atual
 DBSIZE
 ```
 
@@ -447,14 +508,14 @@ DBSIZE
 Obtenha estatísticas do servidor e teste a conectividade.
 
 ```redis
-# Teste a conexão com o servidor
+# Testar conexão com o servidor
 PING
-# Obtenha informações do servidor
+# Obter informações do servidor
 INFO
-# Obtenha seção de informações específica
+# Obter seção de informações específica
 INFO memory
 INFO replication
-# Obtenha o tempo do servidor
+# Obter tempo do servidor
 TIME
 ```
 
@@ -467,24 +528,24 @@ Controle a persistência de dados e backups do Redis.
 SAVE
 # Salvamento em segundo plano (não bloqueante)
 BGSAVE
-# Obtenha a hora do último salvamento
+# Obter hora do último salvamento
 LASTSAVE
-# Reescreva o arquivo AOF
+# Reescrever arquivo AOF
 BGREWRITEAOF
 ```
 
 ### Configuração: `CONFIG GET` / `CONFIG SET`
 
-Visualize e modifique a configuração do Redis.
+Visualizar e modificar a configuração do Redis.
 
 ```redis
-# Obtenha toda a configuração
+# Obter toda a configuração
 CONFIG GET *
-# Obtenha configuração específica
+# Obter configuração específica
 CONFIG GET maxmemory
-# Defina a configuração
+# Definir configuração
 CONFIG SET timeout 300
-# Redefina estatísticas
+# Resetar estatísticas
 CONFIG RESETSTAT
 ```
 
@@ -495,13 +556,13 @@ CONFIG RESETSTAT
 Rastreie comandos e identifique gargalos de desempenho.
 
 ```redis
-# Monitore todos os comandos em tempo real
+# Monitorar todos os comandos em tempo real
 MONITOR
-# Obtenha o log de consultas lentas
+# Obter log de consultas lentas
 SLOWLOG GET 10
-# Obtenha o comprimento do log lento
+# Obter comprimento do log lento
 SLOWLOG LEN
-# Redefina o log lento
+# Resetar log lento
 SLOWLOG RESET
 ```
 
@@ -510,13 +571,13 @@ SLOWLOG RESET
 Analise o consumo de memória e otimização.
 
 ```redis
-# Obtenha o uso de memória da chave
+# Obter uso de memória da chave
 MEMORY USAGE mykey
-# Obtenha estatísticas de memória
+# Obter estatísticas de memória
 MEMORY STATS
-# Obtenha relatório de diagnóstico de memória
+# Obter relatório do médico de memória
 MEMORY DOCTOR
-# Limpe a memória
+# Limpar memória
 MEMORY PURGE
 ```
 
@@ -525,13 +586,13 @@ MEMORY PURGE
 Monitore clientes conectados e conexões.
 
 ```redis
-# Liste todos os clientes
+# Listar todos os clientes
 CLIENT LIST
-# Obtenha informações do cliente
+# Obter informações do cliente
 CLIENT INFO
-# Mate a conexão do cliente
+# Encerrar conexão do cliente
 CLIENT KILL ip:port
-# Defina o nome do cliente
+# Definir nome do cliente
 CLIENT SETNAME "my-app"
 ```
 
@@ -555,15 +616,15 @@ redis-benchmark -d 1024 -t SET -n 10000
 Execute múltiplos comandos atomicamente.
 
 ```redis
-# Inicie a transação
+# Iniciar transação
 MULTI
 SET key1 "value1"
 INCR counter
-# Execute todos os comandos
+# Executar todos os comandos
 EXEC
-# Descarte a transação
+# Descartar transação
 DISCARD
-# Observe as chaves em busca de alterações
+# Observar chaves para alterações
 WATCH mykey
 ```
 
@@ -572,13 +633,13 @@ WATCH mykey
 Implemente passagem de mensagens entre clientes.
 
 ```redis
-# Assine um canal
+# Assinar canal
 SUBSCRIBE news sports
-# Publique mensagem
+# Publicar mensagem
 PUBLISH news "Breaking: Redis 7.0 released!"
 # Assinatura de padrão
 PSUBSCRIBE news:*
-# Desassinar
+# Cancelar assinatura
 UNSUBSCRIBE news
 ```
 
@@ -587,13 +648,13 @@ UNSUBSCRIBE news
 Execute scripts Lua personalizados atomicamente.
 
 ```redis
-# Execute o script Lua
+# Executar script Lua
 EVAL "return redis.call('SET', 'key', 'value')" 0
-# Carregue o script e obtenha o SHA
+# Carregar script e obter SHA
 SCRIPT LOAD "return redis.call('GET', KEYS[1])"
-# Execute por SHA
+# Executar por SHA
 EVALSHA sha1 1 mykey
-# Verifique a existência do script
+# Verificar existência do script
 SCRIPT EXISTS sha1
 ```
 
@@ -602,13 +663,13 @@ SCRIPT EXISTS sha1
 Trabalhe com streams do Redis para dados semelhantes a logs.
 
 ```redis
-# Adicione entrada ao stream
+# Adicionar entrada ao stream
 XADD mystream * field1 value1 field2 value2
-# Leia do stream
+# Ler do stream
 XREAD STREAMS mystream 0
-# Obtenha o comprimento do stream
+# Obter comprimento do stream
 XLEN mystream
-# Crie um grupo de consumidores
+# Criar grupo de consumidores
 XGROUP CREATE mystream mygroup 0
 ```
 
@@ -616,7 +677,7 @@ XGROUP CREATE mystream mygroup 0
 
 ### Strings: Tipo mais versátil
 
-Pode armazenar texto, números, JSON, dados binários. Tamanho máximo: 512MB. Use para: cache, contadores, flags.
+Pode armazenar texto, números, JSON, dados binários. Tamanho máximo: 512MB. Usado para: cache, contadores, flags.
 
 ```redis
 SET user:123:name "John"
@@ -626,7 +687,7 @@ INCR page:views
 
 ### Listas: Coleções ordenadas
 
-Listas encadeadas de strings. Use para: filas, pilhas, feeds de atividade, itens recentes.
+Listas ligadas de strings. Usado para: filas, pilhas, feeds de atividade, itens recentes.
 
 ```redis
 LPUSH queue:jobs "job1"
@@ -636,7 +697,7 @@ LRANGE recent:posts 0 9
 
 ### Conjuntos (Sets): Coleções únicas
 
-Coleções não ordenadas de strings exclusivas. Use para: tags, visitantes únicos, relacionamentos.
+Coleções não ordenadas de strings únicas. Usado para: tags, visitantes únicos, relacionamentos.
 
 ```redis
 SADD post:123:tags "redis" "database"
@@ -648,14 +709,14 @@ SINTER user:123:friends user:456:friends
 
 ### Gerenciamento de Memória
 
-Configure limites de memória e políticas de evacuação.
+Configure limites de memória e políticas de despejo (eviction).
 
 ```redis
-# Defina o limite de memória
+# Definir limite de memória
 CONFIG SET maxmemory 2gb
-# Defina a política de evacuação
+# Definir política de despejo
 CONFIG SET maxmemory-policy allkeys-lru
-# Verifique o uso da memória
+# Verificar uso de memória
 INFO memory
 ```
 
@@ -664,9 +725,9 @@ INFO memory
 Configure opções de durabilidade de dados.
 
 ```redis
-# Habilite AOF
+# Habilitar AOF
 CONFIG SET appendonly yes
-# Defina intervalos de salvamento
+# Definir intervalos de salvamento
 CONFIG SET save "900 1 300 10 60 10000"
 # Configurações de reescrita AOF
 CONFIG SET auto-aof-rewrite-percentage 100
@@ -677,13 +738,13 @@ CONFIG SET auto-aof-rewrite-percentage 100
 Configurações básicas de segurança para o Redis.
 
 ```redis
-# Defina a senha
+# Definir senha
 CONFIG SET requirepass mypassword
 # Autenticar
 AUTH mypassword
-# Desabilite comandos perigosos
+# Desabilitar comandos perigosos
 CONFIG SET rename-command FLUSHALL ""
-# Defina o tempo limite
+# Definir timeout
 CONFIG SET timeout 300
 # TCP keep alive
 CONFIG SET tcp-keepalive 60
@@ -695,12 +756,12 @@ CONFIG SET maxclients 10000
 
 Otimize o Redis para melhor desempenho.
 
-```bash
-# Habilite o pipelining para múltiplos comandos
-# Use pool de conexões
-# Configure a política maxmemory apropriada
-# Monitore consultas lentas regularmente
-# Use estruturas de dados apropriadas para casos de uso
+```redis
+# Habilitar pipelining para múltiplos comandos
+# Usar pool de conexões
+# Configurar política maxmemory apropriada
+# Monitorar consultas lentas regularmente
+# Usar estruturas de dados apropriadas para casos de uso
 ```
 
 ## Links Relevantes

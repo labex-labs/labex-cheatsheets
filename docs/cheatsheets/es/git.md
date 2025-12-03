@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Git'
-description: 'Aprenda Git con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Git | LabEx'
+description: 'Aprenda control de versiones Git con esta hoja de trucos completa. Referencia rápida de comandos Git, ramificación, fusión, rebase, flujos de trabajo de GitHub y desarrollo colaborativo.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Git
 <a target="_blank" href="https://labex.io/es/learn/git">Aprende Git con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende control de versiones Git a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Git que cubren comandos esenciales, estrategias de ramificación, flujos de trabajo de colaboración y técnicas avanzadas. Aprende a gestionar repositorios de código, resolver conflictos y trabajar eficazmente con equipos usando Git y GitHub.
+Aprende el control de versiones Git a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Git que cubren comandos esenciales, estrategias de ramificación, flujos de trabajo de colaboración y técnicas avanzadas. Aprende a gestionar repositorios de código, resolver conflictos y trabajar eficazmente con equipos utilizando Git y GitHub.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -46,8 +46,8 @@ git clone https://github.com/user/repo.git
 # Clonar vía SSH
 git clone git@github.com:user/repo.git
 # Clonar con nombre personalizado
-git clone repo.git local-name
-# Clonación superficial (solo el último commit)
+git clone repo.git nombre-local
+# Clonar superficial (solo el último commit)
 git clone --depth 1 repo.git
 ```
 
@@ -56,10 +56,10 @@ git clone --depth 1 repo.git
 Establece la información del usuario y las preferencias globalmente.
 
 ```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu.email@example.com"
 git config --global init.defaultBranch main
-# Ver toda la configuración
+# Ver todas las configuraciones
 git config --list
 ```
 
@@ -69,9 +69,9 @@ Establece la configuración específica del repositorio.
 
 ```bash
 # Establecer solo para el repo actual
-git config user.name "Project Name"
+git config user.name "Nombre del Proyecto"
 # Email específico del proyecto
-git config user.email "project@example.com"
+git config user.email "proyecto@example.com"
 ```
 
 ### Gestión de Remotos: `git remote`
@@ -143,7 +143,7 @@ Muestra el historial de commits y la línea de tiempo del repositorio.
 ```bash
 # Historial de commits completo
 git log
-# Formato condensado de una línea
+# Formato condensado de una sola línea
 git log --oneline
 # Mostrar los últimos 5 commits
 git log -5
@@ -176,14 +176,29 @@ Guarda los cambios preparados en el repositorio con un mensaje descriptivo.
 
 ```bash
 # Commit con mensaje
-git commit -m "Add user authentication"
+git commit -m "Añadir autenticación de usuario"
 # Preparar y confirmar archivos modificados
-git commit -a -m "Update docs"
+git commit -a -m "Actualizar documentación"
 # Modificar el último commit
 git commit --amend
 # Modificar sin cambiar el mensaje
 git commit --no-edit --amend
 ```
+
+<BaseQuiz id="git-commit-1" correct="A">
+  <template #question>
+    ¿Qué hace `git commit -m "message"`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Crea un nuevo commit con el mensaje especificado</BaseQuizOption>
+  <BaseQuizOption value="B">Prepara todos los cambios en el directorio de trabajo</BaseQuizOption>
+  <BaseQuizOption value="C">Envía los cambios al repositorio remoto</BaseQuizOption>
+  <BaseQuizOption value="D">Crea una nueva rama</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El comando `git commit -m` crea un nuevo commit con los cambios preparados y los guarda en el historial del repositorio con el mensaje proporcionado. No envía al remoto ni crea ramas.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Despreparar Archivos: `git reset`
 
@@ -228,7 +243,7 @@ git branch
 git branch -a
 # Listar solo ramas remotas
 git branch -r
-# Mostrar último commit en cada rama
+# Mostrar el último commit en cada rama
 git branch -v
 ```
 
@@ -247,6 +262,21 @@ git checkout main
 git switch main
 ```
 
+<BaseQuiz id="git-branch-1" correct="B">
+  <template #question>
+    ¿Qué hace `git checkout -b feature-branch`?
+  </template>
+  
+  <BaseQuizOption value="A">Elimina la rama feature-branch</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Crea una nueva rama llamada feature-branch y cambia a ella</BaseQuizOption>
+  <BaseQuizOption value="C">Fusiona feature-branch en la rama actual</BaseQuizOption>
+  <BaseQuizOption value="D">Muestra el historial de commits de feature-branch</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El flag `-b` crea una nueva rama, y `checkout` cambia a ella. Este comando combina ambas operaciones: crear la rama y cambiar inmediatamente a ella.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Fusionar Ramas: `git merge`
 
 Combina cambios de diferentes ramas.
@@ -254,9 +284,9 @@ Combina cambios de diferentes ramas.
 ```bash
 # Fusionar feature-branch en la rama actual
 git merge feature-branch
-# Fusión forzada (no fast-forward)
+# Fusión forzada (sin fast-forward)
 git merge --no-ff feature-branch
-# Agrupar commits antes de fusionar
+# Aplastar commits antes de fusionar
 git merge --squash feature-branch
 ```
 
@@ -267,7 +297,7 @@ Elimina ramas que ya no son necesarias.
 ```bash
 # Eliminar rama fusionada
 git branch -d feature-branch
-# Eliminar rama no fusionada forzadamente
+# Eliminar rama no fusionada forzosamente
 git branch -D feature-branch
 # Eliminar rama remota
 git push origin --delete feature-branch
@@ -295,15 +325,30 @@ git fetch origin main
 Descarga y fusiona cambios del repositorio remoto.
 
 ```bash
-# Traer de la rama de seguimiento
+# Traer desde la rama de seguimiento
 git pull
-# Traer de una rama remota específica
+# Traer desde rama remota específica
 git pull origin main
-# Traer con rebase en lugar de merge
+# Traer usando rebase en lugar de merge
 git pull --rebase
 # Solo fast-forward, sin commits de fusión
 git pull --ff-only
 ```
+
+<BaseQuiz id="git-pull-1" correct="C">
+  <template #question>
+    ¿Cuál es la diferencia entre `git fetch` y `git pull`?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia; hacen lo mismo</BaseQuizOption>
+  <BaseQuizOption value="B">git fetch envía cambios, git pull descarga cambios</BaseQuizOption>
+  <BaseQuizOption value="C" correct>git fetch descarga cambios sin fusionar, git pull descarga y fusiona cambios</BaseQuizOption>
+  <BaseQuizOption value="D">git fetch funciona con repos locales, git pull funciona con repos remotos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` descarga cambios del repositorio remoto pero no los fusiona en tu rama actual. `git pull` realiza ambas operaciones: obtiene los cambios y luego los fusiona en tu rama actual.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Enviar Cambios: `git push`
 
@@ -312,7 +357,7 @@ Sube los commits locales al repositorio remoto.
 ```bash
 # Enviar a la rama de seguimiento
 git push
-# Enviar a una rama remota específica
+# Enviar a rama remota específica
 git push origin main
 # Enviar y establecer seguimiento (upstream)
 git push -u origin feature
@@ -320,9 +365,24 @@ git push -u origin feature
 git push --force-with-lease
 ```
 
+<BaseQuiz id="git-push-1" correct="D">
+  <template #question>
+    ¿Qué hace `git push -u origin feature`?
+  </template>
+  
+  <BaseQuizOption value="A">Elimina la rama feature del remoto</BaseQuizOption>
+  <BaseQuizOption value="B">Trae cambios desde la rama feature</BaseQuizOption>
+  <BaseQuizOption value="C">Fusiona la rama feature en main</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Envía la rama feature a origin y establece el seguimiento</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El flag `-u` (o `--set-upstream`) envía la rama al repositorio remoto y establece el seguimiento, por lo que los futuros comandos `git push` y `git pull` sabrán qué rama remota usar.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Seguir Ramas Remotas: `git branch --track`
 
-Configura el seguimiento entre ramas locales y remotas.
+Establece el seguimiento entre ramas locales y remotas.
 
 ```bash
 # Establecer seguimiento
@@ -333,7 +393,7 @@ git checkout -b local-branch origin/remote-branch
 
 ## Stashing y Almacenamiento Temporal
 
-### Guardar Cambios: `git stash`
+### Guardar Cambios Temporalmente: `git stash`
 
 Guarda temporalmente los cambios no confirmados para usarlos más tarde.
 
@@ -341,7 +401,7 @@ Guarda temporalmente los cambios no confirmados para usarlos más tarde.
 # Guardar cambios actuales
 git stash
 # Guardar con mensaje
-git stash save "Work in progress on feature X"
+git stash save "Trabajo en progreso en la característica X"
 # Incluir archivos no rastreados
 git stash -u
 # Guardar solo cambios no preparados
@@ -368,17 +428,32 @@ Restaura los cambios guardados previamente.
 ```bash
 # Aplicar el último stash
 git stash apply
-# Aplicar un stash específico
+# Aplicar stash específico
 git stash apply stash@{1}
 # Aplicar y eliminar el último stash
 git stash pop
 # Eliminar el último stash
 git stash drop
-# Crear rama a partir de stash
+# Crear rama a partir de un stash
 git stash branch new-branch stash@{1}
 # Eliminar todos los stashes
 git stash clear
 ```
+
+<BaseQuiz id="git-stash-1" correct="B">
+  <template #question>
+    ¿Cuál es la diferencia entre `git stash apply` y `git stash pop`?
+  </template>
+  
+  <BaseQuizOption value="A">git stash apply elimina el stash, git stash pop lo mantiene</BaseQuizOption>
+  <BaseQuizOption value="B" correct>git stash apply mantiene el stash, git stash pop lo elimina después de aplicarlo</BaseQuizOption>
+  <BaseQuizOption value="C">git stash apply funciona con repos remotos, git stash pop funciona localmente</BaseQuizOption>
+  <BaseQuizOption value="D">No hay diferencia; hacen lo mismo</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git stash apply` restaura los cambios guardados pero mantiene el stash en la lista. `git stash pop` aplica el stash y luego lo elimina de la lista, lo cual es útil cuando ya no necesitas el stash.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Análisis de Historial y Logs
 
@@ -389,7 +464,7 @@ Explora el historial del repositorio con varias opciones de formato.
 ```bash
 # Historial visual de ramas
 git log --oneline --graph --all
-# Commits por un autor específico
+# Commits de un autor específico
 git log --author="John Doe"
 # Commits recientes
 git log --since="2 weeks ago"
@@ -419,7 +494,7 @@ Busca patrones de texto a través del historial del repositorio.
 git grep "function"
 # Buscar con números de línea
 git grep -n "TODO"
-# Buscar en archivos preparados (staged)
+# Buscar en archivos preparados
 git grep --cached "bug"
 ```
 
@@ -470,7 +545,7 @@ git reset --hard HEAD~1
 
 ### Rebase Interactivo: `git rebase -i`
 
-Edita, reordena o agrupa commits interactivamente.
+Edita, reordena o aplasta commits interactivamente.
 
 ```bash
 # Rebase interactivo de los últimos 3 commits
@@ -509,7 +584,7 @@ git status
 git add resolved-file.txt
 # Completar la fusión
 git commit
-# Cancelar la fusión y volver al estado anterior
+# Cancelar fusión y volver al estado anterior
 git merge --abort
 ```
 
@@ -518,15 +593,15 @@ git merge --abort
 Lanza herramientas externas para ayudar a resolver conflictos visualmente.
 
 ```bash
-# Lanzar la herramienta de fusión por defecto
+# Lanzar herramienta de fusión por defecto
 git mergetool
 # Establecer herramienta de fusión por defecto
 git config --global merge.tool vimdiff
-# Usar una herramienta específica para esta fusión
+# Usar herramienta específica para esta fusión
 git mergetool --tool=meld
 ```
 
-### Marcadores de Conflicto: Entendiendo el Formato
+### Marcadores de Conflicto: Entender el Formato
 
 Interpreta los marcadores de conflicto de Git en los archivos.
 
@@ -547,7 +622,7 @@ git commit
 
 ### Herramientas de Diferencia: `git difftool`
 
-Usa herramientas externas para una mejor visualización de conflictos.
+Usa herramientas externas de diferencia para una mejor visualización de conflictos.
 
 ```bash
 # Lanzar herramienta de diferencia para cambios
@@ -556,7 +631,7 @@ git difftool
 git config --global diff.tool vimdiff
 ```
 
-## Etiquetado y Lanzamientos (Tagging & Releases)
+## Etiquetado y Lanzamientos (Releases)
 
 ### Crear Etiquetas: `git tag`
 
@@ -566,7 +641,7 @@ Marca commits específicos con etiquetas de versión.
 # Crear etiqueta ligera (lightweight)
 git tag v1.0
 # Crear etiqueta anotada
-git tag -a v1.0 -m "Version 1.0 release"
+git tag -a v1.0 -m "Lanzamiento Versión 1.0"
 # Etiquetar commit específico
 git tag -a v1.0 abc123
 # Crear etiqueta firmada
@@ -619,13 +694,13 @@ git push origin :refs/tags/v1.0
 Muestra la configuración actual de Git.
 
 ```bash
-# Mostrar toda la configuración
+# Mostrar todas las configuraciones
 git config --list
 # Mostrar solo configuraciones globales
 git config --global --list
-# Mostrar configuración específica del repositorio
+# Mostrar configuraciones específicas del repositorio
 git config --local --list
-# Mostrar una configuración específica
+# Mostrar configuración específica
 git config user.name
 ```
 
@@ -687,7 +762,7 @@ git fsck
 
 ### Manejo de Archivos Grandes: `git lfs`
 
-Gestiona archivos binarios grandes de manera eficiente con Git LFS.
+Gestiona archivos binarios grandes eficientemente con Git LFS.
 
 ```bash
 # Instalar LFS en el repositorio
@@ -713,14 +788,14 @@ git clone --depth 10 repo.git
 git fetch --unshallow
 ```
 
-### Sparse Checkout: Trabajar con Subdirectorios
+### Checkout Disperso (Sparse Checkout): Trabajar con Subdirectorios
 
 Extrae solo partes específicas de repositorios grandes.
 
 ```bash
 git config core.sparseCheckout true
 echo "src/*" > .git/info/sparse-checkout
-# Aplicar checkout disperso
+# Aplicar sparse checkout
 git read-tree -m -u HEAD
 ```
 
@@ -753,15 +828,15 @@ git --version
 which git
 ```
 
-### Configuración Inicial: Identidad del Usuario
+### Configuración Inicial: Configuración del Usuario
 
 Configura Git con tu identidad para los commits.
 
 ```bash
-git config --global user.name "Your Full Name"
-git config --global user.email "your.email@example.com"
+git config --global user.name "Tu Nombre Completo"
+git config --global user.email "tu.email@example.com"
 git config --global init.defaultBranch main
-# Establecer comportamiento de pull
+# Establecer comportamiento de fusión
 git config --global pull.rebase false
 ```
 
@@ -784,7 +859,7 @@ git push -u origin feature/user-auth
 # ... crear pull request ...
 ```
 
-### Git Flow: Modelo Estructurado de Ramificación
+### Git Flow: Modelo de Ramificación Estructurado
 
 Enfoque sistemático con ramas dedicadas para diferentes propósitos.
 
@@ -792,9 +867,9 @@ Enfoque sistemático con ramas dedicadas para diferentes propósitos.
 # Inicializar Git Flow
 git flow init
 # Iniciar característica
-git flow feature start new-feature
+git flow feature start nueva-caracteristica
 # Finalizar característica
-git flow feature finish new-feature
+git flow feature finish nueva-caracteristica
 # Iniciar rama de lanzamiento (release)
 git flow release start 1.0.0
 ```
@@ -805,10 +880,10 @@ Sigue el formato de commit convencional para un historial de proyecto claro.
 
 ```bash
 # Formato: <tipo>(<ámbito>): <asunto>
-git commit -m "feat(auth): add user login functionality"
-git commit -m "fix(api): resolve null pointer exception"
-git commit -m "docs(readme): update installation instructions"
-git commit -m "refactor(utils): simplify date formatting"
+git commit -m "feat(auth): añadir funcionalidad de inicio de sesión de usuario"
+git commit -m "fix(api): resolver excepción de puntero nulo"
+git commit -m "docs(readme): actualizar instrucciones de instalación"
+git commit -m "refactor(utils): simplificar formato de fecha"
 ```
 
 ### Commits Atómicos: Mejores Prácticas
@@ -819,9 +894,9 @@ Crea commits enfocados y de propósito único para un mejor historial.
 # Preparar cambios interactivamente
 git add -p
 # Cambio específico
-git commit -m "Add validation to email field"
-# Evitar: git commit -m "Fix stuff" # Demasiado vago
-# Bueno:  git commit -m "Fix email validation regex pattern"
+git commit -m "Añadir validación al campo de correo electrónico"
+# Evitar: git commit -m "Arreglar cosas" # Demasiado vago
+# Bueno:  git commit -m "Arreglar patrón de expresión regular de validación de correo electrónico"
 ```
 
 ## Solución de Problemas y Recuperación
@@ -843,7 +918,7 @@ git branch recovery-branch abc123
 
 ### Repositorio Corrupto: Reparación
 
-Arregla problemas de corrupción e integridad del repositorio.
+Soluciona problemas de corrupción e integridad del repositorio.
 
 ```bash
 # Verificar integridad del repositorio

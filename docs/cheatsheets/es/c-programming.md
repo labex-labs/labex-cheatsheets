@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Programación en C'
-description: 'Aprenda programación en C con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Programación en C | LabEx'
+description: 'Aprenda programación en C con esta hoja de trucos completa. Referencia rápida de sintaxis de C, punteros, gestión de memoria, estructuras de datos y conceptos esenciales de programación de sistemas para desarrolladores.'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 
@@ -77,6 +77,21 @@ int main(int argc, char *argv[]) {
 }
 ```
 
+<BaseQuiz id="c-main-1" correct="C">
+  <template #question>
+    ¿Qué indica `return 0` en la función main?
+  </template>
+  
+  <BaseQuizOption value="A">El programa falló</BaseQuizOption>
+  <BaseQuizOption value="B">El programa sigue ejecutándose</BaseQuizOption>
+  <BaseQuizOption value="C" correct>El programa se ejecutó con éxito</BaseQuizOption>
+  <BaseQuizOption value="D">El programa no devolvió ningún valor</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    En C, `return 0` desde la función main indica una ejecución exitosa del programa. Los valores de retorno distintos de cero típicamente indican errores o terminación anormal.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Salida Básica
 
 Mostrar texto y variables en la consola.
@@ -123,7 +138,7 @@ int is_valid = 1;  // 1 para verdadero, 0 para falso
 
 ### Arreglos y Cadenas
 
-Arreglos y manejo de cadenas en C.
+Manejo de arreglos y cadenas en C.
 
 ```c
 // Arreglos
@@ -138,6 +153,21 @@ int len = strlen(name);
 int size = sizeof(buffer);
 ```
 
+<BaseQuiz id="c-arrays-1" correct="C">
+  <template #question>
+    ¿Cómo se representan las cadenas en C?
+  </template>
+  
+  <BaseQuizOption value="A">Como un tipo de cadena especial</BaseQuizOption>
+  <BaseQuizOption value="B">Como enteros</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Como arreglos de caracteres</BaseQuizOption>
+  <BaseQuizOption value="D">Solo como punteros</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    En C, las cadenas se representan como arreglos de caracteres (`char`). La cadena está terminada por un carácter nulo (`\0`), que marca el final de la cadena.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Constantes y Modificadores
 
 Valores inmutables y modificadores de almacenamiento.
@@ -146,7 +176,7 @@ Valores inmutables y modificadores de almacenamiento.
 // Constantes
 const int MAX_SIZE = 100;
 const double PI = 3.14159;
-// Constantes de preprocesador
+// Constantes del preprocesador
 #define BUFFER_SIZE 512
 #define TRUE 1
 #define FALSE 0
@@ -156,7 +186,7 @@ extern int global_var;    // Variable externa
 register int fast_var;    // Sugerencia de registro
 ```
 
-## Estructuras de Flujo de Control
+## Estructuras de Control de Flujo
 
 ### Sentencias Condicionales
 
@@ -209,9 +239,24 @@ for (int i = 0; i < 3; i++) {
 }
 ```
 
+<BaseQuiz id="c-for-loop-1" correct="A">
+  <template #question>
+    ¿Qué calcula `sizeof(numbers) / sizeof(numbers[0])`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>El número de elementos en el arreglo</BaseQuizOption>
+  <BaseQuizOption value="B">El tamaño total de memoria del arreglo</BaseQuizOption>
+  <BaseQuizOption value="C">El índice del último elemento</BaseQuizOption>
+  <BaseQuizOption value="D">El tamaño de un elemento</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Esta expresión calcula la longitud del arreglo dividiendo el tamaño total del arreglo por el tamaño de un elemento. Este es un modismo común en C ya que los arreglos no almacenan su longitud.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Bucles While
 
-Iteración basada en condiciones.
+Iteración basada en una condición.
 
 ```c
 // Bucle While
@@ -355,7 +400,7 @@ Relación entre arreglos y punteros.
 
 ```c
 int arr[5] = {1, 2, 3, 4, 5};
-int *p = arr;  // Apunta al primer elemento
+int *p = arr;  // Puntero al primer elemento
 // Notación de arreglo vs aritmética de punteros
 printf("%d\n", arr[2]);   // Notación de arreglo
 printf("%d\n", *(p + 2)); // Aritmética de punteros
@@ -510,7 +555,7 @@ Leer datos de archivos de texto.
 
 ```c
 #include <stdio.h>
-// Leer archivo carácter por carácter
+// Leer archivo completo carácter por carácter
 FILE *file = fopen("data.txt", "r");
 if (file != NULL) {
     int ch;
@@ -546,11 +591,11 @@ if (file == NULL) {
     perror("fopen");  // Imprimir mensaje de error del sistema
     return 1;
 }
-// Verificar errores de lectura
+// Comprobar errores de lectura
 if (ferror(file)) {
-    printf("Error leyendo el archivo!\n");
+    printf("¡Error al leer el archivo!\n");
 }
-// Verificar fin de archivo
+// Comprobar fin de archivo
 if (feof(file)) {
     printf("Se alcanzó el final del archivo\n");
 }
@@ -569,7 +614,7 @@ if (outfile != NULL) {
     fprintf(outfile, "Número: %d\n", 42);
     fclose(outfile);
 }
-// Añadir a archivo existente
+// Anexar a archivo existente
 FILE *appendfile = fopen("log.txt", "a");
 if (appendfile != NULL) {
     fprintf(appendfile, "Nueva entrada de registro\n");
@@ -607,7 +652,7 @@ fclose(readbin);
 
 ## Manipulación de Cadenas
 
-### Funciones de Cadenas
+### Funciones de Cadena
 
 Operaciones comunes de cadenas de la librería string.h.
 
@@ -616,16 +661,16 @@ Operaciones comunes de cadenas de la librería string.h.
 char str1[50] = "Hello";
 char str2[] = "World";
 char dest[100];
-// Longitud de la cadena
+// Longitud de cadena
 int len = strlen(str1);
 printf("Longitud: %d\n", len);
 // Copia de cadena
 strcpy(dest, str1);
 strncpy(dest, str1, 10); // Copiar los primeros 10 caracteres
-// Concatenación de cadenas
+// Concatenación de cadena
 strcat(dest, " ");
 strcat(dest, str2);
-strncat(dest, "!", 1);   // Añadir 1 carácter
+strncat(dest, "!", 1);   // Anexar 1 carácter
 // Comparación de cadenas
 int result = strcmp(str1, str2);
 if (result == 0) {
@@ -643,15 +688,15 @@ char *ptr;
 // Encontrar primera ocurrencia de carácter
 ptr = strchr(text, 'q');
 if (ptr != NULL) {
-    printf("Encontrado 'q' en la posición: %ld\n", ptr - text);
+    printf("Se encontró 'q' en la posición: %ld\n", ptr - text);
 }
 // Encontrar última ocurrencia
 ptr = strrchr(text, 'o');
 printf("Última 'o' en la posición: %ld\n", ptr - text);
-// Buscar subcadena
+// Encontrar subcadena
 ptr = strstr(text, "brown");
 if (ptr != NULL) {
-    printf("Encontrado 'brown' en: %s\n", ptr);
+    printf("Se encontró 'brown' en: %s\n", ptr);
 }
 ```
 
@@ -668,7 +713,7 @@ int num = atoi(num_str);
 long long_num = atol(num_str);
 double float_num = atof(float_str);
 printf("Entero: %d\n", num);
-printf("Long: %ld\n", long_num);
+printf("Largo: %ld\n", long_num);
 printf("Doble: %.2f\n", float_num);
 // Número a cadena (usando sprintf)
 char buffer[50];
@@ -710,17 +755,17 @@ GNU Compiler Collection para C.
 
 ```bash
 # Compilación básica
-gcc -o program main.c
+gcc -o programa main.c
 # Con información de depuración
-gcc -g -o program main.c
+gcc -g -o programa main.c
 # Niveles de optimización
-gcc -O2 -o program main.c
+gcc -O2 -o programa main.c
 # Múltiples archivos fuente
-gcc -o program main.c utils.c math.c
+gcc -o programa main.c utils.c math.c
 # Incluir directorios adicionales
-gcc -I/usr/local/include -o program main.c
+gcc -I/usr/local/include -o programa main.c
 # Enlazar librerías
-gcc -o program main.c -lm -lpthread
+gcc -o programa main.c -lm -lpthread
 ```
 
 ### Estándares de C
@@ -729,15 +774,15 @@ Compilar con versiones específicas del estándar C.
 
 ```bash
 # Estándar C90/C89 (ANSI C)
-gcc -std=c89 -o program main.c
+gcc -std=c89 -o programa main.c
 # Estándar C99
-gcc -std=c99 -o program main.c
+gcc -std=c99 -o programa main.c
 # Estándar C11 (recomendado)
-gcc -std=c11 -o program main.c
+gcc -std=c11 -o programa main.c
 # Estándar C18 (más reciente)
-gcc -std=c18 -o program main.c
+gcc -std=c18 -o programa main.c
 # Habilitar todas las advertencias
-gcc -Wall -Wextra -std=c11 -o program main.c
+gcc -Wall -Wextra -std=c11 -o programa main.c
 ```
 
 ### Conceptos Básicos de Makefile
@@ -786,10 +831,10 @@ void process_data(int *input_array, int array_size);
 Prevenir errores comunes relacionados con la memoria.
 
 ```c
-// Siempre inicializar variables
-int count = 0;        // Bueno
+// Inicializar siempre las variables
+int count = 0;        // Bien
 int count;            // Peligroso - sin inicializar
-// Verificar el valor de retorno de malloc
+// Comprobar el valor de retorno de malloc
 int *ptr = malloc(sizeof(int) * 10);
 if (ptr == NULL) {
     printf("Fallo en la asignación de memoria!\n");
@@ -798,7 +843,7 @@ if (ptr == NULL) {
 // Siempre liberar la memoria asignada
 free(ptr);
 ptr = NULL;  // Prevenir reutilización accidental
-// Verificación de límites de arreglo
+// Comprobación de límites de arreglo
 for (int i = 0; i < array_size; i++) {
     // Acceso seguro al arreglo
     array[i] = i;
@@ -821,7 +866,7 @@ for (int i = 0; i < len; i++) {
 // Usar register para variables accedidas frecuentemente
 register int counter;
 // Preferir arreglos sobre asignación dinámica cuando el tamaño es conocido
-int fixed_array[100];  // Asignación en pila (stack)
+int fixed_array[100];  // Asignación en la pila
 // vs
 int *dynamic_array = malloc(100 * sizeof(int));
 ```

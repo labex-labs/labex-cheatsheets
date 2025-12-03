@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по Red Hat Enterprise Linux'
-description: 'Изучите Red Hat Enterprise Linux с помощью нашей исчерпывающей шпаргалки, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Red Hat Enterprise Linux | LabEx'
+description: 'Изучите администрирование Red Hat Enterprise Linux (RHEL) с помощью этой комплексной шпаргалки. Быстрый справочник по командам RHEL, управлению системой, SELinux, управлению пакетами и администрированию корпоративного Linux.'
 pdfUrl: '/cheatsheets/pdf/red-hat-linux-cheatsheet.pdf'
 ---
 
@@ -82,7 +82,7 @@ du -h --max-depth=1 / | sort -hr
 Проверка времени работы системы и вошедших пользователей.
 
 ```bash
-# Показать время работы системы и загрузку
+# Показать время работы системы и нагрузку
 uptime
 # Показать вошедших пользователей
 who
@@ -94,7 +94,7 @@ last
 
 ### Информация об оборудовании: `lscpu` / `lsblk`
 
-Отображение компонентов и конфигурации оборудования.
+Отображение аппаратных компонентов и конфигурации.
 
 ```bash
 # Показать информацию о ЦП
@@ -125,6 +125,21 @@ sudo dnf install --enablerepo=repo-
 name package
 ```
 
+<BaseQuiz id="rhel-package-1" correct="A">
+  <template #question>
+    В чем разница между `dnf` и `yum` в RHEL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>dnf — это более новый менеджер пакетов для RHEL 8+, yum используется в RHEL 7</BaseQuizOption>
+  <BaseQuizOption value="B">dnf предназначен для пакетов разработки, yum — для продакшена</BaseQuizOption>
+  <BaseQuizOption value="C">Разницы нет, это одно и то же</BaseQuizOption>
+  <BaseQuizOption value="D">dnf устарел, всегда следует использовать yum</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    DNF (Dandified YUM) — это версия YUM следующего поколения и менеджер пакетов по умолчанию в RHEL 8 и более поздних версиях. YUM по-прежнему используется в RHEL 7. DNF обеспечивает лучшую производительность и разрешение зависимостей.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Обновление пакетов: `dnf update` / `yum update`
 
 Обновление пакетов до последних версий.
@@ -134,7 +149,7 @@ name package
 sudo dnf update
 # Обновить конкретный пакет
 sudo dnf update package-name
-# Проверить наличие обновлений
+# Проверить наличие доступных обновлений
 dnf check-update
 # Обновить только исправления безопасности
 sudo dnf update --security
@@ -142,7 +157,7 @@ sudo dnf update --security
 
 ### Информация о пакетах: `dnf info` / `rpm -q`
 
-Запрос информации о пакетах и зависимостях.
+Запрос информации о пакете и зависимостях.
 
 ```bash
 # Показать информацию о пакете
@@ -159,16 +174,16 @@ dnf deplist package-name
 
 ### Навигация: `cd` / `pwd` / `ls`
 
-Перемещение по файловой системе и листинг содержимого.
+Навигация по файловой системе и перечисление содержимого.
 
 ```bash
 # Сменить каталог
 cd /path/to/directory
 # Показать текущий каталог
 pwd
-# Листинг файлов и каталогов
+# Список файлов и каталогов
 ls -la
-# Листинг с размерами файлов
+# Список с размерами файлов
 ls -lh
 # Показать скрытые файлы
 ls -a
@@ -181,15 +196,30 @@ ls -a
 ```bash
 # Скопировать файл
 cp source.txt destination.txt
-# Скопировать каталог рекурсивно
+# Рекурсивно скопировать каталог
 cp -r /source/dir/ /dest/dir/
 # Переместить/переименовать файл
 mv oldname.txt newname.txt
 # Удалить файл
 rm filename.txt
-# Удалить каталог рекурсивно
+# Рекурсивно удалить каталог
 rm -rf directory/
 ```
+
+<BaseQuiz id="rhel-file-ops-1" correct="B">
+  <template #question>
+    Что делает `cp -r`?
+  </template>
+  
+  <BaseQuizOption value="A">Копирует только файлы</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Рекурсивно копирует каталоги, включая все подкаталоги и файлы</BaseQuizOption>
+  <BaseQuizOption value="C">Удаляет файлы</BaseQuizOption>
+  <BaseQuizOption value="D">Переименовывает файлы</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `-r` (рекурсивный) позволяет `cp` копировать каталоги и их содержимое, включая все подкаталоги и файлы внутри них. Без `-r` команда `cp` не может копировать каталоги.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Содержимое файла: `cat` / `less` / `head` / `tail`
 
@@ -207,6 +237,21 @@ tail filename.txt
 # Следить за файлом журнала в реальном времени
 tail -f /var/log/messages
 ```
+
+<BaseQuiz id="rhel-tail-1" correct="C">
+  <template #question>
+    Что делает `tail -f /var/log/messages`?
+  </template>
+  
+  <BaseQuizOption value="A">Показывает только первые 10 строк</BaseQuizOption>
+  <BaseQuizOption value="B">Удаляет файл журнала</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Отображает последние 10 строк и отслеживает новые записи в реальном времени</BaseQuizOption>
+  <BaseQuizOption value="D">Архивирует файл журнала</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `-f` заставляет `tail` следить за файлом, отображая новые записи журнала по мере их записи. Это важно для мониторинга журналов в реальном времени и устранения неполадок.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Разрешения файлов: `chmod` / `chown` / `chgrp`
 
@@ -276,12 +321,12 @@ sudo systemctl disable service-name
 
 ### Информация о службах: `systemctl list-units`
 
-Листинг и запрос системных служб.
+Перечисление и запрос системных служб.
 
 ```bash
-# Листинг всех активных служб
+# Список всех активных служб
 systemctl list-units --type=service
-# Листинг всех включенных служб
+# Список всех включенных служб
 systemctl list-unit-files --type=service --state=enabled
 # Показать зависимости службы
 systemctl list-dependencies service-name
@@ -381,7 +426,7 @@ sudo -l
 
 ### Информация о сети: `ip` / `nmcli`
 
-Отображение информации о сетевых интерфейсах и конфигурации.
+Отображение информации и конфигурации сетевых интерфейсов.
 
 ```bash
 # Показать сетевые интерфейсы
@@ -390,7 +435,7 @@ ip addr show
 ip route show
 # Показать соединения Network Manager
 nmcli connection show
-# Показать статус устройств
+# Показать статус устройства
 nmcli device status
 ```
 
@@ -399,7 +444,7 @@ nmcli device status
 Настройка сетевых параметров с помощью NetworkManager.
 
 ```bash
-# Текстовая конфигурация сети
+# Сетевая конфигурация в текстовом режиме
 sudo nmtui
 # Добавить новое соединение
 sudo nmcli connection add type ethernet con-name
@@ -413,12 +458,12 @@ sudo nmcli connection up "eth0"
 
 ### Тестирование сети: `ping` / `curl` / `wget`
 
-Проверка сетевой связности и загрузка файлов.
+Проверка сетевого подключения и загрузка файлов.
 
 ```bash
 # Проверить связность
 ping google.com
-# Проверить определенный порт
+# Проверить конкретный порт
 telnet hostname 80
 # Скачать файл
 wget http://example.com/file.txt
@@ -433,7 +478,7 @@ curl -I http://example.com
 ```bash
 # Показать статус брандмауэра
 sudo firewall-cmd --state
-# Листинг активных зон
+# Список активных зон
 sudo firewall-cmd --get-active-zones
 # Добавить службу в брандмауэр
 sudo firewall-cmd --permanent --add-service=http
@@ -448,7 +493,7 @@ sudo firewall-cmd --reload
 Создание и управление разделами дисков.
 
 ```bash
-# Листинг разделов дисков
+# Список разделов диска
 sudo fdisk -l
 # Интерактивный редактор разделов
 sudo fdisk /dev/sda
@@ -475,7 +520,7 @@ sudo fsck /dev/sda1
 
 ### Управление LVM: `pvcreate` / `vgcreate` / `lvcreate`
 
-Управление логическим управлением томами (LVM).
+Управление логическим менеджером томов (LVM) для хранения данных.
 
 ```bash
 # Создать физический том
@@ -510,9 +555,9 @@ mount | column -t
 ```bash
 # Проверить статус SELinux
 getenforce
-# Установить SELinux в режим Permissive
+# Установить SELinux в режим Permissive (разрешающий)
 sudo setenforce 0
-# Установить SELinux в режим Enforcing
+# Установить SELinux в режим Enforcing (принудительный)
 sudo setenforce 1
 # Проверить контекст SELinux
 ls -Z filename
@@ -585,13 +630,13 @@ iotop
 Анализ исторических и текущих метрик системы.
 
 ```bash
-# Отчет об активности системы
+# Отчет о системной активности
 sar -u 1 3
 # Отчет об использовании памяти
 sar -r
 # Отчет о сетевой активности
 sar -n DEV
-# Мониторинг среднего уровня загрузки
+# Мониторинг средней нагрузки
 uptime
 ```
 
@@ -602,7 +647,7 @@ uptime
 ```bash
 # Трассировка системных вызовов
 strace -p 1234
-# Листинг открытых файлов
+# Список открытых файлов
 lsof
 # Показать файлы, открытые процессом
 lsof -p 1234
@@ -615,7 +660,7 @@ lsof -i
 Оптимизация производительности системы для конкретных рабочих нагрузок.
 
 ```bash
-# Листинг доступных профилей
+# Список доступных профилей
 tuned-adm list
 # Показать активный профиль
 tuned-adm active
@@ -629,17 +674,17 @@ sudo tuned-adm profile_mode
 
 ### Регистрация системы: `subscription-manager`
 
-Регистрация системы на портале подписки Red Hat.
+Регистрация системы на портале Red Hat Customer Portal.
 
 ```bash
 # Зарегистрировать систему
 sudo subscription-manager
 register --username
 your_username
-# Автоматически прикрепить подписки
+# Автоматическое подключение подписок
 sudo subscription-manager
 attach --auto
-# Листинг доступных подписок
+# Список доступных подписок
 subscription-manager list --
 available
 # Показать статус системы
@@ -651,7 +696,7 @@ subscription-manager status
 Управление репозиториями программного обеспечения.
 
 ```bash
-# Листинг включенных репозиториев
+# Список включенных репозиториев
 dnf repolist
 # Включить репозиторий
 sudo dnf config-manager --
@@ -666,7 +711,7 @@ repo https://example.com/repo
 
 ### Конфигурация системы: `hostnamectl` / `timedatectl`
 
-Настройка основных системных параметров.
+Настройка основных параметров системы.
 
 ```bash
 # Установить имя хоста
@@ -705,7 +750,7 @@ dmesg | tail
 ```bash
 # Показать информацию об оборудовании
 sudo dmidecode -t system
-# Листинг аппаратных компонентов
+# Список аппаратных компонентов
 sudo lshw -short
 # Проверить информацию о памяти
 sudo dmidecode -t memory
@@ -730,7 +775,7 @@ traceroute google.com
 
 ### Восстановление и спасение: `systemctl rescue`
 
-Процедуры восстановления системы и аварийные режимы.
+Процедуры восстановления системы и экстренные случаи.
 
 ```bash
 # Войти в режим восстановления
@@ -739,20 +784,20 @@ sudo systemctl rescue
 sudo systemctl emergency
 # Сбросить неудачные службы
 sudo systemctl reset-failed
-# Реконфигурировать загрузчик
+# Перенастроить загрузчик
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
 ## Автоматизация и скриптинг
 
-### Cron-задания: `crontab`
+### Задания Cron: `crontab`
 
 Планирование автоматизированных задач и обслуживания.
 
 ```bash
 # Редактировать crontab пользователя
 crontab -e
-# Листинг crontab пользователя
+# Список crontab пользователя
 crontab -l
 # Удалить crontab пользователя
 crontab -r
@@ -760,9 +805,9 @@ crontab -r
 0 2 * * * /path/to/script.sh
 ```
 
-### Shell-скриптинг: `bash`
+### Скриптинг Shell: `bash`
 
-Создание и выполнение shell-скриптов для автоматизации.
+Создание и выполнение сценариев оболочки для автоматизации.
 
 ```bash
 #!/bin/bash
@@ -797,7 +842,7 @@ sudo vi /etc/systemd/system/backup.timer
 # Включить и запустить таймер
 sudo systemctl enable backup.timer
 sudo systemctl start backup.timer
-# Листинг активных таймеров
+# Список активных таймеров
 systemctl list-timers
 ```
 

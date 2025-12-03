@@ -1,6 +1,6 @@
 ---
 title: 'Hoja de Trucos de Linux | LabEx'
-description: 'Aprenda administración de Linux con esta hoja de trucos completa. Referencia rápida de comandos de Linux, gestión de archivos, administración de sistemas, redes y scripting de shell.'
+description: 'Aprenda administración de Linux con esta hoja de trucos completa. Referencia rápida para comandos de Linux, gestión de archivos, administración de sistemas, redes y scripting de shell.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Hoja de Trucos de Linux
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Visite Comandos de Linux</a>
+<a href="https://linux-commands.labex.io/" target="_blank">Visitar Comandos de Linux</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Para obtener materiales de referencia completos de comandos de Linux, ejemplos de sintaxis y documentación detallada, visite <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Este sitio independiente proporciona amplias hojas de trucos de Linux que cubren comandos esenciales, conceptos y mejores prácticas para administradores y desarrolladores de Linux.
+Para materiales de referencia completos de comandos de Linux, ejemplos de sintaxis y documentación detallada, por favor visite <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Este sitio independiente proporciona hojas de trucos extensas de Linux que cubren comandos esenciales, conceptos y mejores prácticas para administradores y desarrolladores de Linux.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Para obtener materiales de referencia completos de comandos de Linux, ejemplos d
 
 ### Información del Sistema: `uname`
 
-Muestra información del sistema, incluido el kernel y la arquitectura.
+Muestra información del sistema incluyendo el kernel y la arquitectura.
 
 ```bash
 # Mostrar nombre del kernel
@@ -38,9 +38,9 @@ uname -m
 uname -o
 ```
 
-### Información del Hardware: `lscpu`, `lsblk`
+### Información de Hardware: `lscpu`, `lsblk`
 
-Ver especificaciones detalladas del hardware y dispositivos de bloque.
+Ver especificaciones detalladas de hardware y dispositivos de bloque.
 
 ```bash
 # Información de la CPU
@@ -269,7 +269,7 @@ ls -l filename
 Muestra procesos en ejecución y sus detalles.
 
 ```bash
-# Mostrar procesos de usuario
+# Mostrar procesos del usuario
 ps
 # Mostrar todos los procesos con detalles
 ps aux
@@ -279,18 +279,18 @@ ps -ef --forest
 ps -u username
 ```
 
-### Terminar Procesos: `kill`, `killall`
+### Matar Procesos: `kill`, `killall`
 
 Terminar procesos por PID o nombre.
 
 ```bash
 # Monitor de procesos en tiempo real
 top
-# Terminar proceso por PID
+# Matar proceso por PID
 kill 1234
-# Terminar proceso forzadamente
+# Matar proceso forzosamente
 kill -9 1234
-# Terminar por nombre de proceso
+# Matar por nombre de proceso
 killall processname
 # Listar todas las señales
 kill -l
@@ -306,10 +306,10 @@ kill -HUP 1234
   <BaseQuizOption value="A">SIGTERM (terminar elegantemente)</BaseQuizOption>
   <BaseQuizOption value="B">SIGHUP (colgar)</BaseQuizOption>
   <BaseQuizOption value="C">SIGINT (interrumpir)</BaseQuizOption>
-  <BaseQuizOption value="D" correct>SIGKILL (terminación forzosa, no se puede ignorar)</BaseQuizOption>
+  <BaseQuizOption value="D" correct>SIGKILL (matar forzosamente, no se puede ignorar)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9` envía SIGKILL, que termina un proceso por la fuerza inmediatamente. Esta señal no puede ser capturada o ignorada por el proceso, lo que la hace útil para matar procesos que no responden.
+    `kill -9` envía SIGKILL, que termina forzosamente un proceso inmediatamente. Esta señal no puede ser capturada o ignorada por el proceso, lo que la hace útil para matar procesos que no responden.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,13 +326,13 @@ bg %1
 fg %1
 # Ejecutar comando en segundo plano
 command &
-# Desvincularse del terminal
+# Desvincular del terminal
 nohup command &
 ```
 
 ### Monitor del Sistema: `htop`, `systemctl`
 
-Monitorizar recursos del sistema y gestionar servicios.
+Monitorear recursos del sistema y gestionar servicios.
 
 ```bash
 # Visor de procesos mejorado (si está instalado)
@@ -360,7 +360,7 @@ ip addr show
 ip route show
 # Configurar interfaz (temporal)
 ip addr add 192.168.1.10/24 dev eth0
-# Poner interfaz arriba/abajo
+# Activar/desactivar interfaz
 ip link set eth0 up
 # Configuración de interfaz heredada
 ifconfig
@@ -428,7 +428,7 @@ rsync -avz localdir/ user@host:/remotedir/
 rsync -avz --progress src/ dest/
 ```
 
-## Procesamiento y Búsqueda de Texto
+## Procesamiento de Texto y Búsqueda
 
 ### Búsqueda de Texto: `grep`
 
@@ -437,7 +437,7 @@ Buscar patrones en archivos y salida de comandos.
 ```bash
 # Buscar patrón en archivo
 grep "pattern" filename
-# Búsqueda sin distinguir mayúsculas y minúsculas
+# Búsqueda insensible a mayúsculas y minúsculas
 grep -i "pattern" filename
 # Búsqueda recursiva en directorios
 grep -r "pattern" /path/
@@ -449,7 +449,7 @@ grep -c "pattern" filename
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    ¿Qué opción de `grep` realiza una búsqueda sin distinguir entre mayúsculas y minúsculas?
+    ¿Qué opción de `grep` realiza una búsqueda insensible a mayúsculas y minúsculas?
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La opción `-i` hace que grep no distinga entre mayúsculas y minúsculas, por lo que coincidirá con letras mayúsculas y minúsculas. Por ejemplo, `grep -i "error" file.txt` coincidirá con "Error", "ERROR" y "error".
+    La opción `-i` hace que grep no distinga entre mayúsculas y minúsculas, por lo que coincidirá con "Error", "ERROR" y "error".
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -473,7 +473,7 @@ sed 's/old/new/g' filename
 sed '/pattern/d' filename
 # Imprimir campos específicos
 awk '{print $1, $3}' filename
-# Sumar valores en una columna
+# Sumar valores en columna
 awk '{sum += $1} END {print sum}' filename
 ```
 
@@ -564,7 +564,7 @@ tar -uf archive.tar files/
 
 ### Espacio en Disco: `du`
 
-Analizar el uso del disco y los tamaños de los directorios.
+Analizar el uso de disco y los tamaños de directorios.
 
 ```bash
 # Mostrar tamaños de directorio
@@ -577,11 +577,11 @@ du -h --max-depth=1 /path/
 du -h | sort -hr | head -10
 ```
 
-## Monitorización del Sistema y Rendimiento
+## Monitoreo y Rendimiento del Sistema
 
 ### Uso de Memoria: `free`, `vmstat`
 
-Monitorizar el uso de memoria y las estadísticas de memoria virtual.
+Monitorear el uso de memoria y las estadísticas de memoria virtual.
 
 ```bash
 # Resumen del uso de memoria
@@ -596,24 +596,24 @@ vmstat 2
 swapon --show
 ```
 
-### E/S de Disco: `iostat`, `iotop`
+### Disco I/O: `iostat`, `iotop`
 
-Monitorizar el rendimiento de entrada/salida del disco e identificar cuellos de botella.
+Monitorear el rendimiento de entrada/salida del disco e identificar cuellos de botella.
 
 ```bash
-# Estadísticas de E/S (requiere sysstat)
+# Estadísticas de I/O (requiere sysstat)
 iostat
-# Estadísticas de E/S cada 2 segundos
+# Estadísticas de I/O cada 2 segundos
 iostat 2
-# Monitorizar E/S de disco por proceso
+# Monitorear I/O de disco por proceso
 iotop
-# Mostrar uso de E/S para un dispositivo específico
+# Mostrar uso de I/O para un dispositivo específico
 iostat -x /dev/sda
 ```
 
 ### Carga del Sistema: `top`, `htop`
 
-Monitorizar la carga del sistema, el uso de CPU y los procesos en ejecución.
+Monitorear la carga del sistema, el uso de CPU y los procesos en ejecución.
 
 ```bash
 # Monitor de procesos en tiempo real
@@ -624,7 +624,7 @@ htop
 uptime
 # Mostrar información de la CPU
 lscpu
-# Monitorizar proceso específico
+# Monitorear proceso específico
 top -p PID
 ```
 
@@ -654,13 +654,13 @@ Crear, modificar y eliminar cuentas de usuario.
 ```bash
 # Añadir nuevo usuario
 useradd username
-# Añadir usuario con directorio de inicio
+# Añadir usuario con directorio home
 useradd -m username
 # Modificar cuenta de usuario
 usermod -aG groupname username
 # Eliminar cuenta de usuario
 userdel username
-# Eliminar usuario con directorio de inicio
+# Eliminar usuario con directorio home
 userdel -r username
 ```
 
@@ -688,7 +688,7 @@ Cambiar de usuario y ejecutar comandos con privilegios elevados.
 ```bash
 # Cambiar a usuario root
 su -
-# Cambiar a un usuario específico
+# Cambiar a usuario específico
 su - username
 # Ejecutar comando como root
 sudo command
@@ -711,7 +711,7 @@ passwd username
 chage -l username
 # Establecer caducidad de contraseña
 chage -M 90 username
-# Forzar cambio de contraseña en el próximo inicio de sesión
+# Forzar cambio de contraseña al próximo inicio de sesión
 passwd -e username
 ```
 
@@ -781,7 +781,7 @@ flatpak install packagename
 flatpak list
 # Actualizar paquetes flatpak
 flatpak update
-# Eliminar flatpak
+# Desinstalar flatpak
 flatpak uninstall packagename
 # Buscar paquetes flatpak
 flatpak search packagename
@@ -874,7 +874,7 @@ sha256sum linux.iso
 
 ### Arranque e Instalación: USB, Red
 
-Crear medios de arranque e instalar el sistema.
+Crear medios de arranque y realizar la instalación del sistema.
 
 ```bash
 # Crear USB de arranque (Linux)
@@ -953,16 +953,16 @@ yum update --security
 apt list --upgradable
 ```
 
-### Monitorización de Registros: Eventos de Seguridad
+### Monitoreo de Registros: Eventos de Seguridad
 
-Monitorizar registros del sistema para eventos de seguridad y anomalías.
+Monitorear registros del sistema para eventos de seguridad y anomalías.
 
 ```bash
-# Monitorizar registros de autenticación
+# Monitorear registros de autenticación
 tail -f /var/log/auth.log
 # Verificar intentos de inicio de sesión fallidos
 grep "Failed password" /var/log/auth.log
-# Monitorizar registros del sistema
+# Monitorear registros del sistema
 tail -f /var/log/syslog
 # Ver historial de inicio de sesión
 last
@@ -996,7 +996,7 @@ Verificar y reparar la corrupción del sistema de archivos.
 ```bash
 # Verificar sistema de archivos
 fsck /dev/sda1
-# Forzar verificación del sistema de archivos
+# Verificación forzada del sistema de archivos
 fsck -f /dev/sda1
 # Reparación automática
 fsck -y /dev/sda1
@@ -1028,7 +1028,7 @@ Identificar y resolver cuellos de botella en el rendimiento del sistema.
 ```bash
 # Verificar espacio en disco
 df -h
-# Monitorizar uso de E/S
+# Monitorear uso de I/O
 iotop
 # Verificar uso de memoria
 free -h

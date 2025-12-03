@@ -1,6 +1,6 @@
 ---
-title: 'Hydra チートシート'
-description: 'Hydra の必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで学習しましょう。'
+title: 'Hydra チートシート | LabEx'
+description: 'Hydra パスワードクラッキングを学ぶための包括的なチートシート。ブルートフォース攻撃、パスワード監査、セキュリティテスト、認証プロトコル、ペネトレーションテストツールのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/hydra-cheatsheet.pdf'
 ---
 
@@ -23,12 +23,12 @@ LabEx では、プロトコル攻撃、Web フォームの悪用、パフォー�
 
 ### インストール：`sudo apt install hydra`
 
-Hydra は通常 Kali Linux にプリインストールされていますが、他のディストリビューションにもインストールできます。
+Hydra は通常 Kali Linux にプリインストールされていますが、他のディストリビューションにもインストール可能です。
 
 ```bash
 # Debian/Ubuntuシステムへのインストール
 sudo apt install hydra
-# その他のシステムへのインストール
+# 他のシステムへのインストール
 sudo apt-get install hydra
 # インストールの確認
 hydra -h
@@ -49,16 +49,31 @@ hydra -L users.txt -P passwords.txt target.com ssh
 hydra -l admin -p password123 192.168.1.100 ftp
 ```
 
+<BaseQuiz id="hydra-syntax-1" correct="B">
+  <template #question>
+    Hydra の `-l`と`-L` の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">`-l`はパスワード用、`-L` はユーザー名用です</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`-l`は単一のユーザー名を指定し、`-L` はユーザー名のリストファイル指定です</BaseQuizOption>
+  <BaseQuizOption value="C">違いはありません</BaseQuizOption>
+  <BaseQuizOption value="D">`-l`は小文字、`-L` は大文字です</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-l`オプションは単一のユーザー名に使用され、`-L`はユーザー名のリストを含むファイルに使用されます。同様に、`-p`は単一のパスワード、`-P` はパスワードリストファイルに使用されます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### コアオプション：`-l`, `-L`, `-p`, `-P`
 
 ブルートフォース攻撃に使用するユーザー名とパスワードを指定します。
 
 ```bash
 # ユーザー名オプション
--l username          # ユーザー名1つ
+-l username          # 単一のユーザー名
 -L userlist.txt      # ユーザー名リストファイル
 # パスワードオプション
--p password          # パスワード1つ
+-p password          # 単一のパスワード
 -P passwordlist.txt  # パスワードリストファイル
 # 一般的なワードリストの場所
 /usr/share/wordlists/rockyou.txt
@@ -67,7 +82,7 @@ hydra -l admin -p password123 192.168.1.100 ftp
 
 ### 出力オプション：`-o`, `-b`
 
-結果をファイルに保存して後で分析できるようにします。
+結果をファイルに保存し、後で分析できるようにします。
 
 ```bash
 # 結果をファイルに保存
@@ -77,6 +92,21 @@ hydra -l admin -P passwords.txt target.com ssh -b json
 # 詳細出力
 hydra -l admin -P passwords.txt target.com ssh -V
 ```
+
+<BaseQuiz id="hydra-output-1" correct="A">
+  <template #question>
+    `hydra -V`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>詳細な進捗を表示する詳細出力を有効にします</BaseQuizOption>
+  <BaseQuizOption value="B">ワードリストファイルを検証します</BaseQuizOption>
+  <BaseQuizOption value="C">Hydra のバージョンを表示します</BaseQuizOption>
+  <BaseQuizOption value="D">詳細モードでのみ実行します</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-V` フラグは詳細モードを有効にし、各ログイン試行を含む詳細な出力を表示するため、パスワード攻撃中の進捗監視やデバッグが容易になります。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## プロトコル固有の攻撃
 
@@ -95,6 +125,21 @@ hydra -l admin -P passwords.txt 192.168.1.100 -s 2222 ssh
 hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 ```
 
+<BaseQuiz id="hydra-ssh-1" correct="C">
+  <template #question>
+    Hydra の `-s` フラグは何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">サービスタイプを設定します</BaseQuizOption>
+  <BaseQuizOption value="B">ステルスモードを有効にします</BaseQuizOption>
+  <BaseQuizOption value="C" correct>カスタムポート番号を指定します</BaseQuizOption>
+  <BaseQuizOption value="D">スレッド数を設定します</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-s` フラグは、サービスが標準ポート以外で実行されている場合にカスタムポート番号を指定します。例えば、`-s 2222`はデフォルトのポート 22 ではなくポート 2222 の SSH をターゲットにします。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### FTP: `hydra target ftp`
 
 FTP ログイン認証情報をブルートフォースします。
@@ -102,7 +147,7 @@ FTP ログイン認証情報をブルートフォースします。
 ```bash
 # 基本的なFTP攻撃
 hydra -l admin -P passwords.txt ftp://192.168.1.100
-# 匿名FTPチェック
+# アノニマスFTPチェック
 hydra -l anonymous -p "" ftp://192.168.1.100
 # カスタムFTPポート
 hydra -l user -P passwords.txt -s 2121 192.168.1.100 ftp
@@ -123,14 +168,14 @@ hydra -l sa -P passwords.txt 192.168.1.100 mssql
 hydra -l admin -P passwords.txt 192.168.1.100 mongodb
 ```
 
-### SMTP/Email: `hydra target smtp`
+### SMTP/Eメール: `hydra target smtp`
 
-メールサーバーの認証を攻撃します。
+メールサーバー認証を攻撃します。
 
 ```bash
 # SMTPブルートフォース
 hydra -l admin -P passwords.txt smtp://mail.target.com
-# NULL/空のパスワードあり
+# NULL/空のパスワードを使用
 hydra -P passwords.txt -e ns -V -s 25 smtp.target.com smtp
 # IMAP攻撃
 hydra -l user -P passwords.txt imap://mail.target.com
@@ -140,44 +185,44 @@ hydra -l user -P passwords.txt imap://mail.target.com
 
 ### HTTP POST フォーム：`http-post-form`
 
-プレースホルダー `^USER^` と `^PASS^` を使用して、HTTP POST メソッドで Web ログインフォームを攻撃します。
+プレースホルダー`^USER^`と`^PASS^`を使用して、Web ログインフォームを HTTP POST メソッドで攻撃します。
 
 ```bash
 # 基本的なPOSTフォーム攻撃
 hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/login.php:username=^USER^&password=^PASS^:F=incorrect"
-# カスタムエラーメッセージあり
+# カスタムエラーメッセージ付き
 hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/login:user=^USER^&pass=^PASS^:Invalid password"
-# 成功条件あり
+# 成功条件付き
 hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/admin:username=^USER^&password=^PASS^:S=Dashboard"
 ```
 
 ### HTTP GET フォーム：`http-get-form`
 
-GET リクエストを対象とする点で POST フォームと似ています。
+POST フォームと似ていますが、GET リクエストをターゲットにします。
 
 ```bash
 # GETフォーム攻撃
 hydra -l admin -P passwords.txt 192.168.1.100 http-get-form "/login:username=^USER^&password=^PASS^:F=Invalid"
-# カスタムヘッダーあり
+# カスタムヘッダー付き
 hydra -l admin -P passwords.txt 192.168.1.100 http-get-form "/auth:user=^USER^&pass=^PASS^:F=Error:H=Cookie: session=abc123"
 ```
 
 ### HTTP Basic Auth: `http-get`/`http-post`
 
-HTTP Basic 認証を使用して Web サーバーを攻撃します。
+HTTP 基本認証を使用して Web サーバーを攻撃します。
 
 ```bash
-# HTTP Basic認証
+# HTTP基本認証
 hydra -l admin -P passwords.txt http-get://192.168.1.100
-# HTTPS Basic認証
+# HTTPS基本認証
 hydra -l admin -P passwords.txt https-get://secure.target.com
-# カスタムパスあり
+# カスタムパス付き
 hydra -l admin -P passwords.txt http-get://192.168.1.100/admin
 ```
 
 ### 高度な Web 攻撃
 
-CSRF トークンや Cookie を使用して複雑な Web アプリケーションを処理します。
+CSRF トークンや Cookie を扱う複雑な Web アプリケーションに対応します。
 
 ```bash
 # CSRFトークン処理あり
@@ -197,7 +242,7 @@ hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/login:username=^U
 hydra -l admin -P passwords.txt target.com ssh
 # カスタムスレッド数
 hydra -l admin -P passwords.txt -t 4 target.com ssh
-# ハイパフォーマンス攻撃 (注意して使用)
+# 高性能攻撃 (注意して使用)
 hydra -l admin -P passwords.txt -t 64 target.com ssh
 # 控えめなスレッディング (検出回避)
 hydra -l admin -P passwords.txt -t 1 target.com ssh
@@ -225,9 +270,9 @@ hydra -l admin -P passwords.txt -W 5 target.com ssh
 echo "192.168.1.100" > targets.txt
 echo "192.168.1.101" >> targets.txt
 echo "192.168.1.102" >> targets.txt
-# 複数ターゲットを攻撃
+# 複数ターゲットの攻撃
 hydra -L users.txt -P passwords.txt -M targets.txt ssh
-# ターゲットごとのカスタムスレッディング
+# カスタムスレッディング付き
 hydra -L users.txt -P passwords.txt -M targets.txt -t 2 ssh
 ```
 
@@ -238,7 +283,7 @@ hydra -L users.txt -P passwords.txt -M targets.txt -t 2 ssh
 ```bash
 # 最初の成功で停止
 hydra -l admin -P passwords.txt -f target.com ssh
-# 前回の攻撃を再開
+# 以前の攻撃を再開
 hydra -R
 # リストアファイルを作成
 hydra -l admin -P passwords.txt -I restore.txt target.com ssh
@@ -251,11 +296,11 @@ hydra -l admin -P passwords.txt -I restore.txt target.com ssh
 追加のパスワードバリエーションを自動的にテストします。
 
 ```bash
-# NULLパスワードをテスト
+# NULLパスワードのテスト
 hydra -l admin -e n target.com ssh
 # ユーザー名をパスワードとしてテスト
 hydra -l admin -e s target.com ssh
-# ユーザー名を逆順にしてテスト
+# ユーザー名の逆順をテスト
 hydra -l admin -e r target.com ssh
 # すべてのオプションを組み合わせる
 hydra -l admin -e nsr -P passwords.txt target.com ssh
@@ -263,7 +308,7 @@ hydra -l admin -e nsr -P passwords.txt target.com ssh
 
 ### コロン区切り形式：`-C`
 
-攻撃時間を短縮するために、ユーザー名：パスワードの組み合わせを使用します。
+ユーザー名：パスワードの組み合わせを使用して、攻撃時間を短縮します。
 
 ```bash
 # 認証情報ファイルを作成
@@ -272,7 +317,7 @@ echo "root:password" >> creds.txt
 echo "user:123456" >> creds.txt
 # コロン形式を使用
 hydra -C creds.txt target.com ssh
-# 完全な組み合わせテストよりも高速
+# 全組み合わせテストよりも高速
 ```
 
 ### プロキシサポート：`HYDRA_PROXY`
@@ -298,7 +343,7 @@ pw-inspector を使用して、ポリシーに基づいてパスワードリス�
 cat passwords.txt | pw-inspector -m 6 -c 2 -n > filtered.txt
 # フィルタリングされたリストをHydraで使用
 hydra -l admin -P filtered.txt target.com ssh
-# まず重複を削除
+# 重複を先に削除
 cat passwords.txt | sort | uniq > unique_passwords.txt
 ```
 
@@ -309,10 +354,10 @@ cat passwords.txt | sort | uniq > unique_passwords.txt
 Hydra は合法的に、また違法に使用される可能性があります。ブルートフォース攻撃を実行する前に、適切な許可と承認を得てください。
 
 ```text
-明示的な許可が得られたシステムでのみ攻撃を実行する
-常にシステム所有者または管理者から明示的な許可を得ていることを確認する
+明示的な許可を得たシステムでのみ攻撃を実行する
+必ずシステム所有者または管理者から明示的な許可を得ていることを確認する
 コンプライアンスのためにすべてのテスト活動を文書化する
-承認されたペネトレーションテスト中にのみ使用する
+正規のペネトレーションテスト中にのみ使用する
 不正なアクセス試行には絶対に使用しない
 ```
 
@@ -333,26 +378,26 @@ Hydra は合法的に、また違法に使用される可能性があります�
 控えめな設定から開始し、透明性のためにすべての活動を文書化します。
 
 ```text
-サービスの中断を避けるために、低いスレッドカウントから開始する
+サービスの中断を避けるために、低いスレッド数から開始する
 ターゲット環境に適したワードリストを使用する
-可能な場合は、承認されたメンテナンスウィンドウ中にテストする
+可能な限り、承認されたメンテナンスウィンドウ中にテストする
 テスト中にターゲットシステムのパフォーマンスを監視する
 インシデント対応手順を準備しておく
 ```
 
 ### 一般的な使用例
 
-レッドチームとブルーチームの両方が、パスワード監査、セキュリティ評価、ペネトレーションテストに役立ちます。
+レッドチームとブルーチームの両方が、パスワード監査、セキュリティ評価、ペネトレーションテストのために恩恵を受けます。
 
 ```text
 弱いパスワードを特定し、パスワード強度を評価するためのパスワードクラッキング
 ネットワークサービスのセキュリティ監査
 ペネトレーションテストと脆弱性評価
 パスワードポリシーのコンプライアンステスト
-トレーニングと教育的なデモンストレーション
+トレーニングと教育デモンストレーション
 ```
 
-## GUI 代替手段と追加ツール
+## GUI の代替と追加ツール
 
 ### XHydra: GUI インターフェース
 
@@ -367,20 +412,20 @@ sudo apt install hydra-gtk
 # - ポイントアンドクリックインターフェース
 # - 事前設定された攻撃テンプレート
 # - 視覚的な進捗監視
-# - 簡単なターゲットとワードリストの選択
+# - ターゲットとワードリストの簡単な選択
 ```
 
 ### Hydra Wizard: 対話型セットアップ
 
-Hydra セットアップを簡単な質問でガイドする対話型ウィザードです。
+Hydra セットアップを簡単な質問で案内する対話型ウィザードです。
 
 ```bash
 # 対話型ウィザードを起動
 hydra-wizard
 # ウィザードが尋ねること:
 # 1. 攻撃するサービス
-# 2. 攻撃対象
-# 3. ユーザー名またはユーザーファイル
+# 2. 攻撃するターゲット
+# 3. ユーザー名またはユーザー名ファイル
 # 4. パスワードまたはパスワードファイル
 # 5. 追加のパスワードテスト
 # 6. ポート番号
@@ -411,7 +456,7 @@ dpl4hydra all
 ```bash
 # Nmapサービス検出と組み合わせる
 nmap -sV 192.168.1.0/24 | grep -E "(ssh|ftp|http)"
-# ユーザー名列挙結果を使用
+# ユーザー名列挙結果と組み合わせる
 enum4linux 192.168.1.100 | grep "user:" > users.txt
 # Metasploitのワードリストとの統合
 ls /usr/share/wordlists/metasploit/
@@ -421,7 +466,7 @@ ls /usr/share/wordlists/metasploit/
 
 ### 一般的な問題と解決策
 
-Hydra の使用中に遭遇する一般的な問題の解決策。
+Hydra の使用中に遭遇する一般的な問題を解決します。
 
 ```bash
 # 接続タイムアウトエラー
@@ -440,7 +485,7 @@ hydra
 パスワードリストを最適化し、可能性の高い順にソートして結果を高速化します。
 
 ```bash
-# パスワードを可能性の高い順にソート
+# パスワードを可能性順にソート
 hydra -l admin -P passwords.txt -u target.com ssh
 # 重複を削除
 sort passwords.txt | uniq > clean_passwords.txt
@@ -452,7 +497,7 @@ sort passwords.txt | uniq > clean_passwords.txt
 
 ### 出力形式と分析
 
-レポート作成と分析のために異なる出力形式。
+結果の分析とレポート作成のために、異なる出力形式を使用します。
 
 ```bash
 # 標準テキスト出力
@@ -461,7 +506,7 @@ hydra -l admin -P passwords.txt target.com ssh -o results.txt
 hydra -l admin -P passwords.txt target.com ssh -b json -o results.json
 # デバッグ用の詳細出力
 hydra -l admin -P passwords.txt target.com ssh -V
-# 成功時のみの出力
+# 成功した結果のみの出力
 hydra -l admin -P passwords.txt target.com ssh | grep "password:"
 ```
 
@@ -470,11 +515,11 @@ hydra -l admin -P passwords.txt target.com ssh | grep "password:"
 攻撃中にシステムおよびネットワークリソースを監視します。
 
 ```bash
-# CPU使用率を監視
+# CPU使用率の監視
 top -p $(pidof hydra)
-# ネットワーク接続を監視
+# ネットワーク接続の監視
 netstat -an | grep :22
-# メモリ使用量を監視
+# メモリ使用量の監視
 ps aux | grep hydra
 # システムへの影響を制限
 nice -n 19 hydra -l admin -P passwords.txt target.com ssh

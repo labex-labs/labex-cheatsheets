@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Dicas do Kali Linux'
-description: 'Aprenda Kali Linux com nossa folha de dicas abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Cheatsheet Kali Linux | LabEx'
+description: 'Aprenda testes de penetração com Kali Linux com este cheatsheet abrangente. Referência rápida para ferramentas de segurança, hacking ético, varredura de vulnerabilidades, exploração e testes de cibersegurança.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
@@ -83,7 +83,7 @@ sudo ifconfig wlan0 up
 
 ### Variáveis de Ambiente: `export`
 
-Configura variáveis de ambiente e caminhos de teste.
+Configura variáveis de ambiente e caminhos para testes.
 
 ```bash
 # Definir IP alvo
@@ -93,6 +93,21 @@ export WORDLIST=/usr/share/wordlists/rockyou.txt
 # Visualizar variáveis de ambiente
 env | grep TARGET
 ```
+
+<BaseQuiz id="kali-env-1" correct="C">
+  <template #question>
+    O que acontece com as variáveis de ambiente definidas com `export`?
+  </template>
+  
+  <BaseQuizOption value="A">Elas persistem após reinicializações do sistema</BaseQuizOption>
+  <BaseQuizOption value="B">Elas estão disponíveis apenas no arquivo atual</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Elas estão disponíveis para o shell atual e processos filhos</BaseQuizOption>
+  <BaseQuizOption value="D">Elas são variáveis globais do sistema</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    As variáveis de ambiente definidas com `export` estão disponíveis para a sessão de shell atual e todos os processos filhos gerados a partir dela. Elas são perdidas quando a sessão do shell termina, a menos que sejam adicionadas a arquivos de configuração do shell como `.bashrc`.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Instalação de Ferramentas: `apt install`
 
@@ -139,6 +154,21 @@ nmap -sU 192.168.1.1
 nmap -sS 192.168.1.1
 ```
 
+<BaseQuiz id="kali-nmap-1" correct="B">
+  <template #question>
+    O que o `nmap -sS` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Realiza uma varredura UDP</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Realiza uma varredura SYN furtiva (varredura meio aberta)</BaseQuizOption>
+  <BaseQuizOption value="C">Varre todas as portas</BaseQuizOption>
+  <BaseQuizOption value="D">Realiza detecção de SO</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O sinalizador `-sS` realiza uma varredura SYN (também chamada de varredura meio aberta) porque nunca completa o handshake TCP. Ele envia pacotes SYN e analisa as respostas, tornando-o mais furtivo do que uma varredura de conexão TCP completa.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Enumeração de Serviços: `nmap -sV`
 
 Identifica versões de serviços e vulnerabilidades potenciais.
@@ -148,6 +178,22 @@ Identifica versões de serviços e vulnerabilidades potenciais.
 nmap -sV 192.168.1.1
 # Detecção de SO
 nmap -O 192.168.1.1
+```
+
+<BaseQuiz id="kali-enumeration-1" correct="A">
+  <template #question>
+    O que o `nmap -sV` faz?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Detecta as versões de serviço em execução nas portas abertas</BaseQuizOption>
+  <BaseQuizOption value="B">Varre apenas portas de controle de versão</BaseQuizOption>
+  <BaseQuizOption value="C">Mostra apenas serviços vulneráveis</BaseQuizOption>
+  <BaseQuizOption value="D">Realiza apenas detecção de SO</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O sinalizador `-sV` habilita a detecção de versão, que sonda portas abertas para determinar qual serviço e versão estão em execução. Isso é útil para identificar vulnerabilidades potenciais associadas a versões específicas de software.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Varredura de scripts
 nmap -sC 192.168.1.1
 # Varredura abrangente
@@ -176,7 +222,7 @@ dnsrecon -d example.com
 Descobre diretórios e arquivos ocultos em servidores web.
 
 ```bash
-# Força bruta de diretório
+# Força bruta de diretórios
 dirb http://192.168.1.1
 # Wordlist personalizada
 dirb http://192.168.1.1 /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
@@ -186,7 +232,7 @@ gobuster dir -u http://192.168.1.1 -w /usr/share/wordlists/dirbuster/directory-l
 
 ### Informações WHOIS: `whois`
 
-Coleta informações de registro e propriedade de domínio.
+Coleta informações de registro de domínio e propriedade.
 
 ```bash
 # Consulta WHOIS
@@ -199,7 +245,7 @@ theharvester -d example.com -l 100 -b google
 
 ### Análise SSL/TLS: `sslscan`
 
-Analisa a configuração e vulnerabilidades de SSL/TLS.
+Analisa a configuração e vulnerabilidades SSL/TLS.
 
 ```bash
 # Varredura SSL
@@ -219,7 +265,7 @@ Enumera compartilhamentos SMB e informações NetBIOS.
 enum4linux 192.168.1.1
 # Listar compartilhamentos SMB
 smbclient -L //192.168.1.1
-# Conectar a um compartilhamento
+# Conectar ao compartilhamento
 smbclient //192.168.1.1/share
 # Varredura de vulnerabilidade SMB
 nmap --script smb-vuln* 192.168.1.1
@@ -270,9 +316,9 @@ use exploit/windows/smb/ms17_010_eternalblue
 set RHOSTS 192.168.1.1
 ```
 
-### Teste de Buffer Overflow: `pattern_create`
+### Teste de Overflow de Buffer: `pattern_create`
 
-Gera padrões para exploração de estouro de buffer.
+Gera padrões para exploração de overflow de buffer.
 
 ```bash
 # Criar padrão
@@ -428,7 +474,7 @@ Testa vulnerabilidades XSS em aplicações web.
 ```bash
 # Teste XSS
 xsser --url "http://example.com/search.php?q=XSS"
-# Detecção XSS automatizada
+# Detecção automatizada de XSS
 xsser -u "http://example.com" --crawl=10
 # Payload personalizado
 xsser --url "http://example.com" --payload="<script>alert(1)</script>"
@@ -442,7 +488,7 @@ Plataforma abrangente de testes de segurança de aplicações web.
 # Iniciar Burp Suite
 burpsuite
 # Configurar proxy (127.0.0.1:8080)
-# Configurar proxy do navegador para capturar tráfego
+# Configurar o proxy do navegador para capturar tráfego
 # Usar Intruder para ataques automatizados
 # Usar Spider para descoberta de conteúdo
 ```
@@ -460,7 +506,7 @@ wfuzz -c -z file,payloads.txt "http://example.com/page.php?file=FUZZ"
 
 ## Pós-Exploração e Escalada de Privilégios
 
-### Enumeração de Sistema: `linpeas`
+### Enumeração do Sistema: `linpeas`
 
 Enumeração automatizada de escalada de privilégios para sistemas Linux.
 
@@ -565,7 +611,7 @@ Analisa capturas de tráfego de rede em busca de evidências forenses.
 ```bash
 # Iniciar Wireshark
 wireshark
-# Análise de linha de comando
+# Análise na linha de comando
 tshark -r capture.pcap -Y "http.request.method==GET"
 # Extrair arquivos
 foremost -i capture.pcap -o extracted/
@@ -597,7 +643,7 @@ Grava sessões de terminal para fins de documentação.
 script session.log
 # Gravar com temporização
 script -T session.time session.log
-# Reexecutar sessão
+# Reproduzir sessão
 scriptreplay session.time session.log
 ```
 
@@ -722,7 +768,7 @@ function pentest-setup() {
 
 ### Atalhos de Teclado: Terminal
 
-Domine os atalhos de teclado essenciais para uma navegação mais rápida.
+Domine atalhos de teclado essenciais para navegação mais rápida.
 
 ```bash
 # Atalhos do terminal
@@ -753,7 +799,7 @@ tmux attach -t pentest
 
 - <router-link to="/linux">Folha de Dicas do Linux</router-link>
 - <router-link to="/shell">Folha de Dicas do Shell</router-link>
-- <router-link to="/cybersecurity">Folha de Dicas de Segurança Cibernética</router-link>
+- <router-link to="/cybersecurity">Folha de Dicas de Cibersegurança</router-link>
 - <router-link to="/nmap">Folha de Dicas do Nmap</router-link>
 - <router-link to="/wireshark">Folha de Dicas do Wireshark</router-link>
 - <router-link to="/hydra">Folha de Dicas do Hydra</router-link>

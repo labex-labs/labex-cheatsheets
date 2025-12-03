@@ -1,6 +1,6 @@
 ---
-title: 'CSS 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 CSS 를 학습하세요.'
+title: 'CSS 치트 시트 | LabEx'
+description: '포괄적인 CSS 치트 시트로 CSS3 를 학습하세요. 웹 개발자를 위한 CSS 선택자, 플렉스박스, 그리드, 애니메이션, 반응형 디자인 및 최신 스타일링 기술에 대한 빠른 참조 가이드입니다.'
 pdfUrl: '/cheatsheets/pdf/css-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ CSS 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/css">실습 랩을 통해 CSS 배우기</a>
+<a target="_blank" href="https://labex.io/ko/learn/css">Hands-On Labs 로 CSS 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 CSS 웹 스타일링을 배우세요. LabEx 는 필수 속성, 선택자, 레이아웃 기술, 반응형 디자인 및 최신 기능을 다루는 포괄적인 CSS 과정을 제공합니다. 현대적인 웹 개발 워크플로우를 위한 효율적인 웹 스타일링 및 레이아웃 디자인을 마스터하세요.
+실습 랩과 실제 시나리오를 통해 CSS 웹 스타일링을 학습하세요. LabEx 는 필수 속성, 선택자, 레이아웃 기술, 반응형 디자인 및 최신 기능을 다루는 포괄적인 CSS 강좌를 제공합니다. 현대적인 웹 개발 워크플로우를 위한 효율적인 웹 스타일링 및 레이아웃 디자인을 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -62,7 +62,7 @@ a {
 
 ### 클래스 선택자
 
-특정 클래스 속성을 가진 요소를 대상으로 지정합니다.
+특정 `class` 속성을 가진 요소를 대상으로 지정합니다.
 
 ```css
 /* class="highlight"를 가진 요소 선택 */
@@ -82,9 +82,24 @@ p.intro {
 }
 ```
 
+<BaseQuiz id="css-class-1" correct="B">
+  <template #question>
+    CSS 에서 class="highlight"를 가진 요소를 선택하는 방법은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">highlight { }</BaseQuizOption>
+  <BaseQuizOption value="B" correct>.highlight { }</BaseQuizOption>
+  <BaseQuizOption value="C">#highlight { }</BaseQuizOption>
+  <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    클래스 선택자는 점 (`.`) 접두사를 사용합니다. `.highlight` 는 `class="highlight"` 를 가진 모든 요소를 선택합니다. ID 선택자는 `#` 을 사용하고, 요소 선택자는 접두사를 사용하지 않습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ID 선택자
 
-특정 ID 속성을 가진 요소를 대상으로 지정합니다.
+특정 `id` 속성을 가진 요소를 대상으로 지정합니다.
 
 ```css
 /* id="header"를 가진 요소 선택 */
@@ -113,7 +128,7 @@ a[href^='http'] {
   color: red;
 }
 
-/* type 이 text 인 입력 요소 */
+/* type 이 text 인 input 요소 */
 input[type='text'] {
   border: 1px solid #ccc;
 }
@@ -165,7 +180,7 @@ div {
   height: 200px;
 }
 
-/* 반응형 크기 */
+/* 반응형 크기 조정 */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -194,18 +209,34 @@ div {
   padding-right: 15px;
 }
 
-/* 축약형: 위 오른쪽 아래 왼쪽 */
+/* 단축 구문: 위 오른쪽 아래 왼쪽 */
 div {
   padding: 10px 15px 20px 5px;
 }
 ```
 
+<BaseQuiz id="css-padding-1" correct="C">
+  <template #question>
+    `padding: 10px 20px`는 무엇을 설정합니까?
+  </template>
+  
+  <BaseQuizOption value="A">10px 위/아래, 20px 왼쪽/오른쪽</BaseQuizOption>
+  <BaseQuizOption value="B">10px 모든 면</BaseQuizOption>
+  <BaseQuizOption value="C" correct>10px 위/아래, 20px 왼쪽/오른쪽</BaseQuizOption>
+  <BaseQuizOption value="D">10px 위, 20px 아래</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    두 개의 값이 제공되면 첫 번째 값은 위쪽과 아래쪽에 적용되고 두 번째 값은 왼쪽과 오른쪽에 적용됩니다. 따라서 `padding: 10px 20px`는 10px 의 수직 패딩과 20px 의 수평 패딩을 의미합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+```
+
 ### 테두리 (Border): `border`
 
-테두리는 크기, 스타일 및 색상을 사용자 정의하여 요소에 프레임을 제공합니다.
+테두리는 사용자 정의 가능한 크기, 스타일 및 색상으로 요소에 프레임을 제공합니다.
 
 ```css
-/* 테두리 축약형 */
+/* 테두리 단축 구문 */
 div {
   border: 2px solid #333;
 }
@@ -225,7 +256,7 @@ div {
 
 ### 마진 (Margin): `margin`
 
-테두리 바깥쪽 공간으로, 요소들 사이에 위치합니다.
+테두리 바깥쪽의 공간으로, 요소들 사이에 위치합니다.
 
 ```css
 /* 모든 면 */
@@ -233,7 +264,7 @@ div {
   margin: 20px;
 }
 
-/* 수평 중앙 정렬 */
+/* 수평으로 가운데 정렬 */
 div {
   margin: 0 auto;
 }
@@ -249,6 +280,21 @@ div {
   margin-left: -20px;
 }
 ```
+
+<BaseQuiz id="css-margin-1" correct="C">
+  <template #question>
+    `margin: 0 auto`는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A">모든 마진 제거</BaseQuizOption>
+  <BaseQuizOption value="B">모든 면에 동일한 마진 추가</BaseQuizOption>
+  <BaseQuizOption value="C" correct>블록 요소를 수평으로 가운데 정렬</BaseQuizOption>
+  <BaseQuizOption value="D">블록 요소를 수직으로 가운데 정렬</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `margin: 0 auto`는 위쪽과 아래쪽 마진을 0으로 설정하고 왼쪽/오른쪽 마진을 auto로 설정하여 블록 레벨 요소를 컨테이너 내에서 수평으로 가운데 정렬합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 텍스트 및 타이포그래피
 
@@ -341,7 +387,7 @@ h1 {
 
 ### 색상
 
-CSS 는 다양한 스타일링 요구 사항에 대해 여러 가지 색상 지정 방법을 제공합니다.
+CSS는 다양한 스타일링 요구 사항에 대해 여러 가지 색상 지정 방법을 제공합니다.
 
 ```css
 /* 색상 형식 */
@@ -351,6 +397,22 @@ p {
 div {
   background-color: #ff5733;
 }
+```
+
+<BaseQuiz id="css-colors-1" correct="D">
+  <template #question>
+    웹 디자인에 가장 일반적으로 사용되는 CSS 색상 형식은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">RGB만</BaseQuizOption>
+  <BaseQuizOption value="B">이름 있는 색상만</BaseQuizOption>
+  <BaseQuizOption value="C">HSL만</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Hex 코드(#RRGGBB)는 이름 있는 색상과 함께 매우 일반적입니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Hex 색상 코드(#RRGGBB)는 디자인 도구에서 복사하기 쉽고 간결하기 때문에 널리 사용됩니다. 이름 있는 색상 및 RGB/rgba도 일반적입니다. 선택은 특정 사용 사례와 선호도에 따라 달라집니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 span {
   color: rgb(255, 87, 51);
 }
@@ -358,19 +420,20 @@ section {
   background-color: rgba(255, 87, 51, 0.8);
 }
 
-/* HSL 색상 */
+/_ HSL 색상 _/
 header {
-  background-color: hsl(200, 100%, 50%);
+background-color: hsl(200, 100%, 50%);
 }
 
-/* CSS 변수 사용 */
+/_ CSS 변수를 사용한 색상 _/
 :root {
-  --primary-color: #3498db;
+--primary-color: #3498db;
 }
 .button {
-  background-color: var(--primary-color);
+background-color: var(--primary-color);
 }
-```
+
+````
 
 ## Flexbox 레이아웃
 
@@ -391,7 +454,7 @@ header {
   flex-direction: row-reverse;
 }
 
-/* justify-content (주축) */
+/* Justify content (주축) */
 .container {
   justify-content: flex-start; /* 기본값 */
   justify-content: center;
@@ -399,27 +462,27 @@ header {
   justify-content: space-around;
 }
 
-/* align-items (교차축) */
+/* Align items (교차축) */
 .container {
   align-items: stretch; /* 기본값 */
   align-items: center;
   align-items: flex-start;
 }
-```
+````
 
-### Flex 아이템 속성
+### Flex 항목 속성
 
 자식 요소에 적용되는 속성입니다.
 
 ```css
 /* Flex grow/shrink */
 .item {
-  flex-grow: 1; /* 공간을 채우기 위해 늘어남 */
-  flex-shrink: 1; /* 필요시 축소 */
+  flex-grow: 1; /* 공간을 채우기 위해 성장 */
+  flex-shrink: 1; /* 필요한 경우 축소 */
   flex-basis: auto; /* 초기 크기 */
 }
 
-/* 축약형 */
+/* 단축 구문 */
 .item {
   flex: 1; /* flex: 1 1 0% */
   flex: 0 0 200px; /* 고정 너비 */
@@ -441,7 +504,7 @@ header {
 
 ### Grid 컨테이너
 
-그리드 구조 및 속성을 정의합니다.
+그리드 구조와 속성을 정의합니다.
 
 ```css
 /* 그리드 활성화 */
@@ -471,9 +534,9 @@ header {
 }
 ```
 
-### Grid 아이템
+### Grid 항목
 
-그리드 아이템의 위치 및 크기를 지정합니다.
+그리드 항목의 위치와 크기를 지정합니다.
 
 ```css
 /* 그리드 위치 지정 */
@@ -482,7 +545,7 @@ header {
   grid-row: 2 / 4; /* 행 2-3 걸침 */
 }
 
-/* 축약형 */
+/* 단축 구문 */
 .grid-item {
   grid-area: 2 / 1 / 4 / 3; /* row-start / col-start / row-end / col-end */
 }
@@ -505,7 +568,7 @@ header {
 }
 ```
 
-## 위치 지정 (Positioning)
+## 포지셔닝 (Positioning)
 
 ### Position 속성
 
@@ -517,28 +580,28 @@ header {
   position: static;
 }
 
-/* Relative 위치 지정 */
+/* Relative 포지셔닝 */
 .element {
   position: relative;
   top: 20px;
   left: 10px;
 }
 
-/* Absolute 위치 지정 */
+/* Absolute 포지셔닝 */
 .element {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-/* Fixed 위치 지정 */
+/* Fixed 포지셔닝 */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
 }
 
-/* Sticky 위치 지정 */
+/* Sticky 포지셔닝 */
 .sidebar {
   position: sticky;
   top: 20px;
@@ -668,7 +731,7 @@ h1 {
 
 ### CSS 전환 (Transitions)
 
-속성 값 사이의 부드러운 변화입니다.
+속성 값 간의 부드러운 변화입니다.
 
 ```css
 /* 기본 전환 */
@@ -732,7 +795,7 @@ h1 {
   animation: pulse 2s infinite;
 }
 
-/* 애니메이션 축약형 */
+/* 애니메이션 단축 구문 */
 .spinner {
   animation: spin 1s linear infinite;
 }
@@ -781,7 +844,7 @@ h1 {
 
 ### CSS 함수
 
-CSS 에는 계산 및 동적 값을 위한 다양한 내장 함수가 있습니다.
+계산 및 동적 값을 위해 내장된 다양한 함수를 사용합니다.
 
 ```css
 /* Calc 함수 */
@@ -889,7 +952,7 @@ body div.container > p {
 /* position 대신 transform 사용 */
 .element {
   transform: translateX(100px);
-  /* 대신 left: 100px; */
+  /* left: 100px; 대신 */
 }
 
 /* 공급업체 접두사 그룹화 */
@@ -908,11 +971,11 @@ body div.container > p {
 
 ```css
 /* 일반적인 디버깅 단계 */
-/* 1. 마우스 오른쪽 버튼 클릭 → 요소 검사 */
+/* 1. 마우스 오른쪽 클릭 → 요소 검사 */
 /* 2. 계산된 스타일 확인 */
 /* 3. 재정의된 속성 확인 */
 /* 4. 실시간으로 변경 사항 테스트 */
-/* 5. 수정된 CSS 를 파일로 다시 복사 */
+/* 5. 수정된 CSS 를 파일에 다시 복사 */
 ```
 
 ### 일반적인 CSS 문제
@@ -925,7 +988,7 @@ body div.container > p {
   box-sizing: border-box;
 }
 
-/* float 제거 */
+/* float 정리 */
 .clearfix::after {
   content: '';
   display: table;
@@ -933,7 +996,7 @@ body div.container > p {
 }
 
 /* Z-index 문제 */
-/* z-index 가 작동하도록 위치 지정된 요소 필요 */
+/* z-index 가 작동하려면 위치 지정된 요소가 필요합니다 */
 .element {
   position: relative;
   z-index: 1;
@@ -942,7 +1005,7 @@ body div.container > p {
 
 ### CSS 유효성 검사
 
-CSS 가 표준 및 모범 사례를 따르는지 확인합니다.
+표준 및 모범 사례를 따르는지 확인합니다.
 
 ```css
 /* CSS 검사기 사용 */

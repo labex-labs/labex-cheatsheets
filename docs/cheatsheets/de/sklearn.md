@@ -1,6 +1,6 @@
 ---
-title: 'scikit-learn Spickzettel'
-description: 'Lernen Sie scikit-learn mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'scikit-learn Spickzettel | LabEx'
+description: 'Lernen Sie scikit-learn Machine Learning mit diesem umfassenden Spickzettel. Schnelle Referenz für ML-Algorithmen, Modelltraining, Vorverarbeitung, Evaluierung und Python ML-Workflows.'
 pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 
@@ -12,14 +12,14 @@ scikit-learn Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/sklearn">Lernen Sie scikit-learn mit Hands-On-Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/sklearn">Lernen Sie scikit-learn mit Hands-On Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie maschinelles Lernen mit scikit-learn durch praktische Labs und reale Szenarien. LabEx bietet umfassende scikit-learn Kurse, die wesentliche Datenvorverarbeitung, Modellauswahl, Training, Evaluierung und Feature Engineering abdecken. Meistern Sie Algorithmen des maschinellen Lernens und erstellen Sie prädiktive Modelle mit Python.
+Lernen Sie maschinelles Lernen mit scikit-learn durch praktische Übungen und reale Szenarien. LabEx bietet umfassende scikit-learn Kurse, die wesentliche Datenvorverarbeitung, Modellauswahl, Training, Evaluierung und Feature Engineering abdecken. Meistern Sie Algorithmen des maschinellen Lernens und erstellen Sie prädiktive Modelle mit Python.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Installation & Imports
+## Installation & Importe
 
 ### Installation: `pip install scikit-learn`
 
@@ -34,12 +34,12 @@ pip install scikit-learn pandas numpy matplotlib
 pip install scikit-learn --upgrade
 ```
 
-### Wesentliche Imports
+### Wesentliche Importe
 
-Standard-Imports für scikit-learn Workflows.
+Standardimporte für scikit-learn Workflows.
 
 ```python
-# Kern-Imports
+# Kernimporte
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -88,15 +88,15 @@ n_features=20, n_informative=10, random_state=42)
 Daten in Trainings- und Testsets aufteilen.
 
 ```python
-# Grundlegender Split (80% Training, 20% Test)
+# Grundlegende Aufteilung (80% Training, 20% Test)
 X_train, X_test, y_train, y_test =
 train_test_split(X, y, test_size=0.2,
 random_state=42)
-# Stratifizierter Split für Klassifikation
+# Stratifizierte Aufteilung für Klassifikation
 X_train, X_test, y_train, y_test =
 train_test_split(X, y, test_size=0.2,
 stratify=y, random_state=42)
-# Mehrere Splits
+# Mehrere Aufteilungen
 X_train, X_temp, y_train, y_temp =
 train_test_split(X, y, test_size=0.4,
 random_state=42)
@@ -105,9 +105,24 @@ train_test_split(X_temp, y_temp,
 test_size=0.5, random_state=42)
 ```
 
+<BaseQuiz id="sklearn-split-1" correct="B">
+  <template #question>
+    Warum ist es wichtig, Daten in Trainings- und Testsets aufzuteilen?
+  </template>
+  
+  <BaseQuizOption value="A">Um die Datensatzgröße zu reduzieren</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Um die Modellleistung auf ungesehenen Daten zu bewerten und Überanpassung zu verhindern</BaseQuizOption>
+  <BaseQuizOption value="C">Um das Modelltraining zu beschleunigen</BaseQuizOption>
+  <BaseQuizOption value="D">Um den Datensatz auszugleichen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Aufteilung der Daten ermöglicht es, das Modell auf einem Teil zu trainieren und es auf einem anderen zu testen. Dies hilft zu bewerten, wie gut das Modell auf neue, ungesehene Daten generalisiert, und verhindert eine Überanpassung an die Trainingsdaten.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Feature-Skalierung: `StandardScaler()` / `MinMaxScaler()`
 
-Features auf ähnliche Skalen normalisieren.
+Merkmale auf ähnliche Skalen normalisieren.
 
 ```python
 # Standardisierung (Mittelwert=0, Standardabweichung=1)
@@ -126,12 +141,27 @@ X_test_minmax =
 minmax_scaler.transform(X_test)
 ```
 
+<BaseQuiz id="sklearn-scaling-1" correct="A">
+  <template #question>
+    Warum ist die Feature-Skalierung beim maschinellen Lernen wichtig?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Sie stellt sicher, dass alle Features auf einer ähnlichen Skala sind, wodurch verhindert wird, dass einige Features dominieren</BaseQuizOption>
+  <BaseQuizOption value="B">Sie entfernt fehlende Werte</BaseQuizOption>
+  <BaseQuizOption value="C">Sie erhöht die Anzahl der Features</BaseQuizOption>
+  <BaseQuizOption value="D">Sie entfernt doppelte Zeilen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Feature-Skalierung ist wichtig, da Algorithmen wie SVM, KNN und neuronale Netze empfindlich auf Feature-Skalen reagieren. Ohne Skalierung können Features mit größeren Bereichen den Lernprozess des Modells dominieren.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Kodierung: `LabelEncoder()` / `OneHotEncoder()`
 
 Kategorische Variablen in numerische Form umwandeln.
 
 ```python
-# Label-Kodierung für Zielvariable
+# Label-Kodierung für die Zielvariable
 from sklearn.preprocessing import
 LabelEncoder, OneHotEncoder
 label_encoder = LabelEncoder()
@@ -209,9 +239,24 @@ rf_clf = RandomForestClassifier(
 )
 ```
 
+<BaseQuiz id="sklearn-randomforest-1" correct="A">
+  <template #question>
+    Was steuert `n_estimators` im RandomForestClassifier?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Die Anzahl der Entscheidungsbäume im Wald</BaseQuizOption>
+  <BaseQuizOption value="B">Die maximale Tiefe jedes Baumes</BaseQuizOption>
+  <BaseQuizOption value="C">Die Anzahl der Features, die berücksichtigt werden</BaseQuizOption>
+  <BaseQuizOption value="D">Der Zufalls-Seed</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `n_estimators` gibt an, wie viele Entscheidungsbäume im Random Forest enthalten sein sollen. Mehr Bäume verbessern im Allgemeinen die Leistung, erhöhen aber die Rechenzeit. Der Standardwert ist normalerweise 100.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Support Vector Machine: `SVC()`
 
-Leistungsstarker Klassifikator unter Verwendung von Kernel-Methoden.
+Leistungsstarker Klassifikator, der Kernel-Methoden verwendet.
 
 ```python
 # SVM Klassifikator
@@ -241,7 +286,7 @@ y_pred = lin_reg.predict(X_test)
 # Koeffizienten und Achsenabschnitt abrufen
 coefficients = lin_reg.coef_
 intercept = lin_reg.intercept_
-print(f"R² Wert: {lin_reg.score(X_test, y_test)}")
+print(f"R²-Wert: {lin_reg.score(X_test, y_test)}")
 ```
 
 ### Ridge Regression: `Ridge()`
@@ -254,7 +299,7 @@ from sklearn.linear_model import Ridge
 ridge_reg = Ridge(alpha=1.0)
 ridge_reg.fit(X_train, y_train)
 y_pred = ridge_reg.predict(X_test)
-# Kreuzvalidierung zur Alpha-Auswahl
+# Kreuzvalidierung zur Auswahl von Alpha
 from sklearn.linear_model import RidgeCV
 ridge_cv = RidgeCV(alphas=[0.1, 1.0, 10.0])
 ridge_cv.fit(X_train, y_train)
@@ -270,7 +315,7 @@ from sklearn.linear_model import Lasso
 lasso_reg = Lasso(alpha=0.1)
 lasso_reg.fit(X_train, y_train)
 y_pred = lasso_reg.predict(X_test)
-# Feature-Auswahl (Nicht-Null-Koeffizienten)
+# Feature-Auswahl (nicht-null Koeffizienten)
 selected_features = X.columns[lasso_reg.coef_ != 0]
 print(f"Ausgewählte Features: {len(selected_features)}")
 ```
@@ -290,11 +335,11 @@ y_pred = rf_reg.predict(X_test)
 feature_importance = rf_reg.feature_importances_
 ```
 
-## Modell-Evaluierung
+## Modellbewertung
 
 ### Klassifikationsmetriken
 
-Bewerten Sie die Leistung des Klassifikationsmodells.
+Bewertung der Leistung von Klassifikationsmodellen.
 
 ```python
 # Grundlegende Genauigkeit
@@ -327,14 +372,14 @@ import matplotlib.pyplot as plt
 plt.figure(figsize=(8, 6))
 plt.plot(fpr, tpr, label=f'ROC Kurve (AUC = {roc_auc:.2f})')
 plt.plot([0, 1], [0, 1], 'k--')
-plt.xlabel('Falsch-Positiv-Rate')
-plt.ylabel('Wahr-Positiv-Rate')
+plt.xlabel('Falsche Positivrate')
+plt.ylabel('Wahre Positivrate')
 plt.legend()
 ```
 
 ### Regressionsmetriken
 
-Bewerten Sie die Leistung des Regressionsmodells.
+Bewertung der Leistung von Regressionsmodellen.
 
 ```python
 # Regressionsmetriken
@@ -352,7 +397,7 @@ print(f"R²: {r2:.4f}")
 
 ### Kreuzvalidierung
 
-Robuste Modellauswertung mittels Kreuzvalidierung.
+Robuste Modellbewertung mittels Kreuzvalidierung.
 
 ```python
 # K-Fold Kreuzvalidierung
@@ -373,7 +418,7 @@ scoring='f1_weighted')
 
 ### K-Means-Clustering: `KMeans()`
 
-Daten in k Cluster unterteilen.
+Daten in k Cluster partitionieren.
 
 ```python
 # K-Means Clustering
@@ -381,7 +426,7 @@ from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, random_state=42)
 cluster_labels = kmeans.fit_predict(X)
 centroids = kmeans.cluster_centers_
-# Optimale Anzahl von Clustern bestimmen (Ellbogen-Methode)
+# Bestimmung der optimalen Clusteranzahl (Ellbogen-Methode)
 inertias = []
 K_range = range(1, 11)
 for k in K_range:
@@ -446,7 +491,7 @@ dendrogram(linked)
 
 ### Grid Search: `GridSearchCV()`
 
-Erschöpfende Suche über den Parameter-Grid.
+Umfassende Suche im Parameter-Grid.
 
 ```python
 # Grid Search für Hyperparameter-Tuning
@@ -467,7 +512,7 @@ best_params = grid_search.best_params_
 
 ### Random Search: `RandomizedSearchCV()`
 
-Zufällige Stichprobenentnahme aus Parameter-Verteilungen.
+Zufällige Stichproben aus Parameterverteilungen.
 
 ```python
 # Random Search (schneller für große Parameterbereiche)
@@ -492,7 +537,7 @@ random_search.fit(X_train, y_train)
 Verkettung von Vorverarbeitungs- und Modellierungsschritten.
 
 ```python
-# Erstellung einer Vorverarbeitungs- und Modellierungs-Pipeline
+# Pipeline für Vorverarbeitung und Modellierung erstellen
 from sklearn.pipeline import Pipeline
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
@@ -595,7 +640,7 @@ classes=np.unique(y_train), y=y_train)
 weight_dict = dict(zip(np.unique(y_train), class_weights))
 ```
 
-### Modell-Persistenz: `joblib`
+### Modellpersistenz: `joblib`
 
 Trainierte Modelle speichern und laden.
 
@@ -622,7 +667,7 @@ with open('model.pkl', 'rb') as f:
 
 ### Lernkurven: `learning_curve()`
 
-Überanpassung und Unteranpassung diagnostizieren.
+Diagnose von Überanpassung und Unteranpassung.
 
 ```python
 # Lernkurven plotten
@@ -635,17 +680,17 @@ plt.plot(train_sizes, np.mean(train_scores, axis=1), 'o-',
 label='Trainings-Score')
 plt.plot(train_sizes, np.mean(val_scores, axis=1), 'o-',
 label='Validierungs-Score')
-plt.xlabel('Größe des Trainingssatzes')
+plt.xlabel('Größe des Trainingsdatensatzes')
 plt.ylabel('Score')
 plt.legend()
 ```
 
 ### Validierungskurven: `validation_curve()`
 
-Die Auswirkung von Hyperparametern analysieren.
+Analyse des Einflusses von Hyperparametern.
 
 ```python
-# Validierungskurve für einzelnen Hyperparameter
+# Validierungskurve für einen einzelnen Hyperparameter
 from sklearn.model_selection import validation_curve
 param_range = [10, 50, 100, 200, 500]
 train_scores, val_scores = validation_curve(
@@ -671,7 +716,7 @@ Verstehen, welche Features die Modellvorhersagen bestimmen.
 importances = model.feature_importances_
 indices = np.argsort(importances)[::-1]
 plt.figure(figsize=(12, 8))
-plt.title("Feature Wichtigkeit")
+plt.title("Feature-Wichtigkeit")
 plt.bar(range(X.shape[1]), importances[indices])
 plt.xticks(range(X.shape[1]), [X.columns[i] for i in indices],
 rotation=90)
@@ -712,7 +757,7 @@ scoring='accuracy')
 
 ### Random State & Reproduzierbarkeit
 
-Konsistente Ergebnisse über Läufe hinweg sicherstellen.
+Konsistente Ergebnisse über Durchläufe hinweg sicherstellen.
 
 ```python
 # Setzen des Random State für
@@ -744,8 +789,7 @@ RandomForestClassifier(n_jobs=
 grid_search =
 GridSearchCV(model,
 param_grid, n_jobs=-1)
-# Für große Datensätze,
-partial_fit verwenden, wenn verfügbar
+# Für große Datensätze, partial_fit verwenden, wenn verfügbar
 from sklearn.linear_model
 import SGDClassifier
 sgd = SGDClassifier()
@@ -757,25 +801,20 @@ chunk_y)
 
 ### Warnungen & Debugging
 
-Häufige Probleme behandeln und Modelle debuggen.
+Umgang mit häufigen Problemen und Debugging von Modellen.
 
 ```python
-# Warnungen unterdrücken (mit
-Vorsicht verwenden)
+# Warnungen unterdrücken (vorsichtig verwenden)
 import warnings
 warnings.filterwarnings('ignore')
-# set_config von sklearn
-aktivieren für besseres
-Debugging
+# set_config von sklearn für besseres Debugging aktivieren
 from sklearn import set_config
 set_config(display='diagram')  #
 Erweiterte Anzeige in Jupyter
-# Auf Datenleck prüfen
+# Auf Datenleckage prüfen
 from sklearn.model_selection
 import cross_val_score
-# Sicherstellen, dass die
-Vorverarbeitung innerhalb der
-CV-Schleife erfolgt
+# Sicherstellen, dass die Vorverarbeitung innerhalb der CV-Schleife erfolgt
 ```
 
 ## Relevante Links

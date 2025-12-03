@@ -1,6 +1,6 @@
 ---
-title: '红帽企业版 Linux 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，学习红帽企业版 Linux。'
+title: '红帽企业版 Linux 速查表 | LabEx'
+description: '使用本综合速查表学习红帽企业版 Linux (RHEL) 管理。RHEL 命令、系统管理、SELinux、软件包管理和企业版 Linux 管理快速参考。'
 pdfUrl: '/cheatsheets/pdf/red-hat-linux-cheatsheet.pdf'
 ---
 
@@ -53,20 +53,20 @@ ps aux
 
 ### 内存信息：`free` / `cat /proc/meminfo`
 
-显示内存使用和可用性。
+显示内存使用情况和可用性。
 
 ```bash
 # 以人类可读的格式显示内存使用情况
 free -h
-# 显示详细的内存信息
+# 显示详细内存信息
 cat /proc/meminfo
 # 显示交换空间使用情况
 swapon --show
 ```
 
-### 磁盘使用情况：`df` / `du`
+### 磁盘使用率：`df` / `du`
 
-监控文件系统和目录使用情况。
+监控文件系统和目录的使用情况。
 
 ```bash
 # 显示文件系统使用情况
@@ -79,7 +79,7 @@ du -h --max-depth=1 / | sort -hr
 
 ### 系统正常运行时间：`uptime` / `who`
 
-检查系统运行时间和登录用户。
+检查系统运行时间和已登录用户。
 
 ```bash
 # 显示系统运行时间和负载
@@ -88,7 +88,7 @@ uptime
 who
 # 显示当前用户
 whoami
-# 显示上次登录
+# 显示最近登录
 last
 ```
 
@@ -125,6 +125,21 @@ sudo dnf install --enablerepo=repo-
 name package
 ```
 
+<BaseQuiz id="rhel-package-1" correct="A">
+  <template #question>
+    `dnf` 和 `yum` 在 RHEL 中有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A" correct>dnf 是 RHEL 8+ 的较新包管理器，yum 用于 RHEL 7</BaseQuizOption>
+  <BaseQuizOption value="B">dnf 用于开发包，yum 用于生产环境</BaseQuizOption>
+  <BaseQuizOption value="C">没有区别，它们是相同的</BaseQuizOption>
+  <BaseQuizOption value="D">dnf 已弃用，应始终使用 yum</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    DNF (Dandified YUM) 是 YUM 的下一代版本，是 RHEL 8 及更高版本中的默认包管理器。YUM 仍用于 RHEL 7。DNF 提供更好的性能和依赖项解析。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 包更新：`dnf update` / `yum update`
 
 将包更新到最新版本。
@@ -142,7 +157,7 @@ sudo dnf update --security
 
 ### 包信息：`dnf info` / `rpm -q`
 
-查询包信息和依赖关系。
+查询包信息和依赖项。
 
 ```bash
 # 显示包信息
@@ -151,11 +166,11 @@ dnf info package-name
 rpm -qa
 # 搜索包
 dnf search keyword
-# 显示包依赖关系
+# 显示包依赖项
 dnf deplist package-name
 ```
 
-## 文件与目录操作
+## 文件和目录操作
 
 ### 导航：`cd` / `pwd` / `ls`
 
@@ -176,7 +191,7 @@ ls -a
 
 ### 文件操作：`cp` / `mv` / `rm`
 
-复制、移动和删除文件和目录。
+复制、移动和删除文件及目录。
 
 ```bash
 # 复制文件
@@ -190,6 +205,21 @@ rm filename.txt
 # 递归删除目录
 rm -rf directory/
 ```
+
+<BaseQuiz id="rhel-file-ops-1" correct="B">
+  <template #question>
+    `cp -r` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">仅复制文件</BaseQuizOption>
+  <BaseQuizOption value="B" correct>递归复制目录，包括所有子目录和文件</BaseQuizOption>
+  <BaseQuizOption value="C">删除文件</BaseQuizOption>
+  <BaseQuizOption value="D">重命名文件</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-r` 标志（递归）允许 `cp` 复制目录及其内容，包括其中所有的子目录和文件。没有 `-r`，`cp` 无法复制目录。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 文件内容：`cat` / `less` / `head` / `tail`
 
@@ -208,6 +238,21 @@ tail filename.txt
 tail -f /var/log/messages
 ```
 
+<BaseQuiz id="rhel-tail-1" correct="C">
+  <template #question>
+    `tail -f /var/log/messages` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">仅显示前 10 行</BaseQuizOption>
+  <BaseQuizOption value="B">删除日志文件</BaseQuizOption>
+  <BaseQuizOption value="C" correct>显示最后 10 行并实时跟踪新条目</BaseQuizOption>
+  <BaseQuizOption value="D">归档日志文件</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-f` 标志使 `tail` 跟踪文件，在写入新日志条目时显示它们。这对于实时日志监控和故障排除至关重要。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 文件权限：`chmod` / `chown` / `chgrp`
 
 管理文件权限和所有权。
@@ -219,13 +264,13 @@ chmod 755 script.sh
 sudo chown user:group filename.txt
 # 更改组所有权
 sudo chgrp newgroup filename.txt
-# 递归权限更改
+# 递归更改权限
 sudo chmod -R 644 /path/to/directory/
 ```
 
 ### 文件搜索：`find` / `locate` / `grep`
 
-搜索文件和文件内容。
+搜索文件和文件中的内容。
 
 ```bash
 # 按名称查找文件
@@ -260,11 +305,11 @@ unzip archive.zip
 使用 systemd 管理系统服务。
 
 ```bash
-# 启动服务
+# 启动一个服务
 sudo systemctl start service-name
-# 停止服务
+# 停止一个服务
 sudo systemctl stop service-name
-# 重启服务
+# 重启一个服务
 sudo systemctl restart service-name
 # 检查服务状态
 systemctl status service-name
@@ -283,7 +328,7 @@ sudo systemctl disable service-name
 systemctl list-units --type=service
 # 列出所有已启用的服务
 systemctl list-unit-files --type=service --state=enabled
-# 显示服务依赖关系
+# 显示服务依赖项
 systemctl list-dependencies service-name
 ```
 
@@ -311,11 +356,11 @@ journalctl --since "2024-01-01" --until "2024-01-31"
 ```bash
 # 显示正在运行的进程
 ps aux
-# 按 PID 杀死进程
+# 按 PID 终止进程
 kill 1234
-# 按名称杀死进程
+# 按名称终止进程
 killall process-name
-# 强制杀死进程
+# 强制终止进程
 kill -9 1234
 # 显示进程层次结构
 pstree
@@ -351,7 +396,7 @@ sudo groupadd groupname
 # 将用户添加到组
 sudo usermod -aG groupname
 username
-# 从组中移除用户
+# 从组中删除用户
 sudo gpasswd -d username
 groupname
 # 删除组
@@ -369,7 +414,7 @@ groups username
 su -
 # 切换到特定用户
 su - username
-# 以 root 权限执行命令
+# 以 root 身份执行命令
 sudo command
 # 编辑 sudoers 文件
 sudo visudo
@@ -399,7 +444,7 @@ nmcli device status
 使用 NetworkManager 配置网络设置。
 
 ```bash
-# 文本模式网络配置
+# 基于文本的网络配置
 sudo nmtui
 # 添加新连接
 sudo nmcli connection add type ethernet con-name
@@ -460,7 +505,7 @@ sudo parted /dev/sda mkpart primary ext4 1MiB 100GiB
 
 ### 文件系统管理：`mkfs` / `mount`
 
-创建文件系统和挂载存储设备。
+创建文件系统并挂载存储设备。
 
 ```bash
 # 创建 ext4 文件系统
@@ -505,7 +550,7 @@ mount | column -t
 
 ### SELinux 管理：`getenforce` / `setenforce`
 
-控制 SELinux 强制执行和策略。
+控制 SELinux 的强制执行和策略。
 
 ```bash
 # 检查 SELinux 状态
@@ -535,7 +580,7 @@ sudo audit2allow -M mypolicy < /var/log/audit/audit.log
 
 ### SSH 配置：`/etc/ssh/sshd_config`
 
-配置 SSH 守护进程以实现安全远程访问。
+配置 SSH 守护进程以实现安全的远程访问。
 
 ```bash
 # 编辑 SSH 配置文件
@@ -739,7 +784,7 @@ sudo systemctl rescue
 sudo systemctl emergency
 # 重置失败的服务
 sudo systemctl reset-failed
-# 重新生成引导加载程序配置
+# 重新配置引导加载程序
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
@@ -754,7 +799,7 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 crontab -e
 # 列出用户 crontab
 crontab -l
-# 移除用户 crontab
+# 删除用户 crontab
 crontab -r
 # 示例：每天凌晨 2 点运行脚本
 0 2 * * * /path/to/script.sh
@@ -769,7 +814,7 @@ crontab -r
 # 简单备份脚本
 DATE=$(date +%Y%m%d)
 tar -czf backup_$DATE.tar.gz /home/user/documents
-echo "备份完成: backup_$DATE.tar.gz"
+echo "Backup completed: backup_$DATE.tar.gz"
 ```
 
 ### 环境变量：`export` / `env`
@@ -797,7 +842,7 @@ sudo vi /etc/systemd/system/backup.timer
 # 启用并启动 timer
 sudo systemctl enable backup.timer
 sudo systemctl start backup.timer
-# 列出活动计时器
+# 列出活动 timer
 systemctl list-timers
 ```
 

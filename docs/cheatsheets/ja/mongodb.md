@@ -1,6 +1,6 @@
 ---
-title: 'MongoDB チートシート'
-description: 'MongoDB の必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで学習しましょう。'
+title: 'MongoDB チートシート | LabEx'
+description: 'この包括的なチートシートで MongoDB NoSQL データベースを学習。MongoDB クエリ、集計、インデックス、シャーディング、レプリケーション、ドキュメントデータベース管理のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ MongoDB チートシート
 <a target="_blank" href="https://labex.io/ja/learn/mongodb">ハンズオンラボで MongoDB を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-LabEx は、ハンズオンラボと実世界のシナリオを通じて MongoDB NoSQL データベース管理を教えます。LabEx は、基本的な操作、ドキュメントクエリ、集計パイプライン、インデックス戦略、高度なテクニックを網羅した包括的な MongoDB コースを提供します。MongoDB のドキュメントベースのデータモデルを習得し、スケーラブルで柔軟なデータベースアプリケーションを構築しましょう。
+LabEx では、ハンズオンラボと実世界のシナリオを通じて、MongoDB NoSQL データベース管理を学習できます。LabEx は、必須操作、ドキュメントクエリ、集計パイプライン、インデックス戦略、高度なテクニックを網羅した包括的な MongoDB コースを提供しています。MongoDB のドキュメントベースのデータモデルを習得し、スケーラブルで柔軟なデータベースアプリケーションを構築しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -47,6 +47,21 @@ use myapp
 use newdb
 db.users.insertOne({name: "John"})
 ```
+
+<BaseQuiz id="mongodb-use-1" correct="B">
+  <template #question>
+    MongoDB で`use newdb`を実行するとどうなりますか？
+  </template>
+  
+  <BaseQuizOption value="A">データベースがすぐに作成される</BaseQuizOption>
+  <BaseQuizOption value="B" correct>データベースに切り替わる（最初にデータを挿入したときに作成される）</BaseQuizOption>
+  <BaseQuizOption value="C">データベースが削除される</BaseQuizOption>
+  <BaseQuizOption value="D">データベース内のすべてのコレクションが表示される</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `use` コマンドはデータベースに切り替えますが、MongoDB は最初のドキュメントを挿入するまでデータベースを作成しません。これは遅延作成アプローチです。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### データベースの削除：`db.dropDatabase()`
 
@@ -101,14 +116,14 @@ show collections
 
 ### コレクションの統計情報：`db.collection.stats()`
 
-コレクションに関する包括的な統計情報（サイズ、ドキュメント数、インデックス情報など）を表示します。
+サイズ、ドキュメント数、インデックス情報など、コレクションに関する包括的な統計情報を表示します。
 
 ```javascript
 // コレクションの統計情報
 db.users.stats()
 // ドキュメント数をカウント
 db.users.countDocuments()
-// 推定カウント（より高速）
+// 推定ドキュメント数（より高速）
 db.users.estimatedDocumentCount()
 // コレクションのインデックスを確認
 db.users.getIndexes()
@@ -116,7 +131,7 @@ db.users.getIndexes()
 
 ### サンプルドキュメント：`db.collection.findOne()`
 
-構造とデータ型を理解するためにサンプルドキュメントを取得します。
+構造とデータ型を理解するために、サンプルドキュメントを取得します。
 
 ```javascript
 // ドキュメントを 1 つ取得
@@ -136,7 +151,7 @@ db.users.findOne({}, { _id: 0 })
 db.users.find().limit(5)
 // スキップとリミット（ページネーション）
 db.users.find().skip(10).limit(5)
-// 整形表示
+// 読みやすい形式で表示
 db.users.find().pretty()
 ```
 
@@ -153,7 +168,7 @@ db.users.insertOne({
   age: 30,
   email: 'john@example.com',
 })
-// カスタム _id で挿入
+// カスタム_id で挿入
 db.users.insertOne({
   _id: 'custom_id_123',
   name: 'Jane Doe',
@@ -161,7 +176,22 @@ db.users.insertOne({
 })
 ```
 
-### 複数件挿入：`db.collection.insertMany()`
+<BaseQuiz id="mongodb-insert-1" correct="A">
+  <template #question>
+    `db.users.insertOne()` は何を返しますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>挿入されたドキュメントの_id を含む確認オブジェクト</BaseQuizOption>
+  <BaseQuizOption value="B">挿入されたドキュメント</BaseQuizOption>
+  <BaseQuizOption value="C">何も返さない</BaseQuizOption>
+  <BaseQuizOption value="D">挿入されたドキュメント数</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `insertOne()` は、`acknowledged: true`と、挿入されたドキュメントの `_id`（または提供されたカスタム`_id`）を含む`insertedId` を含む確認オブジェクトを返します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 複数挿入：`db.collection.insertMany()`
 
 単一の操作で複数のドキュメントを追加します。
 
@@ -182,12 +212,12 @@ db.users.insertMany(
 )
 ```
 
-### 日付の挿入：`new Date()`
+### 日付付き挿入：`new Date()`
 
 タイムスタンプフィールドを持つドキュメントを追加します。
 
 ```javascript
-// 現在の日付を挿入
+// 現在の日付で挿入
 db.posts.insertOne({
   title: 'My Blog Post',
   content: 'Post content here',
@@ -201,7 +231,7 @@ db.posts.insertOne({
 埋め込みオブジェクトと配列を持つドキュメントを追加します。
 
 ```javascript
-// ネストされたオブジェクトを挿入
+// ネストされたオブジェクトで挿入
 db.users.insertOne({
   name: 'John Doe',
   address: {
@@ -222,11 +252,11 @@ db.users.insertOne({
 ```javascript
 // すべてのドキュメントを検索
 db.users.find()
-// 条件付き検索
+// 条件を指定して検索
 db.users.find({ age: 30 })
-// 複数条件 (AND)
+// 複数の条件（AND）で検索
 db.users.find({ age: 30, status: 'active' })
-// OR 条件
+// OR 条件で検索
 db.users.find({ $or: [{ age: 25 }, { age: 30 }] })
 ```
 
@@ -243,9 +273,9 @@ db.users.find({}, { password: 0, _id: 0 })
 db.users.find({}, { 'address.city': 1 })
 ```
 
-### クエリ演算子：`$gt`, `$lt`, `$in` など
+### クエリ演算子：`$gt`, `$lt`, `$in`など
 
-より複雑なクエリのために比較演算子と論理演算子を使用します。
+複雑なクエリのために比較演算子と論理演算子を使用します。
 
 ```javascript
 // より大きい、より小さい
@@ -258,12 +288,27 @@ db.users.find({ status: { $ne: 'inactive' } })
 db.users.find({ email: { $exists: true } })
 ```
 
+<BaseQuiz id="mongodb-query-1" correct="B">
+  <template #question>
+    MongoDB クエリにおける `$gt` は何を意味しますか？
+  </template>
+  
+  <BaseQuizOption value="A">以上</BaseQuizOption>
+  <BaseQuizOption value="B" correct>より大きい</BaseQuizOption>
+  <BaseQuizOption value="C">グループ化</BaseQuizOption>
+  <BaseQuizOption value="D">合計を取得</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$gt` は「より大きい」を意味する比較演算子です。`{ age: { $gt: 25 } }`のようなクエリで使用され、age フィールドが 25 より大きいドキュメントを検索します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### テキスト検索：`$text`, `$regex`
 
 テキストとパターンマッチングを使用してドキュメントを検索します。
 
 ```javascript
-// テキスト検索（text インデックスが必要）
+// テキスト検索（テキストインデックスが必要）
 db.posts.find({ $text: { $search: 'mongodb tutorial' } })
 // Regex 検索
 db.users.find({ name: { $regex: '^John', $options: 'i' } })
@@ -280,7 +325,7 @@ db.users.find({ email: { $regex: '@gmail.com$' } })
 ```javascript
 // 単一フィールドを更新
 db.users.updateOne({ name: 'John Doe' }, { $set: { age: 31 } })
-// 複数フィールドを更新
+// 複数のフィールドを更新
 db.users.updateOne(
   { _id: ObjectId('...') },
   { $set: { age: 31, status: 'updated' } },
@@ -293,7 +338,7 @@ db.users.updateOne(
 )
 ```
 
-### 複数件更新：`db.collection.updateMany()`
+### 複数更新：`db.collection.updateMany()`
 
 クエリに一致するすべてのドキュメントを変更します。
 
@@ -316,7 +361,25 @@ db.users.updateOne(
 )
 // 配列にプッシュ
 db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
-// 配列からプル
+```
+
+<BaseQuiz id="mongodb-update-1" correct="C">
+  <template #question>
+    MongoDB の更新操作における `$set` は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">フィールドを削除する</BaseQuizOption>
+  <BaseQuizOption value="B">配列に要素を追加する</BaseQuizOption>
+  <BaseQuizOption value="C" correct>フィールドの値を設定する</BaseQuizOption>
+  <BaseQuizOption value="D">配列から要素を削除する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$set` 演算子は、ドキュメント内のフィールドの値を設定します。フィールドが存在しない場合は作成され、存在する場合は値を更新します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```javascript
+// 配列からプル（削除）
 db.users.updateOne({ name: 'John' }, { $pull: { hobbies: 'reading' } })
 ```
 
@@ -374,7 +437,7 @@ db.sales.aggregate([
 
 ### 集計演算子：`$sum`, `$avg`, `$max`
 
-統計値を計算し、数学的な操作を実行します。
+統計値を計算し、数学的演算を実行します。
 
 ```javascript
 // 統計演算
@@ -393,7 +456,7 @@ db.products.aggregate([
 
 ### プロジェクションステージ：`$project`
 
-ドキュメント構造を変換し、計算されたフィールドを作成します。
+ドキュメント構造を変換し、計算フィールドを作成します。
 
 ```javascript
 // フィールドのプロジェクションと計算
@@ -424,7 +487,7 @@ db.users.deleteOne({ _id: ObjectId('...') })
 db.posts.deleteOne({ status: 'draft', author: 'unknown' })
 ```
 
-### 複数件削除：`db.collection.deleteMany()`
+### 複数削除：`db.collection.deleteMany()`
 
 クエリ条件に一致するすべてのドキュメントを削除します。
 
@@ -441,7 +504,7 @@ db.logs.deleteMany({
 
 ### 検索して削除：`db.collection.findOneAndDelete()`
 
-単一の不可分な操作でドキュメントを検索して削除します。
+単一の原子的な操作でドキュメントを検索して削除します。
 
 ```javascript
 // 検索して削除
@@ -469,16 +532,16 @@ db.users.createIndex({ email: 1 }, { unique: true })
 
 ### インデックス管理：`getIndexes()`, `dropIndex()`
 
-コレクション上の既存のインデックスを表示および管理します。
+コレクション上に存在するインデックスを表示および管理します。
 
 ```javascript
 // すべてのインデックスを一覧表示
 db.users.getIndexes()
 // 特定のインデックスを削除
 db.users.dropIndex({ email: 1 })
-// 名前でインデックスを削除
+// インデックス名で削除
 db.users.dropIndex('email_1')
-// _id 以外のすべてのインデックスを削除
+// すべてのインデックスを削除（_id を除く）
 db.users.dropIndexes()
 ```
 
@@ -505,11 +568,11 @@ db.users
 MongoDB のクエリと操作を最適化するためのベストプラクティス。
 
 ```javascript
-// データ転送を制限するためにプロジェクションを使用
+// データ転送量を制限するためにプロジェクションを使用
 db.users.find({ status: 'active' }, { name: 1, email: 1 })
 // パフォーマンス向上のために結果を制限
 db.posts.find().sort({ createdAt: -1 }).limit(10)
-// 特定のインデックスを強制するためにヒントを使用
+// 特定のインデックスを強制的に使用するためにヒントを使用
 db.users.find({ age: 25 }).hint({ age: 1 })
 ```
 
@@ -517,10 +580,10 @@ db.users.find({ age: 25 }).hint({ age: 1 })
 
 ### MongoDB への接続：`mongosh`
 
-MongoDB シェルを起動し、さまざまなインスタンスに接続します。
+MongoDB シェルを起動し、異なるインスタンスに接続します。
 
 ```bash
-# ローカル MongoDB に接続
+# ローカルMongoDBに接続
 mongosh
 # 特定のホストとポートに接続
 mongosh "mongodb://localhost:27017"
@@ -532,7 +595,7 @@ mongosh --host localhost --port 27017
 
 ### シェルヘルパー: `help`, `exit`
 
-ヘルプ情報を取得し、シェルセッションを管理します。
+ヘルプ情報の取得とシェルセッションの管理。
 
 ```javascript
 // 一般的なヘルプ
@@ -547,7 +610,7 @@ exit
 
 ### シェル変数と設定
 
-シェル動作を設定し、JavaScript 変数を使用します。
+シェル動作の設定と JavaScript 変数の使用。
 
 ```javascript
 // 変数を設定
@@ -562,32 +625,32 @@ var user = db.users.findOne({ name: 'John' })
 print('User age: ' + user.age)
 ```
 
-## データのインポートとエクスポート
+## データのエクスポートとインポート
 
 ### データのインポート：`mongoimport`
 
 JSON、CSV、または TSV ファイルから MongoDB にデータをロードします。
 
 ```bash
-# JSON ファイルをインポート
+# JSONファイルをインポート
 mongoimport --db myapp --collection users --file users.json
-# CSV ファイルをインポート
+# CSVファイルをインポート
 mongoimport --db myapp --collection products \
   --type csv --headerline --file products.csv
-# upsert モードでインポート
+# Upsertモードでインポート
 mongoimport --db myapp --collection users \
   --file users.json --mode upsert
 ```
 
 ### データの書き出し：`mongoexport`
 
-MongoDB データを JSON または CSV 形式にエクスポートします。
+MongoDB のデータを JSON または CSV 形式でエクスポートします。
 
 ```bash
-# JSON にエクスポート
+# JSONにエクスポート
 mongoexport --db myapp --collection users \
   --out users.json
-# CSV にエクスポート
+# CSVにエクスポート
 mongoexport --db myapp --collection users \
   --type csv --fields name,email,age --out users.csv
 # クエリ付きでエクスポート
@@ -615,7 +678,7 @@ mongodump --db myapp --gzip --out /backup/
 ```bash
 # データベースをリストア
 mongorestore --db myapp /backup/myapp/
-# drop オプション付きでリストア
+# --dropオプション付きでリストア
 mongorestore --db myapp --drop /backup/myapp/
 # 圧縮されたバックアップをリストア
 mongorestore --gzip --db myapp /backup/myapp/
@@ -623,14 +686,14 @@ mongorestore --gzip --db myapp /backup/myapp/
 
 ## MongoDB のインストールとセットアップ
 
-### MongoDB コミュニティサーバー
+### MongoDB Community Server
 
 MongoDB Community Edition のダウンロードとインストール。
 
 ```bash
 # Ubuntu/Debian
 sudo apt-get install -y mongodb-org
-# MongoDB サービスを開始
+# MongoDBサービスを開始
 sudo systemctl start mongod
 # 自動起動を有効化
 sudo systemctl enable mongod
@@ -643,9 +706,9 @@ sudo systemctl status mongod
 Docker コンテナを使用して MongoDB を実行します。
 
 ```bash
-# MongoDB イメージをプル
+# MongoDBイメージをプル
 docker pull mongo
-# MongoDB コンテナを実行
+# MongoDBコンテナを実行
 docker run --name mongodb -d \
   -p 27017:27017 \
   -v mongodb_data:/data/db \
@@ -656,10 +719,10 @@ docker exec -it mongodb mongosh
 
 ### MongoDB Compass (GUI)
 
-MongoDB の公式 GUI ツールをインストールして使用します。
+MongoDB の公式 GUI ツールのインストールと使用。
 
 ```bash
-# mongodb.com からダウンロード
+# mongodb.comからダウンロード
 # 接続文字列を使用して接続
 mongodb://localhost:27017
 # 利用可能な機能:
@@ -676,14 +739,14 @@ mongodb://localhost:27017
 適切なロールと権限を持つデータベースユーザーを設定します。
 
 ```javascript
-// 管理者ユーザーを作成
+// 管理者ユーザーの作成
 use admin
 db.createUser({
   user: "admin",
   pwd: "securepassword",
   roles: [{role: "root", db: "admin"}]
 })
-// データベースユーザーを作成
+// データベースユーザーの作成
 use myapp
 db.createUser({
   user: "appuser",
@@ -697,12 +760,12 @@ db.createUser({
 MongoDB に認証を要求するように設定します。
 
 ```bash
-# /etc/mongod.conf を編集
+# /etc/mongod.confを編集
 security:
   authorization: enabled
-# MongoDB を再起動
+# MongoDBを再起動
 sudo systemctl restart mongod
-# 認証情報を使用して接続
+# 認証を使用して接続
 mongosh -u admin -p --authenticationDatabase admin
 ```
 
@@ -711,7 +774,7 @@ mongosh -u admin -p --authenticationDatabase admin
 高可用性のためにレプリカセットを設定します。
 
 ```javascript
-// レプリカセットを初期化
+// レプリカセットの初期化
 rs.initiate({
   _id: 'myReplicaSet',
   members: [
@@ -746,7 +809,7 @@ processManagement:
 
 ### 一般的なエラーと解決策
 
-MongoDB で頻繁に発生する問題の特定と修正。
+頻繁に発生する MongoDB の問題を特定し修正します。
 
 ```javascript
 // 接続エラー
@@ -771,7 +834,7 @@ try {
 ```javascript
 // 現在の操作を確認
 db.currentOp()
-// 時間のかかる操作をキル
+// 長時間実行中の操作をキル
 db.killOp(operationId)
 // サーバーの状態
 db.serverStatus()
@@ -819,7 +882,7 @@ try {
 }
 ```
 
-### Change Streams: `db.collection.watch()`
+### 変更ストリーム：`db.collection.watch()`
 
 コレクションの変更をリアルタイムで監視します。
 
@@ -829,7 +892,7 @@ const changeStream = db.users.watch()
 changeStream.on('change', (change) => {
   console.log('Change detected:', change)
 })
-// フィルタ付きで監視
+// フィルター付きで監視
 const pipeline = [{ $match: { operationType: 'insert' } }]
 const changeStream = db.users.watch(pipeline)
 ```

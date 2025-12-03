@@ -1,6 +1,6 @@
 ---
-title: '자바스크립트 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 JavaScript 를 학습하세요.'
+title: 'JavaScript 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 JavaScript 프로그래밍을 배우세요. JS 구문, ES6+, DOM 조작, async/await, Node.js 및 최신 웹 개발을 위한 빠른 참조.'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ JavaScript 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/javascript">Hands-On 실습으로 JavaScript 배우기</a>
+<a target="_blank" href="https://labex.io/ko/learn/javascript">Hands-On Labs 로 JavaScript 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Hands-On 실습과 실제 시나리오를 통해 JavaScript 프로그래밍을 배우십시오. LabEx 는 필수 구문, 함수, DOM 조작, 비동기 프로그래밍 및 최신 ES6+ 기능을 다루는 포괄적인 JavaScript 과정을 제공합니다. 효율적인 웹 개발 및 프로그래밍 워크플로우를 위해 JavaScript 를 마스터하십시오.
+실습 랩과 실제 시나리오를 통해 JavaScript 프로그래밍을 학습하세요. LabEx 는 필수 구문, 함수, DOM 조작, 비동기 프로그래밍 및 최신 ES6+ 기능을 다루는 포괄적인 JavaScript 과정을 제공합니다. 효율적인 웹 개발 및 프로그래밍 워크플로우를 위해 JavaScript 를 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -31,14 +31,29 @@ let name = 'John'
 let age = 25
 age = 26 // 재할당 가능
 
-// 블록 범위, 불변
+// 블록 범위, 변경 불가능
 const PI = 3.14159
 const user = { name: 'Alice' }
 user.age = 30 // 객체 속성은 수정 가능
 
-// 함수 범위 (최신 JS 에서는 피함)
+// 함수 범위 (최신 JS 에서는 사용 지양)
 var oldVariable = 'legacy'
 ```
+
+<BaseQuiz id="javascript-let-const-1" correct="B">
+  <template #question>
+    `let` 과 `const` 의 주요 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">let 은 함수 범위이고, const 는 블록 범위입니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>let 은 재할당을 허용하고, const 는 재할당을 허용하지 않습니다</BaseQuizOption>
+  <BaseQuizOption value="C">const 는 숫자에서만 사용할 수 있고, let 은 모든 타입에 사용할 수 있습니다</BaseQuizOption>
+  <BaseQuizOption value="D">차이점이 없습니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `let` 과 `const` 는 모두 블록 범위이지만, `let` 은 변수 재할당을 허용하는 반면 `const` 는 재할당을 방지합니다. 하지만 `const` 객체의 속성은 여전히 수정될 수 있습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 기본 타입 (Primitive Types)
 
@@ -147,6 +162,21 @@ const processData = (data) => {
 }
 ```
 
+<BaseQuiz id="javascript-arrow-1" correct="C">
+  <template #question>
+    화살표 함수의 주요 특징은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">함수 선언처럼 호이스팅됩니다</BaseQuizOption>
+  <BaseQuizOption value="B">자체적인 `this` 바인딩을 가집니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>자신을 둘러싼 범위로부터 `this` 를 상속받습니다</BaseQuizOption>
+  <BaseQuizOption value="D">값을 반환할 수 없습니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    화살표 함수는 자체적인 `this` 바인딩을 가지지 않습니다. 대신, 렉시컬 (둘러싼) 범위로부터 `this` 를 상속받으므로 콜백 및 이벤트 핸들러에서 컨텍스트를 유지하고 싶을 때 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 고차 함수 (Higher-Order Functions)
 
 다른 함수를 인수로 받거나 반환하는 함수입니다.
@@ -160,7 +190,7 @@ function createMultiplier(factor) {
 }
 const double = createMultiplier(2)
 
-// 매개변수로 사용되는 함수
+// 매개변수로 함수 사용
 function applyOperation(arr, operation) {
   return arr.map(operation)
 }
@@ -187,16 +217,31 @@ const evens = numbers.filter((x) => x % 2 === 0)
 const sum = numbers.reduce((acc, curr) => acc + curr, 0)
 // 15
 
-// 메서드 연결 (Chain methods)
+// 메서드 체이닝
 const result = numbers
   .filter((x) => x > 2)
   .map((x) => x * 3)
   .reduce((a, b) => a + b, 0)
 ```
 
+<BaseQuiz id="javascript-array-1" correct="A">
+  <template #question>
+    `filter()` 는 무엇을 반환합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>테스트를 통과하는 요소들로 이루어진 새 배열</BaseQuizOption>
+  <BaseQuizOption value="B">테스트를 통과하는 첫 번째 요소</BaseQuizOption>
+  <BaseQuizOption value="C">배열에서 축소된 단일 값</BaseQuizOption>
+  <BaseQuizOption value="D">제자리에서 수정된 원본 배열</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `filter()` 메서드는 제공된 함수로 구현된 테스트를 통과하는 모든 요소를 포함하는 새 배열을 생성합니다. 원본 배열은 수정하지 않습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 배열 유틸리티: `find()`, `includes()`, `sort()`
 
-배열 요소를 검색하고, 확인하고, 정리합니다.
+배열 요소를 검색하고, 확인하고, 정렬합니다.
 
 ```javascript
 const users = [
@@ -217,7 +262,7 @@ const sorted = users.sort((a, b) => a.age - b.age)
 
 ### 객체 생성 및 조작
 
-객체 및 해당 속성으로 작업합니다.
+객체와 그 속성을 다룹니다.
 
 ```javascript
 // 객체 리터럴
@@ -279,7 +324,22 @@ const listItems = document.querySelectorAll('li')
 const buttonsArray = Array.from(allButtons)
 ```
 
-### 요소 수정
+<BaseQuiz id="javascript-dom-1" correct="C">
+  <template #question>
+    `querySelector()` 와 `querySelectorAll()` 의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
+  <BaseQuizOption value="B">querySelector 가 더 빠릅니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>querySelector 는 일치하는 첫 번째 요소를 반환하고, querySelectorAll 은 일치하는 모든 요소를 반환합니다</BaseQuizOption>
+  <BaseQuizOption value="D">querySelector 는 ID 에 사용되고, querySelectorAll 은 클래스에 사용됩니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `querySelector()` 는 CSS 선택자와 일치하는 첫 번째 요소를 반환하는 반면, `querySelectorAll()` 는 일치하는 모든 요소를 포함하는 NodeList 를 반환합니다. 하나의 요소가 필요할 때는 `querySelector()` 를, 여러 요소가 필요할 때는 `querySelectorAll()` 를 사용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 요소 수정 (Element Modification)
 
 콘텐츠, 속성 및 스타일을 변경합니다.
 
@@ -315,8 +375,8 @@ parent.appendChild(div)
 parent.insertBefore(div, parent.firstChild)
 
 // 최신 삽입 메서드
-parent.prepend(div) // 맨 앞에 삽입
-parent.append(div) // 맨 뒤에 삽입
+parent.prepend(div) // 시작 부분에 삽입
+parent.append(div) // 끝 부분에 삽입
 div.before(newElement) // div 앞에 삽입
 div.after(newElement) // div 뒤에 삽입
 ```
@@ -358,7 +418,7 @@ button.addEventListener('click', function (event) {
 // 화살표 함수 이벤트 핸들러
 button.addEventListener('click', (e) => {
   e.preventDefault() // 기본 동작 방지
-  console.log('클릭됨:', e.target)
+  console.log('클릭 대상:', e.target)
 })
 
 // 옵션이 있는 이벤트 리스너
@@ -380,7 +440,7 @@ element.addEventListener('mouseout', handleMouseOut)
 
 // 키보드 이벤트
 input.addEventListener('keydown', (e) => {
-  console.log('키 눌림:', e.key)
+  console.log('눌린 키:', e.key)
   if (e.key === 'Enter') {
     // Enter 키 처리
   }
@@ -443,7 +503,7 @@ const fetchData = new Promise((resolve, reject) => {
     if (success) {
       resolve({ data: 'Hello World' })
     } else {
-      reject(new Error('가져오기 실패'))
+      reject(new Error('Failed to fetch'))
     }
   }, 1000)
 })
@@ -472,7 +532,7 @@ async function getData() {
   }
 }
 
-// Async 함수 사용
+// async 함수 사용
 getData()
   .then((data) => console.log(data))
   .catch((error) => console.error(error))
@@ -514,15 +574,15 @@ Promise.all(promises)
     console.log('게시물:', posts)
   })
 
-// Race - 먼저 해결되는 Promise 가 승리
+// Race - 가장 먼저 해결되는 Promise 가 승리
 Promise.race(promises).then((firstResponse) => console.log('첫 번째 응답'))
 ```
 
-## ES6+ 최신 기능
+## ES6+ 최신 기능 (ES6+ Modern Features)
 
 ### 템플릿 리터럴 및 스프레드 연산자 (Template Literals & Spread Operator)
 
-문자열 보간 및 배열/객체 확산입니다.
+문자열 보간 및 배열/객체 확산.
 
 ```javascript
 // 템플릿 리터럴
@@ -549,7 +609,7 @@ const obj2 = { ...obj1, c: 3 } // { a: 1, b: 2, c: 3 }
 
 ### 클래스 및 모듈 (Classes & Modules)
 
-객체 지향 프로그래밍 및 모듈 시스템입니다.
+객체 지향 프로그래밍 및 모듈 시스템.
 
 ```javascript
 // ES6 클래스
@@ -597,7 +657,7 @@ try {
 } catch (error) {
   console.error('오류 발생:', error.message)
 } finally {
-  console.log('정리 코드가 여기서 실행됩니다')
+  console.log('정리 코드가 여기에 실행됩니다')
 }
 
 // 비동기 오류 처리
@@ -615,7 +675,7 @@ async function asyncOperation() {
 
 ### 사용자 정의 오류 및 디버깅
 
-사용자 정의 오류 유형을 생성하고 효과적으로 디버그합니다.
+사용자 정의 오류 유형을 생성하고 효과적으로 디버깅합니다.
 
 ```javascript
 // 사용자 정의 오류 클래스
@@ -630,7 +690,7 @@ class ValidationError extends Error {
 // 사용자 정의 오류 throw
 function validateEmail(email) {
   if (!email.includes('@')) {
-    throw new ValidationError('잘못된 이메일 형식', 'email')
+    throw new ValidationError('유효하지 않은 이메일 형식', 'email')
   }
 }
 
@@ -640,7 +700,7 @@ console.warn('경고 메시지')
 console.error('오류 메시지')
 console.table([{ name: 'John', age: 30 }])
 console.time('operation')
-// ... 일부 코드
+// ... 측정할 코드
 console.timeEnd('operation')
 ```
 
@@ -680,12 +740,12 @@ if (localStorage.getItem('username') !== null) {
 JSON 데이터를 구문 분석하고 문자열로 변환합니다.
 
 ```javascript
-// JavaScript 객체를 JSON 문자열로 변환
+// JavaScript 객체를 JSON 문자열로
 const user = { name: 'Alice', age: 25, active: true }
 const jsonString = JSON.stringify(user)
 // '{"name":"Alice","age":25,"active":true}'
 
-// JSON 문자열을 JavaScript 객체로 변환
+// JSON 문자열을 JavaScript 객체로
 const jsonData = '{"name":"Bob","age":30}'
 const userObj = JSON.parse(jsonData)
 
@@ -693,7 +753,7 @@ const userObj = JSON.parse(jsonData)
 try {
   const data = JSON.parse(invalidJson)
 } catch (error) {
-  console.error('잘못된 JSON:', error.message)
+  console.error('유효하지 않은 JSON:', error.message)
 }
 
 // 사용자 정의 replacer/reviver를 사용한 JSON
@@ -724,7 +784,7 @@ const text = 'Call me at 123-456-7890';
 const phoneMatch = text.match(/\d{3}-\d{3}-\d{4}/);
 console.log(phoneMatch[0]); // '123-456-7890'
 
-// 전역 검색 (Global search)
+// 전역 검색
 const allNumbers = text.match(/\d+/g); // ['123', '456', '7890']
 ```
 
@@ -754,18 +814,18 @@ const patterns = {
 }
 ```
 
-## JavaScript 설정 및 환경
+## JavaScript 설정 및 환경 (JavaScript Setup & Environment)
 
-### 브라우저 콘솔
+### 브라우저 콘솔 (Browser Console)
 
 웹 브라우저의 내장 JavaScript 환경입니다.
 
 ```javascript
-// 브라우저 개발자 도구 열기 (F12)
-// 콘솔 탭으로 이동
+// 웹 브라우저 개발자 도구 열기 (F12)
+// Console 탭으로 이동
 console.log('Hello JavaScript!')
 
-// 직접 코드 테스트
+// 코드를 직접 테스트
 let x = 5
 let y = 10
 console.log(x + y) // 15
@@ -815,7 +875,7 @@ JavaScript 개발에 필수적인 도구입니다.
 npm install --save-dev @babel/core @babel/preset-env
 ```
 
-## 모범 사례 및 성능
+## 모범 사례 및 성능 (Best Practices & Performance)
 
 ### 성능 최적화
 
@@ -837,7 +897,7 @@ input.addEventListener('input', debouncedSearch)
 
 // 효율적인 DOM 쿼리
 const elements = document.querySelectorAll('.item')
-// 길이 캐싱으로 재계산 방지
+// 길이 계산을 피하기 위해 길이 캐시
 for (let i = 0, len = elements.length; i < len; i++) {
   // elements[i] 처리
 }
@@ -845,7 +905,7 @@ for (let i = 0, len = elements.length; i < len; i++) {
 
 ### 코드 구성 및 표준
 
-유지 관리 및 가독성을 위해 코드를 구성합니다.
+유지 관리 및 가독성을 위해 코드를 구조화합니다.
 
 ```javascript
 // 엄격 모드 사용
@@ -866,12 +926,12 @@ function calculateArea(width, height) {
   return width * height
 }
 
-// 기본적으로 const 사용, 재할당이 필요할 때 let 사용
+// 기본적으로 const 사용, 재할당이 필요할 때만 let 사용
 const config = { theme: 'dark' }
 let counter = 0
 ```
 
-## JavaScript 코드 테스트
+## JavaScript 코드 테스트 (Testing JavaScript Code)
 
 ### Jest 를 사용한 단위 테스트
 
@@ -892,11 +952,11 @@ export function multiply(a, b) {
 // math.test.js
 import { add, multiply } from './math.js'
 
-test('1 + 2 는 3 과 같아야 합니다', () => {
+test('adds 1 + 2 to equal 3', () => {
   expect(add(1, 2)).toBe(3)
 })
 
-test('3 * 4 는 12 와 같아야 합니다', () => {
+test('multiplies 3 * 4 to equal 12', () => {
   expect(multiply(3, 4)).toBe(12)
 })
 
@@ -926,7 +986,7 @@ performance.measure('operation', 'start', 'end')
 const measurements = performance.getEntriesByType('measure')
 ```
 
-## 관련 링크
+## 관련 링크 (Relevant Links)
 
 - <router-link to="/html">HTML 치트 시트</router-link>
 - <router-link to="/css">CSS 치트 시트</router-link>

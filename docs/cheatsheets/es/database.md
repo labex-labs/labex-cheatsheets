@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Bases de Datos'
-description: 'Aprenda Bases de Datos con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Bases de Datos | LabEx'
+description: 'Aprenda gestión de bases de datos con esta hoja de trucos completa. Referencia rápida para consultas SQL, diseño de bases de datos, normalización, indexación, transacciones y administración de bases de datos relacionales.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Bases de Datos
 <a target="_blank" href="https://labex.io/es/learn/database">Aprenda Bases de Datos con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda gestión de bases de datos y SQL a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de bases de datos que cubren comandos SQL esenciales, manipulación de datos, optimización de consultas, diseño de bases de datos y administración. Domine las bases de datos relacionales, los sistemas NoSQL y las mejores prácticas de seguridad de bases de datos.
+Aprenda gestión de bases de datos y SQL a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de bases de datos que cubren comandos SQL esenciales, manipulación de datos, optimización de consultas, diseño de bases de datos y mejores prácticas de administración. Domine las bases de datos relacionales, los sistemas NoSQL y las mejores prácticas de seguridad de bases de datos.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -35,6 +35,21 @@ COLLATE utf8mb4_general_ci;
 -- Usar la base de datos
 USE company_db;
 ```
+
+<BaseQuiz id="database-create-1" correct="A">
+  <template #question>
+    ¿Qué hace `CREATE DATABASE company_db`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Crea una nueva base de datos vacía llamada company_db</BaseQuizOption>
+  <BaseQuizOption value="B">Crea una tabla en la base de datos</BaseQuizOption>
+  <BaseQuizOption value="C">Elimina la base de datos</BaseQuizOption>
+  <BaseQuizOption value="D">Realiza una copia de seguridad de la base de datos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `CREATE DATABASE` crea una nueva base de datos vacía. Después de la creación, debe usar `USE` para seleccionarla y luego crear tablas dentro de ella.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Mostrar Bases de Datos: `SHOW DATABASES`
 
@@ -140,9 +155,24 @@ COLUMN phone;
 RENAME TABLE employees TO staff;
 ```
 
+<BaseQuiz id="database-alter-1" correct="C">
+  <template #question>
+    ¿Qué hace `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)`?
+  </template>
+  
+  <BaseQuizOption value="A">Elimina la columna phone</BaseQuizOption>
+  <BaseQuizOption value="B">Modifica la columna phone</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Añade una nueva columna llamada phone a la tabla employees</BaseQuizOption>
+  <BaseQuizOption value="D">Renombra la tabla</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ALTER TABLE ... ADD COLUMN` añade una nueva columna a una tabla existente. La nueva columna se añadirá con el tipo de dato especificado y será NULL para las filas existentes a menos que especifique un valor predeterminado.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Información de Tabla: `SHOW`
 
-Obtenga información detallada sobre tablas y sus propiedades.
+Obtenga información detallada sobre las tablas y sus propiedades.
 
 ```sql
 -- Mostrar todas las tablas
@@ -160,7 +190,7 @@ SELECT COUNT(*) FROM employees;
 
 ### Insertar Datos: `INSERT INTO`
 
-Agregue nuevos registros a sus tablas.
+Añada nuevos registros a sus tablas.
 
 ```sql
 -- Insertar registro único
@@ -216,7 +246,7 @@ TRUNCATE TABLE temp_employees;
 
 ### Reemplazar Datos: `REPLACE INTO`
 
-Inserte o actualice registros basándose en la clave primaria.
+Insertar o actualizar registros basándose en la clave primaria.
 
 ```sql
 -- Reemplazar registro (insertar o actualizar)
@@ -260,6 +290,24 @@ SELECT * FROM employees
 WHERE department = 'Engineering' AND salary > 75000;
 -- Coincidencia de patrones
 SELECT * FROM employees WHERE name LIKE 'John%';
+```
+
+<BaseQuiz id="database-where-1" correct="C">
+  <template #question>
+    ¿Qué coincide `LIKE 'John%'` en una cláusula WHERE?
+  </template>
+  
+  <BaseQuizOption value="A">Solo coincidencias exactas con "John"</BaseQuizOption>
+  <BaseQuizOption value="B">Valores que terminan en "John"</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Valores que comienzan con "John"</BaseQuizOption>
+  <BaseQuizOption value="D">Valores que contienen "John" en cualquier lugar</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El comodín `%` en SQL coincide con cualquier secuencia de caracteres. `LIKE 'John%'` coincide con cualquier valor que comience con "John", como "John", "Johnny", "Johnson", etc.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```sql
 -- Consultas de rango
 SELECT * FROM employees
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
@@ -364,7 +412,7 @@ LEFT JOIN projects p ON e.id = p.employee_id;
 
 ### Funciones de Ventana: Analítica Avanzada
 
-Realice cálculos a través de filas relacionadas.
+Realice cálculos en filas relacionadas.
 
 ```sql
 -- Numeración de filas
@@ -376,7 +424,7 @@ SELECT name, salary,
     SUM(salary) OVER (ORDER BY hire_date) as
 running_total
 FROM employees;
--- Partición por grupos
+-- Particionar por grupos
 SELECT name, department, salary,
     AVG(salary) OVER (PARTITION BY department) as
 dept_avg
@@ -438,7 +486,7 @@ department);
 
 ### Restricciones CHECK: `CHECK`
 
-Imponga reglas de negocio y validación de datos.
+Aplique reglas de negocio y validación de datos.
 
 ```sql
 -- Restricción check simple
@@ -466,7 +514,7 @@ employees(department, salary);
 -- Índice único
 CREATE UNIQUE INDEX idx_employee_email ON
 employees(email);
--- Mostrar índices de tabla
+-- Mostrar índices de la tabla
 SHOW INDEX FROM employees;
 ```
 
@@ -486,18 +534,18 @@ JOIN departments d ON e.department = d.id;
 
 ### Monitoreo de Rendimiento
 
-Monitoree la actividad y los cuellos de botella del rendimiento de la base de datos.
+Monitoree la actividad y el rendimiento de la base de datos.
 
 ```sql
 -- Mostrar procesos en ejecución
 SHOW PROCESSLIST;
 -- Mostrar estado de la base de datos
 SHOW STATUS LIKE 'Slow_queries';
--- Información de caché de consulta
+-- Información de la caché de consultas
 SHOW STATUS LIKE 'Qcache%';
 ```
 
-### Mantenimiento de Base de Datos
+### Mantenimiento de Bases de Datos
 
 Tareas de mantenimiento regulares para un rendimiento óptimo.
 
@@ -606,7 +654,7 @@ GRANT ALL PRIVILEGES ON company_db.* TO
 -- Revocar privilegios
 REVOKE INSERT ON company_db.employees FROM
 'app_user'@'localhost';
--- Mostrar privilegios del usuario
+-- Mostrar concesiones de usuario
 SHOW GRANTS FOR 'app_user'@'localhost';
 ```
 
@@ -631,8 +679,8 @@ Proteja contra vulnerabilidades de seguridad comunes.
 
 ```sql
 -- Usar sentencias preparadas (nivel de aplicación)
--- Mal: SELECT * FROM users WHERE id = ' + userInput
--- Bien: Usar consultas parametrizadas
+-- Malo: SELECT * FROM users WHERE id = ' + userInput
+-- Bueno: Usar consultas parametrizadas
 -- Validar tipos de datos de entrada
 -- Usar procedimientos almacenados cuando sea posible
 -- Aplicar principio de mínimo privilegio
@@ -709,7 +757,7 @@ SHOW STATUS LIKE 'Connections';
 
 ### Gestión de Conexiones
 
-Administrar conexiones y agrupación de bases de datos.
+Administre las conexiones y el pooling de la base de datos.
 
 ```sql
 -- Mostrar conexiones actuales
@@ -721,12 +769,12 @@ SET SESSION wait_timeout = 600;
 SET SESSION interactive_timeout = 600;
 ```
 
-### Configuración de Copia de Seguridad
+### Configuración de Copias de Seguridad
 
-Configurar copias de seguridad automatizadas de la base de datos.
+Configure copias de seguridad automatizadas de la base de datos.
 
-```sql
--- Script de copia de seguridad automatizado
+```bash
+# Script de copia de seguridad automatizado
 #!/bin/bash
 DATE=$(date +%Y%m%d_%H%M%S)
 mysqldump -u backup_user -p mydatabase >
@@ -735,12 +783,12 @@ backup_$DATE.sql
 0 2 * * * /path/to/backup_script.sh
 ```
 
-### Monitoreo y Registros
+### Monitoreo y Registro (Logging)
 
-Monitorear la actividad y el rendimiento de la base de datos.
+Monitoree la actividad y el rendimiento de la base de datos.
 
 ```sql
--- Configuración de recuperación de punto en el tiempo
+-- Configuración de recuperación punto en el tiempo
 SET GLOBAL log_bin = ON;
 -- Habilitar registro de consultas lentas
 SET GLOBAL slow_query_log = 'ON';
@@ -758,7 +806,7 @@ GROUP BY table_schema;
 
 ### Mejores Prácticas de Escritura de Consultas
 
-Escriba consultas SQL limpias, eficientes y legibles.
+Escriba SQL limpio, eficiente y legible.
 
 ```sql
 -- Usar alias de tabla significativos

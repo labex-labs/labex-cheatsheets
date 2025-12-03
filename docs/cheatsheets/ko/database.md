@@ -1,6 +1,6 @@
 ---
-title: '데이터베이스 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 데이터베이스를 학습하세요.'
+title: '데이터베이스 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 데이터베이스 관리를 학습하세요. SQL 쿼리, 데이터베이스 설계, 정규화, 인덱싱, 트랜잭션 및 관계형 데이터베이스 관리를 위한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
@@ -12,7 +12,7 @@ pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/database">실습 랩을 통해 데이터베이스 학습</a>
+<a target="_blank" href="https://labex.io/ko/learn/database">실습 랩을 통해 데이터베이스 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 실습 랩과 실제 시나리오를 통해 데이터베이스 관리 및 SQL 을 학습하세요. LabEx 는 필수 SQL 명령어, 데이터 조작, 쿼리 최적화, 데이터베이스 설계 및 관리를 다루는 포괄적인 데이터베이스 과정을 제공합니다. 관계형 데이터베이스, NoSQL 시스템 및 데이터베이스 보안 모범 사례를 숙달하세요.
@@ -36,7 +36,22 @@ COLLATE utf8mb4_general_ci;
 USE company_db;
 ```
 
-### 데이터베이스 보기: `SHOW DATABASES`
+<BaseQuiz id="database-create-1" correct="A">
+  <template #question>
+    `CREATE DATABASE company_db`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>company_db 라는 새 비어 있는 데이터베이스를 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="B">데이터베이스에 테이블을 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="C">데이터베이스를 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="D">데이터베이스를 백업합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `CREATE DATABASE`는 새롭고 비어 있는 데이터베이스를 생성합니다. 생성 후에는 `USE` 를 사용하여 선택하고 테이블을 생성해야 합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 데이터베이스 표시: `SHOW DATABASES`
 
 서버에서 사용 가능한 모든 데이터베이스 목록을 표시합니다.
 
@@ -140,6 +155,21 @@ COLUMN phone;
 RENAME TABLE employees TO staff;
 ```
 
+<BaseQuiz id="database-alter-1" correct="C">
+  <template #question>
+    `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A">phone 열을 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="B">phone 열을 수정합니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>employees 테이블에 phone 이라는 새 열을 추가합니다</BaseQuizOption>
+  <BaseQuizOption value="D">테이블 이름을 변경합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ALTER TABLE ... ADD COLUMN`은 기존 테이블에 새 열을 추가합니다. 기본값을 지정하지 않으면 새 열은 기존 행에 대해 NULL 이 됩니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 테이블 정보: `SHOW`
 
 테이블 및 속성에 대한 자세한 정보를 얻습니다.
@@ -210,7 +240,7 @@ WHERE department = 'Temporary';
 -- 조건부 삭제
 DELETE FROM employees
 WHERE hire_date < '2020-01-01' AND salary < 50000;
--- 테이블 비우기 (모든 레코드에 대해 더 빠름)
+-- 테이블의 모든 레코드를 더 빠르게 비우기
 TRUNCATE TABLE temp_employees;
 ```
 
@@ -260,6 +290,24 @@ SELECT * FROM employees
 WHERE department = 'Engineering' AND salary > 75000;
 -- 패턴 일치
 SELECT * FROM employees WHERE name LIKE 'John%';
+```
+
+<BaseQuiz id="database-where-1" correct="C">
+  <template #question>
+    WHERE 절에서 `LIKE 'John%'`는 무엇과 일치합니까?
+  </template>
+  
+  <BaseQuizOption value="A">"John"과 정확히 일치하는 값</BaseQuizOption>
+  <BaseQuizOption value="B">"John"으로 끝나는 값</BaseQuizOption>
+  <BaseQuizOption value="C" correct>"John"으로 시작하는 값</BaseQuizOption>
+  <BaseQuizOption value="D">어디에든 "John"을 포함하는 값</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    SQL 에서 `%` 와일드카드는 모든 문자 시퀀스와 일치합니다. `LIKE 'John%'`는 "John", "Johnny", "Johnson" 등 "John"으로 시작하는 모든 값과 일치합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```sql
 -- 범위 쿼리
 SELECT * FROM employees
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
@@ -313,7 +361,7 @@ FROM employees;
 SELECT department, COUNT(*) as employee_count,
 AVG(salary) as avg_salary
 FROM employees GROUP BY department;
--- 그룹 필터링을 위한 Having 절
+-- 그룹 필터링을 위한 HAVING 절
 SELECT department, COUNT(*) as count
 FROM employees
 GROUP BY department
@@ -328,13 +376,13 @@ HAVING COUNT(*) > 5;
 -- WHERE 절의 서브쿼리
 SELECT * FROM employees
 WHERE salary > (SELECT AVG(salary) FROM employees);
--- IN 을 사용한 서브쿼리
+-- IN 을 사용하는 서브쿼리
 SELECT * FROM employees
 WHERE department IN (
     SELECT name FROM departments WHERE budget >
 100000
 );
--- 상관 서브쿼리
+-- 상관 관계가 있는 서브쿼리
 SELECT * FROM employees e1
 WHERE salary > (
     SELECT AVG(salary) FROM employees e2
@@ -364,7 +412,7 @@ LEFT JOIN projects p ON e.id = p.employee_id;
 
 ### 윈도우 함수: 고급 분석
 
-관련 행에 걸쳐 계산을 수행합니다.
+관련된 행에 걸쳐 계산을 수행합니다.
 
 ```sql
 -- 행 번호 매기기
@@ -424,10 +472,10 @@ departments(id);
 
 ### 고유 제약 조건: `UNIQUE`
 
-열의 중복 값을 방지합니다.
+열에서 중복 값을 방지합니다.
 
 ```sql
--- 단일 열의 고유 제약 조건
+-- 단일 열에 대한 고유 제약 조건
 ALTER TABLE employees
 ADD CONSTRAINT unique_email UNIQUE (email);
 -- 복합 고유 제약 조건
@@ -436,15 +484,15 @@ ADD CONSTRAINT unique_name_dept UNIQUE (name,
 department);
 ```
 
-### CHECK 제약 조건: `CHECK`
+### 확인 제약 조건: `CHECK`
 
 비즈니스 규칙 및 데이터 유효성 검사를 시행합니다.
 
 ```sql
--- 간단한 CHECK 제약 조건
+-- 간단한 확인 제약 조건
 ALTER TABLE employees
 ADD CONSTRAINT check_salary CHECK (salary > 0);
--- 복합 CHECK 제약 조건
+-- 복합 확인 제약 조건
 ALTER TABLE employees
 ADD CONSTRAINT check_age
 CHECK (YEAR(CURDATE()) - YEAR(birth_date) >= 18);
@@ -486,7 +534,7 @@ JOIN departments d ON e.department = d.id;
 
 ### 성능 모니터링
 
-데이터베이스 활동 및 성능 병목 현상을 모니터링합니다.
+데이터베이스 성능을 모니터링하고 병목 현상을 식별합니다.
 
 ```sql
 -- 실행 중인 프로세스 표시
@@ -523,7 +571,7 @@ REPAIR TABLE employees;
 
 ### 데이터 가져오기: `LOAD DATA`
 
-외부 파일에서 데이터베이스 테이블로 데이터를 가져옵니다.
+외부 파일의 데이터를 데이터베이스 테이블로 가져옵니다.
 
 ```sql
 -- CSV 파일에서 가져오기
@@ -532,7 +580,7 @@ INTO TABLE employees
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
--- 열 매핑으로 가져오기
+-- 열 매핑을 사용하여 가져오기
 LOAD DATA INFILE 'data.csv'
 INTO TABLE employees (name, email, salary);
 ```
@@ -649,7 +697,7 @@ GRANT 'app_read_role' TO 'readonly_user'@'localhost';
 
 ### MySQL 설치
 
-대중적인 오픈 소스 관계형 데이터베이스.
+인기 있는 오픈 소스 관계형 데이터베이스.
 
 ```bash
 # Ubuntu/Debian
@@ -716,7 +764,7 @@ SHOW STATUS LIKE 'Connections';
 
 ### 연결 관리
 
-데이터베이스 연결 및 풀링을 관리합니다.
+데이터베이스 연결 및 풀링 관리.
 
 ```sql
 -- 현재 연결 표시
@@ -730,10 +778,10 @@ SET SESSION interactive_timeout = 600;
 
 ### 백업 구성
 
-자동화된 데이터베이스 백업을 설정합니다.
+자동화된 데이터베이스 백업 설정.
 
-```sql
--- 자동 백업 스크립트
+```bash
+# 자동 백업 스크립트
 #!/bin/bash
 DATE=$(date +%Y%m%d_%H%M%S)
 mysqldump -u backup_user -p mydatabase >
@@ -752,13 +800,6 @@ SET GLOBAL log_bin = ON;
 -- 느린 쿼리 로그 활성화
 SET GLOBAL slow_query_log = 'ON';
 SET GLOBAL long_query_time = 2;
--- 데이터베이스 크기 표시
-SELECT
-    table_schema AS 'Database',
-    SUM(data_length + index_length) / 1024 / 1024 AS 'Size
-(MB)'
-FROM information_schema.tables
-GROUP BY table_schema;
 ```
 
 ## SQL 모범 사례

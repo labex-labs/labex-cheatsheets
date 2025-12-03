@@ -1,11 +1,11 @@
 ---
-title: 'Aide-mémoire DevOps'
-description: 'Maîtrisez le DevOps avec notre aide-mémoire complet couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Cheatsheet DevOps | LabEx'
+description: "Apprenez les pratiques DevOps avec cette antisèche complète. Référence rapide pour l'intégration continue/déploiement continu (CI/CD), l'automatisation, l'infrastructure as code, la surveillance et la conteneurisation."
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Trombinoscope DevOps
+Feuille de triche DevOps
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,7 +15,7 @@ Trombinoscope DevOps
 <a target="_blank" href="https://labex.io/fr/learn/devops">Apprenez le DevOps avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez les pratiques DevOps grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours DevOps complets couvrant les opérations essentielles, la gestion de l'infrastructure, les pipelines CI/CD, la conteneurisation, la surveillance et l'automatisation. Apprenez à déployer des applications, à gérer l'infrastructure en tant que code, à automatiser les flux de travail et à mettre en œuvre des pratiques DevOps modernes pour une livraison de logiciels efficace.
+Apprenez les pratiques DevOps grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours DevOps complets couvrant les opérations essentielles, la gestion de l'infrastructure, les pipelines CI/CD, la conteneurisation, la surveillance et l'automatisation. Apprenez à déployer des applications, à gérer l'infrastructure en tant que code, à automatiser les flux de travail et à mettre en œuvre des pratiques DevOps modernes pour une livraison logicielle efficace.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Apprenez les pratiques DevOps grâce à des laboratoires pratiques et des scéna
 
 ### Terraform: Provisionnement d'Infrastructure
 
-Définir et provisionner l'infrastructure à l'aide d'un langage de configuration déclaratif.
+Définissez et provisionnez l'infrastructure à l'aide d'un langage de configuration déclaratif.
 
 ```bash
 # Initialiser Terraform
@@ -40,9 +40,24 @@ terraform fmt
 terraform validate
 ```
 
+<BaseQuiz id="devops-terraform-1" correct="B">
+  <template #question>
+    Que fait `terraform plan` ?
+  </template>
+  
+  <BaseQuizOption value="A">Applique les changements d'infrastructure immédiatement</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Montre les changements qui seront effectués sans les appliquer</BaseQuizOption>
+  <BaseQuizOption value="C">Détruit toute l'infrastructure</BaseQuizOption>
+  <BaseQuizOption value="D">Initialise Terraform</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `terraform plan` crée un plan d'exécution montrant ce que Terraform fera lorsque vous exécutez `terraform apply`. C'est un essai à blanc qui vous aide à examiner les changements avant de les appliquer.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Ansible: Gestion de Configuration
 
-Automatiser le déploiement d'applications et la gestion de la configuration.
+Automatisez le déploiement d'applications et la gestion de configuration.
 
 ```bash
 # Exécuter le playbook
@@ -57,7 +72,7 @@ ansible-playbook -u ubuntu site.yml
 
 ### CloudFormation: IaC Natif AWS
 
-Provisionner des ressources AWS à l'aide de modèles JSON/YAML.
+Provisionnez des ressources AWS à l'aide de modèles JSON/YAML.
 
 ```bash
 # Créer une pile
@@ -104,26 +119,41 @@ kubectl logs pod_name
 kubectl delete -f deployment.yml
 ```
 
+<BaseQuiz id="devops-k8s-1" correct="A">
+  <template #question>
+    Que fait `kubectl apply -f deployment.yml` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Crée ou met à jour les ressources définies dans le fichier YAML</BaseQuizOption>
+  <BaseQuizOption value="B">Supprime toutes les ressources du cluster</BaseQuizOption>
+  <BaseQuizOption value="C">Crée uniquement de nouvelles ressources</BaseQuizOption>
+  <BaseQuizOption value="D">Montre ce qui serait créé sans appliquer</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kubectl apply` est une commande déclarative qui crée des ressources si elles n'existent pas ou les met à jour si elles existent. Elle est idempotente, ce qui signifie que vous pouvez l'exécuter plusieurs fois en toute sécurité.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Helm: Gestionnaire de Paquets Kubernetes
 
 Gérer les applications Kubernetes à l'aide de charts.
 
 ```bash
-# Installer le chart
+# Installer un chart
 helm install myrelease stable/nginx
-# Mettre à jour la version
+# Mettre à jour la release
 helm upgrade myrelease stable/nginx
-# Lister les versions
+# Lister les releases
 helm list
-# Désinstaller la version
+# Désinstaller la release
 helm uninstall myrelease
 ```
 
 ## Gestion des Pipelines CI/CD
 
-### Jenkins: Automatisation de la Construction
+### Jenkins: Automatisation de Construction
 
-Configurer et gérer les pipelines d'intégration continue.
+Configurer et gérer des pipelines d'intégration continue.
 
 ```groovy
 // Exemple Jenkinsfile
@@ -151,7 +181,7 @@ pipeline {
 
 ### GitHub Actions: CI/CD Cloud
 
-Automatiser les flux de travail directement depuis les dépôts GitHub.
+Automatisez les flux de travail directement depuis les dépôts GitHub.
 
 ```yaml
 # .github/workflows/ci.yml
@@ -172,7 +202,7 @@ jobs:
 
 ### GitLab CI: DevOps Intégré
 
-Utiliser les capacités CI/CD intégrées de GitLab pour des flux de travail DevOps complets.
+Utilisez les capacités CI/CD intégrées de GitLab pour des flux de travail DevOps complets.
 
 ```yaml
 # .gitlab-ci.yml
@@ -211,6 +241,21 @@ git push origin main
 git pull origin main
 ```
 
+<BaseQuiz id="devops-git-1" correct="D">
+  <template #question>
+    Quelle est la différence entre `git pull` et `git fetch` ?
+  </template>
+  
+  <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
+  <BaseQuizOption value="B">git pull pousse les changements, git fetch tire les changements</BaseQuizOption>
+  <BaseQuizOption value="C">git pull fonctionne localement, git fetch fonctionne à distance</BaseQuizOption>
+  <BaseQuizOption value="D" correct>git fetch télécharge les changements sans fusionner, git pull télécharge et fusionne les changements</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` télécharge les changements depuis le dépôt distant mais ne les fusionne pas dans votre branche actuelle. `git pull` effectue les deux opérations : il récupère puis fusionne les changements.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Gestion des Branches
 
 Gérer différents flux de développement et de publication.
@@ -218,15 +263,15 @@ Gérer différents flux de développement et de publication.
 ```bash
 # Créer une branche
 git checkout -b feature-branch
-# Fusionner la branche
+# Fusionner une branche
 git merge feature-branch
 # Lister les branches
 git branch -a
 # Changer de branche
 git checkout main
-# Supprimer la branche
+# Supprimer une branche
 git branch -d feature-branch
-# Réinitialiser à un commit précédent
+# Revenir à un commit précédent
 git reset --hard HEAD~1
 # Voir l'historique des commits
 git log --oneline
@@ -420,7 +465,7 @@ gcp_bucket = gcp.storage.Bucket("my-gcp-bucket")
 
 ### HashiCorp Vault: Gestion des Secrets
 
-HashiCorp Vault est un outil permettant d'accéder aux secrets de manière sécurisée. Un secret est tout ce que vous souhaitez contrôler strictement l'accès, comme les clés API, les mots de passe ou les certificats.
+HashiCorp Vault est un outil pour accéder aux secrets en toute sécurité. Un secret est tout ce que vous souhaitez contrôler strictement l'accès, comme les clés API, les mots de passe ou les certificats.
 
 ```bash
 # Écrire un secret
@@ -450,7 +495,7 @@ sonar-scanner -Dsonar.projectKey=myproject -Dsonar.sources=. -Dsonar.host.url=ht
 
 ### Gestion des Certificats SSL/TLS
 
-Gérer les certificats SSL pour les communications sécurisées.
+Gérer les certificats SSL pour des communications sécurisées.
 
 ```bash
 # Let's Encrypt avec Certbot
@@ -485,7 +530,7 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 
 ### Surveillance des Performances Système
 
-Que vous gériez des serveurs, configuriez des déploiements ou répariez quelque chose qui vient de tomber en panne en production, ces commandes vous aident à avancer plus vite et à travailler plus intelligemment.
+Que vous gériez des serveurs, configuriez des déploiements ou répariez quelque chose qui vient de casser en production, ces commandes vous aident à travailler plus vite et plus intelligemment.
 
 ```bash
 # Utilisation du CPU et de la mémoire
@@ -496,24 +541,24 @@ df -h
 netstat -tulpn
 # Surveillance des processus
 ps aux | grep process_name
-# Charge du système
+# Charge système
 uptime
 # Détails de la mémoire
 free -h
 ```
 
-### Réglage des Performances Applicatives
+### Optimisation des Performances Applicatives
 
 Optimiser les performances des applications et l'utilisation des ressources.
 
 ```bash
 # Surveillance des performances JVM
 jstat -gc -t PID 1s
-# Performances Node.js
+# Performance Node.js
 node --inspect app.js
 # Optimisation des requêtes de base de données
 EXPLAIN ANALYZE SELECT * FROM table WHERE condition;
-# Réglage des performances Nginx
+# Optimisation Nginx
 nginx -t && nginx -s reload
 ```
 
@@ -528,7 +573,7 @@ ab -n 1000 -c 10 http://example.com/
 wrk -t12 -c400 -d30s http://example.com/
 # Test de charge Artillery
 artillery run load-test.yml
-# Autoscaler de Pod Horizontal Kubernetes
+# Autoscaler horizontal de pods Kubernetes
 kubectl autoscale deployment myapp --cpu-percent=70 --min=1 --max=10
 ```
 
@@ -557,7 +602,7 @@ redis-cli info memory
 
 ### Gestionnaires de Paquets
 
-Installer des outils à l'aide des gestionnaires de paquets du système.
+Installer des outils à l'aide des gestionnaires de paquets système.
 
 ```bash
 # Ubuntu/Debian
@@ -568,7 +613,7 @@ yum install -y docker kubernetes-client terraform
 brew install docker kubectl terraform ansible
 ```
 
-### Installation du Moteur de Conteneurs
+### Installation du Runtime de Conteneurs
 
 Configurer Docker et les outils d'orchestration de conteneurs.
 
@@ -600,7 +645,7 @@ curl https://sdk.cloud.google.com | bash
 
 ### Gestion des Variables d'Environnement
 
-Gérer la configuration à travers différents environnements de manière sécurisée.
+Gérer la configuration entre différents environnements de manière sécurisée.
 
 ```bash
 # Exemple de fichier .env
@@ -622,7 +667,7 @@ Gérer la découverte de services et la configuration dynamique.
 ```bash
 # Enregistrement de service Consul
 consul services register myservice.json
-# Santé du service
+# Obtenir l'état de santé du service
 consul health service web
 # Magasin clé-valeur Etcd
 etcdctl put /config/database/host localhost
@@ -685,7 +730,7 @@ WantedBy=multi-user.target
 
 ### Automatisation d'Infrastructure avec Ansible
 
-Automatiser le provisionnement d'infrastructure et la gestion de la configuration.
+Automatiser le provisionnement d'infrastructure et la gestion de configuration.
 
 ```yaml
 # Exemple de playbook Ansible
@@ -767,11 +812,11 @@ curl -H "Content-Type: application/json" \
 
 ## Liens Pertinents
 
-- <router-link to="/linux">Trombinoscope Linux</router-link>
-- <router-link to="/shell">Trombinoscope Shell</router-link>
-- <router-link to="/git">Trombinoscope Git</router-link>
-- <router-link to="/docker">Trombinoscope Docker</router-link>
-- <router-link to="/kubernetes">Trombinoscope Kubernetes</router-link>
-- <router-link to="/ansible">Trombinoscope Ansible</router-link>
-- <router-link to="/jenkins">Trombinoscope Jenkins</router-link>
-- <router-link to="/python">Trombinoscope Python</router-link>
+- <router-link to="/linux">Feuille de triche Linux</router-link>
+- <router-link to="/shell">Feuille de triche Shell</router-link>
+- <router-link to="/git">Feuille de triche Git</router-link>
+- <router-link to="/docker">Feuille de triche Docker</router-link>
+- <router-link to="/kubernetes">Feuille de triche Kubernetes</router-link>
+- <router-link to="/ansible">Feuille de triche Ansible</router-link>
+- <router-link to="/jenkins">Feuille de triche Jenkins</router-link>
+- <router-link to="/python">Feuille de triche Python</router-link>

@@ -1,6 +1,6 @@
 ---
-title: 'Jenkins チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Jenkins を習得しましょう。'
+title: 'Jenkins チートシート | LabEx'
+description: 'この包括的なチートシートで Jenkins CI/CDを学ぶ。Jenkinsパイプライン、ジョブ、プラグイン、自動化、継続的インテグレーション、DevOpsワークフローのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/jenkins-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Jenkins チートシート
 <a target="_blank" href="https://labex.io/ja/learn/jenkins">ハンズオンラボで Jenkins を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、Jenkins CI/CDオートメーションを学びます。LabExは、基本的な操作、パイプライン作成、プラグイン管理、ビルド自動化、高度なテクニックを網羅した包括的なJenkinsコースを提供します。Jenkinsを習得し、モダンなソフトウェア開発のための効率的な継続的インテグレーションおよびデプロイメントパイプラインを構築しましょう。
+ハンズオンラボと実世界のシナリオを通じて、Jenkins CI/CDオートメーションを学びます。LabExは、必須操作、パイプライン作成、プラグイン管理、ビルド自動化、高度なテクニックを網羅した包括的なJenkinsコースを提供します。Jenkinsを習得し、モダンなソフトウェア開発のための効率的な継続的インテグレーションおよびデプロイメントパイプラインを構築しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -44,7 +44,7 @@ sudo systemctl start jenkins
 sudo systemctl enable jenkins
 ```
 
-### Windows および macOS
+### Windows & macOS
 
 インストーラまたはパッケージマネージャを使用した Jenkins のインストール。
 
@@ -62,14 +62,14 @@ brew services start jenkins-lts
 
 ### インストール後のセットアップ
 
-初期設定と Jenkins のロック解除。
+初期設定と Jenkins のアンロック。
 
 ```bash
 # 初期管理者パスワードの取得
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 # またはDockerインストールの場合は
 docker exec jenkins_container cat /var/jenkins_home/secrets/initialAdminPassword
-# Jenkinsウェブインターフェースへのアクセス
+# Jenkins Webインターフェースへのアクセス
 # http://localhost:8080 にアクセス
 # 初期管理者パスワードを入力
 # 推奨プラグインのインストール、またはカスタムプラグインの選択
@@ -98,7 +98,7 @@ sudo journalctl -u jenkins.service
 ブラウザ経由での Jenkins アクセスと CLI ツールのセットアップ。
 
 ```bash
-# Jenkinsウェブインターフェースへのアクセス
+# Jenkins Webインターフェースへのアクセス
 http://localhost:8080
 # Jenkins CLIのダウンロード
 wget http://localhost:8080/jnlpJars/jenkins-cli.jar
@@ -123,14 +123,14 @@ java -jar jenkins-cli.jar -auth user:token create-job my-job < job-config.xml
 # 5. 設定を保存
 ```
 
-### ジョブ一覧表示：`list-jobs`
+### ジョブの一覧表示：`list-jobs`
 
 設定されているすべてのジョブを表示します。
 
 ```bash
 # すべてのジョブを一覧表示
 java -jar jenkins-cli.jar -auth user:token list-jobs
-# パターンに一致するジョブを一覧表示
+# パターンマッチングでジョブを一覧表示
 java -jar jenkins-cli.jar -auth user:token list-jobs "*test*"
 # ジョブの設定を取得
 java -jar jenkins-cli.jar -auth user:token get-job my-job > job-config.xml
@@ -140,18 +140,33 @@ java -jar jenkins-cli.jar -auth user:token get-job my-job > job-config.xml
 
 ### ジョブのビルド：`build`
 
-ジョブのビルドを実行し、管理します。
+ジョブのビルドをトリガーおよび管理します。
 
 ```bash
 # ジョブをビルド
 java -jar jenkins-cli.jar -auth user:token build my-job
 # パラメータ付きでビルド
 java -jar jenkins-cli.jar -auth user:token build my-job -p PARAM=value
-# ビルドを実行し、完了を待機
+# ビルド完了を待機してビルド
 java -jar jenkins-cli.jar -auth user:token build my-job -s -v
-# ビルドを実行し、コンソール出力を追跡
+# コンソール出力を追跡してビルド
 java -jar jenkins-cli.jar -auth user:token build my-job -f
 ```
+
+<BaseQuiz id="jenkins-build-1" correct="B">
+  <template #question>
+    `jenkins-cli.jar build my-job -s` の `-s` フラグは何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">ビルドをスキップする</BaseQuizOption>
+  <BaseQuizOption value="B" correct>ビルド完了を待機する（同期）</BaseQuizOption>
+  <BaseQuizOption value="C">ビルドステータスを表示する</BaseQuizOption>
+  <BaseQuizOption value="D">ビルドを停止する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-s` フラグはビルドコマンドを同期的にし、ビルドが完了するまで待機します。このフラグがない場合、コマンドはビルドをトリガーした直後に返されます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### ジョブ制御：`enable-job` / `disable-job`
 
@@ -162,10 +177,25 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
 java -jar jenkins-cli.jar -auth user:token enable-job my-job
 # ジョブを無効化
 java -jar jenkins-cli.jar -auth user:token disable-job my-job
-# Web UIでジョブの状態を確認
+# Web UIでジョブステータスを確認
 # ジョブダッシュボードに移動
 # 「無効化/有効化」ボタンを探す
 ```
+
+<BaseQuiz id="jenkins-job-control-1" correct="B">
+  <template #question>
+    Jenkins ジョブを無効化するとどうなりますか？
+  </template>
+  
+  <BaseQuizOption value="A">ジョブは完全に削除される</BaseQuizOption>
+  <BaseQuizOption value="B" correct>ジョブの設定は保持されるが、自動的には実行されなくなる</BaseQuizOption>
+  <BaseQuizOption value="C">ジョブは別のフォルダに移動される</BaseQuizOption>
+  <BaseQuizOption value="D">すべてのビルド履歴が削除される</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ジョブを無効化すると、自動実行（スケジュールされたビルド、トリガーなど）は防止されますが、ジョブの設定とビルド履歴は保持されます。後で再度有効にできます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### ジョブの削除：`delete-job`
 
@@ -174,7 +204,7 @@ Jenkins からジョブを削除します。
 ```bash
 # ジョブを削除
 java -jar jenkins-cli.jar -auth user:token delete-job my-job
-# 複数ジョブの一括削除（注意が必要）
+# 複数ジョブの削除（注意が必要）
 for job in job1 job2 job3; do
   java -jar jenkins-cli.jar -auth user:token delete-job $job
 done
@@ -185,17 +215,32 @@ done
 ビルドログとコンソール出力を表示します。
 
 ```bash
-# 最新のビルドのコンソール出力を表示
+# 最新のビルドコンソール出力を表示
 java -jar jenkins-cli.jar -auth user:token console my-job
-# 特定のビルド番号の出力を表示
+# 特定のビルド番号を表示
 java -jar jenkins-cli.jar -auth user:token console my-job 15
 # コンソール出力をリアルタイムで追跡
 java -jar jenkins-cli.jar -auth user:token console my-job -f
 ```
 
+<BaseQuiz id="jenkins-console-1" correct="C">
+  <template #question>
+    `jenkins-cli.jar console my-job -f` の `-f` フラグは何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">ビルドの停止を強制する</BaseQuizOption>
+  <BaseQuizOption value="B">失敗したビルドのみを表示する</BaseQuizOption>
+  <BaseQuizOption value="C" correct>コンソール出力をリアルタイムで追跡する</BaseQuizOption>
+  <BaseQuizOption value="D">出力を JSON 形式でフォーマットする</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-f` フラグは、Linux の `tail -f` と同様に、コンソール出力をリアルタイムで追跡します。これはビルドの実行中に監視するのに役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## パイプライン管理
 
-### パイプライン作成
+### パイプラインの作成
 
 Jenkins パイプラインの作成と設定。
 
@@ -268,12 +313,12 @@ stages {
 }
 ```
 
-### パイプライン設定
+### パイプラインの設定
 
 高度なパイプライン設定とオプション。
 
 ```groovy
-// ビルド後アクションを持つパイプライン
+// ビルド後のアクションを持つパイプライン
 pipeline {
     agent any
 
@@ -307,15 +352,15 @@ pipeline {
 パイプラインの自動トリガーを設定します。
 
 ```groovy
-// トリガー付きパイプライン
+// トリガーを持つパイプライン
 pipeline {
     agent any
 
     triggers {
-        // SCMを5分ごとにポーリング
+        // 5分ごとにSCMをポーリング
         pollSCM('H/5 * * * *')
 
-        // Cron形式のスケジュール
+        // Cronライクなスケジューリング
         cron('H 2 * * *')  // 毎日午前2時
 
         // アップストリームジョブのトリガー
@@ -350,7 +395,7 @@ java -jar jenkins-cli.jar -auth user:token install-plugin \
   /path/to/plugin.hpi
 # インストール済みプラグインの一覧表示
 java -jar jenkins-cli.jar -auth user:token list-plugins
-# plugins.txtを使用したプラグインインストール（Docker用）
+# plugins.txtを使用したプラグインのインストール（Docker用）
 # plugins.txtファイルを作成:
 git:latest
 maven-plugin:latest
@@ -362,7 +407,7 @@ jenkins-plugin-cli --plugins git maven-plugin docker-plugin
 
 ### 必須プラグイン
 
-さまざまな目的に使用される一般的な Jenkins プラグイン。
+さまざまな目的のために一般的に使用される Jenkins プラグイン。
 
 ```bash
 # ビルド & SCM プラグイン
@@ -373,7 +418,7 @@ gradle                # Gradleビルドサポート
 # パイプライン プラグイン
 workflow-aggregator   # パイプラインプラグインスイート
 pipeline-stage-view   # パイプラインステージビュー
-blue-ocean           # パイプラインのモダンなUI
+blue-ocean           # パイプラインのモダンUI
 # デプロイ & 連携
 docker-plugin        # Docker連携
 kubernetes           # Kubernetesデプロイ
@@ -386,19 +431,19 @@ sonarqube           # コード品質分析
 
 ### プラグイン管理 Web UI
 
-Jenkins ウェブインターフェース経由でのプラグイン管理。
+Jenkins Web インターフェース経由でのプラグイン管理。
 
 ```bash
 # プラグインマネージャへのアクセス:
-# 1. Jenkinsの管理 → 「プラグインの管理」に移動
-# 2. 「利用可能」「インストール済み」「更新」タブを使用
+# 1. Manage Jenkins → Manage Plugins に移動
+# 2. Available/Installed/Updates タブを使用
 # 3. プラグインを検索
 # 4. 選択してインストール
 # 5. 必要に応じてJenkinsを再起動
 # プラグイン更新プロセス:
-# 1. 「更新」タブを確認
+# 1. "Updates" タブをクリック
 # 2. 更新するプラグインを選択
-# 3. 「ダウンロードして再起動後にインストール」をクリック
+# 3. "Download now and install after restart" をクリック
 ```
 
 ## ユーザー管理とセキュリティ
@@ -409,14 +454,14 @@ Jenkins ユーザーの作成と管理。
 
 ```bash
 # Jenkinsセキュリティの有効化:
-# 1. Jenkinsの管理 → 「システムの設定」
-# 2. 「Jenkinsの独自のユーザーデータベース」を有効化
-# 3. ユーザー登録を許可（初期設定時）
-# 4. 認可戦略を設定
+# 1. Manage Jenkins → Configure Global Security
+# 2. 「Jenkins独自のユーザーデータベース」を有効化
+# 3. ユーザー登録を許可（初期セットアップ用）
+# 4. 認証戦略を設定
 # CLI経由でのユーザー作成（適切な権限が必要）
 # ユーザーは通常Web UI経由で作成されます:
-# 1. Jenkinsの管理 → 「ユーザーの管理」
-# 2. 「ユーザーの作成」をクリック
+# 1. Manage Jenkins → Manage Users
+# 2. 「ユーザー作成」をクリック
 # 3. ユーザー詳細を入力
 # 4. ロール/権限を割り当て
 ```
@@ -427,18 +472,18 @@ Jenkins ユーザーの作成と管理。
 
 ```bash
 # セキュリティ設定のオプション:
-# 1. セキュリティレルム（ユーザー認証方法）:
-#    - Jenkinsの独自のユーザーデータベース
+# 1. Security Realm (ユーザー認証方法):
+#    - Jenkins' own user database
 #    - LDAP
 #    - Active Directory
-#    - Matrixベースのセキュリティ
-#    - ロールベースの認可
-# 2. 認可戦略:
-#    - 何でも許可
-#    - レガシーモード
-#    - ログイン済みユーザーなら何でも許可
-#    - Matrixベースのセキュリティ
-#    - プロジェクトベースのMatrix認可
+#    - Matrix-based security
+#    - Role-based authorization
+# 2. Authorization Strategy:
+#    - Anyone can do anything
+#    - Legacy mode
+#    - Logged-in users can do anything
+#    - Matrix-based security
+#    - Project-based Matrix Authorization
 ```
 
 ### API トークン
@@ -447,12 +492,12 @@ CLI アクセス用の API トークンの生成と管理。
 
 ```bash
 # APIトークンの生成:
-# 1. ユーザー名をクリック → 「設定」
-# 2. APIトークンセクション
+# 1. ユーザー名をクリック → Configure
+# 2. API Tokenセクション
 # 3. 「新しいトークンの追加」をクリック
 # 4. トークン名を入力
-# 5. 生成し、コピー
-# CLIでのAPIトークンの使用
+# 5. 生成し、トークンをコピー
+# APIトークンをCLIで使用
 java -jar jenkins-cli.jar -auth username:api-token \
   -s http://localhost:8080 list-jobs
 # 認証情報を安全に保存
@@ -465,7 +510,7 @@ chmod 600 ~/.jenkins-cli-auth
 ジョブやパイプラインのために保存された認証情報を管理します。
 
 ```bash
-# CLI経由での認証情報の管理
+# CLI経由での認証情報管理
 java -jar jenkins-cli.jar -auth user:token \
   list-credentials system::system::jenkins
 # 認証情報XMLを作成しインポート
@@ -489,24 +534,24 @@ withCredentials([usernamePassword(
 
 ### ビルドステータスとログ
 
-ビルドステータスの監視と詳細なログへのアクセス。
+ビルドステータスを監視し、詳細なログにアクセスします。
 
 ```bash
 # ビルドステータスの確認
 java -jar jenkins-cli.jar -auth user:token console my-job
-# ジョブ情報の取得
+# ビルド情報の取得
 java -jar jenkins-cli.jar -auth user:token get-job my-job
 # ビルドキューの監視
-# Web UI: Jenkinsダッシュボード → ビルドキュー
+# Web UI: Jenkinsダッシュボード → Build Queue
 # 保留中のビルドとそのステータスが表示される
 # ビルド履歴へのアクセス
-# Web UI: ジョブ → ビルド履歴
-# ステータス付きの過去の全ビルドが表示される
+# Web UI: Job → Build History
+# すべての過去のビルドとステータスが表示される
 ```
 
 ### システム情報
 
-Jenkins のシステム情報と診断を取得します。
+Jenkins システム情報を取得し、診断を行います。
 
 ```bash
 # システム情報
@@ -514,7 +559,7 @@ java -jar jenkins-cli.jar -auth user:token version
 # ノード情報
 java -jar jenkins-cli.jar -auth user:token list-computers
 # Groovyコンソール（管理者のみ）
-# Jenkinsの管理 → スクリプトコンソール
+# Manage Jenkins → Script Console
 # システム情報を取得するためのGroovyスクリプトの実行:
 println Jenkins.instance.version
 println Jenkins.instance.getRootDir()
@@ -532,8 +577,8 @@ Jenkins システムログへのアクセスと分析。
 # ログの表示
 tail -f /var/log/jenkins/jenkins.log
 # ログレベルの設定
-# Jenkinsの管理 → システムログ
-# 特定のコンポーネントに対して新しいログレコーダーを追加
+# Manage Jenkins → System Log
+# 特定のコンポーネントの新しいログレコーダーを追加
 # 一般的なログの場所:
 sudo journalctl -u jenkins.service     # Systemdログ
 sudo cat /var/lib/jenkins/jenkins.log  # Jenkinsログファイル
@@ -545,20 +590,20 @@ Jenkins のパフォーマンスとリソース使用率を監視します。
 
 ```bash
 # 組み込み監視
-# Jenkinsの管理 → 負荷統計
-# 時間経過に伴うエグゼキュータの使用状況を表示
+# Manage Jenkins → Load Statistics
+# 実行中のエグゼキュータの利用状況を時間経過とともに表示
 # JVM監視
-# Jenkinsの管理 → ノードの管理 → マスター
+# Manage Jenkins → Manage Nodes → Master
 # メモリ、CPU使用率、システムプロパティを表示
 # ビルドトレンド
-# 「ビルド履歴」プラグインをインストール
+# "Build History Metrics" プラグインをインストール
 # ビルド期間のトレンドと成功率を表示
 # ディスク使用量監視
-# 「ディスク使用量」プラグインをインストール
+# "Disk Usage" プラグインをインストール
 # ワークスペースとビルド成果物のストレージを監視
 ```
 
-## Jenkins 設定とオプション
+## Jenkins 設定と環境設定
 
 ### グローバル設定
 
@@ -566,25 +611,25 @@ Jenkins のパフォーマンスとリソース使用率を監視します。
 
 ```bash
 # グローバルツール設定
-# Jenkinsの管理 → グローバルツール設定
+# Manage Jenkins → Global Tool Configuration
 # 設定するもの:
 # - JDKインストール
 # - Gitインストール
 # - Mavenインストール
 # - Dockerインストール
 # システム設定
-# Jenkinsの管理 → システム設定
+# Manage Jenkins → Configure System
 # 設定するもの:
 # - Jenkins URL
 # - システムメッセージ
 # - エグゼキュータ数
-# - クワイエット期間
+# - Quiet period
 # - SCMポーリング制限
 ```
 
 ### 環境変数
 
-Jenkins の環境変数とシステムプロパティの設定。
+Jenkins 環境変数とシステムプロパティの設定。
 
 ```bash
 # 組み込み環境変数
@@ -595,14 +640,14 @@ WORKSPACE            # ジョブのワークスペースパス
 JENKINS_URL          # Jenkins URL
 NODE_NAME            # ノード名
 # カスタム環境変数
-# Jenkinsの管理 → システム設定
-# グローバルプロパティ → 環境変数
-# グローバルアクセス用のキーと値のペアを追加
+# Manage Jenkins → Configure System
+# Global properties → Environment variables
+# グローバルアクセス用にキーと値のペアを追加
 ```
 
 ### コードとしての Jenkins 設定 (JCasC)
 
-JCasC プラグインを使用した Jenkins 設定の管理。
+JCasC プラグインを使用して Jenkins 設定を管理します。
 
 ```yaml
 # JCasC 設定ファイル (jenkins.yaml)
@@ -627,14 +672,14 @@ export CASC_JENKINS_CONFIG=/path/to/jenkins.yaml
 Jenkins インスタンスを安全に保ち、本番環境に対応させます。
 
 ```bash
-# セキュリティに関する推奨事項:
+# セキュリティ推奨事項:
 # 1. セキュリティと認証を有効化
-# 2. Matrixベースの認可を使用
+# 2. マトリックスベースの認可を使用
 # 3. 定期的なセキュリティアップデート
 # 4. ユーザー権限の制限
 # 5. パスワードの代わりにAPIトークンを使用
 # Jenkins設定の保護:
-# - リモート経由のCLIを無効化
+# - CLI over remoting を無効化
 # - 有効な証明書を使用してHTTPSを使用
 # - JENKINS_HOMEの定期的なバックアップ
 # - セキュリティアドバイザリの監視
@@ -643,21 +688,21 @@ Jenkins インスタンスを安全に保ち、本番環境に対応させます
 
 ### パフォーマンス最適化
 
-パフォーマンスとスケーラビリティのために Jenkins を最適化します。
+パフォーマンスとスケーラビリティ向上のために Jenkins を最適化します。
 
 ```bash
 # パフォーマンスのヒント:
-# 1. 分散ビルドをエージェントと共​​に使用
+# 1. 分散ビルドをエージェントと共に行う
 # 2. ビルドスクリプトと依存関係の最適化
 # 3. 古いビルドの自動クリーンアップ
-# 4. 再利用性のためのパイプラインライブラリの使用
+# 4. 再利用性のためにパイプラインライブラリを使用
 # 5. ディスク容量とメモリ使用率の監視
 # ビルドの最適化:
 # - 可能な限りインクリメンタルビルドを使用
 # - ステージの並列実行
 # - アーティファクトのキャッシュ
 # - ワークスペースのクリーンアップ
-# - リソース割り当ての調整
+# - リソース割り当てのチューニング
 ```
 
 ## 関連リンク

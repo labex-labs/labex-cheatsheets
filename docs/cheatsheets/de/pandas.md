@@ -1,6 +1,6 @@
 ---
-title: 'Pandas Spickzettel'
-description: 'Lernen Sie Pandas mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Pandas Spickzettel | LabEx'
+description: 'Lernen Sie Pandas-Datenmanipulation mit diesem umfassenden Spickzettel. Schnelle Referenz für DataFrame-Operationen, Datenbereinigung, Filterung, Gruppierung, Zusammenführung und Python-Datenanalyse.'
 pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 ---
 
@@ -12,14 +12,14 @@ Pandas Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/pandas">Lernen Sie Pandas mit praktischen Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/pandas">Pandas mit praxisnahen Labs lernen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie die Datenmanipulation mit Pandas durch praktische Labs und reale Szenarien. LabEx bietet umfassende Pandas-Kurse, die wesentliche Operationen, Datenbereinigung, Analyse und Visualisierung abdecken. Lernen Sie, effizient mit DataFrames zu arbeiten, fehlende Daten zu behandeln, Aggregationen durchzuführen und Datensätze mithilfe der leistungsstarken Datenanalysebibliothek von Python zu analysieren.
+Lernen Sie die Datenmanipulation mit Pandas durch praxisnahe Labs und reale Szenarien. LabEx bietet umfassende Pandas-Kurse, die wesentliche Operationen, Datenbereinigung, Analyse und Visualisierung abdecken. Lernen Sie, effizient mit DataFrames zu arbeiten, fehlende Daten zu behandeln, Aggregationen durchzuführen und Datensätze mithilfe der leistungsstarken Datenanalysebibliothek von Python zu analysieren.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Datenladen & Speichern
+## Daten laden & Speichern
 
 ### CSV lesen: `pd.read_csv()`
 
@@ -37,14 +37,29 @@ df = pd.read_csv('data.csv', sep=';')
 df = pd.read_csv('data.csv', parse_dates=['Date'])
 ```
 
+<BaseQuiz id="pandas-read-csv-1" correct="B">
+  <template #question>
+    Was gibt `pd.read_csv('data.csv')` zurück?
+  </template>
+  
+  <BaseQuizOption value="A">Eine Liste von Dictionaries</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Ein pandas DataFrame</BaseQuizOption>
+  <BaseQuizOption value="C">Ein NumPy Array</BaseQuizOption>
+  <BaseQuizOption value="D">Ein String</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pd.read_csv()` liest eine CSV-Datei und gibt ein pandas DataFrame zurück, eine zweidimensionale, beschriftete Datenstruktur mit Spalten und Zeilen.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Excel lesen: `pd.read_excel()`
 
 Daten aus einer Excel-Datei laden.
 
 ```python
-# Erstes Blatt lesen
+# Erstes Tabellenblatt lesen
 df = pd.read_excel('data.xlsx')
-# Spezifisches Blatt lesen
+# Spezifisches Tabellenblatt lesen
 df = pd.read_excel('data.xlsx', sheet_name='Sheet2')
 # Zeile 2 als Kopfzeile festlegen (0-indiziert)
 df = pd.read_excel('data.xlsx', header=1)
@@ -103,11 +118,11 @@ df.to_sql('existing_table', engine, if_exists='append')
 Gibt eine prägnante Zusammenfassung eines DataFrames aus, einschließlich Datentypen und nicht-null-Werten.
 
 ```python
-# DataFrame-Zusammenfassung anzeigen
+# Zusammenfassung des DataFrames anzeigen
 df.info()
 # Datentypen jeder Spalte anzeigen
 df.dtypes
-# Anzahl der Zeilen und Spalten abrufen (Tupel)
+# Anzahl der Zeilen und Spalten (Tupel) abrufen
 df.shape
 # Spaltennamen abrufen
 df.columns
@@ -160,6 +175,21 @@ df.dropna()
 df.dropna(axis=1)
 ```
 
+<BaseQuiz id="pandas-missing-1" correct="B">
+  <template #question>
+    Was bewirkt `df.dropna(axis=1)`?
+  </template>
+  
+  <BaseQuizOption value="A">Entfernt Zeilen mit fehlenden Werten</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Entfernt Spalten mit fehlenden Werten</BaseQuizOption>
+  <BaseQuizOption value="C">Füllt fehlende Werte mit 0</BaseQuizOption>
+  <BaseQuizOption value="D">Zählt fehlende Werte</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Der Parameter `axis=1` bedeutet "Spalten", daher entfernt `df.dropna(axis=1)` Spalten, die fehlende Werte enthalten. Verwenden Sie `axis=0` (Standard), um Zeilen zu entfernen.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Duplikate: `duplicated()` / `drop_duplicates()`
 
 Doppelte Zeilen identifizieren und entfernen.
@@ -173,6 +203,21 @@ df.drop_duplicates()
 df.drop_duplicates(subset=['col1', 'col2'])
 ```
 
+<BaseQuiz id="pandas-duplicates-1" correct="A">
+  <template #question>
+    Was bewirkt `df.drop_duplicates()` standardmäßig?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Entfernt doppelte Zeilen und behält das erste Vorkommen bei</BaseQuizOption>
+  <BaseQuizOption value="B">Entfernt alle Zeilen</BaseQuizOption>
+  <BaseQuizOption value="C">Behält nur doppelte Zeilen bei</BaseQuizOption>
+  <BaseQuizOption value="D">Entfernt das erste Vorkommen von Duplikaten</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Standardmäßig behält `drop_duplicates()` das erste Vorkommen jeder doppelten Zeile bei und entfernt nachfolgende Duplikate. Sie können `keep='last'` verwenden, um stattdessen das letzte Vorkommen beizubehalten.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Datentypen: `astype()`
 
 Den Datentyp einer Spalte ändern.
@@ -182,7 +227,7 @@ Den Datentyp einer Spalte ändern.
 df['col'].astype(int)
 # In String ändern
 df['col'].astype(str)
-# In Datum/Uhrzeit konvertieren
+# In Datum konvertieren
 df['col'] = pd.to_datetime(df['col'])
 ```
 
@@ -193,13 +238,28 @@ Funktionen anwenden oder Werte in DataFrames/Serien ersetzen.
 ```python
 # Lambda-Funktion auf eine Spalte anwenden
 df['col'].apply(lambda x: x*2)
-# Werte mithilfe eines Wörterbuchs zuordnen
+# Werte mithilfe eines Dictionaries zuordnen
 df['col'].map({'old': 'new'})
 # Werte ersetzen
 df.replace('old_val', 'new_val')
 # Mehrere Werte ersetzen
 df.replace(['A', 'B'], ['C', 'D'])
 ```
+
+<BaseQuiz id="pandas-apply-1" correct="A">
+  <template #question>
+    Was bewirkt `df['col'].apply(lambda x: x*2)`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Wendet eine Funktion auf jedes Element in der Spalte an und multipliziert jedes mit 2</BaseQuizOption>
+  <BaseQuizOption value="B">Multipliziert die gesamte Spalte einmal mit 2</BaseQuizOption>
+  <BaseQuizOption value="C">Ersetzt die Spalte durch 2</BaseQuizOption>
+  <BaseQuizOption value="D">Zählt Elemente in der Spalte</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Methode `apply()` wendet eine Funktion auf jedes Element in einer Serie an. Die Lambda-Funktion `lambda x: x*2` multipliziert jeden Wert mit 2 und gibt eine neue Serie mit den transformierten Werten zurück.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## DataFrame Inspektion
 
@@ -212,7 +272,7 @@ Eindeutige Werte und deren Häufigkeiten untersuchen.
 df['col'].unique()
 # Anzahl der eindeutigen Werte abrufen
 df['col'].nunique()
-# Vorkommen jedes eindeutigen Werts zählen
+# Vorkommen jedes eindeutigen Wertes zählen
 df['col'].value_counts()
 # Anteile der eindeutigen Werte
 df['col'].value_counts(normalize=True)
@@ -269,7 +329,7 @@ Die Speichernutzung jeder Spalte oder des gesamten DataFrames anzeigen.
 df.memory_usage()
 # Gesamte Speichernutzung in Bytes
 df.memory_usage(deep=True).sum()
-# Detaillierte Speichernutzung in info()-Ausgabe
+# Detaillierte Speichernutzung in der info()-Ausgabe
 df.info(memory_usage='deep')
 ```
 
@@ -282,11 +342,11 @@ Speicher reduzieren, indem Spalten in kleinere, geeignete Datentypen umgewandelt
 df['int_col'] = df['int_col'].astype('int16')
 # Float herunterstufen
 df['float_col'] = df['float_col'].astype('float32')
-# Kategorietyp verwenden
+# Kategorialen Typ verwenden
 df['category_col'] = df['category_col'].astype('category')
 ```
 
-### Große Dateien in Chunks verarbeiten: `read_csv(chunksize=...)`
+### Große Dateien in Chunks lesen: `read_csv(chunksize=...)`
 
 Große Dateien in Blöcken verarbeiten, um zu vermeiden, dass alles auf einmal in den Speicher geladen wird.
 
@@ -302,14 +362,14 @@ for chunk in chunk_iterator:
 # final_df = pd.concat(processed_chunks)
 ```
 
-## Datenimport/Export
+## Daten Import/Export
 
 ### JSON lesen: `pd.read_json()`
 
 Daten aus einer JSON-Datei oder URL laden.
 
 ```python
-# Aus lokaler JSON lesen
+# Von lokalem JSON lesen
 df = pd.read_json('data.json')
 # Von URL lesen
 df = pd.read_json('http://example.com/api/data')
@@ -332,9 +392,9 @@ df = tables[0]
 DataFrame in das JSON-Format schreiben.
 
 ```python
-# In JSON-Datei schreiben
+# In JSON-Datei
 df.to_json('output.json', orient='records', indent=4)
-# In JSON-String schreiben
+# In JSON-String
 json_str = df.to_json(orient='split')
 ```
 
@@ -386,14 +446,14 @@ loaded_df = pd.read_hdf('my_data.h5', key='df')
 
 ### Label-basiert: `df.loc[]` / `df.at[]`
 
-Daten anhand des expliziten Labels von Index/Spalten auswählen.
+Daten anhand der expliziten Beschriftung von Index/Spalten auswählen.
 
 ```python
 # Zeile mit Index 0 auswählen
 df.loc[0]
 # Alle Zeilen für 'col1' auswählen
 df.loc[:, 'col1']
-# Zeilenbereich auswählen und mehrere Spalten auswählen
+# Zeilen aufteilen und mehrere Spalten auswählen
 df.loc[0:5, ['col1', 'col2']]
 # Boolesche Indizierung für Zeilen
 df.loc[df['col'] > 5]
@@ -410,7 +470,7 @@ Daten anhand der ganzzahligen Position von Index/Spalten auswählen.
 df.iloc[0]
 # Erste Spalte nach Position auswählen
 df.iloc[:, 0]
-# Zeilenbereich auswählen und mehrere Spalten nach Position auswählen
+# Zeilen aufteilen und mehrere Spalten nach Position auswählen
 df.iloc[0:5, [0, 1]]
 # Schneller Skalarzugriff nach Position
 df.iat[0, 0]
@@ -462,7 +522,7 @@ print(f"Ausführungszeit: {end_time - start_time} Sekunden")
 
 ### Optimierte Operationen: `eval()` / `query()`
 
-Diese Methoden nutzen, um eine schnellere Leistung bei großen DataFrames zu erzielen, insbesondere bei elementweisen Operationen und Filterungen.
+Diese Methoden für schnellere Leistung auf großen DataFrames nutzen, insbesondere für elementweise Operationen und Filterung.
 
 ```python
 # Schneller als `df['col1'] + df['col2']`
@@ -473,7 +533,7 @@ df_filtered = df.query('col1 > @threshold and col2 == "value"')
 
 ### Code profilieren: `cProfile` / `line_profiler`
 
-Analysieren, wo Zeit bei Ihren Python-Funktionen verbracht wird.
+Analysieren, wo Zeit bei der Ausführung Ihrer Python-Funktionen verbracht wird.
 
 ```python
 import cProfile
@@ -490,7 +550,7 @@ cProfile.run('my_pandas_function(df)') # Funktion mit cProfile ausführen
 # %lprun -f my_function my_function(df)
 ```
 
-## Pandas Installation & Setup
+## Pandas Installation & Einrichtung
 
 ### Pip: `pip install pandas`
 
@@ -510,7 +570,7 @@ pip show pandas
 Paketmanager für Anaconda/Miniconda-Umgebungen.
 
 ```python
-# Pandas in der aktuellen conda-Umgebung installieren
+# Pandas in der aktuellen Conda-Umgebung installieren
 conda install pandas
 # Pandas aktualisieren
 conda update pandas
@@ -522,7 +582,7 @@ conda create -n myenv pandas
 
 ### Version prüfen / Importieren
 
-Die Pandas-Installation überprüfen und sie in Ihren Skripten importieren.
+Ihre Pandas-Installation überprüfen und sie in Ihren Skripten importieren.
 
 ```python
 # Standard-Importalias
@@ -602,7 +662,7 @@ Eine Sequenz von Transformationen auf einen DataFrame anwenden.
 
 ### `.pipe()` verwenden
 
-Funktionen anwenden, die den DataFrame als erstes Argument akzeptieren, um benutzerdefinierte Schritte in einer Kette zu ermöglichen.
+Funktionen anwenden, die den DataFrame als erstes Argument entgegennehmen, um benutzerdefinierte Schritte in einer Kette zu ermöglichen.
 
 ```python
 def custom_filter(df, threshold):

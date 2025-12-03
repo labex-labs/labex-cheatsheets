@@ -1,6 +1,6 @@
 ---
-title: 'DevOps 速查表'
-description: '使用我们的综合速查表学习 DevOps，涵盖基本命令、概念和最佳实践。'
+title: 'DevOps 速查表 | LabEx'
+description: '使用此综合速查表学习 DevOps 实践。CI/CD、自动化、基础设施即代码、监控、容器化和现代软件交付工作流程的快速参考。'
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ DevOps 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/devops">通过实践实验室学习 DevOps</a>
+<a target="_blank" href="https://labex.io/zh/learn/devops">通过实战实验学习 DevOps</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 DevOps 实践。LabEx 提供全面的 DevOps 课程，涵盖基本操作、基础设施管理、CI/CD 流水线、容器化、监控和自动化。学习部署应用程序、将基础设施即代码化、自动化工作流程以及实施现代 DevOps 实践以实现高效的软件交付。
+通过实战实验和真实场景学习 DevOps 实践。LabEx 提供全面的 DevOps 课程，涵盖基本操作、基础设施管理、CI/CD 流水线、容器化、监控和自动化。学习部署应用程序、管理基础设施即代码、自动化工作流程以及实施现代 DevOps 实践以实现高效的软件交付。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ DevOps 速查表
 
 ### Terraform: 基础设施配置
 
-使用声明性配置文件语言定义和配置基础设施。
+使用声明性配置文件定义和配置基础设施。
 
 ```bash
 # 初始化 Terraform
@@ -39,6 +39,21 @@ terraform fmt
 # 验证配置
 terraform validate
 ```
+
+<BaseQuiz id="devops-terraform-1" correct="B">
+  <template #question>
+    `terraform plan` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">立即应用基础设施变更</BaseQuizOption>
+  <BaseQuizOption value="B" correct>显示将要进行的变更，但不应用它们</BaseQuizOption>
+  <BaseQuizOption value="C">销毁所有基础设施</BaseQuizOption>
+  <BaseQuizOption value="D">初始化 Terraform</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `terraform plan` 创建一个执行计划，显示运行 `terraform apply` 时 Terraform 将要执行的操作。这是一个预演，可帮助您在应用之前审查变更。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Ansible: 配置管理
 
@@ -94,15 +109,30 @@ docker rm container_id
 ```bash
 # 应用配置
 kubectl apply -f deployment.yml
-# 获取 Pods
+# 获取 Pod
 kubectl get pods
-# 缩放部署
+# 扩展部署
 kubectl scale deployment myapp --replicas=5
 # 查看日志
 kubectl logs pod_name
 # 删除资源
 kubectl delete -f deployment.yml
 ```
+
+<BaseQuiz id="devops-k8s-1" correct="A">
+  <template #question>
+    `kubectl apply -f deployment.yml` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>创建或更新 YAML 文件中定义的资源</BaseQuizOption>
+  <BaseQuizOption value="B">删除集群中的所有资源</BaseQuizOption>
+  <BaseQuizOption value="C">只创建新资源</BaseQuizOption>
+  <BaseQuizOption value="D">显示将要创建的内容，但不应用</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kubectl apply` 是一个声明式命令，如果资源不存在则创建它们，如果存在则更新它们。它是幂等的，意味着可以安全地多次运行。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Helm: Kubernetes 包管理器
 
@@ -199,7 +229,7 @@ test_job:
 ```bash
 # 克隆仓库
 git clone https://github.com/user/repo.git
-# 查看状态
+# 检查状态
 git status
 # 添加变更
 git add .
@@ -210,6 +240,21 @@ git push origin main
 # 拉取最新变更
 git pull origin main
 ```
+
+<BaseQuiz id="devops-git-1" correct="D">
+  <template #question>
+    `git pull` 和 `git fetch` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">没有区别</BaseQuizOption>
+  <BaseQuizOption value="B">git pull 推送变更，git fetch 拉取变更</BaseQuizOption>
+  <BaseQuizOption value="C">git pull 在本地工作，git fetch 在远程工作</BaseQuizOption>
+  <BaseQuizOption value="D" correct>git fetch 下载变更但不合并，git pull 下载并合并变更</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` 从远程仓库下载变更，但不会将它们合并到您当前的分支中。`git pull` 执行这两个操作：它会获取并随后合并变更。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 分支管理
 
@@ -226,7 +271,7 @@ git branch -a
 git checkout main
 # 删除分支
 git branch -d feature-branch
-# 硬重置到上一个提交
+# 重置到上一个提交
 git reset --hard HEAD~1
 # 查看提交历史
 git log --oneline
@@ -245,7 +290,7 @@ gh pr list
 gh pr merge 123
 gh issue create --title "Bug report"
 gh release create v1.0.0
-# 创建 pull request
+# 创建拉取请求
 git push -u origin feature-branch
 # 然后在 GitHub/GitLab 上创建 PR
 ```
@@ -353,7 +398,7 @@ statsd.histogram('web.response_time', 0.75)
 
 ## 云平台管理
 
-### AWS CLI: Amazon Web Services
+### AWS CLI: 亚马逊网络服务
 
 从命令行与 AWS 服务进行交互。
 
@@ -370,7 +415,7 @@ aws lambda create-function --function-name myfunction --runtime python3.8 --role
 aws ecs list-services --cluster my-cluster
 ```
 
-### Azure CLI: Microsoft Azure
+### Azure CLI: 微软 Azure
 
 管理 Azure 资源和服务。
 
@@ -387,7 +432,7 @@ az webapp list
 
 ### Google Cloud: GCP
 
-在 Google Cloud Platform 上部署和管理应用程序。
+在谷歌云平台上部署和管理应用程序。
 
 ```bash
 # 使用 GCP 进行身份验证
@@ -420,7 +465,7 @@ gcp_bucket = gcp.storage.Bucket("my-gcp-bucket")
 
 ### HashiCorp Vault: 密钥管理
 
-HashiCorp Vault 是一种安全访问密钥的工具。密钥是您希望严格控制访问的任何内容，例如 API 密钥、密码或证书。
+HashiCorp Vault 是一种用于安全访问密钥的工具。密钥是指您希望严格控制访问的任何内容，例如 API 密钥、密码或证书。
 
 ```bash
 # 写入密钥
@@ -485,7 +530,7 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 
 ### 系统性能监控
 
-无论您是管理服务器、设置部署还是修复生产中出现的问题，这些命令都能帮助您更快地工作，更智能地工作。
+无论您是管理服务器、设置部署，还是修复生产中刚刚出现的问题，这些命令都能帮助您更快地行动，更智能地工作。
 
 ```bash
 # CPU 和内存使用情况
@@ -553,11 +598,54 @@ redis-cli --latency
 redis-cli info memory
 ```
 
+## 工具安装
+
+### 包管理器
+
+使用系统包管理器安装工具。
+
+```bash
+# Ubuntu/Debian
+apt update && apt install -y docker.io kubectl terraform
+# CentOS/RHEL
+yum install -y docker kubernetes-client terraform
+# macOS Homebrew
+brew install docker kubectl terraform ansible
+```
+
+### 容器运行时安装
+
+设置 Docker 和容器编排工具。
+
+```bash
+# 安装 Docker
+curl -fsSL https://get.docker.com | sh
+systemctl start docker
+systemctl enable docker
+# 安装 Docker Compose
+curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+```
+
+### 云 CLI 工具
+
+安装主要云提供商的命令行界面。
+
+```bash
+# AWS CLI
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip && ./aws/install
+# Azure CLI
+curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+# Google Cloud SDK
+curl https://sdk.cloud.google.com | bash
+```
+
 ## 环境配置
 
 ### 环境变量管理
 
-安全地管理跨不同环境的配置。
+安全地管理不同环境的配置。
 
 ```bash
 # .env 文件示例
@@ -568,7 +656,7 @@ ENVIRONMENT=production
 export $(cat .env | xargs)
 # Docker 环境变量
 docker run -e NODE_ENV=production -e API_KEY=secret myapp
-# Kubernetes configmap
+# Kubernetes ConfigMap
 kubectl create configmap app-config --from-env-file=.env
 ```
 

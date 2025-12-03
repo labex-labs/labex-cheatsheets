@@ -1,6 +1,6 @@
 ---
-title: 'PostgreSQL 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合 PostgreSQL 速查表进行学习。'
+title: 'PostgreSQL 速查表 | LabEx'
+description: '使用此综合速查表学习 PostgreSQL 数据库管理。快速参考 SQL 查询、高级功能、JSON 支持、全文搜索和企业数据库管理。'
 pdfUrl: '/cheatsheets/pdf/postgresql-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ PostgreSQL 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/postgresql">通过实践实验室学习 PostgreSQL</a>
+<a target="_blank" href="https://labex.io/zh/learn/postgresql">通过动手实验学习 PostgreSQL</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 PostgreSQL 数据库管理。LabEx 提供全面的 PostgreSQL 课程，涵盖基本的 SQL 操作、高级查询、性能优化、数据库管理和安全。掌握企业级关系数据库的开发和管理。
+通过动手实验和真实场景学习 PostgreSQL 数据库管理。LabEx 提供全面的 PostgreSQL 课程，涵盖基本的 SQL 操作、高级查询、性能优化、数据库管理和安全。掌握企业级关系数据库的开发和管理。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -38,7 +38,7 @@ psql "host=localhost port=5432 dbname=mydb user=myuser"
 
 ### 创建数据库：`CREATE DATABASE`
 
-使用 CREATE DATABASE 命令在 PostgreSQL 中创建一个新的数据库。
+使用 CREATE DATABASE 命令在 PostgreSQL 中创建一个新数据库。
 
 ```sql
 # 创建一个新数据库
@@ -67,12 +67,12 @@ CREATE DATABASE mydatabase
 
 ### 基本 psql 命令
 
-用于导航和获取信息的关键 psql 终端命令。
+用于导航和获取信息的常用 psql 终端命令。
 
 ```bash
 # 退出 psql
 \q
-# 获取 CREATE TABLE 命令的帮助
+# 获取 SQL 命令的帮助
 \help CREATE TABLE
 # 获取 psql 命令的帮助
 \?
@@ -82,7 +82,7 @@ CREATE DATABASE mydatabase
 \! ls
 # 列出所有表
 \dt
-# 列出带有详细信息的表
+# 列出所有表及其详细信息
 \dt+
 # 描述特定表
 \d table_name
@@ -99,9 +99,9 @@ CREATE DATABASE mydatabase
 ```sql
 # 检查 PostgreSQL 版本
 SELECT version();
-# 显示所有设置
+# 查看当前设置
 SHOW ALL;
-# 显示特定设置
+# 查看特定设置
 SHOW max_connections;
 # 设置配置参数
 SET work_mem = '256MB';
@@ -131,9 +131,24 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="postgresql-create-table-1" correct="A">
+  <template #question>
+    PostgreSQL 中的 `SERIAL PRIMARY KEY` 是做什么的？
+  </template>
+  
+  <BaseQuizOption value="A" correct>创建一个自增整数列作为主键</BaseQuizOption>
+  <BaseQuizOption value="B">创建一个文本列</BaseQuizOption>
+  <BaseQuizOption value="C">创建一个外键约束</BaseQuizOption>
+  <BaseQuizOption value="D">创建一个唯一索引</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SERIAL` 是 PostgreSQL 特有的数据类型，它创建一个自增整数。与 `PRIMARY KEY` 结合使用时，它会为每一行创建一个自动递增的唯一标识符。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 修改表：`ALTER TABLE`
 
-向现有表添加、修改或删除列和约束。
+向现有表中添加、修改或删除列和约束。
 
 ```sql
 # 添加新列
@@ -154,7 +169,7 @@ ALTER TABLE users ADD CONSTRAINT unique_email
 ```sql
 # 完全删除表
 DROP TABLE IF EXISTS old_table;
-# 清除所有数据但保留结构
+# 移除所有数据但保留结构
 TRUNCATE TABLE users;
 # 截断并重置标识符
 TRUNCATE TABLE users RESTART IDENTITY;
@@ -162,7 +177,7 @@ TRUNCATE TABLE users RESTART IDENTITY;
 
 ### 数据类型与约束
 
-用于不同类型数据的关键 PostgreSQL 数据类型。
+用于不同类型数据的基本 PostgreSQL 数据类型。
 
 ```sql
 # 数值类型
@@ -177,7 +192,7 @@ CHAR(n), VARCHAR(n), TEXT
 DATE, TIME, TIMESTAMP
 TIMESTAMPTZ (带时区)
 
-# 布尔和其他
+# 布尔值和其他
 BOOLEAN
 JSON, JSONB
 UUID
@@ -212,16 +227,31 @@ CREATE UNIQUE INDEX idx_unique_email
 # 复合索引
 CREATE INDEX idx_user_date
     ON orders(user_id, created_at);
-# 局部索引 (Partial index)
+# 局部索引
 CREATE INDEX idx_active_users
     ON users(username) WHERE active = true;
 # 删除索引
 DROP INDEX IF EXISTS idx_username;
 ```
 
+<BaseQuiz id="postgresql-index-1" correct="A">
+  <template #question>
+    在 PostgreSQL 中创建索引的主要目的是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>提高查询性能，加快数据检索速度</BaseQuizOption>
+  <BaseQuizOption value="B">减小数据库大小</BaseQuizOption>
+  <BaseQuizOption value="C">加密数据</BaseQuizOption>
+  <BaseQuizOption value="D">防止重复条目</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    索引创建了一个数据结构，允许数据库快速查找行而无需扫描整个表。这显著加快了 SELECT 查询的速度，尤其是在大型表上。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 序列：`CREATE SEQUENCE`
 
-自动生成唯一数字值。
+自动生成唯一的数字值。
 
 ```sql
 # 创建序列
@@ -257,6 +287,21 @@ RETURNING id, created_at;
 INSERT INTO archive_users
 SELECT * FROM users WHERE active = false;
 ```
+
+<BaseQuiz id="postgresql-insert-1" correct="C">
+  <template #question>
+    PostgreSQL 的 `RETURNING` 子句有什么作用？
+  </template>
+  
+  <BaseQuizOption value="A">回滚插入操作</BaseQuizOption>
+  <BaseQuizOption value="B">阻止插入操作</BaseQuizOption>
+  <BaseQuizOption value="C" correct>返回被插入的行数据</BaseQuizOption>
+  <BaseQuizOption value="D">更新现有行</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PostgreSQL 中的 `RETURNING` 子句允许您在插入后立即检索被插入的行数据（或特定列），这对于获取自动生成的 ID 或时间戳非常有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 更新数据：`UPDATE`
 
@@ -311,7 +356,7 @@ WHERE user_id IN (
 );
 # 删除所有记录
 DELETE FROM temp_table;
-# 删除并返回
+# 带返回的删除
 DELETE FROM users
 WHERE id = 5
 RETURNING *;
@@ -341,13 +386,13 @@ JOIN products p ON o.product_id = p.id;
 
 ### 子查询与 CTE
 
-使用嵌套查询和通用表表达式进行复杂操作。
+使用嵌套查询和公共表表达式进行复杂操作。
 
 ```sql
 # WHERE 中的子查询
 SELECT * FROM users
 WHERE id IN (SELECT user_id FROM orders);
-# 通用表表达式 (CTE)
+# 公共表表达式 (CTE)
 WITH active_users AS (
     SELECT * FROM users WHERE active = true
 )
@@ -359,7 +404,7 @@ GROUP BY au.username;
 
 ### 聚合：`GROUP BY`
 
-分组数据并应用聚合函数进行分析。
+对数据进行分组并应用聚合函数进行分析。
 
 ```sql
 # 基本分组
@@ -385,7 +430,7 @@ HAVING COUNT(*) > 5;
 SELECT username, email,
        ROW_NUMBER() OVER (ORDER BY created_at) as row_num
 FROM users;
-# 运行总计
+# 累计总计
 SELECT date, amount,
        SUM(amount) OVER (ORDER BY date) as running_total
 FROM sales;
@@ -406,7 +451,7 @@ FROM user_scores;
 COPY users(username, email, age)
 FROM '/path/to/users.csv'
 DELIMITER ',' CSV HEADER;
-# 导入时使用特定选项
+# 带特定选项的导入
 COPY products
 FROM '/path/to/products.csv'
 WITH (FORMAT csv, HEADER true, DELIMITER ';');
@@ -473,12 +518,12 @@ WHERE metadata->'features' ? 'wireless';
 # 创建用户
 CREATE USER myuser WITH PASSWORD 'secretpassword';
 # 创建角色
-CREATE ROLE readonly_user;
+CREATE ROLE readonly_role;
 # 创建带特定权限的用户
 CREATE USER admin_user WITH
     CREATEDB CREATEROLE PASSWORD 'adminpass';
 # 将角色授予用户
-GRANT readonly_user TO myuser;
+GRANT readonly_role TO myuser;
 ```
 
 ### 权限：`GRANT/REVOKE`
@@ -523,7 +568,7 @@ FROM pg_roles r;
 ALTER USER myuser PASSWORD 'newpassword';
 # 设置密码过期时间
 ALTER USER myuser VALID UNTIL '2025-12-31';
-# 创建不带登录权限的角色
+# 创建无登录权限的角色
 CREATE ROLE reporting_role NOLOGIN;
 # 启用/禁用用户
 ALTER USER myuser WITH NOLOGIN;
@@ -539,7 +584,7 @@ ALTER USER myuser WITH LOGIN;
 ```sql
 # 显示查询执行计划
 EXPLAIN SELECT * FROM users WHERE active = true;
-# 使用实际执行统计信息进行分析
+# 带实际执行统计信息的分析
 EXPLAIN ANALYZE
 SELECT u.username, COUNT(o.id)
 FROM users u
@@ -720,20 +765,20 @@ user=myuser
 设置 PostgreSQL 环境变量以简化连接。
 
 ```bash
-# 在你的 shell 配置文件中设置
+# 在您的 shell 配置文件中设置
 export PGHOST=localhost
 export PGPORT=5432
 export PGDATABASE=mydatabase
 export PGUSER=myuser
-# 然后简单地用以下命令连接
+# 然后只需使用 psql 连接
 psql
-# 或者使用特定环境
+# 或使用特定环境变量
 PGDATABASE=testdb psql
 ```
 
 ### 数据库信息
 
-获取有关数据库对象和结构的信息。
+获取有关数据库对象和结构的​​信息。
 
 ```bash
 # 列出数据库

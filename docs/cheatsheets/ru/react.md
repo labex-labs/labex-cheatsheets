@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по React'
-description: 'Изучите React с нашей полной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по React | LabEx'
+description: 'Изучите разработку на React с помощью этой исчерпывающей шпаргалки. Быстрый справочник по хукам React, компонентам, JSX, управлению состоянием, пропсам и современным паттернам фронтенд-разработки.'
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 
@@ -44,7 +44,7 @@ const Greeting = ({ name }) => <h1>Hello, {name}!</h1>
 
 ### Классовые компоненты: `class extends React.Component`
 
-Создавайте компоненты с использованием синтаксиса класса ES6.
+Создавайте компоненты с использованием синтаксиса классов ES6.
 
 ```javascript
 import React, { Component } from 'react'
@@ -169,9 +169,24 @@ function Welcome({ name = 'Guest' }) {
 }
 ```
 
+<BaseQuiz id="react-props-1" correct="B">
+  <template #question>
+    How do you pass data from a parent component to a child component in React?
+  </template>
+  
+  <BaseQuizOption value="A">Using state variables</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Using props</BaseQuizOption>
+  <BaseQuizOption value="C">Using refs</BaseQuizOption>
+  <BaseQuizOption value="D">Using context API</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Props (short for properties) are the primary way to pass data from parent to child components in React. You pass props as attributes when rendering the child component.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### PropTypes: `Component.propTypes`
 
-Проверка типов props, передаваемых компонентам (требуется пакет prop-types).
+Проверка типов передаваемых props компонентам (требуется пакет prop-types).
 
 ```javascript
 import PropTypes from 'prop-types'
@@ -237,6 +252,21 @@ function Form() {
 }
 ```
 
+<BaseQuiz id="react-usestate-1" correct="A">
+  <template #question>
+    What does `useState(0)` return?
+  </template>
+  
+  <BaseQuizOption value="A" correct>An array with the state value and a function to update it</BaseQuizOption>
+  <BaseQuizOption value="B">Just the state value</BaseQuizOption>
+  <BaseQuizOption value="C">A function to update the state</BaseQuizOption>
+  <BaseQuizOption value="D">Nothing, it just sets the state</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `useState` returns an array with two elements: the current state value and a function to update it. The initial value (0) is passed as an argument.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Хук useEffect: `useEffect()`
 
 Выполнение побочных эффектов в функциональных компонентах.
@@ -260,7 +290,22 @@ function Timer() {
 }
 ```
 
-### Классовое состояние: `this.state` / `setState()`
+<BaseQuiz id="react-useeffect-1" correct="D">
+  <template #question>
+    What does the empty dependency array `[]` in `useEffect(() => {...}, [])` mean?
+  </template>
+  
+  <BaseQuizOption value="A">The effect runs on every render</BaseQuizOption>
+  <BaseQuizOption value="B">The effect never runs</BaseQuizOption>
+  <BaseQuizOption value="C">The effect runs twice</BaseQuizOption>
+  <BaseQuizOption value="D" correct>The effect runs only once after the initial render</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    An empty dependency array means the effect has no dependencies, so it will only run once after the component mounts. This is useful for setup code that should only run once.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Состояние класса: `this.state` / `setState()`
 
 Управление состоянием в классовых компонентах.
 
@@ -313,6 +358,21 @@ function Counter() {
 ```
 
 ## Обработка событий
+
+<BaseQuiz id="react-props-2" correct="A">
+  <template #question>
+    What is the purpose of PropTypes in React?
+  </template>
+  
+  <BaseQuizOption value="A" correct>To validate the types of props passed to components</BaseQuizOption>
+  <BaseQuizOption value="B">To improve component performance</BaseQuizOption>
+  <BaseQuizOption value="C">To automatically style components</BaseQuizOption>
+  <BaseQuizOption value="D">To make components faster</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PropTypes help catch bugs by validating that components receive props of the correct type. They provide runtime type checking and are especially useful during development.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### События клика: `onClick`
 
@@ -422,7 +482,7 @@ function KeyboardHandler() {
 
 ### Условные операторы: `&&` / `?:`
 
-Отображение/скрытие элементов на основе условий.
+Показать/скрыть элементы на основе условий.
 
 ```javascript
 function Greeting({ user }) {
@@ -465,7 +525,7 @@ function Component({ data }) {
 
 ### Операторы Switch: `switch`
 
-Эффективная обработка нескольких условий.
+Эффективная обработка множества условий.
 
 ```javascript
 function StatusIcon({ status }) {
@@ -533,7 +593,7 @@ function ItemList({ items }) {
 }
 ```
 
-### Ключи: `key` prop
+### Ключи: prop `key`
 
 Предоставление уникальных идентификаторов для элементов списка для оптимизации рендеринга.
 
@@ -565,7 +625,7 @@ function CommentList({ comments }) {
 
 ### Filter и Map: Методы массива
 
-Обработка массивов перед их отображением.
+Обработка массивов перед их рендерингом.
 
 ```javascript
 function TaskList({ tasks, showCompleted }) {
@@ -584,7 +644,7 @@ function TaskList({ tasks, showCompleted }) {
 }
 ```
 
-### Пустые состояния: Обработка пустых массивов
+### Состояния пустого списка: Обработка пустых массивов
 
 Отображение соответствующего содержимого, когда списки пусты.
 
@@ -683,9 +743,9 @@ function App() {
 }
 ```
 
-## Коммуникация между компонентами
+## Взаимодействие компонентов
 
-### Props Down: От родителя к потомку
+### Props Down: Родитель к Дочернему
 
 Передача данных от родительских компонентов к дочерним.
 
@@ -705,9 +765,9 @@ function ChildComponent({ user }) {
 }
 ```
 
-### Callbacks Up: От потомка к родителю
+### Callbacks Up: Дочерний к Родительскому
 
-Отправка данных из дочерних компонентов обратно в родительские.
+Отправка данных от дочерних компонентов обратно родительским.
 
 ```javascript
 function Parent() {
@@ -859,7 +919,7 @@ function onRenderCallback(id, phase, actualDuration) {
 
 ### Create React App: `npx create-react-app`
 
-Быстрый запуск нового проекта React.
+Быстрый старт нового проекта React.
 
 ```bash
 # Создать новое приложение React
@@ -917,7 +977,7 @@ root.render(<App />)
 
 ## Расширенные шаблоны и функции
 
-### Компоненты высшего порядка (HOC)
+### Компонент высшего порядка (HOC)
 
 Повторное использование логики компонентов путем оборачивания компонентов.
 
@@ -938,7 +998,7 @@ const UserListWithLoading = withLoading(UserList)
 
 ### Шаблон Render Props
 
-Совместное использование кода между компонентами с помощью пропса, значением которого является функция.
+Совместное использование кода между компонентами с помощью prop, значением которого является функция.
 
 ```javascript
 function DataFetcher({ render, url }) {
@@ -964,7 +1024,7 @@ function DataFetcher({ render, url }) {
 />
 ```
 
-### Составные компоненты (Compound Components)
+### Составные компоненты
 
 Создание компонентов, которые работают вместе как единое целое.
 
@@ -992,7 +1052,7 @@ function Tab({ children, isActive }) {
 
 ### Портал: `ReactDOM.createPortal()`
 
-Рендеринг дочерних элементов в узле DOM за пределами иерархии родительского компонента.
+Рендеринг дочерних элементов в узел DOM за пределами иерархии родительского компонента.
 
 ```javascript
 import ReactDOM from 'react-dom'

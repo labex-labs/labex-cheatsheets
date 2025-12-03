@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de trucos CompTIA'
-description: 'Aprenda CompTIA con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos CompTIA | LabEx'
+description: 'Aprenda certificaciones de TI CompTIA con esta hoja de trucos completa. Referencia rápida para CompTIA A+, Network+, Security+, Linux+ y fundamentos de TI para la preparación de exámenes de certificación.'
 pdfUrl: '/cheatsheets/pdf/comptia-cheatsheet.pdf'
 ---
 
@@ -21,7 +21,7 @@ Aprenda las certificaciones CompTIA a través de laboratorios prácticos y escen
 
 ## Resumen de Certificaciones CompTIA
 
-### Certificaciones Fundamentales (Core)
+### Certificaciones Core (Fundamentales)
 
 Certificaciones fundamentales para el éxito en la carrera de TI.
 
@@ -46,6 +46,21 @@ Certificaciones fundamentales para el éxito en la carrera de TI.
 - Operaciones y respuesta a incidentes
 - Gobernanza, riesgo y cumplimiento
 ```
+
+<BaseQuiz id="comptia-core-1" correct="B">
+  <template #question>
+    ¿Qué certificación CompTIA se centra en los fundamentos de red y la solución de problemas?
+  </template>
+  
+  <BaseQuizOption value="A">CompTIA A+</BaseQuizOption>
+  <BaseQuizOption value="B" correct>CompTIA Network+</BaseQuizOption>
+  <BaseQuizOption value="C">CompTIA Security+</BaseQuizOption>
+  <BaseQuizOption value="D">CompTIA Linux+</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    CompTIA Network+ (N10-008) se centra en los fundamentos de red, implementaciones, operaciones, seguridad y solución de problemas. Está diseñado para administradores y técnicos de red.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Certificaciones Especializadas
 
@@ -137,7 +152,7 @@ Smartphones, tabletas y gestión de dispositivos móviles.
 # Seguridad Móvil
 - Bloqueos de pantalla y biometría
 - Gestión de dispositivos móviles (MDM)
-- Seguridad de aplicaciones y permisos
+- Seguridad y permisos de aplicaciones
 - Capacidades de borrado remoto
 ```
 
@@ -149,7 +164,7 @@ Gestión de Windows, macOS, Linux y sistemas operativos móviles.
 # Administración de Windows
 - Ediciones de Windows 10/11
 - Control de Cuentas de Usuario (UAC)
-- Directiva de Grupo y Registro
+- Directiva de grupo y Registro
 - Gestión de Actualizaciones de Windows
 
 # Gestión de macOS
@@ -187,6 +202,21 @@ Capa 1: Física (Cables, Hubs)
 - Servicios DHCP y DNS
 - Protocolos ARP e ICMP
 ```
+
+<BaseQuiz id="comptia-osi-1" correct="C">
+  <template #question>
+    ¿En qué capa OSI opera TCP?
+  </template>
+  
+  <BaseQuizOption value="A">Capa 3 (Red)</BaseQuizOption>
+  <BaseQuizOption value="B">Capa 5 (Sesión)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Capa 4 (Transporte)</BaseQuizOption>
+  <BaseQuizOption value="D">Capa 7 (Aplicación)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    TCP (Protocolo de Control de Transmisión) opera en la Capa 4 (Transporte) del modelo OSI. Esta capa es responsable de la transmisión de datos confiable, la verificación de errores y el control de flujo.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Dispositivos de Red
 
@@ -261,8 +291,23 @@ Algo que sabes: Contraseñas, PINs
 Algo que tienes: Tokens, tarjetas inteligentes
 Algo que eres: Biometría
 Algo que haces: Patrones de comportamiento
-Algún lugar donde estás: Basado en ubicación
+Algún lugar donde estás: Basado en la ubicación
 ```
+
+<BaseQuiz id="comptia-cia-1" correct="A">
+  <template #question>
+    ¿Qué representa la tríada CIA en ciberseguridad?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Confidencialidad, Integridad y Disponibilidad: los tres principios básicos de seguridad</BaseQuizOption>
+  <BaseQuizOption value="B">Una agencia gubernamental</BaseQuizOption>
+  <BaseQuizOption value="C">Tres tipos de ataques</BaseQuizOption>
+  <BaseQuizOption value="D">Tres métodos de autenticación</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La tríada CIA representa los tres principios fundamentales de la seguridad de la información: Confidencialidad (proteger los datos del acceso no autorizado), Integridad (garantizar la precisión y autenticidad de los datos) y Disponibilidad (garantizar que los sistemas y datos estén accesibles cuando sea necesario).
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Panorama de Amenazas
 
@@ -273,7 +318,7 @@ Ataques comunes y actores de amenazas.
 - Phishing y ingeniería social
 - Malware (virus, troyanos, ransomware)
 - Ataques DDoS y DoS
-- Ataques de intermediario (Man-in-the-middle)
+- Ataques de hombre en el medio (Man-in-the-middle)
 - Inyección SQL y XSS
 - Exploits de día cero
 
@@ -303,14 +348,29 @@ Firmas Digitales: No repudio
 - Infraestructura de Clave Pública (PKI)
 ```
 
+<BaseQuiz id="comptia-crypto-1" correct="B">
+  <template #question>
+    ¿Cuál es la principal diferencia entre el cifrado simétrico y asimétrico?
+  </template>
+  
+  <BaseQuizOption value="A">El simétrico es más rápido, el asimétrico es más lento</BaseQuizOption>
+  <BaseQuizOption value="B" correct>El simétrico usa una clave para cifrar/descifrar, el asimétrico usa un par de claves</BaseQuizOption>
+  <BaseQuizOption value="C">El simétrico es para correos electrónicos, el asimétrico es para archivos</BaseQuizOption>
+  <BaseQuizOption value="D">No hay diferencia</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El cifrado simétrico utiliza la misma clave para cifrar y descifrar, lo que lo hace más rápido pero requiere una distribución segura de claves. El cifrado asimétrico utiliza un par de claves pública/privada, resolviendo el problema de distribución de claves pero siendo computacionalmente más costoso.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Control de Acceso
 
-Modelos de gestión de identidad y autorización.
+Gestión de identidad y modelos de autorización.
 
 ```text
 # Modelos de Control de Acceso
 DAC: Control de Acceso Discrecional
-MAC: Control de Acceso Obligatorio
+MAC: Control de Acceso Mandatorio
 RBAC: Control de Acceso Basado en Roles
 ABAC: Control de Acceso Basado en Atributos
 
@@ -325,7 +385,7 @@ ABAC: Control de Acceso Basado en Atributos
 
 ### Planificación del Estudio
 
-Cree un enfoque estructurado para la preparación de la certificación.
+Crear un enfoque estructurado para la preparación de la certificación.
 
 ```text
 # Horario de Estudio
@@ -343,7 +403,7 @@ Semana 11-12: Revisión final y examen
 - Grupos de estudio y foros
 ```
 
-### Práctica Práctica (Hands-On)
+### Práctica Práctica (Hands-On Practice)
 
 Experiencia práctica para reforzar el conocimiento teórico.
 
@@ -352,7 +412,7 @@ Experiencia práctica para reforzar el conocimiento teórico.
 - VMs de VMware o VirtualBox
 - Configuración de laboratorio en casa
 - Laboratorios basados en la nube (AWS, Azure)
-- Software de simulación de CompTIA
+- Software de simulación CompTIA
 
 # Habilidades Prácticas
 - Construcción y solución de problemas de PC
@@ -361,15 +421,15 @@ Experiencia práctica para reforzar el conocimiento teórico.
 - Dominio de la línea de comandos
 ```
 
-### Estrategias de Examen
+### Estrategias para el Examen
 
-Técnicas para tomar exámenes de certificación CompTIA.
+Técnicas para tomar exámenes de CompTIA.
 
 ```text
 # Tipos de Preguntas
 Opción múltiple: Lea todas las opciones
-Basadas en rendimiento: Practique simulaciones
-Arrastrar y soltar: Comprenda las relaciones
+Basadas en rendimiento (PBQ): Practique simulaciones
+Arrastrar y soltar (Drag-and-drop): Comprenda las relaciones
 Punto de acceso (Hot spot): Conozca los diseños de interfaz
 
 # Gestión del Tiempo
@@ -381,7 +441,7 @@ Punto de acceso (Hot spot): Conozca los diseños de interfaz
 
 ### Temas Comunes del Examen
 
-Áreas frecuentemente evaluadas en los exámenes CompTIA.
+Temas de alta frecuencia en los exámenes CompTIA.
 
 ```text
 # Áreas Frecuentemente Evaluadas
@@ -406,13 +466,13 @@ FTP/SFTP: Transferencia de archivos
 SMTP/POP3/IMAP: Correo electrónico
 DNS: Sistema de Nombres de Dominio
 DHCP: Configuración Dinámica de Host
-TCP/UDP: Protocolos de Transporte
+TCP/UDP: Protocolos de transporte
 IP: Protocolo de Internet
-ICMP: Mensaje de Control de Internet
+ICMP: Protocolo de Mensajes de Control de Internet
 
 # Inalámbrico y Seguridad
 WPA/WPA2: Acceso Protegido Wi-Fi
-SSID: Identificador de Conjunto de Servicio
+SSID: Identificador de Conjunto de Servicios
 MAC: Control de Acceso al Medio
 VPN: Red Privada Virtual
 VLAN: Red Local Virtual
@@ -456,7 +516,7 @@ SOC: Centro de Operaciones de Seguridad
 
 # Cumplimiento y Riesgo
 GDPR: Reglamento General de Protección de Datos
-HIPAA: Ley de Portabilidad y Responsabilidad de Seguros Médicos
+HIPAA: Ley de Portabilidad y Responsabilidad del Seguro Médico
 PCI DSS: Estándar de Seguridad de Datos de la Industria de Tarjetas de Pago
 SOX: Ley Sarbanes-Oxley
 NIST: Instituto Nacional de Estándares y Tecnología
@@ -492,12 +552,12 @@ hardware, software y habilidades básicas de solución de problemas.
 
 ### Infraestructura
 
-Desarrolle experiencia en redes y administración de servidores para roles de infraestructura.
+Desarrolle experiencia en administración de redes y servidores para roles de infraestructura.
 
 ```text
 2. Infraestructura
 Network+ & Server+
-Desarrolle experiencia en redes y administración de servidores para
+Desarrolle experiencia en administración de redes y servidores para
 roles de infraestructura.
 ```
 
@@ -519,7 +579,8 @@ Especializaciones avanzadas en pruebas de penetración y tecnologías en la nube
 ```text
 4. Especialización
 PenTest+ & Cloud+
-Especializaciones avanzadas en pruebas de penetración y tecnologías en la nube.
+Especializaciones avanzadas en pruebas de penetración y tecnologías
+en la nube.
 ```
 
 ## Números de Puerto Comunes
@@ -535,9 +596,9 @@ Puerto 23: Telnet
 Puerto 25: SMTP (Protocolo Simple de Transferencia de Correo)
 Puerto 53: DNS (Sistema de Nombres de Dominio)
 Puerto 67/68: DHCP (Configuración Dinámica de Host)
-Puerto 69: TFTP (Protocolo Trivial de Transferencia de Archivos)
+Puerto 69: TFTP (Protocolo de Transferencia de Archivos Trivial)
 Puerto 80: HTTP (Protocolo de Transferencia de Hipertexto)
-Puerto 110: POP3 (Protocolo de Oficina Postal v3)
+Puerto 110: POP3 (Protocolo de Oficina de Correos v3)
 Puerto 143: IMAP (Protocolo de Acceso a Mensajes de Internet)
 Puerto 161/162: SNMP (Gestión Simple de Red)
 Puerto 443: HTTPS (HTTP Seguro)
@@ -588,7 +649,7 @@ Metodología estándar para la resolución de problemas técnicos.
    - Comenzar con soluciones simples
 
 3. Probar la teoría para determinar la causa
-   - Si la teoría se confirma, proceder
+   - Si la teoría se confirma, continuar
    - Si no, establecer una nueva teoría
    - Escalar si es necesario
 ```
@@ -597,11 +658,11 @@ Metodología estándar para la resolución de problemas técnicos.
 
 Pasos finales en el proceso de solución de problemas.
 
-```text
+```bash
 # Pasos Restantes
 4. Establecer un plan de acción
    - Determinar los pasos para resolver
-   - Identificar posibles efectos
+   - Identificar efectos potenciales
    - Implementar la solución o escalar
 
 5. Implementar la solución o escalar
@@ -610,12 +671,12 @@ Pasos finales en el proceso de solución de problemas.
    - Verificar la funcionalidad completa
 
 6. Documentar hallazgos, acciones y resultados
-   - Actualizar los sistemas de tickets
+   - Actualizar sistemas de tickets
    - Compartir lecciones aprendidas
-   - Prevenir futuras ocurrencias
+   - Prevenir ocurrencias futuras
 ```
 
-## Consejos para Preguntas Basadas en el Rendimiento
+## Consejos para Preguntas Basadas en Rendimiento
 
 ### Preguntas de Rendimiento A+
 
@@ -627,14 +688,14 @@ Escenarios de simulación comunes y sus soluciones.
 - Configurar ajustes de BIOS/UEFI
 - Instalar y configurar RAM
 - Conectar dispositivos de almacenamiento correctamente
-- Solucionar problemas de la fuente de alimentación
+- Solucionar problemas de fuente de alimentación
 
 # Tareas del Sistema Operativo
 - Instalación y configuración de Windows
 - Gestión de cuentas de usuario y permisos
 - Configuración de ajustes de red
 - Instalación de controladores de dispositivos
-- Reparación de archivos del sistema y del registro
+- Reparación de archivos del sistema y registro
 ```
 
 ### Simulaciones Network+
@@ -679,7 +740,7 @@ Implementación de seguridad y respuesta a incidentes.
 
 ### Consejos Generales para Simulaciones
 
-Mejores prácticas para preguntas basadas en el rendimiento.
+Mejores prácticas para preguntas basadas en rendimiento.
 
 ```text
 # Estrategias de Éxito
@@ -692,9 +753,9 @@ Mejores prácticas para preguntas basadas en el rendimiento.
 - Comprenda los conceptos subyacentes, no solo los pasos
 ```
 
-## Registro y Logística de Exámenes
+## Registro y Logística del Examen
 
-### Proceso de Registro de Exámenes
+### Proceso de Registro del Examen
 
 Pasos para programar y prepararse para los exámenes CompTIA.
 
@@ -707,7 +768,7 @@ Pasos para programar y prepararse para los exámenes CompTIA.
 5. Pagar la tarifa del examen
 6. Recibir correo electrónico de confirmación
 
-# Costos de Examen (USD, aproximados)
+# Costos de Examen (USD, aproximado)
 CompTIA A+: $239 por examen (2 exámenes)
 CompTIA Network+: $358
 CompTIA Security+: $370
@@ -722,7 +783,7 @@ Qué esperar y qué llevar el día del examen.
 
 ```text
 # Artículos Requeridos
-- Identificación con foto emitida por el gobierno válida
+- Identificación oficial con foto emitida por el gobierno
 - Correo electrónico/número de confirmación
 - Llegar 30 minutos antes
 - No se permiten artículos personales en la sala de examen
@@ -732,7 +793,7 @@ Qué esperar y qué llevar el día del examen.
 - Preguntas basadas en rendimiento (simulaciones)
 - Preguntas de arrastrar y soltar
 - Preguntas de punto de acceso (hot spot)
-- Los límites de tiempo varían según el examen (90-165 minutos)
+- Límites de tiempo variables según el examen (90-165 minutos)
 ```
 
 ## Mantenimiento de la Certificación

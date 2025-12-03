@@ -1,6 +1,6 @@
 ---
-title: 'Wireshark チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Wireshark を習得しましょう。'
+title: 'Wireshark チートシート | LabEx'
+description: 'この包括的なチートシートで Wireshark のネットワーク解析を学ぶ。パケットキャプチャ、ネットワークプロトコル解析、トラフィック検査、トラブルシューティング、ネットワークセキュリティ監視のためのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 
@@ -15,18 +15,18 @@ Wireshark チートシート
 <a target="_blank" href="https://labex.io/ja/learn/wireshark">ハンズオンラボで Wireshark を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、Wireshark ネットワークパケット解析を学びます。LabEx は、必須のパケットキャプチャ、表示フィルタ、プロトコル解析、ネットワークトラブルシューティング、セキュリティ監視を網羅した包括的な Wireshark コースを提供します。ネットワークトラフィック分析とパケット検査技術を習得しましょう。
+ハンズオンラボと実世界のシナリオを通じて、Wireshark ネットワークパケット解析を学びます。LabEx は、必須のパケットキャプチャ、表示フィルター、プロトコル解析、ネットワークトラブルシューティング、セキュリティ監視を網羅した包括的な Wireshark コースを提供します。ネットワークトラフィック分析とパケット検査技術を習得しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
-## キャプチャフィルタとトラフィックキャプチャ
+## キャプチャフィルターとトラフィックキャプチャ
 
 ### ホストフィルタリング
 
 特定のホストとの間で送受信されるトラフィックをキャプチャします。
 
 ```bash
-# 特定のIPとの送受信トラフィックをキャプチャ
+# 特定のIPとのトラフィックをキャプチャ
 host 192.168.1.100
 # 特定の送信元からのトラフィックをキャプチャ
 src host 192.168.1.100
@@ -35,6 +35,21 @@ dst host 192.168.1.100
 # サブネットからのトラフィックをキャプチャ
 net 192.168.1.0/24
 ```
+
+<BaseQuiz id="wireshark-filter-1" correct="A">
+  <template #question>
+    Wireshark で`host 192.168.1.100`は何をフィルタリングしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>192.168.1.100 とのすべてのトラフィック（送受信）</BaseQuizOption>
+  <BaseQuizOption value="B">192.168.1.100 からのトラフィックのみ</BaseQuizOption>
+  <BaseQuizOption value="C">192.168.1.100 へのトラフィックのみ</BaseQuizOption>
+  <BaseQuizOption value="D">192.168.1.100 のポート上のトラフィック</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `host` フィルターは、指定された IP アドレスが送信元または宛先のすべてのトラフィックをキャプチャします。送信元のみの場合は`src host`、宛先のみの場合は`dst host`を使用します。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### ポートフィルタリング
 
@@ -53,6 +68,21 @@ port 53
 portrange 1000-2000
 ```
 
+<BaseQuiz id="wireshark-port-1" correct="D">
+  <template #question>
+    Wireshark で`port 80`は何をフィルタリングしますか？
+  </template>
+  
+  <BaseQuizOption value="A">HTTP リクエストのみ</BaseQuizOption>
+  <BaseQuizOption value="B">HTTP レスポンスのみ</BaseQuizOption>
+  <BaseQuizOption value="C">TCP パケットのみ</BaseQuizOption>
+  <BaseQuizOption value="D" correct>ポート 80 上のすべてのトラフィック（送信元と宛先の両方）</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `port` フィルターは、ポート 80 が送信元ポートまたは宛先ポートのいずれかであるすべてのトラフィックをキャプチャします。これには、ポート 80 を使用する HTTP リクエストとレスポンスの両方が含まれます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### プロトコルフィルタリング
 
 特定のプロトコルトラフィックをキャプチャします。
@@ -68,20 +98,35 @@ icmp
 arp
 ```
 
-### 高度なキャプチャフィルタ
+### 高度なキャプチャフィルター
 
-複数の条件を組み合わせて正確にキャプチャします。
+複数の条件を組み合わせて正確なキャプチャを行います。
 
 ```bash
 # 特定のホストとのHTTPトラフィック
 host 192.168.1.100 and port 80
-# SSHを除くTCPトラフィック
+# SSH（ポート22）を除くTCPトラフィック
 tcp and not port 22
 # 2つのホスト間のトラフィック
 host 192.168.1.100 and host 192.168.1.200
 # HTTPまたはHTTPSトラフィック
 port 80 or port 443
 ```
+
+<BaseQuiz id="wireshark-advanced-1" correct="B">
+  <template #question>
+    `tcp and not port 22`は何をキャプチャしますか？
+  </template>
+  
+  <BaseQuizOption value="A">SSH トラフィックのみ</BaseQuizOption>
+  <BaseQuizOption value="B" correct>SSH（ポート 22）を除くすべての TCP トラフィック</BaseQuizOption>
+  <BaseQuizOption value="C">ポート 22 の UDP トラフィック</BaseQuizOption>
+  <BaseQuizOption value="D">すべてのネットワークトラフィック</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    このフィルターは、ポート 22（SSH）を除くすべての TCP トラフィックをキャプチャします。`and not`演算子は、指定されたポートを除外しながら、他のすべての TCP トラフィックを保持します。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### インターフェイスの選択
 
@@ -108,17 +153,17 @@ lo
 -a filesize:100
 # キャプチャ期間を制限 (秒)
 -a duration:300
-# 10ファイルでリングバッファ
+# 10ファイルでのリングバッファ
 -b files:10
 # プロミスキャスモード (すべてのトラフィックをキャプチャ)
 -p
 ```
 
-## 表示フィルタとパケット解析
+## 表示フィルターとパケット解析
 
-### 基本的な表示フィルタ
+### 基本的な表示フィルター
 
-一般的なプロトコルやトラフィックタイプのための必須フィルタ。
+一般的なプロトコルやトラフィックタイプのための必須フィルター。
 
 ```bash
 # HTTPトラフィックのみを表示
@@ -152,16 +197,16 @@ ip.src_net == 192.168.1.0/24
 not ip.addr == 192.168.1.1
 ```
 
-### ポートとプロトコルフィルタ
+### ポートとプロトコルフィルター
 
 特定のポートとプロトコルの詳細でフィルタリングします。
 
 ```bash
-# 特定のポートのトラフィック
+# 特定のポート上のトラフィック
 tcp.port == 80
-# 送信元ポートフィルタ
+# 送信元ポートフィルター
 tcp.srcport == 443
-# 宛先ポートフィルタ
+# 宛先ポートフィルター
 tcp.dstport == 22
 # ポート範囲
 tcp.port >= 1000 and tcp.port <=
@@ -191,7 +236,7 @@ http contains "login"
 
 ### DNS 解析
 
-DNS クエリと応答を調べます。
+DNS クエリと応答を検査します。
 
 ```bash
 # DNSクエリのみ
@@ -211,9 +256,9 @@ dns.flags.rcode != 0
 TCP 接続の詳細を解析します。
 
 ```bash
-# TCP SYNパケット (接続試行)
+# TCP SYNパケット（接続試行）
 tcp.flags.syn == 1
-# TCP RSTパケット (接続リセット)
+# TCP RSTパケット（接続リセット）
 tcp.flags.reset == 1
 # TCP再送信
 tcp.analysis.retransmission
@@ -225,7 +270,7 @@ tcp.flags.syn == 1 and tcp.flags.ack == 0
 
 ### TLS/SSL解析
 
-暗号化された接続の詳細を調べます。
+暗号化された接続の詳細を検査します。
 
 ```bash
 # TLSハンドシェイクパケット
@@ -247,26 +292,26 @@ tls.handshake.extensions_server_name
 ```bash
 # ICMP到達不能メッセージ
 icmp.type == 3
-# ARPリクエスト/応答
+# ARPリクエスト/レスポンス
 arp.opcode == 1 or arp.opcode == 2
 # ブロードキャストトラフィック
 eth.dst == ff:ff:ff:ff:ff:ff
 # フラグメント化されたパケット
 ip.flags.mf == 1
-# 大きなパケット (MTU問題の可能性)
+# 大きなパケット（MTU問題の可能性）
 frame.len > 1500
 ```
 
 ### 時間ベースのフィルタリング
 
-タイムスタンプとタイミングでパケットをフィルタリングします。
+タイムスタンプとタイミングに基づいてフィルタリングします。
 
 ```bash
 # 時間範囲内のパケット
 frame.time >= "2024-01-01 10:00:00"
 # 過去1時間以内のパケット
 frame.time_relative >= -3600
-# 応答時間解析
+# 応答時間の分析
 tcp.time_delta > 1.0
 # パケット間隔時間
 frame.time_delta > 0.1
@@ -279,8 +324,8 @@ frame.time_delta > 0.1
 キャプチャ内のプロトコル分布を表示します。
 
 ```bash
-# 以下からアクセス: Statistics > Protocol Hierarchy
-# 各プロトコルの割合を表示
+# アクセス方法: Statistics > Protocol Hierarchy
+# 各プロトコルのパーセンテージを表示
 # 最も一般的なプロトコルを特定
 # トラフィックの概要把握に役立つ
 # コマンドライン相当
@@ -289,10 +334,10 @@ tshark -r capture.pcap -q -z io,phs
 
 ### 通信 (Conversations)
 
-エンドポイント間の通信を解析します。
+エンドポイント間の通信を分析します。
 
 ```bash
-# 以下からアクセス: Statistics > Conversations
+# アクセス方法: Statistics > Conversations
 # Ethernet通信
 # IPv4/IPv6通信
 # TCP/UDP通信
@@ -303,14 +348,14 @@ tshark -r capture.pcap -q -z conv,tcp
 
 ### I/O グラフ
 
-時間の経過に伴うトラフィックパターンを視覚化します。
+トラフィックパターンを時間軸で視覚化します。
 
 ```bash
-# 以下からアクセス: Statistics > I/O Graphs
-# トラフィック量（時間経過）
+# アクセス方法: Statistics > I/O Graphs
+# 時間経過に伴うトラフィック量
 # 1秒あたりのパケット数
 # 1秒あたりのバイト数
-# 特定のトラフィックにフィルタを適用
+# 特定のトラフィックに対してフィルターを適用
 # トラフィックの急増を特定するのに役立つ
 ```
 
@@ -319,28 +364,28 @@ tshark -r capture.pcap -q -z conv,tcp
 潜在的なネットワークの問題を特定します。
 
 ```bash
-# 以下からアクセス: Analyze > Expert Info
+# アクセス方法: Analyze > Expert Info
 # ネットワーク問題に関する警告
 # パケット送信におけるエラー
 # パフォーマンスの問題
-# セキュリティ上の懸念
-# エキスパート情報の重大度でフィルタリング
+# セキュリティに関する懸念
+# エキスパート情報の深刻度でフィルタリング
 tcp.analysis.flags
 ```
 
 ### フローグラフ
 
-エンドポイント間のパケットの流れを視覚化します。
+エンドポイント間のパケットフローを視覚化します。
 
 ```bash
-# 以下からアクセス: Statistics > Flow Graph
+# アクセス方法: Statistics > Flow Graph
 # パケットシーケンスを表示
 # 時間ベースの視覚化
 # トラブルシューティングに役立つ
 # 通信パターンを特定
 ```
 
-### 応答時間解析
+### 応答時間分析
 
 アプリケーションの応答時間を測定します。
 
@@ -387,16 +432,16 @@ tcp.analysis.flags
 
 ### コマンドラインキャプチャ
 
-tshark を使用して自動化されたキャプチャと解析を実行します。
+tshark を使用して自動化されたキャプチャと分析を実行します。
 
 ```bash
 # ファイルにキャプチャ
 tshark -i eth0 -w capture.pcap
-# フィルタ付きでキャプチャ
+# フィルター付きでキャプチャ
 tshark -i eth0 -f "port 80" -w http.pcap
-# パケットを読み取り表示
+# パケットを読み取り、表示
 tshark -r capture.pcap
-# ファイルに表示フィルタを適用
+# ファイルに表示フィルターを適用
 tshark -r capture.pcap -Y "tcp.port == 80"
 ```
 
@@ -426,9 +471,9 @@ editcap -A "2024-01-01 10:00:00" \
 -b filesize:100 -b files:10
 # パケットキャプチャサイズを制限
 -s 96  # 最初の96バイトのみキャプチャ
-# 関連性の高いデータのみをキャプチャするためにキャプチャフィルタを使用
+# データを減らすためにキャプチャフィルターを使用
 host 192.168.1.100 and port 80
-# 速度向上のためにプロトコル解析を無効化
+# 速度向上のためにプロトコルディセクションを無効化
 -d tcp.port==80,http
 ```
 
@@ -439,42 +484,39 @@ host 192.168.1.100 and port 80
 ```bash
 # 調整する設定:
 # Edit > Preferences > Appearance
-# 配色設定
-# フォントサイズ
-# カラム表示オプション
-# 時間表示形式の設定
+# 配色スキームの選択
+# フォントサイズや種類の調整
+# カラム表示オプションの調整
+# 時間表示設定の調整
 # View > Time Display Format
 # キャプチャ開始からの秒数
 # 時刻
 # UTC時刻
-# Edit > Preferences > Protocols
-# 不要なプロトコルディセクタを無効化
-# TCP再構築の削減
-# 大容量ファイルの解析にtsharkを使用
+# tsharkを大規模ファイル分析に使用
 tshark -r large.pcap -q -z conv,tcp
 ```
 
-### 効率的な解析ワークフロー
+### 効率的な分析ワークフロー
 
-ネットワークトラフィックを解析するためのベストプラクティス。
+ネットワークトラフィックを分析するためのベストプラクティス。
 
 ```bash
-# 1. キャプチャフィルタから始める
-# 関連性の高いトラフィックのみをキャプチャ
-# 2. 表示フィルタを段階的に使用する
+# 1. キャプチャフィルターから始める
+# 関連するトラフィックのみをキャプチャ
+# 2. 表示フィルターを段階的に使用する
 # 広く始めて、徐々に絞り込む
-# 3. 最初に統計情報を使用する
-# 詳細な解析の前に概要を把握する
+# 3. 統計情報をまず使用する
+# 詳細な分析の前に概要を把握する
 # 4. 特定のフローに焦点を当てる
 # パケットを右クリック > Follow > TCP Stream
 ```
 
-### 自動化とスクリプト
+### 自動化とスクリプト作成
 
-一般的な解析タスクを自動化します。
+一般的な分析タスクを自動化します。
 
 ```bash
-# カスタム表示フィルタボタンの作成
+# カスタム表示フィルターボタンの作成
 # View > Display Filter Expression
 # シナリオごとにプロファイルを使用
 # Edit > Configuration Profiles
@@ -492,7 +534,7 @@ grep -v "Filter:" | head -20
 
 ```bash
 # wireshark.orgからダウンロード
-# 管理者としてインストーラを実行
+# 管理者としてインストーラーを実行
 # インストール中にWinPcap/Npcapを含める
 # コマンドラインインストール
 (chocolatey)
@@ -503,7 +545,7 @@ wireshark --version
 
 ### Linux インストール
 
-パッケージマネージャ経由、またはソースからインストールします。
+パッケージマネージャー経由、またはソースからインストールします。
 
 ```bash
 # Ubuntu/Debian
@@ -520,7 +562,7 @@ $USER
 
 ### macOS インストール
 
-Homebrew または公式インストーラを使用してインストールします。
+Homebrew または公式インストーラーを使用してインストールします。
 
 ```bash
 # Homebrewを使用
@@ -541,7 +583,7 @@ brew install wireshark
 # Edit > Preferences > Capture
 # デフォルトのキャプチャインターフェイス
 # プロミスキャスモード設定
-# バッファサイズ設定
+# バッファサイズの設定
 # ライブキャプチャでの自動スクロール
 # インターフェイス固有の設定
 # Capture > Options > Interface Details
@@ -556,7 +598,7 @@ brew install wireshark
 # プロトコルディセクタの有効化/無効化
 # ポート割り当ての設定
 # 復号化キーの設定 (TLS, WEPなど)
-# TCP再構築オプション
+# TCP再アセンブリオプション
 # Decode As機能
 # Analyze > Decode As
 ```
@@ -567,10 +609,10 @@ brew install wireshark
 
 ```bash
 # Edit > Preferences > Appearance
-# 配色設定の選択
-# フォントサイズとタイプ
+# 配色スキームの選択
+# フォントサイズと種類
 # カラム表示オプション
-# 時間表示形式の設定
+# 時間表示設定
 # View > Time Display Format
 # キャプチャ開始からの秒数
 # 時刻
@@ -589,14 +631,14 @@ brew install wireshark
 # キーログファイルの位置
 # 潜在的に危険な機能の無効化
 # Luaスクリプトの実行
-# External resolvers
+# 外部リゾルバ
 ```
 
 ## 高度なフィルタリング技術
 
 ### 論理演算子
 
-複数のフィルタ条件を結合します。
+複数のフィルター条件を組み合わせます。
 
 ```bash
 # AND演算子
@@ -637,14 +679,14 @@ frame.len > 1000
 # 範囲チェック
 tcp.port >= 1024 and tcp.port <= 65535
 # セットメンバーシップ
-tcp.port in {80 443 8080 8443}
+tcp.port in {80 443 8080}
 # フィールドの存在
 tcp.options
 ```
 
-### 高度なパケット解析
+### 高度なパケット分析
 
-特定のパケット特性と異常を識別します。
+特定のパケット特性や異常を特定します。
 
 ```bash
 # 破損したパケット
@@ -653,7 +695,7 @@ _ws.malformed
 frame.number == tcp.analysis.duplicate_ack_num
 # 順序が狂ったパケット
 tcp.analysis.out_of_order
-# TCPウィンドウのスケーリングの問題
+# TCPウィンドウのスケール問題
 tcp.analysis.window_full
 ```
 
@@ -668,7 +710,7 @@ tcp.analysis.window_full
 tcp.analysis.retransmission and tcp.analysis.rto
 # 遅い接続の特定
 tcp.time_delta > 1.0
-# ネットワーク輻輳の特定
+# ネットワーク輻輳の検出
 tcp.analysis.window_full
 # DNS解決の問題
 dns.flags.rcode != 0
@@ -676,19 +718,19 @@ dns.flags.rcode != 0
 icmp.type == 3 and icmp.code == 4
 ```
 
-### セキュリティ解析
+### セキュリティ分析
 
-潜在的なセキュリティ脅威と疑わしいアクティビティを検出します。
+潜在的なセキュリティ脅威や疑わしいアクティビティを検出します。
 
 ```bash
 # ポートスキャン検出
 tcp.flags.syn == 1 and tcp.flags.ack == 0
-# 単一IPからの大量接続数
+# 単一IPからの大量接続
 # Statistics > Conversations を使用
 # 疑わしいDNSクエリ
 dns.qry.name contains "dga" or dns.qry.name matches
 "^[a-z]{8,}\.com$"
-# 悪意のあるURLへのHTTP POST
+# 疑わしいURLへのHTTP POST
 http.request.method == "POST" and http.request.uri
 contains "/upload"
 # 異常なトラフィックパターン
@@ -700,13 +742,13 @@ contains "/upload"
 アプリケーションの応答時間を監視および分析します。
 
 ```bash
-# Webアプリケーション解析
+# Webアプリケーション分析
 http.time > 2.0
 # データベース接続監視
 tcp.port == 3306 and tcp.analysis.initial_rtt > 0.1
 # ファイル転送パフォーマンス
 tcp.stream eq X and tcp.analysis.bytes_in_flight
-# VoIP品質解析
+# VoIP品質分析
 rtp.jitter > 30 or rtp.marker == 1
 ```
 
@@ -721,7 +763,7 @@ tcp.port == 25 or tcp.port == 587 or tcp.port == 993
 ftp-data or ftp.request.command == "RETR"
 # SMB/CIFSファイル共有
 smb2 or smb
-# DHCPリース解析
+# DHCPリース分析
 bootp.option.dhcp == 1 or bootp.option.dhcp == 2
 ```
 

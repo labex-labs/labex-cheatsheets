@@ -1,6 +1,6 @@
 ---
-title: 'NumPy チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで NumPy を習得しましょう。'
+title: 'NumPy チートシート | LabEx'
+description: 'この包括的なチートシートで NumPy 数値計算を学ぶ。配列、線形代数、数学的演算、ブロードキャスト、Python 科学計算のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/numpy-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ NumPy チートシート
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/numpy">ハンズオンラボで NumPy を学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/numpy">Learn NumPy with Hands-On Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-LabEx では、ハンズオンラボと現実世界のシナリオを通じて、NumPy の数値計算を学習できます。LabEx は、必須の配列操作、数学関数、線形代数、パフォーマンス最適化を網羅した包括的な NumPy コースを提供しています。データサイエンスのワークフローのために、効率的な数値計算と配列操作を習得しましょう。
+LabEx では、ハンズオンラボと現実世界のシナリオを通じて NumPy 数値計算を学習できます。LabEx は、必須の配列操作、数学関数、線形代数、パフォーマンス最適化を網羅した包括的な NumPy コースを提供しています。データサイエンスのワークフローのために、効率的な数値計算と配列操作を習得しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -37,6 +37,21 @@ arr = np.array([1, 2, 3], dtype=float)
 # 文字列の配列
 arr_str = np.array(['a', 'b', 'c'])
 ```
+
+<BaseQuiz id="numpy-array-1" correct="C">
+  <template #question>
+    NumPy 配列が Python リストよりも優れている主な利点は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">文字列を格納できること</BaseQuizOption>
+  <BaseQuizOption value="B">作成が容易であること</BaseQuizOption>
+  <BaseQuizOption value="C" correct>数値演算において高速でメモリ効率が良いこと</BaseQuizOption>
+  <BaseQuizOption value="D">混合データ型を格納できること</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    NumPy 配列は数値計算用に最適化されており、特に大規模データセットや数学的演算において、Python リストよりも高速な操作と効率的なメモリ使用量を提供します。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### ゼロとイチ：`np.zeros()` / `np.ones()`
 
@@ -88,7 +103,7 @@ rand = np.random.random((2, 3))
 rand_int = np.random.randint(0, 10, size=(3, 3))
 # 正規分布
 normal = np.random.normal(0, 1, size=5)
-# 再現性のためのランダムシードの設定
+# 再現性のためのランダムシード設定
 np.random.seed(42)
 ```
 
@@ -155,7 +170,7 @@ arr.astype(np.int16)
 
 ## 配列のインデックス指定とスライス
 
-### 基本的なインデックス指定：`arr[index]`
+### 基本インデックス指定：`arr[index]`
 
 個々の要素とスライスにアクセスします。
 
@@ -187,12 +202,27 @@ mask = arr > 3
 filtered = arr[mask]
 ```
 
+<BaseQuiz id="numpy-boolean-1" correct="C">
+  <template #question>
+    ブールインデックス指定 `arr[arr > 5]` は何を返しますか？
+  </template>
+  
+  <BaseQuizOption value="A">ブール配列</BaseQuizOption>
+  <BaseQuizOption value="B">元の配列</BaseQuizOption>
+  <BaseQuizOption value="C" correct>5 より大きい要素のみを含む配列</BaseQuizOption>
+  <BaseQuizOption value="D">エラー</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ブールインデックス指定は配列をフィルタリングし、条件が真である要素のみを返します。`arr[arr > 5]` は 5 より大きい値のみを含む新しい配列を返します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 高度なインデックス指定：Fancy Indexing
 
 インデックスの配列を使用して複数の要素にアクセスします。
 
 ```python
-# インデックスの配列でインデックス指定
+# インデックス配列によるインデックス指定
 indices = [0, 2, 4]
 arr[indices]
 # 2D ファンシーインデックス指定
@@ -223,13 +253,43 @@ result = np.where(arr > 5, 'high', 'low')
 ```python
 # リシェイプ (可能な場合はビューを作成)
 arr.reshape(2, 3)
-arr.reshape(-1, 1)  # -1 は次元の推論を意味する
-# リサイズ (元の配列を変更する)
+arr.reshape(-1, 1)  # -1 は次元を推測
+# リサイズ (元の配列を変更)
 arr.resize((2, 3))
-# 1D に平坦化
+# 1D にフラット化
 arr.flatten()  # コピーを返す
 arr.ravel()  # 可能な場合はビューを返す
 ```
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    `arr.reshape(-1, 1)` における `-1` は何を意味しますか？
+  </template>
+  
+  <BaseQuizOption value="A">エラーを作成する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>配列サイズに基づいて次元を自動的に推測する</BaseQuizOption>
+  <BaseQuizOption value="C">1D 配列を作成する</BaseQuizOption>
+  <BaseQuizOption value="D">配列を反転する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    リシェイプで `-1` を使用すると、NumPy に配列の総サイズと指定された他の次元に基づいてその次元を自動的に計算するように指示します。これは、1 つの次元はわかっているが、もう一方の次元を NumPy に計算させたい場合に便利です。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    `arr.reshape(-1, 1)` における `-1` は何を意味しますか？
+  </template>
+  
+  <BaseQuizOption value="A">エラーを作成する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>NumPy が次元を自動的に推測する</BaseQuizOption>
+  <BaseQuizOption value="C">その次元を削除する</BaseQuizOption>
+  <BaseQuizOption value="D">次元を 1 に設定する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    リシェイプで `-1` を使用すると、NumPy に配列の総サイズと指定された他の次元に基づいてその次元を自動的に計算するように指示します。これは、1 つの次元はわかっているが、もう一方の次元を NumPy に計算させたい場合に便利です。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 転置：`T` / `transpose()`
 
@@ -238,7 +298,7 @@ arr.ravel()  # 可能な場合はビューを返す
 ```python
 # 単純な転置
 arr2d.T
-# 軸の指定による転置
+# 軸指定による転置
 arr.transpose()
 np.transpose(arr)
 # より高次元の場合
@@ -247,7 +307,7 @@ arr3d.transpose(2, 0, 1)
 
 ### 要素の追加/削除
 
-要素の追加または削除によって配列サイズを変更します。
+要素の追加または削除による配列サイズの変更。
 
 ```python
 # 要素の追加
@@ -275,7 +335,7 @@ np.hstack([arr1, arr2])  # 水平方向
 np.dstack([arr1, arr2])  # 奥行き方向
 ```
 
-## 数学演算
+## 数学的な操作
 
 ### 基本的な算術：`+`, `-`, `*`, `/`
 
@@ -311,7 +371,7 @@ np.power(arr, 3)
 
 ### 集計関数
 
-配列の次元にわたって要約統計量を計算します。
+配列の次元にわたる要約統計量を計算します。
 
 ```python
 # 基本的な統計
@@ -335,10 +395,10 @@ np.mean(arr2d, axis=1)  # 列に沿った平均
 arr > 5
 arr == 3
 arr != 0
-# 配列の比較
+# 配列比較
 np.array_equal(arr1, arr2)
 np.allclose(arr1, arr2)  # 許容誤差内
-# Any/all操作
+# Any/all 演算
 np.any(arr > 5)
 np.all(arr > 0)
 ```
@@ -355,7 +415,7 @@ np.dot(A, B)
 A @ B  # Python 3.5 以降の演算子
 # 要素ごとの乗算
 A * B
-# 行列のべき乗
+# 行列べき乗
 np.linalg.matrix_power(A, 3)
 ```
 
@@ -431,9 +491,9 @@ arr = np.loadtxt('data.csv', delimiter=',', skiprows=1)
 np.savetxt('output.csv', arr, delimiter=',', fmt='%.2f')
 ```
 
-### 構造化データ付き CSV: `np.genfromtxt()`
+### 構造化データを持つ CSV: `np.genfromtxt()`
 
-欠損値の処理を伴う高度なテキストファイル読み込み。
+欠損値処理を備えた高度なテキストファイル読み込み。
 
 ```python
 # 欠損値の処理
@@ -446,10 +506,10 @@ data = np.genfromtxt('data.csv', delimiter=',',
 
 ### メモリマップ：`np.memmap()`
 
-メモリに収まらない大きな配列を扱うために使用します。
+メモリに収まらない配列を扱うために使用します。
 
 ```python
-# メモリマップされた配列の作成
+# メモリマップ配列の作成
 mmap_arr = np.memmap('large_array.dat', dtype='float32',
                      mode='w+', shape=(1000000,))
 # 通常の配列のようにアクセスするが、ディスクに保存されている
@@ -493,10 +553,10 @@ result = vec_func(arr)
 
 ### メモリ最適化
 
-大きな配列の効率的なメモリ使用のためのテクニック。
+大規模配列のメモリ使用効率を高めるためのテクニック。
 
 ```python
-# 適切なデータ型を使用する
+# 適切なデータ型を使用
 arr_int8 = arr.astype(np.int8)  # 要素あたり 1 バイト
 arr_float32 = arr.astype(np.float32)  # float64 の代わりに 4 バイト
 # ビューとコピー
@@ -511,7 +571,7 @@ view.base is arr  # ビューの場合は True
 高速な NumPy コードのためのベストプラクティス。
 
 ```python
-# 可能な場合はインプレース操作を使用する
+# 可能な場合はインプレース操作を使用
 arr += 5  # arr = arr + 5 の代わりに
 np.add(arr, 5, out=arr)  # 明示的なインプレース
 # 中間配列の作成を最小限に抑える
@@ -520,9 +580,9 @@ result = ((arr + 1) * 2) ** 2
 # より良い例：可能な場合は複合演算を使用
 ```
 
-## ランダム数値生成
+## 乱数生成
 
-### 基本的なランダム：`np.random`
+### 基本的な乱数：`np.random`
 
 様々な分布から乱数を生成します。
 
@@ -559,7 +619,7 @@ np.random.permutation(arr)
 ```python
 # 再現性のためのシード設定
 np.random.seed(42)
-# 最新のアプローチ：ジェネレータ
+# 最新のアプローチ：Generator
 rng = np.random.default_rng(42)
 rng.random(5)
 rng.integers(0, 10, size=5)
@@ -579,7 +639,7 @@ np.median(arr)
 # ばらつきの尺度
 np.std(arr)  # 標準偏差
 np.var(arr)  # 分散
-np.ptp(arr)  # 範囲 (max - min)
+np.ptp(arr)  # ピークからピーク (max - min)
 # パーセンタイル
 np.percentile(arr, [25, 50, 75])
 np.quantile(arr, [0.25, 0.5, 0.75])
@@ -587,7 +647,7 @@ np.quantile(arr, [0.25, 0.5, 0.75])
 
 ### 相関と共分散
 
-変数間の関係を測定します。
+変数間の関係性を測定します。
 
 ```python
 # 相関係数
@@ -616,11 +676,11 @@ bin_indices = np.digitize(arr, bins)
 高度な統計計算。
 
 ```python
-# 加重統計量
+# 加重統計
 np.average(arr, weights=weights)
-# 一意な値とそのカウント
+# 一意な値とカウント
 unique_vals, counts = np.unique(arr, return_counts=True)
-# Bincount (整数配列用)
+# ビンカウント (整数配列用)
 np.bincount(int_arr)
 ```
 
@@ -631,13 +691,13 @@ np.bincount(int_arr)
 標準的な Python パッケージインストーラ。
 
 ```bash
-# NumPyのインストール
+# NumPyをインストール
 pip install numpy
-# 最新バージョンへのアップグレード
+# 最新バージョンにアップグレード
 pip install numpy --upgrade
-# 特定バージョンのインストール
+# 特定のバージョンをインストール
 pip install numpy==1.21.0
-# パッケージ情報の表示
+# パッケージ情報を表示
 pip show numpy
 ```
 
@@ -648,7 +708,7 @@ Anaconda/Miniconda環境用のパッケージマネージャ。
 ```bash
 # 現在の環境にNumPyをインストール
 conda install numpy
-# NumPyの更新
+# NumPyを更新
 conda update numpy
 # conda-forgeからインストール
 conda install -c conda-forge numpy
@@ -667,7 +727,7 @@ import numpy as np
 print(np.__version__)
 # ビルド情報の表示
 np.show_config()
-# プリントオプションの設定
+# 印刷オプションの設定
 np.set_printoptions(precision=2, suppress=True)
 ```
 
@@ -689,12 +749,12 @@ people['age']
 
 ### マスク配列：`np.ma`
 
-欠損または無効なデータを扱うための配列。
+欠損データや無効なデータを持つ配列を扱います。
 
 ```python
 # マスク配列の作成
 masked_arr = np.ma.array([1, 2, 3, 4, 5], mask=[0, 0, 1, 0, 0])
-# マスクされた値は無視される演算
+# マスクされた値は演算で無視される
 np.ma.mean(masked_arr)
 # マスクされた値を埋める
 filled = masked_arr.filled(0)
@@ -702,14 +762,14 @@ filled = masked_arr.filled(0)
 
 ### 多項式：`np.poly1d`
 
-多項式表現と演算を扱います。
+多項式表現とその操作を扱います。
 
 ```python
-# 多項式の作成 (降順の係数)
+# 多項式の作成 (係数は降順)
 p = np.poly1d([1, -2, 1])  # x² - 2x + 1
 # 多項式の評価
 p(5)  # x=5 で評価
-# 根を見つける
+# 根の検索
 np.roots([1, -2, 1])
 # 多項式フィッティング
 coeff = np.polyfit(x, y, degree=2)

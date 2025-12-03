@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Matplotlib'
-description: 'Aprenda Matplotlib con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Matplotlib | LabEx'
+description: 'Aprenda visualización de datos con Matplotlib con esta hoja de trucos completa. Referencia rápida para trazado, gráficos, diagramas, subgráficos, personalización y visualización de datos en Python.'
 pdfUrl: '/cheatsheets/pdf/matplotlib-cheatsheet.pdf'
 ---
 
@@ -40,13 +40,28 @@ plt.plot(x, y, label='Línea 1')
 plt.plot(x, [1, 3, 5, 7, 9], label='Línea 2')
 plt.legend()
 
-# Estilos de línea y colores
+# Estilos y colores de línea
 plt.plot(x, y, 'r--', linewidth=2, marker='o')
 ```
 
+<BaseQuiz id="matplotlib-plot-1" correct="C">
+  <template #question>
+    ¿Qué hace `plt.show()` en Matplotlib?
+  </template>
+  
+  <BaseQuizOption value="A">Guarda el gráfico en un archivo</BaseQuizOption>
+  <BaseQuizOption value="B">Cierra la ventana del gráfico</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Muestra el gráfico en una ventana</BaseQuizOption>
+  <BaseQuizOption value="D">Limpia el gráfico</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `plt.show()` muestra el gráfico en una ventana interactiva. Es necesario llamar a esta función para ver la visualización. Sin ella, el gráfico no se mostrará.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Gráfico de Dispersión: `plt.scatter()`
 
-Muestre las relaciones entre dos variables.
+Muestra la relación entre dos variables.
 
 ```python
 # Gráfico de dispersión básico
@@ -58,6 +73,21 @@ sizes = [20, 50, 100, 200, 500]
 plt.scatter(x, y, c=colors, s=sizes, alpha=0.6)
 plt.colorbar()  # Añadir barra de color
 ```
+
+<BaseQuiz id="matplotlib-scatter-1" correct="D">
+  <template #question>
+    ¿Qué controla el parámetro `alpha` en los gráficos de matplotlib?
+  </template>
+  
+  <BaseQuizOption value="A">El color del gráfico</BaseQuizOption>
+  <BaseQuizOption value="B">El tamaño del gráfico</BaseQuizOption>
+  <BaseQuizOption value="C">La posición del gráfico</BaseQuizOption>
+  <BaseQuizOption value="D" correct>La transparencia/opacidad de los elementos del gráfico</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El parámetro `alpha` controla la transparencia, con valores de 0 (completamente transparente) a 1 (completamente opaco). Es útil para crear visualizaciones superpuestas donde se desea ver a través de los elementos.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Gráfico de Barras: `plt.bar()` / `plt.barh()`
 
@@ -80,7 +110,7 @@ plt.bar(x + 0.2, [15, 25, 35, 20], 0.4, label='Grupo 2')
 
 ### Histograma: `plt.hist()`
 
-Muestre la distribución de datos continuos.
+Muestra la distribución de datos continuos.
 
 ```python
 # Histograma básico
@@ -94,9 +124,9 @@ plt.hist(data, bins=50, alpha=0.7, color='skyblue', edgecolor='black')
 plt.hist([data1, data2], bins=30, alpha=0.7, label=['Datos 1', 'Datos 2'])
 ```
 
-### Gráfico Circular (Pie Chart): `plt.pie()`
+### Gráfico Circular (Tarta): `plt.pie()`
 
-Muestre datos proporcionales como un gráfico circular.
+Muestra datos proporcionales como un gráfico circular.
 
 ```python
 # Gráfico circular básico
@@ -112,7 +142,7 @@ plt.pie(sizes, labels=labels, autopct='%1.1f%%',
 
 ### Diagrama de Caja (Box Plot): `plt.boxplot()`
 
-Visualice la distribución de datos y los valores atípicos.
+Visualiza la distribución de datos y los valores atípicos (outliers).
 
 ```python
 # Diagrama de caja único
@@ -124,7 +154,7 @@ plt.boxplot(data, labels=['Grupo 1', 'Grupo 2', 'Grupo 3', 'Grupo 4'],
            patch_artist=True, notch=True)
 ```
 
-## Personalización y Estilo de Trazado
+## Personalización y Estilo de Gráficos
 
 ### Etiquetas y Títulos: `plt.xlabel()` / `plt.title()`
 
@@ -158,7 +188,7 @@ plt.plot(x, y, color=(0.1, 0.2, 0.5))  # Tupla RGB
 # Estilos de línea
 plt.plot(x, y, linestyle='--')  # Discontinua
 plt.plot(x, y, linestyle=':')   # Punteada
-plt.plot(x, y, linestyle='-.')  # Guion-punto
+plt.plot(x, y, linestyle='-.')  # Rayas y puntos
 
 # Marcadores
 plt.plot(x, y, marker='o', markersize=8, markerfacecolor='red')
@@ -174,13 +204,28 @@ plt.plot(x, y1, label='Conjunto de Datos 1')
 plt.plot(x, y2, label='Conjunto de Datos 2')
 plt.legend()
 
-# Personalizar posición de la leyenda
+# Posición de la leyenda personalizada
 plt.legend(loc='upper right', fontsize=10, frameon=False)
 
 # Anotaciones
 plt.annotate('Punto Importante', xy=(2, 4), xytext=(3, 6),
             arrowprops=dict(arrowstyle='->', color='red'))
 ```
+
+<BaseQuiz id="matplotlib-legend-1" correct="B">
+  <template #question>
+    ¿Qué se requiere para que `plt.legend()` muestre etiquetas?
+  </template>
+  
+  <BaseQuizOption value="A">Nada, funciona automáticamente</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Cada gráfico debe tener un parámetro `label` establecido</BaseQuizOption>
+  <BaseQuizOption value="C">La leyenda debe crearse antes de trazar</BaseQuizOption>
+  <BaseQuizOption value="D">Las etiquetas deben establecerse manualmente en la leyenda</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Para mostrar una leyenda, debe establecer el parámetro `label` al crear cada gráfico (ej: `plt.plot(x, y, label='Conjunto de Datos 1')`). Luego, llamar a `plt.legend()` mostrará todas las etiquetas.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Control de Ejes y Diseño
 
@@ -202,7 +247,7 @@ plt.gca().invert_yaxis()  # Invertir eje y
 
 ### Marcas y Etiquetas de Eje: `plt.xticks()` / `plt.yticks()`
 
-Personalice las marcas de los ejes y sus etiquetas.
+Personalice las marcas de graduación del eje y sus etiquetas.
 
 ```python
 # Posiciones de marcas personalizadas
@@ -258,7 +303,7 @@ plt.plot(x, y2)
 Ajuste automáticamente el espaciado de los subgráficos para una mejor apariencia.
 
 ```python
-# Evitar superposición de elementos
+# Evitar elementos superpuestos
 plt.tight_layout()
 
 # Ajuste manual del espaciado
@@ -285,7 +330,7 @@ plt.style.use('bmh')
 plt.style.use('default')
 ```
 
-## Subgráficos y Múltiples Trazados
+## Subgráficos y Múltiples Gráficos
 
 ### Subgráficos Básicos: `plt.subplot()` / `plt.subplots()`
 
@@ -310,7 +355,7 @@ plt.scatter(x, y)
 
 ### Ejes Compartidos: `sharex` / `sharey`
 
-Vincule los ejes a través de los subgráficos para un escalado consistente.
+Vincule los ejes a través de los subgráficos para una escala consistente.
 
 ```python
 # Compartir eje x a través de subgráficos
@@ -336,9 +381,9 @@ fig = plt.figure(figsize=(10, 8))
 # Subgráficos de diferentes tamaños
 ax1 = fig.add_subplot(gs[0, :])  # Fila superior, todas las columnas
 ax2 = fig.add_subplot(gs[1, :-1])  # Fila media, primeras 2 columnas
-ax3 = fig.add_subplot(gs[1:, -1])  # Última columna, filas inferiores 2
+ax3 = fig.add_subplot(gs[1:, -1])  # Última columna, últimas 2 filas
 ax4 = fig.add_subplot(gs[-1, 0])   # Esquina inferior izquierda
-ax5 = fig.add_subplot(gs[-1, 1])   # Parte inferior central
+ax5 = fig.add_subplot(gs[-1, 1])   # Centro inferior
 ```
 
 ### Espaciado de Subgráficos: `hspace` / `wspace`
@@ -445,9 +490,9 @@ plt.plot(x, y, 'k-', linewidth=2)
 plt.fill_between(x, y-yerr, y+yerr, alpha=0.2, color='gray')
 ```
 
-### Gráficos de Violín: Alternativa a los Diagramas de Caja
+### Gráficos de Violín: Alternativa a los Box Plots
 
-Muestre la forma de la distribución junto con los cuartiles.
+Muestran la forma de la distribución junto con los cuartiles.
 
 ```python
 # Usando pyplot
@@ -459,11 +504,11 @@ for pc in parts['bodies']:
     pc.set_alpha(0.7)
 ```
 
-## Características Interactivas y de Animación
+## Funciones Interactivas y de Animación
 
 ### Backend Interactivo: `%matplotlib widget`
 
-Habilite gráficos interactivos en cuadernos Jupyter.
+Habilita gráficos interactivos en cuadernos Jupyter.
 
 ```python
 # En cuaderno Jupyter
@@ -478,7 +523,7 @@ Habilite gráficos interactivos en cuadernos Jupyter.
 Responda a las interacciones del usuario con los gráficos.
 
 ```python
-# Interactivo zoom, paneo y pasar el ratón por encima
+# Zoom interactivo, paneo y pasar el ratón por encima
 def onclick(event):
     if event.inaxes:
         print(f'Haga clic en x={event.xdata}, y={event.ydata}')
@@ -521,10 +566,10 @@ plt.show()
 Exporte gráficos a archivos de imagen con varias opciones.
 
 ```python
-# Guardado básico
+# Guardar básico
 plt.savefig('mi_grafico.png')
 
-# Guardado de alta calidad
+# Guardar de alta calidad
 plt.savefig('grafico.png', dpi=300, bbox_inches='tight')
 
 # Diferentes formatos
@@ -536,7 +581,7 @@ plt.savefig('grafico.eps')  # EPS
 plt.savefig('grafico.png', transparent=True)
 ```
 
-### Calidad de Figura: DPI y Tamaño
+### Calidad de la Figura: DPI y Tamaño
 
 Controle la resolución y las dimensiones de los gráficos guardados.
 
@@ -566,7 +611,7 @@ with plt.figure() as fig:
     plt.plot(x, y)
     plt.savefig('grafico.png')
 
-# Guardado por lotes de múltiples gráficos
+# Guardar por lotes múltiples gráficos
 for i, data in enumerate(datasets):
     plt.figure()
     plt.plot(data)
@@ -636,7 +681,7 @@ Administre la memoria al crear muchos gráficos o visualizaciones grandes.
 # Limpiar ejes en lugar de crear nuevas figuras
 fig, ax = plt.subplots()
 for data in datasets:
-    ax.clear()  # Limpiar trazado anterior
+    ax.clear()  # Limpiar gráfico anterior
     ax.plot(data)
     plt.savefig(f'grafico_{i}.png')
 
@@ -646,7 +691,7 @@ def data_generator():
         yield np.random.randn(100)
 
 for i, data in enumerate(data_generator()):
-    if i > 10:  # Limitar número de gráficos
+    if i > 10:  # Limitar el número de gráficos
         break
 ```
 
@@ -654,7 +699,7 @@ for i, data in enumerate(data_generator()):
 
 ### Integración con Pandas: Trazado Directo
 
-Use métodos de DataFrame de Pandas para trazar directamente.
+Use métodos de DataFrame de Pandas para trazar.
 
 ```python
 import pandas as pd
@@ -720,7 +765,7 @@ Optimice Matplotlib para entornos de cuadernos Jupyter.
 # Pantallas de alta resolución (DPI)
 %config InlineBackend.figure_format = 'retina'
 
-# Dimensionamiento automático de figuras
+# Tamaño de figura automático
 %matplotlib inline
 plt.rcParams['figure.dpi'] = 100
 ```

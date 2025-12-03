@@ -1,6 +1,6 @@
 ---
-title: 'Webentwicklung Spickzettel'
-description: 'Lernen Sie Webentwicklung mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Webentwicklung Spickzettel | LabEx'
+description: 'Webentwicklung lernen mit diesem umfassenden Spickzettel. Schnelle Referenz für HTML, CSS, JavaScript, APIs, responsives Design, Leistungsoptimierung und Full-Stack-Essentials.'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 
@@ -19,11 +19,11 @@ Lernen Sie Webentwicklung durch praktische Labs und reale Szenarien. LabEx biete
 </base-disclaimer-content>
 </base-disclaimer>
 
-## HTML Grundlagen & Dokumentenstruktur
+## HTML Grundlagen & Dokumentstruktur
 
 ### Grundlegende HTML-Struktur: `<!DOCTYPE html>`
 
-Erstellen Sie das Fundament jeder Webseite.
+Erstellen Sie die Grundlage jeder Webseite.
 
 ```html
 <!DOCTYPE html>
@@ -64,6 +64,21 @@ Verwenden Sie aussagekräftige HTML5-Semantikelemente für eine bessere Struktur
   <p>© 2024 My Website</p>
 </footer>
 ```
+
+<BaseQuiz id="webdev-semantic-1" correct="B">
+  <template #question>
+    Was ist der Hauptvorteil der Verwendung semantischer HTML-Elemente wie `header`, `main` und `footer`?
+  </template>
+  
+  <BaseQuizOption value="A">Sie lassen die Seite schneller laden</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Sie verbessern die Barrierefreiheit und SEO, indem sie der Struktur Bedeutung verleihen</BaseQuizOption>
+  <BaseQuizOption value="C">Sie stylen die Seite automatisch</BaseQuizOption>
+  <BaseQuizOption value="D">Sie sind für die Funktion von JavaScript erforderlich</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Semantische HTML-Elemente verleihen der Dokumentstruktur Bedeutung und erleichtern es Screenreadern, Suchmaschinen und Entwicklern, die Inhaltsorganisation zu verstehen. Dies verbessert die Barrierefreiheit und SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Textelemente: `<h1>` bis `<h6>` / `<p>`
 
@@ -177,7 +192,7 @@ Verwenden Sie geeignete Eingabetypen für verschiedene Daten.
 
 ### Formularsteuerelemente: `<select>` / `<textarea>`
 
-Bieten Sie verschiedene Möglichkeiten für Benutzer zur Eingabe von Informationen.
+Stellen Sie verschiedene Möglichkeiten für Benutzer zur Eingabe von Informationen bereit.
 
 ```html
 <select name="country" id="country">
@@ -225,7 +240,7 @@ h1 {
 }
 ```
 
-### Box-Modell: `margin` / `padding` / `border`
+### Box Model: `margin` / `padding` / `border`
 
 Steuern Sie Abstände und Layout mit dem CSS-Box-Modell.
 
@@ -245,6 +260,21 @@ Steuern Sie Abstände und Layout mit dem CSS-Box-Modell.
   border-radius: 5px; /* Rounded corners */
 }
 ```
+
+<BaseQuiz id="webdev-boxmodel-1" correct="B">
+  <template #question>
+    Was ist der Unterschied zwischen `margin` und `padding` in CSS?
+  </template>
+  
+  <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Margin ist der Abstand außerhalb des Elements, Padding ist der Abstand innerhalb des Elements</BaseQuizOption>
+  <BaseQuizOption value="C">Margin ist für den horizontalen Abstand, Padding für den vertikalen Abstand</BaseQuizOption>
+  <BaseQuizOption value="D">Margin ist für Ränder, Padding für Inhalt</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Margin erzeugt Platz außerhalb des Elementrandes (zwischen Elementen), während Padding Platz innerhalb des Elements zwischen Inhalt und Rand erzeugt. Beide beeinflussen den Abstand, jedoch in unterschiedlichen Bereichen.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Flexbox: `display: flex`
 
@@ -268,6 +298,21 @@ Erstellen Sie einfach flexible und reaktionsschnelle Layouts.
   flex-direction: column;
 }
 ```
+
+<BaseQuiz id="webdev-flexbox-1" correct="A">
+  <template #question>
+    Was bewirkt `justify-content: center` in Flexbox?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Zentriert Flex-Elemente entlang der Hauptachse (standardmäßig horizontal)</BaseQuizOption>
+  <BaseQuizOption value="B">Zentriert Elemente vertikal</BaseQuizOption>
+  <BaseQuizOption value="C">Verteilt Elemente gleichmäßig</BaseQuizOption>
+  <BaseQuizOption value="D">Dehnt Elemente aus, um Platz auszufüllen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `justify-content` steuert die Ausrichtung entlang der Hauptachse (standardmäßig horizontal). `center` zentriert alle Flex-Elemente im Container. Verwenden Sie `align-items`, um die Ausrichtung der Querachse (vertikal) zu steuern.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Grid Layout: `display: grid`
 
@@ -295,7 +340,7 @@ Erstellen Sie komplexe zweidimensionale Layouts.
 }
 ```
 
-## JavaScript Grundlagen & Programmierfundamente
+## JavaScript Grundlagen & Programmiergrundlagen
 
 ### Variablen: `let` / `const` / `var`
 
@@ -465,7 +510,7 @@ document.addEventListener('keydown', function (e) {
 
 ### Elemente erstellen: `createElement` / `appendChild`
 
-Dynamisches Erstellen und Hinzufügen neuer HTML-Elemente.
+Dynamisch neue HTML-Elemente erstellen und hinzufügen.
 
 ```javascript
 // Create new element
@@ -489,7 +534,7 @@ oldElement.remove()
 
 ### Viewport Meta-Tag: `viewport`
 
-Richten Sie den richtigen Viewport für responsives Design ein.
+Richten Sie den Viewport für responsives Design ein.
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -565,9 +610,9 @@ p {
 }
 ```
 
-### Responsive Typography: `clamp()`
+### Responsive Typografie: `clamp()`
 
-Erstellen Sie flüssige Typografie, die mit der Bildschirmgröße skaliert.
+Erstellen Sie fließende Typografie, die mit der Bildschirmgröße skaliert.
 
 ```css
 /* Fluid typography */
@@ -589,7 +634,7 @@ h1 {
 }
 ```
 
-## Debugging & Browser Developer Tools
+## Debugging & Browser Entwicklertools
 
 ### Konsolenmethoden: `console.log()` / `console.error()`
 

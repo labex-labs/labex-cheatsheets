@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola Go (Golang)'
-description: 'Aprenda Golang com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Cheatsheet Golang | LabEx'
+description: 'Aprenda programação Go com este cheatsheet abrangente. Referência rápida para sintaxe Go, goroutines, canais, interfaces, tratamento de erros e programação concorrente para desenvolvedores backend.'
 pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 ---
 
@@ -21,7 +21,7 @@ Aprenda programação Go através de laboratórios práticos e cenários do mund
 
 ## Instalação e Configuração
 
-### Instalar Go: Baixar e Extrair
+### Instalar Go: Download e Extração
 
 Baixe e instale o Go do site oficial.
 
@@ -99,7 +99,7 @@ Configurar o VS Code para desenvolvimento Go.
 ```bash
 # Instalar a extensão Go no VS Code
 # Ctrl+Shift+P -> Go: Install/Update Tools
-# Principais recursos ativados:
+# Recursos chave ativados:
 # - Realce de sintaxe
 # - IntelliSense
 # - Debugging
@@ -139,6 +139,21 @@ count := 42
 const Pi = 3.14159
 const Message = "Hello, Go!"
 ```
+
+<BaseQuiz id="golang-variables-1" correct="B">
+  <template #question>
+    Qual é a diferença entre `var name string = "Go"` e `name := "Go"`?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`:=` é declaração curta que infere o tipo, `var` declara explicitamente o tipo</BaseQuizOption>
+  <BaseQuizOption value="C">`:=` só pode ser usado para constantes</BaseQuizOption>
+  <BaseQuizOption value="D">`var` só pode ser usado dentro de funções</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O operador `:=` é um atalho para declaração e inicialização de variáveis, e Go infere o tipo automaticamente. `var` declara explicitamente o tipo da variável e pode ser usado no nível do pacote ou da função.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Tipos de Dados Básicos
 
@@ -197,11 +212,11 @@ for condition {
 }
 // Loop infinito
 for {
-    // sair quando necessário
+    // quebrar quando necessário
 }
 ```
 
-### Iteração Range
+### Iteração com Range
 
 Iterar sobre slices, arrays, mapas e strings.
 
@@ -221,6 +236,21 @@ for i, char := range "Hello" {
     fmt.Printf("%d: %c\n", i, char)
 }
 ```
+
+<BaseQuiz id="golang-range-1" correct="B">
+  <template #question>
+    O que `range` retorna ao iterar sobre um slice em Go?
+  </template>
+  
+  <BaseQuizOption value="A">Apenas o valor</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Tanto o índice quanto o valor</BaseQuizOption>
+  <BaseQuizOption value="C">Apenas o índice</BaseQuizOption>
+  <BaseQuizOption value="D">O comprimento do slice</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Ao usar `range` com um slice, ele retorna dois valores: o índice (posição) e o valor naquele índice. Você pode usar `_` para ignorar qualquer valor se não precisar dele.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Declarações de Controle: `break` / `continue`
 
@@ -242,6 +272,21 @@ for i := 0; i < 5; i++ {
     fmt.Println(i)
 }
 ```
+
+<BaseQuiz id="golang-control-1" correct="C">
+  <template #question>
+    Qual é a diferença entre `break` e `continue` em loops Go?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="B">break pula a iteração atual, continue sai do loop</BaseQuizOption>
+  <BaseQuizOption value="C" correct>break sai completamente do loop, continue pula para a próxima iteração</BaseQuizOption>
+  <BaseQuizOption value="D">Ambos saem do loop</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `break` sai imediatamente do loop e continua a execução após o loop. `continue` pula o restante da iteração atual e avança para a próxima iteração do loop.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Funções
 
@@ -371,7 +416,7 @@ ages := map[string]int{
 }
 // Operações de Mapa
 ages["David"] = 40        // Adicionar/atualizar
-delete(ages, "Bob")       // Excluir
+delete(ages, "Bob")       // Deletar
 age, exists := ages["Alice"] // Verificar existência
 ```
 
@@ -476,7 +521,7 @@ str, ok := i.(string)
 if ok {
     fmt.Printf("Valor da string: %s\n", str)
 }
-// Switch de tipo
+// Type switch
 switch v := i.(type) {
 case int:
     fmt.Printf("Inteiro: %d\n", v)
@@ -526,7 +571,7 @@ func divide(a, b float64) (float64, error) {
     }
     return a / b, nil
 }
-// Verificação de erro
+// Verificação de Erro
 result, err := divide(10, 2)
 if err != nil {
     log.Fatal(err)
@@ -562,7 +607,7 @@ func validateAge(age int) error {
 
 ### Encadeamento de Erros (Error Wrapping)
 
-Adicionar contexto a erros, preservando o erro original.
+Adicionar contexto a erros preservando o erro original.
 
 ```go
 import "fmt"
@@ -570,7 +615,7 @@ import "fmt"
 func processFile(filename string) error {
     file, err := os.Open(filename)
     if err != nil {
-        return fmt.Errorf("falha ao abrir arquivo %s: %w",
+        return fmt.Errorf("falha ao abrir o arquivo %s: %w",
                           filename, err)
     }
     defer file.Close()
@@ -590,7 +635,7 @@ if err != nil {
 
 ### Panic e Recovery
 
-Lidar com situações excepcionais com `panic` e `recover`.
+Lidar com situações excepcionais com panic e recover.
 
 ```go
 // Função que pode entrar em pânico
@@ -618,7 +663,7 @@ Threads leves gerenciadas pelo runtime Go.
 import "time"
 // Goroutine simples
 func sayHello() {
-    fmt.Println("Olá do goroutine!")
+    fmt.Println("Olá da goroutine!")
 }
 func main() {
     // Iniciar goroutine
@@ -629,7 +674,7 @@ func main() {
         fmt.Println("Goroutine anônima")
     }()
 
-    // Esperar que os goroutines terminem
+    // Esperar as goroutines terminarem
     time.Sleep(time.Second)
 }
 ```
@@ -704,7 +749,7 @@ func main() {
     case msg2 := <-ch2:
         fmt.Println(msg2)
     case <-time.After(3 * time.Second):
-        fmt.Println("tempo limite esgotado")
+        fmt.Println("tempo esgotado")
     }
 }
 ```
@@ -904,7 +949,7 @@ Inicializar e gerenciar módulos Go para gerenciamento de dependências.
 go mod init github.com/username/project
 # Adicionar dependências
 go get github.com/gorilla/mux
-go get -u github.com/gin-gonic/gin  # Atualizar para o mais recente
+go get -u github.com/gin-gonic/gin  # Atualizar para a mais recente
 # Remover dependências não utilizadas
 go mod tidy
 # Baixar dependências

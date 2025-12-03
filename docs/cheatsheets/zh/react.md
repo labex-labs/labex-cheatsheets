@@ -1,6 +1,6 @@
 ---
-title: 'React 速查表'
-description: '使用我们涵盖核心命令、概念和最佳实践的综合 React 速查表，快速掌握 React。'
+title: 'React 速查表 | LabEx'
+description: '使用这份全面的 React 速查表学习 React 开发。快速参考 React 钩子、组件、JSX、状态管理、Props 和现代前端开发模式。'
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 
@@ -15,11 +15,11 @@ React 速查表
 <a target="_blank" href="https://labex.io/zh/learn/react">通过实践实验室学习 React</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 React 前端开发。LabEx 提供全面的 React 课程，涵盖基本的组件创建、状态管理、Hooks、事件处理和性能优化。掌握为现代 Web 应用程序构建高效且可维护的用户界面的技能。
+通过实践实验室和真实场景学习 React 前端开发。LabEx 提供全面的 React 课程，涵盖基本的组件创建、状态管理、Hooks、事件处理和性能优化。掌握为现代 Web 应用程序构建高效且可维护的用户界面。
 </base-disclaimer-content>
 </base-disclaimer>
 
-## 组件创建与 JSX
+## 组件创建和 JSX
 
 ### 函数式组件：`function` / `=>`
 
@@ -55,7 +55,7 @@ class Welcome extends Component {
   }
 }
 
-// 带有构造函数的组件
+// 带有构造函数的类组件
 class Counter extends Component {
   constructor(props) {
     super(props)
@@ -116,7 +116,7 @@ import { Button } from './Button'
 // 导入多个组件
 import React, { useState, useEffect } from 'react'
 
-// 导入并使用别名
+// 使用别名导入
 import { Button as MyButton } from './Button'
 ```
 
@@ -142,11 +142,11 @@ return (
 )
 ```
 
-## Props 与组件结构
+## Props 和组件结构
 
 ### Props: `props.name`
 
-将数据从父组件传递给子组件。
+将数据从父组件传递到子组件。
 
 ```javascript
 // 接收 props
@@ -169,9 +169,24 @@ function Welcome({ name = 'Guest' }) {
 }
 ```
 
+<BaseQuiz id="react-props-1" correct="B">
+  <template #question>
+    如何在 React 中将数据从父组件传递到子组件？
+  </template>
+  
+  <BaseQuizOption value="A">使用 state 变量</BaseQuizOption>
+  <BaseQuizOption value="B" correct>使用 props</BaseQuizOption>
+  <BaseQuizOption value="C">使用 refs</BaseQuizOption>
+  <BaseQuizOption value="D">使用 context API</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Props（properties 的缩写）是 React 中从父组件向子组件传递数据的首选方式。您在渲染子组件时将 props 作为属性传递。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### PropTypes: `Component.propTypes`
 
-验证传递给组件的 props（需要 prop-types 包）。
+验证传递给组件的 props 类型（需要 prop-types 包）。
 
 ```javascript
 import PropTypes from 'prop-types'
@@ -196,7 +211,7 @@ Welcome.defaultProps = {
 
 ### Children: `props.children`
 
-访问在组件开始和结束标签之间传递的内容。
+访问组件开始和结束标签之间传递的内容。
 
 ```javascript
 // 使用 children 的组件
@@ -211,7 +226,7 @@ function Card({ children }) {
 </Card>
 ```
 
-## 状态管理与 Hooks
+## 状态管理和 Hooks
 
 ### useState Hook: `useState()`
 
@@ -237,6 +252,21 @@ function Form() {
 }
 ```
 
+<BaseQuiz id="react-usestate-1" correct="A">
+  <template #question>
+    `useState(0)` 返回什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>一个包含状态值和更新函数的数组</BaseQuizOption>
+  <BaseQuizOption value="B">仅状态值</BaseQuizOption>
+  <BaseQuizOption value="C">一个更新状态的函数</BaseQuizOption>
+  <BaseQuizOption value="D">什么都不返回，它只设置状态</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `useState` 返回一个包含两个元素的数组：当前状态值和一个更新它的函数。初始值 (0) 作为参数传入。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### useEffect Hook: `useEffect()`
 
 在函数式组件中执行副作用操作。
@@ -247,12 +277,12 @@ import React, { useState, useEffect } from 'react'
 function Timer() {
   const [count, setCount] = useState(0)
 
-  // 每次渲染后执行的 Effect
+  // 效果在每次渲染后运行
   useEffect(() => {
     document.title = `Count: ${count}`
   })
 
-  // 带有清理函数的 Effect
+  // 带有清理函数的副作用
   useEffect(() => {
     const timer = setInterval(() => setCount((c) => c + 1), 1000)
     return () => clearInterval(timer)
@@ -260,7 +290,22 @@ function Timer() {
 }
 ```
 
-### 类状态：`this.state` / `setState()`
+<BaseQuiz id="react-useeffect-1" correct="D">
+  <template #question>
+    `useEffect(() => {...}, [])` 中的空依赖数组 `[]` 是什么意思？
+  </template>
+  
+  <BaseQuizOption value="A">效果在每次渲染时运行</BaseQuizOption>
+  <BaseQuizOption value="B">效果从不运行</BaseQuizOption>
+  <BaseQuizOption value="C">效果运行两次</BaseQuizOption>
+  <BaseQuizOption value="D" correct>效果仅在初始渲染后运行一次</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    空依赖数组意味着副作用没有依赖项，因此它只在组件挂载后运行一次。这对于只需要运行一次的设置代码非常有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 类组件状态：`this.state` / `setState()`
 
 在类组件中管理状态。
 
@@ -289,7 +334,7 @@ class Counter extends React.Component {
 创建可重用的有状态逻辑。
 
 ```javascript
-// 自定义 Hook
+// 自定义 hook
 function useCounter(initialValue = 0) {
   const [count, setCount] = useState(initialValue)
   const increment = () => setCount(count + 1)
@@ -314,6 +359,21 @@ function Counter() {
 
 ## 事件处理
 
+<BaseQuiz id="react-props-2" correct="A">
+  <template #question>
+    PropTypes 在 React 中的目的是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>验证传递给组件的 props 的类型</BaseQuizOption>
+  <BaseQuizOption value="B">提高组件性能</BaseQuizOption>
+  <BaseQuizOption value="C">自动样式化组件</BaseQuizOption>
+  <BaseQuizOption value="D">使组件运行更快</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PropTypes 通过验证组件接收到正确类型的 props 来帮助捕获错误。它们提供运行时类型检查，在开发过程中尤其有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 点击事件：`onClick`
 
 处理按钮点击和元素交互。
@@ -326,7 +386,7 @@ function Button() {
   return <button onClick={handleClick}>Click me</button>
 }
 
-// 内联事件处理函数
+// 内联事件处理程序
 function Button() {
   return <button onClick={() => alert('Clicked!')}>Click me</button>
 }
@@ -504,11 +564,11 @@ function Button({ variant, disabled }) {
 }
 ```
 
-## 列表渲染与 Keys
+## 列表渲染和 Key
 
 ### Map 函数：`array.map()`
 
-从数组数据渲染组件列表。
+根据数组数据渲染组件列表。
 
 ```javascript
 function TodoList({ todos }) {
@@ -533,7 +593,7 @@ function ItemList({ items }) {
 }
 ```
 
-### Keys: `key` 属性
+### Key: `key` 属性
 
 为列表项提供唯一的标识符以优化渲染。
 
@@ -551,7 +611,7 @@ function UserList({ users }) {
   )
 }
 
-// 创建复合 Key
+// 创建复合 key
 function CommentList({ comments }) {
   return (
     <div>
@@ -563,9 +623,9 @@ function CommentList({ comments }) {
 }
 ```
 
-### Filter 与 Map: 数组方法
+### Filter 和 Map: 数组方法
 
-在渲染前处理数组。
+在渲染之前处理数组。
 
 ```javascript
 function TaskList({ tasks, showCompleted }) {
@@ -611,7 +671,7 @@ function ProductList({ products }) {
 
 ```javascript
 const ExpensiveComponent = React.memo(function ExpensiveComponent({ data }) {
-  return <div>{/* 复杂的渲染逻辑 */}</div>
+  return <div>{/* Complex rendering logic */}</div>
 })
 
 // 使用自定义比较函数
@@ -648,7 +708,7 @@ function ExpensiveList({ items, searchTerm }) {
 
 ### useCallback Hook: `useCallback()`
 
-记忆化函数引用，以防止不必要的重新渲染。
+记忆化函数引用以防止不必要的重新渲染。
 
 ```javascript
 function Parent({ items }) {
@@ -667,7 +727,7 @@ function Parent({ items }) {
 
 ### 懒加载：`React.lazy()` / `Suspense`
 
-仅在需要时加载组件，以减小包大小。
+仅在需要时加载组件以减小包大小。
 
 ```javascript
 const LazyComponent = React.lazy(() => import('./LazyComponent'))
@@ -685,9 +745,9 @@ function App() {
 
 ## 组件通信
 
-### Props 向下传递：父组件到子组件
+### Props 向下：父到子
 
-将数据从父组件传递给子组件。
+将数据从父组件传递到子组件。
 
 ```javascript
 function Parent() {
@@ -705,7 +765,7 @@ function ChildComponent({ user }) {
 }
 ```
 
-### 回调向上：子组件到父组件
+### 回调向上：子到父
 
 将数据从子组件发送回父组件。
 
@@ -732,7 +792,7 @@ function Child({ onMessage }) {
 
 ### Context API: `createContext` / `useContext`
 
-在不进行 Prop 逐层传递的情况下共享跨多个组件的状态。
+在不进行 prop 逐层传递的情况下共享多个组件的状态。
 
 ```javascript
 const UserContext = React.createContext()
@@ -771,13 +831,13 @@ function TextInput() {
   )
 }
 
-// 转发 Ref
+// 转发 refs
 const FancyInput = forwardRef((props, ref) => (
   <input className="fancy" ref={ref} {...props} />
 ))
 ```
 
-## 开发工具与调试
+## 开发工具和调试
 
 ### React DevTools: 浏览器扩展
 
@@ -785,7 +845,7 @@ const FancyInput = forwardRef((props, ref) => (
 
 ```javascript
 // 安装 React DevTools 浏览器扩展
-// Components 选项卡：检查组件层级结构
+// Components 选项卡：检查组件层次结构
 // Profiler 选项卡：测量性能
 
 // 控制台调试
@@ -798,7 +858,7 @@ function MyComponent(props) {
 
 ### 错误边界 (Error Boundaries): `componentDidCatch`
 
-捕获组件树中的 JavaScript 错误并显示回退 UI。
+捕获组件树中的 JavaScript 错误并显示备用 UI。
 
 ```javascript
 class ErrorBoundary extends React.Component {
@@ -821,7 +881,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-### 严格模式：`React.StrictMode`
+### 严格模式 (Strict Mode): `React.StrictMode`
 
 为开发启用额外的检查和警告。
 
@@ -843,7 +903,7 @@ ReactDOM.render(
 
 ```javascript
 // 使用 React DevTools Profiler
-// 包裹需要分析的组件
+// 包裹组件以进行分析
 import { Profiler } from 'react'
 
 function onRenderCallback(id, phase, actualDuration) {
@@ -855,11 +915,11 @@ function onRenderCallback(id, phase, actualDuration) {
 </Profiler>
 ```
 
-## React 安装与设置
+## React 安装和设置
 
 ### Create React App: `npx create-react-app`
 
-快速启动一个新的 React 项目。
+快速启动新的 React 项目。
 
 ```bash
 # 创建新的 React 应用
@@ -893,7 +953,7 @@ npm run dev
 npm run build
 ```
 
-### 手动设置 / 导入
+### 手动设置/导入
 
 将 React 添加到现有项目或使用 CDN。
 
@@ -906,16 +966,16 @@ npm install --save-dev @vitejs/plugin-react
 ```
 
 ```javascript
-// 基础 React 导入
+// 基本 React 导入
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 
 // 渲染到 DOM
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(<App />)
 ```
 
-## 高级模式与特性
+## 高级模式和特性
 
 ### 高阶组件 (HOC)
 
@@ -938,7 +998,7 @@ const UserListWithLoading = withLoading(UserList)
 
 ### Render Props 模式
 
-通过将函数作为 prop 值来在组件之间共享代码。
+通过将 prop 的值设置为函数来在组件之间共享代码。
 
 ```javascript
 function DataFetcher({ render, url }) {
@@ -1010,7 +1070,7 @@ function Modal({ children, isOpen }) {
 
 ### 组合优于继承
 
-使用组合模式而不是继承类。
+使用组合模式而不是扩展类。
 
 ```javascript
 // 好：组合
@@ -1034,7 +1094,7 @@ function IconButton({ icon, children, ...props }) {
 
 ### 组件模式：灵活的 API
 
-设计灵活且易于使用的组件 API。
+设计易于使用的灵活组件 API。
 
 ```javascript
 // 灵活的 Card 组件

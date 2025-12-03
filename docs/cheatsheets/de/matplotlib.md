@@ -1,6 +1,6 @@
 ---
-title: 'Matplotlib Spickzettel'
-description: 'Lernen Sie Matplotlib mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Matplotlib Spickzettel | LabEx'
+description: 'Lernen Sie Matplotlib-Datenvisualisierung mit diesem umfassenden Spickzettel. Schnelle Referenz für Diagramme, Grafiken, Unterplots, Anpassung und Python-Datenvisualisierung.'
 pdfUrl: '/cheatsheets/pdf/matplotlib-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Matplotlib Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/matplotlib">Lernen Sie Matplotlib mit praktischen Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/matplotlib">Lernen Sie Matplotlib mit praktischen Übungen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Matplotlib-Datenvisualisierung durch praktische Labs und reale Szenarien. LabEx bietet umfassende Matplotlib-Kurse, die wesentliche Plotting-Funktionen, Anpassungstechniken, Subplot-Layouts und erweiterte Visualisierungstypen abdecken. Meistern Sie die Erstellung effektiver Datenvisualisierungen für Python-Data-Science-Workflows.
+Lernen Sie die Matplotlib-Datenvisualisierung durch praktische Übungen und reale Szenarien. LabEx bietet umfassende Matplotlib-Kurse, die wesentliche Plot-Funktionen, Anpassungstechniken, Subplot-Layouts und erweiterte Visualisierungstypen abdecken. Meistern Sie die Erstellung effektiver Datenvisualisierungen für Python-Data-Science-Workflows.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -44,6 +44,21 @@ plt.legend()
 plt.plot(x, y, 'r--', linewidth=2, marker='o')
 ```
 
+<BaseQuiz id="matplotlib-plot-1" correct="C">
+  <template #question>
+    Was bewirkt `plt.show()` in Matplotlib?
+  </template>
+  
+  <BaseQuizOption value="A">Speichert das Diagramm in einer Datei</BaseQuizOption>
+  <BaseQuizOption value="B">Schließt das Diagrammfenster</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Zeigt das Diagramm in einem Fenster an</BaseQuizOption>
+  <BaseQuizOption value="D">Löscht das Diagramm</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `plt.show()` zeigt das Diagramm in einem interaktiven Fenster an. Diese Funktion muss aufgerufen werden, um die Visualisierung zu sehen. Ohne sie wird das Diagramm nicht angezeigt.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Streudiagramm: `plt.scatter()`
 
 Zeigt Beziehungen zwischen zwei Variablen an.
@@ -58,6 +73,21 @@ sizes = [20, 50, 100, 200, 500]
 plt.scatter(x, y, c=colors, s=sizes, alpha=0.6)
 plt.colorbar()  # Farbleiste hinzufügen
 ```
+
+<BaseQuiz id="matplotlib-scatter-1" correct="D">
+  <template #question>
+    Was steuert der Parameter `alpha` in Matplotlib-Diagrammen?
+  </template>
+  
+  <BaseQuizOption value="A">Die Farbe des Diagramms</BaseQuizOption>
+  <BaseQuizOption value="B">Die Größe des Diagramms</BaseQuizOption>
+  <BaseQuizOption value="C">Die Position des Diagramms</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Die Transparenz/Opazität der Diagrammelemente</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Der Parameter `alpha` steuert die Transparenz mit Werten von 0 (vollständig transparent) bis 1 (vollständig opak). Er ist nützlich für die Erstellung überlappender Visualisierungen, bei denen man durch Elemente hindurchsehen möchte.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Balkendiagramm: `plt.bar()` / `plt.barh()`
 
@@ -105,7 +135,7 @@ labels = ['A', 'B', 'C', 'D']
 plt.pie(sizes, labels=labels)
 
 # Explodiertes Tortendiagramm mit Prozentangaben
-explode = (0, 0.1, 0, 0)  # 2. Segment herausgezogen
+explode = (0, 0.1, 0, 0)  # 2. Segment herausziehen
 plt.pie(sizes, labels=labels, autopct='%1.1f%%',
         explode=explode, shadow=True, startangle=90)
 ```
@@ -124,21 +154,21 @@ plt.boxplot(data, labels=['Gruppe 1', 'Gruppe 2', 'Gruppe 3', 'Gruppe 4'],
            patch_artist=True, notch=True)
 ```
 
-## Plot-Anpassung & Styling
+## Diagrammanpassung & Stil
 
 ### Beschriftungen & Titel: `plt.xlabel()` / `plt.title()`
 
-Fügen Sie Ihren Plots beschreibenden Text für Klarheit und Kontext hinzu.
+Fügt beschreibenden Text zur besseren Übersicht und Kontext hinzu.
 
 ```python
 # Einfache Beschriftungen und Titel
 plt.plot(x, y)
 plt.xlabel('X-Achsen-Beschriftung')
 plt.ylabel('Y-Achsen-Beschriftung')
-plt.title('Plot-Titel')
+plt.title('Diagrammtitel')
 
 # Formatierte Titel mit Schrifteigenschaften
-plt.title('Mein Plot', fontsize=16, fontweight='bold')
+plt.title('Mein Diagramm', fontsize=16, fontweight='bold')
 plt.xlabel('X-Werte', fontsize=12)
 
 # Gitter für bessere Lesbarkeit
@@ -147,7 +177,7 @@ plt.grid(True, alpha=0.3)
 
 ### Farben & Stile: `color` / `linestyle` / `marker`
 
-Passen Sie das visuelle Erscheinungsbild von Plot-Elementen an.
+Passen Sie das visuelle Erscheinungsbild von Diagrammelementen an.
 
 ```python
 # Farboptionen
@@ -158,7 +188,7 @@ plt.plot(x, y, color=(0.1, 0.2, 0.5))  # RGB-Tupel
 # Linienstile
 plt.plot(x, y, linestyle='--')  # Gestrichelt
 plt.plot(x, y, linestyle=':')   # Gepunktet
-plt.plot(x, y, linestyle='-.')  # Strichpunkt
+plt.plot(x, y, linestyle='-.')  # Strich-Punkt
 
 # Marker
 plt.plot(x, y, marker='o', markersize=8, markerfacecolor='red')
@@ -166,7 +196,7 @@ plt.plot(x, y, marker='o', markersize=8, markerfacecolor='red')
 
 ### Legenden & Anmerkungen: `plt.legend()` / `plt.annotate()`
 
-Fügen Sie Legenden und Anmerkungen hinzu, um Plot-Elemente zu erklären.
+Fügen Sie Legenden und Anmerkungen hinzu, um Diagrammelemente zu erklären.
 
 ```python
 # Einfache Legende
@@ -174,13 +204,28 @@ plt.plot(x, y1, label='Datensatz 1')
 plt.plot(x, y2, label='Datensatz 2')
 plt.legend()
 
-# Legende positionieren
+# Legendenposition anpassen
 plt.legend(loc='upper right', fontsize=10, frameon=False)
 
 # Anmerkungen
 plt.annotate('Wichtiger Punkt', xy=(2, 4), xytext=(3, 6),
             arrowprops=dict(arrowstyle='->', color='red'))
 ```
+
+<BaseQuiz id="matplotlib-legend-1" correct="B">
+  <template #question>
+    Was ist für `plt.legend()` erforderlich, um Beschriftungen anzuzeigen?
+  </template>
+  
+  <BaseQuizOption value="A">Nichts, es funktioniert automatisch</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Jedes Diagramm muss einen `label`-Parameter gesetzt haben</BaseQuizOption>
+  <BaseQuizOption value="C">Die Legende muss vor dem Plotten erstellt werden</BaseQuizOption>
+  <BaseQuizOption value="D">Beschriftungen müssen manuell in der Legende festgelegt werden</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Um eine Legende anzuzeigen, müssen Sie den Parameter `label` beim Erstellen jedes Diagramms festlegen (z. B. `plt.plot(x, y, label='Datensatz 1')`). Dann zeigt ein Aufruf von `plt.legend()` alle Beschriftungen an.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Achsen- & Layout-Steuerung
 
@@ -227,7 +272,7 @@ Steuert das Seitenverhältnis und das Erscheinungsbild der Achsen.
 ```python
 # Gleiches Seitenverhältnis
 plt.axis('equal')
-# Quadratischer Plot
+# Quadratisches Diagramm
 plt.axis('square')
 # Achse ausschalten
 plt.axis('off')
@@ -237,7 +282,7 @@ plt.gca().set_aspect('equal', adjustable='box')
 
 ### Figurengröße: `plt.figure()`
 
-Steuert die Gesamtgröße und Auflösung Ihrer Plots.
+Steuert die Gesamtgröße und Auflösung Ihrer Diagramme.
 
 ```python
 # Figurengröße festlegen (Breite, Höhe in Zoll)
@@ -270,13 +315,13 @@ plt.tight_layout(pad=3.0)
 
 ### Style Sheets: `plt.style.use()`
 
-Wendet vordefinierte Stile für ein konsistentes Plot-Erscheinungsbild an.
+Wendet vordefinierte Stile für ein konsistentes Diagrammerscheinungsbild an.
 
 ```python
 # Verfügbare Stile
 print(plt.style.available)
 
-# Eingebettete Stile verwenden
+# Eingebaute Stile verwenden
 plt.style.use('seaborn-v0_8')
 plt.style.use('ggplot')
 plt.style.use('bmh')
@@ -285,17 +330,17 @@ plt.style.use('bmh')
 plt.style.use('default')
 ```
 
-## Subplots & Mehrere Plots
+## Subplots & Mehrere Diagramme
 
-### Grundlegende Subplots: `plt.subplot()` / `plt.subplots()`
+### Einfache Subplots: `plt.subplot()` / `plt.subplots()`
 
-Erstellt mehrere Plots in einer einzigen Figure.
+Erstellt mehrere Diagramme in einer einzigen Figure.
 
 ```python
-# Erstellt ein 2x2 Subplot-Raster
+# 2x2 Subplot-Raster erstellen
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 
-# Plot in jedem Subplot
+# In jedem Subplot zeichnen
 axes[0, 0].plot(x, y)
 axes[0, 1].scatter(x, y)
 axes[1, 0].bar(x, y)
@@ -310,7 +355,7 @@ plt.scatter(x, y)
 
 ### Gemeinsame Achsen: `sharex` / `sharey`
 
-Verknüpft Achsen über Subplots hinweg für konsistente Skalierung.
+Verknüpft Achsen über Subplots hinweg für eine konsistente Skalierung.
 
 ```python
 # X-Achse über Subplots teilen
@@ -324,19 +369,19 @@ fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
 
 ### GridSpec: Erweiterte Layouts
 
-Erstellt komplexe Subplot-Anordnungen mit variierenden Größen.
+Erstellt komplexe Subplot-Anordnungen mit unterschiedlichen Größen.
 
 ```python
 import matplotlib.gridspec as gridspec
 
-# Erstellt ein benutzerdefiniertes Raster
+# Benutzerdefiniertes Raster erstellen
 gs = gridspec.GridSpec(3, 3)
 fig = plt.figure(figsize=(10, 8))
 
-# Unterschiedlich große Subplots
-ax1 = fig.add_subplot(gs[0, :])  # Obere Reihe, alle Spalten
-ax2 = fig.add_subplot(gs[1, :-1])  # Mittlere Reihe, erste 2 Spalten
-ax3 = fig.add_subplot(gs[1:, -1])  # Letzte Spalte, untere 2 Reihen
+# Subplots unterschiedlicher Größe
+ax1 = fig.add_subplot(gs[0, :])  # Obere Zeile, alle Spalten
+ax2 = fig.add_subplot(gs[1, :-1])  # Mittlere Zeile, erste 2 Spalten
+ax3 = fig.add_subplot(gs[1:, -1])  # Letzte Spalte, untere 2 Zeilen
 ax4 = fig.add_subplot(gs[-1, 0])   # Unten links
 ax5 = fig.add_subplot(gs[-1, 1])   # Unten Mitte
 ```
@@ -393,7 +438,7 @@ plt.contourf(X, Y, Z, levels=20, cmap='RdBu')
 plt.colorbar()
 ```
 
-### 3D-Plots: `mplot3d`
+### 3D-Diagramme: `mplot3d`
 
 Erstellt dreidimensionale Visualisierungen.
 
@@ -403,10 +448,10 @@ from mpl_toolkits.mplot3d import Axes3D
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-# 3D-Streuung
+# 3D-Streudiagramm
 ax.scatter(x, y, z)
 
-# 3D-Oberflächenplot
+# 3D-Oberflächendiagramm
 ax.plot_surface(X, Y, Z, cmap='viridis')
 
 # 3D-Liniendiagramm
@@ -430,24 +475,24 @@ yerr_upper = [0.6, 1.0, 0.4, 0.9, 0.5]
 plt.errorbar(x, y, yerr=[yerr_lower, yerr_upper], fmt='s-')
 ```
 
-### Fläche dazwischen: `plt.fill_between()`
+### Zwischen zwei füllen: `plt.fill_between()`
 
 Schattiert Bereiche zwischen Kurven oder um Linien herum.
 
 ```python
-# Fläche zwischen zwei Kurven füllen
+# Füllen zwischen zwei Kurven
 y1 = [2, 4, 6, 8, 10]
 y2 = [1, 3, 5, 7, 9]
 plt.fill_between(x, y1, y2, alpha=0.3, color='blue')
 
-# Fläche um eine Linie mit Fehler füllen
+# Füllen um eine Linie mit Fehler
 plt.plot(x, y, 'k-', linewidth=2)
 plt.fill_between(x, y-yerr, y+yerr, alpha=0.2, color='gray')
 ```
 
-### Violin-Plots: Alternative zu Box Plots
+### Violin-Diagramme: Alternative zu Boxplots
 
-Zeigt die Form der Verteilung zusammen mit den Quartilen an.
+Zeigt die Verteilungsform zusammen mit Quartilen an.
 
 ```python
 # Verwendung von pyplot
@@ -459,11 +504,11 @@ for pc in parts['bodies']:
     pc.set_alpha(0.7)
 ```
 
-## Interaktive Funktionen & Animation
+## Interaktive & Animationsfunktionen
 
 ### Interaktives Backend: `%matplotlib widget`
 
-Aktiviert interaktive Plots in Jupyter Notebooks.
+Aktiviert interaktive Diagramme in Jupyter Notebooks.
 
 ```python
 # In Jupyter Notebook
@@ -475,10 +520,10 @@ Aktiviert interaktive Plots in Jupyter Notebooks.
 
 ### Ereignisbehandlung: Maus & Tastatur
 
-Reagiert auf Benutzerinteraktionen mit Plots.
+Reagiert auf Benutzerinteraktionen mit Diagrammen.
 
 ```python
-# Interaktives Zoomen, Verschieben und Hovern
+# Interaktives Zoomen, Verschieben und Schweben
 def onclick(event):
     if event.inaxes:
         print(f'Geklickt bei x={event.xdata}, y={event.ydata}')
@@ -491,7 +536,7 @@ plt.show()
 
 ### Animationen: `matplotlib.animation`
 
-Erstellt animierte Plots für Zeitreihen oder sich ändernde Daten.
+Erstellt animierte Diagramme für Zeitreihen oder sich ändernde Daten.
 
 ```python
 from matplotlib.animation import FuncAnimation
@@ -514,47 +559,47 @@ plt.show()
 # ani.save('animation.gif', writer='pillow')
 ```
 
-## Speichern & Exportieren von Plots
+## Speichern & Exportieren von Diagrammen
 
 ### Figur speichern: `plt.savefig()`
 
-Exportiert Plots in Bilddateien mit verschiedenen Optionen.
+Exportiert Diagramme in Bilddateien mit verschiedenen Optionen.
 
 ```python
 # Einfaches Speichern
-plt.savefig('mein_plot.png')
+plt.savefig('mein_diagramm.png')
 
 # Hochauflösendes Speichern
-plt.savefig('plot.png', dpi=300, bbox_inches='tight')
+plt.savefig('diagramm.png', dpi=300, bbox_inches='tight')
 
 # Verschiedene Formate
-plt.savefig('plot.pdf')  # PDF
-plt.savefig('plot.svg')  # SVG (Vektor)
-plt.savefig('plot.eps')  # EPS
+plt.savefig('diagramm.pdf')  # PDF
+plt.savefig('diagramm.svg')  # SVG (Vektor)
+plt.savefig('diagramm.eps')  # EPS
 
 # Transparenter Hintergrund
-plt.savefig('plot.png', transparent=True)
+plt.savefig('diagramm.png', transparent=True)
 ```
 
 ### Figurengröße: DPI & Größe
 
-Steuert die Auflösung und Abmessungen gespeicherter Plots.
+Steuert die Auflösung und Abmessungen gespeicherter Diagramme.
 
 ```python
 # Hohe DPI für Publikationen
-plt.savefig('plot.png', dpi=600)
+plt.savefig('diagramm.png', dpi=600)
 
 # Benutzerdefinierte Größe (Breite, Höhe in Zoll)
 plt.figure(figsize=(12, 8))
-plt.savefig('plot.png', figsize=(12, 8))
+plt.savefig('diagramm.png', figsize=(12, 8))
 
 # Leerraum abschneiden
-plt.savefig('plot.png', bbox_inches='tight', pad_inches=0.1)
+plt.savefig('diagramm.png', bbox_inches='tight', pad_inches=0.1)
 ```
 
-### Stapelweiser Export & Speicherverwaltung
+### Stapel-Export & Speicherverwaltung
 
-Behandelt mehrere Plots und Speicherverwaltung effizient.
+Behandelt mehrere Diagramme und verwaltet den Speicher effizient.
 
 ```python
 # Figuren schließen, um Speicher freizugeben
@@ -564,13 +609,13 @@ plt.close('all')  # Alle Figuren schließen
 # Kontextmanager für automatische Bereinigung
 with plt.figure() as fig:
     plt.plot(x, y)
-    plt.savefig('plot.png')
+    plt.savefig('diagramm.png')
 
-# Stapelweiser Speichern mehrerer Plots
+# Stapelweises Speichern mehrerer Diagramme
 for i, data in enumerate(datasets):
     plt.figure()
     plt.plot(data)
-    plt.savefig(f'plot_{i}.png')
+    plt.savefig(f'diagramm_{i}.png')
     plt.close()
 ```
 
@@ -578,7 +623,7 @@ for i, data in enumerate(datasets):
 
 ### RC-Parameter: `plt.rcParams`
 
-Legt Standard-Styling und Verhalten für alle Plots fest.
+Legt Standardstile und Verhalten für alle Diagramme fest.
 
 ```python
 # Häufige rc-Parameter
@@ -613,13 +658,13 @@ custom_cmap = LinearSegmentedColormap.from_list('custom', ['red', 'yellow', 'blu
 
 ### Leistungsoptimierung
 
-Verbessert die Plotting-Leistung für große Datensätze.
+Verbessert die Plot-Leistung für große Datensätze.
 
 ```python
 # Blitting für Animationen verwenden
 ani = FuncAnimation(fig, animate, blit=True)
 
-# Komplexe Plots rasterisieren
+# Komplexe Diagramme rasterisieren
 plt.plot(x, y, rasterized=True)
 
 # Datenpunkte für große Datensätze reduzieren
@@ -630,15 +675,15 @@ plt.plot(large_data[indices])
 
 ### Speichernutzung: Effizientes Plotten
 
-Verwaltet den Speicherverbrauch bei der Erstellung vieler Plots oder großer Visualisierungen.
+Verwaltet den Speicher beim Erstellen vieler Diagramme oder großer Visualisierungen.
 
 ```python
 # Achsen löschen anstatt neue Figuren zu erstellen
 fig, ax = plt.subplots()
 for data in datasets:
-    ax.clear()  # Vorherigen Plot löschen
+    ax.clear()  # Vorheriges Diagramm löschen
     ax.plot(data)
-    plt.savefig(f'plot_{i}.png')
+    plt.savefig(f'diagramm_{i}.png')
 
 # Generatoren für große Datensätze verwenden
 def data_generator():
@@ -646,7 +691,7 @@ def data_generator():
         yield np.random.randn(100)
 
 for i, data in enumerate(data_generator()):
-    if i > 10:  # Anzahl der Plots begrenzen
+    if i > 10:  # Anzahl der Diagramme begrenzen
         break
 ```
 
@@ -659,7 +704,7 @@ Verwendet Matplotlib über Pandas DataFrame-Methoden.
 ```python
 import pandas as pd
 
-# DataFrame-Plotting (verwendet Matplotlib-Backend)
+# DataFrame-Plotten (verwendet Matplotlib-Backend)
 df.plot(kind='line', x='date', y='value')
 df.plot.scatter(x='x_col', y='y_col')
 df.plot.hist(bins=30)
@@ -690,14 +735,14 @@ data = np.random.normal(0, 1, 10000)
 plt.hist(data, bins=50, density=True, alpha=0.7)
 ```
 
-### Seaborn-Integration: Verbesserte Ästhetik
+### Seaborn-Integration: Verbesserte Stile
 
 Kombiniert Matplotlib mit Seaborn für bessere Standard-Ästhetik.
 
 ```python
 import seaborn as sns
 
-# Verwendung von Seaborn-Styling mit Matplotlib
+# Seaborn-Styling mit Matplotlib verwenden
 sns.set_style('whitegrid')
 plt.plot(x, y)
 plt.show()
@@ -708,16 +753,16 @@ sns.scatterplot(data=df, x='x', y='y', ax=axes[0,0])
 plt.plot(x, y, ax=axes[0,1])  # Reines Matplotlib
 ```
 
-### Jupyter-Integration: Inline-Plotting
+### Jupyter-Integration: Inline-Plotten
 
 Optimiert Matplotlib für Jupyter Notebook-Umgebungen.
 
 ```python
 # Magic Commands für Jupyter
-%matplotlib inline  # Statische Plots
-%matplotlib widget  # Interaktive Plots
+%matplotlib inline  # Statische Diagramme
+%matplotlib widget  # Interaktive Diagramme
 
-# High-DPI-Anzeigen
+# Hochauflösende Anzeigen
 %config InlineBackend.figure_format = 'retina'
 
 # Automatische Figurengröße

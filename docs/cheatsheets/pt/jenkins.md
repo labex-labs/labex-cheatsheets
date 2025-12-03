@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola Jenkins'
-description: 'Aprenda Jenkins com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Cheatsheet Jenkins | LabEx'
+description: 'Aprenda CI/CD com Jenkins com este cheatsheet abrangente. Referência rápida para pipelines, jobs, plugins, automação, integração contínua e fluxos de trabalho DevOps do Jenkins.'
 pdfUrl: '/cheatsheets/pdf/jenkins-cheatsheet.pdf'
 ---
 
@@ -77,7 +77,7 @@ docker exec jenkins_container cat /var/jenkins_home/secrets/initialAdminPassword
 
 ### Configuração Inicial
 
-Concluir o assistente de configuração e criar usuário administrador.
+Concluir o assistente de configuração e criar o usuário administrador.
 
 ```bash
 # Após desbloquear o Jenkins:
@@ -85,7 +85,7 @@ Concluir o assistente de configuração e criar usuário administrador.
 # 2. Criar primeiro usuário administrador
 # 3. Configurar URL do Jenkins
 # 4. Começar a usar o Jenkins
-# Verificar se o Jenkins está rodando
+# Verificar se o Jenkins está em execução
 sudo systemctl status jenkins
 # Verificar logs do Jenkins se necessário
 sudo journalctl -u jenkins.service
@@ -113,12 +113,12 @@ java -jar jenkins-cli.jar -s http://localhost:8080 help
 Criar novos jobs de build usando CLI ou interface web.
 
 ```bash
-# Criar job a partir de configuração XML
-java -jar jenkins-cli.jar -auth usuario:token create-job meu-job < job-config.xml
+# Criar job a partir da configuração XML
+java -jar jenkins-cli.jar -auth user:token create-job meu-job < job-config.xml
 # Criar job freestyle simples via UI web:
-# 1. Clicar em "Novo Item"
+# 1. Clicar em "New Item"
 # 2. Inserir nome do job
-# 3. Selecionar "Projeto Freestyle"
+# 3. Selecionar "Freestyle project"
 # 4. Configurar etapas de build
 # 5. Salvar configuração
 ```
@@ -129,11 +129,11 @@ Visualizar todos os jobs configurados no Jenkins.
 
 ```bash
 # Listar todos os jobs
-java -jar jenkins-cli.jar -auth usuario:token list-jobs
+java -jar jenkins-cli.jar -auth user:token list-jobs
 # Listar jobs com correspondência de padrão
-java -jar jenkins-cli.jar -auth usuario:token list-jobs "*teste*"
+java -jar jenkins-cli.jar -auth user:token list-jobs "*teste*"
 # Obter configuração do job
-java -jar jenkins-cli.jar -auth usuario:token get-job meu-job > job-config.xml
+java -jar jenkins-cli.jar -auth user:token get-job meu-job > job-config.xml
 ```
 
 ## Gerenciamento de Jobs
@@ -144,14 +144,29 @@ Disparar e gerenciar builds de jobs.
 
 ```bash
 # Executar um job
-java -jar jenkins-cli.jar -auth usuario:token build meu-job
+java -jar jenkins-cli.jar -auth user:token build meu-job
 # Executar com parâmetros
-java -jar jenkins-cli.jar -auth usuario:token build meu-job -p PARAM=valor
+java -jar jenkins-cli.jar -auth user:token build meu-job -p PARAM=valor
 # Executar e aguardar conclusão
-java -jar jenkins-cli.jar -auth usuario:token build meu-job -s -v
+java -jar jenkins-cli.jar -auth user:token build meu-job -s -v
 # Executar e seguir o output do console
-java -jar jenkins-cli.jar -auth usuario:token build meu-job -f
+java -jar jenkins-cli.jar -auth user:token build meu-job -f
 ```
+
+<BaseQuiz id="jenkins-build-1" correct="B">
+  <template #question>
+    O que a flag `-s` em `jenkins-cli.jar build meu-job -s` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Pula o build</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Aguarda a conclusão do build (síncrono)</BaseQuizOption>
+  <BaseQuizOption value="C">Mostra o status do build</BaseQuizOption>
+  <BaseQuizOption value="D">Para o build</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A flag `-s` torna o comando de build síncrono, ou seja, espera o build terminar antes de retornar. Sem ela, o comando retorna imediatamente após disparar o build.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Controle de Job: `enable-job` / `disable-job`
 
@@ -159,13 +174,28 @@ Habilitar ou desabilitar jobs.
 
 ```bash
 # Habilitar um job
-java -jar jenkins-cli.jar -auth usuario:token enable-job meu-job
+java -jar jenkins-cli.jar -auth user:token enable-job meu-job
 # Desabilitar um job
-java -jar jenkins-cli.jar -auth usuario:token disable-job meu-job
+java -jar jenkins-cli.jar -auth user:token disable-job meu-job
 # Verificar status do job na UI web
 # Navegar para o dashboard do job
-# Procurar botão "Desabilitar/Habilitar"
+# Procurar botão "Disable/Enable"
 ```
+
+<BaseQuiz id="jenkins-job-control-1" correct="B">
+  <template #question>
+    O que acontece quando você desabilita um job do Jenkins?
+  </template>
+  
+  <BaseQuizOption value="A">O job é excluído permanentemente</BaseQuizOption>
+  <BaseQuizOption value="B" correct>A configuração do job é preservada, mas ele não será executado automaticamente</BaseQuizOption>
+  <BaseQuizOption value="C">O job é movido para outra pasta</BaseQuizOption>
+  <BaseQuizOption value="D">Todo o histórico de builds é excluído</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Desabilitar um job impede que ele seja executado automaticamente (builds agendados, gatilhos, etc.), mas preserva a configuração do job e o histórico de builds. Você pode reabilitá-lo mais tarde.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Exclusão de Job: `delete-job`
 
@@ -173,10 +203,10 @@ Remover jobs do Jenkins.
 
 ```bash
 # Excluir um job
-java -jar jenkins-cli.jar -auth usuario:token delete-job meu-job
-# Exclusão em massa de jobs (com cautela)
+java -jar jenkins-cli.jar -auth user:token delete-job meu-job
+# Excluir jobs em lote (com cautela)
 for job in job1 job2 job3; do
-  java -jar jenkins-cli.jar -auth usuario:token delete-job $job
+  java -jar jenkins-cli.jar -auth user:token delete-job $job
 done
 ```
 
@@ -185,13 +215,28 @@ done
 Visualizar logs de build e output do console.
 
 ```bash
-# Ver output do console do build mais recente
-java -jar jenkins-cli.jar -auth usuario:token console meu-job
-# Ver número de build específico
-java -jar jenkins-cli.jar -auth usuario:token console meu-job 15
+# Visualizar output do console do build mais recente
+java -jar jenkins-cli.jar -auth user:token console meu-job
+# Visualizar número de build específico
+java -jar jenkins-cli.jar -auth user:token console meu-job 15
 # Seguir output do console em tempo real
-java -jar jenkins-cli.jar -auth usuario:token console meu-job -f
+java -jar jenkins-cli.jar -auth user:token console meu-job -f
 ```
+
+<BaseQuiz id="jenkins-console-1" correct="C">
+  <template #question>
+    O que a flag `-f` em `jenkins-cli.jar console meu-job -f` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Força a parada do build</BaseQuizOption>
+  <BaseQuizOption value="B">Mostra apenas builds com falha</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Segue o output do console em tempo real</BaseQuizOption>
+  <BaseQuizOption value="D">Formata o output como JSON</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A flag `-f` segue o output do console em tempo real, semelhante a `tail -f` no Linux. Isso é útil para monitorar builds enquanto eles estão em execução.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Gerenciamento de Pipeline
 
@@ -341,15 +386,15 @@ Instalar plugins usando interface de linha de comando.
 
 ```bash
 # Instalar plugin via CLI (requer reinicialização)
-java -jar jenkins-cli.jar -auth usuario:token install-plugin git
+java -jar jenkins-cli.jar -auth user:token install-plugin git
 # Instalar múltiplos plugins
-java -jar jenkins-cli.jar -auth usuario:token install-plugin \
+java -jar jenkins-cli.jar -auth user:token install-plugin \
   git maven-plugin docker-plugin
-# Instalar de arquivo .hpi
-java -jar jenkins-cli.jar -auth usuario:token install-plugin \
+# Instalar a partir de arquivo .hpi
+java -jar jenkins-cli.jar -auth user:token install-plugin \
   /caminho/para/plugin.hpi
 # Listar plugins instalados
-java -jar jenkins-cli.jar -auth usuario:token list-plugins
+java -jar jenkins-cli.jar -auth user:token list-plugins
 # Instalação de plugin via plugins.txt (para Docker)
 # Criar arquivo plugins.txt:
 git:latest
@@ -362,7 +407,7 @@ jenkins-plugin-cli --plugins git maven-plugin docker-plugin
 
 ### Plugins Essenciais
 
-Plugins comumente usados no Jenkins para diferentes finalidades.
+Plugins comumente usados para diferentes propósitos.
 
 ```bash
 # Plugins de Build e SCM
@@ -397,19 +442,19 @@ Gerenciar plugins através da interface web do Jenkins.
 # 5. Selecionar e instalar
 # 6. Reiniciar Jenkins se necessário
 # Processo de atualização de plugin:
-# 1. Verificar aba "Atualizações"
+# 1. Verificar aba "Updates"
 # 2. Selecionar plugins para atualizar
-# 3. Clicar em "Baixar agora e instalar após a reinicialização"
+# 3. Clicar em "Download now and install after restart"
 ```
 
-## Gerenciamento de Usuários
+## Gerenciamento de Usuários e Segurança
 
 ### Gerenciamento de Usuários
 
 Criar e gerenciar usuários do Jenkins.
 
 ```bash
-# Habilitar segurança do Jenkins:
+# Habilitar segurança no Jenkins:
 # 1. Gerenciar Jenkins → Configurar Segurança Global
 # 2. Habilitar "Banco de dados de usuários próprio do Jenkins"
 # 3. Permitir que usuários se inscrevam (configuração inicial)
@@ -448,16 +493,16 @@ Gerar e gerenciar tokens de API para acesso CLI.
 
 ```bash
 # Gerar token de API:
-# 1. Clicar em nome de usuário → Configurar
+# 1. Clicar no nome de usuário → Configurar
 # 2. Seção Token de API
 # 3. Clicar em "Adicionar novo Token"
 # 4. Inserir nome do token
-# 5. Gerar e copiar token
+# 5. Gerar e copiar o token
 # Usar token de API com CLI
-java -jar jenkins-cli.jar -auth usuario:token-api \
+java -jar jenkins-cli.jar -auth nome_usuario:token-api \
   -s http://localhost:8080 list-jobs
 # Armazenar credenciais com segurança
-echo "usuario:token-api" > ~/.jenkins-cli-auth
+echo "nome_usuario:token-api" > ~/.jenkins-cli-auth
 chmod 600 ~/.jenkins-cli-auth
 ```
 
@@ -467,10 +512,10 @@ Gerenciar credenciais armazenadas para jobs e pipelines.
 
 ```bash
 # Gerenciar credenciais via CLI
-java -jar jenkins-cli.jar -auth usuario:token \
+java -jar jenkins-cli.jar -auth user:token \
   list-credentials system::system::jenkins
 # Criar XML de credenciais e importar
-java -jar jenkins-cli.jar -auth usuario:token \
+java -jar jenkins-cli.jar -auth user:token \
   create-credentials-by-xml system::system::jenkins \
   < credencial.xml
 ```
@@ -488,17 +533,17 @@ withCredentials([usernamePassword(
 
 ## Monitoramento de Build e Solução de Problemas
 
-### Status e Logs de Build
+### Status e Logs do Build
 
-Monitorar status de build e acessar logs detalhados.
+Monitorar o status do build e acessar logs detalhados.
 
 ```bash
 # Verificar status do build
-java -jar jenkins-cli.jar -auth usuario:token console meu-job
+java -jar jenkins-cli.jar -auth user:token console meu-job
 # Obter informações do build
-java -jar jenkins-cli.jar -auth usuario:token get-job meu-job
+java -jar jenkins-cli.jar -auth user:token get-job meu-job
 # Monitorar fila de builds
-# UI Web: Dashboard Jenkins → Fila de Builds
+# UI Web: Dashboard do Jenkins → Fila de Builds
 # Mostra builds pendentes e seu status
 # Acesso ao histórico de builds
 # UI Web: Job → Histórico de Builds
@@ -511,10 +556,10 @@ Obter informações do sistema Jenkins e diagnósticos.
 
 ```bash
 # Informações do sistema
-java -jar jenkins-cli.jar -auth usuario:token version
+java -jar jenkins-cli.jar -auth user:token version
 # Informações do nó
-java -jar jenkins-cli.jar -auth usuario:token list-computers
-# Console Groovy (somente admin)
+java -jar jenkins-cli.jar -auth user:token list-computers
+# Console Groovy (apenas admin)
 # Gerenciar Jenkins → Console de Script
 # Executar scripts Groovy para informações do sistema:
 println Jenkins.instance.version
@@ -537,7 +582,7 @@ tail -f /var/log/jenkins/jenkins.log
 # Adicionar novo gravador de log para componentes específicos
 # Locais comuns de log:
 sudo journalctl -u jenkins.service     # Logs Systemd
-sudo cat /var/lib/jenkins/jenkins.log  # Arquivo de log Jenkins
+sudo cat /var/lib/jenkins/jenkins.log  # Arquivo de log do Jenkins
 ```
 
 ### Monitoramento de Desempenho
@@ -547,13 +592,13 @@ Monitorar o desempenho e uso de recursos do Jenkins.
 ```bash
 # Monitoramento embutido
 # Gerenciar Jenkins → Estatísticas de Carga
-# Mostra utilização do executor ao longo do tempo
+# Mostra a utilização do executor ao longo do tempo
 # Monitoramento de JVM
-# Gerenciar Jenkins → Gerenciar Nós → Mestre
+# Gerenciar Jenkins → Gerenciar Nós → Master
 # Mostra uso de memória, CPU e propriedades do sistema
 # Tendências de Build
 # Instalar plugin "Build History Metrics"
-# Visualizar tendências de duração de build e taxas de sucesso
+# Visualizar tendências de duração e taxas de sucesso de builds
 # Monitoramento de uso de disco
 # Instalar plugin "Disk Usage"
 # Monitorar espaço de trabalho e armazenamento de artefatos de build
@@ -585,7 +630,7 @@ Configurar configurações globais do Jenkins e ferramentas.
 
 ### Variáveis de Ambiente
 
-Configurar variáveis de ambiente e propriedades do sistema Jenkins.
+Configurar variáveis de ambiente e propriedades do sistema do Jenkins.
 
 ```bash
 # Variáveis de ambiente embutidas
@@ -601,7 +646,7 @@ NODE_NAME            # Nome do nó
 # Adicionar pares chave-valor para acesso global
 ```
 
-### Configuração do Jenkins como Código
+### Jenkins Configuration as Code
 
 Gerenciar a configuração do Jenkins usando o plugin JCasC.
 

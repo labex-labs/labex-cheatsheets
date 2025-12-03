@@ -1,21 +1,21 @@
 ---
-title: 'Fiche Récapitulative scikit-learn'
-description: 'Maîtrisez scikit-learn avec notre aide-mémoire complet couvrant les commandes essentielles, concepts et meilleures pratiques.'
+title: 'Fiche de triche scikit-learn | LabEx'
+description: "Apprenez le machine learning avec scikit-learn grâce à cette fiche de référence complète. Référence rapide pour les algorithmes ML, l'entraînement de modèles, le prétraitement, l'évaluation et les flux de travail Python en ML."
 pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Feuille de triche scikit-learn
+Cheatsheet scikit-learn
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/sklearn">Apprenez scikit-learn avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/sklearn">Apprendre scikit-learn avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez l'apprentissage automatique avec scikit-learn grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur scikit-learn couvrant le prétraitement des données essentiel, la sélection de modèles, l'entraînement, l'évaluation et l'ingénierie des fonctionnalités. Maîtrisez les algorithmes d'apprentissage automatique et construisez des modèles prédictifs avec Python.
+Apprenez le machine learning avec scikit-learn grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur scikit-learn couvrant le prétraitement des données essentiel, la sélection de modèles, l'entraînement, l'évaluation et l'ingénierie des fonctionnalités. Maîtrisez les algorithmes de machine learning et construisez des modèles prédictifs avec Python.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,12 +23,12 @@ Apprenez l'apprentissage automatique avec scikit-learn grâce à des laboratoire
 
 ### Installation : `pip install scikit-learn`
 
-Installez scikit-learn et les dépendances courantes.
+Installer scikit-learn et les dépendances courantes.
 
 ```bash
 # Installer scikit-learn
 pip install scikit-learn
-# Installer avec des paquets supplémentaires
+# Installer avec des paquets additionnels
 pip install scikit-learn pandas numpy matplotlib
 # Mettre à jour vers la dernière version
 pip install scikit-learn --upgrade
@@ -57,7 +57,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 ### Vérifier la Version
 
-Vérifiez votre installation de scikit-learn.
+Vérifier votre installation de scikit-learn.
 
 ```python
 import sklearn
@@ -68,7 +68,7 @@ sklearn.show_versions()
 
 ### Chargement de Jeu de Données
 
-Chargez les jeux de données intégrés pour la pratique.
+Charger des jeux de données intégrés pour la pratique.
 
 ```python
 from sklearn.datasets import load_iris, load_boston,
@@ -83,20 +83,20 @@ n_features=20, n_informative=10, random_state=42)
 
 ## Prétraitement des Données
 
-### Division Entraînement-Test : `train_test_split()`
+### Séparation Entraînement-Test : `train_test_split()`
 
-Divisez les données en ensembles d'entraînement et de test.
+Diviser les données en ensembles d'entraînement et de test.
 
 ```python
-# Division de base (80% entraînement, 20% test)
+# Séparation de base (80% entraînement, 20% test)
 X_train, X_test, y_train, y_test =
 train_test_split(X, y, test_size=0.2,
 random_state=42)
-# Division stratifiée pour la classification
+# Séparation stratifiée pour la classification
 X_train, X_test, y_train, y_test =
 train_test_split(X, y, test_size=0.2,
 stratify=y, random_state=42)
-# Divisions multiples
+# Multiples séparations
 X_train, X_temp, y_train, y_temp =
 train_test_split(X, y, test_size=0.4,
 random_state=42)
@@ -105,9 +105,24 @@ train_test_split(X_temp, y_temp,
 test_size=0.5, random_state=42)
 ```
 
+<BaseQuiz id="sklearn-split-1" correct="B">
+  <template #question>
+    Pourquoi est-il important de séparer les données en ensembles d'entraînement et de test ?
+  </template>
+  
+  <BaseQuizOption value="A">Pour réduire la taille de l'ensemble de données</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Pour évaluer la performance du modèle sur des données non vues et prévenir le surapprentissage (overfitting)</BaseQuizOption>
+  <BaseQuizOption value="C">Pour accélérer l'entraînement du modèle</BaseQuizOption>
+  <BaseQuizOption value="D">Pour équilibrer l'ensemble de données</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Séparer les données permet d'entraîner le modèle sur une partie et de le tester sur une autre. Cela aide à évaluer à quel point le modèle se généralise à de nouvelles données non vues et empêche le surapprentissage aux données d'entraînement.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Mise à l'Échelle des Caractéristiques : `StandardScaler()` / `MinMaxScaler()`
 
-Normalisez les caractéristiques à des échelles similaires.
+Normaliser les caractéristiques à des échelles similaires.
 
 ```python
 # Standardisation (moyenne=0, écart-type=1)
@@ -126,9 +141,24 @@ X_test_minmax =
 minmax_scaler.transform(X_test)
 ```
 
+<BaseQuiz id="sklearn-scaling-1" correct="A">
+  <template #question>
+    Pourquoi la mise à l'échelle des caractéristiques est-elle importante en machine learning ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Elle garantit que toutes les caractéristiques sont sur une échelle similaire, empêchant certaines caractéristiques de dominer</BaseQuizOption>
+  <BaseQuizOption value="B">Elle supprime les valeurs manquantes</BaseQuizOption>
+  <BaseQuizOption value="C">Elle augmente le nombre de caractéristiques</BaseQuizOption>
+  <BaseQuizOption value="D">Elle supprime les lignes dupliquées</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La mise à l'échelle des caractéristiques est importante car les algorithmes comme SVM, KNN et les réseaux neuronaux sont sensibles aux échelles des caractéristiques. Sans mise à l'échelle, les caractéristiques avec des plages plus grandes peuvent dominer le processus d'apprentissage du modèle.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Encodage : `LabelEncoder()` / `OneHotEncoder()`
 
-Convertissez les variables catégorielles en format numérique.
+Convertir les variables catégorielles en format numérique.
 
 ```python
 # Encodage des étiquettes pour la variable cible
@@ -208,9 +238,24 @@ rf_clf = RandomForestClassifier(
 )
 ```
 
+<BaseQuiz id="sklearn-randomforest-1" correct="A">
+  <template #question>
+    Que contrôle `n_estimators` dans RandomForestClassifier ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Le nombre d'arbres de décision dans la forêt</BaseQuizOption>
+  <BaseQuizOption value="B">La profondeur maximale de chaque arbre</BaseQuizOption>
+  <BaseQuizOption value="C">Le nombre de caractéristiques à considérer</BaseQuizOption>
+  <BaseQuizOption value="D">La graine aléatoire (random seed)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `n_estimators` spécifie le nombre d'arbres de décision à inclure dans la forêt aléatoire. Plus d'arbres améliorent généralement la performance mais augmentent le temps de calcul. La valeur par défaut est généralement 100.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Machine à Vecteurs de Support : `SVC()`
 
-Classifieur puissant utilisant des méthodes de noyau.
+Classifieur puissant utilisant des méthodes de noyau (kernel).
 
 ```python
 # Classifieur SVM
@@ -293,7 +338,7 @@ feature_importance = rf_reg.feature_importances_
 
 ### Métriques de Classification
 
-Évaluez la performance du modèle de classification.
+Évaluer la performance du modèle de classification.
 
 ```python
 # Précision de base
@@ -314,7 +359,7 @@ cm = confusion_matrix(y_test, y_pred)
 
 ### Courbe ROC et AUC
 
-Tracez la courbe ROC et calculez l'Aire Sous la Courbe.
+Tracer la courbe ROC et calculer l'Aire Sous la Courbe.
 
 ```python
 # Courbe ROC pour la classification binaire
@@ -333,7 +378,7 @@ plt.legend()
 
 ### Métriques de Régression
 
-Évaluez la performance du modèle de régression.
+Évaluer la performance du modèle de régression.
 
 ```python
 # Métriques de régression
@@ -343,10 +388,10 @@ mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 mae = mean_absolute_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
-print(f"MSE: {mse:.4f}")
-print(f"RMSE: {rmse:.4f}")
-print(f"MAE: {mae:.4f}")
-print(f"R²: {r2:.4f}")
+print(f"MSE : {mse:.4f}")
+print(f"RMSE : {rmse:.4f}")
+print(f"MAE : {mae:.4f}")
+print(f"R² : {r2:.4f}")
 ```
 
 ### Validation Croisée
@@ -359,9 +404,9 @@ from sklearn.model_selection import cross_val_score,
 StratifiedKFold
 cv_scores = cross_val_score(model, X, y, cv=5,
 scoring='accuracy')
-print(f"Précision CV: {cv_scores.mean():.4f} (+/-
+print(f"Précision CV : {cv_scores.mean():.4f} (+/-
 {cv_scores.std() * 2:.4f})")
-# K-fold stratifiée pour les jeux de données déséquilibrés
+# K-fold stratifiée pour les ensembles de données déséquilibrés
 skf = StratifiedKFold(n_splits=5, shuffle=True,
 random_state=42)
 cv_scores = cross_val_score(model, X, y, cv=skf,
@@ -420,8 +465,8 @@ cluster_labels = dbscan.fit_predict(X)
 n_clusters = len(set(cluster_labels)) - (1 if -1 in
 cluster_labels else 0)
 n_noise = list(cluster_labels).count(-1)
-print(f"Nombre de clusters: {n_clusters}")
-print(f"Nombre de points de bruit: {n_noise}")
+print(f"Nombre de clusters : {n_clusters}")
+print(f"Nombre de points de bruit : {n_noise}")
 ```
 
 ### Clustering Hiérarchique : `AgglomerativeClustering()`
@@ -499,7 +544,7 @@ pipeline = Pipeline([
 ])
 pipeline.fit(X_train, y_train)
 y_pred = pipeline.predict(X_test)
-# Pipeline avec recherche par grille
+# Grille de recherche avec pipeline
 param_grid = {
     'classifier__n_estimators': [100, 200],
     'classifier__max_depth': [3, 5, None]
@@ -533,7 +578,7 @@ X_rfe = rfe.fit_transform(X_train, y_train)
 Combiner plusieurs modèles pour une meilleure performance.
 
 ```python
-# Classifieur de vote (ensemble de différents algorithmes)
+# Classifieur à vote (ensemble de différents algorithmes)
 from sklearn.ensemble import VotingClassifier
 voting_clf = VotingClassifier(
     estimators=[
@@ -556,7 +601,7 @@ bagging_clf.fit(X_train, y_train)
 Méthode d'ensemble séquentielle avec correction d'erreur.
 
 ```python
-# Classifieur de gradient boosting
+# Classifieur par Gradient Boosting
 from sklearn.ensemble import
 GradientBoostingClassifier
 gb_clf = GradientBoostingClassifier(n_estimators=100,
@@ -576,7 +621,7 @@ learning_curve(gb_clf, X, y, cv=5)
 Aborder le déséquilibre des classes dans les jeux de données.
 
 ```python
-# Installer imbalanced-learn: pip install imbalanced-learn
+# Installer imbalanced-learn : pip install imbalanced-learn
 from imblearn.over_sampling import SMOTE
 smote = SMOTE(random_state=42)
 X_resampled, y_resampled = smote.fit_resample(X_train,
@@ -596,7 +641,7 @@ weight_dict = dict(zip(np.unique(y_train), class_weights))
 
 ### Persistance du Modèle : `joblib`
 
-Sauvegarder et charger les modèles entraînés.
+Sauvegarder et charger des modèles entraînés.
 
 ```python
 # Sauvegarder le modèle
@@ -711,7 +756,7 @@ scoring='accuracy')
 
 ### État Aléatoire et Reproductibilité
 
-Assurer des résultats cohérents à travers les exécutions.
+Assurer des résultats cohérents entre les exécutions.
 
 ```python
 # Définir l'état aléatoire pour la
@@ -744,7 +789,7 @@ grid_search =
 GridSearchCV(model,
 param_grid, n_jobs=-1)
 # Pour les grands jeux de données, utiliser
-partial_fit lorsqu'il est disponible
+partial_fit quand disponible
 from sklearn.linear_model
 import SGDClassifier
 sgd = SGDClassifier()
@@ -759,27 +804,27 @@ chunk_y)
 Gérer les problèmes courants et déboguer les modèles.
 
 ```python
-# Supprimer les avertissements (à utiliser avec
-prudence)
+# Supprimer les avertissements (à utiliser
+avec prudence)
 import warnings
 warnings.filterwarnings('ignore')
-# Activer set_config de sklearn pour un meilleur
-débogage
+# Activer set_config de sklearn pour un
+meilleur débogage
 from sklearn import set_config
-set_config(display='diagram')  # Affichage
-amélioré dans Jupyter
+set_config(display='diagram')  #
+Affichage amélioré dans Jupyter
 # Vérifier la fuite de données
 from sklearn.model_selection
 import cross_val_score
-# S'assurer que le prétraitement est fait
+# Assurer que le prétraitement est fait
 dans la boucle CV
 ```
 
 ## Liens Pertinents
 
-- <router-link to="/python">Feuille de triche Python</router-link>
-- <router-link to="/pandas">Feuille de triche Pandas</router-link>
-- <router-link to="/numpy">Feuille de triche NumPy</router-link>
-- <router-link to="/matplotlib">Feuille de triche Matplotlib</router-link>
-- <router-link to="/datascience">Feuille de triche Science des Données</router-link>
-- <router-link to="/database">Feuille de triche Base de Données</router-link>
+- <router-link to="/python">Cheatsheet Python</router-link>
+- <router-link to="/pandas">Cheatsheet Pandas</router-link>
+- <router-link to="/numpy">Cheatsheet NumPy</router-link>
+- <router-link to="/matplotlib">Cheatsheet Matplotlib</router-link>
+- <router-link to="/datascience">Cheatsheet Science des Données</router-link>
+- <router-link to="/database">Cheatsheet Base de Données</router-link>

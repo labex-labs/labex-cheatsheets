@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по MongoDB'
-description: 'Изучите MongoDB с помощью нашей исчерпывающей шпаргалки, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по MongoDB | LabEx'
+description: 'Изучите базу данных NoSQL MongoDB с помощью этой исчерпывающей шпаргалки. Краткий справочник по запросам MongoDB, агрегации, индексированию, шардингу, репликации и управлению документоориентированными базами данных.'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 <a target="_blank" href="https://labex.io/ru/learn/mongodb">Изучите MongoDB с практическими лабораторными работами</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите управление базами данных NoSQL MongoDB с помощью практических лабораторных работ и сценариев реального мира. LabEx предлагает комплексные курсы по MongoDB, охватывающие основные операции, запросы документов, конвейеры агрегации, стратегии индексирования и продвинутые методы. Освойте документоориентированную модель данных MongoDB для создания масштабируемых и гибких приложений баз данных.
+Изучите управление базами данных NoSQL MongoDB с помощью практических лабораторных работ и сценариев реального мира. LabEx предлагает комплексные курсы по MongoDB, охватывающие основные операции, запросы документов, конвейеры агрегации, стратегии индексирования и продвинутые методы. Освойте документо-ориентированную модель данных MongoDB для создания масштабируемых и гибких приложений баз данных.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -38,15 +38,30 @@ db.help()
 
 ### Использовать Базу Данных: `use database_name`
 
-Переключение на указанную базу данных (создается, если не существует).
+Переключиться на определенную базу данных (создается, если не существует).
 
 ```javascript
 // Переключиться на базу данных myapp
 use myapp
-// Создать базу данных путем вставки данных
+// Создать базу данных, вставив данные
 use newdb
 db.users.insertOne({name: "John"})
 ```
+
+<BaseQuiz id="mongodb-use-1" correct="B">
+  <template #question>
+    Что произойдет при выполнении команды `use newdb` в MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">Она немедленно создает базу данных</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Она переключается на базу данных (создает ее при первой вставке данных)</BaseQuizOption>
+  <BaseQuizOption value="C">Она удаляет базу данных</BaseQuizOption>
+  <BaseQuizOption value="D">Она показывает все коллекции в базе данных</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Команда `use` переключается на базу данных, но MongoDB не создает базу данных до тех пор, пока вы не вставите первый документ. Это подход ленивого создания.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Удалить Базу Данных: `db.dropDatabase()`
 
@@ -121,13 +136,13 @@ db.users.getIndexes()
 ```javascript
 // Получить один документ
 db.users.findOne()
-// Получить определенный документ
+// Получить конкретный документ
 db.users.findOne({ name: 'John' })
-// Получить документ со всеми отображаемыми полями
+// Получить документ со всеми полями
 db.users.findOne({}, { _id: 0 })
 ```
 
-### Просмотр Данных: `db.collection.find().limit()`
+### Исследовать Данные: `db.collection.find().limit()`
 
 Просмотр данных коллекции с постраничной навигацией и форматированием.
 
@@ -161,6 +176,21 @@ db.users.insertOne({
 })
 ```
 
+<BaseQuiz id="mongodb-insert-1" correct="A">
+  <template #question>
+    Что возвращает `db.users.insertOne()`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Объект подтверждения с _id вставленного документа</BaseQuizOption>
+  <BaseQuizOption value="B">Вставленный документ</BaseQuizOption>
+  <BaseQuizOption value="C">Ничего</BaseQuizOption>
+  <BaseQuizOption value="D">Количество вставленных документов</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `insertOne()` возвращает объект подтверждения, содержащий `acknowledged: true` и `insertedId` с `_id` вставленного документа (или пользовательский `_id`, если он был предоставлен).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Вставить Несколько: `db.collection.insertMany()`
 
 Добавляет несколько документов за одну операцию.
@@ -184,13 +214,13 @@ db.users.insertMany(
 
 ### Вставка с Датой: `new Date()`
 
-Добавляет документы с полями временных меток.
+Добавление документов с полями временных меток.
 
 ```javascript
 // Вставить с текущей датой
 db.posts.insertOne({
-  title: 'My Blog Post',
-  content: 'Post content here',
+  title: 'Мой Блогпост',
+  content: 'Содержимое поста здесь',
   createdAt: new Date(),
   publishDate: ISODate('2024-01-15'),
 })
@@ -198,7 +228,7 @@ db.posts.insertOne({
 
 ### Вставка Вложенных Документов
 
-Добавляет документы с внедренными объектами и массивами.
+Добавление документов с внедренными объектами и массивами.
 
 ```javascript
 // Вставить с вложенными объектами
@@ -217,7 +247,7 @@ db.users.insertOne({
 
 ### Базовый Поиск: `db.collection.find()`
 
-Извлекает документы на основе условий запроса.
+Извлечение документов на основе условий запроса.
 
 ```javascript
 // Найти все документы
@@ -232,7 +262,7 @@ db.users.find({ $or: [{ age: 25 }, { age: 30 }] })
 
 ### Проекция: `db.collection.find({}, {})`
 
-Управляет тем, какие поля возвращаются в результатах.
+Управление тем, какие поля возвращаются в результатах.
 
 ```javascript
 // Включить определенные поля
@@ -245,7 +275,7 @@ db.users.find({}, { 'address.city': 1 })
 
 ### Операторы Запроса: `$gt`, `$lt`, `$in` и т.д.
 
-Используйте операторы сравнения и логические операторы для сложных запросов.
+Использование операторов сравнения и логических операторов для сложных запросов.
 
 ```javascript
 // Больше чем, меньше чем
@@ -257,6 +287,21 @@ db.users.find({ status: { $ne: 'inactive' } })
 // Существует
 db.users.find({ email: { $exists: true } })
 ```
+
+<BaseQuiz id="mongodb-query-1" correct="B">
+  <template #question>
+    Что означает `$gt` в запросах MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">Больше или равно</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Больше чем</BaseQuizOption>
+  <BaseQuizOption value="C">Группировать по</BaseQuizOption>
+  <BaseQuizOption value="D">Получить общее</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$gt` — это оператор сравнения, означающий "больше чем". Он используется в запросах вида `{ age: { $gt: 25 } }` для поиска документов, где поле age больше 25.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Поиск по Тексту: `$text`, `$regex`
 
@@ -316,6 +361,24 @@ db.users.updateOne(
 )
 // Добавить в массив
 db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
+```
+
+<BaseQuiz id="mongodb-update-1" correct="C">
+  <template #question>
+    Что делает `$set` в операциях обновления MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">Удаляет поле</BaseQuizOption>
+  <BaseQuizOption value="B">Добавляет элемент в массив</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Устанавливает значение поля</BaseQuizOption>
+  <BaseQuizOption value="D">Удаляет элемент из массива</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Оператор `$set` устанавливает значение поля в документе. Если поле не существует, он его создает. Если оно существует, он обновляет значение.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```javascript
 // Удалить из массива
 db.users.updateOne({ name: 'John' }, { $pull: { hobbies: 'reading' } })
 ```
@@ -340,7 +403,7 @@ db.users.replaceOne(
 
 ### Базовая Агрегация: `db.collection.aggregate()`
 
-Обрабатывает данные через стадии конвейера агрегации.
+Обработка данных через конвейер стадий агрегации.
 
 ```javascript
 // Группировать и считать
@@ -374,7 +437,7 @@ db.sales.aggregate([
 
 ### Операторы Агрегации: `$sum`, `$avg`, `$max`
 
-Вычисляйте статистические значения и выполняйте математические операции.
+Вычисление статистических значений и выполнение математических операций.
 
 ```javascript
 // Статистические операции
@@ -393,7 +456,7 @@ db.products.aggregate([
 
 ### Стадия Проекции: `$project`
 
-Преобразует структуру документа и создает вычисляемые поля.
+Преобразование структуры документа и создание вычисляемых полей.
 
 ```javascript
 // Проекция и вычисление полей
@@ -474,7 +537,7 @@ db.users.createIndex({ email: 1 }, { unique: true })
 ```javascript
 // Список всех индексов
 db.users.getIndexes()
-// Удалить определенный индекс
+// Удалить конкретный индекс
 db.users.dropIndex({ email: 1 })
 // Удалить индекс по имени
 db.users.dropIndex('email_1')
@@ -491,7 +554,7 @@ db.users.dropIndexes()
 db.users.find({ age: { $gt: 25 } }).explain('executionStats')
 // Проверить, используется ли индекс
 db.users.find({ email: 'john@example.com' }).explain()
-// Анализ производительности агрегации
+// Проанализировать производительность агрегации
 db.users
   .aggregate([
     { $match: { status: 'active' } },
@@ -502,10 +565,10 @@ db.users
 
 ### Советы по Производительности
 
-Лучшие практики для оптимизации запросов и операций MongoDB.
+Рекомендуемые практики для оптимизации запросов и операций MongoDB.
 
 ```javascript
-// Использовать проекцию для ограничения передачи данных
+// Использовать проекцию для ограничения объема передаваемых данных
 db.users.find({ status: 'active' }, { name: 1, email: 1 })
 // Ограничить результаты для лучшей производительности
 db.posts.find().sort({ createdAt: -1 }).limit(10)
@@ -520,9 +583,9 @@ db.users.find({ age: 25 }).hint({ age: 1 })
 Запуск оболочки MongoDB и подключение к различным экземплярам.
 
 ```bash
-# Подключение к локальной MongoDB
+# Подключение к локальному MongoDB
 mongosh
-# Подключение к указанному хосту и порту
+# Подключение к определенному хосту и порту
 mongosh "mongodb://localhost:27017"
 # Подключение к удаленному серверу
 mongosh "mongodb://username:password@host:port/database"
@@ -557,7 +620,7 @@ db.users.find(myQuery)
 db.users.find().pretty()
 // Показать время выполнения
 db.users.find({ age: 25 }).explain('executionStats')
-// Использовать JavaScript в оболочке
+// Использование JavaScript в оболочке
 var user = db.users.findOne({ name: 'John' })
 print('User age: ' + user.age)
 ```
@@ -615,7 +678,7 @@ mongodump --db myapp --gzip --out /backup/
 ```bash
 # Восстановление базы данных
 mongorestore --db myapp /backup/myapp/
-# Восстановление с удалением существующих данных
+# Восстановление с удалением (drop)
 mongorestore --db myapp --drop /backup/myapp/
 # Восстановление сжатой резервной копии
 mongorestore --gzip --db myapp /backup/myapp/
@@ -638,7 +701,7 @@ sudo systemctl enable mongod
 sudo systemctl status mongod
 ```
 
-### Установка Docker
+### Установка через Docker
 
 Запуск MongoDB с использованием контейнеров Docker.
 
@@ -656,10 +719,10 @@ docker exec -it mongodb mongosh
 
 ### MongoDB Compass (GUI)
 
-Установка и использование официального инструмента GUI от MongoDB.
+Установка и использование официального графического инструмента MongoDB.
 
 ```bash
-# Скачать с mongodb.com
+# Загрузить с mongodb.com
 # Подключение с использованием строки подключения
 mongodb://localhost:27017
 # Доступные функции:
@@ -683,7 +746,7 @@ db.createUser({
   pwd: "securepassword",
   roles: [{role: "root", db: "admin"}]
 })
-// Создать пользователя приложения
+// Создать пользователя базы данных
 use myapp
 db.createUser({
   user: "appuser",
@@ -697,7 +760,7 @@ db.createUser({
 Настройка MongoDB для требования аутентификации.
 
 ```bash
-# Отредактировать /etc/mongod.conf
+# Редактировать /etc/mongod.conf
 security:
   authorization: enabled
 # Перезапустить MongoDB
@@ -754,7 +817,7 @@ processManagement:
 sudo systemctl status mongod
 // Проверить доступность порта
 netstat -tuln | grep 27017
-// Обработка ошибки дублирования ключа
+// Обработка ошибок дублирования ключа
 try {
   db.users.insertOne({email: "existing@example.com"})
 } catch (e) {
@@ -775,7 +838,7 @@ db.currentOp()
 db.killOp(operationId)
 // Статус сервера
 db.serverStatus()
-// Статистика подключений
+// Статистика подключения
 db.runCommand({ connPoolStats: 1 })
 ```
 
@@ -834,7 +897,7 @@ const pipeline = [{ $match: { operationType: 'insert' } }]
 const changeStream = db.users.watch(pipeline)
 ```
 
-## Соответствующие Ссылки
+## Связанные Ссылки
 
 - <router-link to="/database">Шпаргалка по Базам Данных</router-link>
 - <router-link to="/mysql">Шпаргалка по MySQL</router-link>

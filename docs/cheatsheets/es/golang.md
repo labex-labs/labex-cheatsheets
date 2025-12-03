@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Golang'
-description: 'Aprenda Golang con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Golang | LabEx'
+description: 'Aprenda programación Go con esta hoja de trucos completa. Referencia rápida de sintaxis de Go, gorutinas, canales, interfaces, manejo de errores y programación concurrente para desarrolladores backend.'
 pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Golang
 <a target="_blank" href="https://labex.io/es/learn/golang">Aprende Golang con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende programación Go a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Go que cubren sintaxis esencial, patrones de concurrencia, manejo de errores y técnicas avanzadas. Domina las características únicas de Go como goroutines, canales e interfaces para construir aplicaciones eficientes y concurrentes.
+Aprende programación Go a través de laboratorios prácticos y escenarios del mundo real. LabEx proporciona cursos completos de Go que cubren sintaxis esencial, patrones de concurrencia, manejo de errores y técnicas avanzadas. Domina las características únicas de Go como goroutines, canales e interfaces para construir aplicaciones concurrentes y eficientes.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -37,7 +37,7 @@ go version
 
 ### Gestor de Paquetes: Usando Homebrew (macOS)
 
-Instalar Go usando Homebrew en macOS.
+Instala Go usando Homebrew en macOS.
 
 ```bash
 # Instalar Go con Homebrew
@@ -49,19 +49,19 @@ go env GOPATH
 
 ### Instalación en Windows
 
-Instalar Go en sistemas Windows.
+Instala Go en sistemas Windows.
 
 ```bash
-# Descargar instalador .msi desde https://golang.org/dl/
+# Descargar el instalador .msi desde https://golang.org/dl/
 # Ejecutar el instalador y seguir las instrucciones
-# Verificar en el Símbolo del sistema
+# Verificar en el Símbolo del sistema (Command Prompt)
 go version
 echo %GOPATH%
 ```
 
 ### Configuración del Espacio de Trabajo: `go mod init`
 
-Inicializar un nuevo módulo y espacio de trabajo de Go.
+Inicializa un nuevo módulo y espacio de trabajo de Go.
 
 ```bash
 # Crear nuevo directorio e inicializar módulo
@@ -94,7 +94,7 @@ go env GOARCH    # Arquitectura
 
 ### Configuración del IDE: VS Code
 
-Configurar VS Code para desarrollo en Go.
+Configura VS Code para el desarrollo en Go.
 
 ```bash
 # Instalar la extensión Go en VS Code
@@ -125,7 +125,7 @@ import "os"
 
 ### Variables y Constantes
 
-Declarar e inicializar variables y constantes.
+Declara e inicializa variables y constantes.
 
 ```go
 // Declaraciones de variables
@@ -139,6 +139,21 @@ count := 42
 const Pi = 3.14159
 const Message = "Hello, Go!"
 ```
+
+<BaseQuiz id="golang-variables-1" correct="B">
+  <template #question>
+    ¿Cuál es la diferencia entre `var name string = "Go"` y `name := "Go"`?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`:=` es una declaración corta que infiere el tipo, `var` declara explícitamente el tipo</BaseQuizOption>
+  <BaseQuizOption value="C">`:=` solo se puede usar para constantes</BaseQuizOption>
+  <BaseQuizOption value="D">`var` solo se puede usar dentro de funciones</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El operador `:=` es una abreviatura para la declaración e inicialización de variables, y Go infiere el tipo automáticamente. `var` declara explícitamente el tipo de variable y se puede usar a nivel de paquete o función.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Tipos de Datos Básicos
 
@@ -160,7 +175,7 @@ var b bool = true
 
 ### Condicionales: `if` / `else` / `switch`
 
-Controlar el flujo del programa con sentencias condicionales.
+Controla el flujo del programa con sentencias condicionales.
 
 ```go
 // Sentencias If
@@ -184,7 +199,7 @@ default:
 
 ### Bucles: `for` / `range`
 
-Iterar usando varias construcciones de bucle.
+Itera usando varias construcciones de bucle.
 
 ```go
 // Bucle for tradicional
@@ -192,7 +207,7 @@ for i := 0; i < 10; i++ {
     fmt.Println(i)
 }
 // Bucle estilo While
-for condicion {
+for condition {
     // cuerpo del bucle
 }
 // Bucle infinito
@@ -203,7 +218,7 @@ for {
 
 ### Iteración con Range
 
-Iterar sobre slices, arrays, mapas y cadenas.
+Itera sobre slices, arrays, mapas y cadenas.
 
 ```go
 // Iterar sobre slice
@@ -222,12 +237,27 @@ for i, char := range "Hello" {
 }
 ```
 
+<BaseQuiz id="golang-range-1" correct="B">
+  <template #question>
+    ¿Qué devuelve `range` al iterar sobre un slice en Go?
+  </template>
+  
+  <BaseQuizOption value="A">Solo el valor</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Tanto el índice como el valor</BaseQuizOption>
+  <BaseQuizOption value="C">Solo el índice</BaseQuizOption>
+  <BaseQuizOption value="D">La longitud del slice</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Cuando se usa `range` con un slice, devuelve dos valores: el índice (posición) y el valor en ese índice. Se puede usar `_` para ignorar cualquiera de los valores si no se necesita.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Sentencias de Control: `break` / `continue`
 
-Controlar el flujo de ejecución del bucle.
+Controla el flujo de ejecución del bucle.
 
 ```go
-// Romper el bucle
+// Salir del bucle
 for i := 0; i < 10; i++ {
     if i == 5 {
         break
@@ -243,11 +273,26 @@ for i := 0; i < 5; i++ {
 }
 ```
 
+<BaseQuiz id="golang-control-1" correct="C">
+  <template #question>
+    ¿Cuál es la diferencia entre `break` y `continue` en los bucles de Go?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="B">break omite la iteración actual, continue sale del bucle</BaseQuizOption>
+  <BaseQuizOption value="C" correct>break sale completamente del bucle, continue salta a la siguiente iteración</BaseQuizOption>
+  <BaseQuizOption value="D">Ambos salen del bucle</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `break` sale inmediatamente del bucle y continúa la ejecución después del bucle. `continue` omite el resto de la iteración actual y pasa a la siguiente iteración del bucle.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Funciones
 
 ### Declaración de Función: `func`
 
-Definir funciones con parámetros y valores de retorno.
+Define funciones con parámetros y valores de retorno.
 
 ```go
 // Función básica
@@ -290,7 +335,7 @@ func sum(nums ...int) int {
 result := sum(1, 2, 3, 4, 5)
 ```
 
-### Tipos de Función y Cláusulas (Closures)
+### Tipos de Función y Clausuras (Closures)
 
 Funciones como ciudadanos de primera clase en Go.
 
@@ -304,7 +349,7 @@ multiply = func(a, b int) int {
 square := func(x int) int {
     return x * x
 }
-// Closure
+// Clausura (Closure)
 func counter() func() int {
     count := 0
     return func() int {
@@ -339,7 +384,7 @@ func processFile(filename string) {
 
 ### Arrays y Slices
 
-Secuencias de elementos fijas y dinámicas.
+Secuencias fijas y dinámicas de elementos.
 
 ```go
 // Arrays (tamaño fijo)
@@ -350,7 +395,7 @@ var slice []int
 slice = append(slice, 1, 2, 3)
 // Crear slice con capacidad
 numbers := make([]int, 5, 10) // longitud 5, capacidad 10
-// Operaciones con slices
+// Operaciones de slice
 slice2 := slice[1:3]  // [2, 3]
 copy(slice2, slice)   // Copiar elementos
 ```
@@ -375,9 +420,9 @@ delete(ages, "Bob")       // Eliminar
 age, exists := ages["Alice"] // Comprobar existencia
 ```
 
-### Structs
+### Estructuras (Structs)
 
-Agrupar datos relacionados con tipos personalizados.
+Agrupa datos relacionados con tipos personalizados.
 
 ```go
 // Definición de struct
@@ -400,7 +445,7 @@ p1.Age = 31
 
 ### Punteros (Pointers)
 
-Referenciar direcciones de memoria de variables.
+Referencia las direcciones de memoria de las variables.
 
 ```go
 // Declaración de puntero
@@ -419,17 +464,17 @@ person.Age = 31  // Desreferenciación automática
 
 ### Métodos
 
-Adjuntar funcionalidad a tipos personalizados.
+Asocia funcionalidad a tipos personalizados.
 
 ```go
 type Rectangle struct {
     Width, Height float64
 }
-// Método con receptor
+// Método con receptor (receiver)
 func (r Rectangle) Area() float64 {
     return r.Width * r.Height
 }
-// Receptor puntero (puede modificar)
+// Receptor de puntero (puede modificar)
 func (r *Rectangle) Scale(factor float64) {
     r.Width *= factor
     r.Height *= factor
@@ -463,7 +508,7 @@ func printShapeInfo(s Shape) {
 
 ### Interfaz Vacía y Asertos de Tipo (Type Assertions)
 
-Trabajar con valores de tipos desconocidos.
+Trabaja con valores de tipos desconocidos.
 
 ```go
 // La interfaz vacía puede contener cualquier valor
@@ -515,7 +560,7 @@ fmt.Println(emp.Name) // "Alice"
 
 ### Manejo Básico de Errores
 
-Usar la interfaz de error incorporada para el manejo de errores.
+Usa la interfaz de error incorporada para el manejo de errores.
 
 ```go
 import "errors"
@@ -526,7 +571,7 @@ func divide(a, b float64) (float64, error) {
     }
     return a / b, nil
 }
-// Comprobación de errores
+// Verificación de errores
 result, err := divide(10, 2)
 if err != nil {
     log.Fatal(err)
@@ -536,7 +581,7 @@ fmt.Printf("Resultado: %.2f\n", result)
 
 ### Errores Personalizados
 
-Crear tipos de error personalizados para condiciones de error específicas.
+Crea tipos de error personalizados para condiciones de error específicas.
 
 ```go
 // Tipo de error personalizado
@@ -562,7 +607,7 @@ func validateAge(age int) error {
 
 ### Envoltura de Errores (Error Wrapping)
 
-Añadir contexto a los errores mientras se preserva el error original.
+Añade contexto a los errores mientras se preserva el error original.
 
 ```go
 import "fmt"
@@ -590,10 +635,10 @@ if err != nil {
 
 ### Panic y Recuperación (Recovery)
 
-Manejar situaciones excepcionales con `panic` y `recover`.
+Maneja situaciones excepcionales con `panic` y `recover`.
 
 ```go
-// Función que podría entrar en pánico
+// Función que podría causar pánico
 func riskyOperation() {
     defer func() {
         if r := recover(); r != nil {
@@ -652,7 +697,7 @@ value := <-ch  // Recibir valor
 close(ch)
 ```
 
-### Patrones de Canales
+### Patrones de Canal
 
 Patrones comunes para la comunicación por canal.
 
@@ -680,7 +725,7 @@ close(jobs)
 
 ### Sentencia Select
 
-Manejar múltiples operaciones de canal simultáneamente.
+Maneja múltiples operaciones de canal simultáneamente.
 
 ```go
 func main() {
@@ -833,7 +878,7 @@ func TestAdd(t *testing.T) {
 
 ### Pruebas Basadas en Tablas (Table-Driven Tests)
 
-Probar múltiples casos de manera eficiente.
+Prueba múltiples casos de manera eficiente.
 
 ```go
 func TestAddMultiple(t *testing.T) {
@@ -860,7 +905,7 @@ func TestAddMultiple(t *testing.T) {
 
 ### Benchmarking
 
-Medir el rendimiento de las funciones.
+Mide el rendimiento de las funciones.
 
 ```go
 func BenchmarkAdd(b *testing.B) {
@@ -875,7 +920,7 @@ func BenchmarkAdd(b *testing.B) {
 
 ### Pruebas de Ejemplo (Example Tests)
 
-Crear ejemplos ejecutables que sirven como documentación.
+Crea ejemplos ejecutables que sirven como documentación.
 
 ```go
 import "fmt"
@@ -897,7 +942,7 @@ func ExampleAdd_negative() {
 
 ### Gestión de Módulos
 
-Inicializar y gestionar módulos de Go para la gestión de dependencias.
+Inicializa y gestiona módulos de Go para la gestión de dependencias.
 
 ```bash
 # Inicializar nuevo módulo
@@ -909,7 +954,7 @@ go get -u github.com/gin-gonic/gin  # Actualizar a la última versión
 go mod tidy
 # Descargar dependencias
 go mod download
-# Incluir dependencias localmente (vendor)
+# Dependencias locales (vendor)
 go mod vendor
 ```
 
@@ -932,7 +977,7 @@ require (
 
 ### Creación de Paquetes
 
-Estructurar el código en paquetes reutilizables.
+Estructura el código en paquetes reutilizables.
 
 ```go
 // Estructura del paquete

@@ -1,11 +1,11 @@
 ---
-title: 'Шпаргалка по PostgreSQL'
-description: 'Изучите PostgreSQL с нашей полной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по PostgreSQL | LabEx'
+description: 'Изучите управление базами данных PostgreSQL с помощью этой исчерпывающей шпаргалки. Краткий справочник по SQL-запросам, расширенным функциям, поддержке JSON, полнотекстовому поиску и администрированию корпоративных баз данных.'
 pdfUrl: '/cheatsheets/pdf/postgresql-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-PostgreSQL Шпаргалка
+Шпаргалка по PostgreSQL
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,11 +15,11 @@ PostgreSQL Шпаргалка
 <a target="_blank" href="https://labex.io/ru/learn/postgresql">Изучите PostgreSQL с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите управление базами данных PostgreSQL с помощью практических лабораторных работ и сценариев реального мира. LabEx предлагает комплексные курсы по PostgreSQL, охватывающие основные операции SQL, расширенный запрос, оптимизацию производительности, администрирование баз данных и безопасность. Освойте разработку и администрирование реляционных баз данных корпоративного уровня.
+Изучите управление базами данных PostgreSQL с помощью практических лабораторий и сценариев реального мира. LabEx предлагает комплексные курсы по PostgreSQL, охватывающие основные операции SQL, расширенный запрос, оптимизацию производительности, администрирование баз данных и безопасность. Освойте разработку и администрирование реляционных баз данных корпоративного уровня.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Соединение и Настройка Базы Данных
+## Подключение и настройка базы данных
 
 ### Подключение к PostgreSQL: `psql`
 
@@ -32,11 +32,11 @@ psql -U username -d database_name
 psql -h hostname -p 5432 -U username -d database_name
 # Подключение с запросом пароля
 psql -U postgres -W
-# Подключение с использованием строки соединения
+# Подключение с использованием строки подключения
 psql "host=localhost port=5432 dbname=mydb user=myuser"
 ```
 
-### Создание Базы Данных: `CREATE DATABASE`
+### Создание базы данных: `CREATE DATABASE`
 
 Создание новой базы данных в PostgreSQL с помощью команды CREATE DATABASE.
 
@@ -52,7 +52,7 @@ CREATE DATABASE mydatabase
   LC_CTYPE='en_US.UTF-8';
 ```
 
-### Список Баз Данных: `\l`
+### Список баз данных: `\l`
 
 Вывод списка всех баз данных на сервере PostgreSQL.
 
@@ -65,9 +65,9 @@ CREATE DATABASE mydatabase
 \c database_name
 ```
 
-### Основные Команды psql
+### Основные команды psql
 
-Важные команды терминала psql для навигации и получения информации.
+Основные команды терминала psql для навигации и получения информации.
 
 ```bash
 # Выход из psql
@@ -92,7 +92,7 @@ CREATE DATABASE mydatabase
 \du
 ```
 
-### Версия и Настройки
+### Версия и настройки
 
 Проверка версии PostgreSQL и настроек конфигурации.
 
@@ -103,13 +103,13 @@ SELECT version();
 SHOW ALL;
 # Показать конкретную настройку
 SHOW max_connections;
-# Установка параметра конфигурации
+# Установить параметр конфигурации
 SET work_mem = '256MB';
 ```
 
-## Создание и Управление Таблицами
+## Создание и управление таблицами
 
-### Создание Таблицы: `CREATE TABLE`
+### Создание таблицы: `CREATE TABLE`
 
 Определение новых таблиц с колонками, типами данных и ограничениями.
 
@@ -131,23 +131,38 @@ CREATE TABLE orders (
 );
 ```
 
-### Изменение Таблиц: `ALTER TABLE`
+<BaseQuiz id="postgresql-create-table-1" correct="A">
+  <template #question>
+    Что делает `SERIAL PRIMARY KEY` в PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Создает автоинкрементруемый целочисленный столбец, который служит первичным ключом</BaseQuizOption>
+  <BaseQuizOption value="B">Создает текстовый столбец</BaseQuizOption>
+  <BaseQuizOption value="C">Создает ограничение внешнего ключа</BaseQuizOption>
+  <BaseQuizOption value="D">Создает уникальный индекс</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SERIAL` — это специфичный для PostgreSQL тип данных, который создает автоматически увеличивающееся целое число. В сочетании с `PRIMARY KEY` он создает уникальный идентификатор для каждой строки, который автоматически увеличивается.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Добавление, изменение или удаление колонок и ограничений из существующих таблиц.
+### Изменение таблиц: `ALTER TABLE`
+
+Добавление, изменение или удаление столбцов и ограничений из существующих таблиц.
 
 ```sql
-# Добавить новую колонку
+# Добавить новый столбец
 ALTER TABLE users ADD COLUMN phone VARCHAR(15);
-# Изменить тип колонки
+# Изменить тип столбца
 ALTER TABLE users ALTER COLUMN phone TYPE VARCHAR(20);
-# Удалить колонку
+# Удалить столбец
 ALTER TABLE users DROP COLUMN phone;
 # Добавить ограничение
 ALTER TABLE users ADD CONSTRAINT unique_email
     UNIQUE (email);
 ```
 
-### Удаление и Очистка: `DROP/TRUNCATE`
+### Удаление и усечение: `DROP/TRUNCATE`
 
 Удаление таблиц или очистка всех данных из таблиц.
 
@@ -156,11 +171,11 @@ ALTER TABLE users ADD CONSTRAINT unique_email
 DROP TABLE IF EXISTS old_table;
 # Удалить все данные, но сохранить структуру
 TRUNCATE TABLE users;
-# Очистка с перезапуском счетчика
+# Усечение с перезапуском счетчика
 TRUNCATE TABLE users RESTART IDENTITY;
 ```
 
-### Типы Данных и Ограничения
+### Типы данных и ограничения
 
 Основные типы данных PostgreSQL для различных видов данных.
 
@@ -170,7 +185,7 @@ INTEGER, BIGINT, SMALLINT
 DECIMAL(10,2), NUMERIC(10,2)
 REAL, DOUBLE PRECISION
 
-# Символьные типы
+# Типы символов
 CHAR(n), VARCHAR(n), TEXT
 
 # Типы даты/времени
@@ -189,13 +204,13 @@ id SERIAL PRIMARY KEY
 # Внешний ключ
 user_id INTEGER REFERENCES users(id)
 
-# Ограничение UNIQUE
+# Уникальное ограничение
 email VARCHAR(100) UNIQUE
 
 # Ограничение CHECK
 age INTEGER CHECK (age >= 0)
 
-# Not null
+# Не может быть NULL
 name VARCHAR(50) NOT NULL
 ```
 
@@ -219,25 +234,40 @@ CREATE INDEX idx_active_users
 DROP INDEX IF EXISTS idx_username;
 ```
 
+<BaseQuiz id="postgresql-index-1" correct="A">
+  <template #question>
+    Какова основная цель создания индекса в PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Для улучшения производительности запросов путем ускорения выборки данных</BaseQuizOption>
+  <BaseQuizOption value="B">Для уменьшения размера базы данных</BaseQuizOption>
+  <BaseQuizOption value="C">Для шифрования данных</BaseQuizOption>
+  <BaseQuizOption value="D">Для предотвращения дублирования записей</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Индексы создают структуру данных, которая позволяет базе данных быстро находить строки без сканирования всей таблицы. Это значительно ускоряет запросы SELECT, особенно в больших таблицах.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Последовательности: `CREATE SEQUENCE`
 
 Автоматическая генерация уникальных числовых значений.
 
 ```sql
-# Создать последовательность
+# Создание последовательности
 CREATE SEQUENCE user_id_seq;
-# Использовать последовательность в таблице
+# Использование последовательности в таблице
 CREATE TABLE users (
     id INTEGER DEFAULT nextval('user_id_seq'),
     username VARCHAR(50)
 );
-# Сбросить последовательность
+# Сброс последовательности
 ALTER SEQUENCE user_id_seq RESTART WITH 1000;
 ```
 
 ## Операции CRUD
 
-### Вставка Данных: `INSERT`
+### Вставка данных: `INSERT`
 
 Добавление новых записей в таблицы базы данных.
 
@@ -249,7 +279,7 @@ VALUES ('john_doe', 'john@example.com');
 INSERT INTO users (username, email) VALUES
     ('alice', 'alice@example.com'),
     ('bob', 'bob@example.com');
-# Вставка с возвратом значений
+# Вставка с возвратом данных
 INSERT INTO users (username, email)
 VALUES ('jane', 'jane@example.com')
 RETURNING id, created_at;
@@ -258,7 +288,22 @@ INSERT INTO archive_users
 SELECT * FROM users WHERE active = false;
 ```
 
-### Обновление Данных: `UPDATE`
+<BaseQuiz id="postgresql-insert-1" correct="C">
+  <template #question>
+    Что делает `RETURNING` в операторе INSERT PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A">Откатывает вставку</BaseQuizOption>
+  <BaseQuizOption value="B">Предотвращает вставку</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Возвращает данные вставленной строки</BaseQuizOption>
+  <BaseQuizOption value="D">Обновляет существующие строки</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Предложение `RETURNING` в PostgreSQL позволяет извлечь данные вставленной строки (или конкретные столбцы) сразу после вставки, что полезно для получения автоматически сгенерированных идентификаторов или временных меток.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Обновление данных: `UPDATE`
 
 Изменение существующих записей в таблицах базы данных.
 
@@ -267,7 +312,7 @@ SELECT * FROM users WHERE active = false;
 UPDATE users
 SET email = 'newemail@example.com'
 WHERE username = 'john_doe';
-# Обновление нескольких колонок
+# Обновление нескольких столбцов
 UPDATE users
 SET email = 'new@example.com',
     updated_at = NOW()
@@ -278,14 +323,14 @@ SET total = (SELECT SUM(price) FROM order_items
             WHERE order_id = orders.id);
 ```
 
-### Выборка Данных: `SELECT`
+### Выборка данных: `SELECT`
 
 Запрос и извлечение данных из таблиц базы данных.
 
 ```sql
 # Базовая выборка
 SELECT * FROM users;
-# Выборка конкретных колонок
+# Выборка конкретных столбцов
 SELECT id, username, email FROM users;
 # Выборка с условиями
 SELECT * FROM users
@@ -296,7 +341,7 @@ ORDER BY created_at DESC
 LIMIT 10 OFFSET 20;
 ```
 
-### Удаление Данных: `DELETE`
+### Удаление данных: `DELETE`
 
 Удаление записей из таблиц базы данных.
 
@@ -311,28 +356,28 @@ WHERE user_id IN (
 );
 # Удаление всех записей
 DELETE FROM temp_table;
-# Удаление с возвратом
+# Удаление с возвратом данных
 DELETE FROM users
 WHERE id = 5
 RETURNING *;
 ```
 
-## Расширенный Запрос
+## Расширенный запрос
 
-### Соединения: `INNER/LEFT/RIGHT JOIN`
+### Объединения: `INNER/LEFT/RIGHT JOIN`
 
-Объединение данных из нескольких таблиц с использованием различных типов соединений.
+Объединение данных из нескольких таблиц с использованием различных типов объединений.
 
 ```sql
-# Внутреннее соединение (Inner join)
+# Внутреннее объединение (Inner join)
 SELECT u.username, o.total
 FROM users u
 INNER JOIN orders o ON u.id = o.user_id;
-# Левое соединение (Left join)
+# Левое объединение (Left join)
 SELECT u.username, o.total
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id;
-# Множественные соединения
+# Несколько объединений
 SELECT u.username, o.total, p.name
 FROM users u
 JOIN orders o ON u.id = o.user_id
@@ -376,7 +421,7 @@ GROUP BY user_id
 HAVING COUNT(*) > 5;
 ```
 
-### Оконные Функции
+### Оконные функции
 
 Выполнение вычислений по связанным строкам без группировки.
 
@@ -385,7 +430,7 @@ HAVING COUNT(*) > 5;
 SELECT username, email,
        ROW_NUMBER() OVER (ORDER BY created_at) as row_num
 FROM users;
-# Накопительные суммы
+# Накопительные итоги
 SELECT date, amount,
        SUM(amount) OVER (ORDER BY date) as running_total
 FROM sales;
@@ -395,14 +440,14 @@ SELECT username, score,
 FROM user_scores;
 ```
 
-## Импорт и Экспорт Данных
+## Импорт и экспорт данных
 
 ### Импорт CSV: `COPY`
 
 Импорт данных из CSV-файлов в таблицы PostgreSQL.
 
 ```sql
-# Импорт из CSV файла
+# Импорт из CSV-файла
 COPY users(username, email, age)
 FROM '/path/to/users.csv'
 DELIMITER ',' CSV HEADER;
@@ -419,7 +464,7 @@ WITH (FORMAT csv, HEADER true, DELIMITER ';');
 Экспорт данных PostgreSQL в CSV-файлы.
 
 ```sql
-# Экспорт в CSV файл
+# Экспорт в CSV-файл
 COPY users TO '/path/to/users_export.csv'
 WITH (FORMAT csv, HEADER true);
 # Экспорт результатов запроса
@@ -429,7 +474,7 @@ TO '/path/to/active_users.csv' CSV HEADER;
 \copy (SELECT * FROM orders) TO STDOUT WITH CSV HEADER;
 ```
 
-### Резервное Копирование и Восстановление: `pg_dump`
+### Резервное копирование и восстановление: `pg_dump`
 
 Создание резервных копий базы данных и восстановление из файлов резервных копий.
 
@@ -446,38 +491,38 @@ psql -U username -d database_name < backup.sql
 pg_restore -U username -d database_name backup.dump
 ```
 
-### Операции с JSON Данными
+### Операции с данными JSON
 
 Работа с типами данных JSON и JSONB для полуструктурированных данных.
 
 ```sql
-# Вставка JSON данных
+# Вставка данных JSON
 INSERT INTO products (name, metadata)
 VALUES ('Laptop', '{"brand": "Dell", "price": 999.99}');
 # Запрос полей JSON
 SELECT name, metadata->>'brand' as brand
 FROM products
 WHERE metadata->>'price'::numeric > 500;
-# Операции с JSON массивами
+# Операции с массивами JSON
 SELECT name FROM products
 WHERE metadata->'features' ? 'wireless';
 ```
 
-## Управление Пользователями и Безопасность
+## Управление пользователями и безопасность
 
-### Создание Пользователей и Ролей
+### Создание пользователей и ролей
 
 Управление доступом к базе данных с помощью пользователей и ролей.
 
 ```sql
-# Создать пользователя
+# Создание пользователя
 CREATE USER myuser WITH PASSWORD 'secretpassword';
-# Создать роль
+# Создание роли
 CREATE ROLE readonly_user;
-# Создать пользователя с конкретными привилегиями
+# Создание пользователя с определенными привилегиями
 CREATE USER admin_user WITH
     CREATEDB CREATEROLE PASSWORD 'adminpass';
-# Назначить роль пользователю
+# Назначение роли пользователю
 GRANT readonly_user TO myuser;
 ```
 
@@ -486,53 +531,53 @@ GRANT readonly_user TO myuser;
 Управление доступом к объектам базы данных через разрешения.
 
 ```sql
-# Предоставить права на таблицу
+# Предоставление разрешений на таблицу
 GRANT SELECT, INSERT ON users TO myuser;
-# Предоставить все привилегии на таблицу
+# Предоставление всех привилегий на таблицу
 GRANT ALL ON orders TO admin_user;
-# Предоставить права на базу данных
+# Предоставление разрешений на базу данных
 GRANT CONNECT ON DATABASE mydb TO myuser;
-# Отозвать разрешения
+# Отзыв разрешений
 REVOKE INSERT ON users FROM myuser;
 ```
 
-### Просмотр Информации о Пользователях
+### Просмотр информации о пользователе
 
 Проверка существующих пользователей и их разрешений.
 
-```sql
-# Список всех пользователей
+```bash
+# Вывод списка всех пользователей
 \du
 # Просмотр разрешений на таблицу
 SELECT table_name, privilege_type, grantee
 FROM information_schema.table_privileges
 WHERE table_schema = 'public';
-# Проверка текущего пользователя
+# Просмотр текущего пользователя
 SELECT current_user;
 # Просмотр членства в ролях
 SELECT r.rolname, r.rolsuper, r.rolcreaterole
 FROM pg_roles r;
 ```
 
-### Пароль и Безопасность
+### Пароль и безопасность
 
 Управление паролями пользователей и настройками безопасности.
 
 ```sql
-# Изменить пароль пользователя
+# Смена пароля пользователя
 ALTER USER myuser PASSWORD 'newpassword';
-# Установить срок действия пароля
+# Установка срока действия пароля
 ALTER USER myuser VALID UNTIL '2025-12-31';
-# Создать пользователя без возможности входа
+# Создание пользователя без входа
 CREATE ROLE reporting_role NOLOGIN;
-# Включить/отключить пользователя
+# Включение/отключение пользователя
 ALTER USER myuser WITH NOLOGIN;
 ALTER USER myuser WITH LOGIN;
 ```
 
-## Производительность и Мониторинг
+## Производительность и мониторинг
 
-### Анализ Запросов: `EXPLAIN`
+### Анализ запросов: `EXPLAIN`
 
 Анализ планов выполнения запросов и оптимизация производительности.
 
@@ -550,9 +595,9 @@ EXPLAIN (ANALYZE, BUFFERS, VERBOSE)
 SELECT * FROM large_table WHERE indexed_col = 'value';
 ```
 
-### Обслуживание Базы Данных: `VACUUM`
+### Обслуживание базы данных: `VACUUM`
 
-Поддержание производительности базы данных с помощью регулярных операций очистки.
+Поддержание производительности базы данных с помощью регулярной очистки.
 
 ```sql
 # Базовый vacuum
@@ -566,7 +611,7 @@ FROM pg_stat_user_tables;
 REINDEX TABLE users;
 ```
 
-### Мониторинг Запросов
+### Мониторинг запросов
 
 Отслеживание активности базы данных и выявление проблем с производительностью.
 
@@ -575,7 +620,7 @@ REINDEX TABLE users;
 SELECT pid, usename, query, state
 FROM pg_stat_activity
 WHERE state != 'idle';
-# Долго выполняющиеся запросы
+# Длительно выполняющиеся запросы
 SELECT pid, now() - query_start as duration, query
 FROM pg_stat_activity
 WHERE state != 'idle'
@@ -584,12 +629,12 @@ ORDER BY duration DESC;
 SELECT pg_terminate_backend(pid) WHERE pid = 12345;
 ```
 
-### Статистика Базы Данных
+### Статистика базы данных
 
 Получение информации об использовании базы данных и метриках производительности.
 
 ```sql
-# Статистика таблиц
+# Статистика по таблицам
 SELECT schemaname, tablename, n_tup_ins, n_tup_upd, n_tup_del
 FROM pg_stat_user_tables;
 # Статистика использования индексов
@@ -599,34 +644,34 @@ FROM pg_stat_user_indexes;
 SELECT pg_size_pretty(pg_database_size('mydatabase'));
 ```
 
-## Расширенные Возможности
+## Расширенные возможности
 
 ### Представления: `CREATE VIEW`
 
 Создание виртуальных таблиц для упрощения сложных запросов и предоставления абстракции данных.
 
 ```sql
-# Создать простое представление
+# Создание простого представления
 CREATE VIEW active_users AS
 SELECT id, username, email
 FROM users WHERE active = true;
-# Создать представление с соединениями
+# Создание представления с объединениями
 CREATE OR REPLACE VIEW order_summary AS
 SELECT u.username, COUNT(o.id) as total_orders,
        SUM(o.total) as total_spent
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id
 GROUP BY u.id, u.username;
-# Удалить представление
+# Удаление представления
 DROP VIEW IF EXISTS order_summary;
 ```
 
-### Триггеры и Функции
+### Триггеры и функции
 
 Автоматизация операций базы данных с помощью хранимых процедур и триггеров.
 
 ```sql
-# Создать функцию
+# Создание функции
 CREATE OR REPLACE FUNCTION update_timestamp()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -634,7 +679,7 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-# Создать триггер
+# Создание триггера
 CREATE TRIGGER update_user_timestamp
     BEFORE UPDATE ON users
     FOR EACH ROW
@@ -646,22 +691,22 @@ CREATE TRIGGER update_user_timestamp
 Обеспечение согласованности данных с помощью управления транзакциями.
 
 ```sql
-# Начать транзакцию
+# Начало транзакции
 BEGIN;
 UPDATE accounts SET balance = balance - 100
 WHERE id = 1;
 UPDATE accounts SET balance = balance + 100
 WHERE id = 2;
-# Зафиксировать транзакцию
+# Фиксация транзакции
 COMMIT;
-# Откатить при необходимости
+# Откат при необходимости
 ROLLBACK;
 # Точки сохранения
 SAVEPOINT my_savepoint;
 ROLLBACK TO my_savepoint;
 ```
 
-### Конфигурация и Тюнинг
+### Конфигурация и настройка
 
 Оптимизация настроек сервера PostgreSQL для лучшей производительности.
 
@@ -678,18 +723,18 @@ SELECT pg_reload_conf();
 SHOW config_file;
 ```
 
-## Конфигурация и Советы psql
+## Конфигурация и советы psql
 
-### Файлы Соединения: `.pgpass`
+### Файлы подключения: `.pgpass`
 
 Безопасное хранение учетных данных базы данных для автоматической аутентификации.
 
 ```bash
-# Создать файл .pgpass (формат: hostname:port:database:username:password)
+# Создание файла .pgpass (формат: hostname:port:database:username:password)
 echo "localhost:5432:mydatabase:myuser:mypassword" >> ~/.pgpass
-# Установить правильные разрешения
+# Установка правильных разрешений
 chmod 600 ~/.pgpass
-# Использовать файл сервиса соединения
+# Использование файла сервисов подключения
 # ~/.pg_service.conf
 [mydb]
 host=localhost
@@ -703,7 +748,7 @@ user=myuser
 Настройка параметров запуска psql и поведения.
 
 ```bash
-# Создать файл ~/.psqlrc с пользовательскими настройками
+# Создание файла ~/.psqlrc с пользовательскими настройками
 \set QUIET on
 \timing on
 \set PROMPT1 '%n@%M:%> %`date` %R%# '
@@ -715,60 +760,60 @@ user=myuser
 \set show_slow_queries 'SELECT query, mean_time, calls FROM pg_stat_statements ORDER BY mean_time DESC LIMIT 10;'
 ```
 
-### Переменные Окружения
+### Переменные окружения
 
 Установка переменных окружения PostgreSQL для упрощения подключений.
 
 ```bash
-# Установить в вашем shell профиле
+# Установить в вашем профиле оболочки
 export PGHOST=localhost
 export PGPORT=5432
 export PGDATABASE=mydatabase
 export PGUSER=myuser
-# Затем просто подключиться с помощью
+# Затем просто подключитесь с помощью
 psql
-# Или использовать конкретное окружение
+# Или используйте специфичное окружение
 PGDATABASE=testdb psql
 ```
 
-### Информация о Базе Данных
+### Информация о базе данных
 
-Получение информации об объектах и структуре базы данных.
+Получение информации об объектах базы данных и структуре.
 
 ```bash
-# Список баз данных
+# Вывод списка баз данных
 \l, \l+
-# Список таблиц в текущей базе данных
+# Вывод списка таблиц в текущей базе данных
 \dt, \dt+
-# Список представлений
+# Вывод списка представлений
 \dv, \dv+
-# Список индексов
+# Вывод списка индексов
 \di, \di+
-# Список функций
+# Вывод списка функций
 \df, \df+
-# Список последовательностей
+# Вывод списка последовательностей
 \ds, \ds+
 # Описание структуры таблицы
 \d table_name
 \d+ table_name
-# Список ограничений таблицы
+# Показать ограничения таблицы
 \d+ table_name
-# Показать права на таблицу
+# Показать разрешения таблицы
 \dp table_name
 \z table_name
-# Список внешних ключей
+# Вывод списка внешних ключей
 SELECT * FROM information_schema.table_constraints
 WHERE constraint_type = 'FOREIGN KEY';
 ```
 
-### Вывод и Форматирование
+### Вывод и форматирование
 
-Управление тем, как psql отображает результаты запросов и вывод.
+Управление отображением результатов запросов и вывода в psql.
 
 ```bash
 # Переключение расширенного вывода
 \x
-# Изменить формат вывода
+# Изменение формата вывода
 \H  -- Вывод в формате HTML
 \t  -- Только кортежи (без заголовков)
 # Вывод в файл
@@ -781,12 +826,12 @@ SELECT * FROM users;
 \e
 ```
 
-### Время и История
+### Время и история
 
 Отслеживание производительности запросов и управление историей команд.
 
 ```bash
-# Переключить отображение времени
+# Переключение отображения времени выполнения
 \timing
 # Показать историю команд
 \s
@@ -799,9 +844,9 @@ SELECT * FROM users;
 \errverbose
 ```
 
-## Соответствующие Ссылки
+## Связанные ссылки
 
-- <router-link to="/database">Шпаргалка по Базам Данных</router-link>
+- <router-link to="/database">Шпаргалка по базам данных</router-link>
 - <router-link to="/mysql">Шпаргалка по MySQL</router-link>
 - <router-link to="/sqlite">Шпаргалка по SQLite</router-link>
 - <router-link to="/mongodb">Шпаргалка по MongoDB</router-link>

@@ -1,6 +1,6 @@
 ---
-title: 'React 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 React 를 학습하세요.'
+title: 'React 치트 시트 | LabEx'
+description: '포괄적인 치트 시트로 React 개발을 학습하세요. React 훅, 컴포넌트, JSX, 상태 관리, props 및 최신 프론트엔드 개발 패턴에 대한 빠른 참조 가이드입니다.'
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 
@@ -116,7 +116,7 @@ import { Button } from './Button'
 // 여러 컴포넌트 가져오기
 import React, { useState, useEffect } from 'react'
 
-// 별칭을 사용하여 가져오기
+// 별칭을 사용한 가져오기
 import { Button as MyButton } from './Button'
 ```
 
@@ -169,6 +169,21 @@ function Welcome({ name = 'Guest' }) {
 }
 ```
 
+<BaseQuiz id="react-props-1" correct="B">
+  <template #question>
+    React 에서 부모 컴포넌트에서 자식 컴포넌트로 데이터를 전달하는 방법은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">상태 변수 사용</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Props 사용</BaseQuizOption>
+  <BaseQuizOption value="C">Refs 사용</BaseQuizOption>
+  <BaseQuizOption value="D">Context API 사용</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Props(속성의 약어) 는 React 에서 부모에서 자식 컴포넌트로 데이터를 전달하는 주요 방법입니다. 자식 컴포넌트를 렌더링할 때 속성으로 props 를 전달합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### PropTypes: `Component.propTypes`
 
 컴포넌트에 전달된 props 를 검증합니다 (prop-types 패키지 필요).
@@ -196,7 +211,7 @@ Welcome.defaultProps = {
 
 ### Children: `props.children`
 
-컴포넌트 열기/닫기 태그 사이에 전달된 콘텐츠에 접근합니다.
+컴포넌트 열림/닫힘 태그 사이에 전달된 콘텐츠에 접근합니다.
 
 ```javascript
 // children 을 사용하는 컴포넌트
@@ -237,6 +252,21 @@ function Form() {
 }
 ```
 
+<BaseQuiz id="react-usestate-1" correct="A">
+  <template #question>
+    `useState(0)` 은 무엇을 반환합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>상태 값과 이를 업데이트하는 함수가 포함된 배열</BaseQuizOption>
+  <BaseQuizOption value="B">상태 값만</BaseQuizOption>
+  <BaseQuizOption value="C">상태를 업데이트하는 함수</BaseQuizOption>
+  <BaseQuizOption value="D">상태를 설정하기만 하고 아무것도 반환하지 않음</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `useState` 는 두 가지 요소 (현재 상태 값과 이를 업데이트하는 함수) 를 포함하는 배열을 반환합니다. 초기값 (0) 은 인수로 전달됩니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### useEffect 훅: `useEffect()`
 
 함수형 컴포넌트에서 부수 효과 (side effects) 를 수행합니다.
@@ -247,7 +277,7 @@ import React, { useState, useEffect } from 'react'
 function Timer() {
   const [count, setCount] = useState(0)
 
-  // 렌더링 후마다 실행되는 효과
+  // 효과는 모든 렌더링 후 실행됨
   useEffect(() => {
     document.title = `Count: ${count}`
   })
@@ -259,6 +289,21 @@ function Timer() {
   }, [])
 }
 ```
+
+<BaseQuiz id="react-useeffect-1" correct="D">
+  <template #question>
+    `useEffect(() => {...}, [])`에서 빈 의존성 배열 `[]`은 무엇을 의미합니까?
+  </template>
+  
+  <BaseQuizOption value="A">효과가 렌더링될 때마다 실행됨</BaseQuizOption>
+  <BaseQuizOption value="B">효과가 실행되지 않음</BaseQuizOption>
+  <BaseQuizOption value="C">효과가 두 번 실행됨</BaseQuizOption>
+  <BaseQuizOption value="D" correct>효과가 초기 렌더링 후에 한 번만 실행됨</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    빈 의존성 배열은 효과에 의존성이 없음을 의미하므로 컴포넌트가 마운트될 때 한 번만 실행됩니다. 이는 한 번만 실행되어야 하는 설정 코드에 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 클래스 상태: `this.state` / `setState()`
 
@@ -313,6 +358,21 @@ function Counter() {
 ```
 
 ## 이벤트 처리
+
+<BaseQuiz id="react-props-2" correct="A">
+  <template #question>
+    React 에서 PropTypes 의 목적은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>컴포넌트에 전달되는 props 의 유형을 검증하기 위함</BaseQuizOption>
+  <BaseQuizOption value="B">컴포넌트 성능을 향상시키기 위함</BaseQuizOption>
+  <BaseQuizOption value="C">컴포넌트를 자동으로 스타일링하기 위함</BaseQuizOption>
+  <BaseQuizOption value="D">컴포넌트를 더 빠르게 만들기 위함</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PropTypes 는 올바른 유형의 props 를 컴포넌트가 받는지 검증하여 버그를 잡는 데 도움이 되며, 특히 개발 중에 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 클릭 이벤트: `onClick`
 
@@ -442,7 +502,7 @@ function Status({ isOnline }) {
 
 ### If/Else 로직: `if` 문
 
-복잡한 조건 처리를 위해 전통적인 JavaScript 로직을 사용합니다.
+복잡한 조건에 대해 기존 JavaScript 로직을 사용합니다.
 
 ```javascript
 function UserProfile({ user, isAdmin }) {
@@ -508,7 +568,7 @@ function Button({ variant, disabled }) {
 
 ### Map 함수: `array.map()`
 
-배열 데이터로부터 컴포넌트 목록을 렌더링합니다.
+배열 데이터에서 컴포넌트 목록을 렌더링합니다.
 
 ```javascript
 function TodoList({ todos }) {
@@ -521,7 +581,7 @@ function TodoList({ todos }) {
   )
 }
 
-// 인덱스 포함 (가능하면 피해야 함)
+// 인덱스 사용 (가능한 경우 피함)
 function ItemList({ items }) {
   return (
     <ul>
@@ -535,7 +595,7 @@ function ItemList({ items }) {
 
 ### 키: `key` prop
 
-목록 항목을 최적화하기 위해 고유 식별자를 제공합니다.
+렌더링 최적화를 위해 목록 항목에 고유 식별자를 제공합니다.
 
 ```javascript
 // 좋음: 고유 ID 사용
@@ -565,7 +625,7 @@ function CommentList({ comments }) {
 
 ### 필터 및 Map: 배열 메서드
 
-목록을 렌더링하기 전에 배열을 처리합니다.
+배열을 처리한 후 렌더링합니다.
 
 ```javascript
 function TaskList({ tasks, showCompleted }) {
@@ -611,7 +671,7 @@ function ProductList({ products }) {
 
 ```javascript
 const ExpensiveComponent = React.memo(function ExpensiveComponent({ data }) {
-  return <div>{/* Complex rendering logic */}</div>
+  return <div>{/* 복잡한 렌더링 로직 */}</div>
 })
 
 // 사용자 정의 비교 사용
@@ -687,7 +747,7 @@ function App() {
 
 ### Props Down: 부모에서 자식으로
 
-부모 컴포넌트에서 자식 컴포넌트로 데이터를 전달합니다.
+데이터를 부모 컴포넌트에서 자식 컴포넌트로 전달합니다.
 
 ```javascript
 function Parent() {
@@ -732,7 +792,7 @@ function Child({ onMessage }) {
 
 ### Context API: `createContext` / `useContext`
 
-prop 드릴링 없이 여러 컴포넌트에 걸쳐 상태를 공유합니다.
+Prop 드릴링 없이 여러 컴포넌트에 걸쳐 상태를 공유합니다.
 
 ```javascript
 const UserContext = React.createContext()
@@ -823,7 +883,7 @@ class ErrorBoundary extends React.Component {
 
 ### Strict Mode: `React.StrictMode`
 
-개발 중 추가적인 검사 및 경고를 활성화합니다.
+개발을 위해 추가적인 검사 및 경고를 활성화합니다.
 
 ```javascript
 import React from 'react'
@@ -859,7 +919,7 @@ function onRenderCallback(id, phase, actualDuration) {
 
 ### Create React App: `npx create-react-app`
 
-새로운 React 프로젝트를 빠르게 부트스트랩합니다.
+새 React 프로젝트를 빠르게 부트스트랩합니다.
 
 ```bash
 # 새 React 앱 생성
@@ -938,7 +998,7 @@ const UserListWithLoading = withLoading(UserList)
 
 ### 렌더 프롭 패턴
 
-값을 함수로 전달하는 prop 을 사용하여 컴포넌트 간에 코드를 공유합니다.
+값을 함수로 전달하여 컴포넌트 간에 코드를 공유합니다.
 
 ```javascript
 function DataFetcher({ render, url }) {
@@ -990,7 +1050,7 @@ function Tab({ children, isActive }) {
 </Tabs>
 ```
 
-### Portal: `ReactDOM.createPortal()`
+### 포털: `ReactDOM.createPortal()`
 
 자식 요소를 부모 컴포넌트 계층 구조 외부의 DOM 노드에 렌더링합니다.
 
@@ -1008,12 +1068,12 @@ function Modal({ children, isOpen }) {
 }
 ```
 
-### 상속보다 합성
+### 상속보다 구성
 
-클래스 상속 대신 합성 패턴을 사용합니다.
+클래스 상속 대신 구성 패턴을 사용합니다.
 
 ```javascript
-// 좋음: 합성
+// 좋음: 구성
 function Button({ variant, children, ...props }) {
   return (
     <button className={`btn btn-${variant}`} {...props}>
@@ -1034,7 +1094,7 @@ function IconButton({ icon, children, ...props }) {
 
 ### 컴포넌트 패턴: 유연한 API
 
-사용하기 쉽고 유연한 컴포넌트 API 를 설계합니다.
+유연하고 사용하기 쉬운 컴포넌트 API 를 설계합니다.
 
 ```javascript
 // 유연한 Card 컴포넌트

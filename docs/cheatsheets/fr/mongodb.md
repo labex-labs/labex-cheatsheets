@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo MongoDB'
-description: 'Apprenez MongoDB avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Mémento MongoDB | LabEx'
+description: "Apprenez la base de données NoSQL MongoDB avec ce mémento complet. Référence rapide pour les requêtes, l'agrégation, l'indexation, le sharding, la réplication et la gestion de bases de données documentaires MongoDB."
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Feuille de triche MongoDB
 <a target="_blank" href="https://labex.io/fr/learn/mongodb">Apprenez MongoDB avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la gestion de base de données NoSQL MongoDB grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours complets sur MongoDB couvrant les opérations essentielles, les requêtes de documents, les pipelines d'agrégation, les stratégies d'indexation et les techniques avancées. Maîtrisez le modèle de données basé sur les documents de MongoDB pour construire des applications de base de données évolutives et flexibles.
+Apprenez la gestion de base de données NoSQL MongoDB grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur MongoDB couvrant les opérations essentielles, les requêtes de documents, les pipelines d'agrégation, les stratégies d'indexation et les techniques avancées. Maîtrisez le modèle de données basé sur les documents de MongoDB pour construire des applications de base de données évolutives et flexibles.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -38,7 +38,7 @@ db.help()
 
 ### Utiliser une Base de Données : `use database_name`
 
-Passe à une base de données spécifique (créée si elle n'existe pas).
+Passe à une base de données spécifique (la crée si elle n'existe pas).
 
 ```javascript
 // Passer à la base de données myapp
@@ -47,6 +47,21 @@ use myapp
 use newdb
 db.users.insertOne({name: "John"})
 ```
+
+<BaseQuiz id="mongodb-use-1" correct="B">
+  <template #question>
+    Que se passe-t-il lorsque vous exécutez `use newdb` dans MongoDB ?
+  </template>
+  
+  <BaseQuizOption value="A">Elle crée immédiatement la base de données</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Elle passe à la base de données (la crée lors de la première insertion de données)</BaseQuizOption>
+  <BaseQuizOption value="C">Elle supprime la base de données</BaseQuizOption>
+  <BaseQuizOption value="D">Elle affiche toutes les collections de la base de données</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La commande `use` passe à une base de données, mais MongoDB ne la crée que lorsque vous insérez le premier document. C'est une approche de création paresseuse.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Supprimer une Base de Données : `db.dropDatabase()`
 
@@ -62,7 +77,7 @@ db.dropDatabase()
 
 ### Afficher les Collections : `show collections`
 
-Liste toutes les collections dans la base de données actuelle.
+Liste toutes les collections de la base de données actuelle.
 
 ```javascript
 // Afficher toutes les collections
@@ -108,7 +123,7 @@ Affiche des statistiques complètes sur une collection, y compris la taille, le 
 db.users.stats()
 // Compter les documents
 db.users.countDocuments()
-// Comptage estimé (plus rapide)
+// Compte estimé (plus rapide)
 db.users.estimatedDocumentCount()
 // Vérifier les index de la collection
 db.users.getIndexes()
@@ -136,7 +151,7 @@ Parcourir les données de la collection avec pagination et formatage.
 db.users.find().limit(5)
 // Sauter et limiter (pagination)
 db.users.find().skip(10).limit(5)
-// Formatage joli
+// Format joli
 db.users.find().pretty()
 ```
 
@@ -161,6 +176,21 @@ db.users.insertOne({
 })
 ```
 
+<BaseQuiz id="mongodb-insert-1" correct="A">
+  <template #question>
+    Que retourne `db.users.insertOne()` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Un objet d'acquittement avec l'_id du document inséré</BaseQuizOption>
+  <BaseQuizOption value="B">Le document inséré</BaseQuizOption>
+  <BaseQuizOption value="C">Rien</BaseQuizOption>
+  <BaseQuizOption value="D">Le nombre de documents insérés</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `insertOne()` retourne un objet d'acquittement contenant `acknowledged: true` et `insertedId` avec l'`_id` du document inséré (ou l'`_id` personnalisé s'il est fourni).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Insérer Plusieurs : `db.collection.insertMany()`
 
 Ajoute plusieurs documents en une seule opération.
@@ -184,7 +214,7 @@ db.users.insertMany(
 
 ### Insérer avec Date : `new Date()`
 
-Ajouter des documents avec des champs horodatés.
+Ajoute des documents avec des champs horodatés.
 
 ```javascript
 // Insérer avec la date actuelle
@@ -198,7 +228,7 @@ db.posts.insertOne({
 
 ### Insérer des Documents Imbriqués
 
-Ajouter des documents avec des objets et des tableaux intégrés.
+Ajoute des documents avec des objets et des tableaux intégrés.
 
 ```javascript
 // Insérer avec des objets imbriqués
@@ -213,7 +243,7 @@ db.users.insertOne({
 })
 ```
 
-## Requête de Documents (Lecture)
+## Interrogation de Documents (Lecture)
 
 ### Recherche de Base : `db.collection.find()`
 
@@ -245,26 +275,41 @@ db.users.find({}, { 'address.city': 1 })
 
 ### Opérateurs de Requête : `$gt`, `$lt`, `$in`, etc.
 
-Utiliser des opérateurs de comparaison et logiques pour des requêtes complexes.
+Utilise des opérateurs de comparaison et logiques pour des requêtes complexes.
 
 ```javascript
 // Supérieur à, inférieur à
 db.users.find({ age: { $gt: 25, $lt: 40 } })
 // Dans un tableau
 db.users.find({ status: { $in: ['active', 'pending'] } })
-// Non égal
+// Différent de
 db.users.find({ status: { $ne: 'inactive' } })
 // Existe
 db.users.find({ email: { $exists: true } })
 ```
 
-### Recherche Textuelle : `$text`, `$regex`
+<BaseQuiz id="mongodb-query-1" correct="B">
+  <template #question>
+    Que signifie `$gt` dans les requêtes MongoDB ?
+  </template>
+  
+  <BaseQuizOption value="A">Supérieur ou égal à</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Strictement supérieur à</BaseQuizOption>
+  <BaseQuizOption value="C">Grouper par</BaseQuizOption>
+  <BaseQuizOption value="D">Obtenir le total</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$gt` est un opérateur de comparaison qui signifie "strictement supérieur à" (Greater Than). Il est utilisé dans des requêtes comme `{ age: { $gt: 25 } }` pour trouver des documents où le champ âge est supérieur à 25.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Rechercher des documents en utilisant du texte et la correspondance de motifs.
+### Recherche de Texte : `$text`, `$regex`
+
+Recherche des documents en utilisant du texte et la correspondance de motifs.
 
 ```javascript
-// Recherche textuelle (nécessite un index textuel)
-db.posts.find({ $text: { $search: 'mongodb tutorial' } })
+// Recherche de texte (nécessite un index textuel)
+db.posts.find({ $text: { $search: 'tutoriel mongodb' } })
 // Recherche Regex
 db.users.find({ name: { $regex: '^John', $options: 'i' } })
 // Recherche insensible à la casse
@@ -278,7 +323,7 @@ db.users.find({ email: { $regex: '@gmail.com$' } })
 Modifie le premier document qui correspond à la requête.
 
 ```javascript
-// Mettre à jour un seul champ
+// Mettre à jour un champ unique
 db.users.updateOne({ name: 'John Doe' }, { $set: { age: 31 } })
 // Mettre à jour plusieurs champs
 db.users.updateOne(
@@ -295,7 +340,7 @@ db.users.updateOne(
 
 ### Mettre à Jour Plusieurs : `db.collection.updateMany()`
 
-Modifie tous les documents qui correspondent à la requête.
+Modifie tous les documents qui correspondent à la condition de requête.
 
 ```javascript
 // Mettre à jour plusieurs documents
@@ -306,7 +351,7 @@ db.posts.updateMany({ category: 'tech' }, { $inc: { views: 1 } })
 
 ### Opérateurs de Mise à Jour : `$set`, `$unset`, `$push`
 
-Utiliser divers opérateurs pour modifier les champs de document.
+Utilise divers opérateurs pour modifier les champs de document.
 
 ```javascript
 // Définir et supprimer des champs
@@ -314,15 +359,33 @@ db.users.updateOne(
   { name: 'John' },
   { $set: { lastLogin: new Date() }, $unset: { temp: '' } },
 )
-// Pousser dans un tableau
+// Ajouter à un tableau
 db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
-// Tirer d'un tableau
+```
+
+<BaseQuiz id="mongodb-update-1" correct="C">
+  <template #question>
+    Que fait `$set` dans les opérations de mise à jour MongoDB ?
+  </template>
+  
+  <BaseQuizOption value="A">Supprime un champ</BaseQuizOption>
+  <BaseQuizOption value="B">Ajoute un élément à un tableau</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Définit la valeur d'un champ</BaseQuizOption>
+  <BaseQuizOption value="D">Supprime un élément d'un tableau</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'opérateur `$set` définit la valeur d'un champ dans un document. Si le champ n'existe pas, il le crée. S'il existe, il met à jour la valeur.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```javascript
+// Retirer d'un tableau
 db.users.updateOne({ name: 'John' }, { $pull: { hobbies: 'reading' } })
 ```
 
 ### Remplacer le Document : `db.collection.replaceOne()`
 
-Remplace un document entier, à l'exception du champ \_id.
+Remplace un document entier à l'exception du champ \_id.
 
 ```javascript
 // Remplacer le document entier
@@ -340,7 +403,7 @@ db.users.replaceOne(
 
 ### Agrégation de Base : `db.collection.aggregate()`
 
-Traiter les données via des étapes de pipeline d'agrégation.
+Traite les données via des étapes de pipeline d'agrégation.
 
 ```javascript
 // Grouper et compter
@@ -354,7 +417,7 @@ db.orders.aggregate([
 
 ### Étapes Courantes : `$match`, `$group`, `$sort`
 
-Utiliser des étapes de pipeline pour transformer et analyser les données.
+Utilise des étapes de pipeline pour transformer et analyser les données.
 
 ```javascript
 // Pipeline d'agrégation complexe
@@ -374,7 +437,7 @@ db.sales.aggregate([
 
 ### Opérateurs d'Agrégation : `$sum`, `$avg`, `$max`
 
-Calculer des valeurs statistiques et effectuer des opérations mathématiques.
+Calcule des valeurs statistiques et effectue des opérations mathématiques.
 
 ```javascript
 // Opérations statistiques
@@ -393,7 +456,7 @@ db.products.aggregate([
 
 ### Étape de Projection : `$project`
 
-Transformer la structure du document et créer des champs calculés.
+Transforme la structure du document et crée des champs calculés.
 
 ```javascript
 // Projeter et calculer des champs
@@ -446,7 +509,7 @@ Trouve un document et le supprime en une seule opération atomique.
 ```javascript
 // Trouver et supprimer
 const deletedDoc = db.users.findOneAndDelete({ status: 'pending' })
-// Trouver et supprimer avec des options
+// Trouver et supprimer avec options
 db.queue.findOneAndDelete({ processed: false }, { sort: { priority: -1 } })
 ```
 
@@ -507,13 +570,13 @@ Meilleures pratiques pour optimiser les requêtes et les opérations MongoDB.
 ```javascript
 // Utiliser la projection pour limiter le transfert de données
 db.users.find({ status: 'active' }, { name: 1, email: 1 })
-// Limiter les résultats pour une meilleure performance
+// Limiter les résultats pour de meilleures performances
 db.posts.find().sort({ createdAt: -1 }).limit(10)
 // Utiliser hint pour forcer un index spécifique
 db.users.find({ age: 25 }).hint({ age: 1 })
 ```
 
-## Shell MongoDB et Connexion
+## Shell et Connexion MongoDB
 
 ### Se Connecter à MongoDB : `mongosh`
 
@@ -566,7 +629,7 @@ print("Âge de l'utilisateur : " + user.age)
 
 ### Importer des Données : `mongoimport`
 
-Charger des données depuis des fichiers JSON, CSV ou TSV dans MongoDB.
+Charger des données à partir de fichiers JSON, CSV ou TSV dans MongoDB.
 
 ```bash
 # Importer un fichier JSON
@@ -617,7 +680,7 @@ Restaurer les données MongoDB à partir de sauvegardes binaires.
 mongorestore --db myapp /backup/myapp/
 # Restaurer avec suppression
 mongorestore --db myapp --drop /backup/myapp/
-# Restaurer la sauvegarde compressée
+# Restaurer une sauvegarde compressée
 mongorestore --gzip --db myapp /backup/myapp/
 ```
 
@@ -625,7 +688,7 @@ mongorestore --gzip --db myapp /backup/myapp/
 
 ### Serveur Communautaire MongoDB
 
-Télécharger et installer l'édition Communautaire de MongoDB.
+Télécharger et installer l'édition Community de MongoDB.
 
 ```bash
 # Ubuntu/Debian
@@ -754,7 +817,7 @@ Identifier et corriger les problèmes fréquemment rencontrés avec MongoDB.
 sudo systemctl status mongod
 // Vérifier la disponibilité du port
 netstat -tuln | grep 27017
-// Gestion des erreurs de clé dupliquée
+// Gestion des erreurs de clé en double
 try {
   db.users.insertOne({email: "existing@example.com"})
 } catch (e) {
@@ -766,7 +829,7 @@ try {
 
 ### Surveillance : `db.currentOp()`, `db.serverStatus()`
 
-Surveiller les opérations de la base de données et les performances du serveur.
+Surveiller les opérations de base de données et les performances du serveur.
 
 ```javascript
 // Vérifier les opérations en cours
@@ -824,7 +887,7 @@ try {
 Observer les changements en temps réel dans les collections.
 
 ```javascript
-// Surveiller les changements de collection
+// Surveiller les changements de la collection
 const changeStream = db.users.watch()
 changeStream.on('change', (change) => {
   console.log('Changement détecté :', change)

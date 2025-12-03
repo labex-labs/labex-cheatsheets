@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo Développement Web'
-description: 'Apprenez le développement web avec notre fiche mémo complète couvrant les commandes essentielles, concepts et meilleures pratiques.'
+title: 'Fiche de Référence Développement Web | LabEx'
+description: 'Apprenez le développement web avec cette fiche complète. Référence rapide pour HTML, CSS, JavaScript, API, conception responsive, optimisation des performances et essentiels du développement full-stack.'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 
@@ -65,9 +65,24 @@ Utilisez des éléments sémantiques HTML5 significatifs pour une meilleure stru
 </footer>
 ```
 
+<BaseQuiz id="webdev-semantic-1" correct="B">
+  <template #question>
+    Quel est l'avantage principal d'utiliser des éléments HTML sémantiques tels que `header`, `main` et `footer` ?
+  </template>
+  
+  <BaseQuizOption value="A">Ils rendent le chargement de la page plus rapide</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Ils améliorent l'accessibilité et le SEO en donnant un sens à la structure</BaseQuizOption>
+  <BaseQuizOption value="C">Ils stylisent automatiquement la page</BaseQuizOption>
+  <BaseQuizOption value="D">Ils sont requis pour que JavaScript fonctionne</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les éléments HTML sémantiques donnent un sens à la structure du document, ce qui facilite la compréhension de l'organisation du contenu par les lecteurs d'écran, les moteurs de recherche et les développeurs. Cela améliore l'accessibilité et le SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Éléments de Texte : `<h1>` à `<h6>` / `<p>`
 
-Structurez le contenu avec une hiérarchie de titres et des paragraphes appropriés.
+Structurez le contenu avec une hiérarchie de titres appropriée et des paragraphes.
 
 ```html
 <h1>Main Title</h1>
@@ -225,7 +240,7 @@ h1 {
 }
 ```
 
-### Modèle de Boîte : `margin` / `padding` / `border`
+### Modèle de Boîte (Box Model) : `margin` / `padding` / `border`
 
 Contrôlez l'espacement et la mise en page avec le modèle de boîte CSS.
 
@@ -245,6 +260,21 @@ Contrôlez l'espacement et la mise en page avec le modèle de boîte CSS.
   border-radius: 5px; /* Rounded corners */
 }
 ```
+
+<BaseQuiz id="webdev-boxmodel-1" correct="B">
+  <template #question>
+    Quelle est la différence entre `margin` et `padding` en CSS ?
+  </template>
+  
+  <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
+  <BaseQuizOption value="B" correct>La marge est l'espace à l'extérieur de l'élément, le padding est l'espace à l'intérieur de l'élément</BaseQuizOption>
+  <BaseQuizOption value="C">La marge est pour l'espacement horizontal, le padding est pour l'espacement vertical</BaseQuizOption>
+  <BaseQuizOption value="D">La marge est pour les bordures, le padding est pour le contenu</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La marge crée de l'espace à l'extérieur de la bordure de l'élément (entre les éléments), tandis que le padding crée de l'espace à l'intérieur de l'élément entre le contenu et la bordure. Les deux affectent l'espacement mais dans des zones différentes.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Flexbox : `display: flex`
 
@@ -269,14 +299,29 @@ Créez des mises en page flexibles et réactives facilement.
 }
 ```
 
-### Mise en Page en Grille : `display: grid`
+<BaseQuiz id="webdev-flexbox-1" correct="A">
+  <template #question>
+    Que fait `justify-content: center` en Flexbox ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Centre les éléments flex le long de l'axe principal (horizontal par défaut)</BaseQuizOption>
+  <BaseQuizOption value="B">Centre les éléments verticalement</BaseQuizOption>
+  <BaseQuizOption value="C">Espace les éléments uniformément</BaseQuizOption>
+  <BaseQuizOption value="D">Étire les éléments pour remplir l'espace</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `justify-content` contrôle l'alignement le long de l'axe principal (horizontal par défaut). `center` centre tous les éléments flex dans le conteneur. Utilisez `align-items` pour contrôler l'alignement sur l'axe transversal (vertical).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Mise en Page en Grille (Grid Layout) : `display: grid`
 
 Créez des mises en page bidimensionnelles complexes.
 
 ```css
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns equal */
   grid-gap: 20px;
   grid-template-areas:
     'header header header'
@@ -319,7 +364,7 @@ let user = {
 }
 ```
 
-### Fonctions : `function` / Arrow Functions
+### Fonctions : `function` / Fonctions Fléchées (Arrow Functions)
 
 Créez des blocs de code réutilisables avec différentes syntaxes de fonction.
 
@@ -374,7 +419,7 @@ switch (day) {
 }
 ```
 
-### Boucles : `for` / `while` / Array Methods
+### Boucles : `for` / `while` / Méthodes de Tableau (Array Methods)
 
 Itérez sur les données et répétez les opérations.
 
@@ -485,7 +530,7 @@ const oldElement = document.querySelector('.remove-me')
 oldElement.remove()
 ```
 
-## Conception Réactive et Requêtes Média CSS
+## Conception Réactive (Responsive Design) et Requêtes Média CSS
 
 ### Balise Meta Viewport : `viewport`
 
@@ -612,7 +657,7 @@ console.log('Email:', user.email)
 console.groupEnd()
 ```
 
-### Techniques de Débogage : `debugger` / Breakpoints
+### Techniques de Débogage : `debugger` / Points d'Arrêt (Breakpoints)
 
 Mettez en pause l'exécution du code pour inspecter les variables et l'état du programme.
 

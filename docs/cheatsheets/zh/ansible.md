@@ -1,6 +1,6 @@
 ---
-title: 'Ansible 速查表'
-description: '使用我们涵盖核心命令、概念和最佳实践的 Ansible 速查表，快速掌握 Ansible。'
+title: 'Ansible 速查表 | LabEx'
+description: '使用此综合速查表学习 Ansible 自动化。Ansible Playbook、模块、清单管理、配置管理和基础设施自动化的快速参考。'
 pdfUrl: '/cheatsheets/pdf/ansible-cheatsheet.pdf'
 ---
 
@@ -19,7 +19,7 @@ Ansible 速查表
 </base-disclaimer-content>
 </base-disclaimer>
 
-## 安装和设置
+## 安装与设置
 
 ### Ubuntu/Debian: `apt install ansible`
 
@@ -51,7 +51,7 @@ ansible --version
 
 ### macOS: `brew install ansible`
 
-使用 Homebrew 在 macOS 上安装 Ansible。
+在 macOS 上使用 Homebrew 安装 Ansible。
 
 ```bash
 # 使用 Homebrew 安装
@@ -73,7 +73,7 @@ ansible-config view
 export ANSIBLE_CONFIG=/path/to/ansible.cfg
 ```
 
-### SSH 设置：基于密钥的身份验证
+### SSH 设置：基于密钥的认证
 
 Ansible 使用 SSH 在节点间通信。
 
@@ -103,10 +103,10 @@ export ANSIBLE_REMOTE_USER=ubuntu
 
 ### 基本清单：`/etc/ansible/hosts`
 
-主机组可以通过在方括号内给出组名来创建。
+主机组可以通过在方括号内提供组名来创建。
 
 ```ini
-# 基本主机文件 (INI 格式)
+# 基本 hosts 文件 (INI 格式)
 [webservers]
 web1.example.com
 web2.example.com
@@ -137,7 +137,7 @@ all:
         mysql_port: 3306
 ```
 
-### 主机变量和组
+### 主机变量与组
 
 定义特定于主机的变量和组配置。
 
@@ -171,6 +171,21 @@ ansible all -m command -a "uptime"
 # 使用 sudo 权限运行
 ansible all -m command -a "systemctl status nginx" --become
 ```
+
+<BaseQuiz id="ansible-command-1" correct="C">
+  <template #question>
+    `ansible all -m ping` 执行什么操作？
+  </template>
+  
+  <BaseQuizOption value="A">使用 ICMP ping 测试网络连通性</BaseQuizOption>
+  <BaseQuizOption value="B">在所有主机上安装 ping 软件包</BaseQuizOption>
+  <BaseQuizOption value="C" correct>测试 Ansible 与清单中所有主机的连通性</BaseQuizOption>
+  <BaseQuizOption value="D">检查主机是否在线</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Ansible 中的 `ping` 模块不使用 ICMP。它是一个测试模块，用于验证 Ansible 是否可以连接到主机、执行 Python 代码并返回结果。它用于验证连通性和配置。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 文件操作
 
@@ -217,7 +232,7 @@ ansible webservers -m service -a "name=ssh state=restarted" --become
 ansible all -m service -a "name=nginx enabled=yes" --become
 ```
 
-## Playbooks 和任务
+## Playbook 与任务
 
 ### 基本 Playbook 结构
 
@@ -244,16 +259,16 @@ YAML 文件，定义应在哪些主机上运行哪些任务。
         enabled: yes
 ```
 
-### 运行 Playbooks
+### 运行 Playbook
 
-使用各种选项和配置运行 Playbooks。
+使用各种选项和配置运行 Playbook。
 
 ```bash
 # 运行 Playbook
 ansible-playbook site.yml
 # 使用特定清单运行
 ansible-playbook -i inventory.yml site.yml
-# 演练 (check 模式)
+# 演练模式 (check 模式)
 ansible-playbook site.yml --check
 # 在特定主机上运行
 ansible-playbook site.yml --limit webservers
@@ -261,7 +276,22 @@ ansible-playbook site.yml --limit webservers
 ansible-playbook site.yml --extra-vars "nginx_port=8080"
 ```
 
-### 任务选项和条件
+<BaseQuiz id="ansible-playbook-1" correct="B">
+  <template #question>
+    `ansible-playbook site.yml --check` 执行什么操作？
+  </template>
+  
+  <BaseQuizOption value="A">运行两次 Playbook</BaseQuizOption>
+  <BaseQuizOption value="B" correct>以检查模式（演练）运行 Playbook，不进行更改</BaseQuizOption>
+  <BaseQuizOption value="C">检查 Playbook 的语法</BaseQuizOption>
+  <BaseQuizOption value="D">只运行第一个任务</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `--check` 标志以检查模式（演练）运行 Ansible，模拟将要发生的情况，但实际上不进行任何更改。这在应用 Playbook 之前测试它们很有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 任务选项与条件
 
 向任务添加条件、循环和错误处理。
 
@@ -288,9 +318,9 @@ tasks:
       msg: 'User created: {{ user_result.changed }}'
 ```
 
-### 处理器和通知
+### 处理器 (Handlers) 与通知
 
-定义在被任务通知时运行的处理器。
+定义在被任务通知时才执行的处理器。
 
 ```yaml
 tasks:
@@ -307,7 +337,22 @@ handlers:
       state: restarted
 ```
 
-## 变量和模板
+<BaseQuiz id="ansible-handlers-1" correct="C">
+  <template #question>
+    Ansible 处理器何时执行？
+  </template>
+  
+  <BaseQuizOption value="A">定义后立即执行</BaseQuizOption>
+  <BaseQuizOption value="B">在 Playbook 开始时执行</BaseQuizOption>
+  <BaseQuizOption value="C" correct>在 Playbook 结束时执行，仅当被任务通知时</BaseQuizOption>
+  <BaseQuizOption value="D">每次任务运行时执行</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    处理器在 Playbook 结束时运行，并且仅当它们被一个已更改了某些内容（即触发了通知）的任务通知时才会运行。这确保了仅在配置文件实际修改后才重启服务。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+## 变量与模板
 
 ### 变量定义
 
@@ -356,9 +401,9 @@ server {
   notify: reload nginx
 ```
 
-### Facts 和系统信息
+### Facts 与系统信息
 
-在 Playbook 中收集和使用系统 Facts。
+在 Playbook 中收集和使用系统事实。
 
 ```bash
 # 手动收集 facts
@@ -379,7 +424,7 @@ ansible all -m setup -a "filter=ansible_eth*"
   when: ansible_os_family == "Debian"
 ```
 
-### Vault 和秘密管理
+### Vault 与秘密管理
 
 使用 Ansible Vault 加密敏感数据。
 
@@ -390,13 +435,13 @@ ansible-vault create secrets.yml
 ansible-vault edit secrets.yml
 # 加密现有文件
 ansible-vault encrypt passwords.yml
-# 使用 vault 运行 Playbook
+# 使用 vault 密码运行 Playbook
 ansible-playbook site.yml --ask-vault-pass
 # 使用 vault 密码文件
 ansible-playbook site.yml --vault-password-file .vault_pass
 ```
 
-## 角色和组织
+## 角色与组织
 
 ### 角色结构
 
@@ -482,7 +527,7 @@ tasks:
       state: present
 ```
 
-## 调试和故障排除
+## 调试与故障排除
 
 ### 调试任务
 
@@ -524,7 +569,7 @@ ansible-playbook site.yml -vvv  # 最大详细程度
         msg: 'This always runs'
 ```
 
-### 测试和验证
+### 测试与验证
 
 测试 Playbook 和验证配置。
 
@@ -537,11 +582,11 @@ ansible-playbook site.yml --list-tasks
 ansible-playbook site.yml --list-hosts
 # 逐步执行
 ansible-playbook site.yml --step
-# 使用 check 模式测试
+# 使用检查模式测试
 ansible-playbook site.yml --check --diff
 ```
 
-### 性能和优化
+### 性能与优化
 
 优化 Playbook 性能和执行。
 
@@ -562,11 +607,11 @@ ansible-playbook site.yml --check --diff
   poll: 5
 ```
 
-## 最佳实践和技巧
+## 最佳实践与技巧
 
 ### 安全最佳实践
 
-保护您的 Ansible 基础设施和操作。
+保护 Ansible 基础设施和操作。
 
 ```bash
 # 使用 Ansible Vault 加密秘密信息
@@ -582,7 +627,7 @@ ansible-playbook site.yml --limit production
 
 ### 代码组织
 
-有效地组织您的 Ansible 项目。
+有效组织 Ansible 项目。
 
 ```bash
 # 推荐的目录结构
@@ -603,7 +648,7 @@ ansible-project/
   # 为复杂逻辑添加注释
 ```
 
-### 版本控制和测试
+### 版本控制与测试
 
 使用适当的版本控制管理 Ansible 代码。
 
@@ -616,6 +661,77 @@ git commit -m "Initial Ansible setup"
 ansible-playbook -i staging site.yml
 # 使用标签进行选择性执行
 ansible-playbook site.yml --tags "nginx,ssl"
+```
+
+## 配置与高级功能
+
+### Ansible 配置
+
+通过配置文件自定义 Ansible 行为。
+
+```ini
+# ansible.cfg
+[defaults]
+inventory = ./inventory
+remote_user = ansible
+host_key_checking = False
+timeout = 30
+forks = 5
+
+[ssh_connection]
+ssh_args = -o ControlMaster=auto -o ControlPersist=60s
+pipelining = True
+```
+
+### 回调插件 (Callback Plugins)
+
+使用回调插件增强输出和日志记录。
+
+```ini
+# 在 ansible.cfg 中启用回调插件
+[defaults]
+stdout_callback = yaml
+callbacks_enabled = profile_tasks, timer
+
+# 自定义回调配置
+[callback_profile_tasks]
+task_output_limit = 20
+```
+
+### 过滤器与查找插件 (Filters & Lookups)
+
+使用 Jinja2 过滤器和查找插件进行数据操作。
+
+```jinja2
+# 模板中常用的过滤器
+{{ variable | default('default_value') }}
+{{ list_var | length }}
+{{ string_var | upper }}
+{{ dict_var | to_nice_yaml }}
+```
+
+```yaml
+# 查找插件
+- name: Read file content
+  debug:
+    msg: "{{ lookup('file', '/etc/hostname') }}"
+
+- name: Environment variable
+  debug:
+    msg: "{{ lookup('env', 'HOME') }}"
+```
+
+### 动态清单 (Dynamic Inventories)
+
+使用动态清单进行云和容器环境管理。
+
+```bash
+# AWS EC2 动态清单
+ansible-playbook -i ec2.py site.yml
+# Docker 动态清单
+ansible-playbook -i docker.yml site.yml
+# 自定义清单脚本
+ansible-playbook -i ./dynamic_inventory.py site.yml
 ```
 
 ## 相关链接

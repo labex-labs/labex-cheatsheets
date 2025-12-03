@@ -1,6 +1,6 @@
 ---
-title: 'MongoDB Spickzettel'
-description: 'Lernen Sie MongoDB mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'MongoDB Spickzettel | LabEx'
+description: 'Lernen Sie die MongoDB NoSQL-Datenbank mit diesem umfassenden Spickzettel. Schnelle Referenz für MongoDB-Abfragen, Aggregation, Indizierung, Sharding, Replikation und Dokumentendatenbankverwaltung.'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ MongoDB Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/mongodb">Lernen Sie MongoDB mit praktischen Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/mongodb">Lernen Sie MongoDB mit Hands-On-Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie das Management der NoSQL-Datenbank MongoDB durch praktische Labs und reale Szenarien. LabEx bietet umfassende MongoDB-Kurse, die wesentliche Operationen, Dokumentabfragen, Aggregations-Pipelines, Indexierungsstrategien und fortgeschrittene Techniken abdecken. Meistern Sie das dokumentenbasierte Datenmodell von MongoDB, um skalierbare und flexible Datenbankanwendungen zu erstellen.
+Lernen Sie das NoSQL-Datenbankmanagement von MongoDB durch praktische Labs und reale Szenarien. LabEx bietet umfassende MongoDB-Kurse, die wesentliche Operationen, Dokumentabfragen, Aggregations-Pipelines, Indexierungsstrategien und fortgeschrittene Techniken abdecken. Meistern Sie das dokumentenbasierte Datenmodell von MongoDB, um skalierbare und flexible Datenbankanwendungen zu erstellen.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -38,7 +38,7 @@ db.help()
 
 ### Datenbank verwenden: `use database_name`
 
-Wechselt zu einer bestimmten Datenbank (wird erstellt, falls nicht vorhanden).
+Wechselt zu einer bestimmten Datenbank (wird erstellt, falls sie nicht existiert).
 
 ```javascript
 // Zu myapp Datenbank wechseln
@@ -47,6 +47,21 @@ use myapp
 use newdb
 db.users.insertOne({name: "John"})
 ```
+
+<BaseQuiz id="mongodb-use-1" correct="B">
+  <template #question>
+    Was passiert, wenn Sie in MongoDB `use newdb` ausführen?
+  </template>
+  
+  <BaseQuizOption value="A">Es erstellt die Datenbank sofort</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Es wechselt zur Datenbank (erstellt sie, wenn Sie zum ersten Mal Daten einfügen)</BaseQuizOption>
+  <BaseQuizOption value="C">Es löscht die Datenbank</BaseQuizOption>
+  <BaseQuizOption value="D">Es zeigt alle Collections in der Datenbank an</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Der Befehl `use` wechselt zu einer Datenbank, aber MongoDB erstellt die Datenbank erst, wenn das erste Dokument eingefügt wird. Dies ist ein Ansatz der "faulen" Erstellung.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Datenbank löschen: `db.dropDatabase()`
 
@@ -101,7 +116,7 @@ show collections
 
 ### Collection-Statistiken: `db.collection.stats()`
 
-Zeigt umfassende Statistiken zu einer Collection an, einschließlich Größe, Dokumentanzahl und Indexinformationen.
+Zeigt umfassende Statistiken über eine Collection an, einschließlich Größe, Dokumentanzahl und Indexinformationen.
 
 ```javascript
 // Collection-Statistiken
@@ -116,7 +131,7 @@ db.users.getIndexes()
 
 ### Beispiel-Dokumente: `db.collection.findOne()`
 
-Ruft Beispieldokumente ab, um Struktur und Datentypen zu verstehen.
+Ruft Beispiel-Dokumente ab, um Struktur und Datentypen zu verstehen.
 
 ```javascript
 // Ein Dokument abrufen
@@ -153,13 +168,28 @@ db.users.insertOne({
   age: 30,
   email: 'john@example.com',
 })
-// Mit benutzerdefiniertem _id einfügen
+// Einfügen mit benutzerdefiniertem _id
 db.users.insertOne({
   _id: 'custom_id_123',
   name: 'Jane Doe',
   status: 'active',
 })
 ```
+
+<BaseQuiz id="mongodb-insert-1" correct="A">
+  <template #question>
+    Was gibt `db.users.insertOne()` zurück?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Ein Bestätigungsobjekt mit der _id des eingefügten Dokuments</BaseQuizOption>
+  <BaseQuizOption value="B">Das eingefügte Dokument</BaseQuizOption>
+  <BaseQuizOption value="C">Nichts</BaseQuizOption>
+  <BaseQuizOption value="D">Die Anzahl der eingefügten Dokumente</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `insertOne()` gibt ein Bestätigungsobjekt zurück, das `acknowledged: true` und `insertedId` mit der `_id` des eingefügten Dokuments enthält (oder die benutzerdefinierte `_id`, falls angegeben).
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Mehrere Dokumente einfügen: `db.collection.insertMany()`
 
@@ -172,7 +202,7 @@ db.users.insertMany([
   { name: 'Bob', age: 35 },
   { name: 'Charlie', age: 28 },
 ])
-// Mit Optionen einfügen
+// Einfügen mit Optionen
 db.users.insertMany(
   [
     { name: 'Dave', age: 40 },
@@ -213,20 +243,20 @@ db.users.insertOne({
 })
 ```
 
-## Dokumentabfragen (Lesen)
+## Dokumentabfrage (Lesen)
 
-### Basisabfrage: `db.collection.find()`
+### Einfache Suche: `db.collection.find()`
 
 Ruft Dokumente basierend auf Abfragebedingungen ab.
 
 ```javascript
-// Alle Dokumente abrufen
+// Alle Dokumente finden
 db.users.find()
-// Mit Bedingung abrufen
+// Mit Bedingung finden
 db.users.find({ age: 30 })
-// Mit mehreren Bedingungen (AND) abrufen
+// Mit mehreren Bedingungen finden (AND)
 db.users.find({ age: 30, status: 'active' })
-// Mit OR-Bedingung abrufen
+// Mit OR-Bedingung finden
 db.users.find({ $or: [{ age: 25 }, { age: 30 }] })
 ```
 
@@ -258,16 +288,31 @@ db.users.find({ status: { $ne: 'inactive' } })
 db.users.find({ email: { $exists: true } })
 ```
 
+<BaseQuiz id="mongodb-query-1" correct="B">
+  <template #question>
+    Was bedeutet `$gt` in MongoDB-Abfragen?
+  </template>
+  
+  <BaseQuizOption value="A">Größer oder gleich</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Größer als</BaseQuizOption>
+  <BaseQuizOption value="C">Gruppieren nach</BaseQuizOption>
+  <BaseQuizOption value="D">Gesamtmenge abrufen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$gt` ist ein Vergleichsoperator, der "größer als" bedeutet. Er wird in Abfragen wie `{ age: { $gt: 25 } }` verwendet, um Dokumente zu finden, bei denen das Feld `age` größer als 25 ist.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Textsuche: `$text`, `$regex`
 
-Durchsucht Dokumente mithilfe von Text und Musterabgleich.
+Durchsucht Dokumente mithilfe von Text- und Musterabgleichen.
 
 ```javascript
-// Textsuche (erfordert Text-Index)
+// Textsuche (erfordert Textindex)
 db.posts.find({ $text: { $search: 'mongodb tutorial' } })
 // Regex-Suche
 db.users.find({ name: { $regex: '^John', $options: 'i' } })
-// Nicht-Groß-/Kleinschreibung-sensitive Suche
+// Case-insensitive Suche
 db.users.find({ email: { $regex: '@gmail.com$' } })
 ```
 
@@ -316,7 +361,25 @@ db.users.updateOne(
 )
 // Zu Array hinzufügen
 db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
-// Aus Array entfernen
+```
+
+<BaseQuiz id="mongodb-update-1" correct="C">
+  <template #question>
+    Was bewirkt `$set` bei MongoDB-Update-Operationen?
+  </template>
+  
+  <BaseQuizOption value="A">Löscht ein Feld</BaseQuizOption>
+  <BaseQuizOption value="B">Fügt ein Element zu einem Array hinzu</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Setzt den Wert eines Feldes</BaseQuizOption>
+  <BaseQuizOption value="D">Entfernt ein Element aus einem Array</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Der `$set`-Operator setzt den Wert eines Feldes in einem Dokument. Wenn das Feld nicht existiert, wird es erstellt. Wenn es existiert, wird der Wert aktualisiert.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```javascript
+// Aus Array ziehen
 db.users.updateOne({ name: 'John' }, { $pull: { hobbies: 'reading' } })
 ```
 
@@ -338,7 +401,7 @@ db.users.replaceOne(
 
 ## Datenaggregation
 
-### Basisaggregation: `db.collection.aggregate()`
+### Grundlegende Aggregation: `db.collection.aggregate()`
 
 Verarbeitet Daten durch Aggregations-Pipeline-Stufen.
 
@@ -396,7 +459,7 @@ db.products.aggregate([
 Transformiert die Dokumentstruktur und erstellt berechnete Felder.
 
 ```javascript
-// Projektion und Berechnung von Feldern
+// Felder projizieren und berechnen
 db.users.aggregate([
   {
     $project: {
@@ -457,11 +520,11 @@ db.queue.findOneAndDelete({ processed: false }, { sort: { priority: -1 } })
 Erstellt Indizes für Felder, um Abfragen zu beschleunigen.
 
 ```javascript
-// Einzel-Feld-Index
+// Einzelnes Feld Index
 db.users.createIndex({ email: 1 })
 // Zusammengesetzter Index
 db.users.createIndex({ status: 1, createdAt: -1 })
-// Text-Index für Suche
+// Textindex für Suche
 db.posts.createIndex({ title: 'text', content: 'text' })
 // Eindeutiger Index
 db.users.createIndex({ email: 1 }, { unique: true })
@@ -502,12 +565,12 @@ db.users
 
 ### Performance-Tipps
 
-Bewährte Verfahren zur Optimierung von MongoDB-Abfragen und -Operationen.
+Best Practices zur Optimierung von MongoDB-Abfragen und -Operationen.
 
 ```javascript
-// Projektion verwenden, um Datenübertragung zu begrenzen
+// Projektion verwenden, um die Datenübertragung zu begrenzen
 db.users.find({ status: 'active' }, { name: 1, email: 1 })
-// Limit für bessere Performance verwenden
+// Ergebnisse für bessere Leistung begrenzen
 db.posts.find().sort({ createdAt: -1 }).limit(10)
 // Hint verwenden, um einen bestimmten Index zu erzwingen
 db.users.find({ age: 25 }).hint({ age: 1 })
@@ -515,18 +578,18 @@ db.users.find({ age: 25 }).hint({ age: 1 })
 
 ## MongoDB Shell & Verbindung
 
-### Verbindung zu MongoDB: `mongosh`
+### Mit MongoDB verbinden: `mongosh`
 
-Startet die MongoDB Shell und stellt Verbindungen zu verschiedenen Instanzen her.
+Startet die MongoDB-Shell und verbindet sich mit verschiedenen Instanzen.
 
 ```bash
-# Verbindung zu lokalem MongoDB
+# Mit lokaler MongoDB verbinden
 mongosh
-# Verbindung zu spezifischem Host und Port
+# Mit spezifischem Host und Port verbinden
 mongosh "mongodb://localhost:27017"
-# Verbindung zu Remote-Server
+# Mit Remote-Server verbinden
 mongosh "mongodb://username:password@host:port/database"
-# Verbindung mit Optionen
+# Mit Optionen verbinden
 mongosh --host localhost --port 27017
 ```
 
@@ -557,12 +620,12 @@ db.users.find(myQuery)
 db.users.find().pretty()
 // Ausführungszeit anzeigen
 db.users.find({ age: 25 }).explain('executionStats')
-// JavaScript in der Shell verwenden
+// JavaScript in Shell verwenden
 var user = db.users.findOne({ name: 'John' })
 print('Alter des Benutzers: ' + user.age)
 ```
 
-## Datenimport & -export
+## Daten Import & Export
 
 ### Daten importieren: `mongoimport`
 
@@ -608,7 +671,7 @@ mongodump --db myapp --collection users --out /backup/
 mongodump --db myapp --gzip --out /backup/
 ```
 
-### Wiederherstellung: `mongorestore`
+### Wiederherstellen: `mongorestore`
 
 Stellt MongoDB-Daten aus binären Backups wieder her.
 
@@ -708,7 +771,7 @@ mongosh -u admin -p --authenticationDatabase admin
 
 ### Replica Sets: `rs.initiate()`
 
-Richten Sie Replica Sets für hohe Verfügbarkeit ein.
+Richten Sie Replica Sets für Hochverfügbarkeit ein.
 
 ```javascript
 // Replica Set initialisieren
@@ -729,7 +792,7 @@ rs.status()
 Häufige MongoDB-Konfigurationseinstellungen.
 
 ```yaml
-# Beispiel für mongod.conf
+# mongod.conf Beispiel
 storage:
   dbPath: /var/lib/mongodb
 systemLog:
@@ -754,7 +817,7 @@ Identifizieren und beheben Sie häufig auftretende MongoDB-Probleme.
 sudo systemctl status mongod
 // Verfügbarkeit des Ports prüfen
 netstat -tuln | grep 27017
-// Fehlerbehandlung bei doppelten Schlüsseln
+// Behandlung von Duplikatsschlüssel-Fehlern
 try {
   db.users.insertOne({email: "existing@example.com"})
 } catch (e) {
@@ -821,15 +884,15 @@ try {
 
 ### Change Streams: `db.collection.watch()`
 
-Beobachten Sie Echtzeitänderungen in Collections.
+Überwachen Sie Änderungen an Collections in Echtzeit.
 
 ```javascript
-// Collection-Änderungen beobachten
+// Collection-Änderungen überwachen
 const changeStream = db.users.watch()
 changeStream.on('change', (change) => {
   console.log('Änderung erkannt:', change)
 })
-// Mit Filter beobachten
+// Mit Filter überwachen
 const pipeline = [{ $match: { operationType: 'insert' } }]
 const changeStream = db.users.watch(pipeline)
 ```

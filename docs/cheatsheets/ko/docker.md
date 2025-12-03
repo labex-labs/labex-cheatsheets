@@ -1,6 +1,6 @@
 ---
-title: '도커 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 도커를 학습하세요.'
+title: '도커 치트 시트 | LabEx'
+description: '포괄적인 치트 시트로 도커 컨테이너화를 학습하세요. 도커 명령어, 이미지, 컨테이너, Dockerfile, Docker Compose 및 컨테이너 오케스트레이션에 대한 빠른 참조.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Docker 치트 시트
 <a target="_blank" href="https://labex.io/ko/learn/docker">Hands-On Labs 로 Docker 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 Docker 컨테이너화를 학습하세요. LabEx 는 필수 컨테이너 관리, 이미지 빌드, Docker Compose, 네트워킹, 볼륨 및 배포를 다루는 포괄적인 Docker 과정을 제공합니다. 컨테이너 오케스트레이션 및 최신 애플리케이션 배포 기술을 마스터하세요.
+Hands-On 랩 및 실제 시나리오를 통해 Docker 컨테이너화를 학습하십시오. LabEx 는 필수 컨테이너 관리, 이미지 빌드, Docker Compose, 네트워킹, 볼륨 및 배포를 다루는 포괄적인 Docker 과정을 제공합니다. 컨테이너 오케스트레이션 및 최신 애플리케이션 배포 기술을 마스터하십시오.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -34,7 +34,7 @@ software-properties-common
 # Docker 공식 GPG 키 추가
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg
 | sudo apt-key add -
-# Docker 저장소 추가
+# Docker 리포지토리 추가
 sudo add-apt-repository "deb [arch=amd64]
 https://download.docker.com/linux/ubuntu bionic stable"
 # Docker 설치
@@ -50,7 +50,7 @@ GUI 기반 관리를 위해 Docker Desktop 을 설치합니다.
 
 ```bash
 # Windows: docker.com에서 Docker Desktop 다운로드
-# macOS: Homebrew를 사용하거나 docker.com에서 다운로드
+# macOS: Homebrew 사용 또는 docker.com에서 다운로드
 brew install --cask docker
 # 또는 다음에서 직접 다운로드:
 # https://www.docker.com/products/docker-desktop
@@ -58,12 +58,12 @@ brew install --cask docker
 
 ### 설치 후 설정
 
-루트가 아닌 사용자 사용을 위해 Docker 를 구성하고 설치를 확인합니다.
+비-root 사용을 위한 Docker 구성 및 설치 확인.
 
 ```bash
-# 사용자를 docker 그룹에 추가 (Linux)
+# Docker 그룹에 사용자 추가 (Linux)
 sudo usermod -aG docker $USER
-# 그룹 변경 사항을 적용하려면 로그아웃 후 다시 로그인
+# 그룹 변경 사항 적용을 위해 로그아웃 후 다시 로그인
 # Docker 설치 확인
 docker --version
 docker run hello-world
@@ -106,16 +106,31 @@ docker <command> --help
 이미지로부터 컨테이너를 생성하고 시작합니다.
 
 ```bash
-# 컨테이너를 대화형으로 실행
+# 대화형으로 컨테이너 실행
 docker run -it ubuntu:latest bash
 # 컨테이너를 백그라운드에서 실행 (분리 모드)
 docker run -d --name my-container
 nginx
 # 포트 매핑을 사용하여 실행
 docker run -p 8080:80 nginx
-# 종료 시 자동 제거하여 실행
+# 종료 후 자동 제거하며 실행
 docker run --rm hello-world
 ```
+
+<BaseQuiz id="docker-run-1" correct="C">
+  <template #question>
+    `docker run -d`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A">컨테이너를 디버그 모드로 실행합니다</BaseQuizOption>
+  <BaseQuizOption value="B">컨테이너가 중지되면 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>컨테이너를 분리 모드 (백그라운드) 로 실행합니다</BaseQuizOption>
+  <BaseQuizOption value="D">기본 설정으로 컨테이너를 실행합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-d` 플래그는 컨테이너를 분리 모드로 실행하여 백그라운드에서 실행하고 즉시 터미널 제어권을 반환합니다. 이는 장기 실행 서비스에 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 컨테이너 목록: `docker ps`
 
@@ -152,7 +167,7 @@ docker unpause container_name
 
 ### 명령어 실행: `docker exec`
 
-실행 중인 컨테이너 내부에서 명령어를 실행합니다.
+실행 중인 컨테이너 내에서 명령어를 실행합니다.
 
 ```bash
 # 대화형 bash 셸 실행
@@ -191,7 +206,7 @@ docker logs container_name
 docker logs -f container_name
 # 최근 로그만 표시
 docker logs --tail 50 container_name
-# 타임스탬프와 함께 로그 표시
+# 타임스탬프와 함께 로그 보기
 docker logs -t container_name
 ```
 
@@ -212,14 +227,29 @@ docker build --build-arg VERSION=1.0 -t myapp .
 docker build --no-cache -t myapp .
 ```
 
+<BaseQuiz id="docker-build-1" correct="A">
+  <template #question>
+    `docker build -t myapp:latest .`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>현재 디렉토리에서 "myapp:latest" 태그로 Docker 이미지를 빌드합니다</BaseQuizOption>
+  <BaseQuizOption value="B">"myapp"이라는 컨테이너를 실행합니다</BaseQuizOption>
+  <BaseQuizOption value="C">Docker Hub 에서 "myapp:latest" 이미지를 가져옵니다</BaseQuizOption>
+  <BaseQuizOption value="D">"myapp:latest" 이미지를 삭제합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-t` 플래그는 이미지를 "myapp:latest"로 태그 지정하며, `.` 은 빌드 컨텍스트 (현재 디렉토리) 를 지정합니다. 이 명령어는 현재 디렉토리의 Dockerfile 로부터 새 이미지를 빌드합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 이미지 검사: `docker images` / `docker inspect`
 
 Docker 이미지를 나열하고 검사합니다.
 
 ```bash
-# 모든 로컬 이미지 나열
+# 모든 로컬 이미지 목록
 docker images
-# 특정 필터로 이미지 나열
+# 특정 필터로 이미지 목록화
 docker images nginx
 # 이미지 세부 정보 표시
 docker inspect image_name
@@ -238,20 +268,20 @@ docker pull nginx:latest
 docker pull ubuntu:20.04
 # 레지스트리로 이미지 푸시
 docker push myusername/myapp:latest
-# 푸시 전에 이미지 태그 지정
+# 푸시 전 이미지 태그 지정
 docker tag myapp:latest myusername/myapp:v1.0
 ```
 
 ### 이미지 정리: `docker rmi` / `docker image prune`
 
-사용하지 않는 이미지를 제거하여 디스크 공간을 확보합니다.
+디스크 공간 확보를 위해 사용하지 않는 이미지를 제거합니다.
 
 ```bash
 # 특정 이미지 제거
 docker rmi image_name
 # 사용하지 않는 이미지 제거
 docker image prune
-# 사용하지 않는 모든 이미지 제거 (실행 중인 이미지 제외)
+# 모든 사용하지 않는 이미지 제거 (댕글링 이미지뿐만 아니라)
 docker image prune -a
 # 이미지 강제 제거
 docker rmi -f image_name
@@ -259,12 +289,12 @@ docker rmi -f image_name
 
 ## Dockerfile 기본 사항
 
-### 필수 지침
+### 필수 명령어
 
 이미지 빌드를 위한 핵심 Dockerfile 명령어.
 
 ```dockerfile
-# 기본 이미지
+# 베이스 이미지
 FROM ubuntu:20.04
 # 유지 관리자 정보 설정
 LABEL maintainer="user@example.com"
@@ -281,6 +311,21 @@ WORKDIR /app
 EXPOSE 8000
 ```
 
+<BaseQuiz id="dockerfile-1" correct="B">
+  <template #question>
+    Dockerfile 에서 `FROM` 명령어의 목적은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">호스트에서 컨테이너로 파일을 복사합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>기반이 될 베이스 이미지를 지정합니다</BaseQuizOption>
+  <BaseQuizOption value="C">환경 변수를 설정합니다</BaseQuizOption>
+  <BaseQuizOption value="D">컨테이너 시작 시 실행될 명령어를 정의합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `FROM` 명령어는 Dockerfile 의 첫 번째 주석이 아닌 명령어여야 합니다. 이는 이미지 빌드의 기반이 될 베이스 이미지를 지정하여 컨테이너의 토대를 제공합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 런타임 구성
 
 컨테이너 실행 방식을 구성합니다.
@@ -294,7 +339,7 @@ RUN useradd -m appuser
 USER appuser
 # 시작 명령어 정의
 CMD ["python3", "app.py"]
-# 또는 고정된 명령어를 위해 ENTRYPOINT 사용
+# 고정된 명령어를 위해 ENTRYPOINT 사용
 ENTRYPOINT ["python3"]
 CMD ["app.py"]
 # 헬스 체크 설정
@@ -309,9 +354,9 @@ HEALTHCHECK --interval=30s --timeout=3s \
 다중 컨테이너 애플리케이션을 시작하고 중지합니다.
 
 ```bash
-# 서비스를 포그라운드에서 시작
+# 포그라운드에서 서비스 시작
 docker-compose up
-# 서비스를 백그라운드에서 시작
+# 백그라운드에서 서비스 시작
 docker-compose up -d
 # 서비스 빌드 및 시작
 docker-compose up --build
@@ -320,6 +365,21 @@ docker-compose down
 # 볼륨과 함께 중지 및 제거
 docker-compose down -v
 ```
+
+<BaseQuiz id="docker-compose-1" correct="D">
+  <template #question>
+    `docker-compose up -d`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A">실행 중인 모든 컨테이너를 중지합니다</BaseQuizOption>
+  <BaseQuizOption value="B">컨테이너를 시작하지 않고 이미지를 빌드합니다</BaseQuizOption>
+  <BaseQuizOption value="C">모든 서비스의 로그를 표시합니다</BaseQuizOption>
+  <BaseQuizOption value="D" correct>docker-compose.yml 에 정의된 모든 서비스를 분리 모드 (detached mode) 로 시작합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-d` 플래그는 컨테이너를 분리 모드 (백그라운드) 로 실행합니다. `docker-compose up`은 docker-compose.yml 파일을 읽고 정의된 모든 서비스를 시작하여 다중 컨테이너 애플리케이션 관리를 용이하게 합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 서비스 관리
 
@@ -393,6 +453,24 @@ docker network inspect mynetwork
 ```bash
 # 단일 포트 매핑
 docker run -p 8080:80 nginx
+```
+
+<BaseQuiz id="docker-port-1" correct="A">
+  <template #question>
+    `docker run -p 8080:80 nginx`에서 포트 번호는 무엇을 의미합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>8080 은 호스트 포트, 80 은 컨테이너 포트입니다</BaseQuizOption>
+  <BaseQuizOption value="B">80 은 호스트 포트, 8080 은 컨테이너 포트입니다</BaseQuizOption>
+  <BaseQuizOption value="C">두 포트 모두 컨테이너 포트입니다</BaseQuizOption>
+  <BaseQuizOption value="D">두 포트 모두 호스트 포트입니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    형식은 `-p host_port:container_port`입니다. 호스트 머신의 8080 포트가 컨테이너 내부의 80 포트에 매핑되어, localhost:8080 을 통해 컨테이너에서 실행 중인 nginx 웹 서버에 액세스할 수 있습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```bash
 # 여러 포트 매핑
 docker run -p 8080:80 -p 8443:443 nginx
 # 특정 호스트 인터페이스에 매핑
@@ -508,7 +586,7 @@ Docker Hub 에 인증하고 상호 작용합니다.
 ```bash
 # Docker Hub 로그인
 docker login
-# 특정 레지스트리 로그인
+# 특정 레지스트리에 로그인
 docker login registry.example.com
 # Docker Hub에서 이미지 검색
 docker search nginx
@@ -518,29 +596,29 @@ docker search --filter stars=100 nginx
 
 ### 이미지 태그 지정 및 게시
 
-이미지를 준비하고 레지스트리에 게시합니다.
+레지스트리에 이미지를 준비하고 게시합니다.
 
 ```bash
-# 레지스트리용 이미지 태그 지정
+# 레지스트리를 위한 이미지 태그 지정
 docker tag myapp:latest username/myapp:v1.0
 docker tag myapp:latest
 registry.example.com/myapp:latest
 # Docker Hub로 푸시
 docker push username/myapp:v1.0
-# 프라이빗 레지스트리로 푸시
+# 비공개 레지스트리로 푸시
 docker push registry.example.com/myapp:latest
 ```
 
-### 프라이빗 레지스트리
+### 비공개 레지스트리
 
-프라이빗 Docker 레지스트리 작업.
+비공개 Docker 레지스트리 작업.
 
 ```bash
-# 프라이빗 레지스트리에서 가져오기
+# 비공개 레지스트리에서 가져오기
 docker pull registry.company.com/myapp:latest
-# 로컬에서 프라이빗 레지스트리 실행
+# 로컬 레지스트리 실행
 docker run -d -p 5000:5000 --name registry registry:2
-# 로컬 레지스트리로 푸시
+# 로컬 레지스트리로 태그 지정
 docker tag myapp localhost:5000/myapp
 docker push localhost:5000/myapp
 ```
@@ -579,7 +657,7 @@ docker system df
 
 ### 대상 정리
 
-특정 유형의 사용하지 않는 리소스 제거.
+사용하지 않는 특정 유형의 리소스 제거.
 
 ```bash
 # 중지된 컨테이너 제거
@@ -592,9 +670,9 @@ docker volume prune
 docker network prune
 ```
 
-### 대량 작업
+### 일괄 작업
 
-여러 컨테이너/이미지에 대한 작업 수행.
+여러 컨테이너/이미지에 작업 수행.
 
 ```bash
 # 실행 중인 모든 컨테이너 중지
@@ -603,7 +681,7 @@ docker stop $(docker ps -q)
 docker rm $(docker ps -aq)
 # 모든 이미지 제거
 docker rmi $(docker images -q)
-# 끊어진(dangling) 이미지만 제거
+# 댕글링 이미지(dangling images)만 제거
 docker rmi $(docker images -f "dangling=true" -q)
 ```
 
@@ -629,7 +707,7 @@ docker run --restart=always nginx
 프로덕션 사용을 위해 Docker 데몬 구성.
 
 ```bash
-# 데몬 구성 파일 편집
+# 데몬 구성 편집
 sudo nano
 /etc/docker/daemon.json
 # 예시 구성:
@@ -676,7 +754,7 @@ export DOCKER_BUILDKIT=1
 echo '{"experimental": true}' |
 sudo tee
 /etc/docker/daemon.json
-# 스토리지 드라이버 옵션 설정
+# 스토리지 드라이버 옵션 구성
 {
   "storage-driver": "overlay2",
   "storage-opts": [
@@ -697,14 +775,14 @@ sudo tee
 
 ### 보안 모범 사례
 
-컨테이너를 안전하게 유지하고 프로덕션 준비 상태로 유지합니다.
+컨테이너를 안전하게 유지하고 프로덕션 준비 상태로 유지.
 
 ```dockerfile
-# Dockerfile에서 루트가 아닌 사용자로 실행
+# Dockerfile에서 비-root 사용자로 실행
 RUN groupadd -r appuser && useradd -r -g appuser
 appuser
 USER appuser
-# 특정 이미지 태그 사용, 'latest' 사용 안 함
+# 'latest' 대신 특정 이미지 태그 사용
 FROM node:16.20.0-alpine
 # 가능한 경우 읽기 전용 파일 시스템 사용
 docker run --read-only nginx

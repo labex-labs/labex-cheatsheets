@@ -111,7 +111,7 @@ timedatectl
 timedatectl set-timezone America/New_York
 ```
 
-## Operações de Arquivo e Diretório
+## Operações de Arquivos e Diretórios
 
 ### Listar Arquivos: `ls`
 
@@ -243,7 +243,7 @@ chmod +x script.sh
 chown usuario:grupo nome_arquivo
 # Mudar propriedade recursivamente
 chown -R usuario:grupo diretorio/
-# Visualizar permissões do arquivo
+# Ver permissões de arquivo
 ls -l nome_arquivo
 ```
 
@@ -300,12 +300,12 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    Qual sinal o comando `kill -9` envia para um processo?
+    Qual sinal o comando `kill -9` envia a um processo?
   </template>
   
   <BaseQuizOption value="A">SIGTERM (terminar graciosamente)</BaseQuizOption>
   <BaseQuizOption value="B">SIGHUP (desligar)</BaseQuizOption>
-  <BaseQuizOption value="C">SIGINT (interromper)</BaseQuizOption>
+  <BaseQuizOption value="C">SIGINT (interrupção)</BaseQuizOption>
   <BaseQuizOption value="D" correct>SIGKILL (matar à força, não pode ser ignorado)</BaseQuizOption>
   
   <BaseQuizAnswer>
@@ -360,7 +360,7 @@ ip addr show
 ip route show
 # Configurar interface (temporário)
 ip addr add 192.168.1.10/24 dev eth0
-# Ligar/desligar interface
+# Ativar/desativar interface
 ip link set eth0 up
 # Configuração de interface legada
 ifconfig
@@ -428,7 +428,7 @@ rsync -avz localdir/ usuario@host:/remotedir/
 rsync -avz --progress origem/ destino/
 ```
 
-## Processamento e Pesquisa de Texto
+## Processamento de Texto e Pesquisa
 
 ### Pesquisa de Texto: `grep`
 
@@ -437,7 +437,7 @@ Pesquisa por padrões em arquivos e saída de comandos.
 ```bash
 # Pesquisar por padrão em arquivo
 grep "padrao" nome_arquivo
-# Pesquisa insensível a maiúsculas/minúsculas
+# Pesquisa sem distinção entre maiúsculas e minúsculas
 grep -i "padrao" nome_arquivo
 # Pesquisa recursiva em diretórios
 grep -r "padrao" /caminho/
@@ -449,7 +449,7 @@ grep -c "padrao" nome_arquivo
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    Qual opção do `grep` realiza uma pesquisa insensível a maiúsculas/minúsculas?
+    Qual opção do `grep` realiza uma pesquisa sem distinção entre maiúsculas e minúsculas?
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,13 +458,13 @@ grep -c "padrao" nome_arquivo
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    A opção `-i` torna o grep insensível a maiúsculas/minúsculas, então ele corresponderá a letras maiúsculas e minúsculas. Por exemplo, `grep -i "erro" arquivo.txt` corresponderá a "Erro", "ERRO" e "erro".
+    A opção `-i` torna o grep insensível a maiúsculas e minúsculas, então ele corresponderá a letras maiúsculas e minúsculas. Por exemplo, `grep -i "erro" arquivo.txt` corresponderá a "Erro", "ERRO" e "erro".
   </BaseQuizAnswer>
 </BaseQuiz>
 
 ### Manipulação de Texto: `sed`, `awk`
 
-Edita e processa texto usando editores de fluxo e scanners de padrões.
+Edita e processa texto usando editores de fluxo e analisadores de padrões.
 
 ```bash
 # Substituir texto em arquivo
@@ -556,7 +556,7 @@ Operações avançadas de tar para backup e restauração.
 tar -czvf backup.tar.gz /home/usuario/
 # Extrair para diretório específico
 tar -xzf arquivo.tar.gz -C /destino/
-# Adicionar arquivos a um arquivo existente
+# Adicionar arquivos a arquivo existente
 tar -rf arquivo.tar novoarquivo.txt
 # Atualizar arquivo com arquivos mais recentes
 tar -uf arquivo.tar arquivos/
@@ -573,7 +573,7 @@ du -h /caminho/
 du -sh /caminho/
 # Mostrar tamanhos de todos os subdiretórios
 du -h --max-depth=1 /caminho/
-# Diretórios maiores primeiro
+# Maiores diretórios primeiro
 du -h | sort -hr | head -10
 ```
 
@@ -590,15 +590,15 @@ free -h
 cat /proc/meminfo
 # Estatísticas de memória virtual
 vmstat
-# Estatísticas de memória a cada 2 segundos
+# Uso de memória a cada 2 segundos
 vmstat 2
 # Mostrar uso de swap
 swapon --show
 ```
 
-### I/O de Disco: `iostat`, `iotop`
+### Disco I/O: `iostat`, `iotop`
 
-Monitora o desempenho de entrada/saída de disco e identifica gargalos.
+Monitora o desempenho de entrada/saída do disco e identifica gargalos.
 
 ```bash
 # Estatísticas de I/O (requer sysstat)
@@ -645,7 +645,7 @@ dmesg
 dmesg | tail
 ```
 
-## Gerenciamento de Usuário e Permissões
+## Gerenciamento de Usuários e Permissões
 
 ### Operações de Usuário: `useradd`, `usermod`, `userdel`
 
@@ -707,7 +707,7 @@ Gerencia senhas de usuário e políticas de conta.
 passwd
 # Mudar senha de outro usuário (como root)
 passwd nome_usuario
-# Mostrar informações de envelhecimento de senha
+# Mostrar informações de envelhecimento da senha
 chage -l nome_usuario
 # Definir expiração de senha
 chage -M 90 nome_usuario
@@ -772,7 +772,7 @@ snap find nome_pacote
 
 ### Pacotes Flatpak: `flatpak`
 
-Gerencia aplicativos Flatpak para software em sandbox.
+Gerencia aplicações Flatpak para software em sandbox.
 
 ```bash
 # Instalar flatpak
@@ -781,7 +781,7 @@ flatpak install nome_pacote
 flatpak list
 # Atualizar pacotes flatpak
 flatpak update
-# Desinstalar flatpak
+# Remover flatpak
 flatpak uninstall nome_pacote
 # Pesquisar pacotes flatpak
 flatpak search nome_pacote
@@ -808,7 +808,7 @@ Ctrl+R
 
 ### Aliases e Funções: `alias`
 
-Cria atalhos para comandos frequentemente usados.
+Cria atalhos para comandos usados com frequência.
 
 ```bash
 # Criar alias
@@ -817,7 +817,7 @@ alias ll='ls -la'
 alias
 # Remover alias
 unalias ll
-# Tornar alias permanente (adicionar ao .bashrc)
+# Tornar alias permanente (adicionar a .bashrc)
 echo "alias ll='ls -la'" >> ~/.bashrc
 ```
 
@@ -862,7 +862,7 @@ printenv
 Escolhe e instala distribuições Linux para diferentes casos de uso.
 
 ```bash
-# Servidor Ubuntu
+# Ubuntu Server
 wget ubuntu-server.iso
 # CentOS Stream
 wget centos-stream.iso
@@ -882,7 +882,7 @@ dd if=linux.iso of=/dev/sdX bs=4M
 # Criar USB inicializável (multiplataforma)
 # Use ferramentas como Rufus, Etcher ou UNetbootin
 # Instalação em rede
-# Configurar boot PXE para instalações em rede
+# Configurar boot PXE para instalações de rede
 ```
 
 ### Configuração Inicial: Usuários, Rede, SSH
@@ -964,7 +964,7 @@ tail -f /var/log/auth.log
 grep "Failed password" /var/log/auth.log
 # Monitorar logs do sistema
 tail -f /var/log/syslog
-# Verificar histórico de login
+# Ver histórico de login
 last
 # Verificar atividades suspeitas
 journalctl -p err
@@ -974,12 +974,12 @@ journalctl -p err
 
 ### Problemas de Inicialização: Recuperação do GRUB
 
-Recupera-se de problemas no carregador de inicialização e no kernel.
+Recupera problemas de carregador de inicialização e kernel.
 
 ```bash
 # Inicializar a partir do modo de resgate
-# Acessar o menu GRUB durante a inicialização
-# Montar sistema de arquivos root
+# Acessar menu GRUB durante a inicialização
+# Montar sistema de arquivos raiz
 mount /dev/sda1 /mnt
 # Chroot para o sistema
 chroot /mnt
@@ -996,7 +996,7 @@ Verifica e repara corrupção do sistema de arquivos.
 ```bash
 # Verificar sistema de arquivos
 fsck /dev/sda1
-# Verificação forçada do sistema de arquivos
+# Forçar verificação do sistema de arquivos
 fsck -f /dev/sda1
 # Reparo automático
 fsck -y /dev/sda1

@@ -1,6 +1,6 @@
 ---
-title: 'Nmap Spickzettel'
-description: 'Lernen Sie Nmap mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Nmap Spickzettel | LabEx'
+description: 'Lernen Sie Nmap-Netzwerk-Scanning mit diesem umfassenden Spickzettel. Schnelle Referenz für Port-Scanning, Netzwerkerkennung, Schwachstellenerkennung, Sicherheitsaudits und Netzwerkerkundung.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Nmap Spickzettel
 <a target="_blank" href="https://labex.io/de/learn/nmap">Lernen Sie Nmap mit praktischen Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Nmap Network Scanning durch praktische Labs und reale Szenarien. LabEx bietet umfassende Nmap-Kurse, die wesentliche Netzwerkentdeckung, Port-Scanning, Service-Erkennung, OS-Fingerprinting und Schwachstellenbewertung abdecken. Meistern Sie Techniken zur Netzwerkerkundung und Sicherheitsprüfung.
+Lernen Sie Nmap Network Scanning durch praktische Labs und reale Szenarien. LabEx bietet umfassende Nmap-Kurse, die wesentliche Netzwerkentdeckung, Port-Scanning, Dienst-Erkennung, OS-Fingerprinting und Schwachstellenanalyse abdecken. Meistern Sie Techniken zur Netzwerkerkundung und Sicherheitsprüfung.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -47,13 +47,13 @@ brew install nmap
 
 ### Windows Installation
 
-Herunterladen und installieren von der offiziellen Webseite.
+Laden Sie die Installationsdatei von der offiziellen Website herunter und installieren Sie sie.
 
 ```bash
 # Installer herunterladen von
 https://nmap.org/download.html
-# Den .exe Installer mit Administratorrechten ausführen
-# Beinhaltet Zenmap GUI und Kommandozeilenversion
+# Führen Sie die .exe-Installationsdatei mit Administratorrechten aus
+# Enthält Zenmap GUI und Kommandozeilenversion
 ```
 
 ### Grundlegende Überprüfung
@@ -85,9 +85,24 @@ nmap 192.168.1.1 192.168.1.5
 192.168.1.10
 ```
 
+<BaseQuiz id="nmap-scan-1" correct="A">
+  <template #question>
+    Was bewirkt ein einfacher `nmap 192.168.1.1` Scan standardmäßig?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Scannt die 1000 häufigsten TCP-Ports</BaseQuizOption>
+  <BaseQuizOption value="B">Scannt alle 65535 Ports</BaseQuizOption>
+  <BaseQuizOption value="C">Führt nur Host-Discovery durch</BaseQuizOption>
+  <BaseQuizOption value="D">Scannt nur Port 80</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Standardmäßig scannt Nmap die 1000 häufigsten TCP-Ports. Um alle Ports zu scannen, verwenden Sie `-p-` oder geben Sie spezifische Ports mit `-p 80,443,22` an.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Netzwerkbereichs-Scan
 
-Nmap akzeptiert Hostnamen, IP-Adressen, Subnetze.
+Nmap akzeptiert Hostnamen, IP-Adressen und Subnetze.
 
 ```bash
 # IP-Bereich scannen
@@ -113,24 +128,39 @@ nmap 192.168.1.0/24 --excludefile
 exclude.txt
 ```
 
-## Host-Erkennungstechniken
+## Host-Discovery-Techniken
 
-### Ping-Scan: `nmap -sn`
+### Ping Scan: `nmap -sn`
 
-Die Host-Erkennung ist eine Schlüsselmethode, die viele Analysten und Penetrationstester mit Nmap verwenden. Ihr Zweck ist es, einen Überblick darüber zu gewinnen, welche Systeme online sind.
+Host-Discovery ist eine Schlüsselmethode, die viele Analysten und Penetrationstester mit Nmap verwenden. Ihr Zweck ist es, einen Überblick darüber zu gewinnen, welche Systeme online sind.
 
 ```bash
 # Nur Ping-Scan (kein Port-Scan)
 nmap -sn 192.168.1.0/24
-# Host-Erkennung überspringen (alle Hosts als aktiv annehmen)
+# Host-Discovery überspringen (alle Hosts als aktiv annehmen)
 nmap -Pn 192.168.1.1
 # ICMP Echo Ping
 nmap -PE 192.168.1.0/24
 ```
 
+<BaseQuiz id="nmap-ping-1" correct="A">
+  <template #question>
+    Was bewirkt `nmap -sn`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Führt nur Host-Discovery ohne Port-Scanning durch</BaseQuizOption>
+  <BaseQuizOption value="B">Scannt alle Ports auf dem Ziel</BaseQuizOption>
+  <BaseQuizOption value="C">Führt einen Stealth-Scan durch</BaseQuizOption>
+  <BaseQuizOption value="D">Scannt nur UDP-Ports</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-sn` weist Nmap an, nur die Host-Discovery (Ping-Scan) durchzuführen, ohne Ports zu scannen. Dies ist nützlich, um schnell zu identifizieren, welche Hosts in einem Netzwerk online sind.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### TCP Ping-Techniken
 
-Verwenden Sie TCP-Pakete zur Host-Erkennung.
+Verwenden Sie TCP-Pakete für die Host-Discovery.
 
 ```bash
 # TCP SYN Ping an Port 80
@@ -143,18 +173,34 @@ nmap -PS22,80,443 192.168.1.0/24
 
 ### UDP Ping: `nmap -PU`
 
-Verwenden Sie UDP-Pakete zur Host-Erkennung.
+Verwenden Sie UDP-Pakete für die Host-Discovery.
 
 ```bash
 # UDP Ping an gängige Ports
 nmap -PU53,67,68,137 192.168.1.0/24
-# UDP Ping an Standardports
+```
+
+<BaseQuiz id="nmap-udp-1" correct="B">
+  <template #question>
+    Warum sollte man UDP Ping anstelle von ICMP Ping verwenden?
+  </template>
+  
+  <BaseQuizOption value="A">UDP Ping ist immer schneller</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Einige Netzwerke blockieren ICMP, erlauben aber UDP-Pakete</BaseQuizOption>
+  <BaseQuizOption value="C">UDP Ping scannt Ports automatisch</BaseQuizOption>
+  <BaseQuizOption value="D">UDP Ping funktioniert nur in lokalen Netzwerken</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    UDP Ping kann nützlich sein, wenn ICMP durch Firewalls blockiert wird. Viele Netzwerke erlauben UDP-Pakete an gängige Ports (wie DNS Port 53), selbst wenn ICMP gefiltert wird, was UDP Ping für die Host-Discovery effektiv macht.
+  </BaseQuizAnswer>
+</BaseQuiz>
+# UDP Ping an Standard-Ports
 nmap -PU 192.168.1.0/24
 ```
 
 ### ARP Ping: `nmap -PR`
 
-Verwenden Sie ARP-Anfragen zur Erkennung im lokalen Netzwerk.
+Verwenden Sie ARP-Anfragen für die lokale Netzwerk-Discovery.
 
 ```bash
 # ARP Ping (Standard für lokale Netzwerke)
@@ -180,7 +226,7 @@ nmap -sS -T4 192.168.1.1
 
 ### TCP Connect Scan: `nmap -sT`
 
-Nmap sendet ein TCP-Paket mit gesetztem SYN-Flag an einen Port. Dies teilt dem Benutzer mit, ob Ports offen, geschlossen oder unbekannt sind.
+Nmap sendet ein TCP-Paket mit gesetztem SYN-Flag an einen Port. Dies informiert den Benutzer darüber, ob Ports offen, geschlossen oder unbekannt sind.
 
 ```bash
 # TCP Connect Scan (kein Root erforderlich)
@@ -204,7 +250,7 @@ nmap -sS -sU -p T:80,443,U:53,161 192.168.1.1
 
 ### Stealth Scans
 
-Fortgeschrittene Scan-Techniken zur Umgehung von Erkennung.
+Fortgeschrittene Scan-Techniken zur Umgehung von Sicherheitsmaßnahmen.
 
 ```bash
 # FIN Scan
@@ -262,9 +308,9 @@ nmap --open 192.168.1.1
 nmap -v 192.168.1.1
 ```
 
-## Service- & Versionserkennung
+## Dienst- & Versionserkennung
 
-### Service-Erkennung: `nmap -sV`
+### Dienst-Erkennung: `nmap -sV`
 
 Erkennen Sie, welche Dienste laufen, und versuchen Sie, deren Softwareversionen und Konfigurationen zu identifizieren.
 
@@ -281,7 +327,7 @@ nmap -sC -sV 192.168.1.1
 
 ### Service-Skripte
 
-Verwenden Sie Skripte für eine verbesserte Service-Erkennung.
+Verwenden Sie Skripte für eine verbesserte Dienst-Erkennung.
 
 ```bash
 # Banner Grabbing
@@ -340,9 +386,9 @@ nmap -T5 192.168.1.1
 Feinabstimmung, wie Nmap Timeouts, Wiederholungen und paralleles Scannen handhabt, um die Leistung zu optimieren.
 
 ```bash
-# Minimale Rate festlegen (Pakete pro Sekunde)
+# Mindestrate festlegen (Pakete pro Sekunde)
 nmap --min-rate 1000 192.168.1.1
-# Maximale Rate festlegen
+# Maximalrate festlegen
 nmap --max-rate 100 192.168.1.1
 # Paralleles Host-Scannen
 nmap --min-hostgroup 10 192.168.1.0/24
@@ -361,7 +407,7 @@ Führen Sie Skripte nach Kategorie oder Namen aus.
 nmap --script default 192.168.1.1
 # Schwachstellen-Skripte
 nmap --script vuln 192.168.1.1
-# Entdeckungs-Skripte
+# Discovery-Skripte
 nmap --script discovery 192.168.1.1
 # Authentifizierungs-Skripte
 nmap --script auth 192.168.1.1
@@ -411,7 +457,7 @@ nmap --script-help vuln
 
 ### Ausgabeformate
 
-Ergebnisse in verschiedenen Formaten speichern.
+Speichern Sie Ergebnisse in verschiedenen Formaten.
 
 ```bash
 # Normale Ausgabe
@@ -439,7 +485,7 @@ nmap --packet-trace 192.168.1.1
 
 ### Fortsetzen & Anhängen
 
-Unterbrochene Scans fortsetzen oder zu bestehenden hinzufügen.
+Unterbrochene Scans fortsetzen oder vorhandene Dateien erweitern.
 
 ```bash
 # Unterbrochenen Scan fortsetzen
@@ -450,10 +496,10 @@ nmap --append-output -oN existing_scan.txt 192.168.1.1
 
 ### Live-Ergebnisverarbeitung
 
-Kombinieren Sie Nmap-Ausgabe mit Kommandozeilen-Tools, um nützliche Erkenntnisse zu extrahieren.
+Kombinieren Sie Nmap-Ausgabe mit Kommandozeilen-Tools, um nützliche Erkenntnisse zu gewinnen.
 
 ```bash
-# Live-Hosts finden
+# Live-Hosts extrahieren
 nmap -sn 192.168.1.0/24 | grep "Nmap scan report"
 # Webserver finden
 nmap -p 80,443 --open 192.168.1.0/24 | grep "open"
@@ -478,23 +524,23 @@ nmap --mtu 24 192.168.1.1
 
 ### Decoy-Scanning: `nmap -D`
 
-Verstecken Sie Ihren Scan inmitten von Decoy-IP-Adressen.
+Verstecken Sie Ihren Scan inmitten von Köder-IP-Adressen.
 
 ```bash
-# Decoy-IPs verwenden
+# Köder-IPs verwenden
 nmap -D 192.168.1.100,192.168.1.101 192.168.1.1
-# Zufällige Decoys
+# Zufällige Köder
 nmap -D RND:5 192.168.1.1
-# Echte und zufällige Decoys mischen
+# Echte und zufällige Köder mischen
 nmap -D 192.168.1.100,RND:3 192.168.1.1
 ```
 
 ### Quell-IP/Port-Manipulation
 
-Spoofing von Quellinformationen.
+Quellinformationen fälschen.
 
 ```bash
-# Quell-IP spoofen
+# Quell-IP fälschen
 nmap -S 192.168.1.100 192.168.1.1
 # Benutzerdefinierter Quellport
 nmap --source-port 53 192.168.1.1
@@ -507,7 +553,7 @@ nmap --data-length 25 192.168.1.1
 Verwenden Sie einen Zombie-Host, um den Scan-Ursprung zu verbergen.
 
 ```bash
-# Zombie Scan (erfordert Idle-Host)
+# Zombie-Scan (erfordert einen inaktiven Host)
 nmap -sI zombie_host 192.168.1.1
 # Idle-Kandidaten auflisten
 nmap --script ipidseq 192.168.1.0/24
@@ -517,7 +563,7 @@ nmap --script ipidseq 192.168.1.0/24
 
 ### DNS-Auflösungssteuerung
 
-Steuern Sie, wie Nmap DNS-Abfragen behandelt.
+Steuern Sie, wie Nmap DNS-Lookups behandelt.
 
 ```bash
 # DNS-Auflösung deaktivieren
@@ -539,14 +585,14 @@ nmap -6 2001:db8::1
 nmap -6 2001:db8::/32
 ```
 
-### Schnittstellen- & Routing-Steuerung
+### Schnittstelle & Routing
 
 Steuern Sie die Netzwerkschnittstelle und das Routing.
 
 ```bash
 # Netzwerkschnittstelle angeben
 nmap -e eth0 192.168.1.1
-# Schnittstellen und Routen drucken
+# Schnittstelle und Routen drucken
 nmap --iflist
 # Traceroute
 nmap --traceroute 192.168.1.1
@@ -567,7 +613,7 @@ nmap --send-ip 192.168.1.1
 
 ## Praxisbeispiele
 
-### Netzwerk-Entdeckungs-Workflow
+### Netzwerk-Discovery-Workflow
 
 Vollständiger Prozess der Netzwerkerfassung.
 
@@ -602,9 +648,9 @@ Das folgende Beispiel listet Netbios auf den Zielnetzwerken auf.
 ```bash
 # SMB-Dienst-Erkennung
 nmap -sV -p 139,445 192.168.1.0/24
-# NetBIOS-Namensauflösung
+# NetBIOS-Namens-Discovery
 nmap -sU --script nbstat -p 137 192.168.1.0/24
-# SMB-Enumerations-Skripte
+# SMB-Enumerationsskripte
 nmap --script smb-enum-* -p 445 192.168.1.50
 # SMB-Schwachstellenprüfung
 nmap --script smb-vuln-* -p 445 192.168.1.50
@@ -612,10 +658,10 @@ nmap --script smb-vuln-* -p 445 192.168.1.50
 
 ### Stealth-Bewertung
 
-Aufklärung mit geringem Profil.
+Aufklärung mit niedrigem Profil.
 
 ```bash
-# Ultra-Stealth Scan
+# Ultra-Stealth-Scan
 nmap -sS -T0 -f --data-length 200 -D RND:10 192.168.1.1
 # Fragmentierter SYN-Scan
 nmap -sS -f --mtu 8 -T1 192.168.1.1
@@ -625,7 +671,7 @@ nmap -sS -f --mtu 8 -T1 192.168.1.1
 
 ### Schnelle Scan-Strategien
 
-Optimieren Sie die Scan-Geschwindigkeit für große Netzwerke.
+Scan-Geschwindigkeit für große Netzwerke optimieren.
 
 ```bash
 # Schneller Netzwerk-Sweep
@@ -634,13 +680,13 @@ nmap -sS -T4 --min-rate 1000 --max-retries 1
 # Paralleles Host-Scannen
 nmap --min-hostgroup 50 --max-hostgroup 100
 192.168.1.0/24
-# Langsame Operationen überspringen
+# Langsame Vorgänge überspringen
 nmap -sS -T4 --defeat-rst-ratelimit 192.168.1.0/24
 ```
 
 ### Speicher- & Ressourcenverwaltung
 
-Steuern Sie die Ressourcennutzung für Stabilität.
+Steuerung der Ressourcennutzung für Stabilität.
 
 ```bash
 # Parallele Sonden begrenzen

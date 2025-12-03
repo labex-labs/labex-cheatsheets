@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola Hydra'
-description: 'Aprenda Hydra com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola Hydra | LabEx'
+description: 'Aprenda a quebrar senhas com Hydra usando esta folha de cola abrangente. Referência rápida para ataques de força bruta, auditoria de senhas, testes de segurança, protocolos de autenticação e ferramentas de pentest.'
 pdfUrl: '/cheatsheets/pdf/hydra-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Folha de Dicas Hydra
 <a target="_blank" href="https://labex.io/pt/learn/hydra">Aprenda Hydra com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda sobre cracking de senhas com Hydra e testes de penetração através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes sobre Hydra, cobrindo ataques a protocolos, exploração de formulários web, otimização de desempenho e uso ético. Domine técnicas de força bruta para testes de segurança autorizados e avaliações de vulnerabilidade.
+Aprenda cracking de senhas com Hydra e testes de penetração através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes sobre Hydra cobrindo ataques a protocolos, exploração de formulários web, otimização de desempenho e uso ético. Domine técnicas de força bruta para testes de segurança autorizados e avaliações de vulnerabilidade.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -49,9 +49,24 @@ hydra -L users.txt -P passwords.txt target.com ssh
 hydra -l admin -p password123 192.168.1.100 ftp
 ```
 
+<BaseQuiz id="hydra-syntax-1" correct="B">
+  <template #question>
+    Qual é a diferença entre `-l` e `-L` no Hydra?
+  </template>
+  
+  <BaseQuizOption value="A">`-l` é para senhas, `-L` é para nomes de usuário</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`-l` especifica um nome de usuário único, `-L` especifica um arquivo de lista de nomes de usuário</BaseQuizOption>
+  <BaseQuizOption value="C">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="D">`-l` é minúsculo, `-L` é maiúsculo</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A opção `-l` é usada para um nome de usuário único, enquanto `-L` é usada para um arquivo contendo uma lista de nomes de usuário. Da mesma forma, `-p` é para uma senha única e `-P` é para um arquivo de lista de senhas.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Opções Principais: `-l`, `-L`, `-p`, `-P`
 
-Especifica nomes de usuário e senhas para ataques de força bruta.
+Especifique nomes de usuário e senhas para ataques de força bruta.
 
 ```bash
 # Opções de nome de usuário
@@ -67,22 +82,37 @@ Especifica nomes de usuário e senhas para ataques de força bruta.
 
 ### Opções de Saída: `-o`, `-b`
 
-Salva os resultados em um arquivo para análise posterior.
+Salve os resultados em um arquivo para análise posterior.
 
 ```bash
-# Salvar resultados em arquivo
+# Salvar resultados no arquivo
 hydra -l admin -P passwords.txt target.com ssh -o results.txt
 # Formato de saída JSON
 hydra -l admin -P passwords.txt target.com ssh -b json
-# Saída detalhada (Verbose)
+# Saída detalhada (verbose)
 hydra -l admin -P passwords.txt target.com ssh -V
 ```
+
+<BaseQuiz id="hydra-output-1" correct="A">
+  <template #question>
+    O que o comando `hydra -V` faz?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Ativa a saída detalhada mostrando o progresso</BaseQuizOption>
+  <BaseQuizOption value="B">Valida o arquivo da wordlist</BaseQuizOption>
+  <BaseQuizOption value="C">Mostra a versão do Hydra</BaseQuizOption>
+  <BaseQuizOption value="D">Executa apenas no modo detalhado</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O flag `-V` ativa o modo detalhado, que mostra a saída detalhada, incluindo cada tentativa de login, facilitando o monitoramento do progresso e a depuração de problemas durante os ataques de senha.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Ataques Específicos de Protocolo
 
 ### SSH: `hydra alvo ssh`
 
-Ataca serviços SSH com combinações de nome de usuário e senha.
+Atacar serviços SSH com combinações de nome de usuário e senha.
 
 ```bash
 # Ataque SSH básico
@@ -95,9 +125,24 @@ hydra -l admin -P passwords.txt 192.168.1.100 -s 2222 ssh
 hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 ```
 
+<BaseQuiz id="hydra-ssh-1" correct="C">
+  <template #question>
+    O que a flag `-s` faz no Hydra?
+  </template>
+  
+  <BaseQuizOption value="A">Define o tipo de serviço</BaseQuizOption>
+  <BaseQuizOption value="B">Ativa o modo furtivo (stealth)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Especifica um número de porta personalizado</BaseQuizOption>
+  <BaseQuizOption value="D">Define o número de threads</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A flag `-s` especifica um número de porta personalizado quando o serviço está rodando em uma porta não padrão. Por exemplo, `-s 2222` visa o SSH na porta 2222 em vez da porta padrão 22.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### FTP: `hydra alvo ftp`
 
-Força bruta nas credenciais de login FTP.
+Força bruta de credenciais de login FTP.
 
 ```bash
 # Ataque FTP básico
@@ -110,7 +155,7 @@ hydra -l user -P passwords.txt -s 2121 192.168.1.100 ftp
 
 ### Ataques a Banco de Dados: `mysql`, `postgres`, `mssql`
 
-Ataca serviços de banco de dados com força bruta de credenciais.
+Atacar serviços de banco de dados com força bruta de credenciais.
 
 ```bash
 # Ataque MySQL
@@ -125,7 +170,7 @@ hydra -l admin -P passwords.txt 192.168.1.100 mongodb
 
 ### SMTP/Email: `hydra alvo smtp`
 
-Ataca a autenticação do servidor de e-mail.
+Atacar a autenticação do servidor de e-mail.
 
 ```bash
 # Força bruta SMTP
@@ -138,9 +183,9 @@ hydra -l user -P passwords.txt imap://mail.target.com
 
 ## Ataques a Aplicações Web
 
-### Formulários HTTP POST: `http-post-form`
+### Formulários POST HTTP: `http-post-form`
 
-Ataca formulários de login web usando o método HTTP POST com placeholders `^USER^` e `^PASS^`.
+Atacar formulários de login web usando o método HTTP POST com placeholders `^USER^` e `^PASS^`.
 
 ```bash
 # Ataque de formulário POST básico
@@ -151,7 +196,7 @@ hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/login:user=^USER^
 hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/admin:username=^USER^&password=^PASS^:S=Dashboard"
 ```
 
-### Formulários HTTP GET: `http-get-form`
+### Formulários GET HTTP: `http-get-form`
 
 Semelhante aos formulários POST, mas visa requisições GET.
 
@@ -164,7 +209,7 @@ hydra -l admin -P passwords.txt 192.168.1.100 http-get-form "/auth:user=^USER^&p
 
 ### Autenticação Básica HTTP: `http-get`/`http-post`
 
-Ataca servidores web usando autenticação básica HTTP.
+Atacar servidores web usando autenticação básica HTTP.
 
 ```bash
 # Autenticação Básica HTTP
@@ -177,7 +222,7 @@ hydra -l admin -P passwords.txt http-get://192.168.1.100/admin
 
 ### Ataques Web Avançados
 
-Lida com aplicações web complexas com tokens CSRF e cookies.
+Lidar com aplicações web complexas com tokens CSRF e cookies.
 
 ```bash
 # Com tratamento de token CSRF
@@ -190,14 +235,14 @@ hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/login:username=^U
 
 ### Threading: `-t` (Tarefas)
 
-Controla o número de conexões de ataque simultâneas durante o ataque.
+Controlar o número de conexões de ataque simultâneas durante o ataque.
 
 ```bash
 # Threading padrão (16 tarefas)
 hydra -l admin -P passwords.txt target.com ssh
 # Contagem de threads personalizada
 hydra -l admin -P passwords.txt -t 4 target.com ssh
-# Ataque de alto desempenho (use com cuidado)
+# Ataque de alto desempenho (use com cautela)
 hydra -l admin -P passwords.txt -t 64 target.com ssh
 # Threading conservador (evitar detecção)
 hydra -l admin -P passwords.txt -t 1 target.com ssh
@@ -205,7 +250,7 @@ hydra -l admin -P passwords.txt -t 1 target.com ssh
 
 ### Tempo de Espera: `-w` (Atraso)
 
-Adiciona atrasos entre as tentativas para evitar limitação de taxa e detecção.
+Adicionar atrasos entre as tentativas para evitar limitação de taxa e detecção.
 
 ```bash
 # Espera de 30 segundos entre as tentativas
@@ -216,12 +261,12 @@ hydra -l admin -P passwords.txt -t 2 -w 10 target.com ssh
 hydra -l admin -P passwords.txt -W 5 target.com ssh
 ```
 
-### Múltiplos Alvos: `-M` (Arquivo de Alvo)
+### Múltiplos Alvos: `-M` (Arquivo de Alvos)
 
-Ataca múltiplos hosts especificando-os em um arquivo.
+Atacar múltiplos hosts especificando-os em um arquivo.
 
 ```bash
-# Criar arquivo de alvo
+# Criar arquivo de alvos
 echo "192.168.1.100" > targets.txt
 echo "192.168.1.101" >> targets.txt
 echo "192.168.1.102" >> targets.txt
@@ -233,7 +278,7 @@ hydra -L users.txt -P passwords.txt -M targets.txt -t 2 ssh
 
 ### Opções de Retomada e Parada
 
-Retoma ataques interrompidos e controla o comportamento de parada.
+Retomar ataques interrompidos e controlar o comportamento de parada.
 
 ```bash
 # Parar após o primeiro sucesso
@@ -248,14 +293,14 @@ hydra -l admin -P passwords.txt -I restore.txt target.com ssh
 
 ### Geração de Senhas: `-e` (Testes Adicionais)
 
-Testa variações adicionais de senhas automaticamente.
+Testar variações de senha adicionais automaticamente.
 
 ```bash
 # Testar senhas nulas
 hydra -l admin -e n target.com ssh
 # Testar nome de usuário como senha
 hydra -l admin -e s target.com ssh
-# Testar nome de usuário invertido
+# Testar nome de usuário reverso
 hydra -l admin -e r target.com ssh
 # Combinar todas as opções
 hydra -l admin -e nsr -P passwords.txt target.com ssh
@@ -263,7 +308,7 @@ hydra -l admin -e nsr -P passwords.txt target.com ssh
 
 ### Formato Separado por Dois Pontos: `-C`
 
-Usa combinações de nome de usuário:senha para reduzir o tempo de ataque.
+Usar combinações de nome de usuário:senha para reduzir o tempo de ataque.
 
 ```bash
 # Criar arquivo de credenciais
@@ -277,7 +322,7 @@ hydra -C creds.txt target.com ssh
 
 ### Suporte a Proxy: `HYDRA_PROXY`
 
-Usa servidores proxy para ataques com variáveis de ambiente.
+Usar servidores proxy para ataques com variáveis de ambiente.
 
 ```bash
 # Proxy HTTP
@@ -291,7 +336,7 @@ export HYDRA_PROXY=socks5://proxy.example.com:1080
 
 ### Otimização da Lista de Senhas: `pw-inspector`
 
-Usa pw-inspector para filtrar listas de senhas com base em políticas.
+Usar pw-inspector para filtrar listas de senhas com base em políticas.
 
 ```bash
 # Filtrar senhas (mínimo 6 caracteres, 2 classes de caracteres)
@@ -306,7 +351,7 @@ cat passwords.txt | sort | uniq > unique_passwords.txt
 
 ### Diretrizes Legais e Éticas
 
-É possível usar o Hydra tanto legalmente quanto ilegalmente. Obtenha permissão e aprovação apropriadas antes de realizar ataques de força bruta.
+É possível usar o Hydra tanto de forma legal quanto ilegal. Obtenha permissão e aprovação apropriadas antes de realizar ataques de força bruta.
 
 ```text
 Realize ataques apenas em sistemas onde permissão explícita foi obtida
@@ -342,29 +387,29 @@ Tenha procedimentos de resposta a incidentes prontos
 
 ### Casos de Uso Comuns
 
-Equipes vermelhas e azuis se beneficiam para auditorias de senhas, avaliações de segurança e testes de penetração.
+Equipes vermelhas e azuis se beneficiam de auditorias de senhas, avaliações de segurança e testes de penetração.
 
 ```text
-Quebra de senhas para identificar senhas fracas e avaliar a força da senha
+Cracking de senhas para identificar senhas fracas e avaliar a força da senha
 Auditorias de segurança de serviços de rede
 Testes de penetração e avaliações de vulnerabilidade
 Testes de conformidade para políticas de senha
-Demonstrações de treinamento e educação
+Demonstrações de treinamento e educacionais
 ```
 
 ## Alternativa de GUI e Ferramentas Adicionais
 
 ### XHydra: Interface Gráfica
 
-O XHydra é uma GUI para o Hydra que permite selecionar a configuração através de controles visuais em vez de switches de linha de comando.
+O XHydra é uma GUI para o Hydra que permite selecionar a configuração a partir de controles via GUI em vez de switches de linha de comando.
 
 ```bash
-# Iniciar a GUI do XHydra
+# Iniciar GUI do XHydra
 xhydra
 # Instalar se não estiver disponível
 sudo apt install hydra-gtk
 # Funcionalidades:
-# - Interface de apontar e clicar
+# - Interface ponto-e-clique
 # - Modelos de ataque pré-configurados
 # - Monitoramento visual de progresso
 # - Seleção fácil de alvo e wordlist
@@ -432,7 +477,7 @@ hydra -l admin -P passwords.txt -t 2 target.com ssh
 hydra -l admin -P small_list.txt target.com ssh
 # Verificar protocolos suportados
 hydra
-# Procure o protocolo na lista de serviços suportados
+# Procurar protocolo na lista de serviços suportados
 ```
 
 ### Otimização de Desempenho
@@ -467,7 +512,7 @@ hydra -l admin -P passwords.txt target.com ssh | grep "password:"
 
 ### Monitoramento de Recursos
 
-Monitore recursos do sistema e de rede durante os ataques.
+Monitore os recursos do sistema e da rede durante os ataques.
 
 ```bash
 # Monitorar uso da CPU

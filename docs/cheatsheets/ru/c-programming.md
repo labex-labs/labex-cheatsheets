@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по программированию на C'
-description: 'Изучите программирование на C с нашей исчерпывающей шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по C: Синтаксис и Основы | LabEx'
+description: 'Изучите программирование на C с помощью этой исчерпывающей шпаргалки. Быстрый справочник по синтаксису C, указателям, управлению памятью, структурам данных и основам системного программирования для разработчиков.'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 
@@ -40,7 +40,7 @@ int main() {
 ```c
 #include <stdio.h>    // Стандартный ввод/вывод
 #include <stdlib.h>   // Стандартная библиотека
-#include <string.h>   // Функции для строк
+#include <string.h>   // Функции для работы со строками
 #include <math.h>     // Математические функции
 #define PI 3.14159
 #define MAX_SIZE 100
@@ -54,7 +54,7 @@ int main() {
 // Однострочный комментарий
 /*
 Многострочный комментарий
-охватывает несколько строк
+занимает несколько строк
 */
 // TODO: Реализовать функцию
 /* FIXME: Ошибка в этом разделе */
@@ -75,6 +75,21 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 ```
+
+<BaseQuiz id="c-main-1" correct="C">
+  <template #question>
+    Что означает `return 0` в функции main?
+  </template>
+  
+  <BaseQuizOption value="A">Программа завершилась с ошибкой</BaseQuizOption>
+  <BaseQuizOption value="B">Программа все еще выполняется</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Программа выполнилась успешно</BaseQuizOption>
+  <BaseQuizOption value="D">Программа не вернула никакого значения</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    В C возврат `return 0` из функции main указывает на успешное выполнение программы. Ненулевые возвращаемые значения обычно указывают на ошибки или ненормальное завершение.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Базовый вывод
 
@@ -137,6 +152,21 @@ int len = strlen(name);
 int size = sizeof(buffer);
 ```
 
+<BaseQuiz id="c-arrays-1" correct="C">
+  <template #question>
+    Как представляются строки в C?
+  </template>
+  
+  <BaseQuizOption value="A">Как специальный строковый тип</BaseQuizOption>
+  <BaseQuizOption value="B">Как целые числа</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Как массивы символов</BaseQuizOption>
+  <BaseQuizOption value="D">Только как указатели</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    В C строки представляются как массивы символов (`char`). Строка завершается нулевым символом (`\0`), который отмечает конец строки.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Константы и модификаторы
 
 Неизменяемые значения и модификаторы хранения.
@@ -155,7 +185,7 @@ extern int global_var;    // Внешняя переменная
 register int fast_var;    // Подсказка для регистра
 ```
 
-## Структуры управления потоком
+## Структуры потока управления
 
 ### Условные операторы
 
@@ -208,9 +238,24 @@ for (int i = 0; i < 3; i++) {
 }
 ```
 
+<BaseQuiz id="c-for-loop-1" correct="A">
+  <template #question>
+    Что вычисляет `sizeof(numbers) / sizeof(numbers[0])`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Количество элементов в массиве</BaseQuizOption>
+  <BaseQuizOption value="B">Общий размер массива в памяти</BaseQuizOption>
+  <BaseQuizOption value="C">Индекс последнего элемента</BaseQuizOption>
+  <BaseQuizOption value="D">Размер одного элемента</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Это выражение вычисляет длину массива, деля общий размер массива на размер одного элемента. Это распространенный идиом в C, поскольку массивы не хранят свою длину.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Циклы While
 
-Итерация, основанная на условии.
+Итерация на основе условия.
 
 ```c
 // Цикл While
@@ -237,7 +282,7 @@ for (int i = 0; i < 10; i++) {
         continue; // Пропустить итерацию
     }
     if (i == 7) {
-        break;    // Выход из цикла
+        break;    // Выйти из цикла
     }
     printf("%d ", i);
 }
@@ -359,7 +404,7 @@ int *p = arr;  // Указывает на первый элемент
 printf("%d\n", arr[2]);   // Нотация массива
 printf("%d\n", *(p + 2)); // Арифметика указателей
 printf("%d\n", p[2]);     // Указатель как массив
-// Итерация с использованием указателя
+// Итерация с помощью указателя
 for (int i = 0; i < 5; i++) {
     printf("%d ", *(p + i));
 }
@@ -397,7 +442,7 @@ if (arr != NULL) {
 char *str1 = "Hello";           // Литерал строки
 char str2[] = "World";          // Массив символов
 char *str3 = (char*)malloc(20); // Динамическая строка
-// Функции для строк
+// Функции для работы со строками
 strcpy(str3, "Dynamic");
 printf("Length: %lu\n", strlen(str1));
 printf("Compare: %d\n", strcmp(str1, str2));
@@ -462,7 +507,7 @@ printf("Born: %d/%d/%d\n",
 
 ```c
 Student *student_ptr = &student1;
-// Доступ с использованием указателя (два способа)
+// Доступ через указатель (два способа)
 printf("Name: %s\n", (*student_ptr).name);
 printf("Age: %d\n", student_ptr->age);
 // Изменение через указатель
@@ -483,7 +528,7 @@ if (new_student != NULL) {
 Альтернативные методы организации данных.
 
 ```c
-// Union - общее пространство памяти
+// Объединение (Union) - общее пространство памяти
 union Data {
     int integer;
     float floating;
@@ -492,7 +537,7 @@ union Data {
 union Data data;
 data.integer = 42;
 printf("Integer: %d\n", data.integer);
-// Перечисление
+// Перечисление (Enum)
 enum Weekday {
     MONDAY, TUESDAY, WEDNESDAY,
     THURSDAY, FRIDAY, SATURDAY, SUNDAY
@@ -583,12 +628,12 @@ for (int i = 0; i < 5; i++) {
 fclose(numfile);
 ```
 
-### Двоичные файловые операции
+### Операции с бинарными файлами
 
-Эффективное чтение и запись двоичных данных.
+Эффективное чтение и запись бинарных данных.
 
 ```c
-// Запись двоичных данных
+// Запись бинарных данных
 Student students[3] = {
     {"Alice", 20, 3.75},
     {"Bob", 21, 3.2},
@@ -597,7 +642,7 @@ Student students[3] = {
 FILE *binfile = fopen("students.bin", "wb");
 fwrite(students, sizeof(Student), 3, binfile);
 fclose(binfile);
-// Чтение двоичных данных
+// Чтение бинарных данных
 Student loaded_students[3];
 FILE *readbin = fopen("students.bin", "rb");
 fread(loaded_students, sizeof(Student), 3, readbin);
@@ -606,7 +651,7 @@ fclose(readbin);
 
 ## Манипуляции со строками
 
-### Функции для строк
+### Функции для работы со строками
 
 Общие операции со строками из библиотеки string.h.
 
@@ -632,22 +677,22 @@ if (result == 0) {
 }
 ```
 
-### Поиск по строкам
+### Поиск в строках
 
 Поиск подстрок и символов в строках.
 
 ```c
 char text[] = "The quick brown fox";
 char *ptr;
-// Поиск первого вхождения символа
+// Найти первое вхождение символа
 ptr = strchr(text, 'q');
 if (ptr != NULL) {
     printf("Found 'q' at position: %ld\n", ptr - text);
 }
-// Поиск последнего вхождения
+// Найти последнее вхождение
 ptr = strrchr(text, 'o');
 printf("Last 'o' at position: %ld\n", ptr - text);
-// Поиск подстроки
+// Найти подстроку
 ptr = strstr(text, "brown");
 if (ptr != NULL) {
     printf("Found 'brown' at: %s\n", ptr);
@@ -678,7 +723,7 @@ printf("String: %s\n", buffer);
 
 ### Пользовательская обработка строк
 
-Ручные методы манипуляции строками.
+Ручные методы манипулирования строками.
 
 ```c
 // Подсчет символов в строке
@@ -701,7 +746,7 @@ void reverseString(char *str) {
 }
 ```
 
-## Компиляция и процесс сборки
+## Процесс компиляции и сборки
 
 ### Компиляция GCC
 
@@ -716,7 +761,7 @@ gcc -g -o program main.c
 gcc -O2 -o program main.c
 # Несколько исходных файлов
 gcc -o program main.c utils.c math.c
-# Включение дополнительных каталогов
+# Включение дополнительных директорий
 gcc -I/usr/local/include -o program main.c
 # Линковка библиотек
 gcc -o program main.c -lm -lpthread
@@ -756,7 +801,7 @@ rm -f $(TARGET)
 .PHONY: clean
 ```
 
-## Рекомендации и советы
+## Лучшие практики и советы
 
 ### Соглашения об именовании
 
@@ -819,7 +864,7 @@ for (int i = 0; i < len; i++) {
 }
 // Использование register для часто используемых переменных
 register int counter;
-// Предпочитать массивы, а не динамическое выделение, когда размер известен
+// Предпочитайте массивы динамическому выделению, если размер известен
 int fixed_array[100];  // Выделение в стеке
 // Против
 int *dynamic_array = malloc(100 * sizeof(int));
@@ -836,7 +881,7 @@ int *dynamic_array = malloc(100 * sizeof(int));
 // Прототипы функций
 double calculate_area(double radius);
 int fibonacci(int n);
-// Определения структур
+// Определение структур
 typedef struct {
     int x, y;
 } Point;

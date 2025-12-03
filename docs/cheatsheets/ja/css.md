@@ -1,6 +1,6 @@
 ---
-title: 'CSS チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで CSS を学習しましょう。'
+title: 'CSS チートシート | LabEx'
+description: 'この包括的なチートシートで CSS3 を学習しましょう。ウェブ開発者向けの CSS セレクタ、Flexbox、Grid、アニメーション、レスポンシブデザイン、最新のスタイリング技術のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/css-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ CSS チートシート
 <a target="_blank" href="https://labex.io/ja/learn/css">ハンズオンラボで CSS を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて CSS ウェブスタイリングを学びましょう。LabEx は、必須プロパティ、セレクタ、レイアウト技術、レスポンシブデザイン、および最新機能を網羅した包括的な CSS コースを提供します。最新のウェブ開発ワークフローのために、効率的なウェブスタイリングとレイアウトデザインを習得します。
+ハンズオンラボと実世界のシナリオを通じて CSS ウェブスタイリングを学びましょう。LabEx は、必須プロパティ、セレクタ、レイアウト技術、レスポンシブデザイン、最新機能を網羅した包括的な CSS コースを提供します。最新のウェブ開発ワークフローのための効率的なウェブスタイリングとレイアウトデザインを習得します。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ CSS チートシート
 
 ### 基本構文
 
-CSS は、セレクタと宣言で構成されます。セレクタは HTML 要素をターゲットにし、宣言はプロパティ値の設定を行います。
+CSS はセレクタと宣言で構成されます。セレクタは HTML 要素をターゲットにし、宣言はそのプロパティ値を設定します。
 
 ```css
 /* 基本構文 */
@@ -82,9 +82,24 @@ p.intro {
 }
 ```
 
+<BaseQuiz id="css-class-1" correct="B">
+  <template #question>
+    CSS で class="highlight"を持つ要素を選択するにはどうしますか？
+  </template>
+  
+  <BaseQuizOption value="A">highlight { }</BaseQuizOption>
+  <BaseQuizOption value="B" correct>.highlight { }</BaseQuizOption>
+  <BaseQuizOption value="C">#highlight { }</BaseQuizOption>
+  <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    クラスセレクタはドット（.）プレフィックスを使用します。`.highlight`は `class="highlight"`を持つすべての要素を選択します。ID セレクタは`#` を、要素セレクタはプレフィックスを使用しません。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ID セレクタ
 
-特定の`ID`属性を持つ要素をターゲットにします。
+特定の`id`属性を持つ要素をターゲットにします。
 
 ```css
 /* id="header" を持つ要素を選択 */
@@ -92,7 +107,7 @@ p.intro {
   background-color: #333;
 }
 
-/* ID はページごとに一意であるべき */
+/* ID はページごとに一意であるべきです */
 #navigation {
   position: fixed;
 }
@@ -108,7 +123,7 @@ p.intro {
   cursor: help;
 }
 
-/* 外部リンク (http で始まる href) */
+/* 外部リンクへのリンク */
 a[href^='http'] {
   color: red;
 }
@@ -119,9 +134,9 @@ input[type='text'] {
 }
 ```
 
-### 擬似クラス
+### 疑似クラス
 
-擬似クラスは、状態の変化やユーザー操作に基づいて CSS を適用します。
+疑似クラスは、状態変更やユーザーインタラクションに基づいて CSS を適用します。
 
 ```css
 /* リンクの状態 */
@@ -143,7 +158,7 @@ input:invalid {
   border-color: red;
 }
 
-/* 構造的擬似クラス */
+/* 構造的疑似クラス */
 li:first-child {
   font-weight: bold;
 }
@@ -159,13 +174,13 @@ li:nth-child(odd) {
 要素の実際のコンテンツ領域。
 
 ```css
-/* 寸法の設定 */
+/* サイズ設定 */
 div {
   width: 300px;
   height: 200px;
 }
 
-/* レスポンシブなサイズ設定 */
+/* レスポンシブサイズ設定 */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -180,15 +195,15 @@ div {
 
 ### パディング：`padding`
 
-コンテンツと境界線の間のスペース。要素の内部にあります。
+コンテンツと境界線の間のスペース（要素の内部）。
 
 ```css
-/* 全方向 */
+/* 全側面 */
 div {
   padding: 20px;
 }
 
-/* 個別の辺 */
+/* 個別の側面 */
 div {
   padding-top: 10px;
   padding-right: 15px;
@@ -200,9 +215,25 @@ div {
 }
 ```
 
+<BaseQuiz id="css-padding-1" correct="C">
+  <template #question>
+    `padding: 10px 20px`は何を設定しますか？
+  </template>
+  
+  <BaseQuizOption value="A">上下 10px、左右 20px</BaseQuizOption>
+  <BaseQuizOption value="B">全側面 10px</BaseQuizOption>
+  <BaseQuizOption value="C" correct>上下 10px、左右 20px</BaseQuizOption>
+  <BaseQuizOption value="D">上 10px、下 20px</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    2 つの値が指定されている場合、最初の値は上下に、2 番目の値は左右に適用されます。したがって、`padding: 10px 20px`は垂直方向のパディングが 10px、水平方向のパディングが 20px であることを意味します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+```
+
 ### ボーダー: `border`
 
-要素のフレームを提供し、サイズ、スタイル、色をカスタマイズできます。
+境界線は、カスタマイズ可能なサイズ、スタイル、色で要素のフレームを提供します。
 
 ```css
 /* ボーダーのショートハンド */
@@ -217,18 +248,18 @@ div {
   border-color: red;
 }
 
-/* 個別の辺 */
+/* 個別の側面 */
 div {
   border-bottom: 3px solid blue;
 }
 ```
 
-### マージン：`margin`
+### マージン: `margin`
 
-境界線の外側のスペース。要素間に適用されます。
+境界線の外側のスペースで、要素間に配置されます。
 
 ```css
-/* 全方向 */
+/* 全側面 */
 div {
   margin: 20px;
 }
@@ -238,7 +269,7 @@ div {
   margin: 0 auto;
 }
 
-/* 個別の辺 */
+/* 個別の側面 */
 div {
   margin-top: 30px;
   margin-bottom: 10px;
@@ -250,14 +281,29 @@ div {
 }
 ```
 
+<BaseQuiz id="css-margin-1" correct="C">
+  <template #question>
+    `margin: 0 auto`は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">すべてマージンを削除する</BaseQuizOption>
+  <BaseQuizOption value="B">全側面に均等なマージンを追加する</BaseQuizOption>
+  <BaseQuizOption value="C" correct>ブロック要素を水平方向の中央に配置する</BaseQuizOption>
+  <BaseQuizOption value="D">ブロック要素を垂直方向の中央に配置する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `margin: 0 auto`は上下のマージンを0に設定し、左右のマージンをautoに設定することで、ブロックレベル要素をコンテナ内で水平方向に中央揃えにします。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## テキストとタイポグラフィ
 
 ### フォントプロパティ
 
-フォントファミリー、サイズ、太さ、スタイルを制御します。
+フォントファミリ、サイズ、太さ、スタイルを制御します。
 
 ```css
-/* フォントファミリー */
+/* フォントファミリ */
 body {
   font-family: Arial, sans-serif;
 }
@@ -285,7 +331,7 @@ span {
 }
 ```
 
-### テキストの配置
+### テキスト配置
 
 テキストの位置と間隔を制御します。
 
@@ -312,7 +358,7 @@ p {
 }
 ```
 
-### テキストのスタイリング
+### テキストスタイリング
 
 テキストに装飾や変換を追加します。
 
@@ -341,7 +387,7 @@ h1 {
 
 ### 色
 
-CSS には、さまざまなスタイリングニーズに対応するためにいくつかの異なる色の指定方法があります。
+CSSには、さまざまなスタイリングニーズに合わせて色を指定する方法がいくつかあります。
 
 ```css
 /* 色の形式 */
@@ -351,6 +397,22 @@ p {
 div {
   background-color: #ff5733;
 }
+```
+
+<BaseQuiz id="css-colors-1" correct="D">
+  <template #question>
+    ウェブデザインで最も一般的に使用されるCSSの色形式は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">RGBのみ</BaseQuizOption>
+  <BaseQuizOption value="B">名前付きの色のみ</BaseQuizOption>
+  <BaseQuizOption value="C">HSLのみ</BaseQuizOption>
+  <BaseQuizOption value="D" correct>16進数コード（#RRGGBB）は、名前付きの色とRGBと並んで非常に一般的です</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    16進数カラーコード（#RRGGBB）は、デザインツールからコピーしやすく簡潔なため広く使用されています。名前付きの色やRGB/rgbaも一般的です。選択は特定のユースケースと好みに依存します。
+  </BaseQuizAnswer>
+</BaseQuiz>
 span {
   color: rgb(255, 87, 51);
 }
@@ -358,23 +420,24 @@ section {
   background-color: rgba(255, 87, 51, 0.8);
 }
 
-/* HSL 色 */
+/_ HSL colors _/
 header {
-  background-color: hsl(200, 100%, 50%);
+background-color: hsl(200, 100%, 50%);
 }
 
-/* CSS 変数による色 */
+/_ CSS Variables for colors _/
 :root {
-  --primary-color: #3498db;
+--primary-color: #3498db;
 }
 .button {
-  background-color: var(--primary-color);
+background-color: var(--primary-color);
 }
-```
+
+````
 
 ## Flexbox レイアウト
 
-### Flex コンテナのプロパティ
+### Flex コンテナプロパティ
 
 親コンテナに適用されるプロパティ。
 
@@ -384,14 +447,14 @@ header {
   display: flex;
 }
 
-/* flex-direction */
+/* Flex の方向 */
 .container {
   flex-direction: row; /* デフォルト */
   flex-direction: column;
   flex-direction: row-reverse;
 }
 
-/* justify-content (主軸) */
+/* Justify content (主軸) */
 .container {
   justify-content: flex-start; /* デフォルト */
   justify-content: center;
@@ -399,7 +462,7 @@ header {
   justify-content: space-around;
 }
 
-/* align-items (交差軸) */
+/* Align items (交差軸) */
 .container {
   align-items: stretch; /* デフォルト */
   align-items: center;
@@ -407,15 +470,15 @@ header {
 }
 ```
 
-### Flex アイテムのプロパティ
+### Flex アイテムプロパティ
 
 子要素に適用されるプロパティ。
 
 ```css
-/* flex grow/shrink */
+/* Flex の成長/収縮 */
 .item {
-  flex-grow: 1; /* スペースを埋めるために拡大 */
-  flex-shrink: 1; /* 必要に応じて縮小 */
+  flex-grow: 1; /* スペースを埋めるために成長 */
+  flex-shrink: 1; /* 必要に応じて収縮 */
   flex-basis: auto; /* 初期サイズ */
 }
 
@@ -431,7 +494,7 @@ header {
   align-self: flex-end;
 }
 
-/* order */
+/* Order */
 .item {
   order: 2; /* 視覚的な順序を変更 */
 }
@@ -444,18 +507,18 @@ header {
 グリッド構造とプロパティを定義します。
 
 ```css
-/* グリッドを有効にする */
+/* Grid を有効にする */
 .grid-container {
   display: grid;
 }
 
-/* 列と行の定義 */
+/* 列と行を定義 */
 .grid-container {
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 100px auto 50px;
 }
 
-/* グリッドの間隔 */
+/* Grid の間隔 */
 .grid-container {
   gap: 20px;
   column-gap: 30px;
@@ -473,10 +536,10 @@ header {
 
 ### Grid アイテム
 
-グリッドアイテムの位置とサイズを設定します。
+グリッドアイテムを配置し、サイズを設定します。
 
 ```css
-/* グリッドの位置指定 */
+/* Grid の配置 */
 .grid-item {
   grid-column: 1 / 3; /* 列 1 から 2 までをまたぐ */
   grid-row: 2 / 4; /* 行 2 から 3 までをまたぐ */
@@ -500,8 +563,8 @@ header {
 
 /* 自動配置 */
 .grid-item {
-  grid-column: span 2; /* 2 列分をまたぐ */
-  grid-row: span 3; /* 3 行分をまたぐ */
+  grid-column: span 2; /* 2 列をまたぐ */
+  grid-row: span 3; /* 3 行をまたぐ */
 }
 ```
 
@@ -547,7 +610,7 @@ header {
 
 ### Z-Index とスタッキング
 
-`z-index`を使用して、要素が互いに重なり合う順序を制御します。
+`z-index`を使用して、要素が互いに重なり合う順序を制御し、スタッキングコンテキストを作成します。
 
 ```css
 /* スタッキング順序 */
@@ -566,7 +629,7 @@ header {
   z-index: 0;
 }
 
-/* 一般的な z-index の値 */
+/* 一般的な z-index 値 */
 .dropdown {
   z-index: 100;
 }
@@ -590,14 +653,14 @@ header {
   width: 100%;
 }
 
-/* タブレットスタイル */
+/* タブレットのスタイル */
 @media (min-width: 768px) {
   .container {
     width: 750px;
   }
 }
 
-/* デスクトップスタイル */
+/* デスクトップのスタイル */
 @media (min-width: 1024px) {
   .container {
     width: 960px;
@@ -614,7 +677,7 @@ header {
   }
 }
 
-/* 向き */
+/* 方向 */
 @media (orientation: landscape) {
   .sidebar {
     display: block;
@@ -651,13 +714,13 @@ h1 {
   width: 50%;
 }
 
-/* CSS Grid レスポンシブ */
+/* CSS Grid のレスポンシブ */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* Flexbox レスポンシブ */
+/* Flexbox のレスポンシブ */
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -668,7 +731,7 @@ h1 {
 
 ### CSS トランジション
 
-プロパティ値間のスムーズな変化。
+プロパティ値間のスムーズな変更。
 
 ```css
 /* 基本的なトランジション */
@@ -750,7 +813,7 @@ h1 {
 
 ### CSS 変数
 
-一貫したテーマ設定のためにカスタムプロパティを定義します。
+一貫したテーマ設定のためにカスタムプロパティを定義および使用します。
 
 ```css
 /* 変数の定義 */
@@ -781,7 +844,7 @@ h1 {
 
 ### CSS 関数
 
-計算や動的な値のために、CSS には一連の組み込み関数があります。
+計算や動的な値のために組み込み関数の範囲を提供します。
 
 ```css
 /* calc 関数 */
@@ -790,7 +853,7 @@ h1 {
   height: calc(100vh - 60px);
 }
 
-/* min/max 関数 */
+/* min/max関数 */
 .responsive {
   width: min(90%, 1200px);
   font-size: max(16px, 1.2vw);
@@ -803,7 +866,7 @@ h1 {
   color: rgb(255, 87, 51);
 }
 
-/* transform 関数 */
+/* Transform 関数 */
 .rotate {
   transform: rotate(45deg);
 }
@@ -822,7 +885,7 @@ h1 {
 保守性のために CSS を構造化します。
 
 ```css
-/* 意味のあるクラス名を使用 */
+/* 意味のあるクラス名を使用する */
 .hero-section {
 }
 .primary-button {
@@ -830,7 +893,7 @@ h1 {
 .navigation-menu {
 }
 
-/* BEM メソドロジー */
+/* BEM の命名規則 */
 .block {
 }
 .block__element {
@@ -848,7 +911,7 @@ h1 {
 .card--featured {
 }
 
-/* 関連するスタイルをグループ化 */
+/* 関連するスタイルをグループ化する */
 /* ===== レイアウト ===== */
 .container {
 }
@@ -864,7 +927,7 @@ h1 {
 
 ### パフォーマンスと最適化
 
-パフォーマンス向上のために効率的な CSS を記述します。
+より良いパフォーマンスのために効率的な CSS を作成します。
 
 ```css
 /* 深いネストを避ける */
@@ -886,7 +949,7 @@ body div.container > p {
 }
 
 /* 再描画の最小化 */
-/* position の変更の代わりに transform を使用 */
+/* position の変更の代わりに transform を使用する */
 .element {
   transform: translateX(100px);
   /* left: 100px; の代わりに */
@@ -910,14 +973,14 @@ body div.container > p {
 /* 一般的なデバッグ手順 */
 /* 1. 右クリック → 要素を検証 */
 /* 2. 計算済みスタイルを確認 */
-/* 3. 上書きされているプロパティを確認 */
+/* 3. オーバーライドされているプロパティを確認 */
 /* 4. リアルタイムで変更をテスト */
-/* 5. 変更した CSS をファイルにコピーバック */
+/* 5. 変更した CSS をファイルにコピーし直す */
 ```
 
 ### 一般的な CSS の問題
 
-頻繁に発生する問題のトラブルシューティング。
+頻繁に発生する問題をトラブルシューティングします。
 
 ```css
 /* ボックスモデルの問題 */
@@ -932,15 +995,15 @@ body div.container > p {
   clear: both;
 }
 
-/* Z-index の問題 */
-/* z-index を機能させるには、要素が配置されていること */
+/* z-index の問題 */
+/* z-index を機能させるには、要素が配置されている必要があります */
 .element {
   position: relative;
   z-index: 1;
 }
 ```
 
-### CSS 検証
+### CSS の検証
 
 標準とベストプラクティスに従っていることを確認します。
 
@@ -949,7 +1012,7 @@ body div.container > p {
 /* W3C CSS Validator */
 /* ブラウザ互換性ツール */
 
-/* コードにコメントする */
+/* コードにコメントを付ける */
 /* ===== ヘッダースタイル ===== */
 .header {
 }
@@ -957,7 +1020,7 @@ body div.container > p {
 /* TODO: モバイルスタイルを追加 */
 /* FIXME: IE 互換性を修正 */
 
-/* 一貫したフォーマットを使用 */
+/* 一貫したフォーマットを使用する */
 .element {
   property: value;
   property: value;
@@ -1007,7 +1070,7 @@ Web アプリケーションにおけるスタイリングの最新のアプロ�
 /* Autoprefixer - ベンダープレフィックスを追加 */
 /* PurgeCSS - 未使用の CSS を削除 */
 
-/* CSS Modules */
+/* CSS モジュール */
 .button {
   composes: base-button;
   background-color: blue;
@@ -1032,4 +1095,5 @@ const Button = styled.button`
 - <router-link to="/html">HTML チートシート</router-link>
 - <router-link to="/javascript">JavaScript チートシート</router-link>
 - <router-link to="/react">React チートシート</router-link>
-- <router-link to="/web-development">Web 開発 チートシート</router-link>
+- <router-link to="/web-development">Web 開発チートシート</router-link>
+````

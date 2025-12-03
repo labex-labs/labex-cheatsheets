@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Referência JavaScript'
-description: 'Aprenda JavaScript com nossa folha de referência abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola JavaScript | LabEx'
+description: 'Aprenda programação JavaScript com esta folha de cola abrangente. Referência rápida para sintaxe JS, ES6+, manipulação DOM, async/await, Node.js e desenvolvimento web moderno.'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 
@@ -34,11 +34,26 @@ age = 26 // Pode ser reatribuído
 // Escopo de bloco, imutável
 const PI = 3.14159
 const user = { name: 'Alice' }
-user.age = 30 // Propriedades do objeto podem ser modificadas
+user.age = 30 // Propriedades de objeto podem ser modificadas
 
 // Escopo de função (evitar em JS moderno)
 var oldVariable = 'legacy'
 ```
+
+<BaseQuiz id="javascript-let-const-1" correct="B">
+  <template #question>
+    Qual é a principal diferença entre `let` e `const`?
+  </template>
+  
+  <BaseQuizOption value="A">let tem escopo de função, const tem escopo de bloco</BaseQuizOption>
+  <BaseQuizOption value="B" correct>let permite reatribuição, const não permite reatribuição</BaseQuizOption>
+  <BaseQuizOption value="C">const só pode ser usado para números, let pode ser usado para qualquer tipo</BaseQuizOption>
+  <BaseQuizOption value="D">Não há diferença</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Tanto `let` quanto `const` têm escopo de bloco, mas `let` permite que você reatribua a variável, enquanto `const` impede a reatribuição. No entanto, as propriedades de objetos `const` ainda podem ser modificadas.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Tipos Primitivos
 
@@ -93,7 +108,7 @@ Converter entre diferentes tipos de dados.
 String(42) // '42'
 ;(42).toString() // '42'
 
-// Conversão para Number
+// Conversão para Número
 Number('42') // 42
 parseInt('42px') // 42
 parseFloat('3.14') // 3.14
@@ -147,6 +162,21 @@ const processData = (data) => {
 }
 ```
 
+<BaseQuiz id="javascript-arrow-1" correct="C">
+  <template #question>
+    Qual é uma característica chave das funções de seta (arrow functions)?
+  </template>
+  
+  <BaseQuizOption value="A">Elas são içadas (hoisted) como declarações de função</BaseQuizOption>
+  <BaseQuizOption value="B">Elas têm sua própria ligação `this`</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Elas herdam `this` do escopo envolvente</BaseQuizOption>
+  <BaseQuizOption value="D">Elas não podem retornar valores</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    As funções de seta não têm sua própria ligação `this`. Em vez disso, elas herdam `this` do escopo léxico (envolvente), o que as torna úteis para callbacks e manipuladores de eventos onde você deseja preservar o contexto.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Funções de Ordem Superior (Higher-Order Functions)
 
 Funções que recebem ou retornam outras funções.
@@ -194,6 +224,21 @@ const result = numbers
   .reduce((a, b) => a + b, 0)
 ```
 
+<BaseQuiz id="javascript-array-1" correct="A">
+  <template #question>
+    O que `filter()` retorna?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Um novo array com os elementos que passam no teste</BaseQuizOption>
+  <BaseQuizOption value="B">O primeiro elemento que passa no teste</BaseQuizOption>
+  <BaseQuizOption value="C">Um único valor reduzido do array</BaseQuizOption>
+  <BaseQuizOption value="D">O array original modificado no local</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O método `filter()` cria um novo array contendo todos os elementos que passam no teste implementado pela função fornecida. Ele não modifica o array original.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Utilitários de Array: `find()`, `includes()`, `sort()`
 
 Pesquisar, verificar e organizar elementos de array.
@@ -238,16 +283,16 @@ Object.entries(person) // [['name', 'John'], ...]
 const newPerson = Object.assign({}, person, { age: 31 })
 ```
 
-### Atribuição de Desestruturação (Destructuring Assignment)
+### Atribuição por Desestruturação (Destructuring Assignment)
 
 Extrair valores de arrays e objetos.
 
 ```javascript
-// Desestruturação de array
+// Desestruturação de Array
 const [first, second, ...rest] = [1, 2, 3, 4, 5]
 // first: 1, second: 2, rest: [3, 4, 5]
 
-// Desestruturação de objeto
+// Desestruturação de Objeto
 const { name, age } = person
 const { name: userName, age: userAge = 18 } = person
 
@@ -279,21 +324,36 @@ const listItems = document.querySelectorAll('li')
 const buttonsArray = Array.from(allButtons)
 ```
 
+<BaseQuiz id="javascript-dom-1" correct="C">
+  <template #question>
+    Qual é a diferença entre `querySelector()` e `querySelectorAll()`?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="B">querySelector é mais rápido</BaseQuizOption>
+  <BaseQuizOption value="C" correct>querySelector retorna o primeiro elemento correspondente, querySelectorAll retorna todos os elementos correspondentes</BaseQuizOption>
+  <BaseQuizOption value="D">querySelector funciona com IDs, querySelectorAll funciona com classes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `querySelector()` retorna o primeiro elemento que corresponde ao seletor CSS, enquanto `querySelectorAll()` retorna uma NodeList contendo todos os elementos correspondentes. Use `querySelector()` quando precisar de um elemento, e `querySelectorAll()` quando precisar de vários.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Modificação de Elementos
 
 Alterar conteúdo, atributos e estilos.
 
 ```javascript
-// Mudar conteúdo de texto
-element.textContent = 'Novo texto'
-element.innerHTML = 'Texto em negrito'
+// Alterar conteúdo de texto
+element.textContent = 'New text'
+element.innerHTML = 'Bold text'
 
 // Modificar atributos
 element.setAttribute('data-id', '123')
 element.removeAttribute('disabled')
 const value = element.getAttribute('data-id')
 
-// Mudar classes
+// Alterar classes
 element.classList.add('active')
 element.classList.remove('hidden')
 element.classList.toggle('highlight')
@@ -326,7 +386,7 @@ div.after(newElement) // Inserir depois de div
 Aplicar estilos CSS programaticamente.
 
 ```javascript
-// Modificação de estilo direta
+// Modificação direta de estilo
 element.style.color = 'red'
 element.style.backgroundColor = 'blue'
 element.style.fontSize = '16px'
@@ -352,13 +412,13 @@ Responder a interações do usuário e eventos do navegador.
 ```javascript
 // Ouvinte de evento básico
 button.addEventListener('click', function (event) {
-  console.log('Botão clicado!')
+  console.log('Button clicked!')
 })
 
 // Manipulador de evento de função de seta
 button.addEventListener('click', (e) => {
   e.preventDefault() // Prevenir comportamento padrão
-  console.log('Clicado:', e.target)
+  console.log('Clicked:', e.target)
 })
 
 // Ouvinte de evento com opções
@@ -373,14 +433,14 @@ element.addEventListener('scroll', handler, {
 Eventos comuns e propriedades do objeto de evento.
 
 ```javascript
-// Eventos de mouse
+// Eventos do mouse
 element.addEventListener('click', handleClick)
 element.addEventListener('mouseover', handleMouseOver)
 element.addEventListener('mouseout', handleMouseOut)
 
 // Eventos de teclado
 input.addEventListener('keydown', (e) => {
-  console.log('Tecla pressionada:', e.key)
+  console.log('Key pressed:', e.key)
   if (e.key === 'Enter') {
     // Lidar com a tecla Enter
   }
@@ -398,13 +458,13 @@ Lidar com eventos em múltiplos elementos de forma eficiente.
 // Delegação de eventos no elemento pai
 document.querySelector('#list').addEventListener('click', (e) => {
   if (e.target.matches('.list-item')) {
-    console.log('Item da lista clicado:', e.target.textContent)
+    console.log('List item clicked:', e.target.textContent)
   }
 })
 
 // Removendo ouvintes de eventos
 function handleClick(e) {
-  console.log('Clicado')
+  console.log('Clicked')
 }
 button.addEventListener('click', handleClick)
 button.removeEventListener('click', handleClick)
@@ -412,7 +472,7 @@ button.removeEventListener('click', handleClick)
 
 ### Eventos Personalizados
 
-Criar e despachar eventos personalizados.
+Criar e disparar eventos personalizados.
 
 ```javascript
 // Criar evento personalizado
@@ -420,12 +480,12 @@ const customEvent = new CustomEvent('userLogin', {
   detail: { username: 'john', timestamp: Date.now() },
 })
 
-// Despachar evento
+// Disparar evento
 element.dispatchEvent(customEvent)
 
-// Escutar evento personalizado
+// Ouvir evento personalizado
 element.addEventListener('userLogin', (e) => {
-  console.log('Usuário logado:', e.detail.username)
+  console.log('User logged in:', e.detail.username)
 })
 ```
 
@@ -443,7 +503,7 @@ const fetchData = new Promise((resolve, reject) => {
     if (success) {
       resolve({ data: 'Hello World' })
     } else {
-      reject(new Error('Falha ao buscar'))
+      reject(new Error('Failed to fetch'))
     }
   }, 1000)
 })
@@ -452,7 +512,7 @@ const fetchData = new Promise((resolve, reject) => {
 fetchData
   .then((result) => console.log(result.data))
   .catch((error) => console.error(error))
-  .finally(() => console.log('Concluído'))
+  .finally(() => console.log('Done'))
 ```
 
 ### Async/Await: `async`, `await`
@@ -460,14 +520,14 @@ fetchData
 Sintaxe moderna para lidar com código assíncrono.
 
 ```javascript
-// Função async
+// Função Async
 async function getData() {
   try {
     const response = await fetch('/api/data')
     const data = await response.json()
     return data
   } catch (error) {
-    console.error('Erro:', error)
+    console.error('Error:', error)
     throw error
   }
 }
@@ -510,12 +570,12 @@ const promises = [fetch('/api/users'), fetch('/api/posts')]
 Promise.all(promises)
   .then((responses) => Promise.all(responses.map((r) => r.json())))
   .then(([users, posts]) => {
-    console.log('Usuários:', users)
+    console.log('Users:', users)
     console.log('Posts:', posts)
   })
 
 // Race - a primeira promise a resolver vence
-Promise.race(promises).then((firstResponse) => console.log('Primeira resposta'))
+Promise.race(promises).then((firstResponse) => console.log('First response'))
 ```
 
 ## Recursos Modernos ES6+
@@ -576,7 +636,7 @@ class Student extends Person {
   }
 }
 
-// Exportações/Importações de Módulo
+// Exportação/importação de Módulo
 export const helper = () => 'helper function'
 export default Person
 
@@ -595,9 +655,9 @@ try {
   const result = riskyOperation()
   console.log(result)
 } catch (error) {
-  console.error('Ocorreu um erro:', error.message)
+  console.error('Error occurred:', error.message)
 } finally {
-  console.log('O código de limpeza é executado aqui')
+  console.log('Cleanup code runs here')
 }
 
 // Tratamento de erro assíncrono
@@ -607,7 +667,7 @@ async function asyncOperation() {
     const json = await data.json()
     return json
   } catch (error) {
-    console.error('Erro assíncrono:', error)
+    console.error('Async error:', error)
     throw error // Re-lançar se necessário
   }
 }
@@ -630,14 +690,14 @@ class ValidationError extends Error {
 // Lançar erro personalizado
 function validateEmail(email) {
   if (!email.includes('@')) {
-    throw new ValidationError('Formato de e-mail inválido', 'email')
+    throw new ValidationError('Invalid email format', 'email')
   }
 }
 
 // Métodos de depuração do console
-console.log('Log básico')
-console.warn('Mensagem de aviso')
-console.error('Mensagem de erro')
+console.log('Basic log')
+console.warn('Warning message')
+console.error('Error message')
 console.table([{ name: 'John', age: 30 }])
 console.time('operation')
 // ... algum código
@@ -693,7 +753,7 @@ const userObj = JSON.parse(jsonData)
 try {
   const data = JSON.parse(invalidJson)
 } catch (error) {
-  console.error('JSON Inválido:', error.message)
+  console.error('Invalid JSON:', error.message)
 }
 
 // JSON com replacer/reviver personalizado
@@ -799,7 +859,7 @@ npm install --save-dev jest
 Ferramentas essenciais para desenvolvimento JavaScript.
 
 ```json
-// Script package.json
+// Script Package.json
 {
   "scripts": {
     "start": "node index.js",
@@ -843,7 +903,7 @@ for (let i = 0, len = elements.length; i < len; i++) {
 }
 ```
 
-### Organização e Padrões de Código
+### Organização de Código e Padrões
 
 Estruturar o código para manutenibilidade e legibilidade.
 
@@ -903,7 +963,7 @@ test('multiplies 3 * 4 to equal 12', () => {
 // Executar testes: npm test
 ```
 
-### Teste de Navegador e Depuração
+### Teste e Depuração no Navegador
 
 Depurar JavaScript nas ferramentas de desenvolvedor do navegador.
 
@@ -912,9 +972,9 @@ Depurar JavaScript nas ferramentas de desenvolvedor do navegador.
 debugger // Pausa a execução nas ferramentas de desenvolvimento
 
 // Métodos de console para depuração
-console.log('Valor da variável:', variable)
-console.assert(x > 0, 'x deve ser positivo')
-console.trace('Pilha de chamadas de função')
+console.log('Variable value:', variable)
+console.assert(x > 0, 'x should be positive')
+console.trace('Function call stack')
 
 // Cronometragem de desempenho
 performance.mark('start')

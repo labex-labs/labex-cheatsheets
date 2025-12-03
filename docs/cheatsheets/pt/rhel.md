@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola Red Hat Enterprise Linux'
-description: 'Aprenda Red Hat Enterprise Linux com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Dicas Red Hat Enterprise Linux | LabEx'
+description: 'Aprenda administração Red Hat Enterprise Linux (RHEL) com esta folha de dicas abrangente. Referência rápida para comandos RHEL, gerenciamento de sistema, SELinux, gerenciamento de pacotes e administração de Linux empresarial.'
 pdfUrl: '/cheatsheets/pdf/red-hat-linux-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Folha de Dicas do Red Hat Enterprise Linux
 <a target="_blank" href="https://labex.io/pt/learn/rhel">Aprenda Red Hat Enterprise Linux com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda Red Hat Enterprise Linux através de laboratórios práticos e cenários do mundo real. O LabEx fornece cursos abrangentes de RHEL que cobrem administração essencial do sistema, gerenciamento de pacotes, gerenciamento de serviços, configuração de rede, gerenciamento de armazenamento e segurança. Domine as operações de Linux empresarial e as técnicas de gerenciamento de sistema.
+Aprenda Red Hat Enterprise Linux através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de RHEL que cobrem administração essencial do sistema, gerenciamento de pacotes, gerenciamento de serviços, configuração de rede, gerenciamento de armazenamento e segurança. Domine as operações de Linux empresarial e as técnicas de gerenciamento de sistema.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -64,7 +64,7 @@ cat /proc/meminfo
 swapon --show
 ```
 
-### Uso do Disco: `df` / `du`
+### Uso de Disco: `df` / `du`
 
 Monitora o uso do sistema de arquivos e diretórios.
 
@@ -94,7 +94,7 @@ last
 
 ### Informações de Hardware: `lscpu` / `lsblk`
 
-Exibe componentes e configuração de hardware.
+Exibe componentes de hardware e configuração.
 
 ```bash
 # Mostrar informações da CPU
@@ -125,6 +125,21 @@ sudo dnf install --enablerepo=repo-
 name package
 ```
 
+<BaseQuiz id="rhel-package-1" correct="A">
+  <template #question>
+    Qual é a diferença entre `dnf` e `yum` no RHEL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>dnf é o gerenciador de pacotes mais novo para RHEL 8+, yum é usado no RHEL 7</BaseQuizOption>
+  <BaseQuizOption value="B">dnf é para pacotes de desenvolvimento, yum é para produção</BaseQuizOption>
+  <BaseQuizOption value="C">Não há diferença, eles são os mesmos</BaseQuizOption>
+  <BaseQuizOption value="D">dnf está obsoleto, yum deve ser sempre usado</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    DNF (Dandified YUM) é a versão de próxima geração do YUM e é o gerenciador de pacotes padrão no RHEL 8 e posterior. O YUM ainda é usado no RHEL 7. O DNF oferece melhor desempenho e resolução de dependências.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Atualização de Pacotes: `dnf update` / `yum update`
 
 Atualiza pacotes para as versões mais recentes.
@@ -142,7 +157,7 @@ sudo dnf update --security
 
 ### Informações de Pacotes: `dnf info` / `rpm -q`
 
-Consulta informações e dependências de pacotes.
+Consulta informações de pacotes e dependências.
 
 ```bash
 # Mostrar informações do pacote
@@ -159,7 +174,7 @@ dnf deplist package-name
 
 ### Navegação: `cd` / `pwd` / `ls`
 
-Navega no sistema de arquivos e lista conteúdos.
+Navega no sistema de arquivos e lista o conteúdo.
 
 ```bash
 # Mudar diretório
@@ -191,7 +206,22 @@ rm filename.txt
 rm -rf directory/
 ```
 
-### Conteúdo do Arquivo: `cat` / `less` / `head` / `tail`
+<BaseQuiz id="rhel-file-ops-1" correct="B">
+  <template #question>
+    O que `cp -r` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Copia apenas arquivos</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Copia diretórios recursivamente, incluindo todos os subdiretórios e arquivos</BaseQuizOption>
+  <BaseQuizOption value="C">Remove arquivos</BaseQuizOption>
+  <BaseQuizOption value="D">Renomeia arquivos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O flag `-r` (recursivo) permite que `cp` copie diretórios e seu conteúdo, incluindo todos os subdiretórios e arquivos dentro deles. Sem `-r`, `cp` não pode copiar diretórios.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Conteúdo de Arquivo: `cat` / `less` / `head` / `tail`
 
 Visualiza e examina o conteúdo de arquivos.
 
@@ -200,7 +230,7 @@ Visualiza e examina o conteúdo de arquivos.
 cat filename.txt
 # Visualizar arquivo página por página
 less filename.txt
-# Mostrar as 10 primeiras linhas
+# Mostrar as primeiras 10 linhas
 head filename.txt
 # Mostrar as últimas 10 linhas
 tail filename.txt
@@ -208,12 +238,27 @@ tail filename.txt
 tail -f /var/log/messages
 ```
 
+<BaseQuiz id="rhel-tail-1" correct="C">
+  <template #question>
+    O que `tail -f /var/log/messages` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Mostra apenas as primeiras 10 linhas</BaseQuizOption>
+  <BaseQuizOption value="B">Exclui o arquivo de log</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Exibe as últimas 10 linhas e segue novas entradas em tempo real</BaseQuizOption>
+  <BaseQuizOption value="D">Arquiva o arquivo de log</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O flag `-f` faz com que `tail` siga o arquivo, exibindo novas entradas de log à medida que são escritas. Isso é essencial para monitoramento de logs em tempo real e solução de problemas.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Permissões de Arquivo: `chmod` / `chown` / `chgrp`
 
 Gerencia permissões e propriedade de arquivos.
 
 ```bash
-# Mudar permissões do arquivo
+# Mudar permissões de arquivo
 chmod 755 script.sh
 # Mudar propriedade do arquivo
 sudo chown user:group filename.txt
@@ -223,7 +268,7 @@ sudo chgrp newgroup filename.txt
 sudo chmod -R 644 /path/to/directory/
 ```
 
-### Pesquisa de Arquivos: `find` / `locate` / `grep`
+### Pesquisa de Arquivo: `find` / `locate` / `grep`
 
 Procura por arquivos e conteúdo dentro de arquivos.
 
@@ -274,7 +319,7 @@ sudo systemctl enable service-name
 sudo systemctl disable service-name
 ```
 
-### Informações do Serviço: `systemctl list-units`
+### Informações de Serviço: `systemctl list-units`
 
 Lista e consulta serviços do sistema.
 
@@ -381,7 +426,7 @@ sudo -l
 
 ### Informações de Rede: `ip` / `nmcli`
 
-Exibe detalhes de interface e configuração de rede.
+Exibe detalhes da interface e configuração de rede.
 
 ```bash
 # Mostrar interfaces de rede
@@ -450,7 +495,7 @@ Cria e gerencia partições de disco.
 ```bash
 # Listar partições de disco
 sudo fdisk -l
-# Editor de partições interativo
+# Editor de partição interativo
 sudo fdisk /dev/sda
 # Criar tabela de partição
 sudo parted /dev/sda mklabel gpt
@@ -591,7 +636,7 @@ sar -u 1 3
 sar -r
 # Relatório de atividade de rede
 sar -n DEV
-# Monitoramento de carga média
+# Monitoramento de média de carga
 uptime
 ```
 
@@ -677,7 +722,7 @@ hostnamectl
 # Definir fuso horário
 sudo timedatectl set-timezone
 America/New_York
-# Mostrar configurações de hora
+# Mostrar configurações de tempo
 timedatectl
 ```
 
@@ -688,13 +733,13 @@ timedatectl
 Examina arquivos de log do sistema em busca de problemas.
 
 ```bash
-# Ver mensagens do sistema
+# Visualizar mensagens do sistema
 sudo tail -f /var/log/messages
-# Ver logs de autenticação
+# Visualizar logs de autenticação
 sudo tail -f /var/log/secure
-# Ver logs de inicialização
+# Visualizar logs de inicialização
 sudo journalctl -b
-# Ver mensagens do kernel
+# Visualizar mensagens do kernel
 dmesg | tail
 ```
 
@@ -730,7 +775,7 @@ traceroute google.com
 
 ### Recuperação e Resgate: `systemctl rescue`
 
-Procedimentos de recuperação e emergência do sistema.
+Procedimentos de resgate e emergência do sistema.
 
 ```bash
 # Entrar no modo de resgate
@@ -809,5 +854,5 @@ systemctl list-timers
 - <router-link to="/docker">Folha de Dicas do Docker</router-link>
 - <router-link to="/kubernetes">Folha de Dicas do Kubernetes</router-link>
 - <router-link to="/ansible">Folha de Dicas do Ansible</router-link>
-- <router-link to="/devops">Folha de Dicas de DevOps</router-link>
+- <router-link to="/devops">Folha de Dicas do DevOps</router-link>
 - <router-link to="/cybersecurity">Folha de Dicas de Cibersegurança</router-link>

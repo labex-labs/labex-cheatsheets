@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos DevOps'
-description: 'Aprenda DevOps con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de DevOps | LabEx'
+description: 'Aprenda prácticas de DevOps con esta hoja de trucos completa. Referencia rápida para CI/CD, automatización, infraestructura como código, monitoreo, contenerización y flujos de trabajo modernos de entrega de software.'
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de DevOps
 <a target="_blank" href="https://labex.io/es/learn/devops">Aprenda DevOps con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda prácticas de DevOps a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de DevOps que cubren operaciones esenciales, gestión de infraestructura, pipelines de CI/CD, contenedorización, monitoreo y automatización. Aprenda a desplegar aplicaciones, gestionar infraestructura como código, automatizar flujos de trabajo e implementar prácticas modernas de DevOps para una entrega de software eficiente.
+Aprenda prácticas de DevOps a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de DevOps que cubren operaciones esenciales, gestión de infraestructura, pipelines de CI/CD, contenerización, monitoreo y automatización. Aprenda a desplegar aplicaciones, gestionar infraestructura como código, automatizar flujos de trabajo e implementar prácticas modernas de DevOps para una entrega de software eficiente.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -39,6 +39,21 @@ terraform fmt
 # Validar configuración
 terraform validate
 ```
+
+<BaseQuiz id="devops-terraform-1" correct="B">
+  <template #question>
+    ¿Qué hace `terraform plan`?
+  </template>
+  
+  <BaseQuizOption value="A">Aplica cambios de infraestructura inmediatamente</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Muestra qué cambios se realizarán sin aplicarlos</BaseQuizOption>
+  <BaseQuizOption value="C">Destruye toda la infraestructura</BaseQuizOption>
+  <BaseQuizOption value="D">Inicializa Terraform</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `terraform plan` crea un plan de ejecución que muestra lo que Terraform hará cuando ejecute `terraform apply`. Es una simulación (dry-run) que le ayuda a revisar los cambios antes de aplicarlos.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Ansible: Gestión de Configuración
 
@@ -103,6 +118,21 @@ kubectl logs pod_name
 # Eliminar recursos
 kubectl delete -f deployment.yml
 ```
+
+<BaseQuiz id="devops-k8s-1" correct="A">
+  <template #question>
+    ¿Qué hace `kubectl apply -f deployment.yml`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Crea o actualiza los recursos definidos en el archivo YAML</BaseQuizOption>
+  <BaseQuizOption value="B">Elimina todos los recursos en el clúster</BaseQuizOption>
+  <BaseQuizOption value="C">Solo crea nuevos recursos</BaseQuizOption>
+  <BaseQuizOption value="D">Muestra lo que se crearía sin aplicar</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kubectl apply` es un comando declarativo que crea recursos si no existen o los actualiza si ya existen. Es idempotente, lo que significa que puede ejecutarlo varias veces de forma segura.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Helm: Gestor de Paquetes de Kubernetes
 
@@ -205,15 +235,30 @@ git status
 git add .
 # Confirmar cambios
 git commit -m "Añadir característica"
-# Enviar a remoto
+# Subir a remoto
 git push origin main
-# Obtener últimos cambios
+# Bajar últimos cambios
 git pull origin main
 ```
 
-### Gestión de Ramas (Branch Management)
+<BaseQuiz id="devops-git-1" correct="D">
+  <template #question>
+    ¿Cuál es la diferencia entre `git pull` y `git fetch`?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="B">git pull sube cambios, git fetch baja cambios</BaseQuizOption>
+  <BaseQuizOption value="C">git pull funciona localmente, git fetch funciona remotamente</BaseQuizOption>
+  <BaseQuizOption value="D" correct>git fetch descarga cambios sin fusionar, git pull descarga y fusiona cambios</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` descarga cambios del repositorio remoto pero no los fusiona en su rama actual. `git pull` realiza ambas operaciones: obtiene y luego fusiona los cambios.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Gestione diferentes flujos de desarrollo y lanzamientos.
+### Gestión de Ramas
+
+Administre diferentes flujos de desarrollo y lanzamientos.
 
 ```bash
 # Crear rama
@@ -222,7 +267,7 @@ git checkout -b feature-branch
 git merge feature-branch
 # Listar ramas
 git branch -a
-# Cambiar de rama
+# Cambiar rama
 git checkout main
 # Eliminar rama
 git branch -d feature-branch
@@ -252,10 +297,10 @@ git push -u origin feature-branch
 
 ### Revisión de Código y Calidad
 
-Asegure la calidad del código a través de revisión por pares y verificaciones automatizadas.
+Asegure la calidad del código a través de la revisión por pares y comprobaciones automatizadas.
 
 ```bash
-# Ejemplo de hooks pre-commit
+# Ejemplo de ganchos pre-commit
 #!/bin/sh
 # Ejecutar pruebas antes de confirmar
 npm test
@@ -420,7 +465,7 @@ gcp_bucket = gcp.storage.Bucket("my-gcp-bucket")
 
 ### HashiCorp Vault: Gestión de Secretos
 
-HashiCorp Vault es una herramienta para acceder a secretos de forma segura. Un secreto es cualquier cosa a la que se desea controlar estrictamente el acceso, como claves API, contraseñas o certificados.
+HashiCorp Vault es una herramienta para acceder a secretos de forma segura. Un secreto es cualquier cosa cuyo acceso desee controlar estrictamente, como claves API, contraseñas o certificados.
 
 ```bash
 # Escribir un secreto
@@ -450,7 +495,7 @@ sonar-scanner -Dsonar.projectKey=myproject -Dsonar.sources=. -Dsonar.host.url=ht
 
 ### Gestión de Certificados SSL/TLS
 
-Gestione certificados SSL para comunicaciones seguras.
+Administre certificados SSL para comunicaciones seguras.
 
 ```bash
 # Let's Encrypt con Certbot
@@ -524,9 +569,9 @@ Pruebe el rendimiento de la aplicación bajo diversas condiciones de carga.
 ```bash
 # Apache Bench
 ab -n 1000 -c 10 http://example.com/
-# wrk benchmarking HTTP
+# wrk HTTP benchmarking
 wrk -t12 -c400 -d30s http://example.com/
-# Pruebas de carga Artillery
+# Pruebas de carga con Artillery
 artillery run load-test.yml
 # Autoscaler horizontal de pods de Kubernetes
 kubectl autoscale deployment myapp --cpu-percent=70 --min=1 --max=10
@@ -582,7 +627,7 @@ curl -L "https://github.com/docker/compose/releases/latest/download/docker-compo
 chmod +x /usr/local/bin/docker-compose
 ```
 
-### Herramientas CLI de la Nube
+### Herramientas de Línea de Comandos de la Nube
 
 Instale interfaces de línea de comandos para los principales proveedores de nube.
 
@@ -600,7 +645,7 @@ curl https://sdk.cloud.google.com | bash
 
 ### Gestión de Variables de Entorno
 
-Gestione la configuración a través de diferentes entornos de forma segura.
+Administre la configuración a través de diferentes entornos de forma segura.
 
 ```bash
 # Ejemplo de archivo .env
@@ -617,10 +662,10 @@ kubectl create configmap app-config --from-env-file=.env
 
 ### Descubrimiento de Servicios y Configuración
 
-Gestione el descubrimiento de servicios y la configuración dinámica.
+Administre el descubrimiento de servicios y la configuración dinámica.
 
 ```bash
-# Registro de servicio Consul
+# Registro de servicio de Consul
 consul services register myservice.json
 # Obtener salud del servicio
 consul health service web
@@ -631,7 +676,7 @@ etcdctl get /config/database/host
 
 ### Configuración del Entorno de Desarrollo
 
-Configure entornos de desarrollo consistentes usando contenedores.
+Configure entornos de desarrollo consistentes utilizando contenedores.
 
 ```dockerfile
 # Dockerfile de Desarrollo
@@ -743,7 +788,7 @@ if [ "$1" == "push" ]; then
   docker build -t myapp .
   docker run -d --name myapp-$(date +%s) myapp
 fi
-# Webhook de Prometheus alertmanager
+# Webhook de alerta de Prometheus alertmanager
 curl -X POST http://webhook-handler/deploy \
   -H "Content-Type: application/json" \
   -d '{"service": "myapp", "action": "restart"}'

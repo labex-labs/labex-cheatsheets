@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo Shell'
-description: 'Apprenez le Shell avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo Shell | LabEx'
+description: "Apprenez le scripting shell avec cette fiche mémo complète. Référence rapide pour les commandes bash, le scripting shell, l'automatisation, les outils en ligne de commande et l'administration système Linux/Unix."
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
@@ -59,7 +59,7 @@ Créer de nouveaux répertoires.
 # Créer un répertoire
 mkdir mon_repertoire
 # Créer des répertoires imbriqués
-mkdir -p parent/enfant/petit_enfant
+mkdir -p parent/enfant/petit-enfant
 # Créer plusieurs répertoires
 mkdir dir1 dir2 dir3
 ```
@@ -72,8 +72,8 @@ Copier des fichiers et des répertoires.
 # Copier un fichier
 cp source.txt destination.txt
 # Copier un répertoire récursivement
-cp -r repertoire_source repertoire_destination
-# Copier avec une invite de confirmation
+cp -r repertoire_source dest_repertoire
+# Copier avec demande de confirmation
 cp -i fichier1.txt fichier2.txt
 # Préserver les attributs du fichier
 cp -p original.txt copie.txt
@@ -109,12 +109,12 @@ rm -i *.txt
 
 ## Navigation et Gestion des Chemins
 
-### Répertoire Actuel : `pwd`
+### Répertoire Courant : `pwd`
 
 Afficher le chemin du répertoire de travail actuel.
 
 ```bash
-# Afficher le répertoire actuel
+# Afficher le répertoire courant
 pwd
 # Exemple de sortie :
 /home/utilisateur/documents
@@ -135,9 +135,24 @@ cd -
 cd /chemin/vers/repertoire
 ```
 
+<BaseQuiz id="shell-cd-1" correct="A">
+  <template #question>
+    Que fait `cd ~` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Change pour le répertoire personnel</BaseQuizOption>
+  <BaseQuizOption value="B">Change pour le répertoire racine</BaseQuizOption>
+  <BaseQuizOption value="C">Change pour le répertoire parent</BaseQuizOption>
+  <BaseQuizOption value="D">Crée un nouveau répertoire</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le symbole `~` est un raccourci pour le répertoire personnel. `cd ~` navigue vers votre répertoire personnel, ce qui est équivalent à `cd $HOME` ou `cd /home/nom_utilisateur`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Arborescence des Répertoires : `tree`
 
-Afficher la structure du répertoire sous forme d'arbre.
+Afficher la structure des répertoires au format arborescent.
 
 ```bash
 # Afficher l'arborescence du répertoire
@@ -166,7 +181,7 @@ tail fichier.txt
 # Afficher les 20 dernières lignes
 tail -n 20 fichier.txt
 # Suivre les changements dans le fichier (utile pour les logs)
-tail -f fichier_log.txt
+tail -f logfile.txt
 ```
 
 ### Rechercher dans les Fichiers : `grep`
@@ -178,7 +193,7 @@ Rechercher des motifs dans des fichiers texte.
 grep "motif" fichier.txt
 # Recherche insensible à la casse
 grep -i "motif" fichier.txt
-# Rechercher récursivement dans les répertoires
+# Recherche récursive dans les répertoires
 grep -r "motif" repertoire/
 # Afficher les numéros de ligne
 grep -n "motif" fichier.txt
@@ -186,9 +201,24 @@ grep -n "motif" fichier.txt
 grep -c "motif" fichier.txt
 ```
 
+<BaseQuiz id="shell-grep-1" correct="B">
+  <template #question>
+    Que fait `grep -r "motif" repertoire/` ?
+  </template>
+  
+  <BaseQuizOption value="A">Recherche uniquement dans le fichier courant</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Recherche récursivement dans tous les fichiers du répertoire</BaseQuizOption>
+  <BaseQuizOption value="C">Remplace le motif dans les fichiers</BaseQuizOption>
+  <BaseQuizOption value="D">Supprime les fichiers contenant le motif</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `-r` fait que grep recherche récursivement dans tous les fichiers et sous-répertoires. Ceci est utile pour trouver des motifs de texte dans l'ensemble de l'arborescence d'un répertoire.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Trouver des Fichiers : `find`
 
-Localiser des fichiers et des répertoires selon des critères.
+Localiser des fichiers et des répertoires en fonction de critères.
 
 ```bash
 # Trouver des fichiers par nom
@@ -196,7 +226,7 @@ find . -name "*.txt"
 # Trouver des fichiers par type
 find . -type f -name "config*"
 # Trouver des répertoires
-find . -type d -name "sauvegarde"
+find . -type d -name "backup"
 # Trouver des fichiers modifiés dans les 7 derniers jours
 find . -mtime -7
 # Trouver et exécuter une commande
@@ -227,7 +257,7 @@ cat fichier.txt | tr ' ' '\n' | sort | uniq -c
 Afficher les permissions détaillées et la propriété des fichiers.
 
 ```bash
-# Afficher les informations détaillées des fichiers
+# Afficher les informations détaillées du fichier
 ls -l
 # Exemple de sortie :
 # -rw-r--r-- 1 utilisateur groupe 1024 Jan 1 12:00 fichier.txt
@@ -248,6 +278,21 @@ chmod go-w fichier.txt
 # Changement de permission récursif
 chmod -R 644 repertoire/
 ```
+
+<BaseQuiz id="shell-chmod-1" correct="C">
+  <template #question>
+    Que définit `chmod 755 fichier.txt` ?
+  </template>
+  
+  <BaseQuizOption value="A">Lecture, écriture, exécution pour tous les utilisateurs</BaseQuizOption>
+  <BaseQuizOption value="B">Lecture et écriture pour le propriétaire, lecture pour les autres</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lecture, écriture, exécution pour le propriétaire ; lecture, exécution pour le groupe et les autres</BaseQuizOption>
+  <BaseQuizOption value="D">Lecture seule pour tous les utilisateurs</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` définit les permissions comme suit : propriétaire = 7 (rwx), groupe = 5 (r-x), autres = 5 (r-x). C'est un ensemble de permissions courant pour les fichiers exécutables et les répertoires.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Changer la Propriété : `chown` / `chgrp`
 
@@ -296,7 +341,7 @@ top
 htop
 ```
 
-### Tâches d'Arrière-plan : `&` / `jobs` / `fg` / `bg`
+### Tâches en Arrière-plan : `&` / `jobs` / `fg` / `bg`
 
 Gérer les processus d'arrière-plan et de premier plan.
 
@@ -322,7 +367,7 @@ Terminer les processus par PID ou par nom.
 kill 1234
 # Tuer un processus de force
 kill -9 1234
-# Tuer tous les processus portant un nom
+# Tuer tous les processus portant le nom
 killall firefox
 # Envoyer un signal spécifique
 kill -TERM 1234
@@ -362,24 +407,39 @@ commande > sortie.txt 2>&1
 commande > /dev/null
 ```
 
+<BaseQuiz id="shell-redirect-1" correct="B">
+  <template #question>
+    Quelle est la différence entre `>` et `>>` dans la redirection shell ?
+  </template>
+  
+  <BaseQuizOption value="A">`>` ajoute, `>>` écrase</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`>` écrase le fichier, `>>` ajoute au fichier</BaseQuizOption>
+  <BaseQuizOption value="C">`>` redirige stdout, `>>` redirige stderr</BaseQuizOption>
+  <BaseQuizOption value="D">Il n'y a pas de différence</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'opérateur `>` écrase le fichier cible s'il existe, tandis que `>>` ajoute la sortie à la fin du fichier. Utilisez `>>` lorsque vous souhaitez conserver le contenu existant.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Pipes : `|`
 
 Enchaîner des commandes ensemble à l'aide de pipes.
 
 ```bash
-# Utilisation de pipe de base
+# Utilisation de base du pipe
 commande1 | commande2
 # Multiples pipes
 cat fichier.txt | grep "motif" | sort | uniq
 # Compter les lignes de la sortie
 ps aux | wc -l
-# Paginer une longue sortie
+# Paginer à travers une longue sortie
 ls -la | less
 ```
 
 ### Tee : `tee`
 
-Écrire la sortie à la fois dans un fichier et dans stdout.
+Écrire la sortie à la fois dans un fichier et dans la sortie standard.
 
 ```bash
 # Sauvegarder la sortie et l'afficher
@@ -421,9 +481,9 @@ compte=42
 # Utiliser des variables
 echo $nom
 echo "Bonjour, $nom"
-echo "Compte: ${compte}"
+echo "Compte : ${count}"
 # Substitution de commande
-repertoire_actuel=$(pwd)
+repertoire_courant=$(pwd)
 date_aujourdhui=$(date +%Y-%m-%d)
 ```
 
@@ -435,9 +495,9 @@ Gérer les variables d'environnement.
 # Exporter une variable vers l'environnement
 export PATH="/nouveau/chemin:$PATH"
 export MA_VAR="valeur"
-# Voir toutes les variables d'environnement
+# Afficher toutes les variables d'environnement
 env
-# Voir une variable spécifique
+# Afficher une variable spécifique
 echo $HOME
 echo $PATH
 # Supprimer une variable
@@ -455,10 +515,10 @@ $1, $2, $3...  # Premier, deuxième, troisième argument
 $#  # Nombre d'arguments
 $@  # Tous les arguments comme mots séparés
 $*  # Tous les arguments comme un seul mot
-$?  # Code de sortie de la dernière commande
+$?  # Statut de sortie de la dernière commande
 # Information sur le processus
-$$  # PID du shell actuel
-$!  # PID du dernier processus d'arrière-plan
+$$  # PID du shell courant
+$!  # PID du dernier processus en arrière-plan
 ```
 
 ### Expansion de Paramètres
@@ -467,13 +527,13 @@ Techniques avancées de manipulation de variables.
 
 ```bash
 # Valeurs par défaut
-${var:-defaut}  # Utiliser la valeur par défaut si var est vide
-${var:=defaut}  # Définir var à la valeur par défaut si vide
+${var:-valeur_par_defaut}  # Utiliser la valeur par défaut si var est vide
+${var:=valeur_par_defaut}  # Définir var à la valeur par défaut si vide
 # Manipulation de chaînes
-${var#motif}   # Supprimer la correspondance la plus courte au début
-${var##motif}  # Supprimer la correspondance la plus longue au début
-${var%motif}   # Supprimer la correspondance la plus courte à la fin
-${var%%motif}  # Supprimer la correspondance la plus longue à la fin
+${var#motif}   # Supprimer la correspondance la plus courte depuis le début
+${var##motif}  # Supprimer la correspondance la plus longue depuis le début
+${var%motif}   # Supprimer la correspondance la plus courte depuis la fin
+${var%%motif}  # Supprimer la correspondance la plus longue depuis la fin
 ```
 
 ## Bases du Scripting
@@ -490,7 +550,7 @@ salutation="Bonjour, Monde !"
 utilisateur=$(whoami)
 # Sortie
 echo $salutation
-echo "Utilisateur actuel : $utilisateur"
+echo "Utilisateur courant : $utilisateur"
 # Rendre le script exécutable :
 chmod +x script.sh
 # Exécuter le script :
@@ -538,7 +598,7 @@ done
 compte=1
 while [ $compte -le 5 ]; do
     echo "Compte : $compte"
-    compte=$((compte + 1))
+    count=$((count + 1))
 done
 ```
 
@@ -581,20 +641,20 @@ dig google.com
 ip addr show  # Afficher les adresses IP
 ip route show # Afficher la table de routage
 # Télécharger des fichiers
-wget https://example.com/fichier.txt
-curl -O https://example.com/fichier.txt
+wget https://example.com/file.txt
+curl -O https://example.com/file.txt
 ```
 
 ### Informations Système : `uname` / `whoami` / `date`
 
-Obtenir des informations sur le système et l'utilisateur.
+Obtenir des informations système et utilisateur.
 
 ```bash
 # Informations système
 uname -a      # Toutes les infos système
 uname -r      # Version du noyau
 hostname      # Nom de l'ordinateur
-whoami        # Nom d'utilisateur actuel
+whoami        # Nom d'utilisateur courant
 id            # ID utilisateur et groupes
 # Date et heure
 date          # Date/heure actuelle
@@ -652,7 +712,7 @@ history 10
 !123
 # Exécuter la dernière commande commençant par 'ls'
 !ls
-# Rechercher interactivement dans l'historique
+# Rechercher dans l'historique interactivement
 Ctrl+R
 ```
 
@@ -693,18 +753,18 @@ Ctrl+Z  # Suspendre la commande courante
 Ctrl+D  # Quitter le shell ou EOF
 ```
 
-## Combinaisons de Commandes et Astuces
+## Combinaisons et Astuces de Commandes
 
 ### Combinaisons de Commandes Utiles
 
-Commandes uniques pour des tâches courantes.
+Commandes uniques puissantes pour les tâches courantes.
 
 ```bash
 # Trouver et remplacer du texte dans plusieurs fichiers
 find . -name "*.txt" -exec sed -i 's/ancien/nouveau/g' {} \;
-# Trouver les plus gros fichiers dans le répertoire courant
+# Trouver les plus grands fichiers dans le répertoire courant
 du -ah . | sort -rh | head -10
-# Surveiller un fichier log pour un motif spécifique
+# Surveiller un fichier journal pour un motif spécifique
 tail -f /var/log/syslog | grep "ERREUR"
 # Compter les fichiers dans un répertoire
 ls -1 | wc -l
@@ -717,16 +777,16 @@ cp fichier.txt fichier.txt.sauvegarde.$(date +%Y%m%d-%H%M%S)
 Créer des raccourcis pour les commandes fréquemment utilisées.
 
 ```bash
-# Créer des alias (à ajouter dans ~/.bashrc)
+# Créer des alias (ajouter à ~/.bashrc)
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias ..='cd ..'
 alias ...='cd ../..'
-# Voir tous les alias
+# Afficher tous les alias
 alias
 # Créer des alias persistants dans ~/.bashrc :
-echo "alias ma_commande='commande longue ici'" >>
+echo "alias ma_commande='longue commande ici'" >>
 ~/.bashrc
 source ~/.bashrc
 ```

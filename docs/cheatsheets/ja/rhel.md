@@ -1,6 +1,6 @@
 ---
-title: 'Red Hat Enterprise Linux チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Red Hat Enterprise Linux を習得しましょう。'
+title: 'Red Hat Enterprise Linux チートシート | LabEx'
+description: 'この包括的なチートシートで Red Hat Enterprise Linux (RHEL) 管理を学習しましょう。RHEL コマンド、システム管理、SELinux、パッケージ管理、エンタープライズ Linux 管理のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/red-hat-linux-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Red Hat Enterprise Linux チートシート
 <a target="_blank" href="https://labex.io/ja/learn/rhel">ハンズオンラボで Red Hat Enterprise Linux を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて Red Hat Enterprise Linux を学びましょう。LabEx は、基本的なシステム管理、パッケージ管理、サービス管理、ネットワーク設定、ストレージ管理、セキュリティを網羅した包括的な RHEL コースを提供します。エンタープライズ Linux の運用とシステム管理技術を習得してください。
+ハンズオンラボと現実世界のシナリオを通じて Red Hat Enterprise Linux を学びましょう。LabEx は、基本的なシステム管理、パッケージ管理、サービス管理、ネットワーク設定、ストレージ管理、セキュリティを網羅した包括的な RHEL コースを提供します。エンタープライズ Linux の操作とシステム管理技術を習得します。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -26,13 +26,13 @@ Red Hat Enterprise Linux チートシート
 RHEL のバージョンとリリース情報を表示します。
 
 ```bash
-# RHEL バージョンの表示
+# RHEL バージョンを表示
 cat /etc/redhat-release
 # 代替方法
 cat /etc/os-release
-# カーネルバージョンの表示
+# カーネルバージョンを表示
 uname -r
-# システムアーキテクチャの表示
+# システムアーキテクチャを表示
 uname -m
 ```
 
@@ -45,22 +45,22 @@ uname -m
 top
 # 強化されたプロセスビューア (インストールされている場合)
 htop
-# プロセスツリーの表示
+# プロセスツリーを表示
 pstree
-# すべてのプロセスの表示
+# すべてのプロセスを表示
 ps aux
 ```
 
 ### メモリ情報：`free` / `cat /proc/meminfo`
 
-メモリの使用状況と利用可能性を表示します。
+メモリの使用状況と空き容量を表示します。
 
 ```bash
-# 人間が読みやすい形式でメモリ使用量を表示
+# 人間が読みやすい形式でメモリ使用状況を表示
 free -h
 # 詳細なメモリ情報を表示
 cat /proc/meminfo
-# スワップ使用量の表示
+# スワップ使用状況を表示
 swapon --show
 ```
 
@@ -69,26 +69,26 @@ swapon --show
 ファイルシステムとディレクトリの使用状況を監視します。
 
 ```bash
-# ファイルシステム使用量の表示
+# ファイルシステムの使用状況を表示
 df -h
-# ディレクトリサイズの表示
+# ディレクトリサイズを表示
 du -sh /var/log/*
-# 最大のディレクトリの表示
+# 最大のディレクトリを表示
 du -h --max-depth=1 / | sort -hr
 ```
 
 ### システム稼働時間：`uptime` / `who`
 
-システムの稼働時間とログインユーザーを確認します。
+システムの稼働時間とログイン中のユーザーを確認します。
 
 ```bash
-# システムの稼働時間とロードアベレージの表示
+# システムの稼働時間とロードアベレージを表示
 uptime
-# ログインユーザーの表示
+# ログイン中のユーザーを表示
 who
-# 現在のユーザーの表示
+# 現在のユーザーを表示
 whoami
-# 最終ログインの表示
+# 最終ログインを表示
 last
 ```
 
@@ -97,13 +97,13 @@ last
 ハードウェアコンポーネントと設定を表示します。
 
 ```bash
-# CPU 情報の表示
+# CPU 情報を表示
 lscpu
-# ブロックデバイスの表示
+# ブロックデバイスを表示
 lsblk
-# PCI デバイスの表示
+# PCI デバイスを表示
 lspci
-# USB デバイスの表示
+# USB デバイスを表示
 lsusb
 ```
 
@@ -114,16 +114,31 @@ lsusb
 ソフトウェアパッケージと依存関係をインストールします。
 
 ```bash
-# パッケージのインストール (RHEL 8 以降)
+# パッケージをインストール (RHEL 8 以降)
 sudo dnf install package-name
-# パッケージのインストール (RHEL 7)
+# パッケージをインストール (RHEL 7)
 sudo yum install package-name
-# ローカル RPM ファイルのインストール
+# ローカル RPM ファイルをインストール
 sudo rpm -i package.rpm
-# 特定のリポジトリからのインストール
+# 特定のリポジトリからインストール
 sudo dnf install --enablerepo=repo-
 name package
 ```
+
+<BaseQuiz id="rhel-package-1" correct="A">
+  <template #question>
+    RHEL における `dnf` と `yum` の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>dnf は RHEL 8 以降の新しいパッケージマネージャーであり、yum は RHEL 7 で使用されます</BaseQuizOption>
+  <BaseQuizOption value="B">dnf は開発パッケージ用、yum は本番環境用です</BaseQuizOption>
+  <BaseQuizOption value="C">違いはなく、同じものです</BaseQuizOption>
+  <BaseQuizOption value="D">dnf は非推奨であり、常に yum を使用すべきです</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    DNF (Dandified YUM) は YUM の次世代バージョンであり、RHEL 8 以降のデフォルトのパッケージマネージャーです。YUM は RHEL 7 で引き続き使用されます。DNF はパフォーマンスと依存関係の解決が優れています。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### パッケージの更新：`dnf update` / `yum update`
 
@@ -134,7 +149,7 @@ name package
 sudo dnf update
 # 特定のパッケージを更新
 sudo dnf update package-name
-# 利用可能な更新の確認
+# 利用可能な更新を確認
 dnf check-update
 # セキュリティパッチのみを更新
 sudo dnf update --security
@@ -145,13 +160,13 @@ sudo dnf update --security
 パッケージ情報と依存関係を照会します。
 
 ```bash
-# パッケージ情報の表示
+# パッケージ情報を表示
 dnf info package-name
-# インストール済みパッケージの一覧表示
+# インストールされているパッケージを一覧表示
 rpm -qa
-# パッケージの検索
+# パッケージを検索
 dnf search keyword
-# パッケージの依存関係の表示
+# パッケージの依存関係を表示
 dnf deplist package-name
 ```
 
@@ -162,15 +177,15 @@ dnf deplist package-name
 ファイルシステムを移動し、内容を一覧表示します。
 
 ```bash
-# ディレクトリの変更
+# ディレクトリを変更
 cd /path/to/directory
-# 現在のディレクトリの表示
+# 現在のディレクトリを表示
 pwd
-# ファイルとディレクトリの一覧表示
+# ファイルとディレクトリを一覧表示
 ls -la
-# ファイルサイズ付きの一覧表示
+# ファイルサイズ付きで一覧表示
 ls -lh
-# 隠しファイルの表示
+# 隠しファイルを表示
 ls -a
 ```
 
@@ -179,45 +194,75 @@ ls -a
 ファイルとディレクトリのコピー、移動、削除を行います。
 
 ```bash
-# ファイルのコピー
+# ファイルをコピー
 cp source.txt destination.txt
-# ディレクトリの再帰的コピー
+# ディレクトリを再帰的にコピー
 cp -r /source/dir/ /dest/dir/
 # ファイルの移動/名前変更
 mv oldname.txt newname.txt
-# ファイルの削除
+# ファイルを削除
 rm filename.txt
-# ディレクトリの再帰的削除
+# ディレクトリを再帰的に削除
 rm -rf directory/
 ```
 
+<BaseQuiz id="rhel-file-ops-1" correct="B">
+  <template #question>
+    `cp -r` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">ファイルのみをコピーします</BaseQuizOption>
+  <BaseQuizOption value="B" correct>ディレクトリを再帰的にコピーし、すべてのサブディレクトリとファイルを含めます</BaseQuizOption>
+  <BaseQuizOption value="C">ファイルを削除します</BaseQuizOption>
+  <BaseQuizOption value="D">ファイルを名前変更します</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-r` フラグ (再帰的) は、`cp` がディレクトリとその内容（すべてのサブディレクトリとファイルを含む）をコピーできるようにします。`-r` がないと、`cp` はディレクトリをコピーできません。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ファイル内容：`cat` / `less` / `head` / `tail`
 
-ファイル内容の表示と検査を行います。
+ファイルの内容を表示および検査します。
 
 ```bash
-# ファイル内容の表示
+# ファイル内容を表示
 cat filename.txt
 # ページごとにファイルを表示
 less filename.txt
-# 最初の10行の表示
+# 最初の10行を表示
 head filename.txt
-# 最後の10行の表示
+# 最後の10行を表示
 tail filename.txt
 # ログファイルをリアルタイムで追跡
 tail -f /var/log/messages
 ```
+
+<BaseQuiz id="rhel-tail-1" correct="C">
+  <template #question>
+    `tail -f /var/log/messages` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">最初の 10 行のみを表示します</BaseQuizOption>
+  <BaseQuizOption value="B">ログファイルを削除します</BaseQuizOption>
+  <BaseQuizOption value="C" correct>最後の 10 行を表示し、新しいエントリをリアルタイムで追跡します</BaseQuizOption>
+  <BaseQuizOption value="D">ログファイルをアーカイブします</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-f` フラグは `tail` にファイルを追跡させ、ログが書き込まれる新しいエントリを表示します。これはリアルタイムのログ監視とトラブルシューティングに不可欠です。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### ファイルパーミッション：`chmod` / `chown` / `chgrp`
 
 ファイルパーミッションと所有権を管理します。
 
 ```bash
-# ファイルパーミッションの変更
+# ファイルパーミッションを変更
 chmod 755 script.sh
-# ファイルの所有権の変更
+# ファイルの所有権を変更
 sudo chown user:group filename.txt
-# グループ所有権の変更
+# グループ所有権を変更
 sudo chgrp newgroup filename.txt
 # 再帰的なパーミッション変更
 sudo chmod -R 644 /path/to/directory/
@@ -225,16 +270,16 @@ sudo chmod -R 644 /path/to/directory/
 
 ### ファイル検索：`find` / `locate` / `grep`
 
-ファイルとファイル内のコンテンツを検索します。
+ファイルやファイル内のコンテンツを検索します。
 
 ```bash
-# 名前によるファイルの検索
+# 名前でファイルを検索
 find /path -name "*.txt"
-# サイズによるファイルの検索
+# サイズでファイルを検索
 find /path -size +100M
-# ファイル内のテキスト検索
+# ファイル内のテキストを検索
 grep "pattern" filename.txt
-# 再帰的なテキスト検索
+# ディレクトリ内を再帰的にテキスト検索
 grep -r "pattern" /path/to/directory/
 ```
 
@@ -243,13 +288,13 @@ grep -r "pattern" /path/to/directory/
 圧縮アーカイブの作成と展開を行います。
 
 ```bash
-# tar アーカイブの作成
+# tar アーカイブを作成
 tar -czf archive.tar.gz /path/to/directory/
-# tar アーカイブの展開
+# tar アーカイブを展開
 tar -xzf archive.tar.gz
-# zip アーカイブの作成
+# zip アーカイブを作成
 zip -r archive.zip /path/to/directory/
-# zip アーカイブの展開
+# zip アーカイブを展開
 unzip archive.zip
 ```
 
@@ -260,47 +305,47 @@ unzip archive.zip
 systemd を使用してシステムサービスを管理します。
 
 ```bash
-# サービスの起動
+# サービスを開始
 sudo systemctl start service-name
-# サービスの停止
+# サービスを停止
 sudo systemctl stop service-name
-# サービスの再起動
+# サービスを再起動
 sudo systemctl restart service-name
-# サービスの状態確認
+# サービスの状態を確認
 systemctl status service-name
-# ブート時のサービス有効化
+# ブート時にサービスを有効化
 sudo systemctl enable service-name
-# ブート時のサービス無効化
+# ブート時にサービスを無効化
 sudo systemctl disable service-name
 ```
 
 ### サービス情報：`systemctl list-units`
 
-システムサービスの一覧表示と照会を行います。
+システムサービスを一覧表示および照会します。
 
 ```bash
-# すべてのアクティブなサービスの一覧表示
+# すべてのアクティブなサービスを一覧表示
 systemctl list-units --type=service
-# 有効化されているすべてのサービスの一覧表示
+# 有効化されているすべてのサービスを一覧表示
 systemctl list-unit-files --type=service --state=enabled
-# サービスの依存関係の表示
+# サービスの依存関係を表示
 systemctl list-dependencies service-name
 ```
 
 ### システムログ：`journalctl`
 
-journald を使用してシステムログの表示と分析を行います。
+journald を使用してシステムログを表示および分析します。
 
 ```bash
-# すべてのログの表示
+# すべてのログを表示
 journalctl
-# 特定のサービスに関するログの表示
+# 特定のサービスに関するログを表示
 journalctl -u service-name
-# リアルタイムでのログの追跡
+# リアルタイムでログを追跡
 journalctl -f
-# 前回のブートからのログの表示
+# 前回のブートからのログを表示
 journalctl -b
-# 時間範囲によるログの表示
+# 時間範囲でログを表示
 journalctl --since "2024-01-01" --until "2024-01-31"
 ```
 
@@ -309,15 +354,15 @@ journalctl --since "2024-01-01" --until "2024-01-31"
 実行中のプロセスを監視および制御します。
 
 ```bash
-# 実行中のプロセスの表示
+# 実行中のプロセスを表示
 ps aux
-# PID によるプロセスの終了
+# PID でプロセスを終了
 kill 1234
-# プロセス名によるプロセスの終了
+# 名前でプロセスを終了
 killall process-name
-# プロセスの強制終了
+# プロセスを強制終了
 kill -9 1234
-# プロセス階層の表示
+# プロセス階層を表示
 pstree
 ```
 
@@ -328,16 +373,16 @@ pstree
 ユーザーアカウントの作成、変更、削除を行います。
 
 ```bash
-# 新規ユーザーの追加
+# 新しいユーザーを追加
 sudo useradd -m username
-# ユーザーパスワードの設定
+# ユーザーパスワードを設定
 sudo passwd username
-# ユーザーアカウントの変更
+# ユーザーアカウントを変更
 sudo usermod -aG groupname
 username
-# ユーザーアカウントの削除
+# ユーザーアカウントを削除
 sudo userdel -r username
-# ユーザーアカウントのロック
+# ユーザーアカウントをロック
 sudo usermod -L username
 ```
 
@@ -346,7 +391,7 @@ sudo usermod -L username
 グループの作成、変更、削除を行います。
 
 ```bash
-# 新規グループの追加
+# 新しいグループを追加
 sudo groupadd groupname
 # ユーザーをグループに追加
 sudo usermod -aG groupname
@@ -354,9 +399,9 @@ username
 # ユーザーをグループから削除
 sudo gpasswd -d username
 groupname
-# グループの削除
+# グループを削除
 sudo groupdel groupname
-# ユーザーのグループ一覧表示
+# ユーザーのグループを一覧表示
 groups username
 ```
 
@@ -365,15 +410,15 @@ groups username
 ユーザーの切り替えと、昇格された権限でのコマンド実行を行います。
 
 ```bash
-# root ユーザーへの切り替え
+# root ユーザーに切り替え
 su -
-# 特定のユーザーへの切り替え
+# 特定のユーザーに切り替え
 su - username
-# root としてコマンドの実行
+# root としてコマンドを実行
 sudo command
-# sudoers ファイルの編集
+# sudoers ファイルを編集
 sudo visudo
-# sudo 権限の確認
+# sudo 権限を確認
 sudo -l
 ```
 
@@ -384,13 +429,13 @@ sudo -l
 ネットワークインターフェースと設定の詳細を表示します。
 
 ```bash
-# ネットワークインターフェースの表示
+# ネットワークインターフェースを表示
 ip addr show
-# ルーティングテーブルの表示
+# ルーティングテーブルを表示
 ip route show
-# ネットワークマネージャー接続の表示
+# ネットワークマネージャー接続を表示
 nmcli connection show
-# デバイスの状態の表示
+# デバイスの状態を表示
 nmcli device status
 ```
 
@@ -401,28 +446,28 @@ NetworkManager を使用してネットワーク設定を行います。
 ```bash
 # テキストベースのネットワーク設定
 sudo nmtui
-# 新規接続の追加
+# 新しい接続を追加
 sudo nmcli connection add type ethernet con-name
 "eth0" ifname eth0
-# 接続の変更
+# 接続を変更
 sudo nmcli connection modify "eth0" ipv4.addresses
 192.168.1.100/24
-# 接続のアクティブ化
+# 接続をアクティブ化
 sudo nmcli connection up "eth0"
 ```
 
 ### ネットワークテスト：`ping` / `curl` / `wget`
 
-ネットワーク接続のテストとファイルのダウンロードを行います。
+ネットワーク接続をテストし、ファイルをダウンロードします。
 
 ```bash
-# 接続性のテスト
+# 接続性をテスト
 ping google.com
-# 特定ポートのテスト
+# 特定のポートをテスト
 telnet hostname 80
-# ファイルのダウンロード
+# ファイルをダウンロード
 wget http://example.com/file.txt
-# HTTPリクエストのテスト
+# HTTP リクエストをテスト
 curl -I http://example.com
 ```
 
@@ -431,13 +476,13 @@ curl -I http://example.com
 firewalld を使用してファイアウォールルールを設定します。
 
 ```bash
-# ファイアウォールの状態表示
+# ファイアウォールの状態を表示
 sudo firewall-cmd --state
-# アクティブなゾーンの一覧表示
+# アクティブなゾーンを一覧表示
 sudo firewall-cmd --get-active-zones
-# ファイアウォールへのサービスの追加
+# ファイアウォールにサービスを追加
 sudo firewall-cmd --permanent --add-service=http
-# ファイアウォールルールのリロード
+# ファイアウォールルールをリロード
 sudo firewall-cmd --reload
 ```
 
@@ -448,28 +493,28 @@ sudo firewall-cmd --reload
 ディスクパーティションの作成と管理を行います。
 
 ```bash
-# ディスクパーティションの一覧表示
+# ディスクパーティションを一覧表示
 sudo fdisk -l
 # 対話型パーティションエディタ
 sudo fdisk /dev/sda
-# パーティションテーブルの作成
+# パーティションテーブルを作成
 sudo parted /dev/sda mklabel gpt
-# 新しいパーティションの作成
+# 新しいパーティションを作成
 sudo parted /dev/sda mkpart primary ext4 1MiB 100GiB
 ```
 
 ### ファイルシステム管理：`mkfs` / `mount`
 
-ファイルシステムの作成とストレージデバイスのマウントを行います。
+ファイルシステムを作成し、ストレージデバイスをマウントします。
 
 ```bash
-# ext4 ファイルシステムの作成
+# ext4 ファイルシステムを作成
 sudo mkfs.ext4 /dev/sda1
-# ファイルシステムのマウント
+# ファイルシステムをマウント
 sudo mount /dev/sda1 /mnt/data
-# ファイルシステムのアンマウント
+# ファイルシステムをアンマウント
 sudo umount /mnt/data
-# ファイルシステムのチェック
+# ファイルシステムをチェック
 sudo fsck /dev/sda1
 ```
 
@@ -478,13 +523,13 @@ sudo fsck /dev/sda1
 論理ボリュームマネージャー (LVM) ストレージを管理します。
 
 ```bash
-# 物理ボリュームの作成
+# 物理ボリュームを作成
 sudo pvcreate /dev/sdb
-# ボリュームグループの作成
+# ボリュームグループを作成
 sudo vgcreate vg_data /dev/sdb
-# 論理ボリュームの作成
+# 論理ボリュームを作成
 sudo lvcreate -L 10G -n lv_data vg_data
-# 論理ボリュームの拡張
+# 論理ボリュームを拡張
 sudo lvextend -L +5G /dev/vg_data/lv_data
 ```
 
@@ -493,11 +538,11 @@ sudo lvextend -L +5G /dev/vg_data/lv_data
 永続的なマウントポイントを設定します。
 
 ```bash
-# fstab ファイルの編集
+# fstab ファイルを編集
 sudo vi /etc/fstab
-# fstab エントリのテスト
+# fstab エントリをテスト
 sudo mount -a
-# マウントされているファイルシステムの一覧表示
+# マウントされているファイルシステムを表示
 mount | column -t
 ```
 
@@ -508,15 +553,15 @@ mount | column -t
 SELinux の強制モードとポリシーを制御します。
 
 ```bash
-# SELinux ステータスの確認
+# SELinux の状態を確認
 getenforce
 # SELinux を permissive モードに設定
 sudo setenforce 0
 # SELinux を enforcing モードに設定
 sudo setenforce 1
-# SELinux コンテキストの確認
+# SELinux コンテキストを確認
 ls -Z filename
-# SELinux コンテキストの変更
+# SELinux コンテキストを変更
 sudo chcon -t httpd_exec_t /path/to/file
 ```
 
@@ -525,11 +570,11 @@ sudo chcon -t httpd_exec_t /path/to/file
 SELinux の拒否と監査ログを分析します。
 
 ```bash
-# SELinux アラートの確認
+# SELinux アラートを確認
 sudo sealert -a /var/log/audit/audit.log
-# 監査ログの検索
+# 監査ログを検索
 sudo ausearch -m avc -ts recent
-# SELinux ポリシーの生成
+# SELinux ポリシーを生成
 sudo audit2allow -M mypolicy < /var/log/audit/audit.log
 ```
 
@@ -538,13 +583,13 @@ sudo audit2allow -M mypolicy < /var/log/audit/audit.log
 安全なリモートアクセス用に SSH デーモンを設定します。
 
 ```bash
-# SSH 設定の編集
+# SSH 設定を編集
 sudo vi /etc/ssh/sshd_config
-# SSH サービスの再起動
+# SSH サービスを再起動
 sudo systemctl restart sshd
-# SSH 接続のテスト
+# SSH 接続をテスト
 ssh user@hostname
-# SSH キーのコピー
+# SSH キーをコピー
 ssh-copy-id user@hostname
 ```
 
@@ -557,9 +602,9 @@ ssh-copy-id user@hostname
 sudo dnf update
 # セキュリティパッチのみを更新
 sudo dnf update --security
-# 利用可能な更新の確認
+# 利用可能な更新を確認
 dnf check-update --security
-# 自動更新の有効化
+# 自動更新を有効化
 sudo systemctl enable dnf-automatic.timer
 ```
 
@@ -570,19 +615,19 @@ sudo systemctl enable dnf-automatic.timer
 システムパフォーマンスとリソース使用状況を監視します。
 
 ```bash
-# I/O 統計の表示
+# I/O 統計情報を表示
 iostat -x 1
-# 仮想メモリ統計の表示
+# 仮想メモリ統計情報を表示
 vmstat 1
-# ネットワーク統計の表示
+# ネットワーク統計情報を表示
 ss -tuln
-# ディスク I/O の表示
+# ディスク I/O を表示
 iotop
 ```
 
 ### リソース使用状況：`sar` / `top`
 
-履歴およびリアルタイムのシステムメトリクスを分析します。
+履歴およびリアルタイムのシステムメトリックを分析します。
 
 ```bash
 # システムアクティビティレポート
@@ -591,37 +636,37 @@ sar -u 1 3
 sar -r
 # ネットワークアクティビティレポート
 sar -n DEV
-# ロードアベレージの監視
+# ロードアベレージ監視
 uptime
 ```
 
 ### プロセス分析：`strace` / `lsof`
 
-プロセスのデバッグとファイルアクセスを分析します。
+プロセスをデバッグし、ファイルアクセスを検査します。
 
 ```bash
-# システムコールのトレース
+# システムコールをトレース
 strace -p 1234
-# 開いているファイルのリスト表示
+# 開いているファイルを一覧表示
 lsof
-# プロセスが開いているファイルの表示
+# プロセスが開いているファイルを表示
 lsof -p 1234
-# ネットワーク接続の表示
+# ネットワーク接続を表示
 lsof -i
 ```
 
 ### パフォーマンスチューニング：`tuned`
 
-特定のワークロードに対してシステムパフォーマンスを最適化します。
+特定のワークロードに合わせてシステムパフォーマンスを最適化します。
 
 ```bash
-# 利用可能なプロファイルの一覧表示
+# 利用可能なプロファイルを一覧表示
 tuned-adm list
-# アクティブなプロファイルの表示
+# アクティブなプロファイルを表示
 tuned-adm active
-# パフォーマンスプロファイルの設定
+# パフォーマンスプロファイルを設定
 sudo tuned-adm profile throughput-performance
-# カスタムプロファイルの作成
+# カスタムプロファイルを作成
 sudo tuned-adm profile_mode
 ```
 
@@ -632,17 +677,17 @@ sudo tuned-adm profile_mode
 システムを Red Hat カスタマーポータルに登録します。
 
 ```bash
-# システムの登録
+# システムを登録
 sudo subscription-manager
 register --username
 your_username
-# サブスクリプションの自動アタッチ
+# サブスクリプションを自動アタッチ
 sudo subscription-manager
 attach --auto
-# 利用可能なサブスクリプションの一覧表示
+# 利用可能なサブスクリプションを一覧表示
 subscription-manager list --
 available
-# システムステータスの表示
+# システムステータスを表示
 subscription-manager status
 ```
 
@@ -651,15 +696,15 @@ subscription-manager status
 ソフトウェアリポジトリを管理します。
 
 ```bash
-# 有効なリポジトリの一覧表示
+# 有効なリポジトリを一覧表示
 dnf repolist
-# リポジトリの有効化
+# リポジトリを有効化
 sudo dnf config-manager --
 enable repository-name
-# リポジトリの無効化
+# リポジトリを無効化
 sudo dnf config-manager --
 disable repository-name
-# 新しいリポジトリの追加
+# 新しいリポジトリを追加
 sudo dnf config-manager --add-
 repo https://example.com/repo
 ```
@@ -669,15 +714,15 @@ repo https://example.com/repo
 基本的なシステム設定を行います。
 
 ```bash
-# ホスト名の設定
+# ホスト名を設定
 sudo hostnamectl set-hostname
 new-hostname
-# システム情報の表示
+# システム情報を表示
 hostnamectl
-# タイムゾーンの設定
+# タイムゾーンを設定
 sudo timedatectl set-timezone
 America/New_York
-# 時刻設定の表示
+# 時間設定を表示
 timedatectl
 ```
 
@@ -685,16 +730,16 @@ timedatectl
 
 ### システムログ：`/var/log/`
 
-ハードウェア情報の確認と健全性の検査を行います。
+問題の調査のためにシステムログファイルを確認します。
 
 ```bash
-# システムメッセージの表示
+# システムメッセージを表示
 sudo tail -f /var/log/messages
-# 認証ログの表示
+# 認証ログを表示
 sudo tail -f /var/log/secure
-# ブートログの表示
+# ブートログを表示
 sudo journalctl -b
-# カーネルメッセージの表示
+# カーネルメッセージを表示
 dmesg | tail
 ```
 
@@ -703,13 +748,13 @@ dmesg | tail
 ハードウェア情報と健全性を検査します。
 
 ```bash
-# ハードウェア情報の表示
+# ハードウェア情報を表示
 sudo dmidecode -t system
-# ハードウェアコンポーネントの一覧表示
+# ハードウェアコンポーネントを一覧表示
 sudo lshw -short
-# メモリ情報の確認
+# メモリ情報を確認
 sudo dmidecode -t memory
-# CPU 情報の表示
+# CPU 情報を表示
 lscpu
 ```
 
@@ -718,13 +763,13 @@ lscpu
 ネットワーク診断ツールとユーティリティ。
 
 ```bash
-# ネットワーク接続の表示
+# ネットワーク接続を表示
 ss -tuln
-# ルーティングテーブルの表示
+# ルーティングテーブルを表示
 ip route show
-# DNS 解決のテスト
+# DNS 解決をテスト
 nslookup google.com
-# ネットワークパスのトレース
+# ネットワークパスをトレース
 traceroute google.com
 ```
 
@@ -737,9 +782,9 @@ traceroute google.com
 sudo systemctl rescue
 # 緊急モードに入る
 sudo systemctl emergency
-# 失敗したサービスの再設定
+# 失敗したサービスをリセット
 sudo systemctl reset-failed
-# ブートローダーの再設定
+# ブートローダーを再設定
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
@@ -750,11 +795,11 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 自動化されたタスクとメンテナンスをスケジュールします。
 
 ```bash
-# ユーザーの crontab の編集
+# ユーザーの crontab を編集
 crontab -e
-# ユーザーの crontab の一覧表示
+# ユーザーの crontab を一覧表示
 crontab -l
-# ユーザーの crontab の削除
+# ユーザーの crontab を削除
 crontab -r
 # 例: 毎日午前2時にスクリプトを実行
 0 2 * * * /path/to/script.sh
@@ -777,13 +822,13 @@ echo "Backup completed: backup_$DATE.tar.gz"
 環境変数とシェル設定を管理します。
 
 ```bash
-# 環境変数の設定
+# 環境変数を設定
 export MY_VAR="value"
-# すべての環境変数の表示
+# すべての環境変数を表示
 env
-# 特定の変数の表示
+# 特定の変数を表示
 echo $PATH
-# PATH への追加
+# PATH に追加
 export PATH=$PATH:/new/directory
 ```
 
@@ -792,12 +837,12 @@ export PATH=$PATH:/new/directory
 systemd ベースのスケジュールされたタスクを作成します。
 
 ```bash
-# タイマーユニットファイルの作成
+# タイマーユニットファイルを作成
 sudo vi /etc/systemd/system/backup.timer
-# タイマーの有効化と開始
+# タイマーを有効化して開始
 sudo systemctl enable backup.timer
 sudo systemctl start backup.timer
-# アクティブなタイマーの一覧表示
+# アクティブなタイマーを一覧表示
 systemctl list-timers
 ```
 

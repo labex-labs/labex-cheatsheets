@@ -1,21 +1,21 @@
 ---
-title: 'Шпаргалка по Matplotlib'
-description: 'Изучите Matplotlib с нашей исчерпывающей шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка Matplotlib | LabEx'
+description: 'Изучите визуализацию данных Matplotlib с помощью этой исчерпывающей шпаргалки. Краткий справочник по построению графиков, диаграмм, подграфиков, настройке и визуализации данных на Python.'
 pdfUrl: '/cheatsheets/pdf/matplotlib-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Шпаргалка по Matplotlib
+Matplotlib Cheatsheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/matplotlib">Изучите Matplotlib с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/matplotlib">Изучить Matplotlib с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите визуализацию данных с помощью Matplotlib через практические лаборатории и сценарии из реального мира. LabEx предлагает комплексные курсы по Matplotlib, охватывающие основные функции построения графиков, методы настройки, макеты подграфиков и расширенные типы визуализации. Освойте создание эффективных визуализаций данных для рабочих процессов науки о данных на Python.
+Изучите визуализацию данных Matplotlib с помощью практических лабораторий и сценариев из реального мира. LabEx предлагает комплексные курсы по Matplotlib, охватывающие основные функции построения графиков, методы настройки, макеты подграфиков и расширенные типы визуализации. Освойте создание эффективных визуализаций данных для рабочих процессов науки о данных на Python.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -44,12 +44,27 @@ plt.legend()
 plt.plot(x, y, 'r--', linewidth=2, marker='o')
 ```
 
-### Диаграмма рассеяния: `plt.scatter()`
+<BaseQuiz id="matplotlib-plot-1" correct="C">
+  <template #question>
+    Что делает `plt.show()` в Matplotlib?
+  </template>
+  
+  <BaseQuizOption value="A">Сохраняет график в файл</BaseQuizOption>
+  <BaseQuizOption value="B">Закрывает окно графика</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Отображает график в окне</BaseQuizOption>
+  <BaseQuizOption value="D">Очищает график</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `plt.show()` отображает график в интерактивном окне. Необходимо вызвать эту функцию, чтобы увидеть визуализацию. Без нее график не будет отображен.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Точечная диаграмма: `plt.scatter()`
 
 Отображение взаимосвязей между двумя переменными.
 
 ```python
-# Базовая диаграмма рассеяния
+# Базовая точечная диаграмма
 plt.scatter(x, y)
 
 # С разными цветами и размерами
@@ -58,6 +73,21 @@ sizes = [20, 50, 100, 200, 500]
 plt.scatter(x, y, c=colors, s=sizes, alpha=0.6)
 plt.colorbar()  # Добавить цветовую шкалу
 ```
+
+<BaseQuiz id="matplotlib-scatter-1" correct="D">
+  <template #question>
+    Что контролирует параметр `alpha` в графиках matplotlib?
+  </template>
+  
+  <BaseQuizOption value="A">Цвет графика</BaseQuizOption>
+  <BaseQuizOption value="B">Размер графика</BaseQuizOption>
+  <BaseQuizOption value="C">Положение графика</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Прозрачность/непрозрачность элементов графика</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Параметр `alpha` контролирует прозрачность, со значениями от 0 (полностью прозрачный) до 1 (полностью непрозрачный). Он полезен для создания перекрывающихся визуализаций, где вы хотите видеть сквозь элементы.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Столбчатая диаграмма: `plt.bar()` / `plt.barh()`
 
@@ -104,31 +134,31 @@ sizes = [25, 35, 20, 20]
 labels = ['A', 'B', 'C', 'D']
 plt.pie(sizes, labels=labels)
 
-# Выделенный сектор с процентами
+# Выделенный круг с процентами
 explode = (0, 0.1, 0, 0)  # Выделить 2-й сектор
 plt.pie(sizes, labels=labels, autopct='%1.1f%%',
         explode=explode, shadow=True, startangle=90)
 ```
 
-### Ящик с усами: `plt.boxplot()`
+### Ящичковая диаграмма: `plt.boxplot()`
 
 Визуализация распределения данных и выбросов.
 
 ```python
-# Один ящик с усами
+# Одна ящичковая диаграмма
 data = [np.random.randn(100) for _ in range(4)]
 plt.boxplot(data)
 
-# Настроенный ящик с усами
+# Настроенная ящичковая диаграмма
 plt.boxplot(data, labels=['Группа 1', 'Группа 2', 'Группа 3', 'Группа 4'],
            patch_artist=True, notch=True)
 ```
 
-## Настройка и стилизация графиков
+## Настройка и стилизация графика
 
 ### Метки и заголовки: `plt.xlabel()` / `plt.title()`
 
-Добавление описательного текста к вашим графикам для ясности и контекста.
+Добавление описательного текста для ясности и контекста ваших графиков.
 
 ```python
 # Базовые метки и заголовок
@@ -147,13 +177,13 @@ plt.grid(True, alpha=0.3)
 
 ### Цвета и стили: `color` / `linestyle` / `marker`
 
-Настройка визуального представления элементов графика.
+Настройка визуального оформления элементов графика.
 
 ```python
-# Варианты цветов
+# Варианты цвета
 plt.plot(x, y, color='red')  # Именованные цвета
 plt.plot(x, y, color='#FF5733')  # Hex-коды
-plt.plot(x, y, color=(0.1, 0.2, 0.5))  # Кортеж RGB
+plt.plot(x, y, color=(0.1, 0.2, 0.5))  # RGB кортеж
 
 # Стили линий
 plt.plot(x, y, linestyle='--')  # Пунктирная
@@ -182,6 +212,21 @@ plt.annotate('Важная точка', xy=(2, 4), xytext=(3, 6),
             arrowprops=dict(arrowstyle='->', color='red'))
 ```
 
+<BaseQuiz id="matplotlib-legend-1" correct="B">
+  <template #question>
+    Что требуется для отображения меток с помощью `plt.legend()`?
+  </template>
+  
+  <BaseQuizOption value="A">Ничего, она работает автоматически</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Каждому графику должен быть задан параметр `label`</BaseQuizOption>
+  <BaseQuizOption value="C">Легенда должна быть создана до построения графика</BaseQuizOption>
+  <BaseQuizOption value="D">Метки должны быть заданы вручную в легенде</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Чтобы отобразить легенду, необходимо установить параметр `label` при создании каждого графика (например, `plt.plot(x, y, label='Набор данных 1')`). Затем вызов `plt.legend()` отобразит все метки.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Управление осями и макетом
 
 ### Пределы осей: `plt.xlim()` / `plt.ylim()`
@@ -200,22 +245,22 @@ plt.margins(x=0.1, y=0.1)
 plt.gca().invert_yaxis()  # Инвертировать ось Y
 ```
 
-### Деления и метки: `plt.xticks()` / `plt.yticks()`
+### Тики и метки: `plt.xticks()` / `plt.yticks()`
 
-Настройка делений на осях и их меток.
+Настройка отметок тиков на осях и их меток.
 
 ```python
-# Пользовательские позиции делений
+# Пользовательские позиции тиков
 plt.xticks([0, 2, 4, 6, 8, 10])
 plt.yticks(np.arange(0, 101, 10))
 
-# Пользовательские метки делений
+# Пользовательские метки тиков
 plt.xticks([0, 1, 2, 3], ['Янв', 'Фев', 'Мар', 'Апр'])
 
-# Поворот меток делений
+# Поворот меток тиков
 plt.xticks(rotation=45)
 
-# Удалить деления
+# Удалить тики
 plt.xticks([])
 plt.yticks([])
 ```
@@ -255,10 +300,10 @@ plt.plot(x, y2)
 
 ### Плотное расположение: `plt.tight_layout()`
 
-Автоматическая настройка интервалов между подграфиками для лучшего внешнего вида.
+Автоматическая настройка интервалов подграфиков для лучшего внешнего вида.
 
 ```python
-# Предотвращение наложения элементов
+# Предотвращение перекрытия элементов
 plt.tight_layout()
 
 # Ручная настройка интервалов
@@ -268,7 +313,7 @@ plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
 plt.tight_layout(pad=3.0)
 ```
 
-### Листы стилей: `plt.style.use()`
+### Таблицы стилей: `plt.style.use()`
 
 Применение предопределенных стилей для согласованного внешнего вида графиков.
 
@@ -313,7 +358,7 @@ plt.scatter(x, y)
 Связывание осей между подграфиками для согласованного масштабирования.
 
 ```python
-# Общая ось X между подграфиками
+# Общая ось X для подграфиков
 fig, axes = plt.subplots(2, 1, sharex=True)
 axes[0].plot(x, y1)
 axes[1].plot(x, y2)
@@ -324,7 +369,7 @@ fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
 
 ### GridSpec: Расширенные макеты
 
-Создание сложных расположений подграфиков с переменным размером.
+Создание сложных расположений подграфиков с изменяющимся размером.
 
 ```python
 import matplotlib.gridspec as gridspec
@@ -377,7 +422,7 @@ plt.colorbar()
 
 ### Контурные графики: `plt.contour()` / `plt.contourf()`
 
-Отображение линий уровня и заполненных контурных областей.
+Отображение кривых уровня и заполненных контурных областей.
 
 ```python
 # Линии контура
@@ -393,7 +438,7 @@ plt.contourf(X, Y, Z, levels=20, cmap='RdBu')
 plt.colorbar()
 ```
 
-### 3D-графики: `mplot3d`
+### 3D Графики: `mplot3d`
 
 Создание трехмерных визуализаций.
 
@@ -403,28 +448,28 @@ from mpl_toolkits.mplot3d import Axes3D
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-# 3D-диаграмма рассеяния
+# 3D точечная диаграмма
 ax.scatter(x, y, z)
 
-# 3D-поверхность
+# 3D поверхностный график
 ax.plot_surface(X, Y, Z, cmap='viridis')
 
-# 3D-линейный график
+# 3D линейный график
 ax.plot(x, y, z)
 ```
 
-### Полосы ошибок: `plt.errorbar()`
+### Полосы погрешностей: `plt.errorbar()`
 
 Отображение данных с измерениями неопределенности.
 
 ```python
-# Базовые полосы ошибок
+# Базовые полосы погрешностей
 x = [1, 2, 3, 4, 5]
 y = [2, 4, 6, 8, 10]
 yerr = [0.5, 0.8, 0.3, 0.7, 0.4]
 plt.errorbar(x, y, yerr=yerr, fmt='o-', capsize=5)
 
-# Асимметричные полосы ошибок
+# Асимметричные полосы погрешностей
 yerr_lower = [0.4, 0.6, 0.2, 0.5, 0.3]
 yerr_upper = [0.6, 1.0, 0.4, 0.9, 0.5]
 plt.errorbar(x, y, yerr=[yerr_lower, yerr_upper], fmt='s-')
@@ -440,14 +485,14 @@ y1 = [2, 4, 6, 8, 10]
 y2 = [1, 3, 5, 7, 9]
 plt.fill_between(x, y1, y2, alpha=0.3, color='blue')
 
-# Заполнение вокруг линии с ошибкой
+# Заполнение вокруг линии с погрешностью
 plt.plot(x, y, 'k-', linewidth=2)
 plt.fill_between(x, y-yerr, y+yerr, alpha=0.2, color='gray')
 ```
 
-### Скрипичные диаграммы: Альтернатива ящикам с усами
+### Скрипичные диаграммы: Альтернатива ящичковым диаграммам
 
-Показывает форму распределения вместе с квартилями.
+Отображение формы распределения вместе с квартилями.
 
 ```python
 # Использование pyplot
@@ -463,10 +508,10 @@ for pc in parts['bodies']:
 
 ### Интерактивный бэкенд: `%matplotlib widget`
 
-Включение интерактивных графиков в блокнотах Jupyter.
+Включение интерактивных графиков в Jupyter notebook.
 
 ```python
-# В блокноте Jupyter
+# В Jupyter notebook
 %matplotlib widget
 
 # Или для базовой интерактивности
@@ -481,7 +526,7 @@ for pc in parts['bodies']:
 # Интерактивное масштабирование, панорамирование и наведение
 def onclick(event):
     if event.inaxes:
-        print(f'Кликнули по x={event.xdata}, y={event.ydata}')
+        print(f'Нажато по x={event.xdata}, y={event.ydata}')
 
 fig, ax = plt.subplots()
 ax.plot(x, y)
@@ -538,7 +583,7 @@ plt.savefig('plot.png', transparent=True)
 
 ### Качество фигуры: DPI и размер
 
-Управление разрешением и размерами сохраняемых графиков.
+Управление разрешением и размерами сохраненных графиков.
 
 ```python
 # Высокий DPI для публикаций
@@ -676,7 +721,7 @@ plt.show()
 Эффективное построение графиков массивов NumPy и математических функций.
 
 ```python
-# Визуализация 2D-массива
+# Визуализация 2D массива
 arr = np.random.rand(10, 10)
 plt.imshow(arr, cmap='hot', interpolation='nearest')
 
@@ -690,9 +735,9 @@ data = np.random.normal(0, 1, 10000)
 plt.hist(data, bins=50, density=True, alpha=0.7)
 ```
 
-### Интеграция с Seaborn: Улучшенные стили
+### Интеграция с Seaborn: Улучшенная стилизация
 
-Сочетание Matplotlib с Seaborn для лучшей эстетики по умолчанию.
+Объединение Matplotlib с Seaborn для лучшей эстетики по умолчанию.
 
 ```python
 import seaborn as sns
@@ -710,7 +755,7 @@ plt.plot(x, y, ax=axes[0,1])  # Чистый matplotlib
 
 ### Интеграция с Jupyter: Встроенное построение графиков
 
-Оптимизация Matplotlib для сред блокнотов Jupyter.
+Оптимизация Matplotlib для сред Jupyter notebook.
 
 ```python
 # Магические команды для Jupyter
@@ -720,7 +765,7 @@ plt.plot(x, y, ax=axes[0,1])  # Чистый matplotlib
 # Дисплеи с высоким DPI
 %config InlineBackend.figure_format = 'retina'
 
-# Автоматический размер фигуры
+# Автоматическое определение размера фигуры
 %matplotlib inline
 plt.rcParams['figure.dpi'] = 100
 ```
@@ -772,21 +817,21 @@ conda list matplotlib
 import matplotlib
 print(matplotlib.get_backend())
 
-# Установка бэкенда программно
+# Установить бэкенд программно
 matplotlib.use('TkAgg')  # Для Tkinter
 matplotlib.use('Qt5Agg')  # Для PyQt5
 
-# Для бессерверных серверов
+# Для безголовых серверов
 matplotlib.use('Agg')
 
-# Импорт после установки бэкенда
+# Импортировать после установки бэкенда
 import matplotlib.pyplot as plt
 ```
 
-## Соответствующие ссылки
+## Связанные ссылки
 
-- <router-link to="/python">Шпаргалка по Python</router-link>
-- <router-link to="/numpy">Шпаргалка по NumPy</router-link>
-- <router-link to="/pandas">Шпаргалка по Pandas</router-link>
-- <router-link to="/sklearn">Шпаргалка по scikit-learn</router-link>
-- <router-link to="/datascience">Шпаргалка по науке о данных</router-link>
+- <router-link to="/python">Python Cheatsheet</router-link>
+- <router-link to="/numpy">NumPy Cheatsheet</router-link>
+- <router-link to="/pandas">Pandas Cheatsheet</router-link>
+- <router-link to="/sklearn">scikit-learn Cheatsheet</router-link>
+- <router-link to="/datascience">Data Science Cheatsheet</router-link>

@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo JavaScript'
-description: 'Apprenez JavaScript avec notre mémo complet couvrant les commandes essentielles, concepts et meilleures pratiques.'
+title: 'Fiche de Référence JavaScript | LabEx'
+description: 'Apprenez la programmation JavaScript avec cette fiche complète. Référence rapide pour la syntaxe JS, ES6+, la manipulation du DOM, async/await, Node.js et le développement web moderne.'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Feuille de triche JavaScript
 <a target="_blank" href="https://labex.io/fr/learn/javascript">Apprenez JavaScript avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la programmation JavaScript grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets en JavaScript couvrant la syntaxe essentielle, les fonctions, la manipulation du DOM, la programmation asynchrone et les fonctionnalités modernes ES6+. Maîtrisez JavaScript pour un flux de travail de développement web et de programmation efficace.
+Apprenez la programmation JavaScript grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur JavaScript couvrant la syntaxe essentielle, les fonctions, la manipulation du DOM, la programmation asynchrone et les fonctionnalités modernes ES6+. Maîtrisez JavaScript pour un développement web et des flux de travail de programmation efficaces.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -36,9 +36,24 @@ const PI = 3.14159
 const user = { name: 'Alice' }
 user.age = 30 // Les propriétés d'objet peuvent être modifiées
 
-// Portée de fonction (à éviter en JS moderne)
+// Portée de fonction (à éviter dans le JS moderne)
 var oldVariable = 'legacy'
 ```
+
+<BaseQuiz id="javascript-let-const-1" correct="B">
+  <template #question>
+    Quelle est la principale différence entre `let` et `const` ?
+  </template>
+  
+  <BaseQuizOption value="A">let a une portée de fonction, const a une portée de bloc</BaseQuizOption>
+  <BaseQuizOption value="B" correct>let permet la réassignation, const n'autorise pas la réassignation</BaseQuizOption>
+  <BaseQuizOption value="C">const ne peut être utilisé que pour les nombres, let peut être utilisé pour n'importe quel type</BaseQuizOption>
+  <BaseQuizOption value="D">Il n'y a aucune différence</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `let` et `const` ont tous deux une portée de bloc, mais `let` vous permet de réassigner la variable, tandis que `const` empêche la réassignation. Cependant, les propriétés des objets `const` peuvent toujours être modifiées.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Types Primitifs
 
@@ -58,7 +73,7 @@ let scientific = 2e5 // 200000
 let isActive = true
 let isComplete = false
 
-// Autres primitives
+// Autres primitifs
 let nothing = null
 let notDefined = undefined
 let unique = Symbol('id')
@@ -66,7 +81,7 @@ let unique = Symbol('id')
 
 ### Vérification de Type : `typeof`, `instanceof`
 
-Déterminez le type des variables et des valeurs.
+Déterminer le type des variables et des valeurs.
 
 ```javascript
 // Vérifier les types primitifs
@@ -106,7 +121,7 @@ Boolean('hello') // true
 
 ## Fonctions
 
-### Déclarations de Fonctions
+### Déclarations de Fonction
 
 Manière traditionnelle de définir des fonctions avec _hoisting_.
 
@@ -146,6 +161,21 @@ const processData = (data) => {
   return processed.map((x) => x * 2)
 }
 ```
+
+<BaseQuiz id="javascript-arrow-1" correct="C">
+  <template #question>
+    Quelle est une caractéristique clé des fonctions fléchées ?
+  </template>
+  
+  <BaseQuizOption value="A">Elles sont hoistées comme les déclarations de fonction</BaseQuizOption>
+  <BaseQuizOption value="B">Elles ont leur propre liaison `this`</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Elles héritent de `this` de la portée englobante</BaseQuizOption>
+  <BaseQuizOption value="D">Elles ne peuvent pas retourner de valeurs</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les fonctions fléchées n'ont pas leur propre liaison `this`. Au lieu de cela, elles héritent de `this` de la portée lexicale (englobante), ce qui les rend utiles pour les rappels (*callbacks*) et les gestionnaires d'événements où vous souhaitez préserver le contexte.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Fonctions d'Ordre Supérieur
 
@@ -194,6 +224,21 @@ const result = numbers
   .reduce((a, b) => a + b, 0)
 ```
 
+<BaseQuiz id="javascript-array-1" correct="A">
+  <template #question>
+    Que retourne `filter()` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Un nouveau tableau avec les éléments qui passent le test</BaseQuizOption>
+  <BaseQuizOption value="B">Le premier élément qui passe le test</BaseQuizOption>
+  <BaseQuizOption value="C">Une seule valeur réduite à partir du tableau</BaseQuizOption>
+  <BaseQuizOption value="D">Le tableau original modifié sur place</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La méthode `filter()` crée un nouveau tableau contenant tous les éléments qui passent le test implémenté par la fonction fournie. Elle ne modifie pas le tableau original.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Utilitaires de Tableau : `find()`, `includes()`, `sort()`
 
 Rechercher, vérifier et organiser les éléments du tableau.
@@ -238,7 +283,7 @@ Object.entries(person) // [['name', 'John'], ...]
 const newPerson = Object.assign({}, person, { age: 31 })
 ```
 
-### Affectation par Décomposition (Destructuring)
+### Affectation par Décomposition (_Destructuring_)
 
 Extraire des valeurs des tableaux et des objets.
 
@@ -251,7 +296,7 @@ const [first, second, ...rest] = [1, 2, 3, 4, 5]
 const { name, age } = person
 const { name: userName, age: userAge = 18 } = person
 
-// Décomposition de paramètres de fonction
+// Décomposition de paramètre de fonction
 function displayUser({ name, age }) {
   console.log(`${name} is ${age} years old`)
 }
@@ -279,7 +324,22 @@ const listItems = document.querySelectorAll('li')
 const buttonsArray = Array.from(allButtons)
 ```
 
-### Modification d'Élément
+<BaseQuiz id="javascript-dom-1" correct="C">
+  <template #question>
+    Quelle est la différence entre `querySelector()` et `querySelectorAll()` ?
+  </template>
+  
+  <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
+  <BaseQuizOption value="B">querySelector est plus rapide</BaseQuizOption>
+  <BaseQuizOption value="C" correct>querySelector retourne le premier élément correspondant, querySelectorAll retourne tous les éléments correspondants</BaseQuizOption>
+  <BaseQuizOption value="D">querySelector fonctionne avec les IDs, querySelectorAll fonctionne avec les classes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `querySelector()` retourne le premier élément qui correspond au sélecteur CSS, tandis que `querySelectorAll()` retourne une `NodeList` contenant tous les éléments correspondants. Utilisez `querySelector()` lorsque vous avez besoin d'un seul élément, et `querySelectorAll()` lorsque vous en avez besoin de plusieurs.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Modification d'Éléments
 
 Changer le contenu, les attributs et les styles.
 
@@ -301,7 +361,7 @@ element.classList.toggle('highlight')
 
 ### Création et Insertion d'Éléments
 
-Créer dynamiquement et ajouter des éléments HTML.
+Créer et ajouter dynamiquement des éléments HTML.
 
 ```javascript
 // Créer un nouvel élément
@@ -323,10 +383,10 @@ div.after(newElement) // Insérer après div
 
 ### Stylisation des Éléments
 
-Appliquer des styles CSS par programme.
+Appliquer des styles CSS par programmation.
 
 ```javascript
-// Modification de style directe
+// Modification directe du style
 element.style.color = 'red'
 element.style.backgroundColor = 'blue'
 element.style.fontSize = '16px'
@@ -358,7 +418,7 @@ button.addEventListener('click', function (event) {
 // Gestionnaire d'événement de fonction fléchée
 button.addEventListener('click', (e) => {
   e.preventDefault() // Empêcher le comportement par défaut
-  console.log('Clic :', e.target)
+  console.log('Clicqué :', e.target)
 })
 
 // Écouteur d'événement avec options
@@ -514,13 +574,13 @@ Promise.all(promises)
     console.log('Publications :', posts)
   })
 
-// Race - la première promesse résolue gagne
+// Race - la première promesse à se résoudre gagne
 Promise.race(promises).then((firstResponse) => console.log('Première réponse'))
 ```
 
 ## Fonctionnalités Modernes ES6+
 
-### Littéraux de Modèle et Opérateur de Propagation (Spread)
+### Littéraux de Modèle et Opérateur de Propagation (_Spread Operator_)
 
 Interpolation de chaînes et propagation de tableaux/objets.
 
@@ -595,7 +655,7 @@ try {
   const result = riskyOperation()
   console.log(result)
 } catch (error) {
-  console.error('Une erreur est survenue :', error.message)
+  console.error('Erreur survenue :', error.message)
 } finally {
   console.log("Le code de nettoyage s'exécute ici")
 }
@@ -696,7 +756,7 @@ try {
   console.error('JSON invalide :', error.message)
 }
 
-// JSON avec remplacement/réviseur personnalisé
+// JSON avec replacer/reviver personnalisé
 const filtered = JSON.stringify(user, ['name', 'age'])
 const parsed = JSON.parse(jsonString, (key, value) => {
   return key === 'age' ? value + 1 : value
@@ -705,9 +765,9 @@ const parsed = JSON.parse(jsonString, (key, value) => {
 
 ## Expressions Régulières
 
-### Création et Test de Modèles
+### Création et Test de Motifs
 
-Créer des modèles regex et tester des chaînes.
+Créer des motifs regex et tester des chaînes.
 
 ```javascript
 // Littéral Regex
@@ -730,7 +790,7 @@ const allNumbers = text.match(/\d+/g); // ['123', '456', '7890']
 
 ### Méthodes de Chaîne avec Regex
 
-Utiliser regex avec des méthodes de manipulation de chaînes.
+Utiliser des regex avec des méthodes de manipulation de chaînes.
 
 ```javascript
 // Remplacer avec regex
@@ -744,7 +804,7 @@ const parts = 'apple,banana;orange:grape'.split(/[,:;]/)
 // Méthode search
 const position = text.search(/\d+/) // 12 (position du premier chiffre)
 
-// Modèles courants
+// Motifs courants
 const patterns = {
   email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   phone: /^\d{3}-\d{3}-\d{4}$/,
@@ -765,7 +825,7 @@ Environnement JavaScript intégré dans les navigateurs web.
 // Aller à l'onglet Console
 console.log('Hello JavaScript!')
 
-// Tester du code directement
+// Tester le code directement
 let x = 5
 let y = 10
 console.log(x + y) // 15
@@ -811,7 +871,7 @@ Outils essentiels pour le développement JavaScript.
 
 ```bash
 # Modules ES6 dans le navigateur
-# Babel pour la prise en charge des navigateurs plus anciens
+# Babel pour la prise en charge des anciens navigateurs
 npm install --save-dev @babel/core @babel/preset-env
 ```
 
@@ -831,7 +891,7 @@ function debounce(func, delay) {
   }
 }
 
-// Utiliser la fonction débouncée
+// Utiliser la fonction debounced
 const debouncedSearch = debounce(searchFunction, 300)
 input.addEventListener('input', debouncedSearch)
 
@@ -855,7 +915,7 @@ Structurer le code pour la maintenabilité et la lisibilité.
 const userName = 'john' // camelCase pour les variables
 const API_URL = 'https://api.example.com' // CAPS pour les constantes
 
-// Documentation des fonctions
+// Documentation de fonction
 /**
  * Calcule l'aire d'un rectangle
  * @param {number} width - La largeur du rectangle
@@ -866,7 +926,7 @@ function calculateArea(width, height) {
   return width * height
 }
 
-// Utiliser const par défaut, let lorsque la réaffectation est nécessaire
+// Utiliser const par défaut, let lorsque la réassignation est nécessaire
 const config = { theme: 'dark' }
 let counter = 0
 ```
@@ -903,13 +963,13 @@ test('multiplies 3 * 4 to equal 12', () => {
 // Exécuter les tests : npm test
 ```
 
-### Tests Navigateur et Débogage
+### Tests et Débogage dans le Navigateur
 
 Déboguer JavaScript dans les outils de développement du navigateur.
 
 ```javascript
 // Définir des points d'arrêt
-debugger // Met l'exécution en pause dans les outils de développement
+debugger // Met en pause l'exécution dans les outils de développement
 
 // Méthodes de console pour le débogage
 console.log('Valeur de la variable :', variable)

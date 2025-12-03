@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo Hydra'
-description: 'Apprenez Hydra avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Récapitulative Hydra | LabEx'
+description: "Apprenez le cassage de mots de passe avec Hydra grâce à cette fiche complète. Référence rapide pour les attaques par force brute, l'audit de mots de passe, les tests de sécurité, les protocoles d'authentification et les outils de pentesting."
 pdfUrl: '/cheatsheets/pdf/hydra-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Feuille de triche Hydra
 <a target="_blank" href="https://labex.io/fr/learn/hydra">Apprenez Hydra avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez le cassage de mots de passe et les tests d'intrusion avec Hydra grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur Hydra couvrant les attaques de protocoles, l'exploitation de formulaires web, l'optimisation des performances et l'utilisation éthique. Maîtrisez les techniques de force brute pour les tests de sécurité autorisés et les évaluations de vulnérabilités.
+Apprenez le cassage de mots de passe et les tests d'intrusion avec Hydra grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours complets sur Hydra couvrant les attaques de protocoles, l'exploitation de formulaires web, l'optimisation des performances et l'utilisation éthique. Maîtrisez les techniques de force brute pour les tests de sécurité autorisés et les évaluations de vulnérabilités.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -49,6 +49,21 @@ hydra -L users.txt -P passwords.txt target.com ssh
 hydra -l admin -p password123 192.168.1.100 ftp
 ```
 
+<BaseQuiz id="hydra-syntax-1" correct="B">
+  <template #question>
+    Quelle est la différence entre `-l` et `-L` dans Hydra ?
+  </template>
+  
+  <BaseQuizOption value="A">`-l` est pour les mots de passe, `-L` est pour les noms d'utilisateur</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`-l` spécifie un nom d'utilisateur unique, `-L` spécifie un fichier de liste de noms d'utilisateur</BaseQuizOption>
+  <BaseQuizOption value="C">Il n'y a pas de différence</BaseQuizOption>
+  <BaseQuizOption value="D">`-l` est en minuscule, `-L` est en majuscule</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'option `-l` est utilisée pour un nom d'utilisateur unique, tandis que `-L` est utilisée pour un fichier contenant une liste de noms d'utilisateur. De même, `-p` est pour un mot de passe unique et `-P` est pour un fichier de liste de mots de passe.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Options Principales : `-l`, `-L`, `-p`, `-P`
 
 Spécifiez les noms d'utilisateur et les mots de passe pour les attaques par force brute.
@@ -60,7 +75,7 @@ Spécifiez les noms d'utilisateur et les mots de passe pour les attaques par for
 # Options de mot de passe
 -p password          # Mot de passe unique
 -P passwordlist.txt  # Fichier de liste de mots de passe
-# Emplacement courant des listes de mots de passe
+# Emplacement courant des listes de mots
 /usr/share/wordlists/rockyou.txt
 /usr/share/wordlists/metasploit/unix_passwords.txt
 ```
@@ -78,6 +93,21 @@ hydra -l admin -P passwords.txt target.com ssh -b json
 hydra -l admin -P passwords.txt target.com ssh -V
 ```
 
+<BaseQuiz id="hydra-output-1" correct="A">
+  <template #question>
+    Que fait `hydra -V` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Active la sortie verbeuse montrant la progression détaillée</BaseQuizOption>
+  <BaseQuizOption value="B">Valide le fichier de liste de mots</BaseQuizOption>
+  <BaseQuizOption value="C">Affiche la version d'Hydra</BaseQuizOption>
+  <BaseQuizOption value="D">S'exécute uniquement en mode verbeux</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `-V` active le mode verbeux, qui affiche une sortie détaillée incluant chaque tentative de connexion, facilitant la surveillance de la progression et le débogage des problèmes lors des attaques par mot de passe.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Attaques Spécifiques aux Protocoles
 
 ### SSH : `hydra cible ssh`
@@ -87,13 +117,28 @@ Attaquer les services SSH avec des combinaisons de noms d'utilisateur et de mots
 ```bash
 # Attaque SSH de base
 hydra -l root -P /usr/share/wordlists/rockyou.txt 192.168.1.100 ssh
-# Noms d'utilisateur multiples
+# Utilisateurs multiples
 hydra -L users.txt -P passwords.txt ssh://192.168.1.100
 # Port SSH personnalisé
 hydra -l admin -P passwords.txt 192.168.1.100 -s 2222 ssh
 # Avec threading
 hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 ```
+
+<BaseQuiz id="hydra-ssh-1" correct="C">
+  <template #question>
+    Que fait l'indicateur `-s` dans Hydra ?
+  </template>
+  
+  <BaseQuizOption value="A">Définit le type de service</BaseQuizOption>
+  <BaseQuizOption value="B">Active le mode furtif</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Spécifie un numéro de port personnalisé</BaseQuizOption>
+  <BaseQuizOption value="D">Définit le nombre de threads</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'indicateur `-s` spécifie un numéro de port personnalisé lorsque le service s'exécute sur un port non standard. Par exemple, `-s 2222` cible SSH sur le port 2222 au lieu du port par défaut 22.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### FTP : `hydra cible ftp`
 
@@ -153,7 +198,7 @@ hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/admin:username=^U
 
 ### Formulaires GET HTTP : `http-get-form`
 
-Similaire aux formulaires POST mais cible les requêtes GET au lieu de cela.
+Similaire aux formulaires POST mais cible les requêtes GET.
 
 ```bash
 # Attaque de formulaire GET
@@ -208,7 +253,7 @@ hydra -l admin -P passwords.txt -t 1 target.com ssh
 Ajouter des délais entre les tentatives pour éviter la limitation du débit et la détection.
 
 ```bash
-# Attendre 30 secondes entre les tentatives
+# Attente de 30 secondes entre les tentatives
 hydra -l admin -P passwords.txt -w 30 target.com ssh
 # Combiné avec le threading
 hydra -l admin -P passwords.txt -t 2 -w 10 target.com ssh
@@ -277,7 +322,7 @@ hydra -C creds.txt target.com ssh
 
 ### Support Proxy : `HYDRA_PROXY`
 
-Utiliser des serveurs proxy pour les attaques via des variables d'environnement.
+Utiliser des serveurs proxy pour les attaques avec des variables d'environnement.
 
 ```bash
 # Proxy HTTP
@@ -289,7 +334,7 @@ export HYDRA_PROXY=socks4://user:pass@127.0.0.1:1080
 export HYDRA_PROXY=socks5://proxy.example.com:1080
 ```
 
-### Optimisation des Listes de Mots de Passe : `pw-inspector`
+### Optimisation de la Liste de Mots de Passe : `pw-inspector`
 
 Utiliser pw-inspector pour filtrer les listes de mots de passe en fonction des politiques.
 
@@ -298,7 +343,7 @@ Utiliser pw-inspector pour filtrer les listes de mots de passe en fonction des p
 cat passwords.txt | pw-inspector -m 6 -c 2 -n > filtered.txt
 # Utiliser la liste filtrée avec Hydra
 hydra -l admin -P filtered.txt target.com ssh
-# Supprimer les doublons d'abord
+# Supprimer d'abord les doublons
 cat passwords.txt | sort | uniq > unique_passwords.txt
 ```
 
@@ -311,17 +356,17 @@ Il est possible d'utiliser Hydra à la fois légalement et illégalement. Obtene
 ```text
 N'effectuer des attaques que sur des systèmes pour lesquels une autorisation explicite a été obtenue
 Assurez-vous toujours d'avoir l'autorisation explicite du propriétaire ou de l'administrateur du système
-Documentez toutes les activités de test pour la conformité
+Documenter toutes les activités de test pour la conformité
 Utiliser uniquement lors de tests d'intrusion autorisés
 Ne jamais utiliser pour des tentatives d'accès non autorisées
 ```
 
 ### Mesures Défensives
 
-Défendez-vous contre les attaques par force brute avec des mots de passe forts et des politiques appropriées.
+Se défendre contre les attaques par force brute avec des mots de passe forts et des politiques.
 
 ```text
-Mettre en œuvre des politiques de verrouillage de compte pour bloquer temporairement les comptes après des tentatives échouées
+Mettre en œuvre des politiques de verrouillage de compte pour verrouiller temporairement les comptes après des échecs
 Utiliser l'authentification multi-facteurs (MFA)
 Mettre en œuvre des systèmes CAPTCHA pour empêcher les outils d'automatisation
 Surveiller et journaliser les tentatives d'authentification
@@ -330,11 +375,11 @@ Mettre en œuvre la limitation du débit et le blocage d'IP
 
 ### Bonnes Pratiques de Test
 
-Commencez avec des paramètres conservateurs et documentez toutes les activités pour la transparence.
+Commencer avec des paramètres conservateurs et documenter toutes les activités pour la transparence.
 
 ```text
-Commencer avec de faibles nombres de threads pour éviter la perturbation du service
-Utiliser des listes de mots de passe appropriées à l'environnement cible
+Commencer avec un faible nombre de threads pour éviter la perturbation du service
+Utiliser des listes de mots appropriées à l'environnement cible
 Tester pendant les fenêtres de maintenance approuvées lorsque cela est possible
 Surveiller les performances du système cible pendant les tests
 Avoir des procédures de réponse aux incidents prêtes
@@ -356,7 +401,7 @@ Démonstrations de formation et éducatives
 
 ### XHydra : Interface Graphique
 
-XHydra est une interface graphique pour Hydra qui permet de sélectionner la configuration via des contrôles graphiques au lieu des commutateurs de ligne de commande.
+XHydra est une interface graphique pour Hydra qui permet de sélectionner la configuration à partir de contrôles via l'interface graphique au lieu des commutateurs de ligne de commande.
 
 ```bash
 # Lancer l'interface graphique XHydra
@@ -367,12 +412,12 @@ sudo apt install hydra-gtk
 # - Interface cliquable
 # - Modèles d'attaque préconfigurés
 # - Surveillance visuelle de la progression
-# - Sélection facile de la cible et de la liste de mots de passe
+# - Sélection facile de la cible et de la liste de mots
 ```
 
 ### Hydra Wizard : Configuration Interactive
 
-Assistant interactif qui guide les utilisateurs dans la configuration d'hydra avec des questions simples.
+Assistant interactif qui guide les utilisateurs dans la configuration d'Hydra avec des questions simples.
 
 ```bash
 # Lancer l'assistant interactif
@@ -424,9 +469,9 @@ ls /usr/share/wordlists/metasploit/
 Résoudre les problèmes typiques rencontrés lors de l'utilisation d'Hydra.
 
 ```bash
-# Erreurs de temps d'attente de connexion
+# Erreurs de délai d'attente de connexion
 hydra -l admin -P passwords.txt -t 1 -w 30 target.com ssh
-# Erreur trop de connexions
+# Erreur de trop de connexions
 hydra -l admin -P passwords.txt -t 2 target.com ssh
 # Optimisation de l'utilisation de la mémoire
 hydra -l admin -P small_list.txt target.com ssh

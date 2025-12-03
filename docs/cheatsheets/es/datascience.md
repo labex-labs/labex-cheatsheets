@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Ciencia de Datos'
-description: 'Aprenda Ciencia de Datos con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Ciencia de Datos | LabEx'
+description: 'Aprenda ciencia de datos con esta hoja de trucos completa. Referencia rápida para análisis de datos, aprendizaje automático, estadística, visualización, librerías de Python y flujos de trabajo de ciencia de datos.'
 pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 ---
 
@@ -26,7 +26,7 @@ Aprenda ciencia de datos a través de laboratorios prácticos y escenarios del m
 Bibliotecas clave como NumPy, Pandas, Matplotlib, Seaborn y scikit-learn forman la base de los flujos de trabajo de ciencia de datos.
 
 ```python
-# Importaciones esenciales para ciencia de datos
+# Essential imports for data science
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -42,14 +42,14 @@ classification_report
 Paquete fundamental para la computación numérica con Python.
 
 ```python
-# Crear arrays
+# Create arrays
 arr = np.array([1, 2, 3, 4, 5])
 matrix = np.array([[1, 2], [3, 4]])
-# Operaciones básicas
+# Basic operations
 np.mean(arr)       # Promedio
 np.std(arr)        # Desviación estándar
-np.reshape(arr, (5, 1))  # Remodelar array
-# Generar datos
+np.reshape(arr, (5, 1))  # Remodelar arreglo
+# Generate data
 np.random.normal(0, 1, 100)  # Distribución
 normal aleatoria
 ```
@@ -59,30 +59,45 @@ normal aleatoria
 Biblioteca para manipulación y análisis de datos.
 
 ```python
-# Crear DataFrame
+# Create DataFrame
 df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
-# Leer datos
+# Read data
 df = pd.read_csv('data.csv')
-# Exploración básica
+# Basic exploration
 df.head()          # Primeras 5 filas
 df.info()          # Tipos de datos y valores faltantes
 df.describe()      # Estadísticas resumidas
-# Manipulación de datos
+# Data manipulation
 df.groupby('column').mean()
 df.fillna(df.mean())  # Manejar valores faltantes
 ```
 
+<BaseQuiz id="datascience-pandas-1" correct="C">
+  <template #question>
+    ¿Qué devuelve `df.head()` en Pandas?
+  </template>
+  
+  <BaseQuizOption value="A">Las últimas 5 filas del DataFrame</BaseQuizOption>
+  <BaseQuizOption value="B">Un resumen del DataFrame</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Las primeras 5 filas del DataFrame</BaseQuizOption>
+  <BaseQuizOption value="D">Todas las filas del DataFrame</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `df.head()` muestra las primeras 5 filas del DataFrame por defecto. Puede especificar un número diferente, como `df.head(10)` para ver las primeras 10 filas. Es útil para inspeccionar rápidamente sus datos.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Matplotlib & Seaborn: Visualización
 
-Crear visualizaciones estadísticas y gráficos.
+Cree visualizaciones y gráficos estadísticos.
 
 ```python
-# Conceptos básicos de Matplotlib
+# Matplotlib basics
 plt.plot(x, y)
 plt.hist(data, bins=20)
 plt.scatter(x, y)
 plt.show()
-# Seaborn para gráficos estadísticos
+# Seaborn for statistical plots
 sns.boxplot(data=df, x='category', y='value')
 sns.heatmap(df.corr(), annot=True)
 sns.pairplot(df)
@@ -92,10 +107,10 @@ sns.pairplot(df)
 
 ### 1. Definición del Problema
 
-La ciencia de datos es un campo multidisciplinario que combina matemáticas, estadística, programación e inteligencia de negocios. Defina objetivos y métricas de éxito.
+La ciencia de datos es un campo multidisciplinario que combina matemáticas, estadística, programación e inteligencia empresarial. Defina objetivos y métricas de éxito.
 
 ```python
-# Definir el problema de negocio
+# Define business problem
 # - ¿Qué pregunta estamos respondiendo?
 # - ¿Qué métricas medirán el
 éxito?
@@ -107,12 +122,12 @@ La ciencia de datos es un campo multidisciplinario que combina matemáticas, est
 Reúna datos de varias fuentes y formatos.
 
 ```python
-# Múltiples fuentes de datos
+# Multiple data sources
 df_csv = pd.read_csv('data.csv')
 df_json = pd.read_json('data.json')
 df_sql = pd.read_sql('SELECT * FROM
 table', connection)
-# APIs y web scraping
+# APIs and web scraping
 import requests
 response =
 requests.get('https://api.example.co
@@ -121,17 +136,17 @@ m/data')
 
 ### 3. Exploración de Datos (EDA)
 
-Comprender la estructura, los patrones y la calidad de los datos.
+Comprenda la estructura, los patrones y la calidad de los datos.
 
 ```python
-# Análisis Exploratorio de Datos
+# Exploratory Data Analysis
 df.shape              # Dimensiones
 df.dtypes             # Tipos de datos
 df.isnull().sum()     # Valores faltantes
 df['column'].value_counts()  #
-Recuentos de frecuencia
+Frecuencias de conteo
 df.corr()             # Matriz de correlación
-# Visualizaciones para EDA
+# Visualizations for EDA
 sns.histplot(df['numeric_column'])
 sns.boxplot(data=df,
 y='numeric_column')
@@ -146,56 +161,86 @@ sns.heatmap(df.corr(), annot=True)
 Antes de analizar los datos, deben limpiarse y prepararse. Esto incluye manejar datos faltantes, eliminar duplicados y normalizar variables. La limpieza de datos es a menudo el aspecto más lento pero crítico del proceso de ciencia de datos.
 
 ```python
-# Identificar valores faltantes
+# Identify missing values
 df.isnull().sum()
 df.isnull().sum() / len(df) * 100  # Porcentaje faltante
-# Manejar valores faltantes
+# Handle missing values
 df.dropna()                    # Eliminar filas con NaN
 df.fillna(df.mean())          # Rellenar con la media
 df.fillna(method='forward')   # Relleno hacia adelante
 df.fillna(method='backward')  # Relleno hacia atrás
-# Imputación avanzada
+# Advanced imputation
 from sklearn.impute import SimpleImputer, KNNImputer
 imputer = SimpleImputer(strategy='median')
 df_filled = pd.DataFrame(imputer.fit_transform(df))
 ```
+
+<BaseQuiz id="datascience-missing-1" correct="B">
+  <template #question>
+    ¿Para qué se utiliza el relleno hacia adelante (`method='forward'`)?
+  </template>
+  
+  <BaseQuizOption value="A">Rellenar valores faltantes con la media</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Rellenar valores faltantes con el valor no nulo anterior</BaseQuizOption>
+  <BaseQuizOption value="C">Rellenar valores faltantes con valores aleatorios</BaseQuizOption>
+  <BaseQuizOption value="D">Eliminar valores faltantes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El relleno hacia adelante propaga la última observación válida hacia adelante para rellenar los valores faltantes. Esto es útil para datos de series temporales donde desea mantener el valor anterior hasta que haya nuevos datos disponibles.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Transformación de Datos
 
 La normalización de datos (escalar datos a un rango estándar como [0, 1]) ayuda a evitar sesgos debido a diferencias en la magnitud de las características.
 
 ```python
-# Escalado y normalización
+# Scaling and normalization
 from sklearn.preprocessing import StandardScaler,
 MinMaxScaler
 scaler = StandardScaler()
 df_scaled = scaler.fit_transform(df[numeric_columns])
-# Escalado Min-Max a [0,1]
+# Min-Max scaling to [0,1]
 minmax = MinMaxScaler()
 df_normalized =
 minmax.fit_transform(df[numeric_columns])
-# Codificación de variables categóricas
+# Encoding categorical variables
 pd.get_dummies(df, columns=['category_column'])
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 df['encoded'] = le.fit_transform(df['category'])
 ```
 
+<BaseQuiz id="datascience-scaling-1" correct="C">
+  <template #question>
+    ¿Cuál es la diferencia entre StandardScaler y MinMaxScaler?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="B">StandardScaler escala a [0,1], MinMaxScaler escala a media=0, std=1</BaseQuizOption>
+  <BaseQuizOption value="C" correct>StandardScaler normaliza a media=0 y std=1, MinMaxScaler escala al rango [0,1]</BaseQuizOption>
+  <BaseQuizOption value="D">StandardScaler es más rápido</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    StandardScaler transforma los datos para tener una media de 0 y una desviación estándar de 1 (normalización de puntuación Z). MinMaxScaler escala los datos a un rango fijo, típicamente [0, 1]. Ambos son útiles pero para diferentes escenarios.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Detección y Tratamiento de Valores Atípicos (Outliers)
 
-Identificar y manejar valores extremos que pueden sesgar el análisis.
+Identifique y maneje valores extremos que puedan sesgar el análisis.
 
 ```python
-# Detección de valores atípicos estadísticos
+# Statistical outlier detection
 Q1 = df['column'].quantile(0.25)
 Q3 = df['column'].quantile(0.75)
 IQR = Q3 - Q1
 lower_bound = Q1 - 1.5 * IQR
 upper_bound = Q3 + 1.5 * IQR
-# Eliminar valores atípicos
+# Remove outliers
 df_clean = df[(df['column'] >= lower_bound) &
               (df['column'] <= upper_bound)]
-# Método Z-score
+# Z-score method
 from scipy import stats
 z_scores = np.abs(stats.zscore(df['column']))
 df_no_outliers = df[z_scores < 3]
@@ -203,18 +248,18 @@ df_no_outliers = df[z_scores < 3]
 
 ### Ingeniería de Características (Feature Engineering)
 
-Crear nuevas variables para mejorar el rendimiento del modelo.
+Cree nuevas variables para mejorar el rendimiento del modelo.
 
 ```python
-# Crear nuevas características
+# Create new features
 df['feature_ratio'] = df['feature1'] / df['feature2']
 df['feature_sum'] = df['feature1'] + df['feature2']
-# Características de fecha/hora
+# Date/time features
 df['date'] = pd.to_datetime(df['date'])
 df['year'] = df['date'].dt.year
 df['month'] = df['date'].dt.month
 df['day_of_week'] = df['date'].dt.day_name()
-# Agrupación (Binning) de variables continuas
+# Binning continuous variables
 df['age_group'] = pd.cut(df['age'], bins=[0, 18, 35, 50, 100],
                         labels=['Child', 'Young Adult', 'Adult',
 'Senior'])
@@ -227,15 +272,15 @@ df['age_group'] = pd.cut(df['age'], bins=[0, 18, 35, 50, 100],
 Estas medidas de tendencia central resumen los datos y proporcionan información sobre su distribución. Son fundamentales para comprender cualquier conjunto de datos. La media es el promedio de todos los valores en un conjunto de datos. Es muy sensible a los valores atípicos.
 
 ```python
-# Tendencia central
+# Central tendency
 mean = df['column'].mean()
 median = df['column'].median()
 mode = df['column'].mode()[0]
-# Medidas de variabilidad
+# Variability measures
 std_dev = df['column'].std()
 variance = df['column'].var()
 range_val = df['column'].max() - df['column'].min()
-# Forma de la distribución
+# Distribution shape
 skewness = df['column'].skew()
 kurtosis = df['column'].kurtosis()
 # Percentiles
@@ -244,18 +289,18 @@ percentiles = df['column'].quantile([0.25, 0.5, 0.75, 0.95])
 
 ### Pruebas de Hipótesis
 
-Probar hipótesis estadísticas y validar suposiciones.
+Pruebe hipótesis estadísticas y valide suposiciones.
 
 ```python
-# Prueba t para comparar medias
+# T-test for comparing means
 from scipy.stats import ttest_ind, ttest_1samp
-# Prueba t de una muestra
+# One-sample t-test
 t_stat, p_value = ttest_1samp(data, population_mean)
-# Prueba t de dos muestras
+# Two-sample t-test
 group1 = df[df['group'] == 'A']['value']
 group2 = df[df['group'] == 'B']['value']
 t_stat, p_value = ttest_ind(group1, group2)
-# Prueba Chi-cuadrado de independencia
+# Chi-square test for independence
 from scipy.stats import chi2_contingency
 chi2, p_value, dof, expected =
 chi2_contingency(contingency_table)
@@ -263,34 +308,34 @@ chi2_contingency(contingency_table)
 
 ### Análisis de Correlación
 
-Comprender las relaciones entre variables.
+Comprenda las relaciones entre variables.
 
 ```python
-# Matriz de correlación
+# Correlation matrix
 correlation_matrix = df.corr()
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True,
 cmap='coolwarm')
-# Correlaciones específicas
+# Specific correlations
 pearson_corr = df['var1'].corr(df['var2'])
 spearman_corr = df['var1'].corr(df['var2'],
 method='spearman')
-# Significación estadística de la correlación
+# Statistical significance of correlation
 from scipy.stats import pearsonr
 correlation, p_value = pearsonr(df['var1'], df['var2'])
 ```
 
 ### ANOVA y Regresión
 
-Analizar la varianza y las relaciones entre variables.
+Analice la varianza y las relaciones entre variables.
 
 ```python
-# ANOVA de un factor
+# One-way ANOVA
 from scipy.stats import f_oneway
 group_data = [df[df['group'] == g]['value'] for g in
 df['group'].unique()]
 f_stat, p_value = f_oneway(*group_data)
-# Análisis de regresión lineal
+# Linear regression analysis
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 X = df[['feature1', 'feature2']]
@@ -304,23 +349,23 @@ r2 = r2_score(y, y_pred)
 
 ### Aprendizaje Supervisado - Clasificación
 
-Árboles de Decisión: Un modelo en forma de árbol de decisiones y sus posibles consecuencias. Cada nodo representa una prueba en un atributo, y cada rama representa el resultado. Se utiliza comúnmente para tareas de clasificación.
+Árboles de Decisión: Un modelo similar a un árbol de decisiones y consecuencias posibles. Cada nodo representa una prueba en un atributo, y cada rama representa el resultado. Se utiliza comúnmente para tareas de clasificación.
 
 ```python
-# División entrenamiento-prueba
+# Train-test split
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y,
 test_size=0.2, random_state=42)
-# Regresión Logística
+# Logistic Regression
 from sklearn.linear_model import LogisticRegression
 log_reg = LogisticRegression()
 log_reg.fit(X_train, y_train)
 y_pred = log_reg.predict(X_test)
-# Árbol de Decisión
+# Decision Tree
 from sklearn.tree import DecisionTreeClassifier
 dt = DecisionTreeClassifier(max_depth=5)
 dt.fit(X_train, y_train)
-# Bosque Aleatorio (Random Forest)
+# Random Forest
 from sklearn.ensemble import RandomForestClassifier
 rf = RandomForestClassifier(n_estimators=100)
 rf.fit(X_train, y_train)
@@ -328,19 +373,19 @@ rf.fit(X_train, y_train)
 
 ### Aprendizaje Supervisado - Regresión
 
-Predecir variables objetivo continuas.
+Predicción de variables objetivo continuas.
 
 ```python
-# Regresión Lineal
+# Linear Regression
 from sklearn.linear_model import LinearRegression
 lr = LinearRegression()
 lr.fit(X_train, y_train)
 y_pred = lr.predict(X_test)
-# Regresión Polinomial
+# Polynomial Regression
 from sklearn.preprocessing import PolynomialFeatures
 poly = PolynomialFeatures(degree=2)
 X_poly = poly.fit_transform(X)
-# Regresión Ridge y Lasso
+# Ridge & Lasso Regression
 from sklearn.linear_model import Ridge, Lasso
 ridge = Ridge(alpha=1.0)
 lasso = Lasso(alpha=0.1)
@@ -350,19 +395,19 @@ lasso.fit(X_train, y_train)
 
 ### Aprendizaje No Supervisado
 
-Descubrir patrones en los datos sin resultados etiquetados.
+Descubra patrones en los datos sin resultados etiquetados.
 
 ```python
-# Agrupamiento K-Means
+# K-Means Clustering
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, random_state=42)
 clusters = kmeans.fit_predict(X)
 df['cluster'] = clusters
-# Análisis de Componentes Principales (PCA)
+# Principal Component Analysis (PCA)
 from sklearn.decomposition import PCA
 pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X_scaled)
-# Agrupamiento Jerárquico
+# Hierarchical Clustering
 from scipy.cluster.hierarchy import dendrogram, linkage
 linkage_matrix = linkage(X_scaled, method='ward')
 dendrogram(linkage_matrix)
@@ -370,10 +415,10 @@ dendrogram(linkage_matrix)
 
 ### Evaluación del Modelo
 
-Evaluar el rendimiento del modelo utilizando las métricas apropiadas.
+Evalúe el rendimiento del modelo utilizando métricas apropiadas.
 
 ```python
-# Métricas de clasificación
+# Classification metrics
 from sklearn.metrics import accuracy_score,
 precision_score, recall_score, f1_score, confusion_matrix
 accuracy = accuracy_score(y_test, y_pred)
@@ -381,10 +426,10 @@ precision = precision_score(y_test, y_pred,
 average='weighted')
 recall = recall_score(y_test, y_pred, average='weighted')
 f1 = f1_score(y_test, y_pred, average='weighted')
-# Matriz de Confusión
+# Confusion Matrix
 cm = confusion_matrix(y_test, y_pred)
 sns.heatmap(cm, annot=True, fmt='d')
-# Métricas de regresión
+# Regression metrics
 from sklearn.metrics import mean_squared_error,
 mean_absolute_error
 mse = mean_squared_error(y_test, y_pred)
@@ -396,10 +441,10 @@ rmse = np.sqrt(mse)
 
 ### Visualizaciones Exploratorias
 
-Comprender las distribuciones y relaciones de los datos.
+Comprenda las distribuciones y relaciones de los datos.
 
 ```python
-# Gráficos de distribución
+# Distribution plots
 plt.figure(figsize=(12, 4))
 plt.subplot(1, 3, 1)
 plt.hist(df['numeric_col'], bins=20, edgecolor='black')
@@ -407,28 +452,28 @@ plt.subplot(1, 3, 2)
 sns.boxplot(y=df['numeric_col'])
 plt.subplot(1, 3, 3)
 sns.violinplot(y=df['numeric_col'])
-# Gráficos de relación
+# Relationship plots
 plt.figure(figsize=(10, 6))
 sns.scatterplot(data=df, x='feature1', y='feature2',
 hue='category')
 sns.regplot(data=df, x='feature1', y='target')
-# Datos categóricos
+# Categorical data
 sns.countplot(data=df, x='category')
 sns.barplot(data=df, x='category', y='value')
 ```
 
 ### Visualizaciones Avanzadas
 
-Crear paneles de control e informes completos.
+Cree paneles y reportes completos.
 
 ```python
-# Subgráficos para múltiples vistas
+# Subplots for multiple views
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes[0,0].hist(df['col1'])
 axes[0,1].scatter(df['col1'], df['col2'])
 axes[1,0].boxplot(df['col1'])
 sns.heatmap(df.corr(), ax=axes[1,1])
-# Gráficos interactivos con Plotly
+# Interactive plots with Plotly
 import plotly.express as px
 fig = px.scatter(df, x='feature1', y='feature2',
                 color='category', size='value',
@@ -438,12 +483,12 @@ fig.show()
 
 ### Gráficos Estadísticos
 
-Visualizar relaciones estadísticas y resultados del modelo.
+Visualice relaciones estadísticas y resultados del modelo.
 
 ```python
-# Gráficos de pares para correlación
+# Pair plots for correlation
 sns.pairplot(df, hue='target_category')
-# Gráficos de residuos para regresión
+# Residual plots for regression
 plt.figure(figsize=(12, 4))
 plt.subplot(1, 2, 1)
 plt.scatter(y_pred, y_test - y_pred)
@@ -453,7 +498,7 @@ plt.subplot(1, 2, 2)
 plt.scatter(y_test, y_pred)
 plt.plot([y_test.min(), y_test.max()], [y_test.min(),
 y_test.max()], 'r--')
-# Curva ROC para clasificación
+# ROC Curve for classification
 from sklearn.metrics import roc_curve, auc
 fpr, tpr, _ = roc_curve(y_test, y_prob)
 roc_auc = auc(fpr, tpr)
@@ -465,10 +510,10 @@ plt.plot(fpr, tpr, label=f'Curva ROC (AUC = {roc_auc:.2f})')
 Formato profesional de visualización.
 
 ```python
-# Establecer estilo y colores
+# Set style and colors
 plt.style.use('seaborn-v0_8')
 sns.set_palette("husl")
-# Configuración de figura personalizada
+# Custom figure settings
 plt.figure(figsize=(12, 8))
 plt.title('Título de Gráfico Profesional', fontsize=16,
 fontweight='bold')
@@ -477,7 +522,7 @@ plt.ylabel('Etiqueta del Eje Y', fontsize=14)
 plt.legend(loc='best')
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-# Guardar gráficos de alta calidad
+# Save high-quality plots
 plt.savefig('analysis_plot.png', dpi=300,
 bbox_inches='tight')
 ```
@@ -489,18 +534,18 @@ bbox_inches='tight')
 Guardar y cargar modelos entrenados para uso en producción.
 
 ```python
-# Guardar modelos con pickle
+# Save models with pickle
 import pickle
 with open('model.pkl', 'wb') as f:
     pickle.dump(trained_model, f)
-# Cargar modelo guardado
+# Load saved model
 with open('model.pkl', 'rb') as f:
     loaded_model = pickle.load(f)
-# Usar joblib para modelos sklearn
+# Using joblib for sklearn models
 import joblib
 joblib.dump(trained_model, 'model.joblib')
 loaded_model = joblib.load('model.joblib')
-# Versionado de modelos con marcas de tiempo
+# Model versioning with timestamps
 import datetime
 timestamp =
 datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -509,17 +554,17 @@ model_name = f'model_{timestamp}.pkl'
 
 ### Validación Cruzada y Ajuste de Hiperparámetros
 
-Optimizar el rendimiento del modelo y prevenir el sobreajuste (overfitting).
+Optimice el rendimiento del modelo y prevenga el sobreajuste.
 
 ```python
-# Validación cruzada
+# Cross-validation
 from sklearn.model_selection import cross_val_score,
 StratifiedKFold
 cv_scores = cross_val_score(model, X, y, cv=5,
 scoring='accuracy')
 print(f"Precisión CV: {cv_scores.mean():.3f} (+/-
 {cv_scores.std() * 2:.3f})")
-# Búsqueda en cuadrícula (Grid Search) para ajuste de hiperparámetros
+# Grid Search for hyperparameter tuning
 from sklearn.model_selection import GridSearchCV
 param_grid = {
     'n_estimators': [100, 200, 300],
@@ -534,22 +579,22 @@ best_model = grid_search.best_estimator_
 
 ### Monitoreo del Rendimiento
 
-Tener acceso rápido a conceptos y comandos esenciales puede marcar la diferencia en su flujo de trabajo. Ya sea que sea un principiante que busca su lugar o un profesional experimentado que busca una referencia confiable, las hojas de trucos sirven como compañeros invaluables.
+Tener acceso rápido a conceptos y comandos esenciales puede marcar la diferencia en su flujo de trabajo. Ya sea que sea un principiante que encuentra su lugar o un profesional experimentado que busca una referencia confiable, las hojas de trucos sirven como compañeros invaluables.
 
 ```python
-# Seguimiento del rendimiento del modelo
+# Model performance tracking
 import time
 start_time = time.time()
 predictions = model.predict(X_test)
 inference_time = time.time() - start_time
 print(f"Tiempo de inferencia: {inference_time:.4f} segundos")
-# Monitoreo del uso de memoria
+# Memory usage monitoring
 import psutil
 process = psutil.Process()
 memory_usage = process.memory_info().rss / 1024 /
 1024  # MB
 print(f"Uso de memoria: {memory_usage:.2f} MB")
-# Análisis de importancia de características
+# Feature importance analysis
 feature_importance = model.feature_importances_
 importance_df = pd.DataFrame({
     'feature': X.columns,
@@ -559,10 +604,10 @@ importance_df = pd.DataFrame({
 
 ### Documentación del Modelo
 
-Documentar las suposiciones del modelo, el rendimiento y el uso.
+Documente las suposiciones, el rendimiento y el uso del modelo.
 
 ```python
-# Crear informe del modelo
+# Create model report
 model_report = {
     'model_type': type(model).__name__,
     'training_data_shape': X_train.shape,
@@ -577,7 +622,7 @@ average='weighted')
     'training_date': datetime.datetime.now().isoformat(),
     'model_version': '1.0'
 }
-# Guardar metadatos del modelo
+# Save model metadata
 import json
 with open('model_metadata.json', 'w') as f:
     json.dump(model_report, f, indent=2)
@@ -587,10 +632,10 @@ with open('model_metadata.json', 'w') as f:
 
 ### Organización del Código
 
-Estructurar proyectos para la reproducibilidad y la colaboración.
+Estructure los proyectos para la reproducibilidad y la colaboración.
 
 ```python
-# Estructura del proyecto
+# Project structure
 project/
 ├── data/
 │   ├── raw/
@@ -603,27 +648,27 @@ project/
 ├── models/
 ├── reports/
 └── requirements.txt
-# Control de versiones con git
+# Version control with git
 git init
 git add .
-git commit -m "Configuración inicial
-del proyecto de ciencia de datos"
+git commit -m "Initial data
+science project setup"
 ```
 
 ### Gestión de Entornos
 
-Asegurar entornos reproducibles en todos los sistemas.
+Asegure entornos reproducibles en todos los sistemas.
 
 ```bash
-# Crear entorno virtual
+# Create virtual environment
 python -m venv ds_env
 source ds_env/bin/activate  #
 Linux/Mac
 # ds_env\Scripts\activate   #
 Windows
-# Archivo de requisitos
+# Requirements file
 pip freeze > requirements.txt
-# Entorno Conda
+# Conda environment
 conda create -n ds_project
 python=3.9
 conda activate ds_project
@@ -632,12 +677,12 @@ scikit-learn matplotlib seaborn
 jupyter
 ```
 
-### Verificaciones de Calidad de Datos
+### Verificación de Calidad de Datos
 
-Validar la integridad de los datos a lo largo de todo el proceso.
+Valide la integridad de los datos a lo largo de todo el flujo de trabajo.
 
 ```python
-# Funciones de validación de datos
+# Data validation functions
 def validate_data(df):
     checks = {
         'shape': df.shape,
@@ -649,15 +694,15 @@ df.duplicated().sum(),
 df.dtypes.to_dict()
     }
     return checks
-# Informe automatizado de calidad de datos
+# Automated data quality report
 def data_quality_report(df):
-    print(f"Forma del conjunto de datos:
+    print(f"Dataset shape:
 {df.shape}")
-    print(f"Valores faltantes:
+    print(f"Missing values:
 {df.isnull().sum().sum()}")
-    print(f"Filas duplicadas:
+    print(f"Duplicate rows:
 {df.duplicated().sum()}")
-    print("\nTipos de datos de las columnas:")
+    print("\nColumn data types:")
     print(df.dtypes)
 ```
 

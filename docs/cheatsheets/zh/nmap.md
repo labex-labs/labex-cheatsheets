@@ -1,6 +1,6 @@
 ---
-title: 'Nmap 速查表'
-description: '使用我们的综合速查表学习 Nmap，涵盖基本命令、概念和最佳实践。'
+title: 'Nmap 速查表 | LabEx'
+description: '使用此综合速查表学习 Nmap 网络扫描。端口扫描、网络发现、漏洞检测、安全审计和网络侦察的快速参考。'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Nmap 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/nmap">通过实战实验学习 Nmap</a>
+<a target="_blank" href="https://labex.io/zh/learn/nmap">通过动手实验学习 Nmap</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实战实验和真实场景学习 Nmap 网络扫描。LabEx 提供全面的 Nmap 课程，涵盖基本的网络发现、端口扫描、服务检测、操作系统指纹识别和漏洞评估。掌握网络侦察和安全审计技术。
+通过动手实验和真实场景学习 Nmap 网络扫描。LabEx 提供全面的 Nmap 课程，涵盖基本的网络发现、端口扫描、服务检测、操作系统指纹识别和漏洞评估。掌握网络侦察和安全审计技术。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -50,9 +50,9 @@ brew install nmap
 从官方网站下载并安装。
 
 ```bash
-# 从
-https://nmap.org/download.html 下载安装程序
-# 以管理员权限运行 .exe 安装程序
+# 从以下链接下载安装程序
+https://nmap.org/download.html
+# 使用管理员权限运行 .exe 安装程序
 # 包括 Zenmap GUI 和命令行版本
 ```
 
@@ -85,9 +85,24 @@ nmap 192.168.1.1 192.168.1.5
 192.168.1.10
 ```
 
+<BaseQuiz id="nmap-scan-1" correct="A">
+  <template #question>
+    默认情况下，`nmap 192.168.1.1` 扫描执行什么操作？
+  </template>
+  
+  <BaseQuizOption value="A" correct>扫描最常见的 1000 个 TCP 端口</BaseQuizOption>
+  <BaseQuizOption value="B">扫描所有 65535 个端口</BaseQuizOption>
+  <BaseQuizOption value="C">仅执行主机发现</BaseQuizOption>
+  <BaseQuizOption value="D">仅扫描端口 80</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    默认情况下，Nmap 扫描最常见的 1000 个 TCP 端口。要扫描所有端口，请使用 `-p-`，或使用 `-p 80,443,22` 指定特定端口。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 网络范围扫描
 
-Nmap 支持主机名、IP 地址、子网。
+Nmap 允许使用主机名、IP 地址、子网。
 
 ```bash
 # 扫描 IP 范围
@@ -117,10 +132,10 @@ exclude.txt
 
 ### Ping 扫描：`nmap -sn`
 
-主机发现是许多分析师和渗透测试人员使用 Nmap 的关键方式。其目的是了解哪些系统在线。
+主机发现是许多分析师和渗透测试人员使用 Nmap 的关键方式。其目的是概述哪些系统在线。
 
 ```bash
-# 仅 Ping 扫描（不进行端口扫描）
+# 仅进行 Ping 扫描（不进行端口扫描）
 nmap -sn 192.168.1.0/24
 # 跳过主机发现（假设所有主机都已启动）
 nmap -Pn 192.168.1.1
@@ -128,16 +143,31 @@ nmap -Pn 192.168.1.1
 nmap -PE 192.168.1.0/24
 ```
 
+<BaseQuiz id="nmap-ping-1" correct="A">
+  <template #question>
+    `nmap -sn` 执行什么操作？
+  </template>
+  
+  <BaseQuizOption value="A" correct>仅执行主机发现，不进行端口扫描</BaseQuizOption>
+  <BaseQuizOption value="B">扫描目标上的所有端口</BaseQuizOption>
+  <BaseQuizOption value="C">执行隐蔽扫描</BaseQuizOption>
+  <BaseQuizOption value="D">仅扫描 UDP 端口</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-sn` 标志告诉 Nmap 只执行主机发现（Ping 扫描），而不扫描端口。这对于快速识别网络上有哪些主机在线很有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### TCP Ping 技术
 
 使用 TCP 数据包进行主机发现。
 
 ```bash
-# 对端口 80 发送 TCP SYN ping
+# 对端口 80 进行 TCP SYN ping
 nmap -PS80 192.168.1.0/24
 # TCP ACK ping
 nmap -PA80 192.168.1.0/24
-# 对多个端口发送 TCP SYN ping
+# 对多个端口进行 TCP SYN ping
 nmap -PS22,80,443 192.168.1.0/24
 ```
 
@@ -146,9 +176,25 @@ nmap -PS22,80,443 192.168.1.0/24
 使用 UDP 数据包进行主机发现。
 
 ```bash
-# 对常见端口发送 UDP ping
+# 对常见端口进行 UDP ping
 nmap -PU53,67,68,137 192.168.1.0/24
-# 对默认端口发送 UDP ping
+```
+
+<BaseQuiz id="nmap-udp-1" correct="B">
+  <template #question>
+    为什么可能使用 UDP ping 而不是 ICMP ping？
+  </template>
+  
+  <BaseQuizOption value="A">UDP ping 总是更快</BaseQuizOption>
+  <BaseQuizOption value="B" correct>某些网络会阻止 ICMP 但允许 UDP 数据包</BaseQuizOption>
+  <BaseQuizOption value="C">UDP ping 会自动扫描端口</BaseQuizOption>
+  <BaseQuizOption value="D">UDP ping 仅在本地网络上有效</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    当防火墙阻止 ICMP 时，UDP ping 可能很有用。许多网络即使在 ICMP 被过滤的情况下也允许向常见端口（如 DNS 端口 53）发送 UDP 数据包，这使得 UDP ping 对主机发现有效。
+  </BaseQuizAnswer>
+</BaseQuiz>
+# 对默认端口进行 UDP ping
 nmap -PU 192.168.1.0/24
 ```
 
@@ -165,38 +211,38 @@ nmap --disable-arp-ping 192.168.1.0/24
 
 ## 端口扫描类型
 
-### TCP SYN 扫描：`nmap -sS`
+### TCP SYN 扫描: `nmap -sS`
 
 这种扫描更隐蔽，因为 Nmap 发送一个 RST 数据包，从而避免了多次请求并缩短了扫描时间。
 
 ```bash
 # 默认扫描（需要 root 权限）
 nmap -sS 192.168.1.1
-# 扫描特定端口
+# 扫描特定 TCP 端口
 nmap -sS -p 80,443 192.168.1.1
 # 快速 SYN 扫描
 nmap -sS -T4 192.168.1.1
 ```
 
-### TCP Connect 扫描：`nmap -sT`
+### TCP Connect 扫描: `nmap -sT`
 
 Nmap 向端口发送一个设置了 SYN 标志的 TCP 数据包。这使用户能够知道端口是打开、关闭还是未知。
 
 ```bash
-# TCP connect 扫描（无需 root 权限）
+# TCP connect 扫描（不需要 root 权限）
 nmap -sT 192.168.1.1
-# 带时间控制的 Connect 扫描
+# 带有时序的 Connect 扫描
 nmap -sT -T3 192.168.1.1
 ```
 
-### UDP 扫描：`nmap -sU`
+### UDP 扫描: `nmap -sU`
 
-扫描 UDP 端口以查找服务。
+扫描 UDP 端口以发现服务。
 
 ```bash
 # UDP 扫描（慢，需要 root 权限）
 nmap -sU 192.168.1.1
-# 扫描常见 UDP 端口
+# UDP 扫描常见端口
 nmap -sU -p 53,67,68,161 192.168.1.1
 # 组合 TCP/UDP 扫描
 nmap -sS -sU -p T:80,443,U:53,161 192.168.1.1
@@ -204,7 +250,7 @@ nmap -sS -sU -p T:80,443,U:53,161 192.168.1.1
 
 ### 隐蔽扫描
 
-用于规避的安全扫描技术。
+用于规避检测的高级扫描技术。
 
 ```bash
 # FIN 扫描
@@ -217,7 +263,7 @@ nmap -sX 192.168.1.1
 
 ## 端口指定
 
-### 端口范围：`nmap -p`
+### 端口范围: `nmap -p`
 
 针对特定端口、范围或 TCP 和 UDP 端口的组合进行更精确的扫描。
 
@@ -232,7 +278,7 @@ nmap -p 1-1000 192.168.1.1
 nmap -p- 192.168.1.1
 ```
 
-### 特定协议端口
+### 特定协议的端口
 
 明确指定 TCP 或 UDP 端口。
 
@@ -245,16 +291,16 @@ nmap -p U:53,161 192.168.1.1
 nmap -p T:80,U:53 192.168.1.1
 ```
 
-### 常见端口集
+### 常见端口集合
 
-快速扫描最常用的端口。
+快速扫描常用的端口。
 
 ```bash
-# 前 1000 个端口（默认）
+# 最常见的 1000 个端口（默认）
 nmap 192.168.1.1
-# 前 100 个端口
+# 最常见的 100 个端口
 nmap --top-ports 100 192.168.1.1
-# 快速扫描（100 个最常见的端口）
+# 快速扫描（最常见的 100 个端口）
 nmap -F 192.168.1.1
 # 仅显示开放端口
 nmap --open 192.168.1.1
@@ -264,18 +310,18 @@ nmap -v 192.168.1.1
 
 ## 服务与版本检测
 
-### 服务检测：`nmap -sV`
+### 服务检测: `nmap -sV`
 
 检测正在运行的服务，并尝试识别其软件版本和配置。
 
 ```bash
 # 基本版本检测
 nmap -sV 192.168.1.1
-# 侵略性版本检测
+# 积极的版本检测
 nmap -sV --version-intensity 9 192.168.1.1
 # 轻量级版本检测
 nmap -sV --version-intensity 0 192.168.1.1
-# 带默认脚本的版本检测
+# 带版本检测的默认脚本
 nmap -sC -sV 192.168.1.1
 ```
 
@@ -290,14 +336,14 @@ nmap --script banner 192.168.1.1
 nmap --script http-* 192.168.1.1
 ```
 
-### 操作系统检测：`nmap -O`
+### 操作系统检测: `nmap -O`
 
 使用 TCP/IP 指纹识别来猜测目标主机的操作系统。
 
 ```bash
 # 操作系统检测
 nmap -O 192.168.1.1
-# 侵略性操作系统检测
+# 积极的操作系统检测
 nmap -O --osscan-guess 192.168.1.1
 # 限制操作系统检测尝试次数
 nmap -O --max-os-tries 1 192.168.1.1
@@ -308,15 +354,15 @@ nmap -O --max-os-tries 1 192.168.1.1
 组合多种检测技术。
 
 ```bash
-# 侵略性扫描（OS、版本、脚本）
+# 积极扫描（OS、版本、脚本）
 nmap -A 192.168.1.1
-# 自定义侵略性扫描
+# 自定义积极扫描
 nmap -sS -sV -O -sC 192.168.1.1
 ```
 
 ## 时序与性能
 
-### 时序模板：`nmap -T`
+### 时序模板: `nmap -T`
 
 根据目标环境和检测风险调整扫描速度。
 
@@ -329,7 +375,7 @@ nmap -T1 192.168.1.1
 nmap -T2 192.168.1.1
 # 普通（默认）
 nmap -T3 192.168.1.1
-# 侵略性（较快）
+# 积极（更快）
 nmap -T4 192.168.1.1
 # 疯狂（非常快，可能遗漏结果）
 nmap -T5 192.168.1.1
@@ -337,7 +383,7 @@ nmap -T5 192.168.1.1
 
 ### 自定义时序选项
 
-微调 Nmap 处理超时、重试和并行扫描的方式，以优化性能。
+微调 Nmap 如何处理超时、重试和并行扫描，以优化性能。
 
 ```bash
 # 设置最小速率（每秒数据包数）
@@ -352,7 +398,7 @@ nmap --host-timeout 5m 192.168.1.1
 
 ## Nmap 脚本引擎 (NSE)
 
-### 脚本类别：`nmap --script`
+### 脚本类别: `nmap --script`
 
 按类别或名称运行脚本。
 
@@ -407,7 +453,7 @@ ls /usr/share/nmap/scripts/ | grep http
 nmap --script-help vuln
 ```
 
-## 输出格式与结果保存
+## 输出格式与保存结果
 
 ### 输出格式
 
@@ -450,7 +496,7 @@ nmap --append-output -oN existing_scan.txt 192.168.1.1
 
 ### 实时结果处理
 
-将 Nmap 输出与命令行工具结合，以提取有用的见解。
+将 Nmap 输出与命令行工具结合以提取有用信息。
 
 ```bash
 # 提取在线主机
@@ -463,7 +509,7 @@ nmap -oX - 192.168.1.1 | xsltproc --html -
 
 ## 防火墙规避技术
 
-### 数据包分段：`nmap -f`
+### 数据包分段: `nmap -f`
 
 使用数据包分段、IP 欺骗和隐蔽扫描方法来绕过安全措施。
 
@@ -476,7 +522,7 @@ nmap --mtu 16 192.168.1.1
 nmap --mtu 24 192.168.1.1
 ```
 
-### 诱饵扫描：`nmap -D`
+### 诱饵扫描: `nmap -D`
 
 在诱饵 IP 地址中隐藏您的扫描。
 
@@ -502,12 +548,12 @@ nmap --source-port 53 192.168.1.1
 nmap --data-length 25 192.168.1.1
 ```
 
-### 闲置/僵尸主机扫描：`nmap -sI`
+### 僵尸/空闲扫描: `nmap -sI`
 
 使用僵尸主机来隐藏扫描来源。
 
 ```bash
-# 僵尸主机扫描（需要空闲主机）
+# 僵尸扫描（需要空闲主机）
 nmap -sI zombie_host 192.168.1.1
 # 列出空闲候选主机
 nmap --script ipidseq 192.168.1.0/24
@@ -528,7 +574,7 @@ nmap -R 192.168.1.1
 nmap --dns-servers 8.8.8.8,1.1.1.1 192.168.1.1
 ```
 
-### IPv6 扫描：`nmap -6`
+### IPv6 扫描: `nmap -6`
 
 使用这些 Nmap 标志以获得额外功能，例如 IPv6 支持。
 
@@ -565,7 +611,7 @@ nmap --send-eth 192.168.1.1
 nmap --send-ip 192.168.1.1
 ```
 
-## 实际应用示例
+## 实际示例
 
 ### 网络发现工作流程
 
@@ -612,7 +658,7 @@ nmap --script smb-vuln-* -p 445 192.168.1.50
 
 ### 隐蔽评估
 
-低调的侦察活动。
+低调的侦察。
 
 ```bash
 # 超隐蔽扫描
@@ -625,7 +671,7 @@ nmap -sS -f --mtu 8 -T1 192.168.1.1
 
 ### 快速扫描策略
 
-为大型网络优化扫描速度。
+优化大型网络的扫描速度。
 
 ```bash
 # 快速网络扫描
@@ -640,10 +686,10 @@ nmap -sS -T4 --defeat-rst-ratelimit 192.168.1.0/24
 
 ### 内存与资源管理
 
-控制资源使用以保证稳定性。
+控制资源使用以保持稳定性。
 
 ```bash
-# 限制并行探测次数
+# 限制并行探测数
 nmap --max-parallelism 10 192.168.1.0/24
 # 控制扫描延迟
 nmap --scan-delay 100ms 192.168.1.1

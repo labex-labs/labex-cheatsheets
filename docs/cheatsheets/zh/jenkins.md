@@ -1,6 +1,6 @@
 ---
-title: 'Jenkins 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，快速掌握 Jenkins。'
+title: 'Jenkins 速查表 | LabEx'
+description: '使用这份全面的速查表学习 Jenkins CI/CD。快速参考 Jenkins 管道、作业、插件、自动化、持续集成和 DevOps 工作流程。'
 pdfUrl: '/cheatsheets/pdf/jenkins-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Jenkins 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/jenkins">通过实战实验学习 Jenkins</a>
+<a target="_blank" href="https://labex.io/zh/learn/jenkins">使用实战实验学习 Jenkins</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实战实验和真实场景学习 Jenkins CI/CD 自动化。LabEx 提供全面的 Jenkins 课程，涵盖基本操作、流水线创建、插件管理、构建自动化和高级技术。掌握 Jenkins，为现代软件开发构建高效的持续集成和部署流水线。
+通过实战实验和真实场景学习 Jenkins CI/CD 自动化。LabEx 提供全面的 Jenkins 课程，涵盖基本操作、Pipeline 创建、插件管理、构建自动化和高级技术。掌握 Jenkins，为现代软件开发构建高效的持续集成和部署流水线。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -49,7 +49,7 @@ sudo systemctl enable jenkins
 使用安装程序或包管理器安装 Jenkins。
 
 ```bash
-# Windows: 从 jenkins.io 下载 Jenkins 安装程序
+# Windows: 从 jenkins.io 下载安装程序
 # 或使用 Chocolatey
 choco install jenkins
 # macOS: 使用 Homebrew
@@ -108,14 +108,14 @@ java -jar jenkins-cli.jar -s http://localhost:8080 help
 java -jar jenkins-cli.jar -s http://localhost:8080 help
 ```
 
-### 作业创建：`create-job` / Web UI
+### 创建任务：`create-job` / Web UI
 
-使用 CLI 或 Web 界面创建新的构建作业。
+使用 CLI 或 Web 界面创建新的构建任务。
 
 ```bash
-# 从 XML 配置创建作业
+# 从 XML 配置创建任务
 java -jar jenkins-cli.jar -auth user:token create-job my-job < job-config.xml
-# 通过 Web UI 创建简单的自由风格作业：
+# 通过 Web UI 创建简单的自由风格项目：
 # 1. 点击“新建任务”
 # 2. 输入任务名称
 # 3. 选择“自由风格项目”
@@ -123,27 +123,27 @@ java -jar jenkins-cli.jar -auth user:token create-job my-job < job-config.xml
 # 5. 保存配置
 ```
 
-### 列出作业：`list-jobs`
+### 列出任务：`list-jobs`
 
-查看 Jenkins 中所有已配置的作业。
+查看 Jenkins 中所有已配置的任务。
 
 ```bash
-# 列出所有作业
+# 列出所有任务
 java -jar jenkins-cli.jar -auth user:token list-jobs
-# 使用模式匹配列出作业
+# 使用模式匹配列出任务
 java -jar jenkins-cli.jar -auth user:token list-jobs "*test*"
-# 获取作业配置
+# 获取任务配置
 java -jar jenkins-cli.jar -auth user:token get-job my-job > job-config.xml
 ```
 
-## 作业管理
+## 任务管理
 
-### 构建作业：`build`
+### 构建任务：`build`
 
-触发和管理作业构建。
+触发和管理任务构建。
 
 ```bash
-# 构建一个作业
+# 构建一个任务
 java -jar jenkins-cli.jar -auth user:token build my-job
 # 带参数构建
 java -jar jenkins-cli.jar -auth user:token build my-job -p PARAM=value
@@ -153,28 +153,58 @@ java -jar jenkins-cli.jar -auth user:token build my-job -s -v
 java -jar jenkins-cli.jar -auth user:token build my-job -f
 ```
 
-### 作业控制：`enable-job` / `disable-job`
+<BaseQuiz id="jenkins-build-1" correct="B">
+  <template #question>
+    `jenkins-cli.jar build my-job -s` 中的 `-s` 标志是做什么的？
+  </template>
+  
+  <BaseQuizOption value="A">跳过构建</BaseQuizOption>
+  <BaseQuizOption value="B" correct>等待构建完成（同步）</BaseQuizOption>
+  <BaseQuizOption value="C">显示构建状态</BaseQuizOption>
+  <BaseQuizOption value="D">停止构建</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-s` 标志使构建命令同步，意味着它在返回之前会等待构建完成。如果没有此标志，命令在触发构建后会立即返回。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-启用或禁用作业。
+### 任务控制：`enable-job` / `disable-job`
+
+启用或禁用任务。
 
 ```bash
-# 启用一个作业
+# 启用一个任务
 java -jar jenkins-cli.jar -auth user:token enable-job my-job
-# 禁用一个作业
+# 禁用一个任务
 java -jar jenkins-cli.jar -auth user:token disable-job my-job
-# 在 Web UI 中检查作业状态
-# 导航到作业仪表板
+# 在 Web UI 中检查任务状态
+# 导航到任务仪表板
 # 查看“禁用/启用”按钮
 ```
 
-### 作业删除：`delete-job`
+<BaseQuiz id="jenkins-job-control-1" correct="B">
+  <template #question>
+    禁用 Jenkins 任务时会发生什么？
+  </template>
+  
+  <BaseQuizOption value="A">任务被永久删除</BaseQuizOption>
+  <BaseQuizOption value="B" correct>任务配置被保留，但它不会自动运行</BaseQuizOption>
+  <BaseQuizOption value="C">任务被移动到另一个文件夹</BaseQuizOption>
+  <BaseQuizOption value="D">所有构建历史记录被删除</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    禁用任务会阻止它自动运行（计划构建、触发器等），但会保留任务配置和构建历史记录。之后可以重新启用它。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-从 Jenkins 中删除作业。
+### 任务删除：`delete-job`
+
+从 Jenkins 中删除任务。
 
 ```bash
-# 删除一个作业
+# 删除一个任务
 java -jar jenkins-cli.jar -auth user:token delete-job my-job
-# 批量删除作业（需谨慎）
+# 批量删除任务（请谨慎操作）
 for job in job1 job2 job3; do
   java -jar jenkins-cli.jar -auth user:token delete-job $job
 done
@@ -187,20 +217,35 @@ done
 ```bash
 # 查看最新构建的控制台输出
 java -jar jenkins-cli.jar -auth user:token console my-job
-# 查看特定构建编号的输出
+# 查看特定构建编号
 java -jar jenkins-cli.jar -auth user:token console my-job 15
 # 实时跟踪控制台输出
 java -jar jenkins-cli.jar -auth user:token console my-job -f
 ```
 
-## 流水线管理
+<BaseQuiz id="jenkins-console-1" correct="C">
+  <template #question>
+    `jenkins-cli.jar console my-job -f` 中的 `-f` 标志是做什么的？
+  </template>
+  
+  <BaseQuizOption value="A">强制停止构建</BaseQuizOption>
+  <BaseQuizOption value="B">仅显示失败的构建</BaseQuizOption>
+  <BaseQuizOption value="C" correct>实时跟踪控制台输出</BaseQuizOption>
+  <BaseQuizOption value="D">将输出格式化为 JSON</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-f` 标志实时跟踪控制台输出，类似于 Linux 中的 `tail -f`。这对于在构建执行时进行监控非常有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-### 流水线创建
+## Pipeline 管理
 
-创建和配置 Jenkins 流水线。
+### Pipeline 创建
+
+创建和配置 Jenkins Pipeline。
 
 ```groovy
-// 基本 Jenkinsfile (声明式流水线)
+// 基本 Jenkinsfile (声明式 Pipeline)
 pipeline {
     agent any
 
@@ -229,12 +274,12 @@ pipeline {
 }
 ```
 
-### 流水线语法
+### Pipeline 语法
 
-常用流水线语法和指令。
+常见的 Pipeline 语法和指令。
 
 ```groovy
-// 脚本式流水线语法
+// 脚本式 Pipeline 语法
 node {
     stage('Checkout') {
         checkout scm
@@ -268,12 +313,12 @@ stages {
 }
 ```
 
-### 流水线配置
+### Pipeline 配置
 
-高级流水线配置和选项。
+高级 Pipeline 配置和选项。
 
 ```groovy
-// 带后构建操作的流水线
+// 带有构建后操作的 Pipeline
 pipeline {
     agent any
 
@@ -302,12 +347,12 @@ pipeline {
 }
 ```
 
-### 流水线触发器
+### Pipeline 触发器
 
-配置自动流水线触发器。
+配置 Pipeline 自动触发器。
 
 ```groovy
-// 带触发器的流水线
+// 带有触发器的 Pipeline
 pipeline {
     agent any
 
@@ -318,7 +363,7 @@ pipeline {
         // 类似 Cron 的调度
         cron('H 2 * * *')  // 每天凌晨 2 点
 
-        // 上游作业触发
+        // 上游任务触发
         upstream(upstreamProjects: 'upstream-job',
                 threshold: hudson.model.Result.SUCCESS)
     }
@@ -370,10 +415,10 @@ git                    # Git 集成
 github                 # GitHub 集成
 maven-plugin          # Maven 构建支持
 gradle                # Gradle 构建支持
-# 流水线插件
-workflow-aggregator   # 流水线插件套件
-pipeline-stage-view   # 流水线阶段视图
-blue-ocean           # 流水线的现代 UI
+# Pipeline 插件
+workflow-aggregator   # Pipeline 插件套件
+pipeline-stage-view   # Pipeline 阶段视图
+blue-ocean           # Pipeline 的现代 UI
 # 部署和集成
 docker-plugin        # Docker 集成
 kubernetes           # Kubernetes 部署
@@ -390,16 +435,15 @@ sonarqube           # 代码质量分析
 
 ```bash
 # 访问插件管理器：
-# 1. 导航到 管理 Jenkins
-# 2. 点击 “管理插件”
-# 3. 使用 可用/已安装/更新 选项卡
-# 4. 搜索插件
-# 5. 选择并安装
-# 6. 如果需要，重启 Jenkins
+# 1. 导航到 管理 Jenkins → 管理插件
+# 2. 使用 可用/已安装/更新 选项卡
+# 3. 搜索插件
+# 4. 选择并安装
+# 5. 如果需要，重启 Jenkins
 # 插件更新流程：
-# 1. 检查 “更新” 选项卡
+# 1. 检查“更新”选项卡
 # 2. 选择要更新的插件
-# 3. 点击 “现在下载并重启后安装”
+# 3. 点击“现在下载并重启后安装”
 ```
 
 ## 用户管理与安全
@@ -411,24 +455,24 @@ sonarqube           # 代码质量分析
 ```bash
 # 启用 Jenkins 安全性：
 # 1. 管理 Jenkins → 配置全局安全
-# 2. 启用 “Jenkins 自己的用户数据库”
+# 2. 启用“Jenkins 自己的用户数据库”
 # 3. 允许用户注册（初始设置）
 # 4. 设置授权策略
 # 通过 CLI 创建用户（需要适当的权限）
 # 用户通常通过 Web UI 创建：
 # 1. 管理 Jenkins → 管理用户
-# 2. 点击 “创建用户”
+# 2. 点击“创建用户”
 # 3. 填写用户信息
 # 4. 分配角色/权限
 ```
 
 ### 认证与授权
 
-配置安全域和授权策略。
+配置安全领域和授权策略。
 
 ```bash
 # 安全配置选项：
-# 1. 安全域（用户如何认证）：
+# 1. 安全领域（用户如何认证）：
 #    - Jenkins 自己的用户数据库
 #    - LDAP
 #    - Active Directory
@@ -450,7 +494,7 @@ sonarqube           # 代码质量分析
 # 生成 API 令牌：
 # 1. 点击用户名 → 配置
 # 2. API 令牌部分
-# 3. 点击 “添加新令牌”
+# 3. 点击“添加新令牌”
 # 4. 输入令牌名称
 # 5. 生成并复制令牌
 # 使用 API 令牌与 CLI
@@ -463,7 +507,7 @@ chmod 600 ~/.jenkins-cli-auth
 
 ### 凭证管理
 
-管理存储的凭证，用于作业和流水线。
+管理存储在 Jenkins 中的凭证，供任务和 Pipeline 使用。
 
 ```bash
 # 通过 CLI 管理凭证
@@ -476,7 +520,7 @@ java -jar jenkins-cli.jar -auth user:token \
 ```
 
 ```groovy
-// 在流水线中访问凭证
+// 在 Pipeline 中访问凭证
 withCredentials([usernamePassword(
   credentialsId: 'my-credentials',
   usernameVariable: 'USERNAME',
@@ -498,10 +542,10 @@ java -jar jenkins-cli.jar -auth user:token console my-job
 # 获取构建信息
 java -jar jenkins-cli.jar -auth user:token get-job my-job
 # 监控构建队列
-# Web UI：Jenkins 仪表板 → 构建队列
+# Web UI: Jenkins 仪表板 → 构建队列
 # 显示待定构建及其状态
 # 构建历史访问
-# Web UI：作业 → 构建历史
+# Web UI: 任务 → 构建历史
 # 显示所有先前构建及其状态
 ```
 
@@ -547,15 +591,15 @@ sudo cat /var/lib/jenkins/jenkins.log  # Jenkins 日志文件
 ```bash
 # 内置监控
 # 管理 Jenkins → 负载统计
-# 显示执行器利用率随时间的变化情况
+# 显示随时间变化的执行器利用率
 # JVM 监控
 # 管理 Jenkins → 管理节点 → Master
 # 显示内存、CPU 使用率和系统属性
 # 构建趋势
-# 安装 “构建历史” 插件
+# 安装“构建历史”插件
 # 查看构建持续时间趋势和成功率
 # 磁盘使用情况监控
-# 安装 “磁盘使用情况” 插件
+# 安装“磁盘使用情况”插件
 # 监控工作区和构建产物存储
 ```
 
@@ -563,7 +607,7 @@ sudo cat /var/lib/jenkins/jenkins.log  # Jenkins 日志文件
 
 ### 全局配置
 
-配置全局 Jenkins 设置和工具。
+配置 Jenkins 全局设置和工具。
 
 ```bash
 # 全局工具配置
@@ -579,7 +623,7 @@ sudo cat /var/lib/jenkins/jenkins.log  # Jenkins 日志文件
 # - Jenkins URL
 # - 系统消息
 # - 执行器数量
-# - 延迟时间
+# - 安静期
 # - SCM 轮询限制
 ```
 
@@ -591,19 +635,19 @@ sudo cat /var/lib/jenkins/jenkins.log  # Jenkins 日志文件
 # 内置环境变量
 BUILD_NUMBER          # 构建编号
 BUILD_ID              # 构建 ID
-JOB_NAME             # 作业名称
-WORKSPACE            # 作业工作区路径
+JOB_NAME             # 任务名称
+WORKSPACE            # 任务工作区路径
 JENKINS_URL          # Jenkins URL
 NODE_NAME            # 节点名称
 # 自定义环境变量
 # 管理 Jenkins → 配置系统
 # 全局属性 → 环境变量
-# 添加键值对以供全局访问
+# 添加全局可用的键值对
 ```
 
 ### 配置即代码 (JCasC)
 
-使用 JCasC 插件管理 Jenkins 配置。
+使用 JCasC 插件通过代码管理 Jenkins 配置。
 
 ```yaml
 # JCasC 配置文件 (jenkins.yaml)
@@ -625,21 +669,21 @@ export CASC_JENKINS_CONFIG=/path/to/jenkins.yaml
 
 ### 安全最佳实践
 
-保持 Jenkins 实例安全并为生产做好准备。
+保持 Jenkins 实例安全并可用于生产环境。
 
 ```bash
 # 安全建议：
 # 1. 启用安全和身份验证
 # 2. 使用基于矩阵的授权
-# 3. 定期安全更新
+# 3. 定期进行安全更新
 # 4. 限制用户权限
 # 5. 使用 API 令牌代替密码
-# 安全配置：
+# 安全 Jenkins 配置：
 # - 禁用通过 remoting 的 CLI
 # - 使用带有有效证书的 HTTPS
 # - 定期备份 JENKINS_HOME
 # - 监控安全公告
-# - 使用凭证插件存储机密
+# - 使用凭证插件存储敏感信息
 ```
 
 ### 性能优化
@@ -647,16 +691,16 @@ export CASC_JENKINS_CONFIG=/path/to/jenkins.yaml
 优化 Jenkins 以获得更好的性能和可扩展性。
 
 ```bash
-# 性能提示：
+# 性能优化技巧：
 # 1. 使用带有代理的分布式构建
 # 2. 优化构建脚本和依赖项
 # 3. 自动清理旧构建
-# 4. 使用流水线库实现可重用性
+# 4. 使用 Pipeline 库实现可重用性
 # 5. 监控磁盘空间和内存使用情况
 # 构建优化：
 # - 尽可能使用增量构建
 # - 阶段并行执行
-# - 工件缓存
+# - 产物缓存
 # - 工作区清理
 # - 资源分配调整
 ```

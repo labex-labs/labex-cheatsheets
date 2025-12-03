@@ -1,6 +1,6 @@
 ---
-title: 'C++ チートシート'
-description: 'C++ の必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで学習しましょう。'
+title: 'C++ チートシート | LabEx'
+description: 'この包括的なチートシートで C++ プログラミングを習得しましょう。C++ 構文、OOP、STL、テンプレート、メモリ管理、およびソフトウェア開発者向けのモダン C++ 機能のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 ---
 
@@ -12,14 +12,14 @@ C++ チートシート
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/cpp">Learn C++ with Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/ja/learn/cpp">ハンズオンラボで C++ を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて C++ プログラミングを学びましょう。LabEx は、必須の構文、オブジェクト指向プログラミング、STL コンテナ、メモリ管理、高度なテクニックを網羅した包括的な C++ コースを提供します。C++ の強力な機能を習得し、高性能なアプリケーションやシステムソフトウェアを構築しましょう。
+ハンズオンラボと実世界のシナリオを通じて C++ プログラミングを学びましょう。LabEx は、必須の構文、オブジェクト指向プログラミング、STL コンテナ、メモリ管理、高度なテクニックを網羅した包括的な C++ コースを提供します。C++ の強力な機能を習得し、高性能なアプリケーションとシステムソフトウェアを構築しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
-## 基本的な構文と構造
+## 基本構文と構造
 
 ### Hello World プログラム
 
@@ -79,6 +79,21 @@ int main(int argc, char* argv[]) {
 }
 ```
 
+<BaseQuiz id="cpp-main-1" correct="B">
+  <template #question>
+    C と C++ の出力ステートメントの違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはありません</BaseQuizOption>
+  <BaseQuizOption value="B" correct>C は printf() を使用し、C++ は<<演算子を持つ cout を使用します</BaseQuizOption>
+  <BaseQuizOption value="C">C++ は出力をサポートしていません</BaseQuizOption>
+  <BaseQuizOption value="D">C は cout を使用し、C++ は printf を使用します</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C は stdio.h から`printf()`を使用するのに対し、C++ は iostream から`cout`とストリーム挿入演算子`<<`を使用します。C++ は互換性のために printf もサポートしています。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 基本的な出力
 
 コンソールへのテキストと変数の表示。
@@ -86,7 +101,7 @@ int main(int argc, char* argv[]) {
 ```cpp
 cout << "Hello" << endl;
 cout << "Value: " << 42 << endl;
-// 一行に複数の値
+// 1 行に複数の値
 cout << "Name: " << name << ", Age: " << age << endl;
 ```
 
@@ -139,6 +154,21 @@ vector<int> dynamic_array = {10, 20, 30};
 vector<string> names(5); // サイズ 5、空の文字列
 ```
 
+<BaseQuiz id="cpp-vector-1" correct="B">
+  <template #question>
+    通常の配列と比較した場合、`vector` の主な利点は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">ベクターの方が高速</BaseQuizOption>
+  <BaseQuizOption value="B" correct>ベクターは動的にサイズ変更できますが、配列はサイズが固定されています</BaseQuizOption>
+  <BaseQuizOption value="C">ベクターはメモリを少なく使用します</BaseQuizOption>
+  <BaseQuizOption value="D">利点はありません</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `vector` は実行時に増減できる動的配列であり、コンパイル時にサイズが決定される通常の配列とは異なります。これにより、多くのユースケースでベクターはより柔軟になります。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 定数と Auto
 
 不変の値と自動的な型推論。
@@ -158,7 +188,7 @@ using real = double;
 
 ## 制御フロー構造
 
-### 条件文
+### 条件分岐文
 
 条件に基づいた意思決定。
 
@@ -195,16 +225,31 @@ switch (grade) {
 for (int i = 0; i < 10; i++) {
     cout << i << " ";
 }
-// Range-based for ループ (C++11 以降)
+// 範囲ベース for ループ (C++11 以降)
 vector<int> numbers = {1, 2, 3, 4, 5};
 for (int num : numbers) {
     cout << num << " ";
 }
-// Range-based ループでの Auto
+// 範囲ベースループと auto
 for (auto& item : container) {
     // item を処理
 }
 ```
+
+<BaseQuiz id="cpp-range-for-1" correct="B">
+  <template #question>
+    C++ における範囲ベース for ループとは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">配列でのみ機能するループ</BaseQuizOption>
+  <BaseQuizOption value="B" correct>コンテナ内のすべての要素を自動的に反復処理するループ</BaseQuizOption>
+  <BaseQuizOption value="C">無限に実行されるループ</BaseQuizOption>
+  <BaseQuizOption value="D">手動でのインデックス管理が必要なループ</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    範囲ベース for ループ（C++11 で導入）は、コンテナ（vector、配列、文字列など）内のすべての要素を、インデックスを手動で管理することなく自動的に反復処理します。構文は`for (auto item : container)`です。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### While ループ
 
@@ -227,19 +272,19 @@ do {
 
 ### ループ制御
 
-Break と Continue ステートメント。
+Break と continue ステートメント。
 
 ```cpp
 for (int i = 0; i < 10; i++) {
     if (i == 3) {
-        continue; // イテレーションをスキップ
+        continue; // このイテレーションをスキップ
     }
     if (i == 7) {
         break;    // ループを終了
     }
     cout << i << " ";
 }
-// ラベル付き break によるネストされたループ
+// ラベル付き break を持つネストされたループ
 for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
         if (i == j) break; // 内側のループのみを終了
@@ -288,9 +333,9 @@ int multiply(int a, int b, int c) {
 }
 ```
 
-### デフォルト引数
+### デフォルトパラメータ
 
-関数パラメータのデフォルト値の設定。
+関数パラメータにデフォルト値を指定する。
 
 ```cpp
 void greet(string name, string greeting = "Hello") {
@@ -298,7 +343,7 @@ void greet(string name, string greeting = "Hello") {
 }
 // 関数呼び出し
 greet("Alice");              // デフォルトの "Hello" を使用
-greet("Bob", "Good morning"); // カスタム挨拶を使用
+greet("Bob", "Good morning"); // カスタムの挨拶を使用
 ```
 
 ### 参照渡し
@@ -399,7 +444,7 @@ public:
 
 ### ポリモーフィズム
 
-派生オブジェクトにアクセスするための基底クラスポインタの使用。
+派生オブジェクトにアクセスするために基底クラスのポインタを使用する。
 
 ```cpp
 // 仮想関数とポリモーフィズム
@@ -465,7 +510,7 @@ ref = 20;      // x を 20 に変更
 int* ptr = &x; // x のアドレスを指す
 *ptr = 30;     // 間接参照して x を変更
 ptr = nullptr; // 何も指さないようにできる
-// const バリエーション
+// const のバリエーション
 const int* ptr1 = &x;    // 値を変更不可
 int* const ptr2 = &x;    // アドレスを変更不可
 const int* const ptr3 = &x; // 両方変更不可
@@ -483,7 +528,7 @@ int stack_array[100];
 int* heap_var = new int(42);
 int* heap_array = new int[100];
 // スタックオブジェクトは自動的にクリーンアップされる
-// ヒープオブジェクトは手動で delete する必要がある
+// ヒープオブジェクトは手動で削除する必要がある
 delete heap_var;
 delete[] heap_array;
 ```
@@ -508,12 +553,12 @@ string text = "Hello";
 text += " World";         // 連結
 text.append("!");         // 追加
 cout << text.substr(0, 5) << endl; // 部分文字列
-text.replace(6, 5, "C++"); // "World" を "C++" に置換
+text.replace(6, 5, "C++"); // "World"を"C++"に置換
 ```
 
 ### コンテナ：Map と Set
 
-キーと値のペア、および一意な要素のための連想コンテナ。
+キーと値のペア、および一意の要素のための連想コンテナ。
 
 ```cpp
 #include <map>
@@ -523,7 +568,7 @@ map<string, int> ages;
 ages["Alice"] = 25;
 ages["Bob"] = 30;
 ages.insert({"Charlie", 35});
-// Set (一意な要素)
+// Set (一意の要素)
 set<int> unique_nums = {3, 1, 4, 1, 5, 9};
 unique_nums.insert(2);
 unique_nums.erase(1);
@@ -554,18 +599,18 @@ int count = count_if(nums.begin(), nums.end(),
 
 ### イテレータ
 
-コンテナ内を効率的に移動するための手段。
+コンテナ内を効率的に移動するためのナビゲーション。
 
 ```cpp
 vector<string> words = {"hello", "world", "cpp"};
 // イテレータの型
 vector<string>::iterator it;
-auto it2 = words.begin(); // C++11 auto
+auto it2 = words.begin(); // C++11 の auto
 // コンテナの反復処理
 for (it = words.begin(); it != words.end(); ++it) {
     cout << *it << " ";
 }
-// Range-based ループ (推奨)
+// 範囲ベースループ (推奨)
 for (const auto& word : words) {
     cout << word << " ";
 }
@@ -607,7 +652,7 @@ if (!file.good()) {
 
 ```cpp
 #include <sstream>
-// カンマ区切りの値を解析
+// カンマ区切りの値の解析
 string data = "apple,banana,cherry";
 stringstream ss(data);
 string item;
@@ -662,7 +707,7 @@ cout << hex << 255 << endl;                    // 16 進数：ff
 
 ### Try-Catch ブロック
 
-実行中に発生する可能性のある例外の処理。
+実行中に発生する可能性のある例外を処理する。
 
 ```cpp
 try {
@@ -716,7 +761,7 @@ try {
 
 ### RAII パターン
 
-安全なリソース管理のためのリソース取得は初期化 (RAII)。
+安全なリソース管理のためのリソース取得は初期化。
 
 ```cpp
 // スマートポインタによる RAII
@@ -809,7 +854,7 @@ g++ -Wall -Wextra -std=c++17 -o program main.cpp
 
 ### Makefile の基本
 
-make ユーティリティを使用したコンパイルの自動化。
+make ユーティリティによるコンパイルの自動化。
 
 ```makefile
 # シンプルなMakefile
@@ -856,19 +901,19 @@ public:
 一般的なメモリ関連のバグを防ぐ。
 
 ```cpp
-// raw pointer の代わりにスマートポインタを使用
+// 生ポインタの代わりにスマートポインタを使用
 auto ptr = make_unique<int>(42);
 auto shared = make_shared<vector<int>>(10);
 // 変数を初期化する
 int count = 0;        // 良い
 int count;            // 危険 - 未初期化
-// Range-based ループの方が安全
+// 範囲ベースループの方が安全
 for (const auto& item : container) {
     // item を安全に処理
 }
 // ポインタの有効性をチェック
 if (ptr != nullptr) {
-    // 間接参照しても安全
+    // 安全に間接参照できる
 }
 ```
 
@@ -881,22 +926,22 @@ if (ptr != nullptr) {
 void processData(const vector<int>& data) {
     // 大きなオブジェクトのコピーを避ける
 }
-// イテレータにはプリインクリメントを使用する
+// イテレータには前置インクリメントを使用する
 for (auto it = vec.begin(); it != vec.end(); ++it) {
     // ++it は it++ よりも高速な場合がある
 }
 // サイズがわかっている場合はベクターの容量を予約する
 vector<int> numbers;
 numbers.reserve(1000); // 再割り当てを回避
-// オブジェクトには push よりも emplace を使用する
+// オブジェクトには emplace を使用し、push よりもインプレースで構築する
 vector<string> words;
 words.emplace_back("Hello"); // インプレースで構築
 words.push_back(string("World")); // 構築してからコピー
 ```
 
-### コードの構成
+### コードの整理
 
-保守性のためにコードを構造化する。
+保守性のためのコード構造。
 
 ```cpp
 // ヘッダーファイル (utils.h)

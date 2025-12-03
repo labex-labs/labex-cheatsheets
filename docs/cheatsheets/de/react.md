@@ -1,6 +1,6 @@
 ---
-title: 'React Spickzettel'
-description: 'Lernen Sie React mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'React Spickzettel | LabEx'
+description: 'Lernen Sie die React-Entwicklung mit diesem umfassenden Spickzettel. Schnelle Referenz für React Hooks, Komponenten, JSX, Zustandsverwaltung, Props und moderne Frontend-Entwicklungsmuster.'
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ React Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/react">React Frontend-Entwicklung mit Hands-On Labs erlernen</a>
+<a target="_blank" href="https://labex.io/de/learn/react">Lernen Sie React mit praktischen Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Erlernen Sie die React Frontend-Entwicklung durch praktische Labs und reale Szenarien. LabEx bietet umfassende React-Kurse, die die wesentliche Komponentenerstellung, Zustandsverwaltung, Hooks, Ereignisbehandlung und Leistungsoptimierung abdecken. Meistern Sie den Aufbau effizienter und wartbarer Benutzeroberflächen für moderne Webanwendungen.
+Erlernen Sie die Frontend-Entwicklung mit React durch praktische Labs und reale Szenarien. LabEx bietet umfassende React-Kurse, die die wesentliche Komponentenerstellung, Zustandsverwaltung, Hooks, Ereignisbehandlung und Leistungsoptimierung abdecken. Meistern Sie den Aufbau effizienter und wartbarer Benutzeroberflächen für moderne Webanwendungen.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -169,6 +169,21 @@ function Welcome({ name = 'Gast' }) {
 }
 ```
 
+<BaseQuiz id="react-props-1" correct="B">
+  <template #question>
+    Wie übergeben Sie Daten von einer Elternkomponente an eine Kindkomponente in React?
+  </template>
+  
+  <BaseQuizOption value="A">Verwendung von Zustandsvariablen</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Verwendung von Props</BaseQuizOption>
+  <BaseQuizOption value="C">Verwendung von Refs</BaseQuizOption>
+  <BaseQuizOption value="D">Verwendung der Context API</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Props (Kurzform für Eigenschaften) sind der primäre Weg, um Daten von Eltern- an Kindkomponenten in React zu übergeben. Sie übergeben Props als Attribute, wenn Sie die Kindkomponente rendern.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### PropTypes: `Component.propTypes`
 
 Validieren Sie Props, die an Komponenten übergeben werden (erfordert das prop-types-Paket).
@@ -237,6 +252,21 @@ function Form() {
 }
 ```
 
+<BaseQuiz id="react-usestate-1" correct="A">
+  <template #question>
+    Was gibt `useState(0)` zurück?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Ein Array mit dem Zustandswert und einer Funktion, um ihn zu aktualisieren</BaseQuizOption>
+  <BaseQuizOption value="B">Nur den Zustandswert</BaseQuizOption>
+  <BaseQuizOption value="C">Eine Funktion, um den Zustand zu aktualisieren</BaseQuizOption>
+  <BaseQuizOption value="D">Nichts, es setzt nur den Zustand</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `useState` gibt ein Array mit zwei Elementen zurück: dem aktuellen Zustandswert und einer Funktion, um ihn zu aktualisieren. Der Anfangswert (0) wird als Argument übergeben.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### useEffect Hook: `useEffect()`
 
 Führen Sie Seiteneffekte in funktionalen Komponenten aus.
@@ -259,6 +289,21 @@ function Timer() {
   }, [])
 }
 ```
+
+<BaseQuiz id="react-useeffect-1" correct="D">
+  <template #question>
+    Was bedeutet das leere Abhängigkeitsarray `[]` in `useEffect(() => {...}, [])`?
+  </template>
+  
+  <BaseQuizOption value="A">Der Effekt läuft bei jedem Rendern</BaseQuizOption>
+  <BaseQuizOption value="B">Der Effekt läuft nie</BaseQuizOption>
+  <BaseQuizOption value="C">Der Effekt läuft zweimal</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Der Effekt läuft nur einmal nach dem anfänglichen Rendern</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Ein leeres Abhängigkeitsarray bedeutet, dass der Effekt keine Abhängigkeiten hat und daher nur einmal ausgeführt wird, nachdem die Komponente eingebunden wurde. Dies ist nützlich für einmalige Einrichtungscodes.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Klassenstatus: `this.state` / `setState()`
 
@@ -314,14 +359,29 @@ function Counter() {
 
 ## Ereignisbehandlung
 
+<BaseQuiz id="react-props-2" correct="A">
+  <template #question>
+    Was ist der Zweck von PropTypes in React?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Zur Validierung der Typen von Props, die an Komponenten übergeben werden</BaseQuizOption>
+  <BaseQuizOption value="B">Zur Verbesserung der Komponentenleistung</BaseQuizOption>
+  <BaseQuizOption value="C">Zur automatischen Gestaltung von Komponenten</BaseQuizOption>
+  <BaseQuizOption value="D">Um Komponenten schneller zu machen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PropTypes helfen, Fehler abzufangen, indem sie validieren, dass Komponenten Props vom richtigen Typ erhalten. Sie bieten Laufzeit-Typprüfung und sind besonders nützlich während der Entwicklung.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Klick-Ereignisse: `onClick`
 
-Behandeln Sie Button-Klicks und Elementinteraktionen.
+Behandeln Sie Klicks auf Schaltflächen und Interaktionen mit Elementen.
 
 ```javascript
 function Button() {
   const handleClick = () => {
-    alert('Button geklickt!')
+    alert('Schaltfläche geklickt!')
   }
   return <button onClick={handleClick}>Klick mich</button>
 }
@@ -379,7 +439,7 @@ function handleInput(event) {
 }
 
 function handleFormSubmit(event) {
-  event.preventDefault() // Verhindert das Senden des Formulars
+  event.preventDefault() // Formularübermittlung verhindern
   console.log('Formular übermittelt')
 }
 
@@ -387,13 +447,13 @@ function handleFormSubmit(event) {
 function List() {
   const handleClick = (event) => {
     if (event.target.tagName === 'BUTTON') {
-      console.log('Button geklickt:', event.target.textContent)
+      console.log('Schaltfläche geklickt:', event.target.textContent)
     }
   }
   return (
     <div onClick={handleClick}>
-      <button>Button 1</button>
-      <button>Button 2</button>
+      <button>Schaltfläche 1</button>
+      <button>Schaltfläche 2</button>
     </div>
   )
 }
@@ -455,7 +515,7 @@ function UserProfile({ user, isAdmin }) {
   return <UserPanel user={user} />
 }
 
-// Frühe Rückgabe (Early Return) Muster
+// Frühe Rückgabe-Muster
 function Component({ data }) {
   if (!data) return null
   if (data.error) return <ErrorMessage />
@@ -504,7 +564,7 @@ function Button({ variant, disabled }) {
 }
 ```
 
-## Listen-Rendering & Schlüssel (Keys)
+## Listen-Rendering & Schlüssel
 
 ### Map-Funktion: `array.map()`
 
@@ -533,7 +593,7 @@ function ItemList({ items }) {
 }
 ```
 
-### Schlüssel (Keys): `key`-Prop
+### Schlüssel: `key`-Prop
 
 Stellen Sie eindeutige Identifikatoren für Listenelemente bereit, um das Rendern zu optimieren.
 
@@ -584,7 +644,7 @@ function TaskList({ tasks, showCompleted }) {
 }
 ```
 
-### Leere Zustände (Empty States): Umgang mit leeren Arrays
+### Leere Zustände: Umgang mit leeren Arrays
 
 Zeigen Sie geeignete Inhalte an, wenn Listen leer sind.
 
@@ -725,7 +785,7 @@ function Parent() {
 
 function Child({ onMessage }) {
   return (
-    <button onClick={() => onMessage('Hallo vom Kind!')}>
+    <button onClick={() => onMessage('Hallo von Kind!')}>
       Nachricht senden
     </button>
   )
@@ -768,7 +828,7 @@ function TextInput() {
   return (
     <div>
       <input ref={inputRef} type="text" />
-      <button onClick={focusInput}>Fokus auf Eingabe</button>
+      <button onClick={focusInput}>Eingabe fokussieren</button>
     </div>
   )
 }
@@ -779,14 +839,14 @@ const FancyInput = forwardRef((props, ref) => (
 ))
 ```
 
-## Entwicklungswerkzeuge & Debugging
+## Entwicklungs-Tools & Debugging
 
 ### React DevTools: Browser-Erweiterung
 
 Debuggen Sie React-Komponenten und untersuchen Sie die Komponentenstruktur.
 
 ```javascript
-// React DevTools Browser-Erweiterung installieren
+// Installieren Sie die React DevTools Browser-Erweiterung
 // Komponenten-Tab: Komponentenhierarchie untersuchen
 // Profiler-Tab: Leistung messen
 
@@ -839,7 +899,7 @@ ReactDOM.render(
 )
 ```
 
-### Profiling: Leistungs­messung
+### Profiling: Leistungsmessung
 
 Messen Sie die Komponentenleistung und identifizieren Sie Engpässe.
 
@@ -861,17 +921,17 @@ function onRenderCallback(id, phase, actualDuration) {
 
 ### Create React App: `npx create-react-app`
 
-Schnelles Bootstrapping eines neuen React-Projekts.
+Erstellen Sie schnell eine neue React-Anwendung.
 
 ```bash
-# Neues React-App erstellen
+# Neue React-App erstellen
 npx create-react-app my-app
 cd my-app
 
 # Entwicklungsserver starten
 npm start
 
-# Für Produktion erstellen
+# Für die Produktion erstellen
 npm run build
 
 # Tests ausführen
@@ -891,13 +951,13 @@ npm install
 # Entwicklungsserver starten
 npm run dev
 
-# Für Produktion erstellen
+# Für die Produktion erstellen
 npm run build
 ```
 
 ### Manuelle Einrichtung / Import
 
-Fügen Sie React zu einem bestehenden Projekt hinzu oder verwenden Sie CDN.
+Fügen Sie React einem bestehenden Projekt hinzu oder verwenden Sie CDN.
 
 ```bash
 # React und ReactDOM installieren
@@ -921,7 +981,7 @@ root.render(<App />)
 
 ### Higher-Order Components (HOC)
 
-Komponentenlogik wiederverwenden, indem Komponenten umgewickelt werden.
+Wiederverwenden von Komponentenlogik durch Umwickeln von Komponenten.
 
 ```javascript
 function withLoading(WrappedComponent) {
@@ -940,7 +1000,7 @@ const UserListWithLoading = withLoading(UserList)
 
 ### Render Props Muster
 
-Code zwischen Komponenten durch eine Prop teilen, deren Wert eine Funktion ist.
+Teilen Sie Code zwischen Komponenten, indem Sie eine Prop verwenden, deren Wert eine Funktion ist.
 
 ```javascript
 function DataFetcher({ render, url }) {
@@ -966,7 +1026,7 @@ function DataFetcher({ render, url }) {
 />
 ```
 
-### Verbundene Komponenten (Compound Components)
+### Verbundene Komponenten
 
 Erstellen Sie Komponenten, die als zusammenhängende Einheit zusammenarbeiten.
 

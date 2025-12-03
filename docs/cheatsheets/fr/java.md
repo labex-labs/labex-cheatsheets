@@ -1,6 +1,6 @@
 ---
-title: 'Fiche de Référence Java'
-description: 'Apprenez Java avec notre aide-mémoire complet couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de Référence Java | LabEx'
+description: "Apprenez la programmation Java avec cette fiche complète. Référence rapide pour la syntaxe Java, l'OOP, les collections, les streams, le framework Spring et les essentiels du développement d'entreprise."
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Java Aide-mémoire
 <a target="_blank" href="https://labex.io/fr/learn/java">Apprenez Java avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la programmation Java grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Java complets couvrant la syntaxe essentielle, la programmation orientée objet, les collections, la gestion des exceptions et les meilleures pratiques. Maîtrisez les fondamentaux du développement Java et construisez des applications robustes.
+Apprenez la programmation Java grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours Java complets couvrant la syntaxe essentielle, la programmation orientée objet, les collections, la gestion des exceptions et les meilleures pratiques. Maîtrisez les fondamentaux du développement Java et construisez des applications robustes.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -58,6 +58,21 @@ public static void main(String[] args) {
     System.out.println("Program starts here");
 }
 ```
+
+<BaseQuiz id="java-main-1" correct="C">
+  <template #question>
+    Quelle est la signature correcte pour la méthode main en Java ?
+  </template>
+  
+  <BaseQuizOption value="A">public void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="B">static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>public static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La méthode main doit être `public static void main(String[] args)`. `public` permet à la JVM d'y accéder, `static` signifie qu'elle appartient à la classe, `void` signifie qu'elle ne retourne rien, et `String[] args` reçoit les arguments de la ligne de commande.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Commentaires : Documentation du Code
 
@@ -156,6 +171,21 @@ boolean isEmpty = message.isEmpty();
 String uppercase = message.toUpperCase();
 ```
 
+<BaseQuiz id="java-string-1" correct="A">
+  <template #question>
+    Que signifie le fait que les chaînes Java soient immuables ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Une fois créée, la valeur d'une chaîne ne peut pas être modifiée</BaseQuizOption>
+  <BaseQuizOption value="B">Les chaînes ne peuvent pas être créées</BaseQuizOption>
+  <BaseQuizOption value="C">Les chaînes ne peuvent stocker que des nombres</BaseQuizOption>
+  <BaseQuizOption value="D">Les chaînes sont automatiquement supprimées</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'immuabilité signifie qu'une fois qu'un objet String est créé, sa valeur ne peut pas être modifiée. Les opérations comme `toUpperCase()` retournent un nouvel objet String plutôt que de modifier l'original.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Instructions de Flux de Contrôle
 
 ### Instructions Conditionnelles : `if`, `else if`, `else`
@@ -213,7 +243,22 @@ for (int num : numbers) {
 }
 ```
 
-### Boucles While et Do-While
+<BaseQuiz id="java-for-loop-1" correct="C">
+  <template #question>
+    À quoi sert la boucle for améliorée (for-each) ?
+  </template>
+  
+  <BaseQuizOption value="A">Itérer avec une variable de compteur</BaseQuizOption>
+  <BaseQuizOption value="B">Boucles infinies</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Itérer à travers les tableaux et les collections sans index</BaseQuizOption>
+  <BaseQuizOption value="D">Boucles imbriquées uniquement</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La boucle for améliorée (for-each) simplifie l'itération à travers les tableaux et les collections en gérant automatiquement l'index, rendant le code plus lisible et moins sujet aux erreurs.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Boucles While & Do-While
 
 Répéter du code tant qu'une condition est vraie.
 
@@ -232,6 +277,21 @@ do {
     j++;
 } while (j < 3);
 ```
+
+<BaseQuiz id="java-while-1" correct="B">
+  <template #question>
+    Quelle est la différence clé entre les boucles `while` et `do-while` ?
+  </template>
+  
+  <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
+  <BaseQuizOption value="B" correct>do-while s'exécute au moins une fois, tandis que while peut ne jamais s'exécuter</BaseQuizOption>
+  <BaseQuizOption value="C">while est plus rapide</BaseQuizOption>
+  <BaseQuizOption value="D">do-while ne fonctionne qu'avec les tableaux</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La boucle `do-while` vérifie la condition après avoir exécuté le corps de la boucle, elle s'exécute donc toujours au moins une fois. La boucle `while` vérifie la condition en premier, elle peut donc ne pas s'exécuter si la condition est fausse initialement.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Programmation Orientée Objet
 
@@ -327,7 +387,7 @@ public class Example {
     int defaultVar;            // Seulement dans le package
 
     private void privateMethod() {
-        // Seulement accessible dans cette classe
+        // Accessible uniquement dans cette classe
     }
 }
 ```
@@ -761,7 +821,7 @@ java -cp .:mylib.jar MyProgram
 
 ### Configuration et Développement d'IDE
 
-Environnements de Développement Intégrés populaires pour le développement Java.
+Environnements de développement intégrés populaires pour le développement Java.
 
 ```bash
 # IDE Java populaires :
@@ -778,7 +838,7 @@ java -cp bin MainClass
 jar cf myapp.jar -C bin .
 ```
 
-## Bonnes Pratiques et Modèles Courants
+## Meilleures Pratiques et Modèles Courants
 
 ### Conventions de Nommage
 
@@ -814,12 +874,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Cette classe démontre une bonne organisation du code Java
+ * Cette classe démontre une bonne organisation du code
  * @author Your Name
  * @version 1.0
  */
 public class WellOrganizedClass {
-    // Constantes d'abord
+    // Constantes en premier
     private static final int MAX_ATTEMPTS = 3;
 
     // Variables d'instance
@@ -923,11 +983,11 @@ public class ResourceManagement {
 
 ## Liens Pertinents
 
-- <router-link to="/python">Aide-mémoire Python</router-link>
-- <router-link to="/javascript">Aide-mémoire JavaScript</router-link>
-- <router-link to="/cpp">Aide-mémoire C++</router-link>
-- <router-link to="/golang">Aide-mémoire Go</router-link>
-- <router-link to="/web-development">Aide-mémoire Développement Web</router-link>
-- <router-link to="/devops">Aide-mémoire DevOps</router-link>
-- <router-link to="/docker">Aide-mémoire Docker</router-link>
-- <router-link to="/kubernetes">Aide-mémoire Kubernetes</router-link>
+- <router-link to="/python">Python Cheatsheet</router-link>
+- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
+- <router-link to="/cpp">C++ Cheatsheet</router-link>
+- <router-link to="/golang">Go Cheatsheet</router-link>
+- <router-link to="/web-development">Web Development Cheatsheet</router-link>
+- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/docker">Docker Cheatsheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>

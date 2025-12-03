@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola de Ciência de Dados'
-description: 'Aprenda Ciência de Dados com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola de Ciência de Dados | LabEx'
+description: 'Aprenda ciência de dados com esta folha de cola abrangente. Referência rápida para análise de dados, aprendizado de máquina, estatística, visualização, bibliotecas Python e fluxos de trabalho de ciência de dados.'
 pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Folha de Dicas de Ciência de Dados
 <a target="_blank" href="https://labex.io/pt/learn/datascience">Aprenda Ciência de Dados com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda ciência de dados através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de ciência de dados cobrindo bibliotecas essenciais do Python, manipulação de dados, análise estatística, aprendizado de máquina e visualização de dados. Domine técnicas de coleta, limpeza, análise de dados e implantação de modelos.
+Aprenda ciência de dados através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de ciência de dados que cobrem bibliotecas essenciais do Python, manipulação de dados, análise estatística, aprendizado de máquina e visualização de dados. Domine técnicas de coleta, limpeza, análise de dados e implantação de modelos.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -56,7 +56,7 @@ normal aleatória
 
 ### Pandas: `import pandas as pd`
 
-Biblioteca para manipulação e análise de dados.
+Biblioteca de manipulação e análise de dados.
 
 ```python
 # Criar DataFrame
@@ -71,6 +71,21 @@ df.describe()      # Estatísticas resumidas
 df.groupby('column').mean()
 df.fillna(df.mean())  # Lidar com valores ausentes
 ```
+
+<BaseQuiz id="datascience-pandas-1" correct="C">
+  <template #question>
+    O que `df.head()` retorna no Pandas?
+  </template>
+  
+  <BaseQuizOption value="A">As últimas 5 linhas do DataFrame</BaseQuizOption>
+  <BaseQuizOption value="B">Um resumo do DataFrame</BaseQuizOption>
+  <BaseQuizOption value="C" correct>As primeiras 5 linhas do DataFrame</BaseQuizOption>
+  <BaseQuizOption value="D">Todas as linhas do DataFrame</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `df.head()` exibe as primeiras 5 linhas do DataFrame por padrão. Você pode especificar um número diferente, como `df.head(10)` para ver as primeiras 10 linhas. É útil para inspecionar rapidamente seus dados.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Matplotlib & Seaborn: Visualização
 
@@ -97,9 +112,9 @@ A ciência de dados é um campo multidisciplinar, combinando matemática, estat�
 ```python
 # Definir problema de negócio
 # - Que pergunta estamos respondendo?
-# - Que métricas medirão o
+# - Quais métricas medirão o
 sucesso?
-# - Que dados precisamos?
+# - De quais dados precisamos?
 ```
 
 ### 2. Coleta e Importação de Dados
@@ -121,7 +136,7 @@ m/data')
 
 ### 3. Exploração de Dados (EDA)
 
-Entenda a estrutura, padrões e qualidade dos dados.
+Compreender a estrutura, os padrões e a qualidade dos dados.
 
 ```python
 # Análise Exploratória de Dados
@@ -129,7 +144,7 @@ df.shape              # Dimensões
 df.dtypes             # Tipos de dados
 df.isnull().sum()     # Valores ausentes
 df['column'].value_counts()  #
-Contagens de frequência
+Contagem de frequência
 df.corr()             # Matriz de correlação
 # Visualizações para EDA
 sns.histplot(df['numeric_column'])
@@ -160,6 +175,21 @@ imputer = SimpleImputer(strategy='median')
 df_filled = pd.DataFrame(imputer.fit_transform(df))
 ```
 
+<BaseQuiz id="datascience-missing-1" correct="B">
+  <template #question>
+    Para que serve o preenchimento para frente (`method='forward'`)?
+  </template>
+  
+  <BaseQuizOption value="A">Preencher valores ausentes com a média</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Preencher valores ausentes com o valor não nulo anterior</BaseQuizOption>
+  <BaseQuizOption value="C">Preencher valores ausentes com valores aleatórios</BaseQuizOption>
+  <BaseQuizOption value="D">Remover valores ausentes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O preenchimento para frente propaga a última observação válida para preencher valores ausentes. Isso é útil para dados de séries temporais onde você deseja manter o valor anterior até que novos dados estejam disponíveis.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Transformação de Dados
 
 A normalização de dados (escalonamento de dados para um intervalo padrão como [0, 1]) ajuda a evitar vieses devido a diferenças na magnitude das características.
@@ -181,9 +211,24 @@ le = LabelEncoder()
 df['encoded'] = le.fit_transform(df['category'])
 ```
 
+<BaseQuiz id="datascience-scaling-1" correct="C">
+  <template #question>
+    Qual é a diferença entre StandardScaler e MinMaxScaler?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="B">StandardScaler escala para [0,1], MinMaxScaler escala para média=0, dp=1</BaseQuizOption>
+  <BaseQuizOption value="C" correct>StandardScaler normaliza para média=0 e dp=1, MinMaxScaler escala para o intervalo [0,1]</BaseQuizOption>
+  <BaseQuizOption value="D">StandardScaler é mais rápido</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    StandardScaler transforma dados para ter uma média de 0 e desvio padrão de 1 (normalização z-score). MinMaxScaler escala dados para um intervalo fixo, tipicamente [0, 1]. Ambos são úteis, mas para cenários diferentes.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Detecção e Tratamento de Outliers
 
-Identifique e trate valores extremos que podem distorcer a análise.
+Identificar e lidar com valores extremos que podem distorcer a análise.
 
 ```python
 # Detecção estatística de outliers
@@ -203,7 +248,7 @@ df_no_outliers = df[z_scores < 3]
 
 ### Engenharia de Características (Feature Engineering)
 
-Crie novas variáveis para melhorar o desempenho do modelo.
+Criar novas variáveis para melhorar o desempenho do modelo.
 
 ```python
 # Criar novas características
@@ -244,7 +289,7 @@ percentiles = df['column'].quantile([0.25, 0.5, 0.75, 0.95])
 
 ### Teste de Hipóteses
 
-Teste hipóteses estatísticas e valide suposições.
+Testar hipóteses estatísticas e validar suposições.
 
 ```python
 # Teste t para comparar médias
@@ -263,7 +308,7 @@ chi2_contingency(contingency_table)
 
 ### Análise de Correlação
 
-Entenda os relacionamentos entre variáveis.
+Compreender as relações entre as variáveis.
 
 ```python
 # Matriz de correlação
@@ -282,10 +327,10 @@ correlation, p_value = pearsonr(df['var1'], df['var2'])
 
 ### ANOVA e Regressão
 
-Analise a variância e os relacionamentos entre variáveis.
+Analisar a variância e as relações entre as variáveis.
 
 ```python
-# ANOVA de um fator
+# ANOVA de uma via
 from scipy.stats import f_oneway
 group_data = [df[df['group'] == g]['value'] for g in
 df['group'].unique()]
@@ -320,7 +365,7 @@ y_pred = log_reg.predict(X_test)
 from sklearn.tree import DecisionTreeClassifier
 dt = DecisionTreeClassifier(max_depth=5)
 dt.fit(X_train, y_train)
-# Floresta Aleatória (Random Forest)
+# Random Forest
 from sklearn.ensemble import RandomForestClassifier
 rf = RandomForestClassifier(n_estimators=100)
 rf.fit(X_train, y_train)
@@ -350,7 +395,7 @@ lasso.fit(X_train, y_train)
 
 ### Aprendizado Não Supervisionado
 
-Descubra padrões em dados sem resultados rotulados.
+Descobrir padrões em dados sem resultados rotulados.
 
 ```python
 # Agrupamento K-Means
@@ -370,7 +415,7 @@ dendrogram(linkage_matrix)
 
 ### Avaliação de Modelo
 
-Avalie o desempenho do modelo usando métricas apropriadas.
+Avaliar o desempenho do modelo usando métricas apropriadas.
 
 ```python
 # Métricas de classificação
@@ -396,7 +441,7 @@ rmse = np.sqrt(mse)
 
 ### Visualizações Exploratórias
 
-Entenda as distribuições e relacionamentos dos dados.
+Compreender as distribuições e relações dos dados.
 
 ```python
 # Gráficos de distribuição
@@ -407,7 +452,7 @@ plt.subplot(1, 3, 2)
 sns.boxplot(y=df['numeric_col'])
 plt.subplot(1, 3, 3)
 sns.violinplot(y=df['numeric_col'])
-# Gráficos de relacionamento
+# Gráficos de relação
 plt.figure(figsize=(10, 6))
 sns.scatterplot(data=df, x='feature1', y='feature2',
 hue='category')
@@ -419,7 +464,7 @@ sns.barplot(data=df, x='category', y='value')
 
 ### Visualizações Avançadas
 
-Crie painéis e relatórios abrangentes.
+Criação de dashboards e relatórios abrangentes.
 
 ```python
 # Subplots para múltiplas visualizações
@@ -438,7 +483,7 @@ fig.show()
 
 ### Gráficos Estatísticos
 
-Visualize relacionamentos estatísticos e resultados de modelos.
+Visualizar relações estatísticas e resultados de modelos.
 
 ```python
 # Pair plots para correlação
@@ -460,7 +505,7 @@ roc_auc = auc(fpr, tpr)
 plt.plot(fpr, tpr, label=f'Curva ROC (AUC = {roc_auc:.2f})')
 ```
 
-### Personalização e Estilização
+### Personalização e Estilo
 
 Formatação profissional de visualização.
 
@@ -509,7 +554,7 @@ model_name = f'model_{timestamp}.pkl'
 
 ### Validação Cruzada e Ajuste de Hiperparâmetros
 
-Otimize o desempenho do modelo e evite o sobreajuste (overfitting).
+Otimizar o desempenho do modelo e prevenir o sobreajuste (overfitting).
 
 ```python
 # Validação cruzada
@@ -534,7 +579,7 @@ best_model = grid_search.best_estimator_
 
 ### Monitoramento de Desempenho
 
-Ter acesso rápido a conceitos essenciais e comandos pode fazer toda a diferença em seu fluxo de trabalho. Seja você um iniciante se orientando ou um profissional experiente procurando uma referência confiável, as folhas de dicas servem como companheiros inestimáveis.
+Ter acesso rápido a conceitos essenciais e comandos pode fazer toda a diferença em seu fluxo de trabalho. Se você é um iniciante encontrando seu caminho ou um profissional experiente procurando uma referência confiável, as folhas de dicas servem como companheiros inestimáveis.
 
 ```python
 # Rastreamento de desempenho do modelo
@@ -543,13 +588,13 @@ start_time = time.time()
 predictions = model.predict(X_test)
 inference_time = time.time() - start_time
 print(f"Tempo de inferência: {inference_time:.4f} segundos")
-# Monitoramento de uso de memória
+# Monitoramento do uso de memória
 import psutil
 process = psutil.Process()
 memory_usage = process.memory_info().rss / 1024 /
 1024  # MB
 print(f"Uso de memória: {memory_usage:.2f} MB")
-# Análise de importância de características
+# Análise de importância das características
 feature_importance = model.feature_importances_
 importance_df = pd.DataFrame({
     'feature': X.columns,
@@ -559,7 +604,7 @@ importance_df = pd.DataFrame({
 
 ### Documentação do Modelo
 
-Documente suposições, desempenho e uso do modelo.
+Documentar suposições, desempenho e uso do modelo.
 
 ```python
 # Criar relatório do modelo
@@ -587,7 +632,7 @@ with open('model_metadata.json', 'w') as f:
 
 ### Organização do Código
 
-Estruture projetos para reprodutibilidade e colaboração.
+Estruturar projetos para reprodutibilidade e colaboração.
 
 ```python
 # Estrutura do projeto
@@ -612,7 +657,7 @@ projeto de ciência de dados"
 
 ### Gerenciamento de Ambiente
 
-Garanta ambientes reprodutíveis em diferentes sistemas.
+Garantir ambientes reprodutíveis em diferentes sistemas.
 
 ```bash
 # Criar ambiente virtual
@@ -634,7 +679,7 @@ jupyter
 
 ### Verificações de Qualidade de Dados
 
-Valide a integridade dos dados em todo o pipeline.
+Validar a integridade dos dados em todo o pipeline.
 
 ```python
 # Funções de validação de dados
@@ -649,7 +694,7 @@ df.duplicated().sum(),
 df.dtypes.to_dict()
     }
     return checks
-# Relatório de qualidade de dados automatizado
+# Relatório automatizado de qualidade de dados
 def data_quality_report(df):
     print(f"Formato do conjunto de dados:
 {df.shape}")

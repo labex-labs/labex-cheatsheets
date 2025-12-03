@@ -1,6 +1,6 @@
 ---
-title: 'NumPy 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的 NumPy 全面速查表进行学习。'
+title: 'NumPy 速查表 | LabEx'
+description: '使用这份全面的速查表学习 NumPy 数值计算。快速参考数组、线性代数、数学运算、广播和 Python 科研计算。'
 pdfUrl: '/cheatsheets/pdf/numpy-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ NumPy 速查表
 <a target="_blank" href="https://labex.io/zh/learn/numpy">通过实践实验室学习 NumPy</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 NumPy 数值计算。LabEx 提供全面的 NumPy 课程，涵盖基本的数组操作、数学函数、线性代数和性能优化。掌握高效的数值计算和数组操作，以应对数据科学工作流程。
+通过实践实验室和真实场景学习 NumPy 数值计算。LabEx 提供全面的 NumPy 课程，涵盖基本的数组操作、数学函数、线性代数和性能优化。掌握高效的数值计算和数组操作，以用于数据科学工作流程。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ NumPy 速查表
 
 ### 从列表创建：`np.array()`
 
-从 Python 列表或嵌套列表创建数组。
+从 Python 列表或嵌套列表中创建数组。
 
 ```python
 import numpy as np
@@ -37,6 +37,21 @@ arr = np.array([1, 2, 3], dtype=float)
 # 字符串数组
 arr_str = np.array(['a', 'b', 'c'])
 ```
+
+<BaseQuiz id="numpy-array-1" correct="C">
+  <template #question>
+    NumPy 数组相较于 Python 列表的主要优势是什么？
+  </template>
+  
+  <BaseQuizOption value="A">它们可以存储字符串</BaseQuizOption>
+  <BaseQuizOption value="B">它们更容易创建</BaseQuizOption>
+  <BaseQuizOption value="C" correct>它们在数值运算上更快、内存效率更高</BaseQuizOption>
+  <BaseQuizOption value="D">它们可以存储混合数据类型</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    NumPy 数组针对数值计算进行了优化，与 Python 列表相比，在大型数据集和数学运算中提供了更快的操作和更高效的内存使用。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 零和一：`np.zeros()` / `np.ones()`
 
@@ -72,7 +87,7 @@ identity2 = np.identity(4)
 arr = np.arange(10)  # 0 到 9
 arr = np.arange(2, 10, 2)  # 2, 4, 6, 8
 # 等距值
-arr = np.linspace(0, 1, 5)  # 5 个从 0 到 1 的值
+arr = np.linspace(0, 1, 5)  # 从 0 到 1 的 5 个值
 # 包含端点
 arr = np.linspace(0, 10, 11)
 ```
@@ -94,7 +109,7 @@ np.random.seed(42)
 
 ### 特殊数组：`np.full()` / `np.empty()`
 
-创建具有特定值或未初始化的数组。
+创建填充特定值或未初始化的数组。
 
 ```python
 # 填充特定值
@@ -179,7 +194,7 @@ arr[::-1]  # 反转数组
 ```python
 # 简单条件
 arr[arr > 5]
-# 多重条件
+# 多个条件
 arr[(arr > 2) & (arr < 8)]
 arr[(arr < 2) | (arr > 8)]
 # 布尔数组
@@ -187,15 +202,30 @@ mask = arr > 3
 filtered = arr[mask]
 ```
 
-### 高级索引：的花式索引 (Fancy Indexing)
+<BaseQuiz id="numpy-boolean-1" correct="C">
+  <template #question>
+    布尔索引 `arr[arr > 5]` 返回什么？
+  </template>
+  
+  <BaseQuizOption value="A">一个布尔数组</BaseQuizOption>
+  <BaseQuizOption value="B">原始数组</BaseQuizOption>
+  <BaseQuizOption value="C" correct>一个只包含大于 5 的元素的数组</BaseQuizOption>
+  <BaseQuizOption value="D">一个错误</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    布尔索引会过滤数组，只返回条件为真的元素。`arr[arr > 5]` 返回一个包含所有大于 5 的值的新数组。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-使用索引数组访问多个元素。
+### 高级索引：范型索引 (Fancy Indexing)
+
+使用索引数组来访问多个元素。
 
 ```python
 # 使用索引数组
 indices = [0, 2, 4]
 arr[indices]
-# 二维花式索引
+# 二维范型索引
 arr2d[[0, 1], [1, 2]]  # 元素 (0,1) 和 (1,2)
 # 与切片结合
 arr2d[1:, [0, 2]]
@@ -209,8 +239,8 @@ arr2d[1:, [0, 2]]
 # 查找条件为真的索引
 indices = np.where(arr > 5)
 # 条件替换
-result = np.where(arr > 5, arr, 0)  # 大于 5 的值替换为 0
-# 多重条件
+result = np.where(arr > 5, arr, 0)  # 将大于 5 的值替换为 0
+# 多个条件
 result = np.where(arr > 5, 'high', 'low')
 ```
 
@@ -218,18 +248,48 @@ result = np.where(arr > 5, 'high', 'low')
 
 ### 重塑：`reshape()` / `resize()` / `flatten()`
 
-在保持数据不变的情况下更改数组维度。
+在保留数据的情况下更改数组维度。
 
 ```python
 # 重塑（如果可能，创建视图）
 arr.reshape(2, 3)
-arr.reshape(-1, 1)  # -1 表示推断维度
+arr.reshape(-1, 1)  # -1 表示自动推断维度
 # 调整大小（修改原始数组）
 arr.resize((2, 3))
 # 展平为一维
 arr.flatten()  # 返回副本
-arr.ravel()  # 如果可能，返回视图
+arr.ravel()  # 尽可能返回视图
 ```
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    在 `arr.reshape(-1, 1)` 中，`-1` 代表什么？
+  </template>
+  
+  <BaseQuizOption value="A">它会产生一个错误</BaseQuizOption>
+  <BaseQuizOption value="B" correct>它会自动根据数组大小推断维度</BaseQuizOption>
+  <BaseQuizOption value="C">它会创建一个一维数组</BaseQuizOption>
+  <BaseQuizOption value="D">它会反转数组</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    在重塑中使用 `-1` 告诉 NumPy 根据数组的总大小和其他指定的维度自动计算该维度。当你只知道一个维度而希望 NumPy 找出另一个维度时，这很有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    在 `arr.reshape(-1, 1)` 中，`-1` 代表什么？
+  </template>
+  
+  <BaseQuizOption value="A">它会产生一个错误</BaseQuizOption>
+  <BaseQuizOption value="B" correct>NumPy 会自动推断维度</BaseQuizOption>
+  <BaseQuizOption value="C">它会移除该维度</BaseQuizOption>
+  <BaseQuizOption value="D">它将维度设置为 1</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    在重塑中使用 `-1` 告诉 NumPy 根据数组的总大小和其他指定的维度自动计算该维度。当你只知道一个维度而希望 NumPy 找出另一个维度时，这很有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 转置：`T` / `transpose()`
 
@@ -282,7 +342,7 @@ np.dstack([arr1, arr2])  # 深度堆叠
 对数组进行元素级的算术运算。
 
 ```python
-# 元素级操作
+# 元素级运算
 arr1 + arr2
 arr1 - arr2
 arr1 * arr2  # 元素级乘法
@@ -314,7 +374,7 @@ np.power(arr, 3)
 计算跨数组维度的摘要统计信息。
 
 ```python
-# 基本统计量
+# 基本统计
 np.sum(arr)
 np.mean(arr)
 np.std(arr)  # 标准差
@@ -404,7 +464,7 @@ x = np.linalg.lstsq(A, b, rcond=None)[0]
 
 ### NumPy 二进制：`np.save()` / `np.load()`
 
-用于 NumPy 数组的高效二进制格式。
+NumPy 数组的高效二进制格式。
 
 ```python
 # 保存单个数组
@@ -433,7 +493,7 @@ np.savetxt('output.csv', arr, delimiter=',', fmt='%.2f')
 
 ### 结构化数据 CSV: `np.genfromtxt()`
 
-处理缺失数据的高级文本文件读取。
+处理缺失数据的文本文件的高级读取。
 
 ```python
 # 处理缺失值
@@ -446,7 +506,7 @@ data = np.genfromtxt('data.csv', delimiter=',',
 
 ### 内存映射：`np.memmap()`
 
-处理大于内存的数组。
+处理无法完全放入内存的数组。
 
 ```python
 # 创建内存映射数组
@@ -474,7 +534,7 @@ arr * 2  # 所有元素乘以 2
 
 ### 向量化操作
 
-使用 NumPy 的内置函数代替 Python 循环。
+使用 NumPy 内置函数代替 Python 循环。
 
 ```python
 # 代替循环，使用向量化操作
@@ -517,7 +577,7 @@ np.add(arr, 5, out=arr)  # 明确的原地操作
 # 最小化数组创建
 # 差：创建中间数组
 result = ((arr + 1) * 2) ** 2
-# 更好：使用复合操作（如果可能）
+# 更好：尽可能使用复合操作
 ```
 
 ## 随机数生成
@@ -616,11 +676,11 @@ bin_indices = np.digitize(arr, bins)
 高级统计计算。
 
 ```python
-# 加权统计量
+# 加权统计
 np.average(arr, weights=weights)
 # 唯一值和计数
 unique_vals, counts = np.unique(arr, return_counts=True)
-# Bincount（用于整数数组）
+# 计数（用于整数数组）
 np.bincount(int_arr)
 ```
 
@@ -652,7 +712,7 @@ conda install numpy
 conda update numpy
 # 从 conda-forge 安装
 conda install -c conda-forge numpy
-# 创建带 NumPy 的环境
+# 创建包含 NumPy 的环境
 conda create -n myenv numpy
 ```
 
@@ -675,7 +735,7 @@ np.set_printoptions(precision=2, suppress=True)
 
 ### 结构化数组
 
-具有命名字段的数组，用于复杂的数据结构。
+具有命名字段的数组，用于复杂数据结构。
 
 ```python
 # 定义结构化数据类型
@@ -694,9 +754,9 @@ people['age']
 ```python
 # 创建掩码数组
 masked_arr = np.ma.array([1, 2, 3, 4, 5], mask=[0, 0, 1, 0, 0])
-# 操作会忽略被掩码的值
+# 运算会忽略掩码值
 np.ma.mean(masked_arr)
-# 填充被掩码的值
+# 填充掩码值
 filled = masked_arr.filled(0)
 ```
 
@@ -709,7 +769,7 @@ filled = masked_arr.filled(0)
 p = np.poly1d([1, -2, 1])  # x² - 2x + 1
 # 评估多项式
 p(5)  # 在 x=5 处评估
-# 查找根
+# 寻找根
 np.roots([1, -2, 1])
 # 多项式拟合
 coeff = np.polyfit(x, y, degree=2)

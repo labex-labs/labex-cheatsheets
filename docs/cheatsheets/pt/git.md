@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola Git'
-description: 'Aprenda Git com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola Git | LabEx'
+description: 'Aprenda controle de versão Git com esta folha de cola abrangente. Referência rápida para comandos Git, ramificação, mesclagem, rebase, fluxos de trabalho do GitHub e desenvolvimento colaborativo.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
@@ -53,11 +53,11 @@ git clone --depth 1 repo.git
 
 ### Configuração Global: `git config`
 
-Define informações do usuário e preferências globalmente.
+Configura informações do usuário e preferências globalmente.
 
 ```bash
-git config --global user.name "Seu Nome"
-git config --global user.email "seu.email@example.com"
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 git config --global init.defaultBranch main
 # Visualizar todas as configurações
 git config --list
@@ -65,13 +65,13 @@ git config --list
 
 ### Configuração Local: `git config --local`
 
-Define configurações específicas do repositório.
+Define a configuração específica do repositório.
 
 ```bash
 # Definir apenas para o repositório atual
-git config user.name "Nome do Projeto"
+git config user.name "Project Name"
 # E-mail específico do projeto
-git config user.email "projeto@example.com"
+git config user.email "project@example.com"
 ```
 
 ### Gerenciamento de Remotos: `git remote`
@@ -128,9 +128,9 @@ Mostra as alterações entre diferentes estados do seu repositório.
 ```bash
 # Alterações no diretório de trabalho vs staging
 git diff
-# Alterações na área de staging vs último commit
+# Alterações no staging vs último commit
 git diff --staged
-# Todas as alterações não commitadas
+# Todas as alterações não confirmadas
 git diff HEAD
 # Alterações em um arquivo específico
 git diff file.txt
@@ -151,50 +151,65 @@ git log -5
 git log --graph --all
 ```
 
-## Staging e Commit de Alterações
+## Staging e Confirmação de Alterações
 
-### Adicionar Arquivos (Stage): `git add`
+### Preparar Arquivos: `git add`
 
 Adiciona alterações à área de _staging_ para o próximo commit.
 
 ```bash
-# Adicionar arquivo específico
+# Preparar arquivo específico
 git add file.txt
-# Adicionar todas as alterações no diretório atual
+# Preparar todas as alterações no diretório atual
 git add .
-# Adicionar todas as alterações (incluindo exclusões)
+# Preparar todas as alterações (incluindo exclusões)
 git add -A
-# Adicionar todos os arquivos JavaScript
+# Preparar todos os arquivos JavaScript
 git add *.js
-# Staging interativo (modo patch)
+# Preparação interativa (modo patch)
 git add -p
 ```
 
-### Commitar Alterações: `git commit`
+### Confirmar Alterações: `git commit`
 
-Salva as alterações em _staging_ no repositório com uma mensagem descritiva.
+Salva as alterações preparadas no repositório com uma mensagem descritiva.
 
 ```bash
 # Commit com mensagem
-git commit -m "Adiciona autenticação de usuário"
-# Adicionar (stage) e commitar arquivos modificados
-git commit -a -m "Atualiza documentação"
+git commit -m "Add user authentication"
+# Preparar e confirmar arquivos modificados
+git commit -a -m "Update docs"
 # Modificar o último commit
 git commit --amend
 # Modificar sem alterar a mensagem
 git commit --no-edit --amend
 ```
 
-### Desfazer Staging: `git reset`
+<BaseQuiz id="git-commit-1" correct="A">
+  <template #question>
+    O que `git commit -m "message"` faz?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Cria um novo commit com a mensagem especificada</BaseQuizOption>
+  <BaseQuizOption value="B">Prepara todas as alterações no diretório de trabalho</BaseQuizOption>
+  <BaseQuizOption value="C">Envia as alterações para o repositório remoto</BaseQuizOption>
+  <BaseQuizOption value="D">Cria uma nova branch</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O comando `git commit -m` cria um novo commit com as alterações preparadas e as salva no histórico do repositório com a mensagem fornecida. Ele não envia para o remoto nem cria branches.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Despreparar Arquivos: `git reset`
 
 Remove arquivos da área de _staging_ ou desfaz commits.
 
 ```bash
-# Desfazer staging de arquivo específico
+# Despreparar arquivo específico
 git reset file.txt
-# Desfazer staging de todos os arquivos
+# Despreparar todos os arquivos
 git reset
-# Desfazer último commit, mantendo alterações em staging
+# Desfazer último commit, mantendo alterações preparadas
 git reset --soft HEAD~1
 # Desfazer último commit, descartando alterações
 git reset --hard HEAD~1
@@ -205,13 +220,13 @@ git reset --hard HEAD~1
 Reverte alterações no diretório de trabalho para o estado do último commit.
 
 ```bash
-# Descartar alterações em arquivo (sintaxe antiga)
+# Descartar alterações no arquivo (sintaxe antiga)
 git checkout -- file.txt
-# Descartar alterações em arquivo (nova sintaxe)
+# Descartar alterações no arquivo (nova sintaxe)
 git restore file.txt
-# Desfazer staging de arquivo (nova sintaxe)
+# Despreparar arquivo (nova sintaxe)
 git restore --staged file.txt
-# Descartar todas as alterações não commitadas
+# Descartar todas as alterações não confirmadas
 git checkout .
 ```
 
@@ -234,10 +249,10 @@ git branch -v
 
 ### Criar e Mudar: `git checkout` / `git switch`
 
-Cria novos branches e alterna entre eles.
+Cria novas branches e alterna entre elas.
 
 ```bash
-# Criar e mudar para novo branch
+# Criar e mudar para nova branch
 git checkout -b feature-branch
 # Criar e mudar (nova sintaxe)
 git switch -c feature-branch
@@ -247,29 +262,44 @@ git checkout main
 git switch main
 ```
 
+<BaseQuiz id="git-branch-1" correct="B">
+  <template #question>
+    O que `git checkout -b feature-branch` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Deleta a branch feature-branch</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Cria uma nova branch chamada feature-branch e muda para ela</BaseQuizOption>
+  <BaseQuizOption value="C">Mescla feature-branch na branch atual</BaseQuizOption>
+  <BaseQuizOption value="D">Mostra o histórico de commits da feature-branch</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A flag `-b` cria uma nova branch, e `checkout` muda para ela. Este comando combina ambas as operações: criar a branch e imediatamente mudar para ela.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Mesclar Branches: `git merge`
 
 Combina alterações de diferentes branches.
 
 ```bash
-# Mesclar feature-branch no branch atual
+# Mesclar feature-branch na branch atual
 git merge feature-branch
-# Forçar commit de merge
+# Mesclagem forçada
 git merge --no-ff feature-branch
 # Agrupar commits antes de mesclar
 git merge --squash feature-branch
 ```
 
-### Excluir Branches: `git branch -d`
+### Deletar Branches: `git branch -d`
 
 Remove branches que não são mais necessárias.
 
 ```bash
-# Excluir branch mesclado
+# Deletar branch mesclada
 git branch -d feature-branch
-# Excluir branch não mesclado à força
+# Deletar branch não mesclada forçadamente
 git branch -D feature-branch
-# Excluir branch remoto
+# Deletar branch remota
 git push origin --delete feature-branch
 ```
 
@@ -277,7 +307,7 @@ git push origin --delete feature-branch
 
 ### Buscar Atualizações: `git fetch`
 
-Baixa alterações do repositório remoto sem mesclá-las.
+Baixa alterações do repositório remoto sem mesclar.
 
 ```bash
 # Buscar do remoto padrão
@@ -286,7 +316,7 @@ git fetch
 git fetch origin
 # Buscar de todos os remotos
 git fetch --all
-# Buscar branch específico
+# Buscar branch específica
 git fetch origin main
 ```
 
@@ -295,9 +325,9 @@ git fetch origin main
 Baixa e mescla alterações do repositório remoto.
 
 ```bash
-# Puxar do branch de rastreamento
+# Puxar da branch de rastreamento
 git pull
-# Puxar de um branch remoto específico
+# Puxar de branch remota específica
 git pull origin main
 # Puxar com rebase em vez de merge
 git pull --rebase
@@ -305,46 +335,76 @@ git pull --rebase
 git pull --ff-only
 ```
 
+<BaseQuiz id="git-pull-1" correct="C">
+  <template #question>
+    Qual é a diferença entre `git fetch` e `git pull`?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença; eles fazem a mesma coisa</BaseQuizOption>
+  <BaseQuizOption value="B">git fetch envia alterações, git pull baixa alterações</BaseQuizOption>
+  <BaseQuizOption value="C" correct>git fetch baixa alterações sem mesclar, git pull baixa e mescla alterações</BaseQuizOption>
+  <BaseQuizOption value="D">git fetch funciona com repositórios locais, git pull funciona com repositórios remotos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` baixa alterações do repositório remoto, mas não as mescla na sua branch atual. `git pull` executa ambas as operações: ele busca as alterações e depois as mescla na sua branch atual.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Enviar Alterações: `git push`
 
-Envia commits locais para o repositório remoto.
+Carrega commits locais para o repositório remoto.
 
 ```bash
-# Enviar para o branch de rastreamento
+# Enviar para a branch de rastreamento
 git push
-# Enviar para um branch remoto específico
+# Enviar para branch remota específica
 git push origin main
 # Enviar e configurar rastreamento upstream
 git push -u origin feature
-# Enviar à força com segurança
+# Envio forçado seguro
 git push --force-with-lease
 ```
 
-### Rastrear Branches Remotos: `git branch --track`
+<BaseQuiz id="git-push-1" correct="D">
+  <template #question>
+    O que `git push -u origin feature` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Deleta a branch feature do remoto</BaseQuizOption>
+  <BaseQuizOption value="B">Puxa alterações da branch feature</BaseQuizOption>
+  <BaseQuizOption value="C">Mescla a branch feature em main</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Envia a branch feature para origin e configura o rastreamento</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A flag `-u` (ou `--set-upstream`) envia a branch para o repositório remoto e configura o rastreamento, para que comandos futuros de `git push` e `git pull` saibam qual branch remota usar.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Configura o rastreamento entre branches locais e remotos.
+### Rastrear Branches Remotas: `git branch --track`
+
+Configura o rastreamento entre branches locais e remotas.
 
 ```bash
 # Configurar rastreamento
 git branch --set-upstream-to=origin/main main
-# Rastrear branch remoto
+# Rastrear branch remota
 git checkout -b local-branch origin/remote-branch
 ```
 
 ## Stashing e Armazenamento Temporário
 
-### Stash de Alterações: `git stash`
+### Stash Alterações: `git stash`
 
-Salva temporariamente alterações não commitadas para uso posterior.
+Salva temporariamente alterações não confirmadas para uso posterior.
 
 ```bash
-# Stash de alterações atuais
+# Stash alterações atuais
 git stash
 # Stash com mensagem
-git stash save "Trabalho em andamento no recurso X"
+git stash save "Work in progress on feature X"
 # Incluir arquivos não rastreados
 git stash -u
-# Stash apenas alterações não staged
+# Stash apenas alterações não preparadas
 git stash --keep-index
 ```
 
@@ -363,50 +423,65 @@ git stash show stash@{1}
 
 ### Aplicar Stashes: `git stash apply`
 
-Restaura alterações previamente armazenadas em stash.
+Restaura alterações previamente salvas.
 
 ```bash
-# Aplicar o stash mais recente
+# Aplicar stash mais recente
 git stash apply
 # Aplicar stash específico
 git stash apply stash@{1}
 # Aplicar e remover o stash mais recente
 git stash pop
-# Excluir stash mais recente
+# Deletar stash mais recente
 git stash drop
 # Criar branch a partir do stash
 git stash branch new-branch stash@{1}
-# Excluir todos os stashes
+# Deletar todos os stashes
 git stash clear
 ```
+
+<BaseQuiz id="git-stash-1" correct="B">
+  <template #question>
+    Qual é a diferença entre `git stash apply` e `git stash pop`?
+  </template>
+  
+  <BaseQuizOption value="A">git stash apply remove o stash, git stash pop o mantém</BaseQuizOption>
+  <BaseQuizOption value="B" correct>git stash apply mantém o stash, git stash pop o remove após a aplicação</BaseQuizOption>
+  <BaseQuizOption value="C">git stash apply funciona com repositórios remotos, git stash pop funciona localmente</BaseQuizOption>
+  <BaseQuizOption value="D">Não há diferença; eles fazem a mesma coisa</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git stash apply` restaura as alterações salvas, mas mantém o stash na lista de stashes. `git stash pop` aplica o stash e depois o remove da lista de stashes, o que é útil quando você não precisa mais do stash.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Análise de Histórico e Log
 
 ### Visualizar Histórico de Commits: `git log`
 
-Explora o histórico do repositório com várias opções de formatação.
+Explore o histórico do repositório com várias opções de formatação.
 
 ```bash
 # Histórico visual de branches
 git log --oneline --graph --all
-# Commits por um autor específico
-git log --author="João Silva"
+# Commits de um autor específico
+git log --author="John Doe"
 # Commits recentes
 git log --since="2 weeks ago"
-# Pesquisar mensagens de commit
-git log --grep="correção de bug"
+# Buscar mensagens de commit
+git log --grep="bug fix"
 ```
 
-### Rastreamento e Anotação: `git blame`
+### Culpar e Anotar: `git blame`
 
-Vê quem modificou cada linha de um arquivo por último.
+Vê quem modificou cada linha de um arquivo pela última vez.
 
 ```bash
 # Mostrar autoria linha por linha
 git blame file.txt
 # Blame em linhas específicas
 git blame -L 10,20 file.txt
-# Alternativa ao blame
+# Alternativa para blame
 git annotate file.txt
 ```
 
@@ -415,11 +490,11 @@ git annotate file.txt
 Pesquisa padrões de texto em todo o histórico do repositório.
 
 ```bash
-# Pesquisar por texto em arquivos rastreados
+# Pesquisar texto em arquivos rastreados
 git grep "function"
 # Pesquisar com números de linha
 git grep -n "TODO"
-# Pesquisar em arquivos em staging
+# Pesquisar em arquivos preparados
 git grep --cached "bug"
 ```
 
@@ -442,7 +517,7 @@ git show --stat
 
 ### Reverter Commits: `git revert`
 
-Cria novos commits que desfazem alterações anteriores com segurança.
+Cria novos commits que desfazem alterações anteriores de forma segura.
 
 ```bash
 # Reverter o último commit
@@ -457,10 +532,10 @@ git revert --no-commit abc123
 
 ### Resetar Histórico: `git reset`
 
-Move o ponteiro do branch e opcionalmente modifica o diretório de trabalho.
+Move o ponteiro da branch e opcionalmente modifica o diretório de trabalho.
 
 ```bash
-# Desfazer commit, mantendo alterações em staging
+# Desfazer commit, manter alterações preparadas
 git reset --soft HEAD~1
 # Desfazer commit e staging
 git reset --mixed HEAD~1
@@ -475,7 +550,7 @@ Edita, reordena ou agrupa commits interativamente.
 ```bash
 # Rebase interativo dos últimos 3 commits
 git rebase -i HEAD~3
-# Rebase do branch atual sobre main
+# Rebase da branch atual sobre main
 git rebase -i main
 # Continuar após resolver conflitos
 git rebase --continue
@@ -485,14 +560,14 @@ git rebase --abort
 
 ### Cherry-pick: `git cherry-pick`
 
-Aplica commits específicos de outros branches.
+Aplica commits específicos de outras branches.
 
 ```bash
-# Aplicar commit específico no branch atual
+# Aplicar commit específico na branch atual
 git cherry-pick abc123
 # Aplicar intervalo de commits
 git cherry-pick abc123..def456
-# Cherry-pick sem commitar
+# Cherry-pick sem confirmar
 git cherry-pick -n abc123
 ```
 
@@ -505,9 +580,9 @@ Passos para resolver conflitos durante operações de merge.
 ```bash
 # Verificar arquivos em conflito
 git status
-# Marcar arquivo como resolvido
+# Marcar conflito como resolvido
 git add resolved-file.txt
-# Concluir o merge
+# Completar o merge
 git commit
 # Cancelar merge e retornar ao estado anterior
 git merge --abort
@@ -532,9 +607,9 @@ Interpreta os marcadores de conflito do Git nos arquivos.
 
 ```text
 <<<<<<< HEAD
-Conteúdo do branch atual
+Conteúdo da branch atual
 =======
-Conteúdo do branch de entrada
+Conteúdo da branch de entrada
 >>>>>>> feature-branch
 ```
 
@@ -547,7 +622,7 @@ git commit
 
 ### Ferramentas de Diff: `git difftool`
 
-Usa ferramentas de diff externas para melhor visualização de conflitos.
+Usa ferramentas externas de diff para melhor visualização de conflitos.
 
 ```bash
 # Iniciar ferramenta de diff para alterações
@@ -556,7 +631,7 @@ git difftool
 git config --global diff.tool vimdiff
 ```
 
-## Marcação (Tagging) e Lançamentos
+## Marcação e Lançamentos (Tagging)
 
 ### Criar Tags: `git tag`
 
@@ -566,7 +641,7 @@ Marca commits específicos com rótulos de versão.
 # Criar tag leve (lightweight)
 git tag v1.0
 # Criar tag anotada
-git tag -a v1.0 -m "Lançamento da Versão 1.0"
+git tag -a v1.0 -m "Version 1.0 release"
 # Marcar commit específico
 git tag -a v1.0 abc123
 # Criar tag assinada
@@ -599,16 +674,16 @@ git push --tags
 git push origin --tags
 ```
 
-### Excluir Tags: `git tag -d`
+### Deletar Tags: `git tag -d`
 
-Remove tags dos repositórios local e remoto.
+Remove tags de repositórios locais e remotos.
 
 ```bash
-# Excluir tag local
+# Deletar tag local
 git tag -d v1.0
-# Excluir tag remota
+# Deletar tag remota
 git push origin --delete tag v1.0
-# Sintaxe alternativa de exclusão
+# Sintaxe alternativa para deletar
 git push origin :refs/tags/v1.0
 ```
 
@@ -631,7 +706,7 @@ git config user.name
 
 ### Criar Aliases: `git config alias`
 
-Define atalhos para comandos frequentemente usados.
+Cria atalhos para comandos frequentemente usados.
 
 ```bash
 # git st = git status
@@ -687,7 +762,7 @@ git fsck
 
 ### Manipulação de Arquivos Grandes: `git lfs`
 
-Gerencia arquivos binários grandes de forma eficiente com Git LFS.
+Gerencia eficientemente arquivos binários grandes com Git LFS.
 
 ```bash
 # Instalar LFS no repositório
@@ -709,13 +784,13 @@ Clona repositórios com histórico limitado para operações mais rápidas.
 git clone --depth 1 https://github.com/user/repo.git
 # Últimos 10 commits
 git clone --depth 10 repo.git
-# Converter shallow para clone completo
+# Converter clone raso em completo
 git fetch --unshallow
 ```
 
 ### Sparse Checkout: Trabalhando com Subdiretórios
 
-Verifica apenas partes específicas de repositórios grandes.
+Faz checkout apenas de partes específicas de repositórios grandes.
 
 ```bash
 git config core.sparseCheckout true
@@ -755,11 +830,11 @@ which git
 
 ### Configuração Inicial: Identidade do Usuário
 
-Configura o Git com sua identidade para commits.
+Configura sua identidade para commits.
 
 ```bash
-git config --global user.name "Seu Nome Completo"
-git config --global user.email "seu.email@example.com"
+git config --global user.name "Your Full Name"
+git config --global user.email "your.email@example.com"
 git config --global init.defaultBranch main
 # Definir comportamento de merge
 git config --global pull.rebase false
@@ -767,14 +842,14 @@ git config --global pull.rebase false
 
 ## Fluxos de Trabalho e Melhores Práticas do Git
 
-### Fluxo de Trabalho de Branch de Recurso (Feature Branch)
+### Fluxo de Branch de Recurso (Feature Branch Workflow)
 
-Fluxo de trabalho padrão para desenvolvimento de recursos com branches isolados.
+Fluxo de trabalho padrão para desenvolvimento de recursos com branches isoladas.
 
 ```bash
-# Começar do branch principal
+# Começar da branch main
 git checkout main
-# Obter alterações mais recentes
+# Obter últimas alterações
 git pull origin main
 # Criar branch de recurso
 git checkout -b feature/user-auth
@@ -786,7 +861,7 @@ git push -u origin feature/user-auth
 
 ### Git Flow: Modelo Estruturado de Branching
 
-Abordagem sistemática com branches dedicados para diferentes propósitos.
+Abordagem sistemática com branches dedicadas para diferentes propósitos.
 
 ```bash
 # Inicializar Git Flow
@@ -801,34 +876,34 @@ git flow release start 1.0.0
 
 ### Convenções de Mensagens de Commit
 
-Siga o formato de commit convencional para um histórico de projeto claro.
+Seguir o formato de commit convencional para um histórico de projeto claro.
 
 ```bash
 # Formato: <tipo>(<escopo>): <assunto>
-git commit -m "feat(auth): adiciona funcionalidade de login de usuário"
-git commit -m "fix(api): resolve exceção de ponteiro nulo"
-git commit -m "docs(readme): atualiza instruções de instalação"
-git commit -m "refactor(utils): simplifica formatação de data"
+git commit -m "feat(auth): add user login functionality"
+git commit -m "fix(api): resolve null pointer exception"
+git commit -m "docs(readme): update installation instructions"
+git commit -m "refactor(utils): simplify date formatting"
 ```
 
 ### Commits Atômicos: Melhores Práticas
 
-Crie commits focados, de propósito único, para um histórico melhor.
+Criar commits focados, de propósito único, para um histórico melhor.
 
 ```bash
-# Adicionar alterações interativamente
+# Preparar alterações interativamente
 git add -p
 # Alteração específica
-git commit -m "Adiciona validação ao campo de e-mail"
-# Evitar: git commit -m "Corrige coisas" # Muito vago
-# Bom:  git commit -m "Corrige padrão regex de validação de e-mail"
+git commit -m "Add validation to email field"
+# Evitar: git commit -m "Fix stuff" # Muito vago
+# Bom:  git commit -m "Fix email validation regex pattern"
 ```
 
 ## Solução de Problemas e Recuperação
 
 ### Reflog: Ferramenta de Recuperação
 
-Use o log de referências do Git para recuperar commits perdidos.
+Usar o log de referências do Git para recuperar commits perdidos.
 
 ```bash
 # Mostrar log de referências
@@ -843,7 +918,7 @@ git branch recovery-branch abc123
 
 ### Repositório Corrompido: Reparo
 
-Corrige problemas de integridade e corrupção do repositório.
+Corrigir problemas de integridade e corrupção do repositório.
 
 ```bash
 # Verificar integridade do repositório
@@ -856,7 +931,7 @@ rm .git/index; git reset
 
 ### Problemas de Autenticação
 
-Resolve problemas comuns de autenticação e permissão.
+Resolver problemas comuns de autenticação e permissão.
 
 ```bash
 # Usar token
@@ -869,7 +944,7 @@ git config --global credential.helper manager-core
 
 ### Problemas de Desempenho: Depuração
 
-Identifica e resolve problemas de desempenho do repositório.
+Identificar e resolver problemas de desempenho do repositório.
 
 ```bash
 # Mostrar tamanho do repositório
@@ -882,11 +957,11 @@ git for-each-ref --format='%(refname:short)' | wc -l
 
 ## Links Relevantes
 
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
-- <router-link to="/ansible">Ansible Cheatsheet</router-link>
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
+- <router-link to="/linux">Cheatsheet de Linux</router-link>
+- <router-link to="/shell">Cheatsheet de Shell</router-link>
+- <router-link to="/devops">Cheatsheet de DevOps</router-link>
+- <router-link to="/docker">Cheatsheet de Docker</router-link>
+- <router-link to="/kubernetes">Cheatsheet de Kubernetes</router-link>
+- <router-link to="/ansible">Cheatsheet de Ansible</router-link>
+- <router-link to="/python">Cheatsheet de Python</router-link>
+- <router-link to="/javascript">Cheatsheet de JavaScript</router-link>

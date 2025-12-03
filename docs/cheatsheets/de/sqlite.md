@@ -1,6 +1,6 @@
 ---
-title: 'SQLite Spickzettel'
-description: 'Lernen Sie SQLite mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'SQLite Spickzettel | LabEx'
+description: 'Lernen Sie SQLite-Datenbanken mit diesem umfassenden Spickzettel. Schnelle Referenz für SQLite SQL-Syntax, Transaktionen, Trigger, Views und leichtgewichtige Datenbankverwaltung für Anwendungen.'
 pdfUrl: '/cheatsheets/pdf/sqlite-cheatsheet.pdf'
 ---
 
@@ -12,7 +12,7 @@ SQLite Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/sqlite">Lernen Sie SQLite mit Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/sqlite">Lernen Sie SQLite mit praktischen Übungen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Lernen Sie das SQLite-Datenbankmanagement durch praktische Übungen und reale Szenarien. LabEx bietet umfassende SQLite-Kurse, die wesentliche SQL-Operationen, Datenmanipulation, Abfrageoptimierung, Datenbankdesign und Leistungsabstimmung abdecken. Meistern Sie die Entwicklung von leichtgewichtigen Datenbanken und effizientes Datenmanagement.
@@ -107,12 +107,27 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="sqlite-create-table-1" correct="A">
+  <template #question>
+    Was bewirkt `INTEGER PRIMARY KEY AUTOINCREMENT` in SQLite?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Erstellt einen automatisch inkrementierenden Integer-Primärschlüssel</BaseQuizOption>
+  <BaseQuizOption value="B">Erstellt einen Text-Primärschlüssel</BaseQuizOption>
+  <BaseQuizOption value="C">Erstellt eine Fremdschlüsseleinschränkung</BaseQuizOption>
+  <BaseQuizOption value="D">Erstellt einen eindeutigen Index</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INTEGER PRIMARY KEY AUTOINCREMENT` erstellt eine Integer-Spalte, die für jede neue Zeile automatisch hochgezählt wird und als Primärschlüssel dient. Dies stellt sicher, dass jede Zeile eine eindeutige Kennung hat.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Datentypen: `INTEGER`, `TEXT`, `REAL`, `BLOB`
 
 SQLite verwendet dynamische Typisierung mit Speicherkategorien für flexible Datenspeicherung.
 
 ```sql
--- Gängige Datentypen
+-- Häufige Datentypen
 CREATE TABLE products (
     id INTEGER,           -- Ganze Zahlen
     name TEXT,           -- Textzeichenketten
@@ -141,7 +156,7 @@ CREATE TABLE employees (
 
 ### Daten einfügen: `INSERT INTO`
 
-Fügt neue Datensätze mit einer oder mehreren Zeilen in Tabellen ein.
+Fügt neue Datensätze mit einzelnen oder mehreren Zeilen in Tabellen ein.
 
 ```sql
 -- Einzelnen Datensatz einfügen
@@ -153,7 +168,7 @@ INSERT INTO users (name, email, age) VALUES
     ('Jane Smith', 'jane@email.com', 25),
     ('Bob Wilson', 'bob@email.com', 35);
 
--- Einfügen mit allen Spalten
+-- Mit allen Spalten einfügen
 INSERT INTO users VALUES
     (NULL, 'Alice Brown', 'alice@email.com', 28, datetime('now'));
 ```
@@ -177,6 +192,21 @@ UPDATE products SET price = price * 1.1
 WHERE category = 'Electronics';
 ```
 
+<BaseQuiz id="sqlite-update-1" correct="D">
+  <template #question>
+    Was passiert, wenn Sie die WHERE-Klausel in einer UPDATE-Anweisung vergessen?
+  </template>
+  
+  <BaseQuizOption value="A">Das Update schlägt fehl</BaseQuizOption>
+  <BaseQuizOption value="B">Nur die erste Zeile wird aktualisiert</BaseQuizOption>
+  <BaseQuizOption value="C">Es passiert nichts</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Alle Zeilen in der Tabelle werden aktualisiert</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Ohne eine WHERE-Klausel aktualisiert die UPDATE-Anweisung alle Zeilen in der Tabelle. Verwenden Sie immer WHERE, um anzugeben, welche Zeilen aktualisiert werden sollen, um versehentliche Änderungen an unbeabsichtigten Daten zu vermeiden.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Daten löschen: `DELETE FROM`
 
 Entfernt Datensätze aus Tabellen basierend auf angegebenen Bedingungen.
@@ -198,7 +228,7 @@ WHERE user_id IN (SELECT id FROM users WHERE active = 0);
 Fügt neue Datensätze ein oder aktualisiert bestehende bei Konflikten.
 
 ```sql
--- Einfügen oder Ersetzen bei Konflikt
+-- Einfügen oder ersetzen bei Konflikt
 INSERT OR REPLACE INTO users (id, name, email)
 VALUES (1, 'Updated Name', 'updated@email.com');
 
@@ -207,11 +237,26 @@ INSERT OR IGNORE INTO users (name, email)
 VALUES ('Duplicate', 'existing@email.com');
 ```
 
+<BaseQuiz id="sqlite-upsert-1" correct="A">
+  <template #question>
+    Was ist der Unterschied zwischen `INSERT OR REPLACE` und `INSERT OR IGNORE`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>REPLACE aktualisiert bestehende Zeilen, IGNORE überspringt Duplikate</BaseQuizOption>
+  <BaseQuizOption value="B">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="C">REPLACE löscht die Zeile, IGNORE aktualisiert sie</BaseQuizOption>
+  <BaseQuizOption value="D">REPLACE funktioniert mit Tabellen, IGNORE funktioniert mit Views</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INSERT OR REPLACE` ersetzt eine bestehende Zeile, wenn ein Konflikt vorliegt (z. B. doppelter Primärschlüssel). `INSERT OR IGNORE` überspringt das Einfügen einfach, wenn ein Konflikt vorliegt, und lässt die bestehende Zeile unverändert.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Datenabfrage & Auswahl
 
-### Basisabfragen: `SELECT`
+### Grundlegende Abfragen: `SELECT`
 
-Fragt Daten aus Tabellen mit der SELECT-Anweisung und verschiedenen Optionen ab.
+Fragt Daten aus Tabellen mithilfe der SELECT-Anweisung mit verschiedenen Optionen ab.
 
 ```sql
 -- Alle Spalten auswählen
@@ -220,12 +265,27 @@ SELECT * FROM users;
 -- Spezifische Spalten auswählen
 SELECT name, email FROM users;
 
--- Auswahl mit Alias
+-- Mit Alias auswählen
 SELECT name AS full_name, age AS years_old FROM users;
 
 -- Eindeutige Werte auswählen
 SELECT DISTINCT department FROM employees;
 ```
+
+<BaseQuiz id="sqlite-select-1" correct="B">
+  <template #question>
+    Was bewirkt `SELECT DISTINCT`?
+  </template>
+  
+  <BaseQuizOption value="A">Wählt alle Zeilen aus</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Gibt nur eindeutige Werte zurück und entfernt Duplikate</BaseQuizOption>
+  <BaseQuizOption value="C">Wählt nur die erste Zeile aus</BaseQuizOption>
+  <BaseQuizOption value="D">Sortiert die Ergebnisse</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SELECT DISTINCT` eliminiert doppelte Zeilen aus dem Ergebnis-Set und gibt nur eindeutige Werte zurück. Dies ist nützlich, wenn Sie alle eindeutigen Werte in einer Spalte sehen möchten.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Filtern: `WHERE`
 
@@ -262,7 +322,7 @@ SELECT * FROM users ORDER BY department, salary DESC;
 -- Ergebnisse begrenzen
 SELECT * FROM users LIMIT 10;
 
--- Begrenzen mit Offset (Paginierung)
+-- Limit mit Offset (Paginierung)
 SELECT * FROM users LIMIT 10 OFFSET 20;
 ```
 
@@ -289,7 +349,7 @@ SELECT MIN(age), MAX(age) FROM users;
 Gruppiert Zeilen nach angegebenen Kriterien und filtert Gruppen für zusammenfassende Berichte.
 
 ```sql
--- Nach einer Spalte gruppieren
+-- Nach einer einzelnen Spalte gruppieren
 SELECT department, COUNT(*)
 FROM employees
 GROUP BY department;
@@ -372,7 +432,7 @@ EXCEPT
 SELECT email FROM unsubscribed;
 ```
 
-## Indizes & Leistung
+## Indizes & Performance
 
 ### Index erstellen: `CREATE INDEX`
 
@@ -394,7 +454,7 @@ CREATE INDEX idx_active_users ON users(name) WHERE active = 1;
 
 ### Abfrageanalyse: `EXPLAIN QUERY PLAN`
 
-Analysiert Abfrageausführungspläne, um Leistungsengpässe zu identifizieren.
+Analysiert Abfrageausführungspläne, um Engpässe bei der Leistung zu identifizieren.
 
 ```sql
 -- Abfrageleistung analysieren
@@ -408,8 +468,8 @@ EXPLAIN QUERY PLAN SELECT * FROM orders WHERE user_id = 123;
 
 Optimiert Datenbankdateien und aktualisiert Statistiken für bessere Leistung.
 
-```sql
--- Datenbank zur Platzrückgewinnung neu erstellen
+```bash
+# Datenbank neu erstellen, um Speicherplatz zurückzugewinnen
 VACUUM;
 
 -- Indexstatistiken aktualisieren
@@ -430,7 +490,7 @@ PRAGMA journal_mode = WAL;
 -- Synchronisationsmodus einstellen
 PRAGMA synchronous = NORMAL;
 
--- Fremdschlüssel-Einschränkungen aktivieren
+-- Fremdschlüsseleinschränkungen aktivieren
 PRAGMA foreign_keys = ON;
 
 -- Cache-Größe einstellen (in Seiten)
@@ -504,7 +564,7 @@ DROP TRIGGER IF EXISTS update_user_count;
 
 ### Datums- & Zeitfunktionen
 
-Verarbeitet Datums- und Zeitvorgänge mit den integrierten Funktionen von SQLite.
+Verarbeitet Datums- und Zeitoperationen mit den integrierten Funktionen von SQLite.
 
 ```sql
 -- Aktuelles Datum/Uhrzeit
@@ -524,20 +584,20 @@ SELECT strftime('%w', 'now'); -- Wochentag
 
 ### Stringfunktionen
 
-Manipuliert Textdaten mit verschiedenen String-Operationen.
+Manipuliert Textdaten mit verschiedenen Stringoperationen.
 
 ```sql
--- String-Manipulation
+-- Stringmanipulation
 SELECT upper(name) FROM users;
 SELECT lower(email) FROM users;
 SELECT length(name) FROM users;
 SELECT substr(name, 1, 3) FROM users;
 
--- String-Verkettung
+-- Stringverkettung
 SELECT name || ' - ' || email as display FROM users;
 SELECT printf('%s (%d)', name, age) FROM users;
 
--- String-Ersetzung
+-- Stringersetzung
 SELECT replace(phone, '-', '') FROM users;
 ```
 
@@ -615,7 +675,7 @@ PRAGMA locking_mode;
 -- WAL-Modus für bessere Nebenläufigkeit einstellen
 PRAGMA journal_mode = WAL;
 
--- Busy Timeout zum Warten auf Sperren
+-- Busy Timeout für Wartezeiten bei Sperren
 PRAGMA busy_timeout = 5000;
 
 -- Aktuelle Datenbankverbindungen prüfen
@@ -716,7 +776,7 @@ PRAGMA cache_size = 10000;
 PRAGMA temp_store = memory;
 PRAGMA mmap_size = 268435456;
 
--- Fremdschlüssel-Einschränkungen aktivieren
+-- Fremdschlüsseleinschränkungen aktivieren
 PRAGMA foreign_keys = ON;
 
 -- Sicheren Löschmodus einstellen
@@ -731,7 +791,7 @@ PRAGMA foreign_key_check;
 Konfiguriert sicherheitsrelevante Datenbankoptionen und Einschränkungen.
 
 ```sql
--- Fremdschlüssel-Einschränkungen aktivieren
+-- Fremdschlüsseleinschränkungen aktivieren
 PRAGMA foreign_keys = ON;
 
 -- Sicherer Löschmodus
@@ -764,7 +824,7 @@ sqlite3 --version
 
 ### Erstellen Ihrer ersten Datenbank
 
-Erstellt SQLite-Datenbankdateien und beginnt mit der Arbeit mit Daten mithilfe einfacher Befehle.
+Erstellen Sie SQLite-Datenbankdateien und beginnen Sie mit der Arbeit mit Daten mithilfe einfacher Befehle.
 
 ```bash
 # Neue Datenbank erstellen
@@ -783,7 +843,7 @@ VALUES ('John Doe', 'john@example.com');
 
 ### Integration in Programmiersprachen
 
-Verwendet SQLite mit verschiedenen Programmiersprachen über integrierte oder Drittanbieter-Bibliotheken.
+Verwenden Sie SQLite mit verschiedenen Programmiersprachen über integrierte oder Drittanbieterbibliotheken.
 
 ```python
 # Python (integriertes sqlite3-Modul)

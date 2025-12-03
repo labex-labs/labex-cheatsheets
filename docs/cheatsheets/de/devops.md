@@ -1,6 +1,6 @@
 ---
-title: 'DevOps Spickzettel'
-description: 'Lernen Sie DevOps mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'DevOps Spickzettel | LabEx'
+description: 'Erlernen Sie DevOps-Praktiken mit diesem umfassenden Spickzettel. Schnelle Referenz für CI/CD, Automatisierung, Infrastructure as Code, Monitoring, Containerisierung und moderne Softwarebereitstellungs-Workflows.'
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ DevOps Spickzettel
 <a target="_blank" href="https://labex.io/de/learn/devops">DevOps mit Hands-On Labs lernen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie DevOps-Praktiken durch praktische Labs und reale Szenarien. LabEx bietet umfassende DevOps-Kurse, die wesentliche Operationen, Infrastrukturmanagement, CI/CD-Pipelines, Containerisierung, Monitoring und Automatisierung abdecken. Lernen Sie, Anwendungen bereitzustellen, Infrastruktur als Code zu verwalten, Workflows zu automatisieren und moderne DevOps-Praktiken für eine effiziente Softwarebereitstellung zu implementieren.
+Lernen Sie DevOps-Praktiken durch praktische Labs und reale Szenarien. LabEx bietet umfassende DevOps-Kurse, die wesentliche Operationen, Infrastrukturmanagement, CI/CD-Pipelines, Containerisierung, Überwachung und Automatisierung abdecken. Lernen Sie, Anwendungen bereitzustellen, Infrastruktur als Code zu verwalten, Workflows zu automatisieren und moderne DevOps-Praktiken für eine effiziente Softwarebereitstellung zu implementieren.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -40,9 +40,24 @@ terraform fmt
 terraform validate
 ```
 
+<BaseQuiz id="devops-terraform-1" correct="B">
+  <template #question>
+    Was bewirkt `terraform plan`?
+  </template>
+  
+  <BaseQuizOption value="A">Wendet Infrastrukturänderungen sofort an</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Zeigt an, welche Änderungen vorgenommen werden, ohne sie anzuwenden</BaseQuizOption>
+  <BaseQuizOption value="C">Zerstört die gesamte Infrastruktur</BaseQuizOption>
+  <BaseQuizOption value="D">Initialisiert Terraform</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `terraform plan` erstellt einen Ausführungsplan, der zeigt, was Terraform tun wird, wenn Sie `terraform apply` ausführen. Es ist ein Trockenlauf, der Ihnen hilft, Änderungen zu überprüfen, bevor Sie sie anwenden.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Ansible: Konfigurationsmanagement
 
-Automatisierung der Anwendungsbereitstellung und des Konfigurationsmanagements.
+Anwendungsbereitstellung und Konfigurationsmanagement automatisieren.
 
 ```bash
 # Playbook ausführen
@@ -89,7 +104,7 @@ docker rm container_id
 
 ### Kubernetes: Container-Orchestrierung
 
-Containerisierte Anwendungen im großen Maßstab bereitstellen und verwalten.
+Containerisierte Anwendungen in großem Maßstab bereitstellen und verwalten.
 
 ```bash
 # Konfiguration anwenden
@@ -103,6 +118,21 @@ kubectl logs pod_name
 # Ressourcen löschen
 kubectl delete -f deployment.yml
 ```
+
+<BaseQuiz id="devops-k8s-1" correct="A">
+  <template #question>
+    Was bewirkt `kubectl apply -f deployment.yml`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Erstellt oder aktualisiert Ressourcen, die in der YAML-Datei definiert sind</BaseQuizOption>
+  <BaseQuizOption value="B">Löscht alle Ressourcen im Cluster</BaseQuizOption>
+  <BaseQuizOption value="C">Erstellt nur neue Ressourcen</BaseQuizOption>
+  <BaseQuizOption value="D">Zeigt an, was erstellt würde, ohne es anzuwenden</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kubectl apply` ist ein deklarativer Befehl, der Ressourcen erstellt, falls sie nicht existieren, oder sie aktualisiert, falls sie existieren. Er ist idempotent, was bedeutet, dass Sie ihn mehrmals sicher ausführen können.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Helm: Kubernetes Paketmanager
 
@@ -211,6 +241,21 @@ git push origin main
 git pull origin main
 ```
 
+<BaseQuiz id="devops-git-1" correct="D">
+  <template #question>
+    Was ist der Unterschied zwischen `git pull` und `git fetch`?
+  </template>
+  
+  <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="B">git pull pusht Änderungen, git fetch zieht Änderungen</BaseQuizOption>
+  <BaseQuizOption value="C">git pull funktioniert lokal, git fetch funktioniert remote</BaseQuizOption>
+  <BaseQuizOption value="D" correct>git fetch lädt Änderungen ohne Mergen herunter, git pull lädt herunter und merged Änderungen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` lädt Änderungen aus dem Remote-Repository herunter, merged sie aber nicht in Ihren aktuellen Branch. `git pull` führt beide Operationen aus: es fetched und merged dann die Änderungen.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Branch-Verwaltung
 
 Verschiedene Entwicklungsströme und Releases verwalten.
@@ -250,12 +295,12 @@ git push -u origin feature-branch
 # Dann PR auf GitHub/GitLab erstellen
 ```
 
-### Code-Review & Qualität
+### Code Review & Qualität
 
-Codequalität durch Peer-Review und automatisierte Prüfungen sicherstellen.
+Codequalität durch Peer-Reviews und automatisierte Prüfungen sicherstellen.
 
 ```bash
-# Pre-commit Hooks Beispiel
+# Beispiel für Pre-commit Hooks
 #!/bin/sh
 # Tests vor dem Commit ausführen
 npm test
@@ -265,7 +310,7 @@ if [ $? -ne 0 ]; then
 fi
 ```
 
-## Monitoring & Observability
+## Überwachung & Beobachtbarkeit
 
 ### Prometheus: Metriksammlung
 
@@ -274,11 +319,11 @@ System- und Anwendungsmetriken mit Zeitreihendaten überwachen.
 ```promql
 # CPU-Auslastung
 cpu_usage_percent{instance="server1"}
-# Speicherauslastung
+# Speichernutzung
 (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100
 # HTTP-Anforderungsrate
 rate(http_requests_total[5m])
-# Alarmregeln Beispiel
+# Alarmregel Beispiel
 ALERT HighCPUUsage
   IF cpu_usage_percent > 80
   FOR 5m
@@ -286,7 +331,7 @@ ALERT HighCPUUsage
 
 ### Grafana: Visualisierungs-Dashboard
 
-Dashboards und Visualisierungen für Monitoring-Daten erstellen.
+Dashboards und Visualisierungen für Überwachungsdaten erstellen.
 
 ```bash
 # Dashboard erstellen
@@ -335,7 +380,7 @@ output {
 
 ### Application Performance Monitoring
 
-Anwendungsleistung und Benutzererlebniskennzahlen verfolgen.
+Anwendungsleistung und Benutzererfahrung Metriken verfolgen.
 
 ```ruby
 # New Relic Agent Einrichtung
@@ -355,7 +400,7 @@ statsd.histogram('web.response_time', 0.75)
 
 ### AWS CLI: Amazon Web Services
 
-Interaktion mit AWS-Diensten über die Befehlszeile.
+Mit AWS-Diensten über die Befehlszeile interagieren.
 
 ```bash
 # AWS CLI konfigurieren
@@ -416,11 +461,11 @@ bucket = aws.s3.Bucket("my-bucket")
 gcp_bucket = gcp.storage.Bucket("my-gcp-bucket")
 ```
 
-## Sicherheit & Geheimnisverwaltung
+## Sicherheits- & Geheimnisverwaltung
 
 ### HashiCorp Vault: Geheimnisverwaltung
 
-HashiCorp Vault ist ein Werkzeug für den sicheren Zugriff auf Geheimnisse. Ein Geheimnis ist alles, dessen Zugriff Sie streng kontrollieren möchten, wie z. B. API-Schlüssel, Passwörter oder Zertifikate.
+HashiCorp Vault ist ein Tool für den sicheren Zugriff auf Geheimnisse. Ein Geheimnis ist alles, dessen Zugriff Sie streng kontrollieren möchten, wie z. B. API-Schlüssel, Passwörter oder Zertifikate.
 
 ```bash
 # Ein Geheimnis schreiben
@@ -435,12 +480,12 @@ vault auth enable kubernetes
 vault policy write myapp-policy myapp-policy.hcl
 ```
 
-### Sicherheits-Scanning: Trivy & SonarQube
+### Sicherheitsprüfung: Trivy & SonarQube
 
-Container und Code auf Sicherheitslücken scannen.
+Container und Code auf Sicherheitslücken prüfen.
 
 ```bash
-# Trivy Container-Scanning
+# Trivy Container-Scan
 trivy image nginx:latest
 # Dateisystem scannen
 trivy fs /path/to/project
@@ -463,14 +508,14 @@ openssl x509 -in cert.pem -text -noout | grep "Not After"
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 ```
 
-### Container-Sicherheit
+### Containersicherheit
 
 Containerisierte Anwendungen und Laufzeitumgebungen absichern.
 
 ```bash
 # Container als Nicht-Root-Benutzer ausführen
 docker run --user 1000:1000 myapp
-# Image auf Schwachstellen scannen
+# Image auf Schwachstellen prüfen
 docker scan myapp:latest
 ```
 
@@ -488,7 +533,7 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 Egal, ob Sie Server verwalten, Bereitstellungen einrichten oder etwas reparieren, das gerade in der Produktion ausgefallen ist, diese Befehle helfen Ihnen, schneller voranzukommen und intelligenter zu arbeiten.
 
 ```bash
-# CPU- und Speicherauslastung
+# CPU- und Speichernutzung
 htop
 # Festplattennutzung
 df -h
@@ -553,7 +598,7 @@ redis-cli --latency
 redis-cli info memory
 ```
 
-## DevOps-Tool-Installation
+## Tool-Installation
 
 ### Paketmanager
 
@@ -600,7 +645,7 @@ curl https://sdk.cloud.google.com | bash
 
 ### Verwaltung von Umgebungsvariablen
 
-Konfiguration über verschiedene Umgebungen hinweg sicher verwalten.
+Konfigurationen über verschiedene Umgebungen hinweg sicher verwalten.
 
 ```bash
 # .env Datei Beispiel
@@ -620,7 +665,7 @@ kubectl create configmap app-config --from-env-file=.env
 Service Discovery und dynamische Konfiguration verwalten.
 
 ```bash
-# Consul Service-Registrierung
+# Consul Service Registrierung
 consul services register myservice.json
 # Service-Zustand abrufen
 consul health service web
@@ -629,7 +674,7 @@ etcdctl put /config/database/host localhost
 etcdctl get /config/database/host
 ```
 
-### Entwicklungsumgebung einrichten
+### Entwicklungsumgebungs-Setup
 
 Konsistente Entwicklungsumgebungen mithilfe von Containern einrichten.
 
@@ -685,7 +730,7 @@ WantedBy=multi-user.target
 
 ### Infrastrukturautomatisierung mit Ansible
 
-Automatisierung der Infrastrukturbereitstellung und des Konfigurationsmanagements.
+Infrastrukturbereitstellung und Konfigurationsmanagement automatisieren.
 
 ```yaml
 # Ansible Playbook Beispiel

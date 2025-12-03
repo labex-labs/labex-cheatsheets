@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Pandas'
-description: 'Aprenda Pandas con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Pandas | LabEx'
+description: 'Aprenda manipulación de datos con Pandas con esta hoja de trucos completa. Referencia rápida para operaciones de DataFrame, limpieza de datos, filtrado, agrupación, fusión y análisis de datos en Python.'
 pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 ---
 
@@ -36,6 +36,21 @@ df = pd.read_csv('data.csv', sep=';')
 # Analizar fechas
 df = pd.read_csv('data.csv', parse_dates=['Date'])
 ```
+
+<BaseQuiz id="pandas-read-csv-1" correct="B">
+  <template #question>
+    ¿Qué devuelve `pd.read_csv('data.csv')`?
+  </template>
+  
+  <BaseQuizOption value="A">Una lista de diccionarios</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Un DataFrame de pandas</BaseQuizOption>
+  <BaseQuizOption value="C">Un array de NumPy</BaseQuizOption>
+  <BaseQuizOption value="D">Una cadena de texto</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pd.read_csv()` lee un archivo CSV y devuelve un DataFrame de pandas, que es una estructura de datos bidimensional etiquetada con columnas y filas.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Leer Excel: `pd.read_excel()`
 
@@ -160,6 +175,21 @@ df.dropna()
 df.dropna(axis=1)
 ```
 
+<BaseQuiz id="pandas-missing-1" correct="B">
+  <template #question>
+    ¿Qué hace `df.dropna(axis=1)`?
+  </template>
+  
+  <BaseQuizOption value="A">Elimina filas con valores faltantes</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Elimina columnas con valores faltantes</BaseQuizOption>
+  <BaseQuizOption value="C">Rellena valores faltantes con 0</BaseQuizOption>
+  <BaseQuizOption value="D">Cuenta valores faltantes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El parámetro `axis=1` significa "columnas", por lo que `df.dropna(axis=1)` elimina las columnas que contienen cualquier valor faltante. Use `axis=0` (predeterminado) para eliminar filas.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Duplicados: `duplicated()` / `drop_duplicates()`
 
 Identificar y eliminar filas duplicadas.
@@ -169,9 +199,24 @@ Identificar y eliminar filas duplicadas.
 df.duplicated()
 # Eliminar todas las filas duplicadas
 df.drop_duplicates()
-# Eliminar basándose en columnas específicas
+# Eliminar basado en columnas específicas
 df.drop_duplicates(subset=['col1', 'col2'])
 ```
+
+<BaseQuiz id="pandas-duplicates-1" correct="A">
+  <template #question>
+    ¿Qué hace `df.drop_duplicates()` por defecto?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Elimina filas duplicadas, conservando la primera ocurrencia</BaseQuizOption>
+  <BaseQuizOption value="B">Elimina todas las filas</BaseQuizOption>
+  <BaseQuizOption value="C">Conserva solo las filas duplicadas</BaseQuizOption>
+  <BaseQuizOption value="D">Elimina la primera ocurrencia de duplicados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Por defecto, `drop_duplicates()` conserva la primera ocurrencia de cada fila duplicada y elimina las subsiguientes. Puede usar `keep='last'` para conservar la última ocurrencia en su lugar.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Tipos de Datos: `astype()`
 
@@ -201,6 +246,21 @@ df.replace('old_val', 'new_val')
 df.replace(['A', 'B'], ['C', 'D'])
 ```
 
+<BaseQuiz id="pandas-apply-1" correct="A">
+  <template #question>
+    ¿Qué hace `df['col'].apply(lambda x: x*2)`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Aplica una función a cada elemento de la columna, multiplicando cada uno por 2</BaseQuizOption>
+  <BaseQuizOption value="B">Multiplica toda la columna por 2 una vez</BaseQuizOption>
+  <BaseQuizOption value="C">Reemplaza la columna con 2</BaseQuizOption>
+  <BaseQuizOption value="D">Cuenta elementos en la columna</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El método `apply()` aplica una función a cada elemento de una Serie. La función lambda `lambda x: x*2` multiplica cada valor por 2, devolviendo una nueva Serie con los valores transformados.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Inspección del DataFrame
 
 ### Valores Únicos: `unique()` / `value_counts()`
@@ -210,7 +270,7 @@ Explorar valores únicos y sus frecuencias.
 ```python
 # Obtener valores únicos en una columna
 df['col'].unique()
-# Obtener el número de valores únicos
+# Obtener número de valores únicos
 df['col'].nunique()
 # Contar ocurrencias de cada valor único
 df['col'].value_counts()
@@ -220,7 +280,7 @@ df['col'].value_counts(normalize=True)
 
 ### Correlación: `corr()` / `cov()`
 
-Calcular la correlación y covarianza entre columnas numéricas.
+Calcular correlación y covarianza entre columnas numéricas.
 
 ```python
 # Correlación por pares de columnas
@@ -288,7 +348,7 @@ df['category_col'] = df['category_col'].astype('category')
 
 ### Archivos Grandes en Fragmentos: `read_csv(chunksize=...)`
 
-Procesar archivos grandes en fragmentos para evitar cargar todo a la memoria a la vez.
+Procesar archivos grandes en fragmentos para evitar cargar todo en memoria a la vez.
 
 ```python
 chunk_iterator = pd.read_csv('large_data.csv', chunksize=10000)
@@ -362,7 +422,7 @@ df = pd.read_clipboard()
 
 ### Pickle: `df.to_pickle()` / `pd.read_pickle()`
 
-Serializar/deserializar objetos Pandas hacia/desde disco.
+Serializar/deserializar objetos de Pandas hacia/desde disco.
 
 ```python
 # Guardar DataFrame como archivo pickle
@@ -384,7 +444,7 @@ loaded_df = pd.read_hdf('my_data.h5', key='df')
 
 ## Filtrado y Selección de Datos
 
-### Basado en Etiquetas: `df.loc[]` / `df.at[]`
+### Basado en Etiqueta: `df.loc[]` / `df.at[]`
 
 Seleccionar datos por la etiqueta explícita del índice/columnas.
 
@@ -418,7 +478,7 @@ df.iat[0, 0]
 
 ### Indexación Booleana: `df[condition]`
 
-Filtrar filas basándose en una o más condiciones.
+Filtrar filas basadas en una o más condiciones.
 
 ```python
 # Filas donde 'col1' es mayor que 10
@@ -462,7 +522,7 @@ print(f"Tiempo de ejecución: {end_time - start_time} segundos")
 
 ### Operaciones Optimizadas: `eval()` / `query()`
 
-Utilizar estos métodos para un rendimiento más rápido en DataFrames grandes, especialmente para operaciones elemento a elemento y filtrado.
+Utilice estos métodos para un rendimiento más rápido en DataFrames grandes, especialmente para operaciones elemento a elemento y filtrado.
 
 ```python
 # Más rápido que `df['col1'] + df['col2']`
@@ -478,7 +538,7 @@ Analizar dónde se invierte el tiempo en sus funciones de Python.
 ```python
 import cProfile
 def my_pandas_function(df):
-    # Operaciones Pandas
+    # Operaciones de Pandas
     return df.groupby('col').mean()
 cProfile.run('my_pandas_function(df)') # Ejecutar función con cProfile
 
@@ -507,7 +567,7 @@ pip show pandas
 
 ### Conda: `conda install pandas`
 
-Gestor de paquetes para entornos Anaconda/Miniconda.
+Administrador de paquetes para entornos Anaconda/Miniconda.
 
 ```python
 # Instalar Pandas en el entorno conda actual
@@ -522,12 +582,12 @@ conda create -n myenv pandas
 
 ### Verificar Versión / Importar
 
-Verificar su instalación de Pandas e importarlo en sus scripts.
+Verifique su instalación de Pandas e impórtelo en sus scripts.
 
 ```python
 # Alias de importación estándar
 import pandas as pd
-# Verificar la versión de Pandas instalada
+# Comprobar la versión de Pandas instalada
 print(pd.__version__)
 # Mostrar todas las columnas
 pd.set_option('display.max_columns', None)
@@ -535,7 +595,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', 100)
 ```
 
-## Opciones y Configuración
+## Configuración y Ajustes
 
 ### Opciones de Visualización: `pd.set_option()`
 
@@ -548,7 +608,7 @@ pd.set_option('display.max_rows', 50)
 pd.set_option('display.max_columns', None)
 # Ancho de la visualización
 pd.set_option('display.width', 1000)
-# Formato de valores flotantes
+# Formatear valores flotantes
 pd.set_option('display.float_format', '{:.2f}'.format)
 ```
 
@@ -579,7 +639,7 @@ Establecer opciones temporalmente dentro de una declaración `with`.
 ```python
 with pd.option_context('display.max_rows', 10, 'display.max_columns', 5):
     print(df) # DataFrame mostrado con opciones temporales
-print(df) # Las opciones vuelven a la configuración anterior fuera del bloque
+print(df) # Las opciones vuelven a sus configuraciones anteriores fuera del bloque
 ```
 
 ## Encadenamiento de Métodos

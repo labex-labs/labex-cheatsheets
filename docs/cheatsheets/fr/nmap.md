@@ -1,6 +1,6 @@
 ---
-title: 'Cheat Sheet Nmap'
-description: 'Apprenez Nmap avec notre aide-mémoire complet couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Nmap Aide-Mémoire | LabEx'
+description: "Apprenez le scan réseau Nmap avec cet aide-mémoire complet. Référence rapide pour le balayage de ports, la découverte de réseau, la détection de vulnérabilités, l'audit de sécurité et la reconnaissance réseau."
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
@@ -12,7 +12,7 @@ Nmap Aide-mémoire
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/nmap">Apprendre Nmap avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/nmap">Apprenez Nmap avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Apprenez la numérisation de réseau Nmap grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Nmap complets couvrant la découverte de réseau essentielle, la numérisation de ports, la détection de services, l'empreinte du système d'exploitation (OS fingerprinting) et l'évaluation des vulnérabilités. Maîtrisez les techniques de reconnaissance de réseau et d'audit de sécurité.
@@ -53,7 +53,7 @@ Téléchargez et installez depuis le site officiel.
 # Télécharger l'installeur depuis
 https://nmap.org/download.html
 # Exécuter l'installeur .exe avec des privilèges d'administrateur
-# Inclut l'interface graphique Zenmap et la version ligne de commande
+# Inclut l'interface graphique Zenmap et la version en ligne de commande
 ```
 
 ### Vérification de Base
@@ -73,10 +73,10 @@ man nmap
 
 ### Balayage d'Hôte Simple : `nmap [cible]`
 
-Balayage de base d'un seul hôte ou d'une adresse IP.
+Balayage de base d'un seul hôte ou adresse IP.
 
 ```bash
-# Balayer une IP unique
+# Balayer une seule IP
 nmap 192.168.1.1
 # Balayer un nom d'hôte
 nmap example.com
@@ -84,6 +84,21 @@ nmap example.com
 nmap 192.168.1.1 192.168.1.5
 192.168.1.10
 ```
+
+<BaseQuiz id="nmap-scan-1" correct="A">
+  <template #question>
+    Que fait un balayage de base `nmap 192.168.1.1` par défaut ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Balaye les 1000 ports TCP les plus courants</BaseQuizOption>
+  <BaseQuizOption value="B">Balaye les 65535 ports</BaseQuizOption>
+  <BaseQuizOption value="C">Effectue uniquement la découverte d'hôtes</BaseQuizOption>
+  <BaseQuizOption value="D">Ne balaye que le port 80</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Par défaut, Nmap balaye les 1000 ports TCP les plus courants. Pour balayer tous les ports, utilisez `-p-`, ou spécifiez des ports spécifiques avec `-p 80,443,22`.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Balayage de Plage Réseau
 
@@ -117,16 +132,31 @@ exclude.txt
 
 ### Balayage Ping : `nmap -sn`
 
-La découverte d'hôtes est une manière clé que de nombreux analystes et pentesters utilisent Nmap. Son objectif est d'obtenir un aperçu des systèmes en ligne.
+La découverte d'hôtes est une manière clé que de nombreux analystes et pentesters utilisent Nmap. Son objectif est d'obtenir un aperçu des systèmes qui sont en ligne.
 
 ```bash
 # Balayage Ping uniquement (pas de balayage de ports)
 nmap -sn 192.168.1.0/24
-# Sauter la découverte d'hôtes (supposer que tous les hôtes sont actifs)
+# Ignorer la découverte d'hôtes (supposer que tous les hôtes sont actifs)
 nmap -Pn 192.168.1.1
-# Ping echo ICMP
+# Ping par écho ICMP
 nmap -PE 192.168.1.0/24
 ```
+
+<BaseQuiz id="nmap-ping-1" correct="A">
+  <template #question>
+    Que fait `nmap -sn` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Effectue uniquement la découverte d'hôtes, sans balayage de ports</BaseQuizOption>
+  <BaseQuizOption value="B">Balaye tous les ports sur la cible</BaseQuizOption>
+  <BaseQuizOption value="C">Effectue un balayage furtif (stealth scan)</BaseQuizOption>
+  <BaseQuizOption value="D">Ne balaye que les ports UDP</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `-sn` indique à Nmap d'effectuer uniquement la découverte d'hôtes (balayage ping), sans balayer les ports. Ceci est utile pour identifier rapidement quels hôtes sont en ligne sur un réseau.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Techniques de Ping TCP
 
@@ -147,7 +177,23 @@ Utiliser des paquets UDP pour la découverte d'hôtes.
 
 ```bash
 # Ping UDP vers des ports courants
-nmap -PU53,67,68,137 192.168.1.0/24
+nmap -PU53,67,68,161 192.168.1.0/24
+```
+
+<BaseQuiz id="nmap-udp-1" correct="B">
+  <template #question>
+    Pourquoi utiliseriez-vous le ping UDP au lieu du ping ICMP ?
+  </template>
+  
+  <BaseQuizOption value="A">Le ping UDP est toujours plus rapide</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Certains réseaux bloquent les paquets ICMP mais autorisent les paquets UDP</BaseQuizOption>
+  <BaseQuizOption value="C">Le ping UDP balaye les ports automatiquement</BaseQuizOption>
+  <BaseQuizOption value="D">Le ping UDP ne fonctionne que sur les réseaux locaux</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le ping UDP peut être utile lorsque l'ICMP est bloqué par des pare-feu. De nombreux réseaux autorisent les paquets UDP vers des ports courants (comme le port 53 DNS) même lorsque l'ICMP est filtré, rendant le ping UDP efficace pour la découverte d'hôtes.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Ping UDP vers les ports par défaut
 nmap -PU 192.168.1.0/24
 ```
@@ -167,12 +213,12 @@ nmap --disable-arp-ping 192.168.1.0/24
 
 ### Balayage SYN TCP : `nmap -sS`
 
-Ce balayage est plus furtif, car Nmap envoie un paquet RST, ce qui empêche de multiples requêtes et raccourcit le temps de balayage.
+Ce balayage est plus furtif, car Nmap envoie un paquet RST, ce qui empêche les requêtes multiples et raccourcit le temps de balayage.
 
 ```bash
 # Balayage par défaut (nécessite root)
 nmap -sS 192.168.1.1
-# Balayage SYN de ports spécifiques
+# Balayage SYN sur des ports spécifiques
 nmap -sS -p 80,443 192.168.1.1
 # Balayage SYN rapide
 nmap -sS -T4 192.168.1.1
@@ -180,10 +226,10 @@ nmap -sS -T4 192.168.1.1
 
 ### Balayage de Connexion TCP : `nmap -sT`
 
-Nmap envoie un paquet TCP à un port avec le drapeau SYN défini. Cela permet à l'utilisateur de savoir si les ports sont ouverts, fermés ou inconnus.
+Nmap envoie un paquet TCP au port avec le drapeau SYN défini. Cela permet à l'utilisateur de savoir si les ports sont ouverts, fermés ou inconnus.
 
 ```bash
-# Balayage de connexion TCP (aucune racine requise)
+# Balayage de connexion TCP (root non requis)
 nmap -sT 192.168.1.1
 # Balayage de connexion avec temporisation
 nmap -sT -T3 192.168.1.1
@@ -247,7 +293,7 @@ nmap -p T:80,U:53 192.168.1.1
 
 ### Ensembles de Ports Courants
 
-Balayer rapidement les ports fréquemment utilisés.
+Balayer rapidement des ensembles de ports fréquemment utilisés.
 
 ```bash
 # Top 1000 ports (par défaut)
@@ -258,7 +304,7 @@ nmap --top-ports 100 192.168.1.1
 nmap -F 192.168.1.1
 # Afficher uniquement les ports ouverts
 nmap --open 192.168.1.1
-# Afficher tous les états des ports
+# Afficher tous les états de port
 nmap -v 192.168.1.1
 ```
 
@@ -266,7 +312,7 @@ nmap -v 192.168.1.1
 
 ### Détection de Service : `nmap -sV`
 
-Détecter quels services sont en cours d'exécution et tenter d'identifier leur logiciel, leurs versions et leurs configurations.
+Détecter quels services sont en cours d'exécution et tenter d'identifier leurs versions logicielles et configurations.
 
 ```bash
 # Détection de version de base
@@ -295,7 +341,7 @@ nmap --script http-* 192.168.1.1
 Utiliser l'empreinte TCP/IP pour deviner le système d'exploitation des hôtes cibles.
 
 ```bash
-# Détection d'OS
+# Détection de l'OS
 nmap -O 192.168.1.1
 # Détection d'OS agressive
 nmap -O --osscan-guess 192.168.1.1
@@ -318,12 +364,12 @@ nmap -sS -sV -O -sC 192.168.1.1
 
 ### Modèles de Temporisation : `nmap -T`
 
-Ajuster la vitesse du balayage en fonction de votre environnement cible et du risque de détection.
+Ajuster la vitesse de balayage et la furtivité en fonction de votre environnement cible et du risque de détection.
 
 ```bash
 # Paranoïaque (très lent, furtif)
 nmap -T0 192.168.1.1
-# Furtif (lent, furtif)
+# Sournois (lent, furtif)
 nmap -T1 192.168.1.1
 # Poli (plus lent, moins de bande passante)
 nmap -T2 192.168.1.1
@@ -337,7 +383,7 @@ nmap -T5 192.168.1.1
 
 ### Options de Temporisation Personnalisées
 
-Ajuster finement la manière dont Nmap gère les délais d'attente, les nouvelles tentatives et le balayage parallèle pour optimiser les performances.
+Affiner la manière dont Nmap gère les délais d'attente, les nouvelles tentatives et le balayage parallèle pour optimiser les performances.
 
 ```bash
 # Définir le taux minimum (paquets par seconde)
@@ -418,7 +464,7 @@ Sauvegarder les résultats dans différents formats.
 nmap -oN scan_results.txt 192.168.1.1
 # Sortie XML
 nmap -oX scan_results.xml 192.168.1.1
-# Sortie "Grepable"
+# Sortie lisible par grep
 nmap -oG scan_results.gnmap 192.168.1.1
 # Tous les formats
 nmap -oA scan_results 192.168.1.1
@@ -457,7 +503,7 @@ Combiner la sortie Nmap avec des outils en ligne de commande pour extraire des i
 nmap -sn 192.168.1.0/24 | grep "Nmap scan report"
 # Trouver les serveurs web
 nmap -p 80,443 --open 192.168.1.0/24 | grep "open"
-# Exporter au format CSV
+# Exporter en CSV
 nmap -oX - 192.168.1.1 | xsltproc --html -
 ```
 
@@ -476,9 +522,9 @@ nmap --mtu 16 192.168.1.1
 nmap --mtu 24 192.168.1.1
 ```
 
-### Balayage avec Leurres : `nmap -D`
+### Balayage avec Décoy : `nmap -D`
 
-Masquer votre balayage parmi des adresses IP leurres.
+Masquer votre balayage parmi des adresses IP leurres (décoy).
 
 ```bash
 # Utiliser des IPs leurres
@@ -502,7 +548,7 @@ nmap --source-port 53 192.168.1.1
 nmap --data-length 25 192.168.1.1
 ```
 
-### Balayage Inactif/Zombie : `nmap -sI`
+### Balayage Fantôme/Zombie : `nmap -sI`
 
 Utiliser un hôte zombie pour masquer l'origine du balayage.
 
@@ -606,7 +652,7 @@ nmap -sV -p 139,445 192.168.1.0/24
 nmap -sU --script nbstat -p 137 192.168.1.0/24
 # Scripts d'énumération SMB
 nmap --script smb-enum-* -p 445 192.168.1.50
-# Vérification des vulnérabilités SMB
+# Vérification de vulnérabilité SMB
 nmap --script smb-vuln-* -p 445 192.168.1.50
 ```
 
@@ -634,7 +680,7 @@ nmap -sS -T4 --min-rate 1000 --max-retries 1
 # Balayage d'hôtes parallèle
 nmap --min-hostgroup 50 --max-hostgroup 100
 192.168.1.0/24
-# Sauter les opérations lentes
+# Ignorer les opérations lentes
 nmap -sS -T4 --defeat-rst-ratelimit 192.168.1.0/24
 ```
 
@@ -644,7 +690,7 @@ Contrôler l'utilisation des ressources pour la stabilité.
 
 ```bash
 # Limiter les sondes parallèles
-nmap --max-parallelism 10 192.168.1.0/24
+nmap --max-parallelism 10 192.168.1.1
 # Contrôler les délais de balayage
 nmap --scan-delay 100ms 192.168.1.1
 # Définir le délai d'attente de l'hôte
@@ -653,11 +699,11 @@ nmap --host-timeout 10m 192.168.1.0/24
 
 ## Liens Pertinents
 
-- <router-link to="/wireshark">Wireshark Aide-mémoire</router-link>
-- <router-link to="/kali">Kali Linux Aide-mémoire</router-link>
-- <router-link to="/cybersecurity">Cybersecurity Aide-mémoire</router-link>
-- <router-link to="/linux">Linux Aide-mémoire</router-link>
-- <router-link to="/shell">Shell Aide-mémoire</router-link>
-- <router-link to="/network">Network Aide-mémoire</router-link>
-- <router-link to="/devops">DevOps Aide-mémoire</router-link>
-- <router-link to="/docker">Docker Aide-mémoire</router-link>
+- <router-link to="/wireshark">Aide-mémoire Wireshark</router-link>
+- <router-link to="/kali">Aide-mémoire Kali Linux</router-link>
+- <router-link to="/cybersecurity">Aide-mémoire Cybersécurité</router-link>
+- <router-link to="/linux">Aide-mémoire Linux</router-link>
+- <router-link to="/shell">Aide-mémoire Shell</router-link>
+- <router-link to="/network">Aide-mémoire Réseau</router-link>
+- <router-link to="/devops">Aide-mémoire DevOps</router-link>
+- <router-link to="/docker">Aide-mémoire Docker</router-link>

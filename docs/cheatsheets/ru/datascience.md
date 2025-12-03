@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по науке о данных'
-description: 'Изучите науку о данных с помощью нашей исчерпывающей шпаргалки, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Data Science | LabEx'
+description: 'Изучите науку о данных с помощью этой комплексной шпаргалки. Быстрый справочник по анализу данных, машинному обучению, статистике, визуализации, библиотекам Python и рабочим процессам Data Science.'
 pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/datascience">Изучите Data Science с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/datascience">Изучайте Data Science с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите науку о данных с помощью практических лабораторий и сценариев из реального мира. LabEx предлагает комплексные курсы по науке о данных, охватывающие основные библиотеки Python, манипулирование данными, статистический анализ, машинное обучение и визуализацию данных. Освойте методы сбора, очистки, анализа данных и развертывания моделей.
+Изучайте науку о данных с помощью практических лабораторий и сценариев из реального мира. LabEx предлагает комплексные курсы по науке о данных, охватывающие основные библиотеки Python, манипулирование данными, статистический анализ, машинное обучение и визуализацию данных. Освойте методы сбора, очистки, анализа данных и развертывания моделей.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -71,6 +71,21 @@ df.describe()      # Сводная статистика
 df.groupby('column').mean()
 df.fillna(df.mean())  # Обработка пропущенных значений
 ```
+
+<BaseQuiz id="datascience-pandas-1" correct="C">
+  <template #question>
+    Что возвращает `df.head()` в Pandas?
+  </template>
+  
+  <BaseQuizOption value="A">Последние 5 строк DataFrame</BaseQuizOption>
+  <BaseQuizOption value="B">Сводка DataFrame</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Первые 5 строк DataFrame</BaseQuizOption>
+  <BaseQuizOption value="D">Все строки DataFrame</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    По умолчанию `df.head()` отображает первые 5 строк DataFrame. Вы можете указать другое число, например `df.head(10)`, чтобы увидеть первые 10 строк. Это полезно для быстрого осмотра ваших данных.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Matplotlib & Seaborn: Визуализация
 
@@ -143,7 +158,7 @@ sns.heatmap(df.corr(), annot=True)
 
 ### Обработка пропущенных данных
 
-Перед анализом данные должны быть очищены и подготовлены. Это включает обработку пропущенных данных, удаление дубликатов и нормализацию переменных. Очистка данных часто является самой трудоемкой, но критически важной частью процесса науки о данных.
+Прежде чем анализировать данные, их необходимо очистить и подготовить. Это включает обработку пропущенных данных, удаление дубликатов и нормализацию переменных. Очистка данных часто является самой трудоемкой, но критически важной частью процесса Data Science.
 
 ```python
 # Identify missing values
@@ -159,6 +174,21 @@ from sklearn.impute import SimpleImputer, KNNImputer
 imputer = SimpleImputer(strategy='median')
 df_filled = pd.DataFrame(imputer.fit_transform(df))
 ```
+
+<BaseQuiz id="datascience-missing-1" correct="B">
+  <template #question>
+    Для чего используется прямое заполнение (`method='forward'`)?
+  </template>
+  
+  <BaseQuizOption value="A">Заполнение пропущенных значений средним</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Заполнение пропущенных значений предыдущим непустым значением</BaseQuizOption>
+  <BaseQuizOption value="C">Заполнение пропущенных значений случайными значениями</BaseQuizOption>
+  <BaseQuizOption value="D">Удаление пропущенных значений</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Прямое заполнение распространяет последнее действительное наблюдение вперед для заполнения пропущенных значений. Это полезно для временных рядов, где вы хотите сохранить предыдущее значение до появления новых данных.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Преобразование данных
 
@@ -181,6 +211,21 @@ le = LabelEncoder()
 df['encoded'] = le.fit_transform(df['category'])
 ```
 
+<BaseQuiz id="datascience-scaling-1" correct="C">
+  <template #question>
+    В чем разница между StandardScaler и MinMaxScaler?
+  </template>
+  
+  <BaseQuizOption value="A">Разницы нет</BaseQuizOption>
+  <BaseQuizOption value="B">StandardScaler масштабирует до [0,1], MinMaxScaler масштабирует до среднее=0, стд=1</BaseQuizOption>
+  <BaseQuizOption value="C" correct>StandardScaler нормализует до среднего=0 и стандартного отклонения=1, MinMaxScaler масштабирует до диапазона [0,1]</BaseQuizOption>
+  <BaseQuizOption value="D">StandardScaler работает быстрее</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    StandardScaler преобразует данные так, чтобы их среднее было равно 0, а стандартное отклонение — 1 (z-оценка нормализации). MinMaxScaler масштабирует данные до фиксированного диапазона, обычно [0, 1]. Оба полезны, но для разных сценариев.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Обнаружение и обработка выбросов
 
 Выявление и обработка экстремальных значений, которые могут исказить анализ.
@@ -201,7 +246,7 @@ z_scores = np.abs(stats.zscore(df['column']))
 df_no_outliers = df[z_scores < 3]
 ```
 
-### Инженерия признаков (Feature Engineering)
+### Конструирование признаков (Feature Engineering)
 
 Создание новых переменных для улучшения производительности модели.
 
@@ -302,7 +347,7 @@ r2 = r2_score(y, y_pred)
 
 ## Модели машинного обучения
 
-### Обучение с учителем - Классификация
+### Обучение с учителем — Классификация
 
 Деревья решений: Древовидная модель решений и их возможных последствий. Каждый узел представляет собой проверку атрибута, а каждая ветвь — результат. Обычно используется для задач классификации.
 
@@ -326,7 +371,7 @@ rf = RandomForestClassifier(n_estimators=100)
 rf.fit(X_train, y_train)
 ```
 
-### Обучение с учителем - Регрессия
+### Обучение с учителем — Регрессия
 
 Прогнозирование непрерывных целевых переменных.
 
@@ -396,7 +441,7 @@ rmse = np.sqrt(mse)
 
 ### Исследовательские визуализации
 
-Понимание распределений данных и взаимосвязей.
+Понимание распределений и взаимосвязей данных.
 
 ```python
 # Distribution plots
@@ -447,8 +492,8 @@ sns.pairplot(df, hue='target_category')
 plt.figure(figsize=(12, 4))
 plt.subplot(1, 2, 1)
 plt.scatter(y_pred, y_test - y_pred)
-plt.xlabel('Predicted')
-plt.ylabel('Residuals')
+plt.xlabel('Предсказанное')
+plt.ylabel('Остатки')
 plt.subplot(1, 2, 2)
 plt.scatter(y_test, y_pred)
 plt.plot([y_test.min(), y_test.max()], [y_test.min(),
@@ -457,12 +502,12 @@ y_test.max()], 'r--')
 from sklearn.metrics import roc_curve, auc
 fpr, tpr, _ = roc_curve(y_test, y_prob)
 roc_auc = auc(fpr, tpr)
-plt.plot(fpr, tpr, label=f'ROC Curve (AUC = {roc_auc:.2f})')
+plt.plot(fpr, tpr, label=f'ROC-кривая (AUC = {roc_auc:.2f})')
 ```
 
 ### Настройка и стилизация
 
-Профессиональное форматирование визуализаций.
+Форматирование профессиональных визуализаций.
 
 ```python
 # Set style and colors
@@ -470,10 +515,10 @@ plt.style.use('seaborn-v0_8')
 sns.set_palette("husl")
 # Custom figure settings
 plt.figure(figsize=(12, 8))
-plt.title('Professional Chart Title', fontsize=16,
+plt.title('Профессиональное название графика', fontsize=16,
 fontweight='bold')
-plt.xlabel('X-axis Label', fontsize=14)
-plt.ylabel('Y-axis Label', fontsize=14)
+plt.xlabel('Метка оси X', fontsize=14)
+plt.ylabel('Метка оси Y', fontsize=14)
 plt.legend(loc='best')
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
@@ -482,9 +527,9 @@ plt.savefig('analysis_plot.png', dpi=300,
 bbox_inches='tight')
 ```
 
-## Развертывание моделей и MLOps
+## Развертывание модели и MLOps
 
-### Сохранение моделей (Persistence)
+### Сохранение модели (Persistence)
 
 Сохранение и загрузка обученных моделей для использования в продакшене.
 
@@ -534,7 +579,7 @@ best_model = grid_search.best_estimator_
 
 ### Мониторинг производительности
 
-Быстрый доступ к основным концепциям и командам может иметь решающее значение в вашем рабочем процессе. Независимо от того, являетесь ли вы новичком, осваивающим основы, или опытным специалистом, ищущим надежный справочник, шпаргалки служат бесценными помощниками.
+Наличие быстрого доступа к основным концепциям и командам может иметь решающее значение в вашем рабочем процессе. Независимо от того, являетесь ли вы новичком, осваивающим основы, или опытным специалистом, ищущим надежный справочник, шпаргалки служат бесценными помощниками.
 
 ```python
 # Model performance tracking
@@ -583,7 +628,7 @@ with open('model_metadata.json', 'w') as f:
     json.dump(model_report, f, indent=2)
 ```
 
-## Лучшие практики и советы
+## Рекомендации и советы
 
 ### Организация кода
 
@@ -668,6 +713,6 @@ def data_quality_report(df):
 - <router-link to="/numpy">Шпаргалка по NumPy</router-link>
 - <router-link to="/matplotlib">Шпаргалка по Matplotlib</router-link>
 - <router-link to="/sklearn">Шпаргалка по Scikit-learn</router-link>
-- <router-link to="/database">Шпаргалка по Базам Данных</router-link>
+- <router-link to="/database">Шпаргалка по Базам данных</router-link>
 - <router-link to="/javascript">Шпаргалка по JavaScript</router-link>
 - <router-link to="/devops">Шпаргалка по DevOps</router-link>

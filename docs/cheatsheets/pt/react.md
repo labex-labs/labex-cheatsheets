@@ -1,6 +1,6 @@
 ---
-title: 'Guia Rápido React'
-description: 'Aprenda React com nosso guia completo cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola React | LabEx'
+description: 'Aprenda desenvolvimento React com esta folha de cola abrangente. Referência rápida para hooks, componentes, JSX, gerenciamento de estado, props e padrões modernos de desenvolvimento frontend em React.'
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Folha de Dicas de React
 <a target="_blank" href="https://labex.io/pt/learn/react">Aprenda React com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda desenvolvimento frontend React através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de React que cobrem criação essencial de componentes, gerenciamento de estado, hooks, manipulação de eventos e otimização de desempenho. Domine a construção de interfaces de usuário eficientes e de fácil manutenção para aplicações web modernas.
+Aprenda desenvolvimento frontend React através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de React que cobrem a criação essencial de componentes, gerenciamento de estado, hooks, manipulação de eventos e otimização de desempenho. Domine a construção de interfaces de usuário eficientes e de fácil manutenção para aplicações web modernas.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -44,7 +44,7 @@ const Greeting = ({ name }) => <h1>Olá, {name}!</h1>
 
 ### Componentes de Classe: `class extends React.Component`
 
-Crie componentes usando sintaxe de classe ES6.
+Crie componentes usando a sintaxe de classe ES6.
 
 ```javascript
 import React, { Component } from 'react'
@@ -83,7 +83,7 @@ const greeting = <h1>Olá, {name}!</h1>
 const element = (
   <div>
     <h1>Bem-vindo!</h1>
-    <p>É bom ver você por aqui.</p>
+    <p>Bom vê-lo por aqui.</p>
   </div>
 )
 ```
@@ -146,7 +146,7 @@ return (
 
 ### Props: `props.name`
 
-Passe dados de componentes pai para filho.
+Passe dados de componentes pai para componentes filho.
 
 ```javascript
 // Recebendo props
@@ -168,6 +168,21 @@ function Welcome({ name = 'Convidado' }) {
   return <h1>Olá, {name}!</h1>
 }
 ```
+
+<BaseQuiz id="react-props-1" correct="B">
+  <template #question>
+    Como você passa dados de um componente pai para um componente filho no React?
+  </template>
+  
+  <BaseQuizOption value="A">Usando variáveis de estado</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Usando props</BaseQuizOption>
+  <BaseQuizOption value="C">Usando refs</BaseQuizOption>
+  <BaseQuizOption value="D">Usando a API de contexto</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Props (abreviação de propriedades) são a principal forma de passar dados de componentes pai para componentes filho no React. Você passa props como atributos ao renderizar o componente filho.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### PropTypes: `Component.propTypes`
 
@@ -237,6 +252,21 @@ function Form() {
 }
 ```
 
+<BaseQuiz id="react-usestate-1" correct="A">
+  <template #question>
+    O que `useState(0)` retorna?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Um array com o valor do estado e uma função para atualizá-lo</BaseQuizOption>
+  <BaseQuizOption value="B">Apenas o valor do estado</BaseQuizOption>
+  <BaseQuizOption value="C">Uma função para atualizar o estado</BaseQuizOption>
+  <BaseQuizOption value="D">Nada, apenas define o estado</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `useState` retorna um array com dois elementos: o valor de estado atual e uma função para atualizá-lo. O valor inicial (0) é passado como argumento.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Hook useEffect: `useEffect()`
 
 Execute efeitos colaterais em componentes funcionais.
@@ -247,7 +277,7 @@ import React, { useState, useEffect } from 'react'
 function Timer() {
   const [count, setCount] = useState(0)
 
-  // Efeito executado após cada renderização
+  // O efeito é executado após cada renderização
   useEffect(() => {
     document.title = `Contagem: ${count}`
   })
@@ -259,6 +289,21 @@ function Timer() {
   }, [])
 }
 ```
+
+<BaseQuiz id="react-useeffect-1" correct="D">
+  <template #question>
+    O que o array de dependências vazio `[]` em `useEffect(() => {...}, [])` significa?
+  </template>
+  
+  <BaseQuizOption value="A">O efeito é executado em cada renderização</BaseQuizOption>
+  <BaseQuizOption value="B">O efeito nunca é executado</BaseQuizOption>
+  <BaseQuizOption value="C">O efeito é executado duas vezes</BaseQuizOption>
+  <BaseQuizOption value="D" correct>O efeito é executado apenas uma vez após a renderização inicial</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Um array de dependências vazio significa que o efeito não tem dependências, então ele será executado apenas uma vez após o componente ser montado. Isso é útil para código de configuração que deve ser executado apenas uma vez.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Estado de Classe: `this.state` / `setState()`
 
@@ -314,6 +359,21 @@ function Counter() {
 
 ## Manipulação de Eventos
 
+<BaseQuiz id="react-props-2" correct="A">
+  <template #question>
+    Qual é o propósito do PropTypes no React?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Validar os tipos de props passadas para os componentes</BaseQuizOption>
+  <BaseQuizOption value="B">Melhorar o desempenho do componente</BaseQuizOption>
+  <BaseQuizOption value="C">Estilizar componentes automaticamente</BaseQuizOption>
+  <BaseQuizOption value="D">Tornar os componentes mais rápidos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PropTypes ajuda a capturar erros validando se os componentes recebem props do tipo correto. Eles fornecem verificação de tipo em tempo de execução e são especialmente úteis durante o desenvolvimento.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Eventos de Clique: `onClick`
 
 Manipule cliques de botão e interações de elementos.
@@ -342,7 +402,7 @@ function Button() {
 
 ### Eventos de Formulário: `onChange` / `onSubmit`
 
-Manipule entradas de formulário e envios.
+Manipule entradas e envios de formulário.
 
 ```javascript
 function Form() {
@@ -442,7 +502,7 @@ function Status({ isOnline }) {
 
 ### Lógica If/Else: Declarações `if`
 
-Use lógica tradicional de JavaScript para condições complexas.
+Use a lógica tradicional do JavaScript para condições complexas.
 
 ```javascript
 function UserProfile({ user, isAdmin }) {
@@ -521,7 +581,7 @@ function TodoList({ todos }) {
   )
 }
 
-// Com índice (evite quando possível)
+// Com índice (evitar quando possível)
 function ItemList({ items }) {
   return (
     <ul>
@@ -730,9 +790,9 @@ function Child({ onMessage }) {
 }
 ```
 
-### Context API: `createContext` / `useContext`
+### API de Contexto: `createContext` / `useContext`
 
-Compartilhe estado entre vários componentes sem _prop drilling_.
+Compartilhe estado entre vários componentes sem "prop drilling".
 
 ```javascript
 const UserContext = React.createContext()
@@ -788,9 +848,9 @@ Depure componentes React e inspecione a árvore de componentes.
 // Aba Components: Inspecione a hierarquia de componentes
 // Aba Profiler: Meça o desempenho
 
-// Depuração no Console
+// Depuração no console
 function MyComponent(props) {
-  console.log('Props do MyComponent:', props)
+  console.log('Props de MyComponent:', props)
   console.log('MyComponent renderizado')
   return <div>{props.children}</div>
 }
@@ -821,7 +881,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-### Modo Estrito: `React.StrictMode`
+### Strict Mode: `React.StrictMode`
 
 Ative verificações e avisos adicionais para o desenvolvimento.
 

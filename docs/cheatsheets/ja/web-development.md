@@ -1,6 +1,6 @@
 ---
-title: 'Web 開発チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Web 開発を習得しましょう。'
+title: 'Web 開発チートシート | LabEx'
+description: 'この包括的なチートシートで Web 開発を学ぶ。HTML、CSS、JavaScript、API、レスポンシブデザイン、パフォーマンス最適化、フルスタック開発の必須事項を素早く参照。'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 
@@ -12,14 +12,14 @@ Web 開発チートシート
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/web-development">Learn Web Development with Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/ja/learn/web-development">LabEx でハンズオンラボで Web 開発を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと現実世界のシナリオを通じてウェブ開発を学びましょう。LabEx は、不可欠な HTML、CSS、JavaScript、DOM 操作、レスポンシブデザインを網羅した包括的なウェブ開発コースを提供します。最新のウェブ開発ワークフローのために、インタラクティブでレスポンシブなウェブサイトの構築を習得します。
+ハンズオンラボと現実世界のシナリオを通じて Web 開発を学びましょう。LabEx は、不可欠な HTML、CSS、JavaScript、DOM 操作、レスポンシブデザインを網羅した包括的な Web 開発コースを提供します。最新の Web 開発ワークフローのために、インタラクティブでレスポンシブなウェブサイトの構築を習得します。
 </base-disclaimer-content>
 </base-disclaimer>
 
-## HTML の基礎とドキュメント構造
+## HTML の基本とドキュメント構造
 
 ### 基本的な HTML 構造：`<!DOCTYPE html>`
 
@@ -43,7 +43,7 @@ Web 開発チートシート
 
 ### セマンティック要素：`<header>` / `<main>` / `<footer>`
 
-より良い構造のために、意味のある HTML5 セマンティック要素を使用します。
+構造のために意味のある HTML5 セマンティック要素を使用します。
 
 ```html
 <header>
@@ -64,6 +64,21 @@ Web 開発チートシート
   <p>© 2024 My Website</p>
 </footer>
 ```
+
+<BaseQuiz id="webdev-semantic-1" correct="B">
+  <template #question>
+    `header`、`main`、`footer` のようなセマンティック HTML 要素を使用する主な利点は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">ページがより速くロードされる</BaseQuizOption>
+  <BaseQuizOption value="B" correct>アクセシビリティと SEO を構造の意味付けによって向上させる</BaseQuizOption>
+  <BaseQuizOption value="C">ページを自動的にスタイル設定する</BaseQuizOption>
+  <BaseQuizOption value="D">JavaScript が動作するために必要である</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    セマンティック HTML 要素はドキュメント構造に意味を与え、スクリーンリーダー、検索エンジン、開発者がコンテンツの構成を理解しやすくします。これにより、アクセシビリティと SEO が向上します。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### テキスト要素：`<h1>` から `<h6>` / `<p>`
 
@@ -162,7 +177,7 @@ Web 開発チートシート
 
 ### 入力タイプ：`type="text"` / `type="email"`
 
-さまざまなデータに対して適切な入力タイプを使用します。
+異なるデータに対して適切な入力タイプを使用します。
 
 ```html
 <input type="text" placeholder="Enter your name" />
@@ -194,11 +209,11 @@ Web 開発チートシート
 ></textarea>
 ```
 
-## CSS の基礎とスタイリング
+## CSS の基本とスタイリング
 
 ### CSS セレクタ：`element` / `.class` / `#id`
 
-異なるセレクタタイプを使用して HTML 要素をターゲットにします。
+異なるセレクタタイプを使用して HTML 要素をターゲットにしてスタイルを設定します。
 
 ```css
 /* Element selector */
@@ -246,9 +261,24 @@ CSS ボックスモデルを使用して、間隔とレイアウトを制御し�
 }
 ```
 
+<BaseQuiz id="webdev-boxmodel-1" correct="B">
+  <template #question>
+    CSS の `margin`と`padding` の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはありません</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Margin は要素の外側のスペース、padding は要素の内側のスペースです</BaseQuizOption>
+  <BaseQuizOption value="C">Margin は水平方向の間隔、padding は垂直方向の間隔に使用されます</BaseQuizOption>
+  <BaseQuizOption value="D">Margin は境界線用、padding はコンテンツ用です</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Margin は要素の境界線の外側にスペースを作成し（要素間）、padding は要素のコンテンツと境界線の間にスペースを作成します。どちらも間隔に影響しますが、領域が異なります。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Flexbox: `display: flex`
 
-簡単に柔軟でレスポンシブなレイアウトを作成します。
+柔軟でレスポンシブなレイアウトを簡単に作成します。
 
 ```css
 .container {
@@ -269,9 +299,24 @@ CSS ボックスモデルを使用して、間隔とレイアウトを制御し�
 }
 ```
 
+<BaseQuiz id="webdev-flexbox-1" correct="A">
+  <template #question>
+    Flexbox で`justify-content: center`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>フレックスアイテムを主軸に沿って中央揃えにします（デフォルトでは水平方向）</BaseQuizOption>
+  <BaseQuizOption value="B">アイテムを垂直方向に中央揃えにします</BaseQuizOption>
+  <BaseQuizOption value="C">アイテムを均等に配置します</BaseQuizOption>
+  <BaseQuizOption value="D">アイテムをストレッチしてスペースを埋めます</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `justify-content`は主軸（デフォルトでは水平方向）に沿った配置を制御します。`center`はすべてのフレックスアイテムをコンテナ内で中央に配置します。交差軸（垂直方向）の配置を制御するには `align-items` を使用します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Grid レイアウト：`display: grid`
 
-複雑な 2 次元レイアウトを作成します。
+複雑な二次元レイアウトを作成します。
 
 ```css
 .grid-container {
@@ -319,9 +364,9 @@ let user = {
 }
 ```
 
-### 関数：`function` / Arrow Functions
+### 関数：`function` / アロー関数
 
-さまざまな関数構文を使用して、再利用可能なコードブロックを作成します。
+異なる関数構文を使用して、再利用可能なコードブロックを作成します。
 
 ```javascript
 // Function declaration
@@ -346,7 +391,7 @@ function createUser(name, age = 18) {
 
 ### 条件ロジック：`if` / `else` / `switch`
 
-条件文を使用してプログラムフローを制御します。
+条件文を使用してプログラムの流れを制御します。
 
 ```javascript
 // If/else statement
@@ -374,7 +419,7 @@ switch (day) {
 }
 ```
 
-### ループ：`for` / `while` / Array Methods
+### ループ：`for` / `while` / Array メソッド
 
 データを反復処理し、操作を繰り返します。
 
@@ -593,7 +638,7 @@ h1 {
 
 ### コンソールメソッド：`console.log()` / `console.error()`
 
-コンソール出力でコードをデバッグおよび監視します。
+コンソール出力を利用してコードをデバッグおよび監視します。
 
 ```javascript
 // Basic logging
@@ -612,7 +657,7 @@ console.log('Email:', user.email)
 console.groupEnd()
 ```
 
-### デバッグ技術：`debugger` / Breakpoints
+### デバッグ技術：`debugger` / ブレークポイント
 
 コードの実行を一時停止して、変数やプログラムの状態を検査します。
 
@@ -638,7 +683,7 @@ try {
 
 ### ブラウザ DevTools: Elements / Console / Network
 
-ブラウザツールを使用して、HTML を検査し、JavaScript をデバッグし、ネットワークリクエストを監視します。
+HTML の検査、JavaScript のデバッグ、ネットワークリクエストの監視にブラウザツールを使用します。
 
 ```javascript
 // Inspect elements in console

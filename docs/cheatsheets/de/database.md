@@ -1,6 +1,6 @@
 ---
-title: 'Datenbank Spickzettel'
-description: 'Lernen Sie Datenbanken mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Datenbank Spickzettel | LabEx'
+description: 'Lernen Sie Datenbankmanagement mit diesem umfassenden Spickzettel. Schnelle Referenz für SQL-Abfragen, Datenbankdesign, Normalisierung, Indizierung, Transaktionen und relationale Datenbankadministration.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Datenbank Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/database">Datenbank mit praktischen Übungen lernen</a>
+<a target="_blank" href="https://labex.io/de/learn/database">Lernen Sie Datenbankmanagement mit Hands-On-Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Datenbankmanagement und SQL durch praktische Übungen und reale Szenarien. LabEx bietet umfassende Datenbankkurse, die wesentliche SQL-Befehle, Datenmanipulation, Abfrageoptimierung, Datenbankdesign und Verwaltungsbest Practices abdecken. Meistern Sie relationale Datenbanken, NoSQL-Systeme und Best Practices für die Datenbank-Sicherheit.
+Erlernen Sie Datenbankmanagement und SQL durch praktische Übungen und reale Szenarien. LabEx bietet umfassende Datenbankkurse, die wesentliche SQL-Befehle, Datenmanipulation, Abfrageoptimierung, Datenbankdesign und -administration abdecken. Meistern Sie relationale Datenbanken, NoSQL-Systeme und Best Practices für die Datenbank-Sicherheit.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -35,6 +35,21 @@ COLLATE utf8mb4_general_ci;
 -- Datenbank verwenden
 USE company_db;
 ```
+
+<BaseQuiz id="database-create-1" correct="A">
+  <template #question>
+    Was bewirkt `CREATE DATABASE company_db`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Erstellt eine neue, leere Datenbank namens company_db</BaseQuizOption>
+  <BaseQuizOption value="B">Erstellt eine Tabelle in der Datenbank</BaseQuizOption>
+  <BaseQuizOption value="C">Löscht die Datenbank</BaseQuizOption>
+  <BaseQuizOption value="D">Sichert die Datenbank</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `CREATE DATABASE` erstellt eine neue, leere Datenbank. Nach der Erstellung müssen Sie `USE` verwenden, um sie auszuwählen, und dann Tabellen darin erstellen.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Datenbanken anzeigen: `SHOW DATABASES`
 
@@ -66,9 +81,9 @@ DROP DATABASE IF EXISTS old_company_db;
 Erstellt Sicherungskopien Ihrer Datenbank.
 
 ```sql
--- Sicherung über die Kommandozeile
+-- Kommandozeilen-Sicherung
 mysqldump -u username -p database_name > backup.sql
--- Wiederherstellung aus der Sicherung
+-- Wiederherstellen aus Sicherung
 mysql -u username -p database_name < backup.sql
 ```
 
@@ -124,7 +139,7 @@ SHOW COLUMNS FROM employees;
 
 ### Tabelle ändern: `ALTER TABLE`
 
-Modifiziert die bestehende Tabellenstruktur und Spalten.
+Modifiziert die vorhandene Tabellenstruktur und Spalten.
 
 ```sql
 -- Neue Spalte hinzufügen
@@ -140,6 +155,21 @@ COLUMN phone;
 RENAME TABLE employees TO staff;
 ```
 
+<BaseQuiz id="database-alter-1" correct="C">
+  <template #question>
+    Was bewirkt `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)`?
+  </template>
+  
+  <BaseQuizOption value="A">Löscht die Spalte phone</BaseQuizOption>
+  <BaseQuizOption value="B">Modifiziert die Spalte phone</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Fügt der Tabelle employees eine neue Spalte namens phone hinzu</BaseQuizOption>
+  <BaseQuizOption value="D">Benennt die Tabelle um</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ALTER TABLE ... ADD COLUMN` fügt einer bestehenden Tabelle eine neue Spalte hinzu. Die neue Spalte wird mit dem angegebenen Datentyp hinzugefügt und ist für vorhandene Zeilen NULL, sofern kein Standardwert angegeben wird.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Tabelleninformationen: `SHOW`
 
 Ruft detaillierte Informationen über Tabellen und deren Eigenschaften ab.
@@ -152,7 +182,7 @@ SHOW CREATE TABLE employees;
 -- Tabellenstatus anzeigen
 SHOW TABLE STATUS LIKE
 'employees';
--- Zeilen in der Tabelle zählen
+-- Zeilen in Tabelle zählen
 SELECT COUNT(*) FROM employees;
 ```
 
@@ -182,7 +212,7 @@ SELECT * FROM employees WHERE department =
 
 ### Daten aktualisieren: `UPDATE`
 
-Modifiziert bestehende Datensätze in Tabellen.
+Modifiziert vorhandene Datensätze in Tabellen.
 
 ```sql
 -- Einzelnen Datensatz aktualisieren
@@ -216,7 +246,7 @@ TRUNCATE TABLE temp_employees;
 
 ### Daten ersetzen: `REPLACE INTO`
 
-Fügt ein oder aktualisiert einen Datensatz basierend auf dem Primärschlüssel.
+Fügt Datensätze ein oder aktualisiert sie basierend auf dem Primärschlüssel.
 
 ```sql
 -- Datensatz ersetzen (einfügen oder aktualisieren)
@@ -260,6 +290,24 @@ SELECT * FROM employees
 WHERE department = 'Engineering' AND salary > 75000;
 -- Musterabgleich
 SELECT * FROM employees WHERE name LIKE 'John%';
+```
+
+<BaseQuiz id="database-where-1" correct="C">
+  <template #question>
+    Was entspricht `LIKE 'John%'` in einer WHERE-Klausel?
+  </template>
+  
+  <BaseQuizOption value="A">Nur exakte Übereinstimmungen mit "John"</BaseQuizOption>
+  <BaseQuizOption value="B">Werte, die mit "John" enden</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Werte, die mit "John" beginnen</BaseQuizOption>
+  <BaseQuizOption value="D">Werte, die irgendwo "John" enthalten</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das `%`-Platzhalterzeichen in SQL steht für eine beliebige Zeichenfolge. `LIKE 'John%'` passt auf jeden Wert, der mit "John" beginnt, wie z.B. "John", "Johnny", "Johnson" usw.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```sql
 -- Bereichsabfragen
 SELECT * FROM employees
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
@@ -387,7 +435,7 @@ FROM employees;
 
 ### Primärschlüssel: `PRIMARY KEY`
 
-Stellt die eindeutige Identifizierung für jeden Datensatz sicher.
+Stellt die eindeutige Identifizierung jedes Datensatzes sicher.
 
 ```sql
 -- Primärschlüssel mit einer Spalte
@@ -422,29 +470,29 @@ FOREIGN KEY (department_id) REFERENCES
 departments(id);
 ```
 
-### Eindeutige Constraints: `UNIQUE`
+### Eindeutigkeits-Constraints: `UNIQUE`
 
 Verhindert doppelte Werte in Spalten.
 
 ```sql
--- Eindeutiges Constraint für eine einzelne Spalte
+-- Eindeutigkeits-Constraint für eine einzelne Spalte
 ALTER TABLE employees
 ADD CONSTRAINT unique_email UNIQUE (email);
--- Zusammengesetztes eindeutiges Constraint
+-- Zusammengesetzter Eindeutigkeits-Constraint
 ALTER TABLE employees
 ADD CONSTRAINT unique_name_dept UNIQUE (name,
 department);
 ```
 
-### Check Constraints: `CHECK`
+### Check-Constraints: `CHECK`
 
 Erzwingt Geschäftsregeln und Datenvalidierung.
 
 ```sql
--- Einfaches Check-Constraint
+-- Einfacher Check-Constraint
 ALTER TABLE employees
 ADD CONSTRAINT check_salary CHECK (salary > 0);
--- Komplexes Check-Constraint
+-- Komplexer Check-Constraint
 ALTER TABLE employees
 ADD CONSTRAINT check_age
 CHECK (YEAR(CURDATE()) - YEAR(birth_date) >= 18);
@@ -563,7 +611,7 @@ SELECT * FROM old_employees WHERE active = 1;
 
 ### Massenoperationen
 
-Behandelt groß angelegte Datenoperationen effizient.
+Effiziente Handhabung von groß angelegten Datenoperationen.
 
 ```sql
 -- Masseneinfügung mit INSERT IGNORE
@@ -617,7 +665,7 @@ Organisiert Berechtigungen mithilfe von Datenbankrollen.
 ```sql
 -- Rolle erstellen (MySQL 8.0+)
 CREATE ROLE 'app_read_role', 'app_write_role';
--- Berechtigungen für Rolle erteilen
+-- Berechtigungen der Rolle erteilen
 GRANT SELECT ON company_db.* TO 'app_read_role';
 GRANT INSERT, UPDATE, DELETE ON company_db.* TO
 'app_write_role';
@@ -625,7 +673,7 @@ GRANT INSERT, UPDATE, DELETE ON company_db.* TO
 GRANT 'app_read_role' TO 'readonly_user'@'localhost';
 ```
 
-### SQL Injection Prävention
+### Schutz vor SQL-Injection
 
 Schutz vor gängigen Sicherheitslücken.
 
@@ -633,14 +681,14 @@ Schutz vor gängigen Sicherheitslücken.
 -- Prepared Statements verwenden (Anwendungsebene)
 -- Schlecht: SELECT * FROM users WHERE id = ' + userInput
 -- Gut: Parameterisierte Abfragen verwenden
--- Eingabedaten validieren
+-- Eingabedaten typvalidieren
 -- Gespeicherte Prozeduren verwenden, wenn möglich
 -- Prinzip der geringsten Rechte anwenden
 ```
 
 ## Datenbankinstallation & Einrichtung
 
-### MySQL Installation
+### MySQL-Installation
 
 Beliebte Open-Source relationale Datenbank.
 
@@ -655,7 +703,7 @@ sudo systemctl enable mysql
 sudo mysql_secure_installation
 ```
 
-### PostgreSQL Installation
+### PostgreSQL-Installation
 
 Fortschrittliche Open-Source relationale Datenbank.
 
@@ -664,7 +712,7 @@ Fortschrittliche Open-Source relationale Datenbank.
 sudo apt update
 sudo apt install postgresql
 postgresql-contrib
-# Zu postgres-Benutzer wechseln
+# Zum postgres-Benutzer wechseln
 sudo -u postgres psql
 # Datenbank und Benutzer erstellen
 CREATE DATABASE myapp;
@@ -672,9 +720,9 @@ CREATE USER myuser WITH
 PASSWORD 'mypassword';
 ```
 
-### SQLite Einrichtung
+### SQLite-Einrichtung
 
-Leichte, dateibasierte Datenbank.
+Leichtgewichtige, dateibasierte Datenbank.
 
 ```bash
 # SQLite installieren
@@ -690,7 +738,7 @@ sqlite3 mydatabase.db
 
 ## Datenbankkonfiguration & Tuning
 
-### MySQL Konfiguration
+### MySQL-Konfiguration
 
 Wichtige MySQL-Konfigurationsparameter.
 
@@ -709,7 +757,7 @@ SHOW STATUS LIKE 'Connections';
 
 ### Verbindungsverwaltung
 
-Verwaltet Datenbankverbindungen und Pooling.
+Verbindungen und Pooling verwalten.
 
 ```sql
 -- Aktuelle Verbindungen anzeigen
@@ -737,7 +785,7 @@ backup_$DATE.sql
 
 ### Überwachung & Protokollierung
 
-Überwacht die Datenbankaktivität und Leistung.
+Überwachung der Datenbankaktivität und Leistung.
 
 ```sql
 -- Point-in-Time Recovery Einrichtung
@@ -767,7 +815,7 @@ FROM employees e
 JOIN departments d ON e.dept_id = d.id;
 -- Spaltennamen anstelle von SELECT * angeben
 SELECT name, email, salary FROM employees;
--- Geeignete Datentypen verwenden
+-- Angemessene Datentypen verwenden
 CREATE TABLE products (
     id INT PRIMARY KEY,
     price DECIMAL(10,2) NOT NULL,

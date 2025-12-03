@@ -1,6 +1,6 @@
 ---
-title: 'Golang Spickzettel'
-description: 'Lernen Sie Golang mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Golang Spickzettel | LabEx'
+description: 'Lernen Sie Go-Programmierung mit diesem umfassenden Spickzettel. Schnelle Referenz für Go-Syntax, Goroutinen, Channels, Interfaces, Fehlerbehandlung und nebenläufige Programmierung für Backend-Entwickler.'
 pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 ---
 
@@ -21,13 +21,13 @@ Lernen Sie Go-Programmierung durch praktische Labs und reale Szenarien. LabEx bi
 
 ## Installation & Einrichtung
 
-### Go installieren: Herunterladen & Extrahieren
+### Go installieren: Herunterladen & Entpacken
 
 Laden Sie Go von der offiziellen Website herunter und installieren Sie es.
 
 ```bash
 # Download von https://golang.org/dl/
-# Linux/macOS - nach /usr/local extrahieren
+# Linux/macOS - nach /usr/local entpacken
 sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz
 # Zu PATH in ~/.bashrc oder ~/.zshrc hinzufügen
 export PATH=$PATH:/usr/local/go/bin
@@ -64,7 +64,7 @@ echo %GOPATH%
 Initialisieren Sie ein neues Go-Modul und einen Workspace.
 
 ```bash
-# Neues Verzeichnis erstellen und Modul initialisieren
+# Neuen Ordner erstellen und Modul initialisieren
 mkdir my-go-project
 cd my-go-project
 go mod init my-go-project
@@ -98,8 +98,8 @@ Konfigurieren Sie VS Code für die Go-Entwicklung.
 
 ```bash
 # Go-Erweiterung in VS Code installieren
-# Ctrl+Shift+P -> Go: Install/Update Tools
-# Aktivierte Schlüsselfunktionen:
+# Strg+Umschalt+P -> Go: Install/Update Tools
+# Hauptfunktionen aktiviert:
 # - Syntaxhervorhebung
 # - IntelliSense
 # - Debugging
@@ -125,7 +125,7 @@ import "os"
 
 ### Variablen & Konstanten
 
-Deklarieren und initialisieren Sie Variablen und Konstanten.
+Variablen und Konstanten deklarieren und initialisieren.
 
 ```go
 // Variablendeklarationen
@@ -139,6 +139,21 @@ count := 42
 const Pi = 3.14159
 const Message = "Hello, Go!"
 ```
+
+<BaseQuiz id="golang-variables-1" correct="B">
+  <template #question>
+    Was ist der Unterschied zwischen `var name string = "Go"` und `name := "Go"`?
+  </template>
+  
+  <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`:=` ist eine kurze Deklaration, die den Typ ableitet, `var` deklariert den Typ explizit</BaseQuizOption>
+  <BaseQuizOption value="C">`:=` kann nur für Konstanten verwendet werden</BaseQuizOption>
+  <BaseQuizOption value="D">`var` kann nur innerhalb von Funktionen verwendet werden</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Der `:=`-Operator ist eine Kurzform für Variablendeklaration und -initialisierung, wobei Go den Typ automatisch ableitet. `var` deklariert den Variablentyp explizit und kann auf Paket- oder Funktionsebene verwendet werden.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Grundlegende Datentypen
 
@@ -165,20 +180,20 @@ Steuern Sie den Programmfluss mit bedingten Anweisungen.
 ```go
 // If-Anweisungen
 if age >= 18 {
-    fmt.Println("Adult")
+    fmt.Println("Erwachsen")
 } else if age >= 13 {
     fmt.Println("Teenager")
 } else {
-    fmt.Println("Child")
+    fmt.Println("Kind")
 }
 // Switch-Anweisungen
 switch day {
-case "Monday":
-    fmt.Println("Start of work week")
-case "Friday":
+case "Montag":
+    fmt.Println("Wochenanfang")
+case "Freitag":
     fmt.Println("TGIF")
 default:
-    fmt.Println("Regular day")
+    fmt.Println("Regulärer Tag")
 }
 ```
 
@@ -197,7 +212,7 @@ for condition {
 }
 // Endlosschleife
 for {
-    // bei Bedarf beenden
+    // Abbruch bei Bedarf
 }
 ```
 
@@ -209,7 +224,7 @@ Iterieren Sie über Slices, Arrays, Maps und Strings.
 // Über Slice iterieren
 numbers := []int{1, 2, 3, 4, 5}
 for index, value := range numbers {
-    fmt.Printf("Index: %d, Value: %d\n", index, value)
+    fmt.Printf("Index: %d, Wert: %d\n", index, value)
 }
 // Über Map iterieren
 colors := map[string]string{"red": "#FF0000", "green": "#00FF00"}
@@ -222,12 +237,27 @@ for i, char := range "Hello" {
 }
 ```
 
+<BaseQuiz id="golang-range-1" correct="B">
+  <template #question>
+    Was gibt `range` zurück, wenn über ein Slice in Go iteriert wird?
+  </template>
+  
+  <BaseQuizOption value="A">Nur den Wert</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Sowohl den Index als auch den Wert</BaseQuizOption>
+  <BaseQuizOption value="C">Nur den Index</BaseQuizOption>
+  <BaseQuizOption value="D">Die Länge des Slices</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Bei der Verwendung von `range` mit einem Slice gibt es zwei Werte zurück: den Index (Position) und den Wert an diesem Index. Sie können `_` verwenden, um einen der Werte zu ignorieren, falls Sie ihn nicht benötigen.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Kontrollanweisungen: `break` / `continue`
 
 Steuern Sie den Schleifenausführungsfluss.
 
 ```go
-// Schleife abbrechen
+// Aus der Schleife ausbrechen
 for i := 0; i < 10; i++ {
     if i == 5 {
         break
@@ -243,16 +273,31 @@ for i := 0; i < 5; i++ {
 }
 ```
 
+<BaseQuiz id="golang-control-1" correct="C">
+  <template #question>
+    Was ist der Unterschied zwischen `break` und `continue` in Go-Schleifen?
+  </template>
+  
+  <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="B">break überspringt die aktuelle Iteration, continue beendet die Schleife</BaseQuizOption>
+  <BaseQuizOption value="C" correct>break beendet die Schleife vollständig, continue springt zur nächsten Iteration</BaseQuizOption>
+  <BaseQuizOption value="D">Beide beenden die Schleife</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `break` beendet die Schleife sofort und fährt mit der Ausführung nach der Schleife fort. `continue` überspringt den Rest der aktuellen Iteration und fährt mit der nächsten Iteration der Schleife fort.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Funktionen
 
 ### Funktionsdeklaration: `func`
 
-Definieren Sie Funktionen mit Parametern und Rückgabewerten.
+Funktionen mit Parametern und Rückgabewerten definieren.
 
 ```go
-// Basis-Funktion
+// Einfache Funktion
 func greet(name string) {
-    fmt.Printf("Hello, %s!\n", name)
+    fmt.Printf("Hallo, %s!\n", name)
 }
 // Funktion mit Rückgabewert
 func add(a, b int) int {
@@ -261,7 +306,7 @@ func add(a, b int) int {
 // Mehrere Rückgabewerte
 func divide(a, b float64) (float64, error) {
     if b == 0 {
-        return 0, errors.New("division by zero")
+        return 0, errors.New("Division durch Null")
     }
     return a / b, nil
 }
@@ -320,7 +365,7 @@ fmt.Println(c()) // 2
 
 ### Defer-Anweisung
 
-Verzögert die Ausführung von Funktionen bis die umgebende Funktion zurückkehrt.
+Verzögert die Ausführung von Funktionen, bis die umgebende Funktion zurückkehrt.
 
 ```go
 func processFile(filename string) {
@@ -437,7 +482,7 @@ func (r *Rectangle) Scale(factor float64) {
 // Verwendung
 rect := Rectangle{Width: 10, Height: 5}
 fmt.Println(rect.Area()) // 50
-rect.Scale(2)            // rect modifizieren
+rect.Scale(2)            // Modifiziert rect
 ```
 
 ### Interfaces
@@ -450,13 +495,13 @@ type Shape interface {
     Area() float64
     Perimeter() float64
 }
-// Interface für Rectangle implementieren
+// Implementierung des Interfaces für Rectangle
 func (r Rectangle) Perimeter() float64 {
     return 2 * (r.Width + r.Height)
 }
 // Rectangle implementiert nun das Shape-Interface
 func printShapeInfo(s Shape) {
-    fmt.Printf("Area: %.2f, Perimeter: %.2f\n",
+    fmt.Printf("Fläche: %.2f, Umfang: %.2f\n",
                s.Area(), s.Perimeter())
 }
 ```
@@ -469,12 +514,12 @@ Arbeiten mit Werten unbekannter Typen.
 // Leeres Interface kann jeden Wert aufnehmen
 var i interface{}
 i = 42
-i = "hello"
+i = "hallo"
 i = []int{1, 2, 3}
 // Typ-Assertion
 str, ok := i.(string)
 if ok {
-    fmt.Printf("String value: %s\n", str)
+    fmt.Printf("String-Wert: %s\n", str)
 }
 // Typ-Switch
 switch v := i.(type) {
@@ -483,11 +528,11 @@ case int:
 case string:
     fmt.Printf("String: %s\n", v)
 default:
-    fmt.Printf("Unknown type: %T\n", v)
+    fmt.Printf("Unbekannter Typ: %T\n", v)
 }
 ```
 
-### Embedding (Einbettung)
+### Einbettung (Embedding)
 
 Typen durch Einbetten anderer Typen zusammensetzen.
 
@@ -497,7 +542,7 @@ type Person struct {
     Age  int
 }
 type Employee struct {
-    Person    // Eingebettetes Struct
+    Person    // Eingebetteter Struct
     Company   string
     Salary    float64
 }
@@ -515,14 +560,14 @@ fmt.Println(emp.Name) // "Alice"
 
 ### Grundlegende Fehlerbehandlung
 
-Verwenden Sie das eingebaute Fehler-Interface zur Fehlerbehandlung.
+Verwenden Sie die eingebaute Fehler-Schnittstelle zur Fehlerbehandlung.
 
 ```go
 import "errors"
 // Funktion, die einen Fehler zurückgibt
 func divide(a, b float64) (float64, error) {
     if b == 0 {
-        return 0, errors.New("division by zero")
+        return 0, errors.New("Division durch Null")
     }
     return a / b, nil
 }
@@ -531,7 +576,7 @@ result, err := divide(10, 2)
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("Result: %.2f\n", result)
+fmt.Printf("Ergebnis: %.2f\n", result)
 ```
 
 ### Benutzerdefinierte Fehler
@@ -545,7 +590,7 @@ type ValidationError struct {
     Message string
 }
 func (e ValidationError) Error() string {
-    return fmt.Sprintf("validation error in %s: %s",
+    return fmt.Sprintf("Validierungsfehler in %s: %s",
                        e.Field, e.Message)
 }
 // Funktion, die benutzerdefinierten Fehler verwendet
@@ -553,7 +598,7 @@ func validateAge(age int) error {
     if age < 0 {
         return ValidationError{
             Field:   "age",
-            Message: "must be non-negative",
+            Message: "muss nicht-negativ sein",
         }
     }
     return nil
@@ -570,7 +615,7 @@ import "fmt"
 func processFile(filename string) error {
     file, err := os.Open(filename)
     if err != nil {
-        return fmt.Errorf("failed to open file %s: %w",
+        return fmt.Errorf("Fehler beim Öffnen der Datei %s: %w",
                           filename, err)
     }
     defer file.Close()
@@ -583,7 +628,7 @@ err := processFile("missing.txt")
 if err != nil {
     var pathErr *os.PathError
     if errors.As(err, &pathErr) {
-        fmt.Println("Path error:", pathErr)
+        fmt.Println("Pfadfehler:", pathErr)
     }
 }
 ```
@@ -597,15 +642,15 @@ Behandeln Sie außergewöhnliche Situationen mit `panic` und `recover`.
 func riskyOperation() {
     defer func() {
         if r := recover(); r != nil {
-            fmt.Println("Recovered from panic:", r)
+            fmt.Println("Von Panic wiederhergestellt:", r)
         }
     }()
 
     // Dies löst einen Panic aus
-    panic("something went wrong!")
+    panic("etwas ist schiefgelaufen!")
 }
 // Verwendung
-riskyOperation() // Programm läuft nach dem Panic weiter
+riskyOperation() // Programm läuft nach Panic weiter
 ```
 
 ## Nebenläufigkeit (Concurrency)
@@ -618,7 +663,7 @@ Leichtgewichtige Threads, die vom Go-Laufzeitsystem verwaltet werden.
 import "time"
 // Einfache Goroutine
 func sayHello() {
-    fmt.Println("Hello from goroutine!")
+    fmt.Println("Hallo von Goroutine!")
 }
 func main() {
     // Goroutine starten
@@ -626,7 +671,7 @@ func main() {
 
     // Anonyme Goroutine
     go func() {
-        fmt.Println("Anonymous goroutine")
+        fmt.Println("Anonyme Goroutine")
     }()
 
     // Warten, bis Goroutinen fertig sind
@@ -636,7 +681,7 @@ func main() {
 
 ### Channels
 
-Kommunikation zwischen Goroutinen über Channels.
+Kommunikation zwischen Goroutinen mithilfe von Channels.
 
 ```go
 // Channel erstellen
@@ -660,7 +705,7 @@ Gängige Muster für die Channel-Kommunikation.
 // Worker-Muster
 func worker(id int, jobs <-chan int, results chan<- int) {
     for job := range jobs {
-        fmt.Printf("Worker %d processing job %d\n", id, job)
+        fmt.Printf("Worker %d verarbeitet Job %d\n", id, job)
         results <- job * 2
     }
 }
@@ -689,12 +734,12 @@ func main() {
 
     go func() {
         time.Sleep(time.Second)
-        ch1 <- "from ch1"
+        ch1 <- "von ch1"
     }()
 
     go func() {
         time.Sleep(2 * time.Second)
-        ch2 <- "from ch2"
+        ch2 <- "von ch2"
     }()
 
     // Wählt den zuerst verfügbaren Channel
@@ -704,12 +749,12 @@ func main() {
     case msg2 := <-ch2:
         fmt.Println(msg2)
     case <-time.After(3 * time.Second):
-        fmt.Println("timeout")
+        fmt.Println("Timeout")
     }
 }
 ```
 
-## Datei-E/A & JSON
+## Datei-I/O & JSON
 
 ### Dateioperationen
 
@@ -756,7 +801,7 @@ file, _ = os.Create("output.csv")
 defer file.Close()
 writer := csv.NewWriter(file)
 defer writer.Flush()
-writer.Write([]string{"Name", "Age", "City"})
+writer.Write([]string{"Name", "Alter", "Stadt"})
 writer.Write([]string{"Alice", "30", "NYC"})
 ```
 
@@ -823,7 +868,7 @@ func TestAdd(t *testing.T) {
     expected := 5
 
     if result != expected {
-        t.Errorf("Add(2, 3) = %d; want %d", result, expected)
+        t.Errorf("Add(2, 3) = %d; erwartet %d", result, expected)
     }
 }
 // Tests ausführen
@@ -833,7 +878,7 @@ func TestAdd(t *testing.T) {
 
 ### Tabellengetriebene Tests
 
-Testen Sie mehrere Fälle effizient.
+Mehrere Fälle effizient testen.
 
 ```go
 func TestAddMultiple(t *testing.T) {
@@ -842,16 +887,16 @@ func TestAddMultiple(t *testing.T) {
         a, b     int
         expected int
     }{
-        {"positive numbers", 2, 3, 5},
-        {"with zero", 0, 5, 5},
-        {"negative numbers", -1, -2, -3},
+        {"positive Zahlen", 2, 3, 5},
+        {"mit Null", 0, 5, 5},
+        {"negative Zahlen", -1, -2, -3},
     }
 
     for _, tt := range tests {
         t.Run(tt.name, func(t *testing.T) {
             result := Add(tt.a, tt.b)
             if result != tt.expected {
-                t.Errorf("got %d, want %d", result, tt.expected)
+                t.Errorf("erhielt %d, erwartet %d", result, tt.expected)
             }
         })
     }
@@ -860,7 +905,7 @@ func TestAddMultiple(t *testing.T) {
 
 ### Benchmarking
 
-Messen Sie die Leistung von Funktionen.
+Leistungsmessung von Funktionen.
 
 ```go
 func BenchmarkAdd(b *testing.B) {
@@ -897,7 +942,7 @@ func ExampleAdd_negative() {
 
 ### Modulverwaltung
 
-Initialisieren und verwalten Sie Go-Module für die Abhängigkeitsverwaltung.
+Go-Module initialisieren und die Abhängigkeitsverwaltung verwalten.
 
 ```bash
 # Neues Modul initialisieren
@@ -925,8 +970,8 @@ require (
     github.com/stretchr/testify v1.8.4
 )
 require (
-    github.com/davecgh/go-spew v1.1.1 // indirect
-    github.com/pmezard/go-difflib v1.0.0 // indirect
+    github.com/davecgh/go-spew v1.1.1 // indirekt
+    github.com/pmezard/go-difflib v1.0.0 // indirekt
 )
 ```
 

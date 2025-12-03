@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo Base de Données'
-description: 'Apprenez les bases de données avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo Base de Données | LabEx'
+description: "Apprenez la gestion de bases de données avec cette fiche mémo complète. Référence rapide pour les requêtes SQL, la conception de bases de données, la normalisation, l'indexation, les transactions et l'administration des bases de données relationnelles."
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
@@ -12,14 +12,14 @@ Feuille de triche sur les bases de données
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/database">Apprenez la gestion de bases de données avec des laboratoires pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/database">Apprenez les bases de données avec des laboratoires pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la gestion de bases de données et SQL grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur les bases de données couvrant les commandes SQL essentielles, la manipulation de données, l'optimisation des requêtes, la conception de bases de données et l'administration. Maîtrisez les bases de données relationnelles, les systèmes NoSQL et les meilleures pratiques de sécurité des bases de données.
+Apprenez la gestion des bases de données et SQL grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur les bases de données couvrant les commandes SQL essentielles, la manipulation des données, l'optimisation des requêtes, la conception et l'administration des bases de données. Maîtrisez les bases de données relationnelles, les systèmes NoSQL et les meilleures pratiques de sécurité des bases de données.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Création et Gestion de Bases de Données
+## Création et Gestion de Base de Données
 
 ### Créer une Base de Données : `CREATE DATABASE`
 
@@ -36,9 +36,24 @@ COLLATE utf8mb4_general_ci;
 USE company_db;
 ```
 
+<BaseQuiz id="database-create-1" correct="A">
+  <template #question>
+    Que fait `CREATE DATABASE company_db` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Crée une nouvelle base de données vide nommée company_db</BaseQuizOption>
+  <BaseQuizOption value="B">Crée une table dans la base de données</BaseQuizOption>
+  <BaseQuizOption value="C">Supprime la base de données</BaseQuizOption>
+  <BaseQuizOption value="D">Sauvegarde la base de données</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `CREATE DATABASE` crée une nouvelle base de données vide. Après la création, vous devez utiliser `USE` pour la sélectionner, puis créer des tables à l'intérieur.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Afficher les Bases de Données : `SHOW DATABASES`
 
-Liste de toutes les bases de données disponibles sur le serveur.
+Lister toutes les bases de données disponibles sur le serveur.
 
 ```sql
 -- Lister toutes les bases de données
@@ -52,7 +67,7 @@ SELECT DATABASE();
 
 ### Supprimer une Base de Données : `DROP DATABASE`
 
-Supprimez définitivement une base de données entière.
+Supprimer définitivement une base de données entière.
 
 ```sql
 -- Supprimer la base de données (attention !)
@@ -61,20 +76,20 @@ DROP DATABASE old_company_db;
 DROP DATABASE IF EXISTS old_company_db;
 ```
 
-### Sauvegarder une Base de Données : `mysqldump`
+### Sauvegarde de Base de Données : `mysqldump`
 
-Créez des copies de sauvegarde de votre base de données.
+Créer des copies de sauvegarde de votre base de données.
 
 ```sql
 -- Sauvegarde en ligne de commande
 mysqldump -u username -p database_name > backup.sql
--- Restaurer à partir de la sauvegarde
+-- Restauration à partir de la sauvegarde
 mysql -u username -p database_name < backup.sql
 ```
 
 ### Utilisateurs de Base de Données : `CREATE USER`
 
-Gérez les comptes utilisateurs de la base de données et les autorisations.
+Gérer les comptes utilisateurs de la base de données et les permissions.
 
 ```sql
 -- Créer un nouvel utilisateur
@@ -89,7 +104,7 @@ SHOW GRANTS FOR 'newuser'@'localhost';
 
 ### Informations sur la Base de Données : `INFORMATION_SCHEMA`
 
-Interrogez les métadonnées et les informations de structure de la base de données.
+Interroger les métadonnées et les informations de structure de la base de données.
 
 ```sql
 -- Afficher toutes les tables
@@ -104,7 +119,7 @@ DESCRIBE employees;
 
 ### Créer une Table : `CREATE TABLE`
 
-Définissez de nouvelles tables avec des colonnes et des types de données.
+Définir de nouvelles tables avec des colonnes et des types de données.
 
 ```sql
 -- Création de table de base
@@ -124,7 +139,7 @@ SHOW COLUMNS FROM employees;
 
 ### Modifier une Table : `ALTER TABLE`
 
-Modifiez la structure et les colonnes des tables existantes.
+Modifier la structure et les colonnes des tables existantes.
 
 ```sql
 -- Ajouter une nouvelle colonne
@@ -140,9 +155,24 @@ COLUMN phone;
 RENAME TABLE employees TO staff;
 ```
 
+<BaseQuiz id="database-alter-1" correct="C">
+  <template #question>
+    Que fait `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)` ?
+  </template>
+  
+  <BaseQuizOption value="A">Supprime la colonne phone</BaseQuizOption>
+  <BaseQuizOption value="B">Modifie la colonne phone</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Ajoute une nouvelle colonne nommée phone à la table employees</BaseQuizOption>
+  <BaseQuizOption value="D">Renomme la table</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ALTER TABLE ... ADD COLUMN` ajoute une nouvelle colonne à une table existante. La nouvelle colonne sera ajoutée avec le type de données spécifié et sera NULL pour les lignes existantes, sauf si vous spécifiez une valeur par défaut.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Informations sur la Table : `SHOW`
 
-Obtenez des informations détaillées sur les tables et leurs propriétés.
+Obtenir des informations détaillées sur les tables et leurs propriétés.
 
 ```sql
 -- Afficher toutes les tables
@@ -156,11 +186,11 @@ SHOW TABLE STATUS LIKE
 SELECT COUNT(*) FROM employees;
 ```
 
-## Manipulation de Données et Opérations CRUD
+## Manipulation des Données et Opérations CRUD
 
 ### Insérer des Données : `INSERT INTO`
 
-Ajoutez de nouveaux enregistrements à vos tables.
+Ajouter de nouveaux enregistrements à vos tables.
 
 ```sql
 -- Insérer un seul enregistrement
@@ -182,7 +212,7 @@ SELECT * FROM employees WHERE department =
 
 ### Mettre à Jour les Données : `UPDATE`
 
-Modifiez les enregistrements existants dans les tables.
+Modifier les enregistrements existants dans les tables.
 
 ```sql
 -- Mettre à jour un seul enregistrement
@@ -201,7 +231,7 @@ SET e.salary = e.salary + d.bonus;
 
 ### Supprimer des Données : `DELETE FROM`
 
-Supprimez des enregistrements des tables.
+Supprimer des enregistrements des tables.
 
 ```sql
 -- Supprimer des enregistrements spécifiques
@@ -216,14 +246,14 @@ TRUNCATE TABLE temp_employees;
 
 ### Remplacer des Données : `REPLACE INTO`
 
-Insérez ou mettez à jour des enregistrements en fonction de la clé primaire.
+Insérer ou mettre à jour des enregistrements en fonction de la clé primaire.
 
 ```sql
 -- Remplacer l'enregistrement (insérer ou mettre à jour)
 REPLACE INTO employees (id, name, email, salary)
 VALUES (1, 'John Doe Updated',
 'john.new@company.com', 90000);
--- En cas de clé en double, mettre à jour
+-- En cas de clé dupliquée, mettre à jour
 INSERT INTO employees (id, name, salary)
 VALUES (1, 'John Doe', 85000)
 ON DUPLICATE KEY UPDATE salary = VALUES(salary);
@@ -233,7 +263,7 @@ ON DUPLICATE KEY UPDATE salary = VALUES(salary);
 
 ### SELECT de Base : `SELECT`
 
-Récupérez des données à partir des tables de la base de données.
+Récupérer des données à partir des tables de la base de données.
 
 ```sql
 -- Sélectionner toutes les colonnes
@@ -250,7 +280,7 @@ SELECT DISTINCT department FROM employees;
 
 ### Filtrage des Données : `WHERE`
 
-Appliquez des conditions pour filtrer les résultats des requêtes.
+Appliquer des conditions pour filtrer les résultats des requêtes.
 
 ```sql
 -- Conditions de base
@@ -258,8 +288,26 @@ SELECT * FROM employees WHERE salary > 70000;
 -- Conditions multiples
 SELECT * FROM employees
 WHERE department = 'Engineering' AND salary > 75000;
--- Correspondance de modèle
+-- Correspondance de motif
 SELECT * FROM employees WHERE name LIKE 'John%';
+```
+
+<BaseQuiz id="database-where-1" correct="C">
+  <template #question>
+    Que correspond `LIKE 'John%'` dans une clause WHERE ?
+  </template>
+  
+  <BaseQuizOption value="A">Correspondances exactes à "John"</BaseQuizOption>
+  <BaseQuizOption value="B">Valeurs se terminant par "John"</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Valeurs commençant par "John"</BaseQuizOption>
+  <BaseQuizOption value="D">Valeurs contenant "John" n'importe où</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le caractère générique `%` en SQL correspond à toute séquence de caractères. `LIKE 'John%'` correspond à toute valeur commençant par "John", comme "John", "Johnny", "Johnson", etc.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```sql
 -- Requêtes de plage
 SELECT * FROM employees
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
@@ -268,7 +316,7 @@ WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
 
 ### Tri des Données : `ORDER BY`
 
-Triez les résultats de la requête en ordre croissant ou décroissant.
+Trier les résultats de la requête en ordre croissant ou décroissant.
 
 ```sql
 -- Trier par colonne unique
@@ -283,7 +331,7 @@ ORDER BY hire_date DESC LIMIT 10;
 
 ### Limiter les Résultats : `LIMIT`
 
-Contrôlez le nombre d'enregistrements retournés.
+Contrôler le nombre d'enregistrements retournés.
 
 ```sql
 -- Limiter le nombre de résultats
@@ -300,7 +348,7 @@ ORDER BY salary DESC LIMIT 5;
 
 ### Fonctions d'Agrégation : `COUNT`, `SUM`, `AVG`
 
-Effectuez des calculs sur des groupes de données.
+Effectuer des calculs sur des groupes de données.
 
 ```sql
 -- Compter les enregistrements
@@ -322,7 +370,7 @@ HAVING COUNT(*) > 5;
 
 ### Sous-requêtes : Requêtes Imbriquées
 
-Utilisez des requêtes dans d'autres requêtes pour des opérations complexes.
+Utiliser des requêtes dans d'autres requêtes pour des opérations complexes.
 
 ```sql
 -- Sous-requête dans la clause WHERE
@@ -344,14 +392,14 @@ WHERE salary > (
 
 ### Jointures de Tables : `JOIN`
 
-Combinez des données provenant de plusieurs tables.
+Combiner des données provenant de plusieurs tables.
 
 ```sql
--- Jointure interne (Inner join)
+-- Jointure interne (INNER JOIN)
 SELECT e.name, e.salary, d.department_name
 FROM employees e
 INNER JOIN departments d ON e.department = d.id;
--- Jointure gauche (Left join)
+-- Jointure gauche (LEFT JOIN)
 SELECT e.name, d.department_name
 FROM employees e
 LEFT JOIN departments d ON e.department = d.id;
@@ -362,9 +410,9 @@ LEFT JOIN departments d ON e.department = d.id
 LEFT JOIN projects p ON e.id = p.employee_id;
 ```
 
-### Fonctions de Fenêtre : Analyses Avancées
+### Fonctions de Fenêtre : Analyse Avancée
 
-Effectuez des calculs sur des lignes connexes.
+Effectuer des calculs sur des lignes connexes.
 
 ```sql
 -- Numérotation des lignes
@@ -387,7 +435,7 @@ FROM employees;
 
 ### Clés Primaires : `PRIMARY KEY`
 
-Assurez une identification unique pour chaque enregistrement.
+Assurer une identification unique pour chaque enregistrement.
 
 ```sql
 -- Clé primaire sur colonne unique
@@ -406,7 +454,7 @@ CREATE TABLE order_items (
 
 ### Clés Étrangères : `FOREIGN KEY`
 
-Maintenez l'intégrité référentielle entre les tables.
+Maintenir l'intégrité référentielle entre les tables.
 
 ```sql
 -- Ajouter une contrainte de clé étrangère
@@ -424,7 +472,7 @@ departments(id);
 
 ### Contraintes d'Unicité : `UNIQUE`
 
-Empêchez les valeurs dupliquées dans les colonnes.
+Empêcher les valeurs en double dans les colonnes.
 
 ```sql
 -- Contrainte d'unicité sur colonne unique
@@ -438,7 +486,7 @@ department);
 
 ### Contraintes de Vérification : `CHECK`
 
-Appliquez des règles métier et la validation des données.
+Appliquer des règles métier et la validation des données.
 
 ```sql
 -- Contrainte de vérification simple
@@ -454,7 +502,7 @@ CHECK (YEAR(CURDATE()) - YEAR(birth_date) >= 18);
 
 ### Index : `CREATE INDEX`
 
-Accélérez la récupération des données grâce aux index de base de données.
+Accélérer la récupération des données avec des index de base de données.
 
 ```sql
 -- Créer un index sur une colonne unique
@@ -472,7 +520,7 @@ SHOW INDEX FROM employees;
 
 ### Optimisation des Requêtes : `EXPLAIN`
 
-Analysez et optimisez les performances des requêtes.
+Analyser et optimiser les performances des requêtes.
 
 ```sql
 -- Analyser le plan d'exécution de la requête
@@ -486,7 +534,7 @@ JOIN departments d ON e.department = d.id;
 
 ### Surveillance des Performances
 
-Surveillez l'activité et identifiez les goulots d'étranglement des performances de la base de données.
+Surveiller l'activité et identifier les goulots d'étranglement des performances de la base de données.
 
 ```sql
 -- Afficher les processus en cours d'exécution
@@ -495,6 +543,13 @@ SHOW PROCESSLIST;
 SHOW STATUS LIKE 'Slow_queries';
 -- Informations sur le cache de requêtes
 SHOW STATUS LIKE 'Qcache%';
+-- Afficher la taille de la base de données
+SELECT
+    table_schema AS 'Database',
+    SUM(data_length + index_length) / 1024 / 1024 AS 'Size
+(MB)'
+FROM information_schema.tables
+GROUP BY table_schema;
 ```
 
 ### Maintenance de la Base de Données
@@ -516,7 +571,7 @@ REPAIR TABLE employees;
 
 ### Importer des Données : `LOAD DATA`
 
-Importez des données à partir de fichiers externes dans les tables de la base de données.
+Importer des données à partir de fichiers externes dans les tables de la base de données.
 
 ```sql
 -- Importer à partir d'un fichier CSV
@@ -532,7 +587,7 @@ INTO TABLE employees (name, email, salary);
 
 ### Exporter des Données : `SELECT INTO`
 
-Exportez les résultats des requêtes vers des fichiers externes.
+Exporter les résultats des requêtes vers des fichiers externes.
 
 ```sql
 -- Exporter vers un fichier CSV
@@ -548,7 +603,7 @@ database_name table_name
 
 ### Migration de Données : Entre Bases de Données
 
-Déplacez des données entre différents systèmes de bases de données.
+Déplacer des données entre différents systèmes de bases de données.
 
 ```sql
 -- Créer une table à partir d'une structure existante
@@ -563,7 +618,7 @@ SELECT * FROM old_employees WHERE active = 1;
 
 ### Opérations en Masse
 
-Gérez les opérations de données à grande échelle efficacement.
+Gérer les opérations de données à grande échelle efficacement.
 
 ```sql
 -- Insertion en masse avec INSERT IGNORE
@@ -575,11 +630,11 @@ UPDATE employees SET salary = salary * 1.1 WHERE
 department = 'Sales';
 ```
 
-## Sécurité et Contrôle d'Accès des Bases de Données
+## Sécurité et Contrôle d'Accès de la Base de Données
 
 ### Gestion des Utilisateurs : `CREATE USER`
 
-Créez et gérez les comptes utilisateurs de la base de données.
+Créer et gérer les comptes utilisateurs de la base de données.
 
 ```sql
 -- Créer un utilisateur avec mot de passe
@@ -592,9 +647,9 @@ BY 'password';
 DROP USER 'old_user'@'localhost';
 ```
 
-### Autorisations : `GRANT` & `REVOKE`
+### Permissions : `GRANT` & `REVOKE`
 
-Contrôlez l'accès aux objets et aux opérations de la base de données.
+Contrôler l'accès aux objets et aux opérations de la base de données.
 
 ```sql
 -- Accorder des privilèges spécifiques
@@ -606,13 +661,13 @@ GRANT ALL PRIVILEGES ON company_db.* TO
 -- Révoquer des privilèges
 REVOKE INSERT ON company_db.employees FROM
 'app_user'@'localhost';
--- Afficher les autorisations de l'utilisateur
+-- Afficher les privilèges de l'utilisateur
 SHOW GRANTS FOR 'app_user'@'localhost';
 ```
 
 ### Rôles de Base de Données
 
-Organisez les autorisations à l'aide de rôles de base de données.
+Organiser les permissions à l'aide de rôles de base de données.
 
 ```sql
 -- Créer un rôle (MySQL 8.0+)
@@ -627,7 +682,7 @@ GRANT 'app_read_role' TO 'readonly_user'@'localhost';
 
 ### Prévention des Injections SQL
 
-Protégez-vous contre les vulnérabilités de sécurité courantes.
+Se protéger contre les vulnérabilités de sécurité courantes.
 
 ```sql
 -- Utiliser des instructions préparées (niveau application)
@@ -709,7 +764,7 @@ SHOW STATUS LIKE 'Connections';
 
 ### Gestion des Connexions
 
-Gérez les connexions à la base de données et le pooling.
+Gérer les connexions à la base de données et le pooling.
 
 ```sql
 -- Afficher les connexions actuelles
@@ -723,10 +778,10 @@ SET SESSION interactive_timeout = 600;
 
 ### Configuration des Sauvegardes
 
-Configurez des sauvegardes automatisées de la base de données.
+Configurer des sauvegardes automatisées de la base de données.
 
-```sql
--- Script de sauvegarde automatisé
+```bash
+# Script de sauvegarde automatisé
 #!/bin/bash
 DATE=$(date +%Y%m%d_%H%M%S)
 mysqldump -u backup_user -p mydatabase >
@@ -737,7 +792,7 @@ backup_$DATE.sql
 
 ### Surveillance et Journalisation
 
-Surveillez l'activité et les performances de la base de données.
+Surveiller l'activité et les performances de la base de données.
 
 ```sql
 -- Configuration de la récupération à un instant T
@@ -758,7 +813,7 @@ GROUP BY table_schema;
 
 ### Bonnes Pratiques d'Écriture de Requêtes
 
-Écrivez des requêtes SQL propres, efficaces et lisibles.
+Écrire des requêtes SQL propres, efficaces et lisibles.
 
 ```sql
 -- Utiliser des alias de table significatifs
@@ -778,13 +833,13 @@ CURRENT_TIMESTAMP
 
 ### Conseils d'Optimisation des Performances
 
-Optimisez les requêtes pour de meilleures performances de base de données.
+Optimiser les requêtes pour de meilleures performances de la base de données.
 
 ```sql
 -- Utiliser des index sur les colonnes fréquemment interrogées
 CREATE INDEX idx_employee_dept ON
 employees(department);
--- Limiter les ensembles de résultats lorsque cela est possible
+-- Limiter les ensembles de résultats si possible
 SELECT name FROM employees WHERE active = 1 LIMIT
 100;
 -- Utiliser EXISTS au lieu de IN pour les sous-requêtes

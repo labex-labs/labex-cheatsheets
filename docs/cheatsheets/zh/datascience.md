@@ -1,6 +1,6 @@
 ---
-title: '数据科学速查表'
-description: '使用我们涵盖核心命令、概念和最佳实践的综合速查表，快速掌握数据科学。'
+title: '数据科学速查表 | LabEx'
+description: '使用本综合速查表学习数据科学。数据分析、机器学习、统计学、可视化、Python 库和数据科学工作流程的快速参考。'
 pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 <a target="_blank" href="https://labex.io/zh/learn/datascience">通过实践实验室学习数据科学</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实世界场景学习数据科学。LabEx 提供全面的数据科学课程，涵盖基本的 Python 库、数据操作、统计分析、机器学习和数据可视化。掌握数据收集、清洗、分析和模型部署技术。
+通过实践实验室和真实场景学习数据科学。LabEx 提供全面的数据科学课程，涵盖基本的 Python 库、数据操作、统计分析、机器学习和数据可视化。掌握数据收集、清洗、分析和模型部署技术。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,10 +23,10 @@ pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 
 ### 核心数据科学栈
 
-像 NumPy、Pandas、Matplotlib、Seaborn 和 scikit-learn 这样的关键库构成了数据科学工作流程的基础。
+NumPy、Pandas、Matplotlib、Seaborn 和 scikit-learn 等关键库构成了数据科学工作流程的基础。
 
 ```python
-# 数据科学的基本导入
+# Essential imports for data science
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -39,18 +39,19 @@ classification_report
 
 ### NumPy: `import numpy as np`
 
-用于 Python 数值计算的基本包。
+用于 Python 数值计算的基础包。
 
 ```python
-# 创建数组
+# Create arrays
 arr = np.array([1, 2, 3, 4, 5])
 matrix = np.array([[1, 2], [3, 4]])
-# 基本操作
+# Basic operations
 np.mean(arr)       # 平均值
 np.std(arr)        # 标准差
 np.reshape(arr, (5, 1))  # 重塑数组
-# 生成数据
+# Generate data
 np.random.normal(0, 1, 100)  # 随机正态分布
+distribution
 ```
 
 ### Pandas: `import pandas as pd`
@@ -58,30 +59,45 @@ np.random.normal(0, 1, 100)  # 随机正态分布
 数据操作和分析库。
 
 ```python
-# 创建 DataFrame
+# Create DataFrame
 df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
-# 读取数据
+# Read data
 df = pd.read_csv('data.csv')
-# 基本探索
+# Basic exploration
 df.head()          # 前 5 行
 df.info()          # 数据类型和缺失值
-df.describe()      # 汇总统计信息
-# 数据操作
+df.describe()      # 摘要统计信息
+# Data manipulation
 df.groupby('column').mean()
 df.fillna(df.mean())  # 处理缺失值
 ```
+
+<BaseQuiz id="datascience-pandas-1" correct="C">
+  <template #question>
+    Pandas 中的 `df.head()` 返回什么？
+  </template>
+  
+  <BaseQuizOption value="A">DataFrame 的最后 5 行</BaseQuizOption>
+  <BaseQuizOption value="B">DataFrame 的摘要</BaseQuizOption>
+  <BaseQuizOption value="C" correct>DataFrame 的前 5 行</BaseQuizOption>
+  <BaseQuizOption value="D">DataFrame 的所有行</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `df.head()` 默认显示 DataFrame 的前 5 行。您可以指定不同的数字，例如 `df.head(10)` 查看前 10 行。它对于快速检查数据很有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Matplotlib & Seaborn: 可视化
 
 创建统计可视化和图表。
 
 ```python
-# Matplotlib 基础
+# Matplotlib basics
 plt.plot(x, y)
 plt.hist(data, bins=20)
 plt.scatter(x, y)
 plt.show()
-# Seaborn 用于统计图表
+# Seaborn for statistical plots
 sns.boxplot(data=df, x='category', y='value')
 sns.heatmap(df.corr(), annot=True)
 sns.pairplot(df)
@@ -94,10 +110,11 @@ sns.pairplot(df)
 数据科学是一个多学科领域，结合了数学、统计学、编程和商业智能。定义目标和成功指标。
 
 ```python
-# 定义业务问题
-# - 我们在回答什么问题？
-# - 哪些指标衡量成功？
-# - 我们需要哪些数据？
+# Define business problem
+# - What question are we answering?
+# - What metrics will measure
+success?
+# - What data do we need?
 ```
 
 ### 2. 数据收集与导入
@@ -105,12 +122,12 @@ sns.pairplot(df)
 从各种来源和格式收集数据。
 
 ```python
-# 多数据源
+# Multiple data sources
 df_csv = pd.read_csv('data.csv')
 df_json = pd.read_json('data.json')
 df_sql = pd.read_sql('SELECT * FROM
 table', connection)
-# API 和网络抓取
+# APIs and web scraping
 import requests
 response =
 requests.get('https://api.example.co
@@ -122,14 +139,14 @@ m/data')
 了解数据结构、模式和质量。
 
 ```python
-# 探索性数据分析
+# Exploratory Data Analysis
 df.shape              # 维度
 df.dtypes             # 数据类型
 df.isnull().sum()     # 缺失值
 df['column'].value_counts()  #
 频率计数
 df.corr()             # 相关性矩阵
-# EDA 可视化
+# Visualizations for EDA
 sns.histplot(df['numeric_column'])
 sns.boxplot(data=df,
 y='numeric_column')
@@ -144,56 +161,86 @@ sns.heatmap(df.corr(), annot=True)
 在分析数据之前，必须对其进行清洗和准备。这包括处理缺失数据、删除重复项和标准化变量。数据清洗通常是数据科学过程中最耗时但最关键的方面。
 
 ```python
-# 识别缺失值
+# Identify missing values
 df.isnull().sum()
 df.isnull().sum() / len(df) * 100  # 缺失百分比
-# 处理缺失值
+# Handle missing values
 df.dropna()                    # 删除含 NaN 的行
-df.fillna(df.mean())          # 用平均值填充
+df.fillna(df.mean())          # 用均值填充
 df.fillna(method='forward')   # 前向填充
 df.fillna(method='backward')  # 后向填充
-# 高级插补
+# Advanced imputation
 from sklearn.impute import SimpleImputer, KNNImputer
 imputer = SimpleImputer(strategy='median')
 df_filled = pd.DataFrame(imputer.fit_transform(df))
 ```
 
+<BaseQuiz id="datascience-missing-1" correct="B">
+  <template #question>
+    前向填充（`method='forward'`）用于什么？
+  </template>
+  
+  <BaseQuizOption value="A">用均值填充缺失值</BaseQuizOption>
+  <BaseQuizOption value="B" correct>用前一个非空值填充缺失值</BaseQuizOption>
+  <BaseQuizOption value="C">用随机值填充缺失值</BaseQuizOption>
+  <BaseQuizOption value="D">删除缺失值</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    前向填充将上一个有效观测值向前传播以填充缺失值。这对于时间序列数据很有用，因为您希望在有新数据可用之前保持前一个值。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 数据转换
 
-数据归一化（将数据缩放到标准范围如 [0, 1]）有助于避免因特征幅度差异造成的偏差。
+数据归一化（将数据缩放到标准范围如 [0, 1]）有助于避免因特征幅度不同而导致的偏差。
 
 ```python
-# 缩放和归一化
+# Scaling and normalization
 from sklearn.preprocessing import StandardScaler,
 MinMaxScaler
 scaler = StandardScaler()
 df_scaled = scaler.fit_transform(df[numeric_columns])
-# Min-Max 缩放到 [0,1]
+# Min-Max scaling to [0,1]
 minmax = MinMaxScaler()
 df_normalized =
 minmax.fit_transform(df[numeric_columns])
-# 编码分类变量
+# Encoding categorical variables
 pd.get_dummies(df, columns=['category_column'])
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 df['encoded'] = le.fit_transform(df['category'])
 ```
 
+<BaseQuiz id="datascience-scaling-1" correct="C">
+  <template #question>
+    StandardScaler 和 MinMaxScaler 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">没有区别</BaseQuizOption>
+  <BaseQuizOption value="B">StandardScaler 缩放到 [0,1]，MinMaxScaler 缩放到均值为 0、标准差为 1</BaseQuizOption>
+  <BaseQuizOption value="C" correct>StandardScaler 归一化到均值为 0、标准差为 1，MinMaxScaler 缩放到 [0,1] 范围</BaseQuizOption>
+  <BaseQuizOption value="D">StandardScaler 更快</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    StandardScaler 将数据转换为均值为 0、标准差为 1（Z-分数归一化）。MinMaxScaler 将数据缩放到固定范围，通常是 [0, 1]。两者都很有用，但适用于不同的场景。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 异常值检测与处理
 
 识别并处理可能影响分析的极端值。
 
 ```python
-# 统计异常值检测
+# Statistical outlier detection
 Q1 = df['column'].quantile(0.25)
 Q3 = df['column'].quantile(0.75)
 IQR = Q3 - Q1
 lower_bound = Q1 - 1.5 * IQR
 upper_bound = Q3 + 1.5 * IQR
-# 删除异常值
+# Remove outliers
 df_clean = df[(df['column'] >= lower_bound) &
               (df['column'] <= upper_bound)]
-# Z-score 方法
+# Z-score method
 from scipy import stats
 z_scores = np.abs(stats.zscore(df['column']))
 df_no_outliers = df[z_scores < 3]
@@ -204,15 +251,15 @@ df_no_outliers = df[z_scores < 3]
 创建新变量以提高模型性能。
 
 ```python
-# 创建新特征
+# Create new features
 df['feature_ratio'] = df['feature1'] / df['feature2']
 df['feature_sum'] = df['feature1'] + df['feature2']
-# 日期/时间特征
+# Date/time features
 df['date'] = pd.to_datetime(df['date'])
 df['year'] = df['date'].dt.year
 df['month'] = df['date'].dt.month
 df['day_of_week'] = df['date'].dt.day_name()
-# 分箱连续变量
+# Binning continuous variables
 df['age_group'] = pd.cut(df['age'], bins=[0, 18, 35, 50, 100],
                         labels=['Child', 'Young Adult', 'Adult',
 'Senior'])
@@ -222,38 +269,38 @@ df['age_group'] = pd.cut(df['age'], bins=[0, 18, 35, 50, 100],
 
 ### 描述性统计
 
-这些集中趋势的度量总结了数据并提供了对其分布的洞察。它们是理解任何数据集的基础。平均值是数据集中所有值的平均数。它对异常值非常敏感。
+这些集中趋势的度量总结了数据并提供了对其分布的洞察。它们是理解任何数据集的基础。均值是数据集中所有值的平均值。它对异常值非常敏感。
 
 ```python
-# 集中趋势
+# Central tendency
 mean = df['column'].mean()
 median = df['column'].median()
 mode = df['column'].mode()[0]
-# 变异性度量
+# Variability measures
 std_dev = df['column'].std()
 variance = df['column'].var()
 range_val = df['column'].max() - df['column'].min()
-# 分布形状
+# Distribution shape
 skewness = df['column'].skew()
 kurtosis = df['column'].kurtosis()
-# 分位数
+# Percentiles
 percentiles = df['column'].quantile([0.25, 0.5, 0.75, 0.95])
 ```
 
 ### 假设检验
 
-检验统计假设并验证假设。
+检验统计假设并验证前提。
 
 ```python
-# T 检验用于比较均值
+# T-test for comparing means
 from scipy.stats import ttest_ind, ttest_1samp
-# 单样本 t 检验
+# One-sample t-test
 t_stat, p_value = ttest_1samp(data, population_mean)
-# 双样本 t 检验
+# Two-sample t-test
 group1 = df[df['group'] == 'A']['value']
 group2 = df[df['group'] == 'B']['value']
 t_stat, p_value = ttest_ind(group1, group2)
-# 卡方检验独立性
+# Chi-square test for independence
 from scipy.stats import chi2_contingency
 chi2, p_value, dof, expected =
 chi2_contingency(contingency_table)
@@ -264,31 +311,31 @@ chi2_contingency(contingency_table)
 了解变量之间的关系。
 
 ```python
-# 相关性矩阵
+# Correlation matrix
 correlation_matrix = df.corr()
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True,
 cmap='coolwarm')
-# 特定相关性
+# Specific correlations
 pearson_corr = df['var1'].corr(df['var2'])
 spearman_corr = df['var1'].corr(df['var2'],
 method='spearman')
-# 相关性的统计显著性
+# Statistical significance of correlation
 from scipy.stats import pearsonr
 correlation, p_value = pearsonr(df['var1'], df['var2'])
 ```
 
 ### 方差分析 (ANOVA) 和回归
 
-分析变量间的方差和关系。
+分析方差和变量之间的关系。
 
 ```python
-# 单因素方差分析
+# One-way ANOVA
 from scipy.stats import f_oneway
 group_data = [df[df['group'] == g]['value'] for g in
 df['group'].unique()]
 f_stat, p_value = f_oneway(*group_data)
-# 线性回归分析
+# Linear regression analysis
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 X = df[['feature1', 'feature2']]
@@ -302,23 +349,23 @@ r2 = r2_score(y, y_pred)
 
 ### 监督学习 - 分类
 
-决策树：一个关于决策及其可能结果的树状模型。每个节点代表对一个属性的测试，每个分支代表一个结果。它常用于分类任务。
+决策树：一个关于决策及其可能后果的树状模型。每个节点代表对一个属性的测试，每个分支代表一个结果。它通常用于分类任务。
 
 ```python
-# 训练 - 测试分割
+# Train-test split
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y,
 test_size=0.2, random_state=42)
-# 逻辑回归
+# Logistic Regression
 from sklearn.linear_model import LogisticRegression
 log_reg = LogisticRegression()
 log_reg.fit(X_train, y_train)
 y_pred = log_reg.predict(X_test)
-# 决策树
+# Decision Tree
 from sklearn.tree import DecisionTreeClassifier
 dt = DecisionTreeClassifier(max_depth=5)
 dt.fit(X_train, y_train)
-# 随机森林
+# Random Forest
 from sklearn.ensemble import RandomForestClassifier
 rf = RandomForestClassifier(n_estimators=100)
 rf.fit(X_train, y_train)
@@ -329,16 +376,16 @@ rf.fit(X_train, y_train)
 预测连续的目标变量。
 
 ```python
-# 线性回归
+# Linear Regression
 from sklearn.linear_model import LinearRegression
 lr = LinearRegression()
 lr.fit(X_train, y_train)
 y_pred = lr.predict(X_test)
-# 多项式回归
+# Polynomial Regression
 from sklearn.preprocessing import PolynomialFeatures
 poly = PolynomialFeatures(degree=2)
 X_poly = poly.fit_transform(X)
-# Ridge 和 Lasso 回归
+# Ridge & Lasso Regression
 from sklearn.linear_model import Ridge, Lasso
 ridge = Ridge(alpha=1.0)
 lasso = Lasso(alpha=0.1)
@@ -351,16 +398,16 @@ lasso.fit(X_train, y_train)
 在没有标签结果的情况下发现数据中的模式。
 
 ```python
-# K-均值聚类
+# K-Means Clustering
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, random_state=42)
 clusters = kmeans.fit_predict(X)
 df['cluster'] = clusters
-# 主成分分析 (PCA)
+# Principal Component Analysis (PCA)
 from sklearn.decomposition import PCA
 pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X_scaled)
-# 层次聚类
+# Hierarchical Clustering
 from scipy.cluster.hierarchy import dendrogram, linkage
 linkage_matrix = linkage(X_scaled, method='ward')
 dendrogram(linkage_matrix)
@@ -371,7 +418,7 @@ dendrogram(linkage_matrix)
 使用适当的指标评估模型性能。
 
 ```python
-# 分类指标
+# Classification metrics
 from sklearn.metrics import accuracy_score,
 precision_score, recall_score, f1_score, confusion_matrix
 accuracy = accuracy_score(y_test, y_pred)
@@ -379,10 +426,10 @@ precision = precision_score(y_test, y_pred,
 average='weighted')
 recall = recall_score(y_test, y_pred, average='weighted')
 f1 = f1_score(y_test, y_pred, average='weighted')
-# 混淆矩阵
+# Confusion Matrix
 cm = confusion_matrix(y_test, y_pred)
 sns.heatmap(cm, annot=True, fmt='d')
-# 回归指标
+# Regression metrics
 from sklearn.metrics import mean_squared_error,
 mean_absolute_error
 mse = mean_squared_error(y_test, y_pred)
@@ -397,7 +444,7 @@ rmse = np.sqrt(mse)
 了解数据分布和关系。
 
 ```python
-# 分布图
+# Distribution plots
 plt.figure(figsize=(12, 4))
 plt.subplot(1, 3, 1)
 plt.hist(df['numeric_col'], bins=20, edgecolor='black')
@@ -405,28 +452,28 @@ plt.subplot(1, 3, 2)
 sns.boxplot(y=df['numeric_col'])
 plt.subplot(1, 3, 3)
 sns.violinplot(y=df['numeric_col'])
-# 关系图
+# Relationship plots
 plt.figure(figsize=(10, 6))
 sns.scatterplot(data=df, x='feature1', y='feature2',
 hue='category')
 sns.regplot(data=df, x='feature1', y='target')
-# 分类数据
+# Categorical data
 sns.countplot(data=df, x='category')
 sns.barplot(data=df, x='category', y='value')
 ```
 
 ### 高级可视化
 
-创建综合仪表板和报告。
+创建全面的仪表板和报告。
 
 ```python
-# 子图用于多个视图
+# Subplots for multiple views
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes[0,0].hist(df['col1'])
 axes[0,1].scatter(df['col1'], df['col2'])
 axes[1,0].boxplot(df['col1'])
 sns.heatmap(df.corr(), ax=axes[1,1])
-# 使用 Plotly 进行交互式绘图
+# Interactive plots with Plotly
 import plotly.express as px
 fig = px.scatter(df, x='feature1', y='feature2',
                 color='category', size='value',
@@ -439,34 +486,34 @@ fig.show()
 可视化统计关系和模型结果。
 
 ```python
-# 相关性配对图
+# Pair plots for correlation
 sns.pairplot(df, hue='target_category')
-# 回归残差图
+# Residual plots for regression
 plt.figure(figsize=(12, 4))
 plt.subplot(1, 2, 1)
 plt.scatter(y_pred, y_test - y_pred)
-plt.xlabel('预测值')
-plt.ylabel('残差')
+plt.xlabel('Predicted')
+plt.ylabel('Residuals')
 plt.subplot(1, 2, 2)
 plt.scatter(y_test, y_pred)
 plt.plot([y_test.min(), y_test.max()], [y_test.min(),
 y_test.max()], 'r--')
-# 分类 ROC 曲线
+# ROC Curve for classification
 from sklearn.metrics import roc_curve, auc
 fpr, tpr, _ = roc_curve(y_test, y_prob)
 roc_auc = auc(fpr, tpr)
-plt.plot(fpr, tpr, label=f'ROC 曲线 (AUC = {roc_auc:.2f})')
+plt.plot(fpr, tpr, label=f'ROC Curve (AUC = {roc_auc:.2f})')
 ```
 
-### 定制和样式设置
+### 自定义与样式
 
-专业的视觉格式。
+专业的视觉格式化。
 
 ```python
-# 设置样式和颜色
+# Set style and colors
 plt.style.use('seaborn-v0_8')
 sns.set_palette("husl")
-# 自定义图形设置
+# Custom figure settings
 plt.figure(figsize=(12, 8))
 plt.title('专业图表标题', fontsize=16,
 fontweight='bold')
@@ -475,7 +522,7 @@ plt.ylabel('Y 轴标签', fontsize=14)
 plt.legend(loc='best')
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-# 保存高质量图表
+# Save high-quality plots
 plt.savefig('analysis_plot.png', dpi=300,
 bbox_inches='tight')
 ```
@@ -487,18 +534,18 @@ bbox_inches='tight')
 保存和加载训练好的模型以供生产使用。
 
 ```python
-# 使用 pickle 保存模型
+# Save models with pickle
 import pickle
 with open('model.pkl', 'wb') as f:
     pickle.dump(trained_model, f)
-# 加载已保存的模型
+# Load saved model
 with open('model.pkl', 'rb') as f:
     loaded_model = pickle.load(f)
-# 使用 joblib 处理 sklearn 模型
+# Using joblib for sklearn models
 import joblib
 joblib.dump(trained_model, 'model.joblib')
 loaded_model = joblib.load('model.joblib')
-# 使用时间戳进行模型版本控制
+# Model versioning with timestamps
 import datetime
 timestamp =
 datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -510,14 +557,14 @@ model_name = f'model_{timestamp}.pkl'
 优化模型性能并防止过拟合。
 
 ```python
-# 交叉验证
+# Cross-validation
 from sklearn.model_selection import cross_val_score,
 StratifiedKFold
 cv_scores = cross_val_score(model, X, y, cv=5,
 scoring='accuracy')
-print(f"CV 准确率: {cv_scores.mean():.3f} (+/-
+print(f"CV Accuracy: {cv_scores.mean():.3f} (+/-
 {cv_scores.std() * 2:.3f})")
-# 超参数调优的网格搜索
+# Grid Search for hyperparameter tuning
 from sklearn.model_selection import GridSearchCV
 param_grid = {
     'n_estimators': [100, 200, 300],
@@ -532,22 +579,22 @@ best_model = grid_search.best_estimator_
 
 ### 性能监控
 
-快速访问基本概念和命令可以在您的工作流程中发挥重要作用。无论您是初学者还是经验丰富的从业者，寻求可靠的参考，备忘单都是宝贵的伴侣。
+快速访问基本概念和命令可以在工作流程中起到关键作用。无论您是初学者还是经验丰富的从业者，都在寻找可靠的参考，速查表都是无价的伴侣。
 
 ```python
-# 模型性能跟踪
+# Model performance tracking
 import time
 start_time = time.time()
 predictions = model.predict(X_test)
 inference_time = time.time() - start_time
-print(f"推理时间：{inference_time:.4f} 秒")
-# 内存使用情况监控
+print(f"Inference time: {inference_time:.4f} seconds")
+# Memory usage monitoring
 import psutil
 process = psutil.Process()
 memory_usage = process.memory_info().rss / 1024 /
 1024  # MB
-print(f"内存使用：{memory_usage:.2f} MB")
-# 特征重要性分析
+print(f"Memory usage: {memory_usage:.2f} MB")
+# Feature importance analysis
 feature_importance = model.feature_importances_
 importance_df = pd.DataFrame({
     'feature': X.columns,
@@ -560,7 +607,7 @@ importance_df = pd.DataFrame({
 记录模型的假设、性能和用法。
 
 ```python
-# 创建模型报告
+# Create model report
 model_report = {
     'model_type': type(model).__name__,
     'training_data_shape': X_train.shape,
@@ -575,7 +622,7 @@ average='weighted')
     'training_date': datetime.datetime.now().isoformat(),
     'model_version': '1.0'
 }
-# 保存模型元数据
+# Save model metadata
 import json
 with open('model_metadata.json', 'w') as f:
     json.dump(model_report, f, indent=2)
@@ -588,7 +635,7 @@ with open('model_metadata.json', 'w') as f:
 为可重现性和协作组织项目。
 
 ```python
-# 项目结构
+# Project structure
 project/
 ├── data/
 │   ├── raw/
@@ -601,7 +648,7 @@ project/
 ├── models/
 ├── reports/
 └── requirements.txt
-# 使用 git 进行版本控制
+# Version control with git
 git init
 git add .
 git commit -m "Initial data
@@ -610,18 +657,18 @@ science project setup"
 
 ### 环境管理
 
-确保跨系统可重现的环境。
+确保跨系统的环境可重现性。
 
 ```bash
-# 创建虚拟环境
+# Create virtual environment
 python -m venv ds_env
 source ds_env/bin/activate  #
 Linux/Mac
 # ds_env\Scripts\activate   #
 Windows
-# 需求文件
+# Requirements file
 pip freeze > requirements.txt
-# Conda 环境
+# Conda environment
 conda create -n ds_project
 python=3.9
 conda activate ds_project
@@ -635,7 +682,7 @@ jupyter
 在整个管道中验证数据完整性。
 
 ```python
-# 数据验证函数
+# Data validation functions
 def validate_data(df):
     checks = {
         'shape': df.shape,
@@ -647,13 +694,13 @@ df.duplicated().sum(),
 df.dtypes.to_dict()
     }
     return checks
-# 自动数据质量报告
+# Automated data quality report
 def data_quality_report(df):
     print(f"数据集形状:
 {df.shape}")
-    print(f"缺失值:
+    print(f"缺失值数量:
 {df.isnull().sum().sum()}")
-    print(f"重复行:
+    print(f"重复行数:
 {df.duplicated().sum()}")
     print("\n列数据类型：")
     print(df.dtypes)

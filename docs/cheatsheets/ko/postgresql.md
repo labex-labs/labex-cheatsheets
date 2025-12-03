@@ -1,6 +1,6 @@
 ---
-title: 'PostgreSQL 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 PostgreSQL 치트 시트로 학습하세요.'
+title: 'PostgreSQL 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 PostgreSQL 데이터베이스 관리를 학습하세요. SQL 쿼리, 고급 기능, JSON 지원, 전문 검색 및 엔터프라이즈 데이터베이스 관리를 위한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/postgresql-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ PostgreSQL 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/postgresql">실습 랩을 통해 PostgreSQL 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/postgresql">Hands-On 실습으로 PostgreSQL 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 PostgreSQL 데이터베이스 관리를 학습하세요. LabEx 는 필수 SQL 작업, 고급 쿼리, 성능 최적화, 데이터베이스 관리 및 보안을 다루는 포괄적인 PostgreSQL 과정을 제공합니다. 엔터프라이즈급 관계형 데이터베이스 개발 및 관리를 마스터하세요.
+실습 기반 랩과 실제 시나리오를 통해 PostgreSQL 데이터베이스 관리를 학습하세요. LabEx 는 필수 SQL 작업, 고급 쿼리, 성능 최적화, 데이터베이스 관리 및 보안을 다루는 포괄적인 PostgreSQL 과정을 제공합니다. 엔터프라이즈급 관계형 데이터베이스 개발 및 관리를 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -30,7 +30,7 @@ psql 명령줄 도구를 사용하여 로컬 또는 원격 PostgreSQL 데이터�
 psql -U username -d database_name
 # 원격 데이터베이스에 연결
 psql -h hostname -p 5432 -U username -d database_name
-# 암호 프롬프트로 연결
+# 비밀번호 프롬프트로 연결
 psql -U postgres -W
 # 연결 문자열 사용으로 연결
 psql "host=localhost port=5432 dbname=mydb user=myuser"
@@ -99,9 +99,9 @@ PostgreSQL 버전 및 구성 설정을 확인합니다.
 ```sql
 # PostgreSQL 버전 확인
 SELECT version();
-# 모든 설정 표시
+# 모든 현재 설정 보기
 SHOW ALL;
-# 특정 설정 표시
+# 특정 설정 보기
 SHOW max_connections;
 # 구성 매개변수 설정
 SET work_mem = '256MB';
@@ -111,7 +111,7 @@ SET work_mem = '256MB';
 
 ### 테이블 생성: `CREATE TABLE`
 
-열, 데이터 유형 및 제약 조건을 사용하여 새 테이블을 정의합니다.
+열, 데이터 유형 및 제약 조건을 정의하여 새 테이블을 정의합니다.
 
 ```sql
 # 기본 테이블 생성
@@ -131,6 +131,21 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="postgresql-create-table-1" correct="A">
+  <template #question>
+    PostgreSQL 에서 `SERIAL PRIMARY KEY`는 어떤 역할을 하나요?
+  </template>
+  
+  <BaseQuizOption value="A" correct>자동 증가하는 정수 열을 생성하고 기본 키 역할을 수행합니다</BaseQuizOption>
+  <BaseQuizOption value="B">텍스트 열을 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="C">외래 키 제약 조건을 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="D">고유 인덱스를 생성합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SERIAL` 은 PostgreSQL 고유의 데이터 유형으로 자동 증가하는 정수를 생성합니다. `PRIMARY KEY`와 결합되어 각 행에 대해 자동으로 증가하는 고유 식별자를 생성합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 테이블 수정: `ALTER TABLE`
 
 기존 테이블에서 열 및 제약 조건을 추가, 수정 또는 제거합니다.
@@ -140,7 +155,7 @@ CREATE TABLE orders (
 ALTER TABLE users ADD COLUMN phone VARCHAR(15);
 # 열 유형 변경
 ALTER TABLE users ALTER COLUMN phone TYPE VARCHAR(20);
-# 열 제거
+# 열 삭제
 ALTER TABLE users DROP COLUMN phone;
 # 제약 조건 추가
 ALTER TABLE users ADD CONSTRAINT unique_email
@@ -162,7 +177,7 @@ TRUNCATE TABLE users RESTART IDENTITY;
 
 ### 데이터 유형 및 제약 조건
 
-다양한 종류의 데이터를 위한 필수 PostgreSQL 데이터 유형입니다.
+다양한 종류의 데이터에 필수적인 PostgreSQL 데이터 유형입니다.
 
 ```sql
 # 숫자 유형
@@ -192,10 +207,10 @@ user_id INTEGER REFERENCES users(id)
 # 고유 제약 조건
 email VARCHAR(100) UNIQUE
 
-# 검사 제약 조건
+# CHECK 제약 조건
 age INTEGER CHECK (age >= 0)
 
-# 널 불가
+# NOT NULL
 name VARCHAR(50) NOT NULL
 ```
 
@@ -218,6 +233,21 @@ CREATE INDEX idx_active_users
 # 인덱스 삭제
 DROP INDEX IF EXISTS idx_username;
 ```
+
+<BaseQuiz id="postgresql-index-1" correct="A">
+  <template #question>
+    PostgreSQL 에서 인덱스를 생성하는 주된 목적은 무엇인가요?
+  </template>
+  
+  <BaseQuizOption value="A" correct>데이터 검색 속도를 높여 쿼리 성능을 개선하기 위함</BaseQuizOption>
+  <BaseQuizOption value="B">데이터베이스 크기를 줄이기 위함</BaseQuizOption>
+  <BaseQuizOption value="C">데이터를 암호화하기 위함</BaseQuizOption>
+  <BaseQuizOption value="D">중복 항목 생성을 방지하기 위함</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    인덱스는 데이터베이스가 전체 테이블을 스캔하지 않고도 행을 빠르게 찾을 수 있도록 데이터 구조를 생성합니다. 이는 특히 대규모 테이블에서 SELECT 쿼리를 크게 가속화합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 시퀀스: `CREATE SEQUENCE`
 
@@ -249,14 +279,29 @@ VALUES ('john_doe', 'john@example.com');
 INSERT INTO users (username, email) VALUES
     ('alice', 'alice@example.com'),
     ('bob', 'bob@example.com');
-# 반환 값 포함 삽입
+# 반환 값과 함께 삽입
 INSERT INTO users (username, email)
 VALUES ('jane', 'jane@example.com')
 RETURNING id, created_at;
-# 선택으로부터 삽입
+# 선택(SELECT)으로부터 삽입
 INSERT INTO archive_users
 SELECT * FROM users WHERE active = false;
 ```
+
+<BaseQuiz id="postgresql-insert-1" correct="C">
+  <template #question>
+    PostgreSQL 의 INSERT 문에서 `RETURNING` 은 무엇을 하나요?
+  </template>
+  
+  <BaseQuizOption value="A">삽입을 롤백합니다</BaseQuizOption>
+  <BaseQuizOption value="B">삽입을 방지합니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>삽입된 행 데이터를 반환합니다</BaseQuizOption>
+  <BaseQuizOption value="D">기존 행을 업데이트합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PostgreSQL 의 `RETURNING` 절은 삽입 후 즉시 삽입된 행 데이터 (또는 특정 열) 를 검색할 수 있게 해주며, 자동 생성된 ID 나 타임스탬프를 얻을 때 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 데이터 업데이트: `UPDATE`
 
@@ -272,7 +317,7 @@ UPDATE users
 SET email = 'new@example.com',
     updated_at = NOW()
 WHERE id = 1;
-# 서브쿼리를 사용한 업데이트
+# 서브쿼리와 함께 업데이트
 UPDATE orders
 SET total = (SELECT SUM(price) FROM order_items
             WHERE order_id = orders.id);
@@ -304,14 +349,14 @@ LIMIT 10 OFFSET 20;
 # 특정 레코드 삭제
 DELETE FROM users
 WHERE active = false;
-# 서브쿼리를 사용한 삭제
+# 서브쿼리와 함께 삭제
 DELETE FROM orders
 WHERE user_id IN (
     SELECT id FROM users WHERE active = false
 );
 # 모든 레코드 삭제
 DELETE FROM temp_table;
-# 반환 값 포함 삭제
+# 반환 값과 함께 삭제
 DELETE FROM users
 WHERE id = 5
 RETURNING *;
@@ -324,11 +369,11 @@ RETURNING *;
 다양한 조인 유형을 사용하여 여러 테이블의 데이터를 결합합니다.
 
 ```sql
-# 내부 조인
+# 내부 조인 (Inner join)
 SELECT u.username, o.total
 FROM users u
 INNER JOIN orders o ON u.id = o.user_id;
-# 왼쪽 조인
+# 왼쪽 조인 (Left join)
 SELECT u.username, o.total
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id;
@@ -376,7 +421,7 @@ GROUP BY user_id
 HAVING COUNT(*) > 5;
 ```
 
-### 윈도우 함수
+### 윈도우 함수 (Window Functions)
 
 그룹화 없이 관련 행에 걸쳐 계산을 수행합니다.
 
@@ -448,7 +493,7 @@ pg_restore -U username -d database_name backup.dump
 
 ### JSON 데이터 작업
 
-반정형 데이터를 위해 JSON 및 JSONB 데이터 유형을 다룹니다.
+반정형 데이터를 위해 JSON 및 JSONB 데이터 유형을 사용합니다.
 
 ```sql
 # JSON 데이터 삽입
@@ -488,7 +533,7 @@ GRANT readonly_user TO myuser;
 ```sql
 # 사용자에게 테이블 권한 부여
 GRANT SELECT, INSERT ON users TO myuser;
-# 테이블에 대한 모든 권한 부여
+# 테이블에 모든 권한 부여
 GRANT ALL ON orders TO admin_user;
 # 데이터베이스 권한 부여
 GRANT CONNECT ON DATABASE mydb TO myuser;
@@ -514,16 +559,16 @@ SELECT r.rolname, r.rolsuper, r.rolcreaterole
 FROM pg_roles r;
 ```
 
-### 암호 및 보안
+### 비밀번호 및 보안
 
-사용자 암호를 관리하고 보안 설정을 조정합니다.
+사용자 비밀번호 및 보안 설정을 관리합니다.
 
 ```sql
-# 사용자 암호 변경
+# 사용자 비밀번호 변경
 ALTER USER myuser PASSWORD 'newpassword';
-# 암호 만료 설정
+# 비밀번호 만료 설정
 ALTER USER myuser VALID UNTIL '2025-12-31';
-# 로그인 없이 사용자 생성
+# 로그인 없이 역할 생성
 CREATE ROLE reporting_role NOLOGIN;
 # 사용자 활성화/비활성화
 ALTER USER myuser WITH NOLOGIN;
@@ -606,11 +651,11 @@ SELECT pg_size_pretty(pg_database_size('mydatabase'));
 복잡한 쿼리를 단순화하고 데이터 추상화를 제공하기 위해 가상 테이블을 생성합니다.
 
 ```sql
-# 단순 뷰 생성
+# 간단한 뷰 생성
 CREATE VIEW active_users AS
 SELECT id, username, email
 FROM users WHERE active = true;
-# 조인이 있는 뷰 생성
+# 조인을 사용한 뷰 생성
 CREATE OR REPLACE VIEW order_summary AS
 SELECT u.username, COUNT(o.id) as total_orders,
        SUM(o.total) as total_spent
@@ -656,7 +701,7 @@ WHERE id = 2;
 COMMIT;
 # 필요한 경우 롤백
 ROLLBACK;
-# 저장점
+# 저장점 (Savepoints)
 SAVEPOINT my_savepoint;
 ROLLBACK TO my_savepoint;
 ```
@@ -676,6 +721,127 @@ SET random_page_cost = 1.1;
 SELECT pg_reload_conf();
 # 구성 파일 위치 보기
 SHOW config_file;
+```
+
+## psql 구성 및 팁
+
+### 연결 파일: `.pgpass`
+
+자동 인증을 위해 데이터베이스 자격 증명을 안전하게 저장합니다.
+
+```bash
+# .pgpass 파일 생성 (형식: hostname:port:database:username:password)
+echo "localhost:5432:mydatabase:myuser:mypassword" >> ~/.pgpass
+# 적절한 권한 설정
+chmod 600 ~/.pgpass
+# 연결 서비스 파일 사용
+# ~/.pg_service.conf
+[mydb]
+host=localhost
+port=5432
+dbname=mydatabase
+user=myuser
+```
+
+### psql 구성: `.psqlrc`
+
+psql 시작 설정을 사용자 지정하고 동작을 사용자 지정합니다.
+
+```bash
+# ~/.psqlrc 파일에 사용자 지정 설정 생성
+\set QUIET on
+\timing on
+\set PROMPT1 '%n@%M:%> %`date` %R%# '
+\set HISTSIZE 5000
+\set COMP_KEYWORD_CASE upper
+\x auto
+\set QUIET off
+# 사용자 지정 별칭
+\set show_slow_queries 'SELECT query, mean_time, calls FROM pg_stat_statements ORDER BY mean_time DESC LIMIT 10;'
+```
+
+### 환경 변수
+
+더 쉬운 연결을 위해 PostgreSQL 환경 변수를 설정합니다.
+
+```bash
+# 셸 프로필에 설정
+export PGHOST=localhost
+export PGPORT=5432
+export PGDATABASE=mydatabase
+export PGUSER=myuser
+# 그런 다음 간단히 연결
+psql
+# 또는 특정 환경 사용
+PGDATABASE=testdb psql
+```
+
+### 데이터베이스 정보
+
+데이터베이스 객체 및 구조에 대한 정보를 얻습니다.
+
+```bash
+# 데이터베이스 나열
+\l, \l+
+# 현재 데이터베이스의 테이블 나열
+\dt, \dt+
+# 뷰 나열
+\dv, \dv+
+# 인덱스 나열
+\di, \di+
+# 함수 나열
+\df, \df+
+# 시퀀스 나열
+\ds, \ds+
+# 테이블 구조 설명
+\d table_name
+\d+ table_name
+# 테이블 제약 조건 보기
+\d+ table_name
+# 테이블 권한 보기
+\dp table_name
+\z table_name
+# 외래 키 나열
+SELECT * FROM information_schema.table_constraints
+WHERE constraint_type = 'FOREIGN KEY';
+```
+
+### 출력 및 형식 지정
+
+psql 이 쿼리 결과 및 출력을 표시하는 방식을 제어합니다.
+
+```bash
+# 확장 출력 토글
+\x
+# 출력 형식 변경
+\H  -- HTML 출력
+\t  -- 튜플만 (헤더 없음)
+# 파일로 출력
+\o filename.txt
+SELECT * FROM users;
+\o  -- 파일 출력 중지
+# 파일에서 SQL 실행
+\i script.sql
+# 외부 편집기에서 쿼리 편집
+\e
+```
+
+### 타이밍 및 기록
+
+쿼리 성능을 추적하고 명령 기록을 관리합니다.
+
+```bash
+# 타이밍 표시 토글
+\timing
+# 명령 기록 보기
+\s
+# 명령 기록을 파일에 저장
+\s filename.txt
+# 화면 지우기
+\! clear  -- Linux/Mac
+\! cls   -- Windows
+# 마지막 오류 보기
+\errverbose
 ```
 
 ## 관련 링크

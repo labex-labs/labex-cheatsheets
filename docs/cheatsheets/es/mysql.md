@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de MySQL'
-description: 'Aprenda MySQL con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de MySQL | LabEx'
+description: 'Aprenda gestión de bases de datos MySQL con esta hoja de trucos completa. Referencia rápida para consultas SQL, uniones (joins), índices, transacciones, procedimientos almacenados y administración de bases de datos.'
 pdfUrl: '/cheatsheets/pdf/mysql-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Hoja de Trucos de MySQL
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/mysql">Aprenda MySQL con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/mysql">Aprende MySQL con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda la gestión de bases de datos MySQL a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de MySQL que cubren operaciones SQL esenciales, administración de bases de datos, optimización del rendimiento y técnicas avanzadas de consulta. Domine uno de los sistemas de gestión de bases de datos relacionales más populares del mundo.
+Aprende gestión de bases de datos MySQL a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de MySQL que cubren operaciones SQL esenciales, administración de bases de datos, optimización de rendimiento y técnicas avanzadas de consulta. Domina uno de los sistemas de gestión de bases de datos relacionales más populares del mundo.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,22 +23,22 @@ Aprenda la gestión de bases de datos MySQL a través de laboratorios prácticos
 
 ### Conexión al Servidor: `mysql -u username -p`
 
-Conéctese al servidor MySQL usando la línea de comandos.
+Conéctate al servidor MySQL usando la línea de comandos.
 
 ```bash
 # Conectar con nombre de usuario y solicitud de contraseña
 mysql -u root -p
 # Conectar a una base de datos específica
-mysql -u username -p nombre_base_datos
+mysql -u username -p database_name
 # Conectar a un servidor remoto
 mysql -h hostname -u username -p
 # Conectar especificando el puerto
-mysql -h hostname -P 3306 -u username -p nombre_base_datos
+mysql -h hostname -P 3306 -u username -p database_name
 ```
 
 ### Operaciones de Base de Datos: `CREATE` / `DROP` / `USE`
 
-Administre bases de datos en el servidor.
+Gestiona bases de datos en el servidor.
 
 ```sql
 # Crear una nueva base de datos
@@ -50,6 +50,21 @@ USE company_db;
 # Eliminar una base de datos (borrar permanentemente)
 DROP DATABASE old_database;
 ```
+
+<BaseQuiz id="mysql-database-1" correct="C">
+  <template #question>
+    ¿Qué hace `USE database_name`?
+  </template>
+  
+  <BaseQuizOption value="A">Crea una nueva base de datos</BaseQuizOption>
+  <BaseQuizOption value="B">Elimina la base de datos</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Selecciona la base de datos para operaciones subsiguientes</BaseQuizOption>
+  <BaseQuizOption value="D">Muestra todas las tablas en la base de datos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La instrucción `USE` selecciona una base de datos, convirtiéndola en la base de datos activa para todas las sentencias SQL subsiguientes. Esto es equivalente a seleccionar una base de datos al conectarse con `mysql -u user -p database_name`.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Exportar Datos: `mysqldump`
 
@@ -68,18 +83,18 @@ mysqldump -u username -p --routines --triggers database_name > backup.sql
 
 ### Importar Datos: `mysql < file.sql`
 
-Importar archivo SQL a la base de datos MySQL.
+Importa un archivo SQL a una base de datos MySQL.
 
 ```bash
 # Importar archivo SQL a la base de datos
 mysql -u username -p database_name < backup.sql
-# Importar sin especificar base de datos (si está incluida en el archivo)
+# Importar sin especificar la base de datos (si está incluida en el archivo)
 mysql -u username -p < full_backup.sql
 ```
 
 ### Gestión de Usuarios: `CREATE USER` / `GRANT`
 
-Administrar usuarios y permisos de la base de datos.
+Gestiona usuarios y permisos de la base de datos.
 
 ```sql
 # Crear nuevo usuario
@@ -94,7 +109,7 @@ FLUSH PRIVILEGES;
 
 ### Mostrar Información del Servidor: `SHOW STATUS` / `SHOW VARIABLES`
 
-Mostrar la configuración y el estado del servidor.
+Muestra la configuración y el estado del servidor.
 
 ```sql
 # Mostrar estado del servidor
@@ -109,7 +124,7 @@ SHOW PROCESSLIST;
 
 ### Creación de Tabla: `CREATE TABLE`
 
-Crear nuevas tablas con columnas y tipos de datos especificados.
+Crea nuevas tablas con columnas y tipos de datos especificados.
 
 ```sql
 # Crear tabla con varios tipos de datos
@@ -121,7 +136,7 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-# Crear tabla con clave externa (foreign key)
+# Crear tabla con clave foránea
 CREATE TABLE orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
@@ -140,16 +155,16 @@ DESCRIBE users;
 SHOW COLUMNS FROM users;
 # Listar todas las tablas
 SHOW TABLES;
-# Mostrar la declaración CREATE de la tabla
+# Mostrar la sentencia CREATE de la tabla
 SHOW CREATE TABLE users;
 ```
 
 ### Modificar Tablas: `ALTER TABLE`
 
-Cambiar la estructura existente de la tabla, agregar o eliminar columnas.
+Cambia la estructura de la tabla existente, añade o elimina columnas.
 
 ```sql
-# Agregar nueva columna
+# Añadir nueva columna
 ALTER TABLE users ADD COLUMN phone VARCHAR(20);
 # Eliminar columna
 ALTER TABLE users DROP COLUMN age;
@@ -163,7 +178,7 @@ ALTER TABLE users CHANGE old_name new_name VARCHAR(50);
 
 ### Insertar Datos: `INSERT INTO`
 
-Agregar nuevos registros a las tablas.
+Añade nuevos registros a las tablas.
 
 ```sql
 # Insertar un solo registro
@@ -177,9 +192,24 @@ INSERT INTO users (username, email, age) VALUES
 INSERT INTO users_backup SELECT * FROM users;
 ```
 
+<BaseQuiz id="mysql-insert-1" correct="A">
+  <template #question>
+    ¿Cuál es la sintaxis correcta para insertar un solo registro?
+  </template>
+  
+  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La sintaxis correcta es `INSERT INTO table_name (columnas) VALUES (valores)`. La palabra clave `INTO` es requerida, y debes especificar tanto los nombres de las columnas como los valores correspondientes.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Actualizar Datos: `UPDATE`
 
-Modificar registros existentes en las tablas.
+Modifica registros existentes en las tablas.
 
 ```sql
 # Actualizar registro específico
@@ -193,7 +223,7 @@ UPDATE products SET price = price * 1.1 WHERE category = 'electronics';
 
 ### Eliminar Datos: `DELETE` / `TRUNCATE`
 
-Eliminar registros de las tablas.
+Elimina registros de las tablas.
 
 ```sql
 # Eliminar registros específicos
@@ -209,13 +239,13 @@ JOIN inactive_accounts i ON u.id = i.user_id;
 
 ### Reemplazar Datos: `REPLACE` / `INSERT ... ON DUPLICATE KEY`
 
-Manejar situaciones de clave duplicada durante la inserción.
+Maneja situaciones de clave duplicada durante la inserción.
 
 ```sql
 # Reemplazar existente o insertar nuevo
 REPLACE INTO users (id, username, email)
 VALUES (1, 'updated_user', 'new@email.com');
-# Insertar o actualizar en clave duplicada
+# Insertar o actualizar en caso de clave duplicada
 INSERT INTO users (username, email)
 VALUES ('john', 'john@email.com')
 ON DUPLICATE KEY UPDATE email = VALUES(email);
@@ -225,7 +255,7 @@ ON DUPLICATE KEY UPDATE email = VALUES(email);
 
 ### SELECT Básico: `SELECT * FROM`
 
-Recuperar datos de tablas con varias condiciones.
+Recupera datos de tablas con varias condiciones.
 
 ```sql
 # Seleccionar todas las columnas
@@ -234,13 +264,28 @@ SELECT * FROM users;
 SELECT username, email FROM users;
 # Seleccionar con condición WHERE
 SELECT * FROM users WHERE age > 25;
-# Seleccionar con condiciones múltiples
+# Seleccionar con múltiples condiciones
 SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 ```
 
-### Ordenar y Limitar: `ORDER BY` / `LIMIT`
+<BaseQuiz id="mysql-select-1" correct="D">
+  <template #question>
+    ¿Qué devuelve `SELECT * FROM users`?
+  </template>
+  
+  <BaseQuizOption value="A">Solo la primera fila de la tabla users</BaseQuizOption>
+  <BaseQuizOption value="B">Solo la columna username</BaseQuizOption>
+  <BaseQuizOption value="C">La estructura de la tabla</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Todas las columnas y todas las filas de la tabla users</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El comodín `*` selecciona todas las columnas, y sin una cláusula WHERE, devuelve todas las filas. Esto es útil para ver todos los datos, pero debe usarse con precaución en tablas grandes.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Controlar el orden y el número de resultados devueltos.
+### Ordenación y Limitación: `ORDER BY` / `LIMIT`
+
+Controla el orden y el número de resultados devueltos.
 
 ```sql
 # Ordenar resultados
@@ -249,13 +294,13 @@ SELECT * FROM users ORDER BY age DESC;
 SELECT * FROM users ORDER BY age DESC, username ASC;
 # Limitar resultados
 SELECT * FROM users LIMIT 10;
-# Paginación (saltar los primeros 10, tomar los siguientes 10)
+# Paginación (saltar las primeras 10, tomar las siguientes 10)
 SELECT * FROM users LIMIT 10 OFFSET 10;
 ```
 
 ### Filtrado: `WHERE` / `LIKE` / `IN`
 
-Filtrar datos usando varios operadores de comparación.
+Filtra datos usando varios operadores de comparación.
 
 ```sql
 # Coincidencia de patrones
@@ -270,7 +315,7 @@ SELECT * FROM users WHERE email IS NOT NULL;
 
 ### Agrupación: `GROUP BY` / `HAVING`
 
-Agrupar datos y aplicar funciones de agregación.
+Agrupa datos y aplica funciones de agregación.
 
 ```sql
 # Agrupar por columna
@@ -287,7 +332,7 @@ GROUP BY age, gender;
 
 ### Operaciones JOIN: `INNER` / `LEFT` / `RIGHT`
 
-Combinar datos de múltiples tablas.
+Combina datos de múltiples tablas.
 
 ```sql
 # Inner join (solo registros coincidentes)
@@ -305,12 +350,27 @@ JOIN orders o ON u.id = o.user_id
 JOIN products p ON o.product_id = p.id;
 ```
 
+<BaseQuiz id="mysql-join-1" correct="B">
+  <template #question>
+    ¿Cuál es la diferencia entre INNER JOIN y LEFT JOIN?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="B" correct>INNER JOIN devuelve solo filas coincidentes, LEFT JOIN devuelve todas las filas de la tabla izquierda</BaseQuizOption>
+  <BaseQuizOption value="C">INNER JOIN es más rápido</BaseQuizOption>
+  <BaseQuizOption value="D">LEFT JOIN solo funciona con dos tablas</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    INNER JOIN devuelve solo filas donde hay una coincidencia en ambas tablas. LEFT JOIN devuelve todas las filas de la tabla izquierda y las filas coincidentes de la tabla derecha, con valores NULL para las filas no coincidentes de la tabla derecha.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Subconsultas: `SELECT` dentro de `SELECT`
 
-Usar consultas anidadas para la recuperación compleja de datos.
+Utiliza consultas anidadas para la recuperación compleja de datos.
 
 ```sql
-# Subconsulta en cláusula WHERE
+# Subconsulta en la cláusula WHERE
 SELECT * FROM users
 WHERE id IN (SELECT user_id FROM orders WHERE total > 100);
 # Subconsulta correlacionada
@@ -324,14 +384,14 @@ FROM users;
 
 ### Funciones de Agregación: `COUNT` / `SUM` / `AVG`
 
-Calcular estadísticas y resúmenes a partir de los datos.
+Calcula estadísticas y resúmenes a partir de los datos.
 
 ```sql
 # Agregados básicos
 SELECT COUNT(*) FROM users;
 SELECT AVG(age), MIN(age), MAX(age) FROM users;
 SELECT SUM(total) FROM orders;
-# Agregación con agrupación
+# Agregado con agrupación
 SELECT department, AVG(salary)
 FROM employees GROUP BY department;
 # Múltiples agregados
@@ -344,10 +404,10 @@ FROM users;
 
 ### Funciones de Ventana: `OVER` / `PARTITION BY`
 
-Realizar cálculos en conjuntos de filas de tablas.
+Realiza cálculos en conjuntos de filas de tablas.
 
 ```sql
-# Funciones de clasificación (Ranking)
+# Funciones de clasificación (ranking)
 SELECT username, age,
 RANK() OVER (ORDER BY age DESC) as age_rank
 FROM users;
@@ -355,7 +415,7 @@ FROM users;
 SELECT username, department, salary,
 AVG(salary) OVER (PARTITION BY department) as dept_avg
 FROM employees;
-# Totales acumulados (Running totals)
+# Totales acumulados (running totals)
 SELECT order_date, total,
 SUM(total) OVER (ORDER BY order_date) as running_total
 FROM orders;
@@ -365,7 +425,7 @@ FROM orders;
 
 ### Crear Índices: `CREATE INDEX`
 
-Mejorar el rendimiento de las consultas con índices de base de datos.
+Mejora el rendimiento de las consultas con índices de base de datos.
 
 ```sql
 # Crear índice regular
@@ -380,7 +440,7 @@ SHOW INDEXES FROM users;
 
 ### Análisis de Consultas: `EXPLAIN`
 
-Analizar los planes de ejecución de consultas y el rendimiento.
+Analiza los planes de ejecución de consultas y el rendimiento.
 
 ```sql
 # Mostrar plan de ejecución de consulta
@@ -404,12 +464,12 @@ SELECT username, email FROM users WHERE id = 1;
 SELECT * FROM logs ORDER BY created_at DESC LIMIT 1000;
 # Usar condiciones WHERE adecuadas
 SELECT * FROM orders WHERE user_id = 123 AND status = 'pending';
--- Usar índices de cobertura (covering indexes) cuando sea posible
+-- Usar índices que cubran (covering indexes) cuando sea posible
 ```
 
 ### Mantenimiento de Tablas: `OPTIMIZE` / `ANALYZE`
 
-Mantener el rendimiento y las estadísticas de las tablas.
+Mantiene el rendimiento y las estadísticas de las tablas.
 
 ```sql
 # Optimizar almacenamiento de la tabla
@@ -426,7 +486,7 @@ REPAIR TABLE users;
 
 ### Cargar Datos: `LOAD DATA INFILE`
 
-Importar datos desde archivos CSV y de texto.
+Importa datos desde archivos CSV y de texto.
 
 ```sql
 # Cargar archivo CSV
@@ -443,7 +503,7 @@ INTO TABLE users (username, email, age);
 
 ### Exportar Datos: `SELECT INTO OUTFILE`
 
-Exportar resultados de consultas a archivos.
+Exporta los resultados de la consulta a archivos.
 
 ```sql
 # Exportar a archivo CSV
@@ -457,7 +517,7 @@ LINES TERMINATED BY '\n';
 
 ### Copia de Seguridad y Restauración: `mysqldump` / `mysql`
 
-Crear y restaurar copias de seguridad de bases de datos.
+Crea y restaura copias de seguridad de bases de datos.
 
 ```bash
 # Copia de seguridad de tablas específicas
@@ -476,12 +536,12 @@ mysqldump -h source_host -u user -p db_name | mysql -h dest_host -u user -p db_n
 
 ### Tipos de Datos Comunes: Números, Texto, Fechas
 
-Elija tipos de datos apropiados para sus columnas.
+Elige tipos de datos apropiados para tus columnas.
 
 ```sql
 # Tipos numéricos
 INT, BIGINT, DECIMAL(10,2), FLOAT, DOUBLE
-# Tipos de cadena (String)
+# Tipos de cadena
 VARCHAR(255), TEXT, CHAR(10), MEDIUMTEXT, LONGTEXT
 # Tipos de fecha y hora
 DATE, TIME, DATETIME, TIMESTAMP, YEAR
@@ -499,7 +559,7 @@ CREATE TABLE products (
 
 ### Funciones de Cadena: `CONCAT` / `SUBSTRING` / `LENGTH`
 
-Manipular datos de texto con funciones de cadena integradas.
+Manipula datos de texto con funciones de cadena integradas.
 
 ```sql
 # Concatenación de cadenas
@@ -513,7 +573,7 @@ SELECT REPLACE(phone, '-', '.') FROM users WHERE phone LIKE '___-___-____';
 
 ### Funciones de Fecha: `NOW()` / `DATE_ADD` / `DATEDIFF`
 
-Trabajar con fechas y horas de manera efectiva.
+Trabaja con fechas y horas de manera efectiva.
 
 ```sql
 # Fecha y hora actuales
@@ -527,7 +587,7 @@ SELECT DATE_FORMAT(created_at, '%Y-%m-%d %H:%i') as formatted_date FROM orders;
 
 ### Funciones Numéricas: `ROUND` / `ABS` / `RAND`
 
-Realizar operaciones matemáticas sobre datos numéricos.
+Realiza operaciones matemáticas sobre datos numéricos.
 
 ```sql
 # Funciones matemáticas
@@ -542,7 +602,7 @@ SELECT AVG(price), STDDEV(price), VARIANCE(price) FROM products;
 
 ### Control de Transacciones: `BEGIN` / `COMMIT` / `ROLLBACK`
 
-Administrar transacciones de base de datos para la consistencia de los datos.
+Gestiona transacciones de base de datos para la consistencia de los datos.
 
 ```sql
 # Iniciar transacción
@@ -558,9 +618,9 @@ COMMIT;
 ROLLBACK;
 ```
 
-### Nivel de Aislamiento de Transacción: `SET TRANSACTION ISOLATION`
+### Nivel de Aislamiento de Transacciones: `SET TRANSACTION ISOLATION`
 
-Controlar cómo interactúan las transacciones entre sí.
+Controla cómo interactúan las transacciones entre sí.
 
 ```sql
 # Establecer nivel de aislamiento
@@ -573,7 +633,7 @@ SELECT @@transaction_isolation;
 
 ### Bloqueo: `LOCK TABLES` / `SELECT FOR UPDATE`
 
-Controlar el acceso concurrente a los datos.
+Controla el acceso concurrente a los datos.
 
 ```sql
 # Bloquear tablas para acceso exclusivo
@@ -590,7 +650,7 @@ COMMIT;
 
 ### Puntos de Retorno (Savepoints): `SAVEPOINT` / `ROLLBACK TO`
 
-Crear puntos de retroceso dentro de las transacciones.
+Crea puntos de retroceso dentro de las transacciones.
 
 ```sql
 BEGIN;
@@ -608,7 +668,7 @@ COMMIT;
 
 ### Expresiones de Tabla Comunes (CTEs): `WITH`
 
-Crear conjuntos de resultados temporales para consultas complejas.
+Crea conjuntos de resultados temporales para consultas complejas.
 
 ```sql
 # CTE simple
@@ -626,7 +686,7 @@ WHERE uo.total_spent > 1000;
 
 ### Procedimientos Almacenados: `CREATE PROCEDURE`
 
-Crear procedimientos de base de datos reutilizables.
+Crea procedimientos de base de datos reutilizables.
 
 ```sql
 # Crear procedimiento almacenado
@@ -639,16 +699,16 @@ BEGIN
     WHERE o.user_id = user_id;
 END //
 DELIMITER ;
-# Llamar a procedimiento
+# Llamar al procedimiento
 CALL GetUserOrders(123);
 ```
 
 ### Triggers: `CREATE TRIGGER`
 
-Ejecutar código automáticamente en respuesta a eventos de la base de datos.
+Ejecuta código automáticamente en respuesta a eventos de la base de datos.
 
 ```sql
-# Crear trigger para registro de auditoría
+# Crear trigger para registro de auditoría de usuario
 CREATE TRIGGER user_update_audit
 AFTER UPDATE ON users
 FOR EACH ROW
@@ -662,7 +722,7 @@ SHOW TRIGGERS;
 
 ### Vistas: `CREATE VIEW`
 
-Crear tablas virtuales basadas en resultados de consultas.
+Crea tablas virtuales basadas en resultados de consultas.
 
 ```sql
 # Crear vista
@@ -680,7 +740,7 @@ DROP VIEW active_users;
 
 ### Instalación: Gestores de Paquetes
 
-Instalar MySQL usando los gestores de paquetes del sistema.
+Instala MySQL usando los gestores de paquetes del sistema.
 
 ```bash
 # Ubuntu/Debian
@@ -696,12 +756,12 @@ sudo systemctl start mysql
 
 ### Docker: `docker run mysql`
 
-Ejecutar MySQL en contenedores Docker para desarrollo.
+Ejecuta MySQL en contenedores Docker para desarrollo.
 
 ```bash
 # Ejecutar contenedor MySQL
 docker run --name mysql-dev -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql:8.0
-# Conectar al MySQL del contenedor
+# Conectar al MySQL contenedorizado
 docker exec -it mysql-dev mysql -u root -p
 # Crear base de datos en el contenedor
 docker exec -it mysql-dev mysql -u root -p -e "CREATE DATABASE testdb;"
@@ -709,7 +769,7 @@ docker exec -it mysql-dev mysql -u root -p -e "CREATE DATABASE testdb;"
 
 ### Configuración Inicial y Seguridad
 
-Asegure su instalación de MySQL y verifique la configuración.
+Asegura tu instalación de MySQL y verifica la configuración.
 
 ```bash
 # Ejecutar script de seguridad
@@ -728,7 +788,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 
 ### Archivos de Configuración: `my.cnf`
 
-Modificar la configuración del servidor MySQL.
+Modifica la configuración del servidor MySQL.
 
 ```ini
 # Ubicaciones comunes de configuración
@@ -746,20 +806,20 @@ long_query_time = 2
 
 ### Configuración en Tiempo de Ejecución: `SET GLOBAL`
 
-Cambiar la configuración mientras MySQL se está ejecutando.
+Cambia la configuración mientras MySQL se está ejecutando.
 
 ```sql
 # Establecer variables globales
 SET GLOBAL max_connections = 500;
 SET GLOBAL slow_query_log = ON;
-# Mostrar configuraciones actuales
+# Mostrar configuración actual
 SHOW VARIABLES LIKE 'max_connections';
 SHOW GLOBAL STATUS LIKE 'Slow_queries';
 ```
 
-### Optimización del Rendimiento: Memoria y Caché
+### Optimización de Rendimiento: Memoria y Caché
 
-Optimizar la configuración de rendimiento de MySQL.
+Optimiza la configuración de rendimiento de MySQL.
 
 ```sql
 # Mostrar uso de memoria
@@ -774,13 +834,13 @@ SET GLOBAL innodb_buffer_pool_size = 2147483648; -- 2GB
 
 ### Configuración de Registros: Registros de Errores y Consultas
 
-Configurar el registro de MySQL para monitoreo y depuración.
+Configura el registro de MySQL para monitoreo y depuración.
 
 ```sql
-# Habilitar registro de consultas
+# Habilitar registro general de consultas
 SET GLOBAL general_log = 'ON';
 SET GLOBAL general_log_file = '/var/log/mysql/query.log';
-# Registro de consultas lentas (Slow query log)
+# Registro de consultas lentas (slow query log)
 SET GLOBAL slow_query_log = 'ON';
 SET GLOBAL long_query_time = 1;
 # Mostrar configuración de registros

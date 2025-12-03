@@ -1,6 +1,6 @@
 ---
-title: 'SQLite 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 SQLite 를 학습하세요.'
+title: 'SQLite 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 SQLite 데이터베이스를 학습하세요. SQLite SQL 구문, 트랜잭션, 트리거, 뷰 및 애플리케이션을 위한 경량 데이터베이스 관리를 위한 빠른 참조.'
 pdfUrl: '/cheatsheets/pdf/sqlite-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ SQLite 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/sqlite">실습 랩을 통해 SQLite 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/sqlite">Hands-On Labs 로 SQLite 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 SQLite 데이터베이스 관리를 학습하세요. LabEx 는 필수 SQL 작업, 데이터 조작, 쿼리 최적화, 데이터베이스 설계 및 성능 튜닝을 다루는 포괄적인 SQLite 과정을 제공합니다. 경량 데이터베이스 개발 및 효율적인 데이터 관리를 마스터하세요.
+실습 랩을 통해 SQLite 데이터베이스 관리를 학습하세요. LabEx 는 필수 SQL 작업, 데이터 조작, 쿼리 최적화, 데이터베이스 설계 및 성능 튜닝을 다루는 포괄적인 SQLite 과정을 제공합니다. 경량 데이터베이스 개발 및 효율적인 데이터 관리를 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ SQLite 치트 시트
 
 ### 데이터베이스 생성: `sqlite3 database.db`
 
-새 SQLite 데이터베이스 파일을 생성합니다.
+새로운 SQLite 데이터베이스 파일을 생성합니다.
 
 ```bash
 # 데이터베이스 생성 또는 열기
@@ -32,7 +32,7 @@ sqlite3 mydata.db
 sqlite3 :memory:
 # 명령어로 데이터베이스 생성
 .open mydata.db
-# 모든 데이터베이스 나열
+# 연결된 모든 데이터베이스 표시
 .databases
 # 모든 테이블의 스키마 표시
 .schema
@@ -86,7 +86,7 @@ SQLite 명령줄 인터페이스를 닫습니다.
 
 ### 테이블 생성: `CREATE TABLE`
 
-열과 제약 조건을 사용하여 새 테이블을 데이터베이스에 생성합니다.
+제약 조건과 열을 사용하여 새 테이블을 데이터베이스에 생성합니다.
 
 ```sql
 -- 기본 테이블 생성
@@ -106,6 +106,21 @@ CREATE TABLE orders (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 ```
+
+<BaseQuiz id="sqlite-create-table-1" correct="A">
+  <template #question>
+    SQLite 에서 `INTEGER PRIMARY KEY AUTOINCREMENT`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>자동 증가하는 정수 기본 키를 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="B">텍스트 기본 키를 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="C">외래 키 제약 조건을 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="D">고유 인덱스를 생성합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INTEGER PRIMARY KEY AUTOINCREMENT`는 새 행마다 자동으로 증가하며 기본 키 역할을 하는 정수 열을 생성합니다. 이는 각 행에 고유 식별자가 있음을 보장합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 데이터 유형: `INTEGER`, `TEXT`, `REAL`, `BLOB`
 
@@ -177,6 +192,21 @@ UPDATE products SET price = price * 1.1
 WHERE category = 'Electronics';
 ```
 
+<BaseQuiz id="sqlite-update-1" correct="D">
+  <template #question>
+    UPDATE 문에서 WHERE 절을 생략하면 어떻게 됩니까?
+  </template>
+  
+  <BaseQuizOption value="A">업데이트가 실패합니다</BaseQuizOption>
+  <BaseQuizOption value="B">첫 번째 행만 업데이트됩니다</BaseQuizOption>
+  <BaseQuizOption value="C">아무 일도 일어나지 않습니다</BaseQuizOption>
+  <BaseQuizOption value="D" correct>테이블의 모든 행이 업데이트됩니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    WHERE 절이 없으면 UPDATE 문은 테이블의 모든 행을 수정합니다. 의도하지 않은 데이터를 실수로 변경하는 것을 방지하려면 항상 WHERE 를 사용하여 업데이트할 행을 지정해야 합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 데이터 삭제: `DELETE FROM`
 
 지정된 조건에 따라 테이블에서 레코드를 제거합니다.
@@ -198,7 +228,7 @@ WHERE user_id IN (SELECT id FROM users WHERE active = 0);
 충돌 시 새 레코드를 삽입하거나 기존 레코드를 업데이트합니다.
 
 ```sql
--- 충돌 시 삽입 또는 대체
+-- 충돌 시 삽입 또는 교체
 INSERT OR REPLACE INTO users (id, name, email)
 VALUES (1, 'Updated Name', 'updated@email.com');
 
@@ -207,11 +237,26 @@ INSERT OR IGNORE INTO users (name, email)
 VALUES ('Duplicate', 'existing@email.com');
 ```
 
+<BaseQuiz id="sqlite-upsert-1" correct="A">
+  <template #question>
+    `INSERT OR REPLACE`와 `INSERT OR IGNORE`의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>REPLACE 는 기존 행을 업데이트하고, IGNORE 는 중복을 건너뜁니다</BaseQuizOption>
+  <BaseQuizOption value="B">차이점이 없습니다</BaseQuizOption>
+  <BaseQuizOption value="C">REPLACE 는 행을 삭제하고, IGNORE 는 행을 업데이트합니다</BaseQuizOption>
+  <BaseQuizOption value="D">REPLACE 는 테이블에 대해 작동하고, IGNORE 는 뷰에 대해 작동합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INSERT OR REPLACE`는 충돌 (예: 중복 기본 키) 이 있는 경우 기존 행을 대체합니다. `INSERT OR IGNORE`는 충돌이 발생하면 삽입을 건너뛰고 기존 행을 변경하지 않습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 데이터 쿼리 및 선택
 
 ### 기본 쿼리: `SELECT`
 
-다양한 옵션이 있는 SELECT 문을 사용하여 테이블에서 데이터를 쿼리합니다.
+다양한 옵션을 사용하여 SELECT 문으로 테이블에서 데이터를 쿼리합니다.
 
 ```sql
 -- 모든 열 선택
@@ -226,6 +271,21 @@ SELECT name AS full_name, age AS years_old FROM users;
 -- 고유 값 선택
 SELECT DISTINCT department FROM employees;
 ```
+
+<BaseQuiz id="sqlite-select-1" correct="B">
+  <template #question>
+    `SELECT DISTINCT`는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A">모든 행을 선택합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>중복을 제거하고 고유한 값만 반환합니다</BaseQuizOption>
+  <BaseQuizOption value="C">첫 번째 행만 선택합니다</BaseQuizOption>
+  <BaseQuizOption value="D">결과를 정렬합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SELECT DISTINCT`는 결과 집합에서 중복 행을 제거하여 고유한 값만 반환합니다. 이는 열에서 모든 고유 값을 보려고 할 때 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 필터링: `WHERE`
 
@@ -247,7 +307,7 @@ SELECT * FROM users WHERE name GLOB 'J*';
 
 ### 정렬 및 제한: `ORDER BY` / `LIMIT`
 
-결과를 정렬하고 반환되는 행 수를 제한하여 더 나은 데이터 관리를 수행합니다.
+결과를 정렬하고 반환되는 행 수를 제한하여 데이터 관리를 개선합니다.
 
 ```sql
 -- 오름차순 정렬 (기본값)
@@ -308,7 +368,7 @@ HAVING avg_salary > 60000;
 
 ### 서브쿼리
 
-복잡한 데이터 검색 및 조건부 논리를 위해 중첩된 쿼리를 사용합니다.
+복잡한 데이터 검색 및 조건부 로직을 위해 중첩된 쿼리를 사용합니다.
 
 ```sql
 -- WHERE 절의 서브쿼리
@@ -331,7 +391,7 @@ WHERE EXISTS (
 
 ### 조인: `INNER`, `LEFT`, `RIGHT`
 
-다양한 조인 유형을 사용하여 여러 테이블에서 데이터를 결합하여 관계형 쿼리를 수행합니다.
+다양한 조인 유형을 사용하여 여러 테이블의 데이터를 결합하여 관계형 쿼리를 수행합니다.
 
 ```sql
 -- 내부 조인
@@ -396,8 +456,8 @@ CREATE INDEX idx_active_users ON users(name) WHERE active = 1;
 
 쿼리 실행 계획을 분석하여 성능 병목 현상을 식별합니다.
 
-```sql
--- 쿼리 성능 분석
+```bash
+# 쿼리 성능 분석
 EXPLAIN QUERY PLAN SELECT * FROM users WHERE email = 'test@example.com';
 
 -- 인덱스 사용 여부 확인
@@ -408,8 +468,8 @@ EXPLAIN QUERY PLAN SELECT * FROM orders WHERE user_id = 123;
 
 데이터베이스 파일을 최적화하고 통계를 업데이트하여 성능을 개선합니다.
 
-```sql
--- 공간 확보를 위해 데이터베이스 재구축
+```bash
+# 공간 확보를 위해 데이터베이스 재구축
 VACUUM;
 
 -- 인덱스 통계 업데이트
@@ -421,10 +481,10 @@ PRAGMA integrity_check;
 
 ### 성능 설정: `PRAGMA`
 
-최적화 및 구성을 위해 pragma 문을 통해 SQLite 설정을 제어합니다.
+최적화 및 구성을 위해 pragma 문을 통해 SQLite 설정을 구성합니다.
 
 ```sql
--- WAL 모드로 저널 모드 설정 (더 나은 성능)
+-- 더 나은 성능을 위한 저널 모드 설정
 PRAGMA journal_mode = WAL;
 
 -- 동기화 모드 설정
@@ -504,7 +564,7 @@ DROP TRIGGER IF EXISTS update_user_count;
 
 ### 날짜 및 시간 함수
 
-SQLite 의 내장 함수를 사용하여 날짜 및 시간 작업을 처리합니다.
+내장 함수를 사용하여 날짜 및 시간 작업을 처리합니다.
 
 ```sql
 -- 현재 날짜/시간
@@ -557,9 +617,9 @@ FROM employees
 GROUP BY department;
 ```
 
-### 조건부 논리: `CASE`
+### 조건부 로직: `CASE`
 
-SQL 쿼리 내에서 조건부 논리를 구현합니다.
+SQL 쿼리 내에서 조건부 로직을 구현합니다.
 
 ```sql
 -- 간단한 CASE 문
@@ -581,7 +641,7 @@ WHERE CASE WHEN category = 'Electronics' THEN price < 1000
 
 ### 트랜잭션 제어
 
-SQLite 트랜잭션은 데이터 작업을 안정적으로 보장하기 위해 완전히 ACID 를 준수합니다.
+SQLite 트랜잭션은 데이터 작업을 안정적으로 수행하기 위해 완전히 ACID 를 준수합니다.
 
 ```sql
 -- 기본 트랜잭션
@@ -590,7 +650,7 @@ INSERT INTO users (name, email) VALUES ('Test User', 'test@example.com');
 UPDATE users SET age = 25 WHERE name = 'Test User';
 COMMIT;
 
--- 롤백이 포함된 트랜잭션
+-- 롤백을 포함한 트랜잭션
 BEGIN;
 DELETE FROM orders WHERE amount < 10;
 -- 결과 확인 후 필요 시 롤백
@@ -608,8 +668,8 @@ COMMIT;
 
 데이터 무결성을 위해 데이터베이스 잠금 및 동시 액세스를 관리합니다.
 
-```sql
--- 잠금 상태 확인
+```bash
+# 잠금 상태 확인
 PRAGMA locking_mode;
 
 -- 더 나은 동시성을 위해 WAL 모드 설정
@@ -626,7 +686,7 @@ PRAGMA busy_timeout = 5000;
 
 ### 데이터베이스 명령: `.help`
 
-사용 가능한 점 (dot) 명령에 대한 SQLite 명령줄 도움말 및 설명서에 액세스합니다.
+사용 가능한 점 (dot) 명령에 대한 SQLite 명령줄 도움말 및 설명서를 액세스합니다.
 
 ```bash
 # 사용 가능한 모든 명령 표시
@@ -640,7 +700,7 @@ PRAGMA busy_timeout = 5000;
 
 ### 가져오기/내보내기: `.import` / `.export`
 
-다양한 형식으로 SQLite 와 외부 파일 간에 데이터를 전송합니다.
+SQLite 와 외부 파일 간에 다양한 형식으로 데이터를 전송합니다.
 
 ```bash
 # CSV 파일 가져오기
@@ -656,7 +716,7 @@ SELECT * FROM users;
 
 ### 스키마 관리: `.schema` / `.tables`
 
-개발 및 디버깅을 위해 데이터베이스 구조와 테이블 정의를 검사합니다.
+개발 및 디버깅을 위해 데이터베이스 구조 및 테이블 정의를 검사합니다.
 
 ```bash
 # 모든 테이블 표시
@@ -745,12 +805,12 @@ PRAGMA integrity_check;
 
 ### 다운로드 및 설치
 
-운영 체제에 대한 SQLite 도구를 다운로드하고 명령줄 인터페이스를 설정합니다.
+운영 체제용 SQLite 도구를 다운로드하고 명령줄 인터페이스를 설정합니다.
 
 ```bash
 # sqlite.org에서 다운로드
-# Windows의 경우: sqlite-tools-win32-x86-*.zip
-# Linux/Mac의 경우: 패키지 관리자 사용
+# Windows용: sqlite-tools-win32-x86-*.zip
+# Linux/Mac용: 패키지 관리자 사용
 
 # Ubuntu/Debian
 sudo apt-get install sqlite3

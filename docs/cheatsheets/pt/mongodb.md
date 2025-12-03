@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Dicas MongoDB'
-description: 'Aprenda MongoDB com nossa folha de dicas abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Referência MongoDB | LabEx'
+description: 'Aprenda o banco de dados NoSQL MongoDB com esta folha de referência abrangente. Referência rápida para consultas MongoDB, agregação, indexação, sharding, replicação e gerenciamento de banco de dados de documentos.'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 
@@ -48,12 +48,27 @@ use newdb
 db.users.insertOne({name: "John"})
 ```
 
-### Excluir Banco de Dados: `db.dropDatabase()`
+<BaseQuiz id="mongodb-use-1" correct="B">
+  <template #question>
+    O que acontece quando você executa `use newdb` no MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">Ele cria o banco de dados imediatamente</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Ele muda para o banco de dados (o cria quando você insere dados pela primeira vez)</BaseQuizOption>
+  <BaseQuizOption value="C">Ele deleta o banco de dados</BaseQuizOption>
+  <BaseQuizOption value="D">Ele mostra todas as coleções no banco de dados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O comando `use` muda para um banco de dados, mas o MongoDB não o cria até que você insira o primeiro documento. Esta é uma abordagem de criação preguiçosa (lazy creation).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Deletar Banco de Dados: `db.dropDatabase()`
 
 Exclui o banco de dados atual e todas as suas coleções.
 
 ```javascript
-// Excluir banco de dados atual
+// Deletar banco de dados atual
 db.dropDatabase()
 // Confirmar com o nome do banco de dados
 use myapp
@@ -86,14 +101,14 @@ db.createCollection('logs', {
 })
 ```
 
-### Excluir Coleção: `db.collection.drop()`
+### Deletar Coleção: `db.collection.drop()`
 
 Exclui uma coleção e todos os seus documentos.
 
 ```javascript
-// Excluir coleção users
+// Deletar coleção users
 db.users.drop()
-// Verificar se a coleção foi excluída
+// Verificar se a coleção foi deletada
 show collections
 ```
 
@@ -114,9 +129,9 @@ db.users.estimatedDocumentCount()
 db.users.getIndexes()
 ```
 
-### Documentos de Amostra: `db.collection.findOne()`
+### Documentos de Exemplo: `db.collection.findOne()`
 
-Recupera documentos de amostra para entender a estrutura e os tipos de dados.
+Recupera documentos de exemplo para entender a estrutura e os tipos de dados.
 
 ```javascript
 // Obter um documento
@@ -136,7 +151,7 @@ Navega pelos dados da coleção com paginação e formatação.
 db.users.find().limit(5)
 // Pular e limitar (paginação)
 db.users.find().skip(10).limit(5)
-// Formato bonito (pretty)
+// Formato bonito (Pretty format)
 db.users.find().pretty()
 ```
 
@@ -160,6 +175,21 @@ db.users.insertOne({
   status: 'active',
 })
 ```
+
+<BaseQuiz id="mongodb-insert-1" correct="A">
+  <template #question>
+    O que `db.users.insertOne()` retorna?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Um objeto de reconhecimento com o _id do documento inserido</BaseQuizOption>
+  <BaseQuizOption value="B">O documento inserido</BaseQuizOption>
+  <BaseQuizOption value="C">Nada</BaseQuizOption>
+  <BaseQuizOption value="D">O número de documentos inseridos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `insertOne()` retorna um objeto de reconhecimento contendo `acknowledged: true` e `insertedId` com o `_id` do documento inserido (ou o `_id` personalizado, se fornecido).
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Inserir Muitos: `db.collection.insertMany()`
 
@@ -198,7 +228,7 @@ db.posts.insertOne({
 
 ### Inserir Documentos Aninhados
 
-Adiciona documentos com objetos e arrays incorporados.
+Adiciona documentos com objetos e arrays embutidos.
 
 ```javascript
 // Inserir com objetos aninhados
@@ -215,7 +245,7 @@ db.users.insertOne({
 
 ## Consulta de Documentos (Ler)
 
-### Find Básico: `db.collection.find()`
+### Busca Básica: `db.collection.find()`
 
 Recupera documentos com base em condições de consulta.
 
@@ -258,16 +288,31 @@ db.users.find({ status: { $ne: 'inactive' } })
 db.users.find({ email: { $exists: true } })
 ```
 
-### Pesquisa de Texto: `$text`, `$regex`
+<BaseQuiz id="mongodb-query-1" correct="B">
+  <template #question>
+    O que `$gt` significa em consultas MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">Maior ou igual a</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Maior que</BaseQuizOption>
+  <BaseQuizOption value="C">Agrupar por</BaseQuizOption>
+  <BaseQuizOption value="D">Obter total</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$gt` é um operador de comparação que significa "greater than" (maior que). É usado em consultas como `{ age: { $gt: 25 } }` para encontrar documentos onde o campo idade é maior que 25.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Busca de Texto: `$text`, `$regex`
 
 Pesquisa documentos usando texto e correspondência de padrões.
 
 ```javascript
-// Pesquisa de texto (requer índice de texto)
+// Busca de texto (requer índice de texto)
 db.posts.find({ $text: { $search: 'mongodb tutorial' } })
-// Pesquisa Regex
+// Busca Regex
 db.users.find({ name: { $regex: '^John', $options: 'i' } })
-// Pesquisa insensível a maiúsculas e minúsculas
+// Busca insensível a maiúsculas e minúsculas
 db.users.find({ email: { $regex: '@gmail.com$' } })
 ```
 
@@ -285,7 +330,7 @@ db.users.updateOne(
   { _id: ObjectId('...') },
   { $set: { age: 31, status: 'updated' } },
 )
-// Upsert (inserir se não for encontrado)
+// Upsert (inserir se não encontrado)
 db.users.updateOne(
   { name: 'New User' },
   { $set: { age: 25 } },
@@ -314,9 +359,27 @@ db.users.updateOne(
   { name: 'John' },
   { $set: { lastLogin: new Date() }, $unset: { temp: '' } },
 )
-// Adicionar ao array
+// Adicionar a um array
 db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
-// Puxar do array
+```
+
+<BaseQuiz id="mongodb-update-1" correct="C">
+  <template #question>
+    O que `$set` faz nas operações de atualização do MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">Deleta um campo</BaseQuizOption>
+  <BaseQuizOption value="B">Adiciona um elemento a um array</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Define o valor de um campo</BaseQuizOption>
+  <BaseQuizOption value="D">Remove um elemento de um array</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O operador `$set` define o valor de um campo em um documento. Se o campo não existir, ele o cria. Se existir, ele atualiza o valor.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```javascript
+// Puxar de um array
 db.users.updateOne({ name: 'John' }, { $pull: { hobbies: 'reading' } })
 ```
 
@@ -411,42 +474,42 @@ db.users.aggregate([
 
 ## Exclusão de Documentos
 
-### Excluir Um: `db.collection.deleteOne()`
+### Deletar Um: `db.collection.deleteOne()`
 
 Remove o primeiro documento que corresponde à condição de consulta.
 
 ```javascript
-// Excluir documento único
+// Deletar documento único
 db.users.deleteOne({ name: 'John Doe' })
-// Excluir por ID
+// Deletar por ID
 db.users.deleteOne({ _id: ObjectId('...') })
-// Excluir com condição
+// Deletar com condição
 db.posts.deleteOne({ status: 'draft', author: 'unknown' })
 ```
 
-### Excluir Muitos: `db.collection.deleteMany()`
+### Deletar Muitos: `db.collection.deleteMany()`
 
 Remove todos os documentos que correspondem à condição de consulta.
 
 ```javascript
-// Excluir múltiplos documentos
+// Deletar múltiplos documentos
 db.users.deleteMany({ status: 'inactive' })
-// Excluir todos os documentos (tenha cuidado!)
+// Deletar todos os documentos (tenha cuidado!)
 db.temp_collection.deleteMany({})
-// Excluir com condição de data
+// Deletar com condição de data
 db.logs.deleteMany({
   createdAt: { $lt: new Date('2024-01-01') },
 })
 ```
 
-### Encontrar e Excluir: `db.collection.findOneAndDelete()`
+### Encontrar e Deletar: `db.collection.findOneAndDelete()`
 
-Encontra um documento e o exclui em uma única operação atômica.
+Encontra um documento e o deleta em uma única operação atômica.
 
 ```javascript
-// Encontrar e excluir
+// Encontrar e deletar
 const deletedDoc = db.users.findOneAndDelete({ status: 'pending' })
-// Encontrar e excluir com opções
+// Encontrar e deletar com opções
 db.queue.findOneAndDelete({ processed: false }, { sort: { priority: -1 } })
 ```
 
@@ -461,9 +524,9 @@ Cria índices em campos para acelerar as consultas.
 db.users.createIndex({ email: 1 })
 // Índice composto
 db.users.createIndex({ status: 1, createdAt: -1 })
-// Índice de texto para pesquisa
+// Índice de texto para busca
 db.posts.createIndex({ title: 'text', content: 'text' })
-// Índice exclusivo
+// Índice único
 db.users.createIndex({ email: 1 }, { unique: true })
 ```
 
@@ -474,11 +537,11 @@ Visualiza e gerencia índices existentes em coleções.
 ```javascript
 // Listar todos os índices
 db.users.getIndexes()
-// Excluir índice específico
+// Deletar índice específico
 db.users.dropIndex({ email: 1 })
-// Excluir índice por nome
+// Deletar índice por nome
 db.users.dropIndex('email_1')
-// Excluir todos os índices, exceto _id
+// Deletar todos os índices, exceto _id
 db.users.dropIndexes()
 ```
 
@@ -509,11 +572,11 @@ Melhores práticas para otimizar consultas e operações do MongoDB.
 db.users.find({ status: 'active' }, { name: 1, email: 1 })
 // Limitar resultados para melhor desempenho
 db.posts.find().sort({ createdAt: -1 }).limit(10)
-// Usar hint para forçar um índice específico
+// Usar hint para forçar índice específico
 db.users.find({ age: 25 }).hint({ age: 1 })
 ```
 
-## Shell e Conexão do MongoDB
+## Shell do MongoDB e Conexão
 
 ### Conectar ao MongoDB: `mongosh`
 
@@ -524,7 +587,7 @@ Inicia o shell do MongoDB e conecta a diferentes instâncias.
 mongosh
 # Conectar a host e porta específicos
 mongosh "mongodb://localhost:27017"
-# Conectar a servidor remoto
+# Conectar ao servidor remoto
 mongosh "mongodb://username:password@host:port/database"
 # Conectar com opções
 mongosh --host localhost --port 27017
@@ -532,7 +595,7 @@ mongosh --host localhost --port 27017
 
 ### Auxiliares do Shell: `help`, `exit`
 
-Obtém informações de ajuda e gerencia sessões do shell.
+Obtém informações de ajuda e gerencia sessões de shell.
 
 ```javascript
 // Ajuda geral
@@ -559,7 +622,7 @@ db.users.find().pretty()
 db.users.find({ age: 25 }).explain('executionStats')
 // Usar JavaScript no shell
 var user = db.users.findOne({ name: 'John' })
-print('Idade do usuário: ' + user.age)
+print('User age: ' + user.age)
 ```
 
 ## Importação e Exportação de Dados
@@ -615,9 +678,9 @@ Restaura dados do MongoDB a partir de backups binários.
 ```bash
 # Restaurar banco de dados
 mongorestore --db myapp /backup/myapp/
-# Restaurar com exclusão (drop)
+# Restaurar com drop
 mongorestore --db myapp --drop /backup/myapp/
-# Restaurar backup compactado
+# Restaurar backup comprimido
 mongorestore --gzip --db myapp /backup/myapp/
 ```
 
@@ -638,14 +701,14 @@ sudo systemctl enable mongod
 sudo systemctl status mongod
 ```
 
-### Instalação Docker
+### Instalação com Docker
 
 Executa o MongoDB usando contêineres Docker.
 
 ```bash
-# Puxar imagem MongoDB
+# Puxar imagem do MongoDB
 docker pull mongo
-# Executar contêiner MongoDB
+# Executar contêiner do MongoDB
 docker run --name mongodb -d \
   -p 27017:27017 \
   -v mongodb_data:/data/db \
@@ -729,7 +792,7 @@ rs.status()
 Configurações comuns de configuração do MongoDB.
 
 ```yaml
-# Exemplo mongod.conf
+# Exemplo de mongod.conf
 storage:
   dbPath: /var/lib/mongodb
 systemLog:
@@ -750,7 +813,7 @@ Identifica e corrige problemas frequentemente encontrados no MongoDB.
 
 ```javascript
 // Erros de conexão
-// Verificar se o MongoDB está em execução
+// Verificar se o MongoDB está rodando
 sudo systemctl status mongod
 // Verificar disponibilidade da porta
 netstat -tuln | grep 27017
@@ -771,7 +834,7 @@ Monitora operações de banco de dados e desempenho do servidor.
 ```javascript
 // Verificar operações atuais
 db.currentOp()
-// Encerrar operação de longa duração
+// Matar operação de longa duração
 db.killOp(operationId)
 // Status do servidor
 db.serverStatus()
@@ -798,7 +861,7 @@ db.setProfilingLevel(0)
 
 ### Transações: `session.startTransaction()`
 
-Usa transações de múltiplos documentos para consistência de dados.
+Usa transações multi-documento para consistência de dados.
 
 ```javascript
 // Iniciar sessão e transação
@@ -821,15 +884,15 @@ try {
 
 ### Fluxos de Alteração: `db.collection.watch()`
 
-Monitora alterações em coleções em tempo real.
+Observa alterações em tempo real em coleções.
 
 ```javascript
-// Monitorar alterações na coleção
+// Observar alterações na coleção
 const changeStream = db.users.watch()
 changeStream.on('change', (change) => {
   console.log('Mudança detectada:', change)
 })
-// Monitorar com filtro
+// Observar com filtro
 const pipeline = [{ $match: { operationType: 'insert' } }]
 const changeStream = db.users.watch(pipeline)
 ```

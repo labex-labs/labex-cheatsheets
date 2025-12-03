@@ -1,6 +1,6 @@
 ---
-title: 'サイバーセキュリティチートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートでサイバーセキュリティを学ぶ。'
+title: 'サイバーセキュリティチートシート | LabEx'
+description: 'この包括的なチートシートでサイバーセキュリティを学習。セキュリティ概念、脅威検出、脆弱性評価、ペネトレーションテスト、情報セキュリティのベストプラクティスのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 <a target="_blank" href="https://labex.io/ja/learn/cybersecurity">ハンズオンラボでサイバーセキュリティを学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと現実世界のシナリオを通じてサイバーセキュリティを学びましょう。LabEx は、脅威の特定、セキュリティ評価、システム強化、インシデント対応、監視技術を網羅した包括的なサイバーセキュリティコースを提供します。業界標準のツールとベストプラクティスを使用して、サイバー脅威からシステムとデータを保護する方法を学びます。
+ハンズオンラボと現実世界のシナリオを通じてサイバーセキュリティを学びましょう。LabEx は、脅威の特定、セキュリティ評価、システム強化、インシデント対応、監視技術を網羅した包括的なサイバーセキュリティコースを提供します。業界標準のツールとベストプラクティスを使用して、システムとデータをサイバー脅威から保護する方法を学びます。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -53,12 +53,27 @@ chmod -R 755 directory/
 ls -la
 ```
 
+<BaseQuiz id="cybersecurity-chmod-1" correct="C">
+  <template #question>
+    `chmod 644 file.txt` はファイルパーミッションをどのように設定しますか？
+  </template>
+  
+  <BaseQuizOption value="A">全ユーザーに読み取り、書き込み、実行</BaseQuizOption>
+  <BaseQuizOption value="B">所有者に読み取り、書き込み、他のユーザーに読み取り</BaseQuizOption>
+  <BaseQuizOption value="C" correct>所有者に読み取り、書き込み、グループと他のユーザーに読み取り</BaseQuizOption>
+  <BaseQuizOption value="D">全ユーザーに読み取りのみ</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 644` は、所有者 = 6 (rw-)、グループ = 4 (r--)、その他 = 4 (r--) を設定します。これは、すべてが読み取り可能だが、所有者のみが書き込み可能であるべきファイルに対する一般的なパーミッション設定です。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ネットワークセキュリティ設定
 
 ネットワーク接続とサービスを保護します。
 
 ```bash
-# ファイアウォール (UFW) の設定
+# ファイアウォールの設定 (UFW)
 sudo ufw enable
 sudo ufw allow 22/tcp
 sudo ufw deny 23/tcp
@@ -67,9 +82,24 @@ netstat -tuln
 sudo ss -tuln
 ```
 
+<BaseQuiz id="cybersecurity-firewall-1" correct="B">
+  <template #question>
+    `sudo ufw allow 22/tcp` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">ポート 22 をブロックする</BaseQuizOption>
+  <BaseQuizOption value="B" correct>ポート 22 (SSH) への TCP トラフィックを許可する</BaseQuizOption>
+  <BaseQuizOption value="C">ポート 22 で UDP を有効にする</BaseQuizOption>
+  <BaseQuizOption value="D">ファイアウォールのステータスを表示する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ufw allow 22/tcp` は、ポート 22 (デフォルトの SSH ポート) への着信 TCP 接続を許可するファイアウォールルールを作成します。これはリモートサーバーアクセスに不可欠です。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### システムアップデートとパッチ
 
-システムを最新のセキュリティパッチで最新の状態に保ちます。
+システムを最新のセキュリティパッチで更新します。
 
 ```bash
 # パッケージリストの更新 (Ubuntu/Debian)
@@ -107,6 +137,21 @@ sudo journalctl -f
 grep "Failed password" /var/log/auth.log
 ```
 
+<BaseQuiz id="cybersecurity-logs-1" correct="A">
+  <template #question>
+    `tail -f /var/log/auth.log` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>認証ログファイルをリアルタイムで追跡する</BaseQuizOption>
+  <BaseQuizOption value="B">ログイン失敗のみを表示する</BaseQuizOption>
+  <BaseQuizOption value="C">古いログエントリを削除する</BaseQuizOption>
+  <BaseQuizOption value="D">ログファイルをアーカイブする</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-f` フラグにより `tail` はファイルを追跡し、新しいログエントリが書き込まれると同時に表示します。これは認証イベントやセキュリティインシデントのリアルタイム監視に役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## パスワードセキュリティと認証
 
 強力な認証メカニズムとパスワードポリシーを実装します。
@@ -118,11 +163,11 @@ grep "Failed password" /var/log/auth.log
 ```bash
 # 強力なパスワードの生成
 openssl rand -base64 32
-# パスワードの強度要件:
+# パスワード強度要件:
 # - 最小12文字
 # - 大文字、小文字、数字、記号の組み合わせ
 # - 辞書語や個人情報は使用しない
-# - アカウントごとに一意であること
+# - 各アカウントで一意であること
 ```
 
 ### 多要素認証 (MFA)
@@ -132,7 +177,7 @@ openssl rand -base64 32
 ```bash
 # Google Authenticatorのインストール
 sudo apt install libpam-googleauthenticator
-# SSHでのMFAの設定
+# SSHでのMFA設定
 google-authenticator
 # SSH設定での有効化
 sudo nano /etc/pam.d/sshd
@@ -141,7 +186,7 @@ sudo nano /etc/pam.d/sshd
 
 ### パスワード管理
 
-パスワードマネージャーと安全なストレージプラクティスを使用します。
+パスワードマネージャーと安全な保管プラクティスを使用します。
 
 ```bash
 # パスワードマネージャーのインストール (KeePassXC)
@@ -149,7 +194,7 @@ sudo apt install keepassxc
 # ベストプラクティス:
 # - 各サービスに一意のパスワードを使用する
 # - 自動ロック機能を有効にする
-# - 重要なアカウントの定期的なパスワードローテーション
+# - 重要なアカウントのパスワードを定期的にローテーションする
 # - パスワードデータベースの安全なバックアップ
 ```
 
@@ -168,7 +213,7 @@ nmap -sV target_ip
 nmap -A target_ip
 # 特定のポートのスキャン
 nmap -p 22,80,443 target_ip
-# IP範囲のスキャン
+# IPアドレス範囲のスキャン
 nmap 192.168.1.1-254
 ```
 
@@ -189,7 +234,7 @@ sudo tcpdump port 80
 
 ### ファイアウォール設定
 
-送受信のネットワークトラフィックを制御します。
+送受信されるネットワークトラフィックを制御します。
 
 ```bash
 # UFW (Uncomplicated Firewall)
@@ -228,14 +273,14 @@ sudo dpkg -i Nessus-X.X.X-ubuntu1404_amd64.deb
 # Nessusサービスの起動
 sudo systemctl start nessusd
 # Webインターフェースにhttps://localhost:8834でアクセス
-# OpenVASの使用 (無料の代替手段)
+# OpenVAS (無料の代替手段) の使用
 sudo apt install openvas
 sudo gvm-setup
 ```
 
 ### Web アプリケーションセキュリティテスト
 
-一般的な脆弱性に対する Web アプリケーションのテスト。
+一般的な脆弱性について Web アプリケーションをテストします。
 
 ```bash
 # Nikto Webスキャナーの使用
@@ -264,14 +309,14 @@ sudo aideinit
 
 ### 設定セキュリティ
 
-安全なシステムおよびアプリケーション設定の検証。
+安全なシステムおよびアプリケーション設定を確認します。
 
 ```bash
 # SSHセキュリティチェック
 ssh-audit target_ip
 # SSL設定テスト
 testssl.sh https://target.com
-# 秘密ファイルに対するファイルパーミッションの確認
+# 重要なファイルに対するパーミッションの確認
 ls -la /etc/shadow /etc/passwd /etc/group
 ```
 
@@ -286,7 +331,7 @@ ls -la /etc/shadow /etc/passwd /etc/group
 grep -i "failed\|error\|denied" /var/log/auth.log
 # ログイン失敗回数のカウント
 grep "Failed password" /var/log/auth.log | wc -l
-# ログ内のユニークなIPアドレスの検索
+# ログから一意のIPアドレスを検索
 awk '/Failed password/ {print $11}' /var/log/auth.log | sort | uniq -c
 # ライブログアクティビティの監視
 tail -f /var/log/syslog
@@ -309,15 +354,15 @@ tshark -r capture.pcap -Y "http.request"
 
 ### システムフォレンジック
 
-デジタル証拠の保全と分析。
+デジタル証拠を保全し分析します。
 
 ```bash
 # ディスクイメージの作成
 sudo dd if=/dev/sda of=/mnt/evidence/disk_image.dd bs=4096
-# 整合性のためのファイルハッシュの計算
+# 整合性のためのファイルハッシュ計算
 md5sum important_file.txt
 sha256sum important_file.txt
-# 特定のファイルコンテンツの検索
+# 特定のファイル内容の検索
 grep -r "password" /home/user/
 # 最近変更されたファイルのリスト表示
 find /home -mtime -7 -type f
@@ -325,22 +370,22 @@ find /home -mtime -7 -type f
 
 ### インシデント文書化
 
-分析のためにセキュリティインシデントを適切に文書化します。
+セキュリティインシデントを分析のために適切に文書化します。
 
 ```bash
 # インシデント対応チェックリスト:
 # 1. 影響を受けたシステムの隔離
 # 2. 証拠の保全
-# 3. イベントのタイムラインの文書化
+# 3. イベントのタイムライン文書化
 # 4. 攻撃ベクトルの特定
 # 5. 被害とデータ漏洩の評価
-# 6. 封じ込め措置の実施
+# 6. 封じ込め措置の計画
 # 7. 回復手順の計画
 ```
 
 ## 脅威インテリジェンス
 
-現在の脅威と新たなセキュリティ脅威に関する情報を収集・分析します。
+現在および新たなセキュリティ脅威に関する情報を収集・分析します。
 
 ### OSINT (オープンソースインテリジェンス)
 
@@ -358,9 +403,9 @@ sublist3r -d example.com
 # VirusTotal, URLVoid, AbuseIPDB
 ```
 
-### 脅威ハンティングツール
+###脅威ハンティングツール
 
-環境内で積極的に脅威を検索します。
+環境内で脅威を積極的に検索します。
 
 ```bash
 # IOC (侵害の痕跡) 検索
@@ -373,12 +418,12 @@ find /tmp -type f -exec sha256sum {} \;
 
 ### 脅威フィードとインテリジェンス
 
-最新の脅威情報で最新の状態を維持します。
+最新の脅威情報で常に最新の状態を保ちます。
 
 ```bash
 # 主要な脅威インテリジェンスソース:
 # - MISP (Malware Information Sharing Platform)
-# - STIX/TAXII フィード
+# - STIX/TAXIIフィード
 # - 商用フィード (CrowdStrike, FireEye)
 # - 政府フィード (US-CERT, CISA)
 # 例: 脅威フィードに対してIPをチェック
@@ -391,8 +436,8 @@ curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 
 ```bash
 # STRIDE脅威モデルのカテゴリ:
-# - なりすまし (ID)
-# - データの改ざん (データ)
+# - なりすまし (なりすまし)
+# - データ改ざん (改ざん)
 # - 否認 (アクション)
 # - 情報漏洩
 # - サービス拒否 (DoS)
@@ -408,9 +453,9 @@ curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 保存時のデータを保護するためにファイルとストレージデバイスを暗号化します。
 
 ```bash
-# GPGによるファイルの暗号化
+# GPGによるファイル暗号化
 gpg -c sensitive_file.txt
-# ファイルの復号化
+# ファイルの復号
 gpg sensitive_file.txt.gpg
 # LUKSによるフルディスク暗号化
 sudo cryptsetup luksFormat /dev/sdb
@@ -423,10 +468,10 @@ ssh-copy-id user@server
 
 ### ネットワーク暗号化
 
-暗号化プロトコルでネットワーク通信を保護します。
+暗号化プロトコルを使用してネットワーク通信を保護します。
 
 ```bash
-# OpenVPNによるVPNセットアップ
+# OpenVPNによるVPN設定
 sudo apt install openvpn
 sudo openvpn --config client.ovpn
 ```
@@ -436,7 +481,7 @@ sudo openvpn --config client.ovpn
 安全な通信のためにデジタル証明書を管理します。
 
 ```bash
-# 認証局 (CA) の作成
+# 証明機関 (CA) の作成
 openssl genrsa -out ca-key.pem 4096
 openssl req -new -x509 -key ca-key.pem -out ca.pem
 # サーバー証明書の発行
@@ -453,9 +498,9 @@ openssl x509 -req -in server.csr -CA ca.pem -CAkey ca-key.pem -out server.pem
 ```bash
 # ファイルアクセス監視
 sudo apt install auditd
-# 監査ルールの設定
+#監査ルールの設定
 sudo auditctl -w /etc/passwd -p wa -k passwd_changes
-# 監査ログの検索
+#監査ログの検索
 sudo ausearch -k passwd_changes
 ```
 
@@ -463,7 +508,7 @@ sudo ausearch -k passwd_changes
 
 セキュリティタスクと対応手順を自動化します。
 
-### セキュリティスキャン自動化
+### セキュリティスキャンの自動化
 
 定期的なセキュリティスキャンと評価をスケジュールします。
 
@@ -500,14 +545,14 @@ fi
 初期のインシデント対応手順を自動化します。
 
 ```bash
-# 疑わしいIPの自動対応スクリプト
+# 脅威対応スクリプト
 #!/bin/bash
 SUSPICIOUS_IP=$1
-# ファイアウォールでのIPブロック
+# ファイアウォールでIPをブロック
 sudo ufw deny from $SUSPICIOUS_IP
-# アクションのログ記録
+# アクションをログに記録
 echo "$(date): Blocked suspicious IP $SUSPICIOUS_IP" >> /var/log/security-actions.log
-# アラートの送信
+# アラート送信
 echo "Blocked suspicious IP: $SUSPICIOUS_IP" | mail -s "IP Blocked" security@company.com
 ```
 
@@ -540,7 +585,7 @@ echo "Blocked suspicious IP: $SUSPICIOUS_IP" | mail -s "IP Blocked" security@com
 セキュリティポリシーと手順を実装し維持します。
 
 ```bash
-# PAMによるパスワードポリシーの強制
+# PAM (Pluggable Authentication Modules) によるパスワードポリシーの強制
 sudo nano /etc/pam.d/common-password
 # 追加: password required pam_pwquality.so minlen=12
 # アカウントロックアウトポリシー
@@ -550,7 +595,7 @@ sudo nano /etc/pam.d/common-auth
 
 ### 監査とコンプライアンスチェック
 
-セキュリティ標準および規制へのコンプライアンスを確認します。
+セキュリティ標準と規制への準拠を確認します。
 
 ```bash
 # CIS (Center for Internet Security) ベンチマークツール
@@ -569,15 +614,15 @@ sudo apt install cis-cat-lite
 # 低 (1-3)、中 (4-6)、高 (7-9)
 # 脆弱性の優先順位付け
 # CVSSスコア計算
-# 基本スコア = 影響度 × 悪用可能性
+# 基本スコア = 影響度 × 攻撃容易性
 ```
 
 ### 文書化とレポート作成
 
-適切なセキュリティ文書化とレポート作成を維持します。
+適切なセキュリティ文書とレポートを維持します。
 
 ```bash
-# セキュリティインシデントレポートテンプレート:
+# セキュリティインシデント報告書テンプレート:
 # - インシデントの日時
 # - 影響を受けたシステム
 # - 特定された攻撃ベクトル
@@ -607,7 +652,7 @@ sudo pacman -S nmap wireshark-qt tcpdump
 
 ### セキュリティディストリビューション
 
-セキュリティ専門家向けの専門的な Linux ディストリビューション。
+セキュリティ専門家向けに特化した Linux ディストリビューション。
 
 ```bash
 # Kali Linux - ペネトレーションテスト用
@@ -635,11 +680,11 @@ echo 'export PATH=$PATH:/opt/tools/bin' >> ~/.bashrc
 
 ## セキュリティ設定のベストプラクティス
 
-システムおよびアプリケーション全体でセキュリティ強化設定を適用します。
+システムとアプリケーション全体でセキュリティ強化設定を適用します。
 
 ### システム強化
 
-オペレーティングシステムのセキュリティ設定。
+オペレーティングシステムのセキュリティ設定を行います。
 
 ```bash
 # 不要なサービスの無効化
@@ -667,7 +712,7 @@ echo "net.ipv4.conf.all.accept_redirects = 0" >> /etc/sysctl.conf
 
 ### アプリケーションセキュリティ
 
-アプリケーションおよびサービスの設定を保護します。
+アプリケーションとサービスの設定を保護します。
 
 ```bash
 # Apacheセキュリティヘッダー
@@ -681,7 +726,7 @@ add_header X-Content-Type-Options nosniff;
 
 ### バックアップとリカバリのセキュリティ
 
-安全なバックアップおよび災害復旧手順を実装します。
+安全なバックアップと災害復旧手順を実装します。
 
 ```bash
 # rsyncによる暗号化バックアップ
@@ -699,7 +744,7 @@ find /backups -name "*.tar.gz" -exec tar -tzf {} \; > /dev/null
 
 ### 侵入検知システム
 
-脅威検出のために IDS/IPS を導入し設定します。
+IDS/IPSを導入し、脅威検出のために設定します。
 
 ```bash
 # Suricata IDSのインストール
@@ -737,9 +782,9 @@ sudo apt update && sudo apt install elasticsearch
 ```bash
 # フィッシングの特定技術:
 # - 送信元メールアドレスを注意深く確認する
-# - クリックする前にリンクを確認する (ホバー)
-# - スペルミスや文法ミスに注意する
-# - 緊急の要求に疑いを持つ
+# - クリック前にリンクを確認する (ホバー)
+# - スペルミスや文法ミスを探す
+# - 緊急の要求に警戒する
 # - 別のチャネルを通じて要求を確認する
 # 確認すべきメールセキュリティヘッダー:
 # SPF, DKIM, DMARCレコード
@@ -756,7 +801,7 @@ sudo apt update && sudo apt install elasticsearch
 # - セキュリティポリシーの更新
 # - インシデント報告手順
 # - 優れたセキュリティプラクティスに対する表彰
-# 追跡すべき指標:
+# トラッキングすべきメトリクス:
 # - トレーニング完了率
 # - フィッシングシミュレーションのクリック率
 # - セキュリティインシデント報告件数

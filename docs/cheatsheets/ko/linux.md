@@ -1,6 +1,6 @@
 ---
-title: 'Linux 치트 시트 | LabEx'
-description: '이 포괄적인 치트 시트로 Linux 관리를 학습하세요. Linux 명령어, 파일 관리, 시스템 관리, 네트워킹 및 셸 스크립팅을 위한 빠른 참조 자료입니다.'
+title: '리눅스 치트 시트 | LabEx'
+description: '포괄적인 치트 시트로 리눅스 관리를 배우세요. 리눅스 명령어, 파일 관리, 시스템 관리, 네트워킹 및 셸 스크립팅을 위한 빠른 참조 가이드입니다.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
@@ -55,10 +55,10 @@ df -h
 
 ### 시스템 가동 시간: `uptime`
 
-시스템 가동 시간 및 부하 평균을 표시합니다.
+시스템 가동 시간 및 로드 평균을 표시합니다.
 
 ```bash
-# 시스템 가동 시간 및 부하
+# 시스템 가동 시간 및 로드
 uptime
 # 보다 상세한 가동 시간 정보
 uptime -p
@@ -115,7 +115,7 @@ timedatectl set-timezone America/New_York
 
 ### 파일 목록: `ls`
 
-다양한 형식 옵션으로 파일과 디렉토리를 표시합니다.
+다양한 형식 옵션으로 파일 및 디렉토리를 표시합니다.
 
 ```bash
 # 현재 디렉토리의 파일 목록
@@ -164,7 +164,7 @@ cd -
 
 ### 생성 및 제거: `mkdir`, `rmdir`, `rm`
 
-파일과 디렉토리를 생성하고 삭제합니다.
+파일 및 디렉토리를 생성하고 삭제합니다.
 
 ```bash
 # 디렉토리 생성
@@ -198,7 +198,7 @@ tail -f logfile
 
 ### 복사 및 이동: `cp`, `mv`
 
-파일과 디렉토리를 복사하고 이동합니다.
+파일 및 디렉토리를 복사하고 이동합니다.
 
 ```bash
 # 파일 복사
@@ -252,10 +252,10 @@ ls -l filename
     `chmod 755 filename`은 권한을 어떻게 설정합니까?
   </template>
   
-  <BaseQuizOption value="A">소유자는 읽기, 쓰기, 실행; 그룹과 다른 사용자는 읽기</BaseQuizOption>
-  <BaseQuizOption value="B">소유자는 읽기, 쓰기; 그룹과 다른 사용자는 읽기, 실행</BaseQuizOption>
-  <BaseQuizOption value="C" correct>소유자는 읽기, 쓰기, 실행; 그룹과 다른 사용자는 읽기, 실행</BaseQuizOption>
-  <BaseQuizOption value="D">소유자는 읽기, 쓰기; 그룹과 다른 사용자는 읽기</BaseQuizOption>
+  <BaseQuizOption value="A">소유자에게 읽기, 쓰기, 실행; 그룹 및 다른 사용자에게 읽기</BaseQuizOption>
+  <BaseQuizOption value="B">소유자에게 읽기, 쓰기; 그룹 및 다른 사용자에게 읽기, 실행</BaseQuizOption>
+  <BaseQuizOption value="C" correct>소유자에게 읽기, 쓰기, 실행; 그룹 및 다른 사용자에게 읽기, 실행</BaseQuizOption>
+  <BaseQuizOption value="D">소유자에게 읽기, 쓰기; 그룹 및 다른 사용자에게 읽기</BaseQuizOption>
   
   <BaseQuizAnswer>
     `chmod 755`는 다음과 같이 설정합니다: 소유자 = 7 (rwx), 그룹 = 5 (r-x), 다른 사용자 = 5 (r-x). 이는 실행 가능한 파일 및 디렉토리에 대한 일반적인 권한 설정입니다.
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (강제 종료, 무시 불가)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9`는 SIGKILL 을 보내 프로세스를 즉시 강제로 종료합니다. 이 시그널은 프로세스가 포착하거나 무시할 수 없으므로 응답하지 않는 프로세스를 종료하는 데 유용합니다.
+    `kill -9`는 SIGKILL 을 보내 프로세스를 즉시 강제 종료합니다. 이 시그널은 프로세스에 의해 캡처되거나 무시될 수 없으므로 응답하지 않는 프로세스를 종료하는 데 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -324,7 +324,7 @@ jobs
 bg %1
 # 작업을 포그라운드로 가져오기
 fg %1
-# 명령어를 백그라운드에서 실행
+# 명령을 백그라운드에서 실행
 command &
 # 터미널에서 분리
 nohup command &
@@ -405,7 +405,7 @@ mtr google.com
 netstat -tuln
 # 수신 대기 중인 포트 표시
 netstat -tuln | grep LISTEN
-# netstat의 최신 대체 명령어
+# netstat의 최신 대체 도구
 ss -tuln
 # 포트를 사용하는 프로세스 표시
 netstat -tulnp
@@ -437,7 +437,7 @@ rsync -avz --progress src/ dest/
 ```bash
 # 파일에서 패턴 검색
 grep "pattern" filename
-# 대소문자 구분 없이 검색
+# 대소문자 구분 없는 검색
 grep -i "pattern" filename
 # 디렉토리에서 재귀적 검색
 grep -r "pattern" /path/
@@ -479,12 +479,12 @@ awk '{sum += $1} END {print sum}' filename
 
 ### 정렬 및 개수: `sort`, `uniq`, `wc`
 
-데이터 정렬, 중복 제거, 줄/단어/문자 수 계산을 수행합니다.
+데이터 정렬, 중복 제거, 줄/단어/문자 수 계산.
 
 ```bash
 # 파일 내용 정렬
 sort filename
-# 숫자 정렬
+# 숫자순 정렬
 sort -n numbers.txt
 # 중복 줄 제거
 uniq filename
@@ -498,7 +498,7 @@ wc -l filename
 
 ### 잘라내기 및 붙여넣기: `cut`, `paste`
 
-특정 열을 추출하고 파일을 결합합니다.
+특정 열 추출 및 파일 결합.
 
 ```bash
 # 첫 번째 열 추출
@@ -532,7 +532,7 @@ tar -tf archive.tar
 
 ### 압축: `gzip`, `zip`
 
-다양한 알고리즘을 사용하여 파일을 압축하고 압축을 풉니다.
+다양한 알고리즘을 사용하여 파일을 압축 및 압축 해제합니다.
 
 ```bash
 # gzip으로 파일 압축
@@ -611,16 +611,16 @@ iotop
 iostat -x /dev/sda
 ```
 
-### 시스템 부하: `top`, `htop`
+### 시스템 로드: `top`, `htop`
 
-시스템 부하, CPU 사용량 및 실행 중인 프로세스를 모니터링합니다.
+시스템 로드, CPU 사용량 및 실행 중인 프로세스를 모니터링합니다.
 
 ```bash
 # 실시간 프로세스 모니터
 top
 # 향상된 프로세스 뷰어
 htop
-# 부하 평균 표시
+# 로드 평균 표시
 uptime
 # CPU 정보 표시
 lscpu
@@ -785,7 +785,7 @@ flatpak uninstall packagename
 flatpak search packagename
 ```
 
-## 쉘 및 스크립팅
+## 셸 및 스크립팅
 
 ### 명령어 기록: `history`
 
@@ -800,7 +800,7 @@ history 10
 !!
 # 번호로 명령어 실행
 !123
-# 기록에서 대화식으로 검색
+# 대화형으로 기록 검색
 Ctrl+R
 ```
 
@@ -838,7 +838,7 @@ command1 | command2
 
 ### 환경 설정: `.bashrc`, `.profile`
 
-쉘 환경 및 시작 스크립트를 구성합니다.
+셸 환경 및 시작 스크립트를 구성합니다.
 
 ```bash
 # bash 구성 편집
@@ -857,7 +857,7 @@ printenv
 
 ### 배포판 옵션: Ubuntu, CentOS, Debian
 
-다양한 사용 사례를 위한 Linux 배포판을 선택하고 설치합니다.
+다양한 사용 사례를 위한 Linux 배포판 선택 및 설치.
 
 ```bash
 # Ubuntu 서버
@@ -872,7 +872,7 @@ sha256sum linux.iso
 
 ### 부팅 및 설치: USB, 네트워크
 
-부팅 가능한 미디어를 생성하고 시스템 설치를 수행합니다.
+부팅 가능한 미디어 생성 및 시스템 설치 수행.
 
 ```bash
 # 부팅 가능한 USB 생성 (Linux)
@@ -885,13 +885,13 @@ dd if=linux.iso of=/dev/sdX bs=4M
 
 ### 초기 구성: 사용자, 네트워크, SSH
 
-설치 후 기본 시스템 구성을 설정합니다.
+설치 후 기본 시스템 구성.
 
 ```bash
 # 호스트 이름 설정
 hostnamectl set-hostname newname
 # 정적 IP 구성
-# /etc/netplan/ (Ubuntu) 또는 /etc/network/interfaces 편집
+# Ubuntu의 경우 /etc/netplan/ 또는 /etc/network/interfaces 편집
 # SSH 서비스 활성화
 systemctl enable ssh
 systemctl start ssh
@@ -911,9 +911,9 @@ ufw allow ssh
 ufw enable
 # 특정 포트 허용
 ufw allow 22/tcp
-# 서비스 이름으로 SSH 허용
+# 서비스 이름으로 허용
 ufw allow ssh
-# 접근 거부
+# 액세스 거부
 ufw deny 23
 # 방화벽 상태 보기
 ufw status verbose
@@ -1038,7 +1038,7 @@ lsof
 
 ## 관련 링크
 
-- <router-link to="/shell">쉘 치트 시트</router-link>
+- <router-link to="/shell">셸 치트 시트</router-link>
 - <router-link to="/rhel">Red Hat Enterprise Linux 치트 시트</router-link>
 - <router-link to="/docker">Docker 치트 시트</router-link>
 - <router-link to="/kubernetes">Kubernetes 치트 시트</router-link>

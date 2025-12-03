@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Desarrollo Web'
-description: 'Aprenda desarrollo web con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Desarrollo Web | LabEx'
+description: 'Aprenda desarrollo web con esta hoja de trucos completa. Referencia rápida para HTML, CSS, JavaScript, APIs, diseño responsivo, optimización de rendimiento y esenciales de desarrollo full-stack.'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 
@@ -19,7 +19,7 @@ Aprenda desarrollo web a través de laboratorios prácticos y escenarios del mun
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Fundamentos de HTML y Estructura de Documentos
+## Fundamentos de HTML y Estructura del Documento
 
 ### Estructura Básica de HTML: `<!DOCTYPE html>`
 
@@ -64,6 +64,21 @@ Utilice elementos semánticos HTML5 significativos para una mejor estructura.
   <p>© 2024 My Website</p>
 </footer>
 ```
+
+<BaseQuiz id="webdev-semantic-1" correct="B">
+  <template #question>
+    ¿Cuál es el principal beneficio de usar elementos HTML semánticos como `header`, `main` y `footer`?
+  </template>
+  
+  <BaseQuizOption value="A">Hacen que la página se cargue más rápido</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Mejoran la accesibilidad y el SEO al proporcionar significado a la estructura</BaseQuizOption>
+  <BaseQuizOption value="C">Estilizan la página automáticamente</BaseQuizOption>
+  <BaseQuizOption value="D">Son necesarios para que JavaScript funcione</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Los elementos HTML semánticos proporcionan significado a la estructura del documento, lo que facilita a los lectores de pantalla, motores de búsqueda y desarrolladores comprender la organización del contenido. Esto mejora la accesibilidad y el SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Elementos de Texto: `<h1>` a `<h6>` / `<p>`
 
@@ -142,7 +157,7 @@ Muestre datos tabulares con la estructura correcta.
 </table>
 ```
 
-## Formularios e Entrada de Usuario
+## Formularios y Entrada de Usuario
 
 ### Estructura del Formulario: `<form>`
 
@@ -162,7 +177,7 @@ Cree el contenedor para las entradas y controles del usuario.
 
 ### Tipos de Entrada: `type="text"` / `type="email"`
 
-Use los tipos de entrada apropiados para diferentes datos.
+Utilice los tipos de entrada apropiados para diferentes datos.
 
 ```html
 <input type="text" placeholder="Enter your name" />
@@ -225,7 +240,7 @@ h1 {
 }
 ```
 
-### Modelo de Caja: `margin` / `padding` / `border`
+### Modelo de Caja (Box Model): `margin` / `padding` / `border`
 
 Controle el espaciado y el diseño con el modelo de caja CSS.
 
@@ -245,6 +260,21 @@ Controle el espaciado y el diseño con el modelo de caja CSS.
   border-radius: 5px; /* Rounded corners */
 }
 ```
+
+<BaseQuiz id="webdev-boxmodel-1" correct="B">
+  <template #question>
+    ¿Cuál es la diferencia entre `margin` y `padding` en CSS?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Margin es el espacio fuera del elemento, padding es el espacio dentro del elemento</BaseQuizOption>
+  <BaseQuizOption value="C">Margin es para espaciado horizontal, padding es para espaciado vertical</BaseQuizOption>
+  <BaseQuizOption value="D">Margin es para bordes, padding es para contenido</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Margin crea espacio fuera del borde del elemento (entre elementos), mientras que padding crea espacio dentro del elemento entre el contenido y el borde. Ambos afectan el espaciado pero en diferentes áreas.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Flexbox: `display: flex`
 
@@ -269,14 +299,29 @@ Cree diseños flexibles y responsivos fácilmente.
 }
 ```
 
-### Diseño de Cuadrícula: `display: grid`
+<BaseQuiz id="webdev-flexbox-1" correct="A">
+  <template #question>
+    ¿Qué hace `justify-content: center` en Flexbox?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Centra los elementos flex a lo largo del eje principal (horizontal por defecto)</BaseQuizOption>
+  <BaseQuizOption value="B">Centra los elementos verticalmente</BaseQuizOption>
+  <BaseQuizOption value="C">Distribuye los elementos uniformemente</BaseQuizOption>
+  <BaseQuizOption value="D">Estira los elementos para llenar el espacio</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `justify-content` controla la alineación a lo largo del eje principal (horizontal por defecto). `center` centra todos los elementos flex en el contenedor. Use `align-items` para controlar la alineación del eje transversal (vertical).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Diseño de Cuadrícula (Grid Layout): `display: grid`
 
 Cree diseños bidimensionales complejos.
 
 ```css
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
   grid-gap: 20px;
   grid-template-areas:
     'header header header'
@@ -295,7 +340,7 @@ Cree diseños bidimensionales complejos.
 }
 ```
 
-## Conceptos Básicos de JavaScript y Fundamentos de Programación
+## Fundamentos de JavaScript y Programación
 
 ### Variables: `let` / `const` / `var`
 
@@ -374,7 +419,7 @@ switch (day) {
 }
 ```
 
-### Bucles: `for` / `while` / Array Methods
+### Bucles (Loops): `for` / `while` / Array Methods
 
 Itere a través de datos y repita operaciones.
 
@@ -511,7 +556,7 @@ img {
 }
 ```
 
-### Consultas de Medios: `@media`
+### Consultas de Medios (Media Queries): `@media`
 
 Aplique diferentes estilos basados en el tamaño de la pantalla y las capacidades del dispositivo.
 
@@ -636,7 +681,7 @@ try {
 }
 ```
 
-### Herramientas de Desarrollador del Navegador: Elements / Console / Network
+### DevTools del Navegador: Elements / Console / Network
 
 Utilice las herramientas del navegador para inspeccionar HTML, depurar JavaScript y monitorear solicitudes de red.
 

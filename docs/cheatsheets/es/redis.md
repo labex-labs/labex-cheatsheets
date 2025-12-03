@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Redis'
-description: 'Aprenda Redis con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Redis | LabEx'
+description: 'Aprenda el almacén de datos en memoria Redis con esta hoja de trucos completa. Referencia rápida para comandos de Redis, estructuras de datos, caché, pub/sub, persistencia y soluciones de caché de alto rendimiento.'
 pdfUrl: '/cheatsheets/pdf/redis-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Redis
 <a target="_blank" href="https://labex.io/es/learn/redis">Aprende Redis con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende las operaciones de estructura de datos en memoria de Redis a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Redis que cubren comandos esenciales, estructuras de datos, estrategias de almacenamiento en caché, mensajería pub/sub y optimización del rendimiento. Domina el almacenamiento en caché de alto rendimiento y el procesamiento de datos en tiempo real.
+Aprenda las operaciones de estructuras de datos en memoria de Redis a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Redis que cubren comandos esenciales, estructuras de datos, estrategias de almacenamiento en caché, mensajería pub/sub y optimización del rendimiento. Domine el almacenamiento en caché de alto rendimiento y el procesamiento de datos en tiempo real.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -65,7 +65,7 @@ redis-cli -h hostname -p 6379 -a password
 redis-cli SET mykey "Hello Redis"
 ```
 
-## Operaciones Básicas de Cadenas (String)
+## Operaciones Básicas de Cadenas (Strings)
 
 ### Establecer y Obtener: `SET` / `GET`
 
@@ -82,12 +82,27 @@ SET session:123 "user_data" EX 3600
 SET mykey "new_value" NX
 ```
 
+<BaseQuiz id="redis-set-get-1" correct="C">
+  <template #question>
+    ¿Qué hace `SET mykey "value" EX 3600`?
+  </template>
+  
+  <BaseQuizOption value="A">Establece la clave con un valor de 3600 bytes</BaseQuizOption>
+  <BaseQuizOption value="B">Establece la clave solo si ya existe</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Establece la clave con un valor que expira después de 3600 segundos</BaseQuizOption>
+  <BaseQuizOption value="D">Establece la clave con 3600 valores diferentes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La opción `EX` establece un tiempo de expiración en segundos. `SET mykey "value" EX 3600` almacena el valor y lo elimina automáticamente después de 3600 segundos (1 hora).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Manipulación de Cadenas: `APPEND` / `STRLEN`
 
 Modificar e inspeccionar valores de cadena.
 
 ```redis
-# Añadir a la cadena existente
+# Añadir al final de la cadena existente
 APPEND mykey " - Welcome!"
 # Obtener longitud de la cadena
 STRLEN mykey
@@ -112,6 +127,21 @@ INCRBY counter 5
 INCRBYFLOAT price 0.1
 ```
 
+<BaseQuiz id="redis-incr-1" correct="A">
+  <template #question>
+    ¿Qué sucede si usa `INCR` en una clave que no existe?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Redis crea la clave con valor 1</BaseQuizOption>
+  <BaseQuizOption value="B">Redis devuelve un error</BaseQuizOption>
+  <BaseQuizOption value="C">Redis crea la clave con valor 0</BaseQuizOption>
+  <BaseQuizOption value="D">No sucede nada</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Si una clave no existe, `INCR` la trata como si tuviera un valor de 0, la incrementa a 1 y crea la clave. Esto hace que `INCR` sea útil para inicializar contadores.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Operaciones Múltiples: `MSET` / `MGET`
 
 Trabajar con múltiples pares clave-valor de manera eficiente.
@@ -125,13 +155,13 @@ MGET key1 key2 key3
 MSETNX key1 "val1" key2 "val2"
 ```
 
-## Operaciones de Listas (List)
+## Operaciones de Lista (List)
 
-Las listas son secuencias ordenadas de cadenas, útiles como colas o pilas.
+Las listas son secuencias ordenadas de cadenas, útiles como colas (queues) o pilas (stacks).
 
 ### Añadir Elementos: `LPUSH` / `RPUSH`
 
-Añadir elementos al principio (cabeza) o al final (cola) de una lista.
+Añadir elementos al lado izquierdo (cabeza) o derecho (cola) de una lista.
 
 ```redis
 # Añadir a la cabeza (izquierda)
@@ -151,7 +181,7 @@ Eliminar y devolver elementos de los extremos de la lista.
 LPOP mylist
 # Eliminar de la cola
 RPOP mylist
-# Pop bloqueante (esperar por elemento)
+# Pop bloqueante (espera por un elemento)
 BLPOP mylist 10
 ```
 
@@ -160,7 +190,7 @@ BLPOP mylist 10
 Recuperar elementos o rangos de listas.
 
 ```redis
-# Obtener lista completa
+# Obtener la lista completa
 LRANGE mylist 0 -1
 # Obtener los primeros 3 elementos
 LRANGE mylist 0 2
@@ -170,20 +200,35 @@ LINDEX mylist 0
 LLEN mylist
 ```
 
+<BaseQuiz id="redis-list-1" correct="B">
+  <template #question>
+    ¿Qué devuelve `LRANGE mylist 0 -1`?
+  </template>
+  
+  <BaseQuizOption value="A">Solo el primer elemento</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Todos los elementos de la lista</BaseQuizOption>
+  <BaseQuizOption value="C">Solo el último elemento</BaseQuizOption>
+  <BaseQuizOption value="D">Un error</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `LRANGE` con `0 -1` devuelve todos los elementos de la lista. El `0` es el índice de inicio y `-1` representa el último elemento, por lo que recupera todo desde el primero hasta el último elemento.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Utilidades de Lista: `LSET` / `LTRIM`
 
 Modificar el contenido y la estructura de la lista.
 
 ```redis
-# Establecer elemento en índice
+# Establecer elemento en un índice
 LSET mylist 0 "new_value"
 # Recortar lista a un rango
 LTRIM mylist 0 99
-# Encontrar posición de elemento
+# Encontrar posición de un elemento
 LPOS mylist "search_value"
 ```
 
-## Operaciones de Conjuntos (Set)
+## Operaciones de Conjunto (Set)
 
 Los conjuntos son colecciones de elementos de cadena únicos y no ordenados.
 
@@ -198,18 +243,34 @@ SADD myset "apple" "banana" "cherry"
 SMEMBERS myset
 # Verificar si el elemento existe
 SISMEMBER myset "apple"
+```
+
+<BaseQuiz id="redis-set-1" correct="C">
+  <template #question>
+    ¿Qué sucede si intenta añadir un elemento duplicado a un conjunto de Redis?
+  </template>
+  
+  <BaseQuizOption value="A">Crea un error</BaseQuizOption>
+  <BaseQuizOption value="B">Reemplaza el elemento existente</BaseQuizOption>
+  <BaseQuizOption value="C" correct>El duplicado es ignorado y el conjunto permanece sin cambios</BaseQuizOption>
+  <BaseQuizOption value="D">Crea una lista en su lugar</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Los conjuntos de Redis solo contienen elementos únicos. Si intenta añadir un elemento que ya existe, Redis lo ignora y devuelve 0 (indicando que no se añadió ningún elemento). El conjunto permanece sin cambios.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Obtener tamaño del conjunto
 SCARD myset
 ```
 
 ### Modificaciones de Conjunto: `SREM` / `SPOP`
 
-Eliminar elementos de conjuntos de diferentes maneras.
+Eliminar elementos de los conjuntos de diferentes maneras.
 
 ```redis
 # Eliminar elementos específicos
 SREM myset "banana"
-# Eliminar y devolver elemento aleatorio
+# Eliminar y devolver un elemento aleatorio
 SPOP myset
 # Obtener elemento aleatorio sin eliminar
 SRANDMEMBER myset
@@ -217,7 +278,7 @@ SRANDMEMBER myset
 
 ### Operaciones de Conjunto: `SINTER` / `SUNION`
 
-Realizar operaciones matemáticas de conjuntos.
+Realizar operaciones de conjuntos matemáticas.
 
 ```redis
 # Intersección de conjuntos
@@ -243,11 +304,11 @@ SSCAN myset 0 MATCH "a*" COUNT 10
 
 ## Operaciones de Hash
 
-Los hashes almacenan pares de campo-valor, como mini objetos JSON o diccionarios.
+Los hashes almacenan pares campo-valor, como objetos JSON pequeños o diccionarios.
 
 ### Operaciones Básicas de Hash: `HSET` / `HGET`
 
-Establecer y recuperar campos individuales del hash.
+Establecer y recuperar campos de hash individuales.
 
 ```redis
 # Establecer campo de hash
@@ -277,7 +338,7 @@ HLEN user:123
 
 ### Utilidades de Hash: `HEXISTS` / `HDEL`
 
-Verificar existencia y eliminar campos del hash.
+Verificar existencia y eliminar campos de hash.
 
 ```redis
 # Verificar si el campo existe
@@ -320,7 +381,7 @@ ZRANGE leaderboard 0 -1 WITHSCORES
 ZRANGEBYSCORE leaderboard 100 200
 ```
 
-### Información de Conjunto Ordenado: `ZCARD` / `ZSCORE`
+### Información del Conjunto Ordenado: `ZCARD` / `ZSCORE`
 
 Obtener información sobre los miembros del conjunto ordenado.
 
@@ -365,7 +426,7 @@ ZUNIONSTORE result 2 set1 set2 AGGREGATE MAX
 
 ## Gestión de Claves (Key Management)
 
-### Inspección de Clave: `KEYS` / `EXISTS`
+### Inspección de Claves: `KEYS` / `EXISTS`
 
 Encontrar claves usando patrones y verificar existencia.
 
@@ -387,7 +448,7 @@ EXISTS mykey
 Obtener metadatos de la clave e información de expiración.
 
 ```redis
-# Obtener tipo de dato de la clave
+# Obtener tipo de datos de la clave
 TYPE mykey
 # Obtener tiempo de vida (segundos)
 TTL mykey
@@ -429,7 +490,7 @@ PEXPIRE mykey 60000
 
 ### Selección de Base de Datos: `SELECT` / `FLUSHDB`
 
-Gestionar múltiples bases de datos dentro de Redis.
+Administrar múltiples bases de datos dentro de Redis.
 
 ```redis
 # Seleccionar base de datos (0-15 por defecto)
@@ -447,7 +508,7 @@ DBSIZE
 Obtener estadísticas del servidor y probar conectividad.
 
 ```redis
-# Probar conexión del servidor
+# Probar conexión al servidor
 PING
 # Obtener información del servidor
 INFO
@@ -460,7 +521,7 @@ TIME
 
 ### Persistencia: `SAVE` / `BGSAVE`
 
-Controlar la persistencia de datos y las copias de seguridad de Redis.
+Controlar la persistencia y las copias de seguridad de datos de Redis.
 
 ```redis
 # Guardado síncrono (bloquea el servidor)
@@ -488,7 +549,7 @@ CONFIG SET timeout 300
 CONFIG RESETSTAT
 ```
 
-## Monitoreo de Rendimiento
+## Monitoreo del Rendimiento
 
 ### Monitoreo en Tiempo Real: `MONITOR` / `SLOWLOG`
 
@@ -514,7 +575,7 @@ Analizar el consumo de memoria y la optimización.
 MEMORY USAGE mykey
 # Obtener estadísticas de memoria
 MEMORY STATS
-# Obtener informe de doctor de memoria
+# Obtener informe de diagnóstico de memoria
 MEMORY DOCTOR
 # Purgar memoria
 MEMORY PURGE
@@ -529,7 +590,7 @@ Monitorear clientes conectados y conexiones.
 CLIENT LIST
 # Obtener información del cliente
 CLIENT INFO
-# Matar conexión del cliente
+# Matar conexión de cliente
 CLIENT KILL ip:port
 # Establecer nombre del cliente
 CLIENT SETNAME "my-app"
@@ -572,7 +633,7 @@ WATCH mykey
 Implementar el paso de mensajes entre clientes.
 
 ```redis
-# Suscribirse a canal
+# Suscribirse a un canal
 SUBSCRIBE news sports
 # Publicar mensaje
 PUBLISH news "Breaking: Redis 7.0 released!"
@@ -599,7 +660,7 @@ SCRIPT EXISTS sha1
 
 ### Streams: `XADD` / `XREAD`
 
-Trabajar con streams de Redis para datos tipo registro.
+Trabajar con streams de Redis para datos tipo registro (log).
 
 ```redis
 # Añadir entrada al stream
@@ -614,9 +675,9 @@ XGROUP CREATE mystream mygroup 0
 
 ## Resumen de Tipos de Datos
 
-### Strings: El tipo más versátil
+### Cadenas (Strings): El tipo más versátil
 
-Puede almacenar texto, números, JSON, datos binarios. Tamaño máximo: 512MB. Usar para: almacenamiento en caché, contadores, flags.
+Puede almacenar texto, números, JSON, datos binarios. Tamaño máximo: 512MB. Usar para: almacenamiento en caché, contadores, indicadores (flags).
 
 ```redis
 SET user:123:name "John"
@@ -624,9 +685,9 @@ GET user:123:name
 INCR page:views
 ```
 
-### Lists: Colecciones ordenadas
+### Listas (Lists): Colecciones ordenadas
 
-Listas enlazadas de cadenas. Usar para: colas, pilas, feeds de actividad, elementos recientes.
+Listas enlazadas de cadenas. Usar para: colas (queues), pilas (stacks), feeds de actividad, elementos recientes.
 
 ```redis
 LPUSH queue:jobs "job1"
@@ -634,9 +695,9 @@ RPOP queue:jobs
 LRANGE recent:posts 0 9
 ```
 
-### Sets: Colecciones únicas
+### Conjuntos (Sets): Colecciones únicas
 
-Colecciones no ordenadas de cadenas únicas. Usar para: etiquetas, visitantes únicos, relaciones.
+Colecciones no ordenadas de cadenas únicas. Usar para: etiquetas (tags), visitantes únicos, relaciones.
 
 ```redis
 SADD post:123:tags "redis" "database"
@@ -648,12 +709,12 @@ SINTER user:123:friends user:456:friends
 
 ### Gestión de Memoria
 
-Configurar límites de memoria y políticas de evacuación.
+Configurar límites de memoria y políticas de desalojo (eviction).
 
 ```redis
 # Establecer límite de memoria
 CONFIG SET maxmemory 2gb
-# Establecer política de evacuación
+# Establecer política de desalojo
 CONFIG SET maxmemory-policy allkeys-lru
 # Verificar uso de memoria
 INFO memory
@@ -685,9 +746,9 @@ AUTH mypassword
 CONFIG SET rename-command FLUSHALL ""
 # Establecer tiempo de espera
 CONFIG SET timeout 300
-# Keep alive TCP
+# Keep alive de TCP
 CONFIG SET tcp-keepalive 60
-# Clientes máximos
+# Máximo de clientes
 CONFIG SET maxclients 10000
 ```
 
@@ -705,7 +766,7 @@ Optimizar Redis para un mejor rendimiento.
 
 ## Enlaces Relevantes
 
-- <router-link to="/database">Hoja de Trucos de Base de Datos</router-link>
+- <router-link to="/database">Hoja de Trucos de Bases de Datos</router-link>
 - <router-link to="/mysql">Hoja de Trucos de MySQL</router-link>
 - <router-link to="/postgresql">Hoja de Trucos de PostgreSQL</router-link>
 - <router-link to="/mongodb">Hoja de Trucos de MongoDB</router-link>

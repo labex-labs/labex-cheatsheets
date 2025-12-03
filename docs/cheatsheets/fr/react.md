@@ -1,6 +1,6 @@
 ---
-title: 'Anti-sèche React'
-description: 'Maîtrisez React avec notre anti-sèche complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Anti-sèche React | LabEx'
+description: "Apprenez le développement React avec cette anti-sèche complète. Référence rapide pour les hooks React, les composants, JSX, la gestion d'état, les props et les modèles de développement frontend modernes."
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 
@@ -12,7 +12,7 @@ Feuille de triche React
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/react">Apprenez le développement frontend React avec des laboratoires pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/react">Apprenez React avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Apprenez le développement frontend React grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours React complets couvrant la création de composants essentiels, la gestion d'état, les hooks, la gestion des événements et l'optimisation des performances. Maîtrisez la construction d'interfaces utilisateur efficaces et maintenables pour les applications web modernes.
@@ -88,35 +88,35 @@ const element = (
 )
 ```
 
-### Exportation de Composants : `export default` / `export`
+### Export de Composant : `export default` / `export`
 
 Exportez des composants pour les utiliser dans d'autres fichiers.
 
 ```javascript
-// Exportation par défaut
+// Export par défaut
 export default function App() {
   return <div>Mon App</div>
 }
 
-// Exportation nommée
+// Export nommé
 export const Button = () => <button>Cliquez-moi</button>
 ```
 
-### Importation de Composants : `import`
+### Import de Composant : `import`
 
 Importez des composants depuis d'autres fichiers.
 
 ```javascript
-// Importation du composant par défaut
+// Import du composant par défaut
 import App from './App'
 
-// Importation du composant nommé
+// Import du composant nommé
 import { Button } from './Button'
 
-// Importation de plusieurs composants
+// Import de multiples composants
 import React, { useState, useEffect } from 'react'
 
-// Importation avec alias
+// Import avec alias
 import { Button as MyButton } from './Button'
 ```
 
@@ -169,9 +169,24 @@ function Welcome({ name = 'Invité' }) {
 }
 ```
 
+<BaseQuiz id="react-props-1" correct="B">
+  <template #question>
+    Comment passez-vous des données d'un composant parent à un composant enfant dans React ?
+  </template>
+  
+  <BaseQuizOption value="A">En utilisant des variables d'état</BaseQuizOption>
+  <BaseQuizOption value="B" correct>En utilisant des props</BaseQuizOption>
+  <BaseQuizOption value="C">En utilisant des refs</BaseQuizOption>
+  <BaseQuizOption value="D">En utilisant l'API context</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les props (abréviation de propriétés) sont le moyen principal de passer des données des composants parents aux composants enfants dans React. Vous passez les props comme attributs lors du rendu du composant enfant.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### PropTypes : `Component.propTypes`
 
-Validez les props passées aux composants (nécessite le paquet prop-types).
+Validez les props passées aux composants (nécessite le package prop-types).
 
 ```javascript
 import PropTypes from 'prop-types'
@@ -237,6 +252,21 @@ function Form() {
 }
 ```
 
+<BaseQuiz id="react-usestate-1" correct="A">
+  <template #question>
+    Que retourne `useState(0)` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Un tableau avec la valeur d'état et une fonction pour la mettre à jour</BaseQuizOption>
+  <BaseQuizOption value="B">Seulement la valeur d'état</BaseQuizOption>
+  <BaseQuizOption value="C">Une fonction pour mettre à jour l'état</BaseQuizOption>
+  <BaseQuizOption value="D">Rien, cela définit juste l'état</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `useState` retourne un tableau contenant deux éléments : la valeur d'état actuelle et une fonction pour la mettre à jour. La valeur initiale (0) est passée comme argument.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Hook useEffect : `useEffect()`
 
 Effectuez des effets secondaires dans les composants fonctionnels.
@@ -259,6 +289,21 @@ function Timer() {
   }, [])
 }
 ```
+
+<BaseQuiz id="react-useeffect-1" correct="D">
+  <template #question>
+    Que signifie le tableau de dépendances vide `[]` dans `useEffect(() => {...}, [])` ?
+  </template>
+  
+  <BaseQuizOption value="A">L'effet s'exécute à chaque rendu</BaseQuizOption>
+  <BaseQuizOption value="B">L'effet ne s'exécute jamais</BaseQuizOption>
+  <BaseQuizOption value="C">L'effet s'exécute deux fois</BaseQuizOption>
+  <BaseQuizOption value="D" correct>L'effet ne s'exécute qu'une seule fois après le rendu initial</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Un tableau de dépendances vide signifie que l'effet n'a pas de dépendances, il ne s'exécutera donc qu'une seule fois après le montage du composant. Ceci est utile pour le code de configuration qui ne doit s'exécuter qu'une seule fois.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### État de Classe : `this.state` / `setState()`
 
@@ -314,6 +359,21 @@ function Counter() {
 
 ## Gestion des Événements
 
+<BaseQuiz id="react-props-2" correct="A">
+  <template #question>
+    Quel est le but de PropTypes dans React ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Valider les types de props passées aux composants</BaseQuizOption>
+  <BaseQuizOption value="B">Améliorer les performances des composants</BaseQuizOption>
+  <BaseQuizOption value="C">Styliser automatiquement les composants</BaseQuizOption>
+  <BaseQuizOption value="D">Rendre les composants plus rapides</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PropTypes aide à détecter les erreurs en validant que les composants reçoivent des props du bon type. Ils fournissent une vérification de type à l'exécution et sont particulièrement utiles pendant le développement.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Événements Clic : `onClick`
 
 Gérez les clics de bouton et les interactions d'éléments.
@@ -342,7 +402,7 @@ function Button() {
 
 ### Événements de Formulaire : `onChange` / `onSubmit`
 
-Gérez les saisies et les soumissions de formulaire.
+Gérez les entrées de formulaire et les soumissions.
 
 ```javascript
 function Form() {
@@ -374,8 +434,8 @@ Accédez aux propriétés de l'événement et contrôlez le comportement par dé
 
 ```javascript
 function handleInput(event) {
-  console.log('Valeur de saisie :', event.target.value)
-  console.log('Nom de la saisie :', event.target.name)
+  console.log("Valeur de l'entrée :", event.target.value)
+  console.log("Nom de l'entrée :", event.target.name)
 }
 
 function handleFormSubmit(event) {
@@ -442,7 +502,7 @@ function Status({ isOnline }) {
 
 ### Logique If/Else : Instructions `if`
 
-Utilisez la logique JavaScript traditionnelle pour des conditions complexes.
+Utilisez la logique JavaScript traditionnelle pour les conditions complexes.
 
 ```javascript
 function UserProfile({ user, isAdmin }) {
@@ -732,9 +792,9 @@ function Child({ onMessage }) {
 }
 ```
 
-### Context API : `createContext` / `useContext`
+### API Context : `createContext` / `useContext`
 
-Partagez l'état à travers plusieurs composants sans "prop drilling".
+Partagez l'état entre plusieurs composants sans "prop drilling".
 
 ```javascript
 const UserContext = React.createContext()
@@ -768,12 +828,12 @@ function TextInput() {
   return (
     <div>
       <input ref={inputRef} type="text" />
-      <button onClick={focusInput}>Focaliser l'entrée</button>
+      <button onClick={focusInput}>Mettre le focus sur l'entrée</button>
     </div>
   )
 }
 
-// Réacheminement des refs
+// Refs transmises
 const FancyInput = forwardRef((props, ref) => (
   <input className="fancy" ref={ref} {...props} />
 ))
@@ -786,9 +846,9 @@ const FancyInput = forwardRef((props, ref) => (
 Déboguez les composants React et inspectez l'arborescence des composants.
 
 ```javascript
-// Installer l'extension de navigateur React DevTools
-// Onglet Components : Inspecter la hiérarchie des composants
-// Onglet Profiler : Mesurer les performances
+// Installez l'extension de navigateur React DevTools
+// Onglet Components : Inspectez la hiérarchie des composants
+// Onglet Profiler : Mesurez les performances
 
 // Débogage dans la console
 function MyComponent(props) {
@@ -823,7 +883,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-### Strict Mode : `React.StrictMode`
+### Mode Strict : `React.StrictMode`
 
 Activez des vérifications et des avertissements supplémentaires pour le développement.
 
@@ -845,11 +905,11 @@ Mesurez les performances des composants et identifiez les goulots d'étranglemen
 
 ```javascript
 // Utilisation du profileur React DevTools
-// Encapsuler les composants à profiler
+// Encapsulez les composants à profiler
 import { Profiler } from 'react'
 
 function onRenderCallback(id, phase, actualDuration) {
-  console.log('Composant', id, 'a pris', actualDuration, 'ms')
+  console.log('Le composant', id, 'a pris', actualDuration, 'ms')
 }
 
 ;<Profiler id="App" onRender={onRenderCallback}>
@@ -857,41 +917,41 @@ function onRenderCallback(id, phase, actualDuration) {
 </Profiler>
 ```
 
-## Installation & Configuration React
+## Installation & Configuration de React
 
 ### Create React App : `npx create-react-app`
 
 Initialisez rapidement un nouveau projet React.
 
 ```bash
-# Créer une nouvelle application React
+# Créez une nouvelle application React
 npx create-react-app mon-app
 cd mon-app
 
-# Démarrer le serveur de développement
+# Démarrez le serveur de développement
 npm start
 
-# Construire pour la production
+# Construisez pour la production
 npm run build
 
-# Exécuter les tests
+# Exécutez les tests
 npm test
 ```
 
 ### Vite : `npm create vite@latest`
 
-Outil de build rapide et serveur de développement pour les projets React.
+Outil de construction rapide et serveur de développement pour les projets React.
 
 ```bash
-# Créer une nouvelle application Vite React
+# Créez une nouvelle application Vite React
 npm create vite@latest mon-app-react -- --template react
 cd mon-app-react
 npm install
 
-# Démarrer le serveur de développement
+# Démarrez le serveur de développement
 npm run dev
 
-# Construire pour la production
+# Construisez pour la production
 npm run build
 ```
 
@@ -900,7 +960,7 @@ npm run build
 Ajoutez React à un projet existant ou utilisez le CDN.
 
 ```bash
-# Installer React et ReactDOM
+# Installez React et ReactDOM
 npm install react react-dom
 
 # Pour le développement
@@ -908,18 +968,18 @@ npm install --save-dev @vitejs/plugin-react
 ```
 
 ```javascript
-// Importation React de base
+// Importation de base de React
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 // Rendu dans le DOM
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<App />)
+root.render(<App /> />)
 ```
 
-## Patterns & Fonctionnalités Avancés
+## Modèles Avancés & Fonctionnalités
 
-### Higher-Order Components (HOC)
+### Composants d'Ordre Supérieur (HOC)
 
 Réutilisez la logique de composant en enveloppant des composants.
 
@@ -938,7 +998,7 @@ const UserListWithLoading = withLoading(UserList)
 ;<UserListWithLoading users={users} isLoading={loading} />
 ```
 
-### Pattern Render Props
+### Modèle Render Props
 
 Partagez du code entre les composants en utilisant une prop dont la valeur est une fonction.
 
@@ -987,8 +1047,8 @@ function Tab({ children, isActive }) {
 
 // Utilisation
 ;<Tabs activeTab={0}>
-  <Tab>Contenu de l'Onglet 1</Tab>
-  <Tab>Contenu de l'Onglet 2</Tab>
+  <Tab>Contenu Onglet 1</Tab>
+  <Tab>Contenu Onglet 2</Tab>
 </Tabs>
 ```
 
@@ -1036,7 +1096,7 @@ function IconButton({ icon, children, ...props }) {
 
 ### Modèles de Composants : APIs Flexibles
 
-Concevez des APIs de composants qui sont flexibles et faciles à utiliser.
+Concevez des APIs de composants flexibles et faciles à utiliser.
 
 ```javascript
 // Composant Card flexible

@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по базам данных'
-description: 'Изучите базы данных с нашей исчерпывающей шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по базам данных | LabEx'
+description: 'Изучите управление базами данных с помощью этой исчерпывающей шпаргалки. Краткий справочник по SQL-запросам, проектированию БД, нормализации, индексированию, транзакциям и администрированию реляционных баз данных.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
@@ -36,6 +36,21 @@ COLLATE utf8mb4_general_ci;
 USE company_db;
 ```
 
+<BaseQuiz id="database-create-1" correct="A">
+  <template #question>
+    Что делает команда `CREATE DATABASE company_db`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Создает новую пустую базу данных с именем company_db</BaseQuizOption>
+  <BaseQuizOption value="B">Создает таблицу в базе данных</BaseQuizOption>
+  <BaseQuizOption value="C">Удаляет базу данных</BaseQuizOption>
+  <BaseQuizOption value="D">Создает резервную копию базы данных</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `CREATE DATABASE` создает новую пустую базу данных. После создания необходимо использовать `USE` для ее выбора, а затем создавать в ней таблицы.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Показать базы данных: `SHOW DATABASES`
 
 Вывести список всех доступных баз данных на сервере.
@@ -66,7 +81,7 @@ DROP DATABASE IF EXISTS old_company_db;
 Создайте резервные копии вашей базы данных.
 
 ```sql
--- Резервное копирование в командной строке
+-- Резервное копирование через командную строку
 mysqldump -u username -p database_name > backup.sql
 -- Восстановление из резервной копии
 mysql -u username -p database_name < backup.sql
@@ -89,7 +104,7 @@ SHOW GRANTS FOR 'newuser'@'localhost';
 
 ### Информация о базе данных: `INFORMATION_SCHEMA`
 
-Запрашивать метаданные базы данных и информацию о структуре.
+Запрос метаданных и информации о структуре базы данных.
 
 ```sql
 -- Показать все таблицы
@@ -107,7 +122,7 @@ DESCRIBE employees;
 Определите новые таблицы со столбцами и типами данных.
 
 ```sql
--- Базовое создание таблицы
+-- Создание базовой таблицы
 CREATE TABLE employees (
     id INT AUTO_INCREMENT PRIMARY
 KEY,
@@ -124,7 +139,7 @@ SHOW COLUMNS FROM employees;
 
 ### Изменить таблицу: `ALTER TABLE`
 
-Измените существующую структуру таблицы и столбцы.
+Измените структуру и столбцы существующей таблицы.
 
 ```sql
 -- Добавить новый столбец
@@ -139,6 +154,21 @@ COLUMN phone;
 -- Переименовать таблицу
 RENAME TABLE employees TO staff;
 ```
+
+<BaseQuiz id="database-alter-1" correct="C">
+  <template #question>
+    Что делает команда `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)`?
+  </template>
+  
+  <BaseQuizOption value="A">Удаляет столбец phone</BaseQuizOption>
+  <BaseQuizOption value="B">Изменяет столбец phone</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Добавляет новый столбец с именем phone в таблицу employees</BaseQuizOption>
+  <BaseQuizOption value="D">Переименовывает таблицу</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ALTER TABLE ... ADD COLUMN` добавляет новый столбец в существующую таблицу. Новый столбец будет добавлен с указанным типом данных и будет иметь значение NULL для существующих строк, если не указано значение по умолчанию.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Информация о таблице: `SHOW`
 
@@ -193,7 +223,7 @@ WHERE id = 1;
 UPDATE employees
 SET salary = salary * 1.05
 WHERE hire_date < '2024-01-01';
--- Обновить с JOIN
+-- Обновить с помощью JOIN
 UPDATE employees e
 JOIN departments d ON e.department = d.name
 SET e.salary = e.salary + d.bonus;
@@ -210,7 +240,7 @@ WHERE department = 'Temporary';
 -- Удалить с условиями
 DELETE FROM employees
 WHERE hire_date < '2020-01-01' AND salary < 50000;
--- Truncate table (быстрее для всех записей)
+-- Очистить таблицу (быстрее для всех записей)
 TRUNCATE TABLE temp_employees;
 ```
 
@@ -255,12 +285,30 @@ SELECT DISTINCT department FROM employees;
 ```sql
 -- Базовые условия
 SELECT * FROM employees WHERE salary > 70000;
--- Множественные условия
+-- Несколько условий
 SELECT * FROM employees
 WHERE department = 'Engineering' AND salary > 75000;
 -- Сопоставление с шаблоном
 SELECT * FROM employees WHERE name LIKE 'John%';
--- Запросы диапазона
+```
+
+<BaseQuiz id="database-where-1" correct="C">
+  <template #question>
+    Что соответствует `LIKE 'John%'` в предложении WHERE?
+  </template>
+  
+  <BaseQuizOption value="A">Только точные совпадения с "John"</BaseQuizOption>
+  <BaseQuizOption value="B">Значения, оканчивающиеся на "John"</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Значения, начинающиеся с "John"</BaseQuizOption>
+  <BaseQuizOption value="D">Значения, содержащие "John" где-либо</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Символ подстановки `%` в SQL соответствует любой последовательности символов. `LIKE 'John%'` соответствует любому значению, начинающемуся с "John", например, "John", "Johnny", "Johnson" и т. д.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```sql
+-- Диапазонные запросы
 SELECT * FROM employees
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
 31';
@@ -313,7 +361,7 @@ FROM employees;
 SELECT department, COUNT(*) as employee_count,
 AVG(salary) as avg_salary
 FROM employees GROUP BY department;
--- Условие Having для фильтрации групп
+-- Предложение HAVING для фильтрации групп
 SELECT department, COUNT(*) as count
 FROM employees
 GROUP BY department
@@ -347,15 +395,15 @@ WHERE salary > (
 Объединение данных из нескольких таблиц.
 
 ```sql
--- Внутреннее объединение
+-- Внутреннее соединение (INNER JOIN)
 SELECT e.name, e.salary, d.department_name
 FROM employees e
 INNER JOIN departments d ON e.department = d.id;
--- Левое объединение
+-- Левое соединение (LEFT JOIN)
 SELECT e.name, d.department_name
 FROM employees e
 LEFT JOIN departments d ON e.department = d.id;
--- Множественные объединения
+-- Несколько соединений
 SELECT e.name, d.department_name, p.project_name
 FROM employees e
 LEFT JOIN departments d ON e.department = d.id
@@ -387,7 +435,7 @@ FROM employees;
 
 ### Первичные ключи: `PRIMARY KEY`
 
-Обеспечение уникальной идентификации для каждой записи.
+Обеспечение уникальной идентификации каждой записи.
 
 ```sql
 -- Первичный ключ из одного столбца
@@ -436,15 +484,15 @@ ADD CONSTRAINT unique_name_dept UNIQUE (name,
 department);
 ```
 
-### Ограничения CHECK: `CHECK`
+### Ограничения проверки: `CHECK`
 
-Обеспечение бизнес-правил и проверки данных.
+Принудительное применение бизнес-правил и проверки данных.
 
 ```sql
--- Простое ограничение check
+-- Простое ограничение проверки
 ALTER TABLE employees
 ADD CONSTRAINT check_salary CHECK (salary > 0);
--- Сложное ограничение check
+-- Сложное ограничение проверки
 ALTER TABLE employees
 ADD CONSTRAINT check_age
 CHECK (YEAR(CURDATE()) - YEAR(birth_date) >= 18);
@@ -486,14 +534,14 @@ JOIN departments d ON e.department = d.id;
 
 ### Мониторинг производительности
 
-Мониторинг активности базы данных и выявление узких мест.
+Мониторинг производительности базы данных и выявление узких мест.
 
 ```sql
 -- Показать выполняющиеся процессы
 SHOW PROCESSLIST;
 -- Показать статус базы данных
 SHOW STATUS LIKE 'Slow_queries';
--- Информация о кэше запросов
+-- Информация об индексе кэша запросов
 SHOW STATUS LIKE 'Qcache%';
 ```
 
@@ -553,7 +601,7 @@ database_name table_name
 ```sql
 -- Создать таблицу по существующей структуре
 CREATE TABLE employees_backup LIKE employees;
--- Копировать данные между таблицами
+-- Скопировать данные между таблицами
 INSERT INTO employees_backup SELECT * FROM
 employees;
 -- Миграция с условиями
@@ -575,7 +623,7 @@ UPDATE employees SET salary = salary * 1.1 WHERE
 department = 'Sales';
 ```
 
-## Безопасность базы данных и контроль доступа
+## Безопасность базы данных и управление доступом
 
 ### Управление пользователями: `CREATE USER`
 
@@ -630,7 +678,7 @@ GRANT 'app_read_role' TO 'readonly_user'@'localhost';
 Защита от распространенных уязвимостей безопасности.
 
 ```sql
--- Использовать подготовленные операторы (на уровне приложения)
+-- Использование подготовленных операторов (на уровне приложения)
 -- Плохо: SELECT * FROM users WHERE id = ' + userInput
 -- Хорошо: Использовать параметризованные запросы
 -- Проверять типы вводимых данных
@@ -709,12 +757,12 @@ SHOW STATUS LIKE 'Connections';
 
 ### Управление соединениями
 
-Управление соединениями с базой данных и их пулингом.
+Управление соединениями с базой данных и их пулами.
 
 ```sql
 -- Показать текущие соединения
 SHOW PROCESSLIST;
--- Убить конкретное соединение
+-- Завершить конкретное соединение
 KILL CONNECTION 123;
 -- Настройки таймаута соединения
 SET SESSION wait_timeout = 600;
@@ -725,8 +773,8 @@ SET SESSION interactive_timeout = 600;
 
 Настройка автоматического резервного копирования базы данных.
 
-```sql
--- Скрипт автоматического резервного копирования
+```bash
+# Скрипт автоматического резервного копирования
 #!/bin/bash
 DATE=$(date +%Y%m%d_%H%M%S)
 mysqldump -u backup_user -p mydatabase >
@@ -737,7 +785,7 @@ backup_$DATE.sql
 
 ### Мониторинг и логирование
 
-Мониторинг активности базы данных и производительности.
+Мониторинг активности и производительности базы данных.
 
 ```sql
 -- Настройка восстановления на момент времени
@@ -761,13 +809,13 @@ GROUP BY table_schema;
 Пишите чистые, эффективные и читаемые SQL-запросы.
 
 ```sql
--- Использовать значимые псевдонимы таблиц
+-- Использовать осмысленные псевдонимы таблиц
 SELECT e.name, d.department_name
 FROM employees e
 JOIN departments d ON e.dept_id = d.id;
 -- Указывать имена столбцов вместо SELECT *
 SELECT name, email, salary FROM employees;
--- Использовать соответствующие типы данных
+-- Использовать подходящие типы данных
 CREATE TABLE products (
     id INT PRIMARY KEY,
     price DECIMAL(10,2) NOT NULL,
@@ -781,7 +829,7 @@ CURRENT_TIMESTAMP
 Оптимизируйте запросы для лучшей производительности базы данных.
 
 ```sql
--- Использовать индексы в часто запрашиваемых столбцах
+-- Использовать индексы для часто запрашиваемых столбцов
 CREATE INDEX idx_employee_dept ON
 employees(department);
 -- Ограничивать наборы результатов, когда это возможно

@@ -1,11 +1,11 @@
 ---
-title: 'Шпаргалка по Kubernetes'
-description: 'Изучите Kubernetes с нашей полной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Kubernetes | LabEx'
+description: 'Изучите оркестрацию Kubernetes с помощью этой исчерпывающей шпаргалки. Краткий справочник по командам kubectl, подам, развертываниям, сервисам, ingress и управлению облачными контейнерами.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Шпаргалка по Kubernetes
+Справочник по Kubernetes
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -74,7 +74,7 @@ namespace
 ```bash
 # Запуск Minikube
 minikube start
-# Проверить статус
+# Проверка статуса
 minikube status
 # Доступ к панели управления
 minikube dashboard
@@ -82,7 +82,7 @@ minikube dashboard
 minikube stop
 ```
 
-## Базовые Команды и Информация о Кластере
+## Основные Команды и Информация о Кластере
 
 ### Информация о Кластере: `kubectl cluster-info`
 
@@ -131,6 +131,21 @@ namespace
 kubectl get all -n my-namespace
 ```
 
+<BaseQuiz id="kubernetes-namespace-1" correct="B">
+  <template #question>
+    Какова основная цель пространств имен Kubernetes?
+  </template>
+  
+  <BaseQuizOption value="A">Для повышения производительности кластера</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Для организации и изоляции ресурсов внутри кластера</BaseQuizOption>
+  <BaseQuizOption value="C">Для соединения кластеров вместе</BaseQuizOption>
+  <BaseQuizOption value="D">Для хранения образов контейнеров</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Пространства имен предоставляют способ разделения ресурсов кластера между несколькими пользователями или командами. Они помогают организовать ресурсы и обеспечивают область видимости для имен, позволяя иметь ресурсы с одинаковыми именами в разных пространствах имен.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Управление Подами (Pod Management)
 
 ### Создание и Запуск Подов: `kubectl run` / `kubectl create`
@@ -157,15 +172,30 @@ kubectl create job hello --image=busybox:1.28 -- echo
 ```bash
 # Список всех подов в пространстве имен по умолчанию
 kubectl get pods
-# Список подов с большей детализацией
+# Список подов с дополнительными деталями
 kubectl get pods -o wide
 # Список подов во всех пространствах имен
 kubectl get pods --all-namespaces
-# Наблюдать за изменениями статуса пода
+# Наблюдение за изменениями статуса пода
 kubectl get pods --watch
 ```
 
-### Детали Подов: `kubectl describe pod`
+<BaseQuiz id="kubernetes-pods-1" correct="C">
+  <template #question>
+    Что делает команда `kubectl get pods --all-namespaces`?
+  </template>
+  
+  <BaseQuizOption value="A">Выводит только запущенные поды</BaseQuizOption>
+  <BaseQuizOption value="B">Выводит поды в пространстве имен по умолчанию</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Выводит поды во всех пространствах имен кластера</BaseQuizOption>
+  <BaseQuizOption value="D">Удаляет все поды</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `--all-namespaces` (или `-A`) показывает поды из всех пространств имен, а не только из пространства по умолчанию. Это полезно для обзора всего кластера.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Детали Пода: `kubectl describe pod`
 
 Получение исчерпывающей информации о конкретных подах.
 
@@ -214,6 +244,21 @@ kubectl expose deployment nginx --port=80 --
 type=LoadBalancer
 ```
 
+<BaseQuiz id="kubernetes-deployment-1" correct="A">
+  <template #question>
+    Каково основное назначение развертывания Kubernetes (Deployment)?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Управление и поддержание желаемого количества реплик пода</BaseQuizOption>
+  <BaseQuizOption value="B">Открытие подов для внешнего трафика</BaseQuizOption>
+  <BaseQuizOption value="C">Хранение данных конфигурации</BaseQuizOption>
+  <BaseQuizOption value="D">Управление узлами кластера</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Deployment управляет ReplicaSet, который обеспечивает запуск указанного числа реплик пода. Он предоставляет декларативные обновления, поэтапные обновления (rolling updates) и возможности отката.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Управление Развертываниями: `kubectl get deployments`
 
 Просмотр и контроль статуса и конфигурации развертывания.
@@ -243,22 +288,37 @@ kubectl autoscale deployment nginx --min=2 --max=10 --
 cpu-percent=80
 ```
 
+<BaseQuiz id="kubernetes-scale-1" correct="B">
+  <template #question>
+    Что делает команда `kubectl scale deployment nginx --replicas=5`?
+  </template>
+  
+  <BaseQuizOption value="A">Создает 5 новых развертываний</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Масштабирует развертывание nginx до 5 реплик пода</BaseQuizOption>
+  <BaseQuizOption value="C">Удаляет 5 подов из развертывания</BaseQuizOption>
+  <BaseQuizOption value="D">Обновляет образ развертывания</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Команда `scale` изменяет количество реплик для развертывания. Эта команда гарантирует, что развертывание nginx будет запускать ровно 5 реплик пода, создавая или удаляя поды по мере необходимости.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Поэтапные Обновления: `kubectl rollout`
 
-Управление обновлениями развертываний и откат изменений.
+Управление обновлениями развертываний и их откатами.
 
 ```bash
-# Проверить статус обновления
+# Проверить статус развертывания
 kubectl rollout status deployment/nginx
-# Просмотр истории обновлений
+# Просмотр истории развертывания
 kubectl rollout history deployment/nginx
 # Откат к предыдущей версии
 kubectl rollout undo deployment/nginx
-# Откат к конкретной ревизии
+# Откат к определенной ревизии
 kubectl rollout undo deployment/nginx --to-revision=2
 ```
 
-## Службы (Services) и Сеть
+## Службы (Services) и Сетевое Взаимодействие
 
 ### Открытие Служб: `kubectl expose`
 
@@ -277,6 +337,21 @@ type=LoadBalancer
 kubectl apply -f service.yaml
 ```
 
+<BaseQuiz id="kubernetes-service-1" correct="A">
+  <template #question>
+    Какой тип службы по умолчанию используется при вызове `kubectl expose`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>
+  <BaseQuizOption value="B">NodePort</BaseQuizOption>
+  <BaseQuizOption value="C">LoadBalancer</BaseQuizOption>
+  <BaseQuizOption value="D">ExternalName</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ClusterIP является типом службы по умолчанию. Он открывает службу на внутреннем IP-адресе кластера, делая ее доступной только внутри кластера. Типы NodePort и LoadBalancer предоставляют внешний доступ.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Обнаружение Служб: `kubectl get services`
 
 Список и инспекция служб в вашем кластере.
@@ -284,7 +359,7 @@ kubectl apply -f service.yaml
 ```bash
 # Список всех служб
 kubectl get services
-# Список служб с большей детализацией
+# Список служб с дополнительными деталями
 kubectl get svc -o wide
 # Описать конкретную службу
 kubectl describe service
@@ -333,7 +408,7 @@ literal=database_url=localhost --from-literal=debug=true
 # Создать из файла
 kubectl create configmap app-config --from-
 file=app.properties
-# Создать из директории
+# Создать из каталога
 kubectl create configmap app-config --from-file=config/
 ```
 
@@ -365,7 +440,7 @@ literal=password=secret123
 # Создать секрет из файла
 kubectl create secret generic ssl-certs --from-file=tls.crt --
 from-file=tls.key
-# Создать секрет реестра Docker
+# Создать секрет реестра docker
 kubectl create secret docker-registry my-registry --
 docker-server=myregistry.com --docker-username=user -
 -docker-password=pass
@@ -391,7 +466,7 @@ kubectl delete secret db-secret
 
 ### Постоянные Тома (Persistent Volumes): `kubectl get pv`
 
-Управление ресурсами хранилища в масштабе кластера.
+Управление ресурсами хранения в масштабе всего кластера.
 
 ```bash
 # Список постоянных томов
@@ -406,7 +481,7 @@ kubectl delete pv
 
 ### Запросы на Постоянный Том (Persistent Volume Claims): `kubectl get pvc`
 
-Запрос ресурсов хранилища для подов.
+Запрос ресурсов хранения для подов.
 
 ```bash
 # Список PVC
@@ -419,16 +494,16 @@ kubectl apply -f pvc.yaml
 kubectl delete pvc
 ```
 
-### Классы Хранилища (Storage Classes): `kubectl get storageclass`
+### Классы Хранения (Storage Classes): `kubectl get storageclass`
 
 Определение различных типов хранилищ с различными свойствами.
 
 ```bash
-# Список классов хранилища
+# Список классов хранения
 kubectl get storageclass
-# Описать класс хранилища
+# Описать класс хранения
 kubectl describe storageclass
-# Установить класс хранилища по умолчанию
+# Установить класс хранения по умолчанию
 kubectl patch storageclass  -p '{"metadata":
 {"annotations":{"storageclass.kubernetes.io/is-default-
 class":"true"}}}'
@@ -445,11 +520,11 @@ kubectl describe pod  | grep -A5 "Mounts:"
 kubectl get pod  -o yaml | grep -A10 "volumes:"
 ```
 
-## Поиск и Устранение Неполадок (Troubleshooting & Debugging)
+## Устранение Неполадок и Отладка (Troubleshooting & Debugging)
 
 ### Логи и События: `kubectl logs` / `kubectl get events`
 
-Просмотр логов приложений и событий кластера для отладки.
+Анализ логов приложений и событий кластера для отладки.
 
 ```bash
 # Просмотр логов пода
@@ -458,7 +533,7 @@ kubectl logs
 kubectl logs -f
 # Просмотр логов предыдущего контейнера
 kubectl logs  --previous
-# Просмотр логов из конкретного контейнера
+# Просмотр логов конкретного контейнера
 kubectl logs  -c
 # Просмотр событий кластера
 kubectl get events --sort-
@@ -489,15 +564,15 @@ kubectl describe node
 kubectl top nodes
 # Использование ресурсов подами
 kubectl top pods
-# Использование ресурсов подами в пространстве имен
+# Использование ресурсов в пространстве имен
 kubectl top pods -n
-# Сортировка подов по потреблению CPU
+# Сортировка подов по использованию CPU
 kubectl top pods --sort-by=cpu
 ```
 
 ### Интерактивная Отладка: `kubectl exec` / `kubectl debug`
 
-Доступ к запущенным контейнерам для практической отладки.
+Доступ к запущенным контейнерам для практического устранения неполадок.
 
 ```bash
 # Выполнить интерактивную оболочку
@@ -521,7 +596,7 @@ kubectl cp ./local-file :/path/to/destination
 kubectl apply -f deployment.yaml
 # Применить несколько файлов
 kubectl apply -f deployment.yaml -f service.yaml
-# Применить всю директорию
+# Применить весь каталог
 kubectl apply -f ./k8s-configs/
 # Применить из URL
 kubectl apply -f https://example.com/manifest.yaml
@@ -538,8 +613,7 @@ kubectl apply -f deployment.yaml --dry-run=client -o yaml
 kubectl get all
 # Получить ресурсы с пользовательскими столбцами
 kubectl get pods -o custom-
-columns=NAME:.metadata.name,STATUS:.status.phase,N
-ODE:.spec.nodeName
+columns=NAME:.metadata.name,STATUS:.status.phase
 # Получить ресурсы в формате JSON/YAML
 kubectl get deployment nginx -o yaml
 kubectl get pod  -o json
@@ -550,15 +624,15 @@ kubectl delete pod,service -l app=nginx
 
 ### Редактирование Ресурсов: `kubectl edit` / `kubectl patch`
 
-Непосредственное изменение существующих ресурсов.
+Прямое изменение существующих ресурсов.
 
 ```bash
-# Интерактивное редактирование ресурса
+# Редактировать ресурс интерактивно
 kubectl edit deployment
-# Обновить ресурс с помощью стратегического слияния
+# Патч ресурса с помощью стратегического слияния
 kubectl patch deployment nginx -p '{"spec":
 {"replicas":3}}'
-# Обновить ресурс с помощью слияния JSON
+# Патч с помощью слияния JSON
 kubectl patch pod  --type='json' -p='[{"op": "replace",
 "path": "/metadata/labels/env", "value": "prod"}]'
 # Полностью заменить ресурс
@@ -588,16 +662,16 @@ validate=true
 Управление доступностью узлов для обслуживания и обновлений.
 
 ```bash
-# Отметить узел как непланируемый
+# Отметить узел как недоступный для планирования
 kubectl cordon
-# Отметить узел как планируемый
+# Отметить узел как доступный для планирования
 kubectl uncordon
 # Осушить узел для обслуживания
 kubectl drain  --ignore-daemonsets --delete-emptydir-
 data
-# Добавить метку (taint) к узлу
+# Добавить "taint" к узлу
 kubectl taint nodes  key=value:NoSchedule
-# Удалить метку (taint) с узла
+# Удалить "taint" с узла
 kubectl taint nodes  key:NoSchedule-
 ```
 
@@ -623,7 +697,7 @@ kubectl get pods -l 'environment in (production,staging)'
 Доступ к API кластера и управление аутентификацией.
 
 ```bash
-# Запустить прокси к API Kubernetes
+# Запустить прокси для API Kubernetes
 kubectl proxy --port=8080
 # Проверить, может ли пользователь выполнить действие
 kubectl auth can-i create pods
@@ -646,7 +720,7 @@ kubectl wait --for=condition=Ready pod/ --timeout=300s
 # Запуск временного пода для тестирования
 kubectl run tmp-pod --rm -i --tty --image=busybox --
 /bin/sh
-# Генерация YAML-ресурса без создания
+# Генерация YAML ресурса без создания
 kubectl create deployment nginx --image=nginx --dry-
 run=client -o yaml
 # Сортировка ресурсов по времени создания
@@ -672,12 +746,12 @@ kubectl top pods --containers=true
 kubectl top pods --previous
 ```
 
-### Проверки Состояния (Health Checks)
+### Проверки Состояния и Статус
 
-Мониторинг состояния приложений и кластера.
+Мониторинг состояния работоспособности приложений и кластера.
 
 ```bash
-# Проверить статус обновления развертывания
+# Проверить статус развертывания
 kubectl rollout status deployment/
 # Проверить готовность пода
 kubectl get pods --field-selector=status.phase=Running
@@ -690,14 +764,14 @@ kubectl get componentstatuses
 
 ### Оптимизация Производительности
 
-Команды, помогающие оптимизировать производительность кластера.
+Команды для помощи в оптимизации производительности кластера.
 
 ```bash
 # Просмотр запросов и лимитов ресурсов
 kubectl describe node  | grep -A5 "Allocated resources:"
-# Проверить бюджеты прерывания пода (PDB)
+# Проверить бюджеты прерывания пода
 kubectl get pdb
-# Просмотр горизонтальных автоматов масштабирования подов (HPA)
+# Просмотр горизонтальных автомасштабировщиков подов
 kubectl get hpa
 # Проверить сетевые политики
 kubectl get networkpolicy
@@ -771,8 +845,7 @@ view --merge --flatten >
 текущего контекста
 kubectl config set-context --
 current --namespace=
-# Установить другой формат вывода по
-умолчанию
+# Установить другой формат вывода по умолчанию
 kubectl config set-context --
 current --output=yaml
 # Просмотр деталей конфигурации
@@ -794,11 +867,11 @@ alias kgp='kubectl get pods'
 alias kgs='kubectl get services'
 alias kgd='kubectl get deployments'
 # Использование коротких имен для ресурсов
-kubectl get po        # поды
-kubectl get svc       # службы
-kubectl get deploy    # развертывания
-kubectl get ns        # пространства имен
-kubectl get no        # узлы
+kubectl get po        # pods
+kubectl get svc       # services
+kubectl get deploy    # deployments
+kubectl get ns        # namespaces
+kubectl get no        # nodes
 # Наблюдение за ресурсами на предмет изменений
 kubectl get pods --watch
 kubectl get events --watch
@@ -849,7 +922,7 @@ jsonpath='{.items[*].spec.containers[*].image}'
 ```bash
 # Сухой запуск для предварительного просмотра изменений
 kubectl apply -f deployment.yaml --dry-run=client -o yaml
-# Проверить конфигурацию
+# Валидация конфигурации
 kubectl apply -f deployment.yaml --validate=true --dry-
 run=client
 # Показать различия перед применением
@@ -860,11 +933,11 @@ kubectl delete pod  --grace-period=0 --force
 
 ## Соответствующие Ссылки
 
-- <router-link to="/docker">Шпаргалка по Docker</router-link>
-- <router-link to="/linux">Шпаргалка по Linux</router-link>
-- <router-link to="/shell">Шпаргалка по Shell</router-link>
-- <router-link to="/devops">Шпаргалка по DevOps</router-link>
-- <router-link to="/ansible">Шпаргалка по Ansible</router-link>
-- <router-link to="/git">Шпаргалка по Git</router-link>
-- <router-link to="/rhel">Шпаргалка по Red Hat Enterprise Linux</router-link>
-- <router-link to="/cybersecurity">Шпаргалка по Кибербезопасности</router-link>
+- <router-link to="/docker">Справочник по Docker</router-link>
+- <router-link to="/linux">Справочник по Linux</router-link>
+- <router-link to="/shell">Справочник по Shell</router-link>
+- <router-link to="/devops">Справочник по DevOps</router-link>
+- <router-link to="/ansible">Справочник по Ansible</router-link>
+- <router-link to="/git">Справочник по Git</router-link>
+- <router-link to="/rhel">Справочник по Red Hat Enterprise Linux</router-link>
+- <router-link to="/cybersecurity">Справочник по Кибербезопасности</router-link>

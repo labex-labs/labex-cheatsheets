@@ -1,6 +1,6 @@
 ---
-title: 'Guia Rápido Kubernetes'
-description: 'Aprenda Kubernetes com nosso guia completo cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Kubernetes Guia Rápido | LabEx'
+description: 'Aprenda orquestração Kubernetes com este guia rápido abrangente. Referência rápida para comandos kubectl, pods, deployments, services, ingress e gerenciamento de contêineres nativos da nuvem.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Kubernetes Cheatsheet
 <a target="_blank" href="https://labex.io/pt/learn/kubernetes">Aprenda Kubernetes com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda orquestração de contêineres Kubernetes através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de Kubernetes cobrindo comandos essenciais do kubectl, gerenciamento de pods, implantações, serviços, rede e administração de cluster. Domine a orquestração de contêineres e a implantação de aplicações cloud-native.
+Aprenda orquestração de contêineres Kubernetes através de laboratórios práticos e cenários do mundo real. O LabEx fornece cursos abrangentes de Kubernetes cobrindo comandos essenciais do kubectl, gerenciamento de pods, implantações, serviços, rede e administração de cluster. Domine a orquestração de contêineres e a implantação de aplicações cloud-native.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -61,9 +61,9 @@ kubectl config view
 # Listar todos os contextos
 kubectl config get-contexts
 # Mudar para um contexto
-kubectl config use-context my-cluster
+kubectl config use-context meu-cluster
 # Definir namespace padrão
-kubectl config set-context --current --namespace=my-
+kubectl config set-context --current --namespace=meu-
 namespace
 ```
 
@@ -122,14 +122,29 @@ Organizar e isolar recursos usando namespaces.
 # Listar todos os namespaces
 kubectl get namespaces
 # Criar um namespace
-kubectl create namespace my-
+kubectl create namespace meu-
 namespace
-# Deletar um namespace
-kubectl delete namespace my-
+# Excluir um namespace
+kubectl delete namespace meu-
 namespace
 # Obter recursos em um namespace específico
-kubectl get all -n my-namespace
+kubectl get all -n meu-namespace
 ```
+
+<BaseQuiz id="kubernetes-namespace-1" correct="B">
+  <template #question>
+    Qual é o propósito principal dos namespaces do Kubernetes?
+  </template>
+  
+  <BaseQuizOption value="A">Para melhorar o desempenho do cluster</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Para organizar e isolar recursos dentro de um cluster</BaseQuizOption>
+  <BaseQuizOption value="C">Para conectar clusters entre si</BaseQuizOption>
+  <BaseQuizOption value="D">Para armazenar imagens de contêineres</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Namespaces fornecem uma maneira de dividir os recursos do cluster entre vários usuários ou equipes. Eles ajudam a organizar recursos e fornecem escopo para nomes, permitindo que você tenha recursos com o mesmo nome em namespaces diferentes.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Gerenciamento de Pods
 
@@ -165,6 +180,21 @@ kubectl get pods --all-namespaces
 kubectl get pods --watch
 ```
 
+<BaseQuiz id="kubernetes-pods-1" correct="C">
+  <template #question>
+    O que `kubectl get pods --all-namespaces` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Lista apenas pods em execução</BaseQuizOption>
+  <BaseQuizOption value="B">Lista pods no namespace padrão</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lista pods em todos os namespaces do cluster</BaseQuizOption>
+  <BaseQuizOption value="D">Exclui todos os pods</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O flag `--all-namespaces` (ou `-A`) mostra pods de todos os namespaces, não apenas do namespace padrão. Isso é útil para visibilidade em todo o cluster.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Detalhes do Pod: `kubectl describe pod`
 
 Obter informações abrangentes sobre pods específicos.
@@ -189,9 +219,9 @@ kubectl logs -f
 kubectl exec -it  -- /bin/bash
 # Executar comando em contêiner específico
 kubectl exec -it  -c  -- sh
-# Deletar um pod
+# Excluir um pod
 kubectl delete pod
-# Deletar pod forçadamente
+# Forçar exclusão de um pod
 kubectl delete pod  --grace-period=0 --force
 ```
 
@@ -214,6 +244,21 @@ kubectl expose deployment nginx --port=80 --
 type=LoadBalancer
 ```
 
+<BaseQuiz id="kubernetes-deployment-1" correct="A">
+  <template #question>
+    Qual é o principal propósito de um Deployment do Kubernetes?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Gerenciar e manter um número desejado de réplicas de pod</BaseQuizOption>
+  <BaseQuizOption value="B">Expor pods ao tráfego externo</BaseQuizOption>
+  <BaseQuizOption value="C">Armazenar dados de configuração</BaseQuizOption>
+  <BaseQuizOption value="D">Gerenciar nós do cluster</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Um Deployment gerencia um ReplicaSet, que garante que um número especificado de réplicas de pod esteja em execução. Ele fornece atualizações declarativas, atualizações progressivas (rolling updates) e capacidades de rollback.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Gerenciar Deployments: `kubectl get deployments`
 
 Visualizar e controlar o status e a configuração do deployment.
@@ -225,7 +270,7 @@ kubectl get deployments
 kubectl describe deployment
 # Editar deployment
 kubectl edit deployment
-# Deletar deployment
+# Excluir deployment
 kubectl delete deployment
 ```
 
@@ -234,18 +279,33 @@ kubectl delete deployment
 Ajustar o número de réplicas em execução.
 
 ```bash
-# Escalonar deployment
+# Escalar deployment
 kubectl scale deployment nginx --replicas=5
-# Escalonar ReplicaSet
+# Escalar ReplicaSet
 kubectl scale rs  --replicas=3
-# Auto-escalonar deployment
+# Auto-escalar deployment
 kubectl autoscale deployment nginx --min=2 --max=10 --
 cpu-percent=80
 ```
 
+<BaseQuiz id="kubernetes-scale-1" correct="B">
+  <template #question>
+    O que `kubectl scale deployment nginx --replicas=5` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Cria 5 novos deployments</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Escala o deployment nginx para executar 5 réplicas de pod</BaseQuizOption>
+  <BaseQuizOption value="C">Exclui 5 pods do deployment</BaseQuizOption>
+  <BaseQuizOption value="D">Atualiza a imagem do deployment</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O comando `scale` ajusta o número de réplicas para um deployment. Este comando garante que o deployment nginx execute exatamente 5 réplicas de pod, criando ou excluindo pods conforme necessário.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Rolling Updates: `kubectl rollout`
 
-Gerenciar atualizações de implantação e rollbacks.
+Gerenciar atualizações de deployment e rollbacks.
 
 ```bash
 # Verificar status do rollout
@@ -262,7 +322,7 @@ kubectl rollout undo deployment/nginx --to-revision=2
 
 ### Expor Serviços: `kubectl expose`
 
-Tornar aplicações acessíveis via serviços de rede.
+Tornar aplicações acessíveis através de serviços de rede.
 
 ```bash
 # Expor deployment como serviço ClusterIP
@@ -276,6 +336,21 @@ type=LoadBalancer
 # Criar serviço a partir de YAML
 kubectl apply -f service.yaml
 ```
+
+<BaseQuiz id="kubernetes-service-1" correct="A">
+  <template #question>
+    Qual é o tipo de serviço padrão ao usar `kubectl expose`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>
+  <BaseQuizOption value="B">NodePort</BaseQuizOption>
+  <BaseQuizOption value="C">LoadBalancer</BaseQuizOption>
+  <BaseQuizOption value="D">ExternalName</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ClusterIP é o tipo de serviço padrão. Ele expõe o serviço em um IP interno do cluster, tornando-o acessível apenas dentro do cluster. Os tipos NodePort e LoadBalancer fornecem acesso externo.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Descoberta de Serviço: `kubectl get services`
 
@@ -309,7 +384,7 @@ kubectl port-forward pod/ 8080:80 8443:443
 
 ### Gerenciamento de Ingress
 
-Gerenciar acesso externo a serviços via rotas HTTP/HTTPS.
+Gerenciar o acesso externo a serviços via rotas HTTP/HTTPS.
 
 ```bash
 # Listar recursos de ingress
@@ -349,7 +424,7 @@ kubectl describe configmap app-config
 kubectl get configmap app-config -o yaml
 # Editar ConfigMap
 kubectl edit configmap app-config
-# Deletar ConfigMap
+# Excluir ConfigMap
 kubectl delete configmap app-config
 ```
 
@@ -358,14 +433,14 @@ kubectl delete configmap app-config
 Armazenar e gerenciar informações sensíveis como senhas e chaves de API.
 
 ```bash
-# Criar secret genérico
+# Criar segredo genérico
 kubectl create secret generic db-secret --from-
 literal=username=admin --from-
 literal=password=secret123
-# Criar secret a partir de arquivo
+# Criar segredo a partir de arquivo
 kubectl create secret generic ssl-certs --from-file=tls.crt --
 from-file=tls.key
-# Criar secret de registro docker
+# Criar segredo de registro docker
 kubectl create secret docker-registry my-registry --
 docker-server=myregistry.com --docker-username=user -
 -docker-password=pass
@@ -373,17 +448,17 @@ docker-server=myregistry.com --docker-username=user -
 
 ### Gerenciamento de Secrets
 
-Visualizar e gerenciar secrets com segurança.
+Visualizar e gerenciar segredos com segurança.
 
 ```bash
-# Listar secrets
+# Listar segredos
 kubectl get secrets
-# Descrever secret (valores são ocultos)
+# Descrever segredo (valores são ocultos)
 kubectl describe secret db-secret
-# Decodificar valores de secret
+# Decodificar valores de segredo
 kubectl get secret db-secret -o
 jsonpath='{.data.password}' | base64 -d
-# Deletar secret
+# Excluir segredo
 kubectl delete secret db-secret
 ```
 
@@ -400,7 +475,7 @@ kubectl get pv
 kubectl describe pv
 # Criar PV a partir de YAML
 kubectl apply -f persistent-volume.yaml
-# Deletar volume persistente
+# Excluir volume persistente
 kubectl delete pv
 ```
 
@@ -415,7 +490,7 @@ kubectl get pvc
 kubectl describe pvc
 # Criar PVC a partir de YAML
 kubectl apply -f pvc.yaml
-# Deletar PVC
+# Excluir PVC
 kubectl delete pvc
 ```
 
@@ -449,7 +524,7 @@ kubectl get pod  -o yaml | grep -A10 "volumes:"
 
 ### Logs e Eventos: `kubectl logs` / `kubectl get events`
 
-Examinar logs de aplicações e eventos do cluster para depuração.
+Examinar logs de aplicação e eventos do cluster para depuração.
 
 ```bash
 # Visualizar logs do pod
@@ -482,14 +557,14 @@ kubectl describe node
 
 ### Uso de Recursos: `kubectl top`
 
-Monitorar o consumo de recursos em todos os pods e nós.
+Monitorar o consumo de recursos em pods e nós.
 
 ```bash
 # Uso de recursos do nó
-kubectl top nodes
+kubectl top nodes --sort-by=cpu
 # Uso de recursos do pod
-kubectl top pods
-# Uso de recursos do pod no namespace
+kubectl top pods --sort-by=cpu
+# Uso de recursos do pod em namespace
 kubectl top pods -n
 # Ordenar pods por uso de CPU
 kubectl top pods --sort-by=cpu
@@ -523,7 +598,7 @@ kubectl apply -f deployment.yaml
 kubectl apply -f deployment.yaml -f service.yaml
 # Aplicar diretório inteiro
 kubectl apply -f ./k8s-configs/
-# Aplicar de URL
+# Aplicar a partir de URL
 kubectl apply -f https://example.com/manifest.yaml
 # Mostrar o que seria aplicado (dry run)
 kubectl apply -f deployment.yaml --dry-run=client -o yaml
@@ -538,11 +613,11 @@ Listar, inspecionar e remover recursos do Kubernetes.
 kubectl get all
 # Obter recursos com colunas personalizadas
 kubectl get pods -o custom-
-columns=NOME:.metadata.name,STATUS:.status.phase,NÓ:.spec.nodeName
+columns=NOME:.metadata.name,STATUS:.status.phase
 # Obter recursos como JSON/YAML
 kubectl get deployment nginx -o yaml
 kubectl get pod  -o json
-# Deletar recursos
+# Excluir recursos
 kubectl delete -f deployment.yaml
 kubectl delete pod,service -l app=nginx
 ```
@@ -648,7 +723,7 @@ kubectl run tmp-pod --rm -i --tty --image=busybox --
 # Gerar YAML de recurso sem criar
 kubectl create deployment nginx --image=nginx --dry-
 run=client -o yaml
-# Ordenar recursos por tempo de criação
+# Ordenar recursos por data de criação
 kubectl get pods --sort-by=.metadata.creationTimestamp
 ```
 
@@ -696,7 +771,7 @@ Comandos para ajudar a otimizar o desempenho do cluster.
 kubectl describe node  | grep -A5 "Allocated resources:"
 # Verificar orçamentos de interrupção de pod
 kubectl get pdb
-# Visualizar auto-escalonadores de pod horizontal
+# Visualizar autoscalers de pod horizontal
 kubectl get hpa
 # Verificar políticas de rede
 kubectl get networkpolicy
@@ -832,7 +907,8 @@ kubectl get pods -o json
 kubectl get pods -o name
 # Colunas personalizadas
 kubectl get pods -o custom-
-columns=NOME:.metadata.name,STATUS:.status.phase,NÓ:.spec.nodeName
+columns=NOME:.metadata.name,STATUS:.status.phase,N
+ODE:.spec.nodeName
 # Consultas JSONPath
 kubectl get pods -o jsonpath='{.items[*].metadata.name}'
 kubectl get pods -o
@@ -851,7 +927,7 @@ kubectl apply -f deployment.yaml --validate=true --dry-
 run=client
 # Mostrar diferenças antes de aplicar
 kubectl diff -f deployment.yaml
-# Deletar forçadamente com período de carência
+# Excluir forçadamente com período de carência
 kubectl delete pod  --grace-period=0 --force
 ```
 

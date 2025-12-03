@@ -1,6 +1,6 @@
 ---
-title: 'Git 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 Git 을 학습하세요.'
+title: 'Git 치트 시트 | LabEx'
+description: '포괄적인 치트 시트로 Git 버전 관리를 배우세요. Git 명령어, 브랜칭, 병합, 리베이스, GitHub 워크플로우 및 협업 개발을 위한 빠른 참조 가이드입니다.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Git 치트 시트
 <a target="_blank" href="https://labex.io/ko/learn/git">Hands-On 실습으로 Git 배우기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Hands-On 실습과 실제 시나리오를 통해 Git 버전 관리를 배우세요. LabEx 는 필수 명령어, 브랜칭 전략, 협업 워크플로우 및 고급 기술을 다루는 포괄적인 Git 강좌를 제공합니다. Git 과 GitHub 를 사용하여 코드 저장소를 관리하고, 충돌을 해결하며, 팀과 효과적으로 협업하는 방법을 배우십시오.
+실습 및 실제 시나리오를 통해 Git 버전 관리를 학습하세요. LabEx 는 필수 명령어, 브랜칭 전략, 협업 워크플로우 및 고급 기술을 다루는 포괄적인 Git 강좌를 제공합니다. Git 과 GitHub 를 사용하여 코드 저장소를 관리하고, 충돌을 해결하며, 팀과 효과적으로 협업하는 방법을 배우세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -28,11 +28,11 @@ Hands-On 실습과 실제 시나리오를 통해 Git 버전 관리를 배우세�
 ```bash
 # 새 저장소 초기화
 git init
-# 새 디렉토리에 초기화
+# 새 디렉토리에서 초기화
 git init project-name
 # 베어 저장소 초기화 (작업 디렉토리 없음)
 git init --bare
-# 사용자 정의 템플릿 디렉토리 사용
+# 사용자 지정 템플릿 디렉토리 사용
 git init --template=path
 ```
 
@@ -45,7 +45,7 @@ git init --template=path
 git clone https://github.com/user/repo.git
 # SSH를 통한 복제
 git clone git@github.com:user/repo.git
-# 사용자 정의 이름으로 복제
+# 사용자 지정 이름으로 복제
 git clone repo.git local-name
 # 얕은 복제 (최신 커밋만)
 git clone --depth 1 repo.git
@@ -138,20 +138,20 @@ git diff file.txt
 
 ### 기록 보기: `git log`
 
-커밋 기록 및 저장소 타임라인을 표시합니다.
+커밋 기록과 저장소 타임라인을 표시합니다.
 
 ```bash
 # 전체 커밋 기록
 git log
 # 간결한 한 줄 형식
 git log --oneline
-# 마지막 5개 커밋 표시
+# 마지막 5개 커밋 보기
 git log -5
 # 시각적 브랜치 그래프
 git log --graph --all
 ```
 
-## 변경 사항 스테이징 및 커밋
+## 스테이징 및 커밋 변경 사항
 
 ### 파일 스테이징: `git add`
 
@@ -172,7 +172,7 @@ git add -p
 
 ### 변경 사항 커밋: `git commit`
 
-설명 메시지와 함께 스테이징된 변경 사항을 저장소에 저장합니다.
+스테이징된 변경 사항을 설명적인 메시지와 함께 저장소에 저장합니다.
 
 ```bash
 # 메시지와 함께 커밋
@@ -185,14 +185,29 @@ git commit --amend
 git commit --no-edit --amend
 ```
 
-### 파일 언스테이징: `git reset`
+<BaseQuiz id="git-commit-1" correct="A">
+  <template #question>
+    `git commit -m "message"`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>지정된 메시지로 새 커밋을 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="B">작업 디렉토리의 모든 변경 사항을 스테이징합니다</BaseQuizOption>
+  <BaseQuizOption value="C">변경 사항을 원격 저장소에 푸시합니다</BaseQuizOption>
+  <BaseQuizOption value="D">새 브랜치를 생성합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git commit -m` 명령어는 스테이징된 변경 사항으로 새 커밋을 생성하고 제공된 메시지와 함께 저장소 기록에 저장합니다. 원격에 푸시하거나 브랜치를 생성하지는 않습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 파일 스테이징 해제: `git reset`
 
 스테이징 영역에서 파일을 제거하거나 커밋을 취소합니다.
 
 ```bash
-# 특정 파일 언스테이징
+# 특정 파일 스테이징 해제
 git reset file.txt
-# 모든 파일 언스테이징
+# 모든 파일 스테이징 해제
 git reset
 # 마지막 커밋 취소, 변경 사항 스테이징 유지
 git reset --soft HEAD~1
@@ -209,7 +224,7 @@ git reset --hard HEAD~1
 git checkout -- file.txt
 # 파일의 변경 사항 폐기 (새 구문)
 git restore file.txt
-# 파일 언스테이징 (새 구문)
+# 파일 스테이징 해제 (새 구문)
 git restore --staged file.txt
 # 모든 커밋되지 않은 변경 사항 폐기
 git checkout .
@@ -246,6 +261,21 @@ git checkout main
 # 기존 브랜치로 전환 (새 구문)
 git switch main
 ```
+
+<BaseQuiz id="git-branch-1" correct="B">
+  <template #question>
+    `git checkout -b feature-branch`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A">feature-branch 를 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>feature-branch 라는 새 브랜치를 생성하고 해당 브랜치로 전환합니다</BaseQuizOption>
+  <BaseQuizOption value="C">feature-branch 를 현재 브랜치로 병합합니다</BaseQuizOption>
+  <BaseQuizOption value="D">feature-branch 의 커밋 기록을 표시합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-b` 플래그는 새 브랜치를 생성하고, `checkout` 은 해당 브랜치로 전환합니다. 이 명령어는 두 작업을 결합합니다: 브랜치 생성 및 즉시 전환.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 브랜치 병합: `git merge`
 
@@ -305,24 +335,54 @@ git pull --rebase
 git pull --ff-only
 ```
 
+<BaseQuiz id="git-pull-1" correct="C">
+  <template #question>
+    `git fetch`와 `git pull`의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">차이점이 없습니다. 둘 다 동일한 작업을 수행합니다</BaseQuizOption>
+  <BaseQuizOption value="B">git fetch 는 변경 사항을 푸시하고, git pull 은 변경 사항을 다운로드합니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>git fetch 는 병합 없이 변경 사항을 다운로드하고, git pull 은 변경 사항을 다운로드하고 병합합니다</BaseQuizOption>
+  <BaseQuizOption value="D">git fetch 는 로컬 저장소에서 작동하고, git pull 은 원격 저장소에서 작동합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch`는 원격 저장소에서 변경 사항을 다운로드하지만 현재 브랜치에 병합하지는 않습니다. `git pull`은 두 작업을 모두 수행합니다: 변경 사항을 가져온 다음 현재 브랜치에 병합합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 변경 사항 푸시: `git push`
 
-로컬 커밋을 원격 저장소로 업로드합니다.
+로컬 커밋을 원격 저장소에 업로드합니다.
 
 ```bash
 # 추적 브랜치로 푸시
 git push
 # 특정 원격 브랜치로 푸시
 git push origin main
-# 푸시 및 상위 추적 설정
+# 원격 추적 설정 및 푸시
 git push -u origin feature
 # 안전하게 강제 푸시
 git push --force-with-lease
 ```
 
+<BaseQuiz id="git-push-1" correct="D">
+  <template #question>
+    `git push -u origin feature`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A">원격에서 feature 브랜치를 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="B">feature 브랜치에서 변경 사항을 가져옵니다</BaseQuizOption>
+  <BaseQuizOption value="C">feature 브랜치를 main 으로 병합합니다</BaseQuizOption>
+  <BaseQuizOption value="D" correct>feature 브랜치를 origin 으로 푸시하고 추적을 설정합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-u` 플래그 (또는 `--set-upstream`) 는 브랜치를 원격 저장소로 푸시하고 추적을 설정하여 향후 `git push` 및 `git pull` 명령어가 사용할 원격 브랜치를 알 수 있게 합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 원격 브랜치 추적: `git branch --track`
 
-로컬 및 원격 브랜치 간의 추적을 설정합니다.
+로컬 브랜치와 원격 브랜치 간의 추적을 설정합니다.
 
 ```bash
 # 추적 설정
@@ -331,54 +391,69 @@ git branch --set-upstream-to=origin/main main
 git checkout -b local-branch origin/remote-branch
 ```
 
-## Stashing 및 임시 저장소
+## 스테이싱 및 임시 저장소
 
-### 변경 사항 Stash: `git stash`
+### 변경 사항 스테이싱: `git stash`
 
-나중에 사용하기 위해 커밋되지 않은 변경 사항을 임시로 저장합니다.
+커밋되지 않은 변경 사항을 나중에 사용하기 위해 임시로 저장합니다.
 
 ```bash
-# 현재 변경 사항 Stash
+# 현재 변경 사항 스테이징
 git stash
-# 메시지와 함께 Stash 저장
+# 메시지와 함께 스테이징
 git stash save "Work in progress on feature X"
 # 추적되지 않은 파일 포함
 git stash -u
-# 스테이징되지 않은 변경 사항만 Stash
+# 스테이징되지 않은 변경 사항만 스테이징
 git stash --keep-index
 ```
 
-### Stash 목록 보기: `git stash list`
+### 스테이시 목록 보기: `git stash list`
 
-저장된 모든 stash 를 확인합니다.
+저장된 모든 스테이시를 봅니다.
 
 ```bash
-# 모든 stash 표시
+# 모든 스테이시 표시
 git stash list
-# 최신 stash의 변경 사항 표시
+# 최신 스테이시의 변경 사항 표시
 git stash show
-# 특정 stash의 변경 사항 표시
+# 특정 스테이시의 변경 사항 표시
 git stash show stash@{1}
 ```
 
-### Stash 적용: `git stash apply`
+### 스테이시 적용: `git stash apply`
 
-이전에 저장한 변경 사항을 복원합니다.
+이전에 스테이징된 변경 사항을 복원합니다.
 
 ```bash
-# 최신 stash 적용
+# 최신 스테이시 적용
 git stash apply
-# 특정 stash 적용
+# 특정 스테이시 적용
 git stash apply stash@{1}
-# 적용 후 최신 stash 제거
+# 스테이시 적용 후 제거
 git stash pop
-# 최신 stash 삭제
+# 최신 스테이시 삭제
 git stash drop
-# stash에서 브랜치 생성
+# 스테이시로 브랜치 생성
 git stash branch new-branch stash@{1}
-# 모든 stash 삭제
+# 모든 스테이시 삭제
 git stash clear
 ```
+
+<BaseQuiz id="git-stash-1" correct="B">
+  <template #question>
+    `git stash apply`와 `git stash pop`의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">git stash apply 는 스테이시를 제거하고, git stash pop 은 유지합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>git stash apply 는 스테이시를 유지하고, git stash pop 은 적용 후 제거합니다</BaseQuizOption>
+  <BaseQuizOption value="C">git stash apply 는 원격 저장소에서 작동하고, git stash pop 은 로컬에서 작동합니다</BaseQuizOption>
+  <BaseQuizOption value="D">차이점이 없습니다. 둘 다 동일한 작업을 수행합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git stash apply`는 스테이시를 스테이시 목록에 유지하면서 저장된 변경 사항을 복원합니다. `git stash pop`은 스테이시를 적용한 다음 스테이시 목록에서 제거하므로 더 이상 스테이시가 필요하지 않을 때 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 기록 및 로그 분석
 
@@ -397,16 +472,16 @@ git log --since="2 weeks ago"
 git log --grep="bug fix"
 ```
 
-### Blame 및 주석: `git blame`
+### 블레임 및 주석: `git blame`
 
 파일의 각 줄을 마지막으로 수정한 사람을 확인합니다.
 
 ```bash
 # 줄별 작성자 표시
 git blame file.txt
-# 특정 줄 범위에 대한 Blame
+# 특정 줄 범위 블레임
 git blame -L 10,20 file.txt
-# blame의 대안
+# 블레임의 대안
 git annotate file.txt
 ```
 
@@ -428,13 +503,13 @@ git grep --cached "bug"
 특정 커밋에 대한 자세한 정보를 표시합니다.
 
 ```bash
-# 최신 커밋 세부 정보 표시
+# 최신 커밋 세부 정보 보기
 git show
-# 이전 커밋 표시
+# 이전 커밋 보기
 git show HEAD~1
-# 해시로 특정 커밋 표시
+# 특정 커밋 해시로 보기
 git show abc123
-# 파일 통계와 함께 커밋 표시
+# 파일 통계와 함께 보기
 git show --stat
 ```
 
@@ -468,22 +543,22 @@ git reset --mixed HEAD~1
 git reset --hard HEAD~1
 ```
 
-### 대화형 Rebase: `git rebase -i`
+### 대화형 리베이스: `git rebase -i`
 
 커밋을 대화형으로 편집, 재정렬 또는 스쿼시합니다.
 
 ```bash
-# 마지막 3개 커밋 대화형으로 rebase
+# 마지막 3개 커밋 대화형 리베이스
 git rebase -i HEAD~3
-# 현재 브랜치를 main 위에 rebase
+# 현재 브랜치를 main 위에 리베이스
 git rebase -i main
 # 충돌 해결 후 계속
 git rebase --continue
-# rebase 작업 취소
+# 리베이스 작업 취소
 git rebase --abort
 ```
 
-### Cherry-pick: `git cherry-pick`
+### 체리픽: `git cherry-pick`
 
 다른 브랜치의 특정 커밋을 적용합니다.
 
@@ -492,7 +567,7 @@ git rebase --abort
 git cherry-pick abc123
 # 커밋 범위 적용
 git cherry-pick abc123..def456
-# 커밋하지 않고 cherry-pick
+# 커밋하지 않고 체리픽
 git cherry-pick -n abc123
 ```
 
@@ -515,7 +590,7 @@ git merge --abort
 
 ### 병합 도구: `git mergetool`
 
-시각적으로 충돌을 해결하는 데 도움이 되는 외부 도구를 실행합니다.
+시각적 충돌 해결을 돕기 위해 외부 도구를 실행합니다.
 
 ```bash
 # 기본 병합 도구 실행
@@ -528,7 +603,7 @@ git mergetool --tool=meld
 
 ### 충돌 마커: 형식 이해
 
-파일에서 Git 의 충돌 마커 형식을 해석합니다.
+파일 내의 Git 충돌 마커 해석.
 
 ```text
 <<<<<<< HEAD
@@ -575,14 +650,14 @@ git tag -s v1.0
 
 ### 태그 목록 및 보기: `git tag -l`
 
-기존 태그와 그 정보를 확인합니다.
+기존 태그와 해당 정보를 봅니다.
 
 ```bash
 # 모든 태그 목록 표시
 git tag
 # 패턴과 일치하는 태그 목록 표시
 git tag -l "v1.*"
-# 태그 세부 정보 표시
+# 태그 세부 정보 보기
 git show v1.0
 ```
 
@@ -595,7 +670,7 @@ git show v1.0
 git push origin v1.0
 # 모든 태그 푸시
 git push --tags
-# 특정 원격에 모든 태그 푸시
+# 모든 태그를 특정 원격으로 푸시
 git push origin --tags
 ```
 
@@ -625,7 +700,7 @@ git config --list
 git config --global --list
 # 저장소별 설정 표시
 git config --local --list
-# 특정 설정 표시
+# 특정 설정 보기
 git config user.name
 ```
 
@@ -646,7 +721,7 @@ git config --global alias.ci commit
 
 ### 고급 별칭: 복잡한 명령어
 
-복잡한 명령어 조합을 위한 별칭을 만듭니다.
+복잡한 명령어 조합을 위한 별칭 생성.
 
 ```bash
 git config --global alias.lg "log --oneline --graph --all"
@@ -677,7 +752,7 @@ git config --global core.editor "nano"
 ```bash
 # 표준 가비지 컬렉션
 git gc
-# 더 철저한 최적화
+# 보다 철저한 최적화
 git gc --aggressive
 # 필요할 때만 실행
 git gc --auto
@@ -692,7 +767,7 @@ Git LFS 를 사용하여 대용량 바이너리 파일을 효율적으로 관리
 ```bash
 # 저장소에 LFS 설치
 git lfs install
-# LFS로 PDF 파일 추적
+# PDF 파일을 LFS로 추적
 git lfs track "*.pdf"
 # LFS로 추적되는 파일 목록 보기
 git lfs ls-files
@@ -713,9 +788,9 @@ git clone --depth 10 repo.git
 git fetch --unshallow
 ```
 
-### 희소 체크아웃: 하위 디렉토리 작업
+### 희소 체크아웃: 대용량 저장소의 하위 디렉토리 작업
 
-대규모 저장소의 특정 부분만 체크아웃합니다.
+대용량 저장소의 특정 부분만 체크아웃합니다.
 
 ```bash
 git config core.sparseCheckout true
@@ -741,15 +816,15 @@ brew install git
 winget install Git.Git
 ```
 
-### 다운로드 및 설치: 공식 설치 관리자
+### 다운로드 및 설치: 공식 설치 프로그램
 
-플랫폼별 공식 Git 설치 관리자를 사용합니다.
+플랫폼별 공식 Git 설치 프로그램을 사용합니다.
 
 ```bash
 # https://git-scm.com/downloads 에서 다운로드
 # 설치 확인
 git --version
-# Git 실행 파일 경로 표시
+# Git 실행 파일 경로 보기
 which git
 ```
 
@@ -801,7 +876,7 @@ git flow release start 1.0.0
 
 ### 커밋 메시지 규칙
 
-명확한 프로젝트 기록을 위해 컨벤셔널 커밋 형식을 따릅니다.
+명확한 프로젝트 기록을 위해 Conventional Commit 형식을 따릅니다.
 
 ```bash
 # 형식: <유형>(<범위>): <제목>
@@ -813,15 +888,15 @@ git commit -m "refactor(utils): simplify date formatting"
 
 ### 원자적 커밋: 모범 사례
 
-더 나은 기록을 위해 단일 목적의 커밋을 생성합니다.
+더 나은 기록을 위해 목적이 명확한 단일 커밋을 생성합니다.
 
 ```bash
 # 대화형으로 변경 사항 스테이징
 git add -p
 # 특정 변경 사항
 git commit -m "Add validation to email field"
-# 피해야 할 것: git commit -m "Fix stuff" # 너무 모호함
-# 좋은 예:  git commit -m "Fix email validation regex pattern"
+# 피해야 할 사항: git commit -m "Fix stuff" # 너무 모호함
+# 좋은 예: git commit -m "Fix email validation regex pattern"
 ```
 
 ## 문제 해결 및 복구
@@ -837,7 +912,7 @@ git reflog
 git reflog show HEAD
 # 손실된 커밋 복구
 git checkout abc123
-# 손실된 커밋에서 브랜치 생성
+# 손실된 커밋으로 브랜치 생성
 git branch recovery-branch abc123
 ```
 
@@ -850,7 +925,7 @@ git branch recovery-branch abc123
 git fsck --full
 # 공격적인 정리
 git gc --aggressive --prune=now
-# 손상된 경우 인덱스 재구축
+# 인덱스가 손상된 경우 재구축
 rm .git/index; git reset
 ```
 

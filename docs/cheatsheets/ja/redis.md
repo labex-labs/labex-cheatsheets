@@ -1,6 +1,6 @@
 ---
-title: 'Redis チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Redis を習得しましょう。'
+title: 'Redis チートシート | LabEx'
+description: 'Redis インメモリデータストアを学ぶための包括的なチートシート。Redis コマンド、データ構造、キャッシング、Pub/Sub、永続化、高性能キャッシングソリューションのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/redis-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Redis チートシート
 <a target="_blank" href="https://labex.io/ja/learn/redis">ハンズオンラボで Redis を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、Redis インメモリデータ構造の操作を学びます。LabEx は、必須コマンド、データ構造、キャッシング戦略、pub/sub メッセージング、パフォーマンス最適化を網羅した包括的な Redis コースを提供します。高性能キャッシングとリアルタイムデータ処理を習得しましょう。
+ハンズオンラボと実世界のシナリオを通じて、Redis のインメモリデータ構造操作を学びます。LabEx は、必須コマンド、データ構造、キャッシング戦略、pub/sub メッセージング、パフォーマンス最適化を網羅した包括的な Redis コースを提供します。高性能キャッシングとリアルタイムデータ処理を習得しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Redis チートシート
 
 ### Docker: `docker run redis`
 
-ローカルで Redis を起動する最も簡単な方法。
+Redis をローカルで実行するための最も簡単な方法。
 
 ```bash
 # DockerでRedisを実行
@@ -57,7 +57,7 @@ Redis サーバーに接続し、インストールを確認します。
 ```bash
 # ローカルRedisに接続
 redis-cli
-# 接続テスト
+# 接続をテスト
 redis-cli PING
 # リモートRedisに接続
 redis-cli -h hostname -p 6379 -a password
@@ -82,6 +82,21 @@ SET session:123 "user_data" EX 3600
 SET mykey "new_value" NX
 ```
 
+<BaseQuiz id="redis-set-get-1" correct="C">
+  <template #question>
+    `SET mykey "value" EX 3600`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">3600 バイトの値でキーを設定します</BaseQuizOption>
+  <BaseQuizOption value="B">キーが存在する場合にのみ設定します</BaseQuizOption>
+  <BaseQuizOption value="C" correct>3600 秒後に有効期限が切れる値でキーを設定します</BaseQuizOption>
+  <BaseQuizOption value="D">3600 個の異なる値でキーを設定します</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `EX` オプションは秒単位で有効期限を設定します。`SET mykey "value" EX 3600`は値を保存し、3600 秒（1 時間）後に自動的に削除します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### String 操作：`APPEND` / `STRLEN`
 
 文字列値を変更および検査します。
@@ -99,7 +114,7 @@ SETRANGE mykey 6 "Redis"
 
 ### 数値操作：`INCR` / `DECR`
 
-Redis に格納されている整数値をインクリメントまたはデクリメントします。
+Redis に保存されている整数値をインクリメントまたはデクリメントします。
 
 ```redis
 # 1ずつインクリメント
@@ -112,16 +127,31 @@ INCRBY counter 5
 INCRBYFLOAT price 0.1
 ```
 
+<BaseQuiz id="redis-incr-1" correct="A">
+  <template #question>
+    存在しないキーに対して `INCR` を使用するとどうなりますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>Redis はキーを作成し、値を 1 にします</BaseQuizOption>
+  <BaseQuizOption value="B">Redis はエラーを返します</BaseQuizOption>
+  <BaseQuizOption value="C">Redis はキーを作成し、値を 0 にします</BaseQuizOption>
+  <BaseQuizOption value="D">何も起こりません</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    キーが存在しない場合、`INCR`はそれを値が 0 であったかのように扱い、1 にインクリメントしてキーを作成します。これにより、`INCR` はカウンターの初期化に役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 複数操作：`MSET` / `MGET`
 
-複数のキーと値のペアを効率的に扱います。
+複数のキーと値のペアを効率的に操作します。
 
 ```redis
 # 複数のキーを一度に設定
 MSET key1 "value1" key2 "value2" key3 "value3"
 # 複数の値を取得
 MGET key1 key2 key3
-# すべて存在しない場合のみ複数設定
+# すべて存在しない場合にのみ複数設定
 MSETNX key1 "val1" key2 "val2"
 ```
 
@@ -170,6 +200,21 @@ LINDEX mylist 0
 LLEN mylist
 ```
 
+<BaseQuiz id="redis-list-1" correct="B">
+  <template #question>
+    `LRANGE mylist 0 -1`は何を返しますか？
+  </template>
+  
+  <BaseQuizOption value="A">最初の要素のみ</BaseQuizOption>
+  <BaseQuizOption value="B" correct>リスト内のすべての要素</BaseQuizOption>
+  <BaseQuizOption value="C">最後の要素のみ</BaseQuizOption>
+  <BaseQuizOption value="D">エラー</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `0 -1`を指定した `LRANGE`はリスト内のすべての要素を返します。`0`は開始インデックス、`-1` は最後の要素を表すため、最初から最後まで全てを取得します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### List ユーティリティ：`LSET` / `LTRIM`
 
 リストの内容と構造を変更します。
@@ -185,26 +230,42 @@ LPOS mylist "search_value"
 
 ## Set 操作
 
-セットは、一意で順序付けられていない文字列要素のコレクションです。
+Set は、順序付けられていない一意の文字列要素のコレクションです。
 
 ### 基本的な Set 操作：`SADD` / `SMEMBERS`
 
-セットに一意の要素を追加し、すべてのメンバーを取得します。
+一意の要素をセットに追加し、すべてのメンバーを取得します。
 
 ```redis
 # セットに要素を追加
 SADD myset "apple" "banana" "cherry"
 # すべてのセットメンバーを取得
 SMEMBERS myset
-# 要素が存在するか確認
+# 要素の存在を確認
 SISMEMBER myset "apple"
+```
+
+<BaseQuiz id="redis-set-1" correct="C">
+  <template #question>
+    Redis のセットに重複する要素を追加しようとするとどうなりますか？
+  </template>
+  
+  <BaseQuizOption value="A">エラーが発生します</BaseQuizOption>
+  <BaseQuizOption value="B">既存の要素が置き換えられます</BaseQuizOption>
+  <BaseQuizOption value="C" correct>重複は無視され、セットは変更されません</BaseQuizOption>
+  <BaseQuizOption value="D">リストが作成されます</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Redis のセットには一意の要素のみが含まれます。既に存在する要素を追加しようとすると、Redis はそれを無視し、0（追加された要素がないことを示す）を返します。セットは変更されません。
+  </BaseQuizAnswer>
+</BaseQuiz>
 # セットのサイズを取得
 SCARD myset
 ```
 
-### Set の変更：`SREM` / `SPOP`
+### Setの変更: `SREM` / `SPOP`
 
-異なる方法でセットから要素を削除します。
+さまざまな方法でセットから要素を削除します。
 
 ```redis
 # 特定の要素を削除
@@ -215,22 +276,22 @@ SPOP myset
 SRANDMEMBER myset
 ```
 
-### Set 演算：`SINTER` / `SUNION`
+### Set演算: `SINTER` / `SUNION`
 
-数学的なセット演算を実行します。
+数学的な集合演算を実行します。
 
 ```redis
-# 集合の積集合
+# セットの積集合
 SINTER set1 set2
-# 集合の和集合
+# セットの和集合
 SUNION set1 set2
-# 集合の差集合
+# セットの差集合
 SDIFF set1 set2
 # 結果を新しいセットに保存
 SINTERSTORE result set1 set2
 ```
 
-### Set ユーティリティ：`SMOVE` / `SSCAN`
+### Setユーティリティ: `SMOVE` / `SSCAN`
 
 高度なセット操作とインクリメンタルスキャン。
 
@@ -241,13 +302,13 @@ SMOVE source_set dest_set "element"
 SSCAN myset 0 MATCH "a*" COUNT 10
 ```
 
-## Hash 操作
+## Hash操作
 
-ハッシュはフィールドと値のペアを格納し、小さな JSON オブジェクトや辞書のようなものです。
+ハッシュはフィールドと値のペアを格納し、ミニJSONオブジェクトや辞書のようなものです。
 
-### 基本的な Hash 操作：`HSET` / `HGET`
+### 基本的なHash操作: `HSET` / `HGET`
 
-ハッシュの個々のフィールドを設定および取得します。
+個々のハッシュフィールドを設定および取得します。
 
 ```redis
 # ハッシュフィールドを設定
@@ -260,9 +321,9 @@ HMSET user:123 email "john@example.com" city "NYC"
 HMGET user:123 name age email
 ```
 
-### Hash の検査：`HKEYS` / `HVALS`
+### Hashの検査: `HKEYS` / `HVALS`
 
-ハッシュの構造と内容を調べます。
+ハッシュの構造と内容を確認します。
 
 ```redis
 # すべてのフィールド名を取得
@@ -275,12 +336,12 @@ HGETALL user:123
 HLEN user:123
 ```
 
-### Hash ユーティリティ：`HEXISTS` / `HDEL`
+### Hashユーティリティ: `HEXISTS` / `HDEL`
 
-存在を確認し、ハッシュフィールドを削除します。
+フィールドの存在を確認し、削除します。
 
 ```redis
-# フィールドが存在するか確認
+# フィールドの存在を確認
 HEXISTS user:123 email
 # フィールドを削除
 HDEL user:123 age city
@@ -290,29 +351,29 @@ HINCRBY user:123 age 1
 HINCRBYFLOAT user:123 balance 10.50
 ```
 
-### Hash スキャン：`HSCAN`
+### Hashスキャン: `HSCAN`
 
 大きなハッシュをインクリメンタルに反復処理します。
 
 ```redis
-# ハッシュをスキャン
+# ハッシュフィールドをスキャン
 HSCAN user:123 0
 # パターンマッチングでスキャン
 HSCAN user:123 0 MATCH "addr*" COUNT 10
 ```
 
-## Sorted Set 操作
+## Sorted Set操作
 
-Sorted Set は、スコアに基づく順序付けとセットの一意性を組み合わせたものです。
+Sorted Setは、スコアに基づく順序付けとセットの一意性を組み合わせたものです。
 
-### 基本操作：`ZADD` / `ZRANGE`
+### 基本操作: `ZADD` / `ZRANGE`
 
 スコア付きメンバーを追加し、範囲を取得します。
 
 ```redis
 # スコア付きメンバーを追加
 ZADD leaderboard 100 "player1" 200 "player2"
-# ランク順にメンバーを取得（0から始まる）
+# ランク順にメンバーを取得 (0 から始まる)
 ZRANGE leaderboard 0 -1
 # スコア付きで取得
 ZRANGE leaderboard 0 -1 WITHSCORES
@@ -320,9 +381,9 @@ ZRANGE leaderboard 0 -1 WITHSCORES
 ZRANGEBYSCORE leaderboard 100 200
 ```
 
-### Sorted Set 情報：`ZCARD` / `ZSCORE`
+### Sorted Set情報: `ZCARD` / `ZSCORE`
 
-Sorted Set メンバーに関する情報を取得します。
+Sorted Setメンバーに関する情報を取得します。
 
 ```redis
 # セットサイズを取得
@@ -335,7 +396,7 @@ ZRANK leaderboard "player1"
 ZCOUNT leaderboard 100 200
 ```
 
-### 変更：`ZREM` / `ZINCRBY`
+### 変更: `ZREM` / `ZINCRBY`
 
 メンバーを削除し、スコアを変更します。
 
@@ -350,12 +411,12 @@ ZREMRANGEBYRANK leaderboard 0 2
 ZREMRANGEBYSCORE leaderboard 0 100
 ```
 
-### 高度な操作：`ZUNIONSTORE` / `ZINTERSTORE`
+### 高度な操作: `ZUNIONSTORE` / `ZINTERSTORE`
 
-複数の Sorted Set を結合します。
+複数のSorted Setを結合します。
 
 ```redis
-# Sorted Setの和集合
+# Sorted Set の和集合
 ZUNIONSTORE result 2 set1 set2
 # 重み付きの積集合
 ZINTERSTORE result 2 set1 set2 WEIGHTS 1 2
@@ -363,9 +424,9 @@ ZINTERSTORE result 2 set1 set2 WEIGHTS 1 2
 ZUNIONSTORE result 2 set1 set2 AGGREGATE MAX
 ```
 
-## Key 管理
+## Key管理
 
-### Key の検査：`KEYS` / `EXISTS`
+### Keyの検査: `KEYS` / `EXISTS`
 
 パターンを使用してキーを見つけ、存在を確認します。
 
@@ -374,7 +435,7 @@ ZUNIONSTORE result 2 set1 set2 AGGREGATE MAX
 KEYS *
 # パターンに一致するキー
 KEYS user:*
-# パターンで終わるキー
+# 末尾がパターンに一致するキー
 KEYS *:profile
 # 単一文字ワイルドカード
 KEYS order:?
@@ -382,29 +443,29 @@ KEYS order:?
 EXISTS mykey
 ```
 
-### Key 情報：`TYPE` / `TTL`
+### Key情報: `TYPE` / `TTL`
 
 キーのメタデータと有効期限情報を取得します。
 
 ```redis
 # キーのデータ型を取得
 TYPE mykey
-# 有効期限までの時間（秒）を取得
+# 有効期限までの残り時間（秒）を取得
 TTL mykey
-# 有効期限までの時間（ミリ秒）を取得
+# 有効期限までの残り時間（ミリ秒）を取得
 PTTL mykey
 # 有効期限を削除
 PERSIST mykey
 ```
 
-### Key 操作：`RENAME` / `DEL`
+### Key操作: `RENAME` / `DEL`
 
 キーの名前変更、削除、移動を行います。
 
 ```redis
 # キーの名前を変更
 RENAME oldkey newkey
-# 新しいキーが存在しない場合のみ名前を変更
+# 新しいキーが存在しない場合にのみ名前を変更
 RENAMENX oldkey newkey
 # キーを削除
 DEL key1 key2 key3
@@ -412,7 +473,7 @@ DEL key1 key2 key3
 MOVE mykey 1
 ```
 
-### 有効期限：`EXPIRE` / `EXPIREAT`
+### 有効期限: `EXPIRE` / `EXPIREAT`
 
 キーの有効期限を設定します。
 
@@ -427,12 +488,12 @@ PEXPIRE mykey 60000
 
 ## データベース管理
 
-### データベース選択：`SELECT` / `FLUSHDB`
+### データベースの選択: `SELECT` / `FLUSHDB`
 
-Redis 内の複数のデータベースを管理します。
+Redis内の複数のデータベースを管理します。
 
 ```redis
-# データベースを選択（デフォルトでは0-15）
+# データベースを選択 (デフォルトでは 0-15)
 SELECT 0
 # 現在のデータベースをクリア
 FLUSHDB
@@ -442,12 +503,12 @@ FLUSHALL
 DBSIZE
 ```
 
-### サーバー情報：`INFO` / `PING`
+### サーバー情報: `INFO` / `PING`
 
 サーバー統計情報を取得し、接続をテストします。
 
-```bash
-# サーバー接続テスト
+```redis
+# サーバー接続をテスト
 PING
 # サーバー情報を取得
 INFO
@@ -458,9 +519,9 @@ INFO replication
 TIME
 ```
 
-### 永続化：`SAVE` / `BGSAVE`
+### 永続化: `SAVE` / `BGSAVE`
 
-Redis のデータ永続化とバックアップを制御します。
+Redisのデータ永続化とバックアップを制御します。
 
 ```redis
 # 同期セーブ（サーバーをブロック）
@@ -469,13 +530,13 @@ SAVE
 BGSAVE
 # 最終セーブ時刻を取得
 LASTSAVE
-# AOFファイルを書き直す
+# AOF ファイルを書き直す
 BGREWRITEAOF
 ```
 
-### 設定：`CONFIG GET` / `CONFIG SET`
+### 設定: `CONFIG GET` / `CONFIG SET`
 
-Redis の設定を表示および変更します。
+Redisの設定を表示および変更します。
 
 ```redis
 # すべての設定を取得
@@ -484,13 +545,13 @@ CONFIG GET *
 CONFIG GET maxmemory
 # 設定を変更
 CONFIG SET timeout 300
-# 統計をリセット
+# 統計情報をリセット
 CONFIG RESETSTAT
 ```
 
 ## パフォーマンス監視
 
-### リアルタイム監視：`MONITOR` / `SLOWLOG`
+### リアルタイム監視: `MONITOR` / `SLOWLOG`
 
 コマンドを追跡し、パフォーマンスのボトルネックを特定します。
 
@@ -505,7 +566,7 @@ SLOWLOG LEN
 SLOWLOG RESET
 ```
 
-### メモリ分析：`MEMORY USAGE` / `MEMORY STATS`
+### メモリ分析: `MEMORY USAGE` / `MEMORY STATS`
 
 メモリ消費量を分析し、最適化します。
 
@@ -520,7 +581,7 @@ MEMORY DOCTOR
 MEMORY PURGE
 ```
 
-### クライアント情報：`CLIENT LIST`
+### クライアント情報: `CLIENT LIST`
 
 接続されているクライアントと接続を監視します。
 
@@ -535,9 +596,9 @@ CLIENT KILL ip:port
 CLIENT SETNAME "my-app"
 ```
 
-### ベンチマーク：`redis-benchmark`
+### ベンチマーク: `redis-benchmark`
 
-組み込みのベンチマークツールで Redis のパフォーマンスをテストします。
+組み込みのベンチマークツールでRedisのパフォーマンスをテストします。
 
 ```bash
 # 基本的なベンチマーク
@@ -550,7 +611,7 @@ redis-benchmark -d 1024 -t SET -n 10000
 
 ## 高度な機能
 
-### トランザクション：`MULTI` / `EXEC`
+### トランザクション: `MULTI` / `EXEC`
 
 複数のコマンドをアトミックに実行します。
 
@@ -582,24 +643,24 @@ PSUBSCRIBE news:*
 UNSUBSCRIBE news
 ```
 
-### Lua スクリプティング：`EVAL` / `SCRIPT`
+### Luaスクリプティング: `EVAL` / `SCRIPT`
 
-アトミックにカスタム Lua スクリプトを実行します。
+アトミックにカスタムLuaスクリプトを実行します。
 
 ```redis
-# Luaスクリプトを実行
+# Lua スクリプトを実行
 EVAL "return redis.call('SET', 'key', 'value')" 0
-# スクリプトをロードしSHAを取得
+# スクリプトをロードし、SHA を取得
 SCRIPT LOAD "return redis.call('GET', KEYS[1])"
-# SHAで実行
+# SHA で実行
 EVALSHA sha1 1 mykey
 # スクリプトの存在を確認
 SCRIPT EXISTS sha1
 ```
 
-### Streams: `XADD` / `XREAD`
+### Stream: `XADD` / `XREAD`
 
-ログのようなデータを扱うために Redis ストリームを使用します。
+ログのようなデータを扱うためにRedisストリームを使用します。
 
 ```redis
 # ストリームにエントリを追加
@@ -616,7 +677,7 @@ XGROUP CREATE mystream mygroup 0
 
 ### Strings: 最も汎用的な型
 
-テキスト、数値、JSON、バイナリデータを格納可能。最大サイズ：512MB。用途：キャッシング、カウンター、フラグ。
+テキスト、数値、JSON、バイナリデータを格納可能。最大サイズ: 512MB。用途: キャッシング、カウンター、フラグ。
 
 ```redis
 SET user:123:name "John"
@@ -626,7 +687,7 @@ INCR page:views
 
 ### Lists: 順序付きコレクション
 
-文字列の連結リスト。用途：キュー、スタック、アクティビティフィード、最近のアイテム。
+文字列の連結リスト。用途: キュー、スタック、アクティビティフィード、最近のアイテム。
 
 ```redis
 LPUSH queue:jobs "job1"
@@ -634,9 +695,9 @@ RPOP queue:jobs
 LRANGE recent:posts 0 9
 ```
 
-### Sets: 一意なコレクション
+### Sets: 一意のコレクション
 
-一意な文字列の順序付けられていないコレクション。用途：タグ、ユニークビジター、リレーションシップ。
+一意の文字列の順序付けられていないコレクション。用途: タグ、ユニークビジター、リレーションシップ。
 
 ```redis
 SADD post:123:tags "redis" "database"
@@ -644,16 +705,16 @@ SISMEMBER post:123:tags "redis"
 SINTER user:123:friends user:456:friends
 ```
 
-## Redis 設定のヒント
+## Redis設定のヒント
 
 ### メモリ管理
 
-メモリ制限とデータ削除ポリシーを設定します。
+メモリ制限とエビクションポリシーを設定します。
 
 ```redis
 # メモリ制限を設定
 CONFIG SET maxmemory 2gb
-# 削除ポリシーを設定
+# エビクションポリシーを設定
 CONFIG SET maxmemory-policy allkeys-lru
 # メモリ使用量を確認
 INFO memory
@@ -661,20 +722,20 @@ INFO memory
 
 ### 永続化設定
 
-データの耐久性オプションを設定します。
+Redisのデータ耐久性オプションを設定します。
 
 ```redis
-# AOFを有効化
+# AOF を有効化
 CONFIG SET appendonly yes
 # 保存間隔を設定
 CONFIG SET save "900 1 300 10 60 10000"
-# AOF書き込み設定
+# AOF 書き込み設定
 CONFIG SET auto-aof-rewrite-percentage 100
 ```
 
 ### セキュリティ設定
 
-Redis の基本的なセキュリティ設定。
+Redisの基本的なセキュリティ設定。
 
 ```redis
 # パスワードを設定
@@ -685,7 +746,7 @@ AUTH mypassword
 CONFIG SET rename-command FLUSHALL ""
 # タイムアウトを設定
 CONFIG SET timeout 300
-# TCPキープアライブ
+# TCP キープアライブ
 CONFIG SET tcp-keepalive 60
 # 最大クライアント数
 CONFIG SET maxclients 10000
@@ -693,12 +754,12 @@ CONFIG SET maxclients 10000
 
 ### パフォーマンスチューニング
 
-パフォーマンス向上のために Redis を最適化します。
+パフォーマンス向上のためにRedisを最適化します。
 
 ```redis
-# 複数のコマンドのためにパイプラインを有効化
+# 複数のコマンドのためのパイプラインを有効化
 # コネクションプーリングを使用
-# ユースケースに適したmaxmemory-policyを設定
+# ユースケースに適した maxmemory-policy を設定
 # 定期的にスロークエリを監視
 # ユースケースに適したデータ構造を使用
 ```

@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Dicas NumPy'
-description: 'Aprenda NumPy com nossa folha de dicas abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Dicas NumPy | LabEx'
+description: 'Aprenda computação numérica com NumPy usando esta folha de dicas abrangente. Referência rápida para arrays, álgebra linear, operações matemáticas, broadcasting e computação científica em Python.'
 pdfUrl: '/cheatsheets/pdf/numpy-cheatsheet.pdf'
 ---
 
@@ -38,6 +38,21 @@ arr = np.array([1, 2, 3], dtype=float)
 arr_str = np.array(['a', 'b', 'c'])
 ```
 
+<BaseQuiz id="numpy-array-1" correct="C">
+  <template #question>
+    Qual é a principal vantagem dos arrays NumPy sobre as listas Python?
+  </template>
+  
+  <BaseQuizOption value="A">Eles podem armazenar strings</BaseQuizOption>
+  <BaseQuizOption value="B">Eles são mais fáceis de criar</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Eles são mais rápidos e eficientes em termos de memória para operações numéricas</BaseQuizOption>
+  <BaseQuizOption value="D">Eles podem armazenar tipos de dados mistos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Os arrays NumPy são otimizados para computações numéricas, fornecendo operações mais rápidas e uso de memória mais eficiente em comparação com as listas Python, especialmente para grandes conjuntos de dados e operações matemáticas.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Zeros e Uns: `np.zeros()` / `np.ones()`
 
 Cria arrays preenchidos com zeros ou uns.
@@ -71,7 +86,7 @@ Cria arrays com valores espaçados uniformemente.
 # Semelhante ao range do Python
 arr = np.arange(10)  # 0 a 9
 arr = np.arange(2, 10, 2)  # 2, 4, 6, 8
-# Valores espaçados uniformemente
+# Valores igualmente espaçados
 arr = np.linspace(0, 1, 5)  # 5 valores de 0 a 1
 # Incluindo o ponto final
 arr = np.linspace(0, 10, 11)
@@ -101,7 +116,7 @@ Cria arrays com valores específicos ou não inicializados.
 full_arr = np.full((2, 3), 7)
 # Array vazio (não inicializado)
 empty_arr = np.empty((2, 2))
-# Semelhante à forma de array existente
+# Semelhante ao formato de array existente
 like_arr = np.zeros_like(arr)
 ```
 
@@ -165,11 +180,11 @@ arr[0]  # Primeiro elemento
 arr[-1]  # Último elemento
 # Indexação de array 2D
 arr2d[0, 1]  # Linha 0, Coluna 1
-arr2d[1]  # Linha inteira 1
+arr2d[1]  # Linha 1 inteira
 # Fatiamento (Slicing)
 arr[1:4]  # Elementos 1 a 3
 arr[::2]  # Cada segundo elemento
-arr[::-1]  # Inverter array
+arr[::-1]  # Array invertido
 ```
 
 ### Indexação Booleana: `arr[condition]`
@@ -187,7 +202,22 @@ mask = arr > 3
 filtered = arr[mask]
 ```
 
-### Indexação Avançada: Fancy Indexing
+<BaseQuiz id="numpy-boolean-1" correct="C">
+  <template #question>
+    O que retorna a indexação booleana `arr[arr > 5]`?
+  </template>
+  
+  <BaseQuizOption value="A">Um array booleano</BaseQuizOption>
+  <BaseQuizOption value="B">O array original</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Um array contendo apenas elementos maiores que 5</BaseQuizOption>
+  <BaseQuizOption value="D">Um erro</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A indexação booleana filtra o array, retornando apenas os elementos onde a condição é verdadeira. `arr[arr > 5]` retorna um novo array contendo apenas valores maiores que 5.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Indexação Avançada: Indexação "Fancy"
 
 Usa arrays de índices para acessar múltiplos elementos.
 
@@ -195,7 +225,7 @@ Usa arrays de índices para acessar múltiplos elementos.
 # Índice com array de índices
 indices = [0, 2, 4]
 arr[indices]
-# Indexação fancy 2D
+# Indexação "fancy" 2D
 arr2d[[0, 1], [1, 2]]  # Elementos (0,1) e (1,2)
 # Combinado com fatiamento
 arr2d[1:, [0, 2]]
@@ -223,13 +253,43 @@ Altera as dimensões do array preservando os dados.
 ```python
 # Remodelar (cria visualização se possível)
 arr.reshape(2, 3)
-arr.reshape(-1, 1)  # -1 significa inferir dimensão
+arr.reshape(-1, 1)  # -1 significa inferir a dimensão
 # Redimensionar (modifica o array original)
 arr.resize((2, 3))
 # Achatar para 1D
 arr.flatten()  # Retorna cópia
 arr.ravel()  # Retorna visualização se possível
 ```
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    O que significa `-1` em `arr.reshape(-1, 1)`?
+  </template>
+  
+  <BaseQuizOption value="A">Cria um erro</BaseQuizOption>
+  <BaseQuizOption value="B" correct>O NumPy infere a dimensão automaticamente</BaseQuizOption>
+  <BaseQuizOption value="C">Cria um array 1D</BaseQuizOption>
+  <BaseQuizOption value="D">Inverte o array</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Usar `-1` em reshape diz ao NumPy para calcular automaticamente essa dimensão com base no tamanho total do array e nas outras dimensões especificadas. Isso é útil quando você conhece uma dimensão, mas quer que o NumPy descubra a outra.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    O que significa `-1` em `arr.reshape(-1, 1)`?
+  </template>
+  
+  <BaseQuizOption value="A">Cria um erro</BaseQuizOption>
+  <BaseQuizOption value="B" correct>O NumPy infere a dimensão automaticamente</BaseQuizOption>
+  <BaseQuizOption value="C">Remove essa dimensão</BaseQuizOption>
+  <BaseQuizOption value="D">Define a dimensão como 1</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Usar `-1` em reshape diz ao NumPy para calcular automaticamente essa dimensão com base no tamanho total do array e nas outras dimensões especificadas. Isso é útil quando você conhece uma dimensão, mas quer que o NumPy descubra a outra.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Transposição: `T` / `transpose()`
 
@@ -254,7 +314,7 @@ Modifica o tamanho do array adicionando ou removendo elementos.
 np.append(arr, [4, 5])
 # Inserir na posição específica
 np.insert(arr, 1, 99)
-# Excluir elementos
+# Deletar elementos
 np.delete(arr, [1, 3])
 # Repetir elementos
 np.repeat(arr, 3)
@@ -288,7 +348,7 @@ arr1 - arr2
 arr1 * arr2  # Multiplicação elemento a elemento
 arr1 / arr2
 arr1 ** 2  # Elevar ao quadrado
-arr1 % 3  # Operação módulo
+arr1 % 3  # Operação de módulo
 ```
 
 ### Funções Universais (ufuncs)
@@ -328,7 +388,7 @@ np.mean(arr2d, axis=1)  # Média ao longo das colunas
 
 ### Operações de Comparação
 
-Comparações elemento a elemento retornando arrays booleanos.
+Comparações elemento a elemento que retornam arrays booleanos.
 
 ```python
 # Operadores de comparação
@@ -347,7 +407,7 @@ np.all(arr > 0)
 
 ### Operações de Matriz: `np.dot()` / `@`
 
-Realiza multiplicação de matrizes e produtos escalares.
+Executa multiplicação de matrizes e produtos escalares.
 
 ```python
 # Multiplicação de matrizes
@@ -460,10 +520,10 @@ mmap_arr[0:10] = np.random.random(10)
 
 ### Regras de Broadcasting
 
-Entende como o NumPy lida com operações em arrays de formas diferentes.
+Entender como o NumPy lida com operações em arrays de formas diferentes.
 
 ```python
-# Exemplos de broadcasting
+# Exemplos de Broadcasting
 arr1 = np.array([[1, 2, 3]])  # Forma (1, 3)
 arr2 = np.array([[1], [2]])   # Forma (2, 1)
 result = arr1 + arr2          # Forma (2, 3)
@@ -474,7 +534,7 @@ arr * 2  # Multiplica todos os elementos por 2
 
 ### Operações Vetorizadas
 
-Usa funções internas do NumPy em vez de loops Python.
+Use funções internas do NumPy em vez de loops Python.
 
 ```python
 # Em vez de loops, use operações vetorizadas
@@ -493,7 +553,7 @@ result = vec_func(arr)
 
 ### Otimização de Memória
 
-Técnicas para uso eficiente de memória com arrays grandes.
+Técnicas para uso eficiente da memória com arrays grandes.
 
 ```python
 # Usar tipos de dados apropriados
@@ -546,7 +606,7 @@ Amostra de dados existentes ou permuta arrays.
 np.random.choice(arr, size=3)
 # Sem reposição
 np.random.choice(arr, size=3, replace=False)
-# Embaralhar array in-place
+# Embaralha o array in-place
 np.random.shuffle(arr)
 # Permutação aleatória
 np.random.permutation(arr)
@@ -587,7 +647,7 @@ np.quantile(arr, [0.25, 0.5, 0.75])
 
 ### Correlação e Covariância
 
-Mede a relação entre variáveis.
+Mede as relações entre variáveis.
 
 ```python
 # Coeficiente de correlação
@@ -724,7 +784,7 @@ Análise de domínio de frequência e processamento de sinais.
 fft_result = np.fft.fft(signal)
 # Frequências
 freqs = np.fft.fftfreq(len(signal))
-# FFT inversa
+# IFFT
 reconstructed = np.fft.ifft(fft_result)
 # FFT 2D para imagens
 fft2d = np.fft.fft2(image)

@@ -1,6 +1,6 @@
 ---
-title: 'JavaScript 速查表'
-description: '使用我们涵盖核心命令、概念和最佳实践的综合速查表，快速掌握 JavaScript。'
+title: 'JavaScript 速查表 | LabEx'
+description: '使用这份全面的速查表学习 JavaScript 编程。快速参考 JS 语法、ES6+、DOM 操作、async/await、Node.js 和现代 Web 开发。'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 
@@ -39,6 +39,21 @@ user.age = 30 // 对象属性可以修改
 // 函数作用域（现代 JavaScript 中应避免使用）
 var oldVariable = 'legacy'
 ```
+
+<BaseQuiz id="javascript-let-const-1" correct="B">
+  <template #question>
+    `let` 和 `const` 的主要区别是什么？
+  </template>
+  
+  <BaseQuizOption value="A">let 是函数作用域，const 是块级作用域</BaseQuizOption>
+  <BaseQuizOption value="B" correct>let 允许重新赋值，const 不允许重新赋值</BaseQuizOption>
+  <BaseQuizOption value="C">const 只能用于数字，let 可用于任何类型</BaseQuizOption>
+  <BaseQuizOption value="D">没有区别</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `let` 和 `const` 都是块级作用域，但 `let` 允许你重新给变量赋值，而 `const` 禁止重新赋值。然而，`const` 对象仍然可以修改其属性。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 原始类型 (Primitive Types)
 
@@ -108,10 +123,10 @@ Boolean('hello') // true
 
 ### 函数声明 (Function Declarations)
 
-定义函数的方式，具有变量提升 (hoisting) 特性。
+定义函数的传统方式，存在变量提升（hoisting）。
 
 ```javascript
-// 函数声明（已提升）
+// 函数声明（可提升）
 function greet(name) {
   return `Hello, ${name}!`
 }
@@ -140,16 +155,31 @@ const add = function (a, b) {
 // 箭头函数（简洁）
 const subtract = (a, b) => a - b
 
-// 箭头函数带块体
+// 带有块体的箭头函数
 const processData = (data) => {
   const processed = data.filter((x) => x > 0)
   return processed.map((x) => x * 2)
 }
 ```
 
+<BaseQuiz id="javascript-arrow-1" correct="C">
+  <template #question>
+    箭头函数的一个关键特性是什么？
+  </template>
+  
+  <BaseQuizOption value="A">它们像函数声明一样被提升</BaseQuizOption>
+  <BaseQuizOption value="B">它们有自己的 `this` 绑定</BaseQuizOption>
+  <BaseQuizOption value="C" correct>它们从封闭作用域继承 `this`</BaseQuizOption>
+  <BaseQuizOption value="D">它们不能返回值</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    箭头函数没有自己的 `this` 绑定。相反，它们从词法（封闭）作用域继承 `this`，这使得它们在回调和事件处理程序中非常有用，因为可以保留上下文。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 高阶函数 (Higher-Order Functions)
 
-接受其他函数作为参数或返回其他函数的函数。
+接受或返回其他函数的函数。
 
 ```javascript
 // 返回一个函数的函数
@@ -194,6 +224,21 @@ const result = numbers
   .reduce((a, b) => a + b, 0)
 ```
 
+<BaseQuiz id="javascript-array-1" correct="A">
+  <template #question>
+    `filter()` 返回什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>一个包含通过测试元素的新数组</BaseQuizOption>
+  <BaseQuizOption value="B">通过测试的第一个元素</BaseQuizOption>
+  <BaseQuizOption value="C">从数组中归约出的单个值</BaseQuizOption>
+  <BaseQuizOption value="D">原地修改的原始数组</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `filter()` 方法创建一个新数组，其中包含通过所提供的函数实现的测试的所有元素。它不会修改原始数组。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 数组工具：`find()`, `includes()`, `sort()`
 
 搜索、检查和组织数组元素。
@@ -215,7 +260,7 @@ const user = users.find((u) => u.age > 30)
 const sorted = users.sort((a, b) => a.age - b.age)
 ```
 
-### 对象创建和操作 (Object Creation & Manipulation)
+### 对象创建和操作
 
 处理对象及其属性。
 
@@ -257,7 +302,7 @@ function displayUser({ name, age }) {
 }
 ```
 
-## DOM 操作 (DOM Manipulation)
+## DOM 操作
 
 ### 元素选择：`querySelector()`, `getElementById()`
 
@@ -279,7 +324,22 @@ const listItems = document.querySelectorAll('li')
 const buttonsArray = Array.from(allButtons)
 ```
 
-### 元素修改 (Element Modification)
+<BaseQuiz id="javascript-dom-1" correct="C">
+  <template #question>
+    `querySelector()` 和 `querySelectorAll()` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">没有区别</BaseQuizOption>
+  <BaseQuizOption value="B">querySelector 更快</BaseQuizOption>
+  <BaseQuizOption value="C" correct>querySelector 返回第一个匹配的元素，querySelectorAll 返回所有匹配的元素</BaseQuizOption>
+  <BaseQuizOption value="D">querySelector 用于 ID，querySelectorAll 用于类</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `querySelector()` 返回匹配 CSS 选择器的第一个元素，而 `querySelectorAll()` 返回一个包含所有匹配元素的 NodeList。当你需要一个元素时使用 `querySelector()`，需要多个元素时使用 `querySelectorAll()`。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 元素修改
 
 更改内容、属性和样式。
 
@@ -299,7 +359,7 @@ element.classList.remove('hidden')
 element.classList.toggle('highlight')
 ```
 
-### 创建和插入元素 (Creating & Inserting Elements)
+### 创建和插入元素
 
 动态创建和添加 HTML 元素。
 
@@ -315,13 +375,13 @@ parent.appendChild(div)
 parent.insertBefore(div, parent.firstChild)
 
 // 现代插入方法
-parent.prepend(div) // 在开头插入
-parent.append(div) // 在末尾插入
-div.before(newElement) // 在 div 之前插入
-div.after(newElement) // 在 div 之后插入
+parent.prepend(div) // 插入到开头
+parent.append(div) // 插入到末尾
+div.before(newElement) // 插入到 div 之前
+div.after(newElement) // 插入到 div 之后
 ```
 
-### 样式化元素 (Styling Elements)
+### 样式化元素
 
 以编程方式应用 CSS 样式。
 
@@ -345,7 +405,7 @@ const color = styles.getPropertyValue('color')
 
 ## 事件处理 (Event Handling)
 
-### 添加事件监听器 (Adding Event Listeners)
+### 添加事件监听器
 
 响应用户交互和浏览器事件。
 
@@ -361,14 +421,14 @@ button.addEventListener('click', (e) => {
   console.log('点击：', e.target)
 })
 
-// 带选项的事件监听器
+// 带有选项的事件监听器
 element.addEventListener('scroll', handler, {
   passive: true,
   once: true,
 })
 ```
 
-### 事件类型和属性 (Event Types & Properties)
+### 事件类型和属性
 
 常见事件和事件对象属性。
 
@@ -380,7 +440,7 @@ element.addEventListener('mouseout', handleMouseOut)
 
 // 键盘事件
 input.addEventListener('keydown', (e) => {
-  console.log('按下的键：', e.key)
+  console.log('按键：', e.key)
   if (e.key === 'Enter') {
     // 处理回车键
   }
@@ -425,7 +485,7 @@ element.dispatchEvent(customEvent)
 
 // 监听自定义事件
 element.addEventListener('userLogin', (e) => {
-  console.log('用户登录：', e.detail.username)
+  console.log('用户已登录：', e.detail.username)
 })
 ```
 
@@ -505,7 +565,7 @@ fetch('/api/users', {
 同时处理多个 Promise。
 
 ```javascript
-// 等待所有 Promise 解析完成
+// 等待所有 Promise 解析
 const promises = [fetch('/api/users'), fetch('/api/posts')]
 Promise.all(promises)
   .then((responses) => Promise.all(responses.map((r) => r.json())))
@@ -518,9 +578,9 @@ Promise.all(promises)
 Promise.race(promises).then((firstResponse) => console.log('第一个响应'))
 ```
 
-## ES6+ 现代特性 (Modern Features)
+## ES6+ 现代特性
 
-### 模板字面量和展开运算符 (Template Literals & Spread Operator)
+### 模板字面量和扩展运算符 (Template Literals & Spread Operator)
 
 字符串插值和数组/对象的展开。
 
@@ -538,7 +598,7 @@ const html = `
     </div>
 `
 
-// 展开运算符
+// 扩展运算符
 const arr1 = [1, 2, 3]
 const arr2 = [4, 5, 6]
 const combined = [...arr1, ...arr2] // [1,2,3,4,5,6]
@@ -613,7 +673,7 @@ async function asyncOperation() {
 }
 ```
 
-### 自定义错误和调试 (Custom Errors & Debugging)
+### 自定义错误和调试
 
 创建自定义错误类型并有效调试。
 
@@ -675,9 +735,9 @@ if (localStorage.getItem('username') !== null) {
 }
 ```
 
-### JSON 操作 (JSON Operations)
+### JSON 操作
 
-解析和字符串化 JSON 数据。
+解析和序列化 JSON 数据。
 
 ```javascript
 // JavaScript 对象转 JSON 字符串
@@ -696,7 +756,7 @@ try {
   console.error('无效的 JSON:', error.message)
 }
 
-// 使用自定义 replacer/reviver 的 JSON
+// 带有自定义 replacer/reviver 的 JSON
 const filtered = JSON.stringify(user, ['name', 'age'])
 const parsed = JSON.parse(jsonString, (key, value) => {
   return key === 'age' ? value + 1 : value
@@ -705,7 +765,7 @@ const parsed = JSON.parse(jsonString, (key, value) => {
 
 ## 正则表达式 (Regular Expressions)
 
-### 创建和测试模式 (Creating & Testing Patterns)
+### 创建和测试模式
 
 创建正则表达式模式并测试字符串。
 
@@ -716,10 +776,10 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // RegExp 构造函数
 const phoneRegex = new RegExp(r'\d{3}-\d{3}-\d{4}');
 
-// Test 方法
+// test 方法
 const isValidEmail = emailRegex.test('user@example.com'); // true
 
-// Match 方法
+// match 方法
 const text = 'Call me at 123-456-7890';
 const phoneMatch = text.match(/\d{3}-\d{3}-\d{4}/);
 console.log(phoneMatch[0]); // '123-456-7890'
@@ -728,20 +788,20 @@ console.log(phoneMatch[0]); // '123-456-7890'
 const allNumbers = text.match(/\d+/g); // ['123', '456', '7890']
 ```
 
-### 带正则表达式的字符串方法 (String Methods with Regex)
+### 带正则表达式的字符串方法
 
 将正则表达式与字符串操作方法结合使用。
 
 ```javascript
-// 用正则表达式替换
+// 使用正则表达式替换
 const text = 'Hello World 123'
 const cleaned = text.replace(/\d+/g, '') // 'Hello World '
 
-// 用正则表达式分割
+// 使用正则表达式分割
 const parts = 'apple,banana;orange:grape'.split(/[,:;]/)
 // ['apple', 'banana', 'orange', 'grape']
 
-// Search 方法
+// search 方法
 const position = text.search(/\d+/) // 12 (第一个数字的位置)
 
 // 常见模式
@@ -754,7 +814,7 @@ const patterns = {
 }
 ```
 
-## JavaScript 设置和环境 (Setup & Environment)
+## JavaScript 设置和环境
 
 ### 浏览器控制台 (Browser Console)
 
@@ -773,7 +833,7 @@ console.log(x + y) // 15
 // 在 HTML 中包含脚本
 ```
 
-### Node.js 环境 (Node.js Environment)
+### Node.js 环境
 
 用于服务器端开发的 JavaScript 运行时。
 
@@ -794,7 +854,7 @@ npm install lodash
 npm install --save-dev jest
 ```
 
-### 现代开发工具 (Modern Development Tools)
+### 现代开发工具
 
 JavaScript 开发的基本工具。
 
@@ -815,14 +875,14 @@ JavaScript 开发的基本工具。
 npm install --save-dev @babel/core @babel/preset-env
 ```
 
-## 最佳实践和性能 (Best Practices & Performance)
+## 最佳实践和性能
 
-### 性能优化 (Performance Optimization)
+### 性能优化
 
 提高 JavaScript 性能的技术。
 
 ```javascript
-// 节流 (Debouncing) 适用于频繁事件
+// 节流 (Debouncing) 频繁事件
 function debounce(func, delay) {
   let timeoutId
   return function (...args) {
@@ -837,15 +897,15 @@ input.addEventListener('input', debouncedSearch)
 
 // 高效的 DOM 查询
 const elements = document.querySelectorAll('.item')
-// 缓存长度以避免重复计算
+// 缓存长度以避免重新计算
 for (let i = 0, len = elements.length; i < len; i++) {
   // 处理 elements[i]
 }
 ```
 
-### 代码组织和标准 (Code Organization & Standards)
+### 代码组织和标准
 
-为可维护性和可读性组织代码。
+为可维护性和可读性构建代码结构。
 
 ```javascript
 // 使用严格模式
@@ -871,11 +931,11 @@ const config = { theme: 'dark' }
 let counter = 0
 ```
 
-## 测试 JavaScript 代码 (Testing JavaScript Code)
+## 测试 JavaScript 代码
 
-### 使用 Jest 进行单元测试 (Unit Testing with Jest)
+### 使用 Jest 进行单元测试
 
-编写和运行 JavaScript 函数的测试。
+为 JavaScript 函数编写和运行测试。
 
 ```javascript
 // 安装 Jest: npm install --save-dev jest
@@ -903,7 +963,7 @@ test('multiplies 3 * 4 to equal 12', () => {
 // 运行测试：npm test
 ```
 
-### 浏览器测试和调试 (Browser Testing & Debugging)
+### 浏览器测试和调试
 
 在浏览器开发者工具中调试 JavaScript。
 
@@ -926,7 +986,7 @@ performance.measure('operation', 'start', 'end')
 const measurements = performance.getEntriesByType('measure')
 ```
 
-## 相关链接 (Relevant Links)
+## 相关链接
 
 - <router-link to="/html">HTML 速查表</router-link>
 - <router-link to="/css">CSS 速查表</router-link>

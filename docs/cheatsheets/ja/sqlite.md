@@ -1,6 +1,6 @@
 ---
-title: 'SQLite チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで SQLite を習得しましょう。'
+title: 'SQLite チートシート | LabEx'
+description: 'この包括的なチートシートで SQLite データベースを学習。SQLite SQL 構文、トランザクション、トリガー、ビュー、およびアプリケーション向けの軽量データベース管理のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/sqlite-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ SQLite チートシート
 <a target="_blank" href="https://labex.io/ja/learn/sqlite">ハンズオンラボで SQLite を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと現実世界のシナリオを通じて、SQLite データベース管理を学びます。LabEx は、必須の SQL 操作、データ操作、クエリ最適化、データベース設計、パフォーマンスチューニングを網羅した包括的な SQLite コースを提供します。軽量データベース開発と効率的なデータ管理を習得しましょう。
+ハンズオンラボと実世界のシナリオを通じて、SQLite データベース管理を学びます。LabEx は、必須の SQL 操作、データ操作、クエリ最適化、データベース設計、パフォーマンスチューニングを網羅した包括的な SQLite コースを提供します。軽量データベース開発と効率的なデータ管理を習得しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -40,7 +40,7 @@ sqlite3 :memory:
 .tables
 # SQLiteの終了
 .exit
-# 代替の終了コマンド
+# 代替終了コマンド
 .quit
 ```
 
@@ -86,7 +86,7 @@ SQLite コマンドラインインターフェースを閉じます。
 
 ### テーブルの作成：`CREATE TABLE`
 
-列と制約を指定して、データベース内に新しいテーブルを作成します。
+制約と列を指定して、データベース内に新しいテーブルを作成します。
 
 ```sql
 -- 基本的なテーブル作成
@@ -107,9 +107,24 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="sqlite-create-table-1" correct="A">
+  <template #question>
+    SQLite で`INTEGER PRIMARY KEY AUTOINCREMENT`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>自動インクリメントされる整数主キーを作成する</BaseQuizOption>
+  <BaseQuizOption value="B">テキスト主キーを作成する</BaseQuizOption>
+  <BaseQuizOption value="C">外部キー制約を作成する</BaseQuizOption>
+  <BaseQuizOption value="D">一意なインデックスを作成する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INTEGER PRIMARY KEY AUTOINCREMENT`は、新しい行ごとに自動的にインクリメントされ、主キーとして機能する整数列を作成します。これにより、各行に一意の識別子が保証されます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### データ型：`INTEGER`, `TEXT`, `REAL`, `BLOB`
 
-SQLite は動的型付けを採用しており、柔軟なデータ格納のためにストレージクラスを使用します。
+SQLite は動的型付けを使用し、柔軟なデータ格納のためにストレージクラスを提供します。
 
 ```sql
 -- 一般的なデータ型
@@ -177,6 +192,21 @@ UPDATE products SET price = price * 1.1
 WHERE category = 'Electronics';
 ```
 
+<BaseQuiz id="sqlite-update-1" correct="D">
+  <template #question>
+    UPDATE ステートメントで WHERE 句を忘れた場合、どうなりますか？
+  </template>
+  
+  <BaseQuizOption value="A">更新は失敗する</BaseQuizOption>
+  <BaseQuizOption value="B">最初の行のみが更新される</BaseQuizOption>
+  <BaseQuizOption value="C">何も起こらない</BaseQuizOption>
+  <BaseQuizOption value="D" correct>テーブル内のすべての行が更新される</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    WHERE 句がない場合、UPDATE ステートメントはテーブル内のすべての行を変更します。意図しないデータを変更するのを避けるため、常に WHERE 句を使用して更新する行を指定する必要があります。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### データの削除：`DELETE FROM`
 
 指定された条件に基づいてテーブルからレコードを削除します。
@@ -207,11 +237,26 @@ INSERT OR IGNORE INTO users (name, email)
 VALUES ('Duplicate', 'existing@email.com');
 ```
 
+<BaseQuiz id="sqlite-upsert-1" correct="A">
+  <template #question>
+    `INSERT OR REPLACE`と`INSERT OR IGNORE`の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>REPLACE は既存の行を更新し、IGNORE は重複をスキップする</BaseQuizOption>
+  <BaseQuizOption value="B">違いはない</BaseQuizOption>
+  <BaseQuizOption value="C">REPLACE は行を削除し、IGNORE は更新する</BaseQuizOption>
+  <BaseQuizOption value="D">REPLACE はテーブルで機能し、IGNORE はビューで機能する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INSERT OR REPLACE`は、競合（例：重複する主キー）がある場合に既存の行を置き換えます。`INSERT OR IGNORE`は、競合がある場合に挿入を単にスキップし、既存の行は変更されません。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## データクエリと選択
 
 ### 基本的なクエリ：`SELECT`
 
-様々なオプションを使用して SELECT ステートメントでテーブルからデータをクエリします。
+さまざまなオプションを使用して SELECT ステートメントでテーブルからデータをクエリします。
 
 ```sql
 -- すべての列を選択
@@ -227,9 +272,24 @@ SELECT name AS full_name, age AS years_old FROM users;
 SELECT DISTINCT department FROM employees;
 ```
 
+<BaseQuiz id="sqlite-select-1" correct="B">
+  <template #question>
+    `SELECT DISTINCT`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">すべての行を選択する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>重複を削除して一意の値のみを返す</BaseQuizOption>
+  <BaseQuizOption value="C">最初の行のみを選択する</BaseQuizOption>
+  <BaseQuizOption value="D">結果を並べ替える</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SELECT DISTINCT`は、結果セットから重複する行を排除し、一意の値のみを返します。これは、列内のすべての一意の値を確認したい場合に役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### フィルタリング：`WHERE`
 
-様々な条件と比較演算子を使用して行をフィルタリングします。
+さまざまな条件と比較演算子を使用して行をフィルタリングします。
 
 ```sql
 -- 単純な条件
@@ -245,24 +305,24 @@ SELECT * FROM users WHERE email LIKE '%@gmail.com';
 SELECT * FROM users WHERE name GLOB 'J*';
 ```
 
-### ソートと制限：`ORDER BY` / `LIMIT`
+### 並べ替えと制限：`ORDER BY` / `LIMIT`
 
-結果をソートし、返される行数を制限してデータ管理を改善します。
+結果を並べ替え、返される行数を制限して、データ管理を改善します。
 
-```bash
-# 昇順ソート（デフォルト）
+```sql
+-- 昇順ソート（デフォルト）
 SELECT * FROM users ORDER BY age;
 
-# 降順ソート
+-- 降順ソート
 SELECT * FROM users ORDER BY age DESC;
 
-# 複数ソート列
+-- 複数ソート列
 SELECT * FROM users ORDER BY department, salary DESC;
 
-# 結果の制限
+-- 結果の制限
 SELECT * FROM users LIMIT 10;
 
-# オフセット付きの制限（ページネーション）
+-- オフセット付きの制限（ページネーション）
 SELECT * FROM users LIMIT 10 OFFSET 20;
 ```
 
@@ -286,7 +346,7 @@ SELECT MIN(age), MAX(age) FROM users;
 
 ### グループ化：`GROUP BY` / `HAVING`
 
-指定された基準で行をグループ化し、集計レポートのためにグループをフィルタリングします。
+指定された基準で行をグループ化し、サマリーレポートのためにグループをフィルタリングします。
 
 ```sql
 -- 単一列でのグループ化
@@ -329,9 +389,9 @@ WHERE EXISTS (
 );
 ```
 
-### JOIN: `INNER`, `LEFT`, `RIGHT`
+### ジョイン：`INNER`, `LEFT`, `RIGHT`
 
-様々な結合タイプを使用して複数のテーブルからのデータを結合し、リレーショナルクエリを実行します。
+リレーショナルクエリのために、さまざまな結合タイプを使用して複数のテーブルからのデータを結合します。
 
 ```sql
 -- 内部結合
@@ -376,7 +436,7 @@ SELECT email FROM unsubscribed;
 
 ### インデックスの作成：`CREATE INDEX`
 
-クエリの高速化とパフォーマンス向上のために列にインデックスを作成します。
+クエリの高速化とパフォーマンス向上のために、列にインデックスを作成します。
 
 ```sql
 -- 単一列インデックス
@@ -385,10 +445,10 @@ CREATE INDEX idx_user_email ON users(email);
 -- 複数列インデックス
 CREATE INDEX idx_order_user_date ON orders(user_id, order_date);
 
--- ユニークインデックス
+-- 一意インデックス
 CREATE UNIQUE INDEX idx_product_sku ON products(sku);
 
--- 偏りインデックス（条件付き）
+-- 複合インデックス（条件付き）
 CREATE INDEX idx_active_users ON users(name) WHERE active = 1;
 ```
 
@@ -396,11 +456,11 @@ CREATE INDEX idx_active_users ON users(name) WHERE active = 1;
 
 クエリ実行計画を分析し、パフォーマンスのボトルネックを特定します。
 
-```sql
--- クエリパフォーマンスの分析
+```bash
+# クエリパフォーマンスの分析
 EXPLAIN QUERY PLAN SELECT * FROM users WHERE email = 'test@example.com';
 
--- インデックスの使用確認
+-- インデックスが使用されているか確認
 EXPLAIN QUERY PLAN SELECT * FROM orders WHERE user_id = 123;
 ```
 
@@ -408,8 +468,8 @@ EXPLAIN QUERY PLAN SELECT * FROM orders WHERE user_id = 123;
 
 データベースファイルを最適化し、統計情報を更新してパフォーマンスを向上させます。
 
-```sql
--- スペースを回収するためのデータベースの再構築
+```bash
+# スペースを回収するためにデータベースを再構築
 VACUUM;
 
 -- インデックス統計の更新
@@ -421,10 +481,10 @@ PRAGMA integrity_check;
 
 ### パフォーマンス設定：`PRAGMA`
 
-パフォーマンスの最適化と構成のために、pragma ステートメントを使用して SQLite の設定を変更します。
+プラグマステートメントを使用して、最適化と構成のために SQLite の設定を構成します。
 
 ```sql
--- 優れたパフォーマンスのためのジャーナルモード設定
+-- パフォーマンス向上のためのジャーナルモード設定
 PRAGMA journal_mode = WAL;
 
 -- 同期モードの設定
@@ -441,10 +501,10 @@ PRAGMA cache_size = 10000;
 
 ### ビュー: `CREATE VIEW`
 
-保存されたクエリを表す仮想テーブルを作成し、再利用可能なデータアクセスを実現します。
+保存されたクエリを表す仮想テーブルを作成し、再利用可能なデータアクセスを可能にします。
 
 ```sql
--- シンプルなビューの作成
+-- 単純なビューの作成
 CREATE VIEW active_users AS
 SELECT id, name, email
 FROM users
@@ -469,7 +529,7 @@ DROP VIEW IF EXISTS order_summary;
 
 ### ビューの使用
 
-ビューを通常のテーブルのようにクエリして、データアクセスを簡素化します。
+通常のテーブルのようにビューをクエリして、データアクセスを簡素化します。
 
 ```sql
 SELECT * FROM active_users;
@@ -504,7 +564,7 @@ DROP TRIGGER IF EXISTS update_user_count;
 
 ### 日付と時刻の関数
 
-SQLite の組み込み関数を使用して、日付と時刻の操作を処理します。
+組み込みの SQLite 関数を使用して、日付と時刻の操作を処理します。
 
 ```sql
 -- 現在の日付/時刻
@@ -524,7 +584,7 @@ SELECT strftime('%w', 'now'); -- 曜日
 
 ### 文字列関数
 
-様々な文字列操作でテキストデータを操作します。
+さまざまな文字列操作でテキストデータを操作します。
 
 ```sql
 -- 文字列操作
@@ -562,7 +622,7 @@ GROUP BY department;
 SQL クエリ内で条件付きロジックを実装します。
 
 ```sql
--- シンプルな CASE ステートメント
+-- 単純な CASE ステートメント
 SELECT name,
     CASE
         WHEN age < 18 THEN 'Minor'
@@ -571,7 +631,7 @@ SELECT name,
     END as age_category
 FROM users;
 
--- WHERE 句内の CASE
+-- WHERE 句での CASE
 SELECT * FROM products
 WHERE CASE WHEN category = 'Electronics' THEN price < 1000
           ELSE price < 100 END;
@@ -581,7 +641,7 @@ WHERE CASE WHEN category = 'Electronics' THEN price < 1000
 
 ### トランザクション制御
 
-SQLite のトランザクションは完全に ACID 準拠であり、信頼性の高いデータ操作を保証します。
+SQLite トランザクションは完全に ACID 準拠であり、信頼性の高いデータ操作を保証します。
 
 ```sql
 -- 基本的なトランザクション
@@ -612,10 +672,10 @@ COMMIT;
 -- ロック状態の確認
 PRAGMA locking_mode;
 
--- 並行性の向上のための WAL モード設定
+-- より良い並行性のための WAL モードの設定
 PRAGMA journal_mode = WAL;
 
--- ロック待機のためのビジータイムアウト設定
+-- ロック待機のためのビジータイムアウト
 PRAGMA busy_timeout = 5000;
 
 -- 現在のデータベース接続の確認
@@ -640,7 +700,7 @@ PRAGMA busy_timeout = 5000;
 
 ### インポート/エクスポート：`.import` / `.export`
 
-SQLite と外部ファイル間で様々な形式でデータを転送します。
+SQLite と外部ファイル間でさまざまな形式でデータを転送します。
 
 ```bash
 # CSVファイルのインポート
@@ -656,7 +716,7 @@ SELECT * FROM users;
 
 ### スキーマ管理：`.schema` / `.tables`
 
-開発およびデバッグのためにデータベース構造とテーブル定義を調べます。
+開発およびデバッグのために、データベース構造とテーブル定義を調べます。
 
 ```bash
 # すべてのテーブルを表示
@@ -676,7 +736,7 @@ PRAGMA table_info(users);
 コマンドラインインターフェースでのクエリ結果の表示方法を制御します。
 
 ```bash
-# 異なる出力モード
+# さまざまな出力モード
 .mode csv        # カンマ区切り値
 .mode column     # アライメントされた列
 .mode html       # HTMLテーブル形式
@@ -687,23 +747,23 @@ PRAGMA table_info(users);
 # 列幅の設定
 .width 10 15 20
 
-# ファイルへの出力保存
+# 結果をファイルに保存
 .output results.txt
 SELECT * FROM users;
 .output stdout
 
-# ファイルからのSQL読み込み
+# ファイルからSQLを読み込む
 .read script.sql
 
 # データベースファイルの変更
 .open another_database.db
 ```
 
-## 設定と設定
+## 設定とオプション
 
 ### データベース設定：`PRAGMA`
 
-最適化と構成のために pragma ステートメントを通じて SQLite の動作を制御します。
+最適化と構成のためにプラグマステートメントを通じて SQLite の動作を制御します。
 
 ```sql
 -- データベース情報
@@ -728,7 +788,7 @@ PRAGMA foreign_key_check;
 
 ### セキュリティ設定
 
-セキュリティ関連のデータベースオプションと制約を設定します。
+セキュリティ関連のデータベースオプションと制約を構成します。
 
 ```sql
 -- 外部キー制約の有効化
@@ -745,7 +805,7 @@ PRAGMA integrity_check;
 
 ### ダウンロードとインストール
 
-SQLite ツールをダウンロードし、お使いのオペレーティングシステムでコマンドラインインターフェースをセットアップします。
+オペレーティングシステム用に SQLite ツールをダウンロードし、コマンドラインインターフェースをセットアップします。
 
 ```bash
 # sqlite.orgからダウンロード
@@ -755,7 +815,7 @@ SQLite ツールをダウンロードし、お使いのオペレーティング�
 # Ubuntu/Debian
 sudo apt-get install sqlite3
 
-# macOS (Homebrew使用)
+# macOS (Homebrewを使用)
 brew install sqlite
 
 # インストールの確認
@@ -783,10 +843,10 @@ VALUES ('John Doe', 'john@example.com');
 
 ### プログラミング言語との統合
 
-組み込みライブラリまたはサードパーティライブラリを通じて、様々なプログラミング言語で SQLite を使用します。
+組み込みライブラリまたはサードパーティライブラリを通じて、さまざまなプログラミング言語で SQLite を使用します。
 
 ```python
-# Python (組み込み sqlite3 モジュール)
+# Python（組み込み sqlite3 モジュール）
 import sqlite3
 conn = sqlite3.connect('mydb.db')
 cursor = conn.cursor()
@@ -794,7 +854,7 @@ cursor.execute('SELECT * FROM users')
 ```
 
 ```javascript
-// Node.js (sqlite3 パッケージが必要)
+// Node.js（sqlite3 パッケージが必要）
 const sqlite3 = require('sqlite3')
 const db = new sqlite3.Database('mydb.db')
 db.all('SELECT * FROM users', (err, rows) => {
@@ -803,7 +863,7 @@ db.all('SELECT * FROM users', (err, rows) => {
 ```
 
 ```php
-// PHP (組み込み PDO SQLite)
+// PHP（組み込み PDO SQLite）
 $pdo = new PDO('sqlite:mydb.db');
 $stmt = $pdo->query('SELECT * FROM users');
 ```

@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по Python'
-description: 'Изучите Python с нашей подробной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Python | LabEx'
+description: 'Изучите программирование на Python с помощью этой исчерпывающей шпаргалки. Краткий справочник по синтаксису Python, структурам данных, функциям, классам, библиотекам и лучшим практикам для разработчиков Python.'
 pdfUrl: '/cheatsheets/pdf/python-cheatsheet.pdf'
 ---
 
@@ -12,7 +12,7 @@ pdfUrl: '/cheatsheets/pdf/python-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://pythoncheatsheet.org/" target="_blank">Посетите Python Cheatsheet</a>
+<a href="https://pythoncheatsheet.org/" target="_blank">Посетить Python Cheatsheet</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Для получения исчерпывающих справочных материалов по Python, примеров синтаксиса и подробной документации посетите <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>. Этот независимый сайт предоставляет обширные шпаргалки по Python, охватывающие основные команды, концепции и лучшие практики для разработчиков Python.

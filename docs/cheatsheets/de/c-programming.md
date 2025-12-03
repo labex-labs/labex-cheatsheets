@@ -1,6 +1,6 @@
 ---
-title: 'C Programmierung Spickzettel'
-description: 'Lernen Sie C-Programmierung mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'C Programmierung Spickzettel | LabEx'
+description: 'C-Programmierung lernen mit diesem umfassenden Spickzettel. Schnelle Referenz für C-Syntax, Zeiger, Speicherverwaltung, Datenstrukturen und Systemprogrammierung für Entwickler.'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ C Programmier-Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/c">C-Programmierung mit praktischen Übungen erlernen</a>
+<a target="_blank" href="https://labex.io/de/learn/c">C-Programmierung mit praktischen Übungen lernen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Erlernen Sie die C-Programmierung durch praktische Übungen und reale Szenarien. LabEx bietet umfassende C-Kurse, die wesentliche Syntax, Speicherverwaltung, Zeiger, Datenstrukturen und fortgeschrittene Techniken abdecken. Meistern Sie die leistungsstarken Funktionen von C, um effiziente Systemanwendungen zu erstellen und Low-Level-Programmierkonzepte zu verstehen.
+Lernen Sie C-Programmierung durch praktische Übungen und reale Szenarien. LabEx bietet umfassende C-Kurse, die wesentliche Syntax, Speicherverwaltung, Zeiger, Datenstrukturen und fortgeschrittene Techniken abdecken. Meistern Sie die leistungsstarken Funktionen von C, um effiziente Systemanwendungen zu erstellen und Konzepte der Low-Level-Programmierung zu verstehen.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -76,6 +76,21 @@ int main(int argc, char *argv[]) {
 }
 ```
 
+<BaseQuiz id="c-main-1" correct="C">
+  <template #question>
+    Was signalisiert `return 0` in der main-Funktion?
+  </template>
+  
+  <BaseQuizOption value="A">Das Programm ist fehlgeschlagen</BaseQuizOption>
+  <BaseQuizOption value="B">Das Programm läuft noch</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Programm erfolgreich ausgeführt</BaseQuizOption>
+  <BaseQuizOption value="D">Das Programm gab keinen Wert zurück</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    In C signalisiert `return 0` von der main-Funktion eine erfolgreiche Programmausführung. Rückgabewerte ungleich Null deuten typischerweise auf Fehler oder eine abnormale Beendigung hin.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Grundlegende Ausgabe
 
 Text und Variablen auf der Konsole anzeigen.
@@ -107,12 +122,12 @@ fgets(name, sizeof(name), stdin);
 Grundlegende Datentypen zur Speicherung verschiedener Wertarten.
 
 ```c
-// Integer-Typen
+// Ganzzahltypen
 int age = 25;
 short small_num = 100;
 long large_num = 1000000L;
 long long huge_num = 9223372036854775807LL;
-// Gleitkomma-Typen
+// Gleitkommatypen
 float price = 19.99f;
 double precise = 3.14159265359;
 // Zeichen und Boolescher Wert (mittels int)
@@ -136,6 +151,21 @@ char buffer[100];  // Nicht initialisiert
 int len = strlen(name);
 int size = sizeof(buffer);
 ```
+
+<BaseQuiz id="c-arrays-1" correct="C">
+  <template #question>
+    Wie werden Strings in C dargestellt?
+  </template>
+  
+  <BaseQuizOption value="A">Als spezieller String-Typ</BaseQuizOption>
+  <BaseQuizOption value="B">Als Ganzzahlen</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Als Zeichen-Arrays</BaseQuizOption>
+  <BaseQuizOption value="D">Nur als Zeiger</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    In C werden Strings als Zeichen-Arrays (`char`) dargestellt. Der String wird durch ein Nullzeichen (`\0`) terminiert, das das Ende des Strings markiert.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Konstanten & Modifikatoren
 
@@ -200,7 +230,7 @@ int size = sizeof(numbers) / sizeof(numbers[0]);
 for (int i = 0; i < size; i++) {
     printf("%d ", numbers[i]);
 }
-// Verschachtelte Schleifen
+// Geschachtelte Schleifen
 for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
         printf("%d,%d ", i, j);
@@ -208,9 +238,24 @@ for (int i = 0; i < 3; i++) {
 }
 ```
 
+<BaseQuiz id="c-for-loop-1" correct="A">
+  <template #question>
+    Was berechnet `sizeof(numbers) / sizeof(numbers[0])`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Die Anzahl der Elemente im Array</BaseQuizOption>
+  <BaseQuizOption value="B">Die Gesamtgröße des Arrays im Speicher</BaseQuizOption>
+  <BaseQuizOption value="C">Der Index des letzten Elements</BaseQuizOption>
+  <BaseQuizOption value="D">Die Größe eines Elements</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Dieser Ausdruck berechnet die Array-Länge, indem die Gesamtgröße des Arrays durch die Größe eines Elements geteilt wird. Dies ist ein gängiges C-Idiom, da Arrays ihre Länge nicht speichern.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### While Schleifen
 
-Bedingungsbasierte Iteration.
+Zustandsbasierte Iteration.
 
 ```c
 // While-Schleife
@@ -222,14 +267,14 @@ while (count < 5) {
 // Do-while-Schleife (wird mindestens einmal ausgeführt)
 int input;
 do {
-    printf("Zahl eingeben (0 zum Beenden): ");
+    printf("Geben Sie eine Zahl ein (0 zum Beenden): ");
     scanf("%d", &input);
 } while (input != 0);
 ```
 
-### Schleifenkontrolle
+### Schleifensteuerung
 
-Break- und Continue-Anweisungen.
+`break` und `continue` Anweisungen.
 
 ```c
 for (int i = 0; i < 10; i++) {
@@ -241,10 +286,10 @@ for (int i = 0; i < 10; i++) {
     }
     printf("%d ", i);
 }
-// Verschachtelte Schleifen mit break
+// Geschachtelte Schleifen mit break
 for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-        if (i == j) break; // Nur innere Schleife beenden
+        if (i == j) break; // Nur innere Schleife verlassen
         printf("%d,%d ", i, j);
     }
 }
@@ -330,7 +375,7 @@ result = operations[0](10, 5);
 
 ## Zeiger & Speicherverwaltung
 
-### Zeiger Grundlagen
+### Zeiger-Grundlagen
 
 Zeiger deklarieren und verwenden, um auf Speicheradressen zuzugreifen.
 
@@ -350,7 +395,7 @@ int *null_ptr = NULL;
 
 ### Arrays und Zeiger
 
-Zusammenhang zwischen Arrays und Zeigern.
+Beziehung zwischen Arrays und Zeigern.
 
 ```c
 int arr[5] = {1, 2, 3, 4, 5};
@@ -402,7 +447,7 @@ strcpy(str3, "Dynamic");
 printf("Länge: %lu\n", strlen(str1));
 printf("Vergleich: %d\n", strcmp(str1, str2));
 strcat(str2, "!");
-// Immer dynamisch zugewiesene Strings freigeben
+// Dynamische Strings immer freigeben
 free(str3);
 ```
 
@@ -432,7 +477,7 @@ printf("Fläche: %.2f\n", rect1.width * rect1.height);
 printf("Student: %s, Alter: %d\n", student1.name, student1.age);
 ```
 
-### Verschachtelte Strukturen
+### Geschachtelte Strukturen
 
 Strukturen, die andere Strukturen enthalten.
 
@@ -462,10 +507,10 @@ Zeiger verwenden, um auf Strukturen zuzugreifen und diese zu modifizieren.
 
 ```c
 Student *student_ptr = &student1;
-// Zugriff über Zeiger (zwei Methoden)
+// Zugriff mittels Zeiger (zwei Methoden)
 printf("Name: %s\n", (*student_ptr).name);
 printf("Alter: %d\n", student_ptr->age);
-// Modifizieren über Zeiger
+// Modifikation über Zeiger
 student_ptr->age = 21;
 strcpy(student_ptr->name, "Alice Johnson");
 // Dynamische Strukturzuweisung
@@ -621,7 +666,7 @@ printf("Länge: %d\n", len);
 // String kopieren
 strcpy(dest, str1);
 strncpy(dest, str1, 10); // Erste 10 Zeichen kopieren
-// String verketten
+// String-Verkettung
 strcat(dest, " ");
 strcat(dest, str2);
 strncat(dest, "!", 1);   // 1 Zeichen anhängen
@@ -634,7 +679,7 @@ if (result == 0) {
 
 ### String-Suche
 
-Teilstrings und Zeichen innerhalb von Strings finden.
+Teilstrings und Zeichen in Strings finden.
 
 ```c
 char text[] = "The quick brown fox";
@@ -642,15 +687,15 @@ char *ptr;
 // Erstes Vorkommen eines Zeichens finden
 ptr = strchr(text, 'q');
 if (ptr != NULL) {
-    printf("Fand 'q' an Position: %ld\n", ptr - text);
+    printf(" 'q' gefunden an Position: %ld\n", ptr - text);
 }
 // Letztes Vorkommen
 ptr = strrchr(text, 'o');
 printf("Letztes 'o' an Position: %ld\n", ptr - text);
-// Teilstring finden
+// Teilstring suchen
 ptr = strstr(text, "brown");
 if (ptr != NULL) {
-    printf("Fand 'brown' bei: %s\n", ptr);
+    printf(" 'brown' gefunden bei: %s\n", ptr);
 }
 ```
 
@@ -681,7 +726,7 @@ printf("String: %s\n", buffer);
 Manuelle Techniken zur String-Manipulation.
 
 ```c
-// Zeichen in String zählen
+// Zeichen im String zählen
 int countChar(char *str, char target) {
     int count = 0;
     while (*str) {
@@ -708,7 +753,7 @@ void reverseString(char *str) {
 GNU Compiler Collection für C.
 
 ```bash
-# Einfache Kompilierung
+# Grundlegende Kompilierung
 gcc -o program main.c
 # Mit Debugging-Informationen
 gcc -g -o program main.c
@@ -716,13 +761,13 @@ gcc -g -o program main.c
 gcc -O2 -o program main.c
 # Mehrere Quelldateien
 gcc -o program main.c utils.c math.c
-# Zusätzliche Verzeichnisse einbinden
+# Zusätzliche Verzeichnisse einbeziehen
 gcc -I/usr/local/include -o program main.c
-# Bibliotheken linken
+# Bibliotheken verlinken
 gcc -o program main.c -lm -lpthread
 ```
 
-### C Standards
+### C-Standards
 
 Kompilieren mit spezifischen C-Standardversionen.
 
@@ -741,7 +786,7 @@ gcc -Wall -Wextra -std=c11 -o program main.c
 
 ### Makefile Grundlagen
 
-Kompilierung mit dem make-Dienstprogramm automatisieren.
+Kompilierung mit dem `make`-Dienstprogramm automatisieren.
 
 ```makefile
 # Einfaches Makefile
@@ -788,7 +833,7 @@ Häufige speicherbezogene Fehler vermeiden.
 // Variablen immer initialisieren
 int count = 0;        // Gut
 int count;            // Gefährlich - nicht initialisiert
-// Rückgabewert von malloc prüfen
+// malloc Rückgabewert prüfen
 int *ptr = malloc(sizeof(int) * 10);
 if (ptr == NULL) {
     printf("Speicherzuweisung fehlgeschlagen!\n");
@@ -817,7 +862,7 @@ int len = strlen(str); // Einmal berechnen
 for (int i = 0; i < len; i++) {
     // String verarbeiten
 }
-// Register für häufig verwendete Variablen verwenden
+// 'register' für häufig verwendete Variablen bevorzugen
 register int counter;
 // Arrays gegenüber dynamischer Zuweisung bevorzugen, wenn die Größe bekannt ist
 int fixed_array[100];  // Stack-Zuweisung

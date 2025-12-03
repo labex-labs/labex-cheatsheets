@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo CompTIA'
-description: 'Maîtrisez CompTIA avec notre fiche mémo complète couvrant les commandes essentielles, concepts et meilleures pratiques.'
+title: 'Fiche Mémo CompTIA | LabEx'
+description: 'Apprenez les certifications informatiques CompTIA avec cette fiche mémo complète. Référence rapide pour CompTIA A+, Network+, Security+, Linux+ et les fondamentaux informatiques pour la préparation aux examens de certification.'
 pdfUrl: '/cheatsheets/pdf/comptia-cheatsheet.pdf'
 ---
 
@@ -12,24 +12,24 @@ Feuille de triche CompTIA
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/comptia">Apprenez CompTIA avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/comptia">Apprenez CompTIA avec des laboratoires pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez les certifications CompTIA grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours CompTIA complets couvrant A+, Network+, Security+ et des certifications spécialisées. Maîtrisez les fondamentaux de l'informatique, du réseautage, de la sécurité et faites progresser votre carrière informatique avec des accréditations reconnues par l'industrie.
+Apprenez les certifications CompTIA grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours CompTIA complets couvrant A+, Network+, Security+ et des certifications spécialisées. Maîtrisez les fondamentaux de l'informatique, le réseautage, la sécurité et faites progresser votre carrière informatique avec des accréditations reconnues par l'industrie.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Aperçu des Certifications CompTIA
+## Aperçu des certifications CompTIA
 
-### Certifications de Base
+### Certifications de base (Core)
 
-Certifications fondamentales pour le succès d'une carrière en informatique.
+Certifications fondamentales pour le succès d'une carrière informatique.
 
 ```text
 # CompTIA A+ (220-1101, 220-1102)
 - Matériel et appareils mobiles
 - Systèmes d'exploitation et logiciels
-- Bases de la sécurité et du réseau
+- Bases de la sécurité et du réseautage
 - Procédures opérationnelles
 
 # CompTIA Network+ (N10-008)
@@ -46,6 +46,21 @@ Certifications fondamentales pour le succès d'une carrière en informatique.
 - Opérations et réponse aux incidents
 - Gouvernance, risque et conformité
 ```
+
+<BaseQuiz id="comptia-core-1" correct="B">
+  <template #question>
+    Quelle certification CompTIA se concentre-t-elle sur les fondamentaux du réseau et le dépannage ?
+  </template>
+  
+  <BaseQuizOption value="A">CompTIA A+</BaseQuizOption>
+  <BaseQuizOption value="B" correct>CompTIA Network+</BaseQuizOption>
+  <BaseQuizOption value="C">CompTIA Security+</BaseQuizOption>
+  <BaseQuizOption value="D">CompTIA Linux+</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    CompTIA Network+ (N10-008) se concentre sur les fondamentaux du réseau, les implémentations, les opérations, la sécurité et le dépannage. Il est conçu pour les administrateurs et techniciens réseau.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Certifications Spécialisées
 
@@ -74,7 +89,7 @@ Accréditations informatiques avancées et spécialisées.
 
 # CompTIA Server+ (SK0-005)
 - Installation et gestion du matériel serveur
-- Administration de serveur
+- Administration serveur
 - Sécurité et reprise après sinistre
 - Dépannage
 
@@ -91,14 +106,14 @@ Accréditations informatiques avancées et spécialisées.
 - Dépannage
 ```
 
-## Fondamentaux CompTIA A+
+## Essentiels CompTIA A+
 
 ### Composants Matériels
 
 Connaissances essentielles sur le matériel informatique et le dépannage.
 
 ```text
-# Types et Caractéristiques du CPU
+# Types et caractéristiques du CPU
 - Processeurs Intel vs AMD
 - Types de sockets (LGA, PGA, BGA)
 - Nombre de cœurs et threading
@@ -122,7 +137,7 @@ Connaissances essentielles sur le matériel informatique et le dépannage.
 Smartphones, tablettes et gestion des appareils mobiles.
 
 ```text
-# Types d'Appareils Mobiles
+# Types d'appareils mobiles
 - Architecture iOS vs Android
 - Formats ordinateur portable vs tablette
 - Appareils portables (wearables)
@@ -172,14 +187,14 @@ Gestion des systèmes d'exploitation Windows, macOS, Linux et mobiles.
 Compréhension des couches réseau et connaissance des protocoles.
 
 ```text
-# Modèle OSI à 7 Couches
-Couche 7: Application (HTTP, HTTPS, FTP)
-Couche 6: Présentation (SSL, TLS)
-Couche 5: Session (NetBIOS, RPC)
-Couche 4: Transport (TCP, UDP)
-Couche 3: Réseau (IP, ICMP, OSPF)
-Couche 2: Liaison de Données (Ethernet, PPP)
-Couche 1: Physique (Câbles, Hubs)
+# Modèle OSI à 7 couches
+Couche 7 : Application (HTTP, HTTPS, FTP)
+Couche 6 : Présentation (SSL, TLS)
+Couche 5 : Session (NetBIOS, RPC)
+Couche 4 : Transport (TCP, UDP)
+Couche 3 : Réseau (IP, ICMP, OSPF)
+Couche 2 : Liaison de données (Ethernet, PPP)
+Couche 1 : Physique (Câbles, Hubs)
 
 # Suite TCP/IP
 - Adressage IPv4 vs IPv6
@@ -188,14 +203,29 @@ Couche 1: Physique (Câbles, Hubs)
 - Protocoles ARP et ICMP
 ```
 
+<BaseQuiz id="comptia-osi-1" correct="C">
+  <template #question>
+    À quelle couche OSI TCP opère-t-il ?
+  </template>
+  
+  <BaseQuizOption value="A">Couche 3 (Réseau)</BaseQuizOption>
+  <BaseQuizOption value="B">Couche 5 (Session)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Couche 4 (Transport)</BaseQuizOption>
+  <BaseQuizOption value="D">Couche 7 (Application)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    TCP (Transmission Control Protocol) opère à la Couche 4 (Transport) du modèle OSI. Cette couche est responsable de la transmission fiable des données, de la vérification des erreurs et du contrôle de flux.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Périphériques Réseau
 
-Routeurs, commutateurs et équipements de réseautage.
+Routeurs, commutateurs et équipements de réseautique.
 
 ```text
 # Périphériques de Couche 2
-- Commutateurs (Switches) et VLANs
-- Protocole Spanning Tree (STP)
+- Commutateurs (Switches) et VLAN
+- Spanning Tree Protocol (STP)
 - Sécurité des ports et filtrage MAC
 
 # Périphériques de Couche 3
@@ -205,7 +235,7 @@ Routeurs, commutateurs et équipements de réseautage.
 - Traduction NAT et PAT
 ```
 
-### Réseautique Sans Fil
+### Réseautique Sans Fil (Wireless)
 
 Normes Wi-Fi, sécurité et dépannage.
 
@@ -252,37 +282,52 @@ Triade CIA et principes de sécurité de base.
 
 ```text
 # Triade CIA
-Confidentialité: Confidentialité et chiffrement des données
-Intégrité: Exactitude et authenticité des données
-Disponibilité: Temps de fonctionnement et accessibilité du système
+Confidentialité : Confidentialité des données et chiffrement
+Intégrité : Exactitude et authenticité des données
+Disponibilité : Temps de fonctionnement et accessibilité des systèmes
 
 # Facteurs d'Authentification
-Ce que vous savez: Mots de passe, PIN
-Ce que vous possédez: Jetons, cartes à puce
-Ce que vous êtes: Biométrie
-Ce que vous faites: Modèles de comportement
-Où vous êtes: Basé sur la localisation
+Ce que vous savez : Mots de passe, PIN
+Ce que vous possédez : Jetons, cartes à puce
+Ce que vous êtes : Biométrie
+Ce que vous faites : Modèles comportementaux
+Où vous êtes : Basé sur la localisation
 ```
+
+<BaseQuiz id="comptia-cia-1" correct="A">
+  <template #question>
+    Que représente la triade CIA en cybersécurité ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Confidentialité, Intégrité et Disponibilité - les trois principes fondamentaux de la sécurité</BaseQuizOption>
+  <BaseQuizOption value="B">Une agence gouvernementale</BaseQuizOption>
+  <BaseQuizOption value="C">Trois types d'attaques</BaseQuizOption>
+  <BaseQuizOption value="D">Trois méthodes d'authentification</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La triade CIA représente les trois principes fondamentaux de la sécurité de l'information : Confidentialité (protection des données contre l'accès non autorisé), Intégrité (garantie de l'exactitude et de l'authenticité des données) et Disponibilité (garantie que les systèmes et les données sont accessibles en cas de besoin).
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Paysage des Menaces
 
-Attaques courantes et acteurs de la menace.
+Attaques courantes et acteurs des menaces.
 
 ```text
 # Types d'Attaques
 - Phishing et ingénierie sociale
-- Logiciels malveillants (virus, chevaux de Troie, ransomware)
+- Logiciels malveillants (virus, chevaux de Troie, ransomwares)
 - Attaques DDoS et DoS
 - Attaques de l'homme du milieu (Man-in-the-middle)
 - Injection SQL et XSS
-- Exploits de jour zéro
+- Exploits de jour zéro (Zero-day)
 
-# Acteurs de la Menace
+# Acteurs des Menaces
 - Script kiddies
 - Hacktivistes
 - Crime organisé
 - Acteurs étatiques
-- Menaces internes
+- Menaces internes (Insider threats)
 ```
 
 ### Cryptographie
@@ -291,10 +336,10 @@ Méthodes de chiffrement et gestion des clés.
 
 ```text
 # Types de Chiffrement
-Symétrique: AES, 3DES (même clé)
-Asymétrique: RSA, ECC (paires de clés)
-Hachage: SHA-256, MD5 (sens unique)
-Signatures Numériques: Non-répudiation
+Symétrique : AES, 3DES (même clé)
+Asymétrique : RSA, ECC (paires de clés)
+Hachage : SHA-256, MD5 (à sens unique)
+Signatures Numériques : Non-répudiation
 
 # Gestion des Clés
 - Génération et distribution des clés
@@ -303,16 +348,31 @@ Signatures Numériques: Non-répudiation
 - Infrastructure à Clé Publique (PKI)
 ```
 
+<BaseQuiz id="comptia-crypto-1" correct="B">
+  <template #question>
+    Quelle est la principale différence entre le chiffrement symétrique et asymétrique ?
+  </template>
+  
+  <BaseQuizOption value="A">Le symétrique est plus rapide, l'asymétrique est plus lent</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Le symétrique utilise une seule clé pour le chiffrement/déchiffrement, l'asymétrique utilise une paire de clés</BaseQuizOption>
+  <BaseQuizOption value="C">Le symétrique est pour les e-mails, l'asymétrique est pour les fichiers</BaseQuizOption>
+  <BaseQuizOption value="D">Il n'y a pas de différence</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le chiffrement symétrique utilise la même clé pour le chiffrement et le déchiffrement, ce qui le rend plus rapide mais nécessite une distribution sécurisée des clés. Le chiffrement asymétrique utilise une paire de clés publique/privée, résolvant le problème de distribution des clés mais étant plus coûteux en calcul.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Contrôle d'Accès
 
 Gestion des identités et modèles d'autorisation.
 
 ```text
 # Modèles de Contrôle d'Accès
-DAC: Contrôle d'Accès Discrétionnaire
-MAC: Contrôle d'Accès Obligatoire
-RBAC: Contrôle d'Accès Basé sur les Rôles
-ABAC: Contrôle d'Accès Basé sur les Attributs
+DAC : Contrôle d'Accès Discrétionnaire
+MAC : Contrôle d'Accès Obligatoire
+RBAC : Contrôle d'Accès Basé sur les Rôles
+ABAC : Contrôle d'Accès Basé sur les Attributs
 
 # Gestion des Identités
 - Authentification Unique (SSO)
@@ -321,7 +381,7 @@ ABAC: Contrôle d'Accès Basé sur les Attributs
 - Fédération et SAML
 ```
 
-## Stratégies d'Étude et Conseils
+## Stratégies d'Étude
 
 ### Planification des Études
 
@@ -329,16 +389,16 @@ Créer une approche structurée pour la préparation à la certification.
 
 ```text
 # Calendrier d'Étude
-Semaine 1-2: Révision des objectifs de l'examen
-Semaine 3-6: Étude du matériel de base
-Semaine 7-8: Pratique pratique (hands-on)
-Semaine 9-10: Examens blancs
-Semaine 11-12: Révision finale et examen
+Semaine 1-2 : Révision des objectifs de l'examen
+Semaine 3-6 : Étude du matériel de base
+Semaine 7-8 : Pratique pratique (hands-on)
+Semaine 9-10 : Examens pratiques
+Semaine 11-12 : Révision finale et examen
 
 # Matériel d'Étude
 - Guides d'étude officiels CompTIA
-- Cours vidéo
-- Examens blancs et simulateurs
+- Cours de formation vidéo
+- Examens pratiques et simulateurs
 - Exercices pratiques (labs)
 - Groupes d'étude et forums
 ```
@@ -348,10 +408,10 @@ Semaine 11-12: Révision finale et examen
 Expérience pratique pour renforcer les connaissances théoriques.
 
 ```text
-# Environnements de Labo
+# Environnements de Laboratoire
 - VM VMware ou VirtualBox
-- Installation de labo à domicile
-- Labs basés sur le cloud (AWS, Azure)
+- Installation de laboratoire à domicile
+- Laboratoires basés sur le cloud (AWS, Azure)
 - Logiciels de simulation CompTIA
 
 # Compétences Pratiques
@@ -363,25 +423,25 @@ Expérience pratique pour renforcer les connaissances théoriques.
 
 ### Stratégies d'Examen
 
-Techniques de passage d'examen pour les examens CompTIA.
+Techniques de passation d'examen pour les examens CompTIA.
 
 ```text
 # Types de Questions
-Choix multiples: Lire toutes les options
-Basées sur la performance: Pratiquer les simulations
-Glisser-déposer (Drag-and-drop): Comprendre les relations
-Point chaud (Hot spot): Connaître les mises en page des interfaces
+Choix multiples : Lire toutes les options
+Basées sur la performance : Pratiquer les simulations
+Glisser-déposer (Drag-and-drop) : Comprendre les relations
+Point chaud (Hot spot) : Connaître les mises en page des interfaces
 
 # Gestion du Temps
 - Allouer du temps par question
 - Marquer les questions difficiles pour révision
 - Ne pas passer trop de temps sur une seule question
-- Réviser les questions marquées à la fin
+- Réviser les questions signalées à la fin
 ```
 
 ### Sujets d'Examen Courants
 
-Domaines fréquemment testés dans les examens CompTIA.
+Sujets fréquemment abordés dans les examens CompTIA.
 
 ```text
 # Domaines Fréquemment Testés
@@ -401,22 +461,22 @@ Termes et abréviations courants du réseautage.
 
 ```text
 # Protocoles et Normes
-HTTP/HTTPS: Protocoles Web
-FTP/SFTP: Transfert de fichiers
-SMTP/POP3/IMAP: Courrier électronique
-DNS: Système de noms de domaine
-DHCP: Configuration dynamique des hôtes
-TCP/UDP: Protocoles de transport
-IP: Protocole Internet
-ICMP: Message de contrôle Internet
+HTTP/HTTPS : Protocoles Web
+FTP/SFTP : Transfert de fichiers
+SMTP/POP3/IMAP : Courrier électronique
+DNS : Domain Name System
+DHCP : Dynamic Host Configuration
+TCP/UDP : Protocoles de transport
+IP : Internet Protocol
+ICMP : Internet Control Message
 
 # Sans Fil et Sécurité
-WPA/WPA2: Accès Protégé Wi-Fi
-SSID: Identifiant de Service Set
-MAC: Contrôle d'Accès au Média
-VPN: Réseau Privé Virtuel
-VLAN: Réseau Local Virtuel
-QoS: Qualité de Service
+WPA/WPA2 : Wi-Fi Protected Access
+SSID : Service Set Identifier
+MAC : Media Access Control
+VPN : Virtual Private Network
+VLAN : Virtual Local Area Network
+QoS : Quality of Service
 ```
 
 ### Matériel et Logiciel
@@ -425,20 +485,20 @@ Terminologie du matériel et des logiciels informatiques.
 
 ```text
 # Stockage et Mémoire
-HDD: Disque Dur
-SSD: Disque État Solide
-RAM: Mémoire Vive
-ROM: Mémoire Morte
-BIOS/UEFI: Firmware système
-RAID: Réseau Redondant de Disques Indépendants
+HDD : Hard Disk Drive (Disque Dur)
+SSD : Solid State Drive (Disque État Solide)
+RAM : Random Access Memory (Mémoire Vive)
+ROM : Read-Only Memory (Mémoire Morte)
+BIOS/UEFI : Firmware système
+RAID : Redundant Array of Independent Disks
 
 # Interfaces et Ports
-USB: Bus Série Universel
-SATA: ATA Série
-PCIe: Interconnexion Composants Périphériques Express
-HDMI: Interface Multimédia Haute Définition
-VGA: Réseau Graphique Vidéo
-RJ45: Connecteur Ethernet
+USB : Universal Serial Bus
+SATA : Serial ATA
+PCIe : Peripheral Component Interconnect Express
+HDMI : High-Definition Multimedia Interface
+VGA : Video Graphics Array
+RJ45 : Connecteur Ethernet
 ```
 
 ### Terminologie de Sécurité
@@ -447,20 +507,20 @@ Termes et concepts de sécurité de l'information.
 
 ```text
 # Cadres de Sécurité
-CIA: Confidentialité, Intégrité, Disponibilité
-AAA: Authentification, Autorisation, Comptabilité
-PKI: Infrastructure à Clé Publique
-IAM: Gestion des Identités et des Accès
-SIEM: Gestion des Informations et des Événements de Sécurité
-SOC: Centre des Opérations de Sécurité
+CIA : Confidentialité, Intégrité, Disponibilité
+AAA : Authentification, Autorisation, Comptabilité (Accounting)
+PKI : Public Key Infrastructure (Infrastructure à Clé Publique)
+IAM : Identity and Access Management (Gestion des Identités et des Accès)
+SIEM : Security Information and Event Management
+SOC : Security Operations Center (Centre des Opérations de Sécurité)
 
 # Conformité et Risque
-GDPR: Règlement Général sur la Protection des Données
-HIPAA: Loi sur la Portabilité et la Responsabilité de l'Assurance Maladie
-PCI DSS: Normes de Sécurité des Données de l'Industrie des Cartes de Paiement
-SOX: Loi Sarbanes-Oxley
-NIST: Institut National des Normes et de la Technologie
-ISO 27001: Norme de gestion de la sécurité
+GDPR : General Data Protection Regulation (RGPD)
+HIPAA : Health Insurance Portability Act
+PCI DSS : Payment Card Industry Data Security Standard
+SOX : Sarbanes-Oxley Act
+NIST : National Institute of Standards and Technology
+ISO 27001 : Norme de gestion de la sécurité
 ```
 
 ### Cloud et Virtualisation
@@ -469,17 +529,17 @@ Terminologie de l'infrastructure informatique moderne.
 
 ```text
 # Services Cloud
-IaaS: Infrastructure en tant que Service
-PaaS: Plateforme en tant que Service
-SaaS: Logiciel en tant que Service
-VM: Machine Virtuelle
-API: Interface de Programmation d'Application
-CDN: Réseau de Diffusion de Contenu
+IaaS : Infrastructure as a Service (Infrastructure en tant que Service)
+PaaS : Platform as a Service (Plateforme en tant que Service)
+SaaS : Software as a Service (Logiciel en tant que Service)
+VM : Virtual Machine (Machine Virtuelle)
+API : Application Programming Interface
+CDN : Content Delivery Network (Réseau de Diffusion de Contenu)
 ```
 
-## Parcours de Carrière de Certification
+## Parcours de Carrière Certifications
 
-### Niveau Débutant
+### Niveau Débutant (Entry Level)
 
 Certification fondamentale pour les rôles de support informatique, couvrant le matériel, les logiciels et les compétences de base en dépannage.
 
@@ -497,7 +557,8 @@ Développer une expertise en réseautage et en administration de serveurs pour l
 ```text
 2. Infrastructure
 Network+ & Server+
-Développer une expertise en réseautage et en administration de serveurs pour les rôles d'infrastructure.
+Développer une expertise en réseautage et en administration de serveurs pour
+les rôles d'infrastructure.
 ```
 
 ### Orientation Sécurité
@@ -507,7 +568,8 @@ Développer des connaissances en cybersécurité pour les postes d'analyste et d
 ```text
 3. Orientation Sécurité
 Security+ & CySA+
-Développer des connaissances en cybersécurité pour les postes d'analyste et d'administrateur de sécurité.
+Développer des connaissances en cybersécurité pour les postes d'analyste et
+d'administrateur de sécurité.
 ```
 
 ### Spécialisation
@@ -527,20 +589,20 @@ Spécialisations avancées en tests d'intrusion et technologies cloud.
 Ports standard pour les services réseau courants.
 
 ```text
-Port 20/21: FTP (Protocole de Transfert de Fichiers)
+Port 20/21: FTP (File Transfer Protocol)
 Port 22: SSH (Secure Shell)
 Port 23: Telnet
-Port 25: SMTP (Protocole Simple de Transfert de Courrier)
-Port 53: DNS (Système de Noms de Domaine)
-Port 67/68: DHCP (Configuration Dynamique des Hôtes)
-Port 69: TFTP (Protocole de Transfert de Fichiers Trivial)
-Port 80: HTTP (Protocole de Transfert Hypertexte)
-Port 110: POP3 (Protocole de Bureau de Poste v3)
-Port 143: IMAP (Protocole d'Accès aux Messages Internet)
-Port 161/162: SNMP (Gestion Simple de Réseau)
-Port 443: HTTPS (HTTP Sécurisé)
-Port 993: IMAPS (IMAP Sécurisé)
-Port 995: POP3S (POP3 Sécurisé)
+Port 25: SMTP (Simple Mail Transfer Protocol)
+Port 53: DNS (Domain Name System)
+Port 67/68: DHCP (Dynamic Host Configuration)
+Port 69: TFTP (Trivial File Transfer Protocol)
+Port 80: HTTP (Hypertext Transfer Protocol)
+Port 110: POP3 (Post Office Protocol v3)
+Port 143: IMAP (Internet Message Access Protocol)
+Port 161/162: SNMP (Simple Network Management)
+Port 443: HTTPS (HTTP Secure)
+Port 993: IMAPS (IMAP Secure)
+Port 995: POP3S (POP3 Secure)
 ```
 
 ### Ports Enregistrés (1024-49151)
@@ -550,20 +612,20 @@ Ports courants pour les applications et les bases de données.
 ```text
 # Bases de Données et Applications
 Port 1433: Microsoft SQL Server
-Port 1521: Base de données Oracle
-Port 3306: Base de données MySQL
-Port 3389: RDP (Protocole de Bureau à Distance)
-Port 5432: Base de données PostgreSQL
+Port 1521: Oracle Database
+Port 3306: MySQL Database
+Port 3389: RDP (Remote Desktop Protocol)
+Port 5432: PostgreSQL Database
 
 # Services Réseau
-Port 1812/1813: Authentification RADIUS
-Port 1701: L2TP (Protocole de Tunnelisation de Couche 2)
-Port 1723: PPTP (Protocole de Tunnelisation Point à Point)
-Port 5060/5061: SIP (Protocole d'Initiation de Session)
+Port 1812/1813: RADIUS Authentication
+Port 1701: L2TP (Layer 2 Tunneling Protocol)
+Port 1723: PPTP (Point-to-Point Tunneling)
+Port 5060/5061: SIP (Session Initiation Protocol)
 
 # Services de Sécurité
-Port 636: LDAPS (LDAP Sécurisé)
-Port 989/990: FTPS (FTP Sécurisé)
+Port 636: LDAPS (LDAP Secure)
+Port 989/990: FTPS (FTP Secure)
 ```
 
 ## Méthodologies de Dépannage
@@ -575,20 +637,20 @@ Méthodologie standard pour la résolution des problèmes techniques.
 ```text
 # Processus en 6 Étapes
 1. Identifier le problème
-   - Recueillir les informations
+   - Recueillir des informations
    - Questionner les utilisateurs sur les symptômes
    - Identifier les changements apportés au système
    - Dupliquer le problème si possible
 
 2. Établir une théorie de cause probable
-   - Questionner l'évidence
+   - Questionner l'évident
    - Considérer de multiples approches
    - Commencer par des solutions simples
 
 3. Tester la théorie pour déterminer la cause
    - Si la théorie est confirmée, continuer
    - Sinon, établir une nouvelle théorie
-   - Faire remonter si nécessaire
+   - Faire monter en niveau (escalade) si nécessaire
 ```
 
 ### Implémentation et Documentation
@@ -600,12 +662,12 @@ Méthodologie standard pour la résolution des problèmes techniques.
 4. Établir un plan d'action
    - Déterminer les étapes pour résoudre
    - Identifier les effets potentiels
-   - Mettre en œuvre la solution ou faire remonter
+   - Mettre en œuvre la solution ou faire monter en niveau
 
-5. Mettre en œuvre la solution ou faire remonter
+5. Mettre en œuvre la solution ou faire monter en niveau
    - Appliquer la correction appropriée
    - Tester la solution de manière approfondie
-   - Vérifier la pleine fonctionnalité
+   - Vérifier la fonctionnalité complète
 
 6. Documenter les résultats, les actions et les résultats
    - Mettre à jour les systèmes de tickets
@@ -621,7 +683,7 @@ Scénarios de simulation courants et solutions.
 
 ```text
 # Dépannage Matériel
-- Identifier les composants défectueux dans les assemblages de PC
+- Identifier les composants défectueux dans les configurations PC
 - Configurer les paramètres du BIOS/UEFI
 - Installer et configurer la RAM
 - Connecter correctement les périphériques de stockage
@@ -644,7 +706,7 @@ Configuration réseau et scénarios de dépannage.
 - Configuration VLAN et affectation des ports
 - Configuration ACL de routeur
 - Paramètres de sécurité des ports de commutateur
-- Configuration sans fil
+- Configuration réseau sans fil
 - Adressage IP et subnetting
 
 # Tâches de Dépannage
@@ -668,14 +730,14 @@ Implémentation de la sécurité et réponse aux incidents.
 - Segmentation réseau
 
 # Réponse aux Incidents
-- Analyse et interprétation des journaux
+- Analyse et interprétation des journaux (logs)
 - Identification des menaces
 - Évaluation des vulnérabilités
-- Implémentation de contrôles de sécurité
+- Implémentation des contrôles de sécurité
 - Stratégies d'atténuation des risques
 ```
 
-### Conseils Généraux de Simulation
+### Conseils Généraux pour les Simulations
 
 Meilleures pratiques pour les questions basées sur la performance.
 
@@ -690,7 +752,7 @@ Meilleures pratiques pour les questions basées sur la performance.
 - Comprendre les concepts sous-jacents, pas seulement les étapes
 ```
 
-## Inscription et Logistique des Examens
+## Inscription et Logistique de l'Examen
 
 ### Processus d'Inscription à l'Examen
 
@@ -720,8 +782,8 @@ Ce à quoi s'attendre et quoi apporter le jour de l'examen.
 
 ```text
 # Articles Requis
-- Pièce d'identité officielle avec photo
-- E-mail de confirmation/numéro
+- Pièce d'identité valide avec photo délivrée par le gouvernement
+- E-mail/numéro de confirmation
 - Arriver 30 minutes à l'avance
 - Aucun article personnel dans la salle d'examen
 
@@ -729,11 +791,11 @@ Ce à quoi s'attendre et quoi apporter le jour de l'examen.
 - Questions à choix multiples
 - Questions basées sur la performance (simulations)
 - Questions glisser-déposer
-- Questions à point chaud
+- Questions point chaud (hot spot)
 - Limites de temps variables selon l'examen (90-165 minutes)
 ```
 
-## Maintenance de la Certification
+## Maintenance des Certifications
 
 ### Validité de la Certification
 
@@ -741,13 +803,13 @@ Formation continue et renouvellement de la certification.
 
 ```text
 # Validité de la Certification
-La plupart des certifications CompTIA: 3 ans
-CompTIA A+: Permanent (pas d'expiration)
+La plupart des certifications CompTIA : 3 ans
+CompTIA A+ : Permanent (pas d'expiration)
 
 # Unités d'Éducation Continue (CEU)
-Security+: 50 CEU sur 3 ans
-Network+: 30 CEU sur 3 ans
-Cloud+: 30 CEU sur 3 ans
+Security+ : 50 CEU sur 3 ans
+Network+ : 30 CEU sur 3 ans
+Cloud+ : 30 CEU sur 3 ans
 
 # Activités CEU
 - Cours de formation et webinaires
@@ -757,7 +819,7 @@ Cloud+: 30 CEU sur 3 ans
 - Certifications de niveau supérieur
 ```
 
-### Avantages Professionnels
+### Avantages de Carrière
 
 Valeur et reconnaissance des certifications CompTIA.
 
@@ -769,7 +831,7 @@ Valeur et reconnaissance des certifications CompTIA.
 - Améliorations salariales
 - Opportunités d'avancement de carrière
 - Crédibilité technique
-- Base pour les certifications avancées
+- Fondation pour les certifications avancées
 ```
 
 ## Liens Pertinents

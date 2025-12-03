@@ -1,6 +1,6 @@
 ---
-title: 'CompTIA 速查表'
-description: '使用我们的综合速查表学习 CompTIA，涵盖基本命令、概念和最佳实践。'
+title: 'CompTIA 速查表 | LabEx'
+description: '使用此综合速查表学习 CompTIA IT 认证。为认证考试准备提供 CompTIA A+、Network+、Security+、Linux+ 和 IT 基础知识的快速参考。'
 pdfUrl: '/cheatsheets/pdf/comptia-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ CompTIA 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/comptia">通过实践实验室学习 CompTIA</a>
+<a target="_blank" href="https://labex.io/zh/learn/comptia">通过实战实验学习 CompTIA</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 CompTIA 认证。LabEx 提供全面的 CompTIA 课程，涵盖 A+、Network+、Security+ 和专业认证。掌握 IT 基础知识、网络、安全，并通过行业认可的证书提升您的 IT 职业生涯。
+通过实战实验和真实场景学习 CompTIA 认证。LabEx 提供全面的 CompTIA 课程，涵盖 A+、Network+、Security+ 和专业认证。掌握 IT 基础知识、网络、安全，并通过行业认可的证书提升您的 IT 职业生涯。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -46,6 +46,21 @@ CompTIA 速查表
 - 操作和事件响应
 - 治理、风险和合规性
 ```
+
+<BaseQuiz id="comptia-core-1" correct="B">
+  <template #question>
+    哪个 CompTIA 认证侧重于网络基础知识和故障排除？
+  </template>
+  
+  <BaseQuizOption value="A">CompTIA A+</BaseQuizOption>
+  <BaseQuizOption value="B" correct>CompTIA Network+</BaseQuizOption>
+  <BaseQuizOption value="C">CompTIA Security+</BaseQuizOption>
+  <BaseQuizOption value="D">CompTIA Linux+</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    CompTIA Network+ (N10-008) 侧重于网络基础知识、实施、操作、安全和故障排除。它专为网络管理员和技术人员设计。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 专业认证
 
@@ -158,47 +173,62 @@ Windows、macOS、Linux 和移动操作系统的管理。
 - 时间机器备份 (Time Machine)
 - App Store 和 Gatekeeper
 
-# Linux 基础知识
+# Linux 基础
 - 文件系统层次结构
 - 命令行操作
-- 包管理
+- 软件包管理
 - 用户和组权限
 ```
 
 ## Network+ 基础知识
 
-### OSI 模型和 TCP/IP
+### OSI 模型与 TCP/IP
 
 网络层理解和协议知识。
 
 ```text
 # OSI 7 层模型
-Layer 7: 应用层 (HTTP, HTTPS, FTP)
-Layer 6: 表示层 (SSL, TLS)
-Layer 5: 会话层 (NetBIOS, RPC)
-Layer 4: 传输层 (TCP, UDP)
-Layer 3: 网络层 (IP, ICMP, OSPF)
-Layer 2: 数据链路层 (Ethernet, PPP)
-Layer 1: 物理层 (电缆，集线器)
+第 7 层：应用层 (HTTP, HTTPS, FTP)
+第 6 层：表示层 (SSL, TLS)
+第 5 层：会话层 (NetBIOS, RPC)
+第 4 层：传输层 (TCP, UDP)
+第 3 层：网络层 (IP, ICMP, OSPF)
+第 2 层：数据链路层 (Ethernet, PPP)
+第 1 层：物理层 (电缆，集线器)
 
 # TCP/IP 协议栈
-- IPv4 与 IPv6 地址编制
+- IPv4 与 IPv6 寻址
 - 子网划分和 CIDR 表示法
 - DHCP 和 DNS 服务
 - ARP 和 ICMP 协议
 ```
+
+<BaseQuiz id="comptia-osi-1" correct="C">
+  <template #question>
+    TCP 在 OSI 模型的哪一层运行？
+  </template>
+  
+  <BaseQuizOption value="A">第 3 层（网络层）</BaseQuizOption>
+  <BaseQuizOption value="B">第 5 层（会话层）</BaseQuizOption>
+  <BaseQuizOption value="C" correct>第 4 层（传输层）</BaseQuizOption>
+  <BaseQuizOption value="D">第 7 层（应用层）</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    TCP（传输控制协议）在 OSI 模型的第 4 层（传输层）运行。该层负责可靠的数据传输、错误检查和流量控制。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 网络设备
 
 路由器、交换机和网络设备。
 
 ```text
-# 二层设备
+# 第 2 层设备
 - 交换机和 VLAN
 - 生成树协议 (STP)
-- 端口安全和 MAC 地址过滤
+- 端口安全和 MAC 过滤
 
-# 三层设备
+# 第 3 层设备
 - 路由器和路由表
 - 静态路由与动态路由
 - OSPF, EIGRP, BGP 协议
@@ -257,12 +287,27 @@ CIA 三元组和基本安全原则。
 可用性 (Availability): 系统正常运行时间和可访问性
 
 # 认证因素
-你知道的 (Something you know): 密码，PIN
-你拥有的 (Something you have): 令牌，智能卡
+你知道的 (Something you know): 密码、PIN
+你拥有的 (Something you have): 令牌、智能卡
 你是什么 (Something you are): 生物识别
 你做的 (Something you do): 行为模式
 你在哪里 (Somewhere you are): 基于位置
 ```
+
+<BaseQuiz id="comptia-cia-1" correct="A">
+  <template #question>
+    CIA 三元组在网络安全中代表什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>保密性、完整性和可用性——三个核心安全原则</BaseQuizOption>
+  <BaseQuizOption value="B">一个政府机构</BaseQuizOption>
+  <BaseQuizOption value="C">三种攻击类型</BaseQuizOption>
+  <BaseQuizOption value="D">三种认证方法</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    CIA 三元组代表信息安全的三大基本原则：保密性（防止未经授权的访问）、完整性（确保数据准确性和真实性）和可用性（确保系统和数据在需要时可访问）。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 威胁态势
 
@@ -271,9 +316,9 @@ CIA 三元组和基本安全原则。
 ```text
 # 攻击类型
 - 网络钓鱼和社会工程学
-- 恶意软件 (病毒、木马、勒索软件)
+- 恶意软件（病毒、木马、勒索软件）
 - DDoS 和 DoS 攻击
-- 中间人攻击 (Man-in-the-middle)
+- 中间人攻击
 - SQL 注入和 XSS
 - 零日漏洞
 
@@ -291,10 +336,10 @@ CIA 三元组和基本安全原则。
 
 ```text
 # 加密类型
-对称加密：AES, 3DES (使用相同密钥)
+对称加密：AES, 3DES (使用相同的密钥)
 非对称加密：RSA, ECC (使用密钥对)
 哈希：SHA-256, MD5 (单向)
-数字签名：抗否认性
+数字签名：不可否认性
 
 # 密钥管理
 - 密钥生成和分发
@@ -303,13 +348,28 @@ CIA 三元组和基本安全原则。
 - 公钥基础设施 (PKI)
 ```
 
+<BaseQuiz id="comptia-crypto-1" correct="B">
+  <template #question>
+    对称加密和非对称加密的主要区别是什么？
+  </template>
+  
+  <BaseQuizOption value="A">对称加密更快，非对称加密更慢</BaseQuizOption>
+  <BaseQuizOption value="B" correct>对称加密使用一个密钥进行加密/解密，非对称加密使用一对密钥</BaseQuizOption>
+  <BaseQuizOption value="C">对称加密用于电子邮件，非对称加密用于文件</BaseQuizOption>
+  <BaseQuizOption value="D">没有区别</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    对称加密使用相同的密钥进行加密和解密，速度更快，但需要安全的密钥分发。非对称加密使用公钥/私钥对，解决了密钥分发问题，但计算成本更高。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 访问控制
 
 身份管理和授权模型。
 
 ```text
 # 访问控制模型
-DAC: 自由裁量访问控制
+DAC: 自主访问控制
 MAC: 强制访问控制
 RBAC: 基于角色的访问控制
 ABAC: 基于属性的访问控制
@@ -318,10 +378,10 @@ ABAC: 基于属性的访问控制
 - 单点登录 (SSO)
 - 多因素认证 (MFA)
 - LDAP 和 Active Directory
-- 联合和 SAML
+- 联合身份验证和 SAML
 ```
 
-## 学习策略和技巧
+## 学习策略与技巧
 
 ### 学习计划
 
@@ -329,26 +389,26 @@ ABAC: 基于属性的访问控制
 
 ```text
 # 学习时间表
-第 1-2 周：审查考试目标
+第 1-2 周：复习考试目标
 第 3-6 周：核心材料学习
-第 7-8 周：实践操作练习
+第 7-8 周：动手实践
 第 9-10 周：模拟考试
-第 11-12 周：最后复习和考试
+第 11-12 周：最终复习和考试
 
 # 学习材料
 - CompTIA 官方学习指南
 - 视频培训课程
 - 模拟考试和模拟器
-- 实践实验室练习
+- 动手实验练习
 - 学习小组和论坛
 ```
 
-### 实践操作
+### 动手实践
 
-加强理论知识的实践经验。
+强化理论知识的实践经验。
 
 ```text
-# 实验室环境
+# 实验环境
 - VMware 或 VirtualBox 虚拟机
 - 家庭实验室设置
 - 基于云的实验室 (AWS, Azure)
@@ -373,9 +433,9 @@ CompTIA 考试的应试技巧。
 热点题：了解界面布局
 
 # 时间管理
-- 为每道题分配时间
-- 标记困难问题以供复查
-- 不要在一道题上花费过多时间
+- 为每个问题分配时间
+- 标记困难问题以便稍后复查
+- 不要在一个问题上花费过多时间
 - 最后复查标记的问题
 ```
 
@@ -384,7 +444,7 @@ CompTIA 考试的应试技巧。
 跨 CompTIA 考试的高频主题。
 
 ```text
-# 频繁测试的领域
+# 经常测试的领域
 - 故障排除方法论
 - 安全最佳实践
 - 网络协议和端口
@@ -393,11 +453,11 @@ CompTIA 考试的应试技巧。
 - 风险管理概念
 ```
 
-## 技术缩写词和术语
+## 技术缩略语和术语
 
-### 网络缩写词
+### 网络缩略语
 
-常见的网络术语和缩写。
+常见网络术语和缩写。
 
 ```text
 # 协议和标准
@@ -405,10 +465,10 @@ HTTP/HTTPS: Web 协议
 FTP/SFTP: 文件传输
 SMTP/POP3/IMAP: 电子邮件
 DNS: 域名系统
-DHCP: 动态主机配置
+DHCP: 动态主机配置协议
 TCP/UDP: 传输协议
 IP: 互联网协议
-ICMP: 互联网控制消息
+ICMP: 互联网控制消息协议
 
 # 无线和安全
 WPA/WPA2: Wi-Fi 保护访问
@@ -426,7 +486,7 @@ QoS: 服务质量
 ```text
 # 存储和内存
 HDD: 硬盘驱动器
-SSD: 固态驱动器
+SSD: 固态硬盘
 RAM: 随机存取存储器
 ROM: 只读存储器
 BIOS/UEFI: 系统固件
@@ -463,7 +523,7 @@ NIST: 国家标准与技术研究院
 ISO 27001: 安全管理标准
 ```
 
-### 云计算和虚拟化
+### 云和虚拟化
 
 现代 IT 基础设施术语。
 
@@ -486,42 +546,42 @@ CDN: 内容分发网络
 ```text
 1. 入门级
 CompTIA A+
-涵盖硬件、软件和基本故障排除技能的 IT 支持角色的基础认证。
+IT 支持角色的基础认证，涵盖硬件、软件和基本故障排除技能。
 ```
 
 ### 基础设施
 
-构建网络和服务器管理专业知识，以胜任基础设施角色。
+为基础设施角色建立网络和服务器管理专业知识。
 
 ```text
 2. 基础设施
 Network+ & Server+
-构建网络和服务器管理专业知识，以胜任基础设施角色。
+为基础设施角色建立网络和服务器管理专业知识。
 ```
 
-### 安全方向
+### 安全重点
 
 培养网络安全知识，以胜任安全分析师和管理员职位。
 
 ```text
-3. 安全方向
+3. 安全重点
 Security+ & CySA+
 培养网络安全知识，以胜任安全分析师和管理员职位。
 ```
 
 ### 专业化
 
-渗透测试和云计算的高级专业化。
+在渗透测试和云计算等领域的高级专业化。
 
 ```text
 4. 专业化
 PenTest+ & Cloud+
-渗透测试和云计算的高级专业化。
+在渗透测试和云计算等领域的高级专业化。
 ```
 
 ## 常见端口号
 
-### 公认端口 (0-1023)
+### 熟知端口 (0-1023)
 
 常见网络服务的标准端口。
 
@@ -542,7 +602,7 @@ PenTest+ & Cloud+
 端口 995: POP3S (安全 POP3)
 ```
 
-### 已注册端口 (1024-49151)
+### 注册端口 (1024-49151)
 
 常见应用和数据库端口。
 
@@ -569,25 +629,25 @@ PenTest+ & Cloud+
 
 ### CompTIA 故障排除步骤
 
-解决技术问题的标准方法。
+解决技术问题的标准方法论。
 
 ```text
 # 6 步流程
 1. 确定问题
    - 收集信息
-   - 询问用户症状
+   - 询问用户有关症状的情况
    - 识别系统变更
    - 尽可能复现问题
 
 2. 建立可能原因的理论
    - 质疑显而易见的问题
    - 考虑多种方法
-   - 从简单解决方案开始
+   - 从简单的解决方案开始
 
 3. 测试理论以确定原因
-   - 如果理论被证实，则继续
+   - 如果理论得到证实，则继续
    - 如果没有，则建立新理论
-   - 必要时升级
+   - 如果需要，则升级
 ```
 
 ### 实施和文档记录
@@ -609,22 +669,22 @@ PenTest+ & Cloud+
 6. 记录发现、操作和结果
    - 更新工单系统
    - 分享经验教训
-   - 防止未来发生
+   - 预防未来发生
 ```
 
-## 基于性能的题目技巧
+## 基于性能问题的技巧
 
-### A+ 性能题目
+### A+ 性能问题
 
 常见的模拟场景和解决方案。
 
 ```text
 # 硬件故障排除
-- 识别 PC 组装中发生故障的组件
+- 在 PC 构建中识别故障组件
 - 配置 BIOS/UEFI 设置
 - 安装和配置 RAM
 - 正确连接存储设备
-- 故障排除电源问题
+- 排除电源问题
 
 # 操作系统任务
 - Windows 安装和配置
@@ -644,7 +704,7 @@ PenTest+ & Cloud+
 - 路由器 ACL 配置
 - 交换机端口安全设置
 - 无线网络设置
-- IP 地址编制和子网划分
+- IP 寻址和子网划分
 
 # 故障排除任务
 - 电缆测试和更换
@@ -676,12 +736,12 @@ PenTest+ & Cloud+
 
 ### 通用模拟技巧
 
-基于性能题目的最佳实践。
+基于性能问题的最佳实践。
 
 ```text
 # 成功策略
 - 仔细并完整地阅读说明
-- 在进行更改之前截图
+- 在进行更改之前截屏
 - 实施后测试配置
 - 使用排除法
 - 有效管理时间
@@ -693,7 +753,7 @@ PenTest+ & Cloud+
 
 ### 考试注册流程
 
-安排 CompTIA 考试的步骤。
+安排 CompTIA 考试的步骤和准备工作。
 
 ```text
 # 注册步骤
@@ -702,10 +762,10 @@ PenTest+ & Cloud+
 3. 选择考试中心或在线选项
 4. 安排考试日期和时间
 5. 支付考试费用
-6. 接收确认邮件
+6. 接收确认电子邮件
 
 # 考试费用 (美元，近似值)
-CompTIA A+: $239/每门 (共 2 门)
+CompTIA A+: $239/次 (共 2 次)
 CompTIA Network+: $358
 CompTIA Security+: $370
 CompTIA Cloud+: $358
@@ -713,23 +773,23 @@ CompTIA PenTest+: $370
 CompTIA CySA+: $392
 ```
 
-### 考试当天准备
+### 考试日准备
 
-考试当天需要携带和期望的事项。
+考试当天需要携带的物品和注意事项。
 
 ```text
-# 所需物品
+# 必需物品
 - 有效的政府颁发的带照片身份证件
-- 确认邮件/编号
+- 确认邮件/号码
 - 提前 30 分钟到达
 - 考试室内禁止携带个人物品
 
 # 考试形式
 - 多项选择题
-- 基于性能的题目 (模拟)
+- 基于性能的题目（模拟）
 - 拖放题
 - 热点题
-- 时间限制因考试而异 (90-165 分钟)
+- 时间限制因考试而异（90-165 分钟）
 ```
 
 ## 认证维护
@@ -741,7 +801,7 @@ CompTIA CySA+: $392
 ```text
 # 认证有效期
 大多数 CompTIA 认证：3 年
-CompTIA A+: 永久有效 (无过期)
+CompTIA A+：永久有效（不作废）
 
 # 继续教育单元 (CEU)
 Security+: 3 年内 50 CEU
@@ -764,7 +824,7 @@ CompTIA 认证的价值和认可度。
 # 行业认可
 - DOD 8570 批准 (Security+)
 - 政府承包商要求
-- 招聘人员的职位申请筛选
+- 招聘人员筛选工作申请
 - 薪资提升
 - 职业发展机会
 - 技术信誉
@@ -776,7 +836,7 @@ CompTIA 认证的价值和认可度。
 - <router-link to="/linux">Linux 速查表</router-link>
 - <router-link to="/cybersecurity">网络安全速查表</router-link>
 - <router-link to="/network">网络速查表</router-link>
-- <router-link to="/rhel">Red Hat Enterprise Linux 速查表</router-link>
+- <router-link to="/rhel">Red Hat 企业 Linux 速查表</router-link>
 - <router-link to="/devops">DevOps 速查表</router-link>
 - <router-link to="/docker">Docker 速查表</router-link>
 - <router-link to="/kubernetes">Kubernetes 速查表</router-link>

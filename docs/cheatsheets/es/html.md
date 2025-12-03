@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de HTML'
-description: 'Aprenda HTML con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de HTML | LabEx'
+description: 'Aprenda HTML5 con esta hoja de trucos completa. Referencia rápida de etiquetas HTML, elementos semánticos, formularios, accesibilidad y estándares modernos de desarrollo web para desarrolladores frontend.'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 
@@ -39,6 +39,21 @@ Cada documento HTML comienza con una declaración de tipo de documento y sigue u
 </html>
 ```
 
+<BaseQuiz id="html-doctype-1" correct="A">
+  <template #question>
+    ¿Cuál es el propósito de `<!DOCTYPE html>`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Declara el tipo de documento y la versión de HTML</BaseQuizOption>
+  <BaseQuizOption value="B">Crea un nuevo elemento HTML</BaseQuizOption>
+  <BaseQuizOption value="C">Vincula a una hoja de estilo externa</BaseQuizOption>
+  <BaseQuizOption value="D">Establece el título de la página</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La declaración `<!DOCTYPE html>` le dice al navegador qué versión de HTML está utilizando el documento. Para HTML5, esta simple declaración es suficiente y debe ser la primera línea de cada documento HTML.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Elementos Head: `<head>`
 
 La sección head contiene metadatos sobre el documento.
@@ -74,16 +89,16 @@ Los elementos HTML consisten en etiquetas de apertura, contenido y etiquetas de 
 
 ```html
 <!-- Elemento con contenido -->
-<p>Este es un párrafo</p>
-<!-- Elementos de autocierre -->
+<p>This is a paragraph</p>
+<!-- Elementos auto-cerrados -->
 <img src="image.jpg" alt="Description" />
 <br />
 <hr />
 <!-- Elementos con atributos -->
-<a href="https://example.com" target="_blank">Enlace</a>
+<a href="https://example.com" target="_blank">Link</a>
 <!-- Elementos anidados -->
 <div>
-  <p>Párrafo anidado</p>
+  <p>Nested paragraph</p>
 </div>
 ```
 
@@ -94,13 +109,28 @@ Los elementos HTML consisten en etiquetas de apertura, contenido y etiquetas de 
 Definen la jerarquía e importancia de las secciones de contenido.
 
 ```html
-<h1>Título Principal</h1>
-<h2>Título de Sección</h2>
-<h3>Título de Subsección</h3>
-<h4>Título de Sub-subsección</h4>
-<h5>Encabezado Menor</h5>
-<h6>Encabezado Más Pequeño</h6>
+<h1>Main Title</h1>
+<h2>Section Title</h2>
+<h3>Subsection Title</h3>
+<h4>Sub-subsection Title</h4>
+<h5>Minor Heading</h5>
+<h6>Smallest Heading</h6>
 ```
+
+<BaseQuiz id="html-headings-1" correct="B">
+  <template #question>
+    ¿Cuál es la jerarquía correcta de encabezados?
+  </template>
+  
+  <BaseQuizOption value="A">h1 debe usarse varias veces en una página</BaseQuizOption>
+  <BaseQuizOption value="B" correct>h1 debe usarse una vez como título principal, seguido de h2, h3, etc.</BaseQuizOption>
+  <BaseQuizOption value="C">Todos los encabezados tienen la misma importancia</BaseQuizOption>
+  <BaseQuizOption value="D">h6 es el encabezado más importante</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Los encabezados HTML deben seguir una jerarquía lógica: usa un `h1` para el título principal de la página, luego `h2` para las secciones principales, `h3` para las subsecciones, y así sucesivamente. Esto ayuda con la accesibilidad y el SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Párrafos: `p`
 
@@ -108,10 +138,10 @@ El elemento más común para bloques de contenido de texto.
 
 ```html
 <p>
-  Este es un párrafo de texto. Puede contener múltiples oraciones y se ajustará
-  automáticamente.
+  This is a paragraph of text. It can contain multiple sentences and will wrap
+  automatically.
 </p>
-<p>Este es otro párrafo. Los párrafos están separados por espacio de margen.</p>
+<p>This is another paragraph. Paragraphs are separated by margin space.</p>
 ```
 
 ### Formato de Texto: `<strong>`, `<em>`, `<b>`, `<i>`
@@ -119,15 +149,15 @@ El elemento más común para bloques de contenido de texto.
 Elementos para enfatizar y dar estilo al texto en línea.
 
 ```html
-<strong>Importancia fuerte (negrita)</strong>
-<em>Énfasis (cursiva)</em>
-<b>Texto en negrita</b>
-<i>Texto en cursiva</i>
-<u>Texto subrayado</u>
-<mark>Texto resaltado</mark>
-<small>Texto pequeño</small>
-<del>Texto eliminado</del>
-<ins>Texto insertado</ins>
+<strong>Strong importance (bold)</strong>
+<em>Emphasis (italic)</em>
+<b>Bold text</b>
+<i>Italic text</i>
+<u>Underlined text</u>
+<mark>Highlighted text</mark>
+<small>Small text</small>
+<del>Deleted text</del>
+<ins>Inserted text</ins>
 ```
 
 ### Saltos de Línea y Espacio: `<br>`, `<hr>`, `<pre>`
@@ -136,15 +166,15 @@ Controlan el flujo de texto y el espaciado dentro del contenido.
 
 ```html
 <!-- Salto de línea -->
-Línea 1<br />
-Línea 2
+Line 1<br />
+Line 2
 <!-- Regla horizontal -->
 <hr />
 <!-- Texto preformateado -->
 <pre>
-  Texto con
-    espaciado    preservado
-      y saltos de línea
+  Text with
+    preserved    spacing
+      and line breaks
 </pre>
 <!-- Formato de código -->
 <code>console.log('Hello');</code>
@@ -158,17 +188,17 @@ Crea listas con viñetas para elementos no secuenciales.
 
 ```html
 <ul>
-  <li>Primer elemento</li>
-  <li>Segundo elemento</li>
-  <li>Tercer elemento</li>
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
 </ul>
 <!-- Listas anidadas -->
 <ul>
   <li>
-    Elemento principal
+    Main item
     <ul>
-      <li>Sub elemento 1</li>
-      <li>Sub elemento 2</li>
+      <li>Sub item 1</li>
+      <li>Sub item 2</li>
     </ul>
   </li>
 </ul>
@@ -180,19 +210,19 @@ Crea listas numeradas para elementos secuenciales.
 
 ```html
 <ol>
-  <li>Primer paso</li>
-  <li>Segundo paso</li>
-  <li>Tercer paso</li>
+  <li>First step</li>
+  <li>Second step</li>
+  <li>Third step</li>
 </ol>
 <!-- Numeración personalizada -->
 <ol start="5">
-  <li>Elemento 5</li>
-  <li>Elemento 6</li>
+  <li>Item 5</li>
+  <li>Item 6</li>
 </ol>
 <!-- Tipos de numeración diferentes -->
 <ol type="A">
-  <li>Elemento A</li>
-  <li>Elemento B</li>
+  <li>Item A</li>
+  <li>Item B</li>
 </ol>
 ```
 
@@ -209,7 +239,7 @@ Crea listas de términos y sus descripciones.
   <dd>Cascading Style Sheets</dd>
 
   <dt>JavaScript</dt>
-  <dd>Lenguaje de programación para la web</dd>
+  <dd>Programming language for web</dd>
 </dl>
 ```
 
@@ -219,17 +249,32 @@ Crea hipervínculos y estructuras de navegación.
 
 ```html
 <!-- Enlace básico -->
-<a href="https://example.com">Visitar Ejemplo</a>
+<a href="https://example.com">Visit Example</a>
 <!-- Enlace en nueva pestaña -->
-<a href="https://example.com" target="_blank">Nueva Pestaña</a>
+<a href="https://example.com" target="_blank">New Tab</a>
 <!-- Enlace de correo electrónico -->
-<a href="mailto:email@example.com">Enviar Correo</a>
+<a href="mailto:email@example.com">Send Email</a>
 <!-- Enlace telefónico -->
-<a href="tel:+1234567890">Llámanos</a>
+<a href="tel:+1234567890">Call Us</a>
 <!-- Anclas de página internas -->
-<a href="#section1">Ir a Sección 1</a>
-<h2 id="section1">Sección 1</h2>
+<a href="#section1">Go to Section 1</a>
+<h2 id="section1">Section 1</h2>
 ```
+
+<BaseQuiz id="html-links-1" correct="B">
+  <template #question>
+    ¿Qué hace `target="_blank"` en una etiqueta de anclaje?
+  </template>
+  
+  <BaseQuizOption value="A">Abre el enlace en la misma ventana</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Abre el enlace en una nueva pestaña o ventana</BaseQuizOption>
+  <BaseQuizOption value="C">Cierra la ventana actual</BaseQuizOption>
+  <BaseQuizOption value="D">Descarga el enlace</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El atributo `target="_blank"` abre la página enlazada en una nueva pestaña o ventana del navegador, permitiendo a los usuarios mantener abierta la página original.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Formularios y Elementos de Entrada
 
@@ -239,13 +284,13 @@ La base para la recopilación de entradas del usuario.
 
 ```html
 <form action="/submit" method="POST">
-  <label for="username">Nombre de usuario:</label>
+  <label for="username">Username:</label>
   <input type="text" id="username" name="username" required />
 
-  <label for="email">Correo electrónico:</label>
+  <label for="email">Email:</label>
   <input type="email" id="email" name="email" required />
 
-  <input type="submit" value="Enviar" />
+  <input type="submit" value="Submit" />
 </form>
 ```
 
@@ -255,9 +300,9 @@ Varios tipos de entrada para diferentes necesidades de recopilación de datos.
 
 ```html
 <!-- Entradas de texto -->
-<input type="text" placeholder="Ingresar texto" />
+<input type="text" placeholder="Enter text" />
 <input type="email" placeholder="email@example.com" />
-<input type="password" placeholder="Contraseña" />
+<input type="password" placeholder="Password" />
 <input type="url" placeholder="https://example.com" />
 <input type="tel" placeholder="+1234567890" />
 <!-- Entradas numéricas -->
@@ -276,24 +321,24 @@ Elementos de formulario adicionales para la interacción del usuario.
 ```html
 <!-- Checkboxes -->
 <input type="checkbox" id="agree" name="agree" />
-<label for="agree">Acepto los términos</label>
+<label for="agree">I agree to terms</label>
 <!-- Botones de radio -->
 <input type="radio" id="option1" name="choice" value="1" />
-<label for="option1">Opción 1</label>
+<label for="option1">Option 1</label>
 <input type="radio" id="option2" name="choice" value="2" />
-<label for="option2">Opción 2</label>
-<!-- Menú desplegable (Select) -->
+<label for="option2">Option 2</label>
+<!-- Menú desplegable Select -->
 <select name="country">
-  <option value="us">Estados Unidos</option>
-  <option value="uk">Reino Unido</option>
-  <option value="ca">Canadá</option>
+  <option value="us">United States</option>
+  <option value="uk">United Kingdom</option>
+  <option value="ca">Canada</option>
 </select>
 <!-- Textarea -->
 <textarea
   name="message"
   rows="4"
   cols="50"
-  placeholder="Escriba su mensaje"
+  placeholder="Enter your message"
 ></textarea>
 ```
 
@@ -309,6 +354,21 @@ Atributos de validación de formularios integrados en HTML.
 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
 ```
 
+<BaseQuiz id="html-validation-1" correct="A">
+  <template #question>
+    ¿Qué hace el atributo `required` en una entrada HTML?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Evita el envío del formulario si el campo está vacío</BaseQuizOption>
+  <BaseQuizOption value="B">Hace que el campo solo de lectura</BaseQuizOption>
+  <BaseQuizOption value="C">Oculta el campo</BaseQuizOption>
+  <BaseQuizOption value="D">Establece un valor predeterminado</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El atributo `required` hace que un campo de entrada sea obligatorio. Si el campo está vacío al enviar el formulario, el navegador evitará el envío y mostrará un mensaje de validación.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Elementos Multimedia
 
 ### Imágenes: `<img>`, `<picture>`
@@ -317,12 +377,12 @@ Muestra imágenes con varios atributos y opciones.
 
 ```html
 <!-- Imagen básica -->
-<img src="image.jpg" alt="Descripción" />
+<img src="image.jpg" alt="Description" />
 <!-- Imagen responsiva -->
 <img src="image.jpg" alt="Description" width="100%" height="auto" />
 <!-- Imagen con tamaño -->
 <img src="image.jpg" alt="Description" width="300" height="200" />
-<!-- Elemento picture para imágenes responsivas -->
+<!-- Elemento Picture para imágenes responsivas -->
 <picture>
   <source media="(min-width: 800px)" srcset="large.jpg" />
   <source media="(min-width: 400px)" srcset="medium.jpg" />
@@ -339,7 +399,7 @@ Incorpora contenido de audio con controles de reproducción.
 <audio controls>
   <source src="audio.mp3" type="audio/mpeg" />
   <source src="audio.ogg" type="audio/ogg" />
-  Tu navegador no soporta audio.
+  Your browser does not support audio.
 </audio>
 <!-- Audio con reproducción automática -->
 <audio controls autoplay loop>
@@ -356,7 +416,7 @@ Incorpora contenido de video con opciones completas.
 <video controls width="400" height="300">
   <source src="video.mp4" type="video/mp4" />
   <source src="video.webm" type="video/webm" />
-  Tu navegador no soporta video.
+  Your browser does not support video.
 </video>
 <!-- Video con póster y atributos -->
 <video controls poster="thumbnail.jpg" width="100%" height="auto">
@@ -392,9 +452,9 @@ Crea visualizaciones de datos estructurados con tablas.
 <table>
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Edad</th>
-      <th>Ciudad</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
     </tr>
   </thead>
   <tbody>
@@ -414,12 +474,12 @@ Crea visualizaciones de datos estructurados con tablas.
 
 ### Características Avanzadas de Tabla: `rowspan`, `colspan`, `<caption>`
 
-Funcionalidad mejorada de tablas con expansión y agrupación.
+Funcionalidad de tabla mejorada con expansión y agrupación.
 
 ```html
 <table>
   <caption>
-    Informe de Ventas
+    Sales Report
   </caption>
   <colgroup>
     <col style="width: 50%" />
@@ -428,17 +488,17 @@ Funcionalidad mejorada de tablas con expansión y agrupación.
   </colgroup>
   <thead>
     <tr>
-      <th rowspan="2">Producto</th>
-      <th colspan="2">Ventas</th>
+      <th rowspan="2">Product</th>
+      <th colspan="2">Sales</th>
     </tr>
     <tr>
-      <th>T1</th>
-      <th>T2</th>
+      <th>Q1</th>
+      <th>Q2</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Producto A</td>
+      <td>Product A</td>
       <td>$1000</td>
       <td>$1200</td>
     </tr>
@@ -457,28 +517,28 @@ Definen las secciones principales del diseño de tu página.
 <header>
   <nav>
     <ul>
-      <li><a href="#home">Inicio</a></li>
-      <li><a href="#about">Acerca de</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
     </ul>
   </nav>
 </header>
 <!-- Contenido principal -->
 <main>
   <article>
-    <h1>Título del Artículo</h1>
-    <p>Contenido del artículo...</p>
+    <h1>Article Title</h1>
+    <p>Article content...</p>
   </article>
 </main>
 <!-- Barra lateral -->
 <aside>
-  <h2>Enlaces Relacionados</h2>
+  <h2>Related Links</h2>
   <ul>
-    <li><a href="#">Enlace 1</a></li>
+    <li><a href="#">Link 1</a></li>
   </ul>
 </aside>
 <!-- Pie de página de la página -->
 <footer>
-  <p>© 2024 Nombre de la Compañía</p>
+  <p>© 2024 Company Name</p>
 </footer>
 ```
 
@@ -489,25 +549,25 @@ Organizan y agrupan secciones de contenido relacionado.
 ```html
 <!-- Sección genérica -->
 <section>
-  <h2>Título de Sección</h2>
-  <p>Contenido de la sección...</p>
+  <h2>Section Title</h2>
+  <p>Section content...</p>
 </section>
 <!-- Artículo independiente -->
 <article>
   <header>
-    <h1>Título del Artículo</h1>
-    <time datetime="2024-01-01">1 de Enero, 2024</time>
+    <h1>Article Title</h1>
+    <time datetime="2024-01-01">January 1, 2024</time>
   </header>
-  <p>Contenido del artículo...</p>
+  <p>Article content...</p>
 </article>
 <!-- Contenedor genérico -->
 <div class="container">
-  <p>Agrupación de contenido genérico</p>
+  <p>Generic content grouping</p>
 </div>
 <!-- Figura con pie de foto -->
 <figure>
-  <img src="chart.jpg" alt="Gráfico de Ventas" />
-  <figcaption>Datos de ventas para el T1 2024</figcaption>
+  <img src="chart.jpg" alt="Sales Chart" />
+  <figcaption>Sales data for Q1 2024</figcaption>
 </figure>
 ```
 
@@ -519,19 +579,19 @@ Atributos que se pueden usar en cualquier elemento HTML.
 
 ```html
 <!-- ID para identificación única -->
-<div id="unique-element">Contenido</div>
+<div id="unique-element">Content</div>
 <!-- Clase para estilo y selección -->
-<p class="highlight important">Texto</p>
+<p class="highlight important">Text</p>
 <!-- Título para tooltips -->
-<span title="Este es un tooltip">Pasa el ratón sobre mí</span>
+<span title="This is a tooltip">Hover me</span>
 <!-- Atributos de datos -->
-<div data-user-id="123" data-role="admin">Usuario</div>
+<div data-user-id="123" data-role="admin">User</div>
 <!-- Idioma -->
 <p lang="es">Hola mundo</p>
 <!-- Dirección del contenido -->
-<p dir="rtl">Texto de derecha a izquierda</p>
+<p dir="rtl">Right to left text</p>
 <!-- Elementos ocultos -->
-<div hidden>Esto no se mostrará</div>
+<div hidden>This won't be displayed</div>
 ```
 
 ### Atributos de Accesibilidad: `alt`, `aria-*`, `tabindex`, `role`
@@ -540,19 +600,19 @@ Atributos que mejoran la accesibilidad y la experiencia del usuario.
 
 ```html
 <!-- Texto alternativo para imágenes -->
-<img src="photo.jpg" alt="Un atardecer sobre montañas" />
+<img src="photo.jpg" alt="A sunset over mountains" />
 <!-- Etiquetas ARIA -->
-<button aria-label="Cerrar diálogo">×</button>
-<div aria-hidden="true">Contenido decorativo</div>
+<button aria-label="Close dialog">×</button>
+<div aria-hidden="true">Decorative content</div>
 <!-- Accesibilidad del formulario -->
-<label for="email">Dirección de Correo Electrónico:</label>
+<label for="email">Email Address:</label>
 <input type="email" id="email" aria-describedby="email-help" />
-<small id="email-help">Nunca compartiremos tu correo</small>
+<small id="email-help">We'll never share your email</small>
 <!-- Índice de tabulación -->
-<div tabindex="0">Div enfocable</div>
-<div tabindex="-1">Div enfocable programáticamente</div>
+<div tabindex="0">Focusable div</div>
+<div tabindex="-1">Programmatically focusable</div>
 <!-- Atributo de rol -->
-<div role="button" tabindex="0">Botón personalizado</div>
+<div role="button" tabindex="0">Custom button</div>
 ```
 
 ## Características Modernas de HTML5
@@ -564,7 +624,7 @@ HTML5 introdujo nuevos tipos de entrada y atributos.
 ```html
 <!-- Nuevos tipos de entrada -->
 <input type="color" value="#ff0000" />
-<input type="search" placeholder="Buscar..." />
+<input type="search" placeholder="Search..." />
 <input type="file" accept="image/*" multiple />
 <!-- Datalist para autocompletado -->
 <input list="browsers" name="browser" />
@@ -580,12 +640,12 @@ HTML5 introdujo nuevos tipos de entrada y atributos.
 
 ### Canvas y SVG: `<canvas>`, `<svg>`
 
-Capacidades gráficas y de dibujo en HTML5.
+Capacidades de gráficos y dibujo en HTML5.
 
 ```html
 <!-- Canvas para gráficos dinámicos -->
 <canvas id="myCanvas" width="400" height="200">
-  Tu navegador no soporta canvas.
+  Your browser does not support canvas.
 </canvas>
 <!-- SVG en línea -->
 <svg width="100" height="100">
@@ -599,34 +659,33 @@ Crea secciones de contenido colapsables sin JavaScript.
 
 ```html
 <details>
-  <summary>Haz clic para expandir</summary>
+  <summary>Click to expand</summary>
   <p>
-    Este contenido está oculto por defecto y se revela al hacer clic en el
-    resumen.
+    This content is hidden by default and revealed when clicking the summary.
   </p>
   <ul>
-    <li>Elemento 1</li>
-    <li>Elemento 2</li>
+    <li>Item 1</li>
+    <li>Item 2</li>
   </ul>
 </details>
 <details open>
-  <summary>Esto comienza expandido</summary>
-  <p>Contenido visible por defecto.</p>
+  <summary>This starts expanded</summary>
+  <p>Content visible by default.</p>
 </details>
 ```
 
 ### Elemento Dialog: `<dialog>`
 
-Funcionalidad nativa de diálogo y modal en HTML.
+Funcionalidad nativa de diálogo y modal.
 
 ```html
-<!-- Elemento de diálogo -->
+<!-- Elemento Dialog -->
 <dialog id="myDialog">
-  <h2>Título del Diálogo</h2>
-  <p>El contenido del diálogo va aquí.</p>
-  <button onclick="closeDialog()">Cerrar</button>
+  <h2>Dialog Title</h2>
+  <p>Dialog content goes here.</p>
+  <button onclick="closeDialog()">Close</button>
 </dialog>
-<button onclick="openDialog()">Abrir Diálogo</button>
+<button onclick="openDialog()">Open Dialog</button>
 <script>
   function openDialog() {
     document.getElementById('myDialog').showModal()
@@ -649,14 +708,14 @@ Escribe HTML limpio, mantenible y accesible.
 <footer>...</footer>
 <!-- Anidación correcta -->
 <div>
-  <p>Contenido anidado correctamente</p>
+  <p>Properly nested content</p>
 </div>
 <!-- Usa minúsculas para elementos y atributos -->
 <img src="image.jpg" alt="description" />
 <!-- Cierra todas las etiquetas -->
-<p>Siempre cierra tus etiquetas</p>
+<p>Always close your tags</p>
 <!-- Usa texto alt significativo -->
-<img src="chart.png" alt="Las ventas aumentaron un 25% en el T4" />
+<img src="chart.png" alt="Sales increased 25% in Q4" />
 ```
 
 ### Validación y Depuración de HTML
@@ -669,13 +728,13 @@ Asegúrate de que tu HTML sea válido y accesible.
 <!-- Errores comunes de validación -->
 <!-- Faltan atributos alt -->
 <img src="image.jpg" alt="" />
-<!-- Proporcionar texto alt -->
+<!-- Proporciona texto alt -->
 <!-- Etiquetas sin cerrar -->
-<p>Contenido de texto</p>
+<p>Text content</p>
 <!-- Siempre cierra las etiquetas -->
 <!-- Anidación inválida -->
 <p>
-  Contenido de párrafo válido
+  Valid paragraph content
   <!-- No coloques elementos de bloque dentro de párrafos -->
 </p>
 <!-- Usa herramientas de desarrollador -->
@@ -684,21 +743,21 @@ Asegúrate de que tu HTML sea válido y accesible.
 <!-- Valida la accesibilidad con WAVE o axe -->
 ```
 
-## Plantillas y Frameworks HTML
+## Motores de Plantillas y Frameworks HTML
 
 ### Motores de Plantillas: Handlebars, Mustache
 
 Generación dinámica de HTML con lenguajes de plantillas.
 
 ```html
-<!-- Plantilla Handlebars -->
+<!-- Plantilla de Handlebars -->
 <div>
   <h1>{{title}}</h1>
   {{#each items}}
   <p>{{this}}</p>
   {{/each}}
 </div>
-<!-- Plantilla Mustache -->
+<!-- Plantilla de Mustache -->
 <div>
   <h1>{{title}}</h1>
   {{#items}}
@@ -722,7 +781,7 @@ Elementos HTML personalizados reutilizables.
   <p><slot></slot></p>
 </template>
 <!-- Uso -->
-<my-component>Hola Mundo</my-component>
+<my-component>Hello World</my-component>
 <script>
   class MyComponent extends HTMLElement {
     // Lógica del componente
@@ -733,21 +792,21 @@ Elementos HTML personalizados reutilizables.
 
 ### Integración de Frameworks: React JSX, Plantillas Vue
 
-HTML dentro de frameworks JavaScript modernos.
+HTML dentro de frameworks de JavaScript modernos.
 
 ```html
 <!-- React JSX -->
 function Component() { return (
 <div className="container">
   <h1>{title}</h1>
-  <p>Contenido aquí</p>
+  <p>Content here</p>
 </div>
 ); }
-<!-- Plantilla Vue -->
+<!-- Plantilla de Vue -->
 <template>
   <div class="container">
     <h1>{{ title }}</h1>
-    <p v-if="showContent">Contenido aquí</p>
+    <p v-if="showContent">Content here</p>
   </div>
 </template>
 ```

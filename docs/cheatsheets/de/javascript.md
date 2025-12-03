@@ -1,6 +1,6 @@
 ---
-title: 'JavaScript Spickzettel'
-description: 'Lernen Sie JavaScript mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'JavaScript Spickzettel | LabEx'
+description: 'Lernen Sie JavaScript-Programmierung mit diesem umfassenden Spickzettel. Schnelle Referenz für JS-Syntax, ES6+, DOM-Manipulation, Async/Await, Node.js und moderne Webentwicklung.'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ JavaScript Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/javascript">Learn JavaScript with Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/javascript">Lernen Sie JavaScript mit praktischen Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie die JavaScript-Programmierung durch praktische Übungen und reale Szenarien. LabEx bietet umfassende JavaScript-Kurse, die wesentliche Syntax, Funktionen, DOM-Manipulation, asynchrone Programmierung und moderne ES6+-Funktionen abdecken. Meistern Sie JavaScript für effiziente Webentwicklung und Programmier-Workflows.
+Lernen Sie die JavaScript-Programmierung durch praktische Labs und reale Szenarien. LabEx bietet umfassende JavaScript-Kurse, die wesentliche Syntax, Funktionen, DOM-Manipulation, asynchrone Programmierung und moderne ES6+-Funktionen abdecken. Meistern Sie JavaScript für effiziente Webentwicklung und Programmier-Workflows.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -39,6 +39,21 @@ user.age = 30 // Objekteigenschaften können geändert werden
 // Funktions-scoped (in modernem JS vermeiden)
 var oldVariable = 'legacy'
 ```
+
+<BaseQuiz id="javascript-let-const-1" correct="B">
+  <template #question>
+    Was ist der Hauptunterschied zwischen `let` und `const`?
+  </template>
+  
+  <BaseQuizOption value="A">let ist funktions-scoped, const ist block-scoped</BaseQuizOption>
+  <BaseQuizOption value="B" correct>let erlaubt Neuzuweisung, const erlaubt keine Neuzuweisung</BaseQuizOption>
+  <BaseQuizOption value="C">const kann nur für Zahlen verwendet werden, let kann für jeden Typ verwendet werden</BaseQuizOption>
+  <BaseQuizOption value="D">Es gibt keinen Unterschied</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Sowohl `let` als auch `const` sind block-scoped, aber `let` erlaubt es Ihnen, die Variable neu zuzuweisen, während `const` die Neuzuweisung verhindert. Objekte, die mit `const` deklariert wurden, können jedoch immer noch ihre Eigenschaften ändern.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Primitive Typen
 
@@ -137,7 +152,7 @@ const add = function (a, b) {
   return a + b
 }
 
-// Pfeilfunktion (kurz)
+// Pfeilfunktion (prägnant)
 const subtract = (a, b) => a - b
 
 // Pfeilfunktion mit Block-Body
@@ -147,9 +162,24 @@ const processData = (data) => {
 }
 ```
 
+<BaseQuiz id="javascript-arrow-1" correct="C">
+  <template #question>
+    Was ist ein Schlüsselmerkmal von Pfeilfunktionen?
+  </template>
+  
+  <BaseQuizOption value="A">Sie werden wie Funktionsdeklarationen gehoisted</BaseQuizOption>
+  <BaseQuizOption value="B">Sie haben ihre eigene `this`-Bindung</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Sie erben `this` aus dem umgebenden Gültigkeitsbereich</BaseQuizOption>
+  <BaseQuizOption value="D">Sie können keine Werte zurückgeben</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Pfeilfunktionen haben keine eigene `this`-Bindung. Stattdessen erben sie `this` aus dem lexikalischen (umgebenden) Gültigkeitsbereich, was sie nützlich für Callbacks und Event-Handler macht, bei denen der Kontext beibehalten werden soll.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Funktionen höherer Ordnung
 
-Funktionen, die andere Funktionen als Argumente nehmen oder zurückgeben.
+Funktionen, die andere Funktionen als Argumente entgegennehmen oder zurückgeben.
 
 ```javascript
 // Funktion, die eine Funktion zurückgibt
@@ -183,7 +213,7 @@ const doubled = numbers.map((x) => x * 2)
 const evens = numbers.filter((x) => x % 2 === 0)
 // [2, 4]
 
-// Auf einen einzelnen Wert reduzieren
+// Zu einem einzelnen Wert reduzieren
 const sum = numbers.reduce((acc, curr) => acc + curr, 0)
 // 15
 
@@ -193,6 +223,21 @@ const result = numbers
   .map((x) => x * 3)
   .reduce((a, b) => a + b, 0)
 ```
+
+<BaseQuiz id="javascript-array-1" correct="A">
+  <template #question>
+    Was gibt `filter()` zurück?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Ein neues Array mit Elementen, die den Test bestehen</BaseQuizOption>
+  <BaseQuizOption value="B">Das erste Element, das den Test besteht</BaseQuizOption>
+  <BaseQuizOption value="C">Ein einzelner Wert, der aus dem Array reduziert wurde</BaseQuizOption>
+  <BaseQuizOption value="D">Das ursprüngliche Array, das an Ort und Stelle geändert wurde</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Methode `filter()` erstellt ein neues Array, das alle Elemente enthält, die den durch die bereitgestellte Funktion implementierten Test bestehen. Sie modifiziert nicht das ursprüngliche Array.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Array-Dienstprogramme: `find()`, `includes()`, `sort()`
 
@@ -217,7 +262,7 @@ const sorted = users.sort((a, b) => a.age - b.age)
 
 ### Objekterstellung & -manipulation
 
-Mit Objekten und deren Eigenschaften arbeiten.
+Mit Objekten und ihren Eigenschaften arbeiten.
 
 ```javascript
 // Objektliteral
@@ -234,7 +279,7 @@ Object.keys(person) // ['name', 'age', 'greet']
 Object.values(person) // ['John', 30, function]
 Object.entries(person) // [['name', 'John'], ...]
 
-// Objektnachbildung
+// Objektzuweisung
 const newPerson = Object.assign({}, person, { age: 31 })
 ```
 
@@ -279,9 +324,24 @@ const listItems = document.querySelectorAll('li')
 const buttonsArray = Array.from(allButtons)
 ```
 
+<BaseQuiz id="javascript-dom-1" correct="C">
+  <template #question>
+    Was ist der Unterschied zwischen `querySelector()` und `querySelectorAll()`?
+  </template>
+  
+  <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="B">querySelector ist schneller</BaseQuizOption>
+  <BaseQuizOption value="C" correct>querySelector gibt das erste passende Element zurück, querySelectorAll gibt alle passenden Elemente zurück</BaseQuizOption>
+  <BaseQuizOption value="D">querySelector funktioniert mit IDs, querySelectorAll funktioniert mit Klassen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `querySelector()` gibt das erste Element zurück, das mit dem CSS-Selektor übereinstimmt, während `querySelectorAll()` eine NodeList zurückgibt, die alle übereinstimmenden Elemente enthält. Verwenden Sie `querySelector()`, wenn Sie ein Element benötigen, und `querySelectorAll()`, wenn Sie mehrere benötigen.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Elementmodifikation
 
-Inhalt, Attribute und Stile ändern.
+Textinhalt, Attribute und Stile ändern.
 
 ```javascript
 // Textinhalt ändern
@@ -331,7 +391,7 @@ element.style.color = 'red'
 element.style.backgroundColor = 'blue'
 element.style.fontSize = '16px'
 
-// Mehrere Stile setzen
+// Mehrere Stile festlegen
 Object.assign(element.style, {
   width: '100px',
   height: '50px',
@@ -345,17 +405,17 @@ const color = styles.getPropertyValue('color')
 
 ## Ereignisbehandlung
 
-### Event-Listener hinzufügen
+### Hinzufügen von Event-Listenern
 
 Auf Benutzerinteraktionen und Browserereignisse reagieren.
 
 ```javascript
-// Grundlegender Event-Listener
+// Basis-Event-Listener
 button.addEventListener('click', function (event) {
   console.log('Button geklickt!')
 })
 
-// Pfeilfunktions-Event-Handler
+// Event-Handler als Pfeilfunktion
 button.addEventListener('click', (e) => {
   e.preventDefault() // Standardverhalten verhindern
   console.log('Geklickt:', e.target)
@@ -368,7 +428,7 @@ element.addEventListener('scroll', handler, {
 })
 ```
 
-### Ereignistypen & Eigenschaften
+### Ereignistypen & -eigenschaften
 
 Häufige Ereignisse und Eigenschaften des Ereignisobjekts.
 
@@ -392,7 +452,7 @@ form.addEventListener('submit', handleSubmit)
 
 ### Ereignisdelegation
 
-Ereignisse auf mehreren Elementen effizient behandeln.
+Ereignisse für mehrere Elemente effizient behandeln.
 
 ```javascript
 // Ereignisdelegation am Elternelement
@@ -423,7 +483,7 @@ const customEvent = new CustomEvent('userLogin', {
 // Ereignis auslösen
 element.dispatchEvent(customEvent)
 
-// Auf benutzerdefiniertes Ereignis lauschen
+// Auf benutzerdefiniertes Ereignis hören
 element.addEventListener('userLogin', (e) => {
   console.log('Benutzer angemeldet:', e.detail.username)
 })
@@ -433,7 +493,7 @@ element.addEventListener('userLogin', (e) => {
 
 ### Promises: `Promise`, `then()`, `catch()`
 
-Asynchrone Operationen mithilfe von Promises verarbeiten.
+Mit asynchronen Operationen mithilfe von Promises arbeiten.
 
 ```javascript
 // Ein Promise erstellen
@@ -457,7 +517,7 @@ fetchData
 
 ### Async/Await: `async`, `await`
 
-Moderne Syntax zur Verarbeitung asynchronen Codes.
+Moderne Syntax zur Behandlung asynchronen Codes.
 
 ```javascript
 // Async-Funktion
@@ -520,7 +580,7 @@ Promise.race(promises).then((firstResponse) => console.log('Erste Antwort'))
 
 ## ES6+ Moderne Funktionen
 
-### Template Literals & Spread Operator
+### Template-Literale & Spread-Operator
 
 String-Interpolation und Array-/Objekt-Spreading.
 
@@ -635,7 +695,7 @@ function validateEmail(email) {
 }
 
 // Konsolen-Debugging-Methoden
-console.log('Basisprotokoll')
+console.log('Einfacher Log')
 console.warn('Warnmeldung')
 console.error('Fehlermeldung')
 console.table([{ name: 'John', age: 30 }])
@@ -677,15 +737,15 @@ if (localStorage.getItem('username') !== null) {
 
 ### JSON-Operationen
 
-JSON-Daten parsen und in Zeichenketten umwandeln.
+JSON-Daten parsen und stringifizieren.
 
 ```javascript
-// JavaScript-Objekt in JSON-Zeichenkette
+// JavaScript-Objekt zu JSON-String
 const user = { name: 'Alice', age: 25, active: true }
 const jsonString = JSON.stringify(user)
 // '{"name":"Alice","age":25,"active":true}'
 
-// JSON-Zeichenkette in JavaScript-Objekt
+// JSON-String zu JavaScript-Objekt
 const jsonData = '{"name":"Bob","age":30}'
 const userObj = JSON.parse(jsonData)
 
@@ -758,7 +818,7 @@ const patterns = {
 
 ### Browser-Konsole
 
-In Webbrowsern integrierte JavaScript-Umgebung.
+Integrierte JavaScript-Umgebung in Webbrowsern.
 
 ```javascript
 // Browser-Entwicklertools öffnen (F12)
@@ -853,7 +913,7 @@ Code für Wartbarkeit und Lesbarkeit strukturieren.
 
 // Einheitliche Namenskonventionen
 const userName = 'john' // camelCase für Variablen
-const API_URL = 'https://api.example.com' // CAPS für Konstanten
+const API_URL = 'https://api.example.com' // GROSSBUCHSTABEN für Konstanten
 
 // Funktionsdokumentation
 /**
@@ -875,7 +935,7 @@ let counter = 0
 
 ### Unit-Tests mit Jest
 
-Schreiben und Ausführen von Tests für JavaScript-Funktionen.
+Tests für JavaScript-Funktionen schreiben und ausführen.
 
 ```javascript
 // Jest installieren: npm install --save-dev jest
@@ -892,11 +952,11 @@ export function multiply(a, b) {
 // math.test.js
 import { add, multiply } from './math.js'
 
-test('adds 1 + 2 to equal 3', () => {
+test('addiert 1 + 2 zu 3', () => {
   expect(add(1, 2)).toBe(3)
 })
 
-test('multiplies 3 * 4 to equal 12', () => {
+test('multipliziert 3 * 4 zu 12', () => {
   expect(multiply(3, 4)).toBe(12)
 })
 
@@ -918,7 +978,7 @@ console.trace('Funktionsaufrufstapel')
 
 // Performance-Messung
 performance.mark('start')
-// ... Code zur Messung
+// ... zu messender Code
 performance.mark('end')
 performance.measure('operation', 'start', 'end')
 

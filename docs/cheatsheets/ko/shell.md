@@ -1,6 +1,6 @@
 ---
-title: '쉘 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 쉘을 학습하세요.'
+title: '쉘 치트 시트 | LabEx'
+description: '포괄적인 치트 시트로 쉘 스크립팅을 배우세요. Bash 명령어, 쉘 스크립팅, 자동화, 명령줄 도구 및 Linux/Unix 시스템 관리를 위한 빠른 참조 가이드입니다.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Shell 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/shell">실습 랩을 통해 Shell 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/shell">실습 랩을 통해 쉘 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 쉘 스크립팅 및 명령줄 작업을 학습하세요. LabEx 는 필수 Bash 명령어, 파일 작업, 텍스트 처리, 프로세스 관리 및 자동화를 다루는 포괄적인 Shell 강좌를 제공합니다. 명령줄 효율성과 쉘 스크립팅 기술을 마스터하세요.
+실습 랩과 실제 시나리오를 통해 쉘 스크립팅 및 명령줄 작업을 학습하세요. LabEx 는 필수 Bash 명령어, 파일 작업, 텍스트 처리, 프로세스 관리 및 자동화를 다루는 포괄적인 쉘 과정을 제공합니다. 명령줄 효율성과 쉘 스크립팅 기술을 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -32,7 +32,7 @@ ls
 ls -l
 # 숨겨진 파일 표시
 ls -a
-# 사람이 읽기 쉬운 파일 크기와 함께 목록 보기
+# 사람이 읽기 쉬운 파일 크기로 목록 보기
 ls -lh
 # 수정 시간순으로 정렬
 ls -lt
@@ -135,6 +135,21 @@ cd -
 cd /path/to/directory
 ```
 
+<BaseQuiz id="shell-cd-1" correct="A">
+  <template #question>
+    `cd ~`는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>홈 디렉토리로 변경</BaseQuizOption>
+  <BaseQuizOption value="B">루트 디렉토리로 변경</BaseQuizOption>
+  <BaseQuizOption value="C">상위 디렉토리로 변경</BaseQuizOption>
+  <BaseQuizOption value="D">새 디렉토리 생성</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `~` 기호는 홈 디렉토리에 대한 바로 가기입니다. `cd ~`는 홈 디렉토리로 이동하며, 이는 `cd $HOME` 또는 `cd /home/username`과 동일합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 디렉토리 트리: `tree`
 
 디렉토리 구조를 트리 형식으로 표시합니다.
@@ -142,7 +157,7 @@ cd /path/to/directory
 ```bash
 # 디렉토리 트리 표시
 tree
-# 깊이를 2단계로 제한
+# 깊이를 2 레벨로 제한
 tree -L 2
 # 디렉토리만 표시
 tree -d
@@ -182,9 +197,24 @@ grep -i "pattern" file.txt
 grep -r "pattern" directory/
 # 줄 번호 표시
 grep -n "pattern" file.txt
-# 일치하는 줄 수 세기
+# 일치하는 줄 수 계산
 grep -c "pattern" file.txt
 ```
+
+<BaseQuiz id="shell-grep-1" correct="B">
+  <template #question>
+    `grep -r "pattern" directory/`는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A">현재 파일에서만 검색</BaseQuizOption>
+  <BaseQuizOption value="B" correct>디렉토리의 모든 파일에서 재귀적으로 검색</BaseQuizOption>
+  <BaseQuizOption value="C">파일 내 패턴을 대체</BaseQuizOption>
+  <BaseQuizOption value="D">패턴을 포함하는 파일 삭제</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-r` 플래그는 grep 이 모든 파일과 하위 디렉토리를 재귀적으로 검색하도록 합니다. 이는 전체 디렉토리 트리에 걸쳐 텍스트 패턴을 찾을 때 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 파일 찾기: `find`
 
@@ -216,7 +246,7 @@ awk '{print $1, $3}' file.txt
 sort file.txt
 # 중복 줄 제거
 sort file.txt | uniq
-# 단어 빈도수 세기
+# 단어 빈도수 계산
 cat file.txt | tr ' ' '\n' | sort | uniq -c
 ```
 
@@ -224,7 +254,7 @@ cat file.txt | tr ' ' '\n' | sort | uniq -c
 
 ### 권한 보기: `ls -l`
 
-상세 파일 권한 및 소유권을 표시합니다.
+상세한 파일 권한 및 소유권을 표시합니다.
 
 ```bash
 # 상세 파일 정보 표시
@@ -248,6 +278,21 @@ chmod go-w file.txt
 # 재귀적 권한 변경
 chmod -R 644 directory/
 ```
+
+<BaseQuiz id="shell-chmod-1" correct="C">
+  <template #question>
+    `chmod 755 file.txt`는 무엇을 설정합니까?
+  </template>
+  
+  <BaseQuizOption value="A">모든 사용자에게 읽기, 쓰기, 실행</BaseQuizOption>
+  <BaseQuizOption value="B">소유자에게 읽기/쓰기, 다른 사용자에게 읽기</BaseQuizOption>
+  <BaseQuizOption value="C" correct>소유자에게 읽기, 쓰기, 실행; 그룹 및 다른 사용자에게 읽기, 실행</BaseQuizOption>
+  <BaseQuizOption value="D">모든 사용자에게 읽기만 허용</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755`는 권한을 다음과 같이 설정합니다: 소유자 = 7 (rwx), 그룹 = 5 (r-x), 다른 사용자 = 5 (r-x). 이는 실행 가능한 파일 및 디렉토리에 대한 일반적인 권한 설정입니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 소유권 변경: `chown` / `chgrp`
 
@@ -281,12 +326,12 @@ chown -R user:group directory/
 
 ### 프로세스 보기: `ps` / `top` / `htop`
 
-실행 중인 프로세스 정보를 표시합니다.
+실행 중인 프로세스에 대한 정보를 표시합니다.
 
 ```bash
 # 현재 사용자의 프로세스 표시
 ps
-# 상세 정보와 함께 모든 프로세스 표시
+# 모든 프로세스를 상세 정보와 함께 표시
 ps aux
 # 트리 형식으로 프로세스 표시
 ps -ef --forest
@@ -362,6 +407,21 @@ command > output.txt 2>&1
 command > /dev/null
 ```
 
+<BaseQuiz id="shell-redirect-1" correct="B">
+  <template #question>
+    쉘 리디렉션에서 `>`와 `>>`의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">`>`는 추가하고, `>>`는 덮어씁니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`>`는 파일을 덮어쓰고, `>>`는 파일에 추가합니다</BaseQuizOption>
+  <BaseQuizOption value="C">`>`는 stdout 을 리디렉션하고, `>>`는 stderr 을 리디렉션합니다</BaseQuizOption>
+  <BaseQuizOption value="D">차이점이 없습니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `>` 연산자는 대상 파일이 존재하면 덮어쓰고, `>>`는 출력의 끝에 추가합니다. 기존 내용을 보존하려면 `>>`를 사용하세요.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 파이프: `|`
 
 파이프를 사용하여 명령을 연결합니다.
@@ -371,7 +431,7 @@ command > /dev/null
 command1 | command2
 # 다중 파이프
 cat file.txt | grep "pattern" | sort | uniq
-# 출력 줄 수 세기
+# 출력 줄 수 계산
 ps aux | wc -l
 # 긴 출력 페이지 넘기기
 ls -la | less
@@ -382,7 +442,7 @@ ls -la | less
 출력을 파일과 stdout 모두에 씁니다.
 
 ```bash
-# 출력 저장 및 표시
+# 출력을 저장하고 표시
 command | tee output.txt
 # 파일에 추가
 command | tee -a output.txt
@@ -395,13 +455,13 @@ command | tee file1.txt file2.txt
 명령어에 여러 줄 입력을 제공합니다.
 
 ```bash
-# Here document로 파일 생성
+# Here document으로 파일 생성
 cat << EOF > file.txt
 Line 1
 Line 2
 Line 3
 EOF
-# Here document로 이메일 보내기
+# Here document으로 이메일 보내기
 mail user@example.com << EOF
 Subject: Test
 This is a test message.
@@ -415,7 +475,7 @@ EOF
 쉘 변수를 생성하고 사용합니다.
 
 ```bash
-# 변수 할당 ( = 주변에 공백 없음)
+# 변수 할당 (= 주변에 공백 없음)
 name="John"
 count=42
 # 변수 사용
@@ -476,7 +536,7 @@ ${var%pattern}   # 끝 부분에서 가장 짧은 일치 항목 제거
 ${var%%pattern}  # 끝 부분에서 가장 긴 일치 항목 제거
 ```
 
-## 스크립팅 기본 사항
+## 스크립팅 기초
 
 ### 스크립트 구조
 
@@ -491,7 +551,7 @@ user=$(whoami)
 # 출력
 echo $greeting
 echo "Current user: $user"
-# 스크립트 실행 가능하게 만들기:
+# 스크립트 실행 권한 부여:
 chmod +x script.sh
 # 스크립트 실행:
 ./script.sh
@@ -499,24 +559,24 @@ chmod +x script.sh
 
 ### 조건문: `if`
 
-조건을 사용하여 스크립트 흐름을 제어합니다.
+조건문을 사용하여 스크립트 흐름을 제어합니다.
 
 ```bash
 #!/bin/bash
 if [ -f "file.txt" ]; then
-    echo "File exists"
+    echo "파일이 존재합니다"
 elif [ -d "directory" ]; then
-    echo "Directory exists"
+    echo "디렉토리가 존재합니다"
 else
-    echo "Neither exists"
+    echo "둘 다 존재하지 않습니다"
 fi
 # 문자열 비교
 if [ "$USER" = "root" ]; then
-    echo "Running as root"
+    echo "루트로 실행 중입니다"
 fi
 # 숫자 비교
 if [ $count -gt 10 ]; then
-    echo "Count is greater than 10"
+    echo "Count는 10보다 큽니다"
 fi
 ```
 
@@ -568,12 +628,12 @@ echo "Sum: $result"
 
 ### 네트워크 명령어
 
-연결 상태를 테스트하고 네트워크 구성을 확인합니다.
+연결성을 테스트하고 네트워크 구성을 확인합니다.
 
 ```bash
 # 네트워크 연결 테스트
 ping google.com
-ping -c 4 google.com  # 4개 패킷만 보내기
+ping -c 4 google.com  # 4개 패킷만 전송
 # DNS 조회
 nslookup google.com
 dig google.com
@@ -661,7 +721,7 @@ Ctrl+R
 이전 명령어의 일부를 재사용합니다.
 
 ```bash
-# 마지막 명령어의 인수
+# 이전 명령어의 인수
 !$    # 이전 명령어의 마지막 인수
 !^    # 이전 명령어의 첫 번째 인수
 !*    # 이전 명령어의 모든 인수
@@ -706,7 +766,7 @@ find . -name "*.txt" -exec sed -i 's/old/new/g' {} \;
 du -ah . | sort -rh | head -10
 # 특정 패턴에 대해 로그 파일 모니터링
 tail -f /var/log/syslog | grep "ERROR"
-# 디렉토리의 파일 수 세기
+# 디렉토리 내 파일 수 계산
 ls -1 | wc -l
 # 타임스탬프를 사용하여 백업 생성
 cp file.txt file.txt.backup.$(date +%Y%m%d-%H%M%S)

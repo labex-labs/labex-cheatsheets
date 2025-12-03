@@ -1,6 +1,6 @@
 ---
-title: 'Matplotlib 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 Matplotlib 을 배우세요.'
+title: 'Matplotlib 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 Matplotlib 데이터 시각화를 학습하세요. 플로팅, 차트, 그래프, 서브플롯, 사용자 정의 및 Python 데이터 시각화를 위한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/matplotlib-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Matplotlib 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/matplotlib">실습 랩을 통해 Matplotlib 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/matplotlib">핸즈온 실습으로 Matplotlib 배우기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 Matplotlib 데이터 시각화를 학습하세요. LabEx 는 필수 플로팅 함수, 사용자 정의 기술, 서브플롯 레이아웃 및 고급 시각화 유형을 다루는 포괄적인 Matplotlib 강좌를 제공합니다. Python 데이터 과학 워크플로우를 위한 효과적인 데이터 시각화를 만드는 방법을 마스터하세요.
+핸즈온 실습과 실제 시나리오를 통해 Matplotlib 데이터 시각화를 학습하세요. LabEx 는 필수 플로팅 함수, 사용자 정의 기술, 서브플롯 레이아웃 및 고급 시각화 유형을 다루는 포괄적인 Matplotlib 과정을 제공합니다. Python 데이터 과학 워크플로우를 위한 효과적인 데이터 시각화 작성을 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -44,6 +44,21 @@ plt.legend()
 plt.plot(x, y, 'r--', linewidth=2, marker='o')
 ```
 
+<BaseQuiz id="matplotlib-plot-1" correct="C">
+  <template #question>
+    Matplotlib 에서 `plt.show()` 는 무엇을 하나요?
+  </template>
+  
+  <BaseQuizOption value="A">플롯을 파일에 저장합니다</BaseQuizOption>
+  <BaseQuizOption value="B">플롯 창을 닫습니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>플롯을 창에 표시합니다</BaseQuizOption>
+  <BaseQuizOption value="D">플롯을 지웁니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `plt.show()` 는 시각화 창에 플롯을 표시합니다. 시각화를 보려면 이 함수를 호출해야 합니다. 이 함수 없이는 플롯이 표시되지 않습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 산점도: `plt.scatter()`
 
 두 변수 간의 관계 표시.
@@ -52,12 +67,27 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 # 기본 산점도
 plt.scatter(x, y)
 
-# 다른 색상 및 크기 포함
+# 다른 색상 및 크기 사용
 colors = [1, 2, 3, 4, 5]
 sizes = [20, 50, 100, 200, 500]
 plt.scatter(x, y, c=colors, s=sizes, alpha=0.6)
 plt.colorbar()  # 색상 막대 추가
 ```
+
+<BaseQuiz id="matplotlib-scatter-1" correct="D">
+  <template #question>
+    Matplotlib 플롯에서 `alpha` 매개변수는 무엇을 제어하나요?
+  </template>
+  
+  <BaseQuizOption value="A">플롯의 색상</BaseQuizOption>
+  <BaseQuizOption value="B">플롯의 크기</BaseQuizOption>
+  <BaseQuizOption value="C">플롯의 위치</BaseQuizOption>
+  <BaseQuizOption value="D" correct>플롯 요소의 투명도/불투명도</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `alpha` 매개변수는 투명도를 제어하며, 값은 0(완전히 투명) 에서 1(완전히 불투명) 사이입니다. 겹치는 시각화를 만들 때 요소를 통과하여 볼 수 있도록 하는 데 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 막대 차트: `plt.bar()` / `plt.barh()`
 
@@ -80,7 +110,7 @@ plt.bar(x + 0.2, [15, 25, 35, 20], 0.4, label='Group 2')
 
 ### 히스토그램: `plt.hist()`
 
-연속 데이터의 분포 표시.
+연속 데이터 분포 표시.
 
 ```python
 # 기본 히스토그램
@@ -104,7 +134,7 @@ sizes = [25, 35, 20, 20]
 labels = ['A', 'B', 'C', 'D']
 plt.pie(sizes, labels=labels)
 
-# 백분율이 포함된 분리된 파이 차트
+# 백분율이 있는 분리된 파이 조각
 explode = (0, 0.1, 0, 0)  # 두 번째 조각 분리
 plt.pie(sizes, labels=labels, autopct='%1.1f%%',
         explode=explode, shadow=True, startangle=90)
@@ -166,7 +196,7 @@ plt.plot(x, y, marker='o', markersize=8, markerfacecolor='red')
 
 ### 범례 및 주석: `plt.legend()` / `plt.annotate()`
 
-범례와 주석을 추가하여 플롯 요소 설명.
+범례와 주석을 추가하여 플롯 요소를 설명.
 
 ```python
 # 기본 범례
@@ -182,6 +212,21 @@ plt.annotate('중요 지점', xy=(2, 4), xytext=(3, 6),
             arrowprops=dict(arrowstyle='->', color='red'))
 ```
 
+<BaseQuiz id="matplotlib-legend-1" correct="B">
+  <template #question>
+    `plt.legend()` 가 레이블을 표시하려면 무엇이 필요한가요?
+  </template>
+  
+  <BaseQuizOption value="A">아무것도 필요하지 않으며 자동으로 작동합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>각 플롯에 `label` 매개변수가 설정되어야 합니다</BaseQuizOption>
+  <BaseQuizOption value="C">범례는 플롯 생성 전에 생성되어야 합니다</BaseQuizOption>
+  <BaseQuizOption value="D">레이블은 범례에서 수동으로 설정되어야 합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    범례를 표시하려면 각 플롯을 생성할 때 `label` 매개변수를 설정해야 합니다 (예: `plt.plot(x, y, label='데이터셋 1')`). 그런 다음 `plt.legend()` 를 호출하면 모든 레이블이 표시됩니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 축 및 레이아웃 제어
 
 ### 축 범위: `plt.xlim()` / `plt.ylim()`
@@ -193,7 +238,7 @@ plt.annotate('중요 지점', xy=(2, 4), xytext=(3, 6),
 plt.xlim(0, 10)
 plt.ylim(-5, 15)
 
-# 여백을 포함한 자동 범위 조정
+# 여백 포함 자동 범위 조정
 plt.margins(x=0.1, y=0.1)
 
 # 축 반전
@@ -202,20 +247,20 @@ plt.gca().invert_yaxis()  # y 축 반전
 
 ### 틱 및 레이블: `plt.xticks()` / `plt.yticks()`
 
-축 틱 마크와 해당 레이블 사용자 정의.
+축 눈금 표시와 레이블을 사용자 정의합니다.
 
 ```python
-# 사용자 정의 틱 위치
+# 사용자 정의 눈금 위치
 plt.xticks([0, 2, 4, 6, 8, 10])
 plt.yticks(np.arange(0, 101, 10))
 
-# 사용자 정의 틱 레이블
+# 사용자 정의 눈금 레이블
 plt.xticks([0, 1, 2, 3], ['1 월', '2 월', '3 월', '4 월'])
 
-# 틱 레이블 회전
+# 눈금 레이블 회전
 plt.xticks(rotation=45)
 
-# 틱 제거
+# 눈금 제거
 plt.xticks([])
 plt.yticks([])
 ```
@@ -253,7 +298,7 @@ fig2 = plt.figure(2)
 plt.plot(x, y2)
 ```
 
-### 깔끔한 레이아웃: `plt.tight_layout()`
+### 꽉 찬 레이아웃: `plt.tight_layout()`
 
 서브플롯 간격을 자동으로 조정하여 모양 개선.
 
@@ -289,10 +334,10 @@ plt.style.use('default')
 
 ### 기본 서브플롯: `plt.subplot()` / `plt.subplots()`
 
-단일 그림 내에 여러 플롯 생성.
+단일 그림에 여러 플롯 생성.
 
 ```python
-# 2x2 서브플롯 그리드 생성
+# 2x2 서브플롯 격자 생성
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 
 # 각 서브플롯에 플롯
@@ -310,7 +355,7 @@ plt.scatter(x, y)
 
 ### 공유 축: `sharex` / `sharey`
 
-일관된 스케일링을 위해 서브플롯 간 축 연결.
+일관된 크기 조정을 위해 서브플롯 간 축 연결.
 
 ```python
 # 서브플롯 간 x 축 공유
@@ -324,12 +369,12 @@ fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
 
 ### GridSpec: 고급 레이아웃
 
-다양한 크기의 서브플롯을 가진 복잡한 서브플롯 배열 생성.
+다양한 크기의 복잡한 서브플롯 배열 생성.
 
 ```python
 import matplotlib.gridspec as gridspec
 
-# 사용자 정의 그리드 생성
+# 사용자 정의 격자 생성
 gs = gridspec.GridSpec(3, 3)
 fig = plt.figure(figsize=(10, 8))
 
@@ -366,7 +411,7 @@ data = np.random.randn(10, 10)
 plt.imshow(data, cmap='viridis')
 plt.colorbar()
 
-# 불규칙한 그리드에 대한 Pcolormesh
+# 불규칙한 격자에 대한 pcolormesh
 x = np.linspace(0, 10, 11)
 y = np.linspace(0, 5, 6)
 X, Y = np.meshgrid(x, y)
@@ -377,7 +422,7 @@ plt.colorbar()
 
 ### 등고선 플롯: `plt.contour()` / `plt.contourf()`
 
-레벨 곡선 및 채워진 등고선 영역 표시.
+등고선 및 채워진 등고선 영역 표시.
 
 ```python
 # 등고선
@@ -409,13 +454,13 @@ ax.scatter(x, y, z)
 # 3D 표면 플롯
 ax.plot_surface(X, Y, Z, cmap='viridis')
 
-# 3D 선 플롯
+# 3D 선 그래프
 ax.plot(x, y, z)
 ```
 
 ### 오차 막대: `plt.errorbar()`
 
-불확실성 측정값을 포함하여 데이터 표시.
+불확실성 측정을 포함하여 데이터 표시.
 
 ```python
 # 기본 오차 막대
@@ -430,7 +475,7 @@ yerr_upper = [0.6, 1.0, 0.4, 0.9, 0.5]
 plt.errorbar(x, y, yerr=[yerr_lower, yerr_upper], fmt='s-')
 ```
 
-### 두 영역 채우기: `plt.fill_between()`
+### 채우기 사이: `plt.fill_between()`
 
 곡선 사이 또는 선 주변 영역 음영 처리.
 
@@ -440,7 +485,7 @@ y1 = [2, 4, 6, 8, 10]
 y2 = [1, 3, 5, 7, 9]
 plt.fill_between(x, y1, y2, alpha=0.3, color='blue')
 
-# 오차를 포함한 선 주변 채우기
+# 오차를 가진 선 주변 채우기
 plt.plot(x, y, 'k-', linewidth=2)
 plt.fill_between(x, y-yerr, y+yerr, alpha=0.2, color='gray')
 ```
@@ -469,7 +514,7 @@ Jupyter 노트북에서 대화형 플롯 활성화.
 # Jupyter 노트북에서
 %matplotlib widget
 
-# 기본 상호 작용을 위해
+# 기본 상호 작용의 경우
 %matplotlib notebook
 ```
 
@@ -491,7 +536,7 @@ plt.show()
 
 ### 애니메이션: `matplotlib.animation`
 
-시계열 또는 변경되는 데이터를 위한 애니메이션 플롯 생성.
+시간 경과 또는 데이터 변경에 대한 애니메이션 플롯 생성.
 
 ```python
 from matplotlib.animation import FuncAnimation
@@ -538,10 +583,10 @@ plt.savefig('plot.png', transparent=True)
 
 ### 그림 품질: DPI 및 크기
 
-저장된 플롯의 해상도 및 치수 제어.
+저장된 플롯의 해상도와 치수 제어.
 
 ```python
-# 출판물을 위한 고해상도 DPI
+# 출판을 위한 고해상도 DPI
 plt.savefig('plot.png', dpi=600)
 
 # 사용자 정의 크기 (너비, 높이 인치)
@@ -554,7 +599,7 @@ plt.savefig('plot.png', bbox_inches='tight', pad_inches=0.1)
 
 ### 일괄 내보내기 및 메모리 관리
 
-여러 플롯을 처리하고 메모리 효율성 유지.
+여러 플롯 처리 및 메모리 효율성 관리.
 
 ```python
 # 메모리 확보를 위해 그림 닫기
@@ -587,33 +632,33 @@ plt.rcParams['font.size'] = 12
 plt.rcParams['lines.linewidth'] = 2
 plt.rcParams['axes.grid'] = True
 
-# 설정 저장 및 복원
+# 설정 복사 및 복원
 original_params = plt.rcParams.copy()
 # ... 변경 사항 적용 ...
 plt.rcParams.update(original_params)  # 복원
 ```
 
-### 색상 관리: 색상 맵 및 팔레트
+### 색상 관리: 컬러맵 및 팔레트
 
-색상 및 색상 맵을 효과적으로 사용.
+색상 및 컬러맵 효과적으로 사용.
 
 ```python
-# 사용 가능한 색상 맵 나열
+# 사용 가능한 컬러맵 나열
 print(plt.colormaps())
 
-# 여러 선에 색상 맵 사용
+# 여러 선에 컬러맵 사용
 colors = plt.cm.viridis(np.linspace(0, 1, len(datasets)))
 for i, (data, color) in enumerate(zip(datasets, colors)):
     plt.plot(data, color=color, label=f'데이터셋 {i+1}')
 
-# 사용자 정의 색상 맵
+# 사용자 정의 컬러맵
 from matplotlib.colors import LinearSegmentedColormap
 custom_cmap = LinearSegmentedColormap.from_list('custom', ['red', 'yellow', 'blue'])
 ```
 
 ### 성능 최적화
 
-대규모 데이터셋에 대한 플로팅 성능 향상.
+대규모 데이터셋에 대한 플로팅 성능 개선.
 
 ```python
 # 애니메이션을 위한 블리팅 사용
@@ -646,7 +691,7 @@ def data_generator():
         yield np.random.randn(100)
 
 for i, data in enumerate(data_generator()):
-    if i > 10:  # 플롯 개수 제한
+    if i > 10:  # 플롯 수 제한
         break
 ```
 
@@ -692,7 +737,7 @@ plt.hist(data, bins=50, density=True, alpha=0.7)
 
 ### Seaborn 통합: 향상된 스타일링
 
-Seaborn 과 Matplotlib 을 결합하여 기본 미학 개선.
+더 나은 기본 미학을 위해 Matplotlib 와 Seaborn 결합.
 
 ```python
 import seaborn as sns
@@ -729,7 +774,7 @@ plt.rcParams['figure.dpi'] = 100
 
 ### Pip: `pip install matplotlib`
 
-Matplotlib 용 표준 Python 패키지 설치 관리자.
+Matplotlib 의 표준 Python 패키지 설치 관리자.
 
 ```bash
 # Matplotlib 설치
@@ -756,7 +801,7 @@ conda install matplotlib
 # matplotlib 업데이트
 conda update matplotlib
 
-# matplotlib를 포함한 환경 생성
+# matplotlib 포함 환경 생성
 conda create -n dataviz matplotlib numpy pandas
 
 # matplotlib 정보 나열
@@ -772,7 +817,7 @@ conda list matplotlib
 import matplotlib
 print(matplotlib.get_backend())
 
-# 프로그래밍 방식으로 백엔드 설정
+# 프로그램 방식으로 백엔드 설정
 matplotlib.use('TkAgg')  # Tkinter 용
 matplotlib.use('Qt5Agg')  # PyQt5 용
 

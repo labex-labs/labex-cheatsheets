@@ -1,6 +1,6 @@
 ---
-title: 'Docker 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合 Docker 速查表，快速掌握 Docker 技术。'
+title: 'Docker 速查表 | LabEx'
+description: '使用本综合速查表学习 Docker 容器化技术。快速参考 Docker 命令、镜像、容器、Dockerfile、Docker Compose 和容器编排。'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
@@ -52,7 +52,7 @@ sudo systemctl enable docker
 # Windows: 从 docker.com 下载 Docker Desktop
 # macOS: 使用 Homebrew 或从 docker.com 下载
 brew install --cask docker
-# 或直接从以下链接下载：
+# 或直接从以下地址下载：
 # https://www.docker.com/products/docker-desktop
 ```
 
@@ -94,7 +94,8 @@ docker-compose --version
 ```bash
 # 显示 Docker 版本信息
 docker version
-# 显示系统范围的 Docker 信息
+# 显示系统范围的 Docker
+信息
 docker system info
 # 显示 Docker 命令的帮助信息
 docker help
@@ -108,14 +109,30 @@ docker <command> --help
 ```bash
 # 交互式运行一个容器
 docker run -it ubuntu:latest bash
-# 在后台运行容器 (分离模式)
+# 在后台运行容器
+(分离模式)
 docker run -d --name my-container
 nginx
-# 运行并进行端口映射
+# 运行并映射端口
 docker run -p 8080:80 nginx
 # 运行后自动移除容器
 docker run --rm hello-world
 ```
+
+<BaseQuiz id="docker-run-1" correct="C">
+  <template #question>
+    `docker run -d` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">以调试模式运行容器</BaseQuizOption>
+  <BaseQuizOption value="B">容器停止后删除它</BaseQuizOption>
+  <BaseQuizOption value="C" correct>以分离模式（后台）运行容器</BaseQuizOption>
+  <BaseQuizOption value="D">以默认设置运行容器</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-d` 标志以分离模式运行容器，意味着它在后台运行并立即将控制权返回给终端。这对于长期运行的服务很有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 列出容器：`docker ps`
 
@@ -124,7 +141,8 @@ docker run --rm hello-world
 ```bash
 # 列出正在运行的容器
 docker ps
-# 列出所有容器 (包括已停止的)
+# 列出所有容器（包括
+已停止的）
 docker ps -a
 # 仅列出容器 ID
 docker ps -q
@@ -152,7 +170,7 @@ docker unpause container_name
 
 ### 执行命令：`docker exec`
 
-在正在运行的容器内部执行命令。
+在正在运行的容器内执行命令。
 
 ```bash
 # 执行交互式 bash shell
@@ -212,6 +230,21 @@ docker build --build-arg VERSION=1.0 -t myapp .
 docker build --no-cache -t myapp .
 ```
 
+<BaseQuiz id="docker-build-1" correct="A">
+  <template #question>
+    `docker build -t myapp:latest .` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>从当前目录构建一个标记为 "myapp:latest" 的 Docker 镜像</BaseQuizOption>
+  <BaseQuizOption value="B">运行一个名为 "myapp" 的容器</BaseQuizOption>
+  <BaseQuizOption value="C">从 Docker Hub 拉取 "myapp:latest" 镜像</BaseQuizOption>
+  <BaseQuizOption value="D">删除 "myapp:latest" 镜像</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-t` 标志将镜像标记为 "myapp:latest"，而 `.` 指定了构建上下文（当前目录）。此命令从当前目录中的 Dockerfile 构建一个新镜像。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 镜像检查：`docker images` / `docker inspect`
 
 列出和检查 Docker 镜像。
@@ -229,7 +262,7 @@ docker history image_name
 
 ### 仓库操作：`docker pull` / `docker push`
 
-从仓库下载和上传镜像。
+下载和上传镜像到仓库。
 
 ```bash
 # 从 Docker Hub 拉取镜像
@@ -251,7 +284,7 @@ docker tag myapp:latest myusername/myapp:v1.0
 docker rmi image_name
 # 移除未使用的镜像
 docker image prune
-# 移除所有未使用的镜像 (不只是悬空镜像)
+# 移除所有未使用的镜像（不只是悬空镜像）
 docker image prune -a
 # 强制移除镜像
 docker rmi -f image_name
@@ -281,6 +314,21 @@ WORKDIR /app
 EXPOSE 8000
 ```
 
+<BaseQuiz id="dockerfile-1" correct="B">
+  <template #question>
+    Dockerfile 中 `FROM` 指令的目的是什么？
+  </template>
+  
+  <BaseQuizOption value="A">它将文件从宿主机复制到容器</BaseQuizOption>
+  <BaseQuizOption value="B" correct>它指定了构建所基于的基础镜像</BaseQuizOption>
+  <BaseQuizOption value="C">它设置了环境变量</BaseQuizOption>
+  <BaseQuizOption value="D">它定义了容器启动时运行的命令</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `FROM` 指令必须是 Dockerfile 中第一个非注释指令。它指定了你的镜像将构建在其之上的基础镜像，为容器提供了基础。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 运行时配置
 
 配置容器的运行方式。
@@ -290,7 +338,8 @@ EXPOSE 8000
 ENV PYTHON_ENV=production
 ENV PORT=8000
 # 创建用户以保证安全
-RUN useradd -m appuser
+RUN groupadd -r appuser && useradd -r -g appuser
+appuser
 USER appuser
 # 定义启动命令
 CMD ["python3", "app.py"]
@@ -317,13 +366,28 @@ docker-compose up -d
 docker-compose up --build
 # 停止并移除服务
 docker-compose down
-# 停止并移除服务及卷
+# 停止并移除（包括卷）
 docker-compose down -v
 ```
 
+<BaseQuiz id="docker-compose-1" correct="D">
+  <template #question>
+    `docker-compose up -d` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">停止所有正在运行的容器</BaseQuizOption>
+  <BaseQuizOption value="B">构建镜像但不启动容器</BaseQuizOption>
+  <BaseQuizOption value="C">显示所有服务的日志</BaseQuizOption>
+  <BaseQuizOption value="D" correct>以分离模式（后台）启动 docker-compose.yml 中定义的所有服务</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-d` 标志以分离模式（后台）运行容器。`docker-compose up` 读取 docker-compose.yml 文件并启动所有定义的服务，便于管理多容器应用程序。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 服务管理
 
-控制 Compose 应用中的单个服务。
+控制 Compose 应用程序中的单个服务。
 
 ```bash
 # 列出正在运行的服务
@@ -393,9 +457,27 @@ docker network inspect mynetwork
 ```bash
 # 映射单个端口
 docker run -p 8080:80 nginx
+```
+
+<BaseQuiz id="docker-port-1" correct="A">
+  <template #question>
+    在 `docker run -p 8080:80 nginx` 中，端口号的含义是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>8080 是宿主机端口，80 是容器端口</BaseQuizOption>
+  <BaseQuizOption value="B">80 是宿主机端口，8080 是容器端口</BaseQuizOption>
+  <BaseQuizOption value="C">两个端口都是容器端口</BaseQuizOption>
+  <BaseQuizOption value="D">两个端口都是宿主机端口</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    格式是 `-p host_port:container_port`。宿主机上的 8080 端口映射到容器内的 80 端口，允许你通过 localhost:8080 访问容器中运行的 nginx Web 服务器。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```bash
 # 映射多个端口
 docker run -p 8080:80 -p 8443:443 nginx
-# 映射到特定主机接口
+# 映射到特定宿主机接口
 docker run -p 127.0.0.1:8080:80 nginx
 # 暴露镜像中定义的所有端口
 docker run -P nginx
@@ -420,12 +502,12 @@ docker volume prune
 
 ### 卷挂载
 
-在容器中挂载卷和主机目录。
+在容器中挂载卷和宿主机目录。
 
 ```bash
 # 挂载命名卷
 docker run -v myvolume:/data nginx
-# 挂载主机目录 (绑定挂载)
+# 挂载宿主机目录（绑定挂载）
 docker run -v /host/path:/container/path nginx
 # 挂载当前目录
 docker run -v $(pwd):/app nginx
@@ -457,11 +539,11 @@ docker inspect --format='{{.Mounts}}' container_name
 监控容器的资源使用情况和性能。
 
 ```bash
-# 显示容器内正在运行的进程
+# 查看容器中正在运行的进程
 docker top container_name
 # 显示实时资源使用统计信息
 docker stats
-# 显示特定容器的统计信息
+# 查看特定容器的统计信息
 docker stats container_name
 # 实时监控事件
 docker events
@@ -472,9 +554,9 @@ docker events
 在容器和宿主机系统之间复制文件。
 
 ```bash
-# 将文件从容器复制到宿主机
+# 从容器复制文件到宿主机
 docker cp container_name:/path/to/file ./
-# 将文件从宿主机复制到容器
+# 从宿主机复制文件到容器
 docker cp ./file container_name:/path/to/destination
 # 复制目录
 docker cp ./directory
@@ -485,7 +567,7 @@ docker cp -a ./directory container_name:/path/
 
 ### 故障排除
 
-调试容器问题和网络连接问题。
+调试容器问题和连接问题。
 
 ```bash
 # 检查容器退出代码
@@ -521,7 +603,7 @@ docker search --filter stars=100 nginx
 准备并将镜像发布到仓库。
 
 ```bash
-# 为仓库标记镜像
+# 标记镜像以供仓库使用
 docker tag myapp:latest username/myapp:v1.0
 docker tag myapp:latest
 registry.example.com/myapp:latest
@@ -569,9 +651,9 @@ docker scan myapp:latest
 ```bash
 # 移除未使用的容器、网络、镜像
 docker system prune
-# 在清理中包含未使用的卷
+# 包含未使用的卷进行清理
 docker system prune -a --volumes
-# 移除所有内容 (谨慎使用)
+# 移除所有内容（谨慎使用）
 docker system prune -a -f
 # 显示空间使用情况
 docker system df
@@ -676,7 +758,7 @@ export DOCKER_BUILDKIT=1
 echo '{"experimental": true}' |
 sudo tee
 /etc/docker/daemon.json
-# 设置存储驱动选项
+# 配置存储驱动选项
 {
   "storage-driver": "overlay2",
   "storage-opts": [
@@ -685,7 +767,7 @@ sudo tee
 =true"
   ]
 }
-# 配置日志记录
+# 配置日志
 {
   "log-driver": "syslog",
   "log-opts": {"syslog-address":
@@ -697,7 +779,7 @@ sudo tee
 
 ### 安全最佳实践
 
-保持容器的安全性和生产就绪性。
+保持容器安全并为生产做好准备。
 
 ```dockerfile
 # 在 Dockerfile 中以非 root 用户运行

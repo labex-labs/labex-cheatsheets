@@ -40,7 +40,7 @@ uname -o
 
 ### Hardwareinformationen: `lscpu`, `lsblk`
 
-Anzeige detaillierter Hardware-Spezifikationen und Blockgeräte.
+Anzeige detaillierter Hardwarespezifikationen und Blockgeräte.
 
 ```bash
 # CPU-Informationen
@@ -53,16 +53,16 @@ free -h
 df -h
 ```
 
-### System-Betriebszeit: `uptime`
+### Systemlaufzeit: `uptime`
 
-Anzeige der System-Betriebszeit und der Lastdurchschnitte.
+Anzeige der Systemlaufzeit und der Lastdurchschnitte.
 
 ```bash
-# System-Betriebszeit und Last
+# Systemlaufzeit und Last
 uptime
-# Detailliertere Betriebszeitinformationen
+# Detailliertere Laufzeitanzeige
 uptime -p
-# Betriebszeit seit einem bestimmten Datum anzeigen
+# Laufzeit seit einem bestimmten Datum anzeigen
 uptime -s
 ```
 
@@ -77,7 +77,7 @@ who
 w
 # Aktuellen Benutzernamen anzeigen
 whoami
-# Anmeldeverlauf anzeigen
+# Anmeldehistorie anzeigen
 last
 ```
 
@@ -126,7 +126,7 @@ ls -l
 ls -la
 # Dateigrößen in menschenlesbarem Format
 ls -lh
-# Sortieren nach Änderungszeit
+# Nach Änderungszeit sortieren
 ls -lt
 ```
 
@@ -181,7 +181,7 @@ rm -rf dirname
 
 ### Dateiinhalt anzeigen: `cat`, `less`, `head`, `tail`
 
-Anzeige des Dateiinhaltes mit verschiedenen Methoden und Paginierung.
+Anzeige von Dateiinhalt mit verschiedenen Methoden und Paginierung.
 
 ```bash
 # Gesamte Datei anzeigen
@@ -209,7 +209,7 @@ cp -r sourcedir/ destdir/
 mv oldname.txt newname.txt
 # In ein anderes Verzeichnis verschieben
 mv file.txt /path/to/destination/
-# Kopieren mit Beibehaltung der Attribute
+# Kopieren mit Beibehaltung von Attributen
 cp -p file.txt backup.txt
 ```
 
@@ -232,16 +232,16 @@ find /path -name "*.log" -exec rm {} \;
 
 ### Dateiberechtigungen: `chmod`, `chown`
 
-Dateiberechtigungen und Eigentümerschaft ändern.
+Dateiberechtigungen und Besitzverhältnisse ändern.
 
 ```bash
 # Berechtigungen ändern (numerisch)
 chmod 755 filename
 # Ausführungsberechtigung hinzufügen
 chmod +x script.sh
-# Eigentümerschaft ändern
+# Besitzverhältnis ändern
 chown user:group filename
-# Eigentümerschaft rekursiv ändern
+# Besitzverhältnis rekursiv ändern
 chown -R user:group directory/
 # Dateiberechtigungen anzeigen
 ls -l filename
@@ -252,13 +252,13 @@ ls -l filename
     Was bewirkt `chmod 755 filename` für Berechtigungen?
   </template>
   
-  <BaseQuizOption value="A">Lesen, Schreiben, Ausführen für Eigentümer; Lesen für Gruppe und andere</BaseQuizOption>
-  <BaseQuizOption value="B">Lesen, Schreiben für Eigentümer; Lesen, Ausführen für Gruppe und andere</BaseQuizOption>
-  <BaseQuizOption value="C" correct>Lesen, Schreiben, Ausführen für Eigentümer; Lesen, Ausführen für Gruppe und andere</BaseQuizOption>
-  <BaseQuizOption value="D">Lesen, Schreiben für Eigentümer; Lesen für Gruppe und andere</BaseQuizOption>
+  <BaseQuizOption value="A">Lesen, Schreiben, Ausführen für den Besitzer; Lesen für Gruppe und andere</BaseQuizOption>
+  <BaseQuizOption value="B">Lesen, Schreiben für den Besitzer; Lesen, Ausführen für Gruppe und andere</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lesen, Schreiben, Ausführen für den Besitzer; Lesen, Ausführen für Gruppe und andere</BaseQuizOption>
+  <BaseQuizOption value="D">Lesen, Schreiben für den Besitzer; Lesen für Gruppe und andere</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` setzt: Eigentümer = 7 (rwx), Gruppe = 5 (r-x), andere = 5 (r-x). Dies ist eine übliche Berechtigungseinstellung für ausführbare Dateien und Verzeichnisse.
+    `chmod 755` setzt: Besitzer = 7 (rwx), Gruppe = 5 (r-x), andere = 5 (r-x). Dies ist eine übliche Berechtigungseinstellung für ausführbare Dateien und Verzeichnisse.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -281,7 +281,7 @@ ps -u username
 
 ### Prozesse beenden: `kill`, `killall`
 
-Prozesse nach PID oder Name beenden.
+Prozesse nach PID oder Namen beenden.
 
 ```bash
 # Prozessüberwachung in Echtzeit
@@ -290,7 +290,7 @@ top
 kill 1234
 # Prozess erzwingen
 kill -9 1234
-# Nach Prozessname beenden
+# Nach Prozessnamen beenden
 killall processname
 # Alle Signale auflisten
 kill -l
@@ -326,7 +326,7 @@ bg %1
 fg %1
 # Befehl im Hintergrund ausführen
 command &
-# Von Terminal trennen
+# Vom Terminal trennen
 nohup command &
 ```
 
@@ -335,7 +335,7 @@ nohup command &
 Systemressourcen überwachen und Dienste verwalten.
 
 ```bash
-# Verbesserter Prozessbetrachter (falls installiert)
+# Verbesserte Prozessanzeige (falls installiert)
 htop
 # Dienststatus prüfen
 systemctl status servicename
@@ -368,12 +368,12 @@ ifconfig
 
 ### Netzwerktests: `ping`, `traceroute`
 
-Netzwerkkonnektivität testen und Paketrouten verfolgen.
+Netzwerkverbindungen testen und Paketrouten verfolgen.
 
 ```bash
 # Konnektivität testen
 ping google.com
-# Ping mit Begrenzung der Anzahl
+# Ping mit begrenzter Anzahl
 ping -c 4 192.168.1.1
 # Route zum Ziel verfolgen
 traceroute google.com
@@ -386,10 +386,10 @@ mtr google.com
     Was bewirkt der Befehl `ping -c 4`?
   </template>
   
-  <BaseQuizOption value="A">4 Sekunden lang pingen</BaseQuizOption>
-  <BaseQuizOption value="B" correct>4 Ping-Pakete senden und stoppen</BaseQuizOption>
-  <BaseQuizOption value="C">4 verschiedene Hosts anpingen</BaseQuizOption>
-  <BaseQuizOption value="D">4 Sekunden zwischen den Pings warten</BaseQuizOption>
+  <BaseQuizOption value="A">Ping mit 4 Sekunden Timeout</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Sendet 4 Ping-Pakete und stoppt</BaseQuizOption>
+  <BaseQuizOption value="C">Pingt 4 verschiedene Hosts</BaseQuizOption>
+  <BaseQuizOption value="D">Wartet 4 Sekunden zwischen den Pings</BaseQuizOption>
   
   <BaseQuizAnswer>
     Die Option `-c` gibt die Anzahl der zu sendenden Pakete an. `ping -c 4` sendet genau 4 ICMP-Echo-Anforderungspakete und stoppt dann, um die Ergebnisse anzuzeigen.
@@ -432,7 +432,7 @@ rsync -avz --progress src/ dest/
 
 ### Textsuche: `grep`
 
-Nach Mustern in Dateien und Befehlsausgaben suchen.
+Muster in Dateiinhalten und Befehlsausgaben suchen.
 
 ```bash
 # Nach Muster in Datei suchen
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Option `-i` macht grep unabhängig von Groß-/Kleinschreibung, sodass sowohl Groß- als auch Kleinbuchstaben gefunden werden. Zum Beispiel findet `grep -i "error" file.txt` sowohl "Error", "ERROR" als auch "error".
+    Die Option `-i` macht grep unabhängig von Groß- und Kleinschreibung, sodass sowohl Groß- als auch Kleinbuchstaben gefunden werden. Zum Beispiel findet `grep -i "error" file.txt` sowohl "Error", "ERROR" als auch "error".
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -469,7 +469,7 @@ Text mit Stream-Editoren und Muster-Scannern bearbeiten und verarbeiten.
 ```bash
 # Text in Datei ersetzen
 sed 's/old/new/g' filename
-# Zeilen, die Muster enthalten, löschen
+# Zeilen löschen, die Muster enthalten
 sed '/pattern/d' filename
 # Spezifische Felder ausgeben
 awk '{print $1, $3}' filename
@@ -498,7 +498,7 @@ wc -l filename
 
 ### Ausschneiden & Einfügen: `cut`, `paste`
 
-Bestimmte Spalten extrahieren und Dateien kombinieren.
+Spezifische Spalten extrahieren und Dateien kombinieren.
 
 ```bash
 # Erste Spalte extrahieren
@@ -515,7 +515,7 @@ cut -d':' -f1,3 /etc/passwd
 
 ### Archive erstellen: `tar`
 
-Archive erstellen und dekomprimieren.
+Komprimierte Archive erstellen und extrahieren.
 
 ```bash
 # Tar-Archiv erstellen
@@ -569,7 +569,7 @@ Festplattennutzung analysieren und Verzeichnisgrößen anzeigen.
 ```bash
 # Verzeichnisgrößen anzeigen
 du -h /path/
-# Gesamtgröße als Zusammenfassung
+# Zusammenfassung der Gesamtgröße
 du -sh /path/
 # Größen aller Unterverzeichnisse anzeigen
 du -h --max-depth=1 /path/
@@ -584,7 +584,7 @@ du -h | sort -hr | head -10
 Speichernutzung und virtuelle Speicherstatistiken überwachen.
 
 ```bash
-# Speicherzusammenfassung
+# Zusammenfassung der Speichernutzung
 free -h
 # Detaillierte Speicherstatistiken
 cat /proc/meminfo
@@ -598,16 +598,16 @@ swapon --show
 
 ### Festplatten-I/O: `iostat`, `iotop`
 
-Festplatten-Eingabe-/Ausgabe-Leistung überwachen und Engpässe identifizieren.
+Festplatten-E/A-Leistung überwachen und Engpässe identifizieren.
 
 ```bash
-# I/O-Statistiken (erfordert sysstat)
+# E/A-Statistiken (erfordert sysstat)
 iostat
-# I/O-Statistiken alle 2 Sekunden
+# E/A-Statistiken alle 2 Sekunden
 iostat 2
-# Festplatten-I/O nach Prozess überwachen
+# Festplatten-E/A nach Prozess überwachen
 iotop
-# I/O-Nutzung für spezifisches Gerät anzeigen
+# E/A-Nutzung für bestimmtes Gerät anzeigen
 iostat -x /dev/sda
 ```
 
@@ -618,13 +618,13 @@ Systemlast, CPU-Auslastung und laufende Prozesse überwachen.
 ```bash
 # Prozessüberwachung in Echtzeit
 top
-# Verbesserter Prozessbetrachter
+# Verbesserte Prozessanzeige
 htop
 # Lastdurchschnitte anzeigen
 uptime
 # CPU-Informationen anzeigen
 lscpu
-# Spezifischen Prozess überwachen
+# Prozess überwachen
 top -p PID
 ```
 
@@ -641,7 +641,7 @@ journalctl -f
 journalctl -u servicename
 # Kernelmeldungen
 dmesg
-# Letzte Bootmeldungen
+# Meldungen des letzten Bootvorgangs
 dmesg | tail
 ```
 
@@ -675,7 +675,7 @@ groupadd groupname
 groups username
 # Alle Gruppen anzeigen
 cat /etc/group
-# Benutzer zu Gruppe hinzufügen
+# Benutzer zur Gruppe hinzufügen
 usermod -aG groupname username
 # Primäre Gruppe des Benutzers ändern
 usermod -g groupname username
@@ -692,7 +692,7 @@ su -
 su - username
 # Befehl als Root ausführen
 sudo command
-# Befehl als spezifischer Benutzer ausführen
+# Befehl als bestimmter Benutzer ausführen
 sudo -u username command
 # Sudoers-Datei bearbeiten
 visudo
@@ -700,7 +700,7 @@ visudo
 
 ### Passwortverwaltung: `passwd`, `chage`
 
-Benutzerpasswörter und Kontolebensdauern verwalten.
+Benutzerpasswörter und Kontenrichtlinien verwalten.
 
 ```bash
 # Passwort ändern
@@ -711,7 +711,7 @@ passwd username
 chage -l username
 # Passwortablauf auf 90 Tage festlegen
 chage -M 90 username
-# Passwortänderung beim nächsten Login erzwingen
+# Passwortwechsel beim nächsten Login erzwingen
 passwd -e username
 ```
 
@@ -781,7 +781,7 @@ flatpak install packagename
 flatpak list
 # Flatpak-Pakete aktualisieren
 flatpak update
-# Flatpak entfernen
+# Flatpak deinstallieren
 flatpak uninstall packagename
 # Nach Flatpak-Paketen suchen
 flatpak search packagename
@@ -791,7 +791,7 @@ flatpak search packagename
 
 ### Befehlshistorie: `history`
 
-Auf den Befehlsverlauf der Kommandozeile zugreifen und diesen verwalten.
+Auf die Befehlszeilenhistorie zugreifen und diese verwalten.
 
 ```bash
 # Befehlshistorie anzeigen
@@ -802,13 +802,13 @@ history 10
 !!
 # Befehl nach Nummer ausführen
 !123
-# Historie interaktiv durchsuchen
+# Interaktiv in der Historie suchen
 Ctrl+R
 ```
 
 ### Aliase & Funktionen: `alias`
 
-Abkürzungen für häufig verwendete Befehle erstellen.
+Verknüpfungen für häufig verwendete Befehle erstellen.
 
 ```bash
 # Alias erstellen
@@ -817,7 +817,7 @@ alias ll='ls -la'
 alias
 # Alias entfernen
 unalias ll
-# Alias dauerhaft machen (zu .bashrc hinzufügen)
+# Alias permanent machen (zu .bashrc hinzufügen)
 echo "alias ll='ls -la'" >> ~/.bashrc
 ```
 
@@ -859,7 +859,7 @@ printenv
 
 ### Distributionsoptionen: Ubuntu, CentOS, Debian
 
-Linux-Distributionen für verschiedene Anwendungsfälle auswählen und installieren.
+Linux-Distributionen für unterschiedliche Anwendungsfälle auswählen und installieren.
 
 ```bash
 # Ubuntu Server
@@ -890,7 +890,7 @@ dd if=linux.iso of=/dev/sdX bs=4M
 Grundlegende Systemkonfiguration nach der Installation einrichten.
 
 ```bash
-# Hostname setzen
+# Hostnamen festlegen
 hostnamectl set-hostname newname
 # Statische IP konfigurieren
 # /etc/netplan/ (Ubuntu) oder /etc/network/interfaces bearbeiten
@@ -909,11 +909,11 @@ ufw allow ssh
 Firewall-Regeln konfigurieren, um das System vor Netzwerkbedrohungen zu schützen.
 
 ```bash
-# UFW Firewall aktivieren
+# UFW-Firewall aktivieren
 ufw enable
-# Spezifischen Port erlauben
+# Bestimmten Port zulassen
 ufw allow 22/tcp
-# Dienst nach Namen erlauben
+# Dienst nach Namen zulassen
 ufw allow ssh
 # Zugriff verweigern
 ufw deny 23
@@ -934,7 +934,7 @@ md5sum filename
 sha256sum filename
 # Prüfsumme verifizieren
 sha256sum -c checksums.txt
-# Prüfsummendatei erstellen
+# Prüfsummen-Datei erstellen
 sha256sum *.txt > checksums.txt
 ```
 
@@ -958,13 +958,13 @@ apt list --upgradable
 Systemprotokolle auf Sicherheitsereignisse und Anomalien überwachen.
 
 ```bash
-# Authentifizierungsprotokolle überwachen
+# Authentifizierungs-Protokolle überwachen
 tail -f /var/log/auth.log
 # Fehlgeschlagene Anmeldeversuche prüfen
 grep "Failed password" /var/log/auth.log
 # Systemprotokolle überwachen
 tail -f /var/log/syslog
-# Anmeldeverlauf prüfen
+# Anmeldehistorie prüfen
 last
 # Nach verdächtigen Aktivitäten suchen
 journalctl -p err
@@ -978,7 +978,7 @@ Probleme mit dem Bootloader und dem Kernel beheben.
 
 ```bash
 # Im Rettungsmodus booten
-# GRUB-Menü während des Bootens aufrufen
+# GRUB-Menü beim Booten aufrufen
 # Root-Dateisystem einbinden
 mount /dev/sda1 /mnt
 # In das System wechseln (chroot)
@@ -996,7 +996,7 @@ Dateisystemfehler überprüfen und reparieren.
 ```bash
 # Dateisystem prüfen
 fsck /dev/sda1
-# Erzwingen einer Dateisystemprüfung
+# Dateisystemprüfung erzwingen
 fsck -f /dev/sda1
 # Automatische Reparatur
 fsck -y /dev/sda1
@@ -1028,7 +1028,7 @@ Systemleistungsengpässe identifizieren und beheben.
 ```bash
 # Speicherplatz prüfen
 df -h
-# I/O-Nutzung überwachen
+# E/A-Nutzung überwachen
 iotop
 # Speichernutzung prüfen
 free -h

@@ -1,6 +1,6 @@
 ---
-title: 'PostgreSQL Spickzettel'
-description: 'Lernen Sie PostgreSQL mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'PostgreSQL Spickzettel | LabEx'
+description: 'Lernen Sie PostgreSQL-Datenbankverwaltung mit diesem umfassenden Spickzettel. Schnelle Referenz für SQL-Abfragen, erweiterte Funktionen, JSON-Unterstützung, Volltextsuche und Enterprise-Datenbankadministration.'
 pdfUrl: '/cheatsheets/pdf/postgresql-cheatsheet.pdf'
 ---
 
@@ -23,12 +23,12 @@ Lernen Sie das PostgreSQL-Datenbankmanagement durch praktische Übungen und real
 
 ### Mit PostgreSQL verbinden: `psql`
 
-Stellen Sie eine Verbindung zu einer lokalen oder Remote-PostgreSQL-Datenbank mit dem psql-Kommandozeilenwerkzeug her.
+Stellen Sie eine Verbindung zu einer lokalen oder entfernten PostgreSQL-Datenbank mit dem psql-Kommandozeilenwerkzeug her.
 
 ```bash
 # Verbindung zur lokalen Datenbank herstellen
 psql -U benutzername -d datenbankname
-# Verbindung zur Remote-Datenbank herstellen
+# Verbindung zur entfernten Datenbank herstellen
 psql -h hostname -p 5432 -U benutzername -d datenbankname
 # Verbindung mit Passwortabfrage
 psql -U postgres -W
@@ -41,7 +41,7 @@ psql "host=localhost port=5432 dbname=mydb user=myuser"
 Erstellen Sie eine neue Datenbank in PostgreSQL mit dem CREATE DATABASE Befehl.
 
 ```sql
-# Neue Datenbank erstellen
+# Eine neue Datenbank erstellen
 CREATE DATABASE mydatabase;
 # Datenbank mit Besitzer erstellen
 CREATE DATABASE mydatabase OWNER myuser;
@@ -94,12 +94,12 @@ Wesentliche psql-Terminalbefehle zur Navigation und Informationsabfrage.
 
 ### Version & Einstellungen
 
-Überprüfen Sie die PostgreSQL-Version und Konfigurationseinstellungen.
+Überprüfen Sie die PostgreSQL-Version und die Konfigurationseinstellungen.
 
 ```sql
 # PostgreSQL-Version prüfen
 SELECT version();
-# Aktuelle Einstellungen anzeigen
+# Alle Einstellungen anzeigen
 SHOW ALL;
 # Spezifische Einstellung anzeigen
 SHOW max_connections;
@@ -131,6 +131,21 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="postgresql-create-table-1" correct="A">
+  <template #question>
+    Was bewirkt `SERIAL PRIMARY KEY` in PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Erstellt eine automatisch inkrementierende Ganzzahlspalte, die als Primärschlüssel dient</BaseQuizOption>
+  <BaseQuizOption value="B">Erstellt eine Textspalte</BaseQuizOption>
+  <BaseQuizOption value="C">Erstellt eine Fremdschlüsseleinschränkung</BaseQuizOption>
+  <BaseQuizOption value="D">Erstellt einen eindeutigen Index</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SERIAL` ist ein PostgreSQL-spezifischer Datentyp, der eine automatisch inkrementierende Ganzzahl erzeugt. In Kombination mit `PRIMARY KEY` wird ein eindeutiger Bezeichner für jede Zeile erstellt, der automatisch hochgezählt wird.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Tabellen ändern: `ALTER TABLE`
 
 Fügen Sie Spalten und Einschränkungen zu bestehenden Tabellen hinzu, ändern oder entfernen Sie diese.
@@ -154,15 +169,15 @@ Tabellen entfernen oder alle Daten aus Tabellen löschen.
 ```sql
 # Tabelle vollständig löschen
 DROP TABLE IF EXISTS old_table;
-# Alle Daten behalten, aber Struktur beibehalten
+# Alle Daten löschen, aber Struktur beibehalten
 TRUNCATE TABLE users;
-# Leeren mit Identität neu starten
+# Leeren mit Neustart der Identität
 TRUNCATE TABLE users RESTART IDENTITY;
 ```
 
 ### Datentypen & Einschränkungen
 
-Wesentliche PostgreSQL-Datentypen für verschiedene Datenarten.
+Wesentliche PostgreSQL-Datentypen für verschiedene Arten von Daten.
 
 ```sql
 # Numerische Typen
@@ -195,7 +210,7 @@ email VARCHAR(100) UNIQUE
 # Prüfeinschränkung
 age INTEGER CHECK (age >= 0)
 
-# Nicht Null
+# Nicht null
 name VARCHAR(50) NOT NULL
 ```
 
@@ -219,6 +234,21 @@ CREATE INDEX idx_active_users
 DROP INDEX IF EXISTS idx_username;
 ```
 
+<BaseQuiz id="postgresql-index-1" correct="A">
+  <template #question>
+    Was ist der Hauptzweck der Erstellung eines Index in PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Zur Verbesserung der Abfrageleistung durch Beschleunigung der Datenabfrage</BaseQuizOption>
+  <BaseQuizOption value="B">Zur Reduzierung der Datenbankgröße</BaseQuizOption>
+  <BaseQuizOption value="C">Zur Verschlüsselung von Daten</BaseQuizOption>
+  <BaseQuizOption value="D">Zur Verhinderung doppelter Einträge</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Indizes erstellen eine Datenstruktur, die es der Datenbank ermöglicht, Zeilen schnell zu finden, ohne die gesamte Tabelle durchsuchen zu müssen. Dies beschleunigt SELECT-Abfragen erheblich, insbesondere bei großen Tabellen.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Sequenzen: `CREATE SEQUENCE`
 
 Generieren Sie automatisch eindeutige numerische Werte.
@@ -239,7 +269,7 @@ ALTER SEQUENCE user_id_seq RESTART WITH 1000;
 
 ### Daten einfügen: `INSERT`
 
-Neue Datensätze zu Datenbanktabellen hinzufügen.
+Fügen Sie neue Datensätze in Datenbanktabellen ein.
 
 ```sql
 # Einzelnen Datensatz einfügen
@@ -258,9 +288,24 @@ INSERT INTO archive_users
 SELECT * FROM users WHERE active = false;
 ```
 
+<BaseQuiz id="postgresql-insert-1" correct="C">
+  <template #question>
+    Was bewirkt `RETURNING` in einer PostgreSQL INSERT-Anweisung?
+  </template>
+  
+  <BaseQuizOption value="A">Es macht den Einfügevorgang rückgängig</BaseQuizOption>
+  <BaseQuizOption value="B">Es verhindert das Einfügen</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Es gibt die eingefügten Zeilendaten zurück</BaseQuizOption>
+  <BaseQuizOption value="D">Es aktualisiert vorhandene Zeilen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Klausel `RETURNING` in PostgreSQL ermöglicht es Ihnen, die eingefügten Zeilendaten (oder bestimmte Spalten) unmittelbar nach dem Einfügen abzurufen, was nützlich ist, um automatisch generierte IDs oder Zeitstempel zu erhalten.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Daten aktualisieren: `UPDATE`
 
-Bestehende Datensätze in Datenbanktabellen ändern.
+Ändern Sie vorhandene Datensätze in Datenbanktabellen.
 
 ```sql
 # Spezifische Datensätze aktualisieren
@@ -283,14 +328,14 @@ SET total = (SELECT SUM(price) FROM order_items
 Daten aus Datenbanktabellen abfragen und abrufen.
 
 ```sql
-# Grundlegendes Auswählen
+# Grundlegende Auswahl
 SELECT * FROM users;
 # Spezifische Spalten auswählen
 SELECT id, username, email FROM users;
-# Auswählen mit Bedingungen
+# Auswahl mit Bedingungen
 SELECT * FROM users
 WHERE active = true AND created_at > '2024-01-01';
-# Auswählen mit Sortierung und Begrenzung
+# Auswahl mit Sortierung und Begrenzung
 SELECT * FROM users
 ORDER BY created_at DESC
 LIMIT 10 OFFSET 20;
@@ -321,7 +366,7 @@ RETURNING *;
 
 ### Joins: `INNER/LEFT/RIGHT JOIN`
 
-Daten aus mehreren Tabellen mithilfe verschiedener Join-Typen kombinieren.
+Kombinieren Sie Daten aus mehreren Tabellen mithilfe verschiedener Join-Typen.
 
 ```sql
 # Inner Join
@@ -341,7 +386,7 @@ JOIN products p ON o.product_id = p.id;
 
 ### Subqueries & CTEs
 
-Verschachtelte Abfragen und Common Table Expressions für komplexe Operationen verwenden.
+Verwenden Sie verschachtelte Abfragen und Common Table Expressions für komplexe Operationen.
 
 ```sql
 # Unterabfrage in WHERE
@@ -359,7 +404,7 @@ GROUP BY au.username;
 
 ### Aggregation: `GROUP BY`
 
-Daten gruppieren und Aggregatfunktionen zur Analyse anwenden.
+Gruppieren Sie Daten und wenden Sie Aggregatfunktionen für die Analyse an.
 
 ```sql
 # Grundlegende Gruppierung
@@ -378,7 +423,7 @@ HAVING COUNT(*) > 5;
 
 ### Fensterfunktionen
 
-Berechnungen über zusammengehörige Zeilen durchführen, ohne zu gruppieren.
+Führen Sie Berechnungen über zusammengehörige Zeilen durch, ohne zu gruppieren.
 
 ```sql
 # Zeilennummerierung
@@ -399,7 +444,7 @@ FROM user_scores;
 
 ### CSV-Import: `COPY`
 
-Daten aus CSV-Dateien in PostgreSQL-Tabellen importieren.
+Importieren Sie Daten aus CSV-Dateien in PostgreSQL-Tabellen.
 
 ```sql
 # Import aus CSV-Datei
@@ -416,7 +461,7 @@ WITH (FORMAT csv, HEADER true, DELIMITER ';');
 
 ### CSV-Export: `COPY TO`
 
-PostgreSQL-Daten in CSV-Dateien exportieren.
+Exportieren Sie PostgreSQL-Daten in CSV-Dateien.
 
 ```sql
 # Export in CSV-Datei
@@ -431,7 +476,7 @@ TO '/path/to/active_users.csv' CSV HEADER;
 
 ### Backup & Wiederherstellung: `pg_dump`
 
-Datenbank-Backups erstellen und aus Backup-Dateien wiederherstellen.
+Erstellen Sie Datenbank-Backups und stellen Sie diese aus Backup-Dateien wieder her.
 
 ```bash
 # Gesamte Datenbank sichern
@@ -448,7 +493,7 @@ pg_restore -U benutzername -d datenbankname backup.dump
 
 ### JSON-Datenoperationen
 
-Mit JSON- und JSONB-Datentypen für semi-strukturierte Daten arbeiten.
+Arbeiten Sie mit JSON- und JSONB-Datentypen für semi-strukturierte Daten.
 
 ```sql
 # JSON-Daten einfügen
@@ -467,7 +512,7 @@ WHERE metadata->'features' ? 'wireless';
 
 ### Benutzer & Rollen erstellen
 
-Datenbankzugriff mit Benutzern und Rollen verwalten.
+Verwalten Sie den Datenbankzugriff mit Benutzern und Rollen.
 
 ```sql
 # Benutzer erstellen
@@ -483,7 +528,7 @@ GRANT readonly_user TO myuser;
 
 ### Berechtigungen: `GRANT/REVOKE`
 
-Zugriff auf Datenbankobjekte über Berechtigungen steuern.
+Steuern Sie den Zugriff auf Datenbankobjekte über Berechtigungen.
 
 ```sql
 # Tabellenberechtigungen erteilen
@@ -498,9 +543,9 @@ REVOKE INSERT ON users FROM myuser;
 
 ### Benutzerinformationen anzeigen
 
-Vorhandene Benutzer und deren Berechtigungen überprüfen.
+Überprüfen Sie vorhandene Benutzer und deren Berechtigungen.
 
-```sql
+```bash
 # Alle Benutzer auflisten
 \du
 # Tabellenberechtigungen anzeigen
@@ -516,7 +561,7 @@ FROM pg_roles r;
 
 ### Passwort & Sicherheit
 
-Benutzerpasswörter und Sicherheitseinstellungen verwalten.
+Verwalten Sie Benutzerpasswörter und Sicherheitseinstellungen.
 
 ```sql
 # Benutzerpasswort ändern
@@ -534,12 +579,12 @@ ALTER USER myuser WITH LOGIN;
 
 ### Abfrageanalyse: `EXPLAIN`
 
-Abfrageausführungspläne analysieren und die Leistung optimieren.
+Analysieren Sie Abfrageausführungspläne und optimieren Sie die Leistung.
 
 ```sql
 # Abfrageausführungsplan anzeigen
 EXPLAIN SELECT * FROM users WHERE active = true;
-# Mit tatsächlichen Ausführungsstatistiken analysieren
+# Analysieren mit tatsächlichen Ausführungsstatistiken
 EXPLAIN ANALYZE
 SELECT u.username, COUNT(o.id)
 FROM users u
@@ -552,7 +597,7 @@ SELECT * FROM large_table WHERE indexed_col = 'value';
 
 ### Datenbankwartung: `VACUUM`
 
-Die Datenbankleistung durch regelmäßige Bereinigungsoperationen aufrechterhalten.
+Wartung der Datenbankleistung durch regelmäßige Bereinigungsoperationen.
 
 ```sql
 # Grundlegendes Vacuum
@@ -568,7 +613,7 @@ REINDEX TABLE users;
 
 ### Abfragen überwachen
 
-Datenbankaktivität verfolgen und Leistungsprobleme identifizieren.
+Verfolgen Sie Datenbankaktivitäten und identifizieren Sie Leistungsprobleme.
 
 ```sql
 # Aktuelle Aktivität
@@ -586,7 +631,7 @@ SELECT pg_terminate_backend(pid) WHERE pid = 12345;
 
 ### Datenbankstatistiken
 
-Einblicke in die Datenbanknutzung und Leistungsmetriken erhalten.
+Erhalten Sie Einblicke in die Datenbanknutzung und Leistungsmetriken.
 
 ```sql
 # Tabellenstatistiken
@@ -623,7 +668,7 @@ DROP VIEW IF EXISTS order_summary;
 
 ### Trigger & Funktionen
 
-Datenbankoperationen mit gespeicherten Prozeduren und Triggern automatisieren.
+Automatisieren Sie Datenbankoperationen mit gespeicherten Prozeduren und Triggern.
 
 ```sql
 # Funktion erstellen
@@ -643,7 +688,7 @@ CREATE TRIGGER update_user_timestamp
 
 ### Transaktionen
 
-Gewährleistung der Datenkonsistenz durch Transaktionskontrolle.
+Stellen Sie die Datenkonsistenz mit Transaktionskontrolle sicher.
 
 ```sql
 # Transaktion beginnen
@@ -663,7 +708,7 @@ ROLLBACK TO my_savepoint;
 
 ### Konfiguration & Tuning
 
-PostgreSQL-Servereinstellungen für bessere Leistung optimieren.
+Optimieren Sie die PostgreSQL-Servereinstellungen für eine bessere Leistung.
 
 ```sql
 # Aktuelle Konfiguration anzeigen
@@ -682,7 +727,7 @@ SHOW config_file;
 
 ### Verbindungsdateien: `.pgpass`
 
-Datenbankanmeldeinformationen sicher für die automatische Authentifizierung speichern.
+Speichern Sie Datenbankanmeldeinformationen sicher für die automatische Authentifizierung.
 
 ```bash
 # .pgpass Datei erstellen (Format: hostname:port:datenbank:benutzername:passwort)
@@ -700,10 +745,10 @@ user=myuser
 
 ### psql Konfiguration: `.psqlrc`
 
-psql-Starteinstellungen und Verhalten anpassen.
+Passen Sie die psql-Starteinstellungen und das Verhalten an.
 
 ```bash
-# ~/.psqlrc Datei mit benutzerdefinierten Einstellungen erstellen
+# Erstellen Sie die ~/.psqlrc Datei mit benutzerdefinierten Einstellungen
 \set QUIET on
 \timing on
 \set PROMPT1 '%n@%M:%> %`date` %R%# '
@@ -717,10 +762,10 @@ psql-Starteinstellungen und Verhalten anpassen.
 
 ### Umgebungsvariablen
 
-PostgreSQL-Umgebungsvariablen für einfachere Verbindungen festlegen.
+Legen Sie PostgreSQL-Umgebungsvariablen für einfachere Verbindungen fest.
 
 ```bash
-# Im Shell-Profil festlegen
+# In Ihrem Shell-Profil festlegen
 export PGHOST=localhost
 export PGPORT=5432
 export PGDATABASE=mydatabase
@@ -733,7 +778,7 @@ PGDATABASE=testdb psql
 
 ### Datenbankinformationen
 
-Informationen zu Datenbankobjekten und Struktur abrufen.
+Erhalten Sie Informationen über Datenbankobjekte und -struktur.
 
 ```bash
 # Datenbanken auflisten
@@ -763,7 +808,7 @@ WHERE constraint_type = 'FOREIGN KEY';
 
 ### Ausgabe & Formatierung
 
-Steuern, wie psql Abfrageergebnisse und Ausgaben anzeigt.
+Steuern Sie, wie psql Abfrageergebnisse und Ausgaben anzeigt.
 
 ```bash
 # Erweiterten Modus umschalten
@@ -783,14 +828,14 @@ SELECT * FROM users;
 
 ### Timing & Verlauf
 
-Abfrageleistung verfolgen und den Befehlsverlauf verwalten.
+Verfolgen Sie die Abfrageleistung und verwalten Sie den Befehlsverlauf.
 
 ```bash
 # Zeitanzeige umschalten
 \timing
 # Befehlsverlauf anzeigen
 \s
-# Befehlsverlauf in Datei speichern
+# Verlauf in Datei speichern
 \s dateiname.txt
 # Bildschirm löschen
 \! clear  -- Linux/Mac

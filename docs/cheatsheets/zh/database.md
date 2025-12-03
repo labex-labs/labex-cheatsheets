@@ -1,6 +1,6 @@
 ---
-title: '数据库速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，快速掌握数据库知识。'
+title: '数据库速查表 | LabEx'
+description: '使用本综合速查表学习数据库管理。快速参考 SQL 查询、数据库设计、规范化、索引、事务和关系数据库管理。'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/database">通过动手实验学习数据库</a>
+<a target="_blank" href="https://labex.io/zh/learn/database">通过实践实验室学习数据库</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过动手实验和真实场景学习数据库管理和 SQL。LabEx 提供全面的数据库课程，涵盖基本的 SQL 命令、数据操作、查询优化、数据库设计和管理。掌握关系数据库、NoSQL 系统和数据库安全最佳实践。
+通过实践实验室和真实场景学习数据库管理和 SQL。LabEx 提供全面的数据库课程，涵盖基本的 SQL 命令、数据操作、查询优化、数据库设计和管理。掌握关系数据库、NoSQL 系统和数据库安全最佳实践。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -35,6 +35,21 @@ COLLATE utf8mb4_general_ci;
 -- 使用数据库
 USE company_db;
 ```
+
+<BaseQuiz id="database-create-1" correct="A">
+  <template #question>
+    `CREATE DATABASE company_db` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>创建一个名为 company_db 的新的空数据库</BaseQuizOption>
+  <BaseQuizOption value="B">在数据库中创建一个表</BaseQuizOption>
+  <BaseQuizOption value="C">删除数据库</BaseQuizOption>
+  <BaseQuizOption value="D">备份数据库</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `CREATE DATABASE` 创建一个新的空数据库。创建后，您需要使用 `USE` 来选择它，然后才能在其中创建表。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 显示数据库：`SHOW DATABASES`
 
@@ -104,7 +119,7 @@ DESCRIBE employees;
 
 ### 创建表：`CREATE TABLE`
 
-定义带有列和数据类型的新的表。
+定义带有列和数据类型的表。
 
 ```sql
 -- 基本表创建
@@ -140,6 +155,21 @@ COLUMN phone;
 RENAME TABLE employees TO staff;
 ```
 
+<BaseQuiz id="database-alter-1" correct="C">
+  <template #question>
+    `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">删除 phone 列</BaseQuizOption>
+  <BaseQuizOption value="B">修改 phone 列</BaseQuizOption>
+  <BaseQuizOption value="C" correct>向 employees 表中添加一个名为 phone 的新列</BaseQuizOption>
+  <BaseQuizOption value="D">重命名表</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ALTER TABLE ... ADD COLUMN` 向现有表中添加一个新列。对于现有行，新列将添加并默认为 NULL，除非您指定了默认值。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 表信息：`SHOW`
 
 获取有关表及其属性的详细信息。
@@ -174,7 +204,7 @@ department) VALUES
 ('Jane Smith', 'jane@company.com', 80000.00,
 'Marketing'),
 ('Bob Johnson', 'bob@company.com', 65000.00, 'Sales');
--- 从另一张表插入
+-- 从另一个表插入
 INSERT INTO backup_employees
 SELECT * FROM employees WHERE department =
 'Engineering';
@@ -223,7 +253,7 @@ TRUNCATE TABLE temp_employees;
 REPLACE INTO employees (id, name, email, salary)
 VALUES (1, 'John Doe Updated',
 'john.new@company.com', 90000);
--- 如果重复键则更新
+-- 存在则更新
 INSERT INTO employees (id, name, salary)
 VALUES (1, 'John Doe', 85000)
 ON DUPLICATE KEY UPDATE salary = VALUES(salary);
@@ -240,7 +270,7 @@ ON DUPLICATE KEY UPDATE salary = VALUES(salary);
 SELECT * FROM employees;
 -- 选择特定列
 SELECT name, email, salary FROM employees;
--- 选择带别名
+-- 带别名的选择
 SELECT name AS employee_name, salary AS
 annual_salary
 FROM employees;
@@ -260,6 +290,24 @@ SELECT * FROM employees
 WHERE department = 'Engineering' AND salary > 75000;
 -- 模式匹配
 SELECT * FROM employees WHERE name LIKE 'John%';
+```
+
+<BaseQuiz id="database-where-1" correct="C">
+  <template #question>
+    在 WHERE 子句中，`LIKE 'John%'` 匹配什么？
+  </template>
+  
+  <BaseQuizOption value="A">仅精确匹配 "John"</BaseQuizOption>
+  <BaseQuizOption value="B">以 "John" 结尾的值</BaseQuizOption>
+  <BaseQuizOption value="C" correct>以 "John" 开头的值</BaseQuizOption>
+  <BaseQuizOption value="D">包含 "John" 任意位置的值</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    SQL 中的 `%` 通配符匹配任意字符序列。`LIKE 'John%'` 匹配任何以 "John" 开头的值，例如 "John"、"Johnny"、"Johnson" 等。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```sql
 -- 范围查询
 SELECT * FROM employees
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
@@ -268,7 +316,7 @@ WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
 
 ### 排序数据：`ORDER BY`
 
-按升序或降序排列查询结果。
+按升序或降序对查询结果进行排序。
 
 ```sql
 -- 按单列排序
@@ -288,7 +336,7 @@ ORDER BY hire_date DESC LIMIT 10;
 ```sql
 -- 限制结果数量
 SELECT * FROM employees LIMIT 5;
--- 分页与 OFFSET
+-- 带 OFFSET 的分页
 SELECT * FROM employees
 ORDER BY id LIMIT 10 OFFSET 20;
 -- 前 N 个结果
@@ -313,7 +361,7 @@ FROM employees;
 SELECT department, COUNT(*) as employee_count,
 AVG(salary) as avg_salary
 FROM employees GROUP BY department;
--- Having 子句用于组过滤
+-- 用于组过滤的 HAVING 子句
 SELECT department, COUNT(*) as count
 FROM employees
 GROUP BY department
@@ -322,7 +370,7 @@ HAVING COUNT(*) > 5;
 
 ### 子查询：嵌套查询
 
-在其他查询中使用查询以实现复杂操作。
+在其他查询中使用查询来进行复杂操作。
 
 ```sql
 -- 在 WHERE 子句中的子查询
@@ -364,14 +412,14 @@ LEFT JOIN projects p ON e.id = p.employee_id;
 
 ### 窗口函数：高级分析
 
-在相关行上执行计算。
+跨相关行执行计算。
 
 ```sql
 -- 行编号
 SELECT name, salary,
     ROW_NUMBER() OVER (ORDER BY salary DESC) as rank
 FROM employees;
--- 累计总和
+-- 运行总计
 SELECT name, salary,
     SUM(salary) OVER (ORDER BY hire_date) as
 running_total
@@ -486,7 +534,7 @@ JOIN departments d ON e.department = d.id;
 
 ### 性能监控
 
-监控数据库活动并识别瓶颈。
+监控数据库活动和识别瓶颈。
 
 ```sql
 -- 显示正在运行的进程
@@ -495,18 +543,11 @@ SHOW PROCESSLIST;
 SHOW STATUS LIKE 'Slow_queries';
 -- 查询缓存信息
 SHOW STATUS LIKE 'Qcache%';
--- 查询数据库大小
-SELECT
-    table_schema AS 'Database',
-    SUM(data_length + index_length) / 1024 / 1024 AS 'Size
-(MB)'
-FROM information_schema.tables
-GROUP BY table_schema;
 ```
 
 ### 数据库维护
 
-为最佳性能执行定期维护任务。
+定期的数据库维护任务以实现最佳性能。
 
 ```sql
 -- 表优化
@@ -515,7 +556,7 @@ OPTIMIZE TABLE employees;
 ANALYZE TABLE employees;
 -- 检查表完整性
 CHECK TABLE employees;
--- 如果需要则修复表
+-- 需要时修复表
 REPAIR TABLE employees;
 ```
 
@@ -523,7 +564,7 @@ REPAIR TABLE employees;
 
 ### 导入数据：`LOAD DATA`
 
-将数据从外部文件导入到数据库表中。
+将外部文件中的数据导入数据库表。
 
 ```sql
 -- 从 CSV 文件导入
@@ -560,7 +601,7 @@ database_name table_name
 ```sql
 -- 从现有结构创建表
 CREATE TABLE employees_backup LIKE employees;
--- 在表之间复制数据
+-- 复制数据到表之间
 INSERT INTO employees_backup SELECT * FROM
 employees;
 -- 带条件的迁移
@@ -573,7 +614,7 @@ SELECT * FROM old_employees WHERE active = 1;
 高效处理大规模数据操作。
 
 ```sql
--- 使用 INSERT IGNORE 批量插入
+-- 使用 INSERT IGNORE 进行批量插入
 INSERT IGNORE INTO employees (name, email) VALUES
 ('John Doe', 'john@email.com'),
 ('Jane Smith', 'jane@email.com');
@@ -628,7 +669,7 @@ CREATE ROLE 'app_read_role', 'app_write_role';
 GRANT SELECT ON company_db.* TO 'app_read_role';
 GRANT INSERT, UPDATE, DELETE ON company_db.* TO
 'app_write_role';
--- 分配角色给用户
+-- 将角色分配给用户
 GRANT 'app_read_role' TO 'readonly_user'@'localhost';
 ```
 
@@ -681,7 +722,7 @@ PASSWORD 'mypassword';
 
 ### SQLite 设置
 
-轻量级的基于文件的数据库。
+轻量级基于文件的数据库。
 
 ```bash
 # 安装 SQLite

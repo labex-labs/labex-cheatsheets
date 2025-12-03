@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo Matplotlib'
-description: 'Maîtrisez Matplotlib avec notre fiche mémo complète : commandes essentielles, concepts clés et meilleures pratiques.'
+title: 'Fiche Mémo Matplotlib | LabEx'
+description: 'Maîtrisez la visualisation de données Matplotlib avec cette fiche mémo complète. Référence rapide pour le traçage, les graphiques, les sous-graphiques, la personnalisation et la visualisation de données Python.'
 pdfUrl: '/cheatsheets/pdf/matplotlib-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Feuille de triche Matplotlib
 <a target="_blank" href="https://labex.io/fr/learn/matplotlib">Apprenez Matplotlib avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la visualisation de données avec Matplotlib grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur Matplotlib couvrant les fonctions de traçage essentielles, les techniques de personnalisation, les mises en page de sous-graphiques et les types de visualisation avancés. Maîtrisez la création de visualisations de données efficaces pour les flux de travail de science des données Python.
+Apprenez la visualisation de données Matplotlib grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Matplotlib complets couvrant les fonctions de traçage essentielles, les techniques de personnalisation, les mises en page de sous-graphiques et les types de visualisation avancés. Maîtrisez la création de visualisations de données efficaces pour les flux de travail de science des données Python.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -35,7 +35,7 @@ y = [2, 4, 6, 8, 10]
 plt.plot(x, y)
 plt.show()
 
-# Multiples lignes
+# Lignes multiples
 plt.plot(x, y, label='Ligne 1')
 plt.plot(x, [1, 3, 5, 7, 9], label='Ligne 2')
 plt.legend()
@@ -43,6 +43,21 @@ plt.legend()
 # Styles et couleurs de ligne
 plt.plot(x, y, 'r--', linewidth=2, marker='o')
 ```
+
+<BaseQuiz id="matplotlib-plot-1" correct="C">
+  <template #question>
+    Que fait `plt.show()` dans Matplotlib ?
+  </template>
+  
+  <BaseQuizOption value="A">Sauvegarde le graphique dans un fichier</BaseQuizOption>
+  <BaseQuizOption value="B">Ferme la fenêtre du graphique</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Affiche le graphique dans une fenêtre</BaseQuizOption>
+  <BaseQuizOption value="D">Efface le graphique</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `plt.show()` affiche le graphique dans une fenêtre interactive. Il est nécessaire d'appeler cette fonction pour voir la visualisation. Sans elle, le graphique ne sera pas affiché.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Nuage de Points : `plt.scatter()`
 
@@ -56,12 +71,27 @@ plt.scatter(x, y)
 colors = [1, 2, 3, 4, 5]
 sizes = [20, 50, 100, 200, 500]
 plt.scatter(x, y, c=colors, s=sizes, alpha=0.6)
-plt.colorbar()  # Ajouter une barre de couleur
+plt.colorbar()  # Ajoute une barre de couleur
 ```
+
+<BaseQuiz id="matplotlib-scatter-1" correct="D">
+  <template #question>
+    Que contrôle le paramètre `alpha` dans les graphiques matplotlib ?
+  </template>
+  
+  <BaseQuizOption value="A">La couleur du graphique</BaseQuizOption>
+  <BaseQuizOption value="B">La taille du graphique</BaseQuizOption>
+  <BaseQuizOption value="C">La position du graphique</BaseQuizOption>
+  <BaseQuizOption value="D" correct>La transparence/opacité des éléments du graphique</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le paramètre `alpha` contrôle la transparence, avec des valeurs allant de 0 (complètement transparent) à 1 (complètement opaque). Il est utile pour créer des visualisations superposées où l'on souhaite voir à travers les éléments.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Diagramme à Barres : `plt.bar()` / `plt.barh()`
 
-Crée des diagrammes à barres verticaux ou horizontaux.
+Crée des diagrammes à barres verticales ou horizontales.
 
 ```python
 # Barres verticales
@@ -90,7 +120,7 @@ plt.hist(data, bins=30)
 # Histogramme personnalisé
 plt.hist(data, bins=50, alpha=0.7, color='skyblue', edgecolor='black')
 
-# Multiples histogrammes
+# Histogrammes multiples
 plt.hist([data1, data2], bins=30, alpha=0.7, label=['Données 1', 'Données 2'])
 ```
 
@@ -104,8 +134,8 @@ sizes = [25, 35, 20, 20]
 labels = ['A', 'B', 'C', 'D']
 plt.pie(sizes, labels=labels)
 
-# Diagramme circulaire éclaté avec pourcentages
-explode = (0, 0.1, 0, 0)  # Éclater la 2ème tranche
+# Diagramme circulaire explosé avec pourcentages
+explode = (0, 0.1, 0, 0)  # Explose la 2ème tranche
 plt.pie(sizes, labels=labels, autopct='%1.1f%%',
         explode=explode, shadow=True, startangle=90)
 ```
@@ -124,21 +154,21 @@ plt.boxplot(data, labels=['Groupe 1', 'Groupe 2', 'Groupe 3', 'Groupe 4'],
            patch_artist=True, notch=True)
 ```
 
-## Personnalisation et Style du Tracé
+## Personnalisation et Style du Graphique
 
 ### Étiquettes et Titres : `plt.xlabel()` / `plt.title()`
 
-Ajoute du texte descriptif à vos tracés pour plus de clarté et de contexte.
+Ajoute du texte descriptif à vos graphiques pour plus de clarté et de contexte.
 
 ```python
 # Étiquettes et titre de base
 plt.plot(x, y)
 plt.xlabel('Étiquette de l\'axe X')
 plt.ylabel('Étiquette de l\'axe Y')
-plt.title('Titre du Tracé')
+plt.title('Titre du Graphique')
 
 # Titres formatés avec propriétés de police
-plt.title('Mon Tracé', fontsize=16, fontweight='bold')
+plt.title('Mon Graphique', fontsize=16, fontweight='bold')
 plt.xlabel('Valeurs X', fontsize=12)
 
 # Grille pour une meilleure lisibilité
@@ -147,7 +177,7 @@ plt.grid(True, alpha=0.3)
 
 ### Couleurs et Styles : `color` / `linestyle` / `marker`
 
-Personnalisez l'apparence visuelle des éléments du tracé.
+Personnalise l'apparence visuelle des éléments du graphique.
 
 ```python
 # Options de couleur
@@ -166,7 +196,7 @@ plt.plot(x, y, marker='o', markersize=8, markerfacecolor='red')
 
 ### Légendes et Annotations : `plt.legend()` / `plt.annotate()`
 
-Ajoutez des légendes et des annotations pour expliquer les éléments du tracé.
+Ajoute des légendes et des annotations pour expliquer les éléments du graphique.
 
 ```python
 # Légende de base
@@ -174,7 +204,7 @@ plt.plot(x, y1, label='Ensemble de données 1')
 plt.plot(x, y2, label='Ensemble de données 2')
 plt.legend()
 
-# Personnaliser la position de la légende
+# Position de la légende personnalisée
 plt.legend(loc='upper right', fontsize=10, frameon=False)
 
 # Annotations
@@ -182,11 +212,26 @@ plt.annotate('Point Important', xy=(2, 4), xytext=(3, 6),
             arrowprops=dict(arrowstyle='->', color='red'))
 ```
 
+<BaseQuiz id="matplotlib-legend-1" correct="B">
+  <template #question>
+    Qu'est-ce qui est requis pour que `plt.legend()` affiche des étiquettes ?
+  </template>
+  
+  <BaseQuizOption value="A">Rien, cela fonctionne automatiquement</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Chaque tracé doit avoir un paramètre `label` défini</BaseQuizOption>
+  <BaseQuizOption value="C">La légende doit être créée avant le traçage</BaseQuizOption>
+  <BaseQuizOption value="D">Les étiquettes doivent être définies manuellement dans la légende</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Pour afficher une légende, vous devez définir le paramètre `label` lors de la création de chaque tracé (par exemple, `plt.plot(x, y, label='Ensemble de données 1')`). Ensuite, appeler `plt.legend()` affichera toutes les étiquettes.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Contrôle des Axes et de la Mise en Page
 
 ### Limites des Axes : `plt.xlim()` / `plt.ylim()`
 
-Contrôlez la plage de valeurs affichées sur chaque axe.
+Contrôle la plage de valeurs affichées sur chaque axe.
 
 ```python
 # Définir les limites des axes
@@ -197,12 +242,12 @@ plt.ylim(-5, 15)
 plt.margins(x=0.1, y=0.1)
 
 # Inverser l'axe
-plt.gca().invert_yaxis()  # Inverser l'axe y
+plt.gca().invert_yaxis()  # Inverse l'axe y
 ```
 
 ### Graduations et Étiquettes : `plt.xticks()` / `plt.yticks()`
 
-Personnalisez les marques de graduation des axes et leurs étiquettes.
+Personnalise les marques de graduation des axes et leurs étiquettes.
 
 ```python
 # Positions de graduation personnalisées
@@ -215,7 +260,7 @@ plt.xticks([0, 1, 2, 3], ['Jan', 'Fév', 'Mar', 'Avr'])
 # Rotation des étiquettes de graduation
 plt.xticks(rotation=45)
 
-# Supprimer les graduations
+# Suppression des graduations
 plt.xticks([])
 plt.yticks([])
 ```
@@ -227,7 +272,7 @@ Contrôle le rapport d'aspect et l'apparence des axes.
 ```python
 # Rapport d'aspect égal
 plt.axis('equal')
-# Tracé carré
+# Graphique carré
 plt.axis('square')
 # Désactiver l'axe
 plt.axis('off')
@@ -237,7 +282,7 @@ plt.gca().set_aspect('equal', adjustable='box')
 
 ### Taille de la Figure : `plt.figure()`
 
-Contrôle la taille et la résolution globales de vos tracés.
+Contrôle la taille et la résolution globales de vos graphiques.
 
 ```python
 # Définir la taille de la figure (largeur, hauteur en pouces)
@@ -246,7 +291,7 @@ plt.figure(figsize=(10, 6))
 # DPI élevé pour une meilleure qualité
 plt.figure(figsize=(8, 6), dpi=300)
 
-# Multiples figures
+# Figures multiples
 fig1 = plt.figure(1)
 plt.plot(x, y1)
 fig2 = plt.figure(2)
@@ -258,19 +303,19 @@ plt.plot(x, y2)
 Ajuste automatiquement l'espacement des sous-graphiques pour une meilleure apparence.
 
 ```python
-# Empêcher le chevauchement des éléments
+# Empêche les éléments qui se chevauchent
 plt.tight_layout()
 
 # Ajustement manuel de l'espacement
 plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
 
-# Rembourrage autour des sous-graphiques
+# Marge autour des sous-graphiques
 plt.tight_layout(pad=3.0)
 ```
 
 ### Feuilles de Style : `plt.style.use()`
 
-Applique des styles prédéfinis pour une apparence de tracé cohérente.
+Applique des styles prédéfinis pour une apparence de graphique cohérente.
 
 ```python
 # Styles disponibles
@@ -285,11 +330,11 @@ plt.style.use('bmh')
 plt.style.use('default')
 ```
 
-## Sous-graphiques et Multiples Tracés
+## Sous-graphiques et Graphiques Multiples
 
 ### Sous-graphiques de Base : `plt.subplot()` / `plt.subplots()`
 
-Crée plusieurs tracés dans une seule figure.
+Crée plusieurs graphiques dans une seule figure.
 
 ```python
 # Créer une grille de sous-graphiques 2x2
@@ -310,7 +355,7 @@ plt.scatter(x, y)
 
 ### Axes Partagés : `sharex` / `sharey`
 
-Liez les axes à travers les sous-graphiques pour une mise à l'échelle cohérente.
+Lie les axes à travers les sous-graphiques pour une mise à l'échelle cohérente.
 
 ```python
 # Partager l'axe x à travers les sous-graphiques
@@ -324,7 +369,7 @@ fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
 
 ### GridSpec : Mises en Page Avancées
 
-Crée des arrangements complexes de sous-graphiques avec des tailles variables.
+Crée des arrangements de sous-graphiques complexes avec des tailles variables.
 
 ```python
 import matplotlib.gridspec as gridspec
@@ -335,7 +380,7 @@ fig = plt.figure(figsize=(10, 8))
 
 # Sous-graphiques de tailles différentes
 ax1 = fig.add_subplot(gs[0, :])  # Ligne du haut, toutes les colonnes
-ax2 = fig.add_subplot(gs[1, :-1])  # Ligne du milieu, 2 premières colonnes
+ax2 = fig.add_subplot(gs[1, :-1])  # Ligne du milieu, premières 2 colonnes
 ax3 = fig.add_subplot(gs[1:, -1])  # Dernière colonne, 2 dernières lignes
 ax4 = fig.add_subplot(gs[-1, 0])   # En bas à gauche
 ax5 = fig.add_subplot(gs[-1, 1])   # En bas au milieu
@@ -358,7 +403,7 @@ plt.tight_layout()
 
 ### Cartes de Chaleur : `plt.imshow()` / `plt.pcolormesh()`
 
-Visualise des données 2D sous forme de matrices codées par couleur.
+Visualise les données 2D sous forme de matrices codées par couleur.
 
 ```python
 # Carte de chaleur de base
@@ -375,9 +420,9 @@ plt.pcolormesh(X, Y, Z, shading='auto')
 plt.colorbar()
 ```
 
-### Tracés de Contour : `plt.contour()` / `plt.contourf()`
+### Graphiques de Contour : `plt.contour()` / `plt.contourf()`
 
-Affiche des courbes de niveau et des régions de contour remplies.
+Affiche les courbes de niveau et les régions de contour remplies.
 
 ```python
 # Lignes de contour
@@ -393,7 +438,7 @@ plt.contourf(X, Y, Z, levels=20, cmap='RdBu')
 plt.colorbar()
 ```
 
-### Tracés 3D : `mplot3d`
+### Graphiques 3D : `mplot3d`
 
 Crée des visualisations tridimensionnelles.
 
@@ -406,14 +451,14 @@ ax = fig.add_subplot(111, projection='3d')
 # Nuage de points 3D
 ax.scatter(x, y, z)
 
-# Tracé de surface 3D
+# Graphique de surface 3D
 ax.plot_surface(X, Y, Z, cmap='viridis')
 
-# Tracé de ligne 3D
+# Graphique linéaire 3D
 ax.plot(x, y, z)
 ```
 
-### Barres d'Erreur : `plt.errorbar()`
+### Barres d\'Erreur : `plt.errorbar()`
 
 Affiche les données avec des mesures d'incertitude.
 
@@ -435,17 +480,17 @@ plt.errorbar(x, y, yerr=[yerr_lower, yerr_upper], fmt='s-')
 Ombre les zones entre les courbes ou autour des lignes.
 
 ```python
-# Remplir entre deux courbes
+# Remplissage entre deux courbes
 y1 = [2, 4, 6, 8, 10]
 y2 = [1, 3, 5, 7, 9]
 plt.fill_between(x, y1, y2, alpha=0.3, color='blue')
 
-# Remplir autour d'une ligne avec erreur
+# Remplissage autour d'une ligne avec erreur
 plt.plot(x, y, 'k-', linewidth=2)
 plt.fill_between(x, y-yerr, y+yerr, alpha=0.2, color='gray')
 ```
 
-### Diagrammes Violon : Alternative aux Diagrammes en Boîte
+### Graphiques en Violon : Alternative aux Diagrammes en Boîte
 
 Montre la forme de la distribution ainsi que les quartiles.
 
@@ -459,11 +504,11 @@ for pc in parts['bodies']:
     pc.set_alpha(0.7)
 ```
 
-## Fonctionnalités Interactives et Animation
+## Fonctionnalités Interactives et d'Animation
 
 ### Backend Interactif : `%matplotlib widget`
 
-Active les tracés interactifs dans les notebooks Jupyter.
+Active les graphiques interactifs dans les notebooks Jupyter.
 
 ```python
 # Dans un notebook Jupyter
@@ -475,7 +520,7 @@ Active les tracés interactifs dans les notebooks Jupyter.
 
 ### Gestion des Événements : Souris et Clavier
 
-Répondre aux interactions de l'utilisateur avec les tracés.
+Répond aux interactions de l'utilisateur avec les graphiques.
 
 ```python
 # Zoom interactif, panoramique et survol
@@ -491,7 +536,7 @@ plt.show()
 
 ### Animations : `matplotlib.animation`
 
-Crée des tracés animés pour les séries temporelles ou les données changeantes.
+Crée des graphiques animés pour les séries temporelles ou les données changeantes.
 
 ```python
 from matplotlib.animation import FuncAnimation
@@ -510,67 +555,67 @@ def animate(frame):
 ani = FuncAnimation(fig, animate, frames=200, blit=True, interval=50)
 plt.show()
 
-# Enregistrer l'animation
+# Sauvegarder l'animation
 # ani.save('animation.gif', writer='pillow')
 ```
 
-## Sauvegarde et Exportation des Tracés
+## Sauvegarde et Exportation de Graphiques
 
 ### Sauvegarder la Figure : `plt.savefig()`
 
-Exporte les tracés dans des fichiers image avec diverses options.
+Exporte les graphiques dans des fichiers image avec diverses options.
 
 ```python
 # Sauvegarde de base
-plt.savefig('mon_trace.png')
+plt.savefig('mon_graphique.png')
 
 # Sauvegarde de haute qualité
-plt.savefig('trace.png', dpi=300, bbox_inches='tight')
+plt.savefig('graphique.png', dpi=300, bbox_inches='tight')
 
 # Différents formats
-plt.savefig('trace.pdf')  # PDF
-plt.savefig('trace.svg')  # SVG (vectoriel)
-plt.savefig('trace.eps')  # EPS
+plt.savefig('graphique.pdf')  # PDF
+plt.savefig('graphique.svg')  # SVG (vecteur)
+plt.savefig('graphique.eps')  # EPS
 
 # Arrière-plan transparent
-plt.savefig('trace.png', transparent=True)
+plt.savefig('graphique.png', transparent=True)
 ```
 
 ### Qualité de la Figure : DPI et Taille
 
-Contrôle la résolution et les dimensions des tracés enregistrés.
+Contrôle la résolution et les dimensions des graphiques enregistrés.
 
 ```python
 # DPI élevé pour les publications
-plt.savefig('trace.png', dpi=600)
+plt.savefig('graphique.png', dpi=600)
 
 # Taille personnalisée (largeur, hauteur en pouces)
 plt.figure(figsize=(12, 8))
-plt.savefig('trace.png', figsize=(12, 8))
+plt.savefig('graphique.png', figsize=(12, 8))
 
-# Rogner les espaces blancs
-plt.savefig('trace.png', bbox_inches='tight', pad_inches=0.1)
+# Rogner l'espace blanc
+plt.savefig('graphique.png', bbox_inches='tight', pad_inches=0.1)
 ```
 
 ### Exportation par Lots et Gestion de la Mémoire
 
-Gère plusieurs tracés et l'efficacité de la mémoire.
+Gère plusieurs graphiques et l'efficacité de la mémoire.
 
 ```python
 # Fermer les figures pour libérer la mémoire
-plt.close()  # Fermer la figure actuelle
-plt.close('all')  # Fermer toutes les figures
+plt.close()  # Ferme la figure actuelle
+plt.close('all')  # Ferme toutes les figures
 
 # Gestionnaire de contexte pour un nettoyage automatique
 with plt.figure() as fig:
     plt.plot(x, y)
-    plt.savefig('trace.png')
+    plt.savefig('graphique.png')
 
-# Sauvegarde par lots de multiples tracés
+# Sauvegarde par lots de plusieurs graphiques
 for i, data in enumerate(datasets):
     plt.figure()
     plt.plot(data)
-    plt.savefig(f'trace_{i}.png')
+    plt.savefig(f'graphique_{i}.png')
     plt.close()
 ```
 
@@ -578,7 +623,7 @@ for i, data in enumerate(datasets):
 
 ### Paramètres RC : `plt.rcParams`
 
-Définit le style et le comportement par défaut pour tous les tracés.
+Définit le style et le comportement par défaut pour tous les graphiques.
 
 ```python
 # Paramètres rc courants
@@ -601,7 +646,7 @@ Travaille efficacement avec les couleurs et les cartes de couleurs.
 # Lister les cartes de couleurs disponibles
 print(plt.colormaps())
 
-# Utiliser une carte de couleurs pour de multiples lignes
+# Utiliser une carte de couleurs pour plusieurs lignes
 colors = plt.cm.viridis(np.linspace(0, 1, len(datasets)))
 for i, (data, color) in enumerate(zip(datasets, colors)):
     plt.plot(data, color=color, label=f'Ensemble de données {i+1}')
@@ -616,29 +661,29 @@ custom_cmap = LinearSegmentedColormap.from_list('custom', ['red', 'yellow', 'blu
 Améliore les performances de traçage pour les grands ensembles de données.
 
 ```python
-# Utiliser le blitting pour les animations
+# Utiliser le "blit" pour les animations
 ani = FuncAnimation(fig, animate, blit=True)
 
-# Rendu matriciel des tracés complexes
+# Rendu matriciel des graphiques complexes
 plt.plot(x, y, rasterized=True)
 
-# Réduire le nombre de points de données pour les grands ensembles
+# Réduire les points de données pour les grands ensembles de données
 # Sous-échantillonner les données avant le traçage
 indices = np.arange(0, len(large_data), step=10)
 plt.plot(large_data[indices])
 ```
 
-### Utilisation de la Mémoire : Tracé Efficace
+### Utilisation de la Mémoire : Traçage Efficace
 
-Gère la mémoire lors de la création de nombreux tracés ou de visualisations volumineuses.
+Gère la mémoire lors de la création de nombreux graphiques ou de visualisations volumineuses.
 
 ```python
 # Effacer les axes au lieu de créer de nouvelles figures
 fig, ax = plt.subplots()
 for data in datasets:
-    ax.clear()  # Effacer le tracé précédent
+    ax.clear()  # Efface le tracé précédent
     ax.plot(data)
-    plt.savefig(f'trace_{i}.png')
+    plt.savefig(f'graphique_{i}.png')
 
 # Utiliser des générateurs pour les grands ensembles de données
 def data_generator():
@@ -646,20 +691,20 @@ def data_generator():
         yield np.random.randn(100)
 
 for i, data in enumerate(data_generator()):
-    if i > 10:  # Limiter le nombre de tracés
+    if i > 10:  # Limiter le nombre de graphiques
         break
 ```
 
 ## Intégration avec les Bibliothèques de Données
 
-### Intégration Pandas : Tracé Direct
+### Intégration Pandas : Traçage Direct
 
-Utilise les méthodes des DataFrames Pandas pour tracer.
+Utilise les méthodes de DataFrame de Pandas.
 
 ```python
 import pandas as pd
 
-# Tracé de DataFrame (utilise le backend matplotlib)
+# Traçage de DataFrame (utilise le backend matplotlib)
 df.plot(kind='line', x='date', y='value')
 df.plot.scatter(x='x_col', y='y_col')
 df.plot.hist(bins=30)
@@ -708,14 +753,14 @@ sns.scatterplot(data=df, x='x', y='y', ax=axes[0,0])
 plt.plot(x, y, ax=axes[0,1])  # Matplotlib pur
 ```
 
-### Intégration Jupyter : Tracé en Ligne
+### Intégration Jupyter : Traçage En Ligne
 
-Optimise Matplotlib pour les environnements de notebook Jupyter.
+Optimise Matplotlib pour les environnements de notebooks Jupyter.
 
 ```python
 # Commandes magiques pour Jupyter
-%matplotlib inline  # Tracés statiques
-%matplotlib widget  # Tracés interactifs
+%matplotlib inline  # Graphiques statiques
+%matplotlib widget  # Graphiques interactifs
 
 # Affichages DPI élevés
 %config InlineBackend.figure_format = 'retina'

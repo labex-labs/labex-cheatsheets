@@ -1,6 +1,6 @@
 ---
-title: 'MongoDB 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 MongoDB 치트 시트로 학습하세요.'
+title: 'MongoDB 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 MongoDB NoSQL 데이터베이스를 학습하세요. MongoDB 쿼리, 집계, 인덱싱, 샤딩, 복제 및 문서 데이터베이스 관리를 위한 빠른 참조.'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ MongoDB 치트 시트
 <a target="_blank" href="https://labex.io/ko/learn/mongodb">핸즈온 랩으로 MongoDB 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-핸즈온 랩과 실제 시나리오를 통해 MongoDB NoSQL 데이터베이스 관리를 학습하세요. LabEx 는 필수 작업, 문서 쿼리, 애그리게이션 파이프라인, 인덱싱 전략 및 고급 기술을 다루는 포괄적인 MongoDB 과정을 제공합니다. MongoDB 의 문서 기반 데이터 모델을 마스터하여 확장 가능하고 유연한 데이터베이스 애플리케이션을 구축하세요.
+핸즈온 랩과 실제 시나리오를 통해 MongoDB NoSQL 데이터베이스 관리를 학습하세요. LabEx 는 필수 작업, 문서 쿼리, 집계 파이프라인, 인덱싱 전략 및 고급 기술을 다루는 포괄적인 MongoDB 과정을 제공합니다. MongoDB 의 문서 기반 데이터 모델을 마스터하여 확장 가능하고 유연한 데이터베이스 애플리케이션을 구축하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -43,10 +43,25 @@ db.help()
 ```javascript
 // myapp 데이터베이스로 전환
 use myapp
-// 데이터를 삽입하여 데이터베이스 생성
+// 데이터 삽입을 통해 데이터베이스 생성
 use newdb
 db.users.insertOne({name: "John"})
 ```
+
+<BaseQuiz id="mongodb-use-1" correct="B">
+  <template #question>
+    MongoDB 에서 `use newdb`를 실행하면 어떻게 되나요?
+  </template>
+  
+  <BaseQuizOption value="A">즉시 데이터베이스를 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>데이터베이스로 전환합니다 (첫 번째 문서를 삽입할 때 생성됨)</BaseQuizOption>
+  <BaseQuizOption value="C">데이터베이스를 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="D">데이터베이스의 모든 컬렉션을 표시합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `use` 명령어는 데이터베이스로 전환하지만, MongoDB 는 첫 번째 문서를 삽입할 때까지 데이터베이스를 생성하지 않습니다. 이는 지연 생성 접근 방식입니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 데이터베이스 삭제: `db.dropDatabase()`
 
@@ -101,7 +116,7 @@ show collections
 
 ### 컬렉션 통계: `db.collection.stats()`
 
-크기, 문서 수 및 인덱스 정보를 포함하여 컬렉션에 대한 포괄적인 통계를 표시합니다.
+컬렉션의 크기, 문서 수, 인덱스 정보를 포함한 포괄적인 통계를 표시합니다.
 
 ```javascript
 // 컬렉션 통계
@@ -123,20 +138,20 @@ db.users.getIndexes()
 db.users.findOne()
 // 특정 문서 가져오기
 db.users.findOne({ name: 'John' })
-// 모든 필드를 표시하는 문서 가져오기
+// 모든 필드를 표시하며 문서 가져오기
 db.users.findOne({}, { _id: 0 })
 ```
 
 ### 데이터 탐색: `db.collection.find().limit()`
 
-페이지 매김 및 서식을 사용하여 컬렉션 데이터를 탐색합니다.
+페이지네이션 및 서식을 사용하여 컬렉션 데이터를 탐색합니다.
 
 ```javascript
 // 처음 5 개 문서
 db.users.find().limit(5)
-// 건너뛰기 및 제한 (페이지 매김)
+// 건너뛰기 및 제한 (페이지네이션)
 db.users.find().skip(10).limit(5)
-// 예쁘게 서식 지정
+// 보기 좋게 서식 지정
 db.users.find().pretty()
 ```
 
@@ -144,7 +159,7 @@ db.users.find().pretty()
 
 ### 하나 삽입: `db.collection.insertOne()`
 
-단일 문서를 컬렉션에 추가합니다.
+컬렉션에 단일 문서를 추가합니다.
 
 ```javascript
 // 단일 문서 삽입
@@ -160,6 +175,21 @@ db.users.insertOne({
   status: 'active',
 })
 ```
+
+<BaseQuiz id="mongodb-insert-1" correct="A">
+  <template #question>
+    `db.users.insertOne()` 은 무엇을 반환하나요?
+  </template>
+  
+  <BaseQuizOption value="A" correct>삽입된 문서의 _id 가 포함된 승인 객체</BaseQuizOption>
+  <BaseQuizOption value="B">삽입된 문서</BaseQuizOption>
+  <BaseQuizOption value="C">아무것도 반환하지 않음</BaseQuizOption>
+  <BaseQuizOption value="D">삽입된 문서 수</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `insertOne()` 은 `acknowledged: true`와 삽입된 문서의 `_id` 를 포함하는 `insertedId` 를 포함하는 승인 객체를 반환합니다 (사용자 지정 `_id` 가 제공된 경우 해당 `_id` 포함).
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 여러 개 삽입: `db.collection.insertMany()`
 
@@ -198,7 +228,7 @@ db.posts.insertOne({
 
 ### 중첩된 문서 삽입
 
-임베디드 객체와 배열을 사용하여 문서를 추가합니다.
+임베디드 객체 및 배열을 사용하여 문서 추가.
 
 ```javascript
 // 중첩된 객체와 함께 삽입
@@ -222,11 +252,11 @@ db.users.insertOne({
 ```javascript
 // 모든 문서 찾기
 db.users.find()
-// 조건부로 찾기
+// 조건과 함께 찾기
 db.users.find({ age: 30 })
-// 여러 조건 (AND) 으로 찾기
+// 여러 조건 (AND) 과 함께 찾기
 db.users.find({ age: 30, status: 'active' })
-// OR 조건으로 찾기
+// OR 조건과 함께 찾기
 db.users.find({ $or: [{ age: 25 }, { age: 30 }] })
 ```
 
@@ -250,13 +280,28 @@ db.users.find({}, { 'address.city': 1 })
 ```javascript
 // 보다 큼, 보다 작음
 db.users.find({ age: { $gt: 25, $lt: 40 } })
-// 배열 내에 있음
+// 배열 내
 db.users.find({ status: { $in: ['active', 'pending'] } })
 // 같지 않음
 db.users.find({ status: { $ne: 'inactive' } })
-// 존재함
+// 존재 여부
 db.users.find({ email: { $exists: true } })
 ```
+
+<BaseQuiz id="mongodb-query-1" correct="B">
+  <template #question>
+    MongoDB 쿼리에서 `$gt` 는 무엇을 의미하나요?
+  </template>
+  
+  <BaseQuizOption value="A">크거나 같음</BaseQuizOption>
+  <BaseQuizOption value="B" correct>보다 큼</BaseQuizOption>
+  <BaseQuizOption value="C">그룹화</BaseQuizOption>
+  <BaseQuizOption value="D">총합 구하기</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$gt` 는 "보다 큼"을 의미하는 비교 연산자입니다. `{ age: { $gt: 25 } }`와 같은 쿼리에서 사용되어 age 필드가 25 보다 큰 문서를 찾습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 텍스트 검색: `$text`, `$regex`
 
@@ -316,6 +361,24 @@ db.users.updateOne(
 )
 // 배열에 추가
 db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
+```
+
+<BaseQuiz id="mongodb-update-1" correct="C">
+  <template #question>
+    MongoDB 업데이트 작업에서 `$set` 은 무엇을 하나요?
+  </template>
+  
+  <BaseQuizOption value="A">필드를 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="B">배열에 요소를 추가합니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>필드의 값을 설정합니다</BaseQuizOption>
+  <BaseQuizOption value="D">배열에서 요소를 제거합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$set` 연산자는 문서 내 필드의 값을 설정합니다. 필드가 없으면 생성하고, 존재하면 값을 업데이트합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```javascript
 // 배열에서 제거
 db.users.updateOne({ name: 'John' }, { $pull: { hobbies: 'reading' } })
 ```
@@ -336,11 +399,11 @@ db.users.replaceOne(
 )
 ```
 
-## 데이터 애그리게이션
+## 데이터 집계
 
-### 기본 애그리게이션: `db.collection.aggregate()`
+### 기본 집계: `db.collection.aggregate()`
 
-애그리게이션 파이프라인 단계를 통해 데이터를 처리합니다.
+집계 파이프라인 단계를 통해 데이터를 처리합니다.
 
 ```javascript
 // 그룹화 및 개수 세기
@@ -357,7 +420,7 @@ db.orders.aggregate([
 파이프라인 단계를 사용하여 데이터를 변환하고 분석합니다.
 
 ```javascript
-// 복잡한 애그리게이션 파이프라인
+// 복잡한 집계 파이프라인
 db.sales.aggregate([
   { $match: { date: { $gte: ISODate('2024-01-01') } } },
   {
@@ -372,7 +435,7 @@ db.sales.aggregate([
 ])
 ```
 
-### 애그리게이션 연산자: `$sum`, `$avg`, `$max`
+### 집계 연산자: `$sum`, `$avg`, `$max`
 
 통계 값을 계산하고 수학적 연산을 수행합니다.
 
@@ -420,7 +483,7 @@ db.users.aggregate([
 db.users.deleteOne({ name: 'John Doe' })
 // ID 로 삭제
 db.users.deleteOne({ _id: ObjectId('...') })
-// 조건부로 삭제
+// 조건과 함께 삭제
 db.posts.deleteOne({ status: 'draft', author: 'unknown' })
 ```
 
@@ -433,7 +496,7 @@ db.posts.deleteOne({ status: 'draft', author: 'unknown' })
 db.users.deleteMany({ status: 'inactive' })
 // 모든 문서 삭제 (주의!)
 db.temp_collection.deleteMany({})
-// 날짜 조건으로 삭제
+// 날짜 조건과 함께 삭제
 db.logs.deleteMany({
   createdAt: { $lt: new Date('2024-01-01') },
 })
@@ -487,11 +550,11 @@ db.users.dropIndexes()
 쿼리 실행 및 성능 통계를 분석합니다.
 
 ```javascript
-// 쿼리 실행 설명
+// 쿼리 실행 분석
 db.users.find({ age: { $gt: 25 } }).explain('executionStats')
 // 인덱스 사용 여부 확인
 db.users.find({ email: 'john@example.com' }).explain()
-// 애그리게이션 성능 분석
+// 집계 성능 분석
 db.users
   .aggregate([
     { $match: { status: 'active' } },
@@ -509,7 +572,7 @@ MongoDB 쿼리 및 작업을 최적화하기 위한 모범 사례.
 db.users.find({ status: 'active' }, { name: 1, email: 1 })
 // 성능 향상을 위해 결과 제한
 db.posts.find().sort({ createdAt: -1 }).limit(10)
-// 특정 인덱스를 강제 사용하도록 힌트 사용
+// 특정 인덱스를 강제하기 위해 힌트 사용
 db.users.find({ age: 25 }).hint({ age: 1 })
 ```
 
@@ -520,13 +583,13 @@ db.users.find({ age: 25 }).hint({ age: 1 })
 MongoDB 셸을 시작하고 다른 인스턴스에 연결합니다.
 
 ```bash
-# 로컬 MongoDB 연결
+# 로컬 MongoDB에 연결
 mongosh
 # 특정 호스트 및 포트에 연결
 mongosh "mongodb://localhost:27017"
 # 원격 서버에 연결
 mongosh "mongodb://username:password@host:port/database"
-# 옵션으로 연결
+# 옵션과 함께 연결
 mongosh --host localhost --port 27017
 ```
 
@@ -590,7 +653,7 @@ mongoexport --db myapp --collection users \
 # CSV로 내보내기
 mongoexport --db myapp --collection users \
   --type csv --fields name,email,age --out users.csv
-# 쿼리로 내보내기
+# 쿼리와 함께 내보내기
 mongoexport --db myapp --collection users \
   --query '{"status":"active"}' --out active_users.json
 ```
@@ -604,18 +667,18 @@ MongoDB 데이터베이스의 바이너리 백업을 생성합니다.
 mongodump --db myapp --out /backup/
 # 특정 컬렉션 백업
 mongodump --db myapp --collection users --out /backup/
-# 압축하여 백업
+# 압축과 함께 백업
 mongodump --db myapp --gzip --out /backup/
 ```
 
 ### 복원: `mongorestore`
 
-MongoDB 데이터를 바이너리 백업에서 복원합니다.
+바이너리 백업에서 MongoDB 데이터를 복원합니다.
 
 ```bash
 # 데이터베이스 복원
 mongorestore --db myapp /backup/myapp/
-# drop 옵션으로 복원
+# drop 옵션과 함께 복원
 mongorestore --db myapp --drop /backup/myapp/
 # 압축된 백업 복원
 mongorestore --gzip --db myapp /backup/myapp/
@@ -643,7 +706,7 @@ sudo systemctl status mongod
 Docker 컨테이너를 사용하여 MongoDB 를 실행합니다.
 
 ```bash
-# MongoDB 이미지 가져오기
+# MongoDB 이미지 풀
 docker pull mongo
 # MongoDB 컨테이너 실행
 docker run --name mongodb -d \
@@ -660,7 +723,7 @@ MongoDB 의 공식 GUI 도구를 설치하고 사용합니다.
 
 ```bash
 # mongodb.com에서 다운로드
-# 연결 문자열을 사용하여 연결
+# 연결 문자열 사용
 mongodb://localhost:27017
 # 사용 가능한 기능:
 # - 시각적 쿼리 빌더
@@ -694,7 +757,7 @@ db.createUser({
 
 ### 인증 활성화
 
-인증을 요구하도록 MongoDB 를 구성합니다.
+MongoDB 가 인증을 요구하도록 구성합니다.
 
 ```bash
 # /etc/mongod.conf 편집
@@ -771,7 +834,7 @@ try {
 ```javascript
 // 현재 작업 확인
 db.currentOp()
-// 오래 실행되는 작업 종료
+// 장기 실행 작업 종료
 db.killOp(operationId)
 // 서버 상태
 db.serverStatus()
@@ -801,7 +864,7 @@ db.setProfilingLevel(0)
 데이터 일관성을 위해 다중 문서 트랜잭션을 사용합니다.
 
 ```javascript
-// 세션 및 트랜잭션 시작
+// 세션 시작 및 트랜잭션
 const session = db.getMongo().startSession()
 session.startTransaction()
 try {

@@ -1,6 +1,6 @@
 ---
-title: 'Fiche de Référence NumPy'
-description: 'Maîtrisez NumPy avec notre fiche complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo NumPy | LabEx'
+description: "Apprenez le calcul numérique avec NumPy grâce à cette fiche mémo complète. Référence rapide pour les tableaux, l'algèbre linéaire, les opérations mathématiques, le broadcasting et le calcul scientifique Python."
 pdfUrl: '/cheatsheets/pdf/numpy-cheatsheet.pdf'
 ---
 
@@ -38,15 +38,30 @@ arr = np.array([1, 2, 3], dtype=float)
 arr_str = np.array(['a', 'b', 'c'])
 ```
 
+<BaseQuiz id="numpy-array-1" correct="C">
+  <template #question>
+    Quel est l'avantage principal des tableaux NumPy par rapport aux listes Python ?
+  </template>
+  
+  <BaseQuizOption value="A">Ils peuvent stocker des chaînes de caractères</BaseQuizOption>
+  <BaseQuizOption value="B">Ils sont plus faciles à créer</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Ils sont plus rapides et plus efficaces en mémoire pour les opérations numériques</BaseQuizOption>
+  <BaseQuizOption value="D">Ils peuvent stocker des types de données mixtes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les tableaux NumPy sont optimisés pour les calculs numériques, offrant des opérations plus rapides et une utilisation de la mémoire plus efficace par rapport aux listes Python, en particulier pour les grands ensembles de données et les opérations mathématiques.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Zéros et Uns : `np.zeros()` / `np.ones()`
 
-Crée des tableaux remplis de zéros ou de uns.
+Crée des tableaux remplis de zéros ou d'uns.
 
 ```python
 # Tableau de zéros
 zeros = np.zeros(5)  # 1D
 zeros2d = np.zeros((3, 4))  # 2D
-# Tableau de uns
+# Tableau d'uns
 ones = np.ones((2, 3))
 # Spécifier le type de données
 zeros_int = np.zeros(5, dtype=int)
@@ -68,7 +83,7 @@ identity2 = np.identity(4)
 Crée des tableaux avec des valeurs espacées uniformément.
 
 ```python
-# Similaire à la plage Python
+# Similaire à la portée Python
 arr = np.arange(10)  # 0 à 9
 arr = np.arange(2, 10, 2)  # 2, 4, 6, 8
 # Valeurs espacées uniformément
@@ -101,7 +116,7 @@ Crée des tableaux avec des valeurs spécifiques ou non initialisés.
 full_arr = np.full((2, 3), 7)
 # Tableau vide (non initialisé)
 empty_arr = np.empty((2, 2))
-# Similaire à la forme du tableau existant
+# Comme la forme du tableau existant
 like_arr = np.zeros_like(arr)
 ```
 
@@ -109,7 +124,7 @@ like_arr = np.zeros_like(arr)
 
 ### Propriétés de Base : `shape` / `size` / `ndim`
 
-Obtient des informations fondamentales sur les dimensions et la taille du tableau.
+Obtenir des informations fondamentales sur les dimensions et la taille du tableau.
 
 ```python
 # Dimensions du tableau (tuple)
@@ -126,7 +141,7 @@ arr.itemsize
 
 ### Informations sur le Tableau : Utilisation de la Mémoire
 
-Obtient des informations détaillées sur l'utilisation de la mémoire et la structure du tableau.
+Obtenir des informations détaillées sur l'utilisation de la mémoire et la structure du tableau.
 
 ```python
 # Utilisation de la mémoire en octets
@@ -141,7 +156,7 @@ arr.base
 
 ### Types de Données : `astype()`
 
-Convertit efficacement entre différents types de données.
+Convertir efficacement entre différents types de données.
 
 ```python
 # Convertir en un type différent
@@ -157,7 +172,7 @@ arr.astype(np.int16)
 
 ### Indexation de Base : `arr[index]`
 
-Accède aux éléments individuels et aux tranches.
+Accéder aux éléments individuels et aux tranches.
 
 ```python
 # Élément unique
@@ -174,7 +189,7 @@ arr[::-1]  # Inverser le tableau
 
 ### Indexation Booléenne : `arr[condition]`
 
-Filtre les tableaux en fonction de conditions.
+Filtrer les tableaux en fonction de conditions.
 
 ```python
 # Condition simple
@@ -187,12 +202,27 @@ mask = arr > 3
 filtered = arr[mask]
 ```
 
+<BaseQuiz id="numpy-boolean-1" correct="C">
+  <template #question>
+    Que retourne l'indexation booléenne `arr[arr > 5]` ?
+  </template>
+  
+  <BaseQuizOption value="A">Un tableau booléen</BaseQuizOption>
+  <BaseQuizOption value="B">Le tableau original</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Un tableau contenant uniquement les éléments supérieurs à 5</BaseQuizOption>
+  <BaseQuizOption value="D">Une erreur</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'indexation booléenne filtre le tableau, ne retournant que les éléments pour lesquels la condition est vraie. `arr[arr > 5]` retourne un nouveau tableau contenant uniquement les valeurs supérieures à 5.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Indexation Avancée : Indexation Fantaisie (Fancy Indexing)
 
-Utilise des tableaux d'indices pour accéder à plusieurs éléments.
+Utiliser des tableaux d'indices pour accéder à plusieurs éléments.
 
 ```python
-# Index avec tableau d'indices
+# Indexation avec un tableau d'indices
 indices = [0, 2, 4]
 arr[indices]
 # Indexation fantaisie 2D
@@ -218,7 +248,7 @@ result = np.where(arr > 5, 'high', 'low')
 
 ### Remodelage : `reshape()` / `resize()` / `flatten()`
 
-Modifie les dimensions du tableau tout en préservant les données.
+Modifier les dimensions du tableau tout en préservant les données.
 
 ```python
 # Remodeler (crée une vue si possible)
@@ -231,9 +261,39 @@ arr.flatten()  # Retourne une copie
 arr.ravel()  # Retourne une vue si possible
 ```
 
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    Que signifie `-1` dans `arr.reshape(-1, 1)` ?
+  </template>
+  
+  <BaseQuizOption value="A">Cela crée une erreur</BaseQuizOption>
+  <BaseQuizOption value="B" correct>NumPy infère automatiquement la dimension</BaseQuizOption>
+  <BaseQuizOption value="C">Cela crée un tableau 1D</BaseQuizOption>
+  <BaseQuizOption value="D">Cela inverse le tableau</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Utiliser `-1` dans reshape indique à NumPy de calculer automatiquement cette dimension en fonction de la taille totale du tableau et des autres dimensions spécifiées. Ceci est utile lorsque vous connaissez une dimension mais souhaitez que NumPy trouve l'autre.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    Que signifie `-1` dans `arr.reshape(-1, 1)` ?
+  </template>
+  
+  <BaseQuizOption value="A">Cela crée une erreur</BaseQuizOption>
+  <BaseQuizOption value="B" correct>NumPy infère automatiquement la dimension</BaseQuizOption>
+  <BaseQuizOption value="C">Cela supprime cette dimension</BaseQuizOption>
+  <BaseQuizOption value="D">Cela définit la dimension à 1</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Utiliser `-1` dans reshape indique à NumPy de calculer automatiquement cette dimension en fonction de la taille totale du tableau et des autres dimensions spécifiées. Ceci est utile lorsque vous connaissez une dimension mais souhaitez que NumPy trouve l'autre.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Transposition : `T` / `transpose()`
 
-Inverse les axes du tableau pour les opérations matricielles.
+Échanger les axes du tableau pour les opérations matricielles.
 
 ```python
 # Transposition simple
@@ -247,7 +307,7 @@ arr3d.transpose(2, 0, 1)
 
 ### Ajout/Suppression d'Éléments
 
-Modifie la taille du tableau en ajoutant ou supprimant des éléments.
+Modifier la taille du tableau en ajoutant ou supprimant des éléments.
 
 ```python
 # Ajouter des éléments
@@ -266,7 +326,7 @@ np.tile(arr, 2)
 Joindre plusieurs tableaux ensemble.
 
 ```python
-# Concaténer le long de l'axe existant
+# Concaténer le long d'un axe existant
 np.concatenate([arr1, arr2])
 np.concatenate([arr1, arr2], axis=1)
 # Empiler les tableaux (crée un nouvel axe)
@@ -293,7 +353,7 @@ arr1 % 3  # Opération modulo
 
 ### Fonctions Universelles (ufuncs)
 
-Applique des fonctions mathématiques élément par élément.
+Appliquer des fonctions mathématiques élément par élément.
 
 ```python
 # Fonctions trigonométriques
@@ -311,7 +371,7 @@ np.power(arr, 3)
 
 ### Fonctions d'Agrégation
 
-Calcule des statistiques récapitulatives sur les dimensions du tableau.
+Calculer des statistiques récapitulatives sur les dimensions du tableau.
 
 ```python
 # Statistiques de base
@@ -347,7 +407,7 @@ np.all(arr > 0)
 
 ### Opérations Matricielles : `np.dot()` / `@`
 
-Effectue la multiplication matricielle et le produit scalaire.
+Effectuer la multiplication matricielle et le produit scalaire.
 
 ```python
 # Multiplication matricielle
@@ -374,7 +434,7 @@ Q, R = np.linalg.qr(A)
 
 ### Propriétés Matricielles
 
-Calcule des caractéristiques matricielles importantes.
+Calculer des caractéristiques matricielles importantes.
 
 ```python
 # Déterminant
@@ -391,7 +451,7 @@ np.trace(A)
 
 ### Résolution de Systèmes Linéaires : `np.linalg.solve()`
 
-Résout des systèmes d'équations linéaires.
+Résoudre des systèmes d'équations linéaires.
 
 ```python
 # Résoudre Ax = b
@@ -407,7 +467,7 @@ x = np.linalg.lstsq(A, b, rcond=None)[0]
 Format binaire efficace pour les tableaux NumPy.
 
 ```python
-# Sauvegarder un seul tableau
+# Sauvegarder un tableau unique
 np.save('array.npy', arr)
 # Charger un tableau
 loaded_arr = np.load('array.npy')
@@ -420,7 +480,7 @@ arr1_loaded = data['a']
 
 ### Fichiers Texte : `np.loadtxt()` / `np.savetxt()`
 
-Lit et écrit des tableaux sous forme de fichiers texte.
+Lire et écrire des tableaux sous forme de fichiers texte.
 
 ```python
 # Charger à partir d'un fichier CSV/texte
@@ -431,7 +491,7 @@ arr = np.loadtxt('data.csv', delimiter=',', skiprows=1)
 np.savetxt('output.csv', arr, delimiter=',', fmt='%.2f')
 ```
 
-### Données Structurées CSV : `np.genfromtxt()`
+### CSV avec Données Structurées : `np.genfromtxt()`
 
 Lecture avancée de fichiers texte avec gestion des données manquantes.
 
@@ -446,7 +506,7 @@ data = np.genfromtxt('data.csv', delimiter=',',
 
 ### Mappage Mémoire : `np.memmap()`
 
-Travaille avec des tableaux trop volumineux pour tenir en mémoire.
+Travailler avec des tableaux trop volumineux pour tenir en mémoire.
 
 ```python
 # Créer un tableau mappé en mémoire
@@ -456,7 +516,7 @@ mmap_arr = np.memmap('large_array.dat', dtype='float32',
 mmap_arr[0:10] = np.random.random(10)
 ```
 
-## Performance et Diffusion (Broadcasting)
+## Performances et Diffusion (Broadcasting)
 
 ### Règles de Diffusion (Broadcasting)
 
@@ -474,7 +534,7 @@ arr * 2  # Multiplie tous les éléments par 2
 
 ### Opérations Vectorisées
 
-Utilise les fonctions intégrées de NumPy au lieu des boucles Python.
+Utiliser les fonctions intégrées de NumPy au lieu des boucles Python.
 
 ```python
 # Au lieu de boucles, utiliser des opérations vectorisées
@@ -499,7 +559,7 @@ Techniques pour une utilisation efficace de la mémoire avec les grands tableaux
 # Utiliser des types de données appropriés
 arr_int8 = arr.astype(np.int8)  # 1 octet par élément
 arr_float32 = arr.astype(np.float32)  # 4 octets contre 8 pour float64
-# Vues contre copies
+# Vues vs Copies
 view = arr[::2]  # Crée une vue (partage la mémoire)
 copy = arr[::2].copy()  # Crée une copie (nouvelle mémoire)
 # Vérifier si le tableau est une vue ou une copie
@@ -508,12 +568,12 @@ view.base is arr  # True pour la vue
 
 ### Conseils de Performance
 
-Bonnes pratiques pour un code NumPy rapide.
+Meilleures pratiques pour un code NumPy rapide.
 
 ```python
-# Utiliser des opérations sur place lorsque c'est possible
+# Utiliser des opérations en place lorsque c'est possible
 arr += 5  # Au lieu de arr = arr + 5
-np.add(arr, 5, out=arr)  # Sur place explicite
+np.add(arr, 5, out=arr)  # Explicite en place
 # Minimiser la création de tableaux
 # Mauvais : crée des tableaux intermédiaires
 result = ((arr + 1) * 2) ** 2
@@ -524,7 +584,7 @@ result = ((arr + 1) * 2) ** 2
 
 ### Aléatoire de Base : `np.random`
 
-Génère des nombres aléatoires à partir de diverses distributions.
+Générer des nombres aléatoires à partir de diverses distributions.
 
 ```python
 # Flottants aléatoires [0, 1)
@@ -539,22 +599,22 @@ np.random.uniform(-1, 1, size=5)
 
 ### Échantillonnage : `choice()` / `shuffle()`
 
-Échantillonne à partir de données existantes ou permute des tableaux.
+Échantillonner à partir de données existantes ou permuter des tableaux.
 
 ```python
 # Choix aléatoire dans le tableau
 np.random.choice(arr, size=3)
 # Sans remplacement
 np.random.choice(arr, size=3, replace=False)
-# Mélanger le tableau sur place
+# Mélanger le tableau en place
 np.random.shuffle(arr)
 # Permutation aléatoire
 np.random.permutation(arr)
 ```
 
-### Graine et Générateurs
+### Graines et Générateurs
 
-Contrôle de l'aléatoire pour des résultats reproductibles.
+Contrôler l'aléatoire pour des résultats reproductibles.
 
 ```python
 # Définir la graine pour la reproductibilité
@@ -587,7 +647,7 @@ np.quantile(arr, [0.25, 0.5, 0.75])
 
 ### Corrélation et Covariance
 
-Mesure les relations entre les variables.
+Mesurer les relations entre les variables.
 
 ```python
 # Coefficient de corrélation
@@ -600,14 +660,14 @@ np.correlate(x, y, mode='full')
 
 ### Histogramme et Binning
 
-Analyse la distribution des données et crée des bacs (bins).
+Analyser la distribution des données et créer des bacs (bins).
 
 ```python
 # Histogramme
 counts, bins = np.histogram(arr, bins=10)
 # Histogramme 2D
 H, xedges, yedges = np.histogram2d(x, y, bins=10)
-# Numérisation (assignation des indices de bac)
+# Numériser (assigner des indices de bac)
 bin_indices = np.digitize(arr, bins)
 ```
 
@@ -656,9 +716,9 @@ conda install -c conda-forge numpy
 conda create -n myenv numpy
 ```
 
-### Vérifier l'Installation et l'Importation
+### Vérifier l'Installation et Importer
 
-Vérifie votre installation NumPy et l'importation standard.
+Vérifier votre installation NumPy et l'importation standard.
 
 ```python
 # Importation standard
@@ -678,7 +738,7 @@ np.set_printoptions(precision=2, suppress=True)
 Tableaux avec des champs nommés pour des structures de données complexes.
 
 ```python
-# Définir un type de données structuré
+# Définir le type de données structuré
 dt = np.dtype([('name', 'U10'), ('age', 'i4'), ('weight', 'f4')])
 # Créer un tableau structuré
 people = np.array([('Alice', 25, 55.0), ('Bob', 30, 70.5)], dtype=dt)
@@ -689,7 +749,7 @@ people['age']
 
 ### Tableaux Masqués : `np.ma`
 
-Gère les tableaux avec des données manquantes ou invalides.
+Gérer les tableaux avec des données manquantes ou invalides.
 
 ```python
 # Créer un tableau masqué
@@ -702,7 +762,7 @@ filled = masked_arr.filled(0)
 
 ### Polynômes : `np.poly1d`
 
-Travaille avec des expressions polynomiales et des opérations.
+Travailler avec des expressions polynomiales et des opérations.
 
 ```python
 # Créer un polynôme (coefficients par ordre décroissant)

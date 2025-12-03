@@ -1,6 +1,6 @@
 ---
-title: 'シェルチートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートでシェルを習得しましょう。'
+title: 'シェルチートシート | LabEx'
+description: 'この包括的なチートシートでシェルスクリプトを習得しましょう。Bash コマンド、シェルスクリプト、自動化、コマンドラインツール、Linux/Unix システム管理のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Shell チートシート
 <a target="_blank" href="https://labex.io/ja/learn/shell">ハンズオンラボで Shell を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、Shell スクリプティングとコマンドライン操作を学びましょう。LabEx は、必須の Bash コマンド、ファイル操作、テキスト処理、プロセス管理、自動化を網羅した包括的な Shell コースを提供します。コマンドラインの効率性とシェルスクリプト技術を習得してください。
+ハンズオンラボと実世界のシナリオを通じて、シェルスクリプトとコマンドライン操作を学びましょう。LabEx は、必須の Bash コマンド、ファイル操作、テキスト処理、プロセス管理、自動化を網羅した包括的な Shell コースを提供します。コマンドラインの効率性とシェルスクリプト技術を習得してください。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -26,7 +26,7 @@ Shell チートシート
 現在の場所にあるファイルとディレクトリを表示します。
 
 ```bash
-# 現在のディレクトリ内のファイルを一覧表示
+# 現在のディレクトリのファイルを一覧表示
 ls
 # 詳細情報付きで一覧表示
 ls -l
@@ -47,7 +47,7 @@ ls -lt
 touch newfile.txt
 # 複数のファイルを作成
 touch file1.txt file2.txt file3.txt
-# 既存のファイルのタイムスタンプを更新
+# 既存ファイルのタイムスタンプを更新
 touch existing_file.txt
 ```
 
@@ -103,7 +103,7 @@ rm file.txt
 rm -r directory/
 # 確認なしで強制削除
 rm -f file.txt
-# 対話的に削除（それぞれ確認）
+# 対話形式で削除 (それぞれ確認)
 rm -i *.txt
 ```
 
@@ -135,6 +135,21 @@ cd -
 cd /path/to/directory
 ```
 
+<BaseQuiz id="shell-cd-1" correct="A">
+  <template #question>
+    `cd ~` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>ホームディレクトリに変更する</BaseQuizOption>
+  <BaseQuizOption value="B">ルートディレクトリに変更する</BaseQuizOption>
+  <BaseQuizOption value="C">親ディレクトリに変更する</BaseQuizOption>
+  <BaseQuizOption value="D">新しいディレクトリを作成する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `~` 記号はホームディレクトリのショートカットです。`cd ~` はホームディレクトリに移動し、`cd $HOME` または `cd /home/username` と同等です。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ディレクトリツリー: `tree`
 
 ディレクトリ構造をツリー形式で表示します。
@@ -142,7 +157,7 @@ cd /path/to/directory
 ```bash
 # ディレクトリツリーを表示
 tree
-# 2階層までに制限
+# 階層を2レベルに制限
 tree -L 2
 # ディレクトリのみ表示
 tree -d
@@ -157,7 +172,7 @@ tree -d
 ```bash
 # ファイル全体を表示
 cat file.txt
-# ページごとにファイルを表示
+# ページごとに表示
 less file.txt
 # 最初の10行を表示
 head file.txt
@@ -165,7 +180,7 @@ head file.txt
 tail file.txt
 # 最後の20行を表示
 tail -n 20 file.txt
-# ファイルの変更を追跡（ログなどに便利）
+# ファイルの変更を追跡 (ログに便利)
 tail -f logfile.txt
 ```
 
@@ -174,7 +189,7 @@ tail -f logfile.txt
 テキストファイル内のパターンを検索します。
 
 ```bash
-# ファイル内でパターンを検索
+# ファイル内のパターンを検索
 grep "pattern" file.txt
 # 大文字・小文字を区別しない検索
 grep -i "pattern" file.txt
@@ -182,13 +197,28 @@ grep -i "pattern" file.txt
 grep -r "pattern" directory/
 # 行番号を表示
 grep -n "pattern" file.txt
-# マッチした行数をカウント
+# 一致した行数をカウント
 grep -c "pattern" file.txt
 ```
 
+<BaseQuiz id="shell-grep-1" correct="B">
+  <template #question>
+    `grep -r "pattern" directory/` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">現在のファイルのみを検索する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>ディレクトリ内のすべてのファイルを再帰的に検索する</BaseQuizOption>
+  <BaseQuizOption value="C">ファイル内のパターンを置換する</BaseQuizOption>
+  <BaseQuizOption value="D">パターンを含むファイルを削除する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-r` フラグにより、grep はすべてのファイルとサブディレクトリを再帰的に検索します。これはディレクトリツリー全体でテキストパターンを見つけるのに役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ファイル検索：`find`
 
-基準に基づいてファイルとディレクトリを見つけます。
+基準に基づいてファイルやディレクトリを見つけます。
 
 ```bash
 # 名前でファイルを検索
@@ -212,7 +242,7 @@ find . -name "*.log" -delete
 sed 's/old/new/g' file.txt
 # 特定の列を抽出
 awk '{print $1, $3}' file.txt
-# ファイルの内容をソート
+# ファイル内容をソート
 sort file.txt
 # 重複行を削除
 sort file.txt | uniq
@@ -220,11 +250,11 @@ sort file.txt | uniq
 cat file.txt | tr ' ' '\n' | sort | uniq -c
 ```
 
-## ファイルパーミッションと所有権
+## ファイルの権限と所有権
 
-### パーミッション表示：`ls -l`
+### 権限表示：`ls -l`
 
-詳細なファイルパーミッションと所有権を表示します。
+詳細なファイル権限と所有権を表示します。
 
 ```bash
 # 詳細なファイル情報を表示
@@ -234,20 +264,35 @@ ls -l
 # d = directory, r = read, w = write, x = execute
 ```
 
-### パーミッション変更：`chmod`
+### 権限変更：`chmod`
 
-ファイルとディレクトリのパーミッションを変更します。
+ファイルとディレクトリの権限を変更します。
 
 ```bash
 # オーナーに実行権限を付与
 chmod +x script.sh
-# 特定のパーミッション (755) を設定
+# 特定の権限 (755) を設定
 chmod 755 file.txt
-# グループ/その他の書き込み権限を削除
+# グループとその他の書き込み権限を削除
 chmod go-w file.txt
-# 再帰的なパーミッション変更
+# 再帰的な権限変更
 chmod -R 644 directory/
 ```
+
+<BaseQuiz id="shell-chmod-1" correct="C">
+  <template #question>
+    `chmod 755 file.txt` は何をセットしますか？
+  </template>
+  
+  <BaseQuizOption value="A">すべてのユーザーに読み取り、書き込み、実行</BaseQuizOption>
+  <BaseQuizOption value="B">オーナーに読み取りと書き込み、その他に読み取り</BaseQuizOption>
+  <BaseQuizOption value="C" correct>オーナーに読み取り、書き込み、実行。グループとその他に読み取り、実行</BaseQuizOption>
+  <BaseQuizOption value="D">すべてのユーザーに読み取りのみ</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` は権限を次のように設定します：オーナー = 7 (rwx)、グループ = 5 (r-x)、その他 = 5 (r-x)。これは実行可能ファイルやディレクトリの一般的な権限設定です。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 所有権変更：`chown` / `chgrp`
 
@@ -264,17 +309,17 @@ chgrp newgroup file.txt
 chown -R user:group directory/
 ```
 
-### パーミッション番号
+### 権限の数値
 
-数値表記のパーミッションの理解。
+数値による権限表記の理解。
 
 ```text
-# パーミッション計算：
+# 権限の計算：
 # 4 = 読み取り (r), 2 = 書き込み (w), 1 = 実行 (x)
-# 755 = rwxr-xr-x (所有者：rwx, グループ：r-x, その他：r-x)
-# 644 = rw-r--r-- (所有者：rw-, グループ：r--, その他：r--)
-# 777 = rwxrwxrwx (全員に完全な権限)
-# 600 = rw------- (所有者：rw-, グループ：---, その他：---)
+# 755 = rwxr-xr-x (オーナー: rwx, グループ：r-x, その他：r-x)
+# 644 = rw-r--r-- (オーナー: rw-, グループ：r--, その他：r--)
+# 777 = rwxrwxrwx (すべてに完全な権限)
+# 600 = rw------- (オーナー: rw-, グループ：---, その他：---)
 ```
 
 ## プロセス管理
@@ -286,11 +331,11 @@ chown -R user:group directory/
 ```bash
 # 現在のユーザーのプロセスを表示
 ps
-# 全てのプロセスを詳細表示
+# すべてのプロセスを詳細付きで表示
 ps aux
 # ツリー形式でプロセスを表示
 ps -ef --forest
-# 対話的なプロセスビューア
+# 対話型プロセスビューア
 top
 # 強化されたプロセスビューア (利用可能な場合)
 htop
@@ -309,20 +354,20 @@ jobs
 fg %1
 # ジョブをバックグラウンドに送る
 bg %1
-# 現在のプロセスを一時停止
+# 現在のプロセスを中断
 Ctrl+Z
 ```
 
 ### プロセス終了：`kill` / `killall`
 
-PID または名前でプロセスを終了します。
+PID または名前でプロセスを終了させます。
 
 ```bash
 # PIDでプロセスを終了
 kill 1234
 # プロセスを強制終了
 kill -9 1234
-# 名前を持つすべてのプロセスを終了
+# 名前が一致するすべてのプロセスを終了
 killall firefox
 # 特定のシグナルを送信
 kill -TERM 1234
@@ -350,17 +395,32 @@ du -h --max-depth=1 | sort -hr
 コマンドの出力と入力をリダイレクトします。
 
 ```bash
-# 出力をファイルにリダイレクト（上書き）
+# 出力をファイルにリダイレクト (上書き)
 command > output.txt
 # 出力をファイルに追加
 command >> output.txt
-# ファイルから入力をリダイレクト
+# 入力をファイルからリダイレクト
 command < input.txt
 # 出力とエラーの両方をリダイレクト
 command > output.txt 2>&1
 # 出力を破棄
 command > /dev/null
 ```
+
+<BaseQuiz id="shell-redirect-1" correct="B">
+  <template #question>
+    シェルリダイレクトにおける `>` と `>>` の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">`>` は追加し、`>>` は上書きする</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`>` はファイルを上書きし、`>>` はファイルに追加する</BaseQuizOption>
+  <BaseQuizOption value="C">`>` は stdout をリダイレクトし、`>>` は stderr をリダイレクトする</BaseQuizOption>
+  <BaseQuizOption value="D">違いはない</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `>` 演算子は、ファイルが存在する場合にターゲットファイルを上書きしますが、`>>` は出力の末尾に追記します。既存のコンテンツを保持したい場合は `>>` を使用します。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### パイプ：`|`
 
@@ -373,7 +433,7 @@ command1 | command2
 cat file.txt | grep "pattern" | sort | uniq
 # 出力行数をカウント
 ps aux | wc -l
-# 長い出力をページング
+# 長い出力をページ送り
 ls -la | less
 ```
 
@@ -395,13 +455,13 @@ command | tee file1.txt file2.txt
 コマンドに複数行の入力を提供します。
 
 ```bash
-# Here documentでファイルを作成
+# Here Document を使用してファイルを作成
 cat << EOF > file.txt
 Line 1
 Line 2
 Line 3
 EOF
-# Here documentでメールを送信
+# Here Document を使用してメールを送信
 mail user@example.com << EOF
 Subject: Test
 This is a test message.
@@ -412,10 +472,10 @@ EOF
 
 ### 変数：代入と使用
 
-シェル変数の作成と使用。
+シェル変数を作成し、使用します。
 
 ```bash
-# 変数の代入（=の周りにスペースなし）
+# 変数の代入 ( = の周りにスペースなし)
 name="John"
 count=42
 # 変数の使用
@@ -453,12 +513,12 @@ unset MY_VAR
 $0  # スクリプト名
 $1, $2, $3...  # 1番目、2番目、3番目の引数
 $#  # 引数の数
-$@  # すべての引数（単語として分離）
-$*  # すべての引数（単一の単語として）
+$@  # すべての引数 (単語ごとに分離)
+$*  # すべての引数 (単一の単語として)
 $?  # 最後のコマンドの終了ステータス
 # プロセス情報
 $$  # 現在のシェルのPID
-$!  # 最後のバックグラウンドプロセスのPID
+$!  # 最後にバックグラウンド実行されたプロセスのPID
 ```
 
 ### パラメータ展開
@@ -468,7 +528,7 @@ $!  # 最後のバックグラウンドプロセスのPID
 ```bash
 # デフォルト値
 ${var:-default}  # varが空の場合にデフォルトを使用
-${var:=default}  # varが空の場合にデフォルトを設定
+${var:=default}  # varが空の場合にvarをデフォルトに設定
 # 文字列操作
 ${var#pattern}   # 先頭から最短一致を削除
 ${var##pattern}  # 先頭から最長一致を削除
@@ -493,13 +553,13 @@ echo $greeting
 echo "Current user: $user"
 # スクリプトの実行権限を付与:
 chmod +x script.sh
-# スクリプトの実行:
+# スクリプトを実行:
 ./script.sh
 ```
 
 ### 条件文：`if`
 
-条件に基づいてスクリプトの流れを制御します。
+条件によってスクリプトの流れを制御します。
 
 ```bash
 #!/bin/bash
@@ -577,7 +637,7 @@ ping -c 4 google.com  # 4パケットのみ送信
 # DNSルックアップ
 nslookup google.com
 dig google.com
-# ネットワーク構成
+# ネットワーク設定
 ip addr show  # IPアドレスを表示
 ip route show # ルーティングテーブルを表示
 # ファイルのダウンロード
@@ -591,7 +651,7 @@ curl -O https://example.com/file.txt
 
 ```bash
 # システム情報
-uname -a      # 全システム情報
+uname -a      # すべてのシステム情報
 uname -r      # カーネルバージョン
 hostname      # コンピュータ名
 whoami        # 現在のユーザー名
@@ -625,13 +685,13 @@ unzip -l archive.zip
 システム間でファイルを転送します。
 
 ```bash
-# ファイルをリモートサーバーにコピー
+# リモートサーバーにファイルをコピー
 scp file.txt user@server:/path/to/destination
 # リモートサーバーからコピー
 scp user@server:/path/to/file.txt .
-# ディレクトリの同期（ローカルからリモートへ）
+# ディレクトリの同期 (ローカルからリモートへ)
 rsync -avz local_dir/ user@server:/remote_dir/
-# 削除付き同期（ミラーリング）
+# 削除付きの同期 (ミラーリング)
 rsync -avz --delete local_dir/ user@server:/remote_dir/
 ```
 
@@ -652,7 +712,7 @@ history 10
 !123
 # 'ls'で始まる最後のコマンドを実行
 !ls
-# 対話的に履歴を検索
+# 対話形式で履歴を検索
 Ctrl+R
 ```
 
@@ -662,9 +722,9 @@ Ctrl+R
 
 ```bash
 # 前のコマンドの引数
-!$    # 前のコマンドの最後の引数
-!^    # 前のコマンドの最初の引数
-!*    # 前のコマンドのすべての引数
+!$    # 直前のコマンドの最後の引数
+!^    # 直前のコマンドの最初の引数
+!*    # 直前のコマンドのすべての引数
 # 使用例:
 ls /very/long/path/to/file.txt
 cd !$  # /very/long/path/to/file.txt に移動
@@ -683,9 +743,9 @@ Ctrl+B  # 1文字後ろに移動
 Alt+F   # 1単語前に移動
 Alt+B   # 1単語後ろに移動
 # 編集
-Ctrl+U  # カーソルより前の行をクリア
-Ctrl+K  # カーソルより後の行をクリア
-Ctrl+W  # カーソル前の単語を削除
+Ctrl+U  # カーソルより前の行全体をクリア
+Ctrl+K  # カーソルより後の行全体をクリア
+Ctrl+W  # カーソルより前の単語を削除
 Ctrl+Y  # 最後に削除したテキストを貼り付け
 # プロセス制御
 Ctrl+C  # 現在のコマンドを中断
@@ -702,7 +762,7 @@ Ctrl+D  # シェルを終了またはEOF
 ```bash
 # 複数ファイル内のテキストを検索・置換
 find . -name "*.txt" -exec sed -i 's/old/new/g' {} \;
-# 現在のディレクトリ内の最大ファイルを見つける
+# 現在のディレクトリで最大のファイルを見つける
 du -ah . | sort -rh | head -10
 # 特定のパターンについてログファイルを監視
 tail -f /var/log/syslog | grep "ERROR"
@@ -717,7 +777,7 @@ cp file.txt file.txt.backup.$(date +%Y%m%d-%H%M%S)
 頻繁に使用するコマンドのショートカットを作成します。
 
 ```bash
-# エイリアスの作成（~/.bashrc に追加）
+# エイリアスの作成 ( ~/.bashrc に追加)
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'

@@ -1,6 +1,6 @@
 ---
-title: '사이버 보안 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 사이버 보안을 학습하세요.'
+title: '사이버 보안 치트 시트 | LabEx'
+description: '이 종합 치트 시트로 사이버 보안을 학습하세요. 보안 개념, 위협 탐지, 취약점 평가, 침투 테스트 및 정보 보안 모범 사례에 대한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/cybersecurity">실습형 랩을 통해 사이버 보안 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/cybersecurity">Hands-On Labs 로 사이버 보안 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습형 랩과 실제 시나리오를 통해 사이버 보안을 학습하세요. LabEx 는 위협 식별, 보안 평가, 시스템 강화, 사고 대응 및 모니터링 기술을 다루는 포괄적인 사이버 보안 과정을 제공합니다. 업계 표준 도구와 모범 사례를 사용하여 시스템과 데이터를 사이버 위협으로부터 보호하는 방법을 배우십시오.
+실습 기반의 랩과 실제 시나리오를 통해 사이버 보안을 학습하세요. LabEx 는 위협 식별, 보안 평가, 시스템 강화, 사고 대응 및 모니터링 기술을 다루는 포괄적인 사이버 보안 과정을 제공합니다. 업계 표준 도구와 모범 사례를 사용하여 시스템과 데이터를 사이버 위협으로부터 보호하는 방법을 배우십시오.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -40,7 +40,7 @@ cat /etc/passwd
 
 ### 파일 권한 및 보안
 
-안전한 파일 및 디렉터리 접근을 구성합니다.
+안전한 파일 및 디렉토리 접근을 구성합니다.
 
 ```bash
 # 파일 권한 변경 (읽기, 쓰기, 실행)
@@ -52,6 +52,21 @@ chmod -R 755 directory/
 # 파일 권한 보기
 ls -la
 ```
+
+<BaseQuiz id="cybersecurity-chmod-1" correct="C">
+  <template #question>
+    `chmod 644 file.txt`는 파일 권한을 어떻게 설정합니까?
+  </template>
+  
+  <BaseQuizOption value="A">모든 사용자에게 읽기, 쓰기, 실행</BaseQuizOption>
+  <BaseQuizOption value="B">소유자에게 읽기, 쓰기, 실행; 다른 사용자에게 읽기</BaseQuizOption>
+  <BaseQuizOption value="C" correct>소유자에게 읽기, 쓰기; 그룹 및 다른 사용자에게 읽기</BaseQuizOption>
+  <BaseQuizOption value="D">모든 사용자에게 읽기 전용</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 644`는 다음과 같이 설정합니다: 소유자 = 6 (rw-), 그룹 = 4 (r--), 다른 사용자 = 4 (r--). 이는 모든 사람이 읽을 수 있지만 소유자만 쓸 수 있는 일반적인 파일 권한 설정입니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 네트워크 보안 구성
 
@@ -67,9 +82,24 @@ netstat -tuln
 sudo ss -tuln
 ```
 
+<BaseQuiz id="cybersecurity-firewall-1" correct="B">
+  <template #question>
+    `sudo ufw allow 22/tcp`는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A">포트 22 를 차단합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>포트 22 (SSH) 의 TCP 트래픽을 허용합니다</BaseQuizOption>
+  <BaseQuizOption value="C">포트 22 에서 UDP 를 활성화합니다</BaseQuizOption>
+  <BaseQuizOption value="D">방화벽 상태를 표시합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ufw allow 22/tcp`는 포트 22(기본 SSH 포트) 로 들어오는 TCP 연결을 허용하는 방화벽 규칙을 생성합니다. 이는 원격 서버 접근에 필수적입니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 시스템 업데이트 및 패치
 
-시스템을 최신 보안 패치로 유지합니다.
+최신 보안 패치로 시스템을 업데이트 상태로 유지합니다.
 
 ```bash
 # 패키지 목록 업데이트 (Ubuntu/Debian)
@@ -107,6 +137,21 @@ sudo journalctl -f
 grep "Failed password" /var/log/auth.log
 ```
 
+<BaseQuiz id="cybersecurity-logs-1" correct="A">
+  <template #question>
+    `tail -f /var/log/auth.log`는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>인증 로그 파일을 실시간으로 추적합니다</BaseQuizOption>
+  <BaseQuizOption value="B">실패한 로그인 시도만 표시합니다</BaseQuizOption>
+  <BaseQuizOption value="C">오래된 로그 항목을 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="D">로그 파일을 아카이브합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-f` 플래그는 `tail` 이 파일을 추적하여 새로운 로그 항목이 기록될 때 실시간으로 표시하도록 합니다. 이는 인증 이벤트 및 보안 사고의 실시간 모니터링에 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 암호 보안 및 인증
 
 강력한 인증 메커니즘과 암호 정책을 구현합니다.
@@ -125,14 +170,14 @@ openssl rand -base64 32
 # - 각 계정마다 고유해야 함
 ```
 
-### 다중 요소 인증 (MFA)
+### 다단계 인증 (MFA)
 
-암호 외에 추가 인증 계층을 추가합니다.
+암호 외에 추가적인 인증 계층을 추가합니다.
 
 ```bash
 # Google Authenticator 설치
 sudo apt install libpam-googleauthenticator
-# SSH에 MFA 구성
+# SSH에 대해 MFA 구성
 google-authenticator
 # SSH 구성에서 활성화
 sudo nano /etc/pam.d/sshd
@@ -149,7 +194,7 @@ sudo apt install keepassxc
 # 모범 사례:
 # - 각 서비스마다 고유한 암호 사용
 # - 자동 잠금 기능 활성화
-# - 중요 계정에 대한 정기적인 암호 로테이션
+# - 중요 계정의 정기적인 암호 순환
 # - 암호 데이터베이스의 안전한 백업
 ```
 
@@ -179,7 +224,7 @@ nmap 192.168.1.1-254
 ```bash
 # tcpdump로 패킷 캡처
 sudo tcpdump -i eth0
-# 파일로 저장
+# 파일에 저장
 sudo tcpdump -w capture.pcap
 # 특정 트래픽 필터링
 sudo tcpdump host 192.168.1.1
@@ -227,7 +272,7 @@ openssl s_client -connect example.com:443
 sudo dpkg -i Nessus-X.X.X-ubuntu1404_amd64.deb
 # Nessus 서비스 시작
 sudo systemctl start nessusd
-# 웹 인터페이스 접속: https://localhost:8834
+# https://localhost:8834에서 웹 인터페이스 접속
 # OpenVAS 사용 (무료 대안)
 sudo apt install openvas
 sudo gvm-setup
@@ -235,12 +280,12 @@ sudo gvm-setup
 
 ### 웹 애플리케이션 보안 테스트
 
-웹 애플리케이션에 일반적인 취약점이 있는지 테스트합니다.
+웹 애플리케이션에 대한 일반적인 취약점을 테스트합니다.
 
 ```bash
 # Nikto 웹 스캐너 사용
 nikto -h http://target.com
-# 디렉터리 열거
+# 디렉토리 열거
 dirb http://target.com
 # SQL 인젝션 테스트
 sqlmap -u "http://target.com/page.php?id=1" --dbs
@@ -248,7 +293,7 @@ sqlmap -u "http://target.com/page.php?id=1" --dbs
 
 ### 보안 감사 도구
 
-포괄적인 보안 평가 유틸리티입니다.
+포괄적인 보안 평가 유틸리티.
 
 ```bash
 # Lynis 보안 감사
@@ -267,7 +312,7 @@ sudo aideinit
 안전한 시스템 및 애플리케이션 구성을 확인합니다.
 
 ```bash
-# SSH 보안 검사
+# SSH 보안 확인
 ssh-audit target_ip
 # SSL 구성 테스트
 testssl.sh https://target.com
@@ -286,7 +331,7 @@ ls -la /etc/shadow /etc/passwd /etc/group
 grep -i "failed\|error\|denied" /var/log/auth.log
 # 실패한 로그인 횟수 계산
 grep "Failed password" /var/log/auth.log | wc -l
-# 로그에서 고유 IP 주소 찾기
+# 로그에서 고유한 IP 주소 찾기
 awk '/Failed password/ {print $11}' /var/log/auth.log | sort | uniq -c
 # 실시간 로그 활동 모니터링
 tail -f /var/log/syslog
@@ -329,12 +374,12 @@ find /home -mtime -7 -type f
 
 ```bash
 # 사고 대응 체크리스트:
-# 1. 영향받는 시스템 격리
+# 1. 영향받은 시스템 격리
 # 2. 증거 보존
 # 3. 이벤트 타임라인 문서화
 # 4. 공격 벡터 식별
 # 5. 손상 및 데이터 노출 평가
-# 6. 격리 조치 구현
+# 6. 격리 조치 계획
 # 7. 복구 절차 계획
 ```
 
@@ -360,7 +405,7 @@ sublist3r -d example.com
 
 ### 위협 헌팅 도구
 
-환경 내에서 위협을 선제적으로 검색합니다.
+환경 내에서 위협을 능동적으로 검색합니다.
 
 ```bash
 # IOC (침해 지표) 검색
@@ -381,7 +426,7 @@ find /tmp -type f -exec sha256sum {} \;
 # - STIX/TAXII 피드
 # - 상용 피드 (CrowdStrike, FireEye)
 # - 정부 피드 (US-CERT, CISA)
-# 예시: 위협 피드에 IP 확인
+# 예시: 위협 피드와 IP 확인
 curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 ```
 
@@ -391,12 +436,12 @@ curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 
 ```bash
 # STRIDE 위협 모델 범주:
-# - 스푸핑 (신원)
-# - 변조 (데이터)
-# - 부인 (행위)
-# - 정보 공개
-# - 서비스 거부
-# - 권한 상승
+# - Spoofing (스푸핑 - 신원)
+# - Tampering (변조 - 데이터)
+# - Repudiation (부인 - 행위)
+# - Information Disclosure (정보 공개)
+# - Denial of Service (서비스 거부)
+# - Elevation of Privilege (권한 상승)
 ```
 
 ## 암호화 및 데이터 보호
@@ -433,7 +478,7 @@ sudo openvpn --config client.ovpn
 
 ### 인증서 관리
 
-안전한 통신을 위해 디지털 인증서를 관리합니다.
+보안 통신을 위해 디지털 인증서를 관리합니다.
 
 ```bash
 # 인증 기관 생성
@@ -461,7 +506,7 @@ sudo ausearch -k passwd_changes
 
 ## 보안 자동화 및 오케스트레이션
 
-보안 작업을 자동화하고 대응 절차를 조정합니다.
+보안 작업 및 대응 절차를 자동화합니다.
 
 ### 보안 스캔 자동화
 
@@ -564,7 +609,7 @@ sudo apt install cis-cat-lite
 보안 위험을 평가하고 정량화합니다.
 
 ```bash
-# 위험 행렬 계산:
+# 위험 매트릭스 계산:
 # 위험 = 가능성 × 영향
 # 낮음 (1-3), 중간 (4-6), 높음 (7-9)
 # 취약점 우선순위 지정
@@ -574,12 +619,12 @@ sudo apt install cis-cat-lite
 
 ### 문서화 및 보고
 
-적절한 보안 문서화 및 보고를 유지합니다.
+적절한 보안 문서화 및 보고서를 유지합니다.
 
 ```bash
 # 보안 사고 보고서 템플릿:
-# - 사고 날짜 및 시간
-# - 영향받은 시스템
+# - 사고 발생 날짜 및 시간
+# - 영향을 받은 시스템
 # - 식별된 공격 벡터
 # - 손상된 데이터
 # - 취한 조치
@@ -607,7 +652,7 @@ sudo pacman -S nmap wireshark-qt tcpdump
 
 ### 보안 배포판
 
-보안 전문가를 위한 특수 Linux 배포판입니다.
+보안 전문가를 위한 특수 Linux 배포판.
 
 ```bash
 # Kali Linux - 침투 테스트
@@ -648,7 +693,7 @@ sudo systemctl disable ftp
 # 안전한 파일 권한 설정
 sudo chmod 600 /etc/ssh/sshd_config
 sudo chmod 644 /etc/passwd
-# 시스템 제한 구성
+# 시스템 제한 설정
 echo "* hard core 0" >> /etc/security/limits.conf
 ```
 
@@ -728,16 +773,16 @@ sudo apt update && sudo apt install elasticsearch
 
 ## 보안 인식 및 교육
 
-사회 공학 공격을 인식하고 방지합니다.
+사회 공학적 공격을 인식하고 방지합니다.
 
 ### 사회 공학 방어
 
-사회 공학 공격을 인식하고 방지합니다.
+사회 공학적 공격을 인식하고 방지합니다.
 
 ```bash
 # 피싱 식별 기술:
 # - 보낸 사람 이메일 주의 깊게 확인
-# - 클릭하기 전에 링크 확인 (마우스 오버)
+# - 클릭 전 링크 확인 (마우스 오버)
 # - 철자/문법 오류 확인
 # - 긴급한 요청에 대해 의심하기
 # - 별도의 채널을 통해 요청 확인
@@ -747,7 +792,7 @@ sudo apt update && sudo apt install elasticsearch
 
 ### 보안 문화 개발
 
-보안 인식을 갖춘 조직 문화를 구축합니다.
+보안 인식이 높은 조직 문화를 구축합니다.
 
 ```bash
 # 보안 인식 프로그램 요소:

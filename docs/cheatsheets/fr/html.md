@@ -1,6 +1,6 @@
 ---
-title: 'Fiche de Référence HTML'
-description: 'Apprenez le HTML avec notre fiche complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de Référence HTML | LabEx'
+description: 'Apprenez le HTML5 avec cette fiche de référence complète. Référence rapide des balises HTML, éléments sémantiques, formulaires, accessibilité et normes de développement web modernes pour les développeurs frontend.'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Feuille de triche HTML
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/html">Apprenez le HTML avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/html">Apprendre le HTML avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la structure web HTML grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours HTML complets couvrant les éléments essentiels, le balisage sémantique, les formulaires, l'intégration multimédia et les fonctionnalités modernes de HTML5. Maîtrisez la structure de page web efficace et l'organisation du contenu pour les flux de travail de développement web modernes.
+Apprenez la structure Web HTML grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours HTML complets couvrant les éléments essentiels, le balisage sémantique, les formulaires, l'intégration multimédia et les fonctionnalités modernes de HTML5. Maîtrisez la structure de page Web efficace et l'organisation du contenu pour les flux de travail de développement Web modernes.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -31,7 +31,7 @@ Chaque document HTML commence par une déclaration de type de document et suit u
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page Title</title>
+    <title>Titre de la Page</title>
   </head>
   <body>
     <!-- Le contenu de la page va ici -->
@@ -39,7 +39,22 @@ Chaque document HTML commence par une déclaration de type de document et suit u
 </html>
 ```
 
-### Éléments de Tête : `<head>`
+<BaseQuiz id="html-doctype-1" correct="A">
+  <template #question>
+    Quel est le but de `<!DOCTYPE html>` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Il déclare le type de document et la version HTML</BaseQuizOption>
+  <BaseQuizOption value="B">Il crée un nouvel élément HTML</BaseQuizOption>
+  <BaseQuizOption value="C">Il lie une feuille de style externe</BaseQuizOption>
+  <BaseQuizOption value="D">Il définit le titre de la page</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La déclaration `<!DOCTYPE html>` indique au navigateur quelle version de HTML le document utilise. Pour HTML5, cette déclaration simple est suffisante et doit être la première ligne de chaque document HTML.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Éléments Head : `<head>`
 
 La section head contient les métadonnées sur le document.
 
@@ -49,8 +64,8 @@ La section head contient les métadonnées sur le document.
 <!-- Viewport pour la conception réactive -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Description de la page -->
-<meta name="description" content="Page description" />
-<!-- Lien vers le CSS -->
+<meta name="description" content="Description de la page" />
+<!-- Lien vers la feuille de style CSS -->
 <link rel="stylesheet" href="styles.css" />
 <!-- Lien vers le favicon -->
 <link rel="icon" href="favicon.ico" />
@@ -102,6 +117,21 @@ Définissent la hiérarchie et l'importance des sections de contenu.
 <h6>Titre le Plus Petit</h6>
 ```
 
+<BaseQuiz id="html-headings-1" correct="B">
+  <template #question>
+    Quelle est la hiérarchie correcte des titres ?
+  </template>
+  
+  <BaseQuizOption value="A">h1 doit être utilisé plusieurs fois sur une page</BaseQuizOption>
+  <BaseQuizOption value="B" correct>h1 doit être utilisé une seule fois comme titre principal, suivi de h2, h3, etc.</BaseQuizOption>
+  <BaseQuizOption value="C">Tous les titres ont la même importance</BaseQuizOption>
+  <BaseQuizOption value="D">h6 est le titre le plus important</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les titres HTML doivent suivre une hiérarchie logique : utilisez un seul `h1` pour le titre principal de la page, puis `h2` pour les sections majeures, `h3` pour les sous-sections, et ainsi de suite. Ceci est utile pour l'accessibilité et le SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Paragraphes : `p`
 
 L'élément le plus courant pour les blocs de contenu textuel.
@@ -109,7 +139,7 @@ L'élément le plus courant pour les blocs de contenu textuel.
 ```html
 <p>
   Ceci est un paragraphe de texte. Il peut contenir plusieurs phrases et
-  s'enroulera automatiquement.
+  s'ajuste automatiquement.
 </p>
 <p>
   Ceci est un autre paragraphe. Les paragraphes sont séparés par un espace de
@@ -135,7 +165,7 @@ L'élément le plus courant pour les blocs de contenu textuel.
 
 ### Sauts de Ligne et Espacement : `<br>`, `<hr>`, `<pre>`
 
-Contrôlent le flux de texte et l'espacement dans le contenu.
+Contrôler le flux de texte et l'espacement dans le contenu.
 
 ```html
 <!-- Saut de ligne -->
@@ -157,7 +187,7 @@ Ligne 2
 
 ### Listes Non Ordonnées : `<ul>`
 
-Crée des listes à puces pour des éléments non séquentiels.
+Crée des listes à puces pour les éléments non séquentiels.
 
 ```html
 <ul>
@@ -179,7 +209,7 @@ Crée des listes à puces pour des éléments non séquentiels.
 
 ### Listes Ordonnées : `<ol>`
 
-Crée des listes numérotées pour des éléments séquentiels.
+Crée des listes numérotées pour les éléments séquentiels.
 
 ```html
 <ol>
@@ -212,7 +242,7 @@ Crée des listes de termes et de leurs descriptions.
   <dd>Cascading Style Sheets</dd>
 
   <dt>JavaScript</dt>
-  <dd>Langage de programmation pour le web</dd>
+  <dd>Langage de programmation pour le Web</dd>
 </dl>
 ```
 
@@ -225,27 +255,42 @@ Crée des hyperliens et des structures de navigation.
 <a href="https://example.com">Visiter Example</a>
 <!-- Lien dans un nouvel onglet -->
 <a href="https://example.com" target="_blank">Nouvel Onglet</a>
-<!-- Lien par e-mail -->
-<a href="mailto:email@example.com">Envoyer un E-mail</a>
-<!-- Lien téléphonique -->
-<a href="tel:+1234567890">Nous Appeler</a>
+<!-- Lien email -->
+<a href="mailto:email@example.com">Envoyer un Email</a>
+<!-- Lien téléphone -->
+<a href="tel:+1234567890">Appelez-nous</a>
 <!-- Ancres de page internes -->
 <a href="#section1">Aller à la Section 1</a>
 <h2 id="section1">Section 1</h2>
 ```
 
+<BaseQuiz id="html-links-1" correct="B">
+  <template #question>
+    Que fait `target="_blank"` dans une balise ancre ?
+  </template>
+  
+  <BaseQuizOption value="A">Ouvre le lien dans la même fenêtre</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Ouvre le lien dans un nouvel onglet ou une nouvelle fenêtre</BaseQuizOption>
+  <BaseQuizOption value="C">Ferme la fenêtre actuelle</BaseQuizOption>
+  <BaseQuizOption value="D">Télécharge le lien</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'attribut `target="_blank"` ouvre la page liée dans un nouvel onglet ou une nouvelle fenêtre du navigateur, permettant aux utilisateurs de garder la page originale ouverte.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Formulaires et Éléments d'Entrée
 
 ### Structure de Formulaire de Base : `<form>`
 
-La base de la collecte d'entrées utilisateur.
+La base de la collecte des entrées utilisateur.
 
 ```html
 <form action="/submit" method="POST">
   <label for="username">Nom d'utilisateur :</label>
   <input type="text" id="username" name="username" required />
 
-  <label for="email">E-mail :</label>
+  <label for="email">Email :</label>
   <input type="email" id="email" name="email" required />
 
   <input type="submit" value="Soumettre" />
@@ -285,7 +330,7 @@ Divers types d'entrée pour différents besoins de collecte de données.
 <label for="option1">Option 1</label>
 <input type="radio" id="option2" name="choice" value="2" />
 <label for="option2">Option 2</label>
-<!-- Menu déroulant -->
+<!-- Menu déroulant Select -->
 <select name="country">
   <option value="us">États-Unis</option>
   <option value="uk">Royaume-Uni</option>
@@ -312,6 +357,21 @@ Attributs de validation de formulaire HTML intégrés.
 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
 ```
 
+<BaseQuiz id="html-validation-1" correct="A">
+  <template #question>
+    Que fait l'attribut `required` dans une entrée HTML ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Empêche la soumission du formulaire si le champ est vide</BaseQuizOption>
+  <BaseQuizOption value="B">Rend le champ en lecture seule</BaseQuizOption>
+  <BaseQuizOption value="C">Masque le champ</BaseQuizOption>
+  <BaseQuizOption value="D">Définit une valeur par défaut</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'attribut `required` rend un champ d'entrée obligatoire. Si le champ est vide lors de la soumission du formulaire, le navigateur empêchera la soumission et affichera un message de validation.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Éléments Multimédias
 
 ### Images : `<img>`, `<picture>`
@@ -325,7 +385,7 @@ Afficher des images avec divers attributs et options.
 <img src="image.jpg" alt="Description" width="100%" height="auto" />
 <!-- Image avec taille -->
 <img src="image.jpg" alt="Description" width="300" height="200" />
-<!-- Élément picture pour les images réactives -->
+<!-- Élément Picture pour les images réactives -->
 <picture>
   <source media="(min-width: 800px)" srcset="large.jpg" />
   <source media="(min-width: 400px)" srcset="medium.jpg" />
@@ -485,9 +545,9 @@ Définissent les principales sections de la mise en page de votre page.
 </footer>
 ```
 
-### Éléments de Regroupement de Contenu : `<section>`, `<article>`, `<div>`, `<figure>`
+### Éléments de Groupement de Contenu : `<section>`, `<article>`, `<div>`, `<figure>`
 
-Organisent et regroupent les sections de contenu liées.
+Organisent et regroupent les sections de contenu associées.
 
 ```html
 <!-- Section générique -->
@@ -553,7 +613,7 @@ Attributs qui améliorent l'accessibilité et l'expérience utilisateur.
 <small id="email-help">Nous ne partagerons jamais votre e-mail</small>
 <!-- Index de tabulation -->
 <div tabindex="0">Div focalisable</div>
-<div tabindex="-1">Div focalisable par programme</div>
+<div tabindex="-1">Focalisable par programme</div>
 <!-- Attribut de rôle -->
 <div role="button" tabindex="0">Bouton personnalisé</div>
 ```
@@ -569,14 +629,14 @@ HTML5 a introduit de nouveaux types d'entrée et des attributs.
 <input type="color" value="#ff0000" />
 <input type="search" placeholder="Rechercher..." />
 <input type="file" accept="image/*" multiple />
-<!-- Datalist pour l'autocomplétion -->
+<!-- Datalist pour l'auto-complétion -->
 <input list="browsers" name="browser" />
 <datalist id="browsers">
   <option value="Chrome"></option>
   <option value="Firefox"></option>
   <option value="Safari"></option>
 </datalist>
-<!-- Progression et mesure -->
+<!-- Progress et meter -->
 <progress value="70" max="100">70%</progress>
 <meter value="0.6">60%</meter>
 ```
@@ -598,7 +658,7 @@ Capacités graphiques et de dessin en HTML5.
 
 ### Détails et Résumé : `<details>`, `<summary>`
 
-Crée des sections de contenu réductibles sans JavaScript.
+Crée des sections de contenu rétractables sans JavaScript.
 
 ```html
 <details>
@@ -620,7 +680,7 @@ Crée des sections de contenu réductibles sans JavaScript.
 Fonctionnalité native de boîte de dialogue et de modale.
 
 ```html
-<!-- Élément dialog -->
+<!-- Élément Dialog -->
 <dialog id="myDialog">
   <h2>Titre de la Boîte de Dialogue</h2>
   <p>Le contenu de la boîte de dialogue va ici.</p>
@@ -638,7 +698,7 @@ Fonctionnalité native de boîte de dialogue et de modale.
 
 ### Bonnes Pratiques HTML
 
-Écrivez un HTML propre, maintenable et accessible.
+Écrire un HTML propre, maintenable et accessible.
 
 ```html
 <!-- Déclarer toujours le doctype -->
@@ -651,7 +711,7 @@ Fonctionnalité native de boîte de dialogue et de modale.
 <div>
   <p>Contenu correctement imbriqué</p>
 </div>
-<!-- Utiliser des minuscules pour les éléments et attributs -->
+<!-- Utiliser des minuscules pour les éléments et les attributs -->
 <img src="image.jpg" alt="description" />
 <!-- Fermer toutes les balises -->
 <p>Fermez toujours vos balises</p>
@@ -722,7 +782,7 @@ Génération HTML dynamique avec des langages de modèles.
   <p><slot></slot></p>
 </template>
 <!-- Utilisation -->
-<my-component>Hello World</my-component>
+<my-component>Bonjour le Monde</my-component>
 <script>
   class MyComponent extends HTMLElement {
     // Logique du composant
@@ -731,7 +791,7 @@ Génération HTML dynamique avec des langages de modèles.
 </script>
 ```
 
-### Intégration de Framework : JSX React, Modèles Vue
+### Intégration de Framework : React JSX, Modèles Vue
 
 HTML au sein des frameworks JavaScript modernes.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola SQLite'
-description: 'Aprenda SQLite com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Referência SQLite | LabEx'
+description: 'Aprenda o banco de dados SQLite com esta folha de referência abrangente. Referência rápida para sintaxe SQL do SQLite, transações, triggers, views e gerenciamento leve de banco de dados para aplicações.'
 pdfUrl: '/cheatsheets/pdf/sqlite-cheatsheet.pdf'
 ---
 
@@ -32,7 +32,7 @@ sqlite3 mydata.db
 sqlite3 :memory:
 # Cria banco de dados com comando
 .open mydata.db
-# Mostra todos os bancos de dados
+# Mostra todos os bancos de dados anexados
 .databases
 # Mostra o esquema de todas as tabelas
 .schema
@@ -107,9 +107,24 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="sqlite-create-table-1" correct="A">
+  <template #question>
+    O que `INTEGER PRIMARY KEY AUTOINCREMENT` faz no SQLite?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Cria uma chave primária inteira com auto-incremento</BaseQuizOption>
+  <BaseQuizOption value="B">Cria uma chave primária de texto</BaseQuizOption>
+  <BaseQuizOption value="C">Cria uma restrição de chave estrangeira</BaseQuizOption>
+  <BaseQuizOption value="D">Cria um índice exclusivo</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INTEGER PRIMARY KEY AUTOINCREMENT` cria uma coluna inteira que se incrementa automaticamente para cada nova linha e serve como chave primária. Isso garante que cada linha tenha um identificador exclusivo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Tipos de Dados: `INTEGER`, `TEXT`, `REAL`, `BLOB`
 
-SQLite usa tipagem dinâmica com classes de armazenamento para armazenamento flexível de dados.
+O SQLite usa tipagem dinâmica com classes de armazenamento para armazenamento de dados flexível.
 
 ```sql
 -- Tipos de dados comuns
@@ -177,6 +192,21 @@ UPDATE products SET price = price * 1.1
 WHERE category = 'Electronics';
 ```
 
+<BaseQuiz id="sqlite-update-1" correct="D">
+  <template #question>
+    O que acontece se você esquecer a cláusula WHERE em uma instrução UPDATE?
+  </template>
+  
+  <BaseQuizOption value="A">A atualização falha</BaseQuizOption>
+  <BaseQuizOption value="B">Apenas a primeira linha é atualizada</BaseQuizOption>
+  <BaseQuizOption value="C">Nada acontece</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Todas as linhas da tabela são atualizadas</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Sem uma cláusula WHERE, a instrução UPDATE modificará todas as linhas da tabela. Sempre use WHERE para especificar quais linhas devem ser atualizadas para evitar alterar dados não intencionais acidentalmente.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Excluir Dados: `DELETE FROM`
 
 Remove registros de tabelas com base em condições especificadas.
@@ -207,6 +237,21 @@ INSERT OR IGNORE INTO users (name, email)
 VALUES ('Duplicate', 'existing@email.com');
 ```
 
+<BaseQuiz id="sqlite-upsert-1" correct="A">
+  <template #question>
+    Qual é a diferença entre `INSERT OR REPLACE` e `INSERT OR IGNORE`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>REPLACE atualiza linhas existentes, IGNORE ignora duplicatas</BaseQuizOption>
+  <BaseQuizOption value="B">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="C">REPLACE exclui a linha, IGNORE a atualiza</BaseQuizOption>
+  <BaseQuizOption value="D">REPLACE funciona com tabelas, IGNORE funciona com visões</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INSERT OR REPLACE` substituirá uma linha existente se houver um conflito (por exemplo, chave primária duplicada). `INSERT OR IGNORE` simplesmente ignorará a inserção se houver um conflito, deixando a linha existente inalterada.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Consulta e Seleção de Dados
 
 ### Consultas Básicas: `SELECT`
@@ -223,9 +268,24 @@ SELECT name, email FROM users;
 -- Seleciona com alias
 SELECT name AS full_name, age AS years_old FROM users;
 
--- Seleciona valores únicos
+-- Seleciona valores exclusivos
 SELECT DISTINCT department FROM employees;
 ```
+
+<BaseQuiz id="sqlite-select-1" correct="B">
+  <template #question>
+    O que `SELECT DISTINCT` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Seleciona todas as linhas</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Retorna apenas valores exclusivos, removendo duplicatas</BaseQuizOption>
+  <BaseQuizOption value="C">Seleciona apenas a primeira linha</BaseQuizOption>
+  <BaseQuizOption value="D">Ordena os resultados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SELECT DISTINCT` elimina linhas duplicadas do conjunto de resultados, retornando apenas valores exclusivos. Isso é útil quando você deseja ver todos os valores exclusivos em uma coluna.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Filtragem: `WHERE`
 
@@ -278,7 +338,7 @@ SELECT COUNT(DISTINCT department) FROM employees;
 -- Soma e média
 SELECT SUM(salary), AVG(salary) FROM employees;
 
--- Valores mínimo e máximo
+-- Valores Mínimo e Máximo
 SELECT MIN(age), MAX(age) FROM users;
 ```
 
@@ -308,7 +368,7 @@ HAVING avg_salary > 60000;
 
 ### Subconsultas
 
-Usa consultas aninhadas para lógica complexa de recuperação de dados e condicionais.
+Usa consultas aninhadas para recuperação complexa de dados e lógica condicional.
 
 ```sql
 -- Subconsulta na cláusula WHERE
@@ -329,9 +389,9 @@ WHERE EXISTS (
 );
 ```
 
-### Joins: `INNER`, `LEFT`, `RIGHT`
+### Junções: `INNER`, `LEFT`, `RIGHT`
 
-Combina dados de múltiplas tabelas usando vários tipos de join para consultas relacionais.
+Combina dados de múltiplas tabelas usando vários tipos de junção para consultas relacionais.
 
 ```sql
 -- Inner join
@@ -385,7 +445,7 @@ CREATE INDEX idx_user_email ON users(email);
 -- Índice de múltiplas colunas
 CREATE INDEX idx_order_user_date ON orders(user_id, order_date);
 
--- Índice único
+-- Índice exclusivo
 CREATE UNIQUE INDEX idx_product_sku ON products(sku);
 
 -- Índice parcial (com condição)
@@ -421,7 +481,7 @@ PRAGMA integrity_check;
 
 ### Configurações de Desempenho: `PRAGMA`
 
-Configura as configurações do SQLite para desempenho e comportamento ótimos.
+Configura configurações do SQLite para desempenho e comportamento ótimos.
 
 ```sql
 -- Define o modo de journal para melhor desempenho
@@ -437,20 +497,20 @@ PRAGMA foreign_keys = ON;
 PRAGMA cache_size = 10000;
 ```
 
-## Views e Triggers
+## Visões e Triggers
 
-### Views: `CREATE VIEW`
+### Visões: `CREATE VIEW`
 
-Cria tabelas virtuais que representam consultas armazenadas para acesso reutilizável a dados.
+Cria tabelas virtuais que representam consultas armazenadas para acesso a dados reutilizável.
 
 ```sql
--- Cria uma view simples
+-- Cria uma visão simples
 CREATE VIEW active_users AS
 SELECT id, name, email
 FROM users
 WHERE active = 1;
 
--- View complexa com joins
+-- Visão complexa com junções
 CREATE VIEW order_summary AS
 SELECT
     u.name,
@@ -460,16 +520,16 @@ FROM users u
 LEFT JOIN orders o ON u.id = o.user_id
 GROUP BY u.id, u.name;
 
--- Consulta uma view
+-- Consulta uma visão
 SELECT * FROM active_users WHERE name LIKE 'J%';
 
--- Remove uma view
+-- Exclui uma visão
 DROP VIEW IF EXISTS order_summary;
 ```
 
-### Usando Views
+### Usando Visões
 
-Consulta views como tabelas regulares para acesso simplificado a dados.
+Consulta visões como tabelas regulares para acesso simplificado a dados.
 
 ```sql
 SELECT * FROM active_users;
@@ -496,7 +556,7 @@ BEGIN
     VALUES ('employees', 'salary_update', OLD.salary, NEW.salary);
 END;
 
--- Remove trigger
+-- Exclui trigger
 DROP TRIGGER IF EXISTS update_user_count;
 ```
 
@@ -504,7 +564,7 @@ DROP TRIGGER IF EXISTS update_user_count;
 
 ### Funções de Data e Hora
 
-Gerencia operações de data e hora com as funções internas do SQLite.
+Lida com operações de data e hora com as funções internas do SQLite.
 
 ```sql
 -- Data/hora atual
@@ -581,7 +641,7 @@ WHERE CASE WHEN category = 'Electronics' THEN price < 1000
 
 ### Controle de Transação
 
-As transações SQLite são totalmente compatíveis com ACID para operações de dados confiáveis.
+As transações do SQLite são totalmente compatíveis com ACID para operações de dados confiáveis.
 
 ```sql
 -- Transação básica
@@ -618,7 +678,7 @@ PRAGMA journal_mode = WAL;
 -- Timeout de ocupado para espera por bloqueios
 PRAGMA busy_timeout = 5000;
 
--- Verifica as conexões atuais do banco de dados
+-- Verifica as conexões de banco de dados atuais
 .databases
 ```
 
@@ -786,7 +846,7 @@ VALUES ('John Doe', 'john@example.com');
 Usa SQLite com várias linguagens de programação através de bibliotecas internas ou de terceiros.
 
 ```python
-# Python (módulo sqlite3 embutido)
+# Python (módulo sqlite3 integrado)
 import sqlite3
 conn = sqlite3.connect('mydb.db')
 cursor = conn.cursor()
@@ -803,7 +863,7 @@ db.all('SELECT * FROM users', (err, rows) => {
 ```
 
 ```php
-// PHP (PDO SQLite embutido)
+// PHP (PDO SQLite integrado)
 $pdo = new PDO('sqlite:mydb.db');
 $stmt = $pdo->query('SELECT * FROM users');
 ```

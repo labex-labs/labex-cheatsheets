@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de scikit-learn'
-description: 'Aprenda scikit-learn con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de scikit-learn | LabEx'
+description: 'Aprenda machine learning con scikit-learn con esta hoja de trucos completa. Referencia rápida para algoritmos de ML, entrenamiento de modelos, preprocesamiento, evaluación y flujos de trabajo de aprendizaje automático en Python.'
 pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 
@@ -83,7 +83,7 @@ n_features=20, n_informative=10, random_state=42)
 
 ## Preprocesamiento de Datos
 
-### División Tren-Prueba: `train_test_split()`
+### División Entrenamiento-Prueba: `train_test_split()`
 
 Dividir los datos en conjuntos de entrenamiento y prueba.
 
@@ -104,6 +104,21 @@ X_val, X_test, y_val, y_test =
 train_test_split(X_temp, y_temp,
 test_size=0.5, random_state=42)
 ```
+
+<BaseQuiz id="sklearn-split-1" correct="B">
+  <template #question>
+    ¿Por qué es importante dividir los datos en conjuntos de entrenamiento y prueba?
+  </template>
+  
+  <BaseQuizOption value="A">Para reducir el tamaño del conjunto de datos</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Para evaluar el rendimiento del modelo en datos no vistos y prevenir el sobreajuste</BaseQuizOption>
+  <BaseQuizOption value="C">Para acelerar el entrenamiento del modelo</BaseQuizOption>
+  <BaseQuizOption value="D">Para equilibrar el conjunto de datos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Dividir los datos permite entrenar el modelo con una porción y probarlo con otra. Esto ayuda a evaluar qué tan bien se generaliza el modelo a datos nuevos y no vistos y previene el sobreajuste a los datos de entrenamiento.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Escalado de Características: `StandardScaler()` / `MinMaxScaler()`
 
@@ -126,6 +141,21 @@ X_test_minmax =
 minmax_scaler.transform(X_test)
 ```
 
+<BaseQuiz id="sklearn-scaling-1" correct="A">
+  <template #question>
+    ¿Por qué es importante el escalado de características en el aprendizaje automático?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Asegura que todas las características estén en una escala similar, evitando que algunas características dominen</BaseQuizOption>
+  <BaseQuizOption value="B">Elimina los valores faltantes</BaseQuizOption>
+  <BaseQuizOption value="C">Aumenta el número de características</BaseQuizOption>
+  <BaseQuizOption value="D">Elimina filas duplicadas</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El escalado de características es importante porque algoritmos como SVM, KNN y redes neuronales son sensibles a las escalas de las características. Sin escalado, las características con rangos más grandes pueden dominar el proceso de aprendizaje del modelo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Codificación: `LabelEncoder()` / `OneHotEncoder()`
 
 Convertir variables categóricas a formato numérico.
@@ -137,8 +167,7 @@ LabelEncoder, OneHotEncoder
 label_encoder = LabelEncoder()
 y_encoded =
 label_encoder.fit_transform(y)
-# Codificación one-hot para características
-categóricas
+# Codificación one-hot para características categóricas
 from sklearn.preprocessing import
 OneHotEncoder
 encoder =
@@ -209,6 +238,21 @@ rf_clf = RandomForestClassifier(
 )
 ```
 
+<BaseQuiz id="sklearn-randomforest-1" correct="A">
+  <template #question>
+    ¿Qué controla `n_estimators` en RandomForestClassifier?
+  </template>
+  
+  <BaseQuizOption value="A" correct>El número de árboles de decisión en el bosque</BaseQuizOption>
+  <BaseQuizOption value="B">La profundidad máxima de cada árbol</BaseQuizOption>
+  <BaseQuizOption value="C">El número de características a considerar</BaseQuizOption>
+  <BaseQuizOption value="D">La semilla aleatoria</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `n_estimators` especifica cuántos árboles de decisión incluir en el bosque aleatorio. Más árboles generalmente mejoran el rendimiento pero aumentan el tiempo de cómputo. El valor predeterminado suele ser 100.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Máquina de Vectores de Soporte: `SVC()`
 
 Clasificador potente que utiliza métodos de kernel.
@@ -275,7 +319,7 @@ selected_features = X.columns[lasso_reg.coef_ != 0]
 print(f"Características seleccionadas: {len(selected_features)}")
 ```
 
-### Regresión Bosque Aleatorio: `RandomForestRegressor()`
+### Regresión de Bosque Aleatorio: `RandomForestRegressor()`
 
 Método de conjunto para tareas de regresión.
 
@@ -286,11 +330,11 @@ rf_reg = RandomForestRegressor(n_estimators=100,
 random_state=42)
 rf_reg.fit(X_train, y_train)
 y_pred = rf_reg.predict(X_test)
-# Importancia de características para regresión
+# Importancia de las características para regresión
 feature_importance = rf_reg.feature_importances_
 ```
 
-## Evaluación del Modelo
+## Evaluación de Modelos
 
 ### Métricas de Clasificación
 
@@ -362,7 +406,7 @@ cv_scores = cross_val_score(model, X, y, cv=5,
 scoring='accuracy')
 print(f"Precisión CV: {cv_scores.mean():.4f} (+/-
 {cv_scores.std() * 2:.4f})")
-# K-fold estratificado para conjuntos de datos desequilibrados
+# K-fold estratificada para conjuntos de datos desequilibrados
 skf = StratifiedKFold(n_splits=5, shuffle=True,
 random_state=42)
 cv_scores = cross_val_score(model, X, y, cv=skf,
@@ -371,17 +415,17 @@ scoring='f1_weighted')
 
 ## Aprendizaje No Supervisado
 
-### Agrupación K-Means: `KMeans()`
+### Agrupamiento K-Means: `KMeans()`
 
-Particionar datos en k clústeres.
+Particionar datos en k grupos.
 
 ```python
-# Agrupación K-means
+# Agrupamiento K-means
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, random_state=42)
 cluster_labels = kmeans.fit_predict(X)
 centroids = kmeans.cluster_centers_
-# Determinar el número óptimo de clústeres (método del codo)
+# Determinar el número óptimo de grupos (método del codo)
 inertias = []
 K_range = range(1, 11)
 for k in K_range:
@@ -409,40 +453,40 @@ np.cumsum(pca_full.explained_variance_ratio_)
 n_components = np.argmax(cumsum >= 0.95) + 1
 ```
 
-### Agrupación DBSCAN: `DBSCAN()`
+### Agrupamiento DBSCAN: `DBSCAN()`
 
-Algoritmo de agrupación basado en densidad.
+Algoritmo de agrupamiento basado en densidad.
 
 ```python
-# Agrupación DBSCAN
+# Agrupamiento DBSCAN
 from sklearn.cluster import DBSCAN
 dbscan = DBSCAN(eps=0.5, min_samples=5)
 cluster_labels = dbscan.fit_predict(X)
 n_clusters = len(set(cluster_labels)) - (1 if -1 in
 cluster_labels else 0)
 n_noise = list(cluster_labels).count(-1)
-print(f"Número de clústeres: {n_clusters}")
+print(f"Número de grupos: {n_clusters}")
 print(f"Número de puntos de ruido: {n_noise}")
 ```
 
-### Agrupación Jerárquica: `AgglomerativeClustering()`
+### Agrupamiento Jerárquico: `AgglomerativeClustering()`
 
-Construir jerarquía de clústeres.
+Construir jerarquía de grupos.
 
 ```python
-# Agrupación aglomerativa
+# Agrupamiento aglomerativo
 from sklearn.cluster import AgglomerativeClustering
 agg_clustering = AgglomerativeClustering(n_clusters=3,
 linkage='ward')
 cluster_labels = agg_clustering.fit_predict(X)
-# Visualización de dendrograma
+# Visualización del dendrograma
 from scipy.cluster.hierarchy import dendrogram, linkage
 linked = linkage(X, 'ward')
 plt.figure(figsize=(12, 8))
 dendrogram(linked)
 ```
 
-## Selección de Modelo y Ajuste de Hiperparámetros
+## Selección de Modelos y Ajuste de Hiperparámetros
 
 ### Búsqueda en Cuadrícula: `GridSearchCV()`
 
@@ -545,7 +589,7 @@ voting_clf = VotingClassifier(
 )
 voting_clf.fit(X_train, y_train)
 y_pred = voting_clf.predict(X_test)
-# Clasificador Bagging
+# Clasificador de bagging
 from sklearn.ensemble import BaggingClassifier
 bagging_clf = BaggingClassifier(DecisionTreeClassifier(),
 n_estimators=100, random_state=42)
@@ -582,7 +626,7 @@ from imblearn.over_sampling import SMOTE
 smote = SMOTE(random_state=42)
 X_resampled, y_resampled = smote.fit_resample(X_train,
 y_train)
-# Uso de pesos de clase
+# Usar pesos de clase
 rf_balanced =
 RandomForestClassifier(class_weight='balanced',
 random_state=42)
@@ -645,7 +689,7 @@ plt.legend()
 Analizar el efecto de los hiperparámetros.
 
 ```python
-# Curva de validación para un único hiperparámetro
+# Curva de validación para un hiperparámetro único
 from sklearn.model_selection import validation_curve
 param_range = [10, 50, 100, 200, 500]
 train_scores, val_scores = validation_curve(
@@ -733,7 +777,7 @@ shuffle=True, random_state=42)
 
 ### Memoria y Rendimiento
 
-Optimizar para conjuntos de datos grandes y eficiencia computacional.
+Optimizar para grandes conjuntos de datos y eficiencia computacional.
 
 ```python
 # Usar n_jobs=-1 para
@@ -744,7 +788,7 @@ RandomForestClassifier(n_jobs=
 grid_search =
 GridSearchCV(model,
 param_grid, n_jobs=-1)
-# Para conjuntos de datos grandes, usar
+# Para grandes conjuntos de datos, usar
 partial_fit cuando esté disponible
 from sklearn.linear_model
 import SGDClassifier
@@ -772,8 +816,8 @@ Visualización mejorada en Jupyter
 # Comprobar si hay fuga de datos
 from sklearn.model_selection
 import cross_val_score
-# Asegurarse de que el preprocesamiento
-se realice dentro del bucle CV
+# Asegurar que el preprocesamiento se
+realice dentro del bucle CV
 ```
 
 ## Enlaces Relevantes

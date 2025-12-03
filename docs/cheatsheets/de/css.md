@@ -1,6 +1,6 @@
 ---
-title: 'CSS Spickzettel'
-description: 'Lernen Sie CSS mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'CSS Spickzettel | LabEx'
+description: 'Lernen Sie CSS3 mit diesem umfassenden Spickzettel. Schnelle Referenz für CSS-Selektoren, Flexbox, Grid, Animationen, responsives Design und moderne Styling-Techniken für Webentwickler.'
 pdfUrl: '/cheatsheets/pdf/css-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ CSS Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/css">Lerne CSS mit praktischen Übungen</a>
+<a target="_blank" href="https://labex.io/de/learn/css">CSS mit praktischen Übungen lernen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lerne CSS-Web-Styling durch praktische Übungen und reale Szenarien. LabEx bietet umfassende CSS-Kurse, die wesentliche Eigenschaften, Selektoren, Layout-Techniken, responsives Design und moderne Funktionen abdecken. Meistere effizientes Web-Styling und Layout-Design für moderne Webentwicklungs-Workflows.
+Lernen Sie CSS-Web-Styling durch praktische Übungen und reale Szenarien. LabEx bietet umfassende CSS-Kurse, die wesentliche Eigenschaften, Selektoren, Layout-Techniken, responsives Design und moderne Funktionen abdecken. Meistern Sie effizientes Web-Styling und Layout-Design für moderne Webentwicklungs-Workflows.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -62,7 +62,7 @@ a {
 
 ### Klassen-Selektoren
 
-Zielen auf Elemente mit bestimmten Klassenattributen ab.
+Zielen auf Elemente mit spezifischen Klassenattributen ab.
 
 ```css
 /* Elemente mit class="highlight" auswählen */
@@ -82,9 +82,24 @@ p.intro {
 }
 ```
 
+<BaseQuiz id="css-class-1" correct="B">
+  <template #question>
+    Wie wählen Sie in CSS ein Element mit class="highlight" aus?
+  </template>
+  
+  <BaseQuizOption value="A">highlight { }</BaseQuizOption>
+  <BaseQuizOption value="B" correct>.highlight { }</BaseQuizOption>
+  <BaseQuizOption value="C">#highlight { }</BaseQuizOption>
+  <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Klassen-Selektoren verwenden einen Punkt (`.`) als Präfix. `.highlight` wählt alle Elemente mit `class="highlight"` aus. ID-Selektoren verwenden `#`, und Element-Selektoren verwenden kein Präfix.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ID-Selektoren
 
-Zielen auf Elemente mit bestimmten ID-Attributen ab.
+Zielen auf Elemente mit spezifischen ID-Attributen ab.
 
 ```css
 /* Element mit id="header" auswählen */
@@ -100,7 +115,7 @@ Zielen auf Elemente mit bestimmten ID-Attributen ab.
 
 ### Attribut-Selektoren
 
-Zielen auf Elemente mit bestimmten Attributen mithilfe von Attributselektoren ab.
+Zielen auf Elemente mit bestimmten Attributen mithilfe von Attribut-Selektoren ab.
 
 ```css
 /* Elemente mit title-Attribut */
@@ -135,7 +150,7 @@ a:active {
   color: orange;
 }
 
-/* Formular-Zustände */
+/* Formularzustände */
 input:focus {
   border-color: blue;
 }
@@ -152,7 +167,7 @@ li:nth-child(odd) {
 }
 ```
 
-## Box Model & Layout
+## Box-Modell & Layout
 
 ### Inhalt: `width` / `height`
 
@@ -171,7 +186,7 @@ div {
   max-width: 1200px;
 }
 
-/* Min/Max-Einschränkungen */
+/* Min/Max-Beschränkungen */
 .box {
   min-height: 100px;
   max-width: 500px;
@@ -180,7 +195,7 @@ div {
 
 ### Padding: `padding`
 
-Abstand zwischen Inhalt und Rahmen, innerhalb des Elements.
+Platz zwischen Inhalt und Rahmen, innerhalb des Elements.
 
 ```css
 /* Alle Seiten */
@@ -200,12 +215,28 @@ div {
 }
 ```
 
+<BaseQuiz id="css-padding-1" correct="C">
+  <template #question>
+    Was bewirkt `padding: 10px 20px`?
+  </template>
+  
+  <BaseQuizOption value="A">10px oben/unten, 20px links/rechts</BaseQuizOption>
+  <BaseQuizOption value="B">10px alle Seiten</BaseQuizOption>
+  <BaseQuizOption value="C" correct>10px oben/unten, 20px links/rechts</BaseQuizOption>
+  <BaseQuizOption value="D">10px oben, 20px unten</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Wenn zwei Werte angegeben werden, gilt der erste für oben und unten, und der zweite für links und rechts. Also bedeutet `padding: 10px 20px` 10px vertikales Padding und 20px horizontales Padding.
+  </BaseQuizAnswer>
+</BaseQuiz>
+```
+
 ### Border: `border`
 
-Rahmen bieten einen Rahmen für Elemente mit anpassbarer Größe, Stil und Farbe.
+Ränder bieten einen Rahmen für Elemente mit anpassbarer Größe, Stil und Farbe.
 
 ```css
-/* Rahmen Kurzschreibweise */
+/* Border Kurzschreibweise */
 div {
   border: 2px solid #333;
 }
@@ -250,9 +281,24 @@ div {
 }
 ```
 
+<BaseQuiz id="css-margin-1" correct="C">
+  <template #question>
+    Was bewirkt `margin: 0 auto`?
+  </template>
+  
+  <BaseQuizOption value="A">Entfernt alle Margins</BaseQuizOption>
+  <BaseQuizOption value="B">Fügt gleiche Margins auf allen Seiten hinzu</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Zentriert ein Blockelement horizontal</BaseQuizOption>
+  <BaseQuizOption value="D">Zentriert ein Blockelement vertikal</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `margin: 0 auto` setzt obere und untere Margins auf 0 und linke/rechte Margins auf auto, was ein Block-Level-Element horizontal innerhalb seines Containers zentriert.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Text & Typografie
 
-### Schrift-Eigenschaften
+### Schriftarten-Eigenschaften
 
 Steuern Sie Schriftfamilie, -größe, -stärke und -stil.
 
@@ -285,7 +331,7 @@ span {
 }
 ```
 
-### Text-Ausrichtung
+### Textausrichtung
 
 Steuern Sie die Textpositionierung und den Abstand.
 
@@ -303,7 +349,7 @@ p {
   line-height: 1.6;
 }
 
-/* Buchstaben- und Wortabstand */
+/* Zeichen- und Wortabstand */
 h1 {
   letter-spacing: 2px;
 }
@@ -351,6 +397,22 @@ p {
 div {
   background-color: #ff5733;
 }
+```
+
+<BaseQuiz id="css-colors-1" correct="D">
+  <template #question>
+    Welches CSS-Farbformat wird am häufigsten für Webdesign verwendet?
+  </template>
+  
+  <BaseQuizOption value="A">Nur RGB</BaseQuizOption>
+  <BaseQuizOption value="B">Nur benannte Farben</BaseQuizOption>
+  <BaseQuizOption value="C">Nur HSL</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Hex-Codes (#RRGGBB) sind sehr verbreitet, zusammen mit benannten Farben und RGB</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Hex-Farb-Codes (#RRGGBB) sind weit verbreitet, da sie prägnant sind und leicht aus Designtools kopiert werden können. Benannte Farben sowie RGB/rgba sind ebenfalls üblich. Die Wahl hängt vom spezifischen Anwendungsfall und der Präferenz ab.
+  </BaseQuizAnswer>
+</BaseQuiz>
 span {
   color: rgb(255, 87, 51);
 }
@@ -358,23 +420,24 @@ section {
   background-color: rgba(255, 87, 51, 0.8);
 }
 
-/* HSL-Farben */
+/_ HSL Farben _/
 header {
-  background-color: hsl(200, 100%, 50%);
+background-color: hsl(200, 100%, 50%);
 }
 
-/* CSS-Variablen für Farben */
+/_ CSS Variablen für Farben _/
 :root {
-  --primary-color: #3498db;
+--primary-color: #3498db;
 }
 .button {
-  background-color: var(--primary-color);
+background-color: var(--primary-color);
 }
-```
+
+````
 
 ## Flexbox Layout
 
-### Flex-Container-Eigenschaften
+### Flex Container Eigenschaften
 
 Eigenschaften, die auf den übergeordneten Container angewendet werden.
 
@@ -399,7 +462,7 @@ Eigenschaften, die auf den übergeordneten Container angewendet werden.
   justify-content: space-around;
 }
 
-/* Align items (Kreuzachse) */
+/* Align items (Querachse) */
 .container {
   align-items: stretch; /* Standard */
   align-items: center;
@@ -407,15 +470,15 @@ Eigenschaften, die auf den übergeordneten Container angewendet werden.
 }
 ```
 
-### Flex-Item-Eigenschaften
+### Flex Item Eigenschaften
 
 Eigenschaften, die auf die Kindelemente angewendet werden.
 
 ```css
 /* Flex wachsen/schrumpfen */
 .item {
-  flex-grow: 1; /* wachsen, um Platz zu füllen */
-  flex-shrink: 1; /* schrumpfen bei Bedarf */
+  flex-grow: 1; /* Platz füllen, um zu wachsen */
+  flex-shrink: 1; /* schrumpfen, falls nötig */
   flex-basis: auto; /* Anfangsgröße */
 }
 
@@ -449,7 +512,7 @@ Definieren Sie die Rasterstruktur und -eigenschaften.
   display: grid;
 }
 
-/* Spalten und Zeilen definieren */
+/* Spalten und Reihen definieren */
 .grid-container {
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 100px auto 50px;
@@ -462,7 +525,7 @@ Definieren Sie die Rasterstruktur und -eigenschaften.
   row-gap: 10px;
 }
 
-/* Benannte Rasterbereiche */
+/* Benannte Grid-Bereiche */
 .grid-container {
   grid-template-areas:
     'header header header'
@@ -473,18 +536,18 @@ Definieren Sie die Rasterstruktur und -eigenschaften.
 
 ### Grid Items
 
-Positionieren und dimensionieren Sie Rasterelemente.
+Positionieren und dimensionieren Sie Grid-Elemente.
 
 ```css
 /* Grid-Positionierung */
 .grid-item {
   grid-column: 1 / 3; /* Spalten 1-2 überspannen */
-  grid-row: 2 / 4; /* Zeilen 2-3 überspannen */
+  grid-row: 2 / 4; /* Reihen 2-3 überspannen */
 }
 
 /* Kurzschreibweise */
 .grid-item {
-  grid-area: 2 / 1 / 4 / 3; /* zeilen-start / spalten-start / zeilen-ende / spalten-ende */
+  grid-area: 2 / 1 / 4 / 3; /* reihe-start / spalte-start / reihe-ende / spalte-ende */
 }
 
 /* Benannte Bereiche */
@@ -501,7 +564,7 @@ Positionieren und dimensionieren Sie Rasterelemente.
 /* Automatische Platzierung */
 .grid-item {
   grid-column: span 2; /* 2 Spalten überspannen */
-  grid-row: span 3; /* 3 Zeilen überspannen */
+  grid-row: span 3; /* 3 Reihen überspannen */
 }
 ```
 
@@ -545,9 +608,9 @@ Steuern Sie das Positionierungsverhalten von Elementen.
 }
 ```
 
-### Z-Index & Stapelung
+### Z-Index & Stapelreihenfolge
 
-Steuern Sie die Reihenfolge, in der sich Elemente übereinander stapeln, mithilfe von z-index und Stapelkontext.
+Steuern Sie die Reihenfolge, in der sich Elemente überlagern, mithilfe von z-index und Stapelkontext.
 
 ```css
 /* Stapelreihenfolge */
@@ -582,10 +645,10 @@ Steuern Sie die Reihenfolge, in der sich Elemente übereinander stapeln, mithilf
 
 ### Media Queries
 
-Wenden Sie Stile basierend auf Geräteeigenschaften an.
+Wenden Sie Stile basierend auf Geräte- oder Anzeigeeigenschaften an.
 
 ```css
-/* Mobile First Ansatz */
+/* Mobile first Ansatz */
 .container {
   width: 100%;
 }
@@ -641,7 +704,7 @@ p {
 } /* 1.2x Schriftgröße des Elternelements */
 h1 {
   font-size: 2rem;
-} /* 2x Root-Schriftgröße */
+} /* 2x Schriftgröße der Wurzel */
 
 /* Prozentuale Einheiten */
 .container {
@@ -886,7 +949,7 @@ body div.container > p {
 }
 
 /* Repaints minimieren */
-/* Transform anstelle von changing position verwenden */
+/* transform anstelle von changing position verwenden */
 .element {
   transform: translateX(100px);
   /* anstelle von left: 100px; */
@@ -910,9 +973,9 @@ CSS in Echtzeit inspizieren und ändern.
 /* Häufige Debugging-Schritte */
 /* 1. Rechtsklick → Element untersuchen */
 /* 2. Berechnete Stile prüfen */
-/* 3. Nach überschriebenen Eigenschaften suchen */
+/* 3. Überschriebene Eigenschaften suchen */
 /* 4. Änderungen in Echtzeit testen */
-/* 5. Geänderte CSS-Datei zurückkopieren */
+/* 5. Geändertes CSS zurück in Ihre Datei kopieren */
 ```
 
 ### Häufige CSS-Probleme
@@ -920,7 +983,7 @@ CSS in Echtzeit inspizieren und ändern.
 Häufig auftretende Probleme beheben.
 
 ```css
-/* Box-Modell-Probleme */
+/* Box-Modell Probleme */
 * {
   box-sizing: border-box;
 }
@@ -932,8 +995,8 @@ Häufig auftretende Probleme beheben.
   clear: both;
 }
 
-/* Z-Index Probleme */
-/* Sicherstellen, dass Elemente positioniert sind, damit z-index funktioniert */
+/* Z-index Probleme */
+/* Sicherstellen, dass Elemente für z-index positioniert sind */
 .element {
   position: relative;
   z-index: 1;
@@ -1033,3 +1096,4 @@ const Button = styled.button`
 - <router-link to="/javascript">JavaScript Spickzettel</router-link>
 - <router-link to="/react">React Spickzettel</router-link>
 - <router-link to="/web-development">Webentwicklung Spickzettel</router-link>
+````

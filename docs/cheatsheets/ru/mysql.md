@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по MySQL'
-description: 'Изучите MySQL с нашей подробной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по MySQL | LabEx'
+description: 'Изучите управление базами данных MySQL с помощью этой исчерпывающей шпаргалки. Краткий справочник по SQL-запросам, соединениям, индексам, транзакциям, хранимым процедурам и администрированию баз данных.'
 pdfUrl: '/cheatsheets/pdf/mysql-cheatsheet.pdf'
 ---
 
@@ -51,6 +51,21 @@ USE company_db;
 DROP DATABASE old_database;
 ```
 
+<BaseQuiz id="mysql-database-1" correct="C">
+  <template #question>
+    Что делает команда `USE database_name`?
+  </template>
+  
+  <BaseQuizOption value="A">Создает новую базу данных</BaseQuizOption>
+  <BaseQuizOption value="B">Удаляет базу данных</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Выбирает базу данных для последующих операций</BaseQuizOption>
+  <BaseQuizOption value="D">Показывает все таблицы в базе данных</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Команда `USE` выбирает базу данных, делая ее активной для всех последующих SQL-операторов. Это эквивалентно выбору базы данных при подключении с помощью `mysql -u user -p database_name`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Экспорт данных: `mysqldump`
 
 Резервное копирование данных базы данных в SQL-файл.
@@ -73,7 +88,7 @@ mysqldump -u username -p --routines --triggers database_name > backup.sql
 ```bash
 # Импорт SQL-файла в базу данных
 mysql -u username -p database_name < backup.sql
-# Импорт без указания базы данных (если она указана в файле)
+# Импорт без указания базы данных (если она включена в файл)
 mysql -u username -p < full_backup.sql
 ```
 
@@ -94,7 +109,7 @@ FLUSH PRIVILEGES;
 
 ### Показать информацию о сервере: `SHOW STATUS` / `SHOW VARIABLES`
 
-Отображение конфигурации и статуса сервера.
+Отображение конфигурации и состояния сервера.
 
 ```sql
 # Показать статус сервера
@@ -159,7 +174,7 @@ ALTER TABLE users MODIFY COLUMN username VARCHAR(100);
 ALTER TABLE users CHANGE old_name new_name VARCHAR(50);
 ```
 
-## Манипуляция данными и операции CRUD
+## Манипулирование данными и CRUD операции
 
 ### Вставка данных: `INSERT INTO`
 
@@ -176,6 +191,21 @@ INSERT INTO users (username, email, age) VALUES
 # Вставить из другой таблицы
 INSERT INTO users_backup SELECT * FROM users;
 ```
+
+<BaseQuiz id="mysql-insert-1" correct="A">
+  <template #question>
+    Какой синтаксис правильный для вставки одной записи?
+  </template>
+  
+  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Правильный синтаксис: `INSERT INTO table_name (columns) VALUES (values)`. Ключевое слово `INTO` является обязательным, и необходимо указать как имена столбцов, так и соответствующие им значения.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Обновление данных: `UPDATE`
 
@@ -238,6 +268,21 @@ SELECT * FROM users WHERE age > 25;
 SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 ```
 
+<BaseQuiz id="mysql-select-1" correct="D">
+  <template #question>
+    Что возвращает `SELECT * FROM users`?
+  </template>
+  
+  <BaseQuizOption value="A">Только первую строку из таблицы users</BaseQuizOption>
+  <BaseQuizOption value="B">Только столбец username</BaseQuizOption>
+  <BaseQuizOption value="C">Структуру таблицы</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Все столбцы и все строки из таблицы users</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Символ `*` выбирает все столбцы, а без условия WHERE возвращаются все строки. Это полезно для просмотра всех данных, но следует использовать с осторожностью для больших таблиц.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Сортировка и ограничение: `ORDER BY` / `LIMIT`
 
 Управление порядком и количеством возвращаемых результатов.
@@ -260,7 +305,7 @@ SELECT * FROM users LIMIT 10 OFFSET 10;
 ```sql
 # Сопоставление с шаблоном
 SELECT * FROM users WHERE username LIKE 'john%';
-# Множественные значения
+# Несколько значений
 SELECT * FROM users WHERE age IN (25, 30, 35);
 # Фильтрация диапазона
 SELECT * FROM users WHERE age BETWEEN 20 AND 30;
@@ -273,12 +318,12 @@ SELECT * FROM users WHERE email IS NOT NULL;
 Группировка данных и применение агрегатных функций.
 
 ```sql
-# Группировать по столбцу
+# Группировка по столбцу
 SELECT age, COUNT(*) FROM users GROUP BY age;
-# Группировать с условием по группам
+# Группировка с условием по группам
 SELECT age, COUNT(*) as count FROM users
 GROUP BY age HAVING count > 1;
-# Несколько столбцов группировки
+# Группировка по нескольким столбцам
 SELECT age, gender, COUNT(*) FROM users
 GROUP BY age, gender;
 ```
@@ -298,12 +343,27 @@ INNER JOIN orders o ON u.id = o.user_id;
 SELECT u.username, o.order_date
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id;
-# Несколько соединений
+# Множественные соединения
 SELECT u.username, o.order_date, p.product_name
 FROM users u
 JOIN orders o ON u.id = o.user_id
 JOIN products p ON o.product_id = p.id;
 ```
+
+<BaseQuiz id="mysql-join-1" correct="B">
+  <template #question>
+    В чем разница между INNER JOIN и LEFT JOIN?
+  </template>
+  
+  <BaseQuizOption value="A">Разницы нет</BaseQuizOption>
+  <BaseQuizOption value="B" correct>INNER JOIN возвращает только совпадающие строки, LEFT JOIN возвращает все строки из левой таблицы</BaseQuizOption>
+  <BaseQuizOption value="C">INNER JOIN работает быстрее</BaseQuizOption>
+  <BaseQuizOption value="D">LEFT JOIN работает только с двумя таблицами</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    INNER JOIN возвращает только строки, имеющие совпадения в обеих таблицах. LEFT JOIN возвращает все строки из левой таблицы и совпадающие строки из правой таблицы, с NULL значениями для несовпадающих строк правой таблицы.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Подзапросы: `SELECT` внутри `SELECT`
 
@@ -334,7 +394,7 @@ SELECT SUM(total) FROM orders;
 # Агрегация с группировкой
 SELECT department, AVG(salary)
 FROM employees GROUP BY department;
-# Несколько агрегатов
+# Множественные агрегаты
 SELECT
     COUNT(*) as total_users,
     AVG(age) as avg_age,
@@ -534,7 +594,7 @@ SELECT DATE_FORMAT(created_at, '%Y-%m-%d %H:%i') as formatted_date FROM orders;
 SELECT ROUND(price, 2), ABS(profit_loss), SQRT(area) FROM products;
 # Случайные и статистические
 SELECT RAND(), FLOOR(price), CEIL(rating) FROM products;
-# Математические агрегаты
+# Математическая агрегация
 SELECT AVG(price), STDDEV(price), VARIANCE(price) FROM products;
 ```
 
@@ -581,7 +641,7 @@ LOCK TABLES users WRITE, orders READ;
 # Выполнить операции
 # ...
 UNLOCK TABLES;
-# Блокировка на уровне строк в транзакциях
+# Блокировка строк на уровне транзакции
 BEGIN;
 SELECT * FROM accounts WHERE id = 1 FOR UPDATE;
 UPDATE accounts SET balance = balance - 100 WHERE id = 1;
@@ -611,7 +671,7 @@ COMMIT;
 Создание временных наборов результатов для сложных запросов.
 
 ```sql
-# Простое CTE
+# Простой CTE
 WITH user_orders AS (
     SELECT user_id, COUNT(*) as order_count,
            SUM(total) as total_spent
@@ -726,7 +786,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 
 ## Конфигурация и настройки
 
-### Конфигурационные файлы: `my.cnf`
+### Файлы конфигурации: `my.cnf`
 
 Изменение настроек конфигурации сервера MySQL.
 
@@ -777,7 +837,7 @@ SET GLOBAL innodb_buffer_pool_size = 2147483648; -- 2GB
 Настройка логирования MySQL для мониторинга и отладки.
 
 ```sql
-# Включить логирование запросов
+# Включить логирование общих запросов
 SET GLOBAL general_log = 'ON';
 SET GLOBAL general_log_file = '/var/log/mysql/query.log';
 # Журнал медленных запросов
@@ -787,7 +847,7 @@ SET GLOBAL long_query_time = 1;
 SHOW VARIABLES LIKE '%log%';
 ```
 
-## Соответствующие ссылки
+## Связанные ссылки
 
 - <router-link to="/database">Шпаргалка по базам данных</router-link>
 - <router-link to="/postgresql">Шпаргалка по PostgreSQL</router-link>

@@ -1,6 +1,6 @@
 ---
-title: 'Java チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Java を学習しましょう。'
+title: 'Java チートシート | LabEx'
+description: 'この包括的なチートシートで Java プログラミングを学習。Java 構文、OOP、コレクション、ストリーム、Spring フレームワーク、エンタープライズ開発の必須事項を素早く参照できます。'
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Java チートシート
 <a target="_blank" href="https://labex.io/ja/learn/java">ハンズオンラボで Java を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて Java プログラミングを学びましょう。LabEx は、必須の構文、オブジェクト指向プログラミング、コレクション、例外処理、ベストプラクティスを網羅した包括的な Java コースを提供します。Java 開発の基礎を習得し、堅牢なアプリケーションを構築しましょう。
+ハンズオンラボと実世界のシナリオを通じて Java プログラミングを学びましょう。LabEx は、必須の構文、オブジェクト指向プログラミング、コレクション、例外処理、ベストプラクティスを網羅した包括的な Java コースを提供します。Java 開発の基礎を習得し、堅牢なアプリケーションを構築します。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -39,7 +39,7 @@ public class HelloWorld {
 
 ```java
 public class MyClass {
-    // クラスの内容はここに記述
+    // クラスの内容をここに記述
     int myVariable;
 
     public void myMethod() {
@@ -50,31 +50,46 @@ public class MyClass {
 
 ### main メソッド：プログラムのエントリーポイント
 
-main メソッドは Java プログラムの実行が開始される場所です。
+main メソッドは、Java プログラムの実行が開始される場所です。
 
 ```java
 public static void main(String[] args) {
-    // プログラムコードはここに
+    // プログラムコードをここに記述
     System.out.println("Program starts here");
 }
 ```
 
+<BaseQuiz id="java-main-1" correct="C">
+  <template #question>
+    Java における main メソッドの正しいシグネチャは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">public void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="B">static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>public static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    main メソッドは `public static void main(String[] args)` である必要があります。`public` は JVM がアクセスできるようにし、`static` はクラスに属することを意味し、`void` は何も返さないことを意味し、`String[] args` はコマンドライン引数を受け取ります。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### コメント：コードのドキュメント化
 
-単一行 (`//`) および複数行 (`/* */`) のコメントを使用して、コードの理解度と保守性を高めます。
+コードをより理解しやすく、保守しやすくするために、単一行 (`//`) および複数行 (`/* */`) のコメントを使用します。
 
 ```java
 // 単一行コメント
 System.out.println("Hello");
 
 /* 複数行コメント
-   複数行にまたがることができる
-   詳細な説明に使用される */
+   複数行にまたがることができます
+   詳細な説明に使用されます */
 ```
 
 ### ステートメントとセミコロン
 
-Java の各ステートメントはセミコロンで終了する必要があります。
+Java では、各ステートメントはセミコロンで終了する必要があります。
 
 ```java
 int number = 10;
@@ -127,20 +142,20 @@ boolean flag = true;        // true または false
 int age;
 String name;
 
-// 宣言と初期化
+// 初期化を伴う宣言
 int age = 25;
 String name = "John";
 
 // 複数宣言
 int x = 10, y = 20, z = 30;
 
-// final 変数（定数）
+// final 変数 (定数)
 final double PI = 3.14159;
 ```
 
 ### 文字列操作
 
-文字列は文字のシーケンスを表し、不変（immutable）であるため、一度作成されるとその値を変更することはできません。
+文字列は文字のシーケンスを表し、不変（immutable）です。つまり、一度作成されると、その値を変更することはできません。
 
 ```java
 String greeting = "Hello";
@@ -156,9 +171,24 @@ boolean isEmpty = message.isEmpty();
 String uppercase = message.toUpperCase();
 ```
 
+<BaseQuiz id="java-string-1" correct="A">
+  <template #question>
+    Java の文字列が不変（immutable）であるとはどういう意味ですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>作成された後、文字列の値を変更することはできない</BaseQuizOption>
+  <BaseQuizOption value="B">文字列を作成できない</BaseQuizOption>
+  <BaseQuizOption value="C">文字列は数値のみを格納できる</BaseQuizOption>
+  <BaseQuizOption value="D">文字列は自動的に削除される</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    不変性とは、一度 String オブジェクトが作成されると、その値を変更できないことを意味します。`toUpperCase()` のような操作は、元のオブジェクトを変更するのではなく、新しい String オブジェクトを返します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 制御フロー文
 
-### 条件分岐文：`if`, `else if`, `else`
+### 条件分岐：`if`, `else if`, `else`
 
 条件に基づいて異なるコードブロックを実行します。
 
@@ -175,7 +205,7 @@ if (score >= 90) {
 }
 ```
 
-### switch 文
+### Switch 文
 
 変数の値に基づいて多方向分岐を行います。
 
@@ -196,7 +226,7 @@ switch (day) {
 }
 ```
 
-### for ループ：回数指定の繰り返し
+### For ループ：回数指定の繰り返し
 
 特定の回数だけコードを繰り返します。
 
@@ -213,9 +243,24 @@ for (int num : numbers) {
 }
 ```
 
-### while および do-while ループ
+<BaseQuiz id="java-for-loop-1" correct="C">
+  <template #question>
+    拡張 for ループ (for-each) は何に使用されますか？
+  </template>
+  
+  <BaseQuizOption value="A">カウンター変数を使用して反復処理を行う</BaseQuizOption>
+  <BaseQuizOption value="B">無限ループ</BaseQuizOption>
+  <BaseQuizOption value="C" correct>インデックスなしで配列やコレクションを反復処理する</BaseQuizOption>
+  <BaseQuizOption value="D">ネストされたループのみ</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    拡張 for ループ (for-each) は、配列やコレクションの反復処理を簡素化し、インデックスを自動的に処理するため、コードの可読性が向上し、エラーが発生しにくくなります。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-条件が true である限りコードを繰り返します。
+### While および Do-While ループ
+
+条件が真である限りコードを繰り返します。
 
 ```java
 // While ループ
@@ -225,7 +270,7 @@ while (i < 3) {
     i++;
 }
 
-// Do-while ループ (少なくとも一度実行される)
+// Do-while ループ (少なくとも 1 回実行される)
 int j = 0;
 do {
     System.out.println("Do-while: " + j);
@@ -233,15 +278,30 @@ do {
 } while (j < 3);
 ```
 
+<BaseQuiz id="java-while-1" correct="B">
+  <template #question>
+    `while` ループと `do-while` ループの主な違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはない</BaseQuizOption>
+  <BaseQuizOption value="B" correct>do-while は少なくとも 1 回実行されるが、while はまったく実行されない場合がある</BaseQuizOption>
+  <BaseQuizOption value="C">while の方が高速である</BaseQuizOption>
+  <BaseQuizOption value="D">do-while は配列でのみ機能する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `do-while` ループはループ本体の実行後に条件をチェックするため、常に少なくとも 1 回実行されます。`while` ループは最初に条件をチェックするため、条件が最初に偽であれば実行されません。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## オブジェクト指向プログラミング
 
 ### クラスとオブジェクト
 
-オブジェクトは状態と動作を持ちます。オブジェクトはクラスのインスタンスです。
+オブジェクトには状態と動作があります。オブジェクトはクラスのインスタンスです。
 
 ```java
 public class Car {
-    // インスタンス変数（状態）
+    // インスタンス変数 (状態)
     String color;
     String model;
     int year;
@@ -253,7 +313,7 @@ public class Car {
         this.year = year;
     }
 
-    // メソッド（動作）
+    // メソッド (動作)
     public void start() {
         System.out.println("Car is starting...");
     }
@@ -321,7 +381,7 @@ myDog.bark(); // 独自のメソッド
 
 ```java
 public class Example {
-    public int publicVar;      // あらゆる場所からアクセス可能
+    public int publicVar;      // どこからでもアクセス可能
     private int privateVar;    // このクラス内でのみアクセス可能
     protected int protectedVar; // パッケージ内およびサブクラスからアクセス可能
     int defaultVar;            // パッケージ内でのみアクセス可能
@@ -351,7 +411,7 @@ public class Calculator {
         System.out.println("Sum: " + result);
     }
 
-    // static メソッド（クラスに属する）
+    // static メソッド (クラスに属する)
     public static int multiply(int a, int b) {
         return a * b;
     }
@@ -378,9 +438,9 @@ public class MathUtils {
 }
 ```
 
-### メソッドのパラメータと戻り値の型
+### メソッドパラメータと戻り値の型
 
-メソッドにデータを渡し、結果を返します。
+メソッドにデータを渡し、結果を返す。
 
 ```java
 public class StringHelper {
@@ -437,7 +497,7 @@ public class RecursiveExamples {
 int[] numbers = {1, 2, 3, 4, 5};
 String[] names = {"Alice", "Bob", "Charlie"};
 
-// サイズを指定した配列
+// 指定されたサイズの配列
 int[] scores = new int[10];
 scores[0] = 95;
 scores[1] = 87;
@@ -478,7 +538,7 @@ for (int i = 0; i < matrix.length; i++) {
 
 ### ArrayList: 動的配列
 
-動的にサイズを変更できる、サイズ変更可能な配列。
+動的に増減できるサイズ変更可能な配列。
 
 ```java
 import java.util.ArrayList;
@@ -497,7 +557,7 @@ String fruit = list.get(0); // "Apple" を取得
 // 要素の削除
 list.remove(1); // "Banana" を削除
 
-// サイズとイテレーション
+// サイズと反復処理
 System.out.println("Size: " + list.size());
 for (String item : list) {
     System.out.println(item);
@@ -538,7 +598,7 @@ if (ages.containsKey("Bob")) {
 public class ExceptionExample {
     public static void main(String[] args) {
         try {
-            int result = 10 / 0; // ArithmeticException をスローする
+            int result = 10 / 0; // これは ArithmeticException をスローします
             System.out.println("Result: " + result);
         } catch (ArithmeticException e) {
             System.out.println("Cannot divide by zero!");
@@ -572,7 +632,7 @@ public void processArray(String[] arr, int index) {
 
 ### カスタム例外のスロー
 
-独自の例外を作成しスローします。
+独自の例外を作成してスローします。
 
 ```java
 public class AgeValidator {
@@ -604,14 +664,14 @@ Java プログラムで頻繁に発生する例外。
 ```java
 // NullPointerException
 String str = null;
-// str.length(); // NullPointerException をスローする
+// str.length(); // NullPointerException をスローします
 
 // ArrayIndexOutOfBoundsException
 int[] arr = {1, 2, 3};
-// int val = arr[5]; // ArrayIndexOutOfBoundsException をスローする
+// int val = arr[5]; // ArrayIndexOutOfBoundsException をスローします
 
 // NumberFormatException
-// int num = Integer.parseInt("abc"); // NumberFormatException をスローする
+// int num = Integer.parseInt("abc"); // NumberFormatException をスローします
 
 // FileNotFoundException (ファイル操作時)
 // IOException (一般的な I/O 操作)
@@ -675,7 +735,7 @@ public class OutputExample {
 
 ### ファイル読み取り：BufferedReader
 
-テキストファイルを効率的に一行ずつ読み取ります。
+テキストファイルを一行ずつ効率的に読み取ります。
 
 ```java
 import java.io.*;
@@ -699,7 +759,7 @@ public class FileReadExample {
 
 ### ファイル書き込み：PrintWriter
 
-適切な例外処理を用いてテキストデータをファイルに書き込みます。
+適切な例外処理でテキストデータをファイルに書き込みます。
 
 ```java
 import java.io.*;
@@ -727,7 +787,7 @@ public class FileWriteExample {
 
 ### JDK のインストール
 
-JDK (Java Development Kit) = JRE + 開発ツール。Java アプリケーションを開発するために必要です。
+JDK (Java Development Kit) = JRE + 開発ツール。Java アプリケーションの開発に必要です。
 
 ```bash
 # Oracle または OpenJDK から JDK をダウンロード
@@ -767,10 +827,10 @@ Java 開発のための人気のある統合開発環境。
 # 人気の Java IDE:
 # - IntelliJ IDEA (JetBrains)
 # - Eclipse IDE
-# - VS Code (Java 拡張機能付き)
+# - Visual Studio Code (Java 拡張機能付き)
 # - NetBeans
 
-# コマンドラインでのコンパイル
+# コマンドラインコンパイル
 javac -d bin src/*.java
 java -cp bin MainClass
 
@@ -780,9 +840,9 @@ jar cf myapp.jar -C bin .
 
 ## ベストプラクティスと一般的なパターン
 
-### 名前付け規則
+### 命名規則
 
-コードの可読性を高めるために Java の命名標準に従います。
+コードの可読性を高めるために、Java の命名標準に従います。
 
 ```java
 // クラス：PascalCase
@@ -814,12 +874,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * このクラスは、優れた Java コードの整理方法を示します
+ * 優れた Java コードの整理方法を示します
  * @author Your Name
  * @version 1.0
  */
 public class WellOrganizedClass {
-    // 定数を最初に
+    // 定数を最初
     private static final int MAX_ATTEMPTS = 3;
 
     // インスタンス変数
@@ -896,7 +956,7 @@ public class ResourceManagement {
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
-        // Reader は自動的に閉じられる
+        // Reader は自動的に閉じられます
     }
 
     // 手動リソースクリーンアップ (非推奨)

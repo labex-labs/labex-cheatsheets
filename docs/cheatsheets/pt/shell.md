@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Dicas Shell'
-description: 'Aprenda Shell com nosso guia completo cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola Shell | LabEx'
+description: 'Aprenda scripting shell com esta folha de cola abrangente. Referência rápida para comandos bash, scripting shell, automação, ferramentas de linha de comando e administração de sistemas Linux/Unix.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
@@ -135,6 +135,21 @@ cd -
 cd /path/to/directory
 ```
 
+<BaseQuiz id="shell-cd-1" correct="A">
+  <template #question>
+    O que `cd ~` faz?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Muda para o diretório home</BaseQuizOption>
+  <BaseQuizOption value="B">Muda para o diretório raiz</BaseQuizOption>
+  <BaseQuizOption value="C">Muda para o diretório pai</BaseQuizOption>
+  <BaseQuizOption value="D">Cria um novo diretório</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O símbolo `~` é um atalho para o diretório home. `cd ~` navega para o seu diretório home, o que é equivalente a `cd $HOME` ou `cd /home/username`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Árvore de Diretórios: `tree`
 
 Exibe a estrutura do diretório em formato de árvore.
@@ -185,6 +200,21 @@ grep -n "pattern" file.txt
 # Contar linhas correspondentes
 grep -c "pattern" file.txt
 ```
+
+<BaseQuiz id="shell-grep-1" correct="B">
+  <template #question>
+    O que `grep -r "pattern" directory/` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Pesquisa apenas no arquivo atual</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Pesquisa recursivamente em todos os arquivos no diretório</BaseQuizOption>
+  <BaseQuizOption value="C">Substitui o padrão nos arquivos</BaseQuizOption>
+  <BaseQuizOption value="D">Exclui arquivos que contêm o padrão</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O sinalizador `-r` faz com que o grep pesquise recursivamente em todos os arquivos e subdiretórios. Isso é útil para encontrar padrões de texto em toda a árvore de diretórios.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Encontrar Arquivos: `find`
 
@@ -249,6 +279,21 @@ chmod go-w file.txt
 chmod -R 644 directory/
 ```
 
+<BaseQuiz id="shell-chmod-1" correct="C">
+  <template #question>
+    O que `chmod 755 file.txt` define?
+  </template>
+  
+  <BaseQuizOption value="A">Leitura, escrita, execução para todos os usuários</BaseQuizOption>
+  <BaseQuizOption value="B">Leitura e escrita para o proprietário, leitura para os outros</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Leitura, escrita, execução para o proprietário; leitura, execução para grupo e outros</BaseQuizOption>
+  <BaseQuizOption value="D">Apenas leitura para todos os usuários</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` define as permissões como: proprietário = 7 (rwx), grupo = 5 (r-x), outros = 5 (r-x). Esta é uma configuração de permissão comum para arquivos e diretórios executáveis.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Mudar Propriedade: `chown` / `chgrp`
 
 Muda o proprietário e o grupo do arquivo.
@@ -273,7 +318,7 @@ Entendendo a notação numérica de permissões.
 # 4 = leitura (r), 2 = escrita (w), 1 = execução (x)
 # 755 = rwxr-xr-x (proprietário: rwx, grupo: r-x, outros: r-x)
 # 644 = rw-r--r-- (proprietário: rw-, grupo: r--, outros: r--)
-# 777 = rwxrwxrwx (todas as permissões para todos)
+# 777 = rwxrwxrwx (permissões totais para todos)
 # 600 = rw------- (proprietário: rw-, grupo: ---, outros: ---)
 ```
 
@@ -313,16 +358,16 @@ bg %1
 Ctrl+Z
 ```
 
-### Matar Processos: `kill` / `killall`
+### Encerrar Processos: `kill` / `killall`
 
 Termina processos por PID ou nome.
 
 ```bash
-# Matar processo por PID
+# Encerrar processo por PID
 kill 1234
-# Matar processo forçadamente
+# Encerrar processo forçadamente
 kill -9 1234
-# Matar todos os processos com nome
+# Encerrar todos os processos com nome
 killall firefox
 # Enviar sinal específico
 kill -TERM 1234
@@ -362,6 +407,21 @@ command > output.txt 2>&1
 command > /dev/null
 ```
 
+<BaseQuiz id="shell-redirect-1" correct="B">
+  <template #question>
+    Qual é a diferença entre `>` e `>>` no redirecionamento shell?
+  </template>
+  
+  <BaseQuizOption value="A">`>` anexa, `>>` sobrescreve</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`>` sobrescreve o arquivo, `>>` anexa ao arquivo</BaseQuizOption>
+  <BaseQuizOption value="C">`>` redireciona stdout, `>>` redireciona stderr</BaseQuizOption>
+  <BaseQuizOption value="D">Não há diferença</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O operador `>` sobrescreve o arquivo de destino se ele existir, enquanto `>>` anexa a saída ao final do arquivo. Use `>>` quando quiser preservar o conteúdo existente.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Pipes: `|`
 
 Conecta comandos usando pipes.
@@ -373,7 +433,7 @@ command1 | command2
 cat file.txt | grep "pattern" | sort | uniq
 # Contar linhas na saída
 ps aux | wc -l
-# Paginar saída longa
+# Paginar através de saída longa
 ls -la | less
 ```
 
@@ -412,7 +472,7 @@ EOF
 
 ### Variáveis: Atribuição e Uso
 
-Cria e usa variáveis de shell.
+Cria e usa variáveis shell.
 
 ```bash
 # Atribuir variáveis (sem espaços ao redor de =)
@@ -420,8 +480,8 @@ name="John"
 count=42
 # Usar variáveis
 echo $name
-echo "Olá, $name"
-echo "Contagem: ${count}"
+echo "Hello, $name"
+echo "Count: ${count}"
 # Substituição de comando
 current_dir=$(pwd)
 date_today=$(date +%Y-%m-%d)
@@ -446,7 +506,7 @@ unset MY_VAR
 
 ### Variáveis Especiais
 
-Variáveis de shell embutidas com significados especiais.
+Variáveis shell embutidas com significados especiais.
 
 ```bash
 # Argumentos do script
@@ -474,10 +534,8 @@ ${var#pattern}   # Remover a correspondência mais curta do
 início
 ${var##pattern}  # Remover a correspondência mais longa do
 início
-${var%pattern}   # Remover a correspondência mais curta do
-final
-${var%%pattern}  # Remover a correspondência mais longa do
-final
+${var%pattern}   # Remover a correspondência mais curta do final
+${var%%pattern}  # Remover a correspondência mais longa do final
 ```
 
 ## Noções Básicas de Scripting
@@ -490,11 +548,11 @@ Formato básico do script e execução.
 #!/bin/bash
 # Este é um comentário
 # Variáveis
-greeting="Olá, Mundo!"
+greeting="Hello, World!"
 user=$(whoami)
 # Saída
 echo $greeting
-echo "Usuário atual: $user"
+echo "Current user: $user"
 # Tornar script executável:
 chmod +x script.sh
 # Executar script:
@@ -555,7 +613,7 @@ Cria blocos de código reutilizáveis.
 # Definir função
 greet() {
     local name=$1
-    echo "Olá, $name!"
+    echo "Hello, $name!"
 }
 # Função com valor de retorno
 add_numbers() {
@@ -656,7 +714,7 @@ history 10
 !123
 # Executar último comando que começa com 'ls'
 !ls
-# Pesquisar no histórico interativamente
+# Pesquisar histórico interativamente
 Ctrl+R
 ```
 
@@ -699,9 +757,9 @@ Ctrl+D  # Sair do shell ou EOF
 
 ## Combinações e Dicas de Comandos
 
-### Combinações Úteis de Comandos
+### Combinações de Comandos Úteis
 
-Linhas únicas poderosas para tarefas comuns.
+Linhas de comando poderosas para tarefas comuns.
 
 ```bash
 # Encontrar e substituir texto em múltiplos arquivos

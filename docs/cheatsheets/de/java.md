@@ -1,6 +1,6 @@
 ---
-title: 'Java Spickzettel'
-description: 'Lernen Sie Java mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Java Spickzettel | LabEx'
+description: 'Lernen Sie Java-Programmierung mit diesem umfassenden Spickzettel. Schnelle Referenz für Java-Syntax, OOP, Collections, Streams, Spring Framework und Grundlagen der Unternehmensentwicklung.'
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 
@@ -23,7 +23,7 @@ Lernen Sie die Java-Programmierung durch praktische Übungen und reale Szenarien
 
 ### Hallo Welt: Einfaches Programm
 
-Das einfachste Java-Programm, das "Hello, World!" auf dem Bildschirm ausgibt.
+Das einfachste Java-Programm, das "Hello, World!" auf dem Bildschirm anzeigt.
 
 ```java
 public class HelloWorld {
@@ -35,7 +35,7 @@ public class HelloWorld {
 
 ### Klassendeklaration: `public class`
 
-Eine Klasse ist eine Vorlage/Blaupause, die das Verhalten/den Zustand beschreibt, den Objekte unterstützen.
+Eine Klasse ist eine Vorlage/ein Bauplan, der das Verhalten/den Zustand beschreibt, den Objekte unterstützen.
 
 ```java
 public class MyClass {
@@ -48,7 +48,7 @@ public class MyClass {
 }
 ```
 
-### Main-Methode: Programm-Einstiegspunkt
+### Main-Methode: Einstiegspunkt des Programms
 
 Die Main-Methode ist der Beginn der Java-Programmausführung.
 
@@ -59,9 +59,24 @@ public static void main(String[] args) {
 }
 ```
 
+<BaseQuiz id="java-main-1" correct="C">
+  <template #question>
+    Was ist die korrekte Signatur für die Main-Methode in Java?
+  </template>
+  
+  <BaseQuizOption value="A">public void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="B">static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>public static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Main-Methode muss `public static void main(String[] args)` sein. `public` erlaubt der JVM den Zugriff, `static` bedeutet, dass sie zur Klasse gehört, `void` bedeutet, dass sie nichts zurückgibt, und `String[] args` empfängt Kommandozeilenargumente.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Kommentare: Code-Dokumentation
 
-Verwenden Sie einzeilige (`//`) und mehrzeilige (`/* */`) Kommentare, um Code verständlicher und wartbarer zu machen.
+Verwenden Sie einzeilige (`//`) und mehrzeilige (`/* */`) Kommentare, um den Code verständlicher und wartbarer zu machen.
 
 ```java
 // Einzeiliger Kommentar
@@ -140,7 +155,7 @@ final double PI = 3.14159;
 
 ### String-Operationen
 
-Strings stellen Zeichenfolgen dar und sind unveränderlich (immutable), d.h. ihr Wert kann nach der Erstellung nicht mehr geändert werden.
+Strings stellen Zeichenketten dar und sind unveränderlich (immutable), was bedeutet, dass ihr Wert nach der Erstellung nicht geändert werden kann.
 
 ```java
 String greeting = "Hello";
@@ -155,6 +170,21 @@ int length = message.length();
 boolean isEmpty = message.isEmpty();
 String uppercase = message.toUpperCase();
 ```
+
+<BaseQuiz id="java-string-1" correct="A">
+  <template #question>
+    Was bedeutet es, dass Java-Strings unveränderlich (immutable) sind?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Sobald ein String erstellt wurde, kann sein Wert nicht geändert werden</BaseQuizOption>
+  <BaseQuizOption value="B">Strings können nicht erstellt werden</BaseQuizOption>
+  <BaseQuizOption value="C">Strings können nur Zahlen speichern</BaseQuizOption>
+  <BaseQuizOption value="D">Strings werden automatisch gelöscht</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Unveränderlichkeit bedeutet, dass der Wert eines String-Objekts nach seiner Erstellung nicht mehr geändert werden kann. Operationen wie `toUpperCase()` geben ein neues String-Objekt zurück, anstatt das ursprüngliche zu modifizieren.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Kontrollflussanweisungen
 
@@ -177,7 +207,7 @@ if (score >= 90) {
 
 ### Switch-Anweisung
 
-Mehrfache Verzweigung basierend auf Variablenwerten.
+Mehrfachverzweigung basierend auf Variablenwerten.
 
 ```java
 int day = 3;
@@ -198,24 +228,39 @@ switch (day) {
 
 ### For-Schleife: Gezählte Wiederholung
 
-Code wiederholen, eine bestimmte Anzahl von Malen.
+Wiederholt Code eine bestimmte Anzahl von Malen.
 
 ```java
-// Standard for-Schleife
+// Standard-For-Schleife
 for (int i = 0; i < 5; i++) {
     System.out.println("Count: " + i);
 }
 
-// Erweiterte for-Schleife (for-each)
+// Erweiterte For-Schleife (For-Each)
 int[] numbers = {1, 2, 3, 4, 5};
 for (int num : numbers) {
     System.out.println("Number: " + num);
 }
 ```
 
+<BaseQuiz id="java-for-loop-1" correct="C">
+  <template #question>
+    Wofür wird die erweiterte For-Schleife (For-Each) verwendet?
+  </template>
+  
+  <BaseQuizOption value="A">Iteration mit einer Zählervariable</BaseQuizOption>
+  <BaseQuizOption value="B">Endlosschleifen</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Iteration durch Arrays und Collections ohne Index</BaseQuizOption>
+  <BaseQuizOption value="D">Nur für verschachtelte Schleifen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die erweiterte For-Schleife (For-Each) vereinfacht die Iteration durch Arrays und Collections, indem sie den Index automatisch verwaltet, was den Code lesbarer und weniger fehleranfällig macht.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### While- & Do-While-Schleifen
 
-Code wiederholen, solange eine Bedingung wahr ist.
+Wiederholt Code, solange eine Bedingung wahr ist.
 
 ```java
 // While-Schleife
@@ -225,13 +270,28 @@ while (i < 3) {
     i++;
 }
 
-// Do-while-Schleife (wird mindestens einmal ausgeführt)
+// Do-While-Schleife (wird mindestens einmal ausgeführt)
 int j = 0;
 do {
     System.out.println("Do-while: " + j);
     j++;
 } while (j < 3);
 ```
+
+<BaseQuiz id="java-while-1" correct="B">
+  <template #question>
+    Was ist der Hauptunterschied zwischen `while`- und `do-while`-Schleifen?
+  </template>
+  
+  <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="B" correct>do-while wird mindestens einmal ausgeführt, während while möglicherweise gar nicht ausgeführt wird</BaseQuizOption>
+  <BaseQuizOption value="C">while ist schneller</BaseQuizOption>
+  <BaseQuizOption value="D">do-while funktioniert nur mit Arrays</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die `do-while`-Schleife prüft die Bedingung nach der Ausführung des Schleifenkörpers, läuft also immer mindestens einmal. Die `while`-Schleife prüft die Bedingung zuerst, sodass sie nicht ausgeführt wird, wenn die Bedingung anfänglich falsch ist.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Objektorientierte Programmierung
 
@@ -266,7 +326,7 @@ myCar.start();
 
 ### Konstruktoren
 
-Spezielle Methoden, die zur Initialisierung von Objekten verwendet werden.
+Spezielle Methoden zur Initialisierung von Objekten.
 
 ```java
 public class Person {
@@ -358,7 +418,7 @@ public class Calculator {
 }
 ```
 
-### Methodenüberladung (Method Overloading)
+### Methodenüberladung (Overloading)
 
 Mehrere Methoden mit gleichem Namen, aber unterschiedlichen Parametern.
 
@@ -506,7 +566,7 @@ for (String item : list) {
 
 ### HashMap: Schlüssel-Wert-Paare
 
-Daten als Schlüssel-Wert-Paare speichern für schnellen Abruf.
+Speichert Daten als Schlüssel-Wert-Paare für schnellen Zugriff.
 
 ```java
 import java.util.HashMap;
@@ -532,13 +592,13 @@ if (ages.containsKey("Bob")) {
 
 ### Try-Catch-Blöcke
 
-Ausnahmen behandeln, um Programmabstürze zu verhindern.
+Behandeln von Ausnahmen, um Programmabstürze zu verhindern.
 
 ```java
 public class ExceptionExample {
     public static void main(String[] args) {
         try {
-            int result = 10 / 0; // Löst ArithmeticException aus
+            int result = 10 / 0; // Dies löst ArithmeticException aus
             System.out.println("Result: " + result);
         } catch (ArithmeticException e) {
             System.out.println("Cannot divide by zero!");
@@ -552,7 +612,7 @@ public class ExceptionExample {
 
 ### Mehrere Catch-Blöcke
 
-Verschiedene Arten von Ausnahmen separat behandeln.
+Behandeln verschiedener Ausnahmetypen separat.
 
 ```java
 public void processArray(String[] arr, int index) {
@@ -570,7 +630,7 @@ public void processArray(String[] arr, int index) {
 }
 ```
 
-### Auslösen benutzerdefinierter Ausnahmen (Throwing Custom Exceptions)
+### Auslösen benutzerdefinierter Ausnahmen
 
 Eigene Ausnahmen erstellen und auslösen.
 
@@ -650,7 +710,7 @@ public class InputExample {
 
 ### Konsolenausgabe: System.out
 
-Ausgabe in verschiedenen Formaten auf der Konsole anzeigen.
+Ausgabe auf der Konsole in verschiedenen Formaten anzeigen.
 
 ```java
 public class OutputExample {
@@ -743,7 +803,7 @@ javac -version
 
 ### Java-Programme kompilieren & ausführen
 
-Verwenden Sie `javac`, um Java-Quelldateien zu kompilieren, und `java`, um das kompilierte Programm auszuführen.
+Verwenden Sie `javac` zum Kompilieren von Java-Quellcode und `java` zum Ausführen des kompilierten Programms.
 
 ```bash
 # Java-Quelldatei kompilieren
@@ -770,7 +830,7 @@ Beliebte Integrierte Entwicklungsumgebungen (IDEs) für die Java-Entwicklung.
 # - Visual Studio Code mit Java-Erweiterungen
 # - NetBeans
 
-# Kompilierung über die Kommandozeile
+# Kommandozeilenkompilierung
 javac -d bin src/*.java
 java -cp bin MainClass
 
@@ -778,11 +838,11 @@ java -cp bin MainClass
 jar cf myapp.jar -C bin .
 ```
 
-## Best Practices & Häufige Muster
+## Best Practices & Gängige Muster
 
 ### Benennungskonventionen
 
-Java-Namensstandards für bessere Lesbarkeit des Codes befolgen.
+Java-Namensstandards für bessere Code-Lesbarkeit befolgen.
 
 ```java
 // Klassen: PascalCase
@@ -799,7 +859,7 @@ public boolean isValidEmail() { }
 public static final int MAX_SIZE = 100;
 public static final String DEFAULT_NAME = "Unknown";
 
-// Pakete: kleinbuchstaben
+// Pakete: Kleinbuchstaben
 package com.company.project;
 package utils.database;
 package com.example.myapp;
@@ -807,7 +867,7 @@ package com.example.myapp;
 
 ### Code-Organisation
 
-Java-Programme für Wartbarkeit strukturieren.
+Java-Programme wartbar strukturieren.
 
 ```java
 import java.util.ArrayList;
@@ -846,7 +906,7 @@ public class WellOrganizedClass {
 
 ### Fehlervermeidung
 
-Gängige Praktiken, um Fehler zu vermeiden und die Codequalität zu verbessern.
+Gängige Praktiken zur Vermeidung von Fehlern und Verbesserung der Codequalität.
 
 ```java
 public class BestPractices {
@@ -882,7 +942,7 @@ public class BestPractices {
 
 ### Ressourcenverwaltung
 
-Ressourcen ordnungsgemäß verwalten, um Speicherlecks zu verhindern.
+Ressourcen ordnungsgemäß verwalten, um Speicherlecks zu vermeiden.
 
 ```java
 import java.io.*;

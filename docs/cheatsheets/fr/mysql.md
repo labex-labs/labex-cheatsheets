@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo MySQL'
-description: 'Apprenez MySQL avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de Référence MySQL | LabEx'
+description: "Maîtrisez la gestion des bases de données MySQL avec cette fiche complète. Référence rapide pour les requêtes SQL, les jointures, les index, les transactions, les procédures stockées et l'administration de bases de données."
 pdfUrl: '/cheatsheets/pdf/mysql-cheatsheet.pdf'
 ---
 
@@ -15,24 +15,24 @@ Feuille de triche MySQL
 <a target="_blank" href="https://labex.io/fr/learn/mysql">Apprenez MySQL avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la gestion des bases de données MySQL grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours MySQL complets couvrant les opérations SQL essentielles, l'administration de bases de données, l'optimisation des performances et les techniques de requête avancées. Maîtrisez l'un des systèmes de gestion de bases de données relationnelles les plus populaires au monde.
+Apprenez la gestion de bases de données MySQL grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours MySQL complets couvrant les opérations SQL essentielles, l'administration de bases de données, l'optimisation des performances et les techniques de requête avancées. Maîtrisez l'un des systèmes de gestion de bases de données relationnelles les plus populaires au monde.
 </base-disclaimer-content>
 </base-disclaimer>
 
 ## Connexion et Gestion de Base de Données
 
-### Connexion au Serveur : `mysql -u username -p`
+### Se connecter au Serveur : `mysql -u username -p`
 
 Se connecter au serveur MySQL via la ligne de commande.
 
 ```bash
-# Connexion avec nom d'utilisateur et invite de mot de passe
+# Se connecter avec le nom d'utilisateur et l'invite de mot de passe
 mysql -u root -p
-# Connexion à une base de données spécifique
+# Se connecter à une base de données spécifique
 mysql -u username -p nom_base_de_donnees
-# Connexion à un serveur distant
+# Se connecter à un serveur distant
 mysql -h hostname -u username -p
-# Connexion avec spécification de port
+# Se connecter avec spécification de port
 mysql -h hostname -P 3306 -u username -p nom_base_de_donnees
 ```
 
@@ -51,43 +51,58 @@ USE company_db;
 DROP DATABASE old_database;
 ```
 
-### Exportation de Données : `mysqldump`
+<BaseQuiz id="mysql-database-1" correct="C">
+  <template #question>
+    Que fait `USE nom_base_de_donnees` ?
+  </template>
+  
+  <BaseQuizOption value="A">Crée une nouvelle base de données</BaseQuizOption>
+  <BaseQuizOption value="B">Supprime la base de données</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Sélectionne la base de données pour les opérations suivantes</BaseQuizOption>
+  <BaseQuizOption value="D">Affiche toutes les tables de la base de données</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'instruction `USE` sélectionne une base de données, la rendant active pour toutes les instructions SQL suivantes. Ceci est équivalent à sélectionner une base de données lors de la connexion avec `mysql -u user -p database_name`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Exporter des Données : `mysqldump`
 
 Sauvegarder les données de la base de données dans un fichier SQL.
 
 ```bash
 # Exporter la base de données entière
-mysqldump -u username -p database_name > backup.sql
+mysqldump -u username -p nom_base_de_donnees > backup.sql
 # Exporter une table spécifique
-mysqldump -u username -p database_name table_name > table_backup.sql
-# Exporter avec structure seulement
-mysqldump -u username -p --no-data database_name > structure.sql
-# Sauvegarde complète de la base de données avec routines et triggers
-mysqldump -u username -p --routines --triggers database_name > backup.sql
+mysqldump -u username -p nom_base_de_donnees nom_table > table_backup.sql
+# Exporter avec structure seule
+mysqldump -u username -p --no-data nom_base_de_donnees > structure.sql
+# Sauvegarde complète de la base de données avec routines et déclencheurs
+mysqldump -u username -p --routines --triggers nom_base_de_donnees > backup.sql
 ```
 
-### Importation de Données : `mysql < file.sql`
+### Importer des Données : `mysql < file.sql`
 
 Importer un fichier SQL dans une base de données MySQL.
 
 ```bash
 # Importer un fichier SQL dans une base de données
-mysql -u username -p database_name < backup.sql
+mysql -u username -p nom_base_de_donnees < backup.sql
 # Importer sans spécifier de base de données (si inclus dans le fichier)
 mysql -u username -p < full_backup.sql
 ```
 
 ### Gestion des Utilisateurs : `CREATE USER` / `GRANT`
 
-Gérer les utilisateurs de la base de données et les permissions.
+Gérer les utilisateurs et les permissions de la base de données.
 
 ```sql
 # Créer un nouvel utilisateur
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 # Accorder tous les privilèges
-GRANT ALL PRIVILEGES ON database_name.* TO 'user'@'localhost';
+GRANT ALL PRIVILEGES ON nom_base_de_donnees.* TO 'user'@'localhost';
 # Accorder des privilèges spécifiques
-GRANT SELECT, INSERT, UPDATE ON table_name TO 'user'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON nom_table TO 'user'@'localhost';
 # Appliquer les changements de privilèges
 FLUSH PRIVILEGES;
 ```
@@ -159,14 +174,14 @@ ALTER TABLE users MODIFY COLUMN username VARCHAR(100);
 ALTER TABLE users CHANGE old_name new_name VARCHAR(50);
 ```
 
-## Manipulation des Données et Opérations CRUD
+## Manipulation et Opérations CRUD de Données
 
 ### Insérer des Données : `INSERT INTO`
 
 Ajouter de nouveaux enregistrements dans les tables.
 
 ```sql
-# Insérer un enregistrement unique
+# Insérer un seul enregistrement
 INSERT INTO users (username, email, age)
 VALUES ('john_doe', 'john@email.com', 25);
 # Insérer plusieurs enregistrements
@@ -176,6 +191,21 @@ INSERT INTO users (username, email, age) VALUES
 # Insérer à partir d'une autre table
 INSERT INTO users_backup SELECT * FROM users;
 ```
+
+<BaseQuiz id="mysql-insert-1" correct="A">
+  <template #question>
+    Quelle est la syntaxe correcte pour insérer un seul enregistrement ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La syntaxe correcte est `INSERT INTO nom_table (colonnes) VALUES (valeurs)`. Le mot-clé `INTO` est requis, et vous devez spécifier à la fois les noms des colonnes et les valeurs correspondantes.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Mettre à Jour les Données : `UPDATE`
 
@@ -212,7 +242,7 @@ JOIN inactive_accounts i ON u.id = i.user_id;
 Gérer les situations de clé dupliquée lors des insertions.
 
 ```sql
-# Remplacer l'existant ou insérer le nouveau
+# Remplacer l'existant ou insérer un nouveau
 REPLACE INTO users (id, username, email)
 VALUES (1, 'updated_user', 'new@email.com');
 # Insérer ou mettre à jour en cas de clé dupliquée
@@ -221,7 +251,7 @@ VALUES ('john', 'john@email.com')
 ON DUPLICATE KEY UPDATE email = VALUES(email);
 ```
 
-## Requêtes et Sélection de Données
+## Interrogation et Sélection des Données
 
 ### SELECT de Base : `SELECT * FROM`
 
@@ -237,6 +267,21 @@ SELECT * FROM users WHERE age > 25;
 # Sélectionner avec conditions multiples
 SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 ```
+
+<BaseQuiz id="mysql-select-1" correct="D">
+  <template #question>
+    Que retourne `SELECT * FROM users` ?
+  </template>
+  
+  <BaseQuizOption value="A">Seule la première ligne de la table users</BaseQuizOption>
+  <BaseQuizOption value="B">Seule la colonne username</BaseQuizOption>
+  <BaseQuizOption value="C">La structure de la table</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Toutes les colonnes et toutes les lignes de la table users</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le joker `*` sélectionne toutes les colonnes, et sans clause WHERE, il retourne toutes les lignes. Ceci est utile pour visualiser toutes les données mais doit être utilisé avec prudence sur de grandes tables.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Tri et Limitation : `ORDER BY` / `LIMIT`
 
@@ -255,7 +300,7 @@ SELECT * FROM users LIMIT 10 OFFSET 10;
 
 ### Filtrage : `WHERE` / `LIKE` / `IN`
 
-Filtrer les données à l'aide de divers opérateurs de comparaison.
+Filtrer les données en utilisant divers opérateurs de comparaison.
 
 ```sql
 # Correspondance de motif
@@ -283,7 +328,7 @@ SELECT age, gender, COUNT(*) FROM users
 GROUP BY age, gender;
 ```
 
-## Requêtes Avancées
+## Interrogation Avancée
 
 ### Opérations JOIN : `INNER` / `LEFT` / `RIGHT`
 
@@ -304,6 +349,21 @@ FROM users u
 JOIN orders o ON u.id = o.user_id
 JOIN products p ON o.product_id = p.id;
 ```
+
+<BaseQuiz id="mysql-join-1" correct="B">
+  <template #question>
+    Quelle est la différence entre INNER JOIN et LEFT JOIN ?
+  </template>
+  
+  <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
+  <BaseQuizOption value="B" correct>INNER JOIN retourne uniquement les lignes correspondantes, LEFT JOIN retourne toutes les lignes de la table de gauche</BaseQuizOption>
+  <BaseQuizOption value="C">INNER JOIN est plus rapide</BaseQuizOption>
+  <BaseQuizOption value="D">LEFT JOIN ne fonctionne qu'avec deux tables</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    INNER JOIN retourne uniquement les lignes où il y a une correspondance dans les deux tables. LEFT JOIN retourne toutes les lignes de la table de gauche et les lignes correspondantes de la table de droite, avec des valeurs NULL pour les lignes non correspondantes de la table de droite.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Sous-requêtes : `SELECT` dans `SELECT`
 
@@ -331,7 +391,7 @@ Calculer des statistiques et des résumés à partir des données.
 SELECT COUNT(*) FROM users;
 SELECT AVG(age), MIN(age), MAX(age) FROM users;
 SELECT SUM(total) FROM orders;
-# Agrégation avec regroupement
+# Agrégat avec regroupement
 SELECT department, AVG(salary)
 FROM employees GROUP BY department;
 # Agrégats multiples
@@ -404,7 +464,7 @@ SELECT username, email FROM users WHERE id = 1;
 SELECT * FROM logs ORDER BY created_at DESC LIMIT 1000;
 # Utiliser des conditions WHERE appropriées
 SELECT * FROM orders WHERE user_id = 123 AND status = 'pending';
--- Utiliser des index couvrant lorsque cela est possible
+-- Utiliser des index couvrant si possible
 ```
 
 ### Maintenance des Tables : `OPTIMIZE` / `ANALYZE`
@@ -461,11 +521,11 @@ Créer et restaurer des sauvegardes de bases de données.
 
 ```bash
 # Sauvegarder des tables spécifiques
-mysqldump -u username -p database_name table1 table2 > tables_backup.sql
-# Restaurer à partir de la sauvegarde
-mysql -u username -p database_name < backup.sql
+mysqldump -u username -p nom_base_de_donnees table1 table2 > tables_backup.sql
+# Restaurer à partir d'une sauvegarde
+mysql -u username -p nom_base_de_donnees < backup.sql
 # Exporter depuis un serveur distant
-mysqldump -h remote_host -u username -p database_name > remote_backup.sql
+mysqldump -h remote_host -u username -p nom_base_de_donnees > remote_backup.sql
 # Importer vers une base de données locale
 mysql -u local_user -p local_database < remote_backup.sql
 # Copie directe de données entre serveurs
@@ -481,7 +541,7 @@ Choisir les types de données appropriés pour vos colonnes.
 ```sql
 # Types numériques
 INT, BIGINT, DECIMAL(10,2), FLOAT, DOUBLE
-# Types de chaînes
+# Types chaîne
 VARCHAR(255), TEXT, CHAR(10), MEDIUMTEXT, LONGTEXT
 # Types date et heure
 DATE, TIME, DATETIME, TIMESTAMP, YEAR
@@ -560,7 +620,7 @@ ROLLBACK;
 
 ### Niveau d'Isolation des Transactions : `SET TRANSACTION ISOLATION`
 
-Contrôler la manière dont les transactions interagissent entre elles.
+Contrôler la manière dont les transactions interagissent les unes avec les autres.
 
 ```sql
 # Définir le niveau d'isolation
@@ -590,7 +650,7 @@ COMMIT;
 
 ### Points de Sauvegarde : `SAVEPOINT` / `ROLLBACK TO`
 
-Créer des points d'annulation au sein des transactions.
+Créer des points de retour arrière au sein des transactions.
 
 ```sql
 BEGIN;
@@ -599,7 +659,7 @@ SAVEPOINT sp1;
 INSERT INTO users (username) VALUES ('user2');
 SAVEPOINT sp2;
 INSERT INTO users (username) VALUES ('user3');
-# Annuler jusqu'au point de sauvegarde
+# Retour arrière au point de sauvegarde
 ROLLBACK TO sp1;
 COMMIT;
 ```
@@ -648,7 +708,7 @@ CALL GetUserOrders(123);
 Exécuter automatiquement du code en réponse à des événements de base de données.
 
 ```sql
-# Créer un trigger pour la journalisation des audits
+# Créer un déclencheur pour la journalisation des mises à jour d'utilisateur
 CREATE TRIGGER user_update_audit
 AFTER UPDATE ON users
 FOR EACH ROW
@@ -656,7 +716,7 @@ BEGIN
     INSERT INTO user_audit (user_id, old_email, new_email, changed_at)
     VALUES (NEW.id, OLD.email, NEW.email, NOW());
 END;
-# Afficher les triggers
+# Afficher les déclencheurs
 SHOW TRIGGERS;
 ```
 
@@ -680,7 +740,7 @@ DROP VIEW active_users;
 
 ### Installation : Gestionnaires de Paquets
 
-Installer MySQL à l'aide des gestionnaires de paquets système.
+Installer MySQL à l'aide des gestionnaires de paquets du système.
 
 ```bash
 # Ubuntu/Debian
@@ -744,7 +804,7 @@ slow_query_log = 1
 long_query_time = 2
 ```
 
-### Configuration d'Exécution : `SET GLOBAL`
+### Configuration à l'Exécution : `SET GLOBAL`
 
 Modifier les paramètres pendant que MySQL est en cours d'exécution.
 

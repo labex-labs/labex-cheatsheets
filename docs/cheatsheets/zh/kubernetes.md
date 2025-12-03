@@ -1,6 +1,6 @@
 ---
-title: 'Kubernetes 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，快速掌握 Kubernetes。'
+title: 'Kubernetes 速查表 | LabEx'
+description: '使用此综合速查表学习 Kubernetes 编排。kubectl 命令、Pod、部署、服务、Ingress 和云原生容器管理的快速参考。'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Kubernetes 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/kubernetes">通过动手实验学习 Kubernetes</a>
+<a target="_blank" href="https://labex.io/zh/learn/kubernetes">使用实战实验学习 Kubernetes</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过动手实验和真实场景学习 Kubernetes 容器编排。LabEx 提供全面的 Kubernetes 课程，涵盖基本的 kubectl 命令、Pod 管理、部署、服务、网络和集群管理。掌握容器编排和云原生应用程序部署。
+通过实战实验和真实场景学习 Kubernetes 容器编排。LabEx 提供全面的 Kubernetes 课程，涵盖基本的 kubectl 命令、Pod 管理、部署、服务、网络和集群管理。掌握容器编排和云原生应用部署。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -26,7 +26,7 @@ Kubernetes 速查表
 安装 Kubernetes 命令行工具。
 
 ```bash
-# macOS 使用 Homebrew
+# 使用 Homebrew (macOS)
 brew install kubectl
 # Linux (官方二进制文件)
 curl -LO "https://dl.k8s.io/release/$(curl -L -s
@@ -34,13 +34,13 @@ https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kube
 ctl"
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
-# Windows 使用 Chocolatey
+# 使用 Chocolatey (Windows)
 choco install kubernetes-cli
 ```
 
 ### 验证安装
 
-检查 kubectl 版本和集群连接。
+检查 kubectl 版本和集群连接状态。
 
 ```bash
 # 检查 kubectl 版本
@@ -60,7 +60,7 @@ kubectl cluster-info
 kubectl config view
 # 列出所有上下文
 kubectl config get-contexts
-# 切换到上下文
+# 切换到特定上下文
 kubectl config use-context my-cluster
 # 设置默认命名空间
 kubectl config set-context --current --namespace=my-
@@ -91,7 +91,7 @@ minikube stop
 ```bash
 # 获取集群信息
 kubectl cluster-info
-# 获取集群配置
+# 查看集群配置
 kubectl config view
 # 检查可用的 API 资源
 kubectl api-resources
@@ -131,9 +131,24 @@ namespace
 kubectl get all -n my-namespace
 ```
 
+<BaseQuiz id="kubernetes-namespace-1" correct="B">
+  <template #question>
+    Kubernetes 命名空间的主要目的是什么？
+  </template>
+  
+  <BaseQuizOption value="A">提高集群性能</BaseQuizOption>
+  <BaseQuizOption value="B" correct>在集群内组织和隔离资源</BaseQuizOption>
+  <BaseQuizOption value="C">将集群连接在一起</BaseQuizOption>
+  <BaseQuizOption value="D">存储容器镜像</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    命名空间提供了一种在多个用户或团队之间划分集群资源的方式。它们有助于组织资源并为名称提供范围，允许您在不同的命名空间中使用相同名称的资源。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Pod 管理
 
-### 创建和运行 Pod: `kubectl run` / `kubectl create`
+### 创建与运行 Pod: `kubectl run` / `kubectl create`
 
 启动容器并管理其生命周期。
 
@@ -155,7 +170,7 @@ kubectl create job hello --image=busybox:1.28 -- echo
 列出和检查正在运行的 Pod。
 
 ```bash
-# 在默认命名空间中列出所有 Pod
+# 列出默认命名空间中的所有 Pod
 kubectl get pods
 # 使用更多细节列出 Pod
 kubectl get pods -o wide
@@ -165,12 +180,27 @@ kubectl get pods --all-namespaces
 kubectl get pods --watch
 ```
 
+<BaseQuiz id="kubernetes-pods-1" correct="C">
+  <template #question>
+    `kubectl get pods --all-namespaces` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">仅列出正在运行的 Pod</BaseQuizOption>
+  <BaseQuizOption value="B">列出默认命名空间中的 Pod</BaseQuizOption>
+  <BaseQuizOption value="C" correct>列出集群中所有命名空间中的 Pod</BaseQuizOption>
+  <BaseQuizOption value="D">删除所有 Pod</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `--all-namespaces` 标志 (或 `-A`) 会显示所有命名空间中的 Pod，而不仅仅是默认命名空间。这对于集群范围的可见性非常有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Pod 详情：`kubectl describe pod`
 
 获取关于特定 Pod 的全面信息。
 
 ```bash
-# 描述一个特定的 Pod
+# 描述特定 Pod
 kubectl describe pod
 # 描述特定命名空间中的 Pod
 kubectl describe pod  -n
@@ -195,37 +225,52 @@ kubectl delete pod
 kubectl delete pod  --grace-period=0 --force
 ```
 
-## 部署和 ReplicaSet
+## Deployment 与 ReplicaSet
 
-### 创建部署：`kubectl create deployment`
+### 创建 Deployment: `kubectl create deployment`
 
 声明式地部署和管理应用程序。
 
 ```bash
-# 创建部署
+# 创建 Deployment
 kubectl create deployment nginx --image=nginx
-# 创建带副本数的部署
+# 创建带有副本数的 Deployment
 kubectl create deployment webapp --image=nginx --
 replicas=3
 # 从 YAML 文件创建
 kubectl apply -f deployment.yaml
-# 将部署暴露为服务
+# 将 Deployment 暴露为 Service
 kubectl expose deployment nginx --port=80 --
 type=LoadBalancer
 ```
 
-### 管理部署：`kubectl get deployments`
+<BaseQuiz id="kubernetes-deployment-1" correct="A">
+  <template #question>
+    Kubernetes Deployment 的主要目的是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>管理和维护所需数量的 Pod 副本</BaseQuizOption>
+  <BaseQuizOption value="B">将 Pod 暴露给外部流量</BaseQuizOption>
+  <BaseQuizOption value="C">存储配置数据</BaseQuizOption>
+  <BaseQuizOption value="D">管理集群节点</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Deployment 管理 ReplicaSet，后者确保指定数量的 Pod 副本正在运行。它提供声明式更新、滚动更新和回滚功能。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-查看和控制部署状态和配置。
+### 管理 Deployment: `kubectl get deployments`
+
+查看和控制 Deployment 状态和配置。
 
 ```bash
-# 列出部署
+# 列出 Deployment
 kubectl get deployments
-# 描述部署
+# 描述 Deployment
 kubectl describe deployment
-# 编辑部署
+# 编辑 Deployment
 kubectl edit deployment
-# 删除部署
+# 删除 Deployment
 kubectl delete deployment
 ```
 
@@ -234,18 +279,33 @@ kubectl delete deployment
 调整运行中的副本数量。
 
 ```bash
-# 伸缩部署
+# 伸缩 Deployment
 kubectl scale deployment nginx --replicas=5
 # 伸缩 ReplicaSet
 kubectl scale rs  --replicas=3
-# 自动伸缩部署
+# 自动伸缩 Deployment
 kubectl autoscale deployment nginx --min=2 --max=10 --
 cpu-percent=80
 ```
 
+<BaseQuiz id="kubernetes-scale-1" correct="B">
+  <template #question>
+    `kubectl scale deployment nginx --replicas=5` 会执行什么操作？
+  </template>
+  
+  <BaseQuizOption value="A">创建 5 个新的 Deployment</BaseQuizOption>
+  <BaseQuizOption value="B" correct>将 nginx Deployment 伸缩到运行 5 个 Pod 副本</BaseQuizOption>
+  <BaseQuizOption value="C">从 Deployment 中删除 5 个 Pod</BaseQuizOption>
+  <BaseQuizOption value="D">更新 Deployment 镜像</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `scale` 命令用于调整 Deployment 的副本数量。此命令确保 nginx Deployment 运行正好 5 个 Pod 副本，根据需要创建或删除 Pod。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 滚动更新：`kubectl rollout`
 
-管理部署更新和回滚。
+管理 Deployment 更新和回滚。
 
 ```bash
 # 检查滚动更新状态
@@ -258,50 +318,65 @@ kubectl rollout undo deployment/nginx
 kubectl rollout undo deployment/nginx --to-revision=2
 ```
 
-## 服务与网络
+## Service 与网络
 
-### 暴露服务：`kubectl expose`
+### 暴露 Service: `kubectl expose`
 
 通过网络服务使应用程序可访问。
 
 ```bash
-# 将部署暴露为 ClusterIP 服务
+# 将 Deployment 暴露为 ClusterIP Service
 kubectl expose deployment nginx --port=80
-# 暴露为 NodePort 服务
+# 暴露为 NodePort Service
 kubectl expose deployment nginx --port=80 --
 type=NodePort
 # 暴露为 LoadBalancer
 kubectl expose deployment nginx --port=80 --
 type=LoadBalancer
-# 从 YAML 创建服务
+# 从 YAML 创建 Service
 kubectl apply -f service.yaml
 ```
+
+<BaseQuiz id="kubernetes-service-1" correct="A">
+  <template #question>
+    使用 `kubectl expose` 时的默认 Service 类型是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>
+  <BaseQuizOption value="B">NodePort</BaseQuizOption>
+  <BaseQuizOption value="C">LoadBalancer</BaseQuizOption>
+  <BaseQuizOption value="D">ExternalName</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ClusterIP 是默认的 Service 类型。它在集群内部 IP 上暴露 Service，使其只能在集群内部访问。NodePort 和 LoadBalancer 类型提供外部访问。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 服务发现：`kubectl get services`
 
 列出和检查集群中的服务。
 
 ```bash
-# 列出所有服务
+# 列出所有 Service
 kubectl get services
-# 使用更多细节列出服务
+# 使用更多细节列出 Service
 kubectl get svc -o wide
-# 描述特定服务
+# 描述特定 Service
 kubectl describe service
-# 获取服务端点
+# 获取 Service 端点
 kubectl get endpoints
 ```
 
 ### 端口转发：`kubectl port-forward`
 
-将 Pod 端口转发到本地机器进行测试和调试。
+在本地机器上访问应用程序以进行测试和调试。
 
 ```bash
 # 将 Pod 端口转发到本地机器
 kubectl port-forward pod/ 8080:80
-# 转发服务端口
+# 转发 Service 端口
 kubectl port-forward svc/ 8080:80
-# 转发部署端口
+# 转发 Deployment 端口
 kubectl port-forward deployment/ 8080:80
 # 转发多个端口
 kubectl port-forward pod/ 8080:80 8443:443
@@ -312,11 +387,11 @@ kubectl port-forward pod/ 8080:80 8443:443
 通过 HTTP/HTTPS 路由管理对服务的外部访问。
 
 ```bash
-# 列出 ingress 资源
+# 列出 Ingress 资源
 kubectl get ingress
-# 描述 ingress
+# 描述 Ingress
 kubectl describe ingress
-# 从 YAML 创建 ingress
+# 从 YAML 创建 Ingress
 kubectl apply -f ingress.yaml
 ```
 
@@ -358,14 +433,14 @@ kubectl delete configmap app-config
 存储和管理敏感信息，如密码和 API 密钥。
 
 ```bash
-# 创建通用 secret
+# 创建通用 Secret
 kubectl create secret generic db-secret --from-
 literal=username=admin --from-
 literal=password=secret123
-# 从文件创建 secret
+# 从文件创建 Secret
 kubectl create secret generic ssl-certs --from-file=tls.crt --
 from-file=tls.key
-# 创建 docker 注册表 secret
+# 创建 Docker 注册表 Secret
 kubectl create secret docker-registry my-registry --
 docker-server=myregistry.com --docker-username=user -
 -docker-password=pass
@@ -373,23 +448,23 @@ docker-server=myregistry.com --docker-username=user -
 
 ### Secret 管理
 
-安全地查看和管理 secret。
+安全地查看和管理 Secret。
 
 ```bash
-# 列出 secrets
+# 列出 Secret
 kubectl get secrets
-# 描述 secret (值被隐藏)
+# 描述 Secret (值被隐藏)
 kubectl describe secret db-secret
-# 解码 secret 值
+# 解码 Secret 值
 kubectl get secret db-secret -o
 jsonpath='{.data.password}' | base64 -d
-# 删除 secret
+# 删除 Secret
 kubectl delete secret db-secret
 ```
 
 ## 存储与卷
 
-### 持久卷：`kubectl get pv`
+### Persistent Volumes: `kubectl get pv`
 
 管理集群范围的存储资源。
 
@@ -404,7 +479,7 @@ kubectl apply -f persistent-volume.yaml
 kubectl delete pv
 ```
 
-### 持久卷声明：`kubectl get pvc`
+### Persistent Volume Claims: `kubectl get pvc`
 
 为 Pod 请求存储资源。
 
@@ -419,7 +494,7 @@ kubectl apply -f pvc.yaml
 kubectl delete pvc
 ```
 
-### 存储类：`kubectl get storageclass`
+### Storage Classes
 
 定义具有不同属性的不同类型的存储。
 
@@ -467,14 +542,14 @@ by=.metadata.creationTimestamp
 
 ### 资源检查：`kubectl describe`
 
-获取任何 Kubernetes 资源的详细信息。
+获取关于任何 Kubernetes 资源的详细信息。
 
 ```bash
 # 描述 Pod
 kubectl describe pod
-# 描述部署
+# 描述 Deployment
 kubectl describe deployment
-# 描述服务
+# 描述 Service
 kubectl describe service
 # 描述节点
 kubectl describe node
@@ -482,7 +557,7 @@ kubectl describe node
 
 ### 资源使用率：`kubectl top`
 
-跨 Pod 和节点监控资源消耗。
+监控集群中 Pod 和节点的资源消耗。
 
 ```bash
 # 查看节点资源使用情况
@@ -497,7 +572,7 @@ kubectl top pods --sort-by=cpu
 
 ### 交互式调试：`kubectl exec` / `kubectl debug`
 
-访问正在运行的容器进行动手故障排除。
+访问正在运行的容器以进行动手故障排除。
 
 ```bash
 # 执行交互式 shell
@@ -525,7 +600,7 @@ kubectl apply -f deployment.yaml -f service.yaml
 kubectl apply -f ./k8s-configs/
 # 从 URL 应用
 kubectl apply -f https://example.com/manifest.yaml
-# 显示将要应用的内容 (干运行)
+# 显示将要应用的内容 (试运行)
 kubectl apply -f deployment.yaml --dry-run=client -o yaml
 ```
 
@@ -534,7 +609,7 @@ kubectl apply -f deployment.yaml --dry-run=client -o yaml
 列出、检查和删除 Kubernetes 资源。
 
 ```bash
-# 获取命名空间中所有资源
+# 获取命名空间中的所有资源
 kubectl get all
 # 使用自定义列获取资源
 kubectl get pods -o custom-
@@ -567,14 +642,14 @@ kubectl replace -f updated-deployment.yaml
 
 ### 资源验证：`kubectl diff` / `kubectl explain`
 
-比较配置并理解资源模式。
+比较配置并理解资源结构。
 
 ```bash
 # 在应用前显示差异
 kubectl diff -f deployment.yaml
 # 解释资源结构
 kubectl explain pod.spec.containers
-# 解释带递归的
+# 递归解释
 kubectl explain deployment --recursive
 # 验证资源而不应用
 kubectl apply -f deployment.yaml --dry-run=client --
@@ -592,12 +667,12 @@ validate=true
 kubectl cordon
 # 标记节点为可调度
 kubectl uncordon
-# 疏散节点进行维护
+# 疏散节点以进行维护
 kubectl drain  --ignore-daemonsets --delete-emptydir-
 data
 # 向节点添加污点
 kubectl taint nodes  key=value:NoSchedule
-# 移除节点的污点
+# 移除节点污点
 kubectl taint nodes  key:NoSchedule-
 ```
 
@@ -608,7 +683,7 @@ kubectl taint nodes  key:NoSchedule-
 ```bash
 # 向资源添加标签
 kubectl label pod  environment=production
-# 移除资源的标签
+# 从资源移除标签
 kubectl label pod  environment-
 # 向资源添加注解
 kubectl annotate pod  description="Frontend web
@@ -620,7 +695,7 @@ kubectl get pods -l 'environment in (production,staging)'
 
 ### 代理与认证：`kubectl proxy` / `kubectl auth`
 
-访问集群 API 和管理认证。
+访问集群 API 和管理身份验证。
 
 ```bash
 # 启动代理访问 Kubernetes API
@@ -641,7 +716,7 @@ kubectl config view --raw -o jsonpath='{.users[*].name}'
 用于 Kubernetes 操作的其他有用命令。
 
 ```bash
-# 等待条件
+# 等待条件满足
 kubectl wait --for=condition=Ready pod/ --timeout=300s
 # 运行临时 Pod 进行测试
 kubectl run tmp-pod --rm -i --tty --image=busybox --
@@ -657,7 +732,7 @@ kubectl get pods --sort-by=.metadata.creationTimestamp
 
 ### 资源指标：`kubectl top`
 
-查看集群中实时的资源使用情况。
+查看集群中资源的实时使用情况。
 
 ```bash
 # 节点资源使用情况
@@ -677,7 +752,7 @@ kubectl top pods --previous
 监控应用程序和集群的健康状况。
 
 ```bash
-# 检查部署滚动更新状态
+# 检查 Deployment 滚动更新状态
 kubectl rollout status deployment/
 # 检查 Pod 就绪状态
 kubectl get pods --field-selector=status.phase=Running
@@ -708,7 +783,7 @@ kubectl get networkpolicy
 集群备份和灾难恢复的基本命令。
 
 ```bash
-# 备份命名空间中所有资源
+# 备份命名空间中的所有资源
 kubectl get all -o yaml -n  > backup.yaml
 # 导出特定资源
 kubectl get deployment  -o yaml > deployment-
@@ -764,7 +839,7 @@ view --merge --flatten >
 
 ### 默认设置
 
-为 kubectl 操作设置默认命名空间和偏好设置。
+为 kubectl 操作设置默认命名空间和首选项。
 
 ```bash
 # 为当前上下文设置默认命名空间
@@ -845,7 +920,7 @@ jsonpath='{.items[*].spec.containers[*].image}'
 确保安全操作和验证配置的命令。
 
 ```bash
-# 干运行以预览更改
+# 试运行以预览更改
 kubectl apply -f deployment.yaml --dry-run=client -o yaml
 # 验证配置
 kubectl apply -f deployment.yaml --validate=true --dry-

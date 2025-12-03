@@ -1,6 +1,6 @@
 ---
-title: 'Guia Rápido Wireshark'
-description: 'Aprenda Wireshark com nosso guia completo cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Guia Rápido Wireshark | LabEx'
+description: 'Aprenda análise de rede com Wireshark usando este guia completo. Referência rápida para captura de pacotes, análise de protocolos de rede, inspeção de tráfego, solução de problemas e monitoramento de segurança de rede.'
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 
@@ -15,30 +15,45 @@ Folha de Dicas do Wireshark
 <a target="_blank" href="https://labex.io/pt/learn/wireshark">Aprenda Wireshark com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda análise de pacotes de rede com Wireshark através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de Wireshark cobrindo captura de pacotes essencial, filtros de exibição, análise de protocolo, solução de problemas de rede e monitoramento de segurança. Domine técnicas de análise de tráfego de rede e inspeção de pacotes.
+Aprenda análise de pacotes de rede com Wireshark através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de Wireshark que cobrem captura de pacotes essencial, filtros de exibição, análise de protocolo, solução de problemas de rede e monitoramento de segurança. Domine a análise de tráfego de rede e as técnicas de inspeção de pacotes.
 </base-disclaimer-content>
 </base-disclaimer>
 
 ## Filtros de Captura e Captura de Tráfego
 
-### Filtragem por Host
+### Filtragem de Host
 
-Captura tráfego de/para hosts específicos.
+Capture o tráfego de/para hosts específicos.
 
 ```bash
 # Capturar tráfego de/para IP específico
 host 192.168.1.100
-# Capturar tráfego de origem específica
+# Capturar tráfego de uma origem específica
 src host 192.168.1.100
-# Capturar tráfego para destino específico
+# Capturar tráfego para um destino específico
 dst host 192.168.1.100
-# Capturar tráfego de sub-rede
+# Capturar tráfego de uma sub-rede
 net 192.168.1.0/24
 ```
 
-### Filtragem por Porta
+<BaseQuiz id="wireshark-filter-1" correct="A">
+  <template #question>
+    O que o filtro `host 192.168.1.100` filtra no Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Todo o tráfego de ou para 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="B">Apenas tráfego de 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="C">Apenas tráfego para 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="D">Tráfego na porta 192.168.1.100</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O filtro `host` captura todo o tráfego onde o endereço IP especificado é a origem ou o destino. Use `src host` para apenas origem ou `dst host` para apenas destino.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Captura tráfego em portas específicas.
+### Filtragem de Porta
+
+Capture o tráfego em portas específicas.
 
 ```bash
 # Tráfego HTTP (porta 80)
@@ -53,9 +68,24 @@ port 53
 portrange 1000-2000
 ```
 
-### Filtragem por Protocolo
+<BaseQuiz id="wireshark-port-1" correct="D">
+  <template #question>
+    O que o filtro `port 80` filtra no Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A">Apenas requisições HTTP</BaseQuizOption>
+  <BaseQuizOption value="B">Apenas respostas HTTP</BaseQuizOption>
+  <BaseQuizOption value="C">Apenas pacotes TCP</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Todo o tráfego na porta 80 (tanto origem quanto destino)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O filtro `port` captura todo o tráfego onde a porta 80 é a porta de origem ou destino. Isso inclui tanto requisições quanto respostas HTTP, bem como qualquer outro tráfego que use a porta 80.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Captura tráfego de protocolo específico.
+### Filtragem de Protocolo
+
+Capture tráfego de protocolo específico.
 
 ```bash
 # Apenas tráfego TCP
@@ -70,10 +100,10 @@ arp
 
 ### Filtros de Captura Avançados
 
-Combina múltiplas condições para captura precisa.
+Combine múltiplas condições para uma captura precisa.
 
 ```bash
-# Tráfego HTTP de/para host específico
+# Tráfego HTTP de/para um host específico
 host 192.168.1.100 and port 80
 # Tráfego TCP exceto SSH
 tcp and not port 22
@@ -83,14 +113,29 @@ host 192.168.1.100 and host 192.168.1.200
 port 80 or port 443
 ```
 
+<BaseQuiz id="wireshark-advanced-1" correct="B">
+  <template #question>
+    O que o filtro `tcp and not port 22` captura?
+  </template>
+  
+  <BaseQuizOption value="A">Apenas tráfego SSH</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Todo o tráfego TCP exceto SSH (porta 22)</BaseQuizOption>
+  <BaseQuizOption value="C">Tráfego UDP na porta 22</BaseQuizOption>
+  <BaseQuizOption value="D">Todo o tráfego de rede</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Este filtro captura todo o tráfego TCP, mas exclui pacotes na porta 22 (SSH). O operador `and not` exclui a porta especificada, mantendo todo o outro tráfego TCP.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Seleção de Interface
 
-Escolhe interfaces de rede para captura.
+Escolha as interfaces de rede para captura.
 
 ```bash
 # Listar interfaces disponíveis
 tshark -D
-# Capturar na interface específica
+# Capturar em interface específica
 # Interface Ethernet
 eth0
 # Interface WiFi
@@ -101,16 +146,16 @@ lo
 
 ### Opções de Captura
 
-Configura parâmetros de captura.
+Configure os parâmetros de captura.
 
 ```bash
-# Limitar tamanho do arquivo de captura (MB)
+# Limitar o tamanho do arquivo de captura (MB)
 -a filesize:100
-# Limitar duração da captura (segundos)
+# Limitar a duração da captura (segundos)
 -a duration:300
 # Buffer circular com 10 arquivos
 -b files:10
-# Modo promíscuo (capturar todo o tráfego)
+# Modo Promíscuo (capturar todo o tráfego)
 -p
 ```
 
@@ -135,29 +180,29 @@ udp
 icmp
 ```
 
-### Filtragem por Endereço IP
+### Filtragem de Endereço IP
 
-Filtra pacotes por endereços IP de origem e destino.
+Filtre pacotes por endereço IP de origem e destino.
 
 ```bash
-# Tráfego de IP específico
+# Tráfego de um IP específico
 ip.src == 192.168.1.100
-# Tráfego para IP específico
+# Tráfego para um IP específico
 ip.dst == 192.168.1.200
 # Tráfego entre dois IPs
 ip.addr == 192.168.1.100
-# Tráfego de sub-rede
+# Tráfego de uma sub-rede
 ip.src_net == 192.168.1.0/24
-# Excluir IP específico
+# Excluir um IP específico
 not ip.addr == 192.168.1.1
 ```
 
-### Filtros de Porta e Protocolo
+### Filtragem de Porta e Protocolo
 
-Filtra por portas específicas e detalhes do protocolo.
+Filtre por portas e detalhes de protocolo específicos.
 
 ```bash
-# Tráfego na porta específica
+# Tráfego em porta específica
 tcp.port == 80
 # Filtro de porta de origem
 tcp.srcport == 443
@@ -174,7 +219,7 @@ tcp.port in {80 443 8080}
 
 ### Análise HTTP
 
-Analisa requisições e respostas HTTP.
+Analise requisições e respostas HTTP.
 
 ```bash
 # Requisições GET HTTP
@@ -183,7 +228,7 @@ http.request.method == "GET"
 http.request.method == "POST"
 # Códigos de status HTTP específicos
 http.response.code == 404
-# Requisições HTTP para host específico
+# Requisições HTTP para um host específico
 http.host == "example.com"
 # Requisições HTTP contendo string
 http contains "login"
@@ -191,16 +236,16 @@ http contains "login"
 
 ### Análise DNS
 
-Examina consultas e respostas DNS.
+Examine consultas e respostas DNS.
 
 ```bash
 # Apenas consultas DNS
 dns.flags.response == 0
 # Apenas respostas DNS
 dns.flags.response == 1
-# Consultas DNS para domínio específico
+# Consultas DNS para um domínio específico
 dns.qry.name == "example.com"
-# Consultas DNS tipo A
+# Consultas DNS do tipo A
 dns.qry.type == 1
 # Erros/falhas DNS
 dns.flags.rcode != 0
@@ -208,7 +253,7 @@ dns.flags.rcode != 0
 
 ### Análise TCP
 
-Analisa detalhes da conexão TCP.
+Analise detalhes da conexão TCP.
 
 ```bash
 # Pacotes TCP SYN (tentativas de conexão)
@@ -217,7 +262,7 @@ tcp.flags.syn == 1
 tcp.flags.reset == 1
 # Retransmissões TCP
 tcp.analysis.retransmission
-# Problemas de janela de recepção TCP
+# Problemas de janela TCP
 tcp.analysis.window_update
 # Estabelecimento de conexão TCP
 tcp.flags.syn == 1 and tcp.flags.ack == 0
@@ -225,7 +270,7 @@ tcp.flags.syn == 1 and tcp.flags.ack == 0
 
 ### Análise TLS/SSL
 
-Examina detalhes da conexão criptografada.
+Examine detalhes da conexão criptografada.
 
 ```bash
 # Pacotes de handshake TLS
@@ -242,7 +287,7 @@ tls.handshake.extensions_server_name
 
 ### Solução de Problemas de Rede
 
-Identifica problemas comuns de rede.
+Identifique problemas comuns de rede.
 
 ```bash
 # Mensagens ICMP inalcançáveis
@@ -259,7 +304,7 @@ frame.len > 1500
 
 ### Filtragem Baseada em Tempo
 
-Filtra pacotes por carimbo de data/hora e temporização.
+Filtre pacotes por carimbo de data/hora e tempo.
 
 ```bash
 # Pacotes dentro do intervalo de tempo
@@ -276,7 +321,7 @@ frame.time_delta > 0.1
 
 ### Hierarquia de Protocolos
 
-Visualiza a distribuição de protocolos na captura.
+Visualize a distribuição de protocolos na captura.
 
 ```bash
 # Acessar via: Estatísticas > Hierarquia de Protocolos
@@ -289,7 +334,7 @@ tshark -r capture.pcap -q -z io,phs
 
 ### Conversas
 
-Analisa a comunicação entre endpoints.
+Analise a comunicação entre endpoints.
 
 ```bash
 # Acessar via: Estatísticas > Conversas
@@ -303,7 +348,7 @@ tshark -r capture.pcap -q -z conv,tcp
 
 ### Gráficos de I/O
 
-Visualiza padrões de tráfego ao longo do tempo.
+Visualize padrões de tráfego ao longo do tempo.
 
 ```bash
 # Acessar via: Estatísticas > Gráficos de I/O
@@ -316,7 +361,7 @@ Visualiza padrões de tráfego ao longo do tempo.
 
 ### Informações de Especialista
 
-Identifica potenciais problemas de rede.
+Identifique problemas de rede potenciais.
 
 ```bash
 # Acessar via: Analisar > Informações de Especialista
@@ -328,9 +373,9 @@ Identifica potenciais problemas de rede.
 tcp.analysis.flags
 ```
 
-### Gráficos de Fluxo
+### Gráfico de Fluxo
 
-Visualiza a sequência de pacotes entre endpoints.
+Visualize a sequência de pacotes entre endpoints.
 
 ```bash
 # Acessar via: Estatísticas > Gráfico de Fluxo
@@ -342,7 +387,7 @@ Visualiza a sequência de pacotes entre endpoints.
 
 ### Análise de Tempo de Resposta
 
-Mede os tempos de resposta da aplicação.
+Meça os tempos de resposta da aplicação.
 
 ```bash
 # Tempos de resposta HTTP
@@ -350,14 +395,14 @@ Mede os tempos de resposta da aplicação.
 # Tempos de resposta DNS
 # Estatísticas > DNS
 # Tempo de resposta do serviço TCP
-# Estatísticas > Gráficos de Sequência de Tempo TCP > TCP
+# Estatísticas > Gráficos de Fluxo TCP > Sequência de Tempo
 ```
 
-## Operações de Arquivo e Exportação
+## Operações e Exportação de Arquivos
 
 ### Salvar e Carregar Capturas
 
-Gerencia arquivos de captura em vários formatos.
+Gerencie arquivos de captura em vários formatos.
 
 ```bash
 # Salvar arquivo de captura
@@ -372,7 +417,7 @@ Gerencia arquivos de captura em vários formatos.
 
 ### Opções de Exportação
 
-Exporta dados específicos ou subconjuntos de pacotes.
+Exporte dados específicos ou subconjuntos de pacotes.
 
 ```bash
 # Exportar pacotes selecionados
@@ -387,7 +432,7 @@ Exporta dados específicos ou subconjuntos de pacotes.
 
 ### Captura na Linha de Comando
 
-Usa tshark para captura e análise automatizadas.
+Use tshark para captura e análise automatizadas.
 
 ```bash
 # Capturar para arquivo
@@ -402,7 +447,7 @@ tshark -r capture.pcap -Y "tcp.port == 80"
 
 ### Processamento em Lote
 
-Processa múltiplos arquivos de captura automaticamente.
+Processe múltiplos arquivos de captura automaticamente.
 
 ```bash
 # Mesclar múltiplos arquivos
@@ -419,29 +464,29 @@ editcap -A "2024-01-01 10:00:00" \
 
 ### Gerenciamento de Memória
 
-Lida com arquivos de captura grandes de forma eficiente.
+Lide com arquivos de captura grandes de forma eficiente.
 
 ```bash
 # Usar buffer circular para captura contínua
 -b filesize:100 -b files:10
-# Limitar tamanho da captura de pacotes
+# Limitar o tamanho da captura de pacotes
 -s 96  # Capturar apenas os primeiros 96 bytes
 # Usar filtros de captura para reduzir dados
 host 192.168.1.100 and port 80
-# Desabilitar dissecação de protocolo para velocidade
+# Desativar dissecação de protocolo para velocidade
 -d tcp.port==80,http
 ```
 
 ### Otimização de Exibição
 
-Melhora o desempenho da GUI com grandes conjuntos de dados.
+Melhore o desempenho da GUI com grandes conjuntos de dados.
 
 ```bash
 # Preferências a ajustar:
 # Editar > Preferências > Aparência
 # Seleção de esquema de cores
 # Tamanho e tipo da fonte
-# Opções de exibição de colunas
+# Opções de exibição de coluna
 # Configurações de formato de tempo
 # Visualizar > Formato de Exibição de Tempo
 # Segundos desde o início da captura
@@ -466,7 +511,7 @@ Melhores práticas para analisar tráfego de rede.
 
 ### Automação e Scripting
 
-Automatiza tarefas comuns de análise.
+Automatize tarefas comuns de análise.
 
 ```bash
 # Criar botões de filtro de exibição personalizados
@@ -483,7 +528,7 @@ grep -v "Filter:" | head -20
 
 ### Instalação no Windows
 
-Baixar e instalar do site oficial.
+Baixe e instale do site oficial.
 
 ```bash
 # Baixar de wireshark.org
@@ -499,7 +544,7 @@ wireshark --version
 
 ### Instalação no Linux
 
-Instalar via gerenciador de pacotes ou a partir do código-fonte.
+Instale via gerenciador de pacotes ou a partir do código-fonte.
 
 ```bash
 # Ubuntu/Debian
@@ -516,7 +561,7 @@ $USER
 
 ### Instalação no macOS
 
-Instalar usando Homebrew ou instalador oficial.
+Instale usando Homebrew ou instalador oficial.
 
 ```bash
 # Usando Homebrew
@@ -531,12 +576,12 @@ brew install wireshark
 
 ### Preferências de Interface
 
-Configura interfaces de captura e opções.
+Configure interfaces de captura e opções.
 
 ```bash
 # Editar > Preferências > Captura
 # Interface de captura padrão
-# Configurações de modo promíscuo
+# Configurações de modo Promíscuo
 # Configuração do tamanho do buffer
 # Rolagem automática na captura ao vivo
 # Configurações específicas da interface
@@ -545,11 +590,11 @@ Configura interfaces de captura e opções.
 
 ### Configurações de Protocolo
 
-Configura dissecação e decodificação de protocolos.
+Configure dissector de protocolo e decodificação.
 
 ```bash
 # Editar > Preferências > Protocolos
-# Habilitar/desabilitar dissecação de protocolo
+# Habilitar/desabilitar dissector de protocolo
 # Configurar atribuições de porta
 # Definir chaves de descriptografia (TLS, WEP, etc.)
 # Opções de remontagem TCP
@@ -559,13 +604,13 @@ Configura dissecação e decodificação de protocolos.
 
 ### Preferências de Exibição
 
-Personaliza a interface do usuário e as opções de exibição.
+Personalize a interface do usuário e as opções de exibição.
 
 ```bash
 # Editar > Preferências > Aparência
 # Seleção de esquema de cores
 # Tamanho e tipo da fonte
-# Opções de exibição de colunas
+# Opções de exibição de coluna
 # Configurações de formato de tempo
 # Visualizar > Formato de Exibição de Tempo
 # Segundos desde o início da captura
@@ -575,7 +620,7 @@ Personaliza a interface do usuário e as opções de exibição.
 
 ### Configurações de Segurança
 
-Configura opções relacionadas à segurança e descriptografia.
+Configure opções relacionadas à segurança e descriptografia.
 
 ```bash
 # Configuração de descriptografia TLS
@@ -588,11 +633,11 @@ Configura opções relacionadas à segurança e descriptografia.
 # Resolvers externos
 ```
 
-## Técnicas de Filtragem Avançadas
+## Técnicas Avançadas de Filtragem
 
 ### Operadores Lógicos
 
-Combina múltiplas condições de filtro.
+Combine múltiplas condições de filtro.
 
 ```bash
 # Operador AND
@@ -608,7 +653,7 @@ not icmp
 
 ### Correspondência de String
 
-Procura por conteúdo específico nos pacotes.
+Procure por conteúdo específico nos pacotes.
 
 ```bash
 # Contém string (sensível a maiúsculas e minúsculas)
@@ -623,7 +668,7 @@ eth.src[0:3] == 00:11:22
 
 ### Comparações de Campo
 
-Compara campos de pacote com valores e intervalos.
+Compare campos de pacote com valores e intervalos.
 
 ```bash
 # Igualdade
@@ -632,15 +677,15 @@ tcp.srcport == 80
 frame.len > 1000
 # Verificações de intervalo
 tcp.port >= 1024 and tcp.port <= 65535
-# Pertencimento a conjunto
+# Associação a conjunto
 tcp.port in {80 443 8080 8443}
 # Existência de campo
 tcp.options
 ```
 
-### Análise de Pacotes Avançada
+### Análise Avançada de Pacotes
 
-Identifica características específicas de pacotes e anomalias.
+Identifique características e anomalias específicas de pacotes.
 
 ```bash
 # Pacotes malformados
@@ -649,7 +694,7 @@ _ws.malformed
 frame.number == tcp.analysis.duplicate_ack_num
 # Pacotes fora de ordem
 tcp.analysis.out_of_order
-# Problemas de janela TCP
+# Problemas de escala de janela TCP
 tcp.analysis.window_full
 ```
 
@@ -657,7 +702,7 @@ tcp.analysis.window_full
 
 ### Solução de Problemas de Rede
 
-Identifica e resolve problemas de conectividade de rede.
+Identifique e resolva problemas de conectividade de rede.
 
 ```bash
 # Encontrar timeouts de conexão
@@ -674,7 +719,7 @@ icmp.type == 3 and icmp.code == 4
 
 ### Análise de Segurança
 
-Detecta potenciais ameaças de segurança e atividades suspeitas.
+Detecte potenciais ameaças de segurança e atividades suspeitas.
 
 ```bash
 # Detecção de varredura de portas
@@ -693,7 +738,7 @@ contains "/upload"
 
 ### Desempenho da Aplicação
 
-Monitora e analisa tempos de resposta da aplicação.
+Monitore e analise os tempos de resposta da aplicação.
 
 ```bash
 # Análise de aplicação web
@@ -708,7 +753,7 @@ rtp.jitter > 30 or rtp.marker == 1
 
 ### Investigação de Protocolo
 
-Mergulho profundo em protocolos específicos e seu comportamento.
+Mergulhe em protocolos específicos e seu comportamento.
 
 ```bash
 # Análise de tráfego de e-mail

@@ -1,11 +1,11 @@
 ---
 title: 'Linux 速查表 | LabEx'
-description: '使用这份全面的速查表学习 Linux 管理。快速参考 Linux 命令、文件管理、系统管理、网络和 Shell 脚本。'
+description: '使用本综合速查表学习 Linux 管理。快速参考 Linux 命令、文件管理、系统管理、网络和 Shell 脚本。'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Linux 备忘单
+Linux 速查表
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,7 +15,7 @@ Linux 备忘单
 <a href="https://linux-commands.labex.io/" target="_blank">访问 Linux 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-有关全面的 Linux 命令参考材料、语法示例和详细文档，请访问 <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>。这个独立网站提供了丰富的 Linux 备忘单，涵盖了 Linux 管理员和开发人员的基本命令、概念和最佳实践。
+有关全面的 Linux 命令参考材料、语法示例和详细文档，请访问 <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>。该独立网站提供了广泛的 Linux 速查表，涵盖了 Linux 管理员和开发人员的基本命令、概念和最佳实践。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -49,20 +49,20 @@ lscpu
 lsblk
 # 内存信息
 free -h
-# 文件系统磁盘使用情况
+# 按文件系统划分的磁盘使用情况
 df -h
 ```
 
-### 系统正常运行时间：`uptime`
+### 系统运行时间：`uptime`
 
-显示系统正常运行时间和负载平均值。
+显示系统运行时间及负载平均值。
 
 ```bash
-# 系统正常运行时间和负载
+# 系统运行时间与负载
 uptime
-# 更详细的正常运行时间信息
+# 更详细的运行时间信息
 uptime -p
-# 显示自特定日期以来的正常运行时间
+# 显示自特定日期以来的运行时间
 uptime -s
 ```
 
@@ -73,7 +73,7 @@ uptime -s
 ```bash
 # 显示已登录用户
 who
-# 带有活动的详细用户信息
+# 包含活动的详细用户信息
 w
 # 显示当前用户名
 whoami
@@ -118,9 +118,9 @@ timedatectl set-timezone America/New_York
 以各种格式选项显示文件和目录。
 
 ```bash
-# 在当前目录中列出文件
+# 在当前目录列出文件
 ls
-# 详细列表和权限
+# 详细列表及权限
 ls -l
 # 显示隐藏文件
 ls -la
@@ -135,15 +135,15 @@ ls -lt
 更改目录并显示当前位置。
 
 ```bash
-# 转到主目录
+# 进入主目录
 cd
-# 转到特定目录
+# 进入特定目录
 cd /path/to/directory
-# 上移一级
+# 上移一级目录
 cd ..
 # 显示当前目录
 pwd
-# 转到上一个目录
+# 返回上一个目录
 cd -
 ```
 
@@ -164,7 +164,7 @@ cd -
 
 ### 创建与删除：`mkdir`, `rmdir`, `rm`
 
-创建和删除文件和目录。
+创建和删除文件及目录。
 
 ```bash
 # 创建目录
@@ -198,7 +198,7 @@ tail -f logfile
 
 ### 复制与移动：`cp`, `mv`
 
-复制和移动文件和目录。
+复制和移动文件及目录。
 
 ```bash
 # 复制文件
@@ -300,7 +300,7 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    `kill -9` 命令向进程发送什么信号？
+    `kill -9` 向进程发送什么信号？
   </template>
   
   <BaseQuizOption value="A">SIGTERM (优雅终止)</BaseQuizOption>
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (强制终止，不可忽略)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9` 发送 SIGKILL，它会立即强制终止进程。该信号不能被进程捕获或忽略，因此可用于终止无响应的进程。
+    `kill -9` 发送 SIGKILL 信号，它会立即强制终止进程。该信号不能被进程捕获或忽略，因此可用于终止无响应的进程。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ bg %1
 fg %1
 # 在后台运行命令
 command &
-# 与终端分离
+# 从终端分离
 nohup command &
 ```
 
@@ -362,13 +362,13 @@ ip route show
 ip addr add 192.168.1.10/24 dev eth0
 # 启用/禁用接口
 ip link set eth0 up
-# 遗留接口配置
+# 传统接口配置
 ifconfig
 ```
 
 ### 网络测试：`ping`, `traceroute`
 
-测试网络连通性并跟踪数据包路由。
+测试网络连通性和跟踪数据包路由。
 
 ```bash
 # 测试连通性
@@ -386,13 +386,13 @@ mtr google.com
     `ping -c 4` 命令的作用是什么？
   </template>
   
-  <BaseQuizOption value="A">以 4 秒的超时时间 Ping</BaseQuizOption>
+  <BaseQuizOption value="A">以 4 秒为间隔 Ping</BaseQuizOption>
   <BaseQuizOption value="B" correct>发送 4 个 Ping 数据包后停止</BaseQuizOption>
   <BaseQuizOption value="C">Ping 4 个不同的主机</BaseQuizOption>
-  <BaseQuizOption value="D">Ping 之间等待 4 秒</BaseQuizOption>
+  <BaseQuizOption value="D">在每次 Ping 之间等待 4 秒</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-c` 选项指定要发送的数据包数量。`ping -c 4` 将发送正好 4 个 ICMP 回显请求数据包，然后停止并显示结果。
+    `-c` 选项指定要发送的数据包数量。`ping -c 4` 将发送 4 个 ICMP 回显请求数据包，然后停止并显示结果。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -437,7 +437,7 @@ rsync -avz --progress src/ dest/
 ```bash
 # 在文件中搜索模式
 grep "pattern" filename
-# 不区分大小写的搜索
+# 忽略大小写搜索
 grep -i "pattern" filename
 # 在目录中递归搜索
 grep -r "pattern" /path/
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-i` 选项使 grep 不区分大小写，因此它会匹配大写和小写字母。例如，`grep -i "error" file.txt` 将匹配 "Error"、"ERROR" 和 "error"。
+    `-i` 选项使 grep 不区分大小写，因此它会匹配大写和小写字母。例如，`grep -i "error" file.txt` 会匹配 "Error", "ERROR" 和 "error"。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -473,7 +473,7 @@ sed 's/old/new/g' filename
 sed '/pattern/d' filename
 # 打印特定字段
 awk '{print $1, $3}' filename
-# 计算第一列的总和
+# 计算列中的值总和
 awk '{sum += $1} END {print sum}' filename
 ```
 
@@ -556,9 +556,9 @@ unzip -l archive.zip
 tar -czvf backup.tar.gz /home/user/
 # 提取到特定目录
 tar -xzf archive.tar.gz -C /destination/
-# 将文件添加到现有归档
+# 向现有归档添加文件
 tar -rf archive.tar newfile.txt
-# 用较新文件更新归档
+# 用更新的文件替换归档中的文件
 tar -uf archive.tar files/
 ```
 
@@ -569,7 +569,7 @@ tar -uf archive.tar files/
 ```bash
 # 显示目录大小
 du -h /path/
-# 总大小摘要
+# 显示总大小
 du -sh /path/
 # 显示所有子目录的大小
 du -h --max-depth=1 /path/
@@ -579,7 +579,7 @@ du -h | sort -hr | head -10
 
 ## 系统监视与性能
 
-### 内存使用情况：`free`, `vmstat`
+### 内存使用：`free`, `vmstat`
 
 监视内存使用情况和虚拟内存统计信息。
 
@@ -590,7 +590,7 @@ free -h
 cat /proc/meminfo
 # 虚拟内存统计
 vmstat
-# 每 2 秒内存统计
+# 每 2 秒内存使用情况
 vmstat 2
 # 显示交换空间使用情况
 swapon --show
@@ -613,7 +613,7 @@ iostat -x /dev/sda
 
 ### 系统负载：`top`, `htop`
 
-监视系统负载、CPU 使用率和运行进程。
+监视系统负载、CPU 使用率和运行中的进程。
 
 ```bash
 # 实时进程监视器
@@ -649,16 +649,16 @@ dmesg | tail
 
 ### 用户操作：`useradd`, `usermod`, `userdel`
 
-创建、修改和删除用户帐户。
+创建、修改和删除用户账户。
 
 ```bash
 # 添加新用户
 useradd username
 # 添加带主目录的用户
 useradd -m username
-# 修改用户帐户
+# 修改用户账户
 usermod -aG groupname username
-# 删除用户帐户
+# 删除用户账户
 userdel username
 # 删除带主目录的用户
 userdel -r username
@@ -690,7 +690,7 @@ usermod -g groupname username
 su -
 # 切换到特定用户
 su - username
-# 以 root 身份执行命令
+# 以 root 权限执行命令
 sudo command
 # 以特定用户身份执行命令
 sudo -u username command
@@ -700,18 +700,18 @@ visudo
 
 ### 密码管理：`passwd`, `chage`
 
-管理用户密码和帐户策略。
+管理用户密码和账户策略。
 
 ```bash
 # 更改密码
 passwd
-# 更改另一个用户的密码（需要 root 权限）
+# 更改其他用户的密码（需要 root 权限）
 passwd username
 # 显示密码过期信息
 chage -l username
 # 设置密码有效期为 90 天
 chage -M 90 username
-# 强制用户下次登录时更改密码
+# 强制下次登录时更改密码
 passwd -e username
 ```
 
@@ -719,7 +719,7 @@ passwd -e username
 
 ### APT (Debian/Ubuntu): `apt`, `apt-get`
 
-管理基于 Debian 的系统上的软件包。
+在基于 Debian 的系统上管理软件包。
 
 ```bash
 # 更新软件包列表
@@ -738,7 +738,7 @@ apt show packagename
 
 ### YUM/DNF (RHEL/Fedora): `yum`, `dnf`
 
-管理基于 Red Hat 的系统上的软件包。
+在基于 Red Hat 的系统上管理软件包。
 
 ```bash
 # 安装软件包
@@ -755,18 +755,18 @@ yum list installed
 
 ### Snap 包：`snap`
 
-在各种发行版中安装和管理 snap 软件包。
+在各种发行版上安装和管理 snap 包。
 
 ```bash
-# 安装 snap 软件包
+# 安装 snap 包
 snap install packagename
 # 列出已安装的 snap
 snap list
-# 刷新 snap 软件包
+# 更新 snap 包
 snap refresh
-# 移除 snap 软件包
+# 移除 snap 包
 snap remove packagename
-# 搜索 snap 软件包
+# 搜索 snap 包
 snap find packagename
 ```
 
@@ -779,11 +779,11 @@ snap find packagename
 flatpak install packagename
 # 列出已安装的 flatpak
 flatpak list
-# 更新 flatpak 软件包
+# 更新 flatpak 包
 flatpak update
-# 移除 flatpak
+# 卸载 flatpak
 flatpak uninstall packagename
-# 搜索 flatpak 软件包
+# 搜索 flatpak 包
 flatpak search packagename
 ```
 
@@ -874,12 +874,12 @@ sha256sum linux.iso
 
 ### 启动与安装：USB, 网络
 
-创建可启动媒体并执行系统安装。
+创建可启动介质并执行系统安装。
 
 ```bash
-# 创建可启动 USB（Linux）
+# 创建可启动 USB (Linux)
 dd if=linux.iso of=/dev/sdX bs=4M
-# 创建可启动 USB（跨平台）
+# 创建可启动 USB (跨平台)
 # 使用 Rufus, Etcher 或 UNetbootin 等工具
 # 网络安装
 # 配置 PXE 启动以进行网络安装
@@ -1006,7 +1006,7 @@ fsck -A
 
 ### 服务问题：`systemctl`
 
-诊断和修复与服务相关的问题。
+诊断和修复与服务相关的故障。
 
 ```bash
 # 检查服务状态
@@ -1040,11 +1040,11 @@ lsof
 
 ## 相关链接
 
-- <router-link to="/shell">Shell 备忘单</router-link>
-- <router-link to="/rhel">Red Hat 企业 Linux 备忘单</router-link>
-- <router-link to="/docker">Docker 备忘单</router-link>
-- <router-link to="/kubernetes">Kubernetes 备忘单</router-link>
-- <router-link to="/git">Git 备忘单</router-link>
-- <router-link to="/ansible">Ansible 备忘单</router-link>
-- <router-link to="/devops">DevOps 备忘单</router-link>
-- <router-link to="/cybersecurity">网络安全备忘单</router-link>
+- <router-link to="/shell">Shell 速查表</router-link>
+- <router-link to="/rhel">Red Hat 企业 Linux 速查表</router-link>
+- <router-link to="/docker">Docker 速查表</router-link>
+- <router-link to="/kubernetes">Kubernetes 速查表</router-link>
+- <router-link to="/git">Git 速查表</router-link>
+- <router-link to="/ansible">Ansible 速查表</router-link>
+- <router-link to="/devops">DevOps 速查表</router-link>
+- <router-link to="/cybersecurity">网络安全速查表</router-link>

@@ -1,6 +1,6 @@
 ---
-title: 'Golang 速查表'
-description: '使用我们涵盖核心命令、概念和最佳实践的综合 Golang 速查表，快速掌握 Go 语言。'
+title: 'Golang 速查表 | LabEx'
+description: '使用本综合速查表学习 Go 编程。Go 语法、goroutine、通道、接口、错误处理和后端开发并发编程的快速参考。'
 pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Golang 速查表
 <a target="_blank" href="https://labex.io/zh/learn/golang">使用实践实验室学习 Golang</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 Go 编程。LabEx 提供全面的 Go 课程，涵盖基本语法、并发模式、错误处理和高级技术。掌握 Go 的独特特性，如 goroutine、channel 和 interface，以构建高效的并发应用程序。
+通过实践实验室和真实场景学习 Go 编程。LabEx 提供全面的 Go 课程，涵盖基本语法、并发模式、错误处理和高级技术。掌握 Go 的独特特性，如 goroutines、channels 和 interfaces，以构建高效的并发应用程序。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -99,7 +99,7 @@ go env GOARCH    # 架构
 ```bash
 # 在 VS Code 中安装 Go 扩展
 # Ctrl+Shift+P -> Go: Install/Update Tools
-# 启用的关键功能:
+# 启用的关键功能：
 # - 语法高亮
 # - IntelliSense
 # - 调试
@@ -125,7 +125,7 @@ import "os"
 
 ### 变量与常量
 
-声明和初始化变量与常量。
+声明和初始化变量和常量。
 
 ```go
 // 变量声明
@@ -139,6 +139,21 @@ count := 42
 const Pi = 3.14159
 const Message = "Hello, Go!"
 ```
+
+<BaseQuiz id="golang-variables-1" correct="B">
+  <template #question>
+    `var name string = "Go"` 和 `name := "Go"` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">没有区别</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`:=` 是推断类型的简短声明，`var` 显式声明类型</BaseQuizOption>
+  <BaseQuizOption value="C">`:=` 只能用于常量</BaseQuizOption>
+  <BaseQuizOption value="D">`var` 只能在函数内部使用</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `:=` 运算符是变量声明和初始化的简写形式，Go 会自动推断类型。`var` 显式声明变量类型，可用于包级别或函数级别。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 基本数据类型
 
@@ -203,24 +218,39 @@ for {
 
 ### 范围迭代
 
-遍历切片 (slice)、数组 (array)、映射 (map) 和字符串 (string)。
+迭代切片、数组、映射和字符串。
 
 ```go
-// 遍历切片
+// 迭代切片
 numbers := []int{1, 2, 3, 4, 5}
 for index, value := range numbers {
     fmt.Printf("Index: %d, Value: %d\n", index, value)
 }
-// 遍历映射
+// 迭代映射
 colors := map[string]string{"red": "#FF0000", "green": "#00FF00"}
 for key, value := range colors {
     fmt.Printf("%s: %s\n", key, value)
 }
-// 遍历字符串
+// 迭代字符串
 for i, char := range "Hello" {
     fmt.Printf("%d: %c\n", i, char)
 }
 ```
+
+<BaseQuiz id="golang-range-1" correct="B">
+  <template #question>
+    在 Go 中迭代切片时，`range` 返回什么？
+  </template>
+  
+  <BaseQuizOption value="A">仅值</BaseQuizOption>
+  <BaseQuizOption value="B" correct>索引和值</BaseQuizOption>
+  <BaseQuizOption value="C">仅索引</BaseQuizOption>
+  <BaseQuizOption value="D">切片的长度</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    当使用 `range` 遍历切片时，它返回两个值：索引（位置）和该索引处的值。如果不需要其中一个值，可以使用 `_` 忽略它。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 控制语句：`break` / `continue`
 
@@ -242,6 +272,21 @@ for i := 0; i < 5; i++ {
     fmt.Println(i)
 }
 ```
+
+<BaseQuiz id="golang-control-1" correct="C">
+  <template #question>
+    Go 循环中的 `break` 和 `continue` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">没有区别</BaseQuizOption>
+  <BaseQuizOption value="B">break 跳过当前迭代，continue 退出循环</BaseQuizOption>
+  <BaseQuizOption value="C" correct>break 完全退出循环，continue 跳到下一次迭代</BaseQuizOption>
+  <BaseQuizOption value="D">两者都退出循环</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `break` 立即退出循环，并在循环后继续执行。`continue` 跳过当前迭代的其余部分，进入循环的下一次迭代。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 函数
 
@@ -267,7 +312,7 @@ func divide(a, b float64) (float64, error) {
 }
 ```
 
-### 命名返回与可变参数函数
+### 命名返回和可变参数函数
 
 高级函数特性和模式。
 
@@ -278,7 +323,7 @@ func split(sum int) (x, y int) {
     y = sum - x
     return // 裸返回
 }
-// 可变参数函数 (Variadic)
+// 可变参数函数
 func sum(nums ...int) int {
     total := 0
     for _, num := range nums {
@@ -320,7 +365,7 @@ fmt.Println(c()) // 2
 
 ### Defer 语句
 
-延迟函数执行直到其所在的函数返回。
+延迟函数执行直到其包围的函数返回。
 
 ```go
 func processFile(filename string) {
@@ -342,10 +387,10 @@ func processFile(filename string) {
 固定和动态的元素序列。
 
 ```go
-// 数组 (固定大小)
+// 数组（固定大小）
 var arr [5]int = [5]int{1, 2, 3, 4, 5}
 shortArr := [3]string{"a", "b", "c"}
-// 切片 (动态大小)
+// 切片（动态）
 var slice []int
 slice = append(slice, 1, 2, 3)
 // 创建带容量的切片
@@ -377,7 +422,7 @@ age, exists := ages["Alice"] // 检查存在性
 
 ### 结构体 (Structs)
 
-将相关数据通过自定义类型组合在一起。
+使用自定义类型将相关数据组合在一起。
 
 ```go
 // 结构体定义
@@ -409,7 +454,7 @@ num := 42
 p = &num  // num 的地址
 // 解引用
 fmt.Println(*p) // 地址处的值 (42)
-*p = 100        // 通过指针修改值
+*p = 100        // 通过指针改变值
 // 结构体指针
 person := &Person{Name: "Alice", Age: 30}
 person.Age = 31  // 自动解引用
@@ -429,7 +474,7 @@ type Rectangle struct {
 func (r Rectangle) Area() float64 {
     return r.Width * r.Height
 }
-// 指针接收者 (可以修改)
+// 指针接收者（可以修改）
 func (r *Rectangle) Scale(factor float64) {
     r.Width *= factor
     r.Height *= factor
@@ -562,11 +607,11 @@ func validateAge(age int) error {
 
 ### 错误包装 (Error Wrapping)
 
-在保留原始错误的同时添加上下文。
+在保留原始错误的同时为错误添加额外上下文。
 
 ```go
 import "fmt"
-// 使用附加上下文包装错误
+// 使用额外上下文包装错误
 func processFile(filename string) error {
     file, err := os.Open(filename)
     if err != nil {
@@ -578,7 +623,7 @@ func processFile(filename string) error {
     // 处理文件...
     return nil
 }
-// 拆解错误
+// 错误解包
 err := processFile("missing.txt")
 if err != nil {
     var pathErr *os.PathError
@@ -616,7 +661,7 @@ riskyOperation() // panic 后程序继续执行
 
 ```go
 import "time"
-// 简单的 goroutine
+// 简单 goroutine
 func sayHello() {
     fmt.Println("Hello from goroutine!")
 }
@@ -629,14 +674,14 @@ func main() {
         fmt.Println("Anonymous goroutine")
     }()
 
-    // 等待 goroutine 完成
+    // 等待 goroutines 完成
     time.Sleep(time.Second)
 }
 ```
 
 ### 通道 (Channels)
 
-使用通道在 goroutine 之间进行通信。
+使用通道在 goroutines 之间进行通信。
 
 ```go
 // 创建通道
@@ -657,14 +702,14 @@ close(ch)
 通道通信的常见模式。
 
 ```go
-// Worker 模式
+// 工作者模式
 func worker(id int, jobs <-chan int, results chan<- int) {
     for job := range jobs {
         fmt.Printf("Worker %d processing job %d\n", id, job)
         results <- job * 2
     }
 }
-// Fan-out 模式
+// 扇出模式 (Fan-out)
 jobs := make(chan int, 100)
 results := make(chan int, 100)
 // 启动工作者
@@ -713,7 +758,7 @@ func main() {
 
 ### 文件操作
 
-使用各种方法读写文件。
+使用各种方法读取和写入文件。
 
 ```go
 import (
@@ -772,13 +817,13 @@ type Person struct {
     Age   int    `json:"age"`
     Email string `json:"email,omitempty"`
 }
-// Marshal (Go 转 JSON)
+// 编码 (Go 到 JSON)
 person := Person{Name: "Alice", Age: 30}
 jsonData, err := json.Marshal(person)
 if err != nil {
     log.Fatal(err)
 }
-// Unmarshal (JSON 转 Go)
+// 解码 (JSON 到 Go)
 var p Person
 err = json.Unmarshal(jsonData, &p)
 ```
@@ -796,7 +841,7 @@ if err != nil {
 }
 defer resp.Body.Close()
 body, _ := ioutil.ReadAll(resp.Body)
-// POST 请求带 JSON
+// POST 请求（带 JSON）
 jsonData := []byte(`{"name":"Alice","age":30}`)
 resp, err = http.Post("https://api.example.com/users",
                       "application/json",
@@ -831,7 +876,7 @@ func TestAdd(t *testing.T) {
 // go test -v (详细模式)
 ```
 
-### 表驱动测试
+### 表驱动测试 (Table-Driven Tests)
 
 高效地测试多个用例。
 
@@ -860,7 +905,7 @@ func TestAddMultiple(t *testing.T) {
 
 ### 基准测试 (Benchmarking)
 
-衡量函数的性能。
+衡量函数性能。
 
 ```go
 func BenchmarkAdd(b *testing.B) {
@@ -904,12 +949,12 @@ func ExampleAdd_negative() {
 go mod init github.com/username/project
 # 添加依赖项
 go get github.com/gorilla/mux
-go get -u github.com/gin-gonic/gin  # 更新到最新版
+go get -u github.com/gin-gonic/gin  # 更新到最新版本
 # 移除未使用的依赖项
 go mod tidy
 # 下载依赖项
 go mod download
-# 在本地维护依赖项
+# 本地化依赖项
 go mod vendor
 ```
 
@@ -930,7 +975,7 @@ require (
 )
 ```
 
-### 创建包 (Packages)
+### 创建包
 
 将代码结构化为可重用的包。
 
@@ -944,11 +989,11 @@ require (
 //       └── string.go
 // utils/math.go
 package utils
-// 导出的函数 (首字母大写)
+// 导出函数（首字母大写）
 func Add(a, b int) int {
     return a + b
 }
-// 私有函数 (首字母小写)
+// 私有函数（首字母小写）
 func multiply(a, b int) int {
     return a * b
 }
@@ -978,7 +1023,7 @@ go build -o myapp  # 自定义名称
 go install
 # 格式化代码
 go fmt ./...
-# 检查代码问题
+# 检查代码是否存在问题
 go vet ./...
 # 清理构建缓存
 go clean -cache

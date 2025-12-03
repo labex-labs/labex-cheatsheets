@@ -1,6 +1,6 @@
 ---
-title: 'Fiche de Référence Red Hat Enterprise Linux'
-description: 'Apprenez Red Hat Enterprise Linux avec notre fiche complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo Red Hat Enterprise Linux | LabEx'
+description: "Apprenez l'administration de Red Hat Enterprise Linux (RHEL) avec cette fiche mémo complète. Référence rapide pour les commandes RHEL, la gestion système, SELinux, la gestion des paquets et l'administration Linux d'entreprise."
 pdfUrl: '/cheatsheets/pdf/red-hat-linux-cheatsheet.pdf'
 ---
 
@@ -12,7 +12,7 @@ Feuille de triche Red Hat Enterprise Linux
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/rhel">Apprenez Red Hat Enterprise Linux avec des laboratoires pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/rhel">Apprenez Red Hat Enterprise Linux avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Apprenez Red Hat Enterprise Linux grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours RHEL complets couvrant l'administration système essentielle, la gestion des paquets, la gestion des services, la configuration réseau, la gestion du stockage et la sécurité. Maîtrisez les opérations Linux d'entreprise et les techniques de gestion de système.
@@ -56,7 +56,7 @@ ps aux
 Afficher l'utilisation et la disponibilité de la mémoire.
 
 ```bash
-# Afficher l'utilisation de la mémoire au format lisible par l'homme
+# Afficher l'utilisation de la mémoire en format lisible par l'homme
 free -h
 # Afficher les informations détaillées sur la mémoire
 cat /proc/meminfo
@@ -99,7 +99,7 @@ Afficher les composants matériels et la configuration.
 ```bash
 # Afficher les informations du CPU
 lscpu
-# Afficher les périphériques en bloc
+# Afficher les périphériques de bloc
 lsblk
 # Afficher les périphériques PCI
 lspci
@@ -125,6 +125,21 @@ sudo dnf install --enablerepo=repo-
 name package
 ```
 
+<BaseQuiz id="rhel-package-1" correct="A">
+  <template #question>
+    Quelle est la différence entre `dnf` et `yum` dans RHEL ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>dnf est le gestionnaire de paquets plus récent pour RHEL 8+, yum est utilisé dans RHEL 7</BaseQuizOption>
+  <BaseQuizOption value="B">dnf est pour les paquets de développement, yum est pour la production</BaseQuizOption>
+  <BaseQuizOption value="C">Il n'y a pas de différence, ils sont identiques</BaseQuizOption>
+  <BaseQuizOption value="D">dnf est obsolète, yum doit toujours être utilisé</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    DNF (Dandified YUM) est la version de nouvelle génération de YUM et est le gestionnaire de paquets par défaut dans RHEL 8 et versions ultérieures. YUM est toujours utilisé dans RHEL 7. DNF offre de meilleures performances et une meilleure résolution des dépendances.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Mises à Jour de Paquets : `dnf update` / `yum update`
 
 Mettre à jour les paquets vers les dernières versions.
@@ -145,7 +160,7 @@ sudo dnf update --security
 Interroger les informations et les dépendances des paquets.
 
 ```bash
-# Afficher les informations du paquet
+# Afficher les informations sur le paquet
 dnf info package-name
 # Lister les paquets installés
 rpm -qa
@@ -176,20 +191,35 @@ ls -a
 
 ### Opérations sur les Fichiers : `cp` / `mv` / `rm`
 
-Copier, déplacer et supprimer des fichiers et répertoires.
+Copier, déplacer et supprimer des fichiers et des répertoires.
 
 ```bash
 # Copier un fichier
 cp source.txt destination.txt
 # Copier un répertoire récursivement
 cp -r /source/dir/ /dest/dir/
-# Déplacer/Renommer un fichier
+# Déplacer/renommer un fichier
 mv oldname.txt newname.txt
 # Supprimer un fichier
 rm filename.txt
 # Supprimer un répertoire récursivement
 rm -rf directory/
 ```
+
+<BaseQuiz id="rhel-file-ops-1" correct="B">
+  <template #question>
+    Que fait `cp -r` ?
+  </template>
+  
+  <BaseQuizOption value="A">Copie uniquement les fichiers</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Copie les répertoires récursivement, y compris tous les sous-répertoires et fichiers</BaseQuizOption>
+  <BaseQuizOption value="C">Supprime les fichiers</BaseQuizOption>
+  <BaseQuizOption value="D">Renomme les fichiers</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'option `-r` (récursif) permet à `cp` de copier les répertoires et leur contenu, y compris tous les sous-répertoires et fichiers qu'ils contiennent. Sans `-r`, `cp` ne peut pas copier les répertoires.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Contenu des Fichiers : `cat` / `less` / `head` / `tail`
 
@@ -198,7 +228,7 @@ Visualiser et examiner le contenu des fichiers.
 ```bash
 # Afficher le contenu du fichier
 cat filename.txt
-# Voir le fichier page par page
+# Visualiser le fichier page par page
 less filename.txt
 # Afficher les 10 premières lignes
 head filename.txt
@@ -208,14 +238,29 @@ tail filename.txt
 tail -f /var/log/messages
 ```
 
+<BaseQuiz id="rhel-tail-1" correct="C">
+  <template #question>
+    Que fait `tail -f /var/log/messages` ?
+  </template>
+  
+  <BaseQuizOption value="A">Affiche uniquement les 10 premières lignes</BaseQuizOption>
+  <BaseQuizOption value="B">Supprime le fichier journal</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Affiche les 10 dernières lignes et suit les nouvelles entrées en temps réel</BaseQuizOption>
+  <BaseQuizOption value="D">Archive le fichier journal</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'option `-f` (follow) fait suivre le fichier à `tail`, affichant les nouvelles entrées de journal au fur et à mesure qu'elles sont écrites. Ceci est essentiel pour la surveillance des journaux en temps réel et le dépannage.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Permissions des Fichiers : `chmod` / `chown` / `chgrp`
 
 Gérer les permissions et la propriété des fichiers.
 
 ```bash
-# Changer les permissions du fichier
+# Changer les permissions d'un fichier
 chmod 755 script.sh
-# Changer la propriété du fichier
+# Changer la propriété d'un fichier
 sudo chown user:group filename.txt
 # Changer la propriété du groupe
 sudo chgrp newgroup filename.txt
@@ -315,7 +360,7 @@ ps aux
 kill 1234
 # Tuer un processus par nom
 killall process-name
-# Forcer la terminaison d'un processus
+# Tuer un processus de force
 kill -9 1234
 # Afficher la hiérarchie des processus
 pstree
@@ -335,9 +380,9 @@ sudo passwd username
 # Modifier le compte utilisateur
 sudo usermod -aG groupname
 username
-# Supprimer le compte utilisateur
+# Supprimer un compte utilisateur
 sudo userdel -r username
-# Verrouiller le compte utilisateur
+# Verrouiller un compte utilisateur
 sudo usermod -L username
 ```
 
@@ -348,10 +393,10 @@ Créer, modifier et supprimer des groupes.
 ```bash
 # Ajouter un nouveau groupe
 sudo groupadd groupname
-# Ajouter un utilisateur au groupe
+# Ajouter un utilisateur à un groupe
 sudo usermod -aG groupname
 username
-# Supprimer un utilisateur du groupe
+# Supprimer un utilisateur d'un groupe
 sudo gpasswd -d username
 groupname
 # Supprimer un groupe
@@ -365,9 +410,9 @@ groups username
 Changer d'utilisateur et exécuter des commandes avec des privilèges élevés.
 
 ```bash
-# Changer pour l'utilisateur root
+# Passer à l'utilisateur root
 su -
-# Changer pour un utilisateur spécifique
+# Passer à un utilisateur spécifique
 su - username
 # Exécuter une commande en tant que root
 sudo command
@@ -404,7 +449,7 @@ sudo nmtui
 # Ajouter une nouvelle connexion
 sudo nmcli connection add type ethernet con-name
 "eth0" ifname eth0
-# Modifier une connexion
+# Modifier la connexion
 sudo nmcli connection modify "eth0" ipv4.addresses
 192.168.1.100/24
 # Activer la connexion
@@ -475,7 +520,7 @@ sudo fsck /dev/sda1
 
 ### Gestion LVM : `pvcreate` / `vgcreate` / `lvcreate`
 
-Gérer le stockage Logical Volume Manager (LVM).
+Gérer le gestionnaire de volumes logiques (LVM) pour le stockage.
 
 ```bash
 # Créer un volume physique
@@ -512,7 +557,7 @@ Contrôler l'application et les politiques SELinux.
 getenforce
 # Définir SELinux en mode permissif
 sudo setenforce 0
-# Définir SELinux en mode d'application
+# Définir SELinux en mode enforcing
 sudo setenforce 1
 # Vérifier le contexte SELinux
 ls -Z filename
@@ -648,7 +693,7 @@ subscription-manager status
 
 ### Gestion des Dépôts : `dnf config-manager`
 
-Gérer les dépôts logiciels.
+Gérer les dépôts de logiciels.
 
 ```bash
 # Lister les dépôts activés
@@ -700,7 +745,7 @@ dmesg | tail
 
 ### Diagnostic Matériel : `dmidecode` / `lshw`
 
-Examiner les informations et l'état du matériel.
+Examiner les informations et l'état de santé du matériel.
 
 ```bash
 # Afficher les informations matérielles
@@ -715,7 +760,7 @@ lscpu
 
 ### Dépannage Réseau : `netstat` / `ss`
 
-Outils de diagnostic réseau et utilitaires.
+Outils et utilitaires de diagnostic réseau.
 
 ```bash
 # Afficher les connexions réseau

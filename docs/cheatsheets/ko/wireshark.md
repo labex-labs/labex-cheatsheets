@@ -1,6 +1,6 @@
 ---
-title: '와이어샤크 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 와이어샤크를 학습하세요.'
+title: '와이어샤크 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 와이어샤크 네트워크 분석을 배우세요. 패킷 캡처, 네트워크 프로토콜 분석, 트래픽 검사, 문제 해결 및 네트워크 보안 모니터링을 위한 빠른 참조 가이드입니다.'
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Wireshark 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/wireshark">실습 랩을 통해 Wireshark 배우기</a>
+<a target="_blank" href="https://labex.io/ko/learn/wireshark">핸즈온 실습으로 Wireshark 배우기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 Wireshark 네트워크 패킷 분석을 학습하세요. LabEx 는 필수 패킷 캡처, 디스플레이 필터, 프로토콜 분석, 네트워크 문제 해결 및 보안 모니터링을 다루는 포괄적인 Wireshark 과정을 제공합니다. 네트워크 트래픽 분석 및 패킷 검사 기술을 마스터하세요.
+핸즈온 실습과 실제 시나리오를 통해 Wireshark 네트워크 패킷 분석을 학습하세요. LabEx 는 필수 패킷 캡처, 디스플레이 필터, 프로토콜 분석, 네트워크 문제 해결 및 보안 모니터링을 다루는 포괄적인 Wireshark 과정을 제공합니다. 네트워크 트래픽 분석 및 패킷 검사 기술을 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,18 +23,33 @@ Wireshark 치트 시트
 
 ### 호스트 필터링
 
-특정 호스트와/또는 특정 호스트로의 트래픽을 캡처합니다.
+특정 호스트와 주고받는 트래픽을 캡처합니다.
 
 ```bash
-# 특정 IP로부터/으로의 트래픽 캡처
+# 특정 IP와 주고받는 트래픽 캡처
 host 192.168.1.100
-# 특정 소스로부터의 트래픽 캡처
+# 특정 소스 트래픽 캡처
 src host 192.168.1.100
-# 특정 목적지로의 트래픽 캡처
+# 특정 목적지 트래픽 캡처
 dst host 192.168.1.100
 # 서브넷 트래픽 캡처
 net 192.168.1.0/24
 ```
+
+<BaseQuiz id="wireshark-filter-1" correct="A">
+  <template #question>
+    Wireshark 에서 `host 192.168.1.100` 필터는 무엇을 필터링합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>192.168.1.100 으로 들어오거나 나가는 모든 트래픽</BaseQuizOption>
+  <BaseQuizOption value="B">192.168.1.100 에서 나가는 트래픽만</BaseQuizOption>
+  <BaseQuizOption value="C">192.168.1.100 으로 들어오는 트래픽만</BaseQuizOption>
+  <BaseQuizOption value="D">192.168.1.100 포트의 트래픽</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `host` 필터는 지정된 IP 주소가 소스 또는 목적지인 모든 트래픽을 캡처합니다. 소스 전용 필터링은 `src host`를, 목적지 전용 필터링은 `dst host`를 사용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 포트 필터링
 
@@ -52,6 +67,21 @@ port 53
 # 포트 범위
 portrange 1000-2000
 ```
+
+<BaseQuiz id="wireshark-port-1" correct="D">
+  <template #question>
+    Wireshark 에서 `port 80` 필터는 무엇을 필터링합니까?
+  </template>
+  
+  <BaseQuizOption value="A">HTTP 요청만</BaseQuizOption>
+  <BaseQuizOption value="B">HTTP 응답만</BaseQuizOption>
+  <BaseQuizOption value="C">TCP 패킷만</BaseQuizOption>
+  <BaseQuizOption value="D" correct>포트 80 의 모든 트래픽 (소스 및 목적지 모두)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `port` 필터는 포트 80 이 소스 포트 또는 목적지 포트인 모든 트래픽을 캡처합니다. 이는 HTTP 요청 및 응답뿐만 아니라 포트 80 을 사용하는 모든 트래픽을 포함합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 프로토콜 필터링
 
@@ -73,7 +103,7 @@ arp
 여러 조건을 결합하여 정확하게 캡처합니다.
 
 ```bash
-# 특정 호스트와/또는 특정 호스트로의 HTTP 트래픽
+# 특정 호스트와 주고받는 HTTP 트래픽
 host 192.168.1.100 and port 80
 # SSH를 제외한 TCP 트래픽
 tcp and not port 22
@@ -82,6 +112,21 @@ host 192.168.1.100 and host 192.168.1.200
 # HTTP 또는 HTTPS 트래픽
 port 80 or port 443
 ```
+
+<BaseQuiz id="wireshark-advanced-1" correct="B">
+  <template #question>
+    `tcp and not port 22` 필터는 무엇을 캡처합니까?
+  </template>
+  
+  <BaseQuizOption value="A">SSH 트래픽만</BaseQuizOption>
+  <BaseQuizOption value="B" correct>SSH (포트 22) 를 제외한 모든 TCP 트래픽</BaseQuizOption>
+  <BaseQuizOption value="C">포트 22 의 UDP 트래픽</BaseQuizOption>
+  <BaseQuizOption value="D">모든 네트워크 트래픽</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    이 필터는 모든 TCP 트래픽을 캡처하지만 포트 22(SSH) 는 제외합니다. `and not` 연산자는 지정된 포트를 제외하면서 나머지 모든 TCP 트래픽을 유지합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 인터페이스 선택
 
@@ -140,19 +185,19 @@ icmp
 소스 및 목적지 IP 주소로 패킷을 필터링합니다.
 
 ```bash
-# 특정 IP로부터의 트래픽
+# 특정 IP에서 오는 트래픽
 ip.src == 192.168.1.100
-# 특정 IP로의 트래픽
+# 특정 IP로 가는 트래픽
 ip.dst == 192.168.1.200
 # 두 IP 간의 트래픽
 ip.addr == 192.168.1.100
-# 서브넷으로부터의 트래픽
+# 서브넷에서 오는 트래픽
 ip.src_net == 192.168.1.0/24
 # 특정 IP 제외
 not ip.addr == 192.168.1.1
 ```
 
-### 포트 및 프로토콜 필터
+### 포트 및 프로토콜 필터링
 
 특정 포트 및 프로토콜 세부 정보로 필터링합니다.
 
@@ -217,7 +262,7 @@ tcp.flags.syn == 1
 tcp.flags.reset == 1
 # TCP 재전송
 tcp.analysis.retransmission
-# TCP 윈도우 업데이트 문제
+# TCP 윈도우 크기 문제
 tcp.analysis.window_update
 # TCP 연결 설정
 tcp.flags.syn == 1 and tcp.flags.ack == 0
@@ -236,7 +281,7 @@ tls.handshake.certificate
 tls.alert
 # 특정 TLS 버전
 tls.handshake.version == 0x0303
-# TLS 서버 이름 표시 (SNI)
+# TLS Server Name Indication
 tls.handshake.extensions_server_name
 ```
 
@@ -259,7 +304,7 @@ frame.len > 1500
 
 ### 시간 기반 필터링
 
-타임스탬프 및 타이밍별로 패킷을 필터링합니다.
+타임스탬프 및 타이밍별로 필터링합니다.
 
 ```bash
 # 시간 범위 내의 패킷
@@ -276,13 +321,13 @@ frame.time_delta > 0.1
 
 ### 프로토콜 계층 구조
 
-캡처에서 프로토콜 분포를 확인합니다.
+캡처 내 프로토콜 분포를 확인합니다.
 
 ```bash
 # 다음을 통해 액세스: 통계 > 프로토콜 계층 구조
-# 각 프로토콜의 백분율 표시
+# 각 프로토콜의 비율 표시
 # 가장 일반적인 프로토콜 식별
-# 트래픽 개요에 유용
+# 트래픽 개요 파악에 유용
 # 명령줄 동등 항목
 tshark -r capture.pcap -q -z io,phs
 ```
@@ -296,7 +341,7 @@ tshark -r capture.pcap -q -z io,phs
 # 이더넷 대화
 # IPv4/IPv6 대화
 # TCP/UDP 대화
-# 전송된 바이트, 패킷 수 표시
+# 전송된 바이트 수, 패킷 수 표시
 # 명령줄 동등 항목
 tshark -r capture.pcap -q -z conv,tcp
 ```
@@ -324,11 +369,11 @@ tshark -r capture.pcap -q -z conv,tcp
 # 패킷 전송 오류
 # 성능 문제
 # 보안 우려 사항
-# 전문가 정보 심각도별 필터링
+# 심각도별 전문가 정보 필터링
 tcp.analysis.flags
 ```
 
-### 흐름 그래프 (Flow Graphs)
+### 흐름 그래프 (Flow Graph)
 
 엔드포인트 간의 패킷 흐름을 시각화합니다.
 
@@ -350,12 +395,12 @@ tcp.analysis.flags
 # DNS 응답 시간
 # 통계 > DNS
 # TCP 서비스 응답 시간
-# 통계 > TCP 스트림 그래프 > 시간 순서
+# 통계 > TCP 스트림 그래프 > 시간 시퀀스
 ```
 
 ## 파일 작업 및 내보내기
 
-### 캡처 저장 및 로드
+### 캡처 파일 저장 및 로드
 
 다양한 형식으로 캡처 파일을 관리합니다.
 
@@ -379,15 +424,15 @@ tcp.analysis.flags
 # 파일 > 지정된 패킷 내보내기
 # 패킷 분해 내보내기
 # 파일 > 패킷 분해 내보내기
-# HTTP에서 객체 내보내기
-# 파일 > 객체 내보내기 > HTTP
+# HTTP에서 개체 내보내기
+# 파일 > 개체 내보내기 > HTTP
 # SSL/TLS 키 내보내기
 # 편집 > 환경 설정 > 프로토콜 > TLS
 ```
 
 ### 명령줄 캡처
 
-자동화된 캡처 및 분석을 위해 tshark 사용.
+자동화된 캡처 및 분석을 위해 tshark 를 사용합니다.
 
 ```bash
 # 파일로 캡처
@@ -422,7 +467,7 @@ editcap -A "2024-01-01 10:00:00" \
 대용량 캡처 파일을 효율적으로 처리합니다.
 
 ```bash
-# 연속 캡처를 위해 링 버퍼 사용
+# 연속 캡처를 위한 링 버퍼 사용
 -b filesize:100 -b files:10
 # 패킷 캡처 크기 제한
 -s 96  # 처음 96바이트만 캡처
@@ -434,19 +479,16 @@ host 192.168.1.100 and port 80
 
 ### 디스플레이 최적화
 
-대용량 데이터 세트에서 GUI 성능 개선.
+대용량 데이터 세트에서 GUI 성능을 개선합니다.
 
 ```bash
 # 조정할 환경 설정:
 # 편집 > 환경 설정 > 모양
 # 색 구성표 선택
-# 글꼴 크기 및 유형
-# 열 표시 옵션
-# 시간 형식 설정
-# 보기 > 시간 표시 형식
-# 캡처 시작 이후 경과 시간
-# 현재 시간
-# UTC 시간
+# 글꼴 크기 및 유형 조정 필요 시
+# 편집 > 환경 설정 > 프로토콜
+# 불필요한 프로토콜 분해기 비활성화
+# TCP 재조립 감소
 # 대용량 파일 분석을 위해 tshark 사용
 tshark -r large.pcap -q -z conv,tcp
 ```
@@ -491,7 +533,8 @@ grep -v "Filter:" | head -20
 # wireshark.org에서 다운로드
 # 관리자 권한으로 설치 프로그램 실행
 # 설치 중 WinPcap/Npcap 포함
-# (초콜릿) 명령줄 설치
+# 명령줄 설치
+(chocolatey)
 choco install wireshark
 # 설치 확인
 wireshark --version
@@ -545,21 +588,21 @@ brew install wireshark
 
 ### 프로토콜 설정
 
-프로토콜 분해 및 디코딩을 구성합니다.
+프로토콜 분해기 및 디코딩을 구성합니다.
 
 ```bash
 # 편집 > 환경 설정 > 프로토콜
-# 프로토콜 분해 프로그램 활성화/비활성화
+# 프로토콜 분해기 활성화/비활성화
 # 포트 할당 구성
 # 암호 해독 키 설정 (TLS, WEP 등)
 # TCP 재조립 옵션
-# Decode As 기능
-# 분석 > 다른 것으로 디코드
+# 다음으로 디코드 기능
+# 분석 > 다음으로 디코드
 ```
 
 ### 디스플레이 환경 설정
 
-사용자 인터페이스 및 디스플레이 옵션을 사용자 정의합니다.
+사용자 인터페이스 및 디스플레이 옵션을 사용자 지정합니다.
 
 ```bash
 # 편집 > 환경 설정 > 모양
@@ -569,7 +612,7 @@ brew install wireshark
 # 시간 형식 설정
 # 보기 > 시간 표시 형식
 # 캡처 시작 이후 경과 시간
-# 현재 시간
+# 현지 시간
 # UTC 시간
 ```
 
@@ -608,7 +651,7 @@ not icmp
 
 ### 문자열 일치
 
-패킷 내의 특정 콘텐츠를 검색합니다.
+패킷 내 특정 콘텐츠를 검색합니다.
 
 ```bash
 # 문자열 포함 (대소문자 구분)
@@ -626,7 +669,7 @@ eth.src[0:3] == 00:11:22
 패킷 필드를 값 및 범위와 비교합니다.
 
 ```bash
-# 등가성
+# 등호
 tcp.srcport == 80
 # 보다 큼/보다 작음
 frame.len > 1000
@@ -679,7 +722,7 @@ icmp.type == 3 and icmp.code == 4
 ```bash
 # 포트 스캔 감지
 tcp.flags.syn == 1 and tcp.flags.ack == 0
-# 단일 IP로부터의 많은 연결 수
+# 단일 IP에서 많은 수의 연결
 # 통계 > 대화 참조
 # 의심스러운 DNS 쿼리
 dns.qry.name contains "dga" or dns.qry.name matches
@@ -708,7 +751,7 @@ rtp.jitter > 30 or rtp.marker == 1
 
 ### 프로토콜 조사
 
-특정 프로토콜 및 동작에 대해 심층적으로 조사합니다.
+특정 프로토콜 및 동작을 심층적으로 조사합니다.
 
 ```bash
 # 이메일 트래픽 분석

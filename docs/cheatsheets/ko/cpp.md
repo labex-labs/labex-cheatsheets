@@ -1,6 +1,6 @@
 ---
-title: 'C++ 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 C++ 를 학습하세요.'
+title: 'C++ 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 C++ 프로그래밍을 학습하세요. 소프트웨어 개발자를 위한 C++ 구문, OOP, STL, 템플릿, 메모리 관리 및 최신 C++ 기능에 대한 빠른 참조입니다.'
 pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ C++ 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/cpp">Hands-On Labs 로 C++ 배우기</a>
+<a target="_blank" href="https://labex.io/ko/learn/cpp">Hands-On 실습으로 C++ 배우기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 기반 랩과 실제 시나리오를 통해 C++ 프로그래밍을 배우십시오. LabEx 는 필수 구문, 객체 지향 프로그래밍, STL 컨테이너, 메모리 관리 및 고급 기술을 다루는 포괄적인 C++ 강좌를 제공합니다. C++ 의 강력한 기능을 마스터하여 고성능 애플리케이션 및 시스템 소프트웨어를 구축하십시오.
+실습 랩과 실제 시나리오를 통해 C++ 프로그래밍을 배우십시오. LabEx 는 필수 구문, 객체 지향 프로그래밍, STL 컨테이너, 메모리 관리 및 고급 기술을 다루는 포괄적인 C++ 강좌를 제공합니다. C++ 의 강력한 기능을 마스터하여 고성능 애플리케이션 및 시스템 소프트웨어를 구축하십시오.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -56,8 +56,8 @@ using namespace std;
 ```cpp
 // 단일 행 주석
 /*
-여러 행에 걸친
-다중 행 주석
+다중 행 주석은
+여러 줄에 걸쳐 있습니다
 */
 // TODO: 기능 구현
 /* FIXME: 이 섹션의 버그 */
@@ -79,9 +79,24 @@ int main(int argc, char* argv[]) {
 }
 ```
 
+<BaseQuiz id="cpp-main-1" correct="B">
+  <template #question>
+    C 와 C++ 출력문 간의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>C 는 printf() 를 사용하고, C++ 는 << 연산자와 함께 cout 을 사용합니다</BaseQuizOption>
+  <BaseQuizOption value="C">C++ 는 출력을 지원하지 않습니다</BaseQuizOption>
+  <BaseQuizOption value="D">C 는 cout 을 사용하고, C++ 는 printf 를 사용합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C 는 stdio.h 에서 `printf()`를 사용하는 반면, C++ 는 iostream 에서 스트림 삽입 연산자 `<<`와 함께 `cout`을 사용합니다. C++ 는 호환성을 위해 printf 도 지원합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 기본 출력
 
-콘솔에 텍스트 및 변수 표시.
+텍스트와 변수를 콘솔에 표시.
 
 ```cpp
 cout << "Hello" << endl;
@@ -139,6 +154,21 @@ vector<int> dynamic_array = {10, 20, 30};
 vector<string> names(5); // 크기 5, 빈 문자열
 ```
 
+<BaseQuiz id="cpp-vector-1" correct="B">
+  <template #question>
+    일반 배열에 비해 `vector` 의 주요 장점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">벡터가 더 빠릅니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>배열은 크기가 고정되어 있지만 벡터는 동적으로 크기를 조정할 수 있습니다</BaseQuizOption>
+  <BaseQuizOption value="C">벡터가 메모리를 덜 사용합니다</BaseQuizOption>
+  <BaseQuizOption value="D">장점이 없습니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `vector` 는 런타임에 크기가 늘어나거나 줄어들 수 있는 동적 배열인 반면, 일반 배열은 컴파일 시간에 크기가 고정됩니다. 이로 인해 벡터는 많은 사용 사례에서 더 유연합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 상수 및 Auto
 
 불변 값 및 자동 타입 추론.
@@ -160,7 +190,7 @@ using real = double;
 
 ### 조건문
 
-조건에 따른 결정 내리기.
+조건에 따라 의사 결정.
 
 ```cpp
 // If-else 문
@@ -200,11 +230,26 @@ vector<int> numbers = {1, 2, 3, 4, 5};
 for (int num : numbers) {
     cout << num << " ";
 }
-// 범위 기반 루프와 Auto
+// 범위 기반 루프에서 auto 사용
 for (auto& item : container) {
     // item 처리
 }
 ```
+
+<BaseQuiz id="cpp-range-for-1" correct="B">
+  <template #question>
+    C++ 에서 범위 기반 for 루프란 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">배열에서만 작동하는 루프입니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>컨테이너의 모든 요소를 자동으로 반복하는 루프입니다</BaseQuizOption>
+  <BaseQuizOption value="C">영원히 실행되는 루프입니다</BaseQuizOption>
+  <BaseQuizOption value="D">수동 인덱스 관리가 필요한 루프입니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    범위 기반 for 루프 (C++11 에서 도입) 는 인덱스를 수동으로 관리할 필요 없이 컨테이너 (벡터, 배열, 문자열 등) 의 모든 요소를 자동으로 반복합니다. 구문은 `for (auto item : container)`입니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### While 루프
 
@@ -232,7 +277,7 @@ Break 및 continue 문.
 ```cpp
 for (int i = 0; i < 10; i++) {
     if (i == 3) {
-        continue; // 반복 건너뛰기
+        continue; // 현재 반복 건너뛰기
     }
     if (i == 7) {
         break;    // 루프 종료
@@ -308,13 +353,13 @@ greet("Bob", "Good morning"); // 사용자 지정 인사말 사용
 ```cpp
 // 값으로 전달 (복사본)
 void changeValue(int x) {
-    x = 100; // 원본 변수 변경 안 됨
+    x = 100; // 원본 변수는 변경되지 않음
 }
 // 참조로 전달
 void changeReference(int& x) {
     x = 100; // 원본 변수 수정됨
 }
-// Const 참조 (읽기 전용, 효율적)
+// const 참조 (읽기 전용, 효율적)
 void processLargeData(const vector<int>& data) {
     // 데이터를 읽을 수는 있지만 수정할 수는 없음
 }
@@ -372,7 +417,7 @@ delete rect3; // 메모리 정리
 
 ### 상속
 
-기반 클래스로부터 파생 클래스 생성.
+기반 클래스로부터 특수화된 클래스 생성.
 
 ```cpp
 class Shape {
@@ -465,7 +510,7 @@ ref = 20;      // x 를 20 으로 변경
 int* ptr = &x; // x 의 주소를 가리킴
 *ptr = 30;     // 역참조하여 x 변경
 ptr = nullptr; // 아무것도 가리키지 않을 수 있음
-// Const 변형
+// const 변형
 const int* ptr1 = &x;    // 값 변경 불가
 int* const ptr2 = &x;    // 주소 변경 불가
 const int* const ptr3 = &x; // 둘 다 변경 불가
@@ -490,20 +535,20 @@ delete[] heap_array;
 
 ## 표준 템플릿 라이브러리 (STL)
 
-### 컨테이너: Vector 및 String
+### 컨테이너: 벡터 및 문자열
 
 동적 배열 및 문자열 조작.
 
 ```cpp
 #include <vector>
 #include <string>
-// Vector 작업
+// 벡터 작업
 vector<int> nums = {1, 2, 3};
 nums.push_back(4);        // 요소 추가
 nums.pop_back();          // 마지막 요소 제거
 nums.insert(nums.begin() + 1, 10); // 위치에 삽입
 nums.erase(nums.begin()); // 첫 번째 요소 제거
-// String 작업
+// 문자열 작업
 string text = "Hello";
 text += " World";         // 연결
 text.append("!");         // 추가
@@ -511,19 +556,19 @@ cout << text.substr(0, 5) << endl; // 부분 문자열
 text.replace(6, 5, "C++"); // "World"를 "C++"로 대체
 ```
 
-### 컨테이너: Map 및 Set
+### 컨테이너: 맵 및 셋
 
 키 - 값 쌍 및 고유 요소 저장을 위한 연관 컨테이너.
 
 ```cpp
 #include <map>
 #include <set>
-// Map (키 - 값 쌍)
+// 맵 (키 - 값 쌍)
 map<string, int> ages;
 ages["Alice"] = 25;
 ages["Bob"] = 30;
 ages.insert({"Charlie", 35});
-// Set (고유 요소)
+// 셋 (고유 요소)
 set<int> unique_nums = {3, 1, 4, 1, 5, 9};
 unique_nums.insert(2);
 unique_nums.erase(1);
@@ -561,7 +606,7 @@ vector<string> words = {"hello", "world", "cpp"};
 // 반복자 타입
 vector<string>::iterator it;
 auto it2 = words.begin(); // C++11 auto
-// 컨테이너 순회
+// 컨테이너 반복
 for (it = words.begin(); it != words.end(); ++it) {
     cout << *it << " ";
 }
@@ -603,7 +648,7 @@ if (!file.good()) {
 
 ### 문자열 스트림 처리
 
-문자열을 스트림처럼 구문 분석 및 조작.
+문자열을 스트림처럼 구문 분석하고 조작.
 
 ```cpp
 #include <sstream>
@@ -716,7 +761,7 @@ try {
 
 ### RAII 패턴
 
-안전한 리소스 관리를 위한 리소스 획득은 초기화.
+안전한 리소스 관리를 위한 리소스 획득은 초기화 (RAII).
 
 ```cpp
 // 스마트 포인터를 사용한 RAII
@@ -881,7 +926,7 @@ if (ptr != nullptr) {
 void processData(const vector<int>& data) {
     // 큰 객체 복사 방지
 }
-// 반복자의 경우 전위 증가 사용
+// 반복자의 경우 전위 증가 (pre-increment) 사용
 for (auto it = vec.begin(); it != vec.end(); ++it) {
     // ++it 가 it++ 보다 종종 빠름
 }

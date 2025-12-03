@@ -1,6 +1,6 @@
 ---
-title: 'MongoDB 速查表'
-description: '使用我们的 MongoDB 速查表学习，涵盖核心命令、概念和最佳实践。'
+title: 'MongoDB 速查表 | LabEx'
+description: '使用本综合速查表学习 MongoDB NoSQL 数据库。MongoDB 查询、聚合、索引、分片、复制和文档数据库管理的快速参考。'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ MongoDB 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/mongodb">通过实践实验室学习 MongoDB</a>
+<a target="_blank" href="https://labex.io/zh/learn/mongodb">使用实战实验学习 MongoDB</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 MongoDB NoSQL 数据库管理。LabEx 提供全面的 MongoDB 课程，涵盖基本操作、文档查询、聚合管道、索引策略和高级技术。掌握 MongoDB 的面向文档的数据模型，以构建可扩展且灵活的数据库应用程序。
+通过实战实验和真实场景学习 MongoDB NoSQL 数据库管理。LabEx 提供全面的 MongoDB 课程，涵盖基本操作、文档查询、聚合管道、索引策略和高级技术。掌握 MongoDB 的面向文档数据模型，以构建可扩展且灵活的数据库应用程序。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -47,6 +47,21 @@ use myapp
 use newdb
 db.users.insertOne({name: "John"})
 ```
+
+<BaseQuiz id="mongodb-use-1" correct="B">
+  <template #question>
+    在 MongoDB 中运行 `use newdb` 会发生什么？
+  </template>
+  
+  <BaseQuizOption value="A">它会立即创建数据库</BaseQuizOption>
+  <BaseQuizOption value="B" correct>它会切换到该数据库（首次插入数据时创建）</BaseQuizOption>
+  <BaseQuizOption value="C">它会删除数据库</BaseQuizOption>
+  <BaseQuizOption value="D">它会显示数据库中的所有集合</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `use` 命令会切换到数据库，但 MongoDB 在你插入第一个文档之前不会创建该数据库。这是一种惰性创建方法。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 删除数据库：`db.dropDatabase()`
 
@@ -88,7 +103,7 @@ db.createCollection('logs', {
 
 ### 删除集合：`db.collection.drop()`
 
-删除集合及其所有文档。
+删除一个集合及其所有文档。
 
 ```javascript
 // 删除 users 集合
@@ -136,7 +151,7 @@ db.users.findOne({}, { _id: 0 })
 db.users.find().limit(5)
 // 跳过和限制（分页）
 db.users.find().skip(10).limit(5)
-// 漂亮的格式
+// 漂亮格式化输出
 db.users.find().pretty()
 ```
 
@@ -161,6 +176,21 @@ db.users.insertOne({
 })
 ```
 
+<BaseQuiz id="mongodb-insert-1" correct="A">
+  <template #question>
+    `db.users.insertOne()` 返回什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>包含被插入文档 _id 的确认对象</BaseQuizOption>
+  <BaseQuizOption value="B">被插入的文档</BaseQuizOption>
+  <BaseQuizOption value="C">无</BaseQuizOption>
+  <BaseQuizOption value="D">插入的文档数量</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `insertOne()` 返回一个包含 `acknowledged: true` 和 `insertedId`（包含被插入文档的 `_id`，如果提供了自定义 `_id` 则为自定义 `_id`）的确认对象。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 插入多个：`db.collection.insertMany()`
 
 在单个操作中添加多个文档。
@@ -182,7 +212,7 @@ db.users.insertMany(
 )
 ```
 
-### 插入日期：`new Date()`
+### 插入带日期：`new Date()`
 
 添加带有时间戳字段的文档。
 
@@ -201,7 +231,7 @@ db.posts.insertOne({
 添加包含嵌入式对象和数组的文档。
 
 ```javascript
-// 插入带嵌套对象的文档
+// 插入嵌套对象
 db.users.insertOne({
   name: 'John Doe',
   address: {
@@ -258,6 +288,21 @@ db.users.find({ status: { $ne: 'inactive' } })
 db.users.find({ email: { $exists: true } })
 ```
 
+<BaseQuiz id="mongodb-query-1" correct="B">
+  <template #question>
+    MongoDB 查询中的 `$gt` 是什么意思？
+  </template>
+  
+  <BaseQuizOption value="A">大于或等于</BaseQuizOption>
+  <BaseQuizOption value="B" correct>大于</BaseQuizOption>
+  <BaseQuizOption value="C">分组依据</BaseQuizOption>
+  <BaseQuizOption value="D">获取总数</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$gt` 是一个比较操作符，表示“大于”。它用于 `{ age: { $gt: 25 } }` 这样的查询中，以查找 age 字段大于 25 的文档。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 文本搜索：`$text`, `$regex`
 
 使用文本和模式匹配搜索文档。
@@ -265,7 +310,7 @@ db.users.find({ email: { $exists: true } })
 ```javascript
 // 文本搜索 (需要文本索引)
 db.posts.find({ $text: { $search: 'mongodb tutorial' } })
-// Regex 搜索
+// 正则表达式搜索
 db.users.find({ name: { $regex: '^John', $options: 'i' } })
 // 不区分大小写的搜索
 db.users.find({ email: { $regex: '@gmail.com$' } })
@@ -316,7 +361,25 @@ db.users.updateOne(
 )
 // 推送到数组
 db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
-// 从数组中拉取
+```
+
+<BaseQuiz id="mongodb-update-1" correct="C">
+  <template #question>
+    MongoDB 更新操作中的 `$set` 执行什么操作？
+  </template>
+  
+  <BaseQuizOption value="A">删除一个字段</BaseQuizOption>
+  <BaseQuizOption value="B">向数组添加一个元素</BaseQuizOption>
+  <BaseQuizOption value="C" correct>设置一个字段的值</BaseQuizOption>
+  <BaseQuizOption value="D">从数组中移除一个元素</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$set` 操作符用于设置文档中某个字段的值。如果该字段不存在，则创建它。如果存在，则更新其值。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```javascript
+// 从数组中拉取 (移除)
 db.users.updateOne({ name: 'John' }, { $pull: { hobbies: 'reading' } })
 ```
 
@@ -343,9 +406,9 @@ db.users.replaceOne(
 通过聚合管道阶段处理数据。
 
 ```javascript
-// 分组和计数
+// 分组并计数
 db.users.aggregate([{ $group: { _id: '$status', count: { $sum: 1 } } }])
-// 匹配和分组
+// 匹配并分组
 db.orders.aggregate([
   { $match: { status: 'completed' } },
   { $group: { _id: '$customerId', total: { $sum: '$amount' } } },
@@ -377,7 +440,7 @@ db.sales.aggregate([
 计算统计值并执行数学运算。
 
 ```javascript
-// 统计操作
+// 统计运算
 db.products.aggregate([
   {
     $group: {
@@ -396,7 +459,7 @@ db.products.aggregate([
 转换文档结构并创建计算字段。
 
 ```javascript
-// 投影和计算字段
+// 投影并计算字段
 db.users.aggregate([
   {
     $project: {
@@ -431,7 +494,7 @@ db.posts.deleteOne({ status: 'draft', author: 'unknown' })
 ```javascript
 // 删除多个文档
 db.users.deleteMany({ status: 'inactive' })
-// 删除所有文档 (请小心!)
+// 删除所有文档 (请小心！)
 db.temp_collection.deleteMany({})
 // 带日期条件的删除
 db.logs.deleteMany({
@@ -446,7 +509,7 @@ db.logs.deleteMany({
 ```javascript
 // 查找并删除
 const deletedDoc = db.users.findOneAndDelete({ status: 'pending' })
-// 带选项的查找并删除
+// 查找并删除带选项
 db.queue.findOneAndDelete({ processed: false }, { sort: { priority: -1 } })
 ```
 
@@ -489,7 +552,7 @@ db.users.dropIndexes()
 ```javascript
 // 解释查询执行
 db.users.find({ age: { $gt: 25 } }).explain('executionStats')
-// 检查是否使用了索引
+// 检查索引是否被使用
 db.users.find({ email: 'john@example.com' }).explain()
 // 分析聚合性能
 db.users
@@ -566,7 +629,7 @@ print('用户年龄：' + user.age)
 
 ### 导入数据：`mongoimport`
 
-从 JSON、CSV 或 TSV 文件加载数据到 MongoDB。
+将 JSON、CSV 或 TSV 文件中的数据加载到 MongoDB。
 
 ```bash
 # 导入 JSON 文件
@@ -662,7 +725,7 @@ docker exec -it mongodb mongosh
 # 从 mongodb.com 下载
 # 使用连接字符串连接
 mongodb://localhost:27017
-# 可用功能:
+# 可用功能：
 # - 可视化查询构建器
 # - 模式分析
 # - 性能监控
@@ -673,7 +736,7 @@ mongodb://localhost:27017
 
 ### 身份验证：创建用户
 
-设置具有适当角色和权限的数据库用户。
+使用适当的角色和权限设置数据库用户。
 
 ```javascript
 // 创建管理员用户
@@ -694,7 +757,7 @@ db.createUser({
 
 ### 启用身份验证
 
-配置 MongoDB 要求进行身份验证。
+配置 MongoDB 要求身份验证。
 
 ```bash
 # 编辑 /etc/mongod.conf
@@ -784,9 +847,9 @@ db.runCommand({ connPoolStats: 1 })
 启用分析以分析慢速操作。
 
 ```javascript
-// 启用慢速操作 (>100ms) 的分析
+// 为慢速操作 (>100ms) 启用分析
 db.setProfilingLevel(1, { slowms: 100 })
-// 启用所有操作的分析
+// 为所有操作启用分析
 db.setProfilingLevel(2)
 // 查看分析器数据
 db.system.profile.find().sort({ ts: -1 }).limit(5)
@@ -798,7 +861,7 @@ db.setProfilingLevel(0)
 
 ### 事务：`session.startTransaction()`
 
-使用多文档事务来保证数据一致性。
+使用多文档事务确保数据一致性。
 
 ```javascript
 // 启动会话和事务
@@ -827,9 +890,9 @@ try {
 // 监控集合变化
 const changeStream = db.users.watch()
 changeStream.on('change', (change) => {
-  console.log('检测到变更：', change)
+  console.log('检测到变化：', change)
 })
-// 带过滤器的监控
+// 带过滤条件监控
 const pipeline = [{ $match: { operationType: 'insert' } }]
 const changeStream = db.users.watch(pipeline)
 ```

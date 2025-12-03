@@ -1,6 +1,6 @@
 ---
 title: 'Linux チートシート | LabEx'
-description: 'この包括的なチートシートで Linux 管理を習得。Linux コマンド、ファイル管理、システム管理、ネットワーキング、シェルスクリプトのクイックリファレンス。'
+description: 'この包括的なチートシートで Linux 管理を学ぶ。Linux コマンド、ファイル管理、システム管理、ネットワーキング、シェルスクリプトのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Linux チートシート
 <a href="https://linux-commands.labex.io/" target="_blank">Linux コマンドにアクセス</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-包括的な Linux コマンドリファレンス資料、構文例、詳細なドキュメントについては、<a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>をご覧ください。この独立したサイトでは、Linux 管理者および開発者向けに、必須コマンド、概念、ベストプラクティスを網羅した広範な Linux チートシートを提供しています。
+包括的な Linux コマンドリファレンス資料、構文例、および詳細なドキュメントについては、<a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>をご覧ください。この独立したサイトでは、Linux 管理者および開発者向けの必須コマンド、概念、ベストプラクティスを網羅した広範な Linux チートシートを提供しています。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -55,10 +55,10 @@ df -h
 
 ### システム稼働時間：`uptime`
 
-システムの稼働時間とロードアベレージを表示します。
+システムの稼働時間と負荷平均を表示します。
 
 ```bash
-# システム稼働時間とロード
+# システム稼働時間と負荷
 uptime
 # より詳細な稼働時間情報
 uptime -p
@@ -103,11 +103,11 @@ echo $PATH
 ```bash
 # 現在の日付と時刻
 date
-# システム時刻を設定（rootとして）
+# システム時刻の設定（rootとして）
 date MMddhhmmyyyy
 # タイムゾーン情報
 timedatectl
-# タイムゾーンを設定
+# タイムゾーンの設定
 timedatectl set-timezone America/New_York
 ```
 
@@ -124,13 +124,13 @@ ls
 ls -l
 # 隠しファイルを表示
 ls -la
-# 人間が読みやすいファイルサイズ
+# 人間が読めるファイルサイズ
 ls -lh
-# 更新時刻でソート
+# 変更時刻順にソート
 ls -lt
 ```
 
-### ディレクトリの移動：`cd`, `pwd`
+### ディレクトリ移動：`cd`, `pwd`
 
 ディレクトリを変更し、現在の場所を表示します。
 
@@ -139,7 +139,7 @@ ls -lt
 cd
 # 特定のディレクトリに移動
 cd /path/to/directory
-# 一つ上の階層に移動
+# 1階層上に移動
 cd ..
 # 現在のディレクトリを表示
 pwd
@@ -149,7 +149,7 @@ cd -
 
 <BaseQuiz id="linux-cd-pwd-1" correct="B">
   <template #question>
-    カレントワーキングディレクトリを表示するコマンドはどれですか？
+    現在の作業ディレクトリを表示するコマンドはどれですか？
   </template>
   
   <BaseQuizOption value="A">cd</BaseQuizOption>
@@ -158,7 +158,7 @@ cd -
   <BaseQuizOption value="D">whoami</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pwd` コマンド（print working directory）は、現在いるディレクトリのフルパスを表示します。
+    `pwd` コマンド（print working directory）は、現在いるディレクトリの完全なパスを表示します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -186,7 +186,7 @@ rm -rf dirname
 ```bash
 # ファイル全体を表示
 cat filename
-# ページネーション付きでファイルを表示
+# ページネーション付きで表示
 less filename
 # 最初の10行を表示
 head filename
@@ -205,7 +205,7 @@ tail -f logfile
 cp source.txt destination.txt
 # ディレクトリを再帰的にコピー
 cp -r sourcedir/ destdir/
-# ファイルの移動/名前変更
+# ファイルを移動/名前変更
 mv oldname.txt newname.txt
 # 別のディレクトリに移動
 mv file.txt /path/to/destination/
@@ -224,7 +224,7 @@ find /path -name "filename"
 find /path -mtime -7
 # ファイルタイプで検索
 find /path -type f -name "*.txt"
-# 迅速にファイルを検索（updatedbが必要）
+# ファイルを素早く見つける（dbの更新が必要）
 locate filename
 # 検索してコマンドを実行
 find /path -name "*.log" -exec rm {} \;
@@ -243,7 +243,7 @@ chmod +x script.sh
 chown user:group filename
 # 所有権の再帰的な変更
 chown -R user:group directory/
-# ファイル権限の表示
+# ファイルの権限を表示
 ls -l filename
 ```
 
@@ -258,7 +258,7 @@ ls -l filename
   <BaseQuizOption value="D">所有者には読み取り、書き込み。グループとその他には読み取り</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` は以下を設定します：所有者 = 7 (rwx)、グループ = 5 (r-x)、その他 = 5 (r-x)。これは実行可能ファイルとディレクトリの一般的な権限設定です。
+    `chmod 755` は以下を設定します：所有者 = 7 (rwx)、グループ = 5 (r-x)、その他 = 5 (r-x)。これは実行可能ファイルやディレクトリの一般的な権限設定です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -271,7 +271,7 @@ ls -l filename
 ```bash
 # ユーザープロセスを表示
 ps
-# 詳細付きですべてのプロセスを表示
+# 詳細付きで全プロセスを表示
 ps aux
 # プロセスツリーを表示
 ps -ef --forest
@@ -320,7 +320,7 @@ kill -HUP 1234
 ```bash
 # アクティブなジョブを一覧表示
 jobs
-# ジョブをバックグラウンドに送信
+# ジョブをバックグラウンドに送る
 bg %1
 # ジョブをフォアグラウンドに持ってくる
 fg %1
@@ -332,7 +332,7 @@ nohup command &
 
 ### システムモニター: `htop`, `systemctl`
 
-システムリソースとサービスを監視および管理します。
+システムリソースを監視し、サービスを管理します。
 
 ```bash
 # 強化されたプロセスビューア（インストールされている場合）
@@ -386,13 +386,13 @@ mtr google.com
     `ping -c 4` コマンドは何をしますか？
   </template>
   
-  <BaseQuizOption value="A">4 秒のタイムアウトで ping を実行</BaseQuizOption>
+  <BaseQuizOption value="A">4 秒間タイムアウトで ping を実行</BaseQuizOption>
   <BaseQuizOption value="B" correct>4 つの ping パケットを送信して停止</BaseQuizOption>
   <BaseQuizOption value="C">4 つの異なるホストに ping を実行</BaseQuizOption>
-  <BaseQuizOption value="D">ping ごとに 4 秒待機</BaseQuizOption>
+  <BaseQuizOption value="D">ping の間隔を 4 秒空ける</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-c` オプションは送信するパケット数を指定します。`ping -c 4`は正確に 4 つの ICMP エコーリクエストパケットを送信し、停止して結果を表示します。
+    `-c` オプションは送信するパケット数を指定します。`ping -c 4`は正確に 4 つの ICMP エコーリクエストパケットを送信し、その後停止して結果を表示します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -437,9 +437,9 @@ rsync -avz --progress src/ dest/
 ```bash
 # ファイル内のパターンを検索
 grep "pattern" filename
-# 大文字と小文字を区別しない検索
+# 大文字小文字を区別しない検索
 grep -i "pattern" filename
-# ディレクトリ内で再帰的に検索
+# ディレクトリ内を再帰的に検索
 grep -r "pattern" /path/
 # 行番号を表示
 grep -n "pattern" filename
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-i` オプションは grep を大文字と小文字を区別しないようにするため、「Error」、「ERROR」、「error」のすべてに一致します。例：`grep -i "error" file.txt`。
+    `-i` オプションは grep を大文字と小文字を区別しないようにするため、大文字と小文字の両方に一致します。例：`grep -i "error" file.txt` は "Error", "ERROR", "error" のすべてに一致します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -490,13 +490,13 @@ sort -n numbers.txt
 uniq filename
 # ソートして重複を削除
 sort filename | uniq
-# 行、単語、文字をカウント
+# 行数、単語数、文字数をカウント
 wc filename
-# 行のみをカウント
+# 行数のみカウント
 wc -l filename
 ```
 
-### カットとペースト：`cut`, `paste`
+### 抽出と貼り付け：`cut`, `paste`
 
 特定の列を抽出し、ファイルを結合します。
 
@@ -518,13 +518,13 @@ cut -d':' -f1,3 /etc/passwd
 圧縮アーカイブの作成と展開を行います。
 
 ```bash
-# tarアーカイブを作成
+# tarアーカイブの作成
 tar -cf archive.tar files/
-# 圧縮アーカイブを作成
+# 圧縮アーカイブの作成
 tar -czf archive.tar.gz files/
-# アーカイブを展開
+# アーカイブの展開
 tar -xf archive.tar
-# 圧縮アーカイブを展開
+# 圧縮アーカイブの展開
 tar -xzf archive.tar.gz
 # アーカイブの内容を一覧表示
 tar -tf archive.tar
@@ -539,9 +539,9 @@ tar -tf archive.tar
 gzip filename
 # gzipファイルを解凍
 gunzip filename.gz
-# zipアーカイブを作成
+# zipアーカイブの作成
 zip archive.zip file1 file2
-# zipアーカイブを展開
+# zipアーカイブの展開
 unzip archive.zip
 # zipの内容を一覧表示
 unzip -l archive.zip
@@ -552,7 +552,7 @@ unzip -l archive.zip
 バックアップとリストアのための高度な tar 操作。
 
 ```bash
-# 圧縮付きアーカイブを作成
+# 圧縮付きアーカイブの作成
 tar -czvf backup.tar.gz /home/user/
 # 特定のディレクトリに展開
 tar -xzf archive.tar.gz -C /destination/
@@ -564,12 +564,12 @@ tar -uf archive.tar files/
 
 ### ディスク使用量：`du`
 
-ディスク使用量を分析し、ディレクトリサイズを把握します。
+ディスク使用量を分析し、ディレクトリサイズを確認します。
 
 ```bash
 # ディレクトリサイズを表示
 du -h /path/
-# 合計サイズを要約
+# 合計サイズ
 du -sh /path/
 # すべてのサブディレクトリのサイズを表示
 du -h --max-depth=1 /path/
@@ -584,7 +584,7 @@ du -h | sort -hr | head -10
 メモリ使用量と仮想メモリ統計を監視します。
 
 ```bash
-# メモリ使用量の要約
+# メモリ使用量の概要
 free -h
 # 詳細なメモリ統計
 cat /proc/meminfo
@@ -598,29 +598,29 @@ swapon --show
 
 ### ディスク I/O: `iostat`, `iotop`
 
-ディスク入出力パフォーマンスを監視し、ボトルネックを特定します。
+ディスクの入出力パフォーマンスを監視し、ボトルネックを特定します。
 
 ```bash
 # I/O統計（sysstatが必要）
 iostat
-# 2秒ごとにI/O統計
+# 2秒ごとのI/O統計
 iostat 2
 # プロセスごとのディスクI/Oを監視
 iotop
-# 特定のデバイスのI/O使用量を表示
+# 特定デバイスのI/O使用量を表示
 iostat -x /dev/sda
 ```
 
-### システムロード：`top`, `htop`
+### システム負荷：`top`, `htop`
 
-システムロード、CPU 使用率、実行中のプロセスを監視します。
+システム負荷、CPU 使用率、実行中のプロセスを監視します。
 
 ```bash
 # リアルタイムプロセスモニター
 top
 # 強化されたプロセスビューア
 htop
-# ロードアベレージを表示
+# 負荷平均を表示
 uptime
 # CPU情報を表示
 lscpu
@@ -630,7 +630,7 @@ top -p PID
 
 ### ログファイル：`journalctl`, `dmesg`
 
-トラブルシューティングのためにシステムログを表示および分析します。
+システムログを表示および分析してトラブルシューティングを行います。
 
 ```bash
 # システムログを表示
@@ -681,9 +681,9 @@ usermod -aG groupname username
 usermod -g groupname username
 ```
 
-### ユーザーの切り替え：`su`, `sudo`
+### ユーザー切り替え：`su`, `sudo`
 
-ユーザーを切り替えたり、昇格した権限でコマンドを実行したりします。
+ユーザーを切り替え、昇格された権限でコマンドを実行します。
 
 ```bash
 # rootユーザーに切り替え
@@ -772,7 +772,7 @@ snap find packagename
 
 ### Flatpak パッケージ：`flatpak`
 
-サンドボックス化されたソフトウェアのための Flatpak アプリケーションを管理します。
+サンドボックス化されたソフトウェアのために Flatpak アプリケーションを管理します。
 
 ```bash
 # flatpakをインストール
@@ -796,9 +796,9 @@ flatpak search packagename
 ```bash
 # コマンド履歴を表示
 history
-# 最後の10件を表示
+# 最後の10件のコマンドを表示
 history 10
-# 直前のコマンドを実行
+# 前のコマンドを実行
 !!
 # 番号でコマンドを実行
 !123
@@ -855,11 +855,11 @@ export PATH=$PATH:/new/path
 printenv
 ```
 
-## システムのインストールと設定
+## システムのインストールとセットアップ
 
-### ディストリビューションの選択肢：Ubuntu, CentOS, Debian
+### ディストリビューションオプション：Ubuntu, CentOS, Debian
 
-異なるユースケースのために Linux ディストリビューションを選択し、インストールします。
+異なるユースケースのために Linux ディストリビューションを選択してインストールします。
 
 ```bash
 # Ubuntu Server
@@ -877,10 +877,10 @@ sha256sum linux.iso
 ブータブルメディアを作成し、システムインストールを実行します。
 
 ```bash
-# ブータブルUSBを作成（Linux）
+# ブータブルUSBの作成（Linux）
 dd if=linux.iso of=/dev/sdX bs=4M
-# ブータブルUSBを作成（クロスプラットフォーム）
-# Rufus、Etcher、またはUNetbootinなどのツールを使用
+# ブータブルUSBの作成（クロスプラットフォーム）
+# Rufus, Etcher, または UNetbootin などのツールを使用
 # ネットワークインストール
 # ネットワークインストール用にPXEブートを設定
 ```
@@ -894,7 +894,7 @@ dd if=linux.iso of=/dev/sdX bs=4M
 hostnamectl set-hostname newname
 # 静的IPを設定
 # Ubuntuでは /etc/netplan/ を編集
-# ネットワークインターフェースを設定するには /etc/network/interfaces を編集
+# または /etc/network/interfaces を編集
 # SSHサービスを有効化
 systemctl enable ssh
 systemctl start ssh
@@ -907,7 +907,7 @@ ufw allow ssh
 
 ### ファイアウォール設定：`ufw`, `iptables`
 
-ネットワーク脅威からシステムを保護するためにファイアウォールルールを設定します。
+ネットワークの脅威からシステムを保護するためにファイアウォールルールを設定します。
 
 ```bash
 # UFWファイアウォールを有効化
@@ -924,9 +924,9 @@ ufw status verbose
 iptables -L
 ```
 
-### ファイル整合性：`checksums`
+### ファイルの整合性：`checksums`
 
-ファイル整合性を検証し、不正な変更を検出します。
+ファイルの整合性を検証し、不正な変更を検出します。
 
 ```bash
 # MD5チェックサムを生成
@@ -956,7 +956,7 @@ apt list --upgradable
 
 ### ログ監視：セキュリティイベント
 
-セキュリティイベントと異常を監視するためにシステムログを分析します。
+セキュリティイベントと異常を検出するためにシステムログを監視します。
 
 ```bash
 # 認証ログを監視
@@ -967,7 +967,7 @@ grep "Failed password" /var/log/auth.log
 tail -f /var/log/syslog
 # ログイン履歴を確認
 last
-# 疑わしいアクティビティをチェック
+# 不審なアクティビティをチェック
 journalctl -p err
 ```
 
@@ -975,10 +975,10 @@ journalctl -p err
 
 ### ブートの問題：GRUB リカバリ
 
-ブートローダーとカーネルの問題から復旧します。
+ブートローダーとカーネルの問題からのリカバリ。
 
 ```bash
-# リカバリモードから起動
+# レスキューモードで起動
 # ブート中にGRUBメニューにアクセス
 # ルートファイルシステムをマウント
 mount /dev/sda1 /mnt
@@ -1024,12 +1024,12 @@ systemctl --failed
 
 ### パフォーマンスの問題：リソース分析
 
-システムのパフォーマンスのボトルネックを特定し、解決します。
+システムパフォーマンスのボトルネックを特定し解決します。
 
 ```bash
 # ディスク空き容量を確認
 df -h
-# I/O使用率を監視
+# I/O使用量を監視
 iotop
 # メモリ使用量を確認
 free -h

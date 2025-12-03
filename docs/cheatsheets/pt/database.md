@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Referência de Banco de Dados'
-description: 'Aprenda Banco de Dados com nossa folha de referência abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola de Base de Dados | LabEx'
+description: 'Aprenda gestão de bases de dados com esta folha de cola abrangente. Referência rápida para consultas SQL, design de base de dados, normalização, indexação, transações e administração de bases de dados relacionais.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Folha de Dicas de Banco de Dados
 <a target="_blank" href="https://labex.io/pt/learn/database">Aprenda Banco de Dados com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda gerenciamento de banco de dados e SQL através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de banco de dados cobrindo comandos SQL essenciais, manipulação de dados, otimização de consultas, design de banco de dados e práticas de administração. Domine bancos de dados relacionais, sistemas NoSQL e as melhores práticas de segurança de banco de dados.
+Aprenda gerenciamento de banco de dados e SQL através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de banco de dados cobrindo comandos SQL essenciais, manipulação de dados, otimização de consultas, design de banco de dados e melhores práticas de administração. Domine bancos de dados relacionais, sistemas NoSQL e melhores práticas de segurança de banco de dados.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -36,6 +36,21 @@ COLLATE utf8mb4_general_ci;
 USE company_db;
 ```
 
+<BaseQuiz id="database-create-1" correct="A">
+  <template #question>
+    O que `CREATE DATABASE company_db` faz?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Cria um novo banco de dados vazio chamado company_db</BaseQuizOption>
+  <BaseQuizOption value="B">Cria uma tabela no banco de dados</BaseQuizOption>
+  <BaseQuizOption value="C">Exclui o banco de dados</BaseQuizOption>
+  <BaseQuizOption value="D">Faz backup do banco de dados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `CREATE DATABASE` cria um novo banco de dados vazio. Após a criação, você precisa usar `USE` para selecioná-lo e então criar tabelas dentro dele.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Mostrar Bancos de Dados: `SHOW DATABASES`
 
 Liste todos os bancos de dados disponíveis no servidor.
@@ -52,7 +67,7 @@ SELECT DATABASE();
 
 ### Excluir Banco de Dados: `DROP DATABASE`
 
-Exclua permanentemente um banco de dados inteiro.
+Exclua um banco de dados inteiro permanentemente.
 
 ```sql
 -- Excluir banco de dados (tenha cuidado!)
@@ -74,7 +89,7 @@ mysql -u username -p database_name < backup.sql
 
 ### Usuários do Banco de Dados: `CREATE USER`
 
-Gerencie contas de usuários e permissões do banco de dados.
+Gerencie contas de usuário e permissões do banco de dados.
 
 ```sql
 -- Criar novo usuário
@@ -139,6 +154,21 @@ COLUMN phone;
 -- Renomear tabela
 RENAME TABLE employees TO staff;
 ```
+
+<BaseQuiz id="database-alter-1" correct="C">
+  <template #question>
+    O que `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Exclui a coluna phone</BaseQuizOption>
+  <BaseQuizOption value="B">Modifica a coluna phone</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Adiciona uma nova coluna chamada phone à tabela employees</BaseQuizOption>
+  <BaseQuizOption value="D">Renomeia a tabela</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ALTER TABLE ... ADD COLUMN` adiciona uma nova coluna a uma tabela existente. A nova coluna será adicionada com o tipo de dado especificado e será NULL para as linhas existentes, a menos que você especifique um valor padrão.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Informações da Tabela: `SHOW`
 
@@ -216,7 +246,7 @@ TRUNCATE TABLE temp_employees;
 
 ### Substituir Dados: `REPLACE INTO`
 
-Insere ou atualiza registros com base na chave primária.
+Inserir ou atualizar registros com base na chave primária.
 
 ```sql
 -- Substituir registro (inserir ou atualizar)
@@ -260,6 +290,24 @@ SELECT * FROM employees
 WHERE department = 'Engineering' AND salary > 75000;
 -- Correspondência de padrão
 SELECT * FROM employees WHERE name LIKE 'John%';
+```
+
+<BaseQuiz id="database-where-1" correct="C">
+  <template #question>
+    O que `LIKE 'John%'` corresponde em uma cláusula WHERE?
+  </template>
+  
+  <BaseQuizOption value="A">Apenas correspondências exatas para "John"</BaseQuizOption>
+  <BaseQuizOption value="B">Valores que terminam com "John"</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Valores que começam com "John"</BaseQuizOption>
+  <BaseQuizOption value="D">Valores que contêm "John" em qualquer lugar</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O curinga `%` em SQL corresponde a qualquer sequência de caracteres. `LIKE 'John%'` corresponde a qualquer valor que comece com "John", como "John", "Johnny", "Johnson", etc.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```sql
 -- Consultas de intervalo
 SELECT * FROM employees
 WHERE hire_date BETWEEN '2023-01-01' AND '2023-12-
@@ -291,7 +339,7 @@ SELECT * FROM employees LIMIT 5;
 -- Paginação com OFFSET
 SELECT * FROM employees
 ORDER BY id LIMIT 10 OFFSET 20;
--- Resultados Top N
+-- Top N resultados
 SELECT * FROM employees
 ORDER BY salary DESC LIMIT 5;
 ```
@@ -371,7 +419,7 @@ Execute cálculos em linhas relacionadas.
 SELECT name, salary,
     ROW_NUMBER() OVER (ORDER BY salary DESC) as rank
 FROM employees;
--- Totais correntes
+-- Totais acumulados
 SELECT name, salary,
     SUM(salary) OVER (ORDER BY hire_date) as
 running_total
@@ -436,21 +484,21 @@ ADD CONSTRAINT unique_name_dept UNIQUE (name,
 department);
 ```
 
-### Restrições de Verificação: `CHECK`
+### Restrições CHECK: `CHECK`
 
 Aplique regras de negócio e validação de dados.
 
 ```sql
--- Restrição de verificação simples
+-- Restrição check simples
 ALTER TABLE employees
 ADD CONSTRAINT check_salary CHECK (salary > 0);
--- Restrição de verificação complexa
+-- Restrição check complexa
 ALTER TABLE employees
 ADD CONSTRAINT check_age
 CHECK (YEAR(CURDATE()) - YEAR(birth_date) >= 18);
 ```
 
-## Desempenho e Otimização do Banco de Dados
+## Desempenho e Otimização de Banco de Dados
 
 ### Índices: `CREATE INDEX`
 
@@ -472,7 +520,7 @@ SHOW INDEX FROM employees;
 
 ### Otimização de Consultas: `EXPLAIN`
 
-Analise e otimize o desempenho da consulta.
+Analise e otimize o desempenho de consultas.
 
 ```sql
 -- Analisar plano de execução da consulta
@@ -497,7 +545,7 @@ SHOW STATUS LIKE 'Slow_queries';
 SHOW STATUS LIKE 'Qcache%';
 ```
 
-### Manutenção do Banco de Dados
+### Manutenção de Banco de Dados
 
 Tarefas de manutenção regulares para desempenho ideal.
 
@@ -525,7 +573,7 @@ INTO TABLE employees
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
--- Importar com mapeamento de coluna
+-- Importar com mapeamento de colunas
 LOAD DATA INFILE 'data.csv'
 INTO TABLE employees (name, email, salary);
 ```
@@ -579,7 +627,7 @@ department = 'Sales';
 
 ### Gerenciamento de Usuários: `CREATE USER`
 
-Crie e gerencie contas de usuários do banco de dados.
+Crie e gerencie contas de usuário do banco de dados.
 
 ```sql
 -- Criar usuário com senha
@@ -627,7 +675,7 @@ GRANT 'app_read_role' TO 'readonly_user'@'localhost';
 
 ### Prevenção de Injeção SQL
 
-Proteja contra vulnerabilidades de segurança comuns.
+Proteja-se contra vulnerabilidades de segurança comuns.
 
 ```sql
 -- Usar prepared statements (nível de aplicação)
@@ -709,7 +757,7 @@ SHOW STATUS LIKE 'Connections';
 
 ### Gerenciamento de Conexão
 
-Gerenciar conexões e pool de conexões do banco de dados.
+Gerenciar conexões de banco de dados e pooling.
 
 ```sql
 -- Mostrar conexões atuais
@@ -723,10 +771,10 @@ SET SESSION interactive_timeout = 600;
 
 ### Configuração de Backup
 
-Configurar backups automatizados do banco de dados.
+Configurar backups automatizados de banco de dados.
 
-```sql
--- Script de backup automatizado
+```bash
+# Script de backup automatizado
 #!/bin/bash
 DATE=$(date +%Y%m%d_%H%M%S)
 mysqldump -u backup_user -p mydatabase >
@@ -735,7 +783,7 @@ backup_$DATE.sql
 0 2 * * * /path/to/backup_script.sh
 ```
 
-### Monitoramento e Registro
+### Monitoramento e Registro (Logging)
 
 Monitore a atividade e o desempenho do banco de dados.
 

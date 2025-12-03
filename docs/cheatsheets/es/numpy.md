@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de NumPy'
-description: 'Aprenda NumPy con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de NumPy | LabEx'
+description: 'Aprenda computación numérica con NumPy con esta hoja de trucos completa. Referencia rápida para arrays, álgebra lineal, operaciones matemáticas, broadcasting y computación científica en Python.'
 pdfUrl: '/cheatsheets/pdf/numpy-cheatsheet.pdf'
 ---
 
@@ -12,35 +12,50 @@ Hoja de Trucos de NumPy
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/numpy">Aprenda NumPy con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/numpy">Aprende NumPy con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda computación numérica con NumPy a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de NumPy que cubren operaciones esenciales de arrays, funciones matemáticas, álgebra lineal y optimización del rendimiento. Domine la manipulación eficiente de arrays y la computación numérica para flujos de trabajo de ciencia de datos.
+Aprende computación numérica con NumPy a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de NumPy que cubren operaciones esenciales de arrays, funciones matemáticas, álgebra lineal y optimización de rendimiento. Domina la computación numérica eficiente y la manipulación de arrays para flujos de trabajo de ciencia de datos.
 </base-disclaimer-content>
 </base-disclaimer>
 
 ## Creación e Inicialización de Arrays
 
-### Desde Listas: `np.array()`
+### A partir de Listas: `np.array()`
 
-Cree arrays a partir de listas de Python o listas anidadas.
+Crea arrays a partir de listas de Python o listas anidadas.
 
 ```python
 import numpy as np
 
-# Array 1D a partir de una lista
+# Array 1D a partir de lista
 arr = np.array([1, 2, 3, 4])
 # Array 2D a partir de listas anidadas
 arr2d = np.array([[1, 2], [3, 4]])
 # Especificar tipo de dato
 arr = np.array([1, 2, 3], dtype=float)
-# Array de cadenas
+# Array de cadenas (strings)
 arr_str = np.array(['a', 'b', 'c'])
 ```
 
+<BaseQuiz id="numpy-array-1" correct="C">
+  <template #question>
+    ¿Cuál es la principal ventaja de los arrays de NumPy sobre las listas de Python?
+  </template>
+  
+  <BaseQuizOption value="A">Pueden almacenar cadenas</BaseQuizOption>
+  <BaseQuizOption value="B">Son más fáciles de crear</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Son más rápidos y eficientes en memoria para operaciones numéricas</BaseQuizOption>
+  <BaseQuizOption value="D">Pueden almacenar tipos de datos mixtos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Los arrays de NumPy están optimizados para cálculos numéricos, proporcionando operaciones más rápidas y un uso de memoria más eficiente en comparación con las listas de Python, especialmente para grandes conjuntos de datos y operaciones matemáticas.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Ceros y Unos: `np.zeros()` / `np.ones()`
 
-Cree arrays llenos de ceros o unos.
+Crea arrays llenos de ceros o unos.
 
 ```python
 # Array de ceros
@@ -54,7 +69,7 @@ zeros_int = np.zeros(5, dtype=int)
 
 ### Matriz Identidad: `np.eye()` / `np.identity()`
 
-Cree matrices identidad para operaciones de álgebra lineal.
+Crea matrices identidad para operaciones de álgebra lineal.
 
 ```python
 # Matriz identidad de 3x3
@@ -65,7 +80,7 @@ identity2 = np.identity(4)
 
 ### Arrays de Rango: `np.arange()` / `np.linspace()`
 
-Cree arrays con valores espaciados uniformemente.
+Crea arrays con valores espaciados uniformemente.
 
 ```python
 # Similar al rango de Python
@@ -79,7 +94,7 @@ arr = np.linspace(0, 10, 11)
 
 ### Arrays Aleatorios: `np.random`
 
-Genere arrays con valores aleatorios.
+Genera arrays con valores aleatorios.
 
 ```python
 # Valores aleatorios entre 0 y 1
@@ -94,14 +109,14 @@ np.random.seed(42)
 
 ### Arrays Especiales: `np.full()` / `np.empty()`
 
-Cree arrays con valores específicos o sin inicializar.
+Crea arrays con valores específicos o sin inicializar.
 
 ```python
-# Llenar con un valor específico
+# Rellenar con valor específico
 full_arr = np.full((2, 3), 7)
 # Array vacío (sin inicializar)
 empty_arr = np.empty((2, 2))
-# Como la forma de un array existente
+# Forma como array existente
 like_arr = np.zeros_like(arr)
 ```
 
@@ -109,7 +124,7 @@ like_arr = np.zeros_like(arr)
 
 ### Propiedades Básicas: `shape` / `size` / `ndim`
 
-Obtenga información fundamental sobre las dimensiones y el tamaño del array.
+Obtén información fundamental sobre las dimensiones y el tamaño del array.
 
 ```python
 # Dimensiones del array (tupla)
@@ -126,7 +141,7 @@ arr.itemsize
 
 ### Información del Array: Uso de Memoria
 
-Obtenga información detallada sobre el uso de memoria y la estructura del array.
+Obtén información detallada sobre el uso de memoria y la estructura del array.
 
 ```python
 # Uso de memoria en bytes
@@ -141,10 +156,10 @@ arr.base
 
 ### Tipos de Datos: `astype()`
 
-Convierta entre diferentes tipos de datos de manera eficiente.
+Convierte eficientemente entre diferentes tipos de datos.
 
 ```python
-# Convertir a tipo diferente
+# Convertir a diferente tipo
 arr.astype(float)
 arr.astype(int)
 arr.astype(str)
@@ -157,15 +172,15 @@ arr.astype(np.int16)
 
 ### Indexación Básica: `arr[index]`
 
-Acceda a elementos individuales y segmentos.
+Accede a elementos individuales y segmentos (slices).
 
 ```python
 # Elemento único
 arr[0]  # Primer elemento
 arr[-1]  # Último elemento
-# Indexación de array 2D
+# Indexación 2D
 arr2d[0, 1]  # Fila 0, Columna 1
-arr2d[1]  # Fila 1 completa
+arr2d[1]  # Fila completa 1
 # Segmentación (Slicing)
 arr[1:4]  # Elementos del 1 al 3
 arr[::2]  # Cada segundo elemento
@@ -174,7 +189,7 @@ arr[::-1]  # Array invertido
 
 ### Indexación Booleana: `arr[condition]`
 
-Filtre arrays basados en condiciones.
+Filtra arrays basados en condiciones.
 
 ```python
 # Condición simple
@@ -187,12 +202,27 @@ mask = arr > 3
 filtered = arr[mask]
 ```
 
+<BaseQuiz id="numpy-boolean-1" correct="C">
+  <template #question>
+    ¿Qué devuelve la indexación booleana `arr[arr > 5]`?
+  </template>
+  
+  <BaseQuizOption value="A">Un array booleano</BaseQuizOption>
+  <BaseQuizOption value="B">El array original</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Un array solo con elementos mayores que 5</BaseQuizOption>
+  <BaseQuizOption value="D">Un error</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La indexación booleana filtra el array, devolviendo solo los elementos donde la condición es verdadera. `arr[arr > 5]` devuelve un nuevo array que contiene solo valores mayores que 5.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Indexación Avanzada: Indexación Fantasma (Fancy Indexing)
 
-Use arrays de índices para acceder a múltiples elementos.
+Usa arrays de índices para acceder a múltiples elementos.
 
 ```python
-# Índice con array de índices
+# Indexar con array de índices
 indices = [0, 2, 4]
 arr[indices]
 # Indexación fantasma 2D
@@ -209,7 +239,7 @@ Selección condicional y reemplazo de elementos.
 # Encontrar índices donde la condición es verdadera
 indices = np.where(arr > 5)
 # Reemplazo condicional
-result = np.where(arr > 5, arr, 0)  # Reemplazar valores >5 con 0
+result = np.where(arr > 5, arr, 0)  # Reemplaza valores >5 con 0
 # Múltiples condiciones
 result = np.where(arr > 5, 'high', 'low')
 ```
@@ -218,12 +248,12 @@ result = np.where(arr > 5, 'high', 'low')
 
 ### Remodelación: `reshape()` / `resize()` / `flatten()`
 
-Cambie las dimensiones del array preservando los datos.
+Cambia las dimensiones del array preservando los datos.
 
 ```python
 # Remodelar (crea vista si es posible)
 arr.reshape(2, 3)
-arr.reshape(-1, 1)  # -1 significa inferir dimensión
+arr.reshape(-1, 1)  # -1 significa inferir la dimensión
 # Redimensionar (modifica el array original)
 arr.resize((2, 3))
 # Aplanar a 1D
@@ -231,9 +261,39 @@ arr.flatten()  # Devuelve copia
 arr.ravel()  # Devuelve vista si es posible
 ```
 
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    ¿Qué significa `-1` en `arr.reshape(-1, 1)`?
+  </template>
+  
+  <BaseQuizOption value="A">Crea un error</BaseQuizOption>
+  <BaseQuizOption value="B" correct>NumPy infiere la dimensión automáticamente</BaseQuizOption>
+  <BaseQuizOption value="C">Crea un array 1D</BaseQuizOption>
+  <BaseQuizOption value="D">Invierte el array</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Usar `-1` en reshape le dice a NumPy que calcule automáticamente esa dimensión basándose en el tamaño total del array y las otras dimensiones especificadas. Esto es útil cuando conoces una dimensión pero quieres que NumPy calcule la otra.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    ¿Qué significa `-1` en `arr.reshape(-1, 1)`?
+  </template>
+  
+  <BaseQuizOption value="A">Crea un error</BaseQuizOption>
+  <BaseQuizOption value="B" correct>NumPy infiere la dimensión automáticamente</BaseQuizOption>
+  <BaseQuizOption value="C">Elimina esa dimensión</BaseQuizOption>
+  <BaseQuizOption value="D">Establece la dimensión a 1</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Usar `-1` en reshape le dice a NumPy que calcule automáticamente esa dimensión basándose en el tamaño total del array y las otras dimensiones especificadas. Esto es útil cuando conoces una dimensión pero quieres que NumPy calcule la otra.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Transposición: `T` / `transpose()`
 
-Intercambie los ejes del array para operaciones matriciales.
+Intercambia los ejes del array para operaciones matriciales.
 
 ```python
 # Transposición simple
@@ -247,7 +307,7 @@ arr3d.transpose(2, 0, 1)
 
 ### Añadir/Eliminar Elementos
 
-Modifique el tamaño del array añadiendo o eliminando elementos.
+Modifica el tamaño del array añadiendo o eliminando elementos.
 
 ```python
 # Añadir elementos
@@ -261,9 +321,9 @@ np.repeat(arr, 3)
 np.tile(arr, 2)
 ```
 
-### Combinación de Arrays: `concatenate()` / `stack()`
+### Combinar Arrays: `concatenate()` / `stack()`
 
-Una múltiples arrays juntos.
+Une múltiples arrays.
 
 ```python
 # Concatenar a lo largo del eje existente
@@ -279,13 +339,13 @@ np.dstack([arr1, arr2])  # Profundidad
 
 ### Aritmética Básica: `+`, `-`, `*`, `/`
 
-Operaciones aritméticas elemento por elemento en arrays.
+Operaciones aritméticas elemento a elemento en arrays.
 
 ```python
-# Operaciones elemento por elemento
+# Operaciones elemento a elemento
 arr1 + arr2
 arr1 - arr2
-arr1 * arr2  # Multiplicación elemento por elemento
+arr1 * arr2  # Multiplicación elemento a elemento
 arr1 / arr2
 arr1 ** 2  # Elevar al cuadrado
 arr1 % 3  # Operación módulo
@@ -293,7 +353,7 @@ arr1 % 3  # Operación módulo
 
 ### Funciones Universales (ufuncs)
 
-Aplique funciones matemáticas elemento por elemento.
+Aplica funciones matemáticas elemento a elemento.
 
 ```python
 # Funciones trigonométricas
@@ -311,7 +371,7 @@ np.power(arr, 3)
 
 ### Funciones de Agregación
 
-Calcule estadísticas resumidas a través de las dimensiones del array.
+Calcula estadísticas resumidas a través de las dimensiones del array.
 
 ```python
 # Estadísticas básicas
@@ -328,7 +388,7 @@ np.mean(arr2d, axis=1)  # Media a lo largo de las columnas
 
 ### Operaciones de Comparación
 
-Comparaciones elemento por elemento que devuelven arrays booleanos.
+Comparaciones elemento a elemento que devuelven arrays booleanos.
 
 ```python
 # Operadores de comparación
@@ -347,13 +407,13 @@ np.all(arr > 0)
 
 ### Operaciones de Matriz: `np.dot()` / `@`
 
-Realice multiplicación de matrices y productos punto.
+Realiza multiplicación de matrices y productos punto.
 
 ```python
 # Multiplicación de matrices
 np.dot(A, B)
 A @ B  # Operador Python 3.5+
-# Multiplicación elemento por elemento
+# Multiplicación elemento a elemento
 A * B
 # Potencia de matriz
 np.linalg.matrix_power(A, 3)
@@ -364,9 +424,9 @@ np.linalg.matrix_power(A, 3)
 Descomposiciones de matrices para cálculos avanzados.
 
 ```python
-# Autovalores y autovectores
+# Valores y vectores propios
 eigenvals, eigenvecs = np.linalg.eig(A)
-# Descomposición de Valores Singulares (SVD)
+# Descomposición de Valores Singulares
 U, s, Vt = np.linalg.svd(A)
 # Descomposición QR
 Q, R = np.linalg.qr(A)
@@ -374,7 +434,7 @@ Q, R = np.linalg.qr(A)
 
 ### Propiedades de la Matriz
 
-Calcule características importantes de la matriz.
+Calcula características importantes de la matriz.
 
 ```python
 # Determinante
@@ -389,9 +449,9 @@ np.linalg.matrix_rank(A)
 np.trace(A)
 ```
 
-### Resolución de Sistemas Lineales: `np.linalg.solve()`
+### Resolver Sistemas Lineales: `np.linalg.solve()`
 
-Resuelva sistemas de ecuaciones lineales.
+Resuelve sistemas de ecuaciones lineales.
 
 ```python
 # Resolver Ax = b
@@ -420,7 +480,7 @@ arr1_loaded = data['a']
 
 ### Archivos de Texto: `np.loadtxt()` / `np.savetxt()`
 
-Leer y escribir arrays como archivos de texto.
+Lee y escribe arrays como archivos de texto.
 
 ```python
 # Cargar desde archivo CSV/texto
@@ -431,7 +491,7 @@ arr = np.loadtxt('data.csv', delimiter=',', skiprows=1)
 np.savetxt('output.csv', arr, delimiter=',', fmt='%.2f')
 ```
 
-### CSV con Datos Estructurados: `np.genfromtxt()`
+### Datos Estructurados CSV: `np.genfromtxt()`
 
 Lectura avanzada de archivos de texto con manejo de datos faltantes.
 
@@ -446,7 +506,7 @@ data = np.genfromtxt('data.csv', delimiter=',',
 
 ### Mapeo de Memoria: `np.memmap()`
 
-Trabaje con arrays demasiado grandes para caber en la memoria.
+Trabaja con arrays demasiado grandes para caber en la memoria.
 
 ```python
 # Crear array mapeado en memoria
@@ -460,24 +520,24 @@ mmap_arr[0:10] = np.random.random(10)
 
 ### Reglas de Difusión (Broadcasting)
 
-Comprenda cómo NumPy maneja las operaciones en arrays de diferentes formas.
+Comprende cómo NumPy maneja operaciones en arrays de diferentes formas.
 
 ```python
-# Ejemplos de difusión
+# Ejemplos de broadcasting
 arr1 = np.array([[1, 2, 3]])  # Forma (1, 3)
 arr2 = np.array([[1], [2]])   # Forma (2, 1)
 result = arr1 + arr2          # Forma (2, 3)
 # Difusión escalar
-arr + 5  # Añade 5 a todos los elementos
+arr + 5  # Suma 5 a todos los elementos
 arr * 2  # Multiplica todos los elementos por 2
 ```
 
 ### Operaciones Vectorizadas
 
-Utilice las funciones integradas de NumPy en lugar de bucles de Python.
+Usa las funciones integradas de NumPy en lugar de bucles de Python.
 
 ```python
-# En lugar de bucles, use operaciones vectorizadas
+# En lugar de bucles, usa operaciones vectorizadas
 # Malo: bucle for
 result = []
 for x in arr:
@@ -513,7 +573,7 @@ Mejores prácticas para código NumPy rápido.
 ```python
 # Usar operaciones in-place cuando sea posible
 arr += 5  # En lugar de arr = arr + 5
-np.add(arr, 5, out=arr)  # Explícito in-place
+np.add(arr, 5, out=arr)  # In-place explícito
 # Minimizar la creación de arrays
 # Malo: crea arrays intermedios
 result = ((arr + 1) * 2) ** 2
@@ -524,7 +584,7 @@ result = ((arr + 1) * 2) ** 2
 
 ### Aleatorio Básico: `np.random`
 
-Genere números aleatorios a partir de varias distribuciones.
+Genera números aleatorios a partir de varias distribuciones.
 
 ```python
 # Flotantes aleatorios [0, 1)
@@ -539,7 +599,7 @@ np.random.uniform(-1, 1, size=5)
 
 ### Muestreo: `choice()` / `shuffle()`
 
-Muestree de datos existentes o permute arrays.
+Muestra de datos existentes o permutación de arrays.
 
 ```python
 # Elección aleatoria del array
@@ -554,7 +614,7 @@ np.random.permutation(arr)
 
 ### Semillas y Generadores
 
-Controle la aleatoriedad para obtener resultados reproducibles.
+Controla la aleatoriedad para resultados reproducibles.
 
 ```python
 # Establecer semilla para reproducibilidad
@@ -587,7 +647,7 @@ np.quantile(arr, [0.25, 0.5, 0.75])
 
 ### Correlación y Covarianza
 
-Mida las relaciones entre variables.
+Mide las relaciones entre variables.
 
 ```python
 # Coeficiente de correlación
@@ -600,7 +660,7 @@ np.correlate(x, y, mode='full')
 
 ### Histograma y Agrupación (Binning)
 
-Analice la distribución de datos y cree contenedores (bins).
+Analiza la distribución de datos y crea contenedores.
 
 ```python
 # Histograma
@@ -618,9 +678,9 @@ Cálculos estadísticos avanzados.
 ```python
 # Estadísticas ponderadas
 np.average(arr, weights=weights)
-# Valores únicos y recuentos
+# Valores únicos y conteos
 unique_vals, counts = np.unique(arr, return_counts=True)
-# Bincount (para arrays de enteros)
+# Conteo de contenedores (para arrays de enteros)
 np.bincount(int_arr)
 ```
 
@@ -628,7 +688,7 @@ np.bincount(int_arr)
 
 ### Pip: `pip install numpy`
 
-Instalador de paquetes estándar de Python.
+Instalador estándar de paquetes de Python.
 
 ```bash
 # Instalar NumPy
@@ -658,7 +718,7 @@ conda create -n myenv numpy
 
 ### Comprobar Instalación e Importación
 
-Verifique su instalación de NumPy y la importación estándar.
+Verifica tu instalación de NumPy y la importación estándar.
 
 ```python
 # Importación estándar
@@ -667,7 +727,7 @@ import numpy as np
 print(np.__version__)
 # Comprobar información de compilación
 np.show_config()
-# Establecer opciones de impresión
+# Opciones de impresión
 np.set_printoptions(precision=2, suppress=True)
 ```
 
@@ -689,7 +749,7 @@ people['age']
 
 ### Arrays Enmascarados: `np.ma`
 
-Maneje arrays con datos faltantes o inválidos.
+Maneja arrays con datos faltantes o inválidos.
 
 ```python
 # Crear array enmascarado
@@ -702,7 +762,7 @@ filled = masked_arr.filled(0)
 
 ### Polinomios: `np.poly1d`
 
-Trabaje con expresiones polinómicas y operaciones.
+Trabaja con expresiones polinómicas y operaciones.
 
 ```python
 # Crear polinomio (coeficientes en orden descendente)

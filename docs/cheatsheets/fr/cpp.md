@@ -1,21 +1,21 @@
 ---
-title: 'Fiche de Référence C++'
-description: 'Apprenez le C++ avec notre aide-mémoire complet couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de Référence C++ | LabEx'
+description: "Apprenez la programmation C++ avec cette fiche complète. Référence rapide pour la syntaxe C++, l'OOP, la STL, les templates, la gestion mémoire et les fonctionnalités C++ modernes pour développeurs."
 pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Fiche de Référence C++
+Feuille de triche C++
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/cpp">Apprendre le C++ avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/cpp">Apprenez le C++ avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la programmation C++ grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets en C++ couvrant la syntaxe essentielle, la programmation orientée objet, les conteneurs STL, la gestion de la mémoire et les techniques avancées. Maîtrisez les fonctionnalités puissantes de C++ pour construire des applications haute performance et des logiciels système.
+Apprenez la programmation C++ grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours C++ complets couvrant la syntaxe essentielle, la programmation orientée objet, les conteneurs STL, la gestion de la mémoire et les techniques avancées. Maîtrisez les fonctionnalités puissantes de C++ pour construire des applications haute performance et des logiciels système.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -79,6 +79,21 @@ int main(int argc, char* argv[]) {
 }
 ```
 
+<BaseQuiz id="cpp-main-1" correct="B">
+  <template #question>
+    Quelle est la différence entre les instructions de sortie C et C++ ?
+  </template>
+  
+  <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
+  <BaseQuizOption value="B" correct>C utilise printf(), C++ utilise cout avec l'opérateur &lt;&lt;</BaseQuizOption>
+  <BaseQuizOption value="C">C++ ne supporte pas la sortie</BaseQuizOption>
+  <BaseQuizOption value="D">C utilise cout, C++ utilise printf</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C utilise `printf()` de stdio.h, tandis que C++ utilise `cout` de iostream avec l'opérateur d'insertion de flux `<<`. C++ supporte également printf pour la compatibilité.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Sortie de Base
 
 Afficher du texte et des variables sur la console.
@@ -107,7 +122,7 @@ getline(cin, name);
 
 ### Types Primitifs
 
-Types de données de base pour stocker différentes sortes de valeurs.
+Types de données de base pour stocker différents types de valeurs.
 
 ```cpp
 // Types entiers
@@ -123,21 +138,36 @@ char grade = 'A';
 bool is_valid = true;
 ```
 
-### String et Tableaux
+### Chaînes de Caractères et Tableaux
 
 Types de données pour le texte et les collections.
 
 ```cpp
-// Strings
+// Chaînes de caractères
 string name = "John Doe";
 string empty_str;
-// Tableaux (Arrays)
+// Tableaux
 int numbers[5] = {1, 2, 3, 4, 5};
 int matrix[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
-// Tableaux dynamiques (vectors)
+// Tableaux dynamiques (vecteurs)
 vector<int> dynamic_array = {10, 20, 30};
 vector<string> names(5); // Taille 5, chaînes vides
 ```
+
+<BaseQuiz id="cpp-vector-1" correct="B">
+  <template #question>
+    Quel est l'avantage principal de `vector` par rapport aux tableaux réguliers en C++ ?
+  </template>
+  
+  <BaseQuizOption value="A">Les vecteurs sont plus rapides</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Les vecteurs peuvent redimensionner dynamiquement, tandis que les tableaux ont une taille fixe</BaseQuizOption>
+  <BaseQuizOption value="C">Les vecteurs utilisent moins de mémoire</BaseQuizOption>
+  <BaseQuizOption value="D">Il n'y a pas d'avantage</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `vector` est un tableau dynamique qui peut croître ou rétrécir à l'exécution, contrairement aux tableaux réguliers dont la taille est fixée à la compilation. Cela rend les vecteurs plus flexibles pour de nombreux cas d'utilisation.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Constantes et Auto
 
@@ -171,18 +201,18 @@ if (age >= 18) {
 } else {
     cout << "Enfant" << endl;
 }
-// Opérateur Ternaire
+// Opérateur ternaire
 string status = (age >= 18) ? "Adulte" : "Mineur";
 // Instruction Switch
 switch (grade) {
     case 'A':
-        cout << "Excellent!" << endl;
+        cout << "Excellent !" << endl;
         break;
     case 'B':
-        cout << "Bon travail!" << endl;
+        cout << "Bon travail !" << endl;
         break;
     default:
-        cout << "Continuez d'essayer!" << endl;
+        cout << "Continuez d'essayer !" << endl;
 }
 ```
 
@@ -206,6 +236,21 @@ for (auto& item : container) {
 }
 ```
 
+<BaseQuiz id="cpp-range-for-1" correct="B">
+  <template #question>
+    Qu'est-ce qu'une boucle for basée sur la plage en C++ ?
+  </template>
+  
+  <BaseQuizOption value="A">Une boucle qui ne fonctionne qu'avec des tableaux</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Une boucle qui itère automatiquement sur tous les éléments d'un conteneur</BaseQuizOption>
+  <BaseQuizOption value="C">Une boucle qui s'exécute indéfiniment</BaseQuizOption>
+  <BaseQuizOption value="D">Une boucle qui nécessite une gestion manuelle des indices</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les boucles for basées sur la plage (introduites en C++11) itèrent automatiquement sur tous les éléments d'un conteneur (comme les vecteurs, les tableaux, les chaînes) sans avoir besoin de gérer manuellement les indices. La syntaxe est `for (auto item : container)`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Boucles While
 
 Itération basée sur une condition.
@@ -220,7 +265,7 @@ while (count < 5) {
 // Boucle Do-while (s'exécute au moins une fois)
 int input;
 do {
-    cout << "Entrez un nombre (0 pour quitter): ";
+    cout << "Entrez un nombre (0 pour quitter) : ";
     cin >> input;
 } while (input != 0);
 ```
@@ -235,14 +280,14 @@ for (int i = 0; i < 10; i++) {
         continue; // Sauter l'itération
     }
     if (i == 7) {
-        break;    // Quitter la boucle
+        break;    // Sortir de la boucle
     }
     cout << i << " ";
 }
 // Boucles imbriquées avec break étiqueté
 for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
-        if (i == j) break; // Quitter uniquement la boucle interne
+        if (i == j) break; // Sortir uniquement de la boucle interne
         cout << i << "," << j << " ";
     }
 }
@@ -270,7 +315,7 @@ int result = add(5, 3);
 printMessage("Hello, functions!");
 ```
 
-### Surcharge de Fonction (Overloading)
+### Surcharge de Fonction
 
 Plusieurs fonctions avec le même nom.
 
@@ -324,7 +369,7 @@ void processLargeData(const vector<int>& data) {
 
 ### Définition de Classe
 
-Définir des types de données personnalisés avec attributs et méthodes.
+Définir des types de données personnalisés avec des attributs et des méthodes.
 
 ```cpp
 class Rectangle {
@@ -362,7 +407,7 @@ Instancier et utiliser des objets de classe.
 Rectangle rect1(5.0, 3.0);
 Rectangle rect2; // Constructeur par défaut
 // Utiliser les fonctions membres
-cout << "Area: " << rect1.area() << endl;
+cout << "Aire: " << rect1.area() << endl;
 rect2.setDimensions(4.0, 2.0);
 // Allocation dynamique
 Rectangle* rect3 = new Rectangle(6.0, 4.0);
@@ -404,17 +449,17 @@ Utiliser des pointeurs de classe de base pour accéder à des objets dérivés.
 ```cpp
 // Fonctions virtuelles et polymorphisme
 vector<Shape*> shapes;
-shapes.push_back(new Circle(5.0, "red"));
+shapes.push_back(new Circle(5.0, "rouge"));
 shapes.push_back(new Rectangle(4.0, 6.0));
 for (Shape* shape : shapes) {
-    cout << "Area: " << shape->area() << endl;
+    cout << "Aire: " << shape->area() << endl;
     // Appelle la méthode de la classe dérivée appropriée
 }
 ```
 
 ## Gestion de la Mémoire
 
-### Allocation Dynamique de Mémoire
+### Allocation Mémoire Dynamique
 
 Allouer et désallouer la mémoire à l'exécution.
 
@@ -433,11 +478,11 @@ delete[] arr;
 // Vérifier l'échec de l'allocation
 int* large_array = new(nothrow) int[1000000];
 if (large_array == nullptr) {
-    cout << "Échec de l'allocation!" << endl;
+    cout << "Échec de l'allocation !" << endl;
 }
 ```
 
-### Pointeur Intelligents (Smart Pointers) (C++11+)
+### Pointeur Intelligents (C++11+)
 
 Gestion automatique de la mémoire avec RAII.
 
@@ -460,10 +505,10 @@ Deux façons d'accéder indirectement aux objets.
 int x = 10;
 // Référence (alias)
 int& ref = x;  // Doit être initialisée
-ref = 20;      // Modifie x à 20
+ref = 20;      // Change x à 20
 // Pointeur
 int* ptr = &x; // Pointeur vers l'adresse de x
-*ptr = 30;     // Déréférencement et modification de x
+*ptr = 30;     // Déréférencement et changement de x
 ptr = nullptr; // Peut pointer vers rien
 // Variations Const
 const int* ptr1 = &x;    // Ne peut pas changer la valeur
@@ -471,9 +516,9 @@ int* const ptr2 = &x;    // Ne peut pas changer l'adresse
 const int* const ptr3 = &x; // Ne peut changer ni l'un ni l'autre
 ```
 
-### Pile (Stack) vs Tas (Heap)
+### Pile vs Tas (Stack vs Heap)
 
-Stratégies d'allocation de mémoire.
+Stratégies d'allocation mémoire.
 
 ```cpp
 // Allocation sur la pile (automatique)
@@ -488,7 +533,7 @@ delete heap_var;
 delete[] heap_array;
 ```
 
-## Bibliothèque Standard Template (STL)
+## Bibliothèque Standard (STL)
 
 ### Conteneurs : Vector et String
 
@@ -497,16 +542,16 @@ Tableaux dynamiques et manipulation de chaînes.
 ```cpp
 #include <vector>
 #include <string>
-// Opérations Vector
+// Opérations sur les vecteurs
 vector<int> nums = {1, 2, 3};
 nums.push_back(4);        // Ajouter un élément
 nums.pop_back();          // Supprimer le dernier
-nums.insert(nums.begin() + 1, 10); // Insérer à une position
+nums.insert(nums.begin() + 1, 10); // Insérer à la position
 nums.erase(nums.begin()); // Supprimer le premier
-// Opérations String
+// Opérations sur les chaînes
 string text = "Hello";
 text += " World";         // Concaténation
-text.append("!");         // Ajouter
+text.append("!");         // Ajouter à la fin
 cout << text.substr(0, 5) << endl; // Sous-chaîne
 text.replace(6, 5, "C++"); // Remplacer "World" par "C++"
 ```
@@ -527,7 +572,7 @@ ages.insert({"Charlie", 35});
 set<int> unique_nums = {3, 1, 4, 1, 5, 9};
 unique_nums.insert(2);
 unique_nums.erase(1);
-// Trié automatiquement : {2, 3, 4, 5, 9}
+// Automatiquement trié : {2, 3, 4, 5, 9}
 ```
 
 ### Algorithmes
@@ -539,7 +584,7 @@ Algorithmes STL pour les opérations courantes.
 vector<int> nums = {64, 34, 25, 12, 22, 11, 90};
 // Tri
 sort(nums.begin(), nums.end());
-sort(nums.rbegin(), nums.rend()); // Tri inversé
+sort(nums.rbegin(), nums.rend()); // Tri inverse
 // Recherche
 auto it = find(nums.begin(), nums.end(), 25);
 if (it != nums.end()) {
@@ -597,7 +642,7 @@ while (file2 >> number) {
 }
 // Lecture avec vérification d'erreurs
 if (!file.good()) {
-    cerr << "Erreur de lecture de fichier!" << endl;
+    cerr << "Erreur de lecture de fichier !" << endl;
 }
 ```
 
@@ -631,7 +676,7 @@ string back_to_str = to_string(num);
 ofstream outfile("output.txt");
 if (outfile.is_open()) {
     outfile << "Hello, file!" << endl;
-    outfile << "Number: " << 42 << endl;
+    outfile << "Nombre: " << 42 << endl;
     outfile.close();
 }
 // Ajouter à un fichier existant
@@ -671,18 +716,18 @@ try {
     vec.at(10) = 100;    // Accès hors limites
 
 } catch (const exception& e) {
-    cout << "Exception attrapée: " << e.what() << endl;
+    cout << "Exception attrapée : " << e.what() << endl;
 } catch (...) {
-    cout << "Exception inconnue attrapée!" << endl;
+    cout << "Exception inconnue attrapée !" << endl;
 }
 // Types d'exceptions spécifiques
 try {
     string str = "abc";
     int num = stoi(str); // Lance invalid_argument
 } catch (const invalid_argument& e) {
-    cout << "Argument invalide: " << e.what() << endl;
+    cout << "Argument invalide : " << e.what() << endl;
 } catch (const out_of_range& e) {
-    cout << "Hors limites: " << e.what() << endl;
+    cout << "Hors limites : " << e.what() << endl;
 }
 ```
 
@@ -703,7 +748,7 @@ public:
 // Fonction qui lance une exception
 void validateAge(int age) {
     if (age < 0 || age > 150) {
-        throw CustomException("Plage d'âge invalide!");
+        throw CustomException("Plage d'âge invalide !");
     }
 }
 // Utilisation
@@ -716,7 +761,7 @@ try {
 
 ### Modèle RAII
 
-Resource Acquisition Is Initialization pour une gestion sûre des ressources.
+Acquisition de Ressource Est Initialisation pour une gestion sûre des ressources.
 
 ```cpp
 // RAII avec pointeurs intelligents
@@ -773,21 +818,21 @@ DBG_PRINT("Démarrage de la fonction");
 
 ### Compilation GCC/G++
 
-GNU Compiler Collection pour C++.
+Collection de compilateurs GNU pour C++.
 
 ```bash
 # Compilation de base
-g++ -o program main.cpp
+g++ -o programme main.cpp
 # Avec informations de débogage
-g++ -g -o program main.cpp
+g++ -g -o programme main.cpp
 # Niveaux d'optimisation
-g++ -O2 -o program main.cpp
+g++ -O2 -o programme main.cpp
 # Fichiers sources multiples
-g++ -o program main.cpp utils.cpp math.cpp
+g++ -o programme main.cpp utils.cpp math.cpp
 # Inclure des répertoires supplémentaires
-g++ -I/usr/local/include -o program main.cpp
+g++ -I/usr/local/include -o programme main.cpp
 # Lier des bibliothèques
-g++ -o program main.cpp -lm -lpthread
+g++ -o programme main.cpp -lm -lpthread
 ```
 
 ### Normes C++ Modernes
@@ -796,15 +841,15 @@ Compiler avec des versions standard C++ spécifiques.
 
 ```bash
 # Standard C++11
-g++ -std=c++11 -o program main.cpp
+g++ -std=c++11 -o programme main.cpp
 # Standard C++14
-g++ -std=c++14 -o program main.cpp
+g++ -std=c++14 -o programme main.cpp
 # Standard C++17 (recommandé)
-g++ -std=c++17 -o program main.cpp
+g++ -std=c++17 -o programme main.cpp
 # Standard C++20 (le plus récent)
-g++ -std=c++20 -o program main.cpp
+g++ -std=c++20 -o programme main.cpp
 # Activer tous les avertissements
-g++ -Wall -Wextra -std=c++17 -o program main.cpp
+g++ -Wall -Wextra -std=c++17 -o programme main.cpp
 ```
 
 ### Bases de Makefile
@@ -815,7 +860,7 @@ Automatiser la compilation avec l'utilitaire make.
 # Makefile simple
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -g
-TARGET = program
+TARGET = programme
 SOURCES = main.cpp utils.cpp
 $(TARGET): $(SOURCES)
 $(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCES)
@@ -851,9 +896,9 @@ public:
 };
 ```
 
-### Sécurité de la Mémoire
+### Sécurité Mémoire
 
-Prévenir les bugs courants liés à la mémoire.
+Prévenir les bogues courants liés à la mémoire.
 
 ```cpp
 // Utiliser des pointeurs intelligents au lieu de pointeurs bruts
@@ -862,13 +907,13 @@ auto shared = make_shared<vector<int>>(10);
 // Initialiser les variables
 int count = 0;        // Bien
 int count;            // Dangereux - non initialisé
-// Les boucles basées sur la plage sont plus sûres
+// Boucles basées sur la plage sont plus sûres
 for (const auto& item : container) {
     // Traiter l'élément en toute sécurité
 }
 // Vérifier la validité du pointeur
 if (ptr != nullptr) {
-    // Sûr de déréférencer
+    // Sûr à déréférencer
 }
 ```
 
@@ -879,9 +924,9 @@ if (ptr != nullptr) {
 ```cpp
 // Passer les objets volumineux par référence constante
 void processData(const vector<int>& data) {
-    // Éviter de copier les objets volumineux
+    // Éviter de copier de gros objets
 }
-// Utiliser l'incrémentation préfixée pour les itérateurs
+// Utiliser le pré-incrément pour les itérateurs
 for (auto it = vec.begin(); it != vec.end(); ++it) {
     // ++it est souvent plus rapide que it++
 }
@@ -890,8 +935,8 @@ vector<int> numbers;
 numbers.reserve(1000); // Éviter les réallocations
 // Utiliser emplace au lieu de push pour les objets
 vector<string> words;
-words.emplace_back("Hello"); // Construction sur place
-words.push_back(string("World")); // Construction puis copie
+words.emplace_back("Hello"); // Construire sur place
+words.push_back(string("World")); // Construire puis copier
 ```
 
 ### Organisation du Code
@@ -920,11 +965,11 @@ double getRadius() const { return radius; }
 
 ## Liens Pertinents
 
-- <router-link to="/c-programming">Fiche de Référence Programmation C</router-link>
-- <router-link to="/java">Fiche de Référence Java</router-link>
-- <router-link to="/python">Fiche de Référence Python</router-link>
-- <router-link to="/javascript">Fiche de Référence JavaScript</router-link>
-- <router-link to="/golang">Fiche de Référence Golang</router-link>
-- <router-link to="/linux">Fiche de Référence Linux</router-link>
-- <router-link to="/shell">Fiche de Référence Shell</router-link>
-- <router-link to="/devops">Fiche de Référence DevOps</router-link>
+- <router-link to="/c-programming">Feuille de triche Programmation C</router-link>
+- <router-link to="/java">Feuille de triche Java</router-link>
+- <router-link to="/python">Feuille de triche Python</router-link>
+- <router-link to="/javascript">Feuille de triche JavaScript</router-link>
+- <router-link to="/golang">Feuille de triche Golang</router-link>
+- <router-link to="/linux">Feuille de triche Linux</router-link>
+- <router-link to="/shell">Feuille de triche Shell</router-link>
+- <router-link to="/devops">Feuille de triche DevOps</router-link>

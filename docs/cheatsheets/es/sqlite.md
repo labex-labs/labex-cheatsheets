@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de SQLite'
-description: 'Aprenda SQLite con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de SQLite | LabEx'
+description: 'Aprenda la base de datos SQLite con esta hoja de trucos completa. Referencia rápida para la sintaxis SQL de SQLite, transacciones, disparadores, vistas y gestión ligera de bases de datos para aplicaciones.'
 pdfUrl: '/cheatsheets/pdf/sqlite-cheatsheet.pdf'
 ---
 
@@ -12,18 +12,18 @@ Hoja de Trucos de SQLite
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/sqlite">Aprenda SQLite con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/sqlite">Aprende SQLite con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Aprenda la gestión de bases de datos SQLite a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de SQLite que cubren operaciones SQL esenciales, manipulación de datos, optimización de consultas, diseño de bases de datos y ajuste de rendimiento. Domine el desarrollo de bases de datos ligeras y la gestión eficiente de datos.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Creación y Conexión de Bases de Datos
+## Creación de Base de Datos y Conexión
 
 ### Crear Base de Datos: `sqlite3 database.db`
 
-Cree un nuevo archivo de base de datos SQLite.
+Crea un nuevo archivo de base de datos SQLite.
 
 ```bash
 # Crear o abrir una base de datos
@@ -40,13 +40,13 @@ sqlite3 :memory:
 .tables
 # Salir de SQLite
 .exit
-# Comando alternativo para salir
+# Comando de salida alternativo
 .quit
 ```
 
-### Información de la Base de Datos: `.databases`
+### Información de Base de Datos: `.databases`
 
-Enumere todas las bases de datos adjuntas y sus archivos.
+Lista todas las bases de datos adjuntas y sus archivos.
 
 ```sql
 -- Adjuntar otra base de datos
@@ -59,16 +59,16 @@ DETACH DATABASE backup;
 
 ### Salir de SQLite: `.exit` o `.quit`
 
-Cerrar la interfaz de línea de comandos de SQLite.
+Cierra la interfaz de línea de comandos de SQLite.
 
 ```bash
 .exit
 .quit
 ```
 
-### Copia de Seguridad de la Base de Datos: `.backup`
+### Copia de Seguridad de Base de Datos: `.backup`
 
-Cree una copia de seguridad de la base de datos actual.
+Crea una copia de seguridad de la base de datos actual.
 
 ```bash
 # Copia de seguridad a un archivo
@@ -82,11 +82,11 @@ Cree una copia de seguridad de la base de datos actual.
 .read backup.sql
 ```
 
-## Creación de Tablas y Esquema
+## Creación de Esquema y Tablas
 
 ### Crear Tabla: `CREATE TABLE`
 
-Cree una nueva tabla en la base de datos con columnas y restricciones.
+Crea una nueva tabla en la base de datos con columnas y restricciones.
 
 ```sql
 -- Creación básica de tabla
@@ -107,6 +107,21 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="sqlite-create-table-1" correct="A">
+  <template #question>
+    ¿Qué hace `INTEGER PRIMARY KEY AUTOINCREMENT` en SQLite?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Crea una clave primaria entera que se incrementa automáticamente</BaseQuizOption>
+  <BaseQuizOption value="B">Crea una clave primaria de texto</BaseQuizOption>
+  <BaseQuizOption value="C">Crea una restricción de clave foránea</BaseQuizOption>
+  <BaseQuizOption value="D">Crea un índice único</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INTEGER PRIMARY KEY AUTOINCREMENT` crea una columna entera que se incrementa automáticamente para cada nueva fila y sirve como clave primaria. Esto asegura que cada fila tenga un identificador único.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Tipos de Datos: `INTEGER`, `TEXT`, `REAL`, `BLOB`
 
 SQLite utiliza tipado dinámico con clases de almacenamiento para un almacenamiento de datos flexible.
@@ -125,7 +140,7 @@ CREATE TABLE products (
 
 ### Restricciones: `PRIMARY KEY`, `NOT NULL`, `UNIQUE`
 
-Defina restricciones para garantizar la integridad de los datos y las relaciones de las tablas.
+Define restricciones para forzar la integridad de los datos y las relaciones de las tablas.
 
 ```sql
 CREATE TABLE employees (
@@ -141,10 +156,10 @@ CREATE TABLE employees (
 
 ### Insertar Datos: `INSERT INTO`
 
-Agregue nuevos registros a las tablas con filas individuales o múltiples.
+Añade nuevos registros a las tablas con una o múltiples filas.
 
 ```sql
--- Insertar registro único
+-- Insertar un solo registro
 INSERT INTO users (name, email, age)
 VALUES ('John Doe', 'john@email.com', 30);
 
@@ -160,10 +175,10 @@ INSERT INTO users VALUES
 
 ### Actualizar Datos: `UPDATE SET`
 
-Modifique registros existentes según las condiciones.
+Modifica registros existentes basándose en condiciones.
 
 ```sql
--- Actualizar columna única
+-- Actualizar una sola columna
 UPDATE users SET age = 31 WHERE name = 'John Doe';
 
 -- Actualizar múltiples columnas
@@ -177,9 +192,24 @@ UPDATE products SET price = price * 1.1
 WHERE category = 'Electronics';
 ```
 
+<BaseQuiz id="sqlite-update-1" correct="D">
+  <template #question>
+    ¿Qué sucede si olvidas la cláusula WHERE en una sentencia UPDATE?
+  </template>
+  
+  <BaseQuizOption value="A">La actualización falla</BaseQuizOption>
+  <BaseQuizOption value="B">Solo se actualiza la primera fila</BaseQuizOption>
+  <BaseQuizOption value="C">No sucede nada</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Se actualizan todas las filas de la tabla</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Sin una cláusula WHERE, la sentencia UPDATE modificará todas las filas de la tabla. Utiliza siempre WHERE para especificar qué filas deben actualizarse y evitar modificar datos no deseados accidentalmente.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Eliminar Datos: `DELETE FROM`
 
-Elimine registros de las tablas según las condiciones especificadas.
+Elimina registros de las tablas basándose en condiciones especificadas.
 
 ```sql
 -- Eliminar registros específicos
@@ -195,7 +225,7 @@ WHERE user_id IN (SELECT id FROM users WHERE active = 0);
 
 ### Upsert: `INSERT OR REPLACE`
 
-Inserte nuevos registros o actualice los existentes en caso de conflicto.
+Inserta nuevos registros o actualiza los existentes basándose en conflictos.
 
 ```sql
 -- Insertar o reemplazar en caso de conflicto
@@ -207,11 +237,26 @@ INSERT OR IGNORE INTO users (name, email)
 VALUES ('Duplicate', 'existing@email.com');
 ```
 
-## Consultas y Selección de Datos
+<BaseQuiz id="sqlite-upsert-1" correct="A">
+  <template #question>
+    ¿Cuál es la diferencia entre `INSERT OR REPLACE` e `INSERT OR IGNORE`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>REPLACE actualiza filas existentes, IGNORE omite duplicados</BaseQuizOption>
+  <BaseQuizOption value="B">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="C">REPLACE elimina la fila, IGNORE la actualiza</BaseQuizOption>
+  <BaseQuizOption value="D">REPLACE funciona con tablas, IGNORE funciona con vistas</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INSERT OR REPLACE` reemplazará una fila existente si hay un conflicto (ej. clave primaria duplicada). `INSERT OR IGNORE` simplemente omitirá la inserción si hay un conflicto, dejando la fila existente sin cambios.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+## Consulta y Selección de Datos
 
 ### Consultas Básicas: `SELECT`
 
-Consulte datos de tablas utilizando la sentencia SELECT con varias opciones.
+Consulta datos de tablas usando la sentencia SELECT con varias opciones.
 
 ```sql
 -- Seleccionar todas las columnas
@@ -227,9 +272,24 @@ SELECT name AS full_name, age AS years_old FROM users;
 SELECT DISTINCT department FROM employees;
 ```
 
+<BaseQuiz id="sqlite-select-1" correct="B">
+  <template #question>
+    ¿Qué hace `SELECT DISTINCT`?
+  </template>
+  
+  <BaseQuizOption value="A">Selecciona todas las filas</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Devuelve solo valores únicos, eliminando duplicados</BaseQuizOption>
+  <BaseQuizOption value="C">Selecciona solo la primera fila</BaseQuizOption>
+  <BaseQuizOption value="D">Ordena los resultados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SELECT DISTINCT` elimina filas duplicadas del conjunto de resultados, devolviendo solo valores únicos. Esto es útil cuando se desean ver todos los valores únicos en una columna.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Filtrado: `WHERE`
 
-Filtre filas utilizando varias condiciones y operadores de comparación.
+Filtra filas usando varias condiciones y operadores de comparación.
 
 ```sql
 -- Condiciones simples
@@ -247,7 +307,7 @@ SELECT * FROM users WHERE name GLOB 'J*';
 
 ### Ordenación y Limitación: `ORDER BY` / `LIMIT`
 
-Ordene los resultados y limite el número de filas devueltas para una mejor gestión de datos.
+Ordena los resultados y limita el número de filas devueltas para una mejor gestión de datos.
 
 ```sql
 -- Ordenar ascendente (por defecto)
@@ -268,7 +328,7 @@ SELECT * FROM users LIMIT 10 OFFSET 20;
 
 ### Funciones de Agregación: `COUNT`, `SUM`, `AVG`
 
-Realice cálculos en grupos de filas para análisis estadístico.
+Realiza cálculos sobre grupos de filas para análisis estadístico.
 
 ```sql
 -- Contar registros
@@ -278,7 +338,7 @@ SELECT COUNT(DISTINCT department) FROM employees;
 -- Suma y promedio
 SELECT SUM(salary), AVG(salary) FROM employees;
 
--- Valores mínimo y máximo
+-- Valores Mínimo y Máximo
 SELECT MIN(age), MAX(age) FROM users;
 ```
 
@@ -286,10 +346,10 @@ SELECT MIN(age), MAX(age) FROM users;
 
 ### Agrupación: `GROUP BY` / `HAVING`
 
-Agrupe filas por criterios especificados y filtre grupos para informes resumidos.
+Agrupa filas por criterios especificados y filtra grupos para informes resumidos.
 
 ```sql
--- Agrupar por columna única
+-- Agrupar por una sola columna
 SELECT department, COUNT(*)
 FROM employees
 GROUP BY department;
@@ -308,14 +368,14 @@ HAVING avg_salary > 60000;
 
 ### Subconsultas
 
-Utilice consultas anidadas para la recuperación compleja de datos y la lógica condicional.
+Utiliza consultas anidadas para la recuperación compleja de datos y la lógica condicional.
 
 ```sql
--- Subconsulta en cláusula WHERE
+-- Subconsulta en la cláusula WHERE
 SELECT name FROM users
 WHERE age > (SELECT AVG(age) FROM users);
 
--- Subconsulta en cláusula FROM
+-- Subconsulta en la cláusula FROM
 SELECT dept, avg_salary FROM (
     SELECT department as dept, AVG(salary) as avg_salary
     FROM employees
@@ -331,7 +391,7 @@ WHERE EXISTS (
 
 ### Joins: `INNER`, `LEFT`, `RIGHT`
 
-Combine datos de múltiples tablas utilizando varios tipos de join para consultas relacionales.
+Combina datos de múltiples tablas utilizando varios tipos de join para consultas relacionales.
 
 ```sql
 -- Inner join
@@ -353,7 +413,7 @@ LEFT JOIN employees e2 ON e1.manager_id = e2.id;
 
 ### Operaciones de Conjunto: `UNION` / `INTERSECT`
 
-Combine resultados de múltiples consultas utilizando operaciones de conjunto.
+Combina resultados de múltiples consultas utilizando operaciones de conjunto.
 
 ```sql
 -- Union (combinar resultados)
@@ -376,7 +436,7 @@ SELECT email FROM unsubscribed;
 
 ### Crear Índices: `CREATE INDEX`
 
-Cree índices en columnas para acelerar las consultas y mejorar el rendimiento.
+Crea índices en columnas para acelerar las consultas y mejorar el rendimiento.
 
 ```sql
 -- Índice de columna única
@@ -394,19 +454,19 @@ CREATE INDEX idx_active_users ON users(name) WHERE active = 1;
 
 ### Análisis de Consultas: `EXPLAIN QUERY PLAN`
 
-Analice los planes de ejecución de consultas para identificar cuellos de botella de rendimiento.
+Analiza los planes de ejecución de consultas para identificar cuellos de botella de rendimiento.
 
 ```sql
 -- Analizar rendimiento de la consulta
 EXPLAIN QUERY PLAN SELECT * FROM users WHERE email = 'test@example.com';
 
--- Verificar si se utiliza un índice
+-- Comprobar si se utiliza un índice
 EXPLAIN QUERY PLAN SELECT * FROM orders WHERE user_id = 123;
 ```
 
-### Optimización de Bases de Datos: `VACUUM` / `ANALYZE`
+### Optimización de Base de Datos: `VACUUM` / `ANALYZE`
 
-Optimice los archivos de la base de datos y actualice las estadísticas para un mejor rendimiento.
+Optimiza los archivos de la base de datos y actualiza las estadísticas para un mejor rendimiento.
 
 ```bash
 # Reconstruir la base de datos para recuperar espacio
@@ -415,16 +475,16 @@ VACUUM;
 -- Actualizar estadísticas de índices
 ANALYZE;
 
--- Verificar la integridad de la base de datos
+-- Comprobar la integridad de la base de datos
 PRAGMA integrity_check;
 ```
 
 ### Configuración de Rendimiento: `PRAGMA`
 
-Configure los ajustes de SQLite para un rendimiento y comportamiento óptimos.
+Configura los ajustes de SQLite para un rendimiento y comportamiento óptimos.
 
 ```sql
--- Modo de registro para mejor rendimiento
+-- Modo journal para mejor rendimiento
 PRAGMA journal_mode = WAL;
 
 -- Modo síncrono
@@ -433,7 +493,7 @@ PRAGMA synchronous = NORMAL;
 -- Habilitar restricciones de clave foránea
 PRAGMA foreign_keys = ON;
 
--- Tamaño de caché (en páginas)
+-- Establecer tamaño de caché (en páginas)
 PRAGMA cache_size = 10000;
 ```
 
@@ -441,7 +501,7 @@ PRAGMA cache_size = 10000;
 
 ### Vistas: `CREATE VIEW`
 
-Cree tablas virtuales que representan consultas almacenadas para acceso a datos reutilizable.
+Crea tablas virtuales que representan consultas almacenadas para acceso a datos reutilizable.
 
 ```sql
 -- Crear una vista simple
@@ -469,7 +529,7 @@ DROP VIEW IF EXISTS order_summary;
 
 ### Uso de Vistas
 
-Consulte vistas como tablas regulares para simplificar el acceso a los datos.
+Consulta vistas como tablas regulares para simplificar el acceso a los datos.
 
 ```sql
 SELECT * FROM active_users;
@@ -478,7 +538,7 @@ SELECT * FROM order_summary WHERE total_spent > 1000;
 
 ### Triggers: `CREATE TRIGGER`
 
-Ejecute código automáticamente en respuesta a eventos de la base de datos.
+Ejecuta automáticamente código en respuesta a eventos de la base de datos.
 
 ```sql
 -- Trigger en INSERT
@@ -504,7 +564,7 @@ DROP TRIGGER IF EXISTS update_user_count;
 
 ### Funciones de Fecha y Hora
 
-Maneje operaciones de fecha y hora con las funciones integradas de SQLite.
+Maneja operaciones de fecha y hora con las funciones integradas de SQLite.
 
 ```sql
 -- Fecha/hora actual
@@ -524,7 +584,7 @@ SELECT strftime('%w', 'now'); -- día de la semana
 
 ### Funciones de Cadena
 
-Manipule datos de texto con varias operaciones de cadena.
+Manipula datos de texto con varias operaciones de cadena.
 
 ```sql
 -- Manipulación de cadenas
@@ -543,7 +603,7 @@ SELECT replace(phone, '-', '') FROM users;
 
 ### Funciones Numéricas
 
-Realice operaciones matemáticas y cálculos.
+Realiza operaciones matemáticas y cálculos.
 
 ```sql
 -- Funciones matemáticas
@@ -559,7 +619,7 @@ GROUP BY department;
 
 ### Lógica Condicional: `CASE`
 
-Implemente lógica condicional dentro de las consultas SQL.
+Implementa lógica condicional dentro de las consultas SQL.
 
 ```sql
 -- Sentencia CASE simple
@@ -571,7 +631,7 @@ SELECT name,
     END as age_category
 FROM users;
 
--- CASE en cláusula WHERE
+-- CASE en la cláusula WHERE
 SELECT * FROM products
 WHERE CASE WHEN category = 'Electronics' THEN price < 1000
           ELSE price < 100 END;
@@ -581,7 +641,7 @@ WHERE CASE WHEN category = 'Electronics' THEN price < 1000
 
 ### Control de Transacciones
 
-Las transacciones de SQLite cumplen totalmente con ACID para operaciones de datos fiables.
+Las transacciones de SQLite son totalmente compatibles con ACID para operaciones de datos fiables.
 
 ```sql
 -- Transacción básica
@@ -606,19 +666,19 @@ COMMIT;
 
 ### Bloqueo y Concurrencia
 
-Administre bloqueos de bases de datos y acceso concurrente para la integridad de los datos.
+Gestiona bloqueos de bases de datos y acceso concurrente para la integridad de los datos.
 
 ```sql
--- Verificar estado de bloqueo
+-- Comprobar estado de bloqueo
 PRAGMA locking_mode;
 
 -- Establecer modo WAL para mejor concurrencia
 PRAGMA journal_mode = WAL;
 
--- Tiempo de espera de ocupado para esperar bloqueos
+-- Tiempo de espera ocupado para esperar bloqueos
 PRAGMA busy_timeout = 5000;
 
--- Verificar conexiones actuales de la base de datos
+-- Comprobar conexiones actuales a la base de datos
 .databases
 ```
 
@@ -626,7 +686,7 @@ PRAGMA busy_timeout = 5000;
 
 ### Comandos de Base de Datos: `.help`
 
-Acceda a la ayuda y documentación de la interfaz de línea de comandos de SQLite para los comandos de punto disponibles.
+Accede a la ayuda de la interfaz de línea de comandos de SQLite y a la documentación para los comandos de punto disponibles.
 
 ```bash
 # Mostrar todos los comandos disponibles
@@ -638,9 +698,9 @@ Acceda a la ayuda y documentación de la interfaz de línea de comandos de SQLit
 .headers on
 ```
 
-### Importación/Exportación: `.import` / `.export`
+### Importar/Exportar: `.import` / `.export`
 
-Transfiera datos entre SQLite y archivos externos en varios formatos.
+Transfiere datos entre SQLite y archivos externos en varios formatos.
 
 ```bash
 # Importar archivo CSV
@@ -656,7 +716,7 @@ SELECT * FROM users;
 
 ### Gestión de Esquema: `.schema` / `.tables`
 
-Examine la estructura de la base de datos y las definiciones de tablas para desarrollo y depuración.
+Examina la estructura de la base de datos y las definiciones de tablas para desarrollo y depuración.
 
 ```bash
 # Mostrar todas las tablas
@@ -673,7 +733,7 @@ PRAGMA table_info(users);
 
 ### Formato de Salida: `.mode`
 
-Controle cómo se muestran los resultados de las consultas en la interfaz de línea de comandos.
+Controla cómo se muestran los resultados de las consultas en la interfaz de línea de comandos.
 
 ```bash
 # Diferentes modos de salida
@@ -682,7 +742,7 @@ Controle cómo se muestran los resultados de las consultas en la interfaz de lí
 .mode html       # Formato de tabla HTML
 .mode json       # Formato JSON
 .mode list       # Formato de lista
-.mode table      # Formato de tabla (predeterminado)
+.mode table      # Formato de tabla (por defecto)
 
 # Establecer ancho de columna
 .width 10 15 20
@@ -703,7 +763,7 @@ SELECT * FROM users;
 
 ### Ajustes de Base de Datos: `PRAGMA`
 
-Controle el comportamiento de SQLite a través de sentencias pragma para optimización y configuración.
+Controla el comportamiento de SQLite a través de sentencias pragma para optimización y configuración.
 
 ```sql
 -- Información de la base de datos
@@ -722,13 +782,13 @@ PRAGMA foreign_keys = ON;
 -- Establecer modo de borrado seguro
 PRAGMA secure_delete = ON;
 
--- Verificar restricciones
+-- Comprobar restricciones
 PRAGMA foreign_key_check;
 ```
 
 ### Ajustes de Seguridad
 
-Configure opciones y restricciones relacionadas con la seguridad de la base de datos.
+Configura opciones y restricciones relacionadas con la seguridad de la base de datos.
 
 ```sql
 -- Habilitar restricciones de clave foránea
@@ -737,7 +797,7 @@ PRAGMA foreign_keys = ON;
 -- Modo de borrado seguro
 PRAGMA secure_delete = ON;
 
--- Verificar integridad
+-- Comprobar integridad
 PRAGMA integrity_check;
 ```
 
@@ -745,12 +805,12 @@ PRAGMA integrity_check;
 
 ### Descarga e Instalación
 
-Descargue las herramientas de SQLite y configure la interfaz de línea de comandos para su sistema operativo.
+Descarga las herramientas de SQLite y configura la interfaz de línea de comandos para tu sistema operativo.
 
 ```bash
 # Descargar desde sqlite.org
 # Para Windows: sqlite-tools-win32-x86-*.zip
-# Para Linux/Mac: Use el gestor de paquetes
+# Para Linux/Mac: Usar gestor de paquetes
 
 # Ubuntu/Debian
 sudo apt-get install sqlite3
@@ -762,15 +822,15 @@ brew install sqlite
 sqlite3 --version
 ```
 
-### Creación de su Primera Base de Datos
+### Creación de Tu Primera Base de Datos
 
-Cree archivos de base de datos SQLite y comience a trabajar con datos utilizando comandos sencillos.
+Crea archivos de base de datos SQLite e inicia el trabajo con datos usando comandos simples.
 
 ```bash
 # Crear nueva base de datos
 sqlite3 myapp.db
 
-# Crear tabla y agregar datos
+# Crear tabla y añadir datos
 CREATE TABLE users (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
@@ -783,7 +843,7 @@ VALUES ('John Doe', 'john@example.com');
 
 ### Integración con Lenguajes de Programación
 
-Utilice SQLite con varios lenguajes de programación a través de bibliotecas integradas o de terceros.
+Utiliza SQLite con varios lenguajes de programación a través de librerías integradas o de terceros.
 
 ```python
 # Python (módulo sqlite3 incorporado)
@@ -794,7 +854,7 @@ cursor.execute('SELECT * FROM users')
 ```
 
 ```javascript
-// Node.js (requiere el paquete sqlite3)
+// Node.js (requiere paquete sqlite3)
 const sqlite3 = require('sqlite3')
 const db = new sqlite3.Database('mydb.db')
 db.all('SELECT * FROM users', (err, rows) => {
@@ -810,7 +870,7 @@ $stmt = $pdo->query('SELECT * FROM users');
 
 ## Enlaces Relevantes
 
-- <router-link to="/database">Hoja de Trucos de Bases de Datos</router-link>
+- <router-link to="/database">Hoja de Trucos de Base de Datos</router-link>
 - <router-link to="/mysql">Hoja de Trucos de MySQL</router-link>
 - <router-link to="/postgresql">Hoja de Trucos de PostgreSQL</router-link>
 - <router-link to="/mongodb">Hoja de Trucos de MongoDB</router-link>

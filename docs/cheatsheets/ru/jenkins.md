@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по Jenkins'
-description: 'Изучите Jenkins с нашей исчерпывающей шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Jenkins | LabEx'
+description: 'Изучите CI/CD Jenkins с помощью этой исчерпывающей шпаргалки. Краткий справочник по конвейерам Jenkins, заданиям, плагинам, автоматизации, непрерывной интеграции и рабочим процессам DevOps.'
 pdfUrl: '/cheatsheets/pdf/jenkins-cheatsheet.pdf'
 ---
 
@@ -12,16 +12,16 @@ pdfUrl: '/cheatsheets/pdf/jenkins-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/jenkins">Изучите Jenkins с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/jenkins">Изучите Jenkins с практическими лабораторными работами</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите автоматизацию CI/CD с помощью Jenkins через практические лаборатории и сценарии реального мира. LabEx предлагает комплексные курсы по Jenkins, охватывающие основные операции, создание конвейеров, управление плагинами, автоматизацию сборки и продвинутые методы. Освойте Jenkins для создания эффективных конвейеров непрерывной интеграции и развертывания для современной разработки программного обеспечения.
+Изучите автоматизацию CI/CD с помощью Jenkins через практические лабораторные работы и сценарии из реального мира. LabEx предлагает комплексные курсы по Jenkins, охватывающие основные операции, создание конвейеров, управление плагинами, автоматизацию сборки и продвинутые методы. Освойте Jenkins для создания эффективных конвейеров непрерывной интеграции и развертывания для современной разработки программного обеспечения.
 </base-disclaimer-content>
 </base-disclaimer>
 
 ## Установка и Настройка
 
-### Установка в Linux
+### Установка на Linux
 
 Установка Jenkins в системах Ubuntu/Debian.
 
@@ -72,17 +72,17 @@ docker exec jenkins_container cat /var/jenkins_home/secrets/initialAdminPassword
 # Доступ к веб-интерфейсу Jenkins
 # Открыть http://localhost:8080
 # Ввести начальный пароль администратора
-# Установить рекомендуемые плагины или выбрать пользовательские
+# Установить рекомендуемые плагины или выбрать пользовательские плагины
 ```
 
 ### Первоначальная настройка
 
-Завершение мастера настройки и создание пользователя администратора.
+Завершение мастера настройки и создание учетной записи администратора.
 
 ```bash
 # После разблокировки Jenkins:
 # 1. Установить рекомендуемые плагины (рекомендуется)
-# 2. Создать первого пользователя администратора
+# 2. Создать первого пользователя-администратора
 # 3. Настроить URL Jenkins
 # 4. Начать использование Jenkins
 # Проверить, что Jenkins запущен
@@ -153,6 +153,21 @@ java -jar jenkins-cli.jar -auth user:token build my-job -s -v
 java -jar jenkins-cli.jar -auth user:token build my-job -f
 ```
 
+<BaseQuiz id="jenkins-build-1" correct="B">
+  <template #question>
+    Что делает флаг `-s` в команде `jenkins-cli.jar build my-job -s`?
+  </template>
+  
+  <BaseQuizOption value="A">Пропускает сборку</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Ожидает завершения сборки (синхронно)</BaseQuizOption>
+  <BaseQuizOption value="C">Показывает статус сборки</BaseQuizOption>
+  <BaseQuizOption value="D">Останавливает сборку</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `-s` делает команду сборки синхронной, то есть она ждет завершения сборки перед возвратом. Без него команда возвращается немедленно после запуска сборки.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Управление Заданиями: `enable-job` / `disable-job`
 
 Включение или отключение заданий.
@@ -163,9 +178,24 @@ java -jar jenkins-cli.jar -auth user:token enable-job my-job
 # Отключить задание
 java -jar jenkins-cli.jar -auth user:token disable-job my-job
 # Проверить статус задания в веб-интерфейсе
-# Перейти на дашборд задания
+# Перейти на панель управления заданием
 # Искать кнопку "Disable/Enable" (Отключить/Включить)
 ```
+
+<BaseQuiz id="jenkins-job-control-1" correct="B">
+  <template #question>
+    Что происходит, когда вы отключаете задание Jenkins?
+  </template>
+  
+  <BaseQuizOption value="A">Задание удаляется навсегда</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Конфигурация задания сохраняется, но оно не будет запускаться автоматически</BaseQuizOption>
+  <BaseQuizOption value="C">Задание перемещается в другую папку</BaseQuizOption>
+  <BaseQuizOption value="D">Удаляется вся история сборок</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Отключение задания предотвращает его автоматический запуск (запланированные сборки, триггеры и т. д.), но сохраняет конфигурацию задания и историю сборок. Вы можете включить его позже.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Удаление Задания: `delete-job`
 
@@ -185,13 +215,28 @@ done
 Просмотр логов сборки и вывода консоли.
 
 ```bash
-# Просмотреть вывод консоли последней сборки
+# Посмотреть вывод консоли последней сборки
 java -jar jenkins-cli.jar -auth user:token console my-job
-# Просмотреть вывод конкретного номера сборки
+# Посмотреть вывод консоли для конкретного номера сборки
 java -jar jenkins-cli.jar -auth user:token console my-job 15
 # Следить за выводом консоли в реальном времени
 java -jar jenkins-cli.jar -auth user:token console my-job -f
 ```
+
+<BaseQuiz id="jenkins-console-1" correct="C">
+  <template #question>
+    Что делает флаг `-f` в команде `jenkins-cli.jar console my-job -f`?
+  </template>
+  
+  <BaseQuizOption value="A">Принудительно останавливает сборку</BaseQuizOption>
+  <BaseQuizOption value="B">Показывает только неудачные сборки</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Следит за выводом консоли в реальном времени</BaseQuizOption>
+  <BaseQuizOption value="D">Форматирует вывод как JSON</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `-f` отслеживает вывод консоли в реальном времени, аналогично `tail -f` в Linux. Это полезно для мониторинга сборок по мере их выполнения.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Управление Конвейерами (Pipeline)
 
@@ -270,7 +315,7 @@ stages {
 
 ### Настройка Конвейера
 
-Расширенная настройка конвейера и опции.
+Расширенная настройка конвейеров и опции.
 
 ```groovy
 // Конвейер с действиями после сборки (post-build actions)
@@ -315,7 +360,7 @@ pipeline {
         // Опрос SCM каждые 5 минут
         pollSCM('H/5 * * * *')
 
-        // Планирование по типу cron
+        // Планирование, похожее на Cron
         cron('H 2 * * *')  // Ежедневно в 2 часа ночи
 
         // Триггер от вышестоящего задания
@@ -368,11 +413,11 @@ jenkins-plugin-cli --plugins git maven-plugin docker-plugin
 # Плагины Сборки и SCM
 git                    # Интеграция с Git
 github                 # Интеграция с GitHub
-maven-plugin          # Поддержка сборки Maven
-gradle                # Поддержка сборки Gradle
-# Плагины Конвейера
-workflow-aggregator   # Пакет плагинов Pipeline
-pipeline-stage-view   # Представление этапов конвейера
+maven-plugin          # Поддержка сборок Maven
+gradle                # Поддержка сборок Gradle
+# Плагины Конвейеров
+workflow-aggregator   # Набор плагинов Pipeline
+pipeline-stage-view   # Представление стадий конвейера
 blue-ocean           # Современный UI для конвейеров
 # Развертывание и Интеграция
 docker-plugin        # Интеграция с Docker
@@ -384,7 +429,7 @@ jacoco              # Покрытие кода
 sonarqube           # Анализ качества кода
 ```
 
-### Веб-интерфейс Управления Плагинами
+### Управление Плагинами через Веб-интерфейс
 
 Управление плагинами через веб-интерфейс Jenkins.
 
@@ -396,7 +441,7 @@ sonarqube           # Анализ качества кода
 # 4. Поиск плагинов
 # 5. Выбрать и установить
 # 6. Перезапустить Jenkins, если требуется
-# Процесс обновления плагинов:
+# Процесс обновления плагина:
 # 1. Проверить вкладку "Updates" (Обновления)
 # 2. Выбрать плагины для обновления
 # 3. Нажать "Download now and install after restart" (Скачать сейчас и установить после перезапуска)
@@ -412,7 +457,7 @@ sonarqube           # Анализ качества кода
 # Включить безопасность Jenkins:
 # 1. Manage Jenkins → Configure Global Security
 # 2. Включить "Jenkins' own user database" (Собственная база данных пользователей Jenkins)
-# 3. Разрешить регистрацию пользователей (первоначальная настройка)
+# 3. Разрешить пользователям регистрироваться (первоначальная настройка)
 # 4. Установить стратегию авторизации
 # Создание пользователя через CLI (требует соответствующих разрешений)
 # Пользователи обычно создаются через веб-интерфейс:
@@ -427,7 +472,7 @@ sonarqube           # Анализ качества кода
 Настройка областей безопасности (security realms) и стратегий авторизации.
 
 ```bash
-# Опции настройки безопасности:
+# Варианты настройки безопасности:
 # 1. Security Realm (область безопасности - как пользователи проходят аутентификацию):
 #    - Jenkins' own user database
 #    - LDAP
@@ -456,7 +501,7 @@ sonarqube           # Анализ качества кода
 # Использование API токена с CLI
 java -jar jenkins-cli.jar -auth username:api-token \
   -s http://localhost:8080 list-jobs
-# Хранить учетные данные безопасно
+# Безопасное хранение учетных данных
 echo "username:api-token" > ~/.jenkins-cli-auth
 chmod 600 ~/.jenkins-cli-auth
 ```
@@ -469,7 +514,7 @@ chmod 600 ~/.jenkins-cli-auth
 # Управление учетными данными через CLI
 java -jar jenkins-cli.jar -auth user:token \
   list-credentials system::system::jenkins
-# Создать учетные данные XML и импортировать
+# Создание учетных данных XML и импорт
 java -jar jenkins-cli.jar -auth user:token \
   create-credentials-by-xml system::system::jenkins \
   < credential.xml
@@ -486,7 +531,7 @@ withCredentials([usernamePassword(
 }
 ```
 
-## Мониторинг Сборки и Устранение Неполадок
+## Мониторинг Сборок и Устранение Неполадок
 
 ### Статус Сборки и Логи
 
@@ -495,10 +540,10 @@ withCredentials([usernamePassword(
 ```bash
 # Проверить статус сборки
 java -jar jenkins-cli.jar -auth user:token console my-job
-# Получить информацию о задании
+# Получить информацию о сборке
 java -jar jenkins-cli.jar -auth user:token get-job my-job
 # Мониторинг очереди сборки
-# Веб-интерфейс: Jenkins Dashboard → Build Queue
+# Веб-интерфейс: Главная панель Jenkins → Build Queue
 # Показывает ожидающие сборки и их статус
 # Доступ к истории сборок
 # Веб-интерфейс: Job → Build History
@@ -507,10 +552,10 @@ java -jar jenkins-cli.jar -auth user:token get-job my-job
 
 ### Информация о Системе
 
-Получение информации о системе Jenkins и диагностика.
+Получение системной информации Jenkins и диагностических данных.
 
 ```bash
-# Информация о системе
+# Системная информация
 java -jar jenkins-cli.jar -auth user:token version
 # Информация о узлах (агентах)
 java -jar jenkins-cli.jar -auth user:token list-computers
@@ -522,7 +567,7 @@ println Jenkins.instance.getRootDir()
 println System.getProperty("java.version")
 ```
 
-### Анализ Логов
+### Анализ Логирования
 
 Доступ и анализ системных логов Jenkins.
 
@@ -532,9 +577,9 @@ println System.getProperty("java.version")
 # Windows: C:\Program Files\Jenkins\jenkins.out.log
 # Просмотр логов
 tail -f /var/log/jenkins/jenkins.log
-# Конфигурация уровней логов
+# Настройка уровней логирования
 # Manage Jenkins → System Log
-# Добавить новый регистратор логов для конкретных компонентов
+# Добавить новый регистратор логов для определенных компонентов
 # Общие расположения логов:
 sudo journalctl -u jenkins.service     # Логи Systemd
 sudo cat /var/lib/jenkins/jenkins.log  # Файл лога Jenkins
@@ -548,15 +593,15 @@ sudo cat /var/lib/jenkins/jenkins.log  # Файл лога Jenkins
 # Встроенный мониторинг
 # Manage Jenkins → Load Statistics
 # Показывает утилизацию исполнителей с течением времени
-# JVM мониторинг
+# Мониторинг JVM
 # Manage Jenkins → Manage Nodes → Master
 # Показывает использование памяти, ЦП и системные свойства
 # Тренды сборок
 # Установить плагин "Build History Metrics"
-# Просмотр трендов продолжительности сборок и коэффициентов успеха
+# Просмотр трендов продолжительности сборок и показателей успеха
 # Мониторинг использования диска
 # Установить плагин "Disk Usage"
-# Мониторинг места на диске и хранилища артефактов сборок
+# Мониторинг места на диске для рабочих областей и артефактов сборок
 ```
 
 ## Конфигурация и Настройки Jenkins
@@ -625,7 +670,7 @@ export CASC_JENKINS_CONFIG=/path/to/jenkins.yaml
 
 ### Рекомендации по Безопасности
 
-Обеспечение безопасности вашей инсталляции Jenkins для продакшена.
+Поддержание безопасности экземпляра Jenkins для продакшена.
 
 ```bash
 # Рекомендации по безопасности:
@@ -639,7 +684,7 @@ export CASC_JENKINS_CONFIG=/path/to/jenkins.yaml
 # - Использовать HTTPS с действительными сертификатами
 # - Регулярное резервное копирование JENKINS_HOME
 # - Мониторинг уведомлений о безопасности
-# - Использовать плагины учетных данных для секретов
+# - Использование плагинов учетных данных для секретов
 ```
 
 ### Оптимизация Производительности
@@ -655,10 +700,10 @@ export CASC_JENKINS_CONFIG=/path/to/jenkins.yaml
 # 5. Мониторинг дискового пространства и использования памяти
 # Оптимизация сборки:
 # - Использовать инкрементальные сборки, где это возможно
-# - Параллельное выполнение этапов
+# - Параллельное выполнение стадий
 # - Кэширование артефактов
 # - Очистка рабочей области
-# - Настройка выделения ресурсов
+# - Тонкая настройка выделения ресурсов
 ```
 
 ## Соответствующие Ссылки

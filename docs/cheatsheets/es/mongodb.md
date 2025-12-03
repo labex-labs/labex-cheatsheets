@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de MongoDB'
-description: 'Aprenda MongoDB con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de MongoDB | LabEx'
+description: 'Aprenda la base de datos NoSQL MongoDB con esta hoja de trucos completa. Referencia rápida para consultas, agregación, indexación, sharding, replicación y gestión de bases de datos de documentos en MongoDB.'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 
@@ -28,7 +28,7 @@ Muestra todas las bases de datos en el servidor MongoDB.
 ```javascript
 // Mostrar todas las bases de datos
 show dbs
-// Mostrar base de datos actual
+// Mostrar la base de datos actual
 db
 // Obtener estadísticas de la base de datos
 db.stats()
@@ -47,6 +47,21 @@ use myapp
 use newdb
 db.users.insertOne({name: "John"})
 ```
+
+<BaseQuiz id="mongodb-use-1" correct="B">
+  <template #question>
+    ¿Qué sucede cuando ejecutas `use newdb` en MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">Crea la base de datos inmediatamente</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Cambia a la base de datos (la crea cuando insertas datos por primera vez)</BaseQuizOption>
+  <BaseQuizOption value="C">Elimina la base de datos</BaseQuizOption>
+  <BaseQuizOption value="D">Muestra todas las colecciones en la base de datos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El comando `use` cambia a una base de datos, pero MongoDB no la crea hasta que insertas el primer documento. Este es un enfoque de creación perezosa.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Eliminar Base de Datos: `db.dropDatabase()`
 
@@ -123,7 +138,7 @@ Recupera documentos de muestra para comprender la estructura y los tipos de dato
 db.users.findOne()
 // Obtener documento específico
 db.users.findOne({ name: 'John' })
-// Obtener documento con todos los campos mostrados
+// Obtener documento mostrando todos los campos
 db.users.findOne({}, { _id: 0 })
 ```
 
@@ -144,7 +159,7 @@ db.users.find().pretty()
 
 ### Insertar Uno: `db.collection.insertOne()`
 
-Agrega un solo documento a una colección.
+Añade un único documento a una colección.
 
 ```javascript
 // Insertar documento único
@@ -161,9 +176,24 @@ db.users.insertOne({
 })
 ```
 
+<BaseQuiz id="mongodb-insert-1" correct="A">
+  <template #question>
+    ¿Qué devuelve `db.users.insertOne()`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Un objeto de acuse de recibo con el _id del documento insertado</BaseQuizOption>
+  <BaseQuizOption value="B">El documento insertado</BaseQuizOption>
+  <BaseQuizOption value="C">Nada</BaseQuizOption>
+  <BaseQuizOption value="D">El número de documentos insertados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `insertOne()` devuelve un objeto de acuse de recibo que contiene `acknowledged: true` y `insertedId` con el `_id` del documento insertado (o el `_id` personalizado si se proporcionó).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Insertar Varios: `db.collection.insertMany()`
 
-Agrega múltiples documentos en una sola operación.
+Añade múltiples documentos en una sola operación.
 
 ```javascript
 // Insertar múltiples documentos
@@ -184,7 +214,7 @@ db.users.insertMany(
 
 ### Insertar con Fecha: `new Date()`
 
-Agrega documentos con campos de marca de tiempo.
+Añade documentos con campos de marca de tiempo.
 
 ```javascript
 // Insertar con fecha actual
@@ -198,7 +228,7 @@ db.posts.insertOne({
 
 ### Insertar Documentos Anidados
 
-Agrega documentos con objetos incrustados y arreglos.
+Añade documentos con objetos y arrays incrustados.
 
 ```javascript
 // Insertar con objetos anidados
@@ -250,13 +280,28 @@ Utiliza operadores de comparación y lógicos para consultas complejas.
 ```javascript
 // Mayor que, menor que
 db.users.find({ age: { $gt: 25, $lt: 40 } })
-// En arreglo
+// En array
 db.users.find({ status: { $in: ['active', 'pending'] } })
 // No igual
 db.users.find({ status: { $ne: 'inactive' } })
 // Existe
 db.users.find({ email: { $exists: true } })
 ```
+
+<BaseQuiz id="mongodb-query-1" correct="B">
+  <template #question>
+    ¿Qué significa `$gt` en las consultas de MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">Mayor o igual que</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Mayor que</BaseQuizOption>
+  <BaseQuizOption value="C">Agrupar por</BaseQuizOption>
+  <BaseQuizOption value="D">Obtener total</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `$gt` es un operador de comparación que significa "mayor que". Se utiliza en consultas como `{ age: { $gt: 25 } }` para encontrar documentos donde el campo edad es mayor que 25.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Búsqueda de Texto: `$text`, `$regex`
 
@@ -295,7 +340,7 @@ db.users.updateOne(
 
 ### Actualizar Varios: `db.collection.updateMany()`
 
-Modifica todos los documentos que coinciden con la consulta.
+Modifica todos los documentos que coinciden con la condición de consulta.
 
 ```javascript
 // Actualizar múltiples documentos
@@ -314,9 +359,27 @@ db.users.updateOne(
   { name: 'John' },
   { $set: { lastLogin: new Date() }, $unset: { temp: '' } },
 )
-// Añadir a arreglo
+// Añadir a array
 db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
-// Extraer de arreglo
+```
+
+<BaseQuiz id="mongodb-update-1" correct="C">
+  <template #question>
+    ¿Qué hace `$set` en las operaciones de actualización de MongoDB?
+  </template>
+  
+  <BaseQuizOption value="A">Elimina un campo</BaseQuizOption>
+  <BaseQuizOption value="B">Añade un elemento a un array</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Establece el valor de un campo</BaseQuizOption>
+  <BaseQuizOption value="D">Elimina un elemento de un array</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El operador `$set` establece el valor de un campo en un documento. Si el campo no existe, lo crea. Si existe, actualiza el valor.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```javascript
+// Extraer de array
 db.users.updateOne({ name: 'John' }, { $pull: { hobbies: 'reading' } })
 ```
 
@@ -431,7 +494,7 @@ Elimina todos los documentos que coinciden con la condición de consulta.
 ```javascript
 // Eliminar múltiples documentos
 db.users.deleteMany({ status: 'inactive' })
-// Eliminar todos los documentos (¡ten cuidado!)
+// Eliminar todos los documentos (¡cuidado!)
 db.temp_collection.deleteMany({})
 // Eliminar con condición de fecha
 db.logs.deleteMany({
@@ -441,7 +504,7 @@ db.logs.deleteMany({
 
 ### Encontrar y Eliminar: `db.collection.findOneAndDelete()`
 
-Encuentra y elimina un documento en una sola operación atómica.
+Encuentra un documento y lo elimina en una sola operación atómica.
 
 ```javascript
 // Encontrar y eliminar
@@ -469,7 +532,7 @@ db.users.createIndex({ email: 1 }, { unique: true })
 
 ### Gestión de Índices: `getIndexes()`, `dropIndex()`
 
-Ver y administrar los índices existentes en las colecciones.
+Ver y gestionar índices existentes en colecciones.
 
 ```javascript
 // Listar todos los índices
@@ -487,11 +550,11 @@ db.users.dropIndexes()
 Analiza la ejecución de consultas y las estadísticas de rendimiento.
 
 ```javascript
-// Explicar la ejecución de la consulta
+// Explicar ejecución de consulta
 db.users.find({ age: { $gt: 25 } }).explain('executionStats')
 // Verificar si se utiliza un índice
 db.users.find({ email: 'john@example.com' }).explain()
-// Analizar el rendimiento de la agregación
+// Analizar rendimiento de agregación
 db.users
   .aggregate([
     { $match: { status: 'active' } },
@@ -502,7 +565,7 @@ db.users
 
 ### Consejos de Rendimiento
 
-Mejores prácticas para optimizar las consultas y operaciones de MongoDB.
+Prácticas recomendadas para optimizar consultas y operaciones de MongoDB.
 
 ```javascript
 // Usar proyección para limitar la transferencia de datos
@@ -517,7 +580,7 @@ db.users.find({ age: 25 }).hint({ age: 1 })
 
 ### Conectarse a MongoDB: `mongosh`
 
-Inicia el shell de MongoDB y se conecta a diferentes instancias.
+Inicia el shell de MongoDB y conéctate a diferentes instancias.
 
 ```bash
 # Conectarse a MongoDB local
@@ -532,7 +595,7 @@ mongosh --host localhost --port 27017
 
 ### Ayudas del Shell: `help`, `exit`
 
-Obtiene información de ayuda y administra sesiones del shell.
+Obtén información de ayuda y gestiona sesiones del shell.
 
 ```javascript
 // Ayuda general
@@ -559,7 +622,7 @@ db.users.find().pretty()
 db.users.find({ age: 25 }).explain('executionStats')
 // Usar JavaScript en el shell
 var user = db.users.findOne({ name: 'John' })
-print('Edad del usuario: ' + user.age)
+print('User age: ' + user.age)
 ```
 
 ## Importación y Exportación de Datos
@@ -600,7 +663,7 @@ mongoexport --db myapp --collection users \
 Crea copias de seguridad binarias de bases de datos MongoDB.
 
 ```bash
-# Copia de seguridad de base de datos completa
+# Copia de seguridad de toda la base de datos
 mongodump --db myapp --out /backup/
 # Copia de seguridad de colección específica
 mongodump --db myapp --collection users --out /backup/
@@ -625,14 +688,14 @@ mongorestore --gzip --db myapp /backup/myapp/
 
 ### Servidor Comunitario de MongoDB
 
-Descarga e instala la Edición Comunitaria de MongoDB.
+Descarga e instala MongoDB Community Edition.
 
 ```bash
 # Ubuntu/Debian
 sudo apt-get install -y mongodb-org
 # Iniciar servicio MongoDB
 sudo systemctl start mongod
-# Habilitar inicio automático
+# Habilitar autoarranque
 sudo systemctl enable mongod
 # Verificar estado
 sudo systemctl status mongod
@@ -645,7 +708,7 @@ Ejecuta MongoDB usando contenedores Docker.
 ```bash
 # Descargar imagen de MongoDB
 docker pull mongo
-# Ejecutar contenedor de MongoDB
+# Ejecutar contenedor MongoDB
 docker run --name mongodb -d \
   -p 27017:27017 \
   -v mongodb_data:/data/db \
@@ -660,10 +723,10 @@ Instala y utiliza la herramienta GUI oficial de MongoDB.
 
 ```bash
 # Descargar desde mongodb.com
-# Conectarse usando cadena de conexión
+# Conectar usando cadena de conexión
 mongodb://localhost:27017
 # Características disponibles:
-# - Constructor de consultas visual
+# - Constructor visual de consultas
 # - Análisis de esquemas
 # - Monitoreo de rendimiento
 # - Gestión de índices
@@ -759,19 +822,19 @@ try {
   db.users.insertOne({email: "existing@example.com"})
 } catch (e) {
   if (e.code === 11000) {
-    print("El correo electrónico ya existe")
+    print("Email already exists")
   }
 }
 ```
 
 ### Monitoreo: `db.currentOp()`, `db.serverStatus()`
 
-Monitorea las operaciones de la base de datos y el rendimiento del servidor.
+Monitorea operaciones de base de datos y rendimiento del servidor.
 
 ```javascript
 // Revisar operaciones actuales
 db.currentOp()
-// Detener operación de larga duración
+// Matar operación de larga duración
 db.killOp(operationId)
 // Estado del servidor
 db.serverStatus()
@@ -821,13 +884,13 @@ try {
 
 ### Flujos de Cambio: `db.collection.watch()`
 
-Observa los cambios en las colecciones en tiempo real.
+Observa cambios en tiempo real en las colecciones.
 
 ```javascript
 // Observar cambios en la colección
 const changeStream = db.users.watch()
 changeStream.on('change', (change) => {
-  console.log('Cambio detectado:', change)
+  console.log('Change detected:', change)
 })
 // Observar con filtro
 const pipeline = [{ $match: { operationType: 'insert' } }]

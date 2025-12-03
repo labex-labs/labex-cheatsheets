@@ -1,6 +1,6 @@
 ---
-title: 'HTML Spickzettel'
-description: 'Lernen Sie HTML mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'HTML Spickzettel | LabEx'
+description: 'Lernen Sie HTML5 mit diesem umfassenden Spickzettel. Schnelle Referenz für HTML-Tags, semantische Elemente, Formulare, Barrierefreiheit und moderne Webentwicklungsstandards für Frontend-Entwickler.'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ HTML Spickzettel
 <a target="_blank" href="https://labex.io/de/learn/html">HTML mit praktischen Übungen lernen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie die Struktur des HTML-Webs durch praktische Übungen und reale Szenarien. LabEx bietet umfassende HTML-Kurse, die wesentliche Elemente, semantische Auszeichnung, Formulare, Medienintegration und moderne HTML5-Funktionen abdecken. Meistern Sie die effiziente Strukturierung von Webseiten und die Organisation von Inhalten für moderne Webentwicklungs-Workflows.
+Lernen Sie die HTML-Webstruktur durch praktische Übungen und reale Szenarien. LabEx bietet umfassende HTML-Kurse, die wesentliche Elemente, semantische Auszeichnung, Formulare, Medienintegration und moderne HTML5-Funktionen abdecken. Meistern Sie die effiziente Strukturierung von Webseiten und die Organisation von Inhalten für moderne Webentwicklungs-Workflows.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -38,6 +38,21 @@ Jedes HTML-Dokument beginnt mit einer Dokumenttypdeklaration und folgt einer Sta
   </body>
 </html>
 ```
+
+<BaseQuiz id="html-doctype-1" correct="A">
+  <template #question>
+    Was ist der Zweck von `<!DOCTYPE html>`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Es deklariert den Dokumenttyp und die HTML-Version</BaseQuizOption>
+  <BaseQuizOption value="B">Es erstellt ein neues HTML-Element</BaseQuizOption>
+  <BaseQuizOption value="C">Es verlinkt auf ein externes Stylesheet</BaseQuizOption>
+  <BaseQuizOption value="D">Es legt den Seitentitel fest</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Deklaration `<!DOCTYPE html>` teilt dem Browser mit, welche HTML-Version das Dokument verwendet. Für HTML5 ist diese einfache Deklaration ausreichend und sollte die erste Zeile jedes HTML-Dokuments sein.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Head-Elemente: `<head>`
 
@@ -81,13 +96,13 @@ HTML-Elemente bestehen aus öffnenden Tags, Inhalt und schließenden Tags.
 <hr />
 <!-- Elemente mit Attributen -->
 <a href="https://example.com" target="_blank">Link</a>
-<!-- Geschachtelte Elemente -->
+<!-- Verschachtelte Elemente -->
 <div>
-  <p>Geschachtelter Absatz</p>
+  <p>Verschachtelter Absatz</p>
 </div>
 ```
 
-## Textelementen
+## Textinhaltelemente
 
 ### Überschriften: `h1` bis `h6`
 
@@ -102,6 +117,21 @@ Definieren die Hierarchie und Wichtigkeit von Inhaltsabschnitten.
 <h6>Kleinste Überschrift</h6>
 ```
 
+<BaseQuiz id="html-headings-1" correct="B">
+  <template #question>
+    Was ist die korrekte Überschriftenhierarchie?
+  </template>
+  
+  <BaseQuizOption value="A">h1 sollte mehrmals auf einer Seite verwendet werden</BaseQuizOption>
+  <BaseQuizOption value="B" correct>h1 sollte einmal als Haupttitel verwendet werden, gefolgt von h2, h3 usw.</BaseQuizOption>
+  <BaseQuizOption value="C">Alle Überschriften haben die gleiche Wichtigkeit</BaseQuizOption>
+  <BaseQuizOption value="D">h6 ist die wichtigste Überschrift</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    HTML-Überschriften sollten einer logischen Hierarchie folgen: Verwenden Sie ein `h1` für den Hauptseitentitel, dann `h2` für Hauptabschnitte, `h3` für Unterabschnitte usw. Dies hilft bei der Barrierefreiheit und SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Absätze: `p`
 
 Das gängigste Element für Textinhaltsblöcke.
@@ -111,7 +141,7 @@ Das gängigste Element für Textinhaltsblöcke.
   Dies ist ein Textabsatz. Er kann mehrere Sätze enthalten und wird automatisch
   umgebrochen.
 </p>
-<p>Dies ist ein weiterer Absatz. Absätze sind durch Randabstand getrennt.</p>
+<p>Dies ist ein weiterer Absatz. Absätze werden durch Randabstand getrennt.</p>
 ```
 
 ### Textformatierung: `<strong>`, `<em>`, `<b>`, `<i>`
@@ -120,11 +150,11 @@ Elemente zur Hervorhebung und Formatierung von Text inline.
 
 ```html
 <strong>Starke Wichtigkeit (fett)</strong>
-<em>Hervorhebung (kursiv)</em>
+<em>Betonung (kursiv)</em>
 <b>Fetter Text</b>
 <i>Kursiver Text</i>
 <u>Unterstrichener Text</u>
-<mark>Markierter Text</mark>
+<mark>Hervorgehobener Text</mark>
 <small>Kleiner Text</small>
 <del>Gelöschter Text</del>
 <ins>Eingefügter Text</ins>
@@ -132,7 +162,7 @@ Elemente zur Hervorhebung und Formatierung von Text inline.
 
 ### Zeilenumbrüche & Abstand: `<br>`, `<hr>`, `<pre>`
 
-Steuern den Textfluss und den Abstand innerhalb des Inhalts.
+Steuern Sie den Textfluss und den Abstand innerhalb des Inhalts.
 
 ```html
 <!-- Zeilenumbruch -->
@@ -143,7 +173,7 @@ Zeile 2
 <!-- Vorformatierter Text -->
 <pre>
   Text mit
-    erhaltenem    Abstand
+    beibehaltener    Formatierung
       und Zeilenumbrüchen
 </pre>
 <!-- Code-Formatierung -->
@@ -154,7 +184,7 @@ Zeile 2
 
 ### Ungeordnete Listen: `<ul>`
 
-Erstellen Sie Listen mit Aufzählungszeichen für nicht-sequentielle Elemente.
+Erstellen Sie Aufzählungslisten für nicht-sequenzielle Elemente.
 
 ```html
 <ul>
@@ -162,7 +192,7 @@ Erstellen Sie Listen mit Aufzählungszeichen für nicht-sequentielle Elemente.
   <li>Zweites Element</li>
   <li>Drittes Element</li>
 </ul>
-<!-- Geschachtelte Listen -->
+<!-- Verschachtelte Listen -->
 <ul>
   <li>
     Hauptelement
@@ -227,15 +257,30 @@ Erstellen Sie Hyperlinks und Navigationsstrukturen.
 <!-- Telefon-Link -->
 <a href="tel:+1234567890">Rufen Sie uns an</a>
 <!-- Interne Seitenanker -->
-<a href="#section1">Gehe zu Abschnitt 1</a>
+<a href="#section1">Zu Abschnitt 1</a>
 <h2 id="section1">Abschnitt 1</h2>
 ```
 
+<BaseQuiz id="html-links-1" correct="B">
+  <template #question>
+    Was bewirkt `target="_blank"` in einem Anker-Tag?
+  </template>
+  
+  <BaseQuizOption value="A">Öffnet den Link im selben Fenster</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Öffnet den Link in einem neuen Tab oder Fenster</BaseQuizOption>
+  <BaseQuizOption value="C">Schließt das aktuelle Fenster</BaseQuizOption>
+  <BaseQuizOption value="D">Lädt den Link herunter</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Attribut `target="_blank"` öffnet die verlinkte Seite in einem neuen Browser-Tab oder -Fenster, sodass der Benutzer die ursprüngliche Seite geöffnet lassen kann.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Formulare & Eingabeelemente
 
-### Basis-Formularstruktur: `<form>`
+### Grundlegende Formularstruktur: `<form>`
 
-Die Grundlage für die Sammlung von Benutzereingaben.
+Die Grundlage für die Erfassung von Benutzereingaben.
 
 ```html
 <form action="/submit" method="POST">
@@ -269,7 +314,7 @@ Verschiedene Eingabetypen für unterschiedliche Datenerfassungsanforderungen.
 <input type="datetime-local" />
 ```
 
-### Formularsteuerelemente: `<checkbox>`, `<radio>`, `<select>`, `<textarea>`
+### Formularelemente: `<checkbox>`, `<radio>`, `<select>`, `<textarea>`
 
 Zusätzliche Formularelemente für die Benutzerinteraktion.
 
@@ -293,7 +338,7 @@ Zusätzliche Formularelemente für die Benutzerinteraktion.
   name="message"
   rows="4"
   cols="50"
-  placeholder="Ihre Nachricht eingeben"
+  placeholder="Geben Sie Ihre Nachricht ein"
 ></textarea>
 ```
 
@@ -308,6 +353,21 @@ Integrierte HTML-Formularvalidierungsattribute.
 <input type="number" min="1" max="100" />
 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
 ```
+
+<BaseQuiz id="html-validation-1" correct="A">
+  <template #question>
+    Was bewirkt das Attribut `required` in einem HTML-Input?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Verhindert das Absenden des Formulars, wenn das Feld leer ist</BaseQuizOption>
+  <BaseQuizOption value="B">Macht das Feld schreibgeschützt</BaseQuizOption>
+  <BaseQuizOption value="C">Blendet das Feld aus</BaseQuizOption>
+  <BaseQuizOption value="D">Setzt einen Standardwert</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Attribut `required` macht ein Eingabefeld obligatorisch. Wenn das Feld beim Absenden des Formulars leer ist, verhindert der Browser das Absenden und zeigt eine Validierungsnachricht an.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Medienelemente
 
@@ -349,7 +409,7 @@ Audiodaten mit Wiedergabesteuerungen einbetten.
 
 ### Video: `<video>`
 
-Videodaten mit umfassenden Optionen einbetten.
+Videoinhalte mit umfassenden Optionen einbetten.
 
 ```html
 <!-- Basis-Video -->
@@ -384,9 +444,9 @@ Externe Inhalte und Anwendungen einbetten.
 
 ## Tabellen
 
-### Basis-Tabellenstruktur: `<table>`
+### Grundlegende Tabellenstruktur: `<table>`
 
-Strukturierte Datenanzeigen mit Tabellen erstellen.
+Strukturierte Datendarstellungen mit Tabellen erstellen.
 
 ```html
 <table>
@@ -450,14 +510,14 @@ Erweiterte Tabellenfunktionalität mit Spanning und Gruppierung.
 
 ### Seitenstruktur-Elemente: `<header>`, `<nav>`, `<main>`, `<footer>`
 
-Definieren Sie die Hauptabschnitte Ihres Seitenlayouts.
+Definieren Sie die Hauptabschnitte des Seitenlayouts.
 
 ```html
-<!-- Seitentitel -->
+<!-- Seitenkopf -->
 <header>
   <nav>
     <ul>
-      <li><a href="#home">Home</a></li>
+      <li><a href="#home">Startseite</a></li>
       <li><a href="#about">Über uns</a></li>
     </ul>
   </nav>
@@ -482,7 +542,7 @@ Definieren Sie die Hauptabschnitte Ihres Seitenlayouts.
 </footer>
 ```
 
-### Inhaltsgruppierungselemente: `<section>`, `<article>`, `<div>`, `<figure>`
+### Inhaltgruppierungselemente: `<section>`, `<article>`, `<div>`, `<figure>`
 
 Organisieren und gruppieren Sie zusammengehörige Inhaltsabschnitte.
 
@@ -523,15 +583,15 @@ Attribute, die auf jedem HTML-Element verwendet werden können.
 <!-- Klasse für Styling und Auswahl -->
 <p class="highlight important">Text</p>
 <!-- Titel für Tooltips -->
-<span title="Dies ist ein Tooltip">Hovern Sie über mich</span>
+<span title="Dies ist ein Tooltip">Fahren Sie mit der Maus darüber</span>
 <!-- Datenattribute -->
 <div data-user-id="123" data-role="admin">Benutzer</div>
 <!-- Sprache -->
 <p lang="es">Hola mundo</p>
-<!-- Textrichtung -->
+<!-- Inhaltsrichtung -->
 <p dir="rtl">Rechts nach links Text</p>
 <!-- Ausgeblendete Elemente -->
-<div hidden>Dies wird nicht angezeigt</div>
+<div hidden>Wird nicht angezeigt</div>
 ```
 
 ### Barrierefreiheitsattribute: `alt`, `aria-*`, `tabindex`, `role`
@@ -550,7 +610,7 @@ Attribute, die die Barrierefreiheit und Benutzererfahrung verbessern.
 <small id="email-help">Wir werden Ihre E-Mail niemals weitergeben</small>
 <!-- Tab-Index -->
 <div tabindex="0">Fokusfähiges div</div>
-<div tabindex="-1">Programmatisch fokussierbares div</div>
+<div tabindex="-1">Programmatisch fokussierbar</div>
 <!-- Rollenattribut -->
 <div role="button" tabindex="0">Benutzerdefinierter Button</div>
 ```
@@ -655,8 +715,8 @@ Schreiben Sie sauberes, wartbares und zugängliches HTML.
 <img src="image.jpg" alt="beschreibung" />
 <!-- Alle Tags schließen -->
 <p>Schließen Sie immer Ihre Tags</p>
-<!-- Sinnvolle Alt-Texte verwenden -->
-<img src="chart.png" alt="Umsatz stieg im 4. Quartal um 25%" />
+<!-- Aussagekräftigen Alt-Text verwenden -->
+<img src="chart.png" alt="Verkäufe stiegen im 4. Quartal um 25%" />
 ```
 
 ### HTML-Validierung & Debugging
@@ -669,7 +729,7 @@ Stellen Sie sicher, dass Ihr HTML gültig und zugänglich ist.
 <!-- Häufige Validierungsfehler -->
 <!-- Fehlende Alt-Attribute -->
 <img src="image.jpg" alt="" />
-<!-- Alt-Text angeben -->
+<!-- Alt-Text bereitstellen -->
 <!-- Nicht geschlossene Tags -->
 <p>Textinhalt</p>
 <!-- Tags immer schließen -->
@@ -680,7 +740,7 @@ Stellen Sie sicher, dass Ihr HTML gültig und zugänglich ist.
 </p>
 <!-- Entwicklertools verwenden -->
 <!-- Rechtsklick → Element untersuchen -->
-<!-- Auf Fehler in der Konsole prüfen -->
+<!-- Auf Fehler im Konsolenbereich prüfen -->
 <!-- Barrierefreiheit mit WAVE oder axe validieren -->
 ```
 
@@ -712,7 +772,7 @@ Dynamische HTML-Generierung mit Template-Sprachen.
 Wiederverwendbare benutzerdefinierte HTML-Elemente.
 
 ```html
-<!-- Definition eines benutzerdefinierten Elements -->
+<!-- Benutzerdefinierte Elementdefinition -->
 <template id="my-component">
   <style>
     p {

@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по scikit-learn'
-description: 'Изучите scikit-learn с нашей подробной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по scikit-learn | LabEx'
+description: 'Изучите машинное обучение с scikit-learn с помощью этой исчерпывающей шпаргалки. Быстрый справочник по алгоритмам машинного обучения, обучению моделей, предварительной обработке, оценке и рабочим процессам машинного обучения на Python.'
 pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 
@@ -105,6 +105,21 @@ train_test_split(X_temp, y_temp,
 test_size=0.5, random_state=42)
 ```
 
+<BaseQuiz id="sklearn-split-1" correct="B">
+  <template #question>
+    Почему важно разделять данные на обучающие и тестовые наборы?
+  </template>
+  
+  <BaseQuizOption value="A">Чтобы уменьшить размер набора данных</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Для оценки производительности модели на невидимых данных и предотвращения переобучения</BaseQuizOption>
+  <BaseQuizOption value="C">Чтобы ускорить обучение модели</BaseQuizOption>
+  <BaseQuizOption value="D">Чтобы сбалансировать набор данных</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Разделение данных позволяет обучать модель на одной части и тестировать ее на другой. Это помогает оценить, насколько хорошо модель обобщается на новых, невидимых данных, и предотвращает переобучение на обучающих данных.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Масштабирование Признаков: `StandardScaler()` / `MinMaxScaler()`
 
 Нормализация признаков до схожих масштабов.
@@ -125,6 +140,21 @@ minmax_scaler.fit_transform(X_train)
 X_test_minmax =
 minmax_scaler.transform(X_test)
 ```
+
+<BaseQuiz id="sklearn-scaling-1" correct="A">
+  <template #question>
+    Почему масштабирование признаков важно в машинном обучении?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Оно гарантирует, что все признаки находятся в схожем масштабе, не позволяя некоторым признакам доминировать</BaseQuizOption>
+  <BaseQuizOption value="B">Оно удаляет пропущенные значения</BaseQuizOption>
+  <BaseQuizOption value="C">Оно увеличивает количество признаков</BaseQuizOption>
+  <BaseQuizOption value="D">Оно удаляет дублирующиеся строки</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Масштабирование признаков важно, поскольку алгоритмы, такие как SVM, KNN и нейронные сети, чувствительны к масштабам признаков. Без масштабирования признаки с большими диапазонами могут доминировать в процессе обучения модели.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Кодирование: `LabelEncoder()` / `OneHotEncoder()`
 
@@ -175,7 +205,7 @@ solver='liblinear')
 Модель на основе деревьев для задач классификации.
 
 ```python
-# Классификатор дерева решений
+# Классификатор на основе дерева решений
 from sklearn.tree import DecisionTreeClassifier
 tree_clf = DecisionTreeClassifier(max_depth=5,
 random_state=42)
@@ -209,6 +239,21 @@ rf_clf = RandomForestClassifier(
 )
 ```
 
+<BaseQuiz id="sklearn-randomforest-1" correct="A">
+  <template #question>
+    Что контролирует `n_estimators` в RandomForestClassifier?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Количество деревьев решений в лесу</BaseQuizOption>
+  <BaseQuizOption value="B">Максимальная глубина каждого дерева</BaseQuizOption>
+  <BaseQuizOption value="C">Количество признаков для рассмотрения</BaseQuizOption>
+  <BaseQuizOption value="D">Случайное начальное число (seed)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `n_estimators` указывает, сколько деревьев решений включить в случайный лес. Большее количество деревьев обычно улучшает производительность, но увеличивает время вычислений. По умолчанию обычно 100.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Метод Опорных Векторов: `SVC()`
 
 Мощный классификатор, использующий ядерные методы.
@@ -238,7 +283,7 @@ from sklearn.linear_model import LinearRegression
 lin_reg = LinearRegression()
 lin_reg.fit(X_train, y_train)
 y_pred = lin_reg.predict(X_test)
-# Получить коэффициенты и сдвиг
+# Получить коэффициенты и смещение
 coefficients = lin_reg.coef_
 intercept = lin_reg.intercept_
 print(f"R² score: {lin_reg.score(X_test, y_test)}")
@@ -315,7 +360,7 @@ cm = confusion_matrix(y_test, y_pred)
 
 ### Кривая ROC и AUC
 
-Построение кривой ROC и вычисление площади под кривой.
+Построение кривой ROC и вычисление площади под ней.
 
 ```python
 # Кривая ROC для бинарной классификации
@@ -362,7 +407,7 @@ cv_scores = cross_val_score(model, X, y, cv=5,
 scoring='accuracy')
 print(f"CV Accuracy: {cv_scores.mean():.4f} (+/-
 {cv_scores.std() * 2:.4f})")
-# Стратифицированная K-fold для несбалансированных наборов данных
+# Стратифицированный K-блок для несбалансированных наборов данных
 skf = StratifiedKFold(n_splits=5, shuffle=True,
 random_state=42)
 cv_scores = cross_val_score(model, X, y, cv=skf,
@@ -390,9 +435,9 @@ for k in K_range:
     inertias.append(kmeans.inertia_)
 ```
 
-### Метод Главных Компонент: `PCA()`
+### Анализ Главных Компонент: `PCA()`
 
-Техника снижения размерности.
+Метод снижения размерности.
 
 ```python
 # PCA для снижения размерности
@@ -574,7 +619,7 @@ learning_curve(gb_clf, X, y, cv=5)
 
 ### Обработка Несбалансированных Данных: `SMOTE()` / Веса Классов
 
-Устранение дисбаланса классов в наборах данных.
+Решение проблемы несбалансированности классов в наборах данных.
 
 ```python
 # Установка imbalanced-learn: pip install imbalanced-learn
@@ -688,7 +733,7 @@ shap.summary_plot(shap_values, X_test)
 Систематическое сравнение нескольких алгоритмов.
 
 ```python
-# Сравнение нескольких моделей
+# Сравнить несколько моделей
 from sklearn.model_selection import cross_val_score
 models = {
     'Logistic Regression':
@@ -710,16 +755,16 @@ scoring='accuracy')
 
 ## Конфигурация и Лучшие Практики
 
-### Случайное Состояние и Воспроизводимость
+### Случайное Начальное Число и Воспроизводимость
 
 Обеспечение согласованных результатов при каждом запуске.
 
 ```python
-# Установка случайного состояния для
+# Установить случайное начальное число для
 воспроизводимости
 import numpy as np
 np.random.seed(42)
-# Установка random_state во всех
+# Установить random_state во всех
 компонентах sklearn
 model =
 RandomForestClassifier(random
@@ -736,7 +781,7 @@ shuffle=True, random_state=42)
 Оптимизация для больших наборов данных и вычислительной эффективности.
 
 ```python
-# Использование n_jobs=-1 для параллельной
+# Использовать n_jobs=-1 для параллельной
 обработки
 model =
 RandomForestClassifier(n_jobs=
@@ -744,8 +789,8 @@ RandomForestClassifier(n_jobs=
 grid_search =
 GridSearchCV(model,
 param_grid, n_jobs=-1)
-# Для больших наборов данных используйте
-partial_fit, когда это возможно
+# Для больших наборов данных использовать
+partial_fit, когда доступно
 from sklearn.linear_model
 import SGDClassifier
 sgd = SGDClassifier()
@@ -757,22 +802,22 @@ chunk_y)
 
 ### Предупреждения и Отладка
 
-Обработка распространенных проблем и отладка моделей.
+Обработка общих проблем и отладка моделей.
 
 ```python
-# Подавление предупреждений (использовать
+# Подавить предупреждения (использовать
 осторожно)
 import warnings
 warnings.filterwarnings('ignore')
-# Включение set_config sklearn для
+# Включить set_config sklearn для
 улучшенной отладки
 from sklearn import set_config
 set_config(display='diagram')  #
 Улучшенный дисплей в Jupyter
-# Проверка на утечку данных
+# Проверить на утечку данных
 from sklearn.model_selection
 import cross_val_score
-# Убедитесь, что предварительная
+# Убедиться, что предварительная
 обработка выполняется внутри цикла CV
 ```
 

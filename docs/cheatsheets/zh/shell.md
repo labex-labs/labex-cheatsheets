@@ -1,6 +1,6 @@
 ---
-title: 'Shell 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，快速掌握 Shell 编程。'
+title: 'Shell 备忘单 | LabEx'
+description: '使用此综合备忘单学习 Shell 脚本。Bash 命令、Shell 脚本、自动化、命令行工具和 Linux/Unix 系统管理的快速参考。'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Shell 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/shell">通过实践实验室学习 Shell</a>
+<a target="_blank" href="https://labex.io/zh/learn/shell">通过动手实验学习 Shell</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 Shell 脚本和命令行操作。LabEx 提供全面的 Shell 课程，涵盖基本的 Bash 命令、文件操作、文本处理、进程管理和自动化。掌握命令行效率和 Shell 脚本技术。
+通过动手实验和真实场景学习 Shell 脚本和命令行操作。LabEx 提供全面的 Shell 课程，涵盖基本的 Bash 命令、文件操作、文本处理、进程管理和自动化。掌握命令行效率和 Shell 脚本技术。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -26,13 +26,13 @@ Shell 速查表
 显示当前位置的文件和目录。
 
 ```bash
-# 在当前目录中列出文件
+# 列出当前目录中的文件
 ls
-# 详细列表
+# 列出并显示详细信息
 ls -l
 # 显示隐藏文件
 ls -a
-# 以人类可读的文件大小列表
+# 以人类可读的文件大小列出
 ls -lh
 # 按修改时间排序
 ls -lt
@@ -75,7 +75,7 @@ cp source.txt destination.txt
 cp -r source_dir dest_dir
 # 复制时提示确认
 cp -i file1.txt file2.txt
-# 保留文件属性
+# 保持文件属性
 cp -p original.txt copy.txt
 ```
 
@@ -103,7 +103,7 @@ rm file.txt
 rm -r directory/
 # 强制删除，不确认
 rm -f file.txt
-# 交互式删除（逐个确认）
+# 交互式删除（确认每一个）
 rm -i *.txt
 ```
 
@@ -135,6 +135,21 @@ cd -
 cd /path/to/directory
 ```
 
+<BaseQuiz id="shell-cd-1" correct="A">
+  <template #question>
+    `cd ~` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>更改到主目录</BaseQuizOption>
+  <BaseQuizOption value="B">更改到根目录</BaseQuizOption>
+  <BaseQuizOption value="C">更改到父目录</BaseQuizOption>
+  <BaseQuizOption value="D">创建一个新目录</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `~` 符号是主目录的快捷方式。`cd ~` 导航到你的主目录，等同于 `cd $HOME` 或 `cd /home/username`。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 目录树：`tree`
 
 以树状格式显示目录结构。
@@ -161,11 +176,11 @@ cat file.txt
 less file.txt
 # 显示前 10 行
 head file.txt
-# 显示后 10 行
+# 显示最后 10 行
 tail file.txt
 # 显示最后 20 行
 tail -n 20 file.txt
-# 跟踪文件变化（常用于日志）
+# 跟踪文件变化（对日志文件有用）
 tail -f logfile.txt
 ```
 
@@ -174,7 +189,7 @@ tail -f logfile.txt
 在文本文件中搜索模式。
 
 ```bash
-# 在文件中搜索模式
+# 在文件中搜索 "pattern"
 grep "pattern" file.txt
 # 忽略大小写搜索
 grep -i "pattern" file.txt
@@ -186,9 +201,24 @@ grep -n "pattern" file.txt
 grep -c "pattern" file.txt
 ```
 
+<BaseQuiz id="shell-grep-1" correct="B">
+  <template #question>
+    `grep -r "pattern" directory/` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">只在当前文件中搜索</BaseQuizOption>
+  <BaseQuizOption value="B" correct>在目录中的所有文件中递归搜索</BaseQuizOption>
+  <BaseQuizOption value="C">替换文件中的模式</BaseQuizOption>
+  <BaseQuizOption value="D">删除包含该模式的文件</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-r` 标志使 grep 递归搜索所有文件和子目录。这在跨整个目录树查找文本模式时非常有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 查找文件：`find`
 
-根据条件定位文件和目录。
+根据标准定位文件和目录。
 
 ```bash
 # 按名称查找文件
@@ -243,11 +273,26 @@ ls -l
 chmod +x script.sh
 # 设置特定权限 (755)
 chmod 755 file.txt
-# 移除组和其他用户的写入权限
+# 移除组和其他用户的写权限
 chmod go-w file.txt
 # 递归更改权限
 chmod -R 644 directory/
 ```
+
+<BaseQuiz id="shell-chmod-1" correct="C">
+  <template #question>
+    `chmod 755 file.txt` 设置了什么权限？
+  </template>
+  
+  <BaseQuizOption value="A">所有用户都具有读、写、执行权限</BaseQuizOption>
+  <BaseQuizOption value="B">所有者具有读写权限，其他用户具有读权限</BaseQuizOption>
+  <BaseQuizOption value="C" correct>所有者具有读、写、执行权限；组和其他用户具有读、执行权限</BaseQuizOption>
+  <BaseQuizOption value="D">所有用户都只有读取权限</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` 设置的权限是：所有者 = 7 (rwx)，组 = 5 (r-x)，其他用户 = 5 (r-x)。这是可执行文件和目录的常见权限设置。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 更改所有权：`chown` / `chgrp`
 
@@ -271,10 +316,10 @@ chown -R user:group directory/
 ```text
 # 权限计算：
 # 4 = 读取 (r), 2 = 写入 (w), 1 = 执行 (x)
-# 755 = rwxr-xr-x (所有者：rwx, 组：r-x, 其他：r-x)
-# 644 = rw-r--r-- (所有者：rw-, 组：r--, 其他：r--)
-# 777 = rwxrwxrwx (对所有人完全权限)
-# 600 = rw------- (所有者：rw-, 组：---, 其他：---)
+# 755 = rwxr-xr-x (所有者：rwx, 组：r-x, 其他用户：r-x)
+# 644 = rw-r--r-- (所有者：rw-, 组：r--, 其他用户：r--)
+# 777 = rwxrwxrwx (所有权限给所有人)
+# 600 = rw------- (所有者：rw-, 组：---, 其他用户：---)
 ```
 
 ## 进程管理
@@ -286,7 +331,7 @@ chown -R user:group directory/
 ```bash
 # 显示当前用户的进程
 ps
-# 显示所有进程及详细信息
+# 显示所有进程及其详细信息
 ps aux
 # 以树状格式显示进程
 ps -ef --forest
@@ -350,7 +395,7 @@ du -h --max-depth=1 | sort -hr
 重定向命令的输出和输入。
 
 ```bash
-# 将输出重定向到文件（覆盖）
+# 将输出重定向到文件 (覆盖)
 command > output.txt
 # 将输出追加到文件
 command >> output.txt
@@ -362,6 +407,21 @@ command > output.txt 2>&1
 command > /dev/null
 ```
 
+<BaseQuiz id="shell-redirect-1" correct="B">
+  <template #question>
+    Shell 重定向中的 `>` 和 `>>` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">`>` 追加，`>>` 覆盖</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`>` 覆盖文件，`>>` 追加到文件</BaseQuizOption>
+  <BaseQuizOption value="C">`>` 重定向 stdout，`>>` 重定向 stderr</BaseQuizOption>
+  <BaseQuizOption value="D">没有区别</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `>` 运算符如果目标文件存在则会覆盖它，而 `>>` 会将输出追加到文件末尾。当你希望保留现有内容时，应使用 `>>`。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 管道：`|`
 
 使用管道将命令链接在一起。
@@ -369,7 +429,7 @@ command > /dev/null
 ```bash
 # 基本管道用法
 command1 | command2
-# 多管道
+# 多重管道
 cat file.txt | grep "pattern" | sort | uniq
 # 统计输出的行数
 ps aux | wc -l
@@ -386,7 +446,7 @@ ls -la | less
 command | tee output.txt
 # 追加到文件
 command | tee -a output.txt
-# 多个输出
+# 多个输出目标
 command | tee file1.txt file2.txt
 ```
 
@@ -415,7 +475,7 @@ EOF
 创建和使用 Shell 变量。
 
 ```bash
-# 赋值（=号两边不能有空格）
+# 赋值（= 符号两侧无空格）
 name="John"
 count=42
 # 使用变量
@@ -453,8 +513,8 @@ unset MY_VAR
 $0  # 脚本名称
 $1, $2, $3...  # 第一个、第二个、第三个参数
 $#  # 参数数量
-$@  # 所有参数（作为独立单词）
-$*  # 所有参数（作为单个单词）
+$@  # 所有参数（作为单独的词）
+$*  # 所有参数（作为单个词）
 $?  # 上一个命令的退出状态
 # 进程信息
 $$  # 当前 Shell 的 PID
@@ -504,19 +564,19 @@ chmod +x script.sh
 ```bash
 #!/bin/bash
 if [ -f "file.txt" ]; then
-    echo "File exists"
+    echo "文件存在"
 elif [ -d "directory" ]; then
-    echo "Directory exists"
+    echo "目录存在"
 else
-    echo "Neither exists"
+    echo "两者都不存在"
 fi
 # 字符串比较
 if [ "$USER" = "root" ]; then
-    echo "Running as root"
+    echo "以 root 身份运行"
 fi
 # 数字比较
 if [ $count -gt 10 ]; then
-    echo "Count is greater than 10"
+    echo "Count 大于 10"
 fi
 ```
 
@@ -526,13 +586,13 @@ fi
 
 ```bash
 #!/bin/bash
-# 范围 for 循环
+# 带有范围的 for 循环
 for i in {1..5}; do
-    echo "Number: $i"
+    echo "数字: $i"
 done
-# 文件 for 循环
+# 带有文件的 for 循环
 for file in *.txt; do
-    echo "Processing: $file"
+    echo "正在处理: $file"
 done
 # While 循环
 count=1
@@ -551,7 +611,7 @@ done
 # 定义函数
 greet() {
     local name=$1
-    echo "Hello, $name!"
+    echo "你好, $name!"
 }
 # 带有返回值的函数
 add_numbers() {
@@ -561,7 +621,7 @@ add_numbers() {
 # 调用函数
 greet "Alice"
 result=$(add_numbers 5 3)
-echo "Sum: $result"
+echo "和: $result"
 ```
 
 ## 网络和系统命令
@@ -622,16 +682,16 @@ unzip -l archive.zip
 
 ### 文件传输：`scp` / `rsync`
 
-在系统之间传输文件。
+在系统间传输文件。
 
 ```bash
 # 将文件复制到远程服务器
 scp file.txt user@server:/path/to/destination
 # 从远程服务器复制文件
 scp user@server:/path/to/file.txt .
-# 同步目录（本地到远程）
+# 同步目录 (本地到远程)
 rsync -avz local_dir/ user@server:/remote_dir/
-# 带删除的同步（镜像）
+# 带删除同步 (镜像)
 rsync -avz --delete local_dir/ user@server:/remote_dir/
 ```
 
@@ -685,7 +745,7 @@ Alt+B   # 向后移动一个单词
 # 编辑
 Ctrl+U  # 清除光标前所有内容
 Ctrl+K  # 清除光标后所有内容
-Ctrl+W  # 删除光标前的单词
+Ctrl+W  # 删除光标前的一个单词
 Ctrl+Y  # 粘贴最后删除的文本
 # 进程控制
 Ctrl+C  # 中断当前命令
@@ -700,11 +760,11 @@ Ctrl+D  # 退出 Shell 或 EOF
 用于常见任务的强大单行命令。
 
 ```bash
-# 在多个文件中查找并替换文本
+# 在多个文件中查找和替换文本
 find . -name "*.txt" -exec sed -i 's/old/new/g' {} \;
 # 查找当前目录中最大的文件
 du -ah . | sort -rh | head -10
-# 监控日志文件中特定的模式
+# 实时监控日志文件中特定的模式
 tail -f /var/log/syslog | grep "ERROR"
 # 统计目录中的文件数
 ls -1 | wc -l
@@ -717,7 +777,7 @@ cp file.txt file.txt.backup.$(date +%Y%m%d-%H%M%S)
 为常用命令创建快捷方式。
 
 ```bash
-# 创建别名（添加到 ~/.bashrc 中）
+# 创建别名 (添加到 ~/.bashrc)
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'

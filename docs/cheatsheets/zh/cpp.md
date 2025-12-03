@@ -1,6 +1,6 @@
 ---
-title: 'C++ 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合 C++ 速查表，快速学习 C++。'
+title: 'C++ 速查表 | LabEx'
+description: '使用这份全面的 C++ 速查表学习 C++ 编程。快速参考 C++ 语法、OOP、STL、模板、内存管理和现代 C++ 特性，专为软件开发人员设计。'
 pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ C++ 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/cpp">使用实践实验室学习 C++</a>
+<a target="_blank" href="https://labex.io/zh/learn/cpp">通过动手实验学习 C++</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 C++ 编程。LabEx 提供全面的 C++ 课程，涵盖基本语法、面向对象编程、STL 容器、内存管理和高级技术。掌握 C++ 的强大功能，构建高性能应用程序和系统软件。
+通过动手实验和真实场景学习 C++ 编程。LabEx 提供全面的 C++ 课程，涵盖基本语法、面向对象编程、STL 容器、内存管理和高级技术。掌握 C++ 的强大功能，以构建高性能应用程序和系统软件。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -36,7 +36,7 @@ int main() {
 
 ### 头文件与命名空间
 
-包含库并管理命名空间。
+包含库和管理命名空间。
 
 ```cpp
 #include <iostream>  // 输入/输出流
@@ -63,7 +63,7 @@ using namespace std;
 /* FIXME: 此处有 Bug */
 ```
 
-### Main 函数
+### 主函数
 
 程序的入口点及返回值。
 
@@ -79,15 +79,30 @@ int main(int argc, char* argv[]) {
 }
 ```
 
+<BaseQuiz id="cpp-main-1" correct="B">
+  <template #question>
+    C 和 C++ 的输出语句有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">没有区别</BaseQuizOption>
+  <BaseQuizOption value="B" correct>C 使用 printf()，C++ 使用带 << 运算符的 cout</BaseQuizOption>
+  <BaseQuizOption value="C">C++ 不支持输出</BaseQuizOption>
+  <BaseQuizOption value="D">C 使用 cout，C++ 使用 printf</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C 使用 stdio.h 中的 `printf()`，而 C++ 使用 iostream 中的 `cout` 和流插入运算符 `<<`。C++ 也支持 `printf` 以保持兼容性。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 基本输出
 
 向控制台显示文本和变量。
 
 ```cpp
 cout << "Hello" << endl;
-cout << "值：" << 42 << endl;
+cout << "Value: " << 42 << endl;
 // 一行中的多个值
-cout << "姓名：" << name << ", 年龄：" << age << endl;
+cout << "Name: " << name << ", Age: " << age << endl;
 ```
 
 ### 基本输入
@@ -105,7 +120,7 @@ getline(cin, name);
 
 ## 数据类型与变量
 
-### 原始类型
+### 基本类型
 
 用于存储不同种类值的基本数据类型。
 
@@ -139,6 +154,21 @@ vector<int> dynamic_array = {10, 20, 30};
 vector<string> names(5); // 大小为 5，空字符串
 ```
 
+<BaseQuiz id="cpp-vector-1" correct="B">
+  <template #question>
+    `vector` 相较于普通数组在 C++ 中的主要优势是什么？
+  </template>
+  
+  <BaseQuizOption value="A">Vector 速度更快</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Vector 可以动态调整大小，而数组大小固定</BaseQuizOption>
+  <BaseQuizOption value="C">Vector 使用更少的内存</BaseQuizOption>
+  <BaseQuizOption value="D">没有优势</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `vector` 是一个动态数组，可以在运行时增长或收缩，与在编译时确定固定大小的常规数组不同。这使得 vector 在许多用例中更具灵活性。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 常量与 Auto
 
 不可变值和自动类型推导。
@@ -160,29 +190,29 @@ using real = double;
 
 ### 条件语句
 
-基于条件做出决策。
+根据条件做出决策。
 
 ```cpp
 // If-else 语句
 if (age >= 18) {
-    cout << "成年人" << endl;
+    cout << "Adult" << endl;
 } else if (age >= 13) {
-    cout << "青少年" << endl;
+    cout << "Teenager" << endl;
 } else {
-    cout << "儿童" << endl;
+    cout << "Child" << endl;
 }
 // 三元运算符
-string status = (age >= 18) ? "成年人" : "未成年人";
+string status = (age >= 18) ? "Adult" : "Minor";
 // Switch 语句
 switch (grade) {
     case 'A':
-        cout << "优秀！" << endl;
+        cout << "Excellent!" << endl;
         break;
     case 'B':
-        cout << "干得好！" << endl;
+        cout << "Good job!" << endl;
         break;
     default:
-        cout << "继续努力！" << endl;
+        cout << "Keep trying!" << endl;
 }
 ```
 
@@ -200,11 +230,26 @@ vector<int> numbers = {1, 2, 3, 4, 5};
 for (int num : numbers) {
     cout << num << " ";
 }
-// 带有 auto 的基于范围的循环
+// 带有范围的循环和 auto
 for (auto& item : container) {
     // 处理 item
 }
 ```
+
+<BaseQuiz id="cpp-range-for-1" correct="B">
+  <template #question>
+    C++ 中的基于范围的 for 循环是什么？
+  </template>
+  
+  <BaseQuizOption value="A">只适用于数组的循环</BaseQuizOption>
+  <BaseQuizOption value="B" correct>自动遍历容器中所有元素的循环</BaseQuizOption>
+  <BaseQuizOption value="C">永远运行的循环</BaseQuizOption>
+  <BaseQuizOption value="D">需要手动管理索引的循环</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    基于范围的 for 循环（C++11 引入）会自动遍历容器（如 vector、数组、字符串）中的所有元素，而无需手动管理索引。语法是 `for (auto item : container)`。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### While 循环
 
@@ -220,7 +265,7 @@ while (count < 5) {
 // Do-while 循环 (至少执行一次)
 int input;
 do {
-    cout << "输入一个数字 (0 退出): ";
+    cout << "Enter a number (0 to quit): ";
     cin >> input;
 } while (input != 0);
 ```
@@ -314,7 +359,7 @@ void changeValue(int x) {
 void changeReference(int& x) {
     x = 100; // 原始变量被修改
 }
-// Const 引用 (只读，高效)
+// const 引用 (只读，高效)
 void processLargeData(const vector<int>& data) {
     // 可以读取数据但不能修改
 }
@@ -362,7 +407,7 @@ public:
 Rectangle rect1(5.0, 3.0);
 Rectangle rect2; // 默认构造函数
 // 使用成员函数
-cout << "面积：" << rect1.area() << endl;
+cout << "Area: " << rect1.area() << endl;
 rect2.setDimensions(4.0, 2.0);
 // 动态分配
 Rectangle* rect3 = new Rectangle(6.0, 4.0);
@@ -407,7 +452,7 @@ vector<Shape*> shapes;
 shapes.push_back(new Circle(5.0, "red"));
 shapes.push_back(new Rectangle(4.0, 6.0));
 for (Shape* shape : shapes) {
-    cout << "面积：" << shape->area() << endl;
+    cout << "Area: " << shape->area() << endl;
     // 调用相应的派生类方法
 }
 ```
@@ -433,7 +478,7 @@ delete[] arr;
 // 检查分配失败
 int* large_array = new(nothrow) int[1000000];
 if (large_array == nullptr) {
-    cout << "分配失败！" << endl;
+    cout << "Allocation failed!" << endl;
 }
 ```
 
@@ -501,7 +546,7 @@ delete[] heap_array;
 vector<int> nums = {1, 2, 3};
 nums.push_back(4);        // 添加元素
 nums.pop_back();          // 移除最后一个
-nums.insert(nums.begin() + 1, 10); // 在位置 1 插入 10
+nums.insert(nums.begin() + 1, 10); // 在位置插入
 nums.erase(nums.begin()); // 移除第一个
 // String 操作
 string text = "Hello";
@@ -543,7 +588,7 @@ sort(nums.rbegin(), nums.rend()); // 降序排序
 // 查找
 auto it = find(nums.begin(), nums.end(), 25);
 if (it != nums.end()) {
-    cout << "找到位置：" << it - nums.begin();
+    cout << "Found at position: " << it - nums.begin();
 }
 // 其他有用算法
 reverse(nums.begin(), nums.end());
@@ -597,7 +642,7 @@ while (file2 >> number) {
 }
 // 带错误检查
 if (!file.good()) {
-    cerr << "读取文件错误！" << endl;
+    cerr << "Error reading file!" << endl;
 }
 ```
 
@@ -607,7 +652,7 @@ if (!file.good()) {
 
 ```cpp
 #include <sstream>
-// 解析逗号分隔值
+// 解析逗号分隔的值
 string data = "apple,banana,cherry";
 stringstream ss(data);
 string item;
@@ -631,12 +676,12 @@ string back_to_str = to_string(num);
 ofstream outfile("output.txt");
 if (outfile.is_open()) {
     outfile << "Hello, file!" << endl;
-    outfile << "数字：" << 42 << endl;
+    outfile << "Number: " << 42 << endl;
     outfile.close();
 }
 // 追加到现有文件
 ofstream appendfile("log.txt", ios::app);
-appendfile << "新的日志条目" << endl;
+appendfile << "New log entry" << endl;
 // 将 vector 写入文件
 vector<int> numbers = {1, 2, 3, 4, 5};
 ofstream numfile("numbers.txt");
@@ -653,8 +698,8 @@ for (int num : numbers) {
 #include <iomanip>
 double pi = 3.14159265;
 cout << fixed << setprecision(2) << pi << endl; // 3.14
-cout << setw(10) << "右对齐" << endl;          // 右对齐
-cout << left << setw(10) << "左对齐" << endl;     // 左对齐
+cout << setw(10) << "Right" << endl;          // 右对齐
+cout << left << setw(10) << "Left" << endl;     // 左对齐
 cout << hex << 255 << endl;                    // 十六进制：ff
 ```
 
@@ -671,18 +716,18 @@ try {
     vec.at(10) = 100;    // 越界访问
 
 } catch (const exception& e) {
-    cout << "捕获到异常：" << e.what() << endl;
+    cout << "Exception caught: " << e.what() << endl;
 } catch (...) {
-    cout << "捕获到未知异常！" << endl;
+    cout << "Unknown exception caught!" << endl;
 }
 // 特定异常类型
 try {
     string str = "abc";
     int num = stoi(str); // 抛出 invalid_argument
 } catch (const invalid_argument& e) {
-    cout << "无效参数：" << e.what() << endl;
+    cout << "Invalid argument: " << e.what() << endl;
 } catch (const out_of_range& e) {
-    cout << "超出范围：" << e.what() << endl;
+    cout << "Out of range: " << e.what() << endl;
 }
 ```
 
@@ -703,7 +748,7 @@ public:
 // 抛出异常的函数
 void validateAge(int age) {
     if (age < 0 || age > 150) {
-        throw CustomException("无效的年龄范围！");
+        throw CustomException("Invalid age range!");
     }
 }
 // 用法
@@ -716,7 +761,7 @@ try {
 
 ### RAII 模式
 
-用于安全资源管理的初始化资源获取。
+用于安全资源管理的资源获取即初始化。
 
 ```cpp
 // 智能指针的 RAII
@@ -766,7 +811,7 @@ void processArray(int* arr, int size) {
     #define DBG_PRINT(x)
 #endif
 // 用法
-DBG_PRINT("开始函数");
+DBG_PRINT("Starting function");
 ```
 
 ## 编译与构建过程
@@ -877,15 +922,15 @@ if (ptr != nullptr) {
 编写高效的 C++ 代码。
 
 ```cpp
-// 传递大对象时使用 const 引用
+// 按 const 引用传递大对象
 void processData(const vector<int>& data) {
     // 避免复制大对象
 }
-// 对迭代器使用前缀自增
+// 对迭代器使用前缀递增
 for (auto it = vec.begin(); it != vec.end(); ++it) {
     // ++it 通常比 it++ 更快
 }
-// 在已知大小时预留 vector 容量
+// 预留 vector 容量，当知道大小时
 vector<int> numbers;
 numbers.reserve(1000); // 避免重新分配
 // 对对象使用 emplace 而不是 push

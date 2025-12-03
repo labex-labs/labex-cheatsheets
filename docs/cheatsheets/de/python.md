@@ -1,6 +1,6 @@
 ---
-title: 'Python Spickzettel'
-description: 'Lernen Sie Python mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Python Spickzettel | LabEx'
+description: 'Python-Programmierung lernen mit diesem umfassenden Spickzettel. Schnelle Referenz für Python-Syntax, Datenstrukturen, Funktionen, Klassen, Bibliotheken und Best Practices für Python-Entwickler.'
 pdfUrl: '/cheatsheets/pdf/python-cheatsheet.pdf'
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: 'Ansible チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Ansible を習得しましょう。'
+title: 'Ansible チートシート | LabEx'
+description: 'この包括的なチートシートで Ansible 自動化を学習。Ansible プレイブック、モジュール、インベントリ管理、構成管理、インフラストラクチャ自動化のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/ansible-cheatsheet.pdf'
 ---
 
@@ -166,11 +166,26 @@ Ansible コマンドの基本構造：`ansible <hosts> -m <module> -a "<argument
 ansible all -m ping
 # 特定のグループを確認
 ansible webservers -m ping
-# すべてのホストでコマンドを実行
+# 全ホストでコマンドを実行
 ansible all -m command -a "uptime"
 # sudo 権限で実行
 ansible all -m command -a "systemctl status nginx" --become
 ```
+
+<BaseQuiz id="ansible-command-1" correct="C">
+  <template #question>
+    `ansible all -m ping` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">ICMP ping を使用してネットワーク接続性をテストする</BaseQuizOption>
+  <BaseQuizOption value="B">全ホストに ping パッケージをインストールする</BaseQuizOption>
+  <BaseQuizOption value="C" correct>インベントリ内の全ホストへの Ansible 接続性をテストする</BaseQuizOption>
+  <BaseQuizOption value="D">ホストがオンラインかどうかを確認する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Ansible の `ping` モジュールは ICMP を使用しません。これは、Ansible がホストに接続し、Python を実行し、結果を返すことができることを検証するためのテストモジュールです。接続性と構成の検証に使用されます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### ファイル操作
 
@@ -189,14 +204,14 @@ ansible all -m file -a "src=/etc/nginx dest=/tmp/nginx state=link"
 
 ### パッケージ管理
 
-異なるシステム間でパッケージをインストール、更新、削除します。
+異なるシステム間でパッケージのインストール、更新、削除を行います。
 
 ```bash
 # パッケージをインストール (apt)
 ansible webservers -m apt -a "name=nginx state=present" --become
 # パッケージをインストール (yum)
 ansible webservers -m yum -a "name=httpd state=present" --become
-# すべてのパッケージを更新
+# 全パッケージを更新
 ansible all -m apt -a "upgrade=dist" --become
 # パッケージを削除
 ansible all -m apt -a "name=apache2 state=absent" --become
@@ -221,7 +236,7 @@ ansible all -m service -a "name=nginx enabled=yes" --become
 
 ### 基本的なプレイブック構造
 
-どのタスクをどのホストで実行するかを定義する YAML ファイル。
+どのタスクを実行し、どのホストで実行するかを定義する YAML ファイル。
 
 ```yaml
 ---
@@ -257,13 +272,28 @@ ansible-playbook -i inventory.yml site.yml
 ansible-playbook site.yml --check
 # 特定のホストで実行
 ansible-playbook site.yml --limit webservers
-# 追加変数で実行
+# 追加変数を指定して実行
 ansible-playbook site.yml --extra-vars "nginx_port=8080"
 ```
 
+<BaseQuiz id="ansible-playbook-1" correct="B">
+  <template #question>
+    `ansible-playbook site.yml --check` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">プレイブックを 2 回実行する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>変更を加えることなくチェックモード (ドライラン) でプレイブックを実行する</BaseQuizOption>
+  <BaseQuizOption value="C">プレイブックの構文をチェックする</BaseQuizOption>
+  <BaseQuizOption value="D">最初のタスクのみを実行する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `--check` フラグは、Ansible をチェックモード (ドライラン) で実行し、実際に変更を加えることなく何が起こるかをシミュレートします。これは、適用前にプレイブックをテストするのに役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### タスクオプションと条件分岐
 
-タスクに条件、ループ、エラー処理を追加します。
+条件、ループ、エラー処理をタスクに追加します。
 
 ```yaml
 tasks:
@@ -290,7 +320,7 @@ tasks:
 
 ### ハンドラと通知
 
-タスクから通知されたときに実行されるハンドラを定義します。
+タスクによって通知されたときに実行されるハンドラを定義します。
 
 ```yaml
 tasks:
@@ -306,6 +336,21 @@ handlers:
       name: nginx
       state: restarted
 ```
+
+<BaseQuiz id="ansible-handlers-1" correct="C">
+  <template #question>
+    Ansible のハンドラはいつ実行されますか？
+  </template>
+  
+  <BaseQuizOption value="A">定義直後に実行される</BaseQuizOption>
+  <BaseQuizOption value="B">プレイブックの開始時に実行される</BaseQuizOption>
+  <BaseQuizOption value="C" correct>プレイブックの最後に、タスクによって通知された場合にのみ実行される</BaseQuizOption>
+  <BaseQuizOption value="D">タスクが実行されるたびに実行される</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ハンドラはプレイブックの最後に実行され、タスクによって何かが変更された場合にのみ通知された場合に実行されます。これにより、設定ファイルが実際に変更された場合にのみサービスが再起動されることが保証されます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 変数とテンプレート
 
@@ -356,19 +401,19 @@ server {
   notify: nginx をリロード
 ```
 
-### ファクトとシステム情報
+### Fact とシステム情報
 
-プレイブック内でシステムファクトを収集し、使用します。
+プレイブックでシステム Fact を収集し、使用します。
 
 ```bash
-# ファクトを手動で収集
+# Fact を手動で収集
 ansible all -m setup
-# 特定のファクトを収集
+# 特定の Fact を収集
 ansible all -m setup -a "filter=ansible_eth*"
 ```
 
 ```yaml
-# プレイブックでファクトを使用
+# プレイブックで Fact を使用
 - name: システム情報を表示
   debug:
     msg: '{{ ansible_hostname }} は {{ ansible_distribution }} を実行中'
@@ -390,17 +435,17 @@ ansible-vault create secrets.yml
 ansible-vault edit secrets.yml
 # 既存のファイルを暗号化
 ansible-vault encrypt passwords.yml
-# Vault を使用してプレイブックを実行
+# Vault でプレイブックを実行
 ansible-playbook site.yml --ask-vault-pass
 # Vault パスワードファイルを使用
 ansible-playbook site.yml --vault-password-file .vault_pass
 ```
 
-## ロールと構成
+## ロールと編成
 
-### ロール構造
+### ロールの構造
 
-プレイブックを再利用可能なロールに整理します。
+プレイブックを再利用可能なロールに編成します。
 
 ```bash
 # ロール構造を作成
@@ -426,7 +471,7 @@ webserver/
 
 ### プレイブックでのロールの使用
 
-プレイブック内でホストにロールを適用します。
+プレイブック内でロールをホストに適用します。
 
 ```yaml
 ---
@@ -464,7 +509,7 @@ ansible-galaxy remove geerlingguy.nginx
 
 ### コレクション
 
-Ansible コレクションを使用して拡張機能で作業します。
+Ansible コレクションを使用して拡張機能に対応します。
 
 ```bash
 # コレクションをインストール
@@ -490,12 +535,12 @@ tasks:
 
 ```yaml
 # デバッグタスクを追加
-- name: 変数の値の表示
+- name: 変数の値を表示
   debug:
     var: my_variable
-- name: カスタムメッセージの表示
+- name: カスタムメッセージを表示
   debug:
-    msg: 'サーバー {{ inventory_hostname }} は IP {{ ansible_default_ipv4.address }} を使用'
+    msg: 'ホスト {{ inventory_hostname }} は IP {{ ansible_default_ipv4.address }} を持つ'
 ```
 
 ```bash
@@ -506,7 +551,7 @@ ansible-playbook site.yml -vvv  # 最大の詳細度
 
 ### エラー処理
 
-エラーを適切に処理します。
+エラーを適切に処理し、正常に実行できるようにします。
 
 ```yaml
 - name: 失敗する可能性のあるタスク
@@ -535,7 +580,7 @@ ansible-playbook site.yml --syntax-check
 ansible-playbook site.yml --list-tasks
 # ホストを一覧表示
 ansible-playbook site.yml --list-hosts
-# プレイブックをステップ実行
+# ステップ実行
 ansible-playbook site.yml --step
 # チェックモードでテスト
 ansible-playbook site.yml --check --diff
@@ -569,9 +614,9 @@ ansible-playbook site.yml --check --diff
 Ansible インフラストラクチャと操作を保護します。
 
 ```bash
-# 機密情報には Ansible Vault を使用
+# Ansible Vault でシークレットを使用
 ansible-vault create group_vars/all/vault.yml
-# ホストキーチェックは慎重に使用
+# ホストキーチェックを慎重に無効化
 host_key_checking = False
 # 必要な場合にのみ become を使用
 become: yes
@@ -580,11 +625,11 @@ become_user: root
 ansible-playbook site.yml --limit production
 ```
 
-### コードの構成
+### コードの編成
 
-Ansible プロジェクトを効果的に構造化します。
+Ansible プロジェクトを効果的に構成します。
 
-```
+```bash
 # 推奨されるディレクトリ構造
 ansible-project/
 ├── inventories/
@@ -611,7 +656,7 @@ ansible-project/
 # バージョン管理に Git を使用
 git init
 git add .
-git commit -m "初期 Ansible セットアップ"
+git commit -m "初期 Ansible 設定"
 # 本番環境の前にステージングでテスト
 ansible-playbook -i staging site.yml
 # 選択的実行のためにタグを使用
@@ -622,7 +667,7 @@ ansible-playbook site.yml --tags "nginx,ssl"
 
 ### Ansible 設定
 
-設定オプションで Ansible の動作をカスタマイズします。
+設定オプションを使用して Ansible の動作をカスタマイズします。
 
 ```ini
 # ansible.cfg
@@ -640,7 +685,7 @@ pipelining = True
 
 ### コールバックプラグイン
 
-コールバックプラグインで出力とロギングを強化します。
+コールバックプラグインを使用して出力とロギングを強化します。
 
 ```ini
 # ansible.cfg でコールバックプラグインを有効化
@@ -667,7 +712,7 @@ Jinja2 フィルターとルックアッププラグインを使用してデー�
 
 ```yaml
 # ルックアッププラグイン
-- name: ファイルの内容を読み込む
+- name: ファイル内容を読み込む
   debug:
     msg: "{{ lookup('file', '/etc/hostname') }}"
 
@@ -678,7 +723,7 @@ Jinja2 フィルターとルックアッププラグインを使用してデー�
 
 ### 動的インベントリ
 
-クラウドやコンテナ環境のために動的インベントリを使用します。
+クラウド環境やコンテナ環境のために動的インベントリを使用します。
 
 ```bash
 # AWS EC2 動的インベントリ

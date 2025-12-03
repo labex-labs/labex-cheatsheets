@@ -1,6 +1,6 @@
 ---
-title: 'NumPy 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 NumPy 를 학습하세요.'
+title: 'NumPy 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 NumPy 수치 계산을 배우세요. 배열, 선형 대수, 수학 연산, 브로드캐스팅 및 Python 과학 컴퓨팅을 위한 빠른 참조.'
 pdfUrl: '/cheatsheets/pdf/numpy-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ NumPy 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/numpy">실습 랩을 통한 NumPy 학습</a>
+<a target="_blank" href="https://labex.io/ko/learn/numpy">핸즈온 실습으로 NumPy 배우기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 NumPy 수치 계산을 학습하세요. LabEx 는 필수적인 배열 연산, 수학 함수, 선형 대수 및 성능 최적화를 다루는 포괄적인 NumPy 과정을 제공합니다. 데이터 과학 워크플로우를 위한 효율적인 수치 계산 및 배열 조작을 마스터하세요.
+핸즈온 실습과 실제 시나리오를 통해 NumPy 수치 계산을 학습하세요. LabEx 는 필수 배열 연산, 수학 함수, 선형 대수 및 성능 최적화를 다루는 포괄적인 NumPy 과정을 제공합니다. 데이터 과학 워크플로우를 위한 효율적인 수치 계산 및 배열 조작을 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -38,7 +38,22 @@ arr = np.array([1, 2, 3], dtype=float)
 arr_str = np.array(['a', 'b', 'c'])
 ```
 
-### 0 또는 1 로 채우기: `np.zeros()` / `np.ones()`
+<BaseQuiz id="numpy-array-1" correct="C">
+  <template #question>
+    NumPy 배열이 Python 리스트보다 갖는 주요 장점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">문자열을 저장할 수 있다</BaseQuizOption>
+  <BaseQuizOption value="B">생성하기가 더 쉽다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>수치 연산에 대해 더 빠르고 메모리 효율적이다</BaseQuizOption>
+  <BaseQuizOption value="D">혼합된 데이터 타입을 저장할 수 있다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    NumPy 배열은 수치 계산에 최적화되어 있어, 특히 대규모 데이터셋 및 수학적 연산에서 Python 리스트보다 더 빠른 연산과 효율적인 메모리 사용을 제공합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 0 과 1 로 채우기: `np.zeros()` / `np.ones()`
 
 0 또는 1 로 채워진 배열을 생성합니다.
 
@@ -52,12 +67,12 @@ ones = np.ones((2, 3))
 zeros_int = np.zeros(5, dtype=int)
 ```
 
-### 단위 행렬: `np.eye()` / `np.identity()`
+### 항등 행렬: `np.eye()` / `np.identity()`
 
-선형 대수 연산을 위한 단위 행렬을 생성합니다.
+선형 대수 연산을 위한 항등 행렬을 생성합니다.
 
 ```python
-# 3x3 단위 행렬
+# 3x3 항등 행렬
 identity = np.eye(3)
 # 대체 방법
 identity2 = np.identity(4)
@@ -65,7 +80,7 @@ identity2 = np.identity(4)
 
 ### 범위 배열: `np.arange()` / `np.linspace()`
 
-균일한 간격의 값으로 배열을 생성합니다.
+균일하게 간격이 지정된 값으로 배열을 생성합니다.
 
 ```python
 # Python range 와 유사
@@ -101,7 +116,7 @@ np.random.seed(42)
 full_arr = np.full((2, 3), 7)
 # 빈 배열 (초기화되지 않음)
 empty_arr = np.empty((2, 2))
-# 기존 배열 모양과 같은 배열
+# 기존 배열 모양과 동일하게
 like_arr = np.zeros_like(arr)
 ```
 
@@ -114,7 +129,7 @@ like_arr = np.zeros_like(arr)
 ```python
 # 배열 차원 (튜플)
 arr.shape
-# 총 요소 수
+# 요소의 총 개수
 arr.size
 # 차원 수
 arr.ndim
@@ -187,6 +202,21 @@ mask = arr > 3
 filtered = arr[mask]
 ```
 
+<BaseQuiz id="numpy-boolean-1" correct="C">
+  <template #question>
+    불리언 인덱싱 `arr[arr > 5]`는 무엇을 반환합니까?
+  </template>
+  
+  <BaseQuizOption value="A">불리언 배열</BaseQuizOption>
+  <BaseQuizOption value="B">원본 배열</BaseQuizOption>
+  <BaseQuizOption value="C" correct>5 보다 큰 요소만 포함하는 배열</BaseQuizOption>
+  <BaseQuizOption value="D">오류</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    불리언 인덱싱은 조건을 필터링하여 조건이 참인 요소만 반환합니다. `arr[arr > 5]`는 5 보다 큰 값만 포함하는 새 배열을 반환합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 고급 인덱싱: Fancy Indexing
 
 인덱스 배열을 사용하여 여러 요소에 접근합니다.
@@ -231,6 +261,36 @@ arr.flatten()  # 복사본 반환
 arr.ravel()  # 가능하면 뷰 반환
 ```
 
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    `arr.reshape(-1, 1)`에서 `-1` 은 무엇을 의미합니까?
+  </template>
+  
+  <BaseQuizOption value="A">오류를 생성한다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>배열 크기에 따라 차원을 자동으로 추론한다</BaseQuizOption>
+  <BaseQuizOption value="C">1D 배열을 생성한다</BaseQuizOption>
+  <BaseQuizOption value="D">배열을 역순으로 만든다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    재구성에서 `-1` 을 사용하면 NumPy 에게 배열의 총 크기와 지정된 다른 차원을 기반으로 해당 차원을 자동으로 계산하도록 지시합니다. 이는 하나의 차원은 알지만 다른 차원은 NumPy 가 알아내도록 할 때 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    `arr.reshape(-1, 1)`에서 `-1` 은 무엇을 의미합니까?
+  </template>
+  
+  <BaseQuizOption value="A">오류를 생성한다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>NumPy 가 차원을 자동으로 추론한다</BaseQuizOption>
+  <BaseQuizOption value="C">해당 차원을 제거한다</BaseQuizOption>
+  <BaseQuizOption value="D">차원을 1 로 설정한다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    재구성에서 `-1` 을 사용하면 NumPy 에게 배열의 총 크기와 지정된 다른 차원을 기반으로 해당 차원을 자동으로 계산하도록 지시합니다. 이는 하나의 차원은 알지만 다른 차원은 NumPy 가 알아내도록 할 때 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 전치: `T` / `transpose()`
 
 행렬 연산을 위해 배열 축을 교환합니다.
@@ -241,7 +301,7 @@ arr2d.T
 # 축 지정 전치
 arr.transpose()
 np.transpose(arr)
-# 고차원용 전치
+# 고차원용
 arr3d.transpose(2, 0, 1)
 ```
 
@@ -279,7 +339,7 @@ np.dstack([arr1, arr2])  # 깊이 방향으로
 
 ### 기본 산술: `+`, `-`, `*`, `/`
 
-배열에 대한 요소별 산술 연산입니다.
+배열에 대한 요소별 산술 연산.
 
 ```python
 # 요소별 연산
@@ -328,7 +388,7 @@ np.mean(arr2d, axis=1)  # 열을 따라 평균
 
 ### 비교 연산
 
-불리언 배열을 반환하는 요소별 비교 연산입니다.
+불리언 배열을 반환하는 요소별 비교.
 
 ```python
 # 비교 연산자
@@ -364,7 +424,7 @@ np.linalg.matrix_power(A, 3)
 고급 계산을 위한 행렬 분해.
 
 ```python
-# 고윳값 및 고유 벡터
+# 고윳값 및 고유벡터
 eigenvals, eigenvecs = np.linalg.eig(A)
 # 특이값 분해
 U, s, Vt = np.linalg.svd(A)
@@ -389,7 +449,7 @@ np.linalg.matrix_rank(A)
 np.trace(A)
 ```
 
-### 선형 시스템 풀이: `np.linalg.solve()`
+### 선형 시스템 풀기: `np.linalg.solve()`
 
 선형 방정식 시스템을 풉니다.
 
@@ -400,7 +460,7 @@ x = np.linalg.solve(A, b)
 x = np.linalg.lstsq(A, b, rcond=None)[0]
 ```
 
-## 배열 입력/출력
+## 배열 입출력
 
 ### NumPy 바이너리: `np.save()` / `np.load()`
 
@@ -446,7 +506,7 @@ data = np.genfromtxt('data.csv', delimiter=',',
 
 ### 메모리 매핑: `np.memmap()`
 
-메모리에 맞지 않는 배열을 다룹니다.
+메모리에 맞지 않는 배열을 처리합니다.
 
 ```python
 # 메모리 매핑된 배열 생성
@@ -460,7 +520,7 @@ mmap_arr[0:10] = np.random.random(10)
 
 ### 브로드캐스팅 규칙
 
-서로 다른 모양의 배열을 NumPy 가 처리하는 방법을 이해합니다.
+서로 다른 모양의 배열에 대해 NumPy 가 연산을 처리하는 방식을 이해합니다.
 
 ```python
 # 브로드캐스팅 예시
@@ -493,17 +553,17 @@ result = vec_func(arr)
 
 ### 메모리 최적화
 
-대용량 배열에 대한 효율적인 메모리 사용 기술.
+대규모 배열에 대한 효율적인 메모리 사용 기술.
 
 ```python
 # 적절한 데이터 타입 사용
 arr_int8 = arr.astype(np.int8)  # 요소당 1 바이트
-arr_float32 = arr.astype(np.float32)  # float64 에 비해 4 바이트
+arr_float32 = arr.astype(np.float32)  # float64 에 비해 4 바이트 대 8 바이트
 # 뷰 대 복사본
 view = arr[::2]  # 뷰 생성 (메모리 공유)
 copy = arr[::2].copy()  # 복사본 생성 (새 메모리)
 # 배열이 뷰인지 복사본인지 확인
-view.base is arr  # 뷰의 경우 True
+view.base is arr  # 뷰인 경우 True
 ```
 
 ### 성능 팁
@@ -514,15 +574,15 @@ view.base is arr  # 뷰의 경우 True
 # 가능한 경우 인플레이스 연산 사용
 arr += 5  # arr = arr + 5 대신
 np.add(arr, 5, out=arr)  # 명시적 인플레이스
-# 배열 생성 최소화
+# 배열 생성을 최소화
 # 나쁨: 중간 배열 생성
 result = ((arr + 1) * 2) ** 2
-# 좋음: 가능한 경우 복합 연산 사용
+# 더 좋음: 가능한 경우 복합 연산 사용
 ```
 
 ## 난수 생성
 
-### 기본 랜덤: `np.random`
+### 기본 난수: `np.random`
 
 다양한 분포에서 난수를 생성합니다.
 
@@ -533,13 +593,13 @@ np.random.random(5)
 np.random.randint(0, 10, size=5)
 # 정규 분포
 np.random.normal(mu=0, sigma=1, size=5)
-# 균일 분포
+# 균등 분포
 np.random.uniform(-1, 1, size=5)
 ```
 
 ### 샘플링: `choice()` / `shuffle()`
 
-기존 데이터에서 샘플링하거나 배열을 순열화합니다.
+기존 데이터에서 샘플링하거나 배열을 순열합니다.
 
 ```python
 # 배열에서 랜덤 선택
@@ -554,7 +614,7 @@ np.random.permutation(arr)
 
 ### 시드 및 생성기
 
-재현성을 위해 난수 생성을 제어합니다.
+재현성을 위해 무작위성을 제어합니다.
 
 ```python
 # 재현성을 위한 시드 설정
@@ -570,22 +630,22 @@ rng.normal(0, 1, size=5)
 
 ### 기술 통계
 
-중심 경향 및 분산에 대한 기본 통계 측정값.
+중심 경향 및 퍼짐에 대한 기본 통계 측정값.
 
 ```python
 # 중심 경향
 np.mean(arr)
 np.median(arr)
-# 분산 측정값
+# 퍼짐 측정값
 np.std(arr)  # 표준 편차
 np.var(arr)  # 분산
 np.ptp(arr)  # 범위 (max - min)
-# 분위수
+# 백분위수
 np.percentile(arr, [25, 50, 75])
 np.quantile(arr, [0.25, 0.5, 0.75])
 ```
 
-### 상관관계 및 공분산
+### 상관 관계 및 공분산
 
 변수 간의 관계를 측정합니다.
 
@@ -594,20 +654,20 @@ np.quantile(arr, [0.25, 0.5, 0.75])
 np.corrcoef(x, y)
 # 공분산
 np.cov(x, y)
-# 상호 상관관계
+# 상호 상관 관계
 np.correlate(x, y, mode='full')
 ```
 
 ### 히스토그램 및 비닝
 
-데이터 분포를 분석하고 빈을 생성합니다.
+데이터 분포를 분석하고 비닝을 생성합니다.
 
 ```python
 # 히스토그램
 counts, bins = np.histogram(arr, bins=10)
 # 2D 히스토그램
 H, xedges, yedges = np.histogram2d(x, y, bins=10)
-# 이산화 (빈 인덱스 할당)
+# 이산화 (비인덱스 할당)
 bin_indices = np.digitize(arr, bins)
 ```
 
@@ -637,7 +697,7 @@ pip install numpy
 pip install numpy --upgrade
 # 특정 버전 설치
 pip install numpy==1.21.0
-# 패키지 정보 보기
+# 패키지 정보 표시
 pip show numpy
 ```
 
@@ -652,7 +712,7 @@ conda install numpy
 conda update numpy
 # conda-forge에서 설치
 conda install -c conda-forge numpy
-# NumPy가 포함된 환경 생성
+# 환경 생성 및 NumPy 설치
 conda create -n myenv numpy
 ```
 
@@ -665,7 +725,7 @@ NumPy 설치를 확인하고 표준 가져오기를 수행합니다.
 import numpy as np
 # 버전 확인
 print(np.__version__)
-# 빌드 정보 확인
+# 빌드 정보 표시
 np.show_config()
 # 출력 옵션 설정
 np.set_printoptions(precision=2, suppress=True)
@@ -689,12 +749,12 @@ people['age']
 
 ### 마스크 배열: `np.ma`
 
-누락되거나 유효하지 않은 데이터를 처리합니다.
+누락되거나 유효하지 않은 데이터를 가진 배열 처리.
 
 ```python
 # 마스크 배열 생성
 masked_arr = np.ma.array([1, 2, 3, 4, 5], mask=[0, 0, 1, 0, 0])
-# 연산은 마스크된 값을 무시합니다
+# 마스크된 값 무시 연산
 np.ma.mean(masked_arr)
 # 마스크된 값 채우기
 filled = masked_arr.filled(0)
@@ -702,7 +762,7 @@ filled = masked_arr.filled(0)
 
 ### 다항식: `np.poly1d`
 
-다항식 표현 및 연산을 다룹니다.
+다항식 표현 및 연산 작업.
 
 ```python
 # 다항식 생성 (내림차순 계수)

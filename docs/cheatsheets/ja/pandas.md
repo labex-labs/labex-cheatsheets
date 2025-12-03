@@ -1,6 +1,6 @@
 ---
-title: 'Pandas チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Pandas を習得しましょう。'
+title: 'Pandas チートシート | LabEx'
+description: 'この包括的なチートシートで Pandas データ操作を習得しましょう。DataFrame 操作、データクレンジング、フィルタリング、グルーピング、マージ、Python データ分析のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 ---
 
@@ -23,7 +23,7 @@ Pandas チートシート
 
 ### CSV の読み込み：`pd.read_csv()`
 
-CSV ファイルから DataFrame にデータをロードします。
+CSV ファイルを DataFrame に読み込みます。
 
 ```python
 import pandas as pd
@@ -37,16 +37,31 @@ df = pd.read_csv('data.csv', sep=';')
 df = pd.read_csv('data.csv', parse_dates=['Date'])
 ```
 
+<BaseQuiz id="pandas-read-csv-1" correct="B">
+  <template #question>
+    `pd.read_csv('data.csv')` は何を返しますか？
+  </template>
+  
+  <BaseQuizOption value="A">辞書のリスト</BaseQuizOption>
+  <BaseQuizOption value="B" correct>pandas DataFrame</BaseQuizOption>
+  <BaseQuizOption value="C">NumPy 配列</BaseQuizOption>
+  <BaseQuizOption value="D">文字列</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pd.read_csv()` は CSV ファイルを読み込み、行と列を持つ 2 次元のラベル付きデータ構造である pandas DataFrame を返します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Excel の読み込み：`pd.read_excel()`
 
-Excel ファイルからデータをロードします。
+Excel ファイルを読み込みます。
 
 ```python
 # 最初のシートを読み込む
 df = pd.read_excel('data.xlsx')
 # 特定のシートを読み込む
 df = pd.read_excel('data.xlsx', sheet_name='Sheet2')
-# 2 行目（0 から数えて）をヘッダーとして設定
+# 2 行目（0 から始まるインデックス）をヘッダーとして設定
 df = pd.read_excel('data.xlsx', header=1)
 ```
 
@@ -87,27 +102,27 @@ writer.save()
 
 ### SQL への保存：`df.to_sql()`
 
-DataFrame を SQL データベースのテーブルに書き込みます。
+DataFrame を SQL データベースのテーブルに書き出します。
 
 ```python
-# テーブルを作成/置き換え
+# テーブルを作成/置換
 df.to_sql('new_table', engine, if_exists='replace', index=False)
 # 既存のテーブルに追加
 df.to_sql('existing_table', engine, if_exists='append')
 ```
 
-## DataFrame のインフォメーションと構造
+## DataFrame の情報と構造
 
 ### 基本情報：`df.info()`
 
-DataFrame の簡潔な概要（データ型や非 Null 値を含む）を出力します。
+DataFrame の簡潔な要約（データ型や非 Null 値を含む）を出力します。
 
 ```python
-# DataFrame の概要を表示
+# DataFrame の要約を表示
 df.info()
 # 各列のデータ型を表示
 df.dtypes
-# 行数と列数（タプル）を取得
+# 行数と列数を取得（タプル）
 df.shape
 # 列名を取得
 df.columns
@@ -124,7 +139,7 @@ df.index
 df.describe()
 # 特定の列の要約
 df['column'].describe()
-# すべての列を含める（object 型も）
+# すべての列（object 型も）を含める
 df.describe(include='all')
 ```
 
@@ -160,7 +175,22 @@ df.dropna()
 df.dropna(axis=1)
 ```
 
-### 複製：`duplicated()` / `drop_duplicates()`
+<BaseQuiz id="pandas-missing-1" correct="B">
+  <template #question>
+    `df.dropna(axis=1)` は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">欠損値を含む行を削除する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>欠損値を含む列を削除する</BaseQuizOption>
+  <BaseQuizOption value="C">欠損値を 0 で埋める</BaseQuizOption>
+  <BaseQuizOption value="D">欠損値をカウントする</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `axis=1`パラメータは「列」を意味するため、`df.dropna(axis=1)` は欠損値を含む列を削除します。行を削除するには `axis=0`（デフォルト）を使用します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 重複：`duplicated()` / `drop_duplicates()`
 
 重複する行を特定し、削除します。
 
@@ -172,6 +202,21 @@ df.drop_duplicates()
 # 特定の列に基づいて削除
 df.drop_duplicates(subset=['col1', 'col2'])
 ```
+
+<BaseQuiz id="pandas-duplicates-1" correct="A">
+  <template #question>
+    `df.drop_duplicates()` はデフォルトで何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>重複する行を削除し、最初に出現したものを保持する</BaseQuizOption>
+  <BaseQuizOption value="B">すべての行を削除する</BaseQuizOption>
+  <BaseQuizOption value="C">重複する行のみを保持する</BaseQuizOption>
+  <BaseQuizOption value="D">重複の最初に出現したものを削除する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    デフォルトでは、`drop_duplicates()`は重複する各行の最初の出現を保持し、それ以降の重複を削除します。`keep='last'` を使用して最後の出現を保持することもできます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### データ型：`astype()`
 
@@ -188,18 +233,33 @@ df['col'] = pd.to_datetime(df['col'])
 
 ### 関数の適用：`apply()` / `map()` / `replace()`
 
-DataFrame/Seriesに関数を適用したり、値を置換したりします。
+DataFrame/Seriesに関数を適用したり、値を置き換えたりします。
 
 ```python
-# 列に関数を適用 (lambda)
+# 列に関数を適用（ラムダ関数）
 df['col'].apply(lambda x: x*2)
-# 辞書を使用して値をマッピング
+# 辞書を使用して値をマップ
 df['col'].map({'old': 'new'})
 # 値を置換
 df.replace('old_val', 'new_val')
 # 複数の値を置換
 df.replace(['A', 'B'], ['C', 'D'])
 ```
+
+<BaseQuiz id="pandas-apply-1" correct="A">
+  <template #question>
+    `df['col'].apply(lambda x: x*2)`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>列の各要素に関数を適用し、それぞれを 2 倍にする</BaseQuizOption>
+  <BaseQuizOption value="B">列全体を一度に 2 倍にする</BaseQuizOption>
+  <BaseQuizOption value="C">列を 2 に置き換える</BaseQuizOption>
+  <BaseQuizOption value="D">列の要素をカウントする</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `apply()` メソッドは、Series の各要素に関数を適用します。ラムダ関数`lambda x: x*2`は各値を 2 倍にし、変換された値を持つ新しい Series を返します。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## DataFrame の検査
 
@@ -223,9 +283,9 @@ df['col'].value_counts(normalize=True)
 数値列間の相関と共分散を計算します。
 
 ```python
-# 列間のペアワイズ相関
+# 列のペアワイズ相関
 df.corr()
-# 列間のペアワイズ共分散
+# 列のペアワイズ共分散
 df.cov()
 # 2 つの特定の列間の相関
 df['col1'].corr(df['col2'])
@@ -236,7 +296,7 @@ df['col1'].corr(df['col2'])
 カテゴリ別にデータをグループ化し、集計関数を適用します。
 
 ```python
-# カテゴリごとの平均値
+# 各カテゴリの平均値
 df.groupby('category_col').mean()
 # 複数の列でグループ化
 df.groupby(['col1', 'col2']).sum()
@@ -273,20 +333,20 @@ df.memory_usage(deep=True).sum()
 df.info(memory_usage='deep')
 ```
 
-### Dtype の最適化：`astype()`
+### データ型の最適化：`astype()`
 
-より小さく適切なデータ型に列を変換することでメモリを削減します。
+列をより小さく適切なデータ型に変換してメモリを削減します。
 
 ```python
-# 整数をダウンキャスト
+# 整数型にダウンキャスト
 df['int_col'] = df['int_col'].astype('int16')
-# 浮動小数点数をダウンキャスト
+# 浮動小数点型にダウンキャスト
 df['float_col'] = df['float_col'].astype('float32')
 # カテゴリ型を使用
 df['category_col'] = df['category_col'].astype('category')
 ```
 
-### 大容量ファイルのチャンク処理：`read_csv(chunksize=...)`
+### 大容量ファイルのチャンキング：`read_csv(chunksize=...)`
 
 一度にすべてをメモリにロードするのを避けるため、大きなファイルをチャンク単位で処理します。
 
@@ -295,7 +355,7 @@ chunk_iterator = pd.read_csv('large_data.csv', chunksize=10000)
 for chunk in chunk_iterator:
     # 各チャンクを処理
     print(chunk.shape)
-# 処理されたチャンクを結合（必要な場合）
+# 処理されたチャンクを結合する場合（必要に応じて）
 # processed_chunks = []
 # for chunk in chunk_iterator:
 #    processed_chunks.append(process_chunk(chunk))
@@ -306,7 +366,7 @@ for chunk in chunk_iterator:
 
 ### JSON の読み込み：`pd.read_json()`
 
-JSON ファイルまたは URL からデータをロードします。
+JSON ファイルまたは URL からデータを読み込みます。
 
 ```python
 # ローカル JSON から読み込み
@@ -351,10 +411,10 @@ df.to_html('output.html', index=False)
 
 ### クリップボードからの読み込み：`pd.read_clipboard()`
 
-クリップボードからテキストを DataFrame に読み込みます。
+クリップボードのテキストを DataFrame に読み込みます。
 
 ```python
-# Web やスプレッドシートから表データをコピーして実行
+# Web やスプレッドシートからテーブルデータをコピーして実行
 df = pd.read_clipboard()
 ```
 
@@ -395,7 +455,7 @@ df.loc[0]
 df.loc[:, 'col1']
 # 行のスライスと複数の列の選択
 df.loc[0:5, ['col1', 'col2']]
-# 行のブールインデックス指定
+# ブールインデックスによる行の選択
 df.loc[df['col'] > 5]
 # ラベルによる高速なスカラーアクセス
 df.at[0, 'col1']
@@ -416,7 +476,7 @@ df.iloc[0:5, [0, 1]]
 df.iat[0, 0]
 ```
 
-### ブールインデックス指定：`df[condition]`
+### ブールインデックス：`df[condition]`
 
 1 つ以上の条件に基づいて行をフィルタリングします。
 
@@ -429,12 +489,12 @@ df[(df['col1'] > 10) & (df['col2'] == 'A')]
 df[~df['col1'].isin([1, 2, 3])]
 ```
 
-### クエリによるデータ検索：`df.query()`
+### データクエリ：`df.query()`
 
 クエリ文字列式を使用して行をフィルタリングします。
 
 ```python
-# ブールインデックス指定と同等
+# ブールインデックスと同じ
 df.query('col1 > 10')
 # 複雑なクエリ
 df.query('col1 > 10 and col2 == "A"')
@@ -444,12 +504,12 @@ df.query('col1 in @my_list')
 
 ## パフォーマンス監視
 
-### 操作のタイミング測定：`%%timeit` / `time`
+### 操作のタイミング：`%%timeit` / `time`
 
 Python/Pandasコードの実行時間を測定します。
 
 ```python
-# 1 行/セルのタイミング測定のための Jupyter/IPython マジックコマンド
+# 行/セルのタイミング測定のための Jupyter/IPython マジックコマンド
 %%timeit
 df['col'].apply(lambda x: x*2) # 例の操作
 
@@ -462,10 +522,10 @@ print(f"実行時間：{end_time - start_time} 秒")
 
 ### 最適化された操作：`eval()` / `query()`
 
-特に大規模な DataFrame での要素ごとの操作やフィルタリングにおいて、これらのメソッドを利用して高速なパフォーマンスを実現します。
+大規模な DataFrame での要素ごとの操作やフィルタリングのために、これらのメソッドを利用して高速化します。
 
 ```python
-# `df['col1'] + df['col2']` よりも高速
+# `df['col1'] + df['col2']`よりも高速
 df['new_col'] = df.eval('col1 + col2')
 # 高速なフィルタリング
 df_filtered = df.query('col1 > @threshold and col2 == "value"')
@@ -482,7 +542,7 @@ def my_pandas_function(df):
     return df.groupby('col').mean()
 cProfile.run('my_pandas_function(df)') # cProfile で関数を実行
 
-# line_profiler の場合 (pip install line_profiler でインストール):
+# line_profiler の場合（pip install line_profiler でインストール）：
 # @profile
 # def my_function(df):
 #    ...
@@ -501,7 +561,7 @@ cProfile.run('my_pandas_function(df)') # cProfile で関数を実行
 pip install pandas
 # Pandas を最新バージョンにアップグレード
 pip install pandas --upgrade
-# インストールされている Pandas パッケージの情報を表示
+# インストールされている Pandas パッケージ情報を表示
 pip show pandas
 ```
 
@@ -574,7 +634,7 @@ print(pd.get_option('display.max_rows'))
 
 ### コンテキストマネージャ：`pd.option_context()`
 
-`with` ステートメント内でオプションを一時的に設定します。
+`with`ステートメント内でオプションを一時的に設定します。
 
 ```python
 with pd.option_context('display.max_rows', 10, 'display.max_columns', 5):
@@ -584,7 +644,7 @@ print(df) # ブロックの外ではオプションは以前の設定に戻る
 
 ## メソッドチェーン
 
-### チェーン操作
+### 操作の連鎖
 
 一連の変換を DataFrame に適用します。
 
@@ -600,9 +660,9 @@ print(df) # ブロックの外ではオプションは以前の設定に戻る
 )
 ```
 
-### `.pipe()` の使用
+### `.pipe()`の使用
 
-DataFrame を最初の引数として受け取る関数を適用できるようにし、チェーン内のカスタムステップを可能にします。
+DataFrame を最初の引数として受け取る関数をチェーン内で適用できるようにします。
 
 ```python
 def custom_filter(df, threshold):
@@ -621,7 +681,7 @@ def custom_filter(df, threshold):
 - <router-link to="/numpy">NumPy チートシート</router-link>
 - <router-link to="/matplotlib">Matplotlib チートシート</router-link>
 - <router-link to="/sklearn">scikit-learn チートシート</router-link>
-- <router-link to="/datascience">データサイエンス チートシート</router-link>
+- <router-link to="/datascience">データサイエンスチートシート</router-link>
 - <router-link to="/mysql">MySQL チートシート</router-link>
 - <router-link to="/postgresql">PostgreSQL チートシート</router-link>
 - <router-link to="/sqlite">SQLite チートシート</router-link>

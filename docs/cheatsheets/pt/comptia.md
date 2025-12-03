@@ -1,6 +1,6 @@
 ---
-title: 'Guia Rápido CompTIA'
-description: 'Aprenda CompTIA com nosso guia rápido abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Guia Rápido CompTIA | LabEx'
+description: 'Aprenda certificações de TI CompTIA com este guia rápido abrangente. Referência rápida para CompTIA A+, Network+, Security+, Linux+ e fundamentos de TI para preparação de exames de certificação.'
 pdfUrl: '/cheatsheets/pdf/comptia-cheatsheet.pdf'
 ---
 
@@ -47,21 +47,36 @@ Certificações fundamentais para o sucesso na carreira de TI.
 - Governança, risco e conformidade
 ```
 
+<BaseQuiz id="comptia-core-1" correct="B">
+  <template #question>
+    Qual certificação CompTIA foca em fundamentos de rede e solução de problemas?
+  </template>
+  
+  <BaseQuizOption value="A">CompTIA A+</BaseQuizOption>
+  <BaseQuizOption value="B" correct>CompTIA Network+</BaseQuizOption>
+  <BaseQuizOption value="C">CompTIA Security+</BaseQuizOption>
+  <BaseQuizOption value="D">CompTIA Linux+</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    CompTIA Network+ (N10-008) foca em fundamentos de rede, implementações, operações, segurança e solução de problemas. É projetada para administradores e técnicos de rede.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Certificações Especializadas
 
 Credenciais de TI avançadas e especializadas.
 
 ```text
 # CompTIA PenTest+ (PT0-002)
-- Planejamento e definição do escopo de testes de penetração
+- Planejamento e escopo de testes de penetração
 - Coleta de informações e identificação de vulnerabilidades
-- Ataques e explorações
+- Ataques e exploits
 - Relatórios e comunicação
 
 # CompTIA CySA+ (CS0-002)
 - Gerenciamento de ameaças e vulnerabilidades
 - Segurança de software e sistemas
-- Operações e monitoramento de segurança
+- Operações de segurança e monitoramento
 - Resposta a incidentes
 - Conformidade e avaliação
 
@@ -80,7 +95,7 @@ Credenciais de TI avançadas e especializadas.
 
 # CompTIA Project+ (PK0-005)
 - Ciclo de vida do projeto
-- Ferramentas e documentação de projeto
+- Ferramentas e documentação de projetos
 - Noções básicas de gerenciamento de custo e tempo de projeto
 - Execução e encerramento do projeto
 
@@ -137,7 +152,7 @@ Smartphones, tablets e gerenciamento de dispositivos móveis.
 # Segurança Móvel
 - Bloqueios de tela e biometria
 - Gerenciamento de dispositivos móveis (MDM)
-- Segurança e permissões de aplicativos
+- Segurança de aplicativos e permissões
 - Capacidades de limpeza remota (remote wipe)
 ```
 
@@ -147,7 +162,7 @@ Gerenciamento de Windows, macOS, Linux e SO móveis.
 
 ```text
 # Administração Windows
-- Edições do Windows 10/11
+- Edições Windows 10/11
 - Controle de Conta de Usuário (UAC)
 - Política de Grupo e Registro
 - Gerenciamento do Windows Update
@@ -169,7 +184,7 @@ Gerenciamento de Windows, macOS, Linux e SO móveis.
 
 ### Modelo OSI e TCP/IP
 
-Compreensão da camada de rede e conhecimento de protocolos.
+Compreensão das camadas de rede e conhecimento de protocolos.
 
 ```text
 # Modelo OSI de 7 Camadas
@@ -188,6 +203,21 @@ Camada 1: Física (Cabos, Hubs)
 - Protocolos ARP e ICMP
 ```
 
+<BaseQuiz id="comptia-osi-1" correct="C">
+  <template #question>
+    Em qual camada OSI o TCP opera?
+  </template>
+  
+  <BaseQuizOption value="A">Camada 3 (Rede)</BaseQuizOption>
+  <BaseQuizOption value="B">Camada 5 (Sessão)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Camada 4 (Transporte)</BaseQuizOption>
+  <BaseQuizOption value="D">Camada 7 (Aplicação)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    TCP (Transmission Control Protocol) opera na Camada 4 (Transporte) do modelo OSI. Esta camada é responsável pela transmissão de dados confiável, verificação de erros e controle de fluxo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Dispositivos de Rede
 
 Roteadores, switches e equipamentos de rede.
@@ -195,7 +225,7 @@ Roteadores, switches e equipamentos de rede.
 ```text
 # Dispositivos de Camada 2
 - Switches e VLANs
-- Protocolo Spanning Tree (STP)
+- Spanning Tree Protocol (STP)
 - Segurança de porta e filtragem MAC
 
 # Dispositivos de Camada 3
@@ -205,7 +235,7 @@ Roteadores, switches e equipamentos de rede.
 - Tradução NAT e PAT
 ```
 
-### Redes Sem Fio
+### Redes Sem Fio (Wireless)
 
 Padrões Wi-Fi, segurança e solução de problemas.
 
@@ -218,7 +248,7 @@ Padrões Wi-Fi, segurança e solução de problemas.
 802.11ac: 5GHz, 6.9Gbps
 802.11ax (Wi-Fi 6): 9.6Gbps
 
-# Segurança Sem Fio
+# Segurança Wireless
 - WEP (obsoleto)
 - WPA/WPA2-PSK
 - WPA2/WPA3-Enterprise
@@ -244,7 +274,7 @@ ipconfig/ifconfig       # Configuração de IP
 - Analisadores de Wi-Fi
 ```
 
-## Conceitos Centrais do Security+
+## Conceitos Principais do Security+
 
 ### Fundamentos de Segurança
 
@@ -261,21 +291,36 @@ Algo que você sabe: Senhas, PINs
 Algo que você tem: Tokens, cartões inteligentes
 Algo que você é: Biometria
 Algo que você faz: Padrões de comportamento
-Algum lugar que você está: Baseado em localização
+Lugar onde você está: Baseado em localização
 ```
+
+<BaseQuiz id="comptia-cia-1" correct="A">
+  <template #question>
+    O que a tríade CIA representa em cibersegurança?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Confidencialidade, Integridade e Disponibilidade - os três princípios centrais de segurança</BaseQuizOption>
+  <BaseQuizOption value="B">Uma agência governamental</BaseQuizOption>
+  <BaseQuizOption value="C">Três tipos de ataques</BaseQuizOption>
+  <BaseQuizOption value="D">Três métodos de autenticação</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A tríade CIA representa os três princípios fundamentais da segurança da informação: Confidencialidade (proteger dados contra acesso não autorizado), Integridade (garantir a precisão e autenticidade dos dados) e Disponibilidade (garantir que sistemas e dados estejam acessíveis quando necessário).
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Cenário de Ameaças
 
 Ataques comuns e atores de ameaças.
 
 ```text
-# Tipos de Ataques
+# Tipos de Ataque
 - Phishing e engenharia social
 - Malware (vírus, trojans, ransomware)
 - Ataques DDoS e DoS
 - Ataques Man-in-the-middle
 - Injeção SQL e XSS
-- Explorações de dia zero (Zero-day)
+- Exploits de dia zero
 
 # Atores de Ameaças
 - Script kiddies
@@ -298,14 +343,29 @@ Assinaturas Digitais: Não repúdio
 
 # Gerenciamento de Chaves
 - Geração e distribuição de chaves
-- Retenção e recuperação de chaves
+- Retomada e recuperação de chaves
 - Autoridades de Certificação (CA)
 - Infraestrutura de Chave Pública (PKI)
 ```
 
+<BaseQuiz id="comptia-crypto-1" correct="B">
+  <template #question>
+    Qual é a principal diferença entre criptografia simétrica e assimétrica?
+  </template>
+  
+  <BaseQuizOption value="A">Simétrica é mais rápida, assimétrica é mais lenta</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Simétrica usa uma chave para criptografar/descriptografar, assimétrica usa um par de chaves</BaseQuizOption>
+  <BaseQuizOption value="C">Simétrica é para e-mails, assimétrica é para arquivos</BaseQuizOption>
+  <BaseQuizOption value="D">Não há diferença</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A criptografia simétrica usa a mesma chave para criptografia e descriptografia, tornando-a mais rápida, mas exigindo distribuição segura da chave. A criptografia assimétrica usa um par de chaves pública/privada, resolvendo o problema de distribuição de chaves, mas sendo computacionalmente mais cara.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Controle de Acesso
 
-Modelos de gerenciamento de identidade e autorização.
+Gerenciamento de identidade e modelos de autorização.
 
 ```text
 # Modelos de Controle de Acesso
@@ -321,14 +381,14 @@ ABAC: Controle de Acesso Baseado em Atributos
 - Federação e SAML
 ```
 
-## Estratégias e Dicas de Estudo
+## Estratégias de Estudo
 
-### Planejamento de Estudos
+### Planejamento de Estudo
 
-Crie uma abordagem estruturada para a preparação para a certificação.
+Crie uma abordagem estruturada para a preparação da certificação.
 
 ```text
-# Cronograma de Estudos
+# Cronograma de Estudo
 Semana 1-2: Revisar objetivos do exame
 Semana 3-6: Estudo do material principal
 Semana 7-8: Prática prática (hands-on)
@@ -368,20 +428,20 @@ Técnicas de realização de testes para exames CompTIA.
 ```text
 # Tipos de Questões
 Múltipla escolha: Leia todas as opções
-Baseadas em desempenho: Pratique simulações
-Arrastar e soltar: Entenda os relacionamentos
-Ponto de acesso (Hot spot): Conheça os layouts da interface
+Baseadas em desempenho (PBQs): Pratique simulações
+Arrastar e soltar (Drag-and-drop): Entenda relacionamentos
+Ponto de acesso (Hot spot): Conheça os layouts de interface
 
 # Gerenciamento de Tempo
 - Aloque tempo por questão
 - Marque questões difíceis para revisão
-- Não gaste muito tempo em questões únicas
+- Não gaste muito tempo em uma única questão
 - Revise as questões sinalizadas no final
 ```
 
-### Tópicos Comuns do Exame
+### Tópicos Comuns de Exame
 
-Áreas de alta frequência em todos os exames CompTIA.
+Tópicos de alta frequência em todos os exames CompTIA.
 
 ```text
 # Áreas Frequentemente Testadas
@@ -408,11 +468,11 @@ DNS: Sistema de Nomes de Domínio
 DHCP: Configuração Dinâmica de Host
 TCP/UDP: Protocolos de Transporte
 IP: Protocolo de Internet
-ICMP: Mensagem de Controle de Internet
+ICMP: Protocolo de Mensagens de Controle de Internet
 
-# Sem Fio e Segurança
+# Wireless e Segurança
 WPA/WPA2: Acesso Protegido Wi-Fi
-SSID: Identificador de Conjunto de Serviços
+SSID: Identificador de Conjunto de Serviço
 MAC: Controle de Acesso ao Meio
 VPN: Rede Privada Virtual
 VLAN: Rede Local Virtual
@@ -428,16 +488,16 @@ Terminologia de hardware e software de computador.
 HDD: Unidade de Disco Rígido
 SSD: Unidade de Estado Sólido
 RAM: Memória de Acesso Aleatório
-ROM: Memória Somente Leitura
+ROM: Memória Somente de Leitura
 BIOS/UEFI: Firmware do sistema
 RAID: Array Redundante de Discos Independentes
 
 # Interfaces e Portas
 USB: Barramento Serial Universal
 SATA: ATA Serial
-PCIe: Interconexão de Componentes Periféricos Expressa
+PCIe: Interconexão de Componentes Periféricos Express
 HDMI: Interface Multimídia de Alta Definição
-VGA: Matriz de Gráficos de Vídeo
+VGA: Matriz de Vídeo Gráfica
 RJ45: Conector Ethernet
 ```
 
@@ -448,7 +508,7 @@ Termos e conceitos de segurança da informação.
 ```text
 # Estruturas de Segurança
 CIA: Confidencialidade, Integridade, Disponibilidade
-AAA: Autenticação, Autorização, Contabilidade
+AAA: Autenticação, Autorização, Contabilização
 PKI: Infraestrutura de Chave Pública
 IAM: Gerenciamento de Identidade e Acesso
 SIEM: Gerenciamento de Eventos e Informações de Segurança
@@ -456,7 +516,7 @@ SOC: Centro de Operações de Segurança
 
 # Conformidade e Risco
 GDPR: Regulamento Geral de Proteção de Dados
-HIPAA: Lei de Portabilidade e Responsabilidade de Seguro Saúde
+HIPAA: Lei de Portabilidade e Responsabilidade de Seguros de Saúde
 PCI DSS: Padrão de Segurança de Dados da Indústria de Cartões de Pagamento
 SOX: Lei Sarbanes-Oxley
 NIST: Instituto Nacional de Padrões e Tecnologia
@@ -468,7 +528,7 @@ ISO 27001: Padrão de gerenciamento de segurança
 Terminologia de infraestrutura de TI moderna.
 
 ```text
-# Serviços em Nuvem
+# Serviços de Nuvem
 IaaS: Infraestrutura como Serviço
 PaaS: Plataforma como Serviço
 SaaS: Software como Serviço
@@ -479,7 +539,7 @@ CDN: Rede de Entrega de Conteúdo
 
 ## Caminhos de Carreira da Certificação
 
-### Nível de Entrada
+### Nível de Entrada (Entry Level)
 
 Certificação fundamental para funções de suporte de TI, cobrindo hardware, software e habilidades básicas de solução de problemas.
 
@@ -492,12 +552,12 @@ hardware, software e habilidades básicas de solução de problemas.
 
 ### Infraestrutura
 
-Desenvolva experiência em redes e administração de servidores para funções de infraestrutura.
+Desenvolva experiência em administração de rede e servidor para funções de infraestrutura.
 
 ```text
 2. Infraestrutura
 Network+ & Server+
-Desenvolva experiência em redes e administração de servidores para
+Desenvolva experiência em administração de rede e servidor para
 funções de infraestrutura.
 ```
 
@@ -519,7 +579,8 @@ Especializações avançadas em testes de penetração e tecnologias de nuvem.
 ```text
 4. Especialização
 PenTest+ & Cloud+
-Especializações avançadas em testes de penetração e tecnologias de nuvem.
+Especializações avançadas em testes de penetração e tecnologias de
+nuvem.
 ```
 
 ## Números de Porta Comuns
@@ -530,15 +591,15 @@ Portas padrão para serviços de rede comuns.
 
 ```text
 Porta 20/21: FTP (Protocolo de Transferência de Arquivos)
-Porta 22: SSH (Shell Seguro)
+Porta 22: SSH (Secure Shell)
 Porta 23: Telnet
-Porta 25: SMTP (Protocolo Simples de Transferência de Correio)
+Porta 25: SMTP (Protocolo de Transferência de E-mail Simples)
 Porta 53: DNS (Sistema de Nomes de Domínio)
 Porta 67/68: DHCP (Configuração Dinâmica de Host)
-Porta 69: TFTP (Protocolo Trivial de Transferência de Arquivos)
+Porta 69: TFTP (Protocolo de Transferência de Arquivos Trivial)
 Porta 80: HTTP (Protocolo de Transferência de Hipertexto)
-Porta 110: POP3 (Protocolo de Correio de Posto v3)
-Porta 143: IMAP (Protocolo de Acesso a Mensagens da Internet)
+Porta 110: POP3 (Protocolo de Correio Versão 3)
+Porta 143: IMAP (Protocolo de Acesso a Mensagens de Internet)
 Porta 161/162: SNMP (Gerenciamento Simples de Rede)
 Porta 443: HTTPS (HTTP Seguro)
 Porta 993: IMAPS (IMAP Seguro)
@@ -547,10 +608,10 @@ Porta 995: POP3S (POP3 Seguro)
 
 ### Portas Registradas (1024-49151)
 
-Portas comuns de aplicativos e bancos de dados.
+Portas comuns de aplicativos e banco de dados.
 
 ```text
-# Bancos de Dados e Aplicações
+# Banco de Dados e Aplicações
 Porta 1433: Microsoft SQL Server
 Porta 1521: Banco de Dados Oracle
 Porta 3306: Banco de Dados MySQL
@@ -559,8 +620,8 @@ Porta 5432: Banco de Dados PostgreSQL
 
 # Serviços de Rede
 Porta 1812/1813: Autenticação RADIUS
-Porta 1701: L2TP (Protocolo de Túnel de Camada 2)
-Porta 1723: PPTP (Protocolo de Túnel Ponto a Ponto)
+Porta 1701: L2TP (Protocolo de Tunelamento de Camada 2)
+Porta 1723: PPTP (Protocolo de Tunelamento Ponto a Ponto)
 Porta 5060/5061: SIP (Protocolo de Iniciação de Sessão)
 
 # Serviços de Segurança
@@ -578,7 +639,7 @@ Metodologia padrão para resolução de problemas técnicos.
 # Processo de 6 Etapas
 1. Identificar o problema
    - Reunir informações
-   - Questionar os usuários sobre os sintomas
+   - Questionar usuários sobre sintomas
    - Identificar mudanças no sistema
    - Duplicar o problema, se possível
 
@@ -588,9 +649,9 @@ Metodologia padrão para resolução de problemas técnicos.
    - Começar com soluções simples
 
 3. Testar a teoria para determinar a causa
-   - Se a teoria for confirmada, prossiga
-   - Se não, estabeleça uma nova teoria
-   - Escalar, se necessário
+   - Se a teoria for confirmada, prosseguir
+   - Se não, estabelecer nova teoria
+   - Escalar se necessário
 ```
 
 ### Implementação e Documentação
@@ -600,14 +661,14 @@ Etapas finais no processo de solução de problemas.
 ```text
 # Etapas Restantes
 4. Estabelecer plano de ação
-   - Determinar os passos para resolver
+   - Determinar passos para resolver
    - Identificar efeitos potenciais
-   - Implementar a solução ou escalar
+   - Implementar solução ou escalar
 
 5. Implementar a solução ou escalar
    - Aplicar a correção apropriada
    - Testar a solução completamente
-   - Verificar a funcionalidade total
+   - Verificar funcionalidade total
 
 6. Documentar descobertas, ações e resultados
    - Atualizar sistemas de tickets
@@ -623,13 +684,13 @@ Cenários de simulação comuns e soluções.
 
 ```text
 # Solução de Problemas de Hardware
-- Identificar componentes defeituosos em montagens de PCs
+- Identificar componentes defeituosos em montagens de PC
 - Configurar configurações de BIOS/UEFI
 - Instalar e configurar RAM
 - Conectar dispositivos de armazenamento corretamente
 - Solucionar problemas de fonte de alimentação
 
-# Tarefas de Sistema Operacional
+# Tarefas do Sistema Operacional
 - Instalação e configuração do Windows
 - Gerenciamento de contas de usuário e permissões
 - Configuração de configurações de rede
@@ -643,7 +704,7 @@ Configuração de rede e cenários de solução de problemas.
 
 ```text
 # Configuração de Rede
-- Configuração de VLAN e atribuições de porta
+- Configuração de VLAN e atribuição de portas
 - Configuração de ACL de roteador
 - Configurações de segurança de porta de switch
 - Configuração de rede sem fio
@@ -673,7 +734,7 @@ Implementação de segurança e resposta a incidentes.
 - Análise e interpretação de logs
 - Identificação de ameaças
 - Avaliação de vulnerabilidades
-- Implementação de controles de segurança
+- Implementação de controle de segurança
 - Estratégias de mitigação de risco
 ```
 
@@ -683,7 +744,7 @@ Melhores práticas para questões baseadas em desempenho.
 
 ```text
 # Estratégias de Sucesso
-- Leia as instruções com atenção e até o fim
+- Leia as instruções com atenção e completamente
 - Tire capturas de tela antes de fazer alterações
 - Teste as configurações após a implementação
 - Use o processo de eliminação
@@ -702,12 +763,12 @@ Etapas para agendar e se preparar para os exames CompTIA.
 # Etapas de Registro
 1. Criar conta Pearson VUE
 2. Selecionar o exame de certificação
-3. Escolher centro de testes ou opção online
+3. Escolher opção de centro de testes ou online
 4. Agendar data e hora do exame
 5. Pagar a taxa do exame
 6. Receber e-mail de confirmação
 
-# Custos dos Exames (USD, aproximado)
+# Custos do Exame (USD, aproximado)
 CompTIA A+: $239 por exame (2 exames)
 CompTIA Network+: $358
 CompTIA Security+: $370

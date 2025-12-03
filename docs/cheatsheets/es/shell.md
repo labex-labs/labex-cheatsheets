@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Shell'
-description: 'Aprenda Shell con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Shell | LabEx'
+description: 'Aprenda scripting de shell con esta hoja de trucos completa. Referencia rápida para comandos bash, scripting de shell, automatización, herramientas de línea de comandos y administración de sistemas Linux/Unix.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Shell
 <a target="_blank" href="https://labex.io/es/learn/shell">Aprende Shell con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende scripting Shell y operaciones de línea de comandos a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Shell que cubren comandos Bash esenciales, operaciones de archivos, procesamiento de texto, gestión de procesos y automatización. Domina la eficiencia de la línea de comandos y las técnicas de scripting shell.
+Aprende scripting de Shell y operaciones de línea de comandos a través de laboratorios prácticos y escenarios del mundo real. LabEx proporciona cursos completos de Shell que cubren comandos esenciales de Bash, operaciones de archivos, procesamiento de texto, gestión de procesos y automatización. Domina la eficiencia de la línea de comandos y las técnicas de scripting de shell.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -44,11 +44,11 @@ Crea archivos vacíos o actualiza marcas de tiempo.
 
 ```bash
 # Crear un nuevo archivo
-touch newfile.txt
+touch nuevoarchivo.txt
 # Crear múltiples archivos
-touch file1.txt file2.txt file3.txt
+touch archivo1.txt archivo2.txt archivo3.txt
 # Actualizar la marca de tiempo del archivo existente
-touch existing_file.txt
+touch archivo_existente.txt
 ```
 
 ### Crear Directorios: `mkdir`
@@ -57,9 +57,9 @@ Crea nuevos directorios.
 
 ```bash
 # Crear un directorio
-mkdir my_directory
+mkdir mi_directorio
 # Crear directorios anidados
-mkdir -p parent/child/grandchild
+mkdir -p padre/hijo/nieto
 # Crear múltiples directorios
 mkdir dir1 dir2 dir3
 ```
@@ -70,13 +70,13 @@ Copia archivos y directorios.
 
 ```bash
 # Copiar un archivo
-cp source.txt destination.txt
+cp fuente.txt destino.txt
 # Copiar directorio recursivamente
-cp -r source_dir dest_dir
+cp -r dir_fuente dir_destino
 # Copiar con solicitud de confirmación
-cp -i file1.txt file2.txt
+cp -i archivo1.txt archivo2.txt
 # Preservar atributos del archivo
-cp -p original.txt copy.txt
+cp -p original.txt copia.txt
 ```
 
 ### Mover/Renombrar: `mv`
@@ -85,11 +85,11 @@ Mueve o renombra archivos y directorios.
 
 ```bash
 # Renombrar un archivo
-mv oldname.txt newname.txt
+mv nombre_antiguo.txt nombre_nuevo.txt
 # Mover archivo a directorio
-mv file.txt /path/to/directory/
+mv archivo.txt /ruta/al/directorio/
 # Mover múltiples archivos
-mv file1 file2 file3 target_directory/
+mv archivo1 archivo2 archivo3 directorio_destino/
 ```
 
 ### Eliminar Archivos: `rm`
@@ -98,11 +98,11 @@ Elimina archivos y directorios.
 
 ```bash
 # Eliminar un archivo
-rm file.txt
+rm archivo.txt
 # Eliminar directorio y contenido
-rm -r directory/
-# Eliminar sin confirmación (forzar)
-rm -f file.txt
+rm -r directorio/
+# Eliminar forzadamente sin confirmación
+rm -f archivo.txt
 # Eliminación interactiva (confirmar cada uno)
 rm -i *.txt
 ```
@@ -117,7 +117,7 @@ Imprime la ruta del directorio de trabajo actual.
 # Mostrar directorio actual
 pwd
 # Ejemplo de salida:
-/home/user/documents
+/home/usuario/documentos
 ```
 
 ### Cambiar Directorio: `cd`
@@ -132,8 +132,23 @@ cd ..
 # Ir al directorio anterior
 cd -
 # Ir a un directorio específico
-cd /path/to/directory
+cd /ruta/al/directorio
 ```
+
+<BaseQuiz id="shell-cd-1" correct="A">
+  <template #question>
+    ¿Qué hace `cd ~`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Cambia al directorio de inicio</BaseQuizOption>
+  <BaseQuizOption value="B">Cambia al directorio raíz</BaseQuizOption>
+  <BaseQuizOption value="C">Cambia al directorio padre</BaseQuizOption>
+  <BaseQuizOption value="D">Crea un nuevo directorio</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El símbolo `~` es un atajo para el directorio de inicio. `cd ~` navega a tu directorio de inicio, lo cual es equivalente a `cd $HOME` o `cd /home/nombre_usuario`.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Árbol de Directorios: `tree`
 
@@ -156,17 +171,17 @@ Muestra el contenido del archivo de diferentes maneras.
 
 ```bash
 # Mostrar archivo completo
-cat file.txt
+cat archivo.txt
 # Ver archivo página por página
-less file.txt
+less archivo.txt
 # Mostrar las primeras 10 líneas
-head file.txt
+head archivo.txt
 # Mostrar las últimas 10 líneas
-tail file.txt
+tail archivo.txt
 # Mostrar las últimas 20 líneas
-tail -n 20 file.txt
+tail -n 20 archivo.txt
 # Seguir cambios en el archivo (útil para logs)
-tail -f logfile.txt
+tail -f archivo_log.txt
 ```
 
 ### Buscar en Archivos: `grep`
@@ -175,20 +190,35 @@ Busca patrones en archivos de texto.
 
 ```bash
 # Buscar patrón en archivo
-grep "pattern" file.txt
+grep "patron" archivo.txt
 # Búsqueda sin distinguir mayúsculas y minúsculas
-grep -i "pattern" file.txt
+grep -i "patron" archivo.txt
 # Búsqueda recursiva en directorios
-grep -r "pattern" directory/
+grep -r "patron" directorio/
 # Mostrar números de línea
-grep -n "pattern" file.txt
+grep -n "patron" archivo.txt
 # Contar líneas coincidentes
-grep -c "pattern" file.txt
+grep -c "patron" archivo.txt
 ```
+
+<BaseQuiz id="shell-grep-1" correct="B">
+  <template #question>
+    ¿Qué hace `grep -r "patron" directorio/`?
+  </template>
+  
+  <BaseQuizOption value="A">Busca solo en el archivo actual</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Busca recursivamente a través de todos los archivos en el directorio</BaseQuizOption>
+  <BaseQuizOption value="C">Reemplaza el patrón en los archivos</BaseQuizOption>
+  <BaseQuizOption value="D">Elimina archivos que contienen el patrón</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El indicador `-r` hace que grep busque recursivamente a través de todos los archivos y subdirectorios. Esto es útil para encontrar patrones de texto en todo un árbol de directorios.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Encontrar Archivos: `find`
 
-Localiza archivos y directorios según criterios.
+Localiza archivos y directorios basándose en criterios.
 
 ```bash
 # Encontrar archivos por nombre
@@ -209,15 +239,15 @@ Procesa y manipula datos de texto.
 
 ```bash
 # Reemplazar texto en archivo
-sed 's/old/new/g' file.txt
+sed 's/antiguo/nuevo/g' archivo.txt
 # Extraer columnas específicas
-awk '{print $1, $3}' file.txt
+awk '{print $1, $3}' archivo.txt
 # Ordenar contenido del archivo
-sort file.txt
+sort archivo.txt
 # Eliminar líneas duplicadas
-sort file.txt | uniq
+sort archivo.txt | uniq
 # Contar frecuencia de palabras
-cat file.txt | tr ' ' '\n' | sort | uniq -c
+cat archivo.txt | tr ' ' '\n' | sort | uniq -c
 ```
 
 ## Permisos y Propiedad de Archivos
@@ -230,7 +260,7 @@ Muestra permisos detallados y propiedad de archivos.
 # Mostrar información detallada del archivo
 ls -l
 # Ejemplo de salida:
-# -rw-r--r-- 1 user group 1024 Jan 1 12:00 file.txt
+# -rw-r--r-- 1 usuario grupo 1024 Ene 1 12:00 archivo.txt
 # d = directorio, r = lectura, w = escritura, x = ejecución
 ```
 
@@ -242,12 +272,27 @@ Modifica los permisos de archivos y directorios.
 # Dar permiso de ejecución al propietario
 chmod +x script.sh
 # Establecer permisos específicos (755)
-chmod 755 file.txt
+chmod 755 archivo.txt
 # Eliminar permiso de escritura para grupo/otros
-chmod go-w file.txt
+chmod go-w archivo.txt
 # Cambio de permisos recursivo
-chmod -R 644 directory/
+chmod -R 644 directorio/
 ```
+
+<BaseQuiz id="shell-chmod-1" correct="C">
+  <template #question>
+    ¿Qué establece `chmod 755 archivo.txt`?
+  </template>
+  
+  <BaseQuizOption value="A">Lectura, escritura, ejecución para todos los usuarios</BaseQuizOption>
+  <BaseQuizOption value="B">Lectura y escritura para el propietario, lectura para los demás</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lectura, escritura, ejecución para el propietario; lectura, ejecución para grupo y otros</BaseQuizOption>
+  <BaseQuizOption value="D">Solo lectura para todos los usuarios</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` establece los permisos como: propietario = 7 (rwx), grupo = 5 (r-x), otros = 5 (r-x). Este es un conjunto de permisos común para archivos y directorios ejecutables.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Cambiar Propiedad: `chown` / `chgrp`
 
@@ -255,13 +300,13 @@ Cambia el propietario y el grupo del archivo.
 
 ```bash
 # Cambiar propietario
-chown newowner file.txt
+chown nuevo_propietario archivo.txt
 # Cambiar propietario y grupo
-chown newowner:newgroup file.txt
+chown nuevo_propietario:nuevo_grupo archivo.txt
 # Cambiar solo el grupo
-chgrp newgroup file.txt
+chgrp nuevo_grupo archivo.txt
 # Cambio de propiedad recursivo
-chown -R user:group directory/
+chown -R usuario:grupo directorio/
 ```
 
 ### Números de Permiso
@@ -273,7 +318,7 @@ Entendiendo la notación numérica de permisos.
 # 4 = lectura (r), 2 = escritura (w), 1 = ejecución (x)
 # 755 = rwxr-xr-x (propietario: rwx, grupo: r-x, otros: r-x)
 # 644 = rw-r--r-- (propietario: rw-, grupo: r--, otros: r--)
-# 777 = rwxrwxrwx (todos los permisos completos)
+# 777 = rwxrwxrwx (todos los permisos completos para todos)
 # 600 = rw------- (propietario: rw-, grupo: ---, otros: ---)
 ```
 
@@ -302,7 +347,7 @@ Gestiona procesos en segundo plano y en primer plano.
 
 ```bash
 # Ejecutar comando en segundo plano
-command &
+comando &
 # Listar trabajos activos
 jobs
 # Traer trabajo al primer plano
@@ -313,16 +358,16 @@ bg %1
 Ctrl+Z
 ```
 
-### Terminar Procesos: `kill` / `killall`
+### Matar Procesos: `kill` / `killall`
 
 Termina procesos por PID o nombre.
 
 ```bash
-# Terminar proceso por PID
+# Matar proceso por PID
 kill 1234
-# Terminar proceso forzadamente
+# Matar proceso forzadamente
 kill -9 1234
-# Terminar todos los procesos con nombre
+# Matar todos los procesos con nombre
 killall firefox
 # Enviar señal específica
 kill -TERM 1234
@@ -338,7 +383,7 @@ free -h
 # Mostrar espacio en disco
 df -h
 # Mostrar tamaño del directorio
-du -sh directory/
+du -sh directorio/
 # Mostrar directorios más grandes
 du -h --max-depth=1 | sort -hr
 ```
@@ -347,20 +392,35 @@ du -h --max-depth=1 | sort -hr
 
 ### Redirección: `>` / `>>` / `<`
 
-Redirige la salida y la entrada de comandos.
+Redirige la salida y entrada de comandos.
 
 ```bash
 # Redirigir salida a archivo (sobrescribir)
-command > output.txt
-# Anexar salida a archivo
-command >> output.txt
+comando > salida.txt
+# Añadir salida al archivo
+comando >> salida.txt
 # Redirigir entrada desde archivo
-command < input.txt
+comando < entrada.txt
 # Redirigir salida y errores
-command > output.txt 2>&1
+comando > salida.txt 2>&1
 # Descartar salida
-command > /dev/null
+comando > /dev/null
 ```
+
+<BaseQuiz id="shell-redirect-1" correct="B">
+  <template #question>
+    ¿Cuál es la diferencia entre `>` y `>>` en la redirección de shell?
+  </template>
+  
+  <BaseQuizOption value="A">`>` añade, `>>` sobrescribe</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`>` sobrescribe el archivo, `>>` añade al archivo</BaseQuizOption>
+  <BaseQuizOption value="C">`>` redirige stdout, `>>` redirige stderr</BaseQuizOption>
+  <BaseQuizOption value="D">No hay diferencia</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El operador `>` sobrescribe el archivo de destino si existe, mientras que `>>` añade la salida al final del archivo. Usa `>>` cuando quieras preservar el contenido existente.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Pipes: `|`
 
@@ -368,12 +428,12 @@ Encadena comandos juntos usando pipes.
 
 ```bash
 # Uso básico de pipe
-command1 | command2
+comando1 | comando2
 # Múltiples pipes
-cat file.txt | grep "pattern" | sort | uniq
+cat archivo.txt | grep "patron" | sort | uniq
 # Contar líneas en la salida
 ps aux | wc -l
-# Paginación de salida larga
+# Paginación a través de salida larga
 ls -la | less
 ```
 
@@ -383,11 +443,11 @@ Escribe la salida tanto al archivo como a stdout.
 
 ```bash
 # Guardar salida y mostrarla
-command | tee output.txt
-# Anexar al archivo
-command | tee -a output.txt
+comando | tee salida.txt
+# Añadir al archivo
+comando | tee -a salida.txt
 # Múltiples salidas
-command | tee file1.txt file2.txt
+comando | tee archivo1.txt archivo2.txt
 ```
 
 ### Here Documents: `<<`
@@ -396,14 +456,14 @@ Proporciona entrada multilínea a los comandos.
 
 ```bash
 # Crear archivo con here document
-cat << EOF > file.txt
+cat << EOF > archivo.txt
 Línea 1
 Línea 2
 Línea 3
 EOF
 # Enviar correo electrónico con here document
-mail user@example.com << EOF
-Subject: Prueba
+mail usuario@ejemplo.com << EOF
+Asunto: Prueba
 Este es un mensaje de prueba.
 EOF
 ```
@@ -416,15 +476,15 @@ Crea y usa variables de shell.
 
 ```bash
 # Asignar variables (sin espacios alrededor de =)
-name="John"
-count=42
+nombre="John"
+contador=42
 # Usar variables
-echo $name
-echo "Hola, $name"
-echo "Cuenta: ${count}"
+echo $nombre
+echo "Hola, $nombre"
+echo "Contador: ${contador}"
 # Sustitución de comandos
-current_dir=$(pwd)
-date_today=$(date +%Y-%m-%d)
+directorio_actual=$(pwd)
+fecha_hoy=$(date +%Y-%m-%d)
 ```
 
 ### Variables de Entorno: `export` / `env`
@@ -433,20 +493,20 @@ Gestiona variables de entorno.
 
 ```bash
 # Exportar variable al entorno
-export PATH="/new/path:$PATH"
-export MY_VAR="value"
+export PATH="/nuevo/ruta:$PATH"
+export MI_VAR="valor"
 # Ver todas las variables de entorno
 env
 # Ver variable específica
 echo $HOME
 echo $PATH
 # Desasignar variable
-unset MY_VAR
+unset MI_VAR
 ```
 
 ### Variables Especiales
 
-Variables de shell incorporadas con significados especiales.
+Variables de shell integradas con significados especiales.
 
 ```bash
 # Argumentos del script
@@ -467,15 +527,15 @@ Técnicas avanzadas de manipulación de variables.
 
 ```bash
 # Valores predeterminados
-${var:-default}  # Usar predeterminado si var está vacío
-${var:=default}  # Establecer var al predeterminado si está vacío
+${var:-predeterminado}  # Usar predeterminado si var está vacío
+${var:=predeterminado}  # Establecer var a predeterminado si está vacío
 # Manipulación de cadenas
-${var#pattern}   # Eliminar la coincidencia más corta desde el
+${var#patron}   # Eliminar la coincidencia más corta del
 principio
-${var##pattern}  # Eliminar la coincidencia más larga desde el
+${var##patron}  # Eliminar la coincidencia más larga del
 principio
-${var%pattern}   # Eliminar la coincidencia más corta desde el final
-${var%%pattern}  # Eliminar la coincidencia más larga desde el final
+${var%patron}   # Eliminar la coincidencia más corta del final
+${var%%patron}  # Eliminar la coincidencia más larga del final
 ```
 
 ## Conceptos Básicos de Scripting
@@ -488,11 +548,11 @@ Formato básico del script y ejecución.
 #!/bin/bash
 # Esto es un comentario
 # Variables
-greeting="¡Hola, Mundo!"
-user=$(whoami)
+saludo="¡Hola, Mundo!"
+usuario=$(whoami)
 # Salida
-echo $greeting
-echo "Usuario actual: $user"
+echo $saludo
+echo "Usuario actual: $usuario"
 # Hacer el script ejecutable:
 chmod +x script.sh
 # Ejecutar script:
@@ -505,9 +565,9 @@ Controla el flujo del script con condiciones.
 
 ```bash
 #!/bin/bash
-if [ -f "file.txt" ]; then
+if [ -f "archivo.txt" ]; then
     echo "El archivo existe"
-elif [ -d "directory" ]; then
+elif [ -d "directorio" ]; then
     echo "El directorio existe"
 else
     echo "Ninguno existe"
@@ -517,8 +577,8 @@ if [ "$USER" = "root" ]; then
     echo "Ejecutando como root"
 fi
 # Comparación numérica
-if [ $count -gt 10 ]; then
-    echo "La cuenta es mayor que 10"
+if [ $contador -gt 10 ]; then
+    echo "El contador es mayor que 10"
 fi
 ```
 
@@ -533,14 +593,14 @@ for i in {1..5}; do
     echo "Número: $i"
 done
 # Bucle for con archivos
-for file in *.txt; do
-    echo "Procesando: $file"
+for archivo in *.txt; do
+    echo "Procesando: $archivo"
 done
 # Bucle while
-count=1
-while [ $count -le 5 ]; do
-    echo "Cuenta: $count"
-    count=$((count + 1))
+contador=1
+while [ $contador -le 5 ]; do
+    echo "Contador: $contador"
+    contador=$((contador + 1))
 done
 ```
 
@@ -551,19 +611,19 @@ Crea bloques de código reutilizables.
 ```bash
 #!/bin/bash
 # Definir función
-greet() {
-    local name=$1
-    echo "Hola, $name!"
+saludar() {
+    local nombre=$1
+    echo "Hola, $nombre!"
 }
 # Función con valor de retorno
-add_numbers() {
-    local sum=$(($1 + $2))
-    echo $sum
+sumar_numeros() {
+    local suma=$(($1 + $2))
+    echo $suma
 }
 # Llamar funciones
-greet "Alicia"
-result=$(add_numbers 5 3)
-echo "Suma: $result"
+saludar "Alicia"
+resultado=$(sumar_numeros 5 3)
+echo "Suma: $resultado"
 ```
 
 ## Comandos de Red y Sistema
@@ -583,8 +643,8 @@ dig google.com
 ip addr show  # Mostrar direcciones IP
 ip route show # Mostrar tabla de enrutamiento
 # Descargar archivos
-wget https://example.com/file.txt
-curl -O https://example.com/file.txt
+wget https://ejemplo.com/archivo.txt
+curl -O https://ejemplo.com/archivo.txt
 ```
 
 ### Información del Sistema: `uname` / `whoami` / `date`
@@ -597,7 +657,7 @@ uname -a      # Toda la información del sistema
 uname -r      # Versión del kernel
 hostname      # Nombre del equipo
 whoami        # Nombre de usuario actual
-id            # ID de usuario y grupos
+id            # ID y grupos de usuario
 # Fecha y hora
 date          # Fecha/hora actual
 date +%Y-%m-%d # Formato personalizado
@@ -610,16 +670,16 @@ Crea y extrae archivos comprimidos.
 
 ```bash
 # Crear archivo tar
-tar -czf archive.tar.gz directory/
+tar -czf archivo.tar.gz directorio/
 # Extraer archivo tar
-tar -xzf archive.tar.gz
+tar -xzf archivo.tar.gz
 # Crear archivo zip
-zip -r archive.zip directory/
+zip -r archivo.zip directorio/
 # Extraer archivo zip
-unzip archive.zip
+unzip archivo.zip
 # Ver contenido del archivo
-tar -tzf archive.tar.gz
-unzip -l archive.zip
+tar -tzf archivo.tar.gz
+unzip -l archivo.zip
 ```
 
 ### Transferencia de Archivos: `scp` / `rsync`
@@ -628,13 +688,13 @@ Transfiere archivos entre sistemas.
 
 ```bash
 # Copiar archivo a servidor remoto
-scp file.txt user@server:/path/to/destination
+scp archivo.txt usuario@servidor:/ruta/al/destino
 # Copiar desde servidor remoto
-scp user@server:/path/to/file.txt .
+scp usuario@servidor:/ruta/al/archivo.txt .
 # Sincronizar directorios (local a remoto)
-rsync -avz local_dir/ user@server:/remote_dir/
+rsync -avz dir_local/ usuario@servidor:/dir_remoto/
 # Sincronizar con eliminación (espejo)
-rsync -avz --delete local_dir/ user@server:/remote_dir/
+rsync -avz --delete dir_local/ usuario@servidor:/dir_remoto/
 ```
 
 ## Historial de Comandos y Atajos
@@ -654,7 +714,7 @@ history 10
 !123
 # Ejecutar el último comando que comienza con 'ls'
 !ls
-# Buscar interactivamente en el historial
+# Buscar en el historial interactivamente
 Ctrl+R
 ```
 
@@ -668,13 +728,13 @@ Reutilizar partes de comandos anteriores.
 !^    # Primer argumento del comando anterior
 !*    # Todos los argumentos del comando anterior
 # Ejemplo de uso:
-ls /very/long/path/to/file.txt
-cd !$  # Va a /very/long/path/to/file.txt
+ls /ruta/muy/larga/a/archivo.txt
+cd !$  # Va a /ruta/muy/larga/a/archivo.txt
 ```
 
 ### Atajos de Teclado
 
-Atajos esenciales para un uso eficiente de la línea de comandos.
+Atajos esenciales para el uso eficiente de la línea de comandos.
 
 ```bash
 # Navegación
@@ -699,11 +759,11 @@ Ctrl+D  # Salir del shell o EOF
 
 ### Combinaciones de Comandos Útiles
 
-One-liners potentes para tareas comunes.
+Comandos de una sola línea potentes para tareas comunes.
 
 ```bash
-# Encontrar y reemplazar texto en múltiples archivos
-find . -name "*.txt" -exec sed -i 's/old/new/g' {} \;
+# Buscar y reemplazar texto en múltiples archivos
+find . -name "*.txt" -exec sed -i 's/antiguo/nuevo/g' {} \;
 # Encontrar los archivos más grandes en el directorio actual
 du -ah . | sort -rh | head -10
 # Monitorear archivo de registro en busca de un patrón específico
@@ -711,7 +771,7 @@ tail -f /var/log/syslog | grep "ERROR"
 # Contar archivos en el directorio
 ls -1 | wc -l
 # Crear copia de seguridad con marca de tiempo
-cp file.txt file.txt.backup.$(date +%Y%m%d-%H%M%S)
+cp archivo.txt archivo.txt.backup.$(date +%Y%m%d-%H%M%S)
 ```
 
 ### Alias y Funciones
@@ -728,7 +788,7 @@ alias ...='cd ../..'
 # Ver todos los alias
 alias
 # Crear alias persistentes en ~/.bashrc:
-echo "alias mycommand='long command here'" >>
+echo "alias micomando='comando largo aquí'" >>
 ~/.bashrc
 source ~/.bashrc
 ```
@@ -739,18 +799,18 @@ Gestiona procesos de larga ejecución y sesiones.
 
 ```bash
 # Iniciar comando en segundo plano
-nohup long_running_command &
+nohup comando_larga_ejecucion &
 # Iniciar sesión de screen
-screen -S mysession
+screen -S mi_sesion
 # Desconectarse de screen: Ctrl+A seguido de D
 # Reconectarse a screen
-screen -r mysession
+screen -r mi_sesion
 # Listar sesiones de screen
 screen -ls
 # Alternativa: tmux
-tmux new -s mysession
+tmux new -s mi_sesion
 # Desconectarse: Ctrl+B seguido de D
-tmux attach -t mysession
+tmux attach -t mi_sesion
 ```
 
 ### Mantenimiento del Sistema
@@ -765,12 +825,12 @@ du -sh /*
 free -h
 cat /proc/meminfo
 # Verificar servicios en ejecución
-systemctl status service_name
+systemctl status nombre_servicio
 systemctl list-units --type=service
 # Actualizar listas de paquetes (Ubuntu/Debian)
 sudo apt update && sudo apt upgrade
 # Buscar paquetes instalados
-dpkg -l | grep package_name
+dpkg -l | grep nombre_paquete
 ```
 
 ## Enlaces Relevantes

@@ -1,6 +1,6 @@
 ---
-title: 'Wireshark 速查表'
-description: '使用我们的综合速查表学习 Wireshark，涵盖基本命令、概念和最佳实践。'
+title: 'Wireshark 速查表 | LabEx'
+description: '使用这份综合速查表学习 Wireshark 网络分析。快速参考数据包捕获、网络协议分析、流量检查、故障排除和网络安全监控。'
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 
@@ -36,6 +36,21 @@ dst host 192.168.1.100
 net 192.168.1.0/24
 ```
 
+<BaseQuiz id="wireshark-filter-1" correct="A">
+  <template #question>
+    Wireshark 中的 `host 192.168.1.100` 过滤器捕获什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>所有到或来自 192.168.1.100 的流量</BaseQuizOption>
+  <BaseQuizOption value="B">仅来自 192.168.1.100 的流量</BaseQuizOption>
+  <BaseQuizOption value="C">仅到 192.168.1.100 的流量</BaseQuizOption>
+  <BaseQuizOption value="D">192.168.1.100 端口上的流量</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `host` 过滤器捕获指定 IP 地址作为源或目的地的所有流量。使用 `src host` 进行仅源过滤或 `dst host` 进行仅目的过滤。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 端口过滤
 
 捕获特定端口上的流量。
@@ -53,9 +68,24 @@ port 53
 portrange 1000-2000
 ```
 
+<BaseQuiz id="wireshark-port-1" correct="D">
+  <template #question>
+    Wireshark 中的 `port 80` 过滤器捕获什么？
+  </template>
+  
+  <BaseQuizOption value="A">仅 HTTP 请求</BaseQuizOption>
+  <BaseQuizOption value="B">仅 HTTP 响应</BaseQuizOption>
+  <BaseQuizOption value="C">仅 TCP 数据包</BaseQuizOption>
+  <BaseQuizOption value="D" correct>端口 80 上的所有流量（源和目的）</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `port` 过滤器捕获端口 80 作为源端口或目的端口的所有流量。这包括 HTTP 请求和响应，以及使用端口 80 的任何其他流量。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 协议过滤
 
-捕获特定协议的流量。
+捕获特定协议流量。
 
 ```bash
 # 仅 TCP 流量
@@ -70,18 +100,33 @@ arp
 
 ### 高级捕获过滤器
 
-组合多个条件以进行精确捕获。
+组合多个条件以实现精确捕获。
 
 ```bash
 # 到/来自特定主机的 HTTP 流量
 host 192.168.1.100 and port 80
-# 除 SSH 以外的 TCP 流量
+# 除 SSH 之外的 TCP 流量
 tcp and not port 22
 # 两个主机之间的流量
 host 192.168.1.100 and host 192.168.1.200
 # HTTP 或 HTTPS 流量
 port 80 or port 443
 ```
+
+<BaseQuiz id="wireshark-advanced-1" correct="B">
+  <template #question>
+    `tcp and not port 22` 过滤器捕获什么？
+  </template>
+  
+  <BaseQuizOption value="A">仅 SSH 流量</BaseQuizOption>
+  <BaseQuizOption value="B" correct>除 SSH (端口 22) 之外的所有 TCP 流量</BaseQuizOption>
+  <BaseQuizOption value="C">端口 22 上的 UDP 流量</BaseQuizOption>
+  <BaseQuizOption value="D">所有网络流量</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    此过滤器捕获所有 TCP 流量，但排除了端口 22 (SSH) 上的数据包。`and not` 运算符在保留所有其他 TCP 流量的同时排除了指定的端口。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 接口选择
 
@@ -123,7 +168,7 @@ lo
 ```bash
 # 仅显示 HTTP 流量
 http
-# 仅显示 HTTPS/TLS 流量
+# 显示仅 HTTPS/TLS 流量
 tls
 # 仅显示 DNS 流量
 dns
@@ -137,7 +182,7 @@ icmp
 
 ### IP 地址过滤
 
-按源和目标 IP 地址过滤数据包。
+按源和目的 IP 地址过滤数据包。
 
 ```bash
 # 来自特定 IP 的流量
@@ -161,7 +206,7 @@ not ip.addr == 192.168.1.1
 tcp.port == 80
 # 源端口过滤
 tcp.srcport == 443
-# 目标端口过滤
+# 目的端口过滤
 tcp.dstport == 22
 # 端口范围
 tcp.port >= 1000 and tcp.port <=
@@ -217,7 +262,7 @@ tcp.flags.syn == 1
 tcp.flags.reset == 1
 # TCP 重传
 tcp.analysis.retransmission
-# TCP 窗口更新问题
+# TCP 窗口问题
 tcp.analysis.window_update
 # TCP 连接建立
 tcp.flags.syn == 1 and tcp.flags.ack == 0
@@ -225,7 +270,7 @@ tcp.flags.syn == 1 and tcp.flags.ack == 0
 
 ### TLS/SSL 分析
 
-检查加密连接的详细信息。
+检查加密连接详细信息。
 
 ```bash
 # TLS 握手数据包
@@ -264,7 +309,7 @@ frame.len > 1500
 ```bash
 # 时间范围内的包
 frame.time >= "2024-01-01 10:00:00"
-# 过去一小时内的包
+# 过去一小时的包
 frame.time_relative >= -3600
 # 响应时间分析
 tcp.time_delta > 1.0
@@ -272,7 +317,7 @@ tcp.time_delta > 1.0
 frame.time_delta > 0.1
 ```
 
-## 统计信息和分析工具
+## 统计和分析工具
 
 ### 协议层次结构
 
@@ -342,7 +387,7 @@ tcp.analysis.flags
 
 ### 响应时间分析
 
-测量应用程序的响应时间。
+测量应用程序响应时间。
 
 ```bash
 # HTTP 响应时间
@@ -377,8 +422,8 @@ tcp.analysis.flags
 ```bash
 # 导出选定的数据包
 # 文件 > 导出指定数据包
-# 导出数据包解剖信息
-# 文件 > 导出数据包解剖信息
+# 导出数据包解析
+# 文件 > 导出数据包解析
 # 从 HTTP 导出对象
 # 文件 > 导出对象 > HTTP
 # 导出 SSL/TLS 密钥
@@ -426,9 +471,9 @@ editcap -A "2024-01-01 10:00:00" \
 -b filesize:100 -b files:10
 # 限制数据包捕获大小
 -s 96  # 仅捕获前 96 字节
-# 使用捕获过滤器来减少数据
+# 使用捕获过滤器减少数据量
 host 192.168.1.100 and port 80
-# 为速度禁用协议解剖
+# 为提高速度禁用协议解析
 -d tcp.port==80,http
 ```
 
@@ -437,16 +482,18 @@ host 192.168.1.100 and port 80
 提高大型数据集的 GUI 性能。
 
 ```bash
-# 调整首选项:
+# 要调整的首选项:
 # 编辑 > 首选项 > 外观
 # 颜色方案选择
-# 字体大小（如果需要，减小字体大小）
+# 字体大小和类型
 # 列显示选项
 # 时间格式设置
-# 查看 > 时间显示格式
+# 视图 > 时间显示格式
 # 自捕获开始以来的秒数
-# 当地时间
+# 当天时间
 # UTC 时间
+# 使用 tshark 分析大文件
+tshark -r large.pcap -q -z conv,tcp
 ```
 
 ### 高效分析工作流程
@@ -466,11 +513,11 @@ host 192.168.1.100 and port 80
 
 ### 自动化和脚本编写
 
-自动化常见分析任务。
+自动化常见的分析任务。
 
 ```bash
 # 创建自定义显示过滤器按钮
-# 查看 > 显示过滤器表达式
+# 视图 > 显示过滤器表达式
 # 为不同场景使用配置文件
 # 编辑 > 配置配置文件
 # 使用 tshark 脚本编写
@@ -488,7 +535,8 @@ grep -v "Filter:" | head -20
 ```bash
 # 从 wireshark.org 下载
 # 以管理员身份运行安装程序
-# 安装过程中包含 WinPcap/Npcap
+# 包括 WinPcap/Npcap
+during installation
 # 命令行安装
 (chocolatey)
 choco install wireshark
@@ -506,7 +554,7 @@ sudo apt update
 sudo apt install wireshark
 # Red Hat/CentOS/Fedora
 sudo yum install wireshark
-# 或
+# or
 sudo dnf install wireshark
 # 将用户添加到 wireshark 组
 sudo usermod -a -G wireshark
@@ -544,11 +592,11 @@ brew install wireshark
 
 ### 协议设置
 
-配置协议解剖器和解码。
+配置协议解析器和解码。
 
 ```bash
 # 编辑 > 首选项 > 协议
-# 启用/禁用协议解剖器
+# 启用/禁用协议解析器
 # 配置端口分配
 # 设置解密密钥 (TLS, WEP 等)
 # TCP 重组选项
@@ -566,9 +614,9 @@ brew install wireshark
 # 字体大小和类型
 # 列显示选项
 # 时间格式设置
-# 查看 > 时间显示格式
+# 视图 > 时间显示格式
 # 自捕获开始以来的秒数
-# 当地时间
+# 当天时间
 # UTC 时间
 ```
 
@@ -582,7 +630,7 @@ brew install wireshark
 # RSA 密钥列表
 # 预共享密钥
 # 密钥日志文件位置
-# 禁用潜在的不安全功能
+# 禁用潜在危险的功能
 # Lua 脚本执行
 # 外部解析器
 ```
@@ -600,7 +648,7 @@ tcp.port == 80 and ip.src == 192.168.1.100
 tcp.port == 80 or tcp.port == 443
 # NOT 运算符
 not icmp
-# 括号用于分组
+# 用于分组的括号
 (tcp.port == 80 or tcp.port == 443) and ip.src ==
 192.168.1.0/24
 ```
@@ -644,11 +692,11 @@ tcp.options
 ```bash
 # 格式错误的包
 _ws.malformed
-# 重复的数据包
+# 重复数据包
 frame.number == tcp.analysis.duplicate_ack_num
 # 乱序数据包
 tcp.analysis.out_of_order
-# TCP 窗口缩放问题
+# TCP 窗口满问题
 tcp.analysis.window_full
 ```
 
@@ -678,16 +726,16 @@ icmp.type == 3 and icmp.code == 4
 ```bash
 # 端口扫描检测
 tcp.flags.syn == 1 and tcp.flags.ack == 0
-# 来自单个 IP 的大量连接
+# 单个 IP 的大量连接
 # 使用 统计信息 > 会话
 # 可疑 DNS 查询
 dns.qry.name contains "dga" or dns.qry.name matches
 "^[a-z]{8,}\.com$"
-# 可疑的 HTTP POST 到 URL
+# HTTP POST 到可疑 URL
 http.request.method == "POST" and http.request.uri
 contains "/upload"
 # 不寻常的流量模式
-# 检查 I/O 图表以查看高峰
+# 检查 I/O 图表中的高峰
 ```
 
 ### 应用程序性能

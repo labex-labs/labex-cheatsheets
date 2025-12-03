@@ -1,6 +1,6 @@
 ---
-title: 'CompTIA Spickzettel'
-description: 'Lernen Sie CompTIA mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'CompTIA Spickzettel | LabEx'
+description: 'Lernen Sie CompTIA IT-Zertifizierungen mit diesem umfassenden Spickzettel. Schnelle Referenz für CompTIA A+, Network+, Security+, Linux+ und IT-Grundlagen zur Prüfungsvorbereitung.'
 pdfUrl: '/cheatsheets/pdf/comptia-cheatsheet.pdf'
 ---
 
@@ -30,7 +30,7 @@ Grundlagenzertifizierungen für den Erfolg in der IT-Karriere.
 - Hardware und mobile Geräte
 - Betriebssysteme und Software
 - Sicherheits- und Netzwerk-Grundlagen
-- Betriebsabläufe
+- Betriebsverfahren
 
 # CompTIA Network+ (N10-008)
 - Netzwerkgrundlagen
@@ -46,6 +46,21 @@ Grundlagenzertifizierungen für den Erfolg in der IT-Karriere.
 - Betrieb und Reaktion auf Vorfälle
 - Governance, Risiko und Compliance
 ```
+
+<BaseQuiz id="comptia-core-1" correct="B">
+  <template #question>
+    Welche CompTIA-Zertifizierung konzentriert sich auf Netzwerkgrundlagen und Fehlerbehebung?
+  </template>
+  
+  <BaseQuizOption value="A">CompTIA A+</BaseQuizOption>
+  <BaseQuizOption value="B" correct>CompTIA Network+</BaseQuizOption>
+  <BaseQuizOption value="C">CompTIA Security+</BaseQuizOption>
+  <BaseQuizOption value="D">CompTIA Linux+</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    CompTIA Network+ (N10-008) konzentriert sich auf Netzwerkgrundlagen, Implementierungen, Betrieb, Sicherheit und Fehlerbehebung. Es ist für Netzwerkadministratoren und Techniker konzipiert.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Spezialisierte Zertifizierungen
 
@@ -87,13 +102,13 @@ Fortgeschrittene und spezialisierte IT-Qualifikationen.
 # CompTIA Linux+ (XK0-005)
 - Systemverwaltung
 - Sicherheit
-- Scripting und Container
+- Skripterstellung und Container
 - Fehlerbehebung
 ```
 
 ## CompTIA A+ Grundlagen
 
-### Hardware-Komponenten
+### Hardwarekomponenten
 
 Wesentliches Wissen über Computer-Hardware und Fehlerbehebung.
 
@@ -160,7 +175,7 @@ Verwaltung von Windows, macOS, Linux und mobilen Betriebssystemen.
 
 # Linux Grundlagen
 - Dateisystemhierarchie
-- Befehlszeilenoperationen
+- Kommandozeilenoperationen
 - Paketverwaltung
 - Benutzer- und Gruppenberechtigungen
 ```
@@ -169,7 +184,7 @@ Verwaltung von Windows, macOS, Linux und mobilen Betriebssystemen.
 
 ### OSI-Modell & TCP/IP
 
-Verständnis der Netzwerkschichten und Protokollkenntnisse.
+Verständnis der Netzwerkschicht und Protokollkenntnisse.
 
 ```text
 # OSI 7-Schichten-Modell
@@ -188,17 +203,32 @@ Schicht 1: Bitübertragung (Kabel, Hubs)
 - ARP und ICMP Protokolle
 ```
 
+<BaseQuiz id="comptia-osi-1" correct="C">
+  <template #question>
+    Auf welcher OSI-Schicht arbeitet TCP?
+  </template>
+  
+  <BaseQuizOption value="A">Schicht 3 (Netzwerk)</BaseQuizOption>
+  <BaseQuizOption value="B">Schicht 5 (Sitzung)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Schicht 4 (Transport)</BaseQuizOption>
+  <BaseQuizOption value="D">Schicht 7 (Anwendung)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    TCP (Transmission Control Protocol) arbeitet auf Schicht 4 (Transport) des OSI-Modells. Diese Schicht ist für die zuverlässige Datenübertragung, Fehlerprüfung und Flusskontrolle verantwortlich.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Netzwerkgeräte
 
 Router, Switches und Netzwerk-Equipment.
 
 ```text
-# Schicht-2-Geräte
+# Schicht 2 Geräte
 - Switches und VLANs
 - Spanning Tree Protocol (STP)
 - Port-Sicherheit und MAC-Filterung
 
-# Schicht-3-Geräte
+# Schicht 3 Geräte
 - Router und Routing-Tabellen
 - Statisches vs dynamisches Routing
 - OSPF, EIGRP, BGP Protokolle
@@ -207,10 +237,10 @@ Router, Switches und Netzwerk-Equipment.
 
 ### Drahtlose Netzwerke
 
-WLAN-Standards, Sicherheit und Fehlerbehebung.
+Wi-Fi-Standards, Sicherheit und Fehlerbehebung.
 
 ```text
-# WLAN-Standards
+# Wi-Fi Standards
 802.11a: 5GHz, 54Mbps
 802.11b: 2.4GHz, 11Mbps
 802.11g: 2.4GHz, 54Mbps
@@ -218,7 +248,7 @@ WLAN-Standards, Sicherheit und Fehlerbehebung.
 802.11ac: 5GHz, 6.9Gbps
 802.11ax (Wi-Fi 6): 9.6Gbps
 
-# WLAN-Sicherheit
+# Drahtlose Sicherheit
 - WEP (veraltet)
 - WPA/WPA2-PSK
 - WPA2/WPA3-Enterprise
@@ -230,7 +260,7 @@ WLAN-Standards, Sicherheit und Fehlerbehebung.
 Gängige Werkzeuge und Diagnoseverfahren.
 
 ```bash
-# Befehlszeilen-Tools
+# Kommandozeilen-Werkzeuge
 ping                    # Konnektivität testen
 tracert/traceroute      # Pfadanalyse
 nslookup/dig            # DNS-Abfragen
@@ -238,31 +268,46 @@ netstat                 # Netzwerkverbindungen
 ipconfig/ifconfig       # IP-Konfiguration
 
 # Netzwerktests
-- Kabeltester und Tongeber
+- Kabeltester und Tongeneratoren
 - Protokollanalysatoren (Wireshark)
 - Geschwindigkeits- und Durchsatztests
-- WLAN-Analysatoren
+- Wi-Fi-Analysatoren
 ```
 
-## Security+ Grundkonzepte
+## Security+ Kernkonzepte
 
 ### Sicherheitsgrundlagen
 
 CIA-Triade und grundlegende Sicherheitsprinzipien.
 
 ```text
-# CIA Triade
+# CIA-Triade
 Vertraulichkeit: Datenschutz und Verschlüsselung
 Integrität: Datenrichtigkeit und Authentizität
-Verfügbarkeit: System-Uptime und Zugänglichkeit
+Verfügbarkeit: Systemverfügbarkeit und Zugänglichkeit
 
 # Authentifizierungsfaktoren
 Etwas, das Sie wissen: Passwörter, PINs
-Etwas, das Sie besitzen: Tokens, Smartcards
+Etwas, das Sie besitzen: Token, Smartcards
 Etwas, das Sie sind: Biometrie
 Etwas, das Sie tun: Verhaltensmuster
 Etwas, wo Sie sind: Standortbasiert
 ```
+
+<BaseQuiz id="comptia-cia-1" correct="A">
+  <template #question>
+    Was repräsentiert die CIA-Triade in der Cybersicherheit?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Vertraulichkeit, Integrität und Verfügbarkeit – die drei Kernprinzipien der Sicherheit</BaseQuizOption>
+  <BaseQuizOption value="B">Eine Regierungsbehörde</BaseQuizOption>
+  <BaseQuizOption value="C">Drei Arten von Angriffen</BaseQuizOption>
+  <BaseQuizOption value="D">Drei Authentifizierungsmethoden</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die CIA-Triade repräsentiert die drei Grundprinzipien der Informationssicherheit: Vertraulichkeit (Schutz von Daten vor unbefugtem Zugriff), Integrität (Gewährleistung der Richtigkeit und Authentizität von Daten) und Verfügbarkeit (Sicherstellung, dass Systeme und Daten bei Bedarf zugänglich sind).
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Bedrohungslandschaft
 
@@ -303,6 +348,21 @@ Digitale Signaturen: Nichtabstreitbarkeit
 - Public Key Infrastructure (PKI)
 ```
 
+<BaseQuiz id="comptia-crypto-1" correct="B">
+  <template #question>
+    Was ist der Hauptunterschied zwischen symmetrischer und asymmetrischer Verschlüsselung?
+  </template>
+  
+  <BaseQuizOption value="A">Symmetrisch ist schneller, asymmetrisch ist langsamer</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Symmetrisch verwendet einen Schlüssel zur Ver-/Entschlüsselung, asymmetrisch verwendet ein Schlüsselpaar</BaseQuizOption>
+  <BaseQuizOption value="C">Symmetrisch ist für E-Mails, asymmetrisch für Dateien</BaseQuizOption>
+  <BaseQuizOption value="D">Es gibt keinen Unterschied</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Symmetrische Verschlüsselung verwendet denselben Schlüssel für Ver- und Entschlüsselung, was sie schneller macht, aber eine sichere Schlüsselverteilung erfordert. Asymmetrische Verschlüsselung verwendet ein öffentliches/privates Schlüsselpaar, löst das Problem der Schlüsselverteilung, ist aber rechnerisch aufwendiger.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Zugriffskontrolle
 
 Identitätsmanagement und Autorisierungsmodelle.
@@ -333,7 +393,7 @@ Woche 1-2: Prüfungsziele überprüfen
 Woche 3-6: Kernmaterial studieren
 Woche 7-8: Praktische Übungen
 Woche 9-10: Übungsprüfungen
-Woche 11-12: Endgültige Wiederholung und Prüfung
+Woche 11-12: Abschließende Wiederholung und Prüfung
 
 # Lernmaterialien
 - Offizielle CompTIA Studienführer
@@ -358,7 +418,7 @@ Praktische Erfahrung zur Festigung theoretischen Wissens.
 - Aufbau und Fehlerbehebung von PCs
 - Netzwerkkonfiguration
 - Implementierung von Sicherheitstools
-- Beherrschung der Befehlszeile
+- Beherrschung der Kommandozeile
 ```
 
 ### Prüfungsstrategien
@@ -381,16 +441,16 @@ Hot Spot: Benutzeroberflächen-Layouts kennen
 
 ### Häufige Prüfungsthemen
 
-Häufig vorkommende Themen in CompTIA-Prüfungen.
+Häufig behandelte Themen in CompTIA-Prüfungen.
 
 ```text
 # Häufig geprüfte Bereiche
-- Methoden zur Fehlerbehebung
+- Fehlerbehebungsmethodiken
 - Best Practices für Sicherheit
 - Netzwerkprotokolle und Ports
 - Betriebssystemfunktionen
-- Hardware-Spezifikationen
-- Konzepte des Risikomanagements
+- Hardwarespezifikationen
+- Risikomanagementkonzepte
 ```
 
 ## Technische Akronyme & Terminologie
@@ -427,7 +487,7 @@ Computer-Hardware- und Software-Terminologie.
 # Speicher & Arbeitsspeicher
 HDD: Hard Disk Drive (Festplattenlaufwerk)
 SSD: Solid State Drive (Solid-State-Laufwerk)
-RAM: Random Access Memory (Flüchtiger Speicher)
+RAM: Random Access Memory (Arbeitsspeicher)
 ROM: Read-Only Memory (Nur-Lese-Speicher)
 BIOS/UEFI: System-Firmware
 RAID: Redundant Array of Independent Disks
@@ -447,17 +507,17 @@ Begriffe und Konzepte der Informationssicherheit.
 
 ```text
 # Sicherheits-Frameworks
-CIA: Vertraulichkeit, Integrität, Verfügbarkeit
-AAA: Authentifizierung, Autorisierung, Abrechnung
-PKI: Public Key Infrastructure
-IAM: Identity and Access Management
+CIA: Confidentiality, Integrity, Availability (Vertraulichkeit, Integrität, Verfügbarkeit)
+AAA: Authentication, Authorization, Accounting (Authentifizierung, Autorisierung, Abrechnung)
+PKI: Public Key Infrastructure (Infrastruktur für öffentliche Schlüssel)
+IAM: Identity and Access Management (Identitäts- und Zugriffsmanagement)
 SIEM: Security Information and Event Management
-SOC: Security Operations Center
+SOC: Security Operations Center (Sicherheitsoperationszentrum)
 
 # Compliance & Risiko
 GDPR: General Data Protection Regulation (DSGVO)
 HIPAA: Health Insurance Portability Act
-PCI DSS: Payment Card Industry Data Security
+PCI DSS: Payment Card Industry Data Security Standard
 SOX: Sarbanes-Oxley Act
 NIST: National Institute of Standards
 ISO 27001: Sicherheitsmanagementstandard
@@ -479,27 +539,26 @@ CDN: Content Delivery Network
 
 ## Zertifizierungs-Karrierepfade
 
-### Einstiegsniveau
+### Einstiegslevel
 
 Grundlagenzertifizierung für IT-Support-Rollen, die Hardware, Software und grundlegende Fehlerbehebungsfähigkeiten abdeckt.
 
 ```text
-1. Einstiegsniveau
+1. Einstiegslevel
 CompTIA A+
 Grundlagenzertifizierung für IT-Support-Rollen, die
-Hardware, Software und grundlegende Fehlerbehebungsfähigkeiten
-abdeckt.
+Hardware, Software und grundlegende Fehlerbehebungsfähigkeiten abdeckt.
 ```
 
 ### Infrastruktur
 
-Aufbau von Fachwissen in Netzwerken und Server-Administration für Infrastrukturrollen.
+Aufbau von Fachwissen in Netzwerk- und Serveradministration für Infrastrukturrollen.
 
 ```text
 2. Infrastruktur
 Network+ & Server+
-Aufbau von Fachwissen in Netzwerken und Server-Administration
-für Infrastrukturrollen.
+Aufbau von Fachwissen in Netzwerk- und Serveradministration für
+Infrastrukturrollen.
 ```
 
 ### Sicherheitsfokus
@@ -526,7 +585,7 @@ Cloud-Technologien.
 
 ## Häufige Portnummern
 
-### Bekannte Ports (0-1023)
+### Well-Known Ports (0-1023)
 
 Standard-Ports für gängige Netzwerkdienste.
 
@@ -549,7 +608,7 @@ Port 995: POP3S (POP3 Secure)
 
 ### Registrierte Ports (1024-49151)
 
-Gängige Anwendungs- und Datenbank-Ports.
+Häufige Anwendungs- und Datenbank-Ports.
 
 ```text
 # Datenbank & Anwendungen
@@ -570,11 +629,11 @@ Port 636: LDAPS (LDAP Secure)
 Port 989/990: FTPS (FTP Secure)
 ```
 
-## Methoden zur Fehlerbehebung
+## Fehlerbehebungsmethodiken
 
 ### CompTIA Fehlerbehebungsschritte
 
-Standardmethodik zur technischen Problemlösung.
+Standardmethodik zur Lösung technischer Probleme.
 
 ```text
 # 6-Schritte-Prozess
@@ -602,7 +661,7 @@ Abschließende Schritte im Fehlerbehebungsprozess.
 ```text
 # Verbleibende Schritte
 4. Maßnahmeplan festlegen
-   - Schritte zur Behebung bestimmen
+   - Schritte zur Lösung bestimmen
    - Mögliche Auswirkungen identifizieren
    - Lösung implementieren oder eskalieren
 
@@ -613,8 +672,8 @@ Abschließende Schritte im Fehlerbehebungsprozess.
 
 6. Ergebnisse, Maßnahmen und Ergebnisse dokumentieren
    - Ticketsysteme aktualisieren
-   - Erkenntnisse teilen
-   - Zukünftiges Auftreten verhindern
+   - Gelernte Lektionen teilen
+   - Zukünftige Vorkommnisse verhindern
 ```
 
 ## Tipps für Performance-Based Questions
@@ -631,7 +690,7 @@ Häufige Simulationsszenarien und Lösungen.
 - Speichergeräte korrekt anschließen
 - Probleme mit dem Netzteil beheben
 
-# Betriebssystem-Aufgaben
+# Betriebssystemaufgaben
 - Windows-Installation und -Konfiguration
 - Benutzerkonten- und Berechtigungsverwaltung
 - Netzwerkeinstellungen konfigurieren
@@ -646,9 +705,9 @@ Netzwerkkonfigurations- und Fehlerbehebungsszenarien.
 ```text
 # Netzwerkkonfiguration
 - VLAN-Einrichtung und Portzuweisungen
-- Router ACL-Konfiguration
+- Konfiguration von Router-ACLs
 - Switch-Port-Sicherheitseinstellungen
-- WLAN-Einrichtung
+- Einrichtung von drahtlosen Netzwerken
 - IP-Adressierung und Subnetting
 
 # Fehlerbehebungsaufgaben
@@ -661,11 +720,11 @@ Netzwerkkonfigurations- und Fehlerbehebungsszenarien.
 
 ### Security+ Szenarien
 
-Sicherheitsimplementierung und Reaktion auf Vorfälle.
+Implementierung von Sicherheit und Reaktion auf Vorfälle.
 
 ```text
 # Sicherheitskonfiguration
-- Firewall-Regelerstellung
+- Erstellung von Firewall-Regeln
 - Einrichtung der Benutzerzugriffskontrolle
 - Zertifikatsverwaltung
 - Implementierung von Verschlüsselung
@@ -688,20 +747,20 @@ Best Practices für Performance-Based Questions.
 - Anweisungen sorgfältig und vollständig lesen
 - Screenshots machen, bevor Änderungen vorgenommen werden
 - Konfigurationen nach der Implementierung testen
-- Ausschlussverfahren anwenden
+- Eliminierungsverfahren anwenden
 - Zeitmanagement effektiv gestalten
 - Mit Simulationssoftware üben
 - Grundlegende Konzepte verstehen, nicht nur Schritte
 ```
 
-## Prüfungsanmeldung & Logistik
+## Prüfungsregistrierung & Logistik
 
-### Prüfungsanmeldungsprozess
+### Prüfungsregistrierungsprozess
 
-Schritte zur Terminierung und Vorbereitung für CompTIA-Prüfungen.
+Schritte zur Planung und Vorbereitung auf CompTIA-Prüfungen.
 
 ```text
-# Anmeldeschritte
+# Registrierungsschritte
 1. Pearson VUE Konto erstellen
 2. Zertifizierungsprüfung auswählen
 3. Testzentrum oder Online-Option wählen
@@ -720,7 +779,7 @@ CompTIA CySA+: $392
 
 ### Vorbereitung auf den Prüfungstag
 
-Was am Prüfungstag erwartet wird und was mitzubringen ist.
+Was am Prüfungstag erwartet wird und mitzubringen ist.
 
 ```text
 # Erforderliche Gegenstände
@@ -737,7 +796,7 @@ Was am Prüfungstag erwartet wird und was mitzubringen ist.
 - Zeitlimits variieren je nach Prüfung (90-165 Minuten)
 ```
 
-## Zertifizierungs-Wartung
+## Zertifizierungswartung
 
 ### Gültigkeit der Zertifizierung
 
@@ -758,7 +817,7 @@ Cloud+: 30 CEUs über 3 Jahre
 - Branchenkonferenzen
 - Veröffentlichung von Artikeln
 - Freiwilligenarbeit
-- Höherstufige Zertifizierungen
+- Höherrangige Zertifizierungen
 ```
 
 ### Karrierevorteile
@@ -779,7 +838,7 @@ Wert und Anerkennung von CompTIA-Zertifizierungen.
 ## Relevante Links
 
 - <router-link to="/linux">Linux Spickzettel</router-link>
-- <router-link to="/cybersecurity">Cybersicherheit Spickzettel</router-link>
+- <router-link to="/cybersecurity">Cybersicherheits Spickzettel</router-link>
 - <router-link to="/network">Netzwerk Spickzettel</router-link>
 - <router-link to="/rhel">Red Hat Enterprise Linux Spickzettel</router-link>
 - <router-link to="/devops">DevOps Spickzettel</router-link>

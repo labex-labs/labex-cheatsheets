@@ -1,6 +1,6 @@
 ---
-title: 'Java 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 Java 를 학습하세요.'
+title: 'Java 치트 시트 | LabEx'
+description: '포괄적인 치트 시트로 Java 프로그래밍을 학습하세요. Java 구문, OOP, 컬렉션, 스트림, Spring 프레임워크 및 엔터프라이즈 개발 필수 사항에 대한 빠른 참조.'
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Java 치트 시트
 <a target="_blank" href="https://labex.io/ko/learn/java">Hands-On Labs 로 Java 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 기반 랩 및 실제 시나리오를 통해 Java 프로그래밍을 학습하세요. LabEx 는 필수 구문, 객체 지향 프로그래밍, 컬렉션, 예외 처리 및 모범 사례를 다루는 포괄적인 Java 과정을 제공합니다. Java 개발 기본 사항을 마스터하고 강력한 애플리케이션을 구축하십시오.
+실습 기반 랩과 실제 시나리오를 통해 Java 프로그래밍을 학습하세요. LabEx 는 필수 구문, 객체 지향 프로그래밍, 컬렉션, 예외 처리 및 모범 사례를 다루는 포괄적인 Java 과정을 제공합니다. Java 개발 기본 사항을 마스터하고 강력한 애플리케이션을 구축하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -39,7 +39,7 @@ public class HelloWorld {
 
 ```java
 public class MyClass {
-    // 클래스 내용이 여기에 들어갑니다
+    // 클래스 내용은 여기에 들어갑니다
     int myVariable;
 
     public void myMethod() {
@@ -59,9 +59,24 @@ public static void main(String[] args) {
 }
 ```
 
+<BaseQuiz id="java-main-1" correct="C">
+  <template #question>
+    Java 에서 메인 메서드의 올바른 시그니처는 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">public void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="B">static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>public static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    메인 메서드는 `public static void main(String[] args)`여야 합니다. `public` 은 JVM 이 접근할 수 있게 하고, `static` 은 클래스에 속함을 의미하며, `void` 는 반환 값이 없음을 의미하고, `String[] args`는 명령줄 인수를 받습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 주석: 코드 문서화
 
-단일 행 (`//`) 및 다중 행 (`/* */`) 주석을 사용하여 코드를 더 이해하기 쉽고 유지 관리하기 쉽게 만듭니다.
+코드 이해도와 유지보수성을 높이기 위해 단일 행 (`//`) 및 다중 행 (`/* */`) 주석을 사용합니다.
 
 ```java
 // 단일 행 주석
@@ -84,7 +99,7 @@ System.out.println(name);
 
 ### 코드 블록: 중괄호
 
-코드 블록은 중괄호 `{}`로 묶이며 코드 섹션의 시작과 끝을 표시합니다.
+코드 블록은 중괄호 `{}`로 묶여 코드 섹션의 시작과 끝을 표시합니다.
 
 ```java
 public class Example {
@@ -120,7 +135,7 @@ boolean flag = true;        // true 또는 false
 
 ### 변수 선언 및 초기화
 
-변수를 생성하고 값을 할당합니다.
+변수를 생성하고 값 할당하기.
 
 ```java
 // 선언만
@@ -156,7 +171,22 @@ boolean isEmpty = message.isEmpty();
 String uppercase = message.toUpperCase();
 ```
 
-## 제어 흐름 문
+<BaseQuiz id="java-string-1" correct="A">
+  <template #question>
+    Java 문자열이 불변 (immutable) 이라는 것은 무엇을 의미합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>일단 생성되면 문자열의 값을 변경할 수 없습니다</BaseQuizOption>
+  <BaseQuizOption value="B">문자열을 생성할 수 없습니다</BaseQuizOption>
+  <BaseQuizOption value="C">문자열은 숫자만 저장할 수 있습니다</BaseQuizOption>
+  <BaseQuizOption value="D">문자열은 자동으로 삭제됩니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    불변성은 String 객체가 생성되면 그 값을 수정할 수 없음을 의미합니다. `toUpperCase()` 와 같은 연산은 원본을 수정하는 대신 새 String 객체를 반환합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+## 제어 흐름문
 
 ### 조건문: `if`, `else if`, `else`
 
@@ -213,6 +243,21 @@ for (int num : numbers) {
 }
 ```
 
+<BaseQuiz id="java-for-loop-1" correct="C">
+  <template #question>
+    향상된 for 루프 (for-each) 는 무엇에 사용됩니까?
+  </template>
+  
+  <BaseQuizOption value="A">카운터 변수를 사용하여 반복</BaseQuizOption>
+  <BaseQuizOption value="B">무한 루프</BaseQuizOption>
+  <BaseQuizOption value="C" correct>인덱스 없이 배열 및 컬렉션을 반복</BaseQuizOption>
+  <BaseQuizOption value="D">중첩 루프에서만 사용</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    향상된 for 루프 (for-each) 는 인덱스를 자동으로 처리하여 배열 및 컬렉션 반복을 단순화하여 코드를 더 읽기 쉽고 오류 발생 가능성을 줄입니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### While 및 Do-While 루프
 
 조건이 참인 동안 코드를 반복합니다.
@@ -232,6 +277,21 @@ do {
     j++;
 } while (j < 3);
 ```
+
+<BaseQuiz id="java-while-1" correct="B">
+  <template #question>
+    `while` 루프와 `do-while` 루프의 주요 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>do-while 은 최소 한 번 실행되지만, while 은 전혀 실행되지 않을 수 있습니다</BaseQuizOption>
+  <BaseQuizOption value="C">while 이 더 빠릅니다</BaseQuizOption>
+  <BaseQuizOption value="D">do-while 은 배열에서만 작동합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `do-while` 루프는 루프 본문을 실행한 후 조건을 확인하므로 항상 최소 한 번 실행됩니다. `while` 루프는 조건을 먼저 확인하므로 조건이 처음부터 거짓이면 실행되지 않을 수 있습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 객체 지향 프로그래밍
 
@@ -289,7 +349,7 @@ public class Person {
 
 ### 상속: `extends`
 
-상속은 코드 재사용을 가능하게 하고 클래스 간의 계층적 관계를 생성합니다.
+상속은 코드 재사용을 가능하게 하고 클래스 간의 계층적 관계를 만듭니다.
 
 ```java
 public class Animal {
@@ -317,13 +377,13 @@ myDog.bark(); // 자신의 메서드
 
 ### 접근 한정자
 
-클래스, 메서드 및 변수에 대한 접근을 제어합니다.
+한정자는 클래스, 메서드 및 변수에 대한 접근을 제어합니다.
 
 ```java
 public class Example {
-    public int publicVar;      // 모든 곳에서 접근 가능
+    public int publicVar;      // 어디서든 접근 가능
     private int privateVar;    // 이 클래스 내에서만 접근 가능
-    protected int protectedVar; // 패키지 내 + 서브클래스에서 접근 가능
+    protected int protectedVar; // 패키지 + 서브클래스 내에서 접근 가능
     int defaultVar;            // 패키지 내에서만 접근 가능
 
     private void privateMethod() {
@@ -360,7 +420,7 @@ public class Calculator {
 
 ### 메서드 오버로딩
 
-매개변수는 다르지만 이름이 같은 여러 메서드입니다.
+매개변수가 다른 동일한 이름의 여러 메서드입니다.
 
 ```java
 public class MathUtils {
@@ -437,7 +497,7 @@ public class RecursiveExamples {
 int[] numbers = {1, 2, 3, 4, 5};
 String[] names = {"Alice", "Bob", "Charlie"};
 
-// 크기가 지정된 배열
+// 지정된 크기로 배열 생성
 int[] scores = new int[10];
 scores[0] = 95;
 scores[1] = 87;
@@ -478,7 +538,7 @@ for (int i = 0; i < matrix.length; i++) {
 
 ### ArrayList: 동적 배열
 
-동적으로 크기가 조정되고 축소될 수 있는 크기 조정 가능한 배열입니다.
+동적으로 크기가 조정되고 축소될 수 있는 가변 크기 배열입니다.
 
 ```java
 import java.util.ArrayList;
@@ -675,7 +735,7 @@ public class OutputExample {
 
 ### 파일 읽기: BufferedReader
 
-텍스트 파일을 한 줄씩 효율적으로 읽습니다.
+효율적으로 파일을 한 줄씩 읽습니다.
 
 ```java
 import java.io.*;
@@ -767,7 +827,7 @@ Java 개발을 위한 인기 있는 통합 개발 환경입니다.
 # 인기 있는 Java IDE:
 # - IntelliJ IDEA (JetBrains)
 # - Eclipse IDE
-# - Visual Studio Code with Java extensions
+# - Java 확장이 포함된 Visual Studio Code
 # - NetBeans
 
 # 명령줄 컴파일
@@ -807,7 +867,7 @@ package com.example.myapp;
 
 ### 코드 구성
 
-유지 관리를 위해 Java 프로그램을 구성합니다.
+유지보수를 위해 Java 프로그램을 구조화합니다.
 
 ```java
 import java.util.ArrayList;
@@ -819,7 +879,7 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class WellOrganizedClass {
-    // 상수가 먼저
+    // 상수를 먼저
     private static final int MAX_ATTEMPTS = 3;
 
     // 인스턴스 변수
@@ -846,7 +906,7 @@ public class WellOrganizedClass {
 
 ### 오류 방지
 
-버그를 방지하고 코드 품질을 개선하기 위한 일반적인 관행입니다.
+버그를 피하고 코드 품질을 개선하기 위한 일반적인 관행입니다.
 
 ```java
 public class BestPractices {
@@ -860,7 +920,7 @@ public class BestPractices {
     }
 
     public void safeStringOperations(String input) {
-        // 문자열 사용 전 null 확인
+        // 문자열 사용 전 Null 확인
         if (input != null && !input.isEmpty()) {
             System.out.println("Length: " + input.length());
             System.out.println("Uppercase: " + input.toUpperCase());
@@ -899,7 +959,7 @@ public class ResourceManagement {
         // Reader 는 자동으로 닫힙니다
     }
 
-    // 수동 리소스 정리 (권장하지 않음)
+    // 수동 리소스 정리 (권장되지 않음)
     public void readFileManual(String filename) {
         BufferedReader reader = null;
         try {

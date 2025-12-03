@@ -1,6 +1,6 @@
 ---
-title: 'JavaScript チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで JavaScript を学習しましょう。'
+title: 'JavaScript チートシート | LabEx'
+description: 'この包括的なチートシートで JavaScript プログラミングを学習。JS 構文、ES6+、DOM 操作、async/await、Node.js、最新 Web 開発のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 
@@ -26,19 +26,34 @@ JavaScript チートシート
 異なるスコープと変更可能性を持つ変数を宣言します。
 
 ```javascript
-// ブロックスコープ、変更可能
+// ブロック スコープ、変更可能
 let name = 'John'
 let age = 25
 age = 26 // 再代入可能
 
-// ブロックスコープ、変更不可能
+// ブロック スコープ、変更不可能
 const PI = 3.14159
 const user = { name: 'Alice' }
 user.age = 30 // オブジェクトのプロパティは変更可能
 
-// 関数スコープ（モダン JS では避けるべき）
+// 関数 スコープ（モダン JS では非推奨）
 var oldVariable = 'legacy'
 ```
+
+<BaseQuiz id="javascript-let-const-1" correct="B">
+  <template #question>
+    `let`と `const` の主な違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">let は関数スコープ、const はブロック スコープである</BaseQuizOption>
+  <BaseQuizOption value="B" correct>let は再代入を許可し、const は再代入を許可しない</BaseQuizOption>
+  <BaseQuizOption value="C">const は数値にのみ使用でき、let は任意の型に使用できる</BaseQuizOption>
+  <BaseQuizOption value="D">違いはない</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `let`も `const` もブロック スコープですが、`let`は変数の再代入を許可し、`const`は再代入を防ぎます。ただし、`const` オブジェクトのプロパティは変更可能です。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### プリミティブ型
 
@@ -66,7 +81,7 @@ let unique = Symbol('id')
 
 ### 型チェック：`typeof`, `instanceof`
 
-変数と値の型を判定します。
+変数と値の型を特定します。
 
 ```javascript
 // プリミティブ型のチェック
@@ -140,12 +155,27 @@ const add = function (a, b) {
 // アロー関数（簡潔）
 const subtract = (a, b) => a - b
 
-// ブロックボディを持つアロー関数
+// ブロック本体を持つアロー関数
 const processData = (data) => {
   const processed = data.filter((x) => x > 0)
   return processed.map((x) => x * 2)
 }
 ```
+
+<BaseQuiz id="javascript-arrow-1" correct="C">
+  <template #question>
+    アロー関数の主な特徴は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">関数宣言のように巻き上げられる</BaseQuizOption>
+  <BaseQuizOption value="B">独自の `this` バインディングを持つ</BaseQuizOption>
+  <BaseQuizOption value="C" correct>囲むスコープから `this` を継承する</BaseQuizOption>
+  <BaseQuizOption value="D">値を返すことができない</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    アロー関数は独自の `this`バインディングを持ちません。代わりに、レキシカル（囲む）スコープから`this` を継承するため、コンテキストを保持したいコールバックやイベントハンドラで役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 高階関数
 
@@ -175,15 +205,15 @@ function applyOperation(arr, operation) {
 ```javascript
 const numbers = [1, 2, 3, 4, 5]
 
-// 各要素の変換
+// 各要素を変換
 const doubled = numbers.map((x) => x * 2)
 // [2, 4, 6, 8, 10]
 
-// 要素のフィルタリング
+// 要素をフィルタリング
 const evens = numbers.filter((x) => x % 2 === 0)
 // [2, 4]
 
-// 単一の値への集約
+// 単一の値に集約
 const sum = numbers.reduce((acc, curr) => acc + curr, 0)
 // 15
 
@@ -193,6 +223,21 @@ const result = numbers
   .map((x) => x * 3)
   .reduce((a, b) => a + b, 0)
 ```
+
+<BaseQuiz id="javascript-array-1" correct="A">
+  <template #question>
+    `filter()` は何を返しますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>テストに合格した要素を持つ新しい配列</BaseQuizOption>
+  <BaseQuizOption value="B">テストに合格した最初の要素</BaseQuizOption>
+  <BaseQuizOption value="C">配列から集約された単一の値</BaseQuizOption>
+  <BaseQuizOption value="D">インプレースで変更された元の配列</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `filter()` メソッドは、提供された関数によって実装されたテストに合格したすべての要素を含む新しい配列を作成します。元の配列は変更されません。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 配列ユーティリティ：`find()`, `includes()`, `sort()`
 
@@ -208,7 +253,7 @@ const users = [
 // 要素の検索
 const user = users.find((u) => u.age > 30)
 
-// 配列が値を含むか確認
+// 配列が値を含むかどうかの確認
 ;[1, 2, 3].includes(2) // true
 
 // 配列のソート
@@ -267,7 +312,7 @@ HTML 要素を見つけて選択します。
 // ID による選択
 const header = document.getElementById('main-header')
 
-// CSS セレクタによる選択（最初の一致）
+// CSS セレクタによる選択（最初のマッチ）
 const button = document.querySelector('.btn-primary')
 const input = document.querySelector('input[type="email"]')
 
@@ -279,14 +324,29 @@ const listItems = document.querySelectorAll('li')
 const buttonsArray = Array.from(allButtons)
 ```
 
+<BaseQuiz id="javascript-dom-1" correct="C">
+  <template #question>
+    `querySelector()`と `querySelectorAll()` の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはない</BaseQuizOption>
+  <BaseQuizOption value="B">querySelector の方が速い</BaseQuizOption>
+  <BaseQuizOption value="C" correct>querySelector は最初に一致した要素を返し、querySelectorAll は一致したすべての要素を返す</BaseQuizOption>
+  <BaseQuizOption value="D">querySelector は ID に使用され、querySelectorAll はクラスに使用される</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `querySelector()`は CSS セレクタに一致する最初の要素を返し、`querySelectorAll()`は一致するすべての要素を含む NodeList を返します。1 つの要素が必要な場合は `querySelector()`を、複数の要素が必要な場合は`querySelectorAll()` を使用します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 要素の変更
 
 コンテンツ、属性、スタイルの変更。
 
 ```javascript
 // テキストコンテンツの変更
-element.textContent = '新しいテキスト'
-element.innerHTML = '太字のテキスト'
+element.textContent = 'New text'
+element.innerHTML = 'Bold text'
 
 // 属性の変更
 element.setAttribute('data-id', '123')
@@ -315,8 +375,8 @@ parent.appendChild(div)
 parent.insertBefore(div, parent.firstChild)
 
 // モダンな挿入メソッド
-parent.prepend(div) // 先頭に挿入
-parent.append(div) // 末尾に挿入
+parent.prepend(div) // 最初に挿入
+parent.append(div) // 最後に挿入
 div.before(newElement) // div の前に挿入
 div.after(newElement) // div の後に挿入
 ```
@@ -326,7 +386,7 @@ div.after(newElement) // div の後に挿入
 CSS スタイルをプログラムで適用します。
 
 ```javascript
-// 直接スタイルの変更
+// 直接的なスタイルの変更
 element.style.color = 'red'
 element.style.backgroundColor = 'blue'
 element.style.fontSize = '16px'
@@ -347,18 +407,18 @@ const color = styles.getPropertyValue('color')
 
 ### イベントリスナーの追加
 
-ユーザーの操作やブラウザイベントに応答します。
+ユーザー操作やブラウザイベントに応答します。
 
 ```javascript
 // 基本的なイベントリスナー
 button.addEventListener('click', function (event) {
-  console.log('ボタンがクリックされました！')
+  console.log('Button clicked!')
 })
 
 // アロー関数によるイベントハンドラ
 button.addEventListener('click', (e) => {
   e.preventDefault() // デフォルトの動作を防止
-  console.log('クリック：', e.target)
+  console.log('Clicked:', e.target)
 })
 
 // オプション付きのイベントリスナー
@@ -380,7 +440,7 @@ element.addEventListener('mouseout', handleMouseOut)
 
 // キーボードイベント
 input.addEventListener('keydown', (e) => {
-  console.log('押されたキー:', e.key)
+  console.log('Key pressed:', e.key)
   if (e.key === 'Enter') {
     // Enter キーの処理
   }
@@ -390,21 +450,21 @@ input.addEventListener('keydown', (e) => {
 form.addEventListener('submit', handleSubmit)
 ```
 
-### イベント委譲 (Event Delegation)
+### イベント委任 (Event Delegation)
 
 複数の要素に対して効率的にイベントを処理します。
 
 ```javascript
-// 親要素でのイベント委譲
+// 親要素でのイベント委任
 document.querySelector('#list').addEventListener('click', (e) => {
   if (e.target.matches('.list-item')) {
-    console.log('リストアイテムがクリックされました：', e.target.textContent)
+    console.log('List item clicked:', e.target.textContent)
   }
 })
 
 // イベントリスナーの削除
 function handleClick(e) {
-  console.log('クリックされました')
+  console.log('Clicked')
 }
 button.addEventListener('click', handleClick)
 button.removeEventListener('click', handleClick)
@@ -425,7 +485,7 @@ element.dispatchEvent(customEvent)
 
 // カスタムイベントのリスニング
 element.addEventListener('userLogin', (e) => {
-  console.log('ユーザーがログインしました：', e.detail.username)
+  console.log('User logged in:', e.detail.username)
 })
 ```
 
@@ -443,7 +503,7 @@ const fetchData = new Promise((resolve, reject) => {
     if (success) {
       resolve({ data: 'Hello World' })
     } else {
-      reject(new Error('取得に失敗しました'))
+      reject(new Error('Failed to fetch'))
     }
   }, 1000)
 })
@@ -452,7 +512,7 @@ const fetchData = new Promise((resolve, reject) => {
 fetchData
   .then((result) => console.log(result.data))
   .catch((error) => console.error(error))
-  .finally(() => console.log('完了'))
+  .finally(() => console.log('Done'))
 ```
 
 ### Async/Await: `async`, `await`
@@ -467,7 +527,7 @@ async function getData() {
     const data = await response.json()
     return data
   } catch (error) {
-    console.error('エラー:', error)
+    console.error('Error:', error)
     throw error
   }
 }
@@ -510,12 +570,12 @@ const promises = [fetch('/api/users'), fetch('/api/posts')]
 Promise.all(promises)
   .then((responses) => Promise.all(responses.map((r) => r.json())))
   .then(([users, posts]) => {
-    console.log('ユーザー:', users)
-    console.log('投稿：', posts)
+    console.log('Users:', users)
+    console.log('Posts:', posts)
   })
 
 // Race - 最初に解決した Promise が勝つ
-Promise.race(promises).then((firstResponse) => console.log('最初のレスポンス'))
+Promise.race(promises).then((firstResponse) => console.log('First response'))
 ```
 
 ## ES6+ モダン機能
@@ -595,9 +655,9 @@ try {
   const result = riskyOperation()
   console.log(result)
 } catch (error) {
-  console.error('エラーが発生しました：', error.message)
+  console.error('Error occurred:', error.message)
 } finally {
-  console.log('クリーンアップコードはここで実行されます')
+  console.log('Cleanup code runs here')
 }
 
 // 非同期エラー処理
@@ -607,7 +667,7 @@ async function asyncOperation() {
     const json = await data.json()
     return json
   } catch (error) {
-    console.error('非同期エラー:', error)
+    console.error('Async error:', error)
     throw error // 必要に応じて再スロー
   }
 }
@@ -615,7 +675,7 @@ async function asyncOperation() {
 
 ### カスタムエラーとデバッグ
 
-カスタムエラー型の作成と効果的なデバッグ。
+カスタムエラー型を作成し、効果的にデバッグします。
 
 ```javascript
 // カスタムエラークラス
@@ -630,17 +690,17 @@ class ValidationError extends Error {
 // カスタムエラーのスロー
 function validateEmail(email) {
   if (!email.includes('@')) {
-    throw new ValidationError('無効なメール形式', 'email')
+    throw new ValidationError('Invalid email format', 'email')
   }
 }
 
 // コンソールデバッグメソッド
-console.log('基本ログ')
-console.warn('警告メッセージ')
-console.error('エラーメッセージ')
+console.log('Basic log')
+console.warn('Warning message')
+console.error('Error message')
 console.table([{ name: 'John', age: 30 }])
 console.time('operation')
-// ... コード
+// ... some code
 console.timeEnd('operation')
 ```
 
@@ -677,7 +737,7 @@ if (localStorage.getItem('username') !== null) {
 
 ### JSON 操作
 
-JSON データのパースと文字列化。
+JSON データの解析と文字列化。
 
 ```javascript
 // JavaScript オブジェクトから JSON 文字列へ
@@ -689,14 +749,14 @@ const jsonString = JSON.stringify(user)
 const jsonData = '{"name":"Bob","age":30}'
 const userObj = JSON.parse(jsonData)
 
-// JSON パースエラーの処理
+// JSON 解析エラーの処理
 try {
   const data = JSON.parse(invalidJson)
 } catch (error) {
-  console.error('無効な JSON:', error.message)
+  console.error('Invalid JSON:', error.message)
 }
 
-// カスタムのリプレース/リバイバー付き JSON
+// カスタムの replacer/reviver を使用した JSON
 const filtered = JSON.stringify(user, ['name', 'age'])
 const parsed = JSON.parse(jsonString, (key, value) => {
   return key === 'age' ? value + 1 : value
@@ -730,7 +790,7 @@ const allNumbers = text.match(/\d+/g); // ['123', '456', '7890']
 
 ### 正規表現を使用した文字列メソッド
 
-文字列操作に正規表現を使用します。
+文字列操作メソッドでの正規表現の使用。
 
 ```javascript
 // 正規表現による置換
@@ -770,7 +830,7 @@ let x = 5
 let y = 10
 console.log(x + y) // 15
 
-// HTML にスクリプトを含める
+// HTML へのスクリプトの組み込み
 ```
 
 ### Node.js 環境
@@ -794,7 +854,7 @@ npm install lodash
 npm install --save-dev jest
 ```
 
-### モダンな開発ツール
+### モダン開発ツール
 
 JavaScript 開発に不可欠なツール。
 
@@ -845,7 +905,7 @@ for (let i = 0, len = elements.length; i < len; i++) {
 
 ### コードの整理と標準
 
-保守性と可読性のためにコードを構成します。
+保守性と可読性のためにコードを構造化します。
 
 ```javascript
 // 厳格モードの使用
@@ -855,7 +915,7 @@ for (let i = 0, len = elements.length; i < len; i++) {
 const userName = 'john' // 変数はキャメルケース
 const API_URL = 'https://api.example.com' // 定数は大文字
 
-// 関数のドキュメント化
+// 関数ドキュメント
 /**
  * 長方形の面積を計算します
  * @param {number} width - 長方形の幅
@@ -912,9 +972,9 @@ test('multiplies 3 * 4 to equal 12', () => {
 debugger // 開発者ツールで実行を一時停止
 
 // デバッグのためのコンソールメソッド
-console.log('変数の値：', variable)
+console.log('Variable value:', variable)
 console.assert(x > 0, 'x は正であるべき')
-console.trace('関数の呼び出しスタック')
+console.trace('関数呼び出しスタック')
 
 // パフォーマンス測定
 performance.mark('start')

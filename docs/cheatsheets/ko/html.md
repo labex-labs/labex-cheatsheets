@@ -1,6 +1,6 @@
 ---
-title: 'HTML 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 HTML 을 학습하세요.'
+title: 'HTML 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 HTML5 를 학습하세요. 프론트엔드 개발자를 위한 HTML 태그, 시맨틱 요소, 폼, 접근성 및 최신 웹 개발 표준에 대한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ HTML 치트 시트
 <a target="_blank" href="https://labex.io/ko/learn/html">실습 랩을 통해 HTML 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 HTML 웹 구조를 학습하세요. LabEx 는 필수 요소, 시맨틱 마크업, 폼, 미디어 통합 및 최신 HTML5 기능을 다루는 포괄적인 HTML 과정을 제공합니다. 현대적인 웹 개발 워크플로우를 위해 효율적인 웹 페이지 구조와 콘텐츠 구성을 마스터하세요.
+실습 랩과 실제 시나리오를 통해 HTML 웹 구조를 학습하세요. LabEx 는 필수 요소, 시맨틱 마크업, 폼, 미디어 통합 및 최신 HTML5 기능을 다루는 포괄적인 HTML 과정을 제공합니다. 현대 웹 개발 워크플로우를 위한 효율적인 웹 페이지 구조 및 콘텐츠 구성을 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ HTML 치트 시트
 
 ### 기본 HTML 문서: `<!DOCTYPE html>`
 
-모든 HTML 문서는 문서 타입 선언으로 시작하며 표준 구조를 따릅니다.
+모든 HTML 문서는 문서 유형 선언으로 시작하며 표준 구조를 따릅니다.
 
 ```html
 <!DOCTYPE html>
@@ -39,6 +39,21 @@ HTML 치트 시트
 </html>
 ```
 
+<BaseQuiz id="html-doctype-1" correct="A">
+  <template #question>
+    `<!DOCTYPE html>`의 목적은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>문서 유형과 HTML 버전을 선언합니다</BaseQuizOption>
+  <BaseQuizOption value="B">새로운 HTML 요소를 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="C">외부 스타일시트를 연결합니다</BaseQuizOption>
+  <BaseQuizOption value="D">페이지 제목을 설정합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `<!DOCTYPE html>` 선언은 브라우저에 문서가 사용하는 HTML 버전을 알려줍니다. HTML5 의 경우, 이 간단한 선언만으로 충분하며 모든 HTML 문서의 첫 번째 줄에 있어야 합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Head 요소: `<head>`
 
 head 섹션에는 문서에 대한 메타데이터가 포함됩니다.
@@ -50,9 +65,9 @@ head 섹션에는 문서에 대한 메타데이터가 포함됩니다.
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- 페이지 설명 -->
 <meta name="description" content="Page description" />
-<!-- CSS 링크 -->
+<!-- CSS 연결 -->
 <link rel="stylesheet" href="styles.css" />
-<!-- 파비콘 링크 -->
+<!-- 즐겨찾기 아이콘 연결 -->
 <link rel="icon" href="favicon.ico" />
 ```
 
@@ -97,10 +112,25 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 <h1>주요 제목</h1>
 <h2>섹션 제목</h2>
 <h3>하위 섹션 제목</h3>
-<h4>소하위 섹션 제목</h4>
+<h4>소제목</h4>
 <h5>작은 제목</h5>
 <h6>가장 작은 제목</h6>
 ```
+
+<BaseQuiz id="html-headings-1" correct="B">
+  <template #question>
+    올바른 제목 계층 구조는 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">h1 은 페이지에서 여러 번 사용되어야 합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>h1 은 주요 제목으로 한 번 사용되어야 하며, 그 다음으로 h2, h3 등이 사용되어야 합니다</BaseQuizOption>
+  <BaseQuizOption value="C">모든 제목은 동일한 중요도를 가집니다</BaseQuizOption>
+  <BaseQuizOption value="D">h6 이 가장 중요한 제목입니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    HTML 제목은 논리적인 계층 구조를 따라야 합니다. 주요 페이지 제목에는 `h1` 을 한 번 사용하고, 주요 섹션에는 `h2` 를, 하위 섹션에는 `h3` 을 사용하는 식으로 진행해야 합니다. 이는 접근성과 SEO 에 도움이 됩니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 단락: `p`
 
@@ -131,7 +161,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 
 ### 줄 바꿈 및 공백: `<br>`, `<hr>`, `<pre>`
 
-콘텐츠 내에서 텍스트 흐름과 간격을 제어합니다.
+콘텐츠 내에서 텍스트 흐름 및 간격을 제어합니다.
 
 ```html
 <!-- 줄 바꿈 -->
@@ -139,10 +169,10 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 두 번째 줄
 <!-- 수평선 -->
 <hr />
-<!-- 사전 형식 지정 텍스트 -->
+<!-- 사전 서식 지정 텍스트 -->
 <pre>
-  공백이
-    유지되는    텍스트
+  보존된    간격이 있는
+      텍스트
       및 줄 바꿈
 </pre>
 <!-- 코드 서식 -->
@@ -175,7 +205,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 
 ### 순서 목록: `<ol>`
 
-순차적인 항목에 대해 번호가 매겨진 목록을 만듭니다.
+순서가 있는 항목에 대해 번호가 매겨진 목록을 만듭니다.
 
 ```html
 <ol>
@@ -185,13 +215,13 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 </ol>
 <!-- 사용자 지정 번호 매기기 -->
 <ol start="5">
-  <li>항목 5</li>
-  <li>항목 6</li>
+  <li>5 번 항목</li>
+  <li>6 번 항목</li>
 </ol>
 <!-- 다른 번호 매기기 유형 -->
 <ol type="A">
-  <li>항목 A</li>
-  <li>항목 B</li>
+  <li>A 항목</li>
+  <li>B 항목</li>
 </ol>
 ```
 
@@ -219,7 +249,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 ```html
 <!-- 기본 링크 -->
 <a href="https://example.com">Example 방문</a>
-<!-- 새 탭의 링크 -->
+<!-- 새 탭에서 링크 열기 -->
 <a href="https://example.com" target="_blank">새 탭</a>
 <!-- 이메일 링크 -->
 <a href="mailto:email@example.com">이메일 보내기</a>
@@ -229,6 +259,21 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 <a href="#section1">섹션 1 로 이동</a>
 <h2 id="section1">섹션 1</h2>
 ```
+
+<BaseQuiz id="html-links-1" correct="B">
+  <template #question>
+    앵커 태그에서 `target="_blank"` 는 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A">현재 창에서 링크를 엽니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>새 탭이나 창에서 링크를 엽니다</BaseQuizOption>
+  <BaseQuizOption value="C">현재 창을 닫습니다</BaseQuizOption>
+  <BaseQuizOption value="D">링크를 다운로드합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `target="_blank"` 속성은 연결된 페이지를 새 브라우저 탭이나 창에서 열어 사용자가 원래 페이지를 열어 둘 수 있도록 합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 폼 및 입력 요소
 
@@ -308,6 +353,21 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
 ```
 
+<BaseQuiz id="html-validation-1" correct="A">
+  <template #question>
+    HTML 입력에서 `required` 속성은 무엇을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>필드가 비어 있으면 폼 제출을 방지합니다</BaseQuizOption>
+  <BaseQuizOption value="B">필드를 읽기 전용으로 만듭니다</BaseQuizOption>
+  <BaseQuizOption value="C">필드를 숨깁니다</BaseQuizOption>
+  <BaseQuizOption value="D">기본값을 설정합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `required` 속성은 입력 필드를 필수 항목으로 만듭니다. 폼 제출 시 필드가 비어 있으면 브라우저는 제출을 방지하고 유효성 검사 메시지를 표시합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 미디어 요소
 
 ### 이미지: `<img>`, `<picture>`
@@ -319,7 +379,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 <img src="image.jpg" alt="설명" />
 <!-- 반응형 이미지 -->
 <img src="image.jpg" alt="설명" width="100%" height="auto" />
-<!-- 크기가 있는 이미지 -->
+<!-- 크기가 지정된 이미지 -->
 <img src="image.jpg" alt="설명" width="300" height="200" />
 <!-- 반응형 이미지를 위한 Picture 요소 -->
 <picture>
@@ -331,7 +391,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 
 ### 오디오: `<audio>`
 
-재생 제어 기능이 있는 오디오 콘텐츠를 삽입합니다.
+재생 제어 기능을 갖춘 오디오 콘텐츠를 삽입합니다.
 
 ```html
 <!-- 기본 오디오 -->
@@ -348,7 +408,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 
 ### 비디오: `<video>`
 
-포괄적인 옵션으로 비디오 콘텐츠를 삽입합니다.
+포괄적인 옵션을 갖춘 비디오 콘텐츠를 삽입합니다.
 
 ```html
 <!-- 기본 비디오 -->
@@ -465,7 +525,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 <main>
   <article>
     <h1>기사 제목</h1>
-    <p>기사 콘텐츠...</p>
+    <p>기사 내용...</p>
   </article>
 </main>
 <!-- 사이드바 -->
@@ -489,15 +549,15 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 <!-- 일반 섹션 -->
 <section>
   <h2>섹션 제목</h2>
-  <p>섹션 콘텐츠...</p>
+  <p>섹션 내용...</p>
 </section>
-<!-- 독립적인 기사 -->
+<!-- 독립형 기사 -->
 <article>
   <header>
     <h1>기사 제목</h1>
     <time datetime="2024-01-01">2024 년 1 월 1 일</time>
   </header>
-  <p>기사 콘텐츠...</p>
+  <p>기사 내용...</p>
 </article>
 <!-- 일반 컨테이너 -->
 <div class="container">
@@ -517,7 +577,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 모든 HTML 요소에 사용할 수 있는 속성입니다.
 
 ```html
-<!-- 고유 식별을 위한 ID -->
+<!-- 고유 식별자를 위한 ID -->
 <div id="unique-element">콘텐츠</div>
 <!-- 스타일링 및 선택을 위한 클래스 -->
 <p class="highlight important">텍스트</p>
@@ -535,7 +595,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 
 ### 접근성 속성: `alt`, `aria-*`, `tabindex`, `role`
 
-접근성과 사용자 경험을 개선하는 속성입니다.
+접근성 및 사용자 경험을 개선하는 속성입니다.
 
 ```html
 <!-- 이미지에 대한 대체 텍스트 -->
@@ -549,9 +609,9 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 <small id="email-help">이메일을 공유하지 않습니다</small>
 <!-- 탭 인덱스 -->
 <div tabindex="0">포커스 가능한 div</div>
-<div tabindex="-1">프로그래밍 방식으로 포커스 가능</div>
+<div tabindex="-1">프로그램적으로 포커스 가능한</div>
 <!-- 역할 속성 -->
-<div role="button" tabindex="0">사용자 정의 버튼</div>
+<div role="button" tabindex="0">사용자 지정 버튼</div>
 ```
 
 ## HTML5 최신 기능
@@ -606,14 +666,14 @@ JavaScript 없이 접을 수 있는 콘텐츠 섹션을 만듭니다.
   </ul>
 </details>
 <details open>
-  <summary>이것은 확장된 상태로 시작합니다</summary>
+  <summary>기본적으로 확장됨</summary>
   <p>기본적으로 보이는 콘텐츠입니다.</p>
 </details>
 ```
 
 ### 대화 상자 요소: `<dialog>`
 
-기본 대화 상자 및 모달 기능입니다.
+기본 대화 상자 및 모달 기능을 제공합니다.
 
 ```html
 <!-- 대화 상자 요소 -->
@@ -637,9 +697,9 @@ JavaScript 없이 접을 수 있는 콘텐츠 섹션을 만듭니다.
 깔끔하고 유지 관리하기 쉬우며 접근 가능한 HTML 을 작성합니다.
 
 ```html
-<!-- 항상 doctype 을 선언합니다 -->
+<!-- 항상 doctype 을 선언하세요 -->
 <!DOCTYPE html>
-<!-- 시맨틱 요소를 사용합니다 -->
+<!-- 시맨틱 요소를 사용하세요 -->
 <header>...</header>
 <main>...</main>
 <footer>...</footer>
@@ -647,9 +707,9 @@ JavaScript 없이 접을 수 있는 콘텐츠 섹션을 만듭니다.
 <div>
   <p>올바르게 중첩된 콘텐츠</p>
 </div>
-<!-- 요소 및 속성에 소문자 사용 -->
+<!-- 요소와 속성에 소문자를 사용하세요 -->
 <img src="image.jpg" alt="description" />
-<!-- 모든 태그 닫기 -->
+<!-- 모든 태그를 닫으세요 -->
 <p>태그를 항상 닫으세요</p>
 <!-- 의미 있는 alt 텍스트 사용 -->
 <img src="chart.png" alt="4분기 판매량 25% 증가" />
@@ -668,7 +728,7 @@ HTML 이 유효하고 접근 가능한지 확인합니다.
 <!-- alt 텍스트 제공 -->
 <!-- 닫히지 않은 태그 -->
 <p>텍스트 콘텐츠</p>
-<!-- 태그를 항상 닫으세요 -->
+<!-- 항상 태그 닫기 -->
 <!-- 잘못된 중첩 -->
 <p>
   유효한 단락 콘텐츠
@@ -684,7 +744,7 @@ HTML 이 유효하고 접근 가능한지 확인합니다.
 
 ### 템플릿 엔진: Handlebars, Mustache
 
-템플릿 언어를 사용한 동적 HTML 생성입니다.
+템플릿 언어를 사용한 동적 HTML 생성.
 
 ```html
 <!-- Handlebars 템플릿 -->
@@ -703,12 +763,12 @@ HTML 이 유효하고 접근 가능한지 확인합니다.
 </div>
 ```
 
-### 웹 컴포넌트: `<template>`, 사용자 정의 요소
+### 웹 컴포넌트: `<template>`, 사용자 지정 요소
 
-재사용 가능한 사용자 정의 HTML 요소입니다.
+재사용 가능한 사용자 지정 HTML 요소.
 
 ```html
-<!-- 사용자 정의 요소 정의 -->
+<!-- 사용자 지정 요소 정의 -->
 <template id="my-component">
   <style>
     p {
@@ -729,7 +789,7 @@ HTML 이 유효하고 접근 가능한지 확인합니다.
 
 ### 프레임워크 통합: React JSX, Vue 템플릿
 
-현대적인 JavaScript 프레임워크 내의 HTML 입니다.
+최신 JavaScript 프레임워크 내의 HTML.
 
 ```html
 <!-- React JSX -->

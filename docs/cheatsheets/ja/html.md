@@ -1,6 +1,6 @@
 ---
-title: 'HTML チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで HTML を学習しましょう。'
+title: 'HTML チートシート | LabEx'
+description: 'この包括的なチートシートで HTML5 を学習しましょう。フロントエンド開発者向けに、HTML タグ、セマンティック要素、フォーム、アクセシビリティ、最新の Web 開発標準のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ HTML チートシート
 <a target="_blank" href="https://labex.io/ja/learn/html">ハンズオンラボで HTML を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと現実世界のシナリオを通じて、HTML のウェブ構造を学びます。LabEx は、必須要素、セマンティックマークアップ、フォーム、メディア統合、最新の HTML5 機能などを網羅した包括的な HTML コースを提供します。最新の Web 開発ワークフローのために、効率的なウェブページ構造とコンテンツ編成を習得しましょう。
+ハンズオンラボと実世界のシナリオを通じて HTML のウェブ構造を学びます。LabEx は、必須要素、セマンティックマークアップ、フォーム、メディア統合、最新の HTML5 機能までを網羅した包括的な HTML コースを提供します。最新の Web 開発ワークフローのために、効率的なウェブページ構造とコンテンツ編成を習得しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -38,6 +38,21 @@ HTML チートシート
   </body>
 </html>
 ```
+
+<BaseQuiz id="html-doctype-1" correct="A">
+  <template #question>
+    `<!DOCTYPE html>`の目的は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>ドキュメントタイプと HTML バージョンを宣言する</BaseQuizOption>
+  <BaseQuizOption value="B">新しい HTML 要素を作成する</BaseQuizOption>
+  <BaseQuizOption value="C">外部スタイルシートにリンクする</BaseQuizOption>
+  <BaseQuizOption value="D">ページのタイトルを設定する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `<!DOCTYPE html>`宣言は、ブラウザにドキュメントが使用している HTML のバージョンを伝えます。HTML5 の場合、この単純な宣言で十分であり、すべての HTML ドキュメントの最初の行である必要があります。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Head 要素：`<head>`
 
@@ -68,7 +83,7 @@ head セクションには、ドキュメントに関するメタデータが含
 -->
 ```
 
-### HTML 要素の解剖学
+### HTML 要素の構造
 
 HTML 要素は、開始タグ、コンテンツ、終了タグで構成されます。
 
@@ -89,7 +104,7 @@ HTML 要素は、開始タグ、コンテンツ、終了タグで構成されま
 
 ## テキストコンテンツ要素
 
-### 見出し：`h1` から `h6`
+### 見出し：`h1`から`h6`
 
 コンテンツセクションの階層と重要度を定義します。
 
@@ -98,9 +113,24 @@ HTML 要素は、開始タグ、コンテンツ、終了タグで構成されま
 <h2>セクションタイトル</h2>
 <h3>サブセクションタイトル</h3>
 <h4>サブサブセクションタイトル</h4>
-<h5>小見出し</h5>
+<h5>マイナー見出し</h5>
 <h6>最小の見出し</h6>
 ```
+
+<BaseQuiz id="html-headings-1" correct="B">
+  <template #question>
+    正しい見出しの階層構造は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">h1 はページ上で複数回使用されるべきである</BaseQuizOption>
+  <BaseQuizOption value="B" correct>h1 はメインタイトルとして一度だけ使用され、その後 h2、h3 と続くべきである</BaseQuizOption>
+  <BaseQuizOption value="C">すべて見出しは同じ重要度を持つ</BaseQuizOption>
+  <BaseQuizOption value="D">h6 が最も重要な見出しである</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    HTML の見出しは論理的な階層に従うべきです。メインページタイトルには `h1`を一度使用し、主要セクションには`h2`、サブセクションには`h3` を使用するなど、順序立てて使用します。これはアクセシビリティと SEO に役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 段落：`p`
 
@@ -110,7 +140,7 @@ HTML 要素は、開始タグ、コンテンツ、終了タグで構成されま
 <p>
   これはテキストの段落です。複数の文を含めることができ、自動的に折り返されます。
 </p>
-<p>これは別の段落です。段落はマージンによって区切られます。</p>
+<p>これは別の段落です。段落間にはマージン（余白）が設定されます。</p>
 ```
 
 ### テキストの書式設定：`<strong>`, `<em>`, `<b>`, `<i>`
@@ -118,10 +148,10 @@ HTML 要素は、開始タグ、コンテンツ、終了タグで構成されま
 インラインテキストの強調表示とスタイリングのための要素。
 
 ```html
-<strong>重要性が高い（太字）</strong>
+<strong>強い重要性（太字）</strong>
 <em>強調（斜体）</em>
-<b>太字のテキスト</b>
-<i>斜体のテキスト</i>
+<b>太字テキスト</b>
+<i>斜体テキスト</i>
 <u>下線付きテキスト</u>
 <mark>ハイライトされたテキスト</mark>
 <small>小さなテキスト</small>
@@ -139,10 +169,10 @@ Line 1<br />
 Line 2
 <!-- 水平線 -->
 <hr />
-<!-- 事前フォーマットされたテキスト -->
+<!-- 事前整形されたテキスト -->
 <pre>
-  テキストは
-    維持される    間隔
+  スペースが
+    保持される    間隔
       と改行
 </pre>
 <!-- コードの書式設定 -->
@@ -153,7 +183,7 @@ Line 2
 
 ### 順序なしリスト：`<ul>`
 
-非順序付けられた項目の箇条書きリストを作成します。
+順序のない項目（箇条書き）のリストを作成します。
 
 ```html
 <ul>
@@ -175,7 +205,7 @@ Line 2
 
 ### 順序付きリスト：`<ol>`
 
-順序付けられた項目の番号付きリストを作成します。
+順序のある項目（番号付き）のリストを作成します。
 
 ```html
 <ol>
@@ -208,7 +238,7 @@ Line 2
   <dd>Cascading Style Sheets</dd>
 
   <dt>JavaScript</dt>
-  <dd>ウェブのためのプログラミング言語</dd>
+  <dd>プログラミング言語（ウェブ用）</dd>
 </dl>
 ```
 
@@ -219,16 +249,31 @@ Line 2
 ```html
 <!-- 基本的なリンク -->
 <a href="https://example.com">Example を訪問</a>
-<!-- 新しいタブのリンク -->
+<!-- 新しいタブで開くリンク -->
 <a href="https://example.com" target="_blank">新しいタブ</a>
 <!-- E メールリンク -->
 <a href="mailto:email@example.com">E メールを送信</a>
 <!-- 電話リンク -->
 <a href="tel:+1234567890">電話する</a>
-<!-- ページ内アンカー -->
+<!-- ページ内アンカーリンク -->
 <a href="#section1">セクション 1 へ移動</a>
 <h2 id="section1">セクション 1</h2>
 ```
+
+<BaseQuiz id="html-links-1" correct="B">
+  <template #question>
+    アンカータグの `target="_blank"` は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">同じウィンドウでリンクを開く</BaseQuizOption>
+  <BaseQuizOption value="B" correct>新しいタブまたはウィンドウでリンクを開く</BaseQuizOption>
+  <BaseQuizOption value="C">現在のウィンドウを閉じる</BaseQuizOption>
+  <BaseQuizOption value="D">リンクをダウンロードする</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `target="_blank"` 属性は、リンクされたページを新しいブラウザタブまたはウィンドウで開きます。これにより、ユーザーは元のページを開いたままにできます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## フォームと入力要素
 
@@ -250,7 +295,7 @@ Line 2
 
 ### 入力タイプ：`<input>`
 
-さまざまなデータ収集ニーズに対応するさまざまな入力タイプ。
+さまざまなデータ収集ニーズに対応する多様な入力タイプ。
 
 ```html
 <!-- テキスト入力 -->
@@ -296,7 +341,7 @@ Line 2
 ></textarea>
 ```
 
-### フォーム検証：`required`, `min`, `max`, `pattern`
+### フォームの検証：`required`, `min`, `max`, `pattern`
 
 組み込みの HTML フォーム検証属性。
 
@@ -307,6 +352,21 @@ Line 2
 <input type="number" min="1" max="100" />
 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
 ```
+
+<BaseQuiz id="html-validation-1" correct="A">
+  <template #question>
+    HTML 入力の `required` 属性は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>フィールドが空の場合、フォームの送信を防ぐ</BaseQuizOption>
+  <BaseQuizOption value="B">フィールドを読み取り専用にする</BaseQuizOption>
+  <BaseQuizOption value="C">フィールドを非表示にする</BaseQuizOption>
+  <BaseQuizOption value="D">デフォルト値を設定する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `required` 属性は入力フィールドを必須にします。フォーム送信時にフィールドが空の場合、ブラウザは送信を防止し、検証メッセージを表示します。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## メディア要素
 
@@ -319,7 +379,7 @@ Line 2
 <img src="image.jpg" alt="説明" />
 <!-- レスポンシブ画像 -->
 <img src="image.jpg" alt="説明" width="100%" height="auto" />
-<!-- サイズ指定付き画像 -->
+<!-- サイズ指定のある画像 -->
 <img src="image.jpg" alt="説明" width="300" height="200" />
 <!-- レスポンシブ画像のための picture 要素 -->
 <picture>
@@ -331,7 +391,7 @@ Line 2
 
 ### オーディオ：`<audio>`
 
-再生コントロール付きのオーディオコンテンツを埋め込みます。
+再生コントロール付きでオーディオコンテンツを埋め込みます。
 
 ```html
 <!-- 基本的なオーディオ -->
@@ -340,7 +400,7 @@ Line 2
   <source src="audio.ogg" type="audio/ogg" />
   お使いのブラウザはオーディオをサポートしていません。
 </audio>
-<!-- 自動再生付きオーディオ -->
+<!-- autoplay 付きオーディオ -->
 <audio controls autoplay loop>
   <source src="background.mp3" type="audio/mpeg" />
 </audio>
@@ -348,7 +408,7 @@ Line 2
 
 ### ビデオ：`<video>`
 
-包括的なオプションを備えたビデオコンテンツを埋め込みます。
+包括的なオプションでビデオコンテンツを埋め込みます。
 
 ```html
 <!-- 基本的なビデオ -->
@@ -371,13 +431,13 @@ Line 2
 ```html
 <!-- 外部コンテンツのための iFrame -->
 <iframe src="https://example.com" width="100%" height="400"></iframe>
-<!-- YouTube ビデオ埋め込み -->
+<!-- YouTube ビデオの埋め込み -->
 <iframe
   width="560"
   height="315"
   src="https://www.youtube.com/embed/VIDEO_ID"
 ></iframe>
-<!-- Google マップ埋め込み -->
+<!-- Google マップの埋め込み -->
 <iframe src="https://maps.google.com/..."></iframe>
 ```
 
@@ -431,8 +491,8 @@ Line 2
       <th colspan="2">売上</th>
     </tr>
     <tr>
-      <th>Q1</th>
-      <th>Q2</th>
+      <th>第 1 四半期</th>
+      <th>第 2 四半期</th>
     </tr>
   </thead>
   <tbody>
@@ -457,15 +517,15 @@ Line 2
   <nav>
     <ul>
       <li><a href="#home">ホーム</a></li>
-      <li><a href="#about">概要</a></li>
+      <li><a href="#about">アバウト</a></li>
     </ul>
   </nav>
 </header>
 <!-- メインコンテンツ -->
 <main>
   <article>
-    <h1>記事タイトル</h1>
-    <p>記事の内容...</p>
+    <h1>記事のタイトル</h1>
+    <p>記事のコンテンツ...</p>
   </article>
 </main>
 <!-- サイドバー -->
@@ -489,15 +549,15 @@ Line 2
 <!-- 一般的なセクション -->
 <section>
   <h2>セクションタイトル</h2>
-  <p>セクションの内容...</p>
+  <p>セクションコンテンツ...</p>
 </section>
 <!-- 独立した記事 -->
 <article>
   <header>
-    <h1>記事タイトル</h1>
+    <h1>記事のタイトル</h1>
     <time datetime="2024-01-01">2024 年 1 月 1 日</time>
   </header>
-  <p>記事の内容...</p>
+  <p>記事のコンテンツ...</p>
 </article>
 <!-- 一般的なコンテナ -->
 <div class="container">
@@ -539,7 +599,7 @@ Line 2
 
 ```html
 <!-- 画像の代替テキスト -->
-<img src="photo.jpg" alt="山々の上の夕日" />
+<img src="photo.jpg" alt="山の上にある夕日" />
 <!-- ARIA ラベル -->
 <button aria-label="ダイアログを閉じる">×</button>
 <div aria-hidden="true">装飾的なコンテンツ</div>
@@ -549,7 +609,7 @@ Line 2
 <small id="email-help">E メールを共有することはありません</small>
 <!-- タブインデックス -->
 <div tabindex="0">フォーカス可能な div</div>
-<div tabindex="-1">プログラムでフォーカス可能な要素</div>
+<div tabindex="-1">プログラムでフォーカス可能な div</div>
 <!-- ロール属性 -->
 <div role="button" tabindex="0">カスタムボタン</div>
 ```
@@ -558,14 +618,14 @@ Line 2
 
 ### 新しい入力機能：`color`, `search`, `file`, `datalist`
 
-HTML5 は新しい入力タイプと属性を導入しました。
+HTML5 で導入された新しい入力タイプと属性。
 
 ```html
 <!-- 新しい入力タイプ -->
 <input type="color" value="#ff0000" />
 <input type="search" placeholder="検索..." />
 <input type="file" accept="image/*" multiple />
-<!-- オートコンプリートのための Datalist -->
+<!-- オートコンプリートのための datalist -->
 <input list="browsers" name="browser" />
 <datalist id="browsers">
   <option value="Chrome"></option>
@@ -579,7 +639,7 @@ HTML5 は新しい入力タイプと属性を導入しました。
 
 ### Canvas と SVG: `<canvas>`, `<svg>`
 
-HTML5 でのグラフィックスと描画機能。
+HTML5 におけるグラフィックスと描画機能。
 
 ```html
 <!-- 動的グラフィックスのための Canvas -->
@@ -592,7 +652,7 @@ HTML5 でのグラフィックスと描画機能。
 </svg>
 ```
 
-### Details と Summary: `<details>`, `<summary>`
+### 詳細と要約：`<details>`, `<summary>`
 
 JavaScript なしで折りたたみ可能なコンテンツセクションを作成します。
 
@@ -610,19 +670,19 @@ JavaScript なしで折りたたみ可能なコンテンツセクションを作
 </details>
 <details open>
   <summary>これはデフォルトで展開されます</summary>
-  <p>デフォルトで表示されるコンテンツ。</p>
+  <p>コンテンツはデフォルトで表示されます。</p>
 </details>
 ```
 
-### Dialog 要素：`<dialog>`
+### ダイアログ要素：`<dialog>`
 
 ネイティブのダイアログおよびモーダル機能。
 
 ```html
-<!-- Dialog 要素 -->
+<!-- ダイアログ要素 -->
 <dialog id="myDialog">
   <h2>ダイアログタイトル</h2>
-  <p>ダイアログコンテンツはここにあります。</p>
+  <p>ダイアログコンテンツはここに配置されます。</p>
   <button onclick="closeDialog()">閉じる</button>
 </dialog>
 <button onclick="openDialog()">ダイアログを開く</button>
@@ -653,7 +713,7 @@ JavaScript なしで折りたたみ可能なコンテンツセクションを作
 <!-- 要素と属性には小文字を使用する -->
 <img src="image.jpg" alt="description" />
 <!-- すべてのタグを閉じる -->
-<p>タグは常に閉じてください</p>
+<p>常にタグを閉じる</p>
 <!-- 意味のある alt テキストを使用する -->
 <img src="chart.png" alt="第4四半期に売上が25%増加" />
 ```
@@ -668,10 +728,10 @@ HTML が有効であり、アクセシブルであることを確認します。
 <!-- 一般的な検証エラー -->
 <!-- alt 属性の欠落 -->
 <img src="image.jpg" alt="" />
-<!-- alt テキストを提供してください -->
+<!-- alt テキストを提供する -->
 <!-- タグが閉じられていない -->
 <p>テキストコンテンツ</p>
-<!-- タグは常に閉じてください -->
+<!-- 常にタグを閉じる -->
 <!-- 無効なネスト -->
 <p>
   有効な段落コンテンツ
@@ -706,7 +766,7 @@ HTML が有効であり、アクセシブルであることを確認します。
 </div>
 ```
 
-### Web コンポーネント：`<template>`, カスタム要素
+### Web Components: `<template>`, カスタム要素
 
 再利用可能なカスタム HTML 要素。
 

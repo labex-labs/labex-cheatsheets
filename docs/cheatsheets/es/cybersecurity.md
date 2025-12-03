@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Ciberseguridad'
-description: 'Aprenda ciberseguridad con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Ciberseguridad | LabEx'
+description: 'Aprenda ciberseguridad con esta hoja de trucos completa. Referencia rápida para conceptos de seguridad, detección de amenazas, evaluación de vulnerabilidades, pruebas de penetración y mejores prácticas de seguridad de la información.'
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Ciberseguridad
 <a target="_blank" href="https://labex.io/es/learn/cybersecurity">Aprenda Ciberseguridad con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda ciberseguridad a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de ciberseguridad que cubren identificación de amenazas, evaluación de seguridad, fortalecimiento de sistemas, respuesta a incidentes y técnicas de monitoreo. Aprenda a proteger sistemas y datos de amenazas cibernéticas utilizando herramientas y mejores prácticas estándar de la industria.
+Aprenda ciberseguridad a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de ciberseguridad que cubren identificación de amenazas, evaluación de seguridad, fortalecimiento de sistemas, respuesta a incidentes y técnicas de monitoreo. Aprenda a proteger sistemas y datos de amenazas cibernéticas utilizando herramientas estándar de la industria y las mejores prácticas.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -53,6 +53,21 @@ chmod -R 755 directory/
 ls -la
 ```
 
+<BaseQuiz id="cybersecurity-chmod-1" correct="C">
+  <template #question>
+    ¿Qué establece `chmod 644 file.txt` para los permisos de archivo?
+  </template>
+  
+  <BaseQuizOption value="A">Lectura, escritura, ejecución para todos los usuarios</BaseQuizOption>
+  <BaseQuizOption value="B">Lectura, escritura, ejecución para el propietario; lectura para los demás</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lectura, escritura para el propietario; lectura para el grupo y los demás</BaseQuizOption>
+  <BaseQuizOption value="D">Solo lectura para todos los usuarios</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 644` establece: propietario = 6 (rw-), grupo = 4 (r--), demás = 4 (r--). Este es un conjunto de permisos común para archivos que deben ser legibles por todos pero solo modificables por el propietario.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Configuración de Seguridad de Red
 
 Asegurar conexiones y servicios de red.
@@ -66,6 +81,21 @@ sudo ufw deny 23/tcp
 netstat -tuln
 sudo ss -tuln
 ```
+
+<BaseQuiz id="cybersecurity-firewall-1" correct="B">
+  <template #question>
+    ¿Qué hace `sudo ufw allow 22/tcp`?
+  </template>
+  
+  <BaseQuizOption value="A">Bloquea el puerto 22</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Permite tráfico TCP en el puerto 22 (SSH)</BaseQuizOption>
+  <BaseQuizOption value="C">Habilita UDP en el puerto 22</BaseQuizOption>
+  <BaseQuizOption value="D">Muestra el estado del firewall</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ufw allow 22/tcp` crea una regla de firewall que permite conexiones TCP entrantes en el puerto 22, que es el puerto predeterminado de SSH. Esto es esencial para el acceso remoto al servidor.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Actualizaciones y Parches del Sistema
 
@@ -107,9 +137,24 @@ sudo journalctl -f
 grep "Failed password" /var/log/auth.log
 ```
 
+<BaseQuiz id="cybersecurity-logs-1" correct="A">
+  <template #question>
+    ¿Qué hace `tail -f /var/log/auth.log`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Sigue el archivo de registro de autenticación en tiempo real</BaseQuizOption>
+  <BaseQuizOption value="B">Muestra solo los intentos de inicio de sesión fallidos</BaseQuizOption>
+  <BaseQuizOption value="C">Elimina entradas de registro antiguas</BaseQuizOption>
+  <BaseQuizOption value="D">Archiva el archivo de registro</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La bandera `-f` hace que `tail` siga el archivo, mostrando nuevas entradas de registro a medida que se escriben. Esto es útil para el monitoreo en tiempo real de eventos de autenticación e incidentes de seguridad.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Seguridad de Contraseñas y Autenticación
 
-Implementar mecanismos sólidos de autenticación y políticas de contraseñas.
+Implementar mecanismos de autenticación sólidos y políticas de contraseñas.
 
 ### Creación de Contraseñas Fuertes
 
@@ -127,7 +172,7 @@ openssl rand -base64 32
 
 ### Autenticación Multifactor (MFA)
 
-Añadir capas de autenticación adicionales más allá de las contraseñas.
+Añadir capas adicionales de autenticación más allá de las contraseñas.
 
 ```bash
 # Instalar Google Authenticator
@@ -196,7 +241,7 @@ Controlar el tráfico de red entrante y saliente.
 sudo ufw status
 sudo ufw allow ssh
 sudo ufw deny 23
-# Reglas iptables
+# Reglas de iptables
 sudo iptables -L
 sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
@@ -279,14 +324,14 @@ ls -la /etc/shadow /etc/passwd /etc/group
 
 ### Análisis de Registros e Investigación
 
-Analizar los registros del sistema para identificar incidentes de seguridad.
+Analizar registros del sistema para identificar incidentes de seguridad.
 
 ```bash
 # Buscar actividades sospechosas
 grep -i "failed\|error\|denied" /var/log/auth.log
 # Contar intentos de inicio de sesión fallidos
 grep "Failed password" /var/log/auth.log | wc -l
-# Encontrar IPs únicas en los registros
+# Encontrar direcciones IP únicas en los registros
 awk '/Failed password/ {print $11}' /var/log/auth.log | sort | uniq -c
 # Monitorear actividad de registro en vivo
 tail -f /var/log/syslog
@@ -354,7 +399,7 @@ dig example.com
 nslookup example.com
 # Encontrar subdominios
 sublist3r -d example.com
-# Comprobar bases de datos de reputación
+# Consultar bases de datos de reputación
 # VirusTotal, URLVoid, AbuseIPDB
 ```
 
@@ -371,7 +416,7 @@ grep "192.168.1.100" /var/log/auth.log
 find /tmp -type f -exec sha256sum {} \;
 ```
 
-### Fuentes de Inteligencia de Amenazas
+### Fuentes y Inteligencia de Amenazas
 
 Mantenerse actualizado con la última información de amenazas.
 
@@ -381,7 +426,7 @@ Mantenerse actualizado con la última información de amenazas.
 # - Feeds STIX/TAXII
 # - Fuentes comerciales (CrowdStrike, FireEye)
 # - Fuentes gubernamentales (US-CERT, CISA)
-# Ejemplo: Comprobar IP contra feeds de inteligencia de amenazas
+# Ejemplo: Comprobar IP contra fuentes de amenazas
 curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 ```
 
@@ -401,7 +446,7 @@ Identificar y evaluar amenazas de seguridad potenciales.
 
 ## Cifrado y Protección de Datos
 
-Implementar un cifrado fuerte para proteger datos sensibles.
+Implementar un cifrado sólido para proteger los datos sensibles.
 
 ### Cifrado de Archivos y Discos
 
@@ -446,7 +491,7 @@ openssl req -new -key server-key.pem -out server.csr
 openssl x509 -req -in server.csr -CA ca.pem -CAkey ca-key.pem -out server.pem
 ```
 
-### Prevención de Pérdida de Datos (DLP)
+### Prevención de Pérdida de Datos
 
 Prevenir la exfiltración y fuga no autorizada de datos.
 
@@ -455,7 +500,7 @@ Prevenir la exfiltración y fuga no autorizada de datos.
 sudo apt install auditd
 # Configurar reglas de auditoría
 sudo auditctl -w /etc/passwd -p wa -k passwd_changes
-# Buscar registros de auditoría
+# Buscar en registros de auditoría
 sudo ausearch -k passwd_changes
 ```
 
@@ -484,7 +529,7 @@ nikto -h $1 -o /var/log/nikto-$(date +%Y%m%d).txt
 
 ### Scripts de Monitoreo de Registros
 
-Automatizar el análisis de registros y la generación de alertas.
+Automatizar el análisis de registros y la alerta.
 
 ```bash
 # Monitoreo de inicios de sesión fallidos
@@ -508,15 +553,15 @@ sudo ufw deny from $SUSPICIOUS_IP
 # Registrar la acción
 echo "$(date): IP sospechosa $SUSPICIOUS_IP bloqueada" >> /var/log/security-actions.log
 # Enviar alerta
-echo "IP sospechosa bloqueada: $SUSPICIOUS_IP" | mail -s "IP Bloqueada" security@company.com
+echo "IP sospechosa bloqueada: $SUSPICIOUS_IP" | mail -s "Bloqueo de IP" security@company.com
 ```
 
 ### Gestión de Configuración
 
-Mantener configuraciones de seguridad del sistema.
+Mantener configuraciones de sistema seguras.
 
 ```bash
-# Ejemplo de playbook de Ansible para seguridad
+# Ejemplo de playbook de Ansible
 ---
 - name: Fortalecer configuración SSH
   hosts: all
@@ -543,7 +588,7 @@ Implementar y mantener políticas y procedimientos de seguridad.
 # Aplicación de política de contraseñas (PAM)
 sudo nano /etc/pam.d/common-password
 # Añadir: password required pam_pwquality.so minlen=12
-# Política de bloqueo de cuentas
+# Política de bloqueo de cuenta
 sudo nano /etc/pam.d/common-auth
 # Añadir: auth required pam_tally2.so deny=5 unlock_time=900
 ```
@@ -553,7 +598,7 @@ sudo nano /etc/pam.d/common-auth
 Verificar el cumplimiento de estándares y regulaciones de seguridad.
 
 ```bash
-# Herramientas de referencia CIS (Center for Internet Security)
+# Herramientas CIS (Center for Internet Security)
 sudo apt install cis-cat-lite
 # Ejecutar evaluación CIS
 ./CIS-CAT.sh -a -s
@@ -568,7 +613,7 @@ Evaluar y cuantificar los riesgos de seguridad.
 # Riesgo = Probabilidad × Impacto
 # Bajo (1-3), Medio (4-6), Alto (7-9)
 # Priorización de vulnerabilidades
-# Cálculo de Puntuación CVSS
+# Cálculo de puntuación CVSS
 # Puntuación Base = Impacto × Explotabilidad
 ```
 
@@ -645,7 +690,7 @@ Asegurar las configuraciones del sistema operativo.
 # Deshabilitar servicios innecesarios
 sudo systemctl disable telnet
 sudo systemctl disable ftp
-# Establecer permisos seguros de archivos
+# Establecer permisos de archivo seguros
 sudo chmod 600 /etc/ssh/sshd_config
 sudo chmod 644 /etc/passwd
 # Configurar límites del sistema
@@ -674,7 +719,7 @@ Asegurar las configuraciones de aplicaciones y servicios.
 Header always set X-Content-Type-Options nosniff
 Header always set X-Frame-Options DENY
 Header always set X-XSS-Protection "1; mode=block"
-# Configuración de seguridad Nginx
+# Configuración de seguridad de Nginx
 add_header X-Frame-Options DENY;
 add_header X-Content-Type-Options nosniff;
 ```
@@ -695,7 +740,7 @@ find /backups -name "*.tar.gz" -exec tar -tzf {} \; > /dev/null
 
 ## Técnicas Avanzadas de Seguridad
 
-Implementar medidas de seguridad avanzadas y estrategias de defensa.
+Implementar medidas y estrategias de defensa de seguridad avanzadas.
 
 ### Sistemas de Detección de Intrusiones
 
@@ -716,7 +761,7 @@ tail -f /var/log/suricata/fast.log
 
 ### Gestión de Información y Eventos de Seguridad (SIEM)
 
-Centralizar y analizar registros y eventos de seguridad.
+Centralizar y analizar registros de seguridad y eventos.
 
 ```bash
 # Pila ELK (Elasticsearch, Logstash, Kibana)
@@ -734,10 +779,10 @@ Reconocer y prevenir ataques de ingeniería social.
 
 ```bash
 # Técnicas de identificación de phishing:
-# - Revisar cuidadosamente el correo del remitente
+# - Revisar cuidadosamente el correo electrónico del remitente
 # - Verificar enlaces antes de hacer clic (pasar el ratón por encima)
 # - Buscar errores ortográficos/gramaticales
-# - Desconfiar de solicitudes urgentes
+# - Ser sospechoso de solicitudes urgentes
 # - Verificar solicitudes a través de un canal separado
 # Encabezados de seguridad de correo electrónico a revisar:
 # Registros SPF, DKIM, DMARC
@@ -748,8 +793,8 @@ Reconocer y prevenir ataques de ingeniería social.
 Construir una cultura organizacional consciente de la seguridad.
 
 ```bash
-# Elementos del programa de concienciación en seguridad:
-# - Sesiones de formación regulares
+# Elementos del programa de concienciación de seguridad:
+# - Sesiones de formación periódicas
 # - Pruebas de simulación de phishing
 # - Actualizaciones de políticas de seguridad
 # - Procedimientos de notificación de incidentes

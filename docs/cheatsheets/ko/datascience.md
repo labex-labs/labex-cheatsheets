@@ -1,6 +1,6 @@
 ---
-title: '데이터 과학 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 데이터 과학을 학습하세요.'
+title: '데이터 과학 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 데이터 과학을 배우세요. 데이터 분석, 머신러닝, 통계, 시각화, Python 라이브러리 및 데이터 과학 워크플로우를 위한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/datascience">Hands-On Labs 로 데이터 과학 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/datascience">Hands-On 실습으로 데이터 과학 배우기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 기반 랩과 실제 시나리오를 통해 데이터 과학을 학습하세요. LabEx 는 필수 Python 라이브러리, 데이터 조작, 통계 분석, 머신러닝 및 데이터 시각화를 다루는 포괄적인 데이터 과학 과정을 제공합니다. 데이터 수집, 정리, 분석 및 모델 배포 기술을 마스터하세요.
+실습 및 실제 시나리오를 통해 데이터 과학을 배우십시오. LabEx 는 필수 Python 라이브러리, 데이터 조작, 통계 분석, 머신러닝 및 데이터 시각화를 다루는 포괄적인 데이터 과학 과정을 제공합니다. 데이터 수집, 정리, 분석 및 모델 배포 기술을 마스터하십시오.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -26,7 +26,7 @@ pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 NumPy, Pandas, Matplotlib, Seaborn, scikit-learn 과 같은 주요 라이브러리는 데이터 과학 워크플로우의 기반을 형성합니다.
 
 ```python
-# 데이터 과학을 위한 필수 임포트
+# 데이터 과학을 위한 필수 가져오기
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -50,7 +50,7 @@ np.mean(arr)       # 평균
 np.std(arr)        # 표준 편차
 np.reshape(arr, (5, 1))  # 배열 재구성
 # 데이터 생성
-np.random.normal(0, 1, 100)  # 난수 정규 분포
+np.random.normal(0, 1, 100)  # 무작위 정규 분포
 ```
 
 ### Pandas: `import pandas as pd`
@@ -71,6 +71,21 @@ df.groupby('column').mean()
 df.fillna(df.mean())  # 누락된 값 처리
 ```
 
+<BaseQuiz id="datascience-pandas-1" correct="C">
+  <template #question>
+    Pandas 에서 `df.head()` 는 무엇을 반환합니까?
+  </template>
+  
+  <BaseQuizOption value="A">DataFrame 의 마지막 5 개 행</BaseQuizOption>
+  <BaseQuizOption value="B">DataFrame 의 요약</BaseQuizOption>
+  <BaseQuizOption value="C" correct>DataFrame 의 처음 5 개 행</BaseQuizOption>
+  <BaseQuizOption value="D">DataFrame 의 모든 행</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `df.head()` 는 기본적으로 DataFrame 의 처음 5 개 행을 표시합니다. 처음 10 개 행을 보려면 `df.head(10)` 과 같이 다른 숫자를 지정할 수 있습니다. 데이터를 빠르게 검사하는 데 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Matplotlib & Seaborn: 시각화
 
 통계적 시각화 및 플롯을 생성합니다.
@@ -81,7 +96,7 @@ plt.plot(x, y)
 plt.hist(data, bins=20)
 plt.scatter(x, y)
 plt.show()
-# 통계적 플롯을 위한 Seaborn
+# 통계 플롯을 위한 Seaborn
 sns.boxplot(data=df, x='category', y='value')
 sns.heatmap(df.corr(), annot=True)
 sns.pairplot(df)
@@ -91,13 +106,13 @@ sns.pairplot(df)
 
 ### 1. 문제 정의
 
-데이터 과학은 수학, 통계, 프로그래밍 및 비즈니스 인텔리전스를 결합한 다학제적 분야입니다. 목표와 성공 측정 기준을 정의합니다.
+데이터 과학은 수학, 통계, 프로그래밍 및 비즈니스 인텔리전스를 결합한 다학제 분야입니다. 목표와 성공 측정 기준을 정의합니다.
 
 ```python
 # 비즈니스 문제 정의
-# - 어떤 질문에 답하고 있는가?
-# - 성공을 측정할 지표는 무엇인가?
-# - 어떤 데이터가 필요한가?
+# - 어떤 질문에 답하고 있습니까?
+# - 성공을 측정할 지표는 무엇입니까?
+# - 어떤 데이터가 필요합니까?
 ```
 
 ### 2. 데이터 수집 및 가져오기
@@ -158,9 +173,24 @@ imputer = SimpleImputer(strategy='median')
 df_filled = pd.DataFrame(imputer.fit_transform(df))
 ```
 
+<BaseQuiz id="datascience-missing-1" correct="B">
+  <template #question>
+    `method='forward'` 를 사용한 순방향 채우기는 무엇에 사용됩니까?
+  </template>
+  
+  <BaseQuizOption value="A">누락된 값을 평균으로 채우기</BaseQuizOption>
+  <BaseQuizOption value="B" correct>누락된 값을 이전의 비-null 값으로 채우기</BaseQuizOption>
+  <BaseQuizOption value="C">누락된 값을 무작위 값으로 채우기</BaseQuizOption>
+  <BaseQuizOption value="D">누락된 값 제거</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    순방향 채우기는 이전의 유효한 관측값을 앞으로 전파하여 누락된 값을 채웁니다. 새로운 데이터가 생길 때까지 이전 값을 유지하려는 시계열 데이터에 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 데이터 변환
 
-데이터 정규화 (데이터를 [0, 1]과 같은 표준 범위로 스케일링) 는 특징 크기의 차이로 인한 편향을 방지하는 데 도움이 됩니다.
+데이터 정규화 (데이터를 [0, 1]과 같은 표준 범위로 스케일링) 는 피처 크기의 차이로 인한 편향을 방지하는 데 도움이 됩니다.
 
 ```python
 # 스케일링 및 정규화
@@ -178,6 +208,21 @@ from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 df['encoded'] = le.fit_transform(df['category'])
 ```
+
+<BaseQuiz id="datascience-scaling-1" correct="C">
+  <template #question>
+    StandardScaler 와 MinMaxScaler 의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">차이점 없음</BaseQuizOption>
+  <BaseQuizOption value="B">StandardScaler 는 [0,1] 로 스케일링하고, MinMaxScaler 는 평균=0, 표준편차=1 로 스케일링함</BaseQuizOption>
+  <BaseQuizOption value="C" correct>StandardScaler 는 평균=0 및 표준편차=1 로 정규화하고, MinMaxScaler 는 [0,1] 범위로 스케일링함</BaseQuizOption>
+  <BaseQuizOption value="D">StandardScaler 가 더 빠름</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    StandardScaler 는 데이터를 평균 0 및 표준편차 1 을 갖도록 변환합니다 (Z-점수 정규화). MinMaxScaler 는 데이터를 고정 범위, 일반적으로 [0, 1] 로 스케일링합니다. 둘 다 유용하지만 시나리오가 다릅니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 이상치 탐지 및 처리
 
@@ -199,20 +244,20 @@ z_scores = np.abs(stats.zscore(df['column']))
 df_no_outliers = df[z_scores < 3]
 ```
 
-### 특성 공학 (Feature Engineering)
+### 피처 엔지니어링
 
 모델 성능을 향상시키기 위해 새로운 변수를 생성합니다.
 
 ```python
-# 새 특성 생성
+# 새 피처 생성
 df['feature_ratio'] = df['feature1'] / df['feature2']
 df['feature_sum'] = df['feature1'] + df['feature2']
-# 날짜/시간 특성
+# 날짜/시간 피처
 df['date'] = pd.to_datetime(df['date'])
 df['year'] = df['date'].dt.year
 df['month'] = df['date'].dt.month
 df['day_of_week'] = df['date'].dt.day_name()
-# 연속 변수 구간화 (Binning)
+# 연속 변수 구간화
 df['age_group'] = pd.cut(df['age'], bins=[0, 18, 35, 50, 100],
                         labels=['Child', 'Young Adult', 'Adult',
 'Senior'])
@@ -222,7 +267,7 @@ df['age_group'] = pd.cut(df['age'], bins=[0, 18, 35, 50, 100],
 
 ### 기술 통계량
 
-이러한 중심 경향성 척도는 데이터를 요약하고 데이터 분포에 대한 통찰력을 제공합니다. 이는 모든 데이터 세트를 이해하는 기초입니다. 평균은 데이터 세트의 모든 값의 평균입니다. 이상치에 매우 민감합니다.
+이러한 중심 경향성 척도는 데이터를 요약하고 분포에 대한 통찰력을 제공합니다. 이는 모든 데이터셋을 이해하는 기초입니다. 평균은 데이터셋의 모든 값의 평균입니다. 이상치에 매우 민감합니다.
 
 ```python
 # 중심 경향성
@@ -247,9 +292,9 @@ percentiles = df['column'].quantile([0.25, 0.5, 0.75, 0.95])
 ```python
 # 평균 비교를 위한 T-검정
 from scipy.stats import ttest_ind, ttest_1samp
-# 단일 표본 t-검정
+# 단일 표본 T-검정
 t_stat, p_value = ttest_1samp(data, population_mean)
-# 이중 표본 t-검정
+# 두 표본 T-검정
 group1 = df[df['group'] == 'A']['value']
 group2 = df[df['group'] == 'B']['value']
 t_stat, p_value = ttest_ind(group1, group2)
@@ -348,7 +393,7 @@ lasso.fit(X_train, y_train)
 
 ### 비지도 학습
 
-레이블이 지정된 결과 없이 데이터에서 패턴을 발견합니다.
+레이블이 지정되지 않은 데이터에서 패턴을 발견합니다.
 
 ```python
 # K-평균 군집화
@@ -441,7 +486,7 @@ fig.show()
 ```python
 # 상관 관계를 위한 쌍 플롯
 sns.pairplot(df, hue='target_category')
-# 회귀 분석을 위한 잔차 플롯
+# 회귀를 위한 잔차 플롯
 plt.figure(figsize=(12, 4))
 plt.subplot(1, 2, 1)
 plt.scatter(y_pred, y_test - y_pred)
@@ -532,7 +577,7 @@ best_model = grid_search.best_estimator_
 
 ### 성능 모니터링
 
-필수 개념에 대한 빠른 액세스를 갖는 것은 워크플로우에 큰 차이를 만듭니다. 초보자가 발판을 찾든 숙련된 실무자가 신뢰할 수 있는 참조를 찾든 치트 시트는 귀중한 동반자 역할을 합니다.
+필수 개념 및 명령에 빠르게 액세스하면 워크플로우에 큰 차이를 만들 수 있습니다. 초보자가 발판을 찾든 숙련된 실무자가 신뢰할 수 있는 참조를 찾든 치트 시트는 매우 유용한 동반자 역할을 합니다.
 
 ```python
 # 모델 성능 추적
@@ -547,7 +592,7 @@ process = psutil.Process()
 memory_usage = process.memory_info().rss / 1024 /
 1024  # MB
 print(f"메모리 사용량: {memory_usage:.2f} MB")
-# 특성 중요도 분석
+# 피처 중요도 분석
 feature_importance = model.feature_importances_
 importance_df = pd.DataFrame({
     'feature': X.columns,
@@ -585,7 +630,7 @@ with open('model_metadata.json', 'w') as f:
 
 ### 코드 구성
 
-재현성과 협업을 위해 프로젝트를 구성합니다.
+재현성 및 협업을 위해 프로젝트를 구성합니다.
 
 ```python
 # 프로젝트 구조
@@ -610,7 +655,7 @@ science project setup"
 
 ### 환경 관리
 
-시스템 전반에 걸쳐 재현 가능한 환경을 보장합니다.
+시스템 전반에서 재현 가능한 환경을 보장합니다.
 
 ```bash
 # 가상 환경 생성
@@ -632,10 +677,10 @@ jupyter
 
 ### 데이터 품질 검사
 
-파이프라인 전체에서 데이터 무결성을 확인합니다.
+파이프라인 전반에 걸쳐 데이터 무결성을 확인합니다.
 
 ```python
-# 데이터 검증 함수
+# 데이터 유효성 검사 함수
 def validate_data(df):
     checks = {
         'shape': df.shape,
@@ -655,7 +700,7 @@ def data_quality_report(df):
 {df.isnull().sum().sum()}")
     print(f"중복 행:
 {df.duplicated().sum()}")
-    print("\n열 데이터 유형:")
+    print("\n컬럼 데이터 유형:")
     print(df.dtypes)
 ```
 

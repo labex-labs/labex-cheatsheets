@@ -1,6 +1,6 @@
 ---
-title: '웹 개발 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 웹 개발을 학습하세요.'
+title: '웹 개발 치트 시트 | LabEx'
+description: '이 종합 치트 시트로 웹 개발을 배우세요. HTML, CSS, JavaScript, API, 반응형 디자인, 성능 최적화 및 풀스택 개발 필수 사항에 대한 빠른 참조.'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 
@@ -15,15 +15,15 @@ pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 <a target="_blank" href="https://labex.io/ko/learn/web-development">실습 랩을 통해 웹 개발 배우기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 웹 개발을 배우십시오. LabEx 는 필수적인 HTML, CSS, JavaScript, DOM 조작 및 반응형 디자인을 다루는 포괄적인 웹 개발 과정을 제공합니다. 최신 웹 개발 워크플로우를 위한 대화형 및 반응형 웹사이트 구축을 마스터하십시오.
+실습 랩과 실제 시나리오를 통해 웹 개발을 배우십시오. LabEx 는 필수적인 HTML, CSS, JavaScript, DOM 조작 및 반응형 디자인을 다루는 포괄적인 웹 개발 과정을 제공합니다. 최신 웹 개발 워크플로우를 위해 대화형 및 반응형 웹사이트 구축을 마스터하십시오.
 </base-disclaimer-content>
 </base-disclaimer>
 
-## HTML 기본 사항 및 문서 구조
+## HTML 기본 및 문서 구조
 
 ### 기본 HTML 구조: `<!DOCTYPE html>`
 
-모든 웹 페이지의 기반을 생성합니다.
+모든 웹 페이지의 기반을 만듭니다.
 
 ```html
 <!DOCTYPE html>
@@ -64,6 +64,21 @@ pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
   <p>© 2024 My Website</p>
 </footer>
 ```
+
+<BaseQuiz id="webdev-semantic-1" correct="B">
+  <template #question>
+    `header`, `main`, `footer` 와 같은 시맨틱 HTML 요소를 사용하는 주요 이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">페이지 로딩 속도를 높여줍니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>구조에 의미를 부여하여 접근성과 SEO 를 개선합니다</BaseQuizOption>
+  <BaseQuizOption value="C">페이지를 자동으로 스타일링합니다</BaseQuizOption>
+  <BaseQuizOption value="D">JavaScript 가 작동하는 데 필수적입니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    시맨틱 HTML 요소는 문서 구조에 의미를 부여하여 스크린 리더, 검색 엔진 및 개발자가 콘텐츠 구성을 이해하기 쉽게 만듭니다. 이는 접근성과 SEO 를 향상시킵니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 텍스트 요소: `<h1>` 부터 `<h6>` / `<p>`
 
@@ -146,7 +161,7 @@ pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 
 ### 폼 구조: `<form>`
 
-사용자 입력 및 컨트롤을 위한 컨테이너를 생성합니다.
+사용자 입력 및 컨트롤을 위한 컨테이너를 만듭니다.
 
 ```html
 <form action="/submit" method="POST">
@@ -194,7 +209,7 @@ pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ></textarea>
 ```
 
-## CSS 기본 사항 및 스타일링
+## CSS 기본 및 스타일링
 
 ### CSS 선택자: `element` / `.class` / `#id`
 
@@ -246,9 +261,24 @@ CSS 박스 모델을 사용하여 간격과 레이아웃을 제어합니다.
 }
 ```
 
+<BaseQuiz id="webdev-boxmodel-1" correct="B">
+  <template #question>
+    CSS 에서 `margin` 과 `padding` 의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Margin 은 요소 외부의 공간이고, padding 은 요소 내부의 공간입니다</BaseQuizOption>
+  <BaseQuizOption value="C">Margin 은 수평 간격에 사용되고, padding 은 수직 간격에 사용됩니다</BaseQuizOption>
+  <BaseQuizOption value="D">Margin 은 테두리에 사용되고, padding 은 콘텐츠에 사용됩니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Margin 은 요소 테두리 바깥쪽에 공간을 생성하고 (요소 간), padding 은 요소 내부에서 콘텐츠와 테두리 사이에 공간을 생성합니다. 둘 다 간격에 영향을 주지만 영역이 다릅니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Flexbox: `display: flex`
 
-쉽게 유연하고 반응성이 뛰어난 레이아웃을 만듭니다.
+유연하고 반응성이 뛰어난 레이아웃을 쉽게 만듭니다.
 
 ```css
 .container {
@@ -269,7 +299,22 @@ CSS 박스 모델을 사용하여 간격과 레이아웃을 제어합니다.
 }
 ```
 
-### 그리드 레이아웃: `display: grid`
+<BaseQuiz id="webdev-flexbox-1" correct="A">
+  <template #question>
+    Flexbox 에서 `justify-content: center`는 어떤 역할을 합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>주축 (기본적으로 수평) 을 따라 플렉스 항목을 중앙에 배치합니다</BaseQuizOption>
+  <BaseQuizOption value="B">항목을 수직으로 중앙에 배치합니다</BaseQuizOption>
+  <BaseQuizOption value="C">항목을 균등하게 분배합니다</BaseQuizOption>
+  <BaseQuizOption value="D">항목을 늘려 공간을 채웁니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `justify-content` 는 주축 (기본적으로 수평) 을 따라 정렬을 제어합니다. `center` 는 컨테이너 내의 모든 플렉스 항목을 중앙에 배치합니다. 교차축 (수직) 정렬을 제어하려면 `align-items` 를 사용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Grid 레이아웃: `display: grid`
 
 복잡한 2 차원 레이아웃을 만듭니다.
 
@@ -295,7 +340,7 @@ CSS 박스 모델을 사용하여 간격과 레이아웃을 제어합니다.
 }
 ```
 
-## JavaScript 기본 사항 및 프로그래밍 기초
+## JavaScript 기본 및 프로그래밍 기초
 
 ### 변수: `let` / `const` / `var`
 
@@ -321,7 +366,7 @@ let user = {
 
 ### 함수: `function` / 화살표 함수
 
-다양한 함수 구문으로 재사용 가능한 코드 블록을 생성합니다.
+다양한 함수 구문으로 재사용 가능한 코드 블록을 만듭니다.
 
 ```javascript
 // Function declaration
@@ -401,7 +446,7 @@ const sum = numbers.reduce((total, num) => total + num, 0)
 
 ### 요소 선택: `querySelector` / `getElementById`
 
-JavaScript 에서 HTML 요소를 찾고 접근합니다.
+JavaScript 에서 HTML 요소를 찾아 접근합니다.
 
 ```javascript
 // Select single elements
@@ -638,7 +683,7 @@ try {
 
 ### 브라우저 DevTools: Elements / Console / Network
 
-HTML 검사, JavaScript 디버깅 및 네트워크 요청 모니터링을 위해 브라우저 도구를 사용합니다.
+브라우저 도구를 사용하여 HTML 을 검사하고, JavaScript 를 디버깅하며, 네트워크 요청을 모니터링합니다.
 
 ```javascript
 // Inspect elements in console

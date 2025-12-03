@@ -1,6 +1,6 @@
 ---
-title: 'Aide-mémoire PostgreSQL'
-description: 'Apprenez PostgreSQL avec notre aide-mémoire complet couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo PostgreSQL | LabEx'
+description: "Maîtrisez la gestion de base de données PostgreSQL avec cette fiche mémo complète. Référence rapide pour les requêtes SQL, les fonctionnalités avancées, le support JSON, la recherche plein texte et l'administration de bases de données d'entreprise."
 pdfUrl: '/cheatsheets/pdf/postgresql-cheatsheet.pdf'
 ---
 
@@ -23,7 +23,7 @@ Apprenez la gestion de bases de données PostgreSQL grâce à des laboratoires p
 
 ### Se Connecter à PostgreSQL : `psql`
 
-Connectez-vous à une base de données PostgreSQL locale ou distante à l'aide de l'outil en ligne de commande psql.
+Se connecter à une base de données PostgreSQL locale ou distante à l'aide de l'outil en ligne de commande psql.
 
 ```bash
 # Se connecter à la base de données locale
@@ -33,19 +33,19 @@ psql -h nom_hote -p 5432 -U nom_utilisateur -d nom_base_de_donnees
 # Se connecter avec invite de mot de passe
 psql -U postgres -W
 # Se connecter en utilisant une chaîne de connexion
-psql "host=localhost port=5432 dbname=mdb user=monuser"
+psql "host=localhost port=5432 dbname=mdb monutilisateur"
 ```
 
 ### Créer une Base de Données : `CREATE DATABASE`
 
-Créez une nouvelle base de données dans PostgreSQL en utilisant la commande CREATE DATABASE.
+Créer une nouvelle base de données dans PostgreSQL en utilisant la commande CREATE DATABASE.
 
 ```sql
 # Créer une nouvelle base de données
 CREATE DATABASE ma_base_de_donnees;
 # Créer une base de données avec un propriétaire
-CREATE DATABASE ma_base_de_donnees OWNER mon_utilisateur;
-# Créer une base de données avec un encodage
+CREATE DATABASE ma_base_de_donnees OWNER monutilisateur;
+# Créer une base de données avec encodage
 CREATE DATABASE ma_base_de_donnees
   WITH ENCODING 'UTF8'
   LC_COLLATE='fr_FR.UTF-8'
@@ -54,7 +54,7 @@ CREATE DATABASE ma_base_de_donnees
 
 ### Lister les Bases de Données : `\l`
 
-Liste toutes les bases de données du serveur PostgreSQL.
+Lister toutes les bases de données dans le serveur PostgreSQL.
 
 ```bash
 # Lister toutes les bases de données
@@ -94,7 +94,7 @@ Commandes essentielles du terminal psql pour la navigation et l'information.
 
 ### Version & Paramètres
 
-Vérifiez la version de PostgreSQL et les paramètres de configuration.
+Vérifier la version de PostgreSQL et les paramètres de configuration.
 
 ```sql
 # Vérifier la version de PostgreSQL
@@ -111,7 +111,7 @@ SET work_mem = '256MB';
 
 ### Créer une Table : `CREATE TABLE`
 
-Définissez de nouvelles tables avec des colonnes, des types de données et des contraintes.
+Définir de nouvelles tables avec des colonnes, des types de données et des contraintes.
 
 ```sql
 # Création de table de base
@@ -125,11 +125,26 @@ CREATE TABLE utilisateurs (
 # Table avec clé étrangère
 CREATE TABLE commandes (
     id SERIAL PRIMARY KEY,
-    id_utilisateur INTEGER REFERENCES utilisateurs(id),
+    utilisateur_id INTEGER REFERENCES utilisateurs(id),
     total DECIMAL(10,2) NOT NULL,
     statut VARCHAR(20) DEFAULT 'en_attente'
 );
 ```
+
+<BaseQuiz id="postgresql-create-table-1" correct="A">
+  <template #question>
+    Que fait `SERIAL PRIMARY KEY` dans PostgreSQL ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Crée une colonne entière auto-incrémentée qui sert de clé primaire</BaseQuizOption>
+  <BaseQuizOption value="B">Crée une colonne de texte</BaseQuizOption>
+  <BaseQuizOption value="C">Crée une contrainte de clé étrangère</BaseQuizOption>
+  <BaseQuizOption value="D">Crée un index unique</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SERIAL` est un type de données spécifique à PostgreSQL qui crée un entier auto-incrémenté. Combiné avec `PRIMARY KEY`, il crée un identifiant unique pour chaque ligne qui s'incrémente automatiquement.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Modifier les Tables : `ALTER TABLE`
 
@@ -147,7 +162,7 @@ ALTER TABLE utilisateurs ADD CONSTRAINT email_unique
     UNIQUE (email);
 ```
 
-### Supprimer & Tronquer : `DROP/TRUNCATE`
+### Supprimer et Tronquer : `DROP/TRUNCATE`
 
 Supprimer des tables ou vider toutes les données des tables.
 
@@ -187,7 +202,7 @@ ARRAY (ex: INTEGER[])
 id SERIAL PRIMARY KEY
 
 # Clé étrangère
-id_utilisateur INTEGER REFERENCES utilisateurs(id)
+utilisateur_id INTEGER REFERENCES utilisateurs(id)
 
 # Contrainte unique
 email VARCHAR(100) UNIQUE
@@ -195,13 +210,13 @@ email VARCHAR(100) UNIQUE
 # Contrainte CHECK
 age INTEGER CHECK (age >= 0)
 
-# Non nul
+# Not null
 nom VARCHAR(50) NOT NULL
 ```
 
 ### Index : `CREATE INDEX`
 
-Améliorez les performances des requêtes avec des index de base de données.
+Améliorer les performances des requêtes avec des index de base de données.
 
 ```sql
 # Index de base
@@ -211,7 +226,7 @@ CREATE UNIQUE INDEX idx_email_unique
     ON utilisateurs(email);
 # Index composite
 CREATE INDEX idx_utilisateur_date
-    ON commandes(id_utilisateur, cree_le);
+    ON commandes(utilisateur_id, cree_le);
 # Index partiel
 CREATE INDEX idx_utilisateurs_actifs
     ON utilisateurs(nom_utilisateur) WHERE actif = true;
@@ -219,9 +234,24 @@ CREATE INDEX idx_utilisateurs_actifs
 DROP INDEX IF EXISTS idx_nom_utilisateur;
 ```
 
+<BaseQuiz id="postgresql-index-1" correct="A">
+  <template #question>
+    Quel est l'objectif principal de la création d'un index dans PostgreSQL ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Améliorer les performances des requêtes en accélérant la récupération des données</BaseQuizOption>
+  <BaseQuizOption value="B">Réduire la taille de la base de données</BaseQuizOption>
+  <BaseQuizOption value="C">Chiffrer les données</BaseQuizOption>
+  <BaseQuizOption value="D">Empêcher les entrées dupliquées</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les index créent une structure de données qui permet à la base de données de trouver rapidement les lignes sans avoir à parcourir toute la table. Cela accélère considérablement les requêtes SELECT, en particulier sur les grandes tables.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Séquences : `CREATE SEQUENCE`
 
-Générez des valeurs numériques uniques automatiquement.
+Générer automatiquement des valeurs numériques uniques.
 
 ```sql
 # Créer une séquence
@@ -244,7 +274,7 @@ Ajouter de nouveaux enregistrements aux tables de la base de données.
 ```sql
 # Insérer un seul enregistrement
 INSERT INTO utilisateurs (nom_utilisateur, email)
-VALUES ('jean_dupont', 'jean@exemple.com');
+VALUES ('jean_doe', 'jean@exemple.com');
 # Insérer plusieurs enregistrements
 INSERT INTO utilisateurs (nom_utilisateur, email) VALUES
     ('alice', 'alice@exemple.com'),
@@ -258,6 +288,21 @@ INSERT INTO utilisateurs_archives
 SELECT * FROM utilisateurs WHERE actif = false;
 ```
 
+<BaseQuiz id="postgresql-insert-1" correct="C">
+  <template #question>
+    Que fait `RETURNING` dans une instruction INSERT de PostgreSQL ?
+  </template>
+  
+  <BaseQuizOption value="A">Il annule l'insertion</BaseQuizOption>
+  <BaseQuizOption value="B">Il empêche l'insertion</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Il renvoie les données de la ligne insérée</BaseQuizOption>
+  <BaseQuizOption value="D">Il met à jour les lignes existantes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La clause `RETURNING` dans PostgreSQL vous permet de récupérer les données de la ligne insérée (ou des colonnes spécifiques) immédiatement après l'insertion, ce qui est utile pour obtenir des identifiants ou des horodatages générés automatiquement.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Mettre à Jour les Données : `UPDATE`
 
 Modifier les enregistrements existants dans les tables de la base de données.
@@ -265,8 +310,8 @@ Modifier les enregistrements existants dans les tables de la base de données.
 ```sql
 # Mettre à jour des enregistrements spécifiques
 UPDATE utilisateurs
-SET email = 'nouvel_email@exemple.com'
-WHERE nom_utilisateur = 'jean_dupont';
+SET email = 'nouvelleadresse@exemple.com'
+WHERE nom_utilisateur = 'jean_doe';
 # Mettre à jour plusieurs colonnes
 UPDATE utilisateurs
 SET email = 'nouveau@exemple.com',
@@ -275,7 +320,7 @@ WHERE id = 1;
 # Mettre à jour avec sous-requête
 UPDATE commandes
 SET total = (SELECT SUM(prix) FROM items_commande
-            WHERE id_commande = commandes.id);
+            WHERE commande_id = commandes.id);
 ```
 
 ### Sélectionner des Données : `SELECT`
@@ -306,7 +351,7 @@ DELETE FROM utilisateurs
 WHERE actif = false;
 # Supprimer avec sous-requête
 DELETE FROM commandes
-WHERE id_utilisateur IN (
+WHERE utilisateur_id IN (
     SELECT id FROM utilisateurs WHERE actif = false
 );
 # Supprimer tous les enregistrements
@@ -321,45 +366,45 @@ RETURNING *;
 
 ### Jointures : `INNER/LEFT/RIGHT JOIN`
 
-Combinez des données provenant de plusieurs tables en utilisant différents types de jointures.
+Combiner des données provenant de plusieurs tables en utilisant différents types de jointures.
 
 ```sql
 # Jointure interne
 SELECT u.nom_utilisateur, o.total
 FROM utilisateurs u
-INNER JOIN commandes o ON u.id = o.id_utilisateur;
+INNER JOIN commandes o ON u.id = o.utilisateur_id;
 # Jointure gauche
 SELECT u.nom_utilisateur, o.total
 FROM utilisateurs u
-LEFT JOIN commandes o ON u.id = o.id_utilisateur;
+LEFT JOIN commandes o ON u.id = o.utilisateur_id;
 # Jointures multiples
 SELECT u.nom_utilisateur, o.total, p.nom
 FROM utilisateurs u
-JOIN commandes o ON u.id = o.id_utilisateur
-JOIN produits p ON o.id_produit = p.id;
+JOIN commandes o ON u.id = o.utilisateur_id
+JOIN produits p ON o.produit_id = p.id;
 ```
 
 ### Sous-requêtes & CTEs
 
-Utilisez des requêtes imbriquées et des expressions de table communes pour des opérations complexes.
+Utiliser des requêtes imbriquées et des expressions de table communes pour des opérations complexes.
 
 ```sql
 # Sous-requête dans WHERE
 SELECT * FROM utilisateurs
-WHERE id IN (SELECT id_utilisateur FROM commandes);
+WHERE id IN (SELECT utilisateur_id FROM commandes);
 # Expression de Table Commune (CTE)
 WITH utilisateurs_actifs AS (
     SELECT * FROM utilisateurs WHERE actif = true
 )
 SELECT ua.nom_utilisateur, COUNT(o.id) as nombre_commandes
 FROM utilisateurs_actifs ua
-LEFT JOIN commandes o ON ua.id = o.id_utilisateur
+LEFT JOIN commandes o ON ua.id = o.utilisateur_id
 GROUP BY ua.nom_utilisateur;
 ```
 
 ### Agrégation : `GROUP BY`
 
-Regroupez les données et appliquez des fonctions d'agrégation pour l'analyse.
+Grouper les données et appliquer des fonctions d'agrégation pour l'analyse.
 
 ```sql
 # Groupement de base
@@ -367,27 +412,27 @@ SELECT statut, COUNT(*) as compte
 FROM commandes
 GROUP BY statut;
 # Agrégations multiples
-SELECT id_utilisateur,
+SELECT utilisateur_id,
        COUNT(*) as compte_commandes,
        SUM(total) as total_depense,
        AVG(total) as commande_moyenne
 FROM commandes
-GROUP BY id_utilisateur
+GROUP BY utilisateur_id
 HAVING COUNT(*) > 5;
 ```
 
-### Fonctions de Fenêtre
+### Fonctions Fenêtres
 
-Effectuez des calculs sur des lignes connexes sans regroupement.
+Effectuer des calculs sur des lignes connexes sans regroupement.
 
 ```sql
 # Numérotation des lignes
 SELECT nom_utilisateur, email,
        ROW_NUMBER() OVER (ORDER BY cree_le) as num_ligne
 FROM utilisateurs;
-# Totaux cumulés
+# Totaux courants
 SELECT date, montant,
-       SUM(montant) OVER (ORDER BY date) as total_cumule
+       SUM(montant) OVER (ORDER BY date) as total_courant
 FROM ventes;
 # Classement
 SELECT nom_utilisateur, score,
@@ -399,7 +444,7 @@ FROM scores_utilisateurs;
 
 ### Importation CSV : `COPY`
 
-Importez des données à partir de fichiers CSV dans des tables PostgreSQL.
+Importer des données à partir de fichiers CSV dans des tables PostgreSQL.
 
 ```sql
 # Importer depuis un fichier CSV
@@ -416,9 +461,9 @@ WITH (FORMAT csv, HEADER true, DELIMITER ';');
 
 ### Exportation CSV : `COPY TO`
 
-Exportez les données PostgreSQL vers des fichiers CSV.
+Exporter des données PostgreSQL vers des fichiers CSV.
 
-```bash
+```sql
 # Exporter vers un fichier CSV
 COPY utilisateurs TO '/chemin/vers/utilisateurs_export.csv'
 WITH (FORMAT csv, HEADER true);
@@ -431,10 +476,10 @@ TO '/chemin/vers/utilisateurs_actifs.csv' CSV HEADER;
 
 ### Sauvegarde & Restauration : `pg_dump`
 
-Créez des sauvegardes de bases de données et restaurez à partir de fichiers de sauvegarde.
+Créer des sauvegardes de bases de données et restaurer à partir de fichiers de sauvegarde.
 
 ```bash
-# Sauvegarder la base de données entière
+# Sauvegarder toute la base de données
 pg_dump -U nom_utilisateur -h nom_hote nom_base_de_donnees > sauvegarde.sql
 # Sauvegarder une table spécifique
 pg_dump -U nom_utilisateur -t nom_table nom_base_de_donnees > sauvegarde_table.sql
@@ -448,7 +493,7 @@ pg_restore -U nom_utilisateur -d nom_base_de_donnees sauvegarde.dump
 
 ### Opérations sur Données JSON
 
-Travaillez avec les types de données JSON et JSONB pour les données semi-structurées.
+Travailler avec les types de données JSON et JSONB pour les données semi-structurées.
 
 ```sql
 # Insérer des données JSON
@@ -465,40 +510,40 @@ WHERE metadonnees->'caracteristiques' ? 'sans_fil';
 
 ## Gestion des Utilisateurs et Sécurité
 
-### Créer des Utilisateurs & Rôles
+### Créer des Utilisateurs et des Rôles
 
-Gérez l'accès à la base de données avec des utilisateurs et des rôles.
+Gérer l'accès à la base de données avec des utilisateurs et des rôles.
 
 ```sql
 # Créer un utilisateur
-CREATE USER mon_utilisateur WITH PASSWORD 'motdepasse_secret';
+CREATE USER monutilisateur WITH PASSWORD 'motdepasse_secret';
 # Créer un rôle
 CREATE ROLE utilisateur_lecture_seule;
 # Créer un utilisateur avec des privilèges spécifiques
 CREATE USER utilisateur_admin WITH
     CREATEDB CREATEROLE PASSWORD 'motdepasse_admin';
 # Accorder un rôle à un utilisateur
-GRANT utilisateur_lecture_seule TO mon_utilisateur;
+GRANT utilisateur_lecture_seule TO monutilisateur;
 ```
 
 ### Permissions : `GRANT/REVOKE`
 
-Contrôlez l'accès aux objets de la base de données via les permissions.
+Contrôler l'accès aux objets de la base de données via les permissions.
 
 ```sql
 # Accorder des permissions de table
-GRANT SELECT, INSERT ON utilisateurs TO mon_utilisateur;
+GRANT SELECT, INSERT ON utilisateurs TO monutilisateur;
 # Accorder tous les privilèges sur la table
 GRANT ALL ON commandes TO utilisateur_admin;
 # Accorder des permissions de base de données
-GRANT CONNECT ON DATABASE mdb TO mon_utilisateur;
+GRANT CONNECT ON DATABASE mdb TO monutilisateur;
 # Révoquer des permissions
-REVOKE INSERT ON utilisateurs FROM mon_utilisateur;
+REVOKE INSERT ON utilisateurs FROM monutilisateur;
 ```
 
-### Voir les Informations Utilisateur
+### Consulter les Informations Utilisateur
 
-Vérifiez les utilisateurs existants et leurs permissions.
+Vérifier les utilisateurs existants et leurs autorisations.
 
 ```bash
 # Lister tous les utilisateurs
@@ -514,36 +559,36 @@ SELECT r.rolname, r.rolsuper, r.rolcreaterole
 FROM pg_roles r;
 ```
 
-### Mot de Passe & Sécurité
+### Mot de Passe et Sécurité
 
-Gérez les mots de passe des utilisateurs et les paramètres de sécurité.
+Gérer les mots de passe des utilisateurs et les paramètres de sécurité.
 
 ```sql
 # Changer le mot de passe de l'utilisateur
-ALTER USER mon_utilisateur PASSWORD 'nouveaumotdepasse';
+ALTER USER monutilisateur PASSWORD 'nouveau_mot_de_passe';
 # Définir l'expiration du mot de passe
-ALTER USER mon_utilisateur VALID UNTIL '2025-12-31';
+ALTER USER monutilisateur VALID UNTIL '2025-12-31';
 # Créer un utilisateur sans connexion
 CREATE ROLE role_rapport NOLOGIN;
 # Activer/désactiver l'utilisateur
-ALTER USER mon_utilisateur WITH NOLOGIN;
-ALTER USER mon_utilisateur WITH LOGIN;
+ALTER USER monutilisateur WITH NOLOGIN;
+ALTER USER monutilisateur WITH LOGIN;
 ```
 
 ## Performances et Surveillance
 
 ### Analyse des Requêtes : `EXPLAIN`
 
-Analysez les plans d'exécution des requêtes et optimisez les performances.
+Analyser les plans d'exécution des requêtes et optimiser les performances.
 
-```sql
+```bash
 # Afficher le plan d'exécution de la requête
 EXPLAIN SELECT * FROM utilisateurs WHERE actif = true;
 # Analyser avec les statistiques d'exécution réelles
 EXPLAIN ANALYZE
 SELECT u.nom_utilisateur, COUNT(o.id)
 FROM utilisateurs u
-LEFT JOIN commandes o ON u.id = o.id_utilisateur
+LEFT JOIN commandes o ON u.id = o.utilisateur_id
 GROUP BY u.nom_utilisateur;
 # Informations d'exécution détaillées
 EXPLAIN (ANALYZE, BUFFERS, VERBOSE)
@@ -552,7 +597,7 @@ SELECT * FROM grande_table WHERE colonne_indexee = 'valeur';
 
 ### Maintenance de la Base de Données : `VACUUM`
 
-Maintenez les performances de la base de données grâce à des opérations de nettoyage régulières.
+Maintenir les performances de la base de données grâce à des opérations de nettoyage régulières.
 
 ```sql
 # Vacuum de base
@@ -568,7 +613,7 @@ REINDEX TABLE utilisateurs;
 
 ### Surveillance des Requêtes
 
-Suivez l'activité de la base de données et identifiez les problèmes de performance.
+Suivre l'activité de la base de données et identifier les problèmes de performance.
 
 ```sql
 # Activité actuelle
@@ -586,7 +631,7 @@ SELECT pg_terminate_backend(pid) WHERE pid = 12345;
 
 ### Statistiques de la Base de Données
 
-Obtenez des informations sur l'utilisation de la base de données et les métriques de performance.
+Obtenir des informations sur l'utilisation et les métriques de performance de la base de données.
 
 ```sql
 # Statistiques des tables
@@ -603,7 +648,7 @@ SELECT pg_size_pretty(pg_database_size('mdb'));
 
 ### Vues : `CREATE VIEW`
 
-Créez des tables virtuelles pour simplifier les requêtes complexes et fournir une abstraction des données.
+Créer des tables virtuelles pour simplifier les requêtes complexes et fournir une abstraction des données.
 
 ```sql
 # Créer une vue simple
@@ -615,15 +660,15 @@ CREATE OR REPLACE VIEW resume_commandes AS
 SELECT u.nom_utilisateur, COUNT(o.id) as total_commandes,
        SUM(o.total) as total_depense
 FROM utilisateurs u
-LEFT JOIN commandes o ON u.id = o.id_utilisateur
+LEFT JOIN commandes o ON u.id = o.utilisateur_id
 GROUP BY u.id, u.nom_utilisateur;
 # Supprimer la vue
 DROP VIEW IF EXISTS resume_commandes;
 ```
 
-### Déclencheurs & Fonctions
+### Déclencheurs et Fonctions
 
-Automatisez les opérations de base de données avec des procédures stockées et des déclencheurs.
+Automatiser les opérations de base de données avec des procédures stockées et des déclencheurs.
 
 ```sql
 # Créer une fonction
@@ -635,7 +680,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 # Créer un déclencheur
-CREATE TRIGGER declencheur_horodatage_utilisateur
+CREATE TRIGGER mise_a_jour_horodatage_utilisateur
     BEFORE UPDATE ON utilisateurs
     FOR EACH ROW
     EXECUTE FUNCTION mettre_a_jour_horodatage();
@@ -643,7 +688,7 @@ CREATE TRIGGER declencheur_horodatage_utilisateur
 
 ### Transactions
 
-Assurez la cohérence des données avec le contrôle des transactions.
+Assurer la cohérence des données avec le contrôle des transactions.
 
 ```sql
 # Début de transaction
@@ -661,9 +706,9 @@ SAVEPOINT point_de_sauvegarde;
 ROLLBACK TO point_de_sauvegarde;
 ```
 
-### Configuration & Optimisation
+### Configuration et Optimisation
 
-Optimisez les paramètres du serveur PostgreSQL pour de meilleures performances.
+Optimiser les paramètres du serveur PostgreSQL pour de meilleures performances.
 
 ```sql
 # Voir la configuration actuelle
@@ -678,16 +723,16 @@ SELECT pg_reload_conf();
 SHOW config_file;
 ```
 
-## Configuration & Astuces psql
+## Configuration et Conseils psql
 
 ### Fichiers de Connexion : `.pgpass`
 
-Stockez les informations d'identification de la base de données en toute sécurité pour une authentification automatique.
+Stocker les informations d'identification de la base de données en toute sécurité pour une authentification automatique.
 
 ```bash
 # Créer le fichier .pgpass (format : nom_hote:port:base_de_donnees:nom_utilisateur:mot_de_passe)
-echo "localhost:5432:mdb:monuser:monmotdepasse" >> ~/.pgpass
-# Définir les permissions appropriées
+echo "localhost:5432:mdb:monutilisateur:monmotdepasse" >> ~/.pgpass
+# Définir les autorisations appropriées
 chmod 600 ~/.pgpass
 # Utiliser le fichier de service de connexion
 # ~/.pg_service.conf
@@ -695,12 +740,12 @@ chmod 600 ~/.pgpass
 host=localhost
 port=5432
 dbname=mdb
-user=monuser
+user=monutilisateur
 ```
 
 ### Configuration psql : `.psqlrc`
 
-Personnalisez les paramètres de démarrage de psql et le comportement.
+Personnaliser les paramètres de démarrage et le comportement de psql.
 
 ```bash
 # Créer le fichier ~/.psqlrc avec des paramètres personnalisés
@@ -717,23 +762,23 @@ Personnalisez les paramètres de démarrage de psql et le comportement.
 
 ### Variables d'Environnement
 
-Définissez les variables d'environnement PostgreSQL pour des connexions plus faciles.
+Définir les variables d'environnement PostgreSQL pour faciliter les connexions.
 
 ```bash
 # Définir dans votre profil shell
 export PGHOST=localhost
 export PGPORT=5432
 export PGDATABASE=mdb
-export PGUSER=monuser
-# Puis connectez-vous simplement avec
+export PGUSER=monutilisateur
+# Puis se connecter simplement avec
 psql
-# Ou utilisez un environnement spécifique
+# Ou utiliser un environnement spécifique
 PGDATABASE=testdb psql
 ```
 
 ### Informations sur la Base de Données
 
-Obtenez des informations sur les objets et la structure de la base de données.
+Obtenir des informations sur les objets et la structure de la base de données.
 
 ```bash
 # Lister les bases de données
@@ -751,9 +796,9 @@ Obtenez des informations sur les objets et la structure de la base de données.
 # Décrire la structure de la table
 \d nom_table
 \d+ nom_table
-# Lister les contraintes de table
+# Afficher les contraintes de la table
 \d+ nom_table
-# Afficher les permissions de table
+# Afficher les permissions de la table
 \dp nom_table
 \z nom_table
 # Lister les clés étrangères
@@ -761,29 +806,29 @@ SELECT * FROM information_schema.table_constraints
 WHERE constraint_type = 'FOREIGN KEY';
 ```
 
-### Sortie & Formatage
+### Sortie et Formatage
 
-Contrôlez la manière dont psql affiche les résultats des requêtes et la sortie.
+Contrôler la manière dont psql affiche les résultats des requêtes et la sortie.
 
 ```bash
 # Basculer la sortie étendue
 \x
 # Changer le format de sortie
 \H  -- Sortie HTML
-\t  -- Seulement les tuples (pas d'en-têtes)
+\t  -- Tuples seulement (sans en-têtes)
 # Sortie vers un fichier
 \o nom_fichier.txt
 SELECT * FROM utilisateurs;
 \o  -- Arrêter la sortie vers le fichier
-# Exécuter le SQL depuis un fichier
+# Exécuter le SQL à partir d'un fichier
 \i script.sql
-# Éditer la requête dans un éditeur externe
+# Modifier la requête dans un éditeur externe
 \e
 ```
 
-### Chronométrage & Historique
+### Chronométrage et Historique
 
-Suivez les performances des requêtes et gérez l'historique des commandes.
+Suivre les performances des requêtes et gérer l'historique des commandes.
 
 ```bash
 # Basculer l'affichage du chronométrage

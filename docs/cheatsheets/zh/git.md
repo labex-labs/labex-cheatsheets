@@ -1,6 +1,6 @@
 ---
-title: 'Git 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合 Git 速查表来学习 Git。'
+title: 'Git 速查表 | LabEx'
+description: '使用此综合速查表学习 Git 版本控制。Git 命令、分支、合并、变基、GitHub 工作流和协作开发的快速参考。'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
@@ -23,7 +23,7 @@ Git 速查表
 
 ### 初始化仓库：`git init`
 
-在当前目录中创建一个新的 Git 仓库。
+在当前目录中创建新的 Git 仓库。
 
 ```bash
 # 初始化新仓库
@@ -83,7 +83,7 @@ git config user.email "project@example.com"
 git remote add origin https://github.com/user/repo.git
 # 列出所有远程仓库及其 URL
 git remote -v
-# 显示详细的远程信息
+# 显示远程仓库的详细信息
 git remote show origin
 # 重命名远程仓库
 git remote rename origin upstream
@@ -117,7 +117,7 @@ git status
 git status -s
 # 机器可读格式
 git status --porcelain
-# 也显示忽略的文件
+# 也显示被忽略的文件
 git status --ignored
 ```
 
@@ -141,7 +141,7 @@ git diff file.txt
 显示提交历史和仓库时间线。
 
 ```bash
-# 完整提交历史
+# 完整的提交历史
 git log
 # 简洁的单行格式
 git log --oneline
@@ -181,9 +181,24 @@ git commit -m "Add user authentication"
 git commit -a -m "Update docs"
 # 修改上一次提交
 git commit --amend
-# 不修改消息地修改上一次提交
+# 不修改消息地修改
 git commit --no-edit --amend
 ```
+
+<BaseQuiz id="git-commit-1" correct="A">
+  <template #question>
+    `git commit -m "message"` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>使用指定的消息创建一个新提交</BaseQuizOption>
+  <BaseQuizOption value="B">暂存工作目录中的所有更改</BaseQuizOption>
+  <BaseQuizOption value="C">将更改推送到远程仓库</BaseQuizOption>
+  <BaseQuizOption value="D">创建一个新分支</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git commit -m` 命令会创建一个包含暂存更改的新提交，并使用提供的消息将其保存到仓库历史记录中。它不会推送到远程或创建分支。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 取消暂存文件：`git reset`
 
@@ -247,6 +262,21 @@ git checkout main
 git switch main
 ```
 
+<BaseQuiz id="git-branch-1" correct="B">
+  <template #question>
+    `git checkout -b feature-branch` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">删除名为 feature-branch 的分支</BaseQuizOption>
+  <BaseQuizOption value="B" correct>创建一个名为 feature-branch 的新分支并切换到它</BaseQuizOption>
+  <BaseQuizOption value="C">将 feature-branch 合并到当前分支</BaseQuizOption>
+  <BaseQuizOption value="D">显示 feature-branch 的提交历史</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-b` 标志创建新分支，`checkout` 切换到它。此命令结合了两个操作：创建分支并立即切换到它。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 合并分支：`git merge`
 
 合并来自不同分支的更改。
@@ -292,18 +322,33 @@ git fetch origin main
 
 ### 拉取更改：`git pull`
 
-从远程仓库下载并合并更改。
+下载并合并远程仓库的更改。
 
 ```bash
 # 从跟踪分支拉取
 git pull
 # 从特定远程分支拉取
 git pull origin main
-# 使用 rebase 而非 merge 拉取
+# 使用 rebase 而不是 merge 拉取
 git pull --rebase
-# 仅快进，不产生合并提交
+# 仅快进，不创建合并提交
 git pull --ff-only
 ```
+
+<BaseQuiz id="git-pull-1" correct="C">
+  <template #question>
+    `git fetch` 和 `git pull` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">它们之间没有区别；它们做同样的事情</BaseQuizOption>
+  <BaseQuizOption value="B">git fetch 推送更改，git pull 下载更改</BaseQuizOption>
+  <BaseQuizOption value="C" correct>git fetch 下载更改但不合并，git pull 下载并合并更改</BaseQuizOption>
+  <BaseQuizOption value="D">git fetch 用于本地仓库，git pull 用于远程仓库</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` 从远程仓库下载更改，但不会合并到你当前的分支中。`git pull` 执行两个操作：它获取更改，然后将它们合并到你当前的分支中。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 推送更改：`git push`
 
@@ -320,9 +365,24 @@ git push -u origin feature
 git push --force-with-lease
 ```
 
+<BaseQuiz id="git-push-1" correct="D">
+  <template #question>
+    `git push -u origin feature` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">从远程删除 feature 分支</BaseQuizOption>
+  <BaseQuizOption value="B">从 feature 分支拉取更改</BaseQuizOption>
+  <BaseQuizOption value="C">将 feature 分支合并到 main</BaseQuizOption>
+  <BaseQuizOption value="D" correct>将 feature 分支推送到 origin 并设置跟踪</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-u` 标志（或 `--set-upstream`）会将分支推送到远程仓库，并设置跟踪，以便将来执行 `git push` 和 `git pull` 命令时知道应使用哪个远程分支。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 跟踪远程分支：`git branch --track`
 
-设置本地分支与远程分支之间的跟踪关系。
+在本地和远程分支之间设置跟踪关系。
 
 ```bash
 # 设置跟踪
@@ -335,7 +395,7 @@ git checkout -b local-branch origin/remote-branch
 
 ### 暂存更改：`git stash`
 
-临时保存未提交的更改以供以后使用。
+临时保存未提交的更改，以供以后使用。
 
 ```bash
 # 暂存当前更改
@@ -350,14 +410,14 @@ git stash --keep-index
 
 ### 列出暂存：`git stash list`
 
-查看所有保存的暂存。
+查看所有保存的暂存项。
 
 ```bash
-# 显示所有暂存
+# 显示所有暂存项
 git stash list
-# 显示最新暂存的更改
+# 显示最新暂存项的更改
 git stash show
-# 显示特定暂存的更改
+# 显示特定暂存项的更改
 git stash show stash@{1}
 ```
 
@@ -366,19 +426,34 @@ git stash show stash@{1}
 恢复先前暂存的更改。
 
 ```bash
-# 应用最新暂存
+# 应用最新暂存项
 git stash apply
-# 应用特定暂存
+# 应用特定暂存项
 git stash apply stash@{1}
-# 应用最新暂存并移除它
+# 应用最新暂存项并移除它
 git stash pop
-# 删除最新暂存
+# 删除最新暂存项
 git stash drop
-# 从暂存创建分支
+# 从暂存项创建分支
 git stash branch new-branch stash@{1}
-# 删除所有暂存
+# 删除所有暂存项
 git stash clear
 ```
+
+<BaseQuiz id="git-stash-1" correct="B">
+  <template #question>
+    `git stash apply` 和 `git stash pop` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">git stash apply 会移除暂存项，git stash pop 会保留它</BaseQuizOption>
+  <BaseQuizOption value="B" correct>git stash apply 保留暂存项，git stash pop 在应用后将其移除</BaseQuizOption>
+  <BaseQuizOption value="C">git stash apply 用于远程仓库，git stash pop 用于本地</BaseQuizOption>
+  <BaseQuizOption value="D">它们之间没有区别；它们做同样的事情</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git stash apply` 恢复暂存的更改，但会保留暂存项在列表中。`git stash pop` 应用暂存项，然后将其从暂存列表中删除，这在你不再需要该暂存项时很有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 历史与日志分析
 
@@ -391,7 +466,7 @@ git stash clear
 git log --oneline --graph --all
 # 特定作者的提交
 git log --author="John Doe"
-# 最近的提交
+# 近期提交
 git log --since="2 weeks ago"
 # 搜索提交消息
 git log --grep="bug fix"
@@ -404,22 +479,22 @@ git log --grep="bug fix"
 ```bash
 # 显示逐行作者信息
 git blame file.txt
-# 注释特定行
+# 追溯特定行
 git blame -L 10,20 file.txt
-# Blame 的替代方案
+# blame 的替代方法
 git annotate file.txt
 ```
 
 ### 搜索仓库：`git grep`
 
-在仓库历史中搜索文本模式。
+在整个仓库历史中搜索文本模式。
 
 ```bash
 # 搜索跟踪文件中的文本
 git grep "function"
 # 带行号搜索
 git grep -n "TODO"
-# 搜索暂存区中的内容
+# 搜索暂存中的文件
 git grep --cached "bug"
 ```
 
@@ -432,13 +507,13 @@ git grep --cached "bug"
 git show
 # 显示前一次提交
 git show HEAD~1
-# 显示特定提交（通过哈希值）
+# 显示特定哈希的提交
 git show abc123
-# 显示提交及文件统计信息
+# 显示带文件统计信息的提交
 git show --stat
 ```
 
-## 撤销更改与编辑历史
+## 撤销更改与历史编辑
 
 ### 撤销提交：`git revert`
 
@@ -475,7 +550,7 @@ git reset --hard HEAD~1
 ```bash
 # 交互式 rebase 最后 3 次提交
 git rebase -i HEAD~3
-# 将当前分支 rebase 到 main 上
+# 将当前分支 rebase 到 main
 git rebase -i main
 # 解决冲突后继续
 git rebase --continue
@@ -492,7 +567,7 @@ git rebase --abort
 git cherry-pick abc123
 # 应用提交范围
 git cherry-pick abc123..def456
-# 不提交地进行 cherry-pick
+# 不提交地 cherry-pick
 git cherry-pick -n abc123
 ```
 
@@ -500,7 +575,7 @@ git cherry-pick -n abc123
 
 ### 合并冲突：解决流程
 
-合并操作期间解决冲突的步骤。
+在合并操作期间解决冲突的步骤。
 
 ```bash
 # 检查冲突文件
@@ -528,7 +603,7 @@ git mergetool --tool=meld
 
 ### 冲突标记：理解格式
 
-解释 Git 在文件中使用的冲突标记。
+解释 Git 文件中的冲突标记。
 
 ```text
 <<<<<<< HEAD
@@ -538,7 +613,7 @@ git mergetool --tool=meld
 >>>>>>> feature-branch
 ```
 
-解决后编辑文件：
+解决冲突并编辑文件后：
 
 ```bash
 git add conflicted-file.txt
@@ -595,7 +670,7 @@ git show v1.0
 git push origin v1.0
 # 推送所有标签
 git push --tags
-# 推送到特定远程仓库的所有标签
+# 将所有标签推送到特定远程
 git push origin --tags
 ```
 
@@ -646,7 +721,7 @@ git config --global alias.ci commit
 
 ### 高级别名：复杂命令
 
-创建用于复杂命令组合的别名。
+为复杂的命令组合创建别名。
 
 ```bash
 git config --global alias.lg "log --oneline --graph --all"
@@ -657,7 +732,7 @@ git config --global alias.visual "!gitk"
 
 ### 编辑器配置：`git config core.editor`
 
-设置用于提交消息和冲突的文本编辑器。
+设置用于提交消息和冲突的首选文本编辑器。
 
 ```bash
 # VS Code
@@ -743,7 +818,7 @@ winget install Git.Git
 
 ### 下载与安装：官方安装程序
 
-使用官方安装程序安装您的平台上的 Git。
+使用官方安装程序安装适用于您平台的 Git。
 
 ```bash
 # 从 https://git-scm.com/downloads 下载
@@ -755,7 +830,7 @@ which git
 
 ### 首次设置：用户配置
 
-使用您的身份配置 Git 以进行提交。
+配置 Git 以便提交时使用您的身份。
 
 ```bash
 git config --global user.name "Your Full Name"
@@ -791,9 +866,9 @@ git push -u origin feature/user-auth
 ```bash
 # 初始化 Git Flow
 git flow init
-# 开始功能分支
+# 开始功能
 git flow feature start new-feature
-# 完成功能分支
+# 完成功能
 git flow feature finish new-feature
 # 开始发布分支
 git flow release start 1.0.0
@@ -801,7 +876,7 @@ git flow release start 1.0.0
 
 ### 提交消息约定
 
-遵循约定提交格式以保持清晰的项目历史。
+遵循约定式提交格式以保持清晰的项目历史。
 
 ```bash
 # 格式: <类型>(<范围>): <主题>
@@ -813,7 +888,7 @@ git commit -m "refactor(utils): simplify date formatting"
 
 ### 原子提交：最佳实践
 
-创建专注的、单一目的的提交，以获得更好的历史记录。
+创建关注单一目的的提交，以获得更好的历史记录。
 
 ```bash
 # 交互式暂存更改
@@ -833,7 +908,7 @@ git commit -m "Add validation to email field"
 ```bash
 # 显示引用日志
 git reflog
-# 显示 HEAD 移动记录
+# 显示 HEAD 的移动记录
 git reflog show HEAD
 # 恢复丢失的提交
 git checkout abc123
@@ -848,7 +923,7 @@ git branch recovery-branch abc123
 ```bash
 # 检查仓库完整性
 git fsck --full
-# 积极清理
+# 彻底清理
 git gc --aggressive --prune=now
 # 如果索引损坏，则重建
 rm .git/index; git reset

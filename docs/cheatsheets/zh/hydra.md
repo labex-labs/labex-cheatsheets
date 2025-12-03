@@ -1,6 +1,6 @@
 ---
-title: 'Hydra 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，快速掌握 Hydra。'
+title: 'Hydra 速查表 | LabEx'
+description: '使用此综合速查表学习 Hydra 密码破解。快速参考暴力破解攻击、密码审计、安全测试、身份验证协议和渗透测试工具。'
 pdfUrl: '/cheatsheets/pdf/hydra-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Hydra 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/hydra">通过实践实验室学习 Hydra</a>
+<a target="_blank" href="https://labex.io/zh/learn/hydra">通过实战实验学习 Hydra</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 Hydra 密码破解和渗透测试。LabEx 提供全面的 Hydra 课程，涵盖协议攻击、Web 表单利用、性能优化和道德使用。掌握暴力破解技术，用于授权的安全测试和漏洞评估。
+通过实战实验和真实场景学习 Hydra 密码破解和渗透测试。LabEx 提供全面的 Hydra 课程，涵盖协议攻击、Web 表单利用、性能优化和道德使用。掌握暴力破解技术，用于授权的安全测试和漏洞评估。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -41,13 +41,28 @@ hydra
 基本语法：`hydra -l <username> -P <password_file> <target_protocol>://<target_address>`
 
 ```bash
-# 单个用户名，密码文件
+# 单个用户名，密码列表
 hydra -l username -P passwords.txt target.com ssh
-# 用户名列表，密码文件
+# 用户名列表，密码列表
 hydra -L users.txt -P passwords.txt target.com ssh
 # 单个用户名，单个密码
 hydra -l admin -p password123 192.168.1.100 ftp
 ```
+
+<BaseQuiz id="hydra-syntax-1" correct="B">
+  <template #question>
+    Hydra 中的 `-l` 和 `-L` 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">`-l` 用于密码，`-L` 用于用户名</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`-l` 指定单个用户名，`-L` 指定用户名列表文件</BaseQuizOption>
+  <BaseQuizOption value="C">没有区别</BaseQuizOption>
+  <BaseQuizOption value="D">`-l` 是小写，`-L` 是大写</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-l` 选项用于单个用户名，而 `-L` 用于包含用户名列表的文件。类似地，`-p` 用于单个密码，`-P` 用于密码列表文件。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 核心选项：`-l`, `-L`, `-p`, `-P`
 
@@ -78,6 +93,21 @@ hydra -l admin -P passwords.txt target.com ssh -b json
 hydra -l admin -P passwords.txt target.com ssh -V
 ```
 
+<BaseQuiz id="hydra-output-1" correct="A">
+  <template #question>
+    `hydra -V` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>启用详细输出，显示详细进度</BaseQuizOption>
+  <BaseQuizOption value="B">验证字典文件</BaseQuizOption>
+  <BaseQuizOption value="C">显示 Hydra 的版本</BaseQuizOption>
+  <BaseQuizOption value="D">仅以详细模式运行</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-V` 标志启用详细模式，它会显示详细的输出，包括每次登录尝试，使在密码攻击期间更容易监控进度和调试问题。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 特定协议攻击
 
 ### SSH: `hydra target ssh`
@@ -94,6 +124,21 @@ hydra -l admin -P passwords.txt 192.168.1.100 -s 2222 ssh
 # 使用线程
 hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 ```
+
+<BaseQuiz id="hydra-ssh-1" correct="C">
+  <template #question>
+    Hydra 中的 `-s` 标志的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">设置服务类型</BaseQuizOption>
+  <BaseQuizOption value="B">启用隐身模式</BaseQuizOption>
+  <BaseQuizOption value="C" correct>指定自定义端口号</BaseQuizOption>
+  <BaseQuizOption value="D">设置线程数</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    当服务运行在非标准端口上时，`-s` 标志用于指定自定义端口号。例如，`-s 2222` 针对端口 2222 上的 SSH，而不是默认端口 22。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### FTP: `hydra target ftp`
 
@@ -130,7 +175,7 @@ hydra -l admin -P passwords.txt 192.168.1.100 mongodb
 ```bash
 # SMTP 暴力破解
 hydra -l admin -P passwords.txt smtp://mail.target.com
-# 使用空/空密码
+# 使用空密码
 hydra -P passwords.txt -e ns -V -s 25 smtp.target.com smtp
 # IMAP 攻击
 hydra -l user -P passwords.txt imap://mail.target.com
@@ -140,7 +185,7 @@ hydra -l user -P passwords.txt imap://mail.target.com
 
 ### HTTP POST 表单：`http-post-form`
 
-使用 HTTP POST 方法和占位符 `^USER^` 和 `^PASS^` 攻击 Web 登录表单。
+使用 HTTP POST 方法攻击 Web 登录表单，使用占位符 `^USER^` 和 `^PASS^`。
 
 ```bash
 # 基本 POST 表单攻击
@@ -153,7 +198,7 @@ hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/admin:username=^U
 
 ### HTTP GET 表单：`http-get-form`
 
-与 POST 表单类似，但针对 GET 请求。
+类似于 POST 表单，但针对 GET 请求。
 
 ```bash
 # GET 表单攻击
@@ -177,7 +222,7 @@ hydra -l admin -P passwords.txt http-get://192.168.1.100/admin
 
 ### 高级 Web 攻击
 
-处理带有 CSRF 令牌和 Cookie 的复杂 Web 应用程序。
+处理具有 CSRF 令牌和 Cookie 的复杂 Web 应用程序。
 
 ```bash
 # 使用 CSRF 令牌处理
@@ -186,11 +231,11 @@ hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/login:username=^U
 hydra -l admin -P passwords.txt 192.168.1.100 http-post-form "/login:username=^USER^&password=^PASS^:F=Invalid:H=Cookie: PHPSESSID=abc123"
 ```
 
-## 性能与线程选项
+## 性能和线程选项
 
 ### 线程：`-t` (任务数)
 
-控制攻击期间同时进行的攻击连接数。
+控制暴力破解攻击期间同时进行的攻击连接数。
 
 ```bash
 # 默认线程数 (16 个任务)
@@ -199,7 +244,7 @@ hydra -l admin -P passwords.txt target.com ssh
 hydra -l admin -P passwords.txt -t 4 target.com ssh
 # 高性能攻击 (谨慎使用)
 hydra -l admin -P passwords.txt -t 64 target.com ssh
-# 节制线程 (避免被检测)
+# 谨慎的线程数 (避免被检测)
 hydra -l admin -P passwords.txt -t 1 target.com ssh
 ```
 
@@ -210,7 +255,7 @@ hydra -l admin -P passwords.txt -t 1 target.com ssh
 ```bash
 # 每次尝试之间等待 30 秒
 hydra -l admin -P passwords.txt -w 30 target.com ssh
-# 与线程结合使用
+# 结合线程使用
 hydra -l admin -P passwords.txt -t 2 -w 10 target.com ssh
 # 随机延迟 (1-5 秒)
 hydra -l admin -P passwords.txt -W 5 target.com ssh
@@ -218,7 +263,7 @@ hydra -l admin -P passwords.txt -W 5 target.com ssh
 
 ### 多个目标：`-M` (目标文件)
 
-通过在文件中指定主机来攻击多个主机。
+通过在文件中指定目标来攻击多个主机。
 
 ```bash
 # 创建目标文件
@@ -227,7 +272,7 @@ echo "192.168.1.101" >> targets.txt
 echo "192.168.1.102" >> targets.txt
 # 攻击多个目标
 hydra -L users.txt -P passwords.txt -M targets.txt ssh
-# 使用每个目标的自定义线程
+# 使用自定义线程数
 hydra -L users.txt -P passwords.txt -M targets.txt -t 2 ssh
 ```
 
@@ -236,19 +281,19 @@ hydra -L users.txt -P passwords.txt -M targets.txt -t 2 ssh
 恢复中断的攻击并控制停止行为。
 
 ```bash
-# 首次成功后停止
+# 成功后停止
 hydra -l admin -P passwords.txt -f target.com ssh
-# 恢复先前攻击
+# 恢复先前的攻击
 hydra -R
 # 创建恢复文件
 hydra -l admin -P passwords.txt -I restore.txt target.com ssh
 ```
 
-## 高级功能与选项
+## 高级功能和选项
 
 ### 密码生成：`-e` (附加测试)
 
-自动测试其他密码变体。
+自动测试附加的密码变体。
 
 ```bash
 # 测试空密码
@@ -294,7 +339,7 @@ export HYDRA_PROXY=socks5://proxy.example.com:1080
 使用 pw-inspector 根据策略过滤密码列表。
 
 ```bash
-# 过滤密码 (最小 6 个字符，2 个字符类别)
+# 过滤密码 (最小 6 个字符，2 种字符类别)
 cat passwords.txt | pw-inspector -m 6 -c 2 -n > filtered.txt
 # 使用过滤后的列表进行 Hydra 攻击
 hydra -l admin -P filtered.txt target.com ssh
@@ -302,17 +347,17 @@ hydra -l admin -P filtered.txt target.com ssh
 cat passwords.txt | sort | uniq > unique_passwords.txt
 ```
 
-## 合法使用与最佳实践
+## 合规使用和最佳实践
 
-### 法律与道德准则
+### 法律和道德准则
 
-使用 Hydra 既可以合法，也可以非法。在执行暴力破解攻击前，请获得适当的许可和批准。
+使用 Hydra 既可以合法也可以非法。在执行暴力破解攻击之前，请获得适当的许可和批准。
 
 ```text
 仅对已获得明确许可的系统执行攻击
 务必确保您已获得系统所有者或管理员的明确许可
-记录所有测试活动以供合规
-仅在授权的渗透测试中使用
+记录所有测试活动以确保合规性
+仅在授权的渗透测试期间使用
 切勿用于未经授权的访问尝试
 ```
 
@@ -333,7 +378,7 @@ cat passwords.txt | sort | uniq > unique_passwords.txt
 以保守的设置开始，并记录所有活动以保持透明度。
 
 ```text
-以低线程计数开始，以避免服务中断
+从低线程计数开始，以避免服务中断
 使用适合目标环境的字典文件
 尽可能在批准的维护窗口期间进行测试
 测试期间监控目标系统性能
@@ -356,7 +401,7 @@ cat passwords.txt | sort | uniq > unique_passwords.txt
 
 ### XHydra: 图形界面
 
-XHydra 是 Hydra 的一个 GUI，允许通过图形控件而不是命令行开关选择配置。
+XHydra 是 Hydra 的一个 GUI，允许通过 GUI 而不是命令行开关选择配置。
 
 ```bash
 # 启动 XHydra GUI
@@ -411,15 +456,15 @@ dpl4hydra all
 ```bash
 # 与 Nmap 服务发现结合
 nmap -sV 192.168.1.0/24 | grep -E "(ssh|ftp|http)"
-# 使用用户名枚举结果
+# 与用户名枚举结果结合使用
 enum4linux 192.168.1.100 | grep "user:" > users.txt
 # 与 Metasploit 字典集成
 ls /usr/share/wordlists/metasploit/
 ```
 
-## 故障排除与性能
+## 故障排除和性能
 
-### 常见问题与解决方案
+### 常见问题和解决方案
 
 解决使用 Hydra 时遇到的典型问题。
 
@@ -440,17 +485,17 @@ hydra
 优化密码列表，按可能性排序以加快结果。
 
 ```bash
-# 按可能性排序密码
+# 按可能性对密码排序
 hydra -l admin -P passwords.txt -u target.com ssh
 # 删除重复项
 sort passwords.txt | uniq > clean_passwords.txt
-# 根据目标优化线程
+# 根据目标优化线程数
 # 本地网络: -t 16
 # 互联网目标: -t 4
 # 慢速服务: -t 1
 ```
 
-### 输出格式与分析
+### 输出格式和分析
 
 不同的输出格式用于结果分析和报告。
 

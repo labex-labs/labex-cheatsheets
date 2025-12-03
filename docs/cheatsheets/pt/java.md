@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola Java'
-description: 'Aprenda Java com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Cheatsheet Java | LabEx'
+description: 'Aprenda programação Java com este cheatsheet abrangente. Referência rápida para sintaxe Java, OOP, coleções, streams, framework Spring e essenciais de desenvolvimento empresarial.'
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 
@@ -59,6 +59,21 @@ public static void main(String[] args) {
 }
 ```
 
+<BaseQuiz id="java-main-1" correct="C">
+  <template #question>
+    Qual é a assinatura correta para o método main em Java?
+  </template>
+  
+  <BaseQuizOption value="A">public void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="B">static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>public static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O método main deve ser `public static void main(String[] args)`. `public` permite que a JVM o acesse, `static` significa que pertence à classe, `void` significa que não retorna nada, e `String[] args` recebe argumentos de linha de comando.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Comentários: Documentação do Código
 
 Use comentários de linha única (`//`) e de múltiplas linhas (`/* */`) para tornar o código mais compreensível e fácil de manter.
@@ -100,7 +115,7 @@ public class Example {
 
 ### Tipos de Dados Primitivos
 
-Tipos de dados básicos integrados à linguagem Java.
+Tipos de dados básicos incorporados à linguagem Java.
 
 ```java
 // Tipos inteiros
@@ -115,7 +130,7 @@ double precision = 3.14159; // Precisão dupla
 
 // Outros tipos
 char letter = 'A';          // Caractere único
-boolean flag = true;        // true ou false
+boolean flag = true;        // verdadeiro ou falso
 ```
 
 ### Declaração e Inicialização de Variáveis
@@ -140,7 +155,7 @@ final double PI = 3.14159;
 
 ### Operações com String
 
-Strings representam sequências de caracteres e são imutáveis, o que significa que, uma vez criados, seus valores não podem ser alterados.
+Strings representam sequências de caracteres e são imutáveis, o que significa que uma vez criados, seus valores não podem ser alterados.
 
 ```java
 String greeting = "Hello";
@@ -155,6 +170,21 @@ int length = message.length();
 boolean isEmpty = message.isEmpty();
 String uppercase = message.toUpperCase();
 ```
+
+<BaseQuiz id="java-string-1" correct="A">
+  <template #question>
+    O que significa que as strings Java são imutáveis?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Uma vez criadas, o valor de uma string não pode ser alterado</BaseQuizOption>
+  <BaseQuizOption value="B">Strings não podem ser criadas</BaseQuizOption>
+  <BaseQuizOption value="C">Strings só podem armazenar números</BaseQuizOption>
+  <BaseQuizOption value="D">Strings são excluídas automaticamente</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Imutabilidade significa que, uma vez que um objeto String é criado, seu valor não pode ser modificado. Operações como `toUpperCase()` retornam um novo objeto String em vez de modificar o original.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Declarações de Fluxo de Controle
 
@@ -175,9 +205,9 @@ if (score >= 90) {
 }
 ```
 
-### Instrução Switch
+### Declaração Switch
 
-Ramificação múltipla com base nos valores das variáveis.
+Ramificação de múltiplas vias baseada nos valores das variáveis.
 
 ```java
 int day = 3;
@@ -198,7 +228,7 @@ switch (day) {
 
 ### Loop For: Repetição Contada
 
-Repetir código um número específico de vezes.
+Repete o código um número específico de vezes.
 
 ```java
 // Loop for padrão
@@ -213,9 +243,24 @@ for (int num : numbers) {
 }
 ```
 
-### Loops While e Do-While
+<BaseQuiz id="java-for-loop-1" correct="C">
+  <template #question>
+    Para que serve o loop for aprimorado (for-each)?
+  </template>
+  
+  <BaseQuizOption value="A">Iterar com uma variável de contador</BaseQuizOption>
+  <BaseQuizOption value="B">Loops infinitos</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Iterar por arrays e coleções sem um índice</BaseQuizOption>
+  <BaseQuizOption value="D">Apenas loops aninhados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O loop for aprimorado (for-each) simplifica a iteração por arrays e coleções, lidando automaticamente com o índice, tornando o código mais legível e menos propenso a erros.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Repetir código enquanto uma condição for verdadeira.
+### Loops While & Do-While
+
+Repete o código enquanto uma condição for verdadeira.
 
 ```java
 // Loop While
@@ -232,6 +277,21 @@ do {
     j++;
 } while (j < 3);
 ```
+
+<BaseQuiz id="java-while-1" correct="B">
+  <template #question>
+    Qual é a principal diferença entre os loops `while` e `do-while`?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="B" correct>do-while executa pelo menos uma vez, enquanto while pode não executar</BaseQuizOption>
+  <BaseQuizOption value="C">while é mais rápido</BaseQuizOption>
+  <BaseQuizOption value="D">do-while só funciona com arrays</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O loop `do-while` verifica a condição após executar o corpo do loop, portanto, ele sempre é executado pelo menos uma vez. O loop `while` verifica a condição primeiro, então pode não ser executado se a condição for falsa inicialmente.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Programação Orientada a Objetos
 
@@ -289,7 +349,7 @@ public class Person {
 
 ### Herança: `extends`
 
-A herança permite a reutilização de código e cria relacionamentos hierárquicos entre classes.
+A herança permite a reutilização de código e cria relações hierárquicas entre classes.
 
 ```java
 public class Animal {
@@ -360,7 +420,7 @@ public class Calculator {
 
 ### Sobrecarga de Método (Method Overloading)
 
-Múltiplos métodos com o mesmo nome, mas com parâmetros diferentes.
+Múltiplos métodos com o mesmo nome, mas parâmetros diferentes.
 
 ```java
 public class MathUtils {
@@ -446,7 +506,7 @@ scores[1] = 87;
 int length = numbers.length;
 System.out.println("Length: " + length);
 
-// Iterar sobre o array
+// Percorrer o array
 for (int i = 0; i < numbers.length; i++) {
     System.out.println("Element " + i + ": " + numbers[i]);
 }
@@ -467,7 +527,7 @@ int[][] matrix = {
 // Acessar elementos
 int element = matrix[1][2]; // Obtém 6
 
-// Iterar sobre array 2D
+// Percorrer array 2D
 for (int i = 0; i < matrix.length; i++) {
     for (int j = 0; j < matrix[i].length; j++) {
         System.out.print(matrix[i][j] + " ");
@@ -614,7 +674,7 @@ int[] arr = {1, 2, 3};
 // int num = Integer.parseInt("abc"); // Lança NumberFormatException
 
 // FileNotFoundException (ao trabalhar com arquivos)
-// IOException (operações gerais de I/O)
+// IOException (operações gerais de E/S)
 ```
 
 ## Operações de Entrada/Saída
@@ -730,7 +790,7 @@ public class FileWriteExample {
 JDK (Java Development Kit) = JRE + Ferramentas de Desenvolvimento. Necessário para desenvolver aplicações Java.
 
 ```bash
-# Baixar JDK do Oracle ou OpenJDK
+# Baixar JDK da Oracle ou OpenJDK
 # Instalar JDK no seu sistema
 # Definir a variável de ambiente JAVA_HOME
 export JAVA_HOME=/path/to/jdk

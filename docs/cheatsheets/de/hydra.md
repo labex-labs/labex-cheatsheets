@@ -1,6 +1,6 @@
 ---
-title: 'Hydra Spickzettel'
-description: 'Lernen Sie Hydra mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Hydra Spickzettel | LabEx'
+description: 'Lernen Sie Hydra Passwort-Cracking mit diesem umfassenden Spickzettel. Schnelle Referenz für Brute-Force-Angriffe, Passwort-Auditing, Sicherheitstests, Authentifizierungsprotokolle und Penetrationstest-Tools.'
 pdfUrl: '/cheatsheets/pdf/hydra-cheatsheet.pdf'
 ---
 
@@ -32,22 +32,37 @@ sudo apt install hydra
 sudo apt-get install hydra
 # Installation überprüfen
 hydra -h
-# Unterstützte Protokolle prüfen
+# Unterstützte Protokolle anzeigen
 hydra
 ```
 
-### Grundlegende Syntax: `hydra [optionen] ziel dienst`
+### Grundlegende Syntax: `hydra [options] ziel dienst`
 
-Grundlegende Syntax: `hydra -l <benutzername> -P <passwortdatei> <zielprotokoll>://<zieladresse>`
+Grundlegende Syntax: `hydra -l <benutzername> -P <passwort_datei> <ziel_protokoll>://<ziel_adresse>`
 
 ```bash
 # Einzelner Benutzername, Passwortliste
 hydra -l benutzername -P passwoerter.txt ziel.com ssh
-# Benutzername-Liste, Passwortliste
+# Benutzernamenliste, Passwortliste
 hydra -L benutzer.txt -P passwoerter.txt ziel.com ssh
 # Einzelner Benutzername, einzelnes Passwort
 hydra -l admin -p passwort123 192.168.1.100 ftp
 ```
+
+<BaseQuiz id="hydra-syntax-1" correct="B">
+  <template #question>
+    Was ist der Unterschied zwischen `-l` und `-L` in Hydra?
+  </template>
+  
+  <BaseQuizOption value="A">`-l` ist für Passwörter, `-L` ist für Benutzernamen</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`-l` gibt einen einzelnen Benutzernamen an, `-L` gibt eine Datei mit einer Liste von Benutzernamen an</BaseQuizOption>
+  <BaseQuizOption value="C">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="D">`-l` ist Kleinbuchstabe, `-L` ist Großbuchstabe</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Option `-l` wird für einen einzelnen Benutzernamen verwendet, während `-L` für eine Datei verwendet wird, die eine Liste von Benutzernamen enthält. In ähnlicher Weise wird `-p` für ein einzelnes Passwort und `-P` für eine Passwortlistendatei verwendet.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Kernoptionen: `-l`, `-L`, `-p`, `-P`
 
@@ -56,18 +71,18 @@ Geben Sie Benutzernamen und Passwörter für Brute-Force-Angriffe an.
 ```bash
 # Benutzername-Optionen
 -l benutzername          # Einzelner Benutzername
--L benutzerliste.txt      # Benutzername-Listen-Datei
+-L benutzerliste.txt      # Datei mit Benutzernamenliste
 # Passwort-Optionen
 -p passwort          # Einzelnes Passwort
--P passwortliste.txt  # Passwort-Listen-Datei
-# Gängige Wortlisten-Speicherorte
+-P passwortliste.txt  # Datei mit Passwortliste
+# Gängige Speicherorte für Wortlisten
 /usr/share/wordlists/rockyou.txt
 /usr/share/wordlists/metasploit/unix_passwords.txt
 ```
 
 ### Ausgabeoptionen: `-o`, `-b`
 
-Ergebnisse zur späteren Analyse in einer Datei speichern.
+Speichern Sie Ergebnisse zur späteren Analyse in einer Datei.
 
 ```bash
 # Ergebnisse in Datei speichern
@@ -78,14 +93,29 @@ hydra -l admin -P passwoerter.txt ziel.com ssh -b json
 hydra -l admin -P passwoerter.txt ziel.com ssh -V
 ```
 
+<BaseQuiz id="hydra-output-1" correct="A">
+  <template #question>
+    Was bewirkt `hydra -V`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Aktiviert eine ausführliche Ausgabe, die detaillierte Fortschritte zeigt</BaseQuizOption>
+  <BaseQuizOption value="B">Validiert die Wortlistendatei</BaseQuizOption>
+  <BaseQuizOption value="C">Zeigt die Version von Hydra an</BaseQuizOption>
+  <BaseQuizOption value="D">Läuft nur im ausführlichen Modus</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-V` aktiviert den ausführlichen Modus, der detaillierte Ausgaben einschließlich jedes Anmeldeversuchs anzeigt, was die Überwachung des Fortschritts und das Debuggen von Problemen während Passwortangriffen erleichtert.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Protokollspezifische Angriffe
 
 ### SSH: `hydra ziel ssh`
 
-Angriff auf SSH-Dienste mit Benutzername- und Passwortkombinationen.
+Angriff auf SSH-Dienste mit Kombinationen aus Benutzernamen und Passwörtern.
 
 ```bash
-# Basis-SSH-Angriff
+# Grundlegender SSH-Angriff
 hydra -l root -P /usr/share/wordlists/rockyou.txt 192.168.1.100 ssh
 # Mehrere Benutzernamen
 hydra -L benutzer.txt -P passwoerter.txt ssh://192.168.1.100
@@ -95,12 +125,27 @@ hydra -l admin -P passwoerter.txt 192.168.1.100 -s 2222 ssh
 hydra -l root -P passwoerter.txt -t 6 ssh://192.168.1.100
 ```
 
+<BaseQuiz id="hydra-ssh-1" correct="C">
+  <template #question>
+    Was bewirkt das Flag `-s` in Hydra?
+  </template>
+  
+  <BaseQuizOption value="A">Legt den Diensttyp fest</BaseQuizOption>
+  <BaseQuizOption value="B">Aktiviert den Stealth-Modus</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Gibt eine benutzerdefinierte Portnummer an</BaseQuizOption>
+  <BaseQuizOption value="D">Legt die Anzahl der Threads fest</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-s` gibt eine benutzerdefinierte Portnummer an, wenn der Dienst auf einem Nicht-Standard-Port läuft. Zum Beispiel zielt `-s 2222` auf SSH auf Port 2222 anstelle des Standardports 22.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### FTP: `hydra ziel ftp`
 
 Brute-Force von FTP-Anmeldeinformationen.
 
 ```bash
-# Basis-FTP-Angriff
+# Grundlegender FTP-Angriff
 hydra -l admin -P passwoerter.txt ftp://192.168.1.100
 # Anonymer FTP-Check
 hydra -l anonymous -p "" ftp://192.168.1.100
@@ -140,10 +185,10 @@ hydra -l user -P passwoerter.txt imap://mail.ziel.com
 
 ### HTTP POST-Formulare: `http-post-form`
 
-Angriff auf Web-Login-Formulare mit der HTTP POST-Methode unter Verwendung der Platzhalter `^USER^` und `^PASS^`.
+Angriff auf Web-Login-Formulare unter Verwendung der HTTP POST-Methode mit Platzhaltern `^USER^` und `^PASS^`.
 
 ```bash
-# Basis-POST-Formular-Angriff
+# Grundlegender POST-Formular-Angriff
 hydra -l admin -P passwoerter.txt 192.168.1.100 http-post-form "/login.php:username=^USER^&password=^PASS^:F=incorrect"
 # Mit benutzerdefinierter Fehlermeldung
 hydra -l admin -P passwoerter.txt 192.168.1.100 http-post-form "/login:user=^USER^&pass=^PASS^:Ungültiges Passwort"
@@ -153,18 +198,18 @@ hydra -l admin -P passwoerter.txt 192.168.1.100 http-post-form "/admin:username=
 
 ### HTTP GET-Formulare: `http-get-form`
 
-Ähnlich wie POST-Formulare, zielt aber auf GET-Anfragen ab.
+Ähnlich wie POST-Formulare, zielt aber stattdessen auf GET-Anfragen ab.
 
 ```bash
 # GET-Formular-Angriff
-hydra -l admin -P passwoerter.txt 192.168.1.100 http-get-form "/login:username=^USER^&password=^PASS^:F=Invalid"
+hydra -l admin -P passwoerter.txt 192.168.1.100 http-get-form "/login:username=^USER^&password=^PASS^:F=Ungültig"
 # Mit benutzerdefinierten Headern
-hydra -l admin -P passwoerter.txt 192.168.1.100 http-get-form "/auth:user=^USER^&pass=^PASS^:F=Error:H=Cookie: session=abc123"
+hydra -l admin -P passwoerter.txt 192.168.1.100 http-get-form "/auth:user=^USER^&pass=^PASS^:F=Fehler:H=Cookie: session=abc123"
 ```
 
 ### HTTP Basic Auth: `http-get`/`http-post`
 
-Angriff auf Webserver mit HTTP Basic Authentication.
+Angriff auf Webserver mittels HTTP Basic Authentication.
 
 ```bash
 # HTTP Basic Authentication
@@ -175,15 +220,15 @@ hydra -l admin -P passwoerter.txt https-get://secure.ziel.com
 hydra -l admin -P passwoerter.txt http-get://192.168.1.100/admin
 ```
 
-### Erweiterte Web-Angriffe
+### Erweiterte Webangriffe
 
 Umgang mit komplexen Webanwendungen mit CSRF-Tokens und Cookies.
 
 ```bash
-# Mit CSRF-Token-Handling
-hydra -l admin -P passwoerter.txt 192.168.1.100 http-post-form "/login:username=^USER^&password=^PASS^&csrf=^CSRF^:F=Error:H=Cookie: csrf=^CSRF^"
+# Mit CSRF-Token-Behandlung
+hydra -l admin -P passwoerter.txt 192.168.1.100 http-post-form "/login:username=^USER^&password=^PASS^&csrf=^CSRF^:F=Fehler:H=Cookie: csrf=^CSRF^"
 # Mit Session-Cookies
-hydra -l admin -P passwoerter.txt 192.168.1.100 http-post-form "/login:username=^USER^&password=^PASS^:F=Invalid:H=Cookie: PHPSESSID=abc123"
+hydra -l admin -P passwoerter.txt 192.168.1.100 http-post-form "/login:username=^USER^&password=^PASS^:F=Ungültig:H=Cookie: PHPSESSID=abc123"
 ```
 
 ## Leistungs- & Threading-Optionen
@@ -199,7 +244,7 @@ hydra -l admin -P passwoerter.txt ziel.com ssh
 hydra -l admin -P passwoerter.txt -t 4 ziel.com ssh
 # Hochleistungsangriff (vorsichtig verwenden)
 hydra -l admin -P passwoerter.txt -t 64 ziel.com ssh
-# Konservatives Threading (Erkennung vermeiden)
+# Konservatives Threading (um Erkennung zu vermeiden)
 hydra -l admin -P passwoerter.txt -t 1 ziel.com ssh
 ```
 
@@ -218,7 +263,7 @@ hydra -l admin -P passwoerter.txt -W 5 ziel.com ssh
 
 ### Mehrere Ziele: `-M` (Zieldatei)
 
-Greifen Sie mehrere Hosts an, indem Sie diese in einer Datei angeben.
+Greift mehrere Hosts an, indem sie in einer Datei angegeben werden.
 
 ```bash
 # Zieldatei erstellen
@@ -233,7 +278,7 @@ hydra -L benutzer.txt -P passwoerter.txt -M ziele.txt -t 2 ssh
 
 ### Fortsetzen & Stopp-Optionen
 
-Unterbrochene Angriffe fortsetzen und das Stoppverhalten steuern.
+Setzt unterbrochene Angriffe fort und steuert das Stoppverhalten.
 
 ```bash
 # Nach dem ersten Erfolg stoppen
@@ -255,23 +300,23 @@ Testet automatisch zusätzliche Passwortvarianten.
 hydra -l admin -e n ziel.com ssh
 # Benutzernamen als Passwort testen
 hydra -l admin -e s ziel.com ssh
-# Benutzernamen umgekehrt testen
+# Benutzernamen umkehren testen
 hydra -l admin -e r ziel.com ssh
 # Alle Optionen kombinieren
 hydra -l admin -e nsr -P passwoerter.txt ziel.com ssh
 ```
 
-### Durch Doppelpunkt getrenntes Format: `-C`
+### Doppelpunkt-getrennter Format: `-C`
 
 Verwendet Benutzername:Passwort-Kombinationen, um die Angriffszeit zu verkürzen.
 
 ```bash
-# Anmeldeinformationsdatei erstellen
-echo "admin:admin" > creds.txt
-echo "root:passwort" >> creds.txt
-echo "user:123456" >> creds.txt
-# Doppelpunktformat verwenden
-hydra -C creds.txt ziel.com ssh
+# Anmeldedatei erstellen
+echo "admin:admin" > anmeldedaten.txt
+echo "root:passwort" >> anmeldedaten.txt
+echo "user:123456" >> anmeldedaten.txt
+# Doppelpunkt-Format verwenden
+hydra -C anmeldedaten.txt ziel.com ssh
 # Schneller als das Testen aller Kombinationen
 ```
 
@@ -294,7 +339,7 @@ export HYDRA_PROXY=socks5://proxy.beispiel.com:1080
 Verwendet pw-inspector, um Passwortlisten basierend auf Richtlinien zu filtern.
 
 ```bash
-# Passwörter filtern (mindestens 6 Zeichen, 2 Zeichenklassen)
+# Passwörter filtern (mindestens 6 Zeichen, 2 Zeichensätze)
 cat passwoerter.txt | pw-inspector -m 6 -c 2 -n > gefiltert.txt
 # Gefilterte Liste mit Hydra verwenden
 hydra -l admin -P gefiltert.txt ziel.com ssh
@@ -304,14 +349,14 @@ cat passwoerter.txt | sort | uniq > eindeutige_passwoerter.txt
 
 ## Ethische Nutzung & Best Practices
 
-### Rechtliche und ethische Richtlinien
+### Rechtliche und Ethische Richtlinien
 
-Es ist möglich, Hydra sowohl legal als auch illegal zu verwenden. Holen Sie vor der Durchführung von Brute-Force-Angriffen eine angemessene Genehmigung und Zustimmung ein.
+Es ist möglich, Hydra sowohl rechtmäßig als auch rechtswidrig einzusetzen. Holen Sie vor der Durchführung von Brute-Force-Angriffen eine angemessene Genehmigung und Zustimmung ein.
 
 ```text
 Führen Sie Angriffe nur auf Systemen durch, für die eine ausdrückliche Genehmigung erteilt wurde
 Stellen Sie immer sicher, dass Sie die ausdrückliche Genehmigung des Systembesitzers oder Administrators haben
-Dokumentieren Sie alle Testaktivitäten für die Einhaltung von Vorschriften
+Dokumentieren Sie alle Testaktivitäten für die Compliance
 Nur bei autorisierten Penetrationstests verwenden
 Niemals für unbefugte Zugriffsversuche verwenden
 ```
@@ -335,7 +380,7 @@ Beginnen Sie mit konservativen Einstellungen und dokumentieren Sie alle Aktivit�
 ```text
 Beginnen Sie mit niedrigen Thread-Zahlen, um Dienstunterbrechungen zu vermeiden
 Verwenden Sie Wortlisten, die für die Zielumgebung geeignet sind
-Testen Sie nach Möglichkeit während genehmigter Wartungsfenster
+Testen Sie, wenn möglich, während genehmigter Wartungsfenster
 Überwachen Sie die Leistung des Zielsystems während des Tests
 Halten Sie Verfahren für die Reaktion auf Vorfälle bereit
 ```
@@ -354,9 +399,9 @@ Schulungs- und Demonstrationszwecke
 
 ## GUI-Alternative & Zusätzliche Tools
 
-### XHydra: GUI-Oberfläche
+### XHydra: GUI-Schnittstelle
 
-XHydra ist eine GUI für Hydra, mit der Konfigurationen über die GUI anstelle von Befehlszeilen-Switches ausgewählt werden können.
+XHydra ist eine GUI für Hydra, mit der Konfigurationen über die GUI anstelle von Befehlszeilenschaltern ausgewählt werden können.
 
 ```bash
 # XHydra GUI starten
@@ -372,7 +417,7 @@ sudo apt install hydra-gtk
 
 ### Hydra Wizard: Interaktive Einrichtung
 
-Interaktiver Assistent, der Benutzer mit einfachen Fragen durch die Hydra-Einrichtung führt.
+Interaktiver Assistent, der Benutzer durch die Hydra-Einrichtung mit einfachen Fragen führt.
 
 ```bash
 # Interaktiven Assistenten starten
@@ -380,7 +425,7 @@ hydra-wizard
 # Der Assistent fragt nach:
 # 1. Anzugreifender Dienst
 # 2. Anzugreifendes Ziel
-# 3. Benutzername oder Benutzerdateiname
+# 3. Benutzername oder Benutzernamendatei
 # 4. Passwort oder Passwortdatei
 # 5. Zusätzliche Passworttests
 # 6. Portnummer
@@ -430,7 +475,7 @@ hydra -l admin -P passwoerter.txt -t 1 -w 30 ziel.com ssh
 hydra -l admin -P passwoerter.txt -t 2 ziel.com ssh
 # Optimierung der Speichernutzung
 hydra -l admin -P kleine_liste.txt ziel.com ssh
-# Unterstützte Protokolle prüfen
+# Unterstützte Protokolle überprüfen
 hydra
 # Nach dem Protokoll in der Liste der unterstützten Dienste suchen
 ```
@@ -452,7 +497,7 @@ sort passwoerter.txt | uniq > saubere_passwoerter.txt
 
 ### Ausgabeformate & Analyse
 
-Verschiedene Ausgabeformate für die Analyse von Ergebnissen und Berichterstattung.
+Verschiedene Ausgabeformate für die Analyse von Ergebnissen und die Berichterstellung.
 
 ```bash
 # Standard-Textausgabe
@@ -467,7 +512,7 @@ hydra -l admin -P passwoerter.txt ziel.com ssh | grep "passwort:"
 
 ### Ressourcenüberwachung
 
-Überwachen Sie System- und Netzwerkressourcen während Angriffen.
+Überwachen Sie System- und Netzwerkressourcen während der Angriffe.
 
 ```bash
 # CPU-Auslastung überwachen
@@ -483,7 +528,7 @@ nice -n 19 hydra -l admin -P passwoerter.txt ziel.com ssh
 ## Relevante Links
 
 - <router-link to="/kali">Kali Linux Spickzettel</router-link>
-- <router-link to="/cybersecurity">Cybersecurity Spickzettel</router-link>
+- <router-link to="/cybersecurity">Cybersicherheit Spickzettel</router-link>
 - <router-link to="/nmap">Nmap Spickzettel</router-link>
 - <router-link to="/wireshark">Wireshark Spickzettel</router-link>
 - <router-link to="/comptia">CompTIA Spickzettel</router-link>

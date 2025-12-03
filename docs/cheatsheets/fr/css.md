@@ -1,6 +1,6 @@
 ---
-title: 'Fiche de Référence CSS'
-description: 'Apprenez le CSS avec notre fiche complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de Référence CSS | LabEx'
+description: 'Apprenez le CSS3 avec cette fiche de référence complète. Référence rapide pour les sélecteurs CSS, flexbox, grid, animations, conception responsive et techniques de style modernes pour les développeurs web.'
 pdfUrl: '/cheatsheets/pdf/css-cheatsheet.pdf'
 ---
 
@@ -82,6 +82,21 @@ p.intro {
 }
 ```
 
+<BaseQuiz id="css-class-1" correct="B">
+  <template #question>
+    Comment sélectionnez-vous un élément avec class="highlight" en CSS ?
+  </template>
+  
+  <BaseQuizOption value="A">highlight { }</BaseQuizOption>
+  <BaseQuizOption value="B" correct>.highlight { }</BaseQuizOption>
+  <BaseQuizOption value="C">#highlight { }</BaseQuizOption>
+  <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les sélecteurs de classe utilisent un point (`.`) comme préfixe. `.highlight` sélectionne tous les éléments avec `class="highlight"`. Les sélecteurs d'ID utilisent `#`, et les sélecteurs d'élément n'ont pas de préfixe.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Sélecteurs d'ID
 
 Ciblez les éléments avec des attributs d'ID spécifiques.
@@ -92,7 +107,7 @@ Ciblez les éléments avec des attributs d'ID spécifiques.
   background-color: #333;
 }
 
-/* Les IDs doivent être uniques par page */
+/* Les ID doivent être uniques par page */
 #navigation {
   position: fixed;
 }
@@ -100,7 +115,7 @@ Ciblez les éléments avec des attributs d'ID spécifiques.
 
 ### Sélecteurs d'Attribut
 
-Ciblez les éléments possédant certains attributs en utilisant des sélecteurs d'attribut.
+Ciblez les éléments avec certains attributs en utilisant des sélecteurs d'attribut.
 
 ```css
 /* Éléments avec l'attribut title */
@@ -121,7 +136,7 @@ input[type='text'] {
 
 ### Pseudo-classes
 
-Les pseudo-classes appliquent du CSS en fonction des changements d'état et des interactions utilisateur.
+Les pseudo-classes appliquent du CSS basé sur des changements d'état et des interactions utilisateur.
 
 ```css
 /* États des liens */
@@ -171,14 +186,14 @@ div {
   max-width: 1200px;
 }
 
-/* Contraintes min/max */
+/* Contraintes Min/Max */
 .box {
   min-height: 100px;
   max-width: 500px;
 }
 ```
 
-### Rembourrage : `padding`
+### Rembourrage (Padding) : `padding`
 
 Espace entre le contenu et la bordure, à l'intérieur de l'élément.
 
@@ -198,6 +213,22 @@ div {
 div {
   padding: 10px 15px 20px 5px;
 }
+```
+
+<BaseQuiz id="css-padding-1" correct="C">
+  <template #question>
+    Que définit `padding: 10px 20px` ?
+  </template>
+  
+  <BaseQuizOption value="A">10px haut/bas, 20px gauche/droite</BaseQuizOption>
+  <BaseQuizOption value="B">10px tous les côtés</BaseQuizOption>
+  <BaseQuizOption value="C" correct>10px haut/bas, 20px gauche/droite</BaseQuizOption>
+  <BaseQuizOption value="D">10px haut, 20px bas</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Lorsque deux valeurs sont fournies, la première s'applique au haut et au bas, et la seconde à la gauche et à la droite. Donc `padding: 10px 20px` signifie 10px de rembourrage vertical et 20px de rembourrage horizontal.
+  </BaseQuizAnswer>
+</BaseQuiz>
 ```
 
 ### Bordure : `border`
@@ -249,6 +280,21 @@ div {
   margin-left: -20px;
 }
 ```
+
+<BaseQuiz id="css-margin-1" correct="C">
+  <template #question>
+    Que fait `margin: 0 auto` ?
+  </template>
+  
+  <BaseQuizOption value="A">Supprime toutes les marges</BaseQuizOption>
+  <BaseQuizOption value="B">Ajoute des marges égales sur tous les côtés</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Centre un élément de type bloc horizontalement</BaseQuizOption>
+  <BaseQuizOption value="D">Centre un élément de type bloc verticalement</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `margin: 0 auto` définit les marges supérieure et inférieure à 0 et les marges gauche/droite à auto, ce qui centre un élément de niveau bloc horizontalement dans son conteneur.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Texte et Typographie
 
@@ -341,7 +387,7 @@ h1 {
 
 ### Couleurs
 
-Le CSS offre plusieurs façons de spécifier les couleurs pour divers besoins de style.
+Le CSS fournit plusieurs façons différentes de spécifier les couleurs pour divers besoins de style.
 
 ```css
 /* Formats de couleur */
@@ -351,6 +397,22 @@ p {
 div {
   background-color: #ff5733;
 }
+```
+
+<BaseQuiz id="css-colors-1" correct="D">
+  <template #question>
+    Quel format de couleur CSS est le plus couramment utilisé pour la conception web ?
+  </template>
+  
+  <BaseQuizOption value="A">RGB uniquement</BaseQuizOption>
+  <BaseQuizOption value="B">Couleurs nommées uniquement</BaseQuizOption>
+  <BaseQuizOption value="C">HSL uniquement</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Les codes Hex (#RRGGBB) sont très courants, ainsi que les couleurs nommées et RGB</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les codes de couleur Hex (#RRGGBB) sont largement utilisés car ils sont concis et faciles à copier à partir des outils de conception. Les couleurs nommées et RGB/rgba sont également courants. Le choix dépend du cas d'utilisation spécifique et de la préférence.
+  </BaseQuizAnswer>
+</BaseQuiz>
 span {
   color: rgb(255, 87, 51);
 }
@@ -358,19 +420,20 @@ section {
   background-color: rgba(255, 87, 51, 0.8);
 }
 
-/* Couleurs HSL */
+/_ Couleurs HSL _/
 header {
-  background-color: hsl(200, 100%, 50%);
+background-color: hsl(200, 100%, 50%);
 }
 
-/* Variables CSS pour les couleurs */
+/_ Variables CSS pour les couleurs _/
 :root {
-  --primary-color: #3498db;
+--primary-color: #3498db;
 }
 .button {
-  background-color: var(--primary-color);
+background-color: var(--primary-color);
 }
-```
+
+````
 
 ## Mise en Page Flexbox
 
@@ -386,14 +449,14 @@ Propriétés appliquées au conteneur parent.
 
 /* Direction flex */
 .container {
-  flex-direction: row; /* défaut */
+  flex-direction: row; /* par défaut */
   flex-direction: column;
   flex-direction: row-reverse;
 }
 
 /* Justify content (axe principal) */
 .container {
-  justify-content: flex-start; /* défaut */
+  justify-content: flex-start; /* par défaut */
   justify-content: center;
   justify-content: space-between;
   justify-content: space-around;
@@ -401,11 +464,11 @@ Propriétés appliquées au conteneur parent.
 
 /* Align items (axe transversal) */
 .container {
-  align-items: stretch; /* défaut */
+  align-items: stretch; /* par défaut */
   align-items: center;
   align-items: flex-start;
 }
-```
+````
 
 ### Propriétés des Éléments Flex
 
@@ -455,7 +518,7 @@ Définir la structure et les propriétés de la grille.
   grid-template-rows: 100px auto 50px;
 }
 
-/* Espacement de la grille */
+/* Espacements de grille */
 .grid-container {
   gap: 20px;
   column-gap: 30px;
@@ -476,10 +539,10 @@ Définir la structure et les propriétés de la grille.
 Positionner et dimensionner les éléments de la grille.
 
 ```css
-/* Positionnement de la grille */
+/* Positionnement de grille */
 .grid-item {
-  grid-column: 1 / 3; /* couvrir les colonnes 1-2 */
-  grid-row: 2 / 4; /* couvrir les lignes 2-3 */
+  grid-column: 1 / 3; /* étendre les colonnes 1-2 */
+  grid-row: 2 / 4; /* étendre les lignes 2-3 */
 }
 
 /* Raccourci */
@@ -500,8 +563,8 @@ Positionner et dimensionner les éléments de la grille.
 
 /* Placement automatique */
 .grid-item {
-  grid-column: span 2; /* couvrir 2 colonnes */
-  grid-row: span 3; /* couvrir 3 lignes */
+  grid-column: span 2; /* étendre 2 colonnes */
+  grid-row: span 3; /* étendre 3 lignes */
 }
 ```
 
@@ -512,7 +575,7 @@ Positionner et dimensionner les éléments de la grille.
 Contrôler le comportement de positionnement des éléments.
 
 ```css
-/* Statique (défaut) */
+/* Statique (par défaut) */
 .element {
   position: static;
 }
@@ -545,7 +608,7 @@ Contrôler le comportement de positionnement des éléments.
 }
 ```
 
-### Z-Index et Empilement
+### Z-Index et Contexte d'Empilement
 
 Contrôlez l'ordre dans lequel les éléments se superposent en utilisant z-index et le contexte d'empilement.
 
@@ -578,7 +641,7 @@ Contrôlez l'ordre dans lequel les éléments se superposent en utilisant z-inde
 }
 ```
 
-## Conception Réactive
+## Conception Réactive (Responsive Design)
 
 ### Media Queries
 
@@ -627,7 +690,7 @@ Appliquer des styles basés sur les caractéristiques de l'appareil.
 Utilisez des unités relatives pour des mises en page flexibles.
 
 ```css
-/* Unités de vue */
+/* Unités de vue (Viewport) */
 .hero {
   height: 100vh;
 } /* hauteur complète de la vue */
@@ -651,7 +714,7 @@ h1 {
   width: 50%;
 }
 
-/* Grid réactif */
+/* Grid CSS réactif */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -822,7 +885,7 @@ Le CSS dispose d'une gamme de fonctions intégrées pour les calculs et les vale
 Structurez votre CSS pour la maintenabilité.
 
 ```css
-/* Utiliser des noms de classes significatifs */
+/* Utiliser des noms de classe significatifs */
 .hero-section {
 }
 .primary-button {
@@ -848,7 +911,7 @@ Structurez votre CSS pour la maintenabilité.
 .card--featured {
 }
 
-/* Grouper les styles connexes */
+/* Grouper les styles associés */
 /* ===== MISE EN PAGE ===== */
 .container {
 }
@@ -864,7 +927,7 @@ Structurez votre CSS pour la maintenabilité.
 
 ### Performance et Optimisation
 
-Écrire du CSS efficace pour de meilleures performances.
+Écrivez du CSS efficace pour de meilleures performances.
 
 ```css
 /* Éviter l'imbrication profonde */
@@ -904,7 +967,7 @@ body div.container > p {
 
 ### Outils de Développement du Navigateur
 
-Inspecter et modifier le CSS en temps réel.
+Inspectez et modifiez le CSS en temps réel.
 
 ```css
 /* Étapes de débogage courantes */
@@ -925,7 +988,7 @@ Dépanner les problèmes fréquemment rencontrés.
   box-sizing: border-box;
 }
 
-/* Effacer les flottants */
+/* Effacer les flottants (floats) */
 .clearfix::after {
   content: '';
   display: table;
@@ -942,14 +1005,14 @@ Dépanner les problèmes fréquemment rencontrés.
 
 ### Validation CSS
 
-Assurez-vous que votre CSS suit les normes et les bonnes pratiques.
+Assurez-vous que votre CSS suit les normes et les meilleures pratiques.
 
 ```css
 /* Utiliser des validateurs CSS */
 /* Validateur CSS W3C */
 /* Outils de compatibilité des navigateurs */
 
-/* Commenter votre code */
+/* Commentez votre code */
 /* ===== STYLES D'EN-TÊTE ===== */
 .header {
 }
@@ -1015,9 +1078,9 @@ Approches modernes pour le style dans les applications web.
 ```
 
 ```javascript
-/* CSS utilitaire d'abord (Tailwind) */
+/* CSS utilitaire (Tailwind) */
 ;<div class="flex items-center justify-center p-4 bg-blue-500">
-  <span class="text-white font-bold">Button</span>
+  <span class="text-white font-bold">Bouton</span>
 </div>
 
 /* CSS-in-JS (Styled Components) */

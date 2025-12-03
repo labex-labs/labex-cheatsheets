@@ -1,11 +1,11 @@
 ---
-title: 'Шпаргалка по Docker'
-description: 'Изучите Docker с нашей исчерпывающей шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Docker | LabEx'
+description: 'Изучите контейнеризацию Docker с помощью этой исчерпывающей шпаргалки. Быстрый справочник по командам Docker, образам, контейнерам, Dockerfile, Docker Compose и оркестрации контейнеров.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Шпаргалка по Docker
+Docker Шпаргалка
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,7 +15,7 @@ pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 <a target="_blank" href="https://labex.io/ru/learn/docker">Изучите Docker с практическими лабораторными работами</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите контейнеризацию Docker с помощью практических лабораторных работ и сценариев реального мира. LabEx предлагает комплексные курсы по Docker, охватывающие основные аспекты управления контейнерами, сборки образов, Docker Compose, сетевых настроек, томов и развертывания. Освойте методы оркестрации контейнеров и современные методы развертывания приложений.
+Изучите контейнеризацию Docker с помощью практических лабораторных работ и сценариев реального мира. LabEx предлагает комплексные курсы по Docker, охватывающие управление контейнерами, сборку образов, Docker Compose, сетевое взаимодействие, тома и развертывание. Освойте оркестрацию контейнеров и современные методы развертывания приложений.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -26,27 +26,27 @@ pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 Установка Docker в системах Ubuntu/Debian.
 
 ```bash
-# Обновление менеджера пакетов
+# Обновить менеджер пакетов
 sudo apt update
-# Установка предварительных требований
+# Установить предварительные требования
 sudo apt install apt-transport-https ca-certificates curl
 software-properties-common
-# Добавление официального GPG-ключа Docker
+# Добавить официальный GPG ключ Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg
 | sudo apt-key add -
-# Добавление репозитория Docker
+# Добавить репозиторий Docker
 sudo add-apt-repository "deb [arch=amd64]
 https://download.docker.com/linux/ubuntu bionic stable"
-# Установка Docker
+# Установить Docker
 sudo apt update && sudo apt install docker-ce
-# Запуск службы Docker
+# Запустить службу Docker
 sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
 ### Windows и macOS
 
-Установка Docker Desktop для управления через графический интерфейс.
+Установите Docker Desktop для управления с помощью графического интерфейса.
 
 ```bash
 # Windows: Скачать Docker Desktop с docker.com
@@ -61,10 +61,10 @@ brew install --cask docker
 Настройка Docker для использования без прав root и проверка установки.
 
 ```bash
-# Добавление пользователя в группу docker (Linux)
+# Добавить пользователя в группу docker (Linux)
 sudo usermod -aG docker $USER
 # Выйти и войти снова для применения изменений группы
-# Проверка установки Docker
+# Проверить установку Docker
 docker --version
 docker run hello-world
 ```
@@ -80,46 +80,61 @@ sudo curl -L
 /v2.24.0/docker-compose-$(uname -s)-$(uname -m)" -o
 /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-# Проверка установки
+# Проверить установку
 docker-compose --version
 # Примечание: Docker Desktop включает Compose
 ```
 
-## Основные Команды Docker
+## Основные команды Docker
 
 ### Информация о системе: `docker version` / `docker system info`
 
-Проверка деталей установки и среды Docker.
+Проверить детали установки и среды Docker.
 
 ```bash
-# Отображение информации о версии Docker
+# Показать информацию о версии Docker
 docker version
-# Отображение системной информации Docker
-system-wide
+# Показать системную информацию Docker
+information
 docker system info
-# Отображение справки по командам Docker
+# Показать справку по командам Docker
 docker help
 docker <command> --help
 ```
 
-### Запуск Контейнеров: `docker run`
+### Запуск контейнеров: `docker run`
 
-Создание и запуск контейнера из образа.
+Создать и запустить контейнер из образа.
 
 ```bash
-# Запуск контейнера в интерактивном режиме
+# Запустить контейнер интерактивно
 docker run -it ubuntu:latest bash
-# Запуск контейнера в фоновом режиме
+# Запустить контейнер в фоновом режиме
 (detached)
 docker run -d --name my-container
 nginx
-# Запуск с сопоставлением портов
+# Запустить с сопоставлением портов
 docker run -p 8080:80 nginx
-# Запуск с автоматическим удалением после выхода
+# Запустить с автоматическим удалением после завершения работы
 docker run --rm hello-world
 ```
 
-### Список Контейнеров: `docker ps`
+<BaseQuiz id="docker-run-1" correct="C">
+  <template #question>
+    Что делает `docker run -d`?
+  </template>
+  
+  <BaseQuizOption value="A">Запускает контейнер в режиме отладки</BaseQuizOption>
+  <BaseQuizOption value="B">Удаляет контейнер после его остановки</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Запускает контейнер в фоновом режиме (detached mode)</BaseQuizOption>
+  <BaseQuizOption value="D">Запускает контейнер с настройками по умолчанию</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `-d` запускает контейнер в фоновом режиме, что означает, что он работает в фоновом режиме и немедленно возвращает управление терминалу. Это полезно для долго работающих служб.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Список контейнеров: `docker ps`
 
 Просмотр запущенных и остановленных контейнеров.
 
@@ -135,87 +150,102 @@ docker ps -q
 docker ps -l
 ```
 
-## Управление Контейнерами
+## Управление контейнерами
 
 ### Жизненный цикл контейнера: `start` / `stop` / `restart`
 
 Управление состоянием выполнения контейнера.
 
 ```bash
-# Остановка запущенного контейнера
+# Остановить запущенный контейнер
 docker stop container_name
-# Запуск остановленного контейнера
+# Запустить остановленный контейнер
 docker start container_name
-# Перезапуск контейнера
+# Перезапустить контейнер
 docker restart container_name
-# Приостановка/возобновление процессов контейнера
+# Приостановить/возобновить процессы контейнера
 docker pause container_name
 docker unpause container_name
 ```
 
-### Выполнение Команд: `docker exec`
+### Выполнение команд: `docker exec`
 
 Выполнение команд внутри запущенных контейнеров.
 
 ```bash
-# Выполнение интерактивной оболочки bash
+# Выполнить интерактивную оболочку bash
 docker exec -it container_name bash
-# Выполнение одной команды
+# Выполнить одну команду
 docker exec container_name ls -la
-# Выполнение от имени другого пользователя
+# Выполнить от имени другого пользователя
 docker exec -u root container_name whoami
-# Выполнение в определенной директории
+# Выполнить в определенной директории
 docker exec -w /app container_name pwd
 ```
 
-### Удаление Контейнеров: `docker rm`
+### Удаление контейнеров: `docker rm`
 
 Удаление контейнеров из системы.
 
 ```bash
-# Удаление остановленного контейнера
+# Удалить остановленный контейнер
 docker rm container_name
-# Принудительное удаление запущенного контейнера
+# Принудительно удалить запущенный контейнер
 docker rm -f container_name
-# Удаление нескольких контейнеров
+# Удалить несколько контейнеров
 docker rm container1 container2
-# Удаление всех остановленных контейнеров
+# Удалить все остановленные контейнеры
 docker container prune
 ```
 
-### Логи Контейнеров: `docker logs`
+### Логи контейнеров: `docker logs`
 
 Просмотр вывода контейнера и отладка проблем.
 
 ```bash
 # Просмотр логов контейнера
 docker logs container_name
-# Слежение за логами в реальном времени
+# Следить за логами в реальном времени
 docker logs -f container_name
-# Показать только последние логи
+# Показать только недавние логи
 docker logs --tail 50 container_name
 # Показать логи с временными метками
 docker logs -t container_name
 ```
 
-## Управление Образами
+## Управление образами
 
-### Сборка Образов: `docker build`
+### Сборка образов: `docker build`
 
 Создание образов Docker из Dockerfile.
 
 ```bash
-# Сборка образа из текущей директории
+# Собрать образ из текущей директории
 docker build .
-# Сборка и тегирование образа
+# Собрать и пометить образ
 docker build -t myapp:latest .
-# Сборка с аргументами сборки
+# Собрать с аргументами сборки
 docker build --build-arg VERSION=1.0 -t myapp .
-# Сборка без использования кэша
+# Собрать без использования кэша
 docker build --no-cache -t myapp .
 ```
 
-### Инспекция Образов: `docker images` / `docker inspect`
+<BaseQuiz id="docker-build-1" correct="A">
+  <template #question>
+    Что делает `docker build -t myapp:latest .`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Собирает образ Docker с тегом "myapp:latest" из текущей директории</BaseQuizOption>
+  <BaseQuizOption value="B">Запускает контейнер с именем "myapp"</BaseQuizOption>
+  <BaseQuizOption value="C">Загружает образ "myapp:latest" из Docker Hub</BaseQuizOption>
+  <BaseQuizOption value="D">Удаляет образ "myapp:latest"</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `-t` помечает образ именем "myapp:latest", а `.` указывает на контекст сборки (текущая директория). Эта команда собирает новый образ из Dockerfile в текущей директории.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Инспекция образов: `docker images` / `docker inspect`
 
 Перечисление и изучение образов Docker.
 
@@ -226,116 +256,147 @@ docker images
 docker images nginx
 # Показать детали образа
 docker inspect image_name
-# Просмотр истории сборки образа
+# Посмотреть историю сборки образа
 docker history image_name
 ```
 
-### Операции с Реестром: `docker pull` / `docker push`
+### Операции с реестром: `docker pull` / `docker push`
 
 Загрузка и выгрузка образов в реестры.
 
 ```bash
-# Загрузка образа из Docker Hub
+# Загрузить образ из Docker Hub
 docker pull nginx:latest
-# Загрузка определенной версии
+# Загрузить конкретную версию
 docker pull ubuntu:20.04
-# Выгрузка образа в реестр
+# Выгрузить образ в реестр
 docker push myusername/myapp:latest
-# Тегирование образа перед выгрузкой
+# Пометить образ перед выгрузкой
 docker tag myapp:latest myusername/myapp:v1.0
 ```
 
-### Очистка Образов: `docker rmi` / `docker image prune`
+### Очистка образов: `docker rmi` / `docker image prune`
 
 Удаление неиспользуемых образов для освобождения дискового пространства.
 
 ```bash
-# Удаление определенного образа
+# Удалить конкретный образ
 docker rmi image_name
-# Удаление неиспользуемых образов
+# Удалить неиспользуемые образы
 docker image prune
-# Удаление всех неиспользуемых образов (не только "висячих")
+# Удалить все неиспользуемые образы (не только висячие)
 docker image prune -a
-# Принудительное удаление образа
+# Принудительно удалить образ
 docker rmi -f image_name
 ```
 
 ## Основы Dockerfile
 
-### Основные Инструкции
+### Основные инструкции
 
 Основные команды Dockerfile для сборки образов.
 
 ```dockerfile
 # Базовый образ
 FROM ubuntu:20.04
-# Установка информации о мейнтейнере
+# Установить информацию о сопровождающем
 LABEL maintainer="user@example.com"
-# Установка пакетов
+# Установить пакеты
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
-# Копирование файлов с хоста в контейнер
+# Скопировать файлы с хоста в контейнер
 COPY app.py /app/
-# Установка рабочей директории
+# Установить рабочую директорию
 WORKDIR /app
-# Открытие порта
+# Открыть порт
 EXPOSE 8000
 ```
 
-### Конфигурация Во Время Выполнения
+<BaseQuiz id="dockerfile-1" correct="B">
+  <template #question>
+    Каково назначение инструкции `FROM` в Dockerfile?
+  </template>
+  
+  <BaseQuizOption value="A">Она копирует файлы с хоста в контейнер</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Она указывает базовый образ, на котором будет производиться сборка</BaseQuizOption>
+  <BaseQuizOption value="C">Она устанавливает переменные окружения</BaseQuizOption>
+  <BaseQuizOption value="D">Она определяет команду, которая будет выполняться при запуске контейнера</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Инструкция `FROM` должна быть первой инструкцией, не являющейся комментарием, в Dockerfile. Она указывает базовый образ, на котором будет построен ваш образ, предоставляя основу для вашего контейнера.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Конфигурация времени выполнения
 
 Настройка того, как запускается контейнер.
 
 ```dockerfile
-# Установка переменных окружения
+# Установить переменные окружения
 ENV PYTHON_ENV=production
 ENV PORT=8000
-# Создание пользователя для безопасности
-RUN useradd -m appuser
+# Создать пользователя для безопасности
+RUN groupadd -r appuser && useradd -r -g appuser
+appuser
 USER appuser
-# Определение команды запуска
+# Определить команду запуска
 CMD ["python3", "app.py"]
-# Или использование ENTRYPOINT для фиксированных команд
+# Или использовать ENTRYPOINT для фиксированных команд
 ENTRYPOINT ["python3"]
 CMD ["app.py"]
-# Установка проверки работоспособности
+# Установить проверку работоспособности
 HEALTHCHECK --interval=30s --timeout=3s \
   CMD curl -f http://localhost:8000/ || exit 1
 ```
 
 ## Docker Compose
 
-### Основные Команды Compose: `docker-compose up` / `docker-compose down`
+### Основные команды Compose: `docker-compose up` / `docker-compose down`
 
 Запуск и остановка многоконтейнерных приложений.
 
 ```bash
-# Запуск сервисов в режиме foreground
+# Запустить службы в режиме вывода в консоль
 docker-compose up
-# Запуск сервисов в фоновом режиме
+# Запустить службы в фоновом режиме
 docker-compose up -d
-# Сборка и запуск сервисов
+# Собрать и запустить службы
 docker-compose up --build
-# Остановка и удаление сервисов
+# Остановить и удалить службы
 docker-compose down
-# Остановка и удаление с томами
+# Остановить и удалить с томами
 docker-compose down -v
 ```
 
-### Управление Сервисами
+<BaseQuiz id="docker-compose-1" correct="D">
+  <template #question>
+    Что делает `docker-compose up -d`?
+  </template>
+  
+  <BaseQuizOption value="A">Останавливает все запущенные контейнеры</BaseQuizOption>
+  <BaseQuizOption value="B">Собирает образы без запуска контейнеров</BaseQuizOption>
+  <BaseQuizOption value="C">Показывает логи всех служб</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Запускает все службы, определенные в docker-compose.yml, в фоновом режиме</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `-d` запускает контейнеры в фоновом режиме. `docker-compose up` считывает файл docker-compose.yml и запускает все определенные службы, что упрощает управление многоконтейнерными приложениями.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Управление отдельными сервисами в приложениях Compose.
+### Управление службами
+
+Управление отдельными службами в приложениях Compose.
 
 ```bash
-# Список запущенных сервисов
+# Список запущенных служб
 docker-compose ps
-# Просмотр логов сервиса
+# Просмотр логов службы
 docker-compose logs service_name
-# Слежение за логами всех сервисов
+# Следить за логами всех служб
 docker-compose logs -f
-# Перезапуск определенного сервиса
+# Перезапустить службу
 docker-compose restart service_name
 ```
 
@@ -370,99 +431,117 @@ volumes:
   db_data:
 ```
 
-## Сетевые Настройки и Тома (Volumes)
+## Сетевое взаимодействие и тома
 
-### Сеть Контейнеров
+### Сетевое взаимодействие контейнеров
 
-Подключение контейнеров и открытие сервисов.
+Подключение контейнеров и открытие служб.
 
 ```bash
 # Список сетей
 docker network ls
-# Создание пользовательской сети
+# Создать пользовательскую сеть
 docker network create mynetwork
-# Запуск контейнера в определенной сети
+# Запустить контейнер в определенной сети
 docker run --network mynetwork nginx
-# Подключение запущенного контейнера к сети
+# Подключить запущенный контейнер к сети
 docker network connect mynetwork container_name
-# Инспекция деталей сети
+# Проверить детали сети
 docker network inspect mynetwork
 ```
 
-### Сопоставление Портов
+### Сопоставление портов
 
 Открытие портов контейнера для хост-системы.
 
 ```bash
 # Сопоставление одного порта
 docker run -p 8080:80 nginx
+```
+
+<BaseQuiz id="docker-port-1" correct="A">
+  <template #question>
+    В команде `docker run -p 8080:80 nginx`, что означают номера портов?
+  </template>
+  
+  <BaseQuizOption value="A" correct>8080 — это порт хоста, 80 — это порт контейнера</BaseQuizOption>
+  <BaseQuizOption value="B">80 — это порт хоста, 8080 — это порт контейнера</BaseQuizOption>
+  <BaseQuizOption value="C">Оба порта — порты контейнера</BaseQuizOption>
+  <BaseQuizOption value="D">Оба порта — порты хоста</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Формат: `-p host_port:container_port`. Порт 8080 на вашей хост-машине сопоставлен порту 80 внутри контейнера, что позволяет вам получить доступ к веб-серверу nginx, работающему в контейнере, через localhost:8080.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+```bash
 # Сопоставление нескольких портов
 docker run -p 8080:80 -p 8443:443 nginx
 # Сопоставление с определенным интерфейсом хоста
 docker run -p 127.0.0.1:8080:80 nginx
-# Открытие всех портов, определенных в образе
+# Открыть все порты, определенные в образе
 docker run -P nginx
 ```
 
-### Тома Данных: `docker volume`
+### Тома данных: `docker volume`
 
 Сохранение и совместное использование данных между контейнерами.
 
 ```bash
-# Создание именованного тома
+# Создать именованный том
 docker volume create myvolume
 # Список всех томов
 docker volume ls
-# Инспекция деталей тома
+# Проверить детали тома
 docker volume inspect myvolume
-# Удаление тома
+# Удалить том
 docker volume rm myvolume
-# Удаление неиспользуемых томов
+# Удалить неиспользуемые тома
 docker volume prune
 ```
 
-### Монтирование Томов
+### Монтирование томов
 
 Монтирование томов и директорий хоста в контейнерах.
 
 ```bash
-# Монтирование именованного тома
+# Смонтировать именованный том
 docker run -v myvolume:/data nginx
-# Монтирование директории хоста (bind mount)
+# Смонтировать директорию хоста (bind mount)
 docker run -v /host/path:/container/path nginx
-# Монтирование текущей директории
+# Смонтировать текущую директорию
 docker run -v $(pwd):/app nginx
 # Монтирование только для чтения
 docker run -v /host/path:/container/path:ro nginx
 ```
 
-## Инспекция и Отладка Контейнеров
+## Инспекция и отладка контейнеров
 
-### Детали Контейнера: `docker inspect`
+### Детали контейнера: `docker inspect`
 
 Получение подробной информации о контейнерах и образах.
 
 ```bash
-# Инспекция конфигурации контейнера
+# Проверить конфигурацию контейнера
 docker inspect container_name
-# Получение конкретной информации с использованием format
+# Получить конкретную информацию с использованием формата
 docker inspect --format='{{.State.Status}}'
 container_name
-# Получение IP-адреса
+# Получить IP-адрес
 docker inspect --format='{{.NetworkSettings.IPAddress}}'
 container_name
-# Получение смонтированных томов
+# Получить смонтированные тома
 docker inspect --format='{{.Mounts}}' container_name
 ```
 
-### Мониторинг Ресурсов
+### Мониторинг ресурсов
 
-Мониторинг использования ресурсов контейнерами и производительности.
+Мониторинг использования ресурсов и производительности контейнеров.
 
 ```bash
 # Показать запущенные процессы в контейнере
 docker top container_name
-# Отображение статистики использования ресурсов в реальном времени
+# Отобразить статистику использования ресурсов в реальном времени
 docker stats
 # Показать статистику для конкретного контейнера
 docker stats container_name
@@ -470,48 +549,48 @@ docker stats container_name
 docker events
 ```
 
-### Операции с Файлами: `docker cp`
+### Операции с файлами: `docker cp`
 
 Копирование файлов между контейнерами и хост-системой.
 
 ```bash
-# Копирование файла из контейнера на хост
+# Скопировать файл из контейнера на хост
 docker cp container_name:/path/to/file ./
-# Копирование файла с хоста в контейнер
+# Скопировать файл с хоста в контейнер
 docker cp ./file container_name:/path/to/destination
-# Копирование директории
+# Скопировать директорию
 docker cp ./directory
 container_name:/path/to/destination/
-# Копирование с архивированием для сохранения разрешений
+# Копировать с архивированием для сохранения разрешений
 docker cp -a ./directory container_name:/path/
 ```
 
-### Устранение Неполадок
+### Устранение неполадок
 
-Отладка проблем с контейнерами и сетевым подключением.
+Отладка проблем контейнера и сетевых проблем.
 
 ```bash
-# Проверка кода выхода контейнера
+# Проверить код выхода контейнера
 docker inspect --format='{{.State.ExitCode}}'
 container_name
-# Просмотр процессов контейнера
+# Просмотреть процессы контейнера
 docker exec container_name ps aux
-# Проверка сетевого подключения
+# Проверить сетевое подключение
 docker exec container_name ping google.com
-# Проверка использования диска
+# Проверить использование диска
 docker exec container_name df -h
 ```
 
-## Реестр и Аутентификация
+## Реестр и аутентификация
 
 ### Операции с Docker Hub: `docker login` / `docker search`
 
 Аутентификация и взаимодействие с Docker Hub.
 
 ```bash
-# Вход в Docker Hub
+# Войти в Docker Hub
 docker login
-# Вход в определенный реестр
+# Войти в конкретный реестр
 docker login registry.example.com
 # Поиск образов в Docker Hub
 docker search nginx
@@ -519,120 +598,120 @@ docker search nginx
 docker search --filter stars=100 nginx
 ```
 
-### Тегирование и Публикация Образов
+### Тегирование и публикация образов
 
 Подготовка и публикация образов в реестрах.
 
 ```bash
-# Тегирование образа для реестра
+# Пометить образ для реестра
 docker tag myapp:latest username/myapp:v1.0
 docker tag myapp:latest
 registry.example.com/myapp:latest
-# Публикация в Docker Hub
+# Выгрузить в Docker Hub
 docker push username/myapp:v1.0
-# Публикация в частный реестр
+# Выгрузить в частный реестр
 docker push registry.example.com/myapp:latest
 ```
 
-### Частный Реестр
+### Частный реестр
 
 Работа с частными реестрами Docker.
 
 ```bash
-# Загрузка из частного реестра
+# Загрузить из частного реестра
 docker pull registry.company.com/myapp:latest
-# Запуск частного реестра локально
+# Запустить локальный реестр
 docker run -d -p 5000:5000 --name registry registry:2
-# Публикация в локальный реестр
+# Выгрузить в локальный реестр
 docker tag myapp localhost:5000/myapp
 docker push localhost:5000/myapp
 ```
 
-### Безопасность Образов
+### Безопасность образов
 
 Проверка целостности и безопасности образов.
 
 ```bash
-# Включение доверия содержимого Docker
+# Включить доверие к содержимому Docker
 export DOCKER_CONTENT_TRUST=1
-# Подписание и выгрузка образа
+# Подписать и выгрузить образ
 docker push username/myapp:signed
-# Проверка подписей образов
+# Проверить подписи образов
 docker trust inspect username/myapp:signed
-# Сканирование образов на уязвимости
+# Сканировать образы на уязвимости
 docker scan myapp:latest
 ```
 
-## Очистка и Обслуживание Системы
+## Очистка и обслуживание системы
 
-### Очистка Системы: `docker system prune`
+### Очистка системы: `docker system prune`
 
 Удаление неиспользуемых ресурсов Docker для освобождения дискового пространства.
 
 ```bash
-# Удаление неиспользуемых контейнеров, сетей, образов
+# Удалить неиспользуемые контейнеры, сети, образы
 docker system prune
-# Включение неиспользуемых томов в очистку
+# Включить неиспользуемые тома в очистку
 docker system prune -a --volumes
-# Удаление всего (использовать с осторожностью)
+# Удалить все (использовать с осторожностью)
 docker system prune -a -f
-# Отображение использования дискового пространства
+# Показать использование дискового пространства
 docker system df
 ```
 
-### Целевая Очистка
+### Целевая очистка
 
-Удаление определенных типов неиспользуемых ресурсов.
+Удаление конкретных типов неиспользуемых ресурсов.
 
 ```bash
-# Удаление остановленных контейнеров
+# Удалить остановленные контейнеры
 docker container prune
-# Удаление неиспользуемых образов
+# Удалить неиспользуемые образы
 docker image prune -a
-# Удаление неиспользуемых томов
+# Удалить неиспользуемые тома
 docker volume prune
-# Удаление неиспользуемых сетей
+# Удалить неиспользуемые сети
 docker network prune
 ```
 
-### Массовые Операции
+### Массовые операции
 
 Выполнение операций над несколькими контейнерами/образами.
 
 ```bash
-# Остановка всех запущенных контейнеров
+# Остановить все запущенные контейнеры
 docker stop $(docker ps -q)
-# Удаление всех контейнеров
+# Удалить все контейнеры
 docker rm $(docker ps -aq)
-# Удаление всех образов
+# Удалить все образы
 docker rmi $(docker images -q)
-# Удаление только "висячих" образов
+# Удалить только висячие образы
 docker rmi $(docker images -f "dangling=true" -q)
 ```
 
-### Ограничение Ресурсов
+### Ограничение ресурсов
 
 Контроль потребления ресурсов контейнерами.
 
 ```bash
-# Ограничение использования памяти
+# Ограничить использование памяти
 docker run --memory=512m nginx
-# Ограничение использования CPU
+# Ограничить использование ЦП
 docker run --cpus="1.5" nginx
-# Ограничение CPU и памяти
+# Ограничить и ЦП, и память
 docker run --memory=1g --cpus="2.0" nginx
-# Установка политики перезапуска
+# Установить политику перезапуска
 docker run --restart=always nginx
 ```
 
-## Конфигурация и Настройки Docker
+## Конфигурация и настройки Docker
 
-### Конфигурация Демона
+### Конфигурация демона
 
 Настройка демона Docker для производственного использования.
 
 ```bash
-# Редактирование конфигурации демона
+# Отредактировать конфигурацию демона
 sudo nano
 /etc/docker/daemon.json
 # Пример конфигурации:
@@ -644,42 +723,42 @@ sudo nano
   },
   "storage-driver": "overlay2"
 }
-# Перезапуск службы Docker
+# Перезапустить службу Docker
 sudo systemctl restart docker
 ```
 
-### Переменные Окружения
+### Переменные окружения
 
 Настройка поведения клиента Docker с помощью переменных окружения.
 
 ```bash
-# Установка хоста Docker
+# Установить хост Docker
 export
 DOCKER_HOST=tcp://remote-
 docker:2376
-# Включение проверки TLS
+# Включить проверку TLS
 export DOCKER_TLS_VERIFY=1
 export
 DOCKER_CERT_PATH=/path/to/c
 erts
-# Установка реестра по умолчанию
+# Установить реестр по умолчанию
 export
 DOCKER_REGISTRY=registry.co
 mpany.com
-# Отладка вывода
+# Вывод отладки
 export DOCKER_BUILDKIT=1
 ```
 
-### Настройка Производительности
+### Настройка производительности
 
 Оптимизация Docker для лучшей производительности.
 
 ```bash
-# Включение экспериментальных функций
+# Включить экспериментальные функции
 echo '{"experimental": true}' |
 sudo tee
 /etc/docker/daemon.json
-# Настройка опций драйвера хранения
+# Опции драйвера хранения
 {
   "storage-driver": "overlay2",
   "storage-opts": [
@@ -696,29 +775,29 @@ sudo tee
 }
 ```
 
-## Лучшие Практики
+## Лучшие практики
 
-### Рекомендации по Безопасности
+### Рекомендации по безопасности
 
-Обеспечение безопасности ваших контейнеров для продакшена.
+Поддержание безопасности контейнеров и их готовности к производству.
 
 ```dockerfile
 # Запуск от имени пользователя без прав root в Dockerfile
 RUN groupadd -r appuser && useradd -r -g appuser
 appuser
 USER appuser
-# Использование конкретных тегов образов, а не 'latest'
+# Использовать конкретные теги образов, а не 'latest'
 FROM node:16.20.0-alpine
-# Использование файловых систем только для чтения, когда это возможно
+# Использовать файловые системы только для чтения, когда это возможно
 docker run --read-only nginx
 ```
 
-### Оптимизация Производительности
+### Оптимизация производительности
 
 Оптимизация контейнеров для скорости и эффективности использования ресурсов.
 
 ```dockerfile
-# Использование многоэтапной сборки для уменьшения размера образа
+# Использовать многоэтапную сборку для уменьшения размера образа
 FROM node:16 AS builder
 WORKDIR /app
 COPY package*.json ./
@@ -731,7 +810,7 @@ COPY . .
 CMD ["node", "server.js"]
 ```
 
-## Соответствующие Ссылки
+## Связанные ссылки
 
 - <router-link to="/kubernetes">Шпаргалка по Kubernetes</router-link>
 - <router-link to="/linux">Шпаргалка по Linux</router-link>

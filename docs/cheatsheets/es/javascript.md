@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de JavaScript'
-description: 'Aprenda JavaScript con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de trucos de JavaScript | LabEx'
+description: 'Aprenda programación JavaScript con esta hoja de trucos completa. Referencia rápida para sintaxis JS, ES6+, manipulación DOM, async/await, Node.js y desarrollo web moderno.'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 
@@ -40,6 +40,21 @@ user.age = 30 // Las propiedades del objeto se pueden modificar
 var oldVariable = 'legacy'
 ```
 
+<BaseQuiz id="javascript-let-const-1" correct="B">
+  <template #question>
+    ¿Cuál es la diferencia principal entre `let` y `const`?
+  </template>
+  
+  <BaseQuizOption value="A">let tiene alcance de función, const tiene alcance de bloque</BaseQuizOption>
+  <BaseQuizOption value="B" correct>let permite la reasignación, const no permite la reasignación</BaseQuizOption>
+  <BaseQuizOption value="C">const solo se puede usar para números, let se puede usar para cualquier tipo</BaseQuizOption>
+  <BaseQuizOption value="D">No hay diferencia</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Tanto `let` como `const` tienen alcance de bloque, pero `let` te permite reasignar la variable, mientras que `const` previene la reasignación. Sin embargo, las propiedades de los objetos `const` aún pueden modificarse.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Tipos Primitivos
 
 Tipos de datos básicos en JavaScript.
@@ -69,13 +84,13 @@ let unique = Symbol('id')
 Determina el tipo de variables y valores.
 
 ```javascript
-// Comprobar tipos primitivos
+// Verificar tipos primitivos
 typeof 42 // 'number'
 typeof 'hello' // 'string'
 typeof true // 'boolean'
 typeof undefined // 'undefined'
 
-// Comprobar tipos de objeto
+// Verificar tipos de objeto
 let arr = [1, 2, 3]
 typeof arr // 'object'
 arr instanceof Array // true
@@ -108,7 +123,7 @@ Boolean('hello') // true
 
 ### Declaraciones de Funciones
 
-Forma tradicional de definir funciones con elevación (hoisting).
+Forma tradicional de definir funciones con _hoisting_.
 
 ```javascript
 // Declaración de función (con hoisting)
@@ -121,7 +136,7 @@ function multiply(a, b = 1) {
   return a * b
 }
 
-// Parámetros restantes (rest parameters)
+// Parámetros restantes (Rest parameters)
 function sum(...numbers) {
   return numbers.reduce((a, b) => a + b, 0)
 }
@@ -146,6 +161,21 @@ const processData = (data) => {
   return processed.map((x) => x * 2)
 }
 ```
+
+<BaseQuiz id="javascript-arrow-1" correct="C">
+  <template #question>
+    ¿Cuál es una característica clave de las funciones de flecha?
+  </template>
+  
+  <BaseQuizOption value="A">Se elevan (hoisted) como declaraciones de función</BaseQuizOption>
+  <BaseQuizOption value="B">Tienen su propia vinculación de `this`</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Heredan `this` del ámbito circundante</BaseQuizOption>
+  <BaseQuizOption value="D">No pueden devolver valores</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Las funciones de flecha no tienen su propia vinculación de `this`. En su lugar, heredan `this` del ámbito léxico (circundante), lo que las hace útiles para callbacks y manejadores de eventos donde se desea preservar el contexto.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Funciones de Orden Superior
 
@@ -175,28 +205,43 @@ Transforma y manipula arrays funcionalmente.
 ```javascript
 const numbers = [1, 2, 3, 4, 5]
 
-// Transforma cada elemento
+// Transformar cada elemento
 const doubled = numbers.map((x) => x * 2)
 // [2, 4, 6, 8, 10]
 
-// Filtra elementos
+// Filtrar elementos
 const evens = numbers.filter((x) => x % 2 === 0)
 // [2, 4]
 
-// Reduce a un solo valor
+// Reducir a un solo valor
 const sum = numbers.reduce((acc, curr) => acc + curr, 0)
 // 15
 
-// Encadenamiento de métodos
+// Encadenar métodos
 const result = numbers
   .filter((x) => x > 2)
   .map((x) => x * 3)
   .reduce((a, b) => a + b, 0)
 ```
 
+<BaseQuiz id="javascript-array-1" correct="A">
+  <template #question>
+    ¿Qué devuelve `filter()`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Un nuevo array con los elementos que pasan la prueba</BaseQuizOption>
+  <BaseQuizOption value="B">El primer elemento que pasa la prueba</BaseQuizOption>
+  <BaseQuizOption value="C">Un único valor reducido del array</BaseQuizOption>
+  <BaseQuizOption value="D">El array original modificado en su lugar</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El método `filter()` crea un nuevo array que contiene todos los elementos que pasan la prueba implementada por la función proporcionada. No modifica el array original.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Utilidades de Array: `find()`, `includes()`, `sort()`
 
-Busca, comprueba y organiza elementos de array.
+Buscar, verificar y organizar elementos de array.
 
 ```javascript
 const users = [
@@ -205,19 +250,19 @@ const users = [
   { name: 'Charlie', age: 35 },
 ]
 
-// Encuentra elemento
+// Encontrar elemento
 const user = users.find((u) => u.age > 30)
 
-// Comprueba si el array incluye un valor
+// Verificar si el array incluye un valor
 ;[1, 2, 3].includes(2) // true
 
-// Ordena array
+// Ordenar array
 const sorted = users.sort((a, b) => a.age - b.age)
 ```
 
 ### Creación y Manipulación de Objetos
 
-Trabaja con objetos y sus propiedades.
+Trabajar con objetos y sus propiedades.
 
 ```javascript
 // Literal de objeto
@@ -240,7 +285,7 @@ const newPerson = Object.assign({}, person, { age: 31 })
 
 ### Asignación por Desestructuración
 
-Extrae valores de arrays y objetos.
+Extraer valores de arrays y objetos.
 
 ```javascript
 // Desestructuración de array
@@ -261,7 +306,7 @@ function displayUser({ name, age }) {
 
 ### Selección de Elementos: `querySelector()`, `getElementById()`
 
-Encuentra y selecciona elementos HTML.
+Encontrar y seleccionar elementos HTML.
 
 ```javascript
 // Seleccionar por ID
@@ -279,9 +324,24 @@ const listItems = document.querySelectorAll('li')
 const buttonsArray = Array.from(allButtons)
 ```
 
+<BaseQuiz id="javascript-dom-1" correct="C">
+  <template #question>
+    ¿Cuál es la diferencia entre `querySelector()` y `querySelectorAll()`?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="B">querySelector es más rápido</BaseQuizOption>
+  <BaseQuizOption value="C" correct>querySelector devuelve el primer elemento coincidente, querySelectorAll devuelve todos los elementos coincidentes</BaseQuizOption>
+  <BaseQuizOption value="D">querySelector funciona con IDs, querySelectorAll funciona con clases</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `querySelector()` devuelve el primer elemento que coincide con el selector CSS, mientras que `querySelectorAll()` devuelve una NodeList que contiene todos los elementos coincidentes. Usa `querySelector()` cuando necesites un elemento, y `querySelectorAll()` cuando necesites varios.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Modificación de Elementos
 
-Cambia contenido, atributos y estilos.
+Cambiar contenido, atributos y estilos.
 
 ```javascript
 // Cambiar contenido de texto
@@ -301,7 +361,7 @@ element.classList.toggle('highlight')
 
 ### Creación e Inserción de Elementos
 
-Crea y añade dinámicamente elementos HTML.
+Crear dinámicamente y añadir elementos HTML.
 
 ```javascript
 // Crear nuevo elemento
@@ -321,9 +381,9 @@ div.before(newElement) // Insertar antes de div
 div.after(newElement) // Insertar después de div
 ```
 
-### Estilismo de Elementos
+### Estilización de Elementos
 
-Aplica estilos CSS programáticamente.
+Aplicar estilos CSS programáticamente.
 
 ```javascript
 // Modificación directa de estilo
@@ -338,7 +398,7 @@ Object.assign(element.style, {
   border: '1px solid black',
 })
 
-// Obtener estilos calculados
+// Obtener estilos computados
 const styles = window.getComputedStyle(element)
 const color = styles.getPropertyValue('color')
 ```
@@ -347,7 +407,7 @@ const color = styles.getPropertyValue('color')
 
 ### Añadir Escuchadores de Eventos
 
-Responde a interacciones del usuario y eventos del navegador.
+Responder a interacciones del usuario y eventos del navegador.
 
 ```javascript
 // Escuchador de eventos básico
@@ -355,7 +415,7 @@ button.addEventListener('click', function (event) {
   console.log('Button clicked!')
 })
 
-// Controlador de eventos de función de flecha
+// Manejador de eventos con función de flecha
 button.addEventListener('click', (e) => {
   e.preventDefault() // Prevenir comportamiento por defecto
   console.log('Clicked:', e.target)
@@ -392,7 +452,7 @@ form.addEventListener('submit', handleSubmit)
 
 ### Delegación de Eventos
 
-Maneja eventos en múltiples elementos de manera eficiente.
+Manejar eventos en múltiples elementos de manera eficiente.
 
 ```javascript
 // Delegación de eventos en el elemento padre
@@ -402,7 +462,7 @@ document.querySelector('#list').addEventListener('click', (e) => {
   }
 })
 
-// Eliminación de escuchadores de eventos
+// Eliminar escuchadores de eventos
 function handleClick(e) {
   console.log('Clicked')
 }
@@ -412,7 +472,7 @@ button.removeEventListener('click', handleClick)
 
 ### Eventos Personalizados
 
-Crea y dispara eventos personalizados.
+Crear y despachar eventos personalizados.
 
 ```javascript
 // Crear evento personalizado
@@ -420,7 +480,7 @@ const customEvent = new CustomEvent('userLogin', {
   detail: { username: 'john', timestamp: Date.now() },
 })
 
-// Disparar evento
+// Despachar evento
 element.dispatchEvent(customEvent)
 
 // Escuchar evento personalizado
@@ -433,7 +493,7 @@ element.addEventListener('userLogin', (e) => {
 
 ### Promesas: `Promise`, `then()`, `catch()`
 
-Trabaja con operaciones asíncronas usando promesas.
+Trabajar con operaciones asíncronas usando promesas.
 
 ```javascript
 // Creando una promesa
@@ -460,7 +520,7 @@ fetchData
 Sintaxis moderna para manejar código asíncrono.
 
 ```javascript
-// Función async
+// Función Async
 async function getData() {
   try {
     const response = await fetch('/api/data')
@@ -480,7 +540,7 @@ getData()
 
 ### API Fetch: `fetch()`
 
-Realiza peticiones HTTP a servidores.
+Realizar peticiones HTTP a servidores.
 
 ```javascript
 // Petición GET
@@ -500,9 +560,9 @@ fetch('/api/users', {
   .then((data) => console.log(data))
 ```
 
-### Utilidades de Promesa: `Promise.all()`, `Promise.race()`
+### Utilidades de Promesas: `Promise.all()`, `Promise.race()`
 
-Trabaja con múltiples promesas simultáneamente.
+Trabajar con múltiples promesas simultáneamente.
 
 ```javascript
 // Esperar a que todas las promesas se resuelvan
@@ -514,18 +574,18 @@ Promise.all(promises)
     console.log('Posts:', posts)
   })
 
-// Race - la primera promesa que se resuelve gana
+// Race - gana la primera promesa que se resuelva
 Promise.race(promises).then((firstResponse) => console.log('First response'))
 ```
 
 ## Características Modernas ES6+
 
-### Literales de Plantilla y Operador Spread
+### Template Literals y Spread Operator
 
 Interpolación de cadenas y propagación de arrays/objetos.
 
 ```javascript
-// Literales de plantilla
+// Template literals
 const name = 'Alice'
 const age = 25
 const message = `Hello, ${name}! You are ${age} years old.`
@@ -538,7 +598,7 @@ const html = `
     </div>
 `
 
-// Operador spread
+// Spread operator
 const arr1 = [1, 2, 3]
 const arr2 = [4, 5, 6]
 const combined = [...arr1, ...arr2] // [1,2,3,4,5,6]
@@ -576,7 +636,7 @@ class Student extends Person {
   }
 }
 
-// Exportaciones/importaciones de módulo
+// Exportación/importación de módulos
 export const helper = () => 'helper function'
 export default Person
 
@@ -587,7 +647,7 @@ import Person, { helper } from './person.js'
 
 ### Try/Catch/Finally
 
-Maneja errores síncronos y asíncronos.
+Manejar errores síncronos y asíncronos.
 
 ```javascript
 // Manejo básico de errores
@@ -615,7 +675,7 @@ async function asyncOperation() {
 
 ### Errores Personalizados y Depuración
 
-Crea tipos de error personalizados y depura eficazmente.
+Crear tipos de error personalizados y depurar eficazmente.
 
 ```javascript
 // Clase de error personalizada
@@ -644,11 +704,11 @@ console.time('operation')
 console.timeEnd('operation')
 ```
 
-## Local Storage y JSON
+## Almacenamiento Local y JSON
 
 ### API LocalStorage
 
-Almacena datos persistentemente en el navegador.
+Almacenar datos persistentemente en el navegador.
 
 ```javascript
 // Almacenar datos
@@ -669,7 +729,7 @@ const settings = JSON.parse(localStorage.getItem('settings'))
 localStorage.removeItem('username')
 localStorage.clear() // Eliminar todos los elementos
 
-// Comprobar si la clave existe
+// Verificar si la clave existe
 if (localStorage.getItem('username') !== null) {
   // La clave existe
 }
@@ -677,7 +737,7 @@ if (localStorage.getItem('username') !== null) {
 
 ### Operaciones JSON
 
-Analiza y serializa datos JSON.
+Analizar y convertir a cadena JSON.
 
 ```javascript
 // Objeto JavaScript a cadena JSON
@@ -707,7 +767,7 @@ const parsed = JSON.parse(jsonString, (key, value) => {
 
 ### Creación y Prueba de Patrones
 
-Crea patrones regex y prueba contra cadenas.
+Crear patrones regex y probarlos contra cadenas.
 
 ```javascript
 // Literal de Regex
@@ -730,7 +790,7 @@ const allNumbers = text.match(/\d+/g); // ['123', '456', '7890']
 
 ### Métodos de Cadena con Regex
 
-Usa regex con métodos de manipulación de cadenas.
+Usar regex con métodos de manipulación de cadenas.
 
 ```javascript
 // Reemplazar con regex
@@ -779,7 +839,7 @@ Runtime de JavaScript para desarrollo del lado del servidor.
 
 ```bash
 # Instalar Node.js desde nodejs.org
-# Comprobar instalación
+# Verificar instalación
 node --version
 npm --version
 
@@ -799,7 +859,7 @@ npm install --save-dev jest
 Herramientas esenciales para el desarrollo de JavaScript.
 
 ```json
-// Script package.json
+// Script de Package.json
 {
   "scripts": {
     "start": "node index.js",
@@ -845,7 +905,7 @@ for (let i = 0, len = elements.length; i < len; i++) {
 
 ### Organización y Estándares del Código
 
-Estructura el código para mantenibilidad y legibilidad.
+Estructurar el código para mantenibilidad y legibilidad.
 
 ```javascript
 // Usar modo estricto
@@ -871,11 +931,11 @@ const config = { theme: 'dark' }
 let counter = 0
 ```
 
-## Pruebas de Código JavaScript
+## Pruebas de JavaScript
 
 ### Pruebas Unitarias con Jest
 
-Escribe y ejecuta pruebas para funciones de JavaScript.
+Escribir y ejecutar pruebas para funciones de JavaScript.
 
 ```javascript
 // Instalar Jest: npm install --save-dev jest
@@ -903,9 +963,9 @@ test('multiplies 3 * 4 to equal 12', () => {
 // Ejecutar pruebas: npm test
 ```
 
-### Pruebas en el Navegador y Depuración
+### Pruebas y Depuración en el Navegador
 
-Depura JavaScript en las herramientas de desarrollador del navegador.
+Depurar JavaScript en las herramientas de desarrollador del navegador.
 
 ```javascript
 // Establecer puntos de interrupción (breakpoints)
@@ -922,7 +982,7 @@ performance.mark('start')
 performance.mark('end')
 performance.measure('operation', 'start', 'end')
 
-// Comprobar entradas de rendimiento
+// Revisar entradas de rendimiento
 const measurements = performance.getEntriesByType('measure')
 ```
 

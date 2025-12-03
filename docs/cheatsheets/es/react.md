@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de React'
-description: 'Aprenda React con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de React | LabEx'
+description: 'Aprenda desarrollo React con esta hoja de trucos completa. Referencia rápida para hooks de React, componentes, JSX, gestión de estado, props y patrones modernos de desarrollo frontend.'
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de React
 <a target="_blank" href="https://labex.io/es/learn/react">Aprende Desarrollo Frontend con React y Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda desarrollo frontend con React a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de React que cubren la creación esencial de componentes, gestión de estado, hooks, manejo de eventos y optimización del rendimiento. Domine la construcción de interfaces de usuario eficientes y mantenibles para aplicaciones web modernas.
+Aprende desarrollo frontend con React a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de React que cubren la creación esencial de componentes, gestión de estado, hooks, manejo de eventos y optimización del rendimiento. Domina la construcción de interfaces de usuario eficientes y mantenibles para aplicaciones web modernas.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Aprenda desarrollo frontend con React a través de laboratorios prácticos y esc
 
 ### Componentes Funcionales: `function` / `=>`
 
-Cree componentes usando sintaxis de función.
+Crea componentes usando sintaxis de función.
 
 ```javascript
 import React from 'react'
@@ -44,7 +44,7 @@ const Greeting = ({ name }) => <h1>Hola, {name}!</h1>
 
 ### Componentes de Clase: `class extends React.Component`
 
-Cree componentes usando sintaxis de clase ES6.
+Crea componentes usando sintaxis de clase ES6.
 
 ```javascript
 import React, { Component } from 'react'
@@ -62,14 +62,14 @@ class Counter extends Component {
     this.state = { count: 0 }
   }
   render() {
-    return <div>Cuenta: {this.state.count}</div>
+    return <div>Contador: {this.state.count}</div>
   }
 }
 ```
 
 ### Elementos JSX: `<element>`
 
-Escriba sintaxis similar a HTML dentro de JavaScript.
+Escribe sintaxis similar a HTML dentro de JavaScript.
 
 ```javascript
 // Elemento JSX
@@ -83,14 +83,14 @@ const greeting = <h1>Hola, {name}!</h1>
 const element = (
   <div>
     <h1>¡Bienvenido!</h1>
-    <p>Me alegra verte aquí.</p>
+    <p>Es bueno verte por aquí.</p>
   </div>
 )
 ```
 
 ### Exportación de Componentes: `export default` / `export`
 
-Exporte componentes para su uso en otros archivos.
+Exporta componentes para su uso en otros archivos.
 
 ```javascript
 // Exportación por defecto
@@ -104,7 +104,7 @@ export const Button = () => <button>Haz clic</button>
 
 ### Importación de Componentes: `import`
 
-Importe componentes desde otros archivos.
+Importa componentes desde otros archivos.
 
 ```javascript
 // Importar componente por defecto
@@ -122,7 +122,7 @@ import { Button as MyButton } from './Button'
 
 ### Fragmento: `<React.Fragment>` / `<>`
 
-Agrupe elementos sin añadir nodos DOM adicionales.
+Agrupa elementos sin añadir nodos DOM extra.
 
 ```javascript
 // Usando React.Fragment
@@ -146,7 +146,7 @@ return (
 
 ### Props: `props.name`
 
-Pase datos de componentes padre a hijo.
+Pasa datos de componentes padre a hijo.
 
 ```javascript
 // Recibiendo props
@@ -169,9 +169,24 @@ function Welcome({ name = 'Invitado' }) {
 }
 ```
 
+<BaseQuiz id="react-props-1" correct="B">
+  <template #question>
+    ¿Cómo pasas datos de un componente padre a un componente hijo en React?
+  </template>
+  
+  <BaseQuizOption value="A">Usando variables de estado</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Usando props</BaseQuizOption>
+  <BaseQuizOption value="C">Usando refs</BaseQuizOption>
+  <BaseQuizOption value="D">Usando la API de contexto</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Las props (abreviatura de propiedades) son la forma principal de pasar datos de componentes padre a hijo en React. Pasas las props como atributos al renderizar el componente hijo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### PropTypes: `Component.propTypes`
 
-Valide las props pasadas a los componentes (requiere el paquete prop-types).
+Valida las props pasadas a los componentes (requiere el paquete prop-types).
 
 ```javascript
 import PropTypes from 'prop-types'
@@ -196,7 +211,7 @@ Welcome.defaultProps = {
 
 ### Children: `props.children`
 
-Acceda al contenido pasado entre las etiquetas de apertura/cierre del componente.
+Accede al contenido pasado entre las etiquetas de apertura/cierre del componente.
 
 ```javascript
 // Componente que usa children
@@ -215,7 +230,7 @@ function Card({ children }) {
 
 ### Hook useState: `useState()`
 
-Añada estado a componentes funcionales.
+Añade estado a componentes funcionales.
 
 ```javascript
 import React, { useState } from 'react'
@@ -224,7 +239,7 @@ function Counter() {
   const [count, setCount] = useState(0)
   return (
     <div>
-      <p>Cuenta: {count}</p>
+      <p>Contador: {count}</p>
       <button onClick={() => setCount(count + 1)}>Incrementar</button>
     </div>
   )
@@ -237,9 +252,24 @@ function Form() {
 }
 ```
 
+<BaseQuiz id="react-usestate-1" correct="A">
+  <template #question>
+    ¿Qué devuelve `useState(0)`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Un array con el valor del estado y una función para actualizarlo</BaseQuizOption>
+  <BaseQuizOption value="B">Solo el valor del estado</BaseQuizOption>
+  <BaseQuizOption value="C">Una función para actualizar el estado</BaseQuizOption>
+  <BaseQuizOption value="D">Nada, solo establece el estado</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `useState` devuelve un array con dos elementos: el valor de estado actual y una función para actualizarlo. El valor inicial (0) se pasa como argumento.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Hook useEffect: `useEffect()`
 
-Realice efectos secundarios en componentes funcionales.
+Realiza efectos secundarios en componentes funcionales.
 
 ```javascript
 import React, { useState, useEffect } from 'react'
@@ -249,7 +279,7 @@ function Timer() {
 
   // El efecto se ejecuta después de cada renderizado
   useEffect(() => {
-    document.title = `Cuenta: ${count}`
+    document.title = `Contador: ${count}`
   })
 
   // Efecto con limpieza
@@ -260,9 +290,24 @@ function Timer() {
 }
 ```
 
+<BaseQuiz id="react-useeffect-1" correct="D">
+  <template #question>
+    ¿Qué significa el array de dependencias vacío `[]` en `useEffect(() => {...}, [])`?
+  </template>
+  
+  <BaseQuizOption value="A">El efecto se ejecuta en cada renderizado</BaseQuizOption>
+  <BaseQuizOption value="B">El efecto nunca se ejecuta</BaseQuizOption>
+  <BaseQuizOption value="C">El efecto se ejecuta dos veces</BaseQuizOption>
+  <BaseQuizOption value="D" correct>El efecto se ejecuta solo una vez después del renderizado inicial</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Un array de dependencias vacío significa que el efecto no tiene dependencias, por lo que solo se ejecutará una vez después de que el componente se monte. Esto es útil para código de configuración que solo debe ejecutarse una vez.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Estado de Clase: `this.state` / `setState()`
 
-Administre el estado en componentes de clase.
+Gestiona el estado en componentes de clase.
 
 ```javascript
 class Counter extends React.Component {
@@ -276,7 +321,7 @@ class Counter extends React.Component {
   render() {
     return (
       <div>
-        <p>Cuenta: {this.state.count}</p>
+        <p>Contador: {this.state.count}</p>
         <button onClick={this.increment}>Incrementar</button>
       </div>
     )
@@ -286,7 +331,7 @@ class Counter extends React.Component {
 
 ### Hooks Personalizados: `use...`
 
-Cree lógica de estado reutilizable.
+Crea lógica de estado reutilizable.
 
 ```javascript
 // Hook personalizado
@@ -303,7 +348,7 @@ function Counter() {
   const { count, increment, decrement, reset } = useCounter(0)
   return (
     <div>
-      <p>Cuenta: {count}</p>
+      <p>Contador: {count}</p>
       <button onClick={increment}>+</button>
       <button onClick={decrement}>-</button>
       <button onClick={reset}>Reiniciar</button>
@@ -314,9 +359,24 @@ function Counter() {
 
 ## Manejo de Eventos
 
+<BaseQuiz id="react-props-2" correct="A">
+  <template #question>
+    ¿Cuál es el propósito de PropTypes en React?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Validar los tipos de props pasadas a los componentes</BaseQuizOption>
+  <BaseQuizOption value="B">Mejorar el rendimiento de los componentes</BaseQuizOption>
+  <BaseQuizOption value="C">Estilizar componentes automáticamente</BaseQuizOption>
+  <BaseQuizOption value="D">Hacer que los componentes sean más rápidos</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PropTypes ayuda a detectar errores validando que los componentes reciben props del tipo correcto. Proporcionan verificación de tipos en tiempo de ejecución y son especialmente útiles durante el desarrollo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Eventos de Clic: `onClick`
 
-Maneje clics de botones e interacciones de elementos.
+Maneja clics de botones e interacciones de elementos.
 
 ```javascript
 function Button() {
@@ -342,7 +402,7 @@ function Button() {
 
 ### Eventos de Formulario: `onChange` / `onSubmit`
 
-Maneje las entradas y envíos de formularios.
+Maneja entradas de formulario y envíos.
 
 ```javascript
 function Form() {
@@ -370,7 +430,7 @@ function Form() {
 
 ### Objeto de Evento: `event.target` / `event.preventDefault()`
 
-Acceda a las propiedades del evento y controle el comportamiento predeterminado.
+Accede a las propiedades del evento y controla el comportamiento predeterminado.
 
 ```javascript
 function handleInput(event) {
@@ -401,7 +461,7 @@ function List() {
 
 ### Eventos de Teclado: `onKeyDown` / `onKeyUp`
 
-Responda a las interacciones del teclado.
+Responde a las interacciones del teclado.
 
 ```javascript
 function KeyboardHandler() {
@@ -422,14 +482,14 @@ function KeyboardHandler() {
 
 ### Operadores Condicionales: `&&` / `?:`
 
-Mostrar/ocultar elementos basados en condiciones.
+Muestra/oculta elementos basados en condiciones.
 
 ```javascript
 function Greeting({ user }) {
   return (
     <div>
       {user && <h1>Bienvenido, {user.name}!</h1>}
-      {!user && <h1>Por favor, inicie sesión</h1>}
+      {!user && <h1>Por favor, inicia sesión</h1>}
     </div>
   )
 }
@@ -442,7 +502,7 @@ function Status({ isOnline }) {
 
 ### Lógica If/Else: Declaraciones `if`
 
-Use lógica tradicional de JavaScript para condiciones complejas.
+Usa lógica tradicional de JavaScript para condiciones complejas.
 
 ```javascript
 function UserProfile({ user, isAdmin }) {
@@ -465,7 +525,7 @@ function Component({ data }) {
 
 ### Sentencias Switch: `switch`
 
-Maneje múltiples condiciones de manera eficiente.
+Maneja múltiples condiciones de manera eficiente.
 
 ```javascript
 function StatusIcon({ status }) {
@@ -484,7 +544,7 @@ function StatusIcon({ status }) {
 
 ### Estilos Dinámicos: CSS Condicional
 
-Aplique estilos basados en el estado o las props del componente.
+Aplica estilos basados en el estado o las props del componente.
 
 ```javascript
 function Button({ variant, disabled }) {
@@ -504,11 +564,11 @@ function Button({ variant, disabled }) {
 }
 ```
 
-## Renderizado de Listas y Claves
+## Renderizado de Listas y Claves (Keys)
 
 ### Función Map: `array.map()`
 
-Renderice listas de componentes a partir de datos de array.
+Renderiza listas de componentes a partir de datos de arrays.
 
 ```javascript
 function TodoList({ todos }) {
@@ -533,9 +593,9 @@ function ItemList({ items }) {
 }
 ```
 
-### Claves: Prop `key`
+### Claves (Keys): Prop `key`
 
-Proporcione identificadores únicos para los elementos de la lista para optimizar el renderizado.
+Proporciona identificadores únicos para los elementos de la lista para optimizar el renderizado.
 
 ```javascript
 // Bueno: usando ID único
@@ -563,9 +623,9 @@ function CommentList({ comments }) {
 }
 ```
 
-### Filtrar y Mapear: Métodos de Array
+### Filter y Map: Métodos de Array
 
-Procese arrays antes de renderizarlos.
+Procesa arrays antes de renderizarlos.
 
 ```javascript
 function TaskList({ tasks, showCompleted }) {
@@ -586,7 +646,7 @@ function TaskList({ tasks, showCompleted }) {
 
 ### Estados Vacíos: Manejo de arrays vacíos
 
-Muestre contenido apropiado cuando las listas estén vacías.
+Muestra contenido apropiado cuando las listas están vacías.
 
 ```javascript
 function ProductList({ products }) {
@@ -607,7 +667,7 @@ function ProductList({ products }) {
 
 ### React.memo: `React.memo()`
 
-Evite renderizados innecesarios de componentes funcionales.
+Previene renderizados innecesarios de componentes funcionales.
 
 ```javascript
 const ExpensiveComponent = React.memo(function ExpensiveComponent({ data }) {
@@ -627,7 +687,7 @@ const MyComponent = React.memo(
 
 ### Hook useMemo: `useMemo()`
 
-Memorice cálculos costosos.
+Memoriza cálculos costosos.
 
 ```javascript
 function ExpensiveList({ items, searchTerm }) {
@@ -648,7 +708,7 @@ function ExpensiveList({ items, searchTerm }) {
 
 ### Hook useCallback: `useCallback()`
 
-Memorice referencias de funciones para evitar renderizados innecesarios.
+Memoriza referencias de funciones para prevenir renderizados innecesarios.
 
 ```javascript
 function Parent({ items }) {
@@ -658,16 +718,16 @@ function Parent({ items }) {
   }, []) // Array de dependencias vacío
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>Cuenta: {count}</button>
+      <button onClick={() => setCount(count + 1)}>Contador: {count}</button>
       <ItemList items={items} onItemClick={handleItemClick} />
     </div>
   )
 }
 ```
 
-### Carga Diferida: `React.lazy()` / `Suspense`
+### Carga Diferida (Lazy Loading): `React.lazy()` / `Suspense`
 
-Cargue componentes solo cuando sea necesario para reducir el tamaño del paquete.
+Carga componentes solo cuando son necesarios para reducir el tamaño del paquete.
 
 ```javascript
 const LazyComponent = React.lazy(() => import('./LazyComponent'))
@@ -687,7 +747,7 @@ function App() {
 
 ### Props Hacia Abajo: Padre a Hijo
 
-Pase datos de componentes padre a componentes hijo.
+Pasa datos de componentes padre a componentes hijo.
 
 ```javascript
 function Parent() {
@@ -707,7 +767,7 @@ function ChildComponent({ user }) {
 
 ### Callbacks Hacia Arriba: Hijo a Padre
 
-Envíe datos de componentes hijo de vuelta a componentes padre.
+Envía datos de componentes hijo de vuelta a componentes padre.
 
 ```javascript
 function Parent() {
@@ -734,7 +794,7 @@ function Child({ onMessage }) {
 
 ### Context API: `createContext` / `useContext`
 
-Comparta estado a través de múltiples componentes sin "prop drilling".
+Comparte estado a través de múltiples componentes sin "prop drilling".
 
 ```javascript
 const UserContext = React.createContext()
@@ -757,7 +817,7 @@ function Header() {
 
 ### Refs: `useRef` / `forwardRef`
 
-Acceda a elementos DOM o almacene valores mutables.
+Accede a elementos DOM o almacena valores mutables.
 
 ```javascript
 function TextInput() {
@@ -783,7 +843,7 @@ const FancyInput = forwardRef((props, ref) => (
 
 ### React DevTools: Extensión del Navegador
 
-Depure componentes de React e inspeccione el árbol de componentes.
+Depura componentes de React e inspecciona el árbol de componentes.
 
 ```javascript
 // Instalar la extensión del navegador React DevTools
@@ -798,9 +858,9 @@ function MyComponent(props) {
 }
 ```
 
-### Límites de Error: `componentDidCatch`
+### Límites de Error (Error Boundaries): `componentDidCatch`
 
-Capture errores de JavaScript en el árbol de componentes y muestre una UI de reserva.
+Captura errores de JavaScript en el árbol de componentes y muestra una UI de respaldo.
 
 ```javascript
 class ErrorBoundary extends React.Component {
@@ -823,9 +883,9 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-### Modo Estricto: `React.StrictMode`
+### Strict Mode: `React.StrictMode`
 
-Habilite verificaciones y advertencias adicionales para el desarrollo.
+Habilita verificaciones y advertencias adicionales para el desarrollo.
 
 ```javascript
 import React from 'react'
@@ -839,13 +899,13 @@ ReactDOM.render(
 )
 ```
 
-### Perfilado: Medición de rendimiento
+### Perfilado (Profiling): Medición de rendimiento
 
-Mida el rendimiento del componente e identifique cuellos de botella.
+Mide el rendimiento de los componentes e identifica cuellos de botella.
 
 ```javascript
 // Usando el Profiler de React DevTools
-// Envuelva componentes para perfilar
+// Envuelve componentes para perfilar
 import { Profiler } from 'react'
 
 function onRenderCallback(id, phase, actualDuration) {
@@ -861,7 +921,7 @@ function onRenderCallback(id, phase, actualDuration) {
 
 ### Create React App: `npx create-react-app`
 
-Inicie rápidamente un nuevo proyecto de React.
+Crea rápidamente un nuevo proyecto React.
 
 ```bash
 # Crear nueva app de React
@@ -880,7 +940,7 @@ npm test
 
 ### Vite: `npm create vite@latest`
 
-Herramienta de compilación rápida y servidor de desarrollo para proyectos de React.
+Herramienta de compilación rápida y servidor de desarrollo para proyectos React.
 
 ```bash
 # Crear nueva app de Vite React
@@ -897,7 +957,7 @@ npm run build
 
 ### Configuración Manual / Importación
 
-Añada React a un proyecto existente o use CDN.
+Añade React a un proyecto existente o usa CDN.
 
 ```bash
 # Instalar React y ReactDOM
@@ -912,7 +972,7 @@ npm install --save-dev @vitejs/plugin-react
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-// Renderizar a DOM
+// Renderizar en el DOM
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(<App />)
 ```
@@ -921,7 +981,7 @@ root.render(<App />)
 
 ### Componentes de Orden Superior (HOC)
 
-Reutilice la lógica de componentes envolviendo componentes.
+Reutiliza la lógica de componentes envolviendo componentes.
 
 ```javascript
 function withLoading(WrappedComponent) {
@@ -940,7 +1000,7 @@ const UserListWithLoading = withLoading(UserList)
 
 ### Patrón Render Props
 
-Comparta código entre componentes usando una prop cuyo valor es una función.
+Comparte código entre componentes usando una prop cuyo valor es una función.
 
 ```javascript
 function DataFetcher({ render, url }) {
@@ -968,7 +1028,7 @@ function DataFetcher({ render, url }) {
 
 ### Componentes Compuestos
 
-Cree componentes que trabajan juntos como una unidad cohesiva.
+Crea componentes que trabajan juntos como una unidad cohesiva.
 
 ```javascript
 function Tabs({ children, activeTab }) {
@@ -987,14 +1047,14 @@ function Tab({ children, isActive }) {
 
 // Uso
 ;<Tabs activeTab={0}>
-  <Tab>Contenido de la Pestaña 1</Tab>
-  <Tab>Contenido de la Pestaña 2</Tab>
+  <Tab>Contenido de Pestaña 1</Tab>
+  <Tab>Contenido de Pestaña 2</Tab>
 </Tabs>
 ```
 
 ### Portal: `ReactDOM.createPortal()`
 
-Renderice hijos en un nodo DOM fuera de la jerarquía del componente padre.
+Renderiza hijos en un nodo DOM fuera de la jerarquía del componente padre.
 
 ```javascript
 import ReactDOM from 'react-dom'
@@ -1012,7 +1072,7 @@ function Modal({ children, isOpen }) {
 
 ### Composición sobre Herencia
 
-Use patrones de composición en lugar de extender clases.
+Usa patrones de composición en lugar de extender clases.
 
 ```javascript
 // Bueno: Composición
@@ -1036,7 +1096,7 @@ function IconButton({ icon, children, ...props }) {
 
 ### Patrones de Componentes: APIs Flexibles
 
-Diseñe APIs de componentes que sean flexibles y fáciles de usar.
+Diseña APIs de componentes que sean flexibles y fáciles de usar.
 
 ```javascript
 // Componente Card Flexible

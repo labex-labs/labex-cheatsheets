@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по веб-разработке'
-description: 'Изучите веб-разработку с нашей комплексной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по веб-разработке | LabEx'
+description: 'Изучите веб-разработку с помощью этой комплексной шпаргалки. Краткий справочник по HTML, CSS, JavaScript, API, адаптивному дизайну, оптимизации производительности и основам full-stack разработки.'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 
@@ -64,6 +64,21 @@ pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
   <p>© 2024 My Website</p>
 </footer>
 ```
+
+<BaseQuiz id="webdev-semantic-1" correct="B">
+  <template #question>
+    Каково основное преимущество использования семантических элементов HTML, таких как `header`, `main` и `footer`?
+  </template>
+  
+  <BaseQuizOption value="A">Они заставляют страницу загружаться быстрее</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Они улучшают доступность (accessibility) и SEO, предоставляя смысл структуре</BaseQuizOption>
+  <BaseQuizOption value="C">Они автоматически стилизуют страницу</BaseQuizOption>
+  <BaseQuizOption value="D">Они необходимы для работы JavaScript</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Семантические элементы HTML придают смысл структуре документа, что облегчает понимание организации контента для программ чтения с экрана, поисковых систем и разработчиков. Это улучшает доступность и SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Текстовые элементы: `<h1>` до `<h6>` / `<p>`
 
@@ -142,7 +157,7 @@ pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 </table>
 ```
 
-## Формы и пользовательский ввод
+## Формы и ввод данных пользователем
 
 ### Структура формы: `<form>`
 
@@ -175,7 +190,7 @@ pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 <input type="file" accept=".jpg,.png" />
 ```
 
-### Элементы управления формы: `<select>` / `<textarea>`
+### Элементы управления формой: `<select>` / `<textarea>`
 
 Предоставьте пользователям различные способы ввода информации.
 
@@ -246,6 +261,21 @@ h1 {
 }
 ```
 
+<BaseQuiz id="webdev-boxmodel-1" correct="B">
+  <template #question>
+    В чем разница между `margin` и `padding` в CSS?
+  </template>
+  
+  <BaseQuizOption value="A">Разницы нет</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Margin — это пространство снаружи элемента, padding — это пространство внутри элемента</BaseQuizOption>
+  <BaseQuizOption value="C">Margin используется для горизонтального расстояния, padding — для вертикального</BaseQuizOption>
+  <BaseQuizOption value="D">Margin используется для границ, padding — для контента</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Margin создает пространство за пределами границы элемента (между элементами), в то время как padding создает пространство внутри элемента между контентом и границей. Оба влияют на расстояние, но в разных областях.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Flexbox: `display: flex`
 
 Легко создавайте гибкие и адаптивные макеты.
@@ -268,6 +298,21 @@ h1 {
   flex-direction: column;
 }
 ```
+
+<BaseQuiz id="webdev-flexbox-1" correct="A">
+  <template #question>
+    Что делает `justify-content: center` во Flexbox?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Центрирует flex-элементы вдоль главной оси (по умолчанию по горизонтали)</BaseQuizOption>
+  <BaseQuizOption value="B">Центрирует элементы по вертикали</BaseQuizOption>
+  <BaseQuizOption value="C">Равномерно распределяет элементы</BaseQuizOption>
+  <BaseQuizOption value="D">Растягивает элементы, чтобы заполнить пространство</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `justify-content` управляет выравниванием вдоль главной оси (по умолчанию горизонтальной). `center` центрирует все flex-элементы в контейнере. Используйте `align-items` для управления выравниванием по поперечной оси (вертикальной).
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Сетка (Grid Layout): `display: grid`
 
@@ -295,7 +340,7 @@ h1 {
 }
 ```
 
-## Основы JavaScript и программирования
+## Основы JavaScript и фундаментальные принципы программирования
 
 ### Переменные: `let` / `const` / `var`
 
@@ -397,7 +442,7 @@ const evens = numbers.filter((num) => num % 2 === 0)
 const sum = numbers.reduce((total, num) => total + num, 0)
 ```
 
-## Манипулирование DOM и события
+## Манипуляции с DOM и события
 
 ### Выбор элементов: `querySelector` / `getElementById`
 
@@ -421,7 +466,7 @@ if (button) {
 
 ### Изменение контента: `innerHTML` / `textContent`
 
-Изменяйте контент и атрибуты HTML-элементов.
+Изменяйте содержимое и атрибуты HTML-элементов.
 
 ```javascript
 // Change text content
@@ -513,7 +558,7 @@ img {
 
 ### Медиа-запросы: `@media`
 
-Применяйте различные стили в зависимости от размера экрана и возможностей устройства.
+Применяйте разные стили в зависимости от размера экрана и возможностей устройства.
 
 ```css
 /* Mobile first approach */
@@ -591,7 +636,7 @@ h1 {
 
 ## Отладка и инструменты разработчика браузера
 
-### Методы консоли: `console.log()` / `console.error()`
+### Методы Console: `console.log()` / `console.error()`
 
 Отлаживайте и отслеживайте свой код с помощью вывода в консоль.
 
@@ -612,9 +657,9 @@ console.log('Email:', user.email)
 console.groupEnd()
 ```
 
-### Методы отладки: `debugger` / Точки останова
+### Методы отладки: `debugger` / Точки останова (Breakpoints)
 
-Приостанавливайте выполнение кода для проверки переменных и состояния программы.
+Приостановите выполнение кода для проверки переменных и состояния программы.
 
 ```javascript
 function calculateTotal(items) {
@@ -664,7 +709,7 @@ console.timeEnd('operation')
 
 ### Типы ошибок: `TypeError` / `ReferenceError`
 
-Понимайте распространенные ошибки JavaScript и способы их исправления.
+Поймите распространенные ошибки JavaScript и способы их исправления.
 
 ## Соответствующие ссылки
 

@@ -1,6 +1,6 @@
 ---
-title: 'scikit-learn 速查表'
-description: '使用我们全面的速查表学习 scikit-learn，涵盖核心命令、概念和最佳实践。'
+title: 'scikit-learn 速查表 | LabEx'
+description: '使用这份全面的速查表学习 scikit-learn 机器学习。快速参考 ML 算法、模型训练、预处理、评估和 Python 机器学习工作流程。'
 pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 
@@ -105,9 +105,24 @@ train_test_split(X_temp, y_temp,
 test_size=0.5, random_state=42)
 ```
 
+<BaseQuiz id="sklearn-split-1" correct="B">
+  <template #question>
+    为什么将数据划分为训练集和测试集很重要？
+  </template>
+  
+  <BaseQuizOption value="A">为了减小数据集大小</BaseQuizOption>
+  <BaseQuizOption value="B" correct>为了在未见过的数据上评估模型性能并防止过拟合</BaseQuizOption>
+  <BaseQuizOption value="C">为了加快模型训练速度</BaseQuizOption>
+  <BaseQuizOption value="D">为了平衡数据集</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    数据划分允许您在一部分数据上训练模型，在另一部分数据上进行测试。这有助于评估模型泛化到新、未见过数据的能力，并防止模型过拟合训练数据。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 特征缩放：`StandardScaler()` / `MinMaxScaler()`
 
-将特征标准化到相似的尺度。
+将特征归一化到相似的尺度。
 
 ```python
 # 标准化 (均值=0, 标准差=1)
@@ -125,6 +140,21 @@ minmax_scaler.fit_transform(X_train)
 X_test_minmax =
 minmax_scaler.transform(X_test)
 ```
+
+<BaseQuiz id="sklearn-scaling-1" correct="A">
+  <template #question>
+    为什么特征缩放在机器学习中很重要？
+  </template>
+  
+  <BaseQuizOption value="A" correct>它确保所有特征处于相似的尺度，防止某些特征占据主导地位</BaseQuizOption>
+  <BaseQuizOption value="B">它会移除缺失值</BaseQuizOption>
+  <BaseQuizOption value="C">它会增加特征的数量</BaseQuizOption>
+  <BaseQuizOption value="D">它会移除重复的行</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    特征缩放很重要，因为像 SVM、KNN 和神经网络这样的算法对特征尺度很敏感。如果没有缩放，范围较大的特征可能会主导模型的学习过程。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 编码：`LabelEncoder()` / `OneHotEncoder()`
 
@@ -154,7 +184,7 @@ encoder.get_feature_names_out()
 
 ### 逻辑回归：`LogisticRegression()`
 
-用于二分类和多分类的线性模型。
+用于二元和多类别分类的线性模型。
 
 ```python
 # 基本逻辑回归
@@ -208,6 +238,21 @@ rf_clf = RandomForestClassifier(
 )
 ```
 
+<BaseQuiz id="sklearn-randomforest-1" correct="A">
+  <template #question>
+    `RandomForestClassifier` 中的 `n_estimators` 控制什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>森林中决策树的数量</BaseQuizOption>
+  <BaseQuizOption value="B">每棵树的最大深度</BaseQuizOption>
+  <BaseQuizOption value="C">要考虑的特征数量</BaseQuizOption>
+  <BaseQuizOption value="D">随机种子</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `n_estimators` 指定随机森林中包含多少棵决策树。更多的树通常会提高性能，但会增加计算时间。默认值通常是 100。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 支持向量机：`SVC()`
 
 使用核方法的强大分类器。
@@ -253,7 +298,7 @@ from sklearn.linear_model import Ridge
 ridge_reg = Ridge(alpha=1.0)
 ridge_reg.fit(X_train, y_train)
 y_pred = ridge_reg.predict(X_test)
-# Alpha 选择的交叉验证
+# 使用交叉验证选择 alpha
 from sklearn.linear_model import RidgeCV
 ridge_cv = RidgeCV(alphas=[0.1, 1.0, 10.0])
 ridge_cv.fit(X_train, y_train)
@@ -271,7 +316,7 @@ lasso_reg.fit(X_train, y_train)
 y_pred = lasso_reg.predict(X_test)
 # 特征选择 (非零系数)
 selected_features = X.columns[lasso_reg.coef_ != 0]
-print(f"选择的特征数：{len(selected_features)}")
+print(f"选择的特征数量：{len(selected_features)}")
 ```
 
 ### 随机森林回归：`RandomForestRegressor()`
@@ -399,12 +444,12 @@ from sklearn.decomposition import PCA
 pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X)
 explained_variance = pca.explained_variance_ratio_
-# 查找最佳成分数量
+# 查找最佳分量数
 pca_full = PCA()
 pca_full.fit(X)
 cumsum =
 np.cumsum(pca_full.explained_variance_ratio_)
-# 查找解释 95% 方差的成分数
+# 查找解释 95% 方差的分量数
 n_components = np.argmax(cumsum >= 0.95) + 1
 ```
 
@@ -466,7 +511,7 @@ best_params = grid_search.best_params_
 
 ### 随机搜索：`RandomizedSearchCV()`
 
-从参数分布中随机抽样。
+从参数分布中随机采样。
 
 ```python
 # 随机搜索 (对于大型参数空间更快)
@@ -553,7 +598,7 @@ bagging_clf.fit(X_train, y_train)
 
 ### 梯度提升：`GradientBoostingClassifier()`
 
-具有误差修正的顺序集成方法。
+带有误差修正的顺序集成方法。
 
 ```python
 # 梯度提升分类器
@@ -609,7 +654,7 @@ y_pred = loaded_model.predict(X_test)
 joblib.dump(pipeline, 'preprocessing_pipeline.pkl')
 loaded_pipeline =
 joblib.load('preprocessing_pipeline.pkl')
-# 使用 pickle 替代方案
+# 使用 pickle
 import pickle
 with open('model.pkl', 'wb') as f:
     pickle.dump(model, f)
@@ -663,7 +708,7 @@ plt.ylabel('分数')
 
 ### 特征重要性可视化
 
-了解哪些特征驱动模型预测。
+了解哪些特征驱动了模型预测。
 
 ```python
 # 绘制特征重要性
@@ -740,7 +785,7 @@ RandomForestClassifier(n_jobs=
 grid_search =
 GridSearchCV(model,
 param_grid, n_jobs=-1)
-# 对于大型数据集，在可用时使用
+# 对于大型数据集，如果可用，使用
 partial_fit
 from sklearn.linear_model
 import SGDClassifier
@@ -753,7 +798,7 @@ chunk_y)
 
 ### 警告与调试
 
-处理常见问题和调试模型。
+处理常见问题并调试模型。
 
 ```python
 # 抑制警告 (谨慎使用)
@@ -761,7 +806,8 @@ import warnings
 warnings.filterwarnings('ignore')
 # 启用 sklearn 的 set_config 以获得更好的调试效果
 from sklearn import set_config
-set_config(display='diagram')  # 在 Jupyter 中增强显示
+set_config(display='diagram')  #
+在 Jupyter 中增强显示
 # 检查数据泄露
 from sklearn.model_selection
 import cross_val_score

@@ -1,6 +1,6 @@
 ---
-title: 'MySQL チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的な MySQL チートシートで MySQL を学習しましょう。'
+title: 'MySQL チートシート | LabEx'
+description: 'この包括的なチートシートで MySQL データベース管理を学習。SQL クエリ、結合、インデックス、トランザクション、ストアドプロシージャ、データベース管理のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/mysql-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ MySQL チートシート
 <a target="_blank" href="https://labex.io/ja/learn/mysql">ハンズオンラボで MySQL を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて MySQL データベース管理を学びます。LabEx は、必須の SQL 操作、データベース管理、パフォーマンス最適化、高度なクエリ技術を網羅した包括的な MySQL コースを提供します。世界で最も人気のあるリレーショナルデータベースシステムを習得しましょう。
+ハンズオンラボと実世界のシナリオを通じて、MySQL データベース管理を学びます。LabEx は、必須の SQL 操作、データベース管理、パフォーマンス最適化、高度なクエリ技術を網羅した包括的な MySQL コースを提供します。世界で最も人気のあるリレーショナルデータベースシステムの一つを習得しましょう。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -51,6 +51,21 @@ USE company_db;
 DROP DATABASE old_database;
 ```
 
+<BaseQuiz id="mysql-database-1" correct="C">
+  <template #question>
+    `USE database_name`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">新しいデータベースを作成する</BaseQuizOption>
+  <BaseQuizOption value="B">データベースを削除する</BaseQuizOption>
+  <BaseQuizOption value="C" correct>後続の操作のためにデータベースを選択する</BaseQuizOption>
+  <BaseQuizOption value="D">データベース内のすべてのテーブルを表示する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `USE` ステートメントはデータベースを選択し、後続のすべての SQL ステートメントのアクティブなデータベースにします。これは、`mysql -u user -p database_name`で接続する際にデータベースを選択するのと同じです。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### データの書き出し：`mysqldump`
 
 データベースデータを SQL ファイルにバックアップします。
@@ -71,7 +86,7 @@ mysqldump -u username -p --routines --triggers database_name > backup.sql
 SQL ファイルを MySQL データベースにインポートします。
 
 ```bash
-# SQL ファイルをデータベースにインポート
+# SQLファイルをデータベースにインポート
 mysql -u username -p database_name < backup.sql
 # データベースを指定せずにインポート（ファイル内に含まれている場合）
 mysql -u username -p < full_backup.sql
@@ -107,7 +122,7 @@ SHOW PROCESSLIST;
 
 ## テーブル構造とスキーマ
 
-### テーブル作成：`CREATE TABLE`
+### テーブルの作成：`CREATE TABLE`
 
 指定された列とデータ型で新しいテーブルを作成します。
 
@@ -129,7 +144,7 @@ CREATE TABLE orders (
 );
 ```
 
-### テーブル情報：`DESCRIBE` / `SHOW`
+### テーブル情報の表示：`DESCRIBE` / `SHOW`
 
 テーブル構造とデータベースの内容を表示します。
 
@@ -140,7 +155,7 @@ DESCRIBE users;
 SHOW COLUMNS FROM users;
 # すべてのテーブルを一覧表示
 SHOW TABLES;
-# テーブルの CREATE ステートメントを表示
+# テーブルのCREATE文を表示
 SHOW CREATE TABLE users;
 ```
 
@@ -177,6 +192,21 @@ INSERT INTO users (username, email, age) VALUES
 INSERT INTO users_backup SELECT * FROM users;
 ```
 
+<BaseQuiz id="mysql-insert-1" correct="A">
+  <template #question>
+    単一レコードを挿入する正しい構文は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    正しい構文は`INSERT INTO table_name (columns) VALUES (values)`です。`INTO` キーワードが必要であり、列名と対応する値の両方を指定する必要があります。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### データの更新：`UPDATE`
 
 テーブル内の既存のレコードを変更します。
@@ -184,7 +214,7 @@ INSERT INTO users_backup SELECT * FROM users;
 ```sql
 # 特定のレコードを更新
 UPDATE users SET age = 26 WHERE username = 'john_doe';
-# 複数列を更新
+# 複数の列を更新
 UPDATE users SET age = 31, email = 'alice_new@email.com'
 WHERE username = 'alice';
 # 計算による更新
@@ -200,9 +230,9 @@ UPDATE products SET price = price * 1.1 WHERE category = 'electronics';
 DELETE FROM users WHERE age < 18;
 # すべてのレコードを削除（構造は保持）
 DELETE FROM users;
-# すべてのレコードを削除（高速、AUTO_INCREMENT をリセット）
+# すべてのレコードを削除（高速、AUTO_INCREMENTをリセット）
 TRUNCATE TABLE users;
-# JOIN を使用した削除
+# JOINを使用した削除
 DELETE u FROM users u
 JOIN inactive_accounts i ON u.id = i.user_id;
 ```
@@ -215,7 +245,7 @@ JOIN inactive_accounts i ON u.id = i.user_id;
 # 既存のものを置換または新規挿入
 REPLACE INTO users (id, username, email)
 VALUES (1, 'updated_user', 'new@email.com');
-# 重複キーの場合は挿入または更新
+# 重複キーの場合に挿入または更新
 INSERT INTO users (username, email)
 VALUES ('john', 'john@email.com')
 ON DUPLICATE KEY UPDATE email = VALUES(email);
@@ -232,11 +262,26 @@ ON DUPLICATE KEY UPDATE email = VALUES(email);
 SELECT * FROM users;
 # 特定の列を選択
 SELECT username, email FROM users;
-# WHERE 条件付きで選択
+# WHERE条件付きで選択
 SELECT * FROM users WHERE age > 25;
-# 複数条件付きで選択
+# 複数の条件付きで選択
 SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 ```
+
+<BaseQuiz id="mysql-select-1" correct="D">
+  <template #question>
+    `SELECT * FROM users`は何を返しますか？
+  </template>
+  
+  <BaseQuizOption value="A">users テーブルの最初の行のみ</BaseQuizOption>
+  <BaseQuizOption value="B">username 列のみ</BaseQuizOption>
+  <BaseQuizOption value="C">テーブル構造</BaseQuizOption>
+  <BaseQuizOption value="D" correct>users テーブルのすべての列とすべての行</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `*` ワイルドカードはすべての列を選択し、WHERE 句がない場合、すべての行を返します。これはすべてのデータを表示するのに役立ちますが、大きなテーブルでは注意が必要です。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### ソートと制限：`ORDER BY` / `LIMIT`
 
@@ -245,11 +290,11 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 ```sql
 # 結果をソート
 SELECT * FROM users ORDER BY age DESC;
-# 複数列でソート
+# 複数の列でソート
 SELECT * FROM users ORDER BY age DESC, username ASC;
 # 結果を制限
 SELECT * FROM users LIMIT 10;
-# ページネーション（最初の 10 件をスキップし、次の 10 件を取得）
+# ページネーション（最初の10件をスキップし、次の10件を取得）
 SELECT * FROM users LIMIT 10 OFFSET 10;
 ```
 
@@ -264,7 +309,7 @@ SELECT * FROM users WHERE username LIKE 'john%';
 SELECT * FROM users WHERE age IN (25, 30, 35);
 # 範囲フィルタリング
 SELECT * FROM users WHERE age BETWEEN 20 AND 30;
-# NULL チェック
+# NULLチェック
 SELECT * FROM users WHERE email IS NOT NULL;
 ```
 
@@ -278,7 +323,7 @@ SELECT age, COUNT(*) FROM users GROUP BY age;
 # グループに対する条件付き
 SELECT age, COUNT(*) as count FROM users
 GROUP BY age HAVING count > 1;
-# 複数グループ化列
+# 複数のグループ化列
 SELECT age, gender, COUNT(*) FROM users
 GROUP BY age, gender;
 ```
@@ -305,18 +350,33 @@ JOIN orders o ON u.id = o.user_id
 JOIN products p ON o.product_id = p.id;
 ```
 
-### サブクエリ：`SELECT` 内の `SELECT`
+<BaseQuiz id="mysql-join-1" correct="B">
+  <template #question>
+    INNER JOIN と LEFT JOIN の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはない</BaseQuizOption>
+  <BaseQuizOption value="B" correct>INNER JOIN は一致する行のみを返し、LEFT JOIN は左側のテーブルのすべての行を返します</BaseQuizOption>
+  <BaseQuizOption value="C">INNER JOIN の方が高速である</BaseQuizOption>
+  <BaseQuizOption value="D">LEFT JOIN は 2 つのテーブルでのみ機能する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    INNER JOIN は両方のテーブルに一致がある行のみを返します。LEFT JOIN は左側のテーブルのすべての行と、右側のテーブルの一致する行を返し、一致しない場合は NULL 値を返します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### サブクエリ：`SELECT` within `SELECT`
 
 複雑なデータ取得のためにネストされたクエリを使用します。
 
 ```sql
-# WHERE 句内のサブクエリ
+# WHERE句内のサブクエリ
 SELECT * FROM users
 WHERE id IN (SELECT user_id FROM orders WHERE total > 100);
 # 相関サブクエリ
 SELECT username FROM users u1
 WHERE age > (SELECT AVG(age) FROM users u2);
-# SELECT 句内のサブクエリ
+# SELECT句内のサブクエリ
 SELECT username,
 (SELECT COUNT(*) FROM orders WHERE user_id = users.id) as order_count
 FROM users;
@@ -324,7 +384,7 @@ FROM users;
 
 ### 集計関数：`COUNT` / `SUM` / `AVG`
 
-データから統計情報と要約を計算します。
+データから統計や要約を計算します。
 
 ```sql
 # 基本的な集計
@@ -334,7 +394,7 @@ SELECT SUM(total) FROM orders;
 # グループ化を伴う集計
 SELECT department, AVG(salary)
 FROM employees GROUP BY department;
-# 複数集計
+# 複数の集計
 SELECT
     COUNT(*) as total_users,
     AVG(age) as avg_age,
@@ -368,13 +428,13 @@ FROM orders;
 データベースインデックスを使用してクエリパフォーマンスを向上させます。
 
 ```sql
-# 通常のインデックスの作成
+# 通常のインデックスを作成
 CREATE INDEX idx_username ON users(username);
-# 複合インデックスの作成
+# 複合インデックスを作成
 CREATE INDEX idx_user_age ON users(username, age);
-# ユニークインデックスの作成
+# ユニークインデックスを作成
 CREATE UNIQUE INDEX idx_email ON users(email);
-# テーブル上のインデックスを表示
+# テーブルのインデックスを表示
 SHOW INDEXES FROM users;
 ```
 
@@ -385,10 +445,10 @@ SHOW INDEXES FROM users;
 ```sql
 # クエリ実行計画を表示
 EXPLAIN SELECT * FROM users WHERE age > 25;
-# 詳細分析
+# 詳細な分析
 EXPLAIN FORMAT=JSON SELECT u.*, o.total
 FROM users u JOIN orders o ON u.id = o.user_id;
-# クエリパフォーマンスの表示
+# クエリパフォーマンスを表示
 SHOW PROFILES;
 SET profiling = 1;
 ```
@@ -398,13 +458,13 @@ SET profiling = 1;
 効率的な SQL クエリを作成するためのテクニック。
 
 ```sql
-# * ではなく特定の列を使用
+# *ではなく特定の列を使用する
 SELECT username, email FROM users WHERE id = 1;
-# 大規模データセットには LIMIT を使用
+# 大規模データセットにはLIMITを使用する
 SELECT * FROM logs ORDER BY created_at DESC LIMIT 1000;
-# 適切な WHERE 条件を使用
+# 適切なWHERE条件を使用する
 SELECT * FROM orders WHERE user_id = 123 AND status = 'pending';
--- カバーリングインデックスを可能な限り使用
+-- カバリングインデックスを可能な限り使用する
 ```
 
 ### テーブルメンテナンス：`OPTIMIZE` / `ANALYZE`
@@ -412,9 +472,9 @@ SELECT * FROM orders WHERE user_id = 123 AND status = 'pending';
 テーブルのパフォーマンスと統計情報を維持します。
 
 ```sql
-# テーブルストレージの最適化
+# テーブルストレージを最適化
 OPTIMIZE TABLE users;
-# テーブル統計の更新
+# テーブル統計を更新
 ANALYZE TABLE users;
 # テーブルの整合性をチェック
 CHECK TABLE users;
@@ -422,21 +482,21 @@ CHECK TABLE users;
 REPAIR TABLE users;
 ```
 
-## データのエクスポート/インポート
+## データインポート/エクスポート
 
 ### データのロード：`LOAD DATA INFILE`
 
-CSV およびテキストファイルからデータをインポートします。
+CSV ファイルやテキストファイルからデータをインポートします。
 
 ```sql
-# CSV ファイルのロード
+# CSVファイルをロード
 LOAD DATA INFILE '/path/to/data.csv'
 INTO TABLE users
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
-# 特定の列へのロード
+# 特定の列をロード
 LOAD DATA INFILE '/path/to/data.csv'
 INTO TABLE users (username, email, age);
 ```
@@ -446,7 +506,7 @@ INTO TABLE users (username, email, age);
 クエリ結果をファイルにエクスポートします。
 
 ```sql
-# CSV ファイルへのエクスポート
+# CSVファイルにエクスポート
 SELECT username, email, age
 FROM users
 INTO OUTFILE '/path/to/export.csv'
@@ -460,13 +520,13 @@ LINES TERMINATED BY '\n';
 データベースバックアップの作成と復元を行います。
 
 ```bash
-# 特定のテーブルのバックアップ
+# 特定のテーブルをバックアップ
 mysqldump -u username -p database_name table1 table2 > tables_backup.sql
-# バックアップからの復元
+# バックアップから復元
 mysql -u username -p database_name < backup.sql
-# リモートサーバーからのエクスポート
+# リモートサーバーからエクスポート
 mysqldump -h remote_host -u username -p database_name > remote_backup.sql
-# ローカルデータベースへのインポート
+# ローカルデータベースにインポート
 mysql -u local_user -p local_database < remote_backup.sql
 # サーバー間での直接データコピー
 mysqldump -h source_host -u user -p db_name | mysql -h dest_host -u user -p db_name
@@ -476,7 +536,7 @@ mysqldump -h source_host -u user -p db_name | mysql -h dest_host -u user -p db_n
 
 ### 一般的なデータ型：数値、テキスト、日付
 
-列に対して適切なデータ型を選択します。
+列に適切なデータ型を選択します。
 
 ```sql
 # 数値型
@@ -499,7 +559,7 @@ CREATE TABLE products (
 
 ### 文字列関数：`CONCAT` / `SUBSTRING` / `LENGTH`
 
-組み込みの文字列関数を使用してテキストデータを操作します。
+組み込みの文字列関数でテキストデータを操作します。
 
 ```sql
 # 文字列の連結
@@ -521,7 +581,7 @@ SELECT NOW(), CURDATE(), CURTIME();
 # 日付の算術演算
 SELECT DATE_ADD(created_at, INTERVAL 30 DAY) as expiry_date FROM users;
 SELECT DATEDIFF(NOW(), created_at) as days_since_signup FROM users;
-# 日付の書式設定
+# 日付のフォーマット
 SELECT DATE_FORMAT(created_at, '%Y-%m-%d %H:%i') as formatted_date FROM orders;
 ```
 
@@ -534,7 +594,7 @@ SELECT DATE_FORMAT(created_at, '%Y-%m-%d %H:%i') as formatted_date FROM orders;
 SELECT ROUND(price, 2), ABS(profit_loss), SQRT(area) FROM products;
 # ランダムと統計
 SELECT RAND(), FLOOR(price), CEIL(rating) FROM products;
-# 集計計算
+# 数値集計
 SELECT AVG(price), STDDEV(price), VARIANCE(price) FROM products;
 ```
 
@@ -554,7 +614,7 @@ UPDATE accounts SET balance = balance - 100 WHERE id = 1;
 UPDATE accounts SET balance = balance + 100 WHERE id = 2;
 # 変更をコミット
 COMMIT;
-# またはエラー時のロールバック
+# またはエラーの場合にロールバック
 ROLLBACK;
 ```
 
@@ -567,7 +627,7 @@ ROLLBACK;
 SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-# 現在の分離レベルの表示
+# 現在の分離レベルを表示
 SELECT @@transaction_isolation;
 ```
 
@@ -610,7 +670,7 @@ COMMIT;
 複雑なクエリのために一時的な結果セットを作成します。
 
 ```sql
-# シンプルな CTE
+# シンプルなCTE
 WITH user_orders AS (
     SELECT user_id, COUNT(*) as order_count,
            SUM(total) as total_spent
@@ -655,7 +715,7 @@ BEGIN
     INSERT INTO user_audit (user_id, old_email, new_email, changed_at)
     VALUES (NEW.id, OLD.email, NEW.email, NOW());
 END;
-# トリガーの表示
+# トリガーを表示
 SHOW TRIGGERS;
 ```
 
@@ -687,9 +747,9 @@ sudo apt update
 sudo apt install mysql-server
 # CentOS/RHEL
 sudo yum install mysql-server
-# macOS (Homebrew)
+# macOS (Homebrew使用)
 brew install mysql
-# MySQL サービスを開始
+# MySQLサービスを開始
 sudo systemctl start mysql
 ```
 
@@ -698,9 +758,9 @@ sudo systemctl start mysql
 開発用に MySQL を Docker コンテナで実行します。
 
 ```bash
-# MySQL コンテナの実行
+# MySQLコンテナの実行
 docker run --name mysql-dev -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql:8.0
-# コンテナ化された MySQL に接続
+# コンテナ化されたMySQLに接続
 docker exec -it mysql-dev mysql -u root -p
 # コンテナ内でデータベースを作成
 docker exec -it mysql-dev mysql -u root -p -e "CREATE DATABASE testdb;"
@@ -713,21 +773,21 @@ MySQL のインストールを保護し、セットアップを確認します�
 ```bash
 # セキュリティスクリプトの実行
 sudo mysql_secure_installation
-# MySQL に接続
+# MySQLに接続
 mysql -u root -p
-# MySQL のバージョンを表示
+# MySQLのバージョンを表示
 SELECT VERSION();
 # 接続ステータスを確認
 STATUS;
-# root パスワードを設定
+# rootパスワードを設定
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 ```
 
-## 設定とオプション
+## 設定と設定
 
 ### 設定ファイル：`my.cnf`
 
-MySQL サーバーの設定を変更します。
+MySQL サーバーの設定設定を変更します。
 
 ```ini
 # 一般的な設定場所
@@ -745,13 +805,13 @@ long_query_time = 2
 
 ### 実行時設定：`SET GLOBAL`
 
-MySQL 実行中に設定を変更します。
+MySQL が実行中に設定を変更します。
 
 ```sql
-# グローバル変数の設定
+# グローバル変数を設定
 SET GLOBAL max_connections = 500;
 SET GLOBAL slow_query_log = ON;
-# 現在の設定の表示
+# 現在の設定を表示
 SHOW VARIABLES LIKE 'max_connections';
 SHOW GLOBAL STATUS LIKE 'Slow_queries';
 ```
@@ -761,13 +821,13 @@ SHOW GLOBAL STATUS LIKE 'Slow_queries';
 MySQL のパフォーマンス設定を最適化します。
 
 ```sql
-# メモリ使用量の表示
+# メモリ使用量を表示
 SHOW VARIABLES LIKE '%buffer_pool_size%';
 SHOW VARIABLES LIKE '%query_cache%';
-# パフォーマンスの監視
+# パフォーマンスを監視
 SHOW STATUS LIKE 'Qcache%';
 SHOW STATUS LIKE 'Created_tmp%';
-# InnoDB 設定
+# InnoDB設定
 SET GLOBAL innodb_buffer_pool_size = 2147483648; -- 2GB
 ```
 
@@ -776,13 +836,13 @@ SET GLOBAL innodb_buffer_pool_size = 2147483648; -- 2GB
 監視とデバッグのために MySQL のロギングを設定します。
 
 ```sql
-# クエリロギングの有効化
+# クエリロギングを有効化
 SET GLOBAL general_log = 'ON';
 SET GLOBAL general_log_file = '/var/log/mysql/query.log';
 # スロークエリログ
 SET GLOBAL slow_query_log = 'ON';
 SET GLOBAL long_query_time = 1;
-# ログ設定の表示
+# ログ設定を表示
 SHOW VARIABLES LIKE '%log%';
 ```
 

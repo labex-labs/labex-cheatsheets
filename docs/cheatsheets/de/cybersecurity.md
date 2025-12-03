@@ -1,6 +1,6 @@
 ---
-title: 'Cybersecurity Spickzettel'
-description: 'Lernen Sie Cybersicherheit mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Cybersicherheit Spickzettel | LabEx'
+description: 'Lernen Sie Cybersicherheit mit diesem umfassenden Spickzettel. Schnelle Referenz für Sicherheitskonzepte, Bedrohungserkennung, Schwachstellenanalyse, Penetrationstests und Best Practices der Informationssicherheit.'
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Cybersecurity Spickzettel
 <a target="_blank" href="https://labex.io/de/learn/cybersecurity">Cybersecurity mit Hands-On Labs lernen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Cybersicherheit durch praktische Labs und reale Szenarien. LabEx bietet umfassende Cybersicherheitskurse zu Bedrohungserkennung, Sicherheitsbewertung, Systemhärtung, Vorfallreaktion und Überwachungstechniken. Lernen Sie, Systeme und Daten mithilfe von Industriestandard-Tools und Best Practices vor Cyberbedrohungen zu schützen.
+Lernen Sie Cybersicherheit durch praktische Labs und reale Szenarien. LabEx bietet umfassende Cybersicherheitskurse zu Bedrohungserkennung, Sicherheitsbewertung, Systemhärtung, Reaktion auf Sicherheitsvorfälle und Überwachungstechniken. Lernen Sie, Systeme und Daten mithilfe von Industriestandard-Tools und Best Practices vor Cyberbedrohungen zu schützen.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -53,6 +53,21 @@ chmod -R 755 directory/
 ls -la
 ```
 
+<BaseQuiz id="cybersecurity-chmod-1" correct="C">
+  <template #question>
+    Was bewirkt `chmod 644 file.txt` für Dateiberechtigungen?
+  </template>
+  
+  <BaseQuizOption value="A">Lesen, Schreiben, Ausführen für alle Benutzer</BaseQuizOption>
+  <BaseQuizOption value="B">Lesen, Schreiben, Ausführen für Besitzer; Lesen für andere</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lesen, Schreiben für Besitzer; Lesen für Gruppe und andere</BaseQuizOption>
+  <BaseQuizOption value="D">Nur Lesen für alle Benutzer</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 644` setzt: Besitzer = 6 (rw-), Gruppe = 4 (r--), andere = 4 (r--). Dies ist eine übliche Berechtigungseinstellung für Dateien, die von allen gelesen, aber nur vom Besitzer beschrieben werden sollen.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Netzwerksicherheitskonfiguration
 
 Sichern Sie Netzwerkverbindungen und Dienste.
@@ -67,6 +82,21 @@ netstat -tuln
 sudo ss -tuln
 ```
 
+<BaseQuiz id="cybersecurity-firewall-1" correct="B">
+  <template #question>
+    Was bewirkt `sudo ufw allow 22/tcp`?
+  </template>
+  
+  <BaseQuizOption value="A">Blockiert Port 22</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Erlaubt TCP-Verkehr auf Port 22 (SSH)</BaseQuizOption>
+  <BaseQuizOption value="C">Aktiviert UDP auf Port 22</BaseQuizOption>
+  <BaseQuizOption value="D">Zeigt den Firewall-Status an</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ufw allow 22/tcp` erstellt eine Firewall-Regel, die eingehende TCP-Verbindungen auf Port 22, dem Standard-SSH-Port, zulässt. Dies ist für den Fernzugriff auf Server unerlässlich.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Systemaktualisierungen & Patches
 
 Halten Sie Systeme mit den neuesten Sicherheitspatches aktuell.
@@ -74,7 +104,7 @@ Halten Sie Systeme mit den neuesten Sicherheitspatches aktuell.
 ```bash
 # Paketlisten aktualisieren (Ubuntu/Debian)
 sudo apt update
-# Alle Pakete upgraden
+# Alle Pakete aktualisieren
 sudo apt upgrade
 # Automatische Sicherheitsupdates
 sudo apt install unattended-upgrades
@@ -107,22 +137,37 @@ sudo journalctl -f
 grep "Failed password" /var/log/auth.log
 ```
 
+<BaseQuiz id="cybersecurity-logs-1" correct="A">
+  <template #question>
+    Was bewirkt `tail -f /var/log/auth.log`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Verfolgt die Authentifizierungslogdatei in Echtzeit</BaseQuizOption>
+  <BaseQuizOption value="B">Zeigt nur fehlgeschlagene Anmeldeversuche an</BaseQuizOption>
+  <BaseQuizOption value="C">Löscht alte Protokolleinträge</BaseQuizOption>
+  <BaseQuizOption value="D">Archiviert die Protokolldatei</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-f` bewirkt, dass `tail` der Datei folgt und neue Protokolleinträge anzeigt, sobald sie geschrieben werden. Dies ist nützlich für die Echtzeitüberwachung von Authentifizierungsereignissen und Sicherheitsvorfällen.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Passwortsicherheit & Authentifizierung
 
 Implementieren Sie starke Authentifizierungsmechanismen und Passwortrichtlinien.
 
 ### Erstellung starker Passwörter
 
-Generieren und verwalten Sie sichere Passwörter nach Best Practices.
+Generieren und verwalten Sie sichere Passwörter gemäß Best Practices.
 
 ```bash
 # Starkes Passwort generieren
 openssl rand -base64 32
 # Anforderungen an die Passwortstärke:
 # - Mindestens 12 Zeichen
-# - Mischung aus Groß-, Kleinbuchstaben, Zahlen, Symbolen
+# - Mischung aus Großbuchstaben, Kleinbuchstaben, Zahlen, Sonderzeichen
 # - Keine Wörterbuchwörter oder persönliche Informationen
-# - Einzigartig für jedes Konto
+# - Einzigartig für jeden Account
 ```
 
 ### Multi-Faktor-Authentifizierung (MFA)
@@ -172,9 +217,9 @@ nmap -p 22,80,443 target_ip
 nmap 192.168.1.1-254
 ```
 
-### Netzwerkanalyse
+### Netzwerktraffic-Analyse
 
-Überwachen und analysieren Sie die Netzwerkkommunikation.
+Überwachen und analysieren Sie Netzwerkkommunikation.
 
 ```bash
 # Pakete mit tcpdump erfassen
@@ -183,7 +228,7 @@ sudo tcpdump -i eth0
 sudo tcpdump -w capture.pcap
 # Spezifischen Verkehr filtern
 sudo tcpdump host 192.168.1.1
-# Spezifischen Port überwachen
+# Bestimmten Port überwachen
 sudo tcpdump port 80
 ```
 
@@ -246,7 +291,7 @@ dirb http://target.com
 sqlmap -u "http://target.com/page.php?id=1" --dbs
 ```
 
-### Sicherheitsüberprüfungstools
+### Sicherheitsprüfungs-Tools
 
 Umfassende Dienstprogramme zur Sicherheitsbewertung.
 
@@ -257,7 +302,7 @@ sudo lynis audit system
 # Nach Rootkits suchen
 sudo apt install chkrootkit
 sudo chkrootkit
-# Überwachung der Dateiintegrität
+# Datei-Integritätsüberwachung
 sudo apt install aide
 sudo aideinit
 ```
@@ -275,7 +320,7 @@ testssl.sh https://target.com
 ls -la /etc/shadow /etc/passwd /etc/group
 ```
 
-## Reaktion auf Vorfälle & Forensik
+## Reaktion auf Sicherheitsvorfälle & Forensik
 
 ### Protokollanalyse & Untersuchung
 
@@ -284,7 +329,7 @@ Analysieren Sie Systemprotokolle, um Sicherheitsvorfälle zu identifizieren.
 ```bash
 # Nach verdächtigen Aktivitäten suchen
 grep -i "failed\|error\|denied" /var/log/auth.log
-# Anzahl fehlgeschlagener Anmeldungen zählen
+# Anzahl fehlgeschlagener Anmeldeversuche zählen
 grep "Failed password" /var/log/auth.log | wc -l
 # Eindeutige IP-Adressen in Protokollen finden
 awk '/Failed password/ {print $11}' /var/log/auth.log | sort | uniq -c
@@ -307,14 +352,14 @@ wireshark capture.pcap
 tshark -r capture.pcap -Y "http.request"
 ```
 
-### Systemsicherheitsforensik
+### Systemforensik
 
 Sichern und analysieren Sie digitale Beweismittel.
 
 ```bash
 # Festplattenabbild erstellen
 sudo dd if=/dev/sda of=/mnt/evidence/disk_image.dd bs=4096
-# Dateihashes zur Integritätsprüfung berechnen
+# Dateihashes zur Integrität berechnen
 md5sum important_file.txt
 sha256sum important_file.txt
 # Nach spezifischem Dateiinhalt suchen
@@ -328,26 +373,26 @@ find /home -mtime -7 -type f
 Dokumentieren Sie Sicherheitsvorfälle ordnungsgemäß zur Analyse.
 
 ```bash
-# Checkliste zur Reaktion auf Vorfälle:
+# Checkliste zur Reaktion auf Sicherheitsvorfälle:
 # 1. Betroffene Systeme isolieren
 # 2. Beweismittel sichern
 # 3. Zeitachse der Ereignisse dokumentieren
 # 4. Angriffsvektoren identifizieren
 # 5. Schaden und Datenexposition bewerten
-# 6. Eindämmungsmaßnahmen umsetzen
+# 6. Eindämmungsmaßnahmen planen
 # 7. Wiederherstellungsverfahren planen
 ```
 
-## Bedrohungsintelligenz
+## Threat Intelligence
 
-Sammeln und analysieren Sie Informationen über aktuelle und neue Sicherheitsbedrohungen.
+Sammeln und analysieren Sie Informationen über aktuelle und aufkommende Sicherheitsbedrohungen.
 
 ### OSINT (Open Source Intelligence)
 
 Sammeln Sie öffentlich verfügbare Bedrohungsinformationen.
 
 ```bash
-# Informationen zur Domain suchen
+# Domain-Informationen suchen
 whois example.com
 # DNS-Abfrage
 dig example.com
@@ -376,12 +421,12 @@ find /tmp -type f -exec sha256sum {} \;
 Bleiben Sie auf dem Laufenden mit den neuesten Bedrohungsinformationen.
 
 ```bash
-# Beliebte Quellen für Bedrohungsintelligenz:
+# Beliebte Threat-Intelligence-Quellen:
 # - MISP (Malware Information Sharing Platform)
 # - STIX/TAXII Feeds
 # - Kommerzielle Feeds (CrowdStrike, FireEye)
 # - Regierungs-Feeds (US-CERT, CISA)
-# Beispiel: IP anhand von Threat Feeds prüfen
+# Beispiel: IP gegen Threat Feeds prüfen
 curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 ```
 
@@ -390,13 +435,13 @@ curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 Identifizieren und bewerten Sie potenzielle Sicherheitsbedrohungen.
 
 ```bash
-# STRIDE Bedrohungsmodellkategorien:
+# STRIDE Bedrohungsmodell-Kategorien:
 # - Spoofing (Identität)
 # - Tampering (Daten)
 # - Repudiation (Aktionen)
-# - Information Disclosure (Offenlegung von Informationen)
+# - Information Disclosure
 # - Denial of Service
-# - Elevation of Privilege (Rechteausweitung)
+# - Elevation of Privilege
 ```
 
 ## Verschlüsselung & Datenschutz
@@ -417,13 +462,13 @@ sudo cryptsetup luksFormat /dev/sdb
 sudo cryptsetup luksOpen /dev/sdb encrypted_drive
 # SSH-Schlüssel generieren
 ssh-keygen -t rsa -b 4096
-# SSH-Schlüsselauthentifizierung einrichten
+# SSH-Schlüssel-Authentifizierung einrichten
 ssh-copy-id user@server
 ```
 
 ### Netzwerkverschlüsselung
 
-Sichern Sie die Netzwerkkommunikation mit Verschlüsselungsprotokollen.
+Sichern Sie Netzwerkkommunikation mit Verschlüsselungsprotokollen.
 
 ```bash
 # VPN-Einrichtung mit OpenVPN
@@ -465,7 +510,7 @@ Automatisieren Sie Sicherheitsaufgaben und Reaktionsverfahren.
 
 ### Automatisierung von Sicherheitsscans
 
-Planen Sie regelmäßige Sicherheitsüberprüfungen und Bewertungen.
+Planen Sie regelmäßige Sicherheitsüberprüfungen und -bewertungen.
 
 ```bash
 # Automatisiertes Nmap-Scan-Skript
@@ -477,7 +522,7 @@ nmap -sS -O 192.168.1.0/24 > /var/log/nmap-scan-$DATE.log
 ```
 
 ```bash
-# Automatisiertes Schwachstellen-Scanning
+# Automatisierte Schwachstellenprüfung
 #!/bin/bash
 nikto -h $1 -o /var/log/nikto-$(date +%Y%m%d).txt
 ```
@@ -497,10 +542,10 @@ fi
 
 ### Automatisierung der Reaktion auf Vorfälle
 
-Automatisieren Sie anfängliche Verfahren zur Reaktion auf Vorfälle.
+Automatisieren Sie erste Verfahren zur Reaktion auf Vorfälle.
 
 ```bash
-# Automatisiertes Skript zur Bedrohungsreaktion
+# Automatisiertes Skript zur Bedrohungsabwehr
 #!/bin/bash
 SUSPICIOUS_IP=$1
 # IP in der Firewall blockieren
@@ -532,8 +577,6 @@ Beibehalten sicherer Systemkonfigurationen.
 ```
 
 ## Compliance & Risikomanagement
-
-Implementieren und pflegen Sie Sicherheitsrichtlinien und -verfahren.
 
 ### Implementierung von Sicherheitsrichtlinien
 
@@ -569,7 +612,7 @@ Bewerten und quantifizieren Sie Sicherheitsrisiken.
 # Niedrig (1-3), Mittel (4-6), Hoch (7-9)
 # Priorisierung von Schwachstellen
 # CVSS-Score-Berechnung
-# Basis-Score = Auswirkung × Ausnutzbarkeit
+# Basisscore = Auswirkung × Ausnutzbarkeit
 ```
 
 ### Dokumentation & Berichterstattung
@@ -583,7 +626,7 @@ Führen Sie ordnungsgemäße Sicherheitsdokumentationen und Berichte.
 # - Identifizierte Angriffsvektoren
 # - Kompromittierte Daten
 # - Ergriffene Maßnahmen
-# - Gelernte Lektionen
+# - Gewonnene Erkenntnisse
 # - Wiederherstellungsplan
 ```
 
@@ -605,20 +648,20 @@ sudo yum install nmap wireshark tcpdump
 sudo pacman -S nmap wireshark-qt tcpdump
 ```
 
-### Sicherheitsdistributionen
+### Spezialisierte Linux-Distributionen
 
 Spezialisierte Linux-Distributionen für Sicherheitsexperten.
 
 ```bash
 # Kali Linux - Penetrationstests
-# Herunterladen von: https://www.kali.org/
+# Download von: https://www.kali.org/
 # Parrot Security OS
-# Herunterladen von: https://www.parrotsec.org/
+# Download von: https://www.parrotsec.org/
 # BlackArch Linux
-# Herunterladen von: https://blackarch.org/
+# Download von: https://blackarch.org/
 ```
 
-### Tool-Überprüfung
+### Tool-Verifizierung
 
 Überprüfen Sie die Tool-Installation und die grundlegende Konfiguration.
 
@@ -626,7 +669,7 @@ Spezialisierte Linux-Distributionen für Sicherheitsexperten.
 # Tool-Versionen prüfen
 nmap --version
 wireshark --version
-# Grundlegender Funktionstest
+# Grundlegender Funktionsfähigkeitstest
 nmap 127.0.0.1
 # Tool-Pfade konfigurieren
 export PATH=$PATH:/opt/tools/bin
@@ -681,7 +724,7 @@ add_header X-Content-Type-Options nosniff;
 
 ### Sicherheit von Backups & Wiederherstellung
 
-Implementieren Sie sichere Backup- und Disaster-Recovery-Verfahren.
+Implementieren Sie sichere Backup- und Notfallwiederherstellungsverfahren.
 
 ```bash
 # Verschlüsselte Backups mit rsync
@@ -695,11 +738,11 @@ find /backups -name "*.tar.gz" -exec tar -tzf {} \; > /dev/null
 
 ## Fortgeschrittene Sicherheitstechniken
 
-Implementieren Sie erweiterte Sicherheitsmaßnahmen und Verteidigungsstrategien.
+Implementieren Sie fortgeschrittene Sicherheitsmaßnahmen und Abwehrstrategien.
 
 ### Intrusion Detection Systems
 
-Implementieren und konfigurieren Sie IDS/IPS zur Bedrohungserkennung.
+Bereitstellung und Konfiguration von IDS/IPS zur Bedrohungserkennung.
 
 ```bash
 # Suricata IDS installieren
@@ -733,14 +776,14 @@ sudo apt update && sudo apt install elasticsearch
 Erkennen und verhindern Sie Social-Engineering-Angriffe.
 
 ```bash
-# Techniken zur Phishing-Identifizierung:
+# Phishing-Identifizierungstechniken:
 # - Absender-E-Mail sorgfältig prüfen
 # - Links vor dem Klicken überprüfen (Hovern)
 # - Auf Rechtschreib-/Grammatikfehler achten
 # - Bei dringenden Anfragen misstrauisch sein
-# - Anfragen über einen separaten Kanal verifizieren
+# - Anfragen über separaten Kanal verifizieren
 # Zu prüfende E-Sicherheits-Header:
-# SPF-, DKIM-, DMARC-Einträge
+# SPF, DKIM, DMARC-Einträge
 ```
 
 ### Entwicklung einer Sicherheitskultur
@@ -750,7 +793,7 @@ Aufbau einer sicherheitsbewussten Organisationskultur.
 ```bash
 # Elemente des Sicherheitsbewusstseinsprogramms:
 # - Regelmäßige Schulungssitzungen
-# - Phishing-Simulationstests
+# - Phishing-Simulations-Tests
 # - Aktualisierungen der Sicherheitsrichtlinien
 # - Verfahren zur Meldung von Vorfällen
 # - Anerkennung für gute Sicherheitspraktiken

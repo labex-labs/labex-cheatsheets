@@ -1,6 +1,6 @@
 ---
-title: 'C 프로그래밍 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 C 프로그래밍을 학습하세요.'
+title: 'C 프로그래밍 치트 시트 | LabEx'
+description: '포괄적인 C 프로그래밍 치트 시트로 학습하세요. 개발자를 위한 C 구문, 포인터, 메모리 관리, 자료 구조 및 시스템 프로그래밍 핵심 사항에 대한 빠른 참조.'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ C 프로그래밍 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/c">실습 랩을 통해 C 프로그래밍 배우기</a>
+<a target="_blank" href="https://labex.io/ko/learn/c">실습 랩을 통한 C 프로그래밍 학습</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 C 프로그래밍을 배우십시오. LabEx 는 필수 구문, 메모리 관리, 포인터, 데이터 구조 및 고급 기술을 다루는 포괄적인 C 과정을 제공합니다. C 의 강력한 기능을 마스터하여 효율적인 시스템 수준 애플리케이션을 구축하고 저수준 프로그래밍 개념을 이해하십시오.
+실습 랩과 실제 시나리오를 통해 C 프로그래밍을 학습하세요. LabEx 는 필수 구문, 메모리 관리, 포인터, 데이터 구조 및 고급 기술을 다루는 포괄적인 C 과정을 제공합니다. C 의 강력한 기능을 마스터하여 효율적인 시스템 수준 애플리케이션을 구축하고 저수준 프로그래밍 개념을 이해하십시오.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -60,7 +60,7 @@ int main() {
 /* FIXME: 이 섹션의 버그 */
 ```
 
-### main 함수
+### Main 함수
 
 반환 값이 있는 프로그램 진입점.
 
@@ -75,6 +75,21 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 ```
+
+<BaseQuiz id="c-main-1" correct="C">
+  <template #question>
+    main 함수에서 `return 0`은 무엇을 나타냅니까?
+  </template>
+  
+  <BaseQuizOption value="A">프로그램이 실패함</BaseQuizOption>
+  <BaseQuizOption value="B">프로그램이 계속 실행 중임</BaseQuizOption>
+  <BaseQuizOption value="C" correct>프로그램이 성공적으로 실행됨</BaseQuizOption>
+  <BaseQuizOption value="D">프로그램이 값을 반환하지 않음</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C 에서 main 함수에서 `return 0`은 프로그램이 성공적으로 실행되었음을 나타냅니다. 0 이 아닌 반환 값은 일반적으로 오류 또는 비정상적인 종료를 나타냅니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 기본 출력
 
@@ -137,6 +152,21 @@ int len = strlen(name);
 int size = sizeof(buffer);
 ```
 
+<BaseQuiz id="c-arrays-1" correct="C">
+  <template #question>
+    C 에서 문자열은 어떻게 표현됩니까?
+  </template>
+  
+  <BaseQuizOption value="A">특수 문자열 타입으로</BaseQuizOption>
+  <BaseQuizOption value="B">정수로</BaseQuizOption>
+  <BaseQuizOption value="C" correct>문자 배열로</BaseQuizOption>
+  <BaseQuizOption value="D">포인터로만</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C 에서 문자열은 문자 배열 (`char`) 로 표현됩니다. 문자열은 널 문자 (`\0`) 로 끝나며, 이는 문자열의 끝을 표시합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 상수 및 한정자
 
 불변 값 및 저장 한정자.
@@ -159,7 +189,7 @@ register int fast_var;    // 레지스터 힌트
 
 ### 조건문
 
-조건에 따른 결정 내리기.
+조건에 따른 결정.
 
 ```c
 // If-else 문
@@ -207,6 +237,21 @@ for (int i = 0; i < 3; i++) {
     }
 }
 ```
+
+<BaseQuiz id="c-for-loop-1" correct="A">
+  <template #question>
+    `sizeof(numbers) / sizeof(numbers[0])`은 무엇을 계산합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>배열의 요소 개수</BaseQuizOption>
+  <BaseQuizOption value="B">배열의 총 메모리 크기</BaseQuizOption>
+  <BaseQuizOption value="C">마지막 요소의 인덱스</BaseQuizOption>
+  <BaseQuizOption value="D">요소 하나의 크기</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    이 표현식은 배열의 총 크기를 요소 하나의 크기로 나누어 배열의 길이를 계산합니다. 이는 C 에서 배열이 길이를 저장하지 않기 때문에 흔히 사용되는 관용구입니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### While 루프
 
@@ -354,11 +399,11 @@ int *null_ptr = NULL;
 
 ```c
 int arr[5] = {1, 2, 3, 4, 5};
-int *p = arr;  // 첫 번째 요소를 가리킴
+int *p = arr;  // 첫 번째 요소 가리킴
 // 배열 표기법 대 포인터 연산
 printf("%d\n", arr[2]);   // 배열 표기법
 printf("%d\n", *(p + 2)); // 포인터 연산
-printf("%d\n", p[2]);     // 배열로 사용되는 포인터
+printf("%d\n", p[2]);     // 배열처럼 사용되는 포인터
 // 포인터를 사용하여 반복
 for (int i = 0; i < 5; i++) {
     printf("%d ", *(p + i));
@@ -458,7 +503,7 @@ printf("Born: %d/%d/%d\n",
 
 ### 구조체 포인터
 
-구조체에 접근하고 수정하기 위해 포인터 사용.
+구조체 접근 및 수정을 위해 포인터 사용.
 
 ```c
 Student *student_ptr = &student1;
@@ -483,7 +528,7 @@ if (new_student != NULL) {
 대안적인 데이터 구성 방법.
 
 ```c
-// 공용체 - 공유 메모리 공간
+// 공용체 - 메모리 공간 공유
 union Data {
     int integer;
     float floating;
@@ -585,7 +630,7 @@ fclose(numfile);
 
 ### 바이너리 파일 작업
 
-바이너리 데이터를 효율적으로 읽고 쓰기.
+바이너리 데이터 효율적으로 읽고 쓰기.
 
 ```c
 // 바이너리 데이터 쓰기
@@ -639,7 +684,7 @@ if (result == 0) {
 ```c
 char text[] = "The quick brown fox";
 char *ptr;
-// 문자의 첫 번째 발생 찾기
+// 문자 첫 번째 발생 찾기
 ptr = strchr(text, 'q');
 if (ptr != NULL) {
     printf("Found 'q' at position: %ld\n", ptr - text);
@@ -660,7 +705,7 @@ if (ptr != NULL) {
 
 ```c
 #include <stdlib.h>
-// 문자열에서 숫자로 변환
+// 문자열을 숫자로 변환
 char num_str[] = "12345";
 char float_str[] = "3.14159";
 int num = atoi(num_str);
@@ -760,7 +805,7 @@ rm -f $(TARGET)
 
 ### 명명 규칙
 
-일관된 명명은 코드를 더 읽기 쉽게 만듭니다.
+일관된 명명은 코드 가독성을 높입니다.
 
 ```c
 // 변수 및 함수: snake_case
@@ -817,11 +862,11 @@ int len = strlen(str); // 한 번 계산
 for (int i = 0; i < len; i++) {
     // 문자열 처리
 }
-// 자주 접근하는 변수는 register 사용
+// 자주 접근하는 변수에 register 사용
 register int counter;
 // 크기를 알 때 동적 할당보다 배열 선호
 int fixed_array[100];  // 스택 할당
-// vs
+// 대 동적 배열
 int *dynamic_array = malloc(100 * sizeof(int));
 ```
 

@@ -1,6 +1,6 @@
 ---
-title: 'Jenkins Spickzettel'
-description: 'Lernen Sie Jenkins mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Jenkins Spickzettel | LabEx'
+description: 'Lernen Sie Jenkins CI/CD mit diesem umfassenden Spickzettel. Schnelle Referenz für Jenkins Pipelines, Jobs, Plugins, Automatisierung, Continuous Integration und DevOps-Workflows.'
 pdfUrl: '/cheatsheets/pdf/jenkins-cheatsheet.pdf'
 ---
 
@@ -77,13 +77,13 @@ docker exec jenkins_container cat /var/jenkins_home/secrets/initialAdminPassword
 
 ### Erste Konfiguration
 
-Den Setup-Assistenten abschließen und Admin-Benutzer erstellen.
+Den Setup-Assistenten abschließen und den Admin-Benutzer erstellen.
 
 ```bash
 # Nach dem Entsperren von Jenkins:
 # 1. Vorgeschlagene Plugins installieren (empfohlen)
 # 2. Ersten Admin-Benutzer erstellen
-# 3. Jenkins-URL konfigurieren
+# 3. Jenkins URL konfigurieren
 # 4. Mit der Nutzung von Jenkins beginnen
 # Überprüfen, ob Jenkins läuft
 sudo systemctl status jenkins
@@ -114,7 +114,7 @@ Neue Build-Jobs mithilfe der CLI oder der Weboberfläche erstellen.
 
 ```bash
 # Job aus XML-Konfiguration erstellen
-java -jar jenkins-cli.jar -auth benutzer:token create-job mein-job < job-config.xml
+java -jar jenkins-cli.jar -auth user:token create-job my-job < job-config.xml
 # Einfachen Freestyle-Job über die Weboberfläche erstellen:
 # 1. Auf "Neues Element" klicken
 # 2. Job-Namen eingeben
@@ -129,29 +129,44 @@ Alle konfigurierten Jobs in Jenkins anzeigen.
 
 ```bash
 # Alle Jobs auflisten
-java -jar jenkins-cli.jar -auth benutzer:token list-jobs
-# Jobs nach Muster auflisten
-java -jar jenkins-cli.jar -auth benutzer:token list-jobs "*test*"
+java -jar jenkins-cli.jar -auth user:token list-jobs
+# Jobs mit Musterabgleich auflisten
+java -jar jenkins-cli.jar -auth user:token list-jobs "*test*"
 # Job-Konfiguration abrufen
-java -jar jenkins-cli.jar -auth benutzer:token get-job mein-job > job-config.xml
+java -jar jenkins-cli.jar -auth user:token get-job my-job > job-config.xml
 ```
 
 ## Job-Verwaltung
 
 ### Jobs bauen: `build`
 
-Build-Jobs auslösen und verwalten.
+Builds von Jobs auslösen und verwalten.
 
 ```bash
 # Einen Job bauen
-java -jar jenkins-cli.jar -auth benutzer:token build mein-job
+java -jar jenkins-cli.jar -auth user:token build my-job
 # Mit Parametern bauen
-java -jar jenkins-cli.jar -auth benutzer:token build mein-job -p PARAM=wert
+java -jar jenkins-cli.jar -auth user:token build my-job -p PARAM=value
 # Bauen und auf Abschluss warten
-java -jar jenkins-cli.jar -auth benutzer:token build mein-job -s -v
-# Bauen und Konsolenausgabe verfolgen
-java -jar jenkins-cli.jar -auth benutzer:token build mein-job -f
+java -jar jenkins-cli.jar -auth user:token build my-job -s -v
+# Bauen und Konsolenausgabe folgen
+java -jar jenkins-cli.jar -auth user:token build my-job -f
 ```
+
+<BaseQuiz id="jenkins-build-1" correct="B">
+  <template #question>
+    Was bewirkt das Flag `-s` in `jenkins-cli.jar build my-job -s`?
+  </template>
+  
+  <BaseQuizOption value="A">Überspringt den Build</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Wartet auf den Abschluss des Builds (synchron)</BaseQuizOption>
+  <BaseQuizOption value="C">Zeigt den Build-Status an</BaseQuizOption>
+  <BaseQuizOption value="D">Stoppt den Build</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-s` macht den Build-Befehl synchron, d.h. er wartet, bis der Build abgeschlossen ist, bevor er zurückkehrt. Ohne dieses Flag gibt der Befehl sofort nach dem Auslösen des Builds zurück.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Job-Steuerung: `enable-job` / `disable-job`
 
@@ -159,13 +174,28 @@ Jobs aktivieren oder deaktivieren.
 
 ```bash
 # Einen Job aktivieren
-java -jar jenkins-cli.jar -auth benutzer:token enable-job mein-job
+java -jar jenkins-cli.jar -auth user:token enable-job my-job
 # Einen Job deaktivieren
-java -jar jenkins-cli.jar -auth benutzer:token disable-job mein-job
+java -jar jenkins-cli.jar -auth user:token disable-job my-job
 # Job-Status in der Weboberfläche prüfen
 # Zum Job-Dashboard navigieren
-# Nach der Schaltfläche "Deaktivieren/Aktivieren" suchen
+# Nach dem "Deaktivieren/Aktivieren"-Button suchen
 ```
+
+<BaseQuiz id="jenkins-job-control-1" correct="B">
+  <template #question>
+    Was passiert, wenn Sie einen Jenkins-Job deaktivieren?
+  </template>
+  
+  <BaseQuizOption value="A">Der Job wird dauerhaft gelöscht</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Die Job-Konfiguration bleibt erhalten, aber er wird nicht mehr automatisch ausgeführt</BaseQuizOption>
+  <BaseQuizOption value="C">Der Job wird in einen anderen Ordner verschoben</BaseQuizOption>
+  <BaseQuizOption value="D">Der gesamte Build-Verlauf wird gelöscht</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Deaktivieren eines Jobs verhindert, dass er automatisch ausgeführt wird (geplante Builds, Trigger usw.), bewahrt jedoch die Job-Konfiguration und den Build-Verlauf. Sie können ihn später wieder aktivieren.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Job-Löschung: `delete-job`
 
@@ -173,25 +203,40 @@ Jobs aus Jenkins entfernen.
 
 ```bash
 # Einen Job löschen
-java -jar jenkins-cli.jar -auth benutzer:token delete-job mein-job
-# Mehrere Jobs löschen (mit Vorsicht)
+java -jar jenkins-cli.jar -auth user:token delete-job my-job
+# Jobs in großen Mengen löschen (mit Vorsicht)
 for job in job1 job2 job3; do
-  java -jar jenkins-cli.jar -auth benutzer:token delete-job $job
+  java -jar jenkins-cli.jar -auth user:token delete-job $job
 done
 ```
 
 ### Konsolenausgabe: `console`
 
-Build-Protokolle und Konsolenausgabe anzeigen.
+Build-Logs und Konsolenausgabe anzeigen.
 
 ```bash
 # Konsolenausgabe des letzten Builds anzeigen
-java -jar jenkins-cli.jar -auth benutzer:token console mein-job
-# Konsolenausgabe einer bestimmten Build-Nummer anzeigen
-java -jar jenkins-cli.jar -auth benutzer:token console mein-job 15
+java -jar jenkins-cli.jar -auth user:token console my-job
+# Spezifische Build-Nummer anzeigen
+java -jar jenkins-cli.jar -auth user:token console my-job 15
 # Konsolenausgabe in Echtzeit verfolgen
-java -jar jenkins-cli.jar -auth benutzer:token console mein-job -f
+java -jar jenkins-cli.jar -auth user:token console my-job -f
 ```
+
+<BaseQuiz id="jenkins-console-1" correct="C">
+  <template #question>
+    Was bewirkt das Flag `-f` in `jenkins-cli.jar console my-job -f`?
+  </template>
+  
+  <BaseQuizOption value="A">Erzwingt das Stoppen des Builds</BaseQuizOption>
+  <BaseQuizOption value="B">Zeigt nur fehlgeschlagene Builds an</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Verfolgt die Konsolenausgabe in Echtzeit</BaseQuizOption>
+  <BaseQuizOption value="D">Formatiert die Ausgabe als JSON</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-f` verfolgt die Konsolenausgabe in Echtzeit, ähnlich wie `tail -f` unter Linux. Dies ist nützlich, um Builds während ihrer Ausführung zu überwachen.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Pipeline-Verwaltung
 
@@ -200,7 +245,7 @@ java -jar jenkins-cli.jar -auth benutzer:token console mein-job -f
 Jenkins Pipelines erstellen und konfigurieren.
 
 ```groovy
-// Grundlegende Jenkinsfile (Deklarative Pipeline)
+// Grundlegender Jenkinsfile (Deklarative Pipeline)
 pipeline {
     agent any
 
@@ -231,7 +276,7 @@ pipeline {
 
 ### Pipeline-Syntax
 
-Häufige Pipeline-Syntax und Direktiven.
+Gängige Pipeline-Syntax und Direktiven.
 
 ```groovy
 // Scripted Pipeline Syntax
@@ -270,7 +315,7 @@ stages {
 
 ### Pipeline-Konfiguration
 
-Erweiterte Pipeline-Konfiguration und Optionen.
+Fortgeschrittene Pipeline-Konfiguration und Optionen.
 
 ```groovy
 // Pipeline mit Post-Build-Aktionen
@@ -304,7 +349,7 @@ pipeline {
 
 ### Pipeline-Trigger
 
-Konfigurieren automatischer Pipeline-Auslöser.
+Konfigurieren von automatischen Pipeline-Triggern.
 
 ```groovy
 // Pipeline mit Triggern
@@ -337,19 +382,19 @@ pipeline {
 
 ### Plugin-Installation: CLI
 
-Plugins über die Kommandozeilenschnittstelle installieren.
+Plugins mithilfe der Befehlszeilenschnittstelle installieren.
 
 ```bash
 # Plugin über CLI installieren (Neustart erforderlich)
-java -jar jenkins-cli.jar -auth benutzer:token install-plugin git
+java -jar jenkins-cli.jar -auth user:token install-plugin git
 # Mehrere Plugins installieren
-java -jar jenkins-cli.jar -auth benutzer:token install-plugin \
+java -jar jenkins-cli.jar -auth user:token install-plugin \
   git maven-plugin docker-plugin
 # Von .hpi-Datei installieren
-java -jar jenkins-cli.jar -auth benutzer:token install-plugin \
+java -jar jenkins-cli.jar -auth user:token install-plugin \
   /path/to/plugin.hpi
 # Installierte Plugins auflisten
-java -jar jenkins-cli.jar -auth benutzer:token list-plugins
+java -jar jenkins-cli.jar -auth user:token list-plugins
 # Plugin-Installation über plugins.txt (für Docker)
 # Erstellen Sie die Datei plugins.txt:
 git:latest
@@ -379,8 +424,8 @@ docker-plugin        # Docker-Integration
 kubernetes           # Kubernetes-Deployment
 ansible              # Ansible-Automatisierung
 # Qualität & Tests
-junit                # JUnit-Testberichte
-jacoco              # Code-Abdeckung
+junit                # JUnit Testberichte
+jacoco              # Code Coverage
 sonarqube           # Codequalitätsanalyse
 ```
 
@@ -390,14 +435,14 @@ Plugins über die Jenkins-Weboberfläche verwalten.
 
 ```bash
 # Auf den Plugin-Manager zugreifen:
-# 1. Zu Verwalte Jenkins navigieren
+# 1. Zu Verwalten Sie Jenkins navigieren
 # 2. Auf "Plugins verwalten" klicken
-# 3. Die Tabs Verfügbar/Installiert/Updates verwenden
+# 3. Die Registerkarten Verfügbar/Installiert/Updates verwenden
 # 4. Nach Plugins suchen
 # 5. Auswählen und installieren
 # 6. Jenkins bei Bedarf neu starten
 # Plugin-Update-Prozess:
-# 1. Reiter "Updates" prüfen
+# 1. Registerkarte "Updates" prüfen
 # 2. Zu aktualisierende Plugins auswählen
 # 3. Auf "Jetzt herunterladen und nach Neustart installieren" klicken
 ```
@@ -410,13 +455,13 @@ Jenkins-Benutzer erstellen und verwalten.
 
 ```bash
 # Jenkins-Sicherheit aktivieren:
-# 1. Verwalte Jenkins → Globale Sicherheit konfigurieren
+# 1. Verwalten Sie Jenkins → Globale Sicherheit konfigurieren
 # 2. "Jenkins' eigene Benutzerdatenbank" aktivieren
-# 3. Benutzern das Anmelden erlauben (Initial-Setup)
+# 3. Benutzern die Anmeldung erlauben (Ersteinrichtung)
 # 4. Autorisierungsstrategie festlegen
 # Benutzer über CLI erstellen (erfordert entsprechende Berechtigungen)
 # Benutzer werden typischerweise über die Weboberfläche erstellt:
-# 1. Verwalte Jenkins → Benutzer verwalten
+# 1. Verwalten Sie Jenkins → Benutzer verwalten
 # 2. Auf "Benutzer erstellen" klicken
 # 3. Benutzerdetails ausfüllen
 # 4. Rollen/Berechtigungen zuweisen
@@ -424,20 +469,20 @@ Jenkins-Benutzer erstellen und verwalten.
 
 ### Authentifizierung & Autorisierung
 
-Sicherheitsbereiche und Autorisierungsstrategien konfigurieren.
+Sicherheitsdomänen und Autorisierungsstrategien konfigurieren.
 
 ```bash
 # Optionen zur Sicherheitskonfiguration:
-# 1. Security Realm (wie Benutzer sich authentifizieren):
+# 1. Sicherheitsdomäne (wie sich Benutzer authentifizieren):
 #    - Jenkins' eigene Benutzerdatenbank
 #    - LDAP
 #    - Active Directory
 #    - Matrix-basierte Sicherheit
 #    - Rollenbasierte Autorisierung
 # 2. Autorisierungsstrategie:
-#    - Jeder darf alles tun
+#    - Jeder kann alles tun
 #    - Legacy-Modus
-#    - Angemeldete Benutzer dürfen alles tun
+#    - Angemeldete Benutzer können alles tun
 #    - Matrix-basierte Sicherheit
 #    - Projektbasierte Matrix-Autorisierung
 ```
@@ -448,7 +493,7 @@ API-Tokens für den CLI-Zugriff generieren und verwalten.
 
 ```bash
 # API-Token generieren:
-# 1. Auf Benutzername klicken → Konfigurieren
+# 1. Auf den Benutzernamen klicken → Konfigurieren
 # 2. Abschnitt API-Token
 # 3. Auf "Neues Token hinzufügen" klicken
 # 4. Token-Namen eingeben
@@ -467,10 +512,10 @@ Gespeicherte Anmeldeinformationen für Jobs und Pipelines verwalten.
 
 ```bash
 # Anmeldeinformationen über CLI verwalten
-java -jar jenkins-cli.jar -auth benutzer:token \
+java -jar jenkins-cli.jar -auth user:token \
   list-credentials system::system::jenkins
-# Anmeldeinformationen XML erstellen und importieren
-java -jar jenkins-cli.jar -auth benutzer:token \
+# Anmeldeinformationen als XML erstellen und importieren
+java -jar jenkins-cli.jar -auth user:token \
   create-credentials-by-xml system::system::jenkins \
   < credential.xml
 ```
@@ -488,41 +533,41 @@ withCredentials([usernamePassword(
 
 ## Build-Überwachung & Fehlerbehebung
 
-### Build-Status & Protokolle
+### Build-Status & Logs
 
-Build-Status überwachen und auf detaillierte Protokolle zugreifen.
+Build-Status überwachen und auf detaillierte Logs zugreifen.
 
 ```bash
 # Build-Status prüfen
-java -jar jenkins-cli.jar -auth benutzer:token console mein-job
-# Build-Informationen abrufen
-java -jar jenkins-cli.jar -auth benutzer:token get-job mein-job
+java -jar jenkins-cli.jar -auth user:token console my-job
+# Job-Informationen abrufen
+java -jar jenkins-cli.jar -auth user:token get-job my-job
 # Build-Warteschlange überwachen
-# Weboberfläche: Jenkins Dashboard → Build Queue
+# Weboberfläche: Jenkins Dashboard → Build-Warteschlange
 # Zeigt ausstehende Builds und deren Status an
-# Zugriff auf Build-Verlauf
-# Weboberfläche: Job → Build History
-# Zeigt alle vorherigen Builds mit Status an
+# Zugriff auf den Build-Verlauf
+# Weboberfläche: Job → Build-Verlauf
+# Zeigt alle vorherigen Builds mit Status
 ```
 
 ### Systeminformationen
 
-Jenkins-Systeminformationen und Diagnosedaten abrufen.
+Jenkins-Systeminformationen und Diagnosen abrufen.
 
 ```bash
 # Systeminformationen
-java -jar jenkins-cli.jar -auth benutzer:token version
+java -jar jenkins-cli.jar -auth user:token version
 # Knoteninformationen
-java -jar jenkins-cli.jar -auth benutzer:token list-computers
+java -jar jenkins-cli.jar -auth user:token list-computers
 # Groovy-Konsole (nur Admin)
-# Verwalte Jenkins → Script Console
-# Groovy-Skripte für Systeminformationen ausführen:
+# Verwalten Sie Jenkins → Skriptkonsole
+# Groovy-Skripte zur Systeminformation ausführen:
 println Jenkins.instance.version
 println Jenkins.instance.getRootDir()
 println System.getProperty("java.version")
 ```
 
-### Protokollanalyse
+### Log-Analyse
 
 Jenkins-Systemprotokolle abrufen und analysieren.
 
@@ -532,34 +577,34 @@ Jenkins-Systemprotokolle abrufen und analysieren.
 # Windows: C:\Program Files\Jenkins\jenkins.out.log
 # Protokolle anzeigen
 tail -f /var/log/jenkins/jenkins.log
-# Protokollstufen konfigurieren
-# Verwalte Jenkins → Systemprotokoll
-# Neuen Protokoll-Recorder für spezifische Komponenten hinzufügen
+# Protokollebenen konfigurieren
+# Verwalten Sie Jenkins → Systemprotokoll
+# Neuen Protokollrekorder für bestimmte Komponenten hinzufügen
 # Häufige Protokollspeicherorte:
-sudo journalctl -u jenkins.service     # Systemd-Protokolle
+sudo journalctl -u jenkins.service     # Systemd-Logs
 sudo cat /var/lib/jenkins/jenkins.log  # Jenkins-Protokolldatei
 ```
 
 ### Leistungsüberwachung
 
-Jenkins-Leistung und Ressourcennutzung überwachen.
+Jenkins auf bessere Leistung und Skalierbarkeit überwachen.
 
 ```bash
 # Eingebaute Überwachung
-# Verwalte Jenkins → Laststatistiken
+# Verwalten Sie Jenkins → Laststatistiken
 # Zeigt die Auslastung der Executor im Zeitverlauf
 # JVM-Überwachung
-# Verwalte Jenkins → Knoten verwalten → Master
-# Zeigt Speicher-, CPU-Nutzung und Systemeigenschaften
+# Verwalten Sie Jenkins → Knoten verwalten → Master
+# Zeigt Speicher-, CPU-Auslastung und Systemeigenschaften
 # Build-Trends
-# Plugin "Build History Metrics" installieren
-# Build-Dauer-Trends und Erfolgsquoten anzeigen
-# Festplattennutzungsüberwachung
-# Plugin "Disk Usage" installieren
-# Überwachung von Workspace- und Build-Artefakt-Speicher
+# Installieren Sie das Plugin "Build History Metrics"
+# Zeigt Trends für Build-Dauer und Erfolgsquoten
+# Überwachung der Festplattennutzung
+# Installieren Sie das Plugin "Disk Usage"
+# Überwacht Workspace- und Build-Artefakt-Speicherplatz
 ```
 
-## Jenkins Konfiguration & Einstellungen
+## Jenkins-Konfiguration & Einstellungen
 
 ### Globale Konfiguration
 
@@ -567,16 +612,16 @@ Globale Jenkins-Einstellungen und Tools konfigurieren.
 
 ```bash
 # Globale Tool-Konfiguration
-# Verwalte Jenkins → Globale Tool-Konfiguration
-# Konfigurieren:
+# Verwalten Sie Jenkins → Globale Tool-Konfiguration
+# Konfigurieren Sie:
 # - JDK-Installationen
 # - Git-Installationen
 # - Maven-Installationen
 # - Docker-Installationen
 # Systemkonfiguration
-# Verwalte Jenkins → System konfigurieren
-# Festlegen:
-# - Jenkins-URL
+# Verwalten Sie Jenkins → System konfigurieren
+# Festlegen von:
+# - Jenkins URL
 # - Systemnachricht
 # - Anzahl der Executor
 # - Quiet Period
@@ -596,19 +641,19 @@ WORKSPACE            # Job-Workspace-Pfad
 JENKINS_URL          # Jenkins URL
 NODE_NAME            # Knotenname
 # Benutzerdefinierte Umgebungsvariablen
-# Verwalte Jenkins → System konfigurieren
+# Verwalten Sie Jenkins → System konfigurieren
 # Globale Eigenschaften → Umgebungsvariablen
 # Schlüssel-Wert-Paare für globalen Zugriff hinzufügen
 ```
 
-### Jenkins Configuration as Code
+### Jenkins-Konfiguration als Code
 
 Jenkins-Konfiguration mithilfe des JCasC-Plugins verwalten.
 
 ```yaml
 # JCasC Konfigurationsdatei (jenkins.yaml)
 jenkins:
-  systemMessage: "Jenkins konfiguriert als Code"
+  systemMessage: "Jenkins configured as code"
   numExecutors: 4
   securityRealm:
     local:
@@ -617,28 +662,28 @@ jenkins:
        - id: "admin"
          password: "admin123"
 # Konfiguration anwenden
-# Umgebungsvariable CASC_JENKINS_CONFIG setzen
+# Setzen Sie die Umgebungsvariable CASC_JENKINS_CONFIG
 export CASC_JENKINS_CONFIG=/path/to/jenkins.yaml
 ```
 
 ## Best Practices
 
-### Sicherheits-Best-Practices
+### Sicherheitspraktiken
 
-Ihre Jenkins-Instanz sicher und produktionsbereit halten.
+Halten Sie Ihre Jenkins-Instanz sicher und produktionsbereit.
 
 ```bash
 # Sicherheitsempfehlungen:
 # 1. Sicherheit und Authentifizierung aktivieren
 # 2. Matrix-basierte Autorisierung verwenden
 # 3. Regelmäßige Sicherheitsupdates
-# 4. Benutzerberechtigungen begrenzen
+# 4. Benutzerberechtigungen einschränken
 # 5. API-Tokens anstelle von Passwörtern verwenden
 # Jenkins-Konfiguration absichern:
 # - CLI über Remoting deaktivieren
 # - HTTPS mit gültigen Zertifikaten verwenden
 # - Regelmäßige Sicherung von JENKINS_HOME
-# - Sicherheitswarnungen überwachen
+# - Sicherheitsmitteilungen überwachen
 # - Anmeldeinformations-Plugins für Geheimnisse verwenden
 ```
 
@@ -647,14 +692,14 @@ Ihre Jenkins-Instanz sicher und produktionsbereit halten.
 Jenkins für bessere Leistung und Skalierbarkeit optimieren.
 
 ```bash
-# Performance-Tipps:
+# Leistungstipps:
 # 1. Verteilte Builds mit Agents verwenden
 # 2. Build-Skripte und Abhängigkeiten optimieren
 # 3. Alte Builds automatisch bereinigen
 # 4. Pipeline-Bibliotheken für Wiederverwendbarkeit nutzen
 # 5. Festplattenspeicher und Speichernutzung überwachen
 # Build-Optimierung:
-# - Inkrementelle Builds verwenden, wo möglich
+# - Wo möglich inkrementelle Builds verwenden
 # - Parallele Ausführung von Stages
 # - Artefakt-Caching
 # - Workspace-Bereinigung

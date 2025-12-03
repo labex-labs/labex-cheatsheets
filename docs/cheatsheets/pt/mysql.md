@@ -1,6 +1,6 @@
 ---
-title: 'Guia Rápido MySQL'
-description: 'Aprenda MySQL com nosso guia completo cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola MySQL | LabEx'
+description: 'Aprenda gerenciamento de banco de dados MySQL com esta folha de cola abrangente. Referência rápida para consultas SQL, junções, índices, transações, procedimentos armazenados e administração de banco de dados.'
 pdfUrl: '/cheatsheets/pdf/mysql-cheatsheet.pdf'
 ---
 
@@ -23,10 +23,10 @@ Aprenda gerenciamento de banco de dados MySQL através de laboratórios prático
 
 ### Conectar ao Servidor: `mysql -u username -p`
 
-Conecte-se ao servidor MySQL usando a linha de comando.
+Conecta ao servidor MySQL usando a linha de comando.
 
 ```bash
-# Conectar com prompt de nome de usuário e senha
+# Conectar com nome de usuário e solicitação de senha
 mysql -u root -p
 # Conectar a um banco de dados específico
 mysql -u username -p nome_do_banco_de_dados
@@ -38,7 +38,7 @@ mysql -h hostname -P 3306 -u username -p nome_do_banco_de_dados
 
 ### Operações de Banco de Dados: `CREATE` / `DROP` / `USE`
 
-Gerencie bancos de dados no servidor.
+Gerenciar bancos de dados no servidor.
 
 ```sql
 # Criar um novo banco de dados
@@ -51,19 +51,34 @@ USE company_db;
 DROP DATABASE old_database;
 ```
 
+<BaseQuiz id="mysql-database-1" correct="C">
+  <template #question>
+    O que `USE nome_do_banco_de_dados` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Cria um novo banco de dados</BaseQuizOption>
+  <BaseQuizOption value="B">Exclui o banco de dados</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Seleciona o banco de dados para operações subsequentes</BaseQuizOption>
+  <BaseQuizOption value="D">Mostra todas as tabelas no banco de dados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A instrução `USE` seleciona um banco de dados, tornando-o o banco de dados ativo para todas as instruções SQL subsequentes. Isso é equivalente a selecionar um banco de dados ao conectar com `mysql -u user -p database_name`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Exportar Dados: `mysqldump`
 
 Fazer backup dos dados do banco de dados para um arquivo SQL.
 
 ```bash
 # Exportar banco de dados inteiro
-mysqldump -u username -p nome_do_banco_de_dados > backup.sql
+mysqldump -u username -p database_name > backup.sql
 # Exportar tabela específica
-mysqldump -u username -p nome_do_banco_de_dados nome_da_tabela > backup_tabela.sql
+mysqldump -u username -p database_name table_name > table_backup.sql
 # Exportar apenas a estrutura
-mysqldump -u username -p --no-data nome_do_banco_de_dados > estrutura.sql
+mysqldump -u username -p --no-data database_name > structure.sql
 # Backup completo do banco de dados com rotinas e triggers
-mysqldump -u username -p --routines --triggers nome_do_banco_de_dados > backup.sql
+mysqldump -u username -p --routines --triggers database_name > backup.sql
 ```
 
 ### Importar Dados: `mysql < file.sql`
@@ -72,7 +87,7 @@ Importar arquivo SQL para o banco de dados MySQL.
 
 ```bash
 # Importar arquivo SQL para o banco de dados
-mysql -u username -p nome_do_banco_de_dados < backup.sql
+mysql -u username -p database_name < backup.sql
 # Importar sem especificar o banco de dados (se incluído no arquivo)
 mysql -u username -p < full_backup.sql
 ```
@@ -85,9 +100,9 @@ Gerenciar usuários e permissões do banco de dados.
 # Criar novo usuário
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 # Conceder todos os privilégios
-GRANT ALL PRIVILEGES ON nome_do_banco_de_dados.* TO 'user'@'localhost';
+GRANT ALL PRIVILEGES ON database_name.* TO 'user'@'localhost';
 # Conceder privilégios específicos
-GRANT SELECT, INSERT, UPDATE ON nome_da_tabela TO 'user'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON table_name TO 'user'@'localhost';
 # Aplicar alterações de privilégios
 FLUSH PRIVILEGES;
 ```
@@ -177,6 +192,21 @@ INSERT INTO users (username, email, age) VALUES
 INSERT INTO users_backup SELECT * FROM users;
 ```
 
+<BaseQuiz id="mysql-insert-1" correct="A">
+  <template #question>
+    Qual é a sintaxe correta para inserir um único registro?
+  </template>
+  
+  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    A sintaxe correta é `INSERT INTO nome_da_tabela (colunas) VALUES (valores)`. A palavra-chave `INTO` é necessária, e você deve especificar tanto os nomes das colunas quanto os valores correspondentes.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Atualizar Dados: `UPDATE`
 
 Modificar registros existentes nas tabelas.
@@ -221,7 +251,7 @@ VALUES ('john', 'john@email.com')
 ON DUPLICATE KEY UPDATE email = VALUES(email);
 ```
 
-## Consultas e Seleção de Dados
+## Consulta e Seleção de Dados
 
 ### SELECT Básico: `SELECT * FROM`
 
@@ -238,6 +268,21 @@ SELECT * FROM users WHERE age > 25;
 SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 ```
 
+<BaseQuiz id="mysql-select-1" correct="D">
+  <template #question>
+    O que `SELECT * FROM users` retorna?
+  </template>
+  
+  <BaseQuizOption value="A">Apenas a primeira linha da tabela users</BaseQuizOption>
+  <BaseQuizOption value="B">Apenas a coluna username</BaseQuizOption>
+  <BaseQuizOption value="C">A estrutura da tabela</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Todas as colunas e todas as linhas da tabela users</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O curinga `*` seleciona todas as colunas e, sem uma cláusula WHERE, retorna todas as linhas. Isso é útil para visualizar todos os dados, mas deve ser usado com cuidado em tabelas grandes.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Ordenação e Limitação: `ORDER BY` / `LIMIT`
 
 Controlar a ordem e o número de resultados retornados.
@@ -249,7 +294,7 @@ SELECT * FROM users ORDER BY age DESC;
 SELECT * FROM users ORDER BY age DESC, username ASC;
 # Limitar resultados
 SELECT * FROM users LIMIT 10;
-# Paginação (ignorar os 10 primeiros, pegar os próximos 10)
+# Paginação (pular os primeiros 10, pegar os próximos 10)
 SELECT * FROM users LIMIT 10 OFFSET 10;
 ```
 
@@ -264,7 +309,7 @@ SELECT * FROM users WHERE username LIKE 'john%';
 SELECT * FROM users WHERE age IN (25, 30, 35);
 # Filtragem por intervalo
 SELECT * FROM users WHERE age BETWEEN 20 AND 30;
-# Verificações NULL
+# Verificações de NULL
 SELECT * FROM users WHERE email IS NOT NULL;
 ```
 
@@ -304,6 +349,21 @@ FROM users u
 JOIN orders o ON u.id = o.user_id
 JOIN products p ON o.product_id = p.id;
 ```
+
+<BaseQuiz id="mysql-join-1" correct="B">
+  <template #question>
+    Qual é a diferença entre INNER JOIN e LEFT JOIN?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="B" correct>INNER JOIN retorna apenas linhas correspondentes, LEFT JOIN retorna todas as linhas da tabela da esquerda</BaseQuizOption>
+  <BaseQuizOption value="C">INNER JOIN é mais rápido</BaseQuizOption>
+  <BaseQuizOption value="D">LEFT JOIN só funciona com duas tabelas</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    INNER JOIN retorna apenas linhas onde há uma correspondência em ambas as tabelas. LEFT JOIN retorna todas as linhas da tabela da esquerda e as linhas correspondentes da tabela da direita, com valores NULL para linhas não correspondentes da tabela da direita.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Subconsultas: `SELECT` dentro de `SELECT`
 
@@ -402,7 +462,7 @@ Técnicas para escrever consultas SQL eficientes.
 SELECT username, email FROM users WHERE id = 1;
 # Usar LIMIT para grandes conjuntos de dados
 SELECT * FROM logs ORDER BY created_at DESC LIMIT 1000;
-# Usar condições WHERE apropriadas
+# Usar condições WHERE adequadas
 SELECT * FROM orders WHERE user_id = 123 AND status = 'pending';
 -- Usar índices de cobertura quando possível
 ```
@@ -461,22 +521,22 @@ Criar e restaurar backups de banco de dados.
 
 ```bash
 # Backup de tabelas específicas
-mysqldump -u username -p nome_do_banco_de_dados tabela1 tabela2 > backup_tabelas.sql
+mysqldump -u username -p database_name table1 table2 > tables_backup.sql
 # Restaurar a partir do backup
-mysql -u username -p nome_do_banco_de_dados < backup.sql
-# Exportar de servidor remoto
-mysqldump -h remote_host -u username -p nome_do_banco_de_dados > backup_remoto.sql
+mysql -u username -p database_name < backup.sql
+# Exportar do servidor remoto
+mysqldump -h remote_host -u username -p database_name > remote_backup.sql
 # Importar para banco de dados local
-mysql -u local_user -p banco_de_dados_local < backup_remoto.sql
+mysql -u local_user -p local_database < remote_backup.sql
 # Cópia direta de dados entre servidores
 mysqldump -h source_host -u user -p db_name | mysql -h dest_host -u user -p db_name
 ```
 
-## Tipos de Dados e Funções MySQL
+## Tipos de Dados e Funções
 
 ### Tipos de Dados Comuns: Números, Texto, Datas
 
-Escolha tipos de dados apropriados para suas colunas.
+Escolha os tipos de dados apropriados para suas colunas.
 
 ```sql
 # Tipos numéricos
@@ -488,7 +548,7 @@ DATE, TIME, DATETIME, TIMESTAMP, YEAR
 # Booleano e binário
 BOOLEAN, BLOB, VARBINARY
 
-# Exemplo de criação de tabela
+# Criação de tabela de exemplo
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -502,7 +562,7 @@ CREATE TABLE products (
 Manipular dados de texto com funções de string integradas.
 
 ```sql
-# Concatenação de strings
+# Concatenação de string
 SELECT CONCAT(first_name, ' ', last_name) as full_name FROM users;
 # Operações de string
 SELECT SUBSTRING(email, 1, LOCATE('@', email)-1) as username FROM users;
@@ -558,7 +618,7 @@ COMMIT;
 ROLLBACK;
 ```
 
-### Isolamento de Transação: `SET TRANSACTION ISOLATION`
+### Nível de Isolamento da Transação: `SET TRANSACTION ISOLATION`
 
 Controlar como as transações interagem umas com as outras.
 
@@ -720,7 +780,7 @@ mysql -u root -p
 SELECT VERSION();
 # Verificar status da conexão
 STATUS;
-# Definir senha root
+# Definir senha do root
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 ```
 
@@ -728,7 +788,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 
 ### Arquivos de Configuração: `my.cnf`
 
-Modificar configurações de configuração do servidor MySQL.
+Modificar as configurações de configuração do servidor MySQL.
 
 ```ini
 # Locais comuns de configuração
@@ -757,9 +817,9 @@ SHOW VARIABLES LIKE 'max_connections';
 SHOW GLOBAL STATUS LIKE 'Slow_queries';
 ```
 
-### Otimização de Desempenho: Memória e Cache
+### Ajuste de Desempenho: Memória e Cache
 
-Otimizar configurações de desempenho do MySQL.
+Otimizar as configurações de desempenho do MySQL.
 
 ```sql
 # Mostrar uso de memória
@@ -768,7 +828,7 @@ SHOW VARIABLES LIKE '%query_cache%';
 # Monitorar desempenho
 SHOW STATUS LIKE 'Qcache%';
 SHOW STATUS LIKE 'Created_tmp%';
-# Configurações InnoDB
+# Configurações do InnoDB
 SET GLOBAL innodb_buffer_pool_size = 2147483648; -- 2GB
 ```
 

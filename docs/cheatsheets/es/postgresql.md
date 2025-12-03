@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de PostgreSQL'
-description: 'Aprenda PostgreSQL con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de PostgreSQL | LabEx'
+description: 'Aprenda gestión de bases de datos PostgreSQL con esta hoja de trucos completa. Referencia rápida para consultas SQL, funciones avanzadas, soporte JSON, búsqueda de texto completo y administración de bases de datos empresariales.'
 pdfUrl: '/cheatsheets/pdf/postgresql-cheatsheet.pdf'
 ---
 
@@ -12,7 +12,7 @@ Hoja de Trucos de PostgreSQL
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/postgresql">Aprenda PostgreSQL con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/postgresql">Aprende PostgreSQL con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Aprenda la gestión de bases de datos PostgreSQL a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de PostgreSQL que cubren operaciones SQL esenciales, consultas avanzadas, optimización del rendimiento, administración de bases de datos y seguridad. Domine el desarrollo y la administración de bases de datos relacionales de nivel empresarial.
@@ -94,7 +94,7 @@ Comandos esenciales de la terminal psql para navegación e información.
 
 ### Versión y Configuración
 
-Verificar la versión de PostgreSQL y la configuración.
+Verifique la versión de PostgreSQL y la configuración.
 
 ```sql
 # Verificar versión de PostgreSQL
@@ -111,7 +111,7 @@ SET work_mem = '256MB';
 
 ### Crear Tabla: `CREATE TABLE`
 
-Definir nuevas tablas con columnas, tipos de datos y restricciones.
+Defina nuevas tablas con columnas, tipos de datos y restricciones.
 
 ```sql
 # Creación básica de tabla
@@ -131,9 +131,24 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="postgresql-create-table-1" correct="A">
+  <template #question>
+    ¿Qué hace `SERIAL PRIMARY KEY` en PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Crea una columna entera de autoincremento que sirve como clave primaria</BaseQuizOption>
+  <BaseQuizOption value="B">Crea una columna de texto</BaseQuizOption>
+  <BaseQuizOption value="C">Crea una restricción de clave foránea</BaseQuizOption>
+  <BaseQuizOption value="D">Crea un índice único</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SERIAL` es un tipo de dato específico de PostgreSQL que crea un entero de autoincremento. Combinado con `PRIMARY KEY`, crea un identificador único para cada fila que se incrementa automáticamente.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Modificar Tablas: `ALTER TABLE`
 
-Añadir, modificar o eliminar columnas y restricciones de tablas existentes.
+Añada, modifique o elimine columnas y restricciones de tablas existentes.
 
 ```sql
 # Añadir nueva columna
@@ -149,7 +164,7 @@ ALTER TABLE users ADD CONSTRAINT unique_email
 
 ### Eliminar y Truncar: `DROP/TRUNCATE`
 
-Eliminar tablas o borrar todos los datos de las tablas.
+Elimine tablas o borre todos los datos de las tablas.
 
 ```sql
 # Eliminar tabla completamente
@@ -181,7 +196,7 @@ TIMESTAMPTZ (con zona horaria)
 BOOLEAN
 JSON, JSONB
 UUID
-ARRAY (ej. INTEGER[])
+ARRAY (ej: INTEGER[])
 
 # Clave primaria
 id SERIAL PRIMARY KEY
@@ -201,7 +216,7 @@ name VARCHAR(50) NOT NULL
 
 ### Índices: `CREATE INDEX`
 
-Mejorar el rendimiento de las consultas con índices de base de datos.
+Mejore el rendimiento de las consultas con índices de base de datos.
 
 ```sql
 # Índice básico
@@ -219,9 +234,24 @@ CREATE INDEX idx_active_users
 DROP INDEX IF EXISTS idx_username;
 ```
 
+<BaseQuiz id="postgresql-index-1" correct="A">
+  <template #question>
+    ¿Cuál es el propósito principal de crear un índice en PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Mejorar el rendimiento de las consultas acelerando la recuperación de datos</BaseQuizOption>
+  <BaseQuizOption value="B">Reducir el tamaño de la base de datos</BaseQuizOption>
+  <BaseQuizOption value="C">Encriptar datos</BaseQuizOption>
+  <BaseQuizOption value="D">Prevenir entradas duplicadas</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Los índices crean una estructura de datos que permite a la base de datos encontrar filas rápidamente sin escanear toda la tabla. Esto acelera significativamente las consultas SELECT, especialmente en tablas grandes.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Secuencias: `CREATE SEQUENCE`
 
-Generar valores numéricos únicos automáticamente.
+Genere valores numéricos únicos automáticamente.
 
 ```sql
 # Crear secuencia
@@ -239,10 +269,10 @@ ALTER SEQUENCE user_id_seq RESTART WITH 1000;
 
 ### Insertar Datos: `INSERT`
 
-Añadir nuevos registros a las tablas de la base de datos.
+Añada nuevos registros a las tablas de la base de datos.
 
 ```sql
-# Insertar registro único
+# Insertar un solo registro
 INSERT INTO users (username, email)
 VALUES ('john_doe', 'john@example.com');
 # Insertar múltiples registros
@@ -258,9 +288,24 @@ INSERT INTO archive_users
 SELECT * FROM users WHERE active = false;
 ```
 
+<BaseQuiz id="postgresql-insert-1" correct="C">
+  <template #question>
+    ¿Qué hace `RETURNING` en una sentencia INSERT de PostgreSQL?
+  </template>
+  
+  <BaseQuizOption value="A">Revierte la inserción</BaseQuizOption>
+  <BaseQuizOption value="B">Previene la inserción</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Devuelve los datos de la fila insertada</BaseQuizOption>
+  <BaseQuizOption value="D">Actualiza filas existentes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La cláusula `RETURNING` en PostgreSQL permite recuperar los datos de la fila insertada (o columnas específicas) inmediatamente después de la inserción, lo cual es útil para obtener IDs autogenerados o marcas de tiempo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Actualizar Datos: `UPDATE`
 
-Modificar registros existentes en las tablas de la base de datos.
+Modifique registros existentes en las tablas de la base de datos.
 
 ```sql
 # Actualizar registros específicos
@@ -280,17 +325,17 @@ SET total = (SELECT SUM(price) FROM order_items
 
 ### Seleccionar Datos: `SELECT`
 
-Consultar y recuperar datos de las tablas de la base de datos.
+Consulte y recupere datos de las tablas de la base de datos.
 
 ```sql
-# Select básico
+# Selección básica
 SELECT * FROM users;
 # Seleccionar columnas específicas
 SELECT id, username, email FROM users;
-# Select con condiciones
+# Selección con condiciones
 SELECT * FROM users
 WHERE active = true AND created_at > '2024-01-01';
-# Select con ordenación y límites
+# Selección con ordenación y límites
 SELECT * FROM users
 ORDER BY created_at DESC
 LIMIT 10 OFFSET 20;
@@ -298,7 +343,7 @@ LIMIT 10 OFFSET 20;
 
 ### Eliminar Datos: `DELETE`
 
-Eliminar registros de las tablas de la base de datos.
+Elimine registros de las tablas de la base de datos.
 
 ```sql
 # Eliminar registros específicos
@@ -321,7 +366,7 @@ RETURNING *;
 
 ### Joins: `INNER/LEFT/RIGHT JOIN`
 
-Combinar datos de múltiples tablas usando varios tipos de unión.
+Combine datos de múltiples tablas usando varios tipos de unión.
 
 ```sql
 # Inner join
@@ -341,7 +386,7 @@ JOIN products p ON o.product_id = p.id;
 
 ### Subconsultas y CTEs
 
-Usar consultas anidadas y expresiones de tabla comunes para operaciones complejas.
+Utilice consultas anidadas y expresiones de tabla comunes para operaciones complejas.
 
 ```sql
 # Subconsulta en WHERE
@@ -359,7 +404,7 @@ GROUP BY au.username;
 
 ### Agregación: `GROUP BY`
 
-Agrupar datos y aplicar funciones agregadas para el análisis.
+Agrupe datos y aplique funciones de agregación para el análisis.
 
 ```sql
 # Agrupación básica
@@ -378,7 +423,7 @@ HAVING COUNT(*) > 5;
 
 ### Funciones de Ventana
 
-Realizar cálculos a través de filas relacionadas sin agrupar.
+Realice cálculos en filas relacionadas sin agrupar.
 
 ```sql
 # Numeración de filas
@@ -399,16 +444,16 @@ FROM user_scores;
 
 ### Importación CSV: `COPY`
 
-Importar datos desde archivos CSV a tablas de PostgreSQL.
+Importe datos desde archivos CSV a tablas de PostgreSQL.
 
 ```sql
 # Importar desde archivo CSV
 COPY users(username, email, age)
-FROM '/ruta/a/users.csv'
+FROM '/path/to/users.csv'
 DELIMITER ',' CSV HEADER;
 # Importar con opciones específicas
 COPY products
-FROM '/ruta/a/products.csv'
+FROM '/path/to/products.csv'
 WITH (FORMAT csv, HEADER true, DELIMITER ';');
 # Importar desde stdin
 \copy users(username, email) FROM STDIN WITH CSV;
@@ -416,22 +461,22 @@ WITH (FORMAT csv, HEADER true, DELIMITER ';');
 
 ### Exportación CSV: `COPY TO`
 
-Exportar datos de PostgreSQL a archivos CSV.
+Exporte datos de PostgreSQL a archivos CSV.
 
 ```sql
 # Exportar a archivo CSV
-COPY users TO '/ruta/a/users_export.csv'
+COPY users TO '/path/to/users_export.csv'
 WITH (FORMAT csv, HEADER true);
 # Exportar resultados de consulta
 COPY (SELECT username, email FROM users WHERE active = true)
-TO '/ruta/a/active_users.csv' CSV HEADER;
+TO '/path/to/active_users.csv' CSV HEADER;
 # Exportar a stdout
 \copy (SELECT * FROM orders) TO STDOUT WITH CSV HEADER;
 ```
 
 ### Copia de Seguridad y Restauración: `pg_dump`
 
-Crear copias de seguridad de bases de datos y restaurar desde archivos de copia de seguridad.
+Cree copias de seguridad de la base de datos y restaure desde archivos de copia de seguridad.
 
 ```bash
 # Volcar base de datos completa
@@ -448,7 +493,7 @@ pg_restore -U nombre_usuario -d nombre_base_datos backup.dump
 
 ### Operaciones de Datos JSON
 
-Trabajar con tipos de datos JSON y JSONB para datos semiestructurados.
+Trabaje con los tipos de datos JSON y JSONB para datos semiestructurados.
 
 ```sql
 # Insertar datos JSON
@@ -467,7 +512,7 @@ WHERE metadata->'features' ? 'wireless';
 
 ### Crear Usuarios y Roles
 
-Administrar el acceso a la base de datos con usuarios y roles.
+Administre el acceso a la base de datos con usuarios y roles.
 
 ```sql
 # Crear usuario
@@ -483,7 +528,7 @@ GRANT readonly_user TO miusuario;
 
 ### Permisos: `GRANT/REVOKE`
 
-Controlar el acceso a los objetos de la base de datos a través de permisos.
+Controle el acceso a los objetos de la base de datos a través de permisos.
 
 ```sql
 # Otorgar permisos de tabla
@@ -498,7 +543,7 @@ REVOKE INSERT ON users FROM miusuario;
 
 ### Ver Información del Usuario
 
-Verificar usuarios existentes y sus permisos.
+Verifique los usuarios existentes y sus permisos.
 
 ```sql
 # Listar todos los usuarios
@@ -516,7 +561,7 @@ FROM pg_roles r;
 
 ### Contraseña y Seguridad
 
-Administrar contraseñas de usuario y configuraciones de seguridad.
+Administre contraseñas de usuario y configuraciones de seguridad.
 
 ```sql
 # Cambiar contraseña de usuario
@@ -534,7 +579,7 @@ ALTER USER miusuario WITH LOGIN;
 
 ### Análisis de Consultas: `EXPLAIN`
 
-Analizar planes de ejecución de consultas y optimizar el rendimiento.
+Analice los planes de ejecución de consultas y optimice el rendimiento.
 
 ```sql
 # Mostrar plan de ejecución de consulta
@@ -545,14 +590,14 @@ SELECT u.username, COUNT(o.id)
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id
 GROUP BY u.username;
-# Información detallada de ejecución
+# Información de ejecución detallada
 EXPLAIN (ANALYZE, BUFFERS, VERBOSE)
 SELECT * FROM large_table WHERE indexed_col = 'value';
 ```
 
 ### Mantenimiento de Base de Datos: `VACUUM`
 
-Mantener el rendimiento de la base de datos a través de operaciones de limpieza regulares.
+Mantenga el rendimiento de la base de datos a través de operaciones de limpieza regulares.
 
 ```sql
 # Vacuum básico
@@ -568,7 +613,7 @@ REINDEX TABLE users;
 
 ### Monitoreo de Consultas
 
-Rastrear la actividad de la base de datos e identificar problemas de rendimiento.
+Rastree la actividad de la base de datos e identifique problemas de rendimiento.
 
 ```sql
 # Actividad actual
@@ -586,7 +631,7 @@ SELECT pg_terminate_backend(pid) WHERE pid = 12345;
 
 ### Estadísticas de la Base de Datos
 
-Obtener información sobre el uso de la base de datos y métricas de rendimiento.
+Obtenga información sobre el uso y las métricas de rendimiento de la base de datos.
 
 ```sql
 # Estadísticas de la tabla
@@ -603,7 +648,7 @@ SELECT pg_size_pretty(pg_database_size('midatabase'));
 
 ### Vistas: `CREATE VIEW`
 
-Crear tablas virtuales para simplificar consultas complejas y proporcionar abstracción de datos.
+Cree tablas virtuales para simplificar consultas complejas y proporcionar abstracción de datos.
 
 ```sql
 # Crear vista simple
@@ -623,7 +668,7 @@ DROP VIEW IF EXISTS order_summary;
 
 ### Triggers y Funciones
 
-Automatizar operaciones de base de datos con procedimientos almacenados y triggers.
+Automatice las operaciones de la base de datos con procedimientos almacenados y triggers.
 
 ```sql
 # Crear función
@@ -643,7 +688,7 @@ CREATE TRIGGER update_user_timestamp
 
 ### Transacciones
 
-Asegurar la consistencia de los datos con el control de transacciones.
+Asegure la consistencia de los datos con el control de transacciones.
 
 ```sql
 # Iniciar transacción
@@ -654,7 +699,7 @@ UPDATE accounts SET balance = balance + 100
 WHERE id = 2;
 # Confirmar transacción
 COMMIT;
-# Deshacer si es necesario
+# Revertir si es necesario
 ROLLBACK;
 # Puntos de guardado
 SAVEPOINT my_savepoint;
@@ -663,7 +708,7 @@ ROLLBACK TO my_savepoint;
 
 ### Configuración y Ajuste
 
-Optimizar la configuración del servidor PostgreSQL para un mejor rendimiento.
+Optimice la configuración del servidor PostgreSQL para un mejor rendimiento.
 
 ```sql
 # Ver configuración actual
@@ -674,7 +719,7 @@ SET work_mem = '256MB';
 SET random_page_cost = 1.1;
 # Recargar configuración
 SELECT pg_reload_conf();
-# Mostrar ubicación del archivo de configuración
+# Ver ubicación del archivo de configuración
 SHOW config_file;
 ```
 
@@ -682,7 +727,7 @@ SHOW config_file;
 
 ### Archivos de Conexión: `.pgpass`
 
-Almacenar credenciales de base de datos de forma segura para la autenticación automática.
+Almacene credenciales de base de datos de forma segura para la autenticación automática.
 
 ```bash
 # Crear archivo .pgpass (formato: hostname:port:database:username:password)
@@ -691,7 +736,7 @@ echo "localhost:5432:midatabase:miusuario:micontraseñasecreta" >> ~/.pgpass
 chmod 600 ~/.pgpass
 # Usar archivo de servicio de conexión
 # ~/.pg_service.conf
-[midb]
+[mydb]
 host=localhost
 port=5432
 dbname=midatabase
@@ -700,7 +745,7 @@ user=miusuario
 
 ### Configuración de psql: `.psqlrc`
 
-Personalizar la configuración de inicio y el comportamiento de psql.
+Personalice la configuración de inicio y el comportamiento de psql.
 
 ```bash
 # Crear archivo ~/.psqlrc con configuraciones personalizadas
@@ -717,7 +762,7 @@ Personalizar la configuración de inicio y el comportamiento de psql.
 
 ### Variables de Entorno
 
-Establecer variables de entorno de PostgreSQL para facilitar las conexiones.
+Establezca variables de entorno de PostgreSQL para facilitar las conexiones.
 
 ```bash
 # Establecer en su perfil de shell
@@ -727,13 +772,13 @@ export PGDATABASE=midatabase
 export PGUSER=miusuario
 # Luego simplemente conéctese con
 psql
-# O usar entorno específico
+# O use entorno específico
 PGDATABASE=testdb psql
 ```
 
 ### Información de la Base de Datos
 
-Obtener información sobre los objetos y la estructura de la base de datos.
+Obtenga información sobre los objetos y la estructura de la base de datos.
 
 ```bash
 # Listar bases de datos
@@ -763,7 +808,7 @@ WHERE constraint_type = 'FOREIGN KEY';
 
 ### Salida y Formato
 
-Controlar cómo psql muestra los resultados de las consultas y la salida.
+Controle cómo psql muestra los resultados de las consultas y la salida.
 
 ```bash
 # Alternar salida expandida
@@ -783,7 +828,7 @@ SELECT * FROM users;
 
 ### Tiempos e Historial
 
-Rastrear el rendimiento de las consultas y administrar el historial de comandos.
+Rastree el rendimiento de las consultas y administre el historial de comandos.
 
 ```bash
 # Alternar visualización de tiempos

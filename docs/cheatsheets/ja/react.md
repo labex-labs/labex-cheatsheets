@@ -1,6 +1,6 @@
 ---
-title: 'React チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで React を学習しましょう。'
+title: 'React チートシート | LabEx'
+description: 'この包括的なチートシートで React 開発を学習しましょう。React フック、コンポーネント、JSX、状態管理、プロパティ、最新のフロントエンド開発パターンのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ React チートシート
 <a target="_blank" href="https://labex.io/ja/learn/react">ハンズオンラボで React を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、React フロントエンド開発を学びましょう。LabEx は、必須のコンポーネント作成、状態管理、フック、イベント処理、パフォーマンス最適化を網羅した包括的な React コースを提供します。最新の Web アプリケーション向けに効率的で保守性の高いユーザーインターフェースを構築するスキルを習得します。
+ハンズオンラボと現実世界のシナリオを通じて、React フロントエンド開発を学びましょう。LabEx は、必須のコンポーネント作成、状態管理、フック、イベント処理、パフォーマンス最適化を網羅した包括的な React コースを提供します。最新の Web アプリケーション向けに効率的で保守性の高いユーザーインターフェースを構築するスキルを習得します。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -90,7 +90,7 @@ const element = (
 
 ### コンポーネントのエクスポート：`export default` / `export`
 
-他のファイルで使用するためにコンポーネントをエクスポートします。
+コンポーネントをエクスポートして、他のファイルで使用できるようにします。
 
 ```javascript
 // デフォルトエクスポート
@@ -125,7 +125,7 @@ import { Button as MyButton } from './Button'
 余分な DOM ノードを追加せずに要素をグループ化します。
 
 ```javascript
-// React.Fragment の使用
+// React.Fragment を使用
 return (
   <React.Fragment>
     <h1>Title</h1>
@@ -133,7 +133,7 @@ return (
   </React.Fragment>
 )
 
-// ショート構文の使用
+// 短縮構文を使用
 return (
   <>
     <h1>Title</h1>
@@ -142,11 +142,11 @@ return (
 )
 ```
 
-## Props とコンポーネント構造
+## Props とコンポーネントの構造
 
 ### Props: `props.name`
 
-親コンポーネントから子コンポーネントへデータを渡します。
+親から子コンポーネントへデータを渡します。
 
 ```javascript
 // props の受信
@@ -169,9 +169,24 @@ function Welcome({ name = 'Guest' }) {
 }
 ```
 
+<BaseQuiz id="react-props-1" correct="B">
+  <template #question>
+    React で親コンポーネントから子コンポーネントにデータを渡すにはどうすればよいですか？
+  </template>
+  
+  <BaseQuizOption value="A">state 変数を使用する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>props を使用する</BaseQuizOption>
+  <BaseQuizOption value="C">ref を使用する</BaseQuizOption>
+  <BaseQuizOption value="D">context API を使用する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Props（プロパティの略）は、React で親から子コンポーネントへデータを渡す主要な方法です。子コンポーネントをレンダリングする際に、属性として props を渡します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### PropTypes: `Component.propTypes`
 
-コンポーネントに渡される props を検証します（prop-types パッケージが必要）。
+コンポーネントに渡された props を検証します（prop-types パッケージが必要）。
 
 ```javascript
 import PropTypes from 'prop-types'
@@ -237,6 +252,21 @@ function Form() {
 }
 ```
 
+<BaseQuiz id="react-usestate-1" correct="A">
+  <template #question>
+    `useState(0)` は何を返しますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>状態値とそれを更新する関数の配列</BaseQuizOption>
+  <BaseQuizOption value="B">状態値のみ</BaseQuizOption>
+  <BaseQuizOption value="C">状態を更新するための関数</BaseQuizOption>
+  <BaseQuizOption value="D">状態を設定するだけで何も返さない</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `useState` は、現在の状態値とそれを更新する関数の 2 つの要素を持つ配列を返します。引数として初期値（0）が渡されます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### useEffect フック：`useEffect()`
 
 関数コンポーネントで副作用を実行します。
@@ -247,7 +277,7 @@ import React, { useState, useEffect } from 'react'
 function Timer() {
   const [count, setCount] = useState(0)
 
-  // エフェクトはすべてのレンダリング後に実行される
+  // すべてのレンダリング後に実行されるエフェクト
   useEffect(() => {
     document.title = `Count: ${count}`
   })
@@ -259,6 +289,21 @@ function Timer() {
   }, [])
 }
 ```
+
+<BaseQuiz id="react-useeffect-1" correct="D">
+  <template #question>
+    `useEffect(() => {...}, [])`の空の依存関係配列は何を意味しますか？
+  </template>
+  
+  <BaseQuizOption value="A">エフェクトはすべてのレンダリングで実行される</BaseQuizOption>
+  <BaseQuizOption value="B">エフェクトは実行されない</BaseQuizOption>
+  <BaseQuizOption value="C">エフェクトは 2 回実行される</BaseQuizOption>
+  <BaseQuizOption value="D" correct>エフェクトは最初のレンダリング後に一度だけ実行される</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    空の依存関係配列は、エフェクトに依存関係がないことを意味するため、コンポーネントのマウント後に一度だけ実行されます。これは一度だけ実行されるべきセットアップコードに役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### クラスの状態：`this.state` / `setState()`
 
@@ -314,9 +359,24 @@ function Counter() {
 
 ## イベント処理
 
+<BaseQuiz id="react-props-2" correct="A">
+  <template #question>
+    React における PropTypes の目的は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>コンポーネントに渡される props の型を検証すること</BaseQuizOption>
+  <BaseQuizOption value="B">コンポーネントのパフォーマンスを向上させること</BaseQuizOption>
+  <BaseQuizOption value="C">コンポーネントを自動的にスタイリングすること</BaseQuizOption>
+  <BaseQuizOption value="D">コンポーネントを高速化すること</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PropTypes は、コンポーネントが正しい型の props を受け取ることを検証することでバグの発見に役立ちます。これらはランタイムの型チェックを提供し、特に開発中に役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### クリックイベント：`onClick`
 
-ボタンのクリックや要素のインタラクションを処理します。
+ボタンのクリックや要素の操作を処理します。
 
 ```javascript
 function Button() {
@@ -331,7 +391,7 @@ function Button() {
   return <button onClick={() => alert('Clicked!')}>Click me</button>
 }
 
-// パラメータの渡渡し
+// パラメータを渡す
 function Button() {
   const handleClick = (message) => {
     alert(message)
@@ -535,7 +595,7 @@ function ItemList({ items }) {
 
 ### キー: `key` prop
 
-レンダリングを最適化するためにリストアイテムに一意の識別子を提供します。
+レンダリングを最適化するために、リスト項目に一意の識別子を提供します。
 
 ```javascript
 // 良い例：一意の ID を使用
@@ -563,9 +623,9 @@ function CommentList({ comments }) {
 }
 ```
 
-### フィルタと Map: 配列メソッド
+### Filter と Map: 配列メソッド
 
-レンダリングする前に配列を処理します。
+リストをレンダリングする前に配列を処理します。
 
 ```javascript
 function TaskList({ tasks, showCompleted }) {
@@ -603,7 +663,7 @@ function ProductList({ products }) {
 }
 ```
 
-## パフォーマンス最適化
+## パフォーマンスの最適化
 
 ### React.memo: `React.memo()`
 
@@ -755,7 +815,7 @@ function Header() {
 
 ### Refs: `useRef` / `forwardRef`
 
-DOM 要素にアクセスしたり、ミュータブルな値を格納したりします。
+DOM 要素にアクセスしたり、変更可能な値を格納したりします。
 
 ```javascript
 function TextInput() {
@@ -796,7 +856,7 @@ function MyComponent(props) {
 }
 ```
 
-### エラー境界：`componentDidCatch`
+### エラー境界線：`componentDidCatch`
 
 コンポーネントツリー内の JavaScript エラーをキャッチし、フォールバック UI を表示します。
 
@@ -823,7 +883,7 @@ class ErrorBoundary extends React.Component {
 
 ### Strict Mode: `React.StrictMode`
 
-開発中の追加のチェックと警告を有効にします。
+開発中に、追加のチェックと警告を有効にします。
 
 ```javascript
 import React from 'react'
@@ -859,7 +919,7 @@ function onRenderCallback(id, phase, actualDuration) {
 
 ### Create React App: `npx create-react-app`
 
-新しい React プロジェクトを素早くブートストラップします。
+新しい React プロジェクトを迅速にブートストラップします。
 
 ```bash
 # 新しいReactアプリの作成
@@ -893,7 +953,7 @@ npm run dev
 npm run build
 ```
 
-### 手動セットアップ / インポート
+### 手動セットアップ/インポート
 
 既存のプロジェクトに React を追加するか、CDN を使用します。
 
@@ -938,7 +998,7 @@ const UserListWithLoading = withLoading(UserList)
 
 ### Render Props パターン
 
-値を関数として持つ prop を使用することで、コンポーネント間でコードを共有します。
+props の値として関数を使用することで、コンポーネント間でコードを共有します。
 
 ```javascript
 function DataFetcher({ render, url }) {
@@ -966,7 +1026,7 @@ function DataFetcher({ render, url }) {
 
 ### 複合コンポーネント
 
-まとまりのあるユニットとして連携するコンポーネントを作成します。
+協調して機能する一貫したユニットとしてコンポーネントを作成します。
 
 ```javascript
 function Tabs({ children, activeTab }) {
@@ -1010,7 +1070,7 @@ function Modal({ children, isOpen }) {
 
 ### 継承よりもコンポジション
 
-クラスを拡張するのではなく、コンポジションパターンを使用します。
+クラスを拡張する代わりに、コンポジションパターンを使用します。
 
 ```javascript
 // 良い例：コンポジション
@@ -1034,7 +1094,7 @@ function IconButton({ icon, children, ...props }) {
 
 ### コンポーネントパターン：柔軟な API
 
-使用が簡単で柔軟なコンポーネント API を設計します。
+柔軟で使いやすいコンポーネント API を設計します。
 
 ```javascript
 // 柔軟な Card コンポーネント

@@ -12,10 +12,10 @@ Feuille de triche Linux
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Visiter les Commandes Linux</a>
+<a href="https://linux-commands.labex.io/" target="_blank">Visiter Commandes Linux</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Pour obtenir des références complètes sur les commandes Linux, des exemples de syntaxe et une documentation détaillée, veuillez visiter <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Ce site indépendant fournit des feuilles de triche Linux complètes couvrant les commandes essentielles, les concepts et les meilleures pratiques pour les administrateurs et développeurs Linux.
+Pour obtenir des matériaux de référence complets sur les commandes Linux, des exemples de syntaxe et une documentation détaillée, veuillez visiter <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Ce site indépendant fournit des fiches de triche Linux complètes couvrant les commandes essentielles, les concepts et les meilleures pratiques pour les administrateurs et les développeurs Linux.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -73,7 +73,7 @@ Afficher les utilisateurs actuellement connectés et leurs activités.
 ```bash
 # Afficher les utilisateurs connectés
 who
-# Informations détaillées sur les utilisateurs avec activités
+# Informations détaillées sur l'utilisateur avec activités
 w
 # Afficher le nom d'utilisateur actuel
 whoami
@@ -168,15 +168,15 @@ Créer et supprimer des fichiers et des répertoires.
 
 ```bash
 # Créer un répertoire
-mkdir nouveau_dir
+mkdir nouveau_rep
 # Créer des répertoires imbriqués
-mkdir -p chemin/vers/repertoire/imbrique
+mkdir -p chemin/vers/rep/imbrique
 # Supprimer un répertoire vide
-rmdir nom_dir
+rmdir nom_rep
 # Supprimer un fichier
-rm fichier
+rm nom_fichier
 # Supprimer un répertoire récursivement
-rm -rf nom_dir
+rm -rf nom_rep
 ```
 
 ### Voir le Contenu des Fichiers : `cat`, `less`, `head`, `tail`
@@ -185,13 +185,13 @@ Afficher le contenu des fichiers en utilisant diverses méthodes et pagination.
 
 ```bash
 # Afficher le fichier entier
-cat fichier
+cat nom_fichier
 # Voir le fichier avec pagination
-less fichier
+less nom_fichier
 # Afficher les 10 premières lignes
-head fichier
+head nom_fichier
 # Afficher les 10 dernières lignes
-tail fichier
+tail nom_fichier
 # Suivre les changements de fichier en temps réel
 tail -f journal.log
 ```
@@ -236,20 +236,20 @@ Modifier les permissions et la propriété des fichiers.
 
 ```bash
 # Changer les permissions (numérique)
-chmod 755 fichier
+chmod 755 nom_fichier
 # Ajouter la permission d'exécution
 chmod +x script.sh
 # Changer la propriété
-chown utilisateur:groupe fichier
+chown utilisateur:groupe nom_fichier
 # Changer la propriété récursivement
 chown -R utilisateur:groupe repertoire/
 # Voir les permissions du fichier
-ls -l fichier
+ls -l nom_fichier
 ```
 
 <BaseQuiz id="linux-chmod-1" correct="C">
   <template #question>
-    Que définit `chmod 755 fichier` comme permissions ?
+    Que définit `chmod 755 nom_fichier` comme permissions ?
   </template>
   
   <BaseQuizOption value="A">Lecture, écriture, exécution pour le propriétaire ; lecture pour le groupe et les autres</BaseQuizOption>
@@ -258,7 +258,7 @@ ls -l fichier
   <BaseQuizOption value="D">Lecture, écriture pour le propriétaire ; lecture pour le groupe et les autres</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` définit : propriétaire = 7 (rwx), groupe = 5 (r-x), autres = 5 (r-x). C'est un ensemble de permissions courant pour les fichiers et répertoires exécutables.
+    `chmod 755` définit : propriétaire = 7 (rwx), groupe = 5 (r-x), autres = 5 (r-x). C'est un ensemble de permissions courant pour les fichiers exécutables et les répertoires.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -286,9 +286,9 @@ Terminer les processus par PID ou par nom.
 ```bash
 # Moniteur de processus en temps réel
 top
-# Tuer un processus par PID
+# Tuer le processus par PID
 kill 1234
-# Tuer un processus de force
+# Tuer le processus de force
 kill -9 1234
 # Tuer par nom de processus
 killall nom_processus
@@ -432,24 +432,24 @@ rsync -avz --progress src/ dest/
 
 ### Recherche de Texte : `grep`
 
-Rechercher des motifs dans le contenu des fichiers et la sortie des commandes.
+Rechercher des motifs dans les fichiers et la sortie des commandes.
 
 ```bash
 # Rechercher un motif dans un fichier
-grep "motif" fichier
+grep "motif" nom_fichier
 # Recherche insensible à la casse
-grep -i "motif" fichier
+grep -i "motif" nom_fichier
 # Recherche récursive dans les répertoires
 grep -r "motif" /chemin/
 # Afficher les numéros de ligne
-grep -n "motif" fichier
+grep -n "motif" nom_fichier
 # Compter les lignes correspondantes
-grep -c "motif" fichier
+grep -c "motif" nom_fichier
 ```
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    Quelle option `grep` effectue-t-elle une recherche insensible à la casse ?
+    Quelle option `grep` effectue une recherche insensible à la casse ?
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -468,13 +468,13 @@ Modifier et traiter le texte à l'aide d'éditeurs de flux et d'analyseurs de mo
 
 ```bash
 # Remplacer le texte dans le fichier
-sed 's/ancien/nouveau/g' fichier
+sed 's/ancien/nouveau/g' nom_fichier
 # Supprimer les lignes contenant un motif
-sed '/motif/d' fichier
+sed '/motif/d' nom_fichier
 # Afficher des champs spécifiques
-awk '{print $1, $3}' fichier
-# Somme des valeurs dans une colonne
-awk '{sum += $1} END {print sum}' fichier
+awk '{print $1, $3}' nom_fichier
+# Sommer les valeurs dans une colonne
+awk '{sum += $1} END {print sum}' nom_fichier
 ```
 
 ### Trier et Compter : `sort`, `uniq`, `wc`
@@ -483,17 +483,17 @@ Trier les données, supprimer les doublons et compter les lignes, les mots ou le
 
 ```bash
 # Trier le contenu du fichier
-sort fichier
+sort nom_fichier
 # Trier numériquement
 sort -n nombres.txt
 # Supprimer les lignes dupliquées
-uniq fichier
+uniq nom_fichier
 # Trier et supprimer les doublons
-sort fichier | uniq
+sort nom_fichier | uniq
 # Compter les lignes, les mots, les caractères
-wc fichier
+wc nom_fichier
 # Compter uniquement les lignes
-wc -l fichier
+wc -l nom_fichier
 ```
 
 ### Couper et Coller : `cut`, `paste`
@@ -504,7 +504,7 @@ Extraire des colonnes spécifiques et combiner des fichiers.
 # Extraire la première colonne
 cut -d',' -f1 fichier.csv
 # Extraire une plage de caractères
-cut -c1-10 fichier
+cut -c1-10 nom_fichier
 # Combiner les fichiers côte à côte
 paste fichier1.txt fichier2.txt
 # Utiliser un délimiteur personnalisé
@@ -532,18 +532,18 @@ tar -tf archive.tar
 
 ### Compression : `gzip`, `zip`
 
-Compresser et décompresser des fichiers en utilisant divers algorithmes.
+Compresser et décompresser des fichiers à l'aide de divers algorithmes.
 
 ```bash
 # Compresser un fichier avec gzip
-gzip fichier
+gzip nom_fichier
 # Décompresser un fichier gzip
-gunzip fichier.gz
+gunzip nom_fichier.gz
 # Créer une archive zip
 zip archive.zip fichier1 fichier2
 # Extraire une archive zip
 unzip archive.zip
-# Lister le contenu d'un zip
+# Lister le contenu zip
 unzip -l archive.zip
 ```
 
@@ -564,7 +564,7 @@ tar -uf archive.tar fichiers/
 
 ### Espace Disque : `du`
 
-Analyser l'utilisation de l'espace disque et les tailles de répertoires.
+Analyser l'utilisation du disque et la taille des répertoires.
 
 ```bash
 # Afficher les tailles des répertoires
@@ -573,7 +573,7 @@ du -h /chemin/
 du -sh /chemin/
 # Afficher les tailles de tous les sous-répertoires
 du -h --max-depth=1 /chemin/
-# Les plus grands répertoires en premier
+# Répertoires les plus volumineux en premier
 du -h | sort -hr | head -10
 ```
 
@@ -592,7 +592,7 @@ cat /proc/meminfo
 vmstat
 # Utilisation de la mémoire toutes les 2 secondes
 vmstat 2
-# Afficher l'utilisation du swap
+# Afficher l'utilisation de l'espace d'échange (swap)
 swapon --show
 ```
 
@@ -605,7 +605,7 @@ Surveiller les performances d'entrée/sortie du disque et identifier les goulots
 iostat
 # Statistiques d'E/S toutes les 2 secondes
 iostat 2
-# Surveiller les E/S du disque par processus
+# Surveiller les E/S de disque par processus
 iotop
 # Afficher l'utilisation des E/S pour un périphérique spécifique
 iostat -x /dev/sda
@@ -641,7 +641,7 @@ journalctl -f
 journalctl -u nom_service
 # Messages du noyau
 dmesg
-# Derniers messages de démarrage
+# Messages du dernier démarrage
 dmesg | tail
 ```
 
@@ -686,9 +686,9 @@ usermod -g groupe_nom nom_utilisateur
 Changer d'utilisateur et exécuter des commandes avec des privilèges élevés.
 
 ```bash
-# Changer en utilisateur root
+# Changer pour l'utilisateur root
 su -
-# Changer en utilisateur spécifique
+# Changer pour un utilisateur spécifique
 su - nom_utilisateur
 # Exécuter une commande en tant que root
 sudo commande
@@ -709,7 +709,7 @@ passwd
 passwd nom_utilisateur
 # Afficher les informations d'expiration du mot de passe
 chage -l nom_utilisateur
-# Définir l'expiration du mot de passe
+# Définir l'expiration du mot de passe à 90 jours
 chage -M 90 nom_utilisateur
 # Forcer le changement de mot de passe à la prochaine connexion
 passwd -e nom_utilisateur
@@ -755,7 +755,7 @@ yum list installed
 
 ### Paquets Snap : `snap`
 
-Installer et gérer les paquets snap sur diverses distributions.
+Installer et gérer les paquets snap sur différentes distributions.
 
 ```bash
 # Installer un paquet snap
@@ -772,12 +772,12 @@ snap find nom_paquet
 
 ### Paquets Flatpak : `flatpak`
 
-Gérer les applications Flatpak pour les logiciels en bac à sable.
+Gérer les applications Flatpak pour les logiciels sandboxed.
 
 ```bash
 # Installer flatpak
 flatpak install nom_paquet
-# Lister les paquets flatpak installés
+# Lister les flatpaks installés
 flatpak list
 # Mettre à jour les paquets flatpak
 flatpak update
@@ -874,7 +874,7 @@ sha256sum linux.iso
 
 ### Démarrage et Installation : USB, Réseau
 
-Créer des médias amorçables et effectuer l'installation du système.
+Créer des supports de démarrage et effectuer l'installation du système.
 
 ```bash
 # Créer une clé USB amorçable (Linux)
@@ -919,7 +919,7 @@ ufw allow ssh
 ufw deny 23
 # Afficher l'état du pare-feu
 ufw status verbose
-# Règles iptables avancées
+# Règles avancées avec iptables
 iptables -L
 ```
 
@@ -928,10 +928,10 @@ iptables -L
 Vérifier l'intégrité des fichiers et détecter les modifications non autorisées.
 
 ```bash
-# Générer le checksum MD5
-md5sum fichier
-# Générer le checksum SHA256
-sha256sum fichier
+# Générer un checksum MD5
+md5sum nom_fichier
+# Générer un checksum SHA256
+sha256sum nom_fichier
 # Vérifier le checksum
 sha256sum -c checksums.txt
 # Créer un fichier de checksum
@@ -964,7 +964,7 @@ tail -f /var/log/auth.log
 grep "Failed password" /var/log/auth.log
 # Surveiller les journaux système
 tail -f /var/log/syslog
-# Voir l'historique des connexions
+# Voir l'historique de connexion
 last
 # Vérifier les activités suspectes
 journalctl -p err
@@ -996,7 +996,7 @@ Vérifier et réparer la corruption du système de fichiers.
 ```bash
 # Vérifier le système de fichiers
 fsck /dev/sda1
-# Forcer la vérification du système de fichiers
+# Vérification forcée du système de fichiers
 fsck -f /dev/sda1
 # Réparation automatique
 fsck -y /dev/sda1
@@ -1006,7 +1006,7 @@ fsck -A
 
 ### Problèmes de Service : `systemctl`
 
-Diagnostiquer et résoudre les problèmes liés aux services.
+Diagnostiquer et corriger les problèmes liés aux services.
 
 ```bash
 # Vérifier l'état du service

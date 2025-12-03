@@ -1,6 +1,6 @@
 ---
-title: 'C 语言速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，学习 C 语言编程。'
+title: 'C 语言速查表 | LabEx'
+description: '使用本综合 C 语言速查表快速学习 C 编程。包含 C 语法、指针、内存管理、数据结构和系统编程要点的快速参考，专为开发者设计。'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 
@@ -76,15 +76,30 @@ int main(int argc, char *argv[]) {
 }
 ```
 
+<BaseQuiz id="c-main-1" correct="C">
+  <template #question>
+    在 main 函数中 `return 0` 表示什么？
+  </template>
+  
+  <BaseQuizOption value="A">程序失败</BaseQuizOption>
+  <BaseQuizOption value="B">程序仍在运行</BaseQuizOption>
+  <BaseQuizOption value="C" correct>程序成功执行</BaseQuizOption>
+  <BaseQuizOption value="D">程序未返回值</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    在 C 语言中，从 main 函数 `return 0` 表示程序成功执行。非零返回值通常表示错误或异常终止。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 基本输出
 
 向控制台显示文本和变量。
 
 ```c
 printf("Hello\n");
-printf("值：%d\n", 42);
-// 单行中的多个值
-printf("姓名：%s, 年龄：%d\n", name, age);
+printf("Value: %d\n", 42);
+// 一行中的多个值
+printf("Name: %s, Age: %d\n", name, age);
 ```
 
 ### 基本输入
@@ -104,7 +119,7 @@ fgets(name, sizeof(name), stdin);
 
 ### 基本类型
 
-用于存储不同种类值的基本数据类型。
+用于存储不同类型值的基本数据类型。
 
 ```c
 // 整数类型
@@ -117,12 +132,12 @@ float price = 19.99f;
 double precise = 3.14159265359;
 // 字符和布尔值 (使用 int)
 char grade = 'A';
-int is_valid = 1;  // 1 代表真，0 代表假
+int is_valid = 1;  // 1 表示 true, 0 表示 false
 ```
 
 ### 数组与字符串
 
-数组和 C 中的字符串处理。
+C 中的数组和字符串处理。
 
 ```c
 // 数组
@@ -136,6 +151,21 @@ char buffer[100];  // 未初始化
 int len = strlen(name);
 int size = sizeof(buffer);
 ```
+
+<BaseQuiz id="c-arrays-1" correct="C">
+  <template #question>
+    C 语言中字符串是如何表示的？
+  </template>
+  
+  <BaseQuizOption value="A">作为特殊的字符串类型</BaseQuizOption>
+  <BaseQuizOption value="B">作为整数</BaseQuizOption>
+  <BaseQuizOption value="C" correct>作为字符数组</BaseQuizOption>
+  <BaseQuizOption value="D">仅作为指针</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    在 C 语言中，字符串表示为字符数组 (`char`)。字符串以空字符 (`\0`) 结尾，该字符标记了字符串的末尾。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 常量与修饰符
 
@@ -164,33 +194,33 @@ register int fast_var;    // 寄存器提示
 ```c
 // If-else 语句
 if (age >= 18) {
-    printf("成年人\n");
+    printf("Adult\n");
 } else if (age >= 13) {
-    printf("青少年\n");
+    printf("Teenager\n");
 } else {
-    printf("儿童\n");
+    printf("Child\n");
 }
 // 三元运算符
 char* status = (age >= 18) ? "Adult" : "Minor";
 // Switch 语句
 switch (grade) {
     case 'A':
-        printf("优秀!\n");
+        printf("Excellent!\n");
         break;
     case 'B':
-        printf("干得好!\n");
+        printf("Good job!\n");
         break;
     default:
-        printf("继续努力!\n");
+        printf("Keep trying!\n");
 }
 ```
 
 ### For 循环
 
-使用基于计数器的循环进行迭代。
+基于计数器的循环迭代。
 
 ```c
-// 传统 for 循环
+// 传统的 for 循环
 for (int i = 0; i < 10; i++) {
     printf("%d ", i);
 }
@@ -208,6 +238,21 @@ for (int i = 0; i < 3; i++) {
 }
 ```
 
+<BaseQuiz id="c-for-loop-1" correct="A">
+  <template #question>
+    `sizeof(numbers) / sizeof(numbers[0])` 计算的是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>数组中的元素数量</BaseQuizOption>
+  <BaseQuizOption value="B">数组的总内存大小</BaseQuizOption>
+  <BaseQuizOption value="C">最后一个元素的索引</BaseQuizOption>
+  <BaseQuizOption value="D">一个元素的大小</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    该表达式通过将数组的总大小除以一个元素的大小来计算数组的长度。这是 C 语言中的常见惯用法，因为数组本身不存储其长度。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### While 循环
 
 基于条件的迭代。
@@ -222,7 +267,7 @@ while (count < 5) {
 // Do-while 循环 (至少执行一次)
 int input;
 do {
-    printf("输入一个数字 (0 退出): ");
+    printf("Enter a number (0 to quit): ");
     scanf("%d", &input);
 } while (input != 0);
 ```
@@ -320,7 +365,7 @@ int fibonacci(int n) {
 ```c
 // 函数指针声明
 int (*operation)(int, int);
-// 赋值函数给指针
+// 将函数赋值给指针
 operation = add;
 int result = operation(5, 3);
 // 函数指针数组
@@ -336,14 +381,14 @@ result = operations[0](10, 5);
 
 ```c
 int x = 10;
-int *ptr = &x;  // 指向 x 的指针
-printf("x 的值：%d\n", x);
-printf("x 的地址：%p\n", &x);
-printf("ptr 的值 (地址): %p\n", ptr);
-printf("ptr 所指向的值：%d\n", *ptr);
+int *ptr = &x;  // x 的指针
+printf("Value of x: %d\n", x);
+printf("Address of x: %p\n", &x);
+printf("Value of ptr: %p\n", ptr);
+printf("Value pointed by ptr: %d\n", *ptr);
 // 通过指针修改值
 *ptr = 20;
-printf("x 的新值：%d\n", x);
+printf("New value of x: %d\n", x);
 // 空指针
 int *null_ptr = NULL;
 ```
@@ -358,7 +403,7 @@ int *p = arr;  // 指向第一个元素
 // 数组表示法 vs 指针算术
 printf("%d\n", arr[2]);   // 数组表示法
 printf("%d\n", *(p + 2)); // 指针算术
-printf("%d\n", p[2]);     // 指针作为数组
+printf("%d\n", p[2]);     // 将指针当作数组使用
 // 使用指针迭代
 for (int i = 0; i < 5; i++) {
     printf("%d ", *(p + i));
@@ -375,7 +420,7 @@ for (int i = 0; i < 5; i++) {
 int *ptr = (int*)malloc(sizeof(int));
 if (ptr != NULL) {
     *ptr = 42;
-    printf("值：%d\n", *ptr);
+    printf("Value: %d\n", *ptr);
     free(ptr);  // 始终释放分配的内存
 }
 // 动态分配数组
@@ -399,8 +444,8 @@ char str2[] = "World";          // 字符数组
 char *str3 = (char*)malloc(20); // 动态字符串
 // 字符串函数
 strcpy(str3, "Dynamic");
-printf("长度：%lu\n", strlen(str1));
-printf("比较：%d\n", strcmp(str1, str2));
+printf("Length: %lu\n", strlen(str1));
+printf("Compare: %d\n", strcmp(str1, str2));
 strcat(str2, "!");
 // 始终释放动态字符串
 free(str3);
@@ -428,8 +473,8 @@ typedef struct {
 struct Rectangle rect1 = {5.0, 3.0};
 Student student1 = {"Alice", 20, 3.75};
 // 访问结构体成员
-printf("面积：%.2f\n", rect1.width * rect1.height);
-printf("学生：%s, 年龄：%d\n", student1.name, student1.age);
+printf("Area: %.2f\n", rect1.width * rect1.height);
+printf("Student: %s, Age: %d\n", student1.name, student1.age);
 ```
 
 ### 嵌套结构体
@@ -450,7 +495,7 @@ Employee emp = {
     {15, 6, 1985},
     50000.0
 };
-printf("出生日期：%d/%d/%d\n",
+printf("Born: %d/%d/%d\n",
        emp.birthdate.day,
        emp.birthdate.month,
        emp.birthdate.year);
@@ -463,8 +508,8 @@ printf("出生日期：%d/%d/%d\n",
 ```c
 Student *student_ptr = &student1;
 // 通过指针访问 (两种方法)
-printf("姓名：%s\n", (*student_ptr).name);
-printf("年龄：%d\n", student_ptr->age);
+printf("Name: %s\n", (*student_ptr).name);
+printf("Age: %d\n", student_ptr->age);
 // 通过指针修改
 student_ptr->age = 21;
 strcpy(student_ptr->name, "Alice Johnson");
@@ -480,7 +525,7 @@ if (new_student != NULL) {
 
 ### 联合体和枚举
 
-其他数据组织方法。
+替代的数据组织方法。
 
 ```c
 // 联合体 - 共享内存空间
@@ -491,14 +536,14 @@ union Data {
 };
 union Data data;
 data.integer = 42;
-printf("整数：%d\n", data.integer);
+printf("Integer: %d\n", data.integer);
 // 枚举
 enum Weekday {
     MONDAY, TUESDAY, WEDNESDAY,
     THURSDAY, FRIDAY, SATURDAY, SUNDAY
 };
 enum Weekday today = FRIDAY;
-printf("今天是第 %d 天\n", today);
+printf("Today is day %d\n", today);
 ```
 
 ## 文件输入/输出操作
@@ -522,14 +567,14 @@ if (file != NULL) {
 FILE *file2 = fopen("lines.txt", "r");
 char buffer[256];
 while (fgets(buffer, sizeof(buffer), file2) != NULL) {
-    printf("行：%s", buffer);
+    printf("Line: %s", buffer);
 }
 fclose(file2);
 // 读取格式化数据
 FILE *numbers = fopen("numbers.txt", "r");
 int num;
 while (fscanf(numbers, "%d", &num) == 1) {
-    printf("数字：%d\n", num);
+    printf("Number: %d\n", num);
 }
 fclose(numbers);
 ```
@@ -541,17 +586,17 @@ fclose(numbers);
 ```c
 FILE *file = fopen("data.txt", "r");
 if (file == NULL) {
-    printf("打开文件错误!\n");
+    printf("Error opening file!\n");
     perror("fopen");  // 打印系统错误信息
     return 1;
 }
 // 检查读取错误
 if (ferror(file)) {
-    printf("读取文件错误!\n");
+    printf("Error reading file!\n");
 }
 // 检查文件结束
 if (feof(file)) {
-    printf("已到达文件末尾\n");
+    printf("Reached end of file\n");
 }
 fclose(file);
 ```
@@ -565,16 +610,16 @@ fclose(file);
 FILE *outfile = fopen("output.txt", "w");
 if (outfile != NULL) {
     fprintf(outfile, "Hello, file!\n");
-    fprintf(outfile, "数字：%d\n", 42);
+    fprintf(outfile, "Number: %d\n", 42);
     fclose(outfile);
 }
 // 追加到现有文件
 FILE *appendfile = fopen("log.txt", "a");
 if (appendfile != NULL) {
-    fprintf(appendfile, "新的日志条目\n");
+    fprintf(appendfile, "New log entry\n");
     fclose(appendfile);
 }
-// 将数组写入文件
+// 写入数组到文件
 int numbers[] = {1, 2, 3, 4, 5};
 FILE *numfile = fopen("numbers.txt", "w");
 for (int i = 0; i < 5; i++) {
@@ -617,7 +662,7 @@ char str2[] = "World";
 char dest[100];
 // 字符串长度
 int len = strlen(str1);
-printf("长度：%d\n", len);
+printf("Length: %d\n", len);
 // 字符串复制
 strcpy(dest, str1);
 strncpy(dest, str1, 10); // 复制前 10 个字符
@@ -628,13 +673,13 @@ strncat(dest, "!", 1);   // 追加 1 个字符
 // 字符串比较
 int result = strcmp(str1, str2);
 if (result == 0) {
-    printf("字符串相等\n");
+    printf("Strings are equal\n");
 }
 ```
 
 ### 字符串搜索
 
-在字符串中查找子字符串和字符。
+在字符串中查找子串和字符。
 
 ```c
 char text[] = "The quick brown fox";
@@ -642,15 +687,15 @@ char *ptr;
 // 查找字符的第一次出现
 ptr = strchr(text, 'q');
 if (ptr != NULL) {
-    printf("找到 'q' 的位置：%ld\n", ptr - text);
+    printf("Found 'q' at position: %ld\n", ptr - text);
 }
 // 查找最后一次出现
 ptr = strrchr(text, 'o');
-printf("最后 'o' 的位置：%ld\n", ptr - text);
-// 查找子字符串
+printf("Last 'o' at position: %ld\n", ptr - text);
+// 查找子串
 ptr = strstr(text, "brown");
 if (ptr != NULL) {
-    printf("找到 'brown' 的位置：%s\n", ptr);
+    printf("Found 'brown' at: %s\n", ptr);
 }
 ```
 
@@ -660,20 +705,20 @@ if (ptr != NULL) {
 
 ```c
 #include <stdlib.h>
-// 字符串转数字
+// 字符串转数字转换
 char num_str[] = "12345";
 char float_str[] = "3.14159";
 int num = atoi(num_str);
 long long_num = atol(num_str);
 double float_num = atof(float_str);
-printf("整数：%d\n", num);
-printf("长整型：%ld\n", long_num);
-printf("双精度浮点数：%.2f\n", float_num);
+printf("Integer: %d\n", num);
+printf("Long: %ld\n", long_num);
+printf("Double: %.2f\n", float_num);
 // 数字转字符串 (使用 sprintf)
 char buffer[50];
 sprintf(buffer, "%d", 42);
 sprintf(buffer, "%.2f", 3.14159);
-printf("字符串：%s\n", buffer);
+printf("String: %s\n", buffer);
 ```
 
 ### 自定义字符串处理
@@ -705,7 +750,7 @@ void reverseString(char *str) {
 
 ### GCC 编译
 
-GNU 编译器集合用于 C 语言。
+用于 C 语言的 GNU 编译器集合。
 
 ```bash
 # 基本编译
@@ -791,7 +836,7 @@ int count;            // 危险 - 未初始化
 // 检查 malloc 的返回值
 int *ptr = malloc(sizeof(int) * 10);
 if (ptr == NULL) {
-    printf("内存分配失败!\n");
+    printf("Memory allocation failed!\n");
     return -1;
 }
 // 始终释放分配的内存
@@ -819,7 +864,7 @@ for (int i = 0; i < len; i++) {
 }
 // 对频繁访问的变量使用 register
 register int counter;
-// 优先使用数组而不是动态分配（当大小已知时）
+// 尺寸已知时，优先使用数组而不是动态分配
 int fixed_array[100];  // 栈分配
 // vs
 int *dynamic_array = malloc(100 * sizeof(int));

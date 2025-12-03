@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Dicas DevOps'
-description: 'Aprenda DevOps com nossa folha de dicas abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Guia Rápido DevOps | LabEx'
+description: 'Aprenda práticas DevOps com este guia rápido abrangente. Referência rápida para CI/CD, automação, infraestrutura como código, monitoramento, conteinerização e fluxos de trabalho modernos de entrega de software.'
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---
 
@@ -40,6 +40,21 @@ terraform fmt
 terraform validate
 ```
 
+<BaseQuiz id="devops-terraform-1" correct="B">
+  <template #question>
+    O que `terraform plan` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Aplica mudanças na infraestrutura imediatamente</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Mostra quais mudanças serão feitas sem aplicá-las</BaseQuizOption>
+  <BaseQuizOption value="C">Destrói toda a infraestrutura</BaseQuizOption>
+  <BaseQuizOption value="D">Inicializa o Terraform</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `terraform plan` cria um plano de execução mostrando o que o Terraform fará quando você executar `terraform apply`. É uma simulação (dry-run) que ajuda você a revisar as mudanças antes de aplicá-las.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Ansible: Gerenciamento de Configuração
 
 Automatize a implantação de aplicações e o gerenciamento de configuração.
@@ -55,7 +70,7 @@ ansible-playbook --syntax-check site.yml
 ansible-playbook -u ubuntu site.yml
 ```
 
-### CloudFormation: IaC Nativa da AWS
+### CloudFormation: IaC Nativo da AWS
 
 Provisão de recursos AWS usando templates JSON/YAML.
 
@@ -64,7 +79,7 @@ Provisão de recursos AWS usando templates JSON/YAML.
 aws cloudformation create-stack --stack-name mystack --template-body file://template.yml
 # Atualizar stack
 aws cloudformation update-stack --stack-name mystack --template-body file://template.yml
-# Excluir stack
+# Deletar stack
 aws cloudformation delete-stack --stack-name mystack
 ```
 
@@ -100,9 +115,24 @@ kubectl get pods
 kubectl scale deployment myapp --replicas=5
 # Visualizar logs
 kubectl logs pod_name
-# Excluir recursos
+# Deletar recursos
 kubectl delete -f deployment.yml
 ```
+
+<BaseQuiz id="devops-k8s-1" correct="A">
+  <template #question>
+    O que `kubectl apply -f deployment.yml` faz?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Cria ou atualiza recursos definidos no arquivo YAML</BaseQuizOption>
+  <BaseQuizOption value="B">Deleta todos os recursos no cluster</BaseQuizOption>
+  <BaseQuizOption value="C">Apenas cria novos recursos</BaseQuizOption>
+  <BaseQuizOption value="D">Mostra o que seria criado sem aplicar</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kubectl apply` é um comando declarativo que cria recursos se eles não existirem ou os atualiza se existirem. É idempotente, o que significa que você pode executá-lo várias vezes com segurança.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Helm: Gerenciador de Pacotes Kubernetes
 
@@ -149,7 +179,7 @@ pipeline {
 }
 ```
 
-### GitHub Actions: CI/CD na Nuvem
+### GitHub Actions: CI/CD em Nuvem
 
 Automatize fluxos de trabalho diretamente de repositórios GitHub.
 
@@ -204,12 +234,27 @@ git status
 # Adicionar mudanças
 git add .
 # Comitar mudanças
-git commit -m "Add feature"
+git commit -m "Adiciona funcionalidade"
 # Enviar para remoto
 git push origin main
 # Puxar últimas mudanças
 git pull origin main
 ```
+
+<BaseQuiz id="devops-git-1" correct="D">
+  <template #question>
+    Qual é a diferença entre `git pull` e `git fetch`?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="B">git pull envia mudanças, git fetch puxa mudanças</BaseQuizOption>
+  <BaseQuizOption value="C">git pull funciona localmente, git fetch funciona remotamente</BaseQuizOption>
+  <BaseQuizOption value="D" correct>git fetch baixa mudanças sem mesclar, git pull baixa e mescla mudanças</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` baixa mudanças do repositório remoto, mas não as mescla no seu branch atual. `git pull` executa ambas as operações: ele busca e depois mescla as mudanças.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Gerenciamento de Branch
 
@@ -224,7 +269,7 @@ git merge feature-branch
 git branch -a
 # Mudar branch
 git checkout main
-# Excluir branch
+# Deletar branch
 git branch -d feature-branch
 # Resetar para commit anterior
 git reset --hard HEAD~1
@@ -232,7 +277,7 @@ git reset --hard HEAD~1
 git log --oneline
 ```
 
-### GitHub: Hospedagem e Colaboração de Código
+### GitHub: Hospedagem de Código e Colaboração
 
 Hospede repositórios e gerencie o desenvolvimento colaborativo.
 
@@ -240,14 +285,14 @@ Hospede repositórios e gerencie o desenvolvimento colaborativo.
 # Comandos do GitHub CLI
 gh repo create myrepo
 gh repo clone user/repo
-gh pr create --title "New feature"
+gh pr create --title "Nova funcionalidade"
 gh pr list
 gh pr merge 123
-gh issue create --title "Bug report"
+gh issue create --title "Relatório de bug"
 gh release create v1.0.0
 # Criar pull request
 git push -u origin feature-branch
-# Então criar PR no GitHub/GitLab
+# Então crie PR no GitHub/GitLab
 ```
 
 ### Revisão de Código e Qualidade
@@ -260,7 +305,7 @@ Garanta a qualidade do código através de revisão por pares e verificações a
 # Executar testes antes do commit
 npm test
 if [ $? -ne 0 ]; then
-  echo "Tests failed"
+  echo "Testes falharam"
   exit 1
 fi
 ```
@@ -404,7 +449,7 @@ gcloud container clusters create my-cluster --num-nodes=3
 
 ### Gerenciamento Multi-Cloud
 
-Ferramentas para gerenciar recursos em vários provedores de nuvem.
+Ferramentas para gerenciar recursos em múltiplos provedores de nuvem.
 
 ```python
 # Pulumi (IaC multi-cloud)
@@ -420,14 +465,14 @@ gcp_bucket = gcp.storage.Bucket("my-gcp-bucket")
 
 ### HashiCorp Vault: Gerenciamento de Segredos
 
-HashiCorp Vault é uma ferramenta para acessar segredos de forma segura. Um segredo é qualquer coisa cujo acesso você deseja controlar rigorosamente, como chaves de API, senhas ou certificados.
+HashiCorp Vault é uma ferramenta para acessar segredos de forma segura. Um segredo é qualquer coisa que você deseja controlar rigorosamente o acesso, como chaves de API, senhas ou certificados.
 
 ```bash
 # Escrever um segredo
 vault kv put secret/myapp/config username=myuser password=mypassword
 # Ler um segredo
 vault kv get secret/myapp/config
-# Excluir um segredo
+# Deletar um segredo
 vault kv delete secret/myapp/config
 # Habilitar método de autenticação
 vault auth enable kubernetes
@@ -465,7 +510,7 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 
 ### Segurança de Contêineres
 
-Proteja aplicações conteinerizadas e ambientes de execução.
+Proteja aplicações conteinerizadas e ambientes de tempo de execução.
 
 ```bash
 # Executar contêiner como usuário não-root
@@ -502,7 +547,7 @@ uptime
 free -h
 ```
 
-### Ajuste Fino de Desempenho da Aplicação
+### Ajuste Fino de Desempenho de Aplicações
 
 Otimize o desempenho da aplicação e a utilização de recursos.
 
@@ -582,7 +627,7 @@ curl -L "https://github.com/docker/compose/releases/latest/download/docker-compo
 chmod +x /usr/local/bin/docker-compose
 ```
 
-### Ferramentas de Linha de Comando de Nuvem
+### Ferramentas de Linha de Comando da Nuvem
 
 Instale interfaces de linha de comando para os principais provedores de nuvem.
 
@@ -622,7 +667,7 @@ Gerencie a descoberta de serviços e a configuração dinâmica.
 ```bash
 # Registro de serviço Consul
 consul services register myservice.json
-# Saúde do serviço
+# Obter saúde do serviço
 consul health service web
 # Armazenamento chave-valor Etcd
 etcdctl put /config/database/host localhost
@@ -668,7 +713,7 @@ Proteja e otimize ambientes de produção.
 ```ini
 # Configuração de serviço Systemd
 [Unit]
-Description=My Application
+Description=Minha Aplicação
 After=network.target
 [Service]
 Type=simple
@@ -693,16 +738,16 @@ Automatize o provisionamento de infraestrutura e o gerenciamento de configuraç�
 - hosts: webservers
   become: yes
   tasks:
-    - name: Install nginx
+    - name: Instalar nginx
       apt:
         name: nginx
         state: present
-    - name: Start nginx
+    - name: Iniciar nginx
       service:
         name: nginx
         state: started
         enabled: yes
-    - name: Deploy application
+    - name: Implantar aplicação
       copy:
         src: /local/app
         dest: /var/www/html
@@ -743,7 +788,7 @@ if [ "$1" == "push" ]; then
   docker build -t myapp .
   docker run -d --name myapp-$(date +%s) myapp
 fi
-# Webhook do Prometheus alertmanager
+# Webhook de alerta Prometheus
 curl -X POST http://webhook-handler/deploy \
   -H "Content-Type: application/json" \
   -d '{"service": "myapp", "action": "restart"}'
@@ -761,7 +806,7 @@ Integre operações DevOps com plataformas de chat para automação colaborativa
 /status infrastructure
 # Webhook do Microsoft Teams
 curl -H "Content-Type: application/json" \
-  -d '{"text": "Deployment completed successfully"}' \
+  -d '{"text": "Implantação concluída com sucesso"}' \
   $TEAMS_WEBHOOK_URL
 ```
 

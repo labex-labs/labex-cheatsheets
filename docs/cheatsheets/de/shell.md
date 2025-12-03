@@ -1,6 +1,6 @@
 ---
-title: 'Shell Spickzettel'
-description: 'Lernen Sie Shell mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Shell Spickzettel | LabEx'
+description: 'Lernen Sie Shell-Skripterstellung mit diesem umfassenden Spickzettel. Schnelle Referenz für Bash-Befehle, Shell-Skripte, Automatisierung, Befehlszeilen-Tools und Linux/Unix-Systemadministration.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Shell Spickzettel
 <a target="_blank" href="https://labex.io/de/learn/shell">Shell mit Hands-on-Labs lernen</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Shell-Skripterstellung und Befehlszeilenoperationen durch praktische Labs und reale Szenarien. LabEx bietet umfassende Shell-Kurse, die wesentliche Bash-Befehle, Dateioperationen, Textverarbeitung, Prozessverwaltung und Automatisierung abdecken. Meistern Sie die Effizienz der Befehlszeile und Techniken der Shell-Skripterstellung.
+Lernen Sie Shell-Skripterstellung und Befehlszeilenoperationen durch praktische Labs und reale Szenarien. LabEx bietet umfassende Shell-Kurse, die wesentliche Bash-Befehle, Dateioperationen, Textverarbeitung, Prozessverwaltung und Automatisierung abdecken. Meistern Sie die Effizienz der Befehlszeile und Techniken des Shell-Skriptings.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -48,7 +48,7 @@ touch neue_datei.txt
 # Mehrere Dateien erstellen
 touch datei1.txt datei2.txt datei3.txt
 # Zeitstempel der vorhandenen Datei aktualisieren
-touch bestehende_datei.txt
+touch vorhandene_datei.txt
 ```
 
 ### Verzeichnisse erstellen: `mkdir`
@@ -61,7 +61,7 @@ mkdir mein_verzeichnis
 # Verschachtelte Verzeichnisse erstellen
 mkdir -p eltern/kind/enkel
 # Mehrere Verzeichnisse erstellen
-mkdir verzeichnis1 verzeichnis2 verzeichnis3
+mkdir verz1 verz2 verz3
 ```
 
 ### Dateien kopieren: `cp`
@@ -72,7 +72,7 @@ Dateien und Verzeichnisse kopieren.
 # Eine Datei kopieren
 cp quelle.txt ziel.txt
 # Verzeichnis rekursiv kopieren
-cp -r quell_verzeichnis ziel_verzeichnis
+cp -r quelle_verz ziel_verz
 # Mit Bestätigungsaufforderung kopieren
 cp -i datei1.txt datei2.txt
 # Dateiattribute beibehalten
@@ -127,7 +127,7 @@ In ein anderes Verzeichnis wechseln.
 ```bash
 # Zum Home-Verzeichnis wechseln
 cd ~
-# Zum übergeordneten Verzeichnis wechseln
+# Zum Elternverzeichnis wechseln
 cd ..
 # Zum vorherigen Verzeichnis wechseln
 cd -
@@ -135,9 +135,24 @@ cd -
 cd /pfad/zum/verzeichnis
 ```
 
+<BaseQuiz id="shell-cd-1" correct="A">
+  <template #question>
+    Was bewirkt `cd ~`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Wechselt in das Home-Verzeichnis</BaseQuizOption>
+  <BaseQuizOption value="B">Wechselt in das Root-Verzeichnis</BaseQuizOption>
+  <BaseQuizOption value="C">Wechselt in das Elternverzeichnis</BaseQuizOption>
+  <BaseQuizOption value="D">Erstellt ein neues Verzeichnis</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Symbol `~` ist eine Abkürzung für das Home-Verzeichnis. `cd ~` navigiert zu Ihrem Home-Verzeichnis, was äquivalent zu `cd $HOME` oder `cd /home/benutzername` ist.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Verzeichnisstruktur: `tree`
 
-Die Verzeichnisstruktur in Baumform anzeigen.
+Anzeige der Verzeichnisstruktur im Baumformat.
 
 ```bash
 # Verzeichnisbaum anzeigen
@@ -166,7 +181,7 @@ tail datei.txt
 # Letzte 20 Zeilen anzeigen
 tail -n 20 datei.txt
 # Dateiänderungen verfolgen (nützlich für Logs)
-tail -f logdatei.txt
+tail -f protokoll.txt
 ```
 
 ### In Dateien suchen: `grep`
@@ -186,6 +201,21 @@ grep -n "muster" datei.txt
 grep -c "muster" datei.txt
 ```
 
+<BaseQuiz id="shell-grep-1" correct="B">
+  <template #question>
+    Was bewirkt `grep -r "muster" verzeichnis/`?
+  </template>
+  
+  <BaseQuizOption value="A">Sucht nur in der aktuellen Datei</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Sucht rekursiv in allen Dateien im Verzeichnis</BaseQuizOption>
+  <BaseQuizOption value="C">Ersetzt das Muster in Dateien</BaseQuizOption>
+  <BaseQuizOption value="D">Löscht Dateien, die das Muster enthalten</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Option `-r` bewirkt, dass grep rekursiv alle Dateien und Unterverzeichnisse durchsucht. Dies ist nützlich, um Textmuster in einer gesamten Verzeichnisstruktur zu finden.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Dateien finden: `find`
 
 Dateien und Verzeichnisse anhand von Kriterien lokalisieren.
@@ -194,7 +224,7 @@ Dateien und Verzeichnisse anhand von Kriterien lokalisieren.
 # Dateien nach Namen finden
 find . -name "*.txt"
 # Dateien nach Typ finden
-find . -type f -name "config*"
+find . -type f -name "konfig*"
 # Verzeichnisse finden
 find . -type d -name "backup"
 # Dateien finden, die in den letzten 7 Tagen geändert wurden
@@ -214,7 +244,7 @@ sed 's/alt/neu/g' datei.txt
 awk '{print $1, $3}' datei.txt
 # Dateiinhalt sortieren
 sort datei.txt
-# Duplikatzeilen entfernen
+# Doppelte Zeilen entfernen
 sort datei.txt | uniq
 # Worthäufigkeit zählen
 cat datei.txt | tr ' ' '\n' | sort | uniq -c
@@ -249,6 +279,21 @@ chmod go-w datei.txt
 chmod -R 644 verzeichnis/
 ```
 
+<BaseQuiz id="shell-chmod-1" correct="C">
+  <template #question>
+    Was setzt `chmod 755 datei.txt`?
+  </template>
+  
+  <BaseQuizOption value="A">Lesen, Schreiben, Ausführen für alle Benutzer</BaseQuizOption>
+  <BaseQuizOption value="B">Lesen und Schreiben für den Besitzer, Lesen für andere</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lesen, Schreiben, Ausführen für den Besitzer; Lesen, Ausführen für Gruppe und andere</BaseQuizOption>
+  <BaseQuizOption value="D">Nur Lesen für alle Benutzer</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 755` setzt die Berechtigungen wie folgt: Besitzer = 7 (rwx), Gruppe = 5 (r-x), andere = 5 (r-x). Dies ist eine übliche Berechtigungseinstellung für ausführbare Dateien und Verzeichnisse.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Eigentümerschaft ändern: `chown` / `chgrp`
 
 Datei-Eigentümer und Gruppe ändern.
@@ -260,7 +305,7 @@ chown neuer_eigentuemer datei.txt
 chown neuer_eigentuemer:neue_gruppe datei.txt
 # Nur Gruppe ändern
 chgrp neue_gruppe datei.txt
-# Rekursive Eigentümerschaftsänderung
+# Rekursive Eigentümeränderung
 chown -R benutzer:gruppe verzeichnis/
 ```
 
@@ -269,12 +314,12 @@ chown -R benutzer:gruppe verzeichnis/
 Verständnis der numerischen Berechtigungsnotation.
 
 ```text
-# Berechtigungsberechnung:
+# Berechnungsformel:
 # 4 = lesen (r), 2 = schreiben (w), 1 = ausführen (x)
-# 755 = rwxr-xr-x (Besitzer: rwx, Gruppe: r-x, Andere: r-x)
-# 644 = rw-r--r-- (Besitzer: rw-, Gruppe: r--, Andere: r--)
+# 755 = rwxr-xr-x (Besitzer: rwx, Gruppe: r-x, andere: r-x)
+# 644 = rw-r--r-- (Besitzer: rw-, Gruppe: r--, andere: r--)
 # 777 = rwxrwxrwx (volle Berechtigungen für alle)
-# 600 = rw------- (Besitzer: rw-, Gruppe: ---, Andere: ---)
+# 600 = rw------- (Besitzer: rw-, Gruppe: ---, andere: ---)
 ```
 
 ## Prozessverwaltung
@@ -288,7 +333,7 @@ Informationen über laufende Prozesse anzeigen.
 ps
 # Alle Prozesse mit Details anzeigen
 ps aux
-# Prozesse in Baumform anzeigen
+# Prozesse im Baumformat anzeigen
 ps -ef --forest
 # Interaktiver Prozess-Viewer
 top
@@ -324,7 +369,7 @@ kill 1234
 kill -9 1234
 # Alle Prozesse mit Namen beenden
 killall firefox
-# Spezielles Signal senden
+# Spezifisches Signal senden
 kill -TERM 1234
 ```
 
@@ -362,12 +407,27 @@ befehl > ausgabe.txt 2>&1
 befehl > /dev/null
 ```
 
+<BaseQuiz id="shell-redirect-1" correct="B">
+  <template #question>
+    Was ist der Unterschied zwischen `>` und `>>` bei der Shell-Umleitung?
+  </template>
+  
+  <BaseQuizOption value="A">`>` hängt an, `>>` überschreibt</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`>` überschreibt die Datei, `>>` hängt an die Datei an</BaseQuizOption>
+  <BaseQuizOption value="C">`>` leitet stdout um, `>>` leitet stderr um</BaseQuizOption>
+  <BaseQuizOption value="D">Es gibt keinen Unterschied</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Der Operator `>` überschreibt die Zieldatei, falls sie existiert, während `>>` die Ausgabe am Ende der Datei anhängt. Verwenden Sie `>>`, wenn Sie vorhandene Inhalte beibehalten möchten.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Pipes: `|`
 
 Befehle mithilfe von Pipes verketten.
 
 ```bash
-# Grundlegende Pipe-Nutzung
+# Grundlegende Pipe-Verwendung
 befehl1 | befehl2
 # Mehrere Pipes
 cat datei.txt | grep "muster" | sort | uniq
@@ -392,7 +452,7 @@ befehl | tee datei1.txt datei2.txt
 
 ### Here Documents: `<<`
 
-Mehrzeilige Eingabe an Befehle übergeben.
+Mehrzeilige Eingabe für Befehle bereitstellen.
 
 ```bash
 # Datei mit Here Document erstellen
@@ -424,7 +484,7 @@ echo "Hallo, $name"
 echo "Anzahl: ${anzahl}"
 # Befehlssubstitution
 aktuelles_verzeichnis=$(pwd)
-datum_heute=$(date +%Y-%m-%d)
+heutiges_datum=$(date +%Y-%m-%d)
 ```
 
 ### Umgebungsvariablen: `export` / `env`
@@ -433,13 +493,13 @@ Umgebungsvariablen verwalten.
 
 ```bash
 # Variable in die Umgebung exportieren
-export PFAD="/neu/pfad:$PFAD"
+export PATH="/neu/pfad:$PATH"
 export MEINE_VAR="wert"
 # Alle Umgebungsvariablen anzeigen
 env
 # Spezifische Variable anzeigen
 echo $HOME
-echo $PFAD
+echo $PATH
 # Variable entfernen
 unset MEINE_VAR
 ```
@@ -454,7 +514,7 @@ $0  # Skriptname
 $1, $2, $3...  # Erstes, zweites, drittes Argument
 $#  # Anzahl der Argumente
 $@  # Alle Argumente als separate Wörter
-$*  # Alle Argumente als einzelnes Wort
+$*  # Alle Argumente als ein Wort
 $?  # Exit-Status des letzten Befehls
 # Prozessinformationen
 $$  # Aktuelle Shell-PID
@@ -467,8 +527,8 @@ Fortgeschrittene Techniken zur Variablenmanipulation.
 
 ```bash
 # Standardwerte
-${var:-standard}  # Standard verwenden, wenn var leer ist
-${var:=standard}  # var auf Standard setzen, wenn leer
+${var:-standard}  # Standardwert verwenden, wenn var leer ist
+${var:=standard}  # var auf Standardwert setzen, wenn leer
 # String-Manipulation
 ${var#muster}   # Kürzeste Übereinstimmung vom Anfang entfernen
 ${var##muster}  # Längste Übereinstimmung vom Anfang entfernen
@@ -499,7 +559,7 @@ chmod +x script.sh
 
 ### Bedingte Anweisungen: `if`
 
-Skriptfluss mit Bedingungen steuern.
+Steuerung des Skriptflusses mit Bedingungen.
 
 ```bash
 #!/bin/bash
@@ -511,7 +571,7 @@ else
     echo "Keines von beiden existiert"
 fi
 # String-Vergleich
-if [ "$BENUTZER" = "root" ]; then
+if [ "$USER" = "root" ]; then
     echo "Als Root ausgeführt"
 fi
 # Numerischer Vergleich
@@ -535,10 +595,10 @@ for datei in *.txt; do
     echo "Verarbeite: $datei"
 done
 # While-Schleife
-count=1
-while [ $count -le 5 ]; do
-    echo "Zähler: $count"
-    count=$((count + 1))
+anzahl=1
+while [ $anzahl -le 5 ]; do
+    echo "Anzahl: $anzahl"
+    anzahl=$((anzahl + 1))
 done
 ```
 
@@ -630,9 +690,9 @@ scp datei.txt benutzer@server:/pfad/zum/ziel
 # Von entferntem Server kopieren
 scp benutzer@server:/pfad/zur/datei.txt .
 # Verzeichnisse synchronisieren (lokal zu remote)
-rsync -avz lokales_verzeichnis/ benutzer@server:/entferntes_verzeichnis/
-# Synchronisieren mit Löschen (spiegeln)
-rsync -avz --delete lokales_verzeichnis/ benutzer@server:/entferntes_verzeichnis/
+rsync -avz lokales_verz/ benutzer@server:/entferntes_verz/
+# Synchronisieren mit Löschen (Spiegeln)
+rsync -avz --delete lokales_verz/ benutzer@server:/entferntes_verz/
 ```
 
 ## Befehlshistorie & Tastenkürzel
@@ -652,7 +712,7 @@ history 10
 !123
 # Letzten Befehl ausführen, der mit 'ls' beginnt
 !ls
-# Interaktiv in der Historie suchen
+# Interaktive Suche in der Historie
 Ctrl+R
 ```
 
@@ -697,14 +757,14 @@ Ctrl+D  # Shell beenden oder EOF
 
 ### Nützliche Befehlskombinationen
 
-Leistungsstarke Einzeiler für gängige Aufgaben.
+Leistungsstarke Einzeiler für häufige Aufgaben.
 
 ```bash
 # Text in mehreren Dateien finden und ersetzen
 find . -name "*.txt" -exec sed -i 's/alt/neu/g' {} \;
 # Größte Dateien im aktuellen Verzeichnis finden
 du -ah . | sort -rh | head -10
-# Logdatei auf bestimmtes Muster überwachen
+# Log-Datei auf bestimmtes Muster überwachen
 tail -f /var/log/syslog | grep "FEHLER"
 # Dateien in einem Verzeichnis zählen
 ls -1 | wc -l
@@ -741,7 +801,7 @@ nohup langlaufender_befehl &
 # Screen-Sitzung starten
 screen -S meine_sitzung
 # Von Screen trennen: Strg+A dann D
-# Zu Screen wieder verbinden
+# Erneut mit Screen verbinden
 screen -r meine_sitzung
 # Screen-Sitzungen auflisten
 screen -ls

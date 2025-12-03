@@ -1,6 +1,6 @@
 ---
-title: 'DevOps チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで DevOps を習得しましょう。'
+title: 'DevOps チートシート | LabEx'
+description: 'この包括的なチートシートで DevOps プラクティスを習得。CI/CD、自動化、IaC、監視、コンテナ化、最新のソフトウェアデリバリーワークフローのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---
 
@@ -15,30 +15,45 @@ DevOps チートシート
 <a target="_blank" href="https://labex.io/ja/learn/devops">ハンズオンラボで DevOps を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと現実世界のシナリオを通じて DevOps プラクティスを学びます。LabEx は、必須のオペレーション、インフラストラクチャ管理、CI/CD パイプライン、コンテナ化、モニタリング、自動化を網羅する包括的な DevOps コースを提供します。アプリケーションのデプロイ、Infrastructure as Code によるインフラストラクチャ管理、ワークフローの自動化、効率的なソフトウェア配信のための最新の DevOps プラクティスの実装方法を学びます。
+ハンズオンラボと現実世界のシナリオを通じて DevOps プラクティスを学びましょう。LabEx は、必須のオペレーション、インフラストラクチャ管理、CI/CD パイプライン、コンテナ化、モニタリング、自動化を網羅した包括的な DevOps コースを提供します。アプリケーションのデプロイ、コードとしてのインフラストラクチャ管理、ワークフローの自動化、効率的なソフトウェア配信のための最新の DevOps プラクティスの実装を学びます。
 </base-disclaimer-content>
 </base-disclaimer>
 
 ## Infrastructure as Code (IaC)
 
-### Terraform: インフラストラクチャのプロビジョニング
+### Terraform: インフラストラクチャプロビジョニング
 
-宣言的な構成言語を使用してインフラストラクチャを定義し、プロビジョニングします。
+宣言的な設定言語を使用してインフラストラクチャを定義し、プロビジョニングします。
 
 ```bash
 # Terraformの初期化
 terraform init
-# インフラストラクチャの変更を計画
+# インフラストラクチャ変更の計画
 terraform plan
-# インフラストラクチャの変更を適用
+# インフラストラクチャ変更の適用
 terraform apply
 # インフラストラクチャの破棄
 terraform destroy
-# 構成ファイルのフォーマット
+# 設定ファイルのフォーマット
 terraform fmt
-# 構成の検証
+# 設定の検証
 terraform validate
 ```
+
+<BaseQuiz id="devops-terraform-1" correct="B">
+  <template #question>
+    `terraform plan`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">インフラストラクチャの変更を即座に適用する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>適用せずに、何が変更されるかを表示する</BaseQuizOption>
+  <BaseQuizOption value="C">すべてのインフラストラクチャを破棄する</BaseQuizOption>
+  <BaseQuizOption value="D">Terraform を初期化する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `terraform plan`は、`terraform apply`を実行したときに Terraform が何を行うかを示す実行計画を作成します。これは、適用前に変更を確認するのに役立つドライランです。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Ansible: 構成管理
 
@@ -72,7 +87,7 @@ aws cloudformation delete-stack --stack-name mystack
 
 ### Docker: コンテナ化
 
-アプリケーションをコンテナ内でビルド、出荷、実行します。
+アプリケーションをコンテナでビルド、出荷、実行します。
 
 ```bash
 # イメージのビルド
@@ -92,7 +107,7 @@ docker rm container_id
 コンテナ化されたアプリケーションを大規模にデプロイおよび管理します。
 
 ```bash
-# 構成の適用
+# 設定の適用
 kubectl apply -f deployment.yml
 # Podの取得
 kubectl get pods
@@ -104,7 +119,22 @@ kubectl logs pod_name
 kubectl delete -f deployment.yml
 ```
 
-### Helm: Kubernetes パッケージマネージャ
+<BaseQuiz id="devops-k8s-1" correct="A">
+  <template #question>
+    `kubectl apply -f deployment.yml`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>YAML ファイルで定義されたリソースを作成または更新する</BaseQuizOption>
+  <BaseQuizOption value="B">クラスタ内のすべてリソースを削除する</BaseQuizOption>
+  <BaseQuizOption value="C">新しいリソースのみを作成する</BaseQuizOption>
+  <BaseQuizOption value="D">適用せずに作成されるものを表示する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `kubectl apply`は、存在しない場合はリソースを作成し、存在する場合は更新する宣言的なコマンドです。べき等性があるため、安全に複数回実行できます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Helm: Kubernetes パッケージマネージャー
 
 チャートを使用して Kubernetes アプリケーションを管理します。
 
@@ -119,14 +149,14 @@ helm list
 helm uninstall myrelease
 ```
 
-## CI/CD パイプライン管理
+## CI/CDパイプライン管理
 
 ### Jenkins: ビルド自動化
 
 継続的インテグレーションパイプラインを設定および管理します。
 
 ```groovy
-// Jenkinsfile の例
+// Jenkinsfileの例
 pipeline {
     agent any
     stages {
@@ -211,6 +241,21 @@ git push origin main
 git pull origin main
 ```
 
+<BaseQuiz id="devops-git-1" correct="D">
+  <template #question>
+    `git pull`と`git fetch`の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはない</BaseQuizOption>
+  <BaseQuizOption value="B">git pull は変更をプッシュし、git fetch は変更をプルする</BaseQuizOption>
+  <BaseQuizOption value="C">git pull はローカルで機能し、git fetch はリモートで機能する</BaseQuizOption>
+  <BaseQuizOption value="D" correct>git fetch はマージせずに変更をダウンロードし、git pull は変更をダウンロードしてマージする</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch`はリモートリポジトリから変更をダウンロードしますが、現在のブランチにはマージしません。`git pull`は両方の操作を実行します：フェッチしてから変更をマージします。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ブランチ管理
 
 異なる開発ストリームとリリースを管理します。
@@ -226,7 +271,7 @@ git branch -a
 git checkout main
 # ブランチの削除
 git branch -d feature-branch
-# 以前のコミットへのリセット
+# 以前のコミットにリセット
 git reset --hard HEAD~1
 # コミット履歴の表示
 git log --oneline
@@ -255,9 +300,9 @@ git push -u origin feature-branch
 ピアレビューと自動チェックを通じてコード品質を保証します。
 
 ```bash
-# Pre-commit フックの例
+# プリコミットフックの例
 #!/bin/sh
-# コミット前のテスト実行
+# コミット前にテストを実行
 npm test
 if [ $? -ne 0 ]; then
   echo "Tests failed"
@@ -302,7 +347,7 @@ curl http://admin:admin@localhost:3000/api/dashboards/uid/dashboard-uid
 インフラストラクチャ全体でログデータを収集、検索、分析します。
 
 ```json
-# Elasticsearch クエリ
+# Elasticsearchクエリ
 # ログの検索
 GET /logs/_search
 {
@@ -315,7 +360,7 @@ GET /logs/_search
 ```
 
 ```ruby
-# Logstash 構成
+# Logstash 設定
 input {
   file {
     path => "/var/log/app.log"
@@ -338,7 +383,7 @@ output {
 アプリケーションのパフォーマンスとユーザーエクスペリエンスのメトリクスを追跡します。
 
 ```ruby
-# New Relic エージェントの設定
+# New Relic エージェント設定
 # アプリケーションへの追加
 require 'newrelic_rpm'
 ```
@@ -358,13 +403,13 @@ statsd.histogram('web.response_time', 0.75)
 コマンドラインから AWS サービスと対話します。
 
 ```bash
-# AWS CLI の設定
+# AWS CLIの設定
 aws configure
-# EC2 インスタンスの一覧表示
+# EC2インスタンスの一覧表示
 aws ec2 describe-instances
-# S3 バケットの作成
+# S3バケットの作成
 aws s3 mb s3://my-bucket-name
-# Lambda 関数のデプロイ
+# Lambda関数のデプロイ
 aws lambda create-function --function-name myfunction --runtime python3.8 --role arn:aws:iam::123456789:role/lambda-role --handler lambda_function.lambda_handler --zip-file fileb://function.zip
 # 実行中のサービスの一覧表示
 aws ecs list-services --cluster my-cluster
@@ -375,7 +420,7 @@ aws ecs list-services --cluster my-cluster
 Azure リソースとサービスを管理します。
 
 ```bash
-# Azure へのログイン
+# Azureへのログイン
 az login
 # リソースグループの作成
 az group create --name myResourceGroup --location eastus
@@ -390,15 +435,15 @@ az webapp list
 Google Cloud Platform でアプリケーションをデプロイおよび管理します。
 
 ```bash
-# GCP 認証
+# GCP認証
 gcloud auth login
 # プロジェクトの設定
 gcloud config set project my-project-id
-# App Engine アプリケーションのデプロイ
+# App Engineアプリケーションのデプロイ
 gcloud app deploy
-# Compute Engine インスタンスの作成
+# Compute Engineインスタンスの作成
 gcloud compute instances create my-instance --zone=us-central1-a
-# Kubernetes クラスターの管理
+# Kubernetesクラスタの管理
 gcloud container clusters create my-cluster --num-nodes=3
 ```
 
@@ -420,7 +465,7 @@ gcp_bucket = gcp.storage.Bucket("my-gcp-bucket")
 
 ### HashiCorp Vault: シークレット管理
 
-HashiCorp Vault は、シークレットに安全にアクセスするためのツールです。シークレットとは、API キー、パスワード、証明書など、アクセスを厳密に制御したいあらゆるものを指します。
+HashiCorp Vault は、シークレットに安全にアクセスするためのツールです。シークレットとは、API キー、パスワード、証明書など、アクセスを厳密に制御したいすべてのものを指します。
 
 ```bash
 # シークレットの書き込み
@@ -440,20 +485,20 @@ vault policy write myapp-policy myapp-policy.hcl
 コンテナとコードをスキャンしてセキュリティの脆弱性を検出します。
 
 ```bash
-# Trivy コンテナスキャン
+# Trivyコンテナスキャン
 trivy image nginx:latest
 # ファイルシステムのスキャン
 trivy fs /path/to/project
-# SonarQube 分析
+# SonarQube分析
 sonar-scanner -Dsonar.projectKey=myproject -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000
 ```
 
-### SSL/TLS 証明書管理
+### SSL/TLS証明書管理
 
 安全な通信のために SSL 証明書を管理します。
 
 ```bash
-# Certbot を使用した Let's Encrypt
+# Certbotを使用したLet's Encrypt
 certbot --nginx -d example.com
 # 証明書の更新
 certbot renew
@@ -468,14 +513,14 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 コンテナ化されたアプリケーションとランタイム環境を保護します。
 
 ```bash
-# 非ルートユーザーとしてコンテナを実行
+# 非rootユーザーとしてコンテナを実行
 docker run --user 1000:1000 myapp
 # イメージの脆弱性スキャン
 docker scan myapp:latest
 ```
 
 ```dockerfile
-# distroless イメージの使用
+# distrolessイメージの使用
 FROM gcr.io/distroless/java:11
 COPY app.jar /app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
@@ -485,7 +530,7 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 
 ### システムパフォーマンス監視
 
-サーバーの管理、デプロイの設定、本番環境で発生した問題の修正を行う際、これらのコマンドはより速く、よりスマートに作業するのに役立ちます。
+サーバーの管理、デプロイの設定、本番環境で発生した問題の修正など、これらのコマンドはより速く、よりスマートに作業するのに役立ちます。
 
 ```bash
 # CPUとメモリの使用率
@@ -496,7 +541,7 @@ df -h
 netstat -tulpn
 # プロセス監視
 ps aux | grep process_name
-# システムロード
+# システム負荷
 uptime
 # メモリ詳細
 free -h
@@ -504,31 +549,31 @@ free -h
 
 ### アプリケーションパフォーマンスチューニング
 
-アプリケーションのパフォーマンスとリソース利用率を最適化します。
+アプリケーションのパフォーマンスとリソース使用率を最適化します。
 
 ```bash
-# JVM パフォーマンス監視
+# JVMパフォーマンス監視
 jstat -gc -t PID 1s
-# Node.js パフォーマンス
+# Node.jsパフォーマンス
 node --inspect app.js
 # データベースクエリの最適化
 EXPLAIN ANALYZE SELECT * FROM table WHERE condition;
-# Nginx パフォーマンスチューニング
+# Nginxパフォーマンスチューニング
 nginx -t && nginx -s reload
 ```
 
-### 負荷テストとベンチマーク
+### ロードテストとベンチマーク
 
-さまざまな負荷条件下でのアプリケーションパフォーマンスをテストします。
+さまざまな負荷条件下でアプリケーションのパフォーマンスをテストします。
 
 ```bash
 # Apache Bench
 ab -n 1000 -c 10 http://example.com/
-# wrk HTTPベンチマーキング
+# wrk HTTPベンチマーク
 wrk -t12 -c400 -d30s http://example.com/
-# Artillery 負荷テスト
+# Artilleryロードテスト
 artillery run load-test.yml
-# Kubernetes 水平 Pod 自動スケーラー
+# Kubernetes水平Podオートスケーラー
 kubectl autoscale deployment myapp --cpu-percent=70 --min=1 --max=10
 ```
 
@@ -537,27 +582,27 @@ kubectl autoscale deployment myapp --cpu-percent=70 --min=1 --max=10
 データベースのパフォーマンスとクエリを監視および最適化します。
 
 ```sql
-# MySQL パフォーマンス
+# MySQLパフォーマンス
 SHOW PROCESSLIST;
 SHOW STATUS LIKE 'Threads_connected';
 ```
 
 ```sql
-# PostgreSQL モニタリング
+# PostgreSQL監視
 SELECT * FROM pg_stat_activity;
 ```
 
 ```bash
-# Redis モニタリング
+# Redis監視
 redis-cli --latency
 redis-cli info memory
 ```
 
-## DevOps ツールインストール
+## DevOps ツールのインストール
 
-### パッケージマネージャ
+### パッケージマネージャー
 
-システムパッケージマネージャを使用してツールをインストールします。
+システムパッケージマネージャーを使用してツールをインストールします。
 
 ```bash
 # Ubuntu/Debian
@@ -573,11 +618,11 @@ brew install docker kubectl terraform ansible
 Docker とコンテナオーケストレーションツールを設定します。
 
 ```bash
-# Docker のインストール
+# Dockerのインストール
 curl -fsSL https://get.docker.com | sh
 systemctl start docker
 systemctl enable docker
-# Docker Compose のインストール
+# Docker Composeのインストール
 curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ```
@@ -609,7 +654,7 @@ API_KEY=your-api-key-here
 ENVIRONMENT=production
 # 環境変数のロード
 export $(cat .env | xargs)
-# Docker 環境変数
+# Docker環境変数
 docker run -e NODE_ENV=production -e API_KEY=secret myapp
 # Kubernetes configmap
 kubectl create configmap app-config --from-env-file=.env
@@ -620,11 +665,11 @@ kubectl create configmap app-config --from-env-file=.env
 サービスディスカバリと動的構成を管理します。
 
 ```bash
-# Consul サービス登録
+# Consulサービス登録
 consul services register myservice.json
 # サービスヘルスチェックの取得
 consul health service web
-# Etcd キーバリューストア
+# Etcdキーバリューストア
 etcdctl put /config/database/host localhost
 etcdctl get /config/database/host
 ```
@@ -634,7 +679,7 @@ etcdctl get /config/database/host
 コンテナを使用して一貫した開発環境をセットアップします。
 
 ```dockerfile
-# 開発用 Dockerfile
+# 開発用Dockerfile
 FROM node:16-alpine
 WORKDIR /app
 COPY package*.json ./
@@ -666,7 +711,7 @@ services:
 本番環境を保護し、最適化します。
 
 ```ini
-# Systemd サービス構成
+# Systemd サービス設定
 [Unit]
 Description=My Application
 After=network.target
@@ -710,7 +755,7 @@ WantedBy=multi-user.target
 
 ### ワークフローオーケストレーション
 
-複雑なワークフローとデータパイプラインをオーケストレーションします。
+複雑なワークフローとデータパイプラインをオーケストレートします。
 
 ```python
 # Apache Airflow DAG の例
@@ -736,7 +781,7 @@ extract >> transform
 システムイベントと Webhook に基づいて自動化をトリガーします。
 
 ```bash
-# GitHub webhook ハンドラ
+# GitHub webhookハンドラ
 #!/bin/bash
 if [ "$1" == "push" ]; then
   git pull origin main
@@ -751,10 +796,10 @@ curl -X POST http://webhook-handler/deploy \
 
 ### ChatOps 統合
 
-共同自動化のために DevOps 操作をチャットプラットフォームに統合します。
+共同自動化のために DevOps 操作をチャットプラットフォームと統合します。
 
 ```bash
-# Slack ボットコマンドの例
+# Slackボットコマンドの例
 /deploy myapp to production
 /rollback myapp to v1.2.3
 /scale myapp replicas=5

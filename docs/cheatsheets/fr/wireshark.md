@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo Wireshark'
-description: 'Maîtrisez Wireshark avec notre fiche mémo complète : commandes essentielles, concepts clés et meilleures pratiques.'
+title: 'Fiche de Référence Wireshark | LabEx'
+description: "Apprenez l'analyse réseau avec Wireshark grâce à cette fiche de référence complète. Guide rapide pour la capture de paquets, l'analyse de protocoles réseau, l'inspection du trafic, le dépannage et la surveillance de la sécurité réseau."
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Feuille de triche Wireshark
 <a target="_blank" href="https://labex.io/fr/learn/wireshark">Apprenez Wireshark avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez l'analyse de paquets réseau avec Wireshark grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours complets sur Wireshark couvrant la capture de paquets essentielle, les filtres d'affichage, l'analyse de protocoles, le dépannage réseau et la surveillance de la sécurité. Maîtrisez l'analyse du trafic réseau et les techniques d'inspection des paquets.
+Apprenez l'analyse de paquets réseau avec Wireshark grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur Wireshark couvrant la capture de paquets essentielle, les filtres d'affichage, l'analyse de protocoles, le dépannage réseau et la surveillance de la sécurité. Maîtrisez l'analyse du trafic réseau et les techniques d'inspection des paquets.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -26,15 +26,30 @@ Apprenez l'analyse de paquets réseau avec Wireshark grâce à des laboratoires 
 Capturez le trafic vers/depuis des hôtes spécifiques.
 
 ```bash
-# Capturer le trafic depuis/vers une IP spécifique
+# Capturer le trafic vers/depuis une IP spécifique
 host 192.168.1.100
-# Capturer le trafic depuis une source spécifique
+# Capturer le trafic depuis la source spécifique
 src host 192.168.1.100
-# Capturer le trafic vers une destination spécifique
+# Capturer le trafic vers la destination spécifique
 dst host 192.168.1.100
 # Capturer le trafic depuis un sous-réseau
 net 192.168.1.0/24
 ```
+
+<BaseQuiz id="wireshark-filter-1" correct="A">
+  <template #question>
+    Que filtre `host 192.168.1.100` dans Wireshark ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Tout le trafic vers ou depuis 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="B">Seulement le trafic provenant de 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="C">Seulement le trafic destiné à 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="D">Trafic sur le port 192.168.1.100</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le filtre `host` capture tout le trafic où l'adresse IP spécifiée est soit la source, soit la destination. Utilisez `src host` pour la source uniquement ou `dst host` pour la destination uniquement.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Filtrage par Port
 
@@ -52,6 +67,21 @@ port 53
 # Plage de ports
 portrange 1000-2000
 ```
+
+<BaseQuiz id="wireshark-port-1" correct="D">
+  <template #question>
+    Que filtre `port 80` dans Wireshark ?
+  </template>
+  
+  <BaseQuizOption value="A">Seulement les requêtes HTTP</BaseQuizOption>
+  <BaseQuizOption value="B">Seulement les réponses HTTP</BaseQuizOption>
+  <BaseQuizOption value="C">Seulement les paquets TCP</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Tout le trafic sur le port 80 (source et destination)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le filtre `port` capture tout le trafic où le port 80 est soit le port source, soit le port de destination. Cela inclut les requêtes et les réponses HTTP, ainsi que tout autre trafic utilisant le port 80.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Filtrage par Protocole
 
@@ -83,6 +113,21 @@ host 192.168.1.100 and host 192.168.1.200
 port 80 or port 443
 ```
 
+<BaseQuiz id="wireshark-advanced-1" correct="B">
+  <template #question>
+    Que capture le filtre `tcp and not port 22` ?
+  </template>
+  
+  <BaseQuizOption value="A">Seulement le trafic SSH</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Tout le trafic TCP sauf SSH (port 22)</BaseQuizOption>
+  <BaseQuizOption value="C">Trafic UDP sur le port 22</BaseQuizOption>
+  <BaseQuizOption value="D">Tout le trafic réseau</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Ce filtre capture tout le trafic TCP mais exclut les paquets sur le port 22 (SSH). L'opérateur `and not` exclut le port spécifié tout en conservant tout autre trafic TCP.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Sélection d'Interface
 
 Choisissez les interfaces réseau pour la capture.
@@ -95,7 +140,7 @@ tshark -D
 eth0
 # Interface WiFi
 wlan0
-# Interface de bouclage (loopback)
+# Interface de boucle locale
 lo
 ```
 
@@ -106,7 +151,7 @@ Configurez les paramètres de capture.
 ```bash
 # Limiter la taille du fichier de capture (Mo)
 -a filesize:100
-# Limiter la durée de la capture (secondes)
+# Limiter la durée de capture (secondes)
 -a duration:300
 # Tampon circulaire avec 10 fichiers
 -b files:10
@@ -118,7 +163,7 @@ Configurez les paramètres de capture.
 
 ### Filtres d'Affichage de Base
 
-Filtres essentiels pour les protocoles courants et les types de trafic.
+Filtres essentiels pour les protocoles et types de trafic courants.
 
 ```bash
 # Afficher uniquement le trafic HTTP
@@ -140,13 +185,13 @@ icmp
 Filtrez les paquets par adresses IP source et destination.
 
 ```bash
-# Trafic depuis une IP spécifique
+# Trafic provenant d'une IP spécifique
 ip.src == 192.168.1.100
-# Trafic vers une IP spécifique
+# Trafic destiné à une IP spécifique
 ip.dst == 192.168.1.200
 # Trafic entre deux IPs
 ip.addr == 192.168.1.100
-# Trafic depuis un sous-réseau
+# Trafic provenant d'un sous-réseau
 ip.src_net == 192.168.1.0/24
 # Exclure une IP spécifique
 not ip.addr == 192.168.1.1
@@ -200,7 +245,7 @@ dns.flags.response == 0
 dns.flags.response == 1
 # Requêtes DNS pour un domaine spécifique
 dns.qry.name == "example.com"
-# Requêtes DNS de type A
+# Requêtes de type A DNS
 dns.qry.type == 1
 # Erreurs/échecs DNS
 dns.flags.rcode != 0
@@ -225,7 +270,7 @@ tcp.flags.syn == 1 and tcp.flags.ack == 0
 
 ### Analyse TLS/SSL
 
-Examinez les détails de la connexion chiffrée.
+Examinez les détails des connexions chiffrées.
 
 ```bash
 # Paquets de handshake TLS
@@ -245,11 +290,11 @@ tls.handshake.extensions_server_name
 Identifiez les problèmes réseau courants.
 
 ```bash
-# Messages d'inaccessibilité ICMP
+# Messages d'atteinte ICMP non réussie
 icmp.type == 3
 # Requêtes/réponses ARP
 arp.opcode == 1 or arp.opcode == 2
-# Trafic de diffusion (broadcast)
+# Trafic de diffusion
 eth.dst == ff:ff:ff:ff:ff:ff
 # Paquets fragmentés
 ip.flags.mf == 1
@@ -268,7 +313,7 @@ frame.time >= "2024-01-01 10:00:00"
 frame.time_relative >= -3600
 # Analyse du temps de réponse
 tcp.time_delta > 1.0
-# Temps d'inter-arrivée
+# Temps inter-arrivée
 frame.time_delta > 0.1
 ```
 
@@ -310,7 +355,7 @@ Visualisez les tendances du trafic dans le temps.
 # Volume de trafic dans le temps
 # Paquets par seconde
 # Octets par seconde
-# Appliquez des filtres pour un trafic spécifique
+# Appliquer des filtres pour un trafic spécifique
 # Utile pour identifier les pics de trafic
 ```
 
@@ -324,11 +369,11 @@ Identifiez les problèmes réseau potentiels.
 # Erreurs dans la transmission des paquets
 # Problèmes de performance
 # Préoccupations de sécurité
-# Filtrer par sévérité des infos d'expert
+# Filtrer par sévérité des informations d'expert
 tcp.analysis.flags
 ```
 
-### Graphiques de Flux
+### Graphique de Flux
 
 Visualisez la séquence des paquets entre les points d'extrémité.
 
@@ -353,9 +398,9 @@ Mesurez les temps de réponse des applications.
 # Statistiques > Graphiques de Flux TCP > Séquence Temporelle
 ```
 
-## Opérations sur les Fichiers et Exportation
+## Opérations et Exportation de Fichiers
 
-### Sauvegarde et Chargement des Captures
+### Sauvegarder et Charger des Captures
 
 Gérez les fichiers de capture dans divers formats.
 
@@ -377,8 +422,8 @@ Exportez des données spécifiques ou des sous-ensembles de paquets.
 ```bash
 # Exporter les paquets sélectionnés
 # Fichier > Exporter les paquets spécifiés
-# Exporter les dissections de paquets
-# Fichier > Exporter les dissections de paquets
+# Exporter les disséctions de paquets
+# Fichier > Exporter les disséctions de paquets
 # Exporter des objets depuis HTTP
 # Fichier > Exporter les Objets > HTTP
 # Exporter les clés SSL/TLS
@@ -396,13 +441,13 @@ tshark -i eth0 -w capture.pcap
 tshark -i eth0 -f "port 80" -w http.pcap
 # Lire et afficher les paquets
 tshark -r capture.pcap
-# Appliquer un filtre d'affichage au fichier
+# Appliquer un filtre d'affichage sur un fichier
 tshark -r capture.pcap -Y "tcp.port == 80"
 ```
 
 ### Traitement par Lots
 
-Traitez plusieurs fichiers de capture automatiquement.
+Traitez automatiquement plusieurs fichiers de capture.
 
 ```bash
 # Fusionner plusieurs fichiers
@@ -442,14 +487,14 @@ Améliorez les performances de l'interface graphique avec de grands ensembles de
 # Sélection du schéma de couleurs
 # Taille et type de police
 # Options d'affichage des colonnes
-# Paramètres du format d'heure
+# Paramètres du format d'affichage de l'heure
 # Vue > Format d'Affichage de l'Heure
 # Secondes depuis le début de la capture
 # Heure du jour
 # Heure UTC
 ```
 
-### Flux de Travail d'Analyse Efficace
+### Flux d'Analyse Efficace
 
 Meilleures pratiques pour l'analyse du trafic réseau.
 
@@ -481,13 +526,13 @@ grep -v "Filter:" | head -20
 
 ## Installation et Configuration
 
-### Installation Windows
+### Installation sous Windows
 
 Téléchargez et installez depuis le site officiel.
 
 ```bash
 # Télécharger depuis wireshark.org
-# Exécuter l'installateur en tant qu'Administrateur
+# Exécuter l'installeur en tant qu'Administrateur
 # Inclure WinPcap/Npcap
 pendant l'installation
 # Installation en ligne de commande
@@ -497,7 +542,7 @@ choco install wireshark
 wireshark --version
 ```
 
-### Installation Linux
+### Installation sous Linux
 
 Installez via le gestionnaire de paquets ou à partir des sources.
 
@@ -514,9 +559,9 @@ sudo usermod -a -G wireshark
 $USER
 ```
 
-### Installation macOS
+### Installation sous macOS
 
-Installez en utilisant Homebrew ou l'installateur officiel.
+Installez en utilisant Homebrew ou l'installeur officiel.
 
 ```bash
 # Utilisation de Homebrew
@@ -543,17 +588,17 @@ Configurez les interfaces de capture et les options.
 # Capture > Options > Détails de l'Interface
 ```
 
-### Paramètres de Protocole
+### Paramètres des Protocoles
 
-Configurez les dissections de protocoles et le décodage.
+Configurez les disséqueurs de protocoles et le décodage.
 
 ```bash
 # Édition > Préférences > Protocoles
-# Activer/désactiver les dissections de protocoles
-# Configuration de l'attribution des ports
-# Clés de déchiffrement (TLS, WEP, etc.)
+# Activer/désactiver les disséqueurs de protocoles
+# Configurer l'attribution des ports
+# Définir les clés de déchiffrement (TLS, WEP, etc.)
 # Options de réassemblage TCP
-# Fonctionnalité Decode As
+# Fonctionnalité Décoder Comme
 # Analyser > Décoder Comme
 ```
 
@@ -566,7 +611,7 @@ Personnalisez l'interface utilisateur et les options d'affichage.
 # Sélection du schéma de couleurs
 # Taille et type de police
 # Options d'affichage des colonnes
-# Paramètres du format d'heure
+# Paramètres du format de l'heure
 # Vue > Format d'Affichage de l'Heure
 # Secondes depuis le début de la capture
 # Heure du jour
@@ -582,10 +627,10 @@ Configurez les options liées à la sécurité et au déchiffrement.
 # Édition > Préférences > Protocoles > TLS
 # Liste des clés RSA
 # Clés pré-partagées
-# Emplacement du fichier journal des clés
+# Emplacement du fichier de journal des clés
 # Désactiver les fonctionnalités potentiellement dangereuses
-# Exécution des scripts Lua
-# Résolveurs externes
+# Exécution de scripts Lua
+# Analyser > Scripts Lua
 ```
 
 ## Techniques de Filtrage Avancées
@@ -595,11 +640,11 @@ Configurez les options liées à la sécurité et au déchiffrement.
 Combinez plusieurs conditions de filtre.
 
 ```bash
-# Opérateur ET (AND)
+# Opérateur ET
 tcp.port == 80 and ip.src == 192.168.1.100
-# Opérateur OU (OR)
+# Opérateur OU
 tcp.port == 80 or tcp.port == 443
-# Opérateur NON (NOT)
+# Opérateur NON
 not icmp
 # Parenthèses pour le regroupement
 (tcp.port == 80 or tcp.port == 443) and ip.src ==
@@ -640,7 +685,7 @@ tcp.options
 
 ### Analyse de Paquets Avancée
 
-Identifiez des caractéristiques spécifiques des paquets et des anomalies.
+Identifiez les caractéristiques spécifiques des paquets et les anomalies.
 
 ```bash
 # Paquets mal formés
@@ -679,7 +724,7 @@ Détectez les menaces de sécurité potentielles et les activités suspectes.
 ```bash
 # Détection de scan de ports
 tcp.flags.syn == 1 and tcp.flags.ack == 0
-# Nombre important de connexions depuis une seule IP
+# Nombre important de connexions à partir d'une seule IP
 # Utiliser Statistiques > Conversations
 # Requêtes DNS suspectes
 dns.qry.name contains "dga" or dns.qry.name matches
@@ -688,7 +733,7 @@ dns.qry.name contains "dga" or dns.qry.name matches
 http.request.method == "POST" and http.request.uri
 contains "/upload"
 # Modèles de trafic inhabituels
-# Vérifier les graphiques I/O pour les pics
+# Vérifier les Graphiques I/O pour les pics
 ```
 
 ### Performance Applicative
@@ -698,7 +743,7 @@ Surveillez et analysez les temps de réponse des applications.
 ```bash
 # Analyse des applications Web
 http.time > 2.0
-# Surveillance des connexions à la base de données
+# Surveillance des connexions de base de données
 tcp.port == 3306 and tcp.analysis.initial_rtt > 0.1
 # Performance des transferts de fichiers
 tcp.stream eq X and tcp.analysis.bytes_in_flight
@@ -711,7 +756,7 @@ rtp.jitter > 30 or rtp.marker == 1
 Plongez dans des protocoles spécifiques et leur comportement.
 
 ```bash
-# Trafic Email
+# Analyse du trafic email
 tcp.port == 25 or tcp.port == 587 or tcp.port == 993
 # Transferts de fichiers FTP
 ftp-data or ftp.request.command == "RETR"

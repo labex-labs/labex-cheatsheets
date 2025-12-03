@@ -1,6 +1,6 @@
 ---
-title: '网络安全速查表'
-description: '使用我们涵盖关键命令、概念和最佳实践的综合速查表，学习网络安全知识。'
+title: '网络安全速查表 | LabEx'
+description: '使用本综合速查表学习网络安全。快速参考安全概念、威胁检测、漏洞评估、渗透测试和信息安全最佳实践。'
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/cybersecurity">通过实战实验室学习网络安全</a>
+<a target="_blank" href="https://labex.io/zh/learn/cybersecurity">通过实践实验室学习网络安全</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实战实验室和真实场景学习网络安全。LabEx 提供全面的网络安全课程，涵盖威胁识别、安全评估、系统加固、事件响应和监控技术。学习如何使用行业标准工具和最佳实践来保护系统和数据免受网络威胁。
+通过实践实验室和真实场景学习网络安全。LabEx 提供全面的网络安全课程，涵盖威胁识别、安全评估、系统加固、事件响应和监控技术。学习如何使用行业标准工具和最佳实践来保护系统和数据免受网络威胁。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -40,7 +40,7 @@ cat /etc/passwd
 
 ### 文件权限与安全
 
-配置安全的文件和目录访问。
+配置安全的文件和目录访问权限。
 
 ```bash
 # 更改文件权限（读、写、执行）
@@ -52,6 +52,21 @@ chmod -R 755 directory/
 # 查看文件权限
 ls -la
 ```
+
+<BaseQuiz id="cybersecurity-chmod-1" correct="C">
+  <template #question>
+    `chmod 644 file.txt` 设置的文件权限是什么？
+  </template>
+  
+  <BaseQuizOption value="A">所有用户都具有读、写、执行权限</BaseQuizOption>
+  <BaseQuizOption value="B">所有者具有读、写、执行权限；其他用户具有读权限</BaseQuizOption>
+  <BaseQuizOption value="C" correct>所有者具有读、写权限；组和其他用户具有读权限</BaseQuizOption>
+  <BaseQuizOption value="D">所有用户都只有读权限</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 644` 设置为：所有者 = 6 (rw-)，组 = 4 (r--)，其他用户 = 4 (r--)。这是一种常见的文件权限设置，文件应可被所有人读取，但只能被所有者写入。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 网络安全配置
 
@@ -67,9 +82,24 @@ netstat -tuln
 sudo ss -tuln
 ```
 
+<BaseQuiz id="cybersecurity-firewall-1" correct="B">
+  <template #question>
+    `sudo ufw allow 22/tcp` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">阻止端口 22</BaseQuizOption>
+  <BaseQuizOption value="B" correct>允许端口 22 (SSH) 上的 TCP 流量</BaseQuizOption>
+  <BaseQuizOption value="C">启用端口 22 上的 UDP</BaseQuizOption>
+  <BaseQuizOption value="D">显示防火墙状态</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ufw allow 22/tcp` 创建了一个防火墙规则，允许传入到端口 22（默认的 SSH 端口）的 TCP 连接。这对于远程服务器访问至关重要。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 系统更新与补丁
 
-保持系统更新最新的安全补丁。
+使用最新的安全补丁保持系统更新。
 
 ```bash
 # 更新软件包列表 (Ubuntu/Debian)
@@ -90,7 +120,7 @@ sudo systemctl stop service_name
 sudo systemctl disable service_name
 # 检查服务状态
 sudo systemctl status ssh
-# 查看运行中的服务
+# 查看正在运行的服务
 systemctl list-units --type=service --state=running
 ```
 
@@ -107,6 +137,21 @@ sudo journalctl -f
 grep "Failed password" /var/log/auth.log
 ```
 
+<BaseQuiz id="cybersecurity-logs-1" correct="A">
+  <template #question>
+    `tail -f /var/log/auth.log` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>实时跟踪身份验证日志文件</BaseQuizOption>
+  <BaseQuizOption value="B">仅显示失败的登录尝试</BaseQuizOption>
+  <BaseQuizOption value="C">删除旧的日志条目</BaseQuizOption>
+  <BaseQuizOption value="D">归档日志文件</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-f` 标志使 `tail` 跟踪文件，在新条目写入时显示它们。这对于实时监控身份验证事件和安全事件非常有用。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 密码安全与身份验证
 
 实施强大的身份验证机制和密码策略。
@@ -120,8 +165,8 @@ grep "Failed password" /var/log/auth.log
 openssl rand -base64 32
 # 密码强度要求：
 # - 最少 12 个字符
-# - 大写字母、小写字母、数字、符号的混合
-# - 不要使用字典词汇或个人信息
+# - 大小写字母、数字、符号的混合
+# - 不要使用字典词或个人信息
 # - 每个账户使用唯一的密码
 ```
 
@@ -132,7 +177,7 @@ openssl rand -base64 32
 ```bash
 # 安装 Google Authenticator
 sudo apt install libpam-googleauthenticator
-# 配置 SSH 的 MFA
+# 为 SSH 配置 MFA
 google-authenticator
 # 在 SSH 配置中启用
 sudo nano /etc/pam.d/sshd
@@ -141,7 +186,7 @@ sudo nano /etc/pam.d/sshd
 
 ### 密码管理
 
-使用密码管理器和安全的存储实践。
+使用密码管理器和安全存储实践。
 
 ```bash
 # 安装密码管理器 (KeePassXC)
@@ -149,8 +194,8 @@ sudo apt install keepassxc
 # 最佳实践：
 # - 为每个服务使用唯一的密码
 # - 启用自动锁定功能
-# - 对关键账户定期轮换密码
-# - 对密码数据库进行安全备份
+# - 关键账户定期轮换密码
+# - 安全备份密码数据库
 ```
 
 ## 网络安全与监控
@@ -189,7 +234,7 @@ sudo tcpdump port 80
 
 ### 防火墙配置
 
-控制入站和出站网络流量。
+控制传入和传出的网络流量。
 
 ```bash
 # UFW (Uncomplicated Firewall)
@@ -204,7 +249,7 @@ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
 ### SSL/TLS 证书管理
 
-实施加密以实现安全通信。
+使用加密实现安全通信。
 
 ```bash
 # 生成自签名证书
@@ -277,8 +322,6 @@ ls -la /etc/shadow /etc/passwd /etc/group
 
 ## 事件响应与取证
 
-分析系统日志以识别安全事件。
-
 ### 日志分析与调查
 
 分析系统日志以识别安全事件。
@@ -290,7 +333,7 @@ grep -i "failed\|error\|denied" /var/log/auth.log
 grep "Failed password" /var/log/auth.log | wc -l
 # 从日志中查找唯一的 IP 地址
 awk '/Failed password/ {print $11}' /var/log/auth.log | sort | uniq -c
-# 监控实时日志活动
+# 实时监控日志活动
 tail -f /var/log/syslog
 ```
 
@@ -311,7 +354,7 @@ tshark -r capture.pcap -Y "http.request"
 
 ### 系统取证
 
-保护和分析数字证据。
+保存和分析数字证据。
 
 ```bash
 # 创建磁盘镜像
@@ -330,9 +373,9 @@ find /home -mtime -7 -type f
 妥善记录安全事件以供分析。
 
 ```bash
-# 安全事件响应清单：
+# 事件响应清单：
 # 1. 隔离受影响的系统
-# 2. 保留证据
+# 2. 保存证据
 # 3. 记录事件时间线
 # 4. 识别攻击媒介
 # 5. 评估损害和数据泄露情况
@@ -360,7 +403,7 @@ sublist3r -d example.com
 # VirusTotal, URLVoid, AbuseIPDB
 ```
 
-### 威胁搜寻工具
+### 威胁狩猎工具
 
 主动在您的环境中搜索威胁。
 
@@ -383,7 +426,7 @@ find /tmp -type f -exec sha256sum {} \;
 # - STIX/TAXII 源
 # - 商业源 (CrowdStrike, FireEye)
 # - 政府源 (US-CERT, CISA)
-# 示例：将 IP 与威胁源进行检查
+# 示例：检查 IP 是否在威胁源中
 curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 ```
 
@@ -407,7 +450,7 @@ curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 
 ### 文件与磁盘加密
 
-加密文件和存储设备以保护静态数据。
+加密文件和存储设备，保护静态数据。
 
 ```bash
 # 使用 GPG 加密文件
@@ -435,7 +478,7 @@ sudo openvpn --config client.ovpn
 
 ### 证书管理
 
-管理用于安全通信的数字证书。
+管理数字证书以实现安全通信。
 
 ```bash
 # 创建证书颁发机构 (CA)
@@ -444,11 +487,11 @@ openssl req -new -x509 -key ca-key.pem -out ca.pem
 # 生成服务器证书
 openssl genrsa -out server-key.pem 4096
 openssl req -new -key server-key.pem -out server.csr
-# 使用 CA 签署证书
-openssl x509 -req -in server.csr -CA ca.pem -CAkey ca-key.pem -out server.pem
+# 使用 CA 签名证书
+openssl x509 -req -in server.csr -CA pem -CAkey ca-key.pem -out server.pem
 ```
 
-### 数据丢失防护 (DLP)
+### 数据丢失防护
 
 防止未经授权的数据泄露和泄漏。
 
@@ -502,7 +545,7 @@ fi
 自动化初始事件响应程序。
 
 ```bash
-# 自动威胁响应脚本
+# 自动化威胁响应脚本
 #!/bin/bash
 SUSPICIOUS_IP=$1
 # 在防火墙中阻止 IP
@@ -518,7 +561,7 @@ echo "Blocked suspicious IP: $SUSPICIOUS_IP" | mail -s "IP Blocked" security@com
 维护安全系统配置。
 
 ```bash
-# Ansible 安全加固 playbook 示例
+# Ansible 安全剧本示例
 ---
 - name: Harden SSH configuration
   hosts: all
@@ -542,7 +585,7 @@ echo "Blocked suspicious IP: $SUSPICIOUS_IP" | mail -s "IP Blocked" security@com
 实施和维护安全策略和程序。
 
 ```bash
-# 密码策略强制执行 (PAM)
+# 密码策略执行 (PAM)
 sudo nano /etc/pam.d/common-password
 # 添加: password required pam_pwquality.so minlen=12
 # 账户锁定策略
@@ -568,10 +611,10 @@ sudo apt install cis-cat-lite
 ```bash
 # 风险矩阵计算：
 # 风险 = 可能性 × 影响
-# 低 (1-3), 中 (4-6), 高 (7-9)
+# 低 (1-3)，中 (4-6)，高 (7-9)
 # 漏洞优先级排序
 # CVSS 分数计算
-# 基本分数 = 影响 × 可利用性
+# 基础分数 = 影响 × 可利用性
 ```
 
 ### 文档记录与报告
@@ -656,7 +699,7 @@ echo "* hard core 0" >> /etc/security/limits.conf
 
 ### 网络安全设置
 
-实施安全的网络配置。
+实施安全网络配置。
 
 ```bash
 # 如果不是路由器，禁用 IP 转发
@@ -690,7 +733,7 @@ add_header X-Content-Type-Options nosniff;
 rsync -av --password-file=/etc/rsyncd.secrets /data/ backup@server::backups/
 # 测试备份完整性
 tar -tzf backup.tar.gz > /dev/null && echo "备份正常"
-# 自动备份验证
+# 自动化备份验证
 #!/bin/bash
 find /backups -name "*.tar.gz" -exec tar -tzf {} \; > /dev/null
 ```
@@ -747,9 +790,9 @@ sudo apt update && sudo apt install elasticsearch
 # SPF, DKIM, DMARC 记录
 ```
 
-### 安全文化建设
+### 安全文化培养
 
-建立具有安全意识的组织文化。
+培养具有安全意识的组织文化。
 
 ```bash
 # 安全意识计划要素：
@@ -761,7 +804,7 @@ sudo apt update && sudo apt install elasticsearch
 # 需要跟踪的指标：
 # - 培训完成率
 # - 网络钓鱼模拟点击率
-# - 安全事件报告率
+# - 安全事件报告数量
 ```
 
 ## 相关链接

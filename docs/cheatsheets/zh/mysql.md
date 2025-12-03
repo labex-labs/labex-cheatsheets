@@ -1,6 +1,6 @@
 ---
-title: 'MySQL 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表，快速学习 MySQL。'
+title: 'MySQL 速查表 | LabEx'
+description: '使用此综合速查表学习 MySQL 数据库管理。快速参考 SQL 查询、连接、索引、事务、存储过程和数据库管理。'
 pdfUrl: '/cheatsheets/pdf/mysql-cheatsheet.pdf'
 ---
 
@@ -26,7 +26,7 @@ MySQL 速查表
 使用命令行连接到 MySQL 服务器。
 
 ```bash
-# 使用用户名和密码提示连接
+# 使用用户名和密码提示符连接
 mysql -u root -p
 # 连接到特定数据库
 mysql -u username -p database_name
@@ -51,6 +51,21 @@ USE company_db;
 DROP DATABASE old_database;
 ```
 
+<BaseQuiz id="mysql-database-1" correct="C">
+  <template #question>
+    `USE database_name` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">创建一个新数据库</BaseQuizOption>
+  <BaseQuizOption value="B">删除数据库</BaseQuizOption>
+  <BaseQuizOption value="C" correct>选择数据库以供后续操作使用</BaseQuizOption>
+  <BaseQuizOption value="D">显示数据库中的所有表</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `USE` 语句选择一个数据库，使其成为所有后续 SQL 语句的活动数据库。这等同于使用 `mysql -u user -p database_name` 连接时选择数据库。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 导出数据：`mysqldump`
 
 将数据库数据备份到 SQL 文件。
@@ -73,7 +88,7 @@ mysqldump -u username -p --routines --triggers database_name > backup.sql
 ```bash
 # 将 SQL 文件导入到数据库
 mysql -u username -p database_name < backup.sql
-# 不指定数据库（如果文件内包含）
+# 不指定数据库导入（如果文件内包含）
 mysql -u username -p < full_backup.sql
 ```
 
@@ -92,7 +107,7 @@ GRANT SELECT, INSERT, UPDATE ON table_name TO 'user'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-### 查看服务器信息：`SHOW STATUS` / `SHOW VARIABLES`
+### 显示服务器信息：`SHOW STATUS` / `SHOW VARIABLES`
 
 显示服务器配置和状态。
 
@@ -112,7 +127,7 @@ SHOW PROCESSLIST;
 使用指定的列和数据类型创建新表。
 
 ```sql
-# 创建具有各种数据类型的表
+# 创建包含各种数据类型的表
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
@@ -177,6 +192,21 @@ INSERT INTO users (username, email, age) VALUES
 INSERT INTO users_backup SELECT * FROM users;
 ```
 
+<BaseQuiz id="mysql-insert-1" correct="A">
+  <template #question>
+    插入单条记录的正确语法是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    正确的语法是 `INSERT INTO table_name (columns) VALUES (values)`。需要 `INTO` 关键字，并且必须同时指定列名和对应的值。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 更新数据：`UPDATE`
 
 修改表中的现有记录。
@@ -212,7 +242,7 @@ JOIN inactive_accounts i ON u.id = i.user_id;
 处理插入期间的重复键情况。
 
 ```sql
-# 替换现有或插入新记录
+# 替换现有记录或插入新记录
 REPLACE INTO users (id, username, email)
 VALUES (1, 'updated_user', 'new@email.com');
 # 插入或在重复键时更新
@@ -225,7 +255,7 @@ ON DUPLICATE KEY UPDATE email = VALUES(email);
 
 ### 基本 SELECT: `SELECT * FROM`
 
-使用各种条件从表中检索数据。
+检索具有各种条件的数据。
 
 ```sql
 # 选择所有列
@@ -234,9 +264,24 @@ SELECT * FROM users;
 SELECT username, email FROM users;
 # 带 WHERE 条件的选择
 SELECT * FROM users WHERE age > 25;
-# 带多个条件的查询
+# 带多条件的选择
 SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 ```
+
+<BaseQuiz id="mysql-select-1" correct="D">
+  <template #question>
+    `SELECT * FROM users` 返回什么？
+  </template>
+  
+  <BaseQuizOption value="A">仅返回 users 表的第一行</BaseQuizOption>
+  <BaseQuizOption value="B">仅返回 username 列</BaseQuizOption>
+  <BaseQuizOption value="C">表结构</BaseQuizOption>
+  <BaseQuizOption value="D" correct>users 表中的所有列和所有行</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `*` 通配符选择所有列，在没有 WHERE 子句的情况下，它返回所有行。这对于查看所有数据很有用，但在处理大表时应谨慎使用。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 排序与限制：`ORDER BY` / `LIMIT`
 
@@ -253,7 +298,7 @@ SELECT * FROM users LIMIT 10;
 SELECT * FROM users LIMIT 10 OFFSET 10;
 ```
 
-### 过滤：`WHERE` / `LIKE` / `IN`
+### 筛选：`WHERE` / `LIKE` / `IN`
 
 使用各种比较运算符过滤数据。
 
@@ -287,10 +332,10 @@ GROUP BY age, gender;
 
 ### JOIN 操作：`INNER` / `LEFT` / `RIGHT`
 
-组合来自多个表的数据。
+合并来自多个表的数据。
 
 ```sql
-# 内连接（仅匹配记录）
+# 内连接（仅匹配的记录）
 SELECT u.username, o.order_date
 FROM users u
 INNER JOIN orders o ON u.id = o.user_id;
@@ -298,25 +343,40 @@ INNER JOIN orders o ON u.id = o.user_id;
 SELECT u.username, o.order_date
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id;
-# 多重连接
+# 多连接
 SELECT u.username, o.order_date, p.product_name
 FROM users u
 JOIN orders o ON u.id = o.user_id
 JOIN products p ON o.product_id = p.id;
 ```
 
+<BaseQuiz id="mysql-join-1" correct="B">
+  <template #question>
+    INNER JOIN 和 LEFT JOIN 有什么区别？
+  </template>
+  
+  <BaseQuizOption value="A">没有区别</BaseQuizOption>
+  <BaseQuizOption value="B" correct>INNER JOIN 只返回匹配的行，LEFT JOIN 返回左表中的所有行</BaseQuizOption>
+  <BaseQuizOption value="C">INNER JOIN 速度更快</BaseQuizOption>
+  <BaseQuizOption value="D">LEFT JOIN 只适用于两个表</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    INNER JOIN 只返回两个表中都有匹配的行。LEFT JOIN 返回左表中的所有行以及右表中匹配的行，对于不匹配的右表行则显示 NULL 值。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 子查询：`SELECT` within `SELECT`
 
-使用嵌套查询进行复杂的数据检索。
+使用嵌套查询来检索复杂数据。
 
 ```sql
-# WHERE 子句中的子查询
+# WHERE 子查询
 SELECT * FROM users
 WHERE id IN (SELECT user_id FROM orders WHERE total > 100);
 # 相关子查询
 SELECT username FROM users u1
 WHERE age > (SELECT AVG(age) FROM users u2);
-# SELECT 中的子查询
+# SELECT 子查询
 SELECT username,
 (SELECT COUNT(*) FROM orders WHERE user_id = users.id) as order_count
 FROM users;
@@ -324,7 +384,7 @@ FROM users;
 
 ### 聚合函数：`COUNT` / `SUM` / `AVG`
 
-计算数据的统计信息和摘要。
+从数据中计算统计信息和摘要。
 
 ```sql
 # 基本聚合
@@ -344,7 +404,7 @@ FROM users;
 
 ### 窗口函数：`OVER` / `PARTITION BY`
 
-在表行集上执行计算。
+在行集上执行计算。
 
 ```sql
 # 排名函数
@@ -368,13 +428,13 @@ FROM orders;
 使用数据库索引提高查询性能。
 
 ```sql
-# 创建常规索引
+# 创建普通索引
 CREATE INDEX idx_username ON users(username);
 # 创建复合索引
 CREATE INDEX idx_user_age ON users(username, age);
 # 创建唯一索引
 CREATE UNIQUE INDEX idx_email ON users(email);
-# 查看表上的索引
+# 显示表上的索引
 SHOW INDEXES FROM users;
 ```
 
@@ -388,7 +448,7 @@ EXPLAIN SELECT * FROM users WHERE age > 25;
 # 详细分析
 EXPLAIN FORMAT=JSON SELECT u.*, o.total
 FROM users u JOIN orders o ON u.id = o.user_id;
-# 查看查询性能
+# 显示查询性能
 SHOW PROFILES;
 SET profiling = 1;
 ```
@@ -436,7 +496,7 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
-# 仅加载特定列
+# 加载特定列
 LOAD DATA INFILE '/path/to/data.csv'
 INTO TABLE users (username, email, age);
 ```
@@ -468,7 +528,7 @@ mysql -u username -p database_name < backup.sql
 mysqldump -h remote_host -u username -p database_name > remote_backup.sql
 # 导入到本地数据库
 mysql -u local_user -p local_database < remote_backup.sql
-# 服务器间直接复制数据
+# 服务器之间直接复制数据
 mysqldump -h source_host -u user -p db_name | mysql -h dest_host -u user -p db_name
 ```
 
@@ -534,7 +594,7 @@ SELECT DATE_FORMAT(created_at, '%Y-%m-%d %H:%i') as formatted_date FROM orders;
 SELECT ROUND(price, 2), ABS(profit_loss), SQRT(area) FROM products;
 # 随机和统计
 SELECT RAND(), FLOOR(price), CEIL(rating) FROM products;
-# 聚合数学运算
+# 数值聚合
 SELECT AVG(price), STDDEV(price), VARIANCE(price) FROM products;
 ```
 
@@ -567,7 +627,7 @@ ROLLBACK;
 SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-# 查看当前隔离级别
+# 显示当前隔离级别
 SELECT @@transaction_isolation;
 ```
 
@@ -590,7 +650,7 @@ COMMIT;
 
 ### 保存点：`SAVEPOINT` / `ROLLBACK TO`
 
-在事务内创建回滚点。
+在事务内部创建回滚点。
 
 ```sql
 BEGIN;
@@ -645,10 +705,10 @@ CALL GetUserOrders(123);
 
 ### 触发器：`CREATE TRIGGER`
 
-响应数据库事件自动执行代码。
+对数据库事件做出响应自动执行代码。
 
 ```sql
-# 创建用于审计日志的触发器
+# 创建触发器以进行审计日志记录
 CREATE TRIGGER user_update_audit
 AFTER UPDATE ON users
 FOR EACH ROW
@@ -656,7 +716,7 @@ BEGIN
     INSERT INTO user_audit (user_id, old_email, new_email, changed_at)
     VALUES (NEW.id, OLD.email, NEW.email, NOW());
 END;
-# 查看触发器
+# 显示触发器
 SHOW TRIGGERS;
 ```
 
@@ -701,13 +761,13 @@ sudo systemctl start mysql
 ```bash
 # 运行 MySQL 容器
 docker run --name mysql-dev -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql:8.0
-# 连接到容器化 MySQL
+# 连接到容器化的 MySQL
 docker exec -it mysql-dev mysql -u root -p
 # 在容器中创建数据库
 docker exec -it mysql-dev mysql -u root -p -e "CREATE DATABASE testdb;"
 ```
 
-### 初始化设置与安全
+### 初始设置与安全
 
 保护您的 MySQL 安装并验证设置。
 
@@ -716,7 +776,7 @@ docker exec -it mysql-dev mysql -u root -p -e "CREATE DATABASE testdb;"
 sudo mysql_secure_installation
 # 连接到 MySQL
 mysql -u root -p
-# 查看 MySQL 版本
+# 显示 MySQL 版本
 SELECT VERSION();
 # 检查连接状态
 STATUS;
@@ -748,11 +808,11 @@ long_query_time = 2
 
 在 MySQL 运行时更改设置。
 
-```sql
+```bash
 # 设置全局变量
 SET GLOBAL max_connections = 500;
 SET GLOBAL slow_query_log = ON;
-# 查看当前设置
+# 显示当前设置
 SHOW VARIABLES LIKE 'max_connections';
 SHOW GLOBAL STATUS LIKE 'Slow_queries';
 ```
@@ -762,7 +822,7 @@ SHOW GLOBAL STATUS LIKE 'Slow_queries';
 优化 MySQL 性能设置。
 
 ```sql
-# 查看内存使用情况
+# 显示内存使用情况
 SHOW VARIABLES LIKE '%buffer_pool_size%';
 SHOW VARIABLES LIKE '%query_cache%';
 # 监控性能
@@ -783,7 +843,7 @@ SET GLOBAL general_log_file = '/var/log/mysql/query.log';
 # 慢查询日志
 SET GLOBAL slow_query_log = 'ON';
 SET GLOBAL long_query_time = 1;
-# 查看日志设置
+# 显示日志设置
 SHOW VARIABLES LIKE '%log%';
 ```
 

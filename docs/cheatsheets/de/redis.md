@@ -1,6 +1,6 @@
 ---
-title: 'Redis Spickzettel'
-description: 'Lernen Sie Redis mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Redis Spickzettel | LabEx'
+description: 'Lernen Sie den In-Memory-Datenspeicher Redis mit diesem umfassenden Spickzettel. Schnelle Referenz für Redis-Befehle, Datenstrukturen, Caching, Pub/Sub, Persistenz und Hochleistungs-Caching-Lösungen.'
 pdfUrl: '/cheatsheets/pdf/redis-cheatsheet.pdf'
 ---
 
@@ -12,7 +12,7 @@ Redis Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/redis">Lernen Sie Redis mit praktischen Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/redis">Lernen Sie Redis mit Hands-On Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Lernen Sie Redis In-Memory-Datenstrukturoperationen durch praktische Labs und reale Szenarien. LabEx bietet umfassende Redis-Kurse, die wesentliche Befehle, Datenstrukturen, Caching-Strategien, Pub/Sub-Messaging und Leistungsoptimierung abdecken. Meistern Sie Hochleistungs-Caching und Echtzeit-Datenverarbeitung.
@@ -36,7 +36,7 @@ docker run --name redis-persistent -p 6379:6379 -v redis-data:/data -d redis
 
 ### Linux: `sudo apt install redis`
 
-Installiert den Redis-Server auf Ubuntu/Debian-Systemen.
+Installieren Sie den Redis-Server auf Ubuntu/Debian-Systemen.
 
 ```bash
 # Redis installieren
@@ -82,9 +82,24 @@ SET session:123 "user_data" EX 3600
 SET mykey "new_value" NX
 ```
 
+<BaseQuiz id="redis-set-get-1" correct="C">
+  <template #question>
+    Was bewirkt `SET mykey "value" EX 3600`?
+  </template>
+  
+  <BaseQuizOption value="A">Setzt den Schlüssel mit einem 3600 Byte großen Wert</BaseQuizOption>
+  <BaseQuizOption value="B">Setzt den Schlüssel nur, wenn er existiert</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Setzt den Schlüssel mit einem Wert, der nach 3600 Sekunden abläuft</BaseQuizOption>
+  <BaseQuizOption value="D">Setzt den Schlüssel mit 3600 verschiedenen Werten</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Die Option `EX` legt eine Ablaufzeit in Sekunden fest. `SET mykey "value" EX 3600` speichert den Wert und löscht ihn automatisch nach 3600 Sekunden (1 Stunde).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### String-Manipulation: `APPEND` / `STRLEN`
 
-String-Werte modifizieren und inspizieren.
+Bearbeiten und inspizieren von String-Werten.
 
 ```redis
 # An bestehenden String anhängen
@@ -99,29 +114,44 @@ SETRANGE mykey 6 "Redis"
 
 ### Zahlenoperationen: `INCR` / `DECR`
 
-Ganzzahlwerte, die in Redis gespeichert sind, inkrementieren oder dekrementieren.
+Integrierte Werte, die in Redis gespeichert sind, inkrementieren oder dekrementieren.
 
 ```redis
 # Um 1 inkrementieren
 INCR counter
 # Um 1 dekrementieren
 DECR counter
-# Um bestimmten Betrag inkrementieren
+# Um einen bestimmten Betrag inkrementieren
 INCRBY counter 5
 # Float inkrementieren
 INCRBYFLOAT price 0.1
 ```
 
+<BaseQuiz id="redis-incr-1" correct="A">
+  <template #question>
+    Was passiert, wenn Sie `INCR` für einen Schlüssel verwenden, der nicht existiert?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Redis erstellt den Schlüssel mit dem Wert 1</BaseQuizOption>
+  <BaseQuizOption value="B">Redis gibt einen Fehler zurück</BaseQuizOption>
+  <BaseQuizOption value="C">Redis erstellt den Schlüssel mit dem Wert 0</BaseQuizOption>
+  <BaseQuizOption value="D">Es passiert nichts</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Wenn ein Schlüssel nicht existiert, behandelt `INCR` ihn so, als hätte er den Wert 0, inkrementiert ihn auf 1 und erstellt den Schlüssel. Dies macht `INCR` nützlich für die Initialisierung von Zählern.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Mehrfachoperationen: `MSET` / `MGET`
 
-Effizient mit mehreren Schlüssel-Wert-Paaren arbeiten.
+Effiziente Arbeit mit mehreren Schlüssel-Wert-Paaren.
 
 ```redis
 # Mehrere Schlüssel auf einmal setzen
 MSET key1 "value1" key2 "value2" key3 "value3"
 # Mehrere Werte abrufen
 MGET key1 key2 key3
-# Mehrere nur setzen, wenn keiner existiert
+# Nur setzen, wenn keiner existiert
 MSETNX key1 "val1" key2 "val2"
 ```
 
@@ -134,9 +164,9 @@ Listen sind geordnete Sequenzen von Strings, nützlich als Warteschlangen oder S
 Elemente am linken (Kopf) oder rechten (Schwanz) Ende einer Liste hinzufügen.
 
 ```redis
-# Am Kopf (links) hinzufügen
+# Zum Kopf (links) hinzufügen
 LPUSH mylist "first"
-# Am Schwanz (rechts) hinzufügen
+# Zum Schwanz (rechts) hinzufügen
 RPUSH mylist "last"
 # Mehrere Elemente hinzufügen
 LPUSH mylist "item1" "item2" "item3"
@@ -162,13 +192,28 @@ Elemente oder Bereiche aus Listen abrufen.
 ```redis
 # Gesamte Liste abrufen
 LRANGE mylist 0 -1
-# Erste 3 Elemente abrufen
+# Die ersten 3 Elemente abrufen
 LRANGE mylist 0 2
 # Spezifisches Element nach Index abrufen
 LINDEX mylist 0
 # Listenlänge abrufen
 LLEN mylist
 ```
+
+<BaseQuiz id="redis-list-1" correct="B">
+  <template #question>
+    Was gibt `LRANGE mylist 0 -1` zurück?
+  </template>
+  
+  <BaseQuizOption value="A">Nur das erste Element</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Alle Elemente in der Liste</BaseQuizOption>
+  <BaseQuizOption value="C">Nur das letzte Element</BaseQuizOption>
+  <BaseQuizOption value="D">Einen Fehler</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `LRANGE` mit `0 -1` gibt alle Elemente in der Liste zurück. Die `0` ist der Startindex und `-1` repräsentiert das letzte Element, sodass dies alles vom ersten bis zum letzten Element abruft.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Listen-Dienstprogramme: `LSET` / `LTRIM`
 
@@ -177,7 +222,7 @@ Listeninhalte und -struktur modifizieren.
 ```redis
 # Element am Index setzen
 LSET mylist 0 "new_value"
-# Liste auf Bereich zuschneiden
+# Liste auf Bereich kürzen
 LTRIM mylist 0 99
 # Position des Elements finden
 LPOS mylist "search_value"
@@ -198,6 +243,22 @@ SADD myset "apple" "banana" "cherry"
 SMEMBERS myset
 # Prüfen, ob Element existiert
 SISMEMBER myset "apple"
+```
+
+<BaseQuiz id="redis-set-1" correct="C">
+  <template #question>
+    Was passiert, wenn Sie versuchen, ein doppeltes Element zu einem Redis-Set hinzuzufügen?
+  </template>
+  
+  <BaseQuizOption value="A">Es wird ein Fehler erzeugt</BaseQuizOption>
+  <BaseQuizOption value="B">Es ersetzt das vorhandene Element</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Das Duplikat wird ignoriert und das Set bleibt unverändert</BaseQuizOption>
+  <BaseQuizOption value="D">Es wird eine Liste erstellt</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Redis-Sets enthalten nur eindeutige Elemente. Wenn Sie versuchen, ein Element hinzuzufügen, das bereits existiert, ignoriert Redis dies und gibt 0 zurück (was anzeigt, dass keine Elemente hinzugefügt wurden). Das Set bleibt unverändert.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Set-Größe abrufen
 SCARD myset
 ```
@@ -220,11 +281,11 @@ SRANDMEMBER myset
 Mathematische Set-Operationen durchführen.
 
 ```redis
-# Schnittmenge von Sets
+# Schnittmenge von Mengen
 SINTER set1 set2
-# Vereinigungsmenge von Sets
+# Vereinigungsmenge von Mengen
 SUNION set1 set2
-# Differenz von Sets
+# Differenzmenge von Mengen
 SDIFF set1 set2
 # Ergebnis in neuem Set speichern
 SINTERSTORE result set1 set2
@@ -232,18 +293,18 @@ SINTERSTORE result set1 set2
 
 ### Set-Dienstprogramme: `SMOVE` / `SSCAN`
 
-Erweiterte Set-Manipulation und -Scan.
+Erweiterte Set-Manipulation und -Durchlauf.
 
 ```redis
 # Element zwischen Sets verschieben
 SMOVE source_set dest_set "element"
-# Set inkrementell scannen
+# Set inkrementell durchlaufen
 SSCAN myset 0 MATCH "a*" COUNT 10
 ```
 
 ## Hash-Operationen
 
-Hashes speichern Feld-Wert-Paare, ähnlich wie kleine JSON-Objekte oder Dictionaries.
+Hashes speichern Feld-Wert-Paare, ähnlich wie Mini-JSON-Objekte oder Dictionaries.
 
 ### Grundlegende Hash-Operationen: `HSET` / `HGET`
 
@@ -262,7 +323,7 @@ HMGET user:123 name age email
 
 ### Hash-Inspektion: `HKEYS` / `HVALS`
 
-Hash-Struktur und Inhalt untersuchen.
+Hash-Struktur und -Inhalt untersuchen.
 
 ```redis
 # Alle Feldnamen abrufen
@@ -286,18 +347,18 @@ HEXISTS user:123 email
 HDEL user:123 age city
 # Feld inkrementieren
 HINCRBY user:123 age 1
-# Float inkrementieren
+# Inkrementieren um Float
 HINCRBYFLOAT user:123 balance 10.50
 ```
 
-### Hash-Scanning: `HSCAN`
+### Hash-Durchlauf: `HSCAN`
 
 Große Hashes inkrementell durchlaufen.
 
 ```redis
-# Hash-Felder scannen
+# Hash-Felder durchlaufen
 HSCAN user:123 0
-# Scannen mit Musterabgleich
+# Durchlauf mit Musterabgleich
 HSCAN user:123 0 MATCH "addr*" COUNT 10
 ```
 
@@ -307,7 +368,7 @@ Sortierte Sets kombinieren die Einzigartigkeit von Sets mit der Reihenfolge basi
 
 ### Grundlegende Operationen: `ZADD` / `ZRANGE`
 
-Scored Members hinzufügen und Bereiche abrufen.
+Mitglieder mit Scores hinzufügen und Bereiche abrufen.
 
 ```redis
 # Mitglieder mit Scores hinzufügen
@@ -331,7 +392,7 @@ ZCARD leaderboard
 ZSCORE leaderboard "player1"
 # Mitglieds-Rang abrufen
 ZRANK leaderboard "player1"
-# Mitglieder im Score-Bereich zählen
+# Anzahl der Mitglieder im Score-Bereich
 ZCOUNT leaderboard 100 200
 ```
 
@@ -344,9 +405,9 @@ Mitglieder entfernen und Scores modifizieren.
 ZREM leaderboard "player1"
 # Mitglieds-Score inkrementieren
 ZINCRBY leaderboard 10 "player2"
-# Entfernen nach Rang
+# Nach Rang entfernen
 ZREMRANGEBYRANK leaderboard 0 2
-# Entfernen nach Score
+# Nach Score entfernen
 ZREMRANGEBYSCORE leaderboard 0 100
 ```
 
@@ -376,7 +437,7 @@ KEYS *
 KEYS user:*
 # Schlüssel, die mit Muster enden
 KEYS *:profile
-# Einzelzeichen-Platzhalter
+# Einzelzeichen-Wildcard
 KEYS order:?
 # Prüfen, ob Schlüssel existiert
 EXISTS mykey
@@ -387,13 +448,13 @@ EXISTS mykey
 Schlüsselmetadaten und Ablaufinformationen abrufen.
 
 ```redis
-# Schlüssel-Datentyp abrufen
+# Datentyp des Schlüssels abrufen
 TYPE mykey
-# Verbleibende Zeit bis zum Ablauf (Sekunden)
+# Verbleibende Lebensdauer (Sekunden) abrufen
 TTL mykey
-# TTL in Millisekunden
+# TTL in Millisekunden abrufen
 PTTL mykey
-# Ablaufzeit entfernen
+# Ablauf entfernen
 PERSIST mykey
 ```
 
@@ -460,7 +521,7 @@ TIME
 
 ### Persistenz: `SAVE` / `BGSAVE`
 
-Redis-Datenspeicherung und Backups steuern.
+Steuerung der Redis-Datenspeicherung und Backups.
 
 ```redis
 # Synchrone Speicherung (blockiert Server)
@@ -492,12 +553,12 @@ CONFIG RESETSTAT
 
 ### Echtzeitüberwachung: `MONITOR` / `SLOWLOG`
 
-Befehle verfolgen und Leistungsengpässe identifizieren.
+Befehle verfolgen und Leistungshindernisse identifizieren.
 
 ```redis
 # Alle Befehle in Echtzeit überwachen
 MONITOR
-# Langsame Abfrageprotokolle abrufen
+# Langsame Abfrageprotokoll abrufen
 SLOWLOG GET 10
 # Länge des langsamen Protokolls abrufen
 SLOWLOG LEN
@@ -507,10 +568,10 @@ SLOWLOG RESET
 
 ### Speicheranalyse: `MEMORY USAGE` / `MEMORY STATS`
 
-Speichernutzung analysieren und Optimierung.
+Speichernutzung analysieren und optimieren.
 
 ```redis
-# Speichernutzung eines Schlüssels abrufen
+# Speicherbelegung des Schlüssels abrufen
 MEMORY USAGE mykey
 # Speicherstatistiken abrufen
 MEMORY STATS
@@ -563,7 +624,7 @@ INCR counter
 EXEC
 # Transaktion verwerfen
 DISCARD
-# Schlüssel beobachten
+# Auf Änderungen an Schlüsseln warten
 WATCH mykey
 ```
 
@@ -578,11 +639,11 @@ SUBSCRIBE news sports
 PUBLISH news "Breaking: Redis 7.0 released!"
 # Musterabonnement
 PSUBSCRIBE news:*
-# Abonnement aufheben
+# Abbestellen
 UNSUBSCRIBE news
 ```
 
-### Lua-Skripting: `EVAL` / `SCRIPT`
+### Lua-Skripterstellung: `EVAL` / `SCRIPT`
 
 Benutzerdefinierte Lua-Skripte atomar ausführen.
 
@@ -604,7 +665,7 @@ Mit Redis-Streams für log-ähnliche Daten arbeiten.
 ```redis
 # Eintrag zum Stream hinzufügen
 XADD mystream * field1 value1 field2 value2
-# Aus dem Stream lesen
+# Aus Stream lesen
 XREAD STREAMS mystream 0
 # Stream-Länge abrufen
 XLEN mystream
@@ -651,30 +712,30 @@ SINTER user:123:friends user:456:friends
 Speicherlimits und Eviction-Richtlinien konfigurieren.
 
 ```redis
-# Speichergrenze setzen
+# Speicherlimit setzen
 CONFIG SET maxmemory 2gb
 # Eviction-Richtlinie setzen
 CONFIG SET maxmemory-policy allkeys-lru
-# Speichernutzung prüfen
+# Speicherbelegung prüfen
 INFO memory
 ```
 
 ### Persistenz-Einstellungen
 
-Einstellungen zur Datendauerhaftigkeit konfigurieren.
+Konfiguration der Datenhaltbarkeitsoptionen.
 
 ```redis
 # AOF aktivieren
 CONFIG SET appendonly yes
 # Speicherintervalle festlegen
 CONFIG SET save "900 1 300 10 60 10000"
-# AOF-Rewrite-Einstellungen
+# AOF-Neuschreib-Einstellungen
 CONFIG SET auto-aof-rewrite-percentage 100
 ```
 
 ### Sicherheitseinstellungen
 
-Grundlegende Sicherheitseinstellungen für Redis.
+Grundlegende Sicherheitskonfigurationen für Redis.
 
 ```redis
 # Passwort setzen
@@ -697,8 +758,8 @@ Redis für bessere Leistung optimieren.
 
 ```redis
 # Pipelining für mehrere Befehle aktivieren
-# Connection Pooling verwenden
-# Angemessene maxmemory-policy konfigurieren
+# Verbindungspooling verwenden
+# Geeignete maxmemory-policy konfigurieren
 # Langsame Abfragen regelmäßig überwachen
 # Geeignete Datenstrukturen für Anwendungsfälle verwenden
 ```

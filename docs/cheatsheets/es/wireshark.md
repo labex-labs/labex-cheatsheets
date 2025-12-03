@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Wireshark'
-description: 'Aprenda Wireshark con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Wireshark | LabEx'
+description: 'Aprenda análisis de red con Wireshark usando esta hoja de trucos completa. Referencia rápida para captura de paquetes, análisis de protocolos de red, inspección de tráfico, solución de problemas y monitoreo de seguridad de red.'
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Wireshark
 <a target="_blank" href="https://labex.io/es/learn/wireshark">Aprenda Wireshark con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda análisis de paquetes de red con Wireshark a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Wireshark que cubren captura de paquetes esencial, filtros de visualización, análisis de protocolos, solución de problemas de red y monitoreo de seguridad. Domine las técnicas de análisis de tráfico de red e inspección de paquetes.
+Aprenda el análisis de paquetes de red con Wireshark a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Wireshark que cubren captura de paquetes esencial, filtros de visualización, análisis de protocolos, solución de problemas de red y monitoreo de seguridad. Domine las técnicas de análisis de tráfico de red e inspección de paquetes.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -36,6 +36,21 @@ dst host 192.168.1.100
 net 192.168.1.0/24
 ```
 
+<BaseQuiz id="wireshark-filter-1" correct="A">
+  <template #question>
+    ¿Qué filtra `host 192.168.1.100` en Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Todo el tráfico hacia o desde 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="B">Solo el tráfico desde 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="C">Solo el tráfico hacia 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="D">Tráfico en el puerto 192.168.1.100</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El filtro `host` captura todo el tráfico donde la dirección IP especificada es la fuente o el destino. Use `src host` para solo fuente o `dst host` para solo destino.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Filtrado por Puerto
 
 Capturar tráfico en puertos específicos.
@@ -53,9 +68,24 @@ port 53
 portrange 1000-2000
 ```
 
+<BaseQuiz id="wireshark-port-1" correct="D">
+  <template #question>
+    ¿Qué filtra `port 80` en Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A">Solo solicitudes HTTP</BaseQuizOption>
+  <BaseQuizOption value="B">Solo respuestas HTTP</BaseQuizOption>
+  <BaseQuizOption value="C">Solo paquetes TCP</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Todo el tráfico en el puerto 80 (tanto fuente como destino)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El filtro `port` captura todo el tráfico donde el puerto 80 es el puerto de origen o destino. Esto incluye tanto las solicitudes como las respuestas HTTP, así como cualquier otro tráfico que utilice el puerto 80.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Filtrado por Protocolo
 
-Capturar tráfico de protocolo específico.
+Capturar tráfico de protocolos específicos.
 
 ```bash
 # Solo tráfico TCP
@@ -70,7 +100,7 @@ arp
 
 ### Filtros de Captura Avanzados
 
-Combinar múltiples condiciones para una captura precisa.
+Combine múltiples condiciones para una captura precisa.
 
 ```bash
 # Tráfico HTTP hacia/desde host específico
@@ -82,6 +112,21 @@ host 192.168.1.100 and host 192.168.1.200
 # Tráfico HTTP o HTTPS
 port 80 or port 443
 ```
+
+<BaseQuiz id="wireshark-advanced-1" correct="B">
+  <template #question>
+    ¿Qué captura `tcp and not port 22`?
+  </template>
+  
+  <BaseQuizOption value="A">Solo tráfico SSH</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Todo el tráfico TCP excepto SSH (puerto 22)</BaseQuizOption>
+  <BaseQuizOption value="C">Tráfico UDP en el puerto 22</BaseQuizOption>
+  <BaseQuizOption value="D">Todo el tráfico de red</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Este filtro captura todo el tráfico TCP pero excluye los paquetes en el puerto 22 (SSH). El operador `and not` excluye el puerto especificado mientras mantiene todo el demás tráfico TCP.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Selección de Interfaz
 
@@ -95,7 +140,7 @@ tshark -D
 eth0
 # Interfaz WiFi
 wlan0
-# Interfaz de bucle invertido
+# Interfaz de loopback
 lo
 ```
 
@@ -108,7 +153,7 @@ Configurar parámetros de captura.
 -a filesize:100
 # Limitar la duración de la captura (segundos)
 -a duration:300
-# Búfer circular con 10 archivos
+# Búfer en anillo con 10 archivos
 -b files:10
 # Modo promiscuo (capturar todo el tráfico)
 -p
@@ -154,14 +199,14 @@ not ip.addr == 192.168.1.1
 
 ### Filtrado por Puerto y Protocolo
 
-Filtrar por puertos específicos y detalles del protocolo.
+Filtrar por puertos y detalles de protocolo específicos.
 
 ```bash
 # Tráfico en puerto específico
 tcp.port == 80
-# Filtrar puerto de origen
+# Filtro de puerto de origen
 tcp.srcport == 443
-# Filtrar puerto de destino
+# Filtro de puerto de destino
 tcp.dstport == 22
 # Rango de puertos
 tcp.port >= 1000 and tcp.port <=
@@ -183,7 +228,7 @@ http.request.method == "GET"
 http.request.method == "POST"
 # Códigos de estado HTTP específicos
 http.response.code == 404
-# Solicitudes HTTP al host específico
+# Solicitudes HTTP a host específico
 http.host == "example.com"
 # Solicitudes HTTP que contienen cadena
 http contains "login"
@@ -200,7 +245,7 @@ dns.flags.response == 0
 dns.flags.response == 1
 # Consultas DNS para dominio específico
 dns.qry.name == "example.com"
-# Consultas DNS de tipo A
+# Consultas DNS tipo A
 dns.qry.type == 1
 # Errores/fallos DNS
 dns.flags.rcode != 0
@@ -217,7 +262,7 @@ tcp.flags.syn == 1
 tcp.flags.reset == 1
 # Retransmisiones TCP
 tcp.analysis.retransmission
-# Problemas de actualización de ventana TCP
+# Problemas de ventana TCP
 tcp.analysis.window_update
 # Establecimiento de conexión TCP
 tcp.flags.syn == 1 and tcp.flags.ack == 0
@@ -245,7 +290,7 @@ tls.handshake.extensions_server_name
 Identificar problemas comunes de red.
 
 ```bash
-# Mensajes de destino inalcanzable ICMP
+# Mensajes ICMP inalcanzable
 icmp.type == 3
 # Solicitudes/respuestas ARP
 arp.opcode == 1 or arp.opcode == 2
@@ -314,17 +359,17 @@ Visualizar patrones de tráfico a lo largo del tiempo.
 # Útil para identificar picos de tráfico
 ```
 
-### Información de Experto
+### Información Experta
 
-Identificar problemas potenciales de red.
+Identificar posibles problemas de red.
 
 ```bash
-# Acceder a través de: Analizar > Información de Experto
+# Acceder a través de: Analizar > Información Experta
 # Advertencias sobre problemas de red
 # Errores en la transmisión de paquetes
 # Problemas de rendimiento
 # Preocupaciones de seguridad
-# Filtrar por severidad de la información de experto
+# Filtrar por severidad de información experta
 tcp.analysis.flags
 ```
 
@@ -350,10 +395,10 @@ Medir los tiempos de respuesta de las aplicaciones.
 # Tiempos de respuesta DNS
 # Estadísticas > DNS
 # Tiempo de respuesta del servicio TCP
-# Estadísticas > Gráficos de Secuencia de Tiempo de Flujo TCP
+# Estadísticas > Gráficos de Secuencia de Tiempo TCP > Flujo TCP
 ```
 
-## Operaciones de Archivo y Exportación
+## Operaciones y Exportación de Archivos
 
 ### Guardar y Cargar Capturas
 
@@ -378,8 +423,8 @@ Exportar datos específicos o subconjuntos de paquetes.
 # Exportar paquetes seleccionados
 # Archivo > Exportar Paquetes Especificados
 # Exportar disecciones de paquetes
-# Archivo > Exportar Disecciones de Paquetes
-# Exportar objetos de HTTP
+# Archivo > Exportar Disección de Paquetes
+# Exportar objetos desde HTTP
 # Archivo > Exportar Objetos > HTTP
 # Exportar claves SSL/TLS
 # Editar > Preferencias > Protocolos > TLS
@@ -422,13 +467,13 @@ editcap -A "2024-01-01 10:00:00" \
 Manejar archivos de captura grandes de manera eficiente.
 
 ```bash
-# Usar búfer circular para captura continua
+# Usar búfer en anillo para captura continua
 -b filesize:100 -b files:10
 # Limitar el tamaño de captura de paquetes
 -s 96  # Capturar solo los primeros 96 bytes
 # Usar filtros de captura para reducir datos
 host 192.168.1.100 and port 80
-# Deshabilitar la disección de protocolos para mayor velocidad
+# Deshabilitar la disección de protocolos para velocidad
 -d tcp.port==80,http
 ```
 
@@ -439,7 +484,7 @@ Mejorar el rendimiento de la GUI con grandes conjuntos de datos.
 ```bash
 # Preferencias a ajustar:
 # Editar > Preferencias > Apariencia
-# Esquema de color
+# Selección de esquema de color
 # Tamaño y tipo de fuente
 # Opciones de visualización de columnas
 # Configuración del formato de tiempo
@@ -451,16 +496,16 @@ Mejorar el rendimiento de la GUI con grandes conjuntos de datos.
 
 ### Flujo de Trabajo de Análisis Eficiente
 
-Mejores prácticas para analizar el tráfico de red.
+Mejores prácticas para analizar tráfico de red.
 
 ```bash
 # 1. Comenzar con filtros de captura
 # Capturar solo el tráfico relevante
 # 2. Usar filtros de visualización progresivamente
-# Empezar amplio, luego reducir
+# Empezar amplio, luego estrechar
 # 3. Usar estadísticas primero
 # Obtener una visión general antes del análisis detallado
-# 4. Centrarse en flujos específicos
+# 4. Enfocarse en flujos específicos
 # Clic derecho en paquete > Seguir > Flujo TCP
 ```
 
@@ -638,9 +683,9 @@ tcp.port in {80 443 8080 8443}
 tcp.options
 ```
 
-### Análisis de Paquetes Avanzado
+### Análisis Avanzado de Paquetes
 
-Identificar características específicas de paquetes y anomalías.
+Identificar características y anomalías específicas de paquetes.
 
 ```bash
 # Paquetes mal formados
@@ -649,7 +694,7 @@ _ws.malformed
 frame.number == tcp.analysis.duplicate_ack_num
 # Paquetes fuera de orden
 tcp.analysis.out_of_order
-# Problemas de escalado de ventana TCP
+# Problemas de ventana TCP
 tcp.analysis.window_full
 ```
 
@@ -674,7 +719,7 @@ icmp.type == 3 and icmp.code == 4
 
 ### Análisis de Seguridad
 
-Detectar posibles amenazas de seguridad y actividad sospechosa.
+Detectar amenazas de seguridad potenciales y actividad sospechosa.
 
 ```bash
 # Detección de escaneo de puertos
@@ -696,7 +741,7 @@ contains "/upload"
 Monitorear y analizar los tiempos de respuesta de las aplicaciones.
 
 ```bash
-# Análisis de aplicaciones web
+# Análisis de aplicación web
 http.time > 2.0
 # Monitoreo de conexión a base de datos
 tcp.port == 3306 and tcp.analysis.initial_rtt > 0.1
@@ -711,11 +756,11 @@ rtp.jitter > 30 or rtp.marker == 1
 Inmersión profunda en protocolos específicos y su comportamiento.
 
 ```bash
-# Análisis de tráfico de correo electrónico
+# Tráfico de correo electrónico
 tcp.port == 25 or tcp.port == 587 or tcp.port == 993
 # Transferencias de archivos FTP
 ftp-data or ftp.request.command == "RETR"
-# Uso compartido de archivos SMB/CIFS
+# Compartición de archivos SMB/CIFS
 smb2 or smb
 # Análisis de asignación DHCP
 bootp.option.dhcp == 1 or bootp.option.dhcp == 2

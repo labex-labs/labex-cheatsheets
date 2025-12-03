@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по Pandas'
-description: 'Изучите Pandas с нашей подробной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Pandas | LabEx'
+description: 'Изучите манипуляции с данными Pandas с помощью этой исчерпывающей шпаргалки. Краткий справочник по операциям с DataFrame, очистке данных, фильтрации, группировке, объединению и анализу данных на Python.'
 pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 <a target="_blank" href="https://labex.io/ru/learn/pandas">Изучите Pandas с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите манипулирование данными Pandas с помощью практических лабораторий и сценариев реального мира. LabEx предлагает комплексные курсы по Pandas, охватывающие основные операции, очистку данных, анализ и визуализацию. Научитесь эффективно работать с DataFrames, обрабатывать отсутствующие данные, выполнять агрегации и анализировать наборы данных с помощью мощной библиотеки анализа данных Python.
+Изучите манипулирование данными Pandas с помощью практических лабораторий и сценариев из реального мира. LabEx предлагает комплексные курсы по Pandas, охватывающие основные операции, очистку данных, анализ и визуализацию. Научитесь эффективно работать с DataFrame, обрабатывать отсутствующие данные, выполнять агрегации и анализировать наборы данных с помощью мощной библиотеки анализа данных Python.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -36,6 +36,21 @@ df = pd.read_csv('data.csv', sep=';')
 # Разбор дат
 df = pd.read_csv('data.csv', parse_dates=['Date'])
 ```
+
+<BaseQuiz id="pandas-read-csv-1" correct="B">
+  <template #question>
+    Что возвращает `pd.read_csv('data.csv')`?
+  </template>
+  
+  <BaseQuizOption value="A">Список словарей</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Pandas DataFrame</BaseQuizOption>
+  <BaseQuizOption value="C">Массив NumPy</BaseQuizOption>
+  <BaseQuizOption value="D">Строку</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pd.read_csv()` считывает CSV-файл и возвращает pandas DataFrame, который представляет собой двумерную маркированную структуру данных со столбцами и строками.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Чтение Excel: `pd.read_excel()`
 
@@ -117,7 +132,7 @@ df.index
 
 ### Описательная статистика: `df.describe()`
 
-Генерирует описательную статистику числовых столбцов.
+Генерирует описательную статистику для числовых столбцов.
 
 ```python
 # Сводная статистика для числовых столбцов
@@ -130,7 +145,7 @@ df.describe(include='all')
 
 ### Просмотр данных: `df.head()` / `df.tail()`
 
-Отображает первые или последние 'n' строк DataFrame.
+Отображение первых или последних 'n' строк DataFrame.
 
 ```python
 # Первые 5 строк
@@ -150,28 +165,58 @@ df.sample(5)
 ```python
 # Подсчет отсутствующих значений по столбцам
 df.isnull().sum()
-# Заполнить все NaN нулем
+# Заполнение всех NaN нулем
 df.fillna(0)
-# Заполнить средним значением столбца
+# Заполнение средним значением столбца
 df['col'].fillna(df['col'].mean())
-# Удалить строки с любым NaN
+# Удаление строк с любым NaN
 df.dropna()
-# Удалить столбцы с любым NaN
+# Удаление столбцов с любым NaN
 df.dropna(axis=1)
 ```
+
+<BaseQuiz id="pandas-missing-1" correct="B">
+  <template #question>
+    Что делает `df.dropna(axis=1)`?
+  </template>
+  
+  <BaseQuizOption value="A">Удаляет строки с отсутствующими значениями</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Удаляет столбцы с отсутствующими значениями</BaseQuizOption>
+  <BaseQuizOption value="C">Заполняет отсутствующие значения нулем</BaseQuizOption>
+  <BaseQuizOption value="D">Считает отсутствующие значения</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Параметр `axis=1` означает "столбцы", поэтому `df.dropna(axis=1)` удаляет столбцы, содержащие какие-либо отсутствующие значения. Используйте `axis=0` (по умолчанию) для удаления строк.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Дубликаты: `duplicated()` / `drop_duplicates()`
 
 Идентификация и удаление дублирующихся строк.
 
 ```python
-# Булевый ряд, указывающий на дубликаты
+# Булево представление, указывающее на дубликаты
 df.duplicated()
-# Удалить все дублирующиеся строки
+# Удаление всех дублирующихся строк
 df.drop_duplicates()
-# Удалить на основе определенных столбцов
+# Удаление на основе определенных столбцов
 df.drop_duplicates(subset=['col1', 'col2'])
 ```
+
+<BaseQuiz id="pandas-duplicates-1" correct="A">
+  <template #question>
+    Что делает `df.drop_duplicates()` по умолчанию?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Удаляет дублирующиеся строки, сохраняя первое вхождение</BaseQuizOption>
+  <BaseQuizOption value="B">Удаляет все строки</BaseQuizOption>
+  <BaseQuizOption value="C">Сохраняет только дублирующиеся строки</BaseQuizOption>
+  <BaseQuizOption value="D">Удаляет первое вхождение дубликатов</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    По умолчанию `drop_duplicates()` сохраняет первое вхождение каждой дублирующейся строки и удаляет последующие дубликаты. Вы можете использовать `keep='last'`, чтобы вместо этого сохранить последнее вхождение.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Типы данных: `astype()`
 
@@ -186,9 +231,9 @@ df['col'].astype(str)
 df['col'] = pd.to_datetime(df['col'])
 ```
 
-### Применение функций: `apply()` / `map()` / `replace()`
+### Применение функции: `apply()` / `map()` / `replace()`
 
-Применение функций или замена значений в DataFrames/Series.
+Применение функций или замена значений в DataFrame/Series.
 
 ```python
 # Применить лямбда-функцию к столбцу
@@ -200,6 +245,21 @@ df.replace('old_val', 'new_val')
 # Заменить несколько значений
 df.replace(['A', 'B'], ['C', 'D'])
 ```
+
+<BaseQuiz id="pandas-apply-1" correct="A">
+  <template #question>
+    Что делает `df['col'].apply(lambda x: x*2)`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Применяет функцию к каждому элементу в столбце, умножая каждый на 2</BaseQuizOption>
+  <BaseQuizOption value="B">Умножает весь столбец на 2 один раз</BaseQuizOption>
+  <BaseQuizOption value="C">Заменяет столбец значением 2</BaseQuizOption>
+  <BaseQuizOption value="D">Считает элементы в столбце</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Метод `apply()` применяет функцию к каждому элементу в Series. Лямбда-функция `lambda x: x*2` умножает каждое значение на 2, возвращая новый Series с преобразованными значениями.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Инспекция DataFrame
 
@@ -282,13 +342,13 @@ df.info(memory_usage='deep')
 df['int_col'] = df['int_col'].astype('int16')
 # Понижение разрядности числа с плавающей точкой
 df['float_col'] = df['float_col'].astype('float32')
-# Использование типа categorical
+# Использование типа category
 df['category_col'] = df['category_col'].astype('category')
 ```
 
-### Чтение больших файлов по частям: `read_csv(chunksize=...)`
+### Обработка больших файлов по частям: `read_csv(chunksize=...)`
 
-Обработка больших файлов частями, чтобы избежать загрузки всего в память одновременно.
+Обработка больших файлов по частям, чтобы избежать загрузки всего в память одновременно.
 
 ```python
 chunk_iterator = pd.read_csv('large_data.csv', chunksize=10000)
@@ -340,7 +400,7 @@ json_str = df.to_json(orient='split')
 
 ### В HTML: `df.to_html()`
 
-Отрисовка DataFrame в виде HTML-таблицы.
+Отображение DataFrame в виде HTML-таблицы.
 
 ```python
 # В строку HTML
@@ -373,7 +433,7 @@ loaded_df = pd.read_pickle('my_dataframe.pkl')
 
 ### HDF5: `df.to_hdf()` / `pd.read_hdf()`
 
-Хранение/загрузка DataFrames с использованием формата HDF5, подходит для больших наборов данных.
+Хранение/загрузка DataFrame с использованием формата HDF5, подходящего для больших наборов данных.
 
 ```python
 # Сохранить в HDF5
@@ -425,7 +485,7 @@ df.iat[0, 0]
 df[df['col1'] > 10]
 # Несколько условий
 df[(df['col1'] > 10) & (df['col2'] == 'A')]
-# Строки, где 'col1' НЕ находится в списке
+# Строки, где 'col1' НЕ в списке
 df[~df['col1'].isin([1, 2, 3])]
 ```
 
@@ -457,12 +517,12 @@ import time
 start_time = time.time()
 # Ваш код Pandas здесь
 end_time = time.time()
-print(f"Execution time: {end_time - start_time} seconds")
+print(f"Время выполнения: {end_time - start_time} секунд")
 ```
 
 ### Оптимизированные операции: `eval()` / `query()`
 
-Использование этих методов для более быстрой работы с большими DataFrame, особенно для поэлементных операций и фильтрации.
+Использование этих методов для более быстрой производительности на больших DataFrame, особенно для поэлементных операций и фильтрации.
 
 ```python
 # Быстрее, чем `df['col1'] + df['col2']`
@@ -473,7 +533,7 @@ df_filtered = df.query('col1 > @threshold and col2 == "value"')
 
 ### Профилирование кода: `cProfile` / `line_profiler`
 
-Анализ того, на что тратится время в ваших функциях Python.
+Анализ того, где тратится время в ваших функциях Python.
 
 ```python
 import cProfile
@@ -497,9 +557,9 @@ cProfile.run('my_pandas_function(df)') # Запуск функции с cProfile
 Стандартный установщик пакетов Python.
 
 ```python
-# Установить Pandas
+# Установка Pandas
 pip install pandas
-# Обновить Pandas до последней версии
+# Обновление Pandas до последней версии
 pip install pandas --upgrade
 # Показать информацию об установленном пакете Pandas
 pip show pandas
@@ -510,19 +570,19 @@ pip show pandas
 Менеджер пакетов для сред Anaconda/Miniconda.
 
 ```python
-# Установить Pandas в текущей среде conda
+# Установка Pandas в текущей среде conda
 conda install pandas
-# Обновить Pandas
+# Обновление Pandas
 conda update pandas
-# Показать установленный пакет Pandas
+# Список установленного пакета Pandas
 conda list pandas
-# Создать новую среду с Pandas
+# Создание новой среды с Pandas
 conda create -n myenv pandas
 ```
 
 ### Проверка версии / Импорт
 
-Проверка установки Pandas и импорт ее в ваших скриптах.
+Проверьте вашу установку Pandas и импортируйте ее в свои скрипты.
 
 ```python
 # Стандартный псевдоним импорта
@@ -557,9 +617,9 @@ pd.set_option('display.float_format', '{:.2f}'.format)
 Сброс определенного параметра или всех параметров к значениям по умолчанию.
 
 ```python
-# Сбросить определенный параметр
+# Сброс определенного параметра
 pd.reset_option('display.max_rows')
-# Сбросить все параметры по умолчанию
+# Сброс всех параметров по умолчанию
 pd.reset_option('all')
 ```
 
@@ -568,7 +628,7 @@ pd.reset_option('all')
 Получение текущего значения указанного параметра.
 
 ```python
-# Получить текущую настройку max_rows
+# Получить текущее значение max_rows
 print(pd.get_option('display.max_rows'))
 ```
 
@@ -584,7 +644,7 @@ print(df) # Параметры возвращаются к предыдущим 
 
 ## Цепочки методов
 
-### Цепочки операций
+### Цепочка операций
 
 Применение последовательности преобразований к DataFrame.
 
@@ -602,7 +662,7 @@ print(df) # Параметры возвращаются к предыдущим 
 
 ### Использование `.pipe()`
 
-Применение функций, которые принимают DataFrame в качестве первого аргумента, что позволяет использовать настраиваемые шаги в цепочке.
+Применение функций, которые принимают DataFrame в качестве первого аргумента, что позволяет выполнять настраиваемые шаги в цепочке.
 
 ```python
 def custom_filter(df, threshold):

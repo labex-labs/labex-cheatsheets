@@ -1,6 +1,6 @@
 ---
-title: 'Scikit-learn 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 종합 치트 시트로 Scikit-learn 을 학습하세요.'
+title: 'Scikit-learn 치트 시트 | LabEx'
+description: '이 포괄적인 치트 시트로 scikit-learn 머신러닝을 학습하세요. ML 알고리즘, 모델 훈련, 전처리, 평가 및 Python 머신러닝 워크플로우에 대한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ scikit-learn 치트 시트
 <a target="_blank" href="https://labex.io/ko/learn/sklearn">Hands-On Labs 로 scikit-learn 학습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 기반 랩과 실제 시나리오를 통해 scikit-learn 머신러닝을 학습하세요. LabEx 는 필수적인 데이터 전처리, 모델 선택, 훈련, 평가 및 특성 공학을 다루는 포괄적인 scikit-learn 과정을 제공합니다. Python 으로 머신러닝 알고리즘을 마스터하고 예측 모델을 구축하세요.
+실습 기반 랩과 실제 시나리오를 통해 scikit-learn 머신러닝을 학습하세요. LabEx 는 필수적인 데이터 전처리, 모델 선택, 훈련, 평가 및 특성 공학을 다루는 포괄적인 scikit-learn 과정을 제공합니다. Python 을 사용하여 머신러닝 알고리즘을 마스터하고 예측 모델을 구축하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -105,6 +105,21 @@ train_test_split(X_temp, y_temp,
 test_size=0.5, random_state=42)
 ```
 
+<BaseQuiz id="sklearn-split-1" correct="B">
+  <template #question>
+    데이터를 훈련 및 테스트 세트로 분할하는 것이 중요한 이유는 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">데이터셋 크기를 줄이기 위해</BaseQuizOption>
+  <BaseQuizOption value="B" correct>보지 못한 데이터에 대한 모델 성능을 평가하고 과적합을 방지하기 위해</BaseQuizOption>
+  <BaseQuizOption value="C">모델 훈련 속도를 높이기 위해</BaseQuizOption>
+  <BaseQuizOption value="D">데이터셋 균형을 맞추기 위해</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    데이터 분할을 통해 한 부분으로 모델을 훈련하고 다른 부분으로 테스트할 수 있습니다. 이는 모델이 새로운, 보지 못한 데이터에 얼마나 잘 일반화되는지 평가하고 훈련 데이터에 과적합되는 것을 방지하는 데 도움이 됩니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 특성 스케일링: `StandardScaler()` / `MinMaxScaler()`
 
 특성을 유사한 규모로 정규화.
@@ -125,6 +140,21 @@ minmax_scaler.fit_transform(X_train)
 X_test_minmax =
 minmax_scaler.transform(X_test)
 ```
+
+<BaseQuiz id="sklearn-scaling-1" correct="A">
+  <template #question>
+    머신러닝에서 특성 스케일링이 중요한 이유는 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>모든 특성이 유사한 규모를 갖도록 하여 일부 특성이 지배하는 것을 방지합니다</BaseQuizOption>
+  <BaseQuizOption value="B">누락된 값을 제거합니다</BaseQuizOption>
+  <BaseQuizOption value="C">특성의 수를 늘립니다</BaseQuizOption>
+  <BaseQuizOption value="D">중복된 행을 제거합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    특성 스케일링은 SVM, KNN 및 신경망과 같은 알고리즘이 특성 규모에 민감하기 때문에 중요합니다. 스케일링 없이는 범위가 더 큰 특성이 모델 학습 과정에서 지배하게 될 수 있습니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 인코딩: `LabelEncoder()` / `OneHotEncoder()`
 
@@ -208,6 +238,21 @@ rf_clf = RandomForestClassifier(
 )
 ```
 
+<BaseQuiz id="sklearn-randomforest-1" correct="A">
+  <template #question>
+    RandomForestClassifier 에서 `n_estimators` 는 무엇을 제어합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>포레스트 내의 결정 트리 개수</BaseQuizOption>
+  <BaseQuizOption value="B">각 트리의 최대 깊이</BaseQuizOption>
+  <BaseQuizOption value="C">고려할 특성의 개수</BaseQuizOption>
+  <BaseQuizOption value="D">랜덤 시드</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `n_estimators` 는 랜덤 포레스트에 포함할 결정 트리의 수를 지정합니다. 트리가 많을수록 일반적으로 성능은 향상되지만 계산 시간은 증가합니다. 기본값은 보통 100 입니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 서포트 벡터 머신: `SVC()`
 
 커널 방법을 사용하는 강력한 분류기.
@@ -279,7 +324,7 @@ print(f"선택된 특성: {len(selected_features)}")
 회귀 작업을 위한 앙상블 방법.
 
 ```python
-# 랜덤 포레스트 회귀기
+# 랜덤 포레스트 회귀자
 from sklearn.ensemble import RandomForestRegressor
 rf_reg = RandomForestRegressor(n_estimators=100,
 random_state=42)
@@ -324,10 +369,10 @@ roc_auc = auc(fpr, tpr)
 # ROC 곡선 그리기
 import matplotlib.pyplot as plt
 plt.figure(figsize=(8, 6))
-plt.plot(fpr, tpr, label=f'ROC 곡선 (AUC = {roc_auc:.2f})')
+plt.plot(fpr, tpr, label=f'ROC Curve (AUC = {roc_auc:.2f})')
 plt.plot([0, 1], [0, 1], 'k--')
-plt.xlabel('거짓 양성 비율 (False Positive Rate)')
-plt.ylabel('참 양성 비율 (True Positive Rate)')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
 plt.legend()
 ```
 
@@ -351,7 +396,7 @@ print(f"R²: {r2:.4f}")
 
 ### 교차 검증 (Cross-Validation)
 
-교차 검증을 사용한 강력한 모델 평가.
+교차 검증을 사용하여 강력한 모델 평가.
 
 ```python
 # K-겹 교차 검증
@@ -404,7 +449,7 @@ pca_full = PCA()
 pca_full.fit(X)
 cumsum =
 np.cumsum(pca_full.explained_variance_ratio_)
-# 95% 분산을 위한 성분 수
+# 95% 분산을 위한 성분 수 찾기
 n_components = np.argmax(cumsum >= 0.95) + 1
 ```
 
@@ -429,7 +474,7 @@ print(f"노이즈 포인트 수: {n_noise}")
 군집의 계층 구조 구축.
 
 ```python
-# 병합 군집화
+# 계층적 군집화
 from sklearn.cluster import AgglomerativeClustering
 agg_clustering = AgglomerativeClustering(n_clusters=3,
 linkage='ward')
@@ -469,7 +514,7 @@ best_params = grid_search.best_params_
 파라미터 분포에서 무작위 샘플링.
 
 ```python
-# 랜덤 검색 (큰 파라미터 공간에 더 빠름)
+# 랜덤 검색 (더 큰 파라미터 공간에 대해 더 빠름)
 from sklearn.model_selection import
 RandomizedSearchCV
 from scipy.stats import randint
@@ -510,7 +555,7 @@ grid_search.fit(X_train, y_train)
 
 ### 특성 선택: `SelectKBest()` / `RFE()`
 
-가장 유익한 특성을 선택.
+가장 유익한 특성 선택.
 
 ```python
 # 단변수 특성 선택
@@ -526,7 +571,7 @@ n_features_to_select=10)
 X_rfe = rfe.fit_transform(X_train, y_train)
 ```
 
-## 고급 기법 (Advanced Techniques)
+## 고급 기술 (Advanced Techniques)
 
 ### 앙상블 방법: `VotingClassifier()` / `BaggingClassifier()`
 
@@ -573,7 +618,7 @@ learning_curve(gb_clf, X, y, cv=5)
 
 ### 불균형 데이터 처리: `SMOTE()` / 클래스 가중치
 
-데이터셋의 클래스 불균형 해결.
+데이터셋의 클래스 불균형 처리.
 
 ```python
 # imbalanced-learn 설치: pip install imbalanced-learn
@@ -609,7 +654,7 @@ y_pred = loaded_model.predict(X_test)
 joblib.dump(pipeline, 'preprocessing_pipeline.pkl')
 loaded_pipeline =
 joblib.load('preprocessing_pipeline.pkl')
-# pickle 사용 대체
+# pickle 을 사용한 대안
 import pickle
 with open('model.pkl', 'wb') as f:
     pickle.dump(model, f)
@@ -631,17 +676,17 @@ train_sizes, train_scores, val_scores = learning_curve(
 )
 plt.figure(figsize=(10, 6))
 plt.plot(train_sizes, np.mean(train_scores, axis=1), 'o-',
-label='훈련 점수')
+label='Training Score')
 plt.plot(train_sizes, np.mean(val_scores, axis=1), 'o-',
-label='검증 점수')
-plt.xlabel('훈련 세트 크기')
-plt.ylabel('점수')
+label='Validation Score')
+plt.xlabel('Training Set Size')
+plt.ylabel('Score')
 plt.legend()
 ```
 
 ### 검증 곡선: `validation_curve()`
 
-하이퍼파라미터의 영향을 분석.
+하이퍼파라미터 효과 분석.
 
 ```python
 # 단일 하이퍼파라미터에 대한 검증 곡선
@@ -654,23 +699,23 @@ param_range=param_range, cv=5
 )
 plt.figure(figsize=(10, 6))
 plt.plot(param_range, np.mean(train_scores, axis=1), 'o-',
-label='훈련')
+label='Training')
 plt.plot(param_range, np.mean(val_scores, axis=1), 'o-',
-label='검증')
-plt.xlabel('추정기 수')
-plt.ylabel('점수')
+label='Validation')
+plt.xlabel('Number of Estimators')
+plt.ylabel('Score')
 ```
 
 ### 특성 중요도 시각화
 
-모델 예측에 어떤 특성이 영향을 미치는지 이해.
+모델 예측을 주도하는 특성 이해.
 
 ```python
 # 특성 중요도 그리기
 importances = model.feature_importances_
 indices = np.argsort(importances)[::-1]
 plt.figure(figsize=(12, 8))
-plt.title("특성 중요도")
+plt.title("Feature Importance")
 plt.bar(range(X.shape[1]), importances[indices])
 plt.xticks(range(X.shape[1]), [X.columns[i] for i in indices],
 rotation=90)
@@ -690,12 +735,12 @@ shap.summary_plot(shap_values, X_test)
 # 여러 모델 비교
 from sklearn.model_selection import cross_val_score
 models = {
-    '로지스틱 회귀':
+    'Logistic Regression':
 LogisticRegression(random_state=42),
-    '랜덤 포레스트':
+    'Random Forest':
 RandomForestClassifier(random_state=42),
     'SVM': SVC(random_state=42),
-    '그래디언트 부스팅':
+    'Gradient Boosting':
 GradientBoostingClassifier(random_state=42)
 }
 results = {}
@@ -730,7 +775,7 @@ shuffle=True, random_state=42)
 
 ### 메모리 및 성능 (Memory & Performance)
 
-대규모 데이터셋 및 계산 효율성 최적화.
+대규모 데이터셋 및 계산 효율성을 위한 최적화.
 
 ```python
 # 병렬 처리를 위해 n_jobs=-1 사용
@@ -740,12 +785,11 @@ RandomForestClassifier(n_jobs=
 grid_search =
 GridSearchCV(model,
 param_grid, n_jobs=-1)
-# 대규모 데이터셋의 경우 사용 가능한 경우
-partial_fit 사용
+# 대규모 데이터셋의 경우 사용 가능한 곳에서 partial_fit 사용
 from sklearn.linear_model
 import SGDClassifier
 sgd = SGDClassifier()
-# 데이터를 청크로 처리
+# 청크 단위로 데이터 처리
 for chunk in chunks:
     sgd.partial_fit(chunk_X,
 chunk_y)
@@ -762,11 +806,11 @@ warnings.filterwarnings('ignore')
 # Jupyter 에서 향상된 표시를 위해 sklearn 의 set_config 활성화
 from sklearn import set_config
 set_config(display='diagram')  #
-향상된 Jupyter 표시
+향상된 표시
 # 데이터 유출 확인
 from sklearn.model_selection
 import cross_val_score
-# CV 루프 내에서 전처리가 수행되는지 확인
+# CV 루프 내에서 전처리 수행 확인
 ```
 
 ## 관련 링크 (Relevant Links)

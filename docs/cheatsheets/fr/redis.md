@@ -1,6 +1,6 @@
 ---
-title: 'Anti-mémoire Redis'
-description: 'Maîtrisez Redis avec notre anti-mémoire complet couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de Référence Redis | LabEx'
+description: 'Apprenez le magasin de données en mémoire Redis avec cette fiche de référence complète. Référence rapide des commandes Redis, structures de données, mise en cache, pub/sub, persistance et solutions de mise en cache haute performance.'
 pdfUrl: '/cheatsheets/pdf/redis-cheatsheet.pdf'
 ---
 
@@ -21,20 +21,20 @@ Apprenez les opérations de structure de données en mémoire de Redis grâce à
 
 ## Installation et Configuration de Redis
 
-### Docker: `docker run redis`
+### Docker : `docker run redis`
 
 Le moyen le plus rapide de faire fonctionner Redis localement.
 
 ```bash
 # Exécuter Redis dans Docker
 docker run --name my-redis -p 6379:6379 -d redis
-# Se connecter à Redis CLI
+# Se connecter à l'interface de ligne de commande Redis
 docker exec -it my-redis redis-cli
 # Exécuter avec stockage persistant
 docker run --name redis-persistent -p 6379:6379 -v redis-data:/data -d redis
 ```
 
-### Linux: `sudo apt install redis`
+### Linux : `sudo apt install redis`
 
 Installer le serveur Redis sur les systèmes Ubuntu/Debian.
 
@@ -50,12 +50,12 @@ sudo systemctl enable redis-server
 sudo systemctl status redis
 ```
 
-### Connexion et Test: `redis-cli`
+### Connexion et Test : `redis-cli`
 
 Se connecter au serveur Redis et vérifier l'installation.
 
 ```bash
-# Se connecter au Redis local
+# Se connecter à Redis local
 redis-cli
 # Tester la connexion
 redis-cli PING
@@ -67,7 +67,7 @@ redis-cli SET mykey "Hello Redis"
 
 ## Opérations de Base sur les Chaînes (Strings)
 
-### Définir et Obtenir: `SET` / `GET`
+### Définir et Obtenir : `SET` / `GET`
 
 Stocker des valeurs simples (texte, nombres, JSON, etc.).
 
@@ -82,7 +82,22 @@ SET session:123 "user_data" EX 3600
 SET mykey "new_value" NX
 ```
 
-### Manipulation de Chaînes: `APPEND` / `STRLEN`
+<BaseQuiz id="redis-set-get-1" correct="C">
+  <template #question>
+    Que fait `SET mykey "value" EX 3600` ?
+  </template>
+  
+  <BaseQuizOption value="A">Définit la clé avec une valeur de 3600 octets</BaseQuizOption>
+  <BaseQuizOption value="B">Définit la clé seulement si elle existe</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Définit la clé avec une valeur qui expire après 3600 secondes</BaseQuizOption>
+  <BaseQuizOption value="D">Définit la clé avec 3600 valeurs différentes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'option `EX` définit un temps d'expiration en secondes. `SET mykey "value" EX 3600` stocke la valeur et la supprime automatiquement après 3600 secondes (1 heure).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Manipulation de Chaînes : `APPEND` / `STRLEN`
 
 Modifier et inspecter les valeurs de chaînes.
 
@@ -97,7 +112,7 @@ GETRANGE mykey 0 4
 SETRANGE mykey 6 "Redis"
 ```
 
-### Opérations Numériques: `INCR` / `DECR`
+### Opérations Numériques : `INCR` / `DECR`
 
 Incrémenter ou décrémenter les valeurs entières stockées dans Redis.
 
@@ -112,9 +127,24 @@ INCRBY counter 5
 INCRBYFLOAT price 0.1
 ```
 
-### Opérations Multiples: `MSET` / `MGET`
+<BaseQuiz id="redis-incr-1" correct="A">
+  <template #question>
+    Que se passe-t-il si vous utilisez `INCR` sur une clé qui n'existe pas ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Redis crée la clé avec la valeur 1</BaseQuizOption>
+  <BaseQuizOption value="B">Redis renvoie une erreur</BaseQuizOption>
+  <BaseQuizOption value="C">Redis crée la clé avec la valeur 0</BaseQuizOption>
+  <BaseQuizOption value="D">Rien ne se passe</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Si une clé n'existe pas, `INCR` la traite comme si elle avait une valeur de 0, l'incrémente à 1 et crée la clé. Cela rend `INCR` utile pour initialiser des compteurs.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-Travailler efficacement avec plusieurs paires clé-valeur.
+### Opérations Multiples : `MSET` / `MGET`
+
+Travailler avec plusieurs paires clé-valeur efficacement.
 
 ```redis
 # Définir plusieurs clés à la fois
@@ -129,9 +159,9 @@ MSETNX key1 "val1" key2 "val2"
 
 Les listes sont des séquences ordonnées de chaînes, utiles comme files d'attente ou piles.
 
-### Ajouter des Éléments: `LPUSH` / `RPUSH`
+### Ajouter des Éléments : `LPUSH` / `RPUSH`
 
-Ajouter des éléments à la gauche (tête) ou à la droite (queue) d'une liste.
+Ajouter des éléments à gauche (tête) ou à droite (queue) d'une liste.
 
 ```redis
 # Ajouter à la tête (gauche)
@@ -142,7 +172,7 @@ RPUSH mylist "last"
 LPUSH mylist "item1" "item2" "item3"
 ```
 
-### Supprimer des Éléments: `LPOP` / `RPOP`
+### Supprimer des Éléments : `LPOP` / `RPOP`
 
 Supprimer et retourner les éléments des extrémités de la liste.
 
@@ -155,7 +185,7 @@ RPOP mylist
 BLPOP mylist 10
 ```
 
-### Accéder aux Éléments: `LRANGE` / `LINDEX`
+### Accéder aux Éléments : `LRANGE` / `LINDEX`
 
 Récupérer des éléments ou des plages de listes.
 
@@ -170,16 +200,31 @@ LINDEX mylist 0
 LLEN mylist
 ```
 
-### Utilitaires de Liste: `LSET` / `LTRIM`
+<BaseQuiz id="redis-list-1" correct="B">
+  <template #question>
+    Que retourne `LRANGE mylist 0 -1` ?
+  </template>
+  
+  <BaseQuizOption value="A">Seulement le premier élément</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Tous les éléments de la liste</BaseQuizOption>
+  <BaseQuizOption value="C">Seulement le dernier élément</BaseQuizOption>
+  <BaseQuizOption value="D">Une erreur</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `LRANGE` avec `0 -1` retourne tous les éléments de la liste. Le `0` est l'index de départ et `-1` représente le dernier élément, donc cela récupère tout du premier au dernier élément.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Utilitaires de Liste : `LSET` / `LTRIM`
 
 Modifier le contenu et la structure de la liste.
 
 ```redis
-# Définir l'élément à un index
+# Définir un élément à un index
 LSET mylist 0 "new_value"
 # Tronquer la liste à une plage
 LTRIM mylist 0 99
-# Trouver la position de l'élément
+# Trouver la position d'un élément
 LPOS mylist "search_value"
 ```
 
@@ -187,7 +232,7 @@ LPOS mylist "search_value"
 
 Les ensembles sont des collections d'éléments de chaîne uniques et non ordonnés.
 
-### Opérations de Base sur les Ensembles: `SADD` / `SMEMBERS`
+### Opérations de Base sur les Ensembles : `SADD` / `SMEMBERS`
 
 Ajouter des éléments uniques aux ensembles et récupérer tous les membres.
 
@@ -198,11 +243,27 @@ SADD myset "apple" "banana" "cherry"
 SMEMBERS myset
 # Vérifier si l'élément existe
 SISMEMBER myset "apple"
+```
+
+<BaseQuiz id="redis-set-1" correct="C">
+  <template #question>
+    Que se passe-t-il si vous essayez d'ajouter un élément en double à un ensemble Redis ?
+  </template>
+  
+  <BaseQuizOption value="A">Cela crée une erreur</BaseQuizOption>
+  <BaseQuizOption value="B">Cela remplace l'élément existant</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Le doublon est ignoré et l'ensemble reste inchangé</BaseQuizOption>
+  <BaseQuizOption value="D">Cela crée une liste à la place</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les ensembles Redis ne contiennent que des éléments uniques. Si vous essayez d'ajouter un élément qui existe déjà, Redis l'ignore et retourne 0 (indiquant qu'aucun élément n'a été ajouté). L'ensemble reste inchangé.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Obtenir la taille de l'ensemble
 SCARD myset
 ```
 
-### Modifications d'Ensemble: `SREM` / `SPOP`
+### Modifications d'Ensemble : `SREM` / `SPOP`
 
 Supprimer des éléments des ensembles de différentes manières.
 
@@ -215,7 +276,7 @@ SPOP myset
 SRANDMEMBER myset
 ```
 
-### Opérations d'Ensemble: `SINTER` / `SUNION`
+### Opérations d'Ensemble : `SINTER` / `SUNION`
 
 Effectuer des opérations d'ensemble mathématiques.
 
@@ -230,9 +291,9 @@ SDIFF set1 set2
 SINTERSTORE result set1 set2
 ```
 
-### Utilitaires d'Ensemble: `SMOVE` / `SSCAN`
+### Utilitaires d'Ensemble : `SMOVE` / `SSCAN`
 
-Manipulation avancée d'ensembles et balayage.
+Manipulation et balayage avancés des ensembles.
 
 ```redis
 # Déplacer un élément entre ensembles
@@ -245,7 +306,7 @@ SSCAN myset 0 MATCH "a*" COUNT 10
 
 Les hachages stockent des paires champ-valeur, comme de mini objets JSON ou des dictionnaires.
 
-### Opérations de Hachage de Base: `HSET` / `HGET`
+### Opérations de Hachage de Base : `HSET` / `HGET`
 
 Définir et récupérer des champs de hachage individuels.
 
@@ -260,7 +321,7 @@ HMSET user:123 email "john@example.com" city "NYC"
 HMGET user:123 name age email
 ```
 
-### Inspection de Hachage: `HKEYS` / `HVALS`
+### Inspection de Hachage : `HKEYS` / `HVALS`
 
 Examiner la structure et le contenu du hachage.
 
@@ -275,7 +336,7 @@ HGETALL user:123
 HLEN user:123
 ```
 
-### Utilitaires de Hachage: `HEXISTS` / `HDEL`
+### Utilitaires de Hachage : `HEXISTS` / `HDEL`
 
 Vérifier l'existence et supprimer des champs de hachage.
 
@@ -286,16 +347,16 @@ HEXISTS user:123 email
 HDEL user:123 age city
 # Incrémenter un champ de hachage
 HINCRBY user:123 age 1
-# Incrémenter un flottant de hachage
+# Incrémenter par flottant
 HINCRBYFLOAT user:123 balance 10.50
 ```
 
-### Balayage de Hachage: `HSCAN`
+### Balayage de Hachage : `HSCAN`
 
-Itérer sur les hachages volumineux par incréments.
+Itérer sur les grands hachages par incréments.
 
 ```redis
-# Balayer le hachage
+# Balayer les champs du hachage
 HSCAN user:123 0
 # Balayer avec correspondance de motif
 HSCAN user:123 0 MATCH "addr*" COUNT 10
@@ -305,9 +366,9 @@ HSCAN user:123 0 MATCH "addr*" COUNT 10
 
 Les ensembles ordonnés combinent l'unicité des ensembles avec un classement basé sur des scores.
 
-### Opérations de Base: `ZADD` / `ZRANGE`
+### Opérations de Base : `ZADD` / `ZRANGE`
 
-Ajouter des membres scorés et récupérer des plages.
+Ajouter des membres avec des scores et récupérer des plages.
 
 ```redis
 # Ajouter des membres avec des scores
@@ -320,7 +381,7 @@ ZRANGE leaderboard 0 -1 WITHSCORES
 ZRANGEBYSCORE leaderboard 100 200
 ```
 
-### Informations sur l'Ensemble Ordonné: `ZCARD` / `ZSCORE`
+### Informations sur l'Ensemble Ordonné : `ZCARD` / `ZSCORE`
 
 Obtenir des informations sur les membres de l'ensemble ordonné.
 
@@ -335,7 +396,7 @@ ZRANK leaderboard "player1"
 ZCOUNT leaderboard 100 200
 ```
 
-### Modifications: `ZREM` / `ZINCRBY`
+### Modifications : `ZREM` / `ZINCRBY`
 
 Supprimer des membres et modifier les scores.
 
@@ -350,7 +411,7 @@ ZREMRANGEBYRANK leaderboard 0 2
 ZREMRANGEBYSCORE leaderboard 0 100
 ```
 
-### Avancé: `ZUNIONSTORE` / `ZINTERSTORE`
+### Avancé : `ZUNIONSTORE` / `ZINTERSTORE`
 
 Combiner plusieurs ensembles ordonnés.
 
@@ -365,7 +426,7 @@ ZUNIONSTORE result 2 set1 set2 AGGREGATE MAX
 
 ## Gestion des Clés
 
-### Inspection des Clés: `KEYS` / `EXISTS`
+### Inspection des Clés : `KEYS` / `EXISTS`
 
 Trouver des clés à l'aide de motifs et vérifier leur existence.
 
@@ -376,20 +437,20 @@ KEYS *
 KEYS user:*
 # Clés se terminant par un motif
 KEYS *:profile
-# Caractère générique unique
+# Caractère générique pour un seul caractère
 KEYS order:?
 # Vérifier si la clé existe
 EXISTS mykey
 ```
 
-### Informations sur les Clés: `TYPE` / `TTL`
+### Informations sur les Clés : `TYPE` / `TTL`
 
 Obtenir les métadonnées de la clé et les informations d'expiration.
 
 ```redis
 # Obtenir le type de données de la clé
 TYPE mykey
-# Obtenir le temps avant expiration (secondes)
+# Obtenir le temps de vie (secondes)
 TTL mykey
 # Obtenir le TTL en millisecondes
 PTTL mykey
@@ -397,7 +458,7 @@ PTTL mykey
 PERSIST mykey
 ```
 
-### Opérations sur les Clés: `RENAME` / `DEL`
+### Opérations sur les Clés : `RENAME` / `DEL`
 
 Renommer, supprimer et déplacer des clés.
 
@@ -412,7 +473,7 @@ DEL key1 key2 key3
 MOVE mykey 1
 ```
 
-### Expiration: `EXPIRE` / `EXPIREAT`
+### Expiration : `EXPIRE` / `EXPIREAT`
 
 Définir les temps d'expiration des clés.
 
@@ -427,7 +488,7 @@ PEXPIRE mykey 60000
 
 ## Gestion des Bases de Données
 
-### Sélection de Base de Données: `SELECT` / `FLUSHDB`
+### Sélection de Base de Données : `SELECT` / `FLUSHDB`
 
 Gérer plusieurs bases de données au sein de Redis.
 
@@ -442,7 +503,7 @@ FLUSHALL
 DBSIZE
 ```
 
-### Informations sur le Serveur: `INFO` / `PING`
+### Informations sur le Serveur : `INFO` / `PING`
 
 Obtenir les statistiques du serveur et tester la connectivité.
 
@@ -458,7 +519,7 @@ INFO replication
 TIME
 ```
 
-### Persistance: `SAVE` / `BGSAVE`
+### Persistance : `SAVE` / `BGSAVE`
 
 Contrôler la persistance des données et les sauvegardes de Redis.
 
@@ -473,7 +534,7 @@ LASTSAVE
 BGREWRITEAOF
 ```
 
-### Configuration: `CONFIG GET` / `CONFIG SET`
+### Configuration : `CONFIG GET` / `CONFIG SET`
 
 Afficher et modifier la configuration de Redis.
 
@@ -490,7 +551,7 @@ CONFIG RESETSTAT
 
 ## Surveillance des Performances
 
-### Surveillance en Temps Réel: `MONITOR` / `SLOWLOG`
+### Surveillance en Temps Réel : `MONITOR` / `SLOWLOG`
 
 Suivre les commandes et identifier les goulots d'étranglement de performance.
 
@@ -505,7 +566,7 @@ SLOWLOG LEN
 SLOWLOG RESET
 ```
 
-### Analyse de la Mémoire: `MEMORY USAGE` / `MEMORY STATS`
+### Analyse de la Mémoire : `MEMORY USAGE` / `MEMORY STATS`
 
 Analyser la consommation de mémoire et l'optimisation.
 
@@ -514,13 +575,13 @@ Analyser la consommation de mémoire et l'optimisation.
 MEMORY USAGE mykey
 # Obtenir les statistiques de mémoire
 MEMORY STATS
-# Obtenir le rapport de diagnostic de mémoire
+# Obtenir le rapport du docteur de la mémoire
 MEMORY DOCTOR
 # Purger la mémoire
 MEMORY PURGE
 ```
 
-### Informations Client: `CLIENT LIST`
+### Informations Client : `CLIENT LIST`
 
 Surveiller les clients connectés et les connexions.
 
@@ -535,7 +596,7 @@ CLIENT KILL ip:port
 CLIENT SETNAME "my-app"
 ```
 
-### Étalonnage (Benchmarking): `redis-benchmark`
+### Étalonnage (Benchmarking) : `redis-benchmark`
 
 Tester les performances de Redis avec l'outil d'étalonnage intégré.
 
@@ -550,7 +611,7 @@ redis-benchmark -d 1024 -t SET -n 10000
 
 ## Fonctionnalités Avancées
 
-### Transactions: `MULTI` / `EXEC`
+### Transactions : `MULTI` / `EXEC`
 
 Exécuter plusieurs commandes de manière atomique.
 
@@ -567,7 +628,7 @@ DISCARD
 WATCH mykey
 ```
 
-### Pub/Sub: `PUBLISH` / `SUBSCRIBE`
+### Pub/Sub : `PUBLISH` / `SUBSCRIBE`
 
 Implémenter le passage de messages entre clients.
 
@@ -582,7 +643,7 @@ PSUBSCRIBE news:*
 UNSUBSCRIBE news
 ```
 
-### Scripting Lua: `EVAL` / `SCRIPT`
+### Scripting Lua : `EVAL` / `SCRIPT`
 
 Exécuter des scripts Lua personnalisés de manière atomique.
 
@@ -597,7 +658,7 @@ EVALSHA sha1 1 mykey
 SCRIPT EXISTS sha1
 ```
 
-### Flux (Streams): `XADD` / `XREAD`
+### Flux (Streams) : `XADD` / `XREAD`
 
 Travailler avec les flux Redis pour des données de type journal.
 
@@ -614,9 +675,9 @@ XGROUP CREATE mystream mygroup 0
 
 ## Aperçu des Types de Données
 
-### Chaînes (Strings): Le type le plus polyvalent
+### Chaînes (Strings) : Le type le plus polyvalent
 
-Peut stocker du texte, des nombres, du JSON, des données binaires. Taille max : 512 Mo. Utilisation pour : mise en cache, compteurs, drapeaux (flags).
+Peut stocker du texte, des nombres, du JSON, des données binaires. Taille max : 512 Mo. Utiliser pour : mise en cache, compteurs, drapeaux (flags).
 
 ```redis
 SET user:123:name "John"
@@ -624,9 +685,9 @@ GET user:123:name
 INCR page:views
 ```
 
-### Listes (Lists): Collections ordonnées
+### Listes (Lists) : Collections ordonnées
 
-Listes chaînées de chaînes. Utilisation pour : files d'attente, piles, fils d'actualité, éléments récents.
+Listes chaînées de chaînes. Utiliser pour : files d'attente, piles, flux d'activité, éléments récents.
 
 ```redis
 LPUSH queue:jobs "job1"
@@ -634,9 +695,9 @@ RPOP queue:jobs
 LRANGE recent:posts 0 9
 ```
 
-### Ensembles (Sets): Collections uniques
+### Ensembles (Sets) : Collections uniques
 
-Collections non ordonnées de chaînes uniques. Utilisation pour : étiquettes (tags), visiteurs uniques, relations.
+Collections non ordonnées de chaînes uniques. Utiliser pour : étiquettes (tags), visiteurs uniques, relations.
 
 ```redis
 SADD post:123:tags "redis" "database"
@@ -685,9 +746,9 @@ AUTH mypassword
 CONFIG SET rename-command FLUSHALL ""
 # Définir le délai d'attente
 CONFIG SET timeout 300
-# Keep alive TCP
+# Maintien de la connexion TCP
 CONFIG SET tcp-keepalive 60
-# Clients max
+# Clients maximum
 CONFIG SET maxclients 10000
 ```
 
@@ -697,15 +758,15 @@ Optimiser Redis pour de meilleures performances.
 
 ```redis
 # Activer le pipelining pour plusieurs commandes
-# Utiliser le pooling de connexions
-# Configurer une politique maxmemory appropriée
+# Utiliser le pool de connexions
+# Configurer la politique maxmemory appropriée
 # Surveiller régulièrement les requêtes lentes
 # Utiliser les structures de données appropriées pour les cas d'utilisation
 ```
 
 ## Liens Pertinents
 
-- <router-link to="/database">Feuille de triche Base de données</router-link>
+- <router-link to="/database">Feuille de triche Bases de données</router-link>
 - <router-link to="/mysql">Feuille de triche MySQL</router-link>
 - <router-link to="/postgresql">Feuille de triche PostgreSQL</router-link>
 - <router-link to="/mongodb">Feuille de triche MongoDB</router-link>

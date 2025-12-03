@@ -1,6 +1,6 @@
 ---
-title: 'Data Science Spickzettel'
-description: 'Lernen Sie Data Science mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Data Science Spickzettel | LabEx'
+description: 'Lernen Sie Data Science mit diesem umfassenden Spickzettel. Schnelle Referenz für Datenanalyse, maschinelles Lernen, Statistik, Visualisierung, Python-Bibliotheken und Data-Science-Workflows.'
 pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 ---
 
@@ -71,9 +71,24 @@ df.groupby('column').mean()
 df.fillna(df.mean())  # Fehlende Werte behandeln
 ```
 
+<BaseQuiz id="datascience-pandas-1" correct="C">
+  <template #question>
+    Was gibt `df.head()` in Pandas zurück?
+  </template>
+  
+  <BaseQuizOption value="A">Die letzten 5 Zeilen des DataFrames</BaseQuizOption>
+  <BaseQuizOption value="B">Eine Zusammenfassung des DataFrames</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Die ersten 5 Zeilen des DataFrames</BaseQuizOption>
+  <BaseQuizOption value="D">Alle Zeilen des DataFrames</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `df.head()` zeigt standardmäßig die ersten 5 Zeilen des DataFrames an. Sie können eine andere Zahl angeben, z. B. `df.head(10)`, um die ersten 10 Zeilen anzuzeigen. Es ist nützlich, um schnell einen Blick auf Ihre Daten zu werfen.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Matplotlib & Seaborn: Visualisierung
 
-Erstellen statistischer Visualisierungen und Diagramme.
+Erstellen Sie statistische Visualisierungen und Diagramme.
 
 ```python
 # Matplotlib Grundlagen
@@ -91,7 +106,7 @@ sns.pairplot(df)
 
 ### 1. Problemdefinition
 
-Data Science ist ein multidisziplinäres Feld, das Mathematik, Statistik, Programmierung und Business Intelligence kombiniert. Definieren Sie Ziele und Erfolgsmetriken.
+Data Science ist ein multidisziplinäres Feld, das Mathematik, Statistik, Programmierung und Business Intelligence kombiniert. Definieren Sie Ziele und Erfolgskennzahlen.
 
 ```python
 # Geschäftsproblem definieren
@@ -102,7 +117,7 @@ Data Science ist ein multidisziplinäres Feld, das Mathematik, Statistik, Progra
 
 ### 2. Datenerfassung & Import
 
-Sammeln von Daten aus verschiedenen Quellen und Formaten.
+Sammeln Sie Daten aus verschiedenen Quellen und Formaten.
 
 ```python
 # Mehrere Datenquellen
@@ -110,7 +125,7 @@ df_csv = pd.read_csv('data.csv')
 df_json = pd.read_json('data.json')
 df_sql = pd.read_sql('SELECT * FROM
 table', connection)
-# APIs und Web-Scraping
+# APIs und Web Scraping
 import requests
 response =
 requests.get('https://api.example.co
@@ -119,7 +134,7 @@ m/data')
 
 ### 3. Datenexploration (EDA)
 
-Verständnis der Datenstruktur, Muster und Qualität.
+Verstehen Sie die Datenstruktur, Muster und Qualität.
 
 ```python
 # Explorative Datenanalyse
@@ -150,17 +165,32 @@ df.isnull().sum() / len(df) * 100  # Prozentsatz fehlend
 # Fehlende Werte behandeln
 df.dropna()                    # Zeilen mit NaN entfernen
 df.fillna(df.mean())          # Mit Mittelwert auffüllen
-df.fillna(method='forward')   # Vorwärts füllen
-df.fillna(method='backward')  # Rückwärts füllen
+df.fillna(method='forward')   # Vorwärts auffüllen
+df.fillna(method='backward')  # Rückwärts auffüllen
 # Erweiterte Imputation
 from sklearn.impute import SimpleImputer, KNNImputer
 imputer = SimpleImputer(strategy='median')
 df_filled = pd.DataFrame(imputer.fit_transform(df))
 ```
 
+<BaseQuiz id="datascience-missing-1" correct="B">
+  <template #question>
+    Wofür wird das Vorwärtsauffüllen (`method='forward'`) verwendet?
+  </template>
+  
+  <BaseQuizOption value="A">Zum Auffüllen fehlender Werte mit dem Mittelwert</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Zum Auffüllen fehlender Werte mit dem vorherigen Nicht-Null-Wert</BaseQuizOption>
+  <BaseQuizOption value="C">Zum Auffüllen fehlender Werte mit Zufallswerten</BaseQuizOption>
+  <BaseQuizOption value="D">Zum Entfernen fehlender Werte</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Forward fill überträgt die letzte gültige Beobachtung nach vorne, um fehlende Werte aufzufüllen. Dies ist nützlich für Zeitreihendaten, bei denen der vorherige Wert beibehalten werden soll, bis neue Daten verfügbar sind.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Datentransformation
 
-Daten-Normalisierung (Skalierung von Daten auf einen Standardbereich wie [0, 1]) hilft, Verzerrungen aufgrund von Unterschieden in der Feature-Größenordnung zu vermeiden.
+Daten-Normalisierung (Skalierung von Daten in einen Standardbereich wie [0, 1]) hilft, Verzerrungen aufgrund von Unterschieden in der Merkmalsgröße zu vermeiden.
 
 ```python
 # Skalierung und Normalisierung
@@ -179,6 +209,21 @@ le = LabelEncoder()
 df['encoded'] = le.fit_transform(df['category'])
 ```
 
+<BaseQuiz id="datascience-scaling-1" correct="C">
+  <template #question>
+    Was ist der Unterschied zwischen StandardScaler und MinMaxScaler?
+  </template>
+  
+  <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
+  <BaseQuizOption value="B">StandardScaler skaliert auf [0,1], MinMaxScaler skaliert auf Mittelwert=0, Standardabweichung=1</BaseQuizOption>
+  <BaseQuizOption value="C" correct>StandardScaler normalisiert auf Mittelwert=0 und Standardabweichung=1, MinMaxScaler skaliert auf den Bereich [0,1]</BaseQuizOption>
+  <BaseQuizOption value="D">StandardScaler ist schneller</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    StandardScaler transformiert Daten so, dass sie einen Mittelwert von 0 und eine Standardabweichung von 1 haben (Z-Score-Normalisierung). MinMaxScaler skaliert Daten auf einen festen Bereich, typischerweise [0, 1]. Beide sind nützlich, aber für unterschiedliche Szenarien.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Ausreißererkennung & -behandlung
 
 Extremwerte identifizieren und behandeln, die die Analyse verzerren können.
@@ -188,11 +233,11 @@ Extremwerte identifizieren und behandeln, die die Analyse verzerren können.
 Q1 = df['column'].quantile(0.25)
 Q3 = df['column'].quantile(0.75)
 IQR = Q3 - Q1
-lower_bound = Q1 - 1.5 * IQR
-upper_bound = Q3 + 1.5 * IQR
+untere_grenze = Q1 - 1.5 * IQR
+obere_grenze = Q3 + 1.5 * IQR
 # Ausreißer entfernen
-df_clean = df[(df['column'] >= lower_bound) &
-              (df['column'] <= upper_bound)]
+df_clean = df[(df['column'] >= untere_grenze) &
+              (df['column'] <= obere_grenze)]
 # Z-Score-Methode
 from scipy import stats
 z_scores = np.abs(stats.zscore(df['column']))
@@ -201,7 +246,7 @@ df_no_outliers = df[z_scores < 3]
 
 ### Feature Engineering
 
-Neue Variablen erstellen, um die Modellleistung zu verbessern.
+Erstellen Sie neue Variablen, um die Modellleistung zu verbessern.
 
 ```python
 # Neue Features erstellen
@@ -214,15 +259,15 @@ df['month'] = df['date'].dt.month
 df['day_of_week'] = df['date'].dt.day_name()
 # Kontinuierliche Variablen bündeln (Binning)
 df['age_group'] = pd.cut(df['age'], bins=[0, 18, 35, 50, 100],
-                        labels=['Child', 'Young Adult', 'Adult',
+                        labels=['Kind', 'Junger Erwachsener', 'Erwachsener',
 'Senior'])
 ```
 
 ## Statistische Analyse
 
-### Deskriptive Statistik
+### Beschreibende Statistik
 
-Diese Maße der zentralen Tendenz fassen Daten zusammen und geben Einblick in ihre Verteilung. Sie sind grundlegend für das Verständnis jedes Datensatzes. Der Mittelwert ist der Durchschnitt aller Werte in einem Datensatz. Er reagiert sehr empfindlich auf Ausreißer.
+Diese Maße der zentralen Tendenz fassen Daten zusammen und geben Aufschluss über ihre Verteilung. Sie sind grundlegend für das Verständnis jedes Datensatzes. Der Mittelwert ist der Durchschnitt aller Werte in einem Datensatz. Er ist sehr empfindlich gegenüber Ausreißern.
 
 ```python
 # Zentrale Tendenz
@@ -302,7 +347,7 @@ r2 = r2_score(y, y_pred)
 
 ### Überwachtes Lernen – Klassifikation
 
-Entscheidungsbäume: Ein baumartiges Modell von Entscheidungen und ihren möglichen Konsequenzen. Jeder Knoten stellt einen Test eines Attributs dar, und jeder Ast repräsentiert das Ergebnis. Er wird häufig für Klassifizierungsaufgaben verwendet.
+Entscheidungsbäume: Ein baumartiges Modell von Entscheidungen und ihren möglichen Konsequenzen. Jeder Knoten stellt einen Test eines Attributs dar, und jeder Ast stellt das Ergebnis dar. Wird häufig für Klassifikationsaufgaben verwendet.
 
 ```python
 # Train-Test-Split
@@ -338,7 +383,7 @@ y_pred = lr.predict(X_test)
 from sklearn.preprocessing import PolynomialFeatures
 poly = PolynomialFeatures(degree=2)
 X_poly = poly.fit_transform(X)
-# Ridge & Lasso Regression
+# Ridge- & Lasso-Regression
 from sklearn.linear_model import Ridge, Lasso
 ridge = Ridge(alpha=1.0)
 lasso = Lasso(alpha=0.1)
@@ -348,7 +393,7 @@ lasso.fit(X_train, y_train)
 
 ### Unüberwachtes Lernen
 
-Muster in Daten ohne gelabelte Ergebnisse entdecken.
+Muster in Daten ohne gekennzeichnete Ergebnisse entdecken.
 
 ```python
 # K-Means-Clustering
@@ -368,7 +413,7 @@ dendrogram(linkage_matrix)
 
 ### Modellevaluierung
 
-Bewertung der Modellleistung anhand geeigneter Metriken.
+Die Modellleistung anhand geeigneter Metriken bewerten.
 
 ```python
 # Klassifikationsmetriken
@@ -394,7 +439,7 @@ rmse = np.sqrt(mse)
 
 ### Explorative Visualisierungen
 
-Verteilung und Beziehungen der Daten verstehen.
+Verteilungen und Beziehungen der Daten verstehen.
 
 ```python
 # Verteilungsdiagramme
@@ -405,7 +450,7 @@ plt.subplot(1, 3, 2)
 sns.boxplot(y=df['numeric_col'])
 plt.subplot(1, 3, 3)
 sns.violinplot(y=df['numeric_col'])
-# Beziehungsgrafiken
+# Beziehungsdiagramme
 plt.figure(figsize=(10, 6))
 sns.scatterplot(data=df, x='feature1', y='feature2',
 hue='category')
@@ -417,7 +462,7 @@ sns.barplot(data=df, x='category', y='value')
 
 ### Erweiterte Visualisierungen
 
-Erstellung umfassender Dashboards und Berichte.
+Umfassende Dashboards und Berichte erstellen.
 
 ```python
 # Subplots für mehrere Ansichten
@@ -436,7 +481,7 @@ fig.show()
 
 ### Statistische Diagramme
 
-Visualisierung statistischer Beziehungen und Modellergebnisse.
+Statistische Beziehungen und Modellergebnisse visualisieren.
 
 ```python
 # Streudiagramme für Korrelation
@@ -463,7 +508,7 @@ plt.plot(fpr, tpr, label=f'ROC-Kurve (AUC = {roc_auc:.2f})')
 Professionelle Formatierung von Visualisierungen.
 
 ```python
-# Stil und Farben festlegen
+# Stil und Farben einstellen
 plt.style.use('seaborn-v0_8')
 sns.set_palette("husl")
 # Benutzerdefinierte Figureneinstellungen
@@ -484,7 +529,7 @@ bbox_inches='tight')
 
 ### Modellpersistenz
 
-Trainierte Modelle für den Produktionseinsatz speichern und laden.
+Trainierte Modelle für die Produktionsnutzung speichern und laden.
 
 ```python
 # Modelle mit pickle speichern
@@ -575,7 +620,7 @@ average='weighted')
     'training_date': datetime.datetime.now().isoformat(),
     'model_version': '1.0'
 }
-# Modell-Metadaten speichern
+# Modellmetadaten speichern
 import json
 with open('model_metadata.json', 'w') as f:
     json.dump(model_report, f, indent=2)
@@ -649,7 +694,7 @@ df.dtypes.to_dict()
     return checks
 # Automatisierter Datenqualitätsbericht
 def data_quality_report(df):
-    print(f"Dataset shape:
+    print(f"Dataset-Form:
 {df.shape}")
     print(f"Fehlende Werte:
 {df.isnull().sum().sum()}")

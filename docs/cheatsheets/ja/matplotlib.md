@@ -1,6 +1,6 @@
 ---
-title: 'Matplotlib チートシート'
-description: 'Matplotlib の必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで学習しましょう。'
+title: 'Matplotlib チートシート | LabEx'
+description: 'この包括的なチートシートで Matplotlib のデータ可視化を学ぶ。プロット、チャート、グラフ、サブプロット、カスタマイズ、Python データ可視化のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/matplotlib-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Matplotlib チートシート
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/matplotlib">LabEx で Matplotlib をハンズオンで学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/matplotlib">Matplotlib をハンズオンラボで学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと現実世界のシナリオを通じて Matplotlib データ可視化を学びます。LabEx は、必須のプロット関数、カスタマイズ技術、サブプロットレイアウト、高度な可視化タイプを網羅した包括的な Matplotlib コースを提供します。Python データサイエンスワークフローのための効果的なデータ可視化の作成を習得します。
+ハンズオンラボと実世界のシナリオを通じて、Matplotlib データ視覚化を学習します。LabEx は、必須のプロット関数、カスタマイズ技術、サブプロットレイアウト、高度な視覚化タイプを網羅した包括的な Matplotlib コースを提供します。Python データサイエンスワークフローで効果的なデータ視覚化を作成するスキルを習得します。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Matplotlib チートシート
 
 ### 折れ線グラフ：`plt.plot()`
 
-連続データを可視化するための折れ線グラフを作成します。
+連続データの視覚化のために折れ線グラフを作成します。
 
 ```python
 import matplotlib.pyplot as plt
@@ -44,6 +44,21 @@ plt.legend()
 plt.plot(x, y, 'r--', linewidth=2, marker='o')
 ```
 
+<BaseQuiz id="matplotlib-plot-1" correct="C">
+  <template #question>
+    Matplotlib における `plt.show()` の役割は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">プロットをファイルに保存する</BaseQuizOption>
+  <BaseQuizOption value="B">プロットウィンドウを閉じる</BaseQuizOption>
+  <BaseQuizOption value="C" correct>プロットをウィンドウに表示する</BaseQuizOption>
+  <BaseQuizOption value="D">プロットをクリアする</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `plt.show()` はプロットをインタラクティブなウィンドウに表示します。視覚化を見るためにはこの関数を呼び出す必要があります。これがないと、プロットは表示されません。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 散布図：`plt.scatter()`
 
 2 つの変数の間の関係を表示します。
@@ -58,6 +73,21 @@ sizes = [20, 50, 100, 200, 500]
 plt.scatter(x, y, c=colors, s=sizes, alpha=0.6)
 plt.colorbar()  # カラーバーを追加
 ```
+
+<BaseQuiz id="matplotlib-scatter-1" correct="D">
+  <template #question>
+    matplotlib プロットにおける `alpha` パラメータは何を制御しますか？
+  </template>
+  
+  <BaseQuizOption value="A">プロットの色</BaseQuizOption>
+  <BaseQuizOption value="B">プロットのサイズ</BaseQuizOption>
+  <BaseQuizOption value="C">プロットの位置</BaseQuizOption>
+  <BaseQuizOption value="D" correct>プロット要素の透明度/不透明度</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `alpha` パラメータは透明度を制御し、値は 0（完全な透明）から 1（完全な不透明）までです。重なり合う視覚化を作成し、要素を通して見たい場合に便利です。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 棒グラフ：`plt.bar()` / `plt.barh()`
 
@@ -90,7 +120,7 @@ plt.hist(data, bins=30)
 # カスタマイズされたヒストグラム
 plt.hist(data, bins=50, alpha=0.7, color='skyblue', edgecolor='black')
 
-# 複数のヒストグラム
+# 複数ヒストグラム
 plt.hist([data1, data2], bins=30, alpha=0.7, label=['Data 1', 'Data 2'])
 ```
 
@@ -112,7 +142,7 @@ plt.pie(sizes, labels=labels, autopct='%1.1f%%',
 
 ### 箱ひげ図：`plt.boxplot()`
 
-データ分布と外れ値を視覚化します。
+データの分布と外れ値を視覚化します。
 
 ```python
 # 単一の箱ひげ図
@@ -128,7 +158,7 @@ plt.boxplot(data, labels=['Group 1', 'Group 2', 'Group 3', 'Group 4'],
 
 ### ラベルとタイトル：`plt.xlabel()` / `plt.title()`
 
-プロットに説明的なテキストを追加して、明確さとコンテキストを提供します。
+プロットに説明的なテキストを追加し、明確さと文脈を提供します。
 
 ```python
 # 基本的なラベルとタイトル
@@ -137,7 +167,7 @@ plt.xlabel('X 軸ラベル')
 plt.ylabel('Y 軸ラベル')
 plt.title('プロットのタイトル')
 
-# フォントプロパティ付きの書式設定されたタイトル
+# フォントプロパティ付きの整形されたタイトル
 plt.title('マイプロット', fontsize=16, fontweight='bold')
 plt.xlabel('X 値', fontsize=12)
 
@@ -170,8 +200,8 @@ plt.plot(x, y, marker='o', markersize=8, markerfacecolor='red')
 
 ```python
 # 基本的な凡例
-plt.plot(x, y1, label='データセット 1')
-plt.plot(x, y2, label='データセット 2')
+plt.plot(x, y1, label='Dataset 1')
+plt.plot(x, y2, label='Dataset 2')
 plt.legend()
 
 # 凡例の位置のカスタマイズ
@@ -182,22 +212,37 @@ plt.annotate('重要な点', xy=(2, 4), xytext=(3, 6),
             arrowprops=dict(arrowstyle='->', color='red'))
 ```
 
+<BaseQuiz id="matplotlib-legend-1" correct="B">
+  <template #question>
+    `plt.legend()` がラベルを表示するために必要なものは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">何もしない、自動的に機能する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>各プロットに `label` パラメータを設定する必要がある</BaseQuizOption>
+  <BaseQuizOption value="C">プロットを作成する前に凡例を作成する必要がある</BaseQuizOption>
+  <BaseQuizOption value="D">凡例内でラベルを手動で設定する必要がある</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    凡例を表示するには、各プロットを作成する際に `label` パラメータを設定する必要があります（例：`plt.plot(x, y, label='Dataset 1')`）。その後、`plt.legend()` を呼び出すと、すべてのラベルが表示されます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 軸とレイアウトの制御
 
 ### 軸の範囲：`plt.xlim()` / `plt.ylim()`
 
-各軸に表示される値の範囲を制御します。
+各軸に表示する値の範囲を制御します。
 
 ```python
 # 軸の範囲を設定
 plt.xlim(0, 10)
 plt.ylim(-5, 15)
 
-# マージン付きの自動調整範囲
+# マージン付きの自動調整された範囲
 plt.margins(x=0.1, y=0.1)
 
 # 軸の反転
-plt.gca().invert_yaxis()  # y 軸を反転
+plt.gca().invert_yaxis()  # Y 軸を反転
 ```
 
 ### 目盛りとラベル：`plt.xticks()` / `plt.yticks()`
@@ -210,7 +255,7 @@ plt.xticks([0, 2, 4, 6, 8, 10])
 plt.yticks(np.arange(0, 101, 10))
 
 # カスタムの目盛りラベル
-plt.xticks([0, 1, 2, 3], ['1 月', '2 月', '3 月', '4 月'])
+plt.xticks([0, 1, 2, 3], ['Jan', 'Feb', 'Mar', 'Apr'])
 
 # 目盛りラベルの回転
 plt.xticks(rotation=45)
@@ -229,33 +274,33 @@ plt.yticks([])
 plt.axis('equal')
 # 正方形のプロット
 plt.axis('square')
-# 軸をオフにする
+# 軸のオフ
 plt.axis('off')
-# カスタムのアスペクト比
+# カスタムアスペクト比
 plt.gca().set_aspect('equal', adjustable='box')
 ```
 
-### 描画領域のサイズ：`plt.figure()`
+### 図のサイズ：`plt.figure()`
 
 プロット全体のサイズと解像度を制御します。
 
 ```python
-# 描画領域のサイズを設定（幅、高さ、単位はインチ）
+# 図のサイズを設定（幅、高さはインチ単位）
 plt.figure(figsize=(10, 6))
 
-# より高品質な出力のための高 DPI
+# より高品質のための高 DPI
 plt.figure(figsize=(8, 6), dpi=300)
 
-# 複数の描画領域
+# 複数の図
 fig1 = plt.figure(1)
 plt.plot(x, y1)
 fig2 = plt.figure(2)
 plt.plot(x, y2)
 ```
 
-### 描画領域のタイトレイアウト：`plt.tight_layout()`
+### タイトレイアウト：`plt.tight_layout()`
 
-サブプロットの間隔を自動的に調整して、見た目を良くします。
+サブプロット間の間隔を自動的に調整し、外観を改善します。
 
 ```python
 # 重なり合う要素を防ぐ
@@ -270,13 +315,13 @@ plt.tight_layout(pad=3.0)
 
 ### スタイルシート：`plt.style.use()`
 
-一貫したプロットの外観のために定義済みのスタイルを適用します。
+定義済みのスタイルを適用して、プロットの外観を統一します。
 
 ```python
 # 利用可能なスタイル
 print(plt.style.available)
 
-# ビルトインスタイルの使用
+# 内蔵スタイルの使用
 plt.style.use('seaborn-v0_8')
 plt.style.use('ggplot')
 plt.style.use('bmh')
@@ -289,13 +334,13 @@ plt.style.use('default')
 
 ### 基本的なサブプロット：`plt.subplot()` / `plt.subplots()`
 
-単一の描画領域内に複数のプロットを作成します。
+単一の図内に複数のプロットを作成します。
 
 ```python
 # 2x2 のサブプロットグリッドを作成
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 
-# 各サブプロットにプロット
+# 各サブプロットへのプロット
 axes[0, 0].plot(x, y)
 axes[0, 1].scatter(x, y)
 axes[1, 0].bar(x, y)
@@ -310,10 +355,10 @@ plt.scatter(x, y)
 
 ### 共有軸：`sharex` / `sharey`
 
-一貫したスケーリングのためにサブプロット間で軸をリンクします。
+一貫したスケーリングのために、サブプロット間で軸をリンクします。
 
 ```python
-# サブプロット間で x 軸を共有
+# サブプロット間で X 軸を共有
 fig, axes = plt.subplots(2, 1, sharex=True)
 axes[0].plot(x, y1)
 axes[1].plot(x, y2)
@@ -350,15 +395,15 @@ ax5 = fig.add_subplot(gs[-1, 1])   # 中央下
 fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 plt.subplots_adjust(hspace=0.4, wspace=0.3)
 
-# または自動調整のために tight_layout を使用
+# または、自動調整のために tight_layout を使用
 plt.tight_layout()
 ```
 
-## 高度な可視化タイプ
+## 高度な視覚化タイプ
 
 ### ヒートマップ：`plt.imshow()` / `plt.pcolormesh()`
 
-2D データを色分けされた行列として可視化します。
+2D データを色分けされた行列として視覚化します。
 
 ```python
 # 基本的なヒートマップ
@@ -395,7 +440,7 @@ plt.colorbar()
 
 ### 3D プロット：`mplot3d`
 
-3 次元の可視化を作成します。
+3 次元の視覚化を作成します。
 
 ```python
 from mpl_toolkits.mplot3d import Axes3D
@@ -430,7 +475,7 @@ yerr_upper = [0.6, 1.0, 0.4, 0.9, 0.5]
 plt.errorbar(x, y, yerr=[yerr_lower, yerr_upper], fmt='s-')
 ```
 
-### 2 つの曲線の間の塗りつぶし：`plt.fill_between()`
+### 間の塗りつぶし：`plt.fill_between()`
 
 曲線間、または線周辺の領域をシェーディングします。
 
@@ -440,7 +485,7 @@ y1 = [2, 4, 6, 8, 10]
 y2 = [1, 3, 5, 7, 9]
 plt.fill_between(x, y1, y2, alpha=0.3, color='blue')
 
-# 誤差線周辺の塗りつぶし
+# 誤差を伴う線周辺の塗りつぶし
 plt.plot(x, y, 'k-', linewidth=2)
 plt.fill_between(x, y-yerr, y+yerr, alpha=0.2, color='gray')
 ```
@@ -469,7 +514,7 @@ Jupyter ノートブックでインタラクティブなプロットを有効に
 # Jupyter ノートブック内
 %matplotlib widget
 
-# 基本的なインタラクティブ性のため
+# または基本的なインタラクティブ性のため
 %matplotlib notebook
 ```
 
@@ -478,7 +523,7 @@ Jupyter ノートブックでインタラクティブなプロットを有効に
 プロットに対するユーザーの操作に応答します。
 
 ```python
-# インタラクティブなズーム、パン、ホバー
+# マウスのクリックとキーボードの応答
 def onclick(event):
     if event.inaxes:
         print(f'クリック位置 x={event.xdata}, y={event.ydata}')
@@ -491,7 +536,7 @@ plt.show()
 
 ### アニメーション：`matplotlib.animation`
 
-時系列や変化するデータのためのアニメーションプロットを作成します。
+時系列データや変化するデータのためのアニメーションプロットを作成します。
 
 ```python
 from matplotlib.animation import FuncAnimation
@@ -516,9 +561,9 @@ plt.show()
 
 ## プロットの保存とエクスポート
 
-### 描画領域の保存：`plt.savefig()`
+### 図の保存：`plt.savefig()`
 
-様々なオプションを使用してプロットを描画領域から画像ファイルにエクスポートします。
+様々なオプションを使用してプロットを図ファイルにエクスポートします。
 
 ```python
 # 基本的な保存
@@ -536,7 +581,7 @@ plt.savefig('plot.eps')  # EPS
 plt.savefig('plot.png', transparent=True)
 ```
 
-### 描画領域の品質：DPI とサイズ
+### 図の品質：DPI とサイズ
 
 保存されるプロットの解像度と寸法を制御します。
 
@@ -544,7 +589,7 @@ plt.savefig('plot.png', transparent=True)
 # 出版物用の高 DPI
 plt.savefig('plot.png', dpi=600)
 
-# カスタムサイズ（幅、高さ、インチ単位）
+# カスタムサイズ（幅、高さはインチ単位）
 plt.figure(figsize=(12, 8))
 plt.savefig('plot.png', figsize=(12, 8))
 
@@ -557,9 +602,9 @@ plt.savefig('plot.png', bbox_inches='tight', pad_inches=0.1)
 複数のプロットを処理し、メモリを効率的に管理します。
 
 ```python
-# メモリを解放するために描画領域を閉じる
-plt.close()  # 現在の描画領域を閉じる
-plt.close('all')  # すべての描画領域を閉じる
+# メモリを解放するために図を閉じる
+plt.close()  # 現在の図を閉じる
+plt.close('all')  # すべての図を閉じる
 
 # 自動クリーンアップのためのコンテキストマネージャ
 with plt.figure() as fig:
@@ -593,7 +638,7 @@ original_params = plt.rcParams.copy()
 plt.rcParams.update(original_params)  # 復元
 ```
 
-### 色管理：カラーマップとパレット
+### 色の管理：カラーマップとパレット
 
 色とカラーマップを効果的に扱います。
 
@@ -604,7 +649,7 @@ print(plt.colormaps())
 # 複数線に対するカラーマップの使用
 colors = plt.cm.viridis(np.linspace(0, 1, len(datasets)))
 for i, (data, color) in enumerate(zip(datasets, colors)):
-    plt.plot(data, color=color, label=f'データセット {i+1}')
+    plt.plot(data, color=color, label=f'Dataset {i+1}')
 
 # カスタムカラーマップ
 from matplotlib.colors import LinearSegmentedColormap
@@ -622,7 +667,7 @@ ani = FuncAnimation(fig, animate, blit=True)
 # 複雑なプロットのラスタライズ
 plt.plot(x, y, rasterized=True)
 
-# 大規模データセットのデータポイントの削減
+# 大規模データセットのためのデータポイントの削減
 # プロット前にデータをダウンサンプリング
 indices = np.arange(0, len(large_data), step=10)
 plt.plot(large_data[indices])
@@ -630,10 +675,10 @@ plt.plot(large_data[indices])
 
 ### メモリ使用量：効率的なプロット
 
-多数のプロットや大規模な可視化を作成する際のメモリ管理。
+多数のプロットや大規模な視覚化を作成する際のメモリ管理。
 
 ```python
-# 新しい描画領域を作成する代わりに軸をクリアする
+# 新しい図を作成する代わりに軸をクリアする
 fig, ax = plt.subplots()
 for data in datasets:
     ax.clear()  # 前のプロットをクリア
@@ -654,7 +699,7 @@ for i, data in enumerate(data_generator()):
 
 ### Pandas との統合：直接プロット
 
-Pandas DataFrame メソッドを通じて Matplotlib を使用します。
+Pandas DataFrame メソッドを介した Matplotlib の使用。
 
 ```python
 import pandas as pd
@@ -671,12 +716,12 @@ ax.set_title('カスタムタイトル')
 plt.show()
 ```
 
-### NumPy との統合：配列の可視化
+### NumPy との統合：配列の視覚化
 
-NumPy 配列と数学関数を効率的にプロットします。
+NumPy 配列と数学関数の効率的なプロット。
 
 ```python
-# 2D 配列の可視化
+# 2D 配列の視覚化
 arr = np.random.rand(10, 10)
 plt.imshow(arr, cmap='hot', interpolation='nearest')
 
@@ -697,7 +742,7 @@ plt.hist(data, bins=50, density=True, alpha=0.7)
 ```python
 import seaborn as sns
 
-# matplotlib で seaborn のスタイリングを使用
+# matplotlib での seaborn スタイリングの使用
 sns.set_style('whitegrid')
 plt.plot(x, y)
 plt.show()
@@ -717,10 +762,10 @@ Jupyter ノートブック環境向けに Matplotlib を最適化します。
 %matplotlib inline  # 静的プロット
 %matplotlib widget  # インタラクティブプロット
 
-# 高 DPI ディスプレイの設定
+# 高 DPI 表示
 %config InlineBackend.figure_format = 'retina'
 
-# 自動描画領域サイズ
+# 自動図サイズ設定
 %matplotlib inline
 plt.rcParams['figure.dpi'] = 100
 ```
@@ -732,7 +777,7 @@ plt.rcParams['figure.dpi'] = 100
 Matplotlib の標準的な Python パッケージインストーラ。
 
 ```bash
-# Matplotlibのインストール
+# Matplotlib のインストール
 pip install matplotlib
 
 # 最新バージョンへのアップグレード
@@ -747,25 +792,25 @@ pip show matplotlib
 
 ### Conda: `conda install matplotlib`
 
-Anaconda/Miniconda環境用のパッケージマネージャ。
+Anaconda/Miniconda 環境用のパッケージマネージャ。
 
 ```bash
 # 現在の環境にインストール
 conda install matplotlib
 
-# matplotlibの更新
+# matplotlib の更新
 conda update matplotlib
 
-# matplotlibを含む環境の作成
+# matplotlib を含む環境の作成
 conda create -n dataviz matplotlib numpy pandas
 
-# matplotlibの情報のリスト表示
+# matplotlib の情報のリスト表示
 conda list matplotlib
 ```
 
 ### バックエンドの設定
 
-異なる環境向けに表示バックエンドを設定します。
+異なる環境での表示バックエンドの設定。
 
 ```python
 # 利用可能なバックエンドの確認
@@ -779,7 +824,7 @@ matplotlib.use('Qt5Agg')  # PyQt5 用
 # ヘッドレスサーバー用
 matplotlib.use('Agg')
 
-# バックエンド設定後のインポート
+# バックエンド設定後にインポート
 import matplotlib.pyplot as plt
 ```
 

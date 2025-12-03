@@ -1,21 +1,21 @@
 ---
-title: 'Cheat Sheet Kubernetes'
-description: 'Maîtrisez Kubernetes avec notre aide-mémoire complet couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Mémento Kubernetes | LabEx'
+description: "Apprenez l'orchestration Kubernetes avec ce mémento complet. Référence rapide pour les commandes kubectl, les pods, les déploiements, les services, l'ingress et la gestion des conteneurs cloud-natifs."
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Trombinoscope Kubernetes
+Feuille de triche Kubernetes
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/kubernetes">Apprendre Kubernetes avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/kubernetes">Apprenez Kubernetes avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez l'orchestration de conteneurs Kubernetes grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur Kubernetes couvrant les commandes kubectl essentielles, la gestion des pods, les déploiements, les services, le réseau et l'administration de cluster. Maîtrisez l'orchestration de conteneurs et le déploiement d'applications cloud-natives.
+Apprenez l'orchestration de conteneurs Kubernetes grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours Kubernetes complets couvrant les commandes kubectl essentielles, la gestion des pods, les déploiements, les services, le réseau et l'administration de cluster. Maîtrisez l'orchestration de conteneurs et le déploiement d'applications cloud-natives.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,7 +23,7 @@ Apprenez l'orchestration de conteneurs Kubernetes grâce à des laboratoires pra
 
 ### Installer kubectl
 
-Installer l'outil de ligne de commande Kubernetes.
+Installez l'outil de ligne de commande Kubernetes.
 
 ```bash
 # macOS avec Homebrew
@@ -40,7 +40,7 @@ choco install kubernetes-cli
 
 ### Vérifier l'Installation
 
-Vérifier la version de kubectl et la connexion au cluster.
+Vérifiez la version de kubectl et la connexion au cluster.
 
 ```bash
 # Vérifier la version de kubectl
@@ -53,7 +53,7 @@ kubectl cluster-info
 
 ### Configurer kubectl
 
-Configurer l'accès au cluster et le contexte.
+Configurez l'accès au cluster et le contexte.
 
 ```bash
 # Voir la configuration actuelle
@@ -91,7 +91,7 @@ Afficher les détails essentiels du cluster et les points d'accès des services.
 ```bash
 # Obtenir les informations du cluster
 kubectl cluster-info
-# Voir la configuration du cluster
+# Obtenir la configuration du cluster
 kubectl config view
 # Vérifier les ressources API disponibles
 kubectl api-resources
@@ -110,7 +110,7 @@ kubectl get nodes
 kubectl get nodes -o wide
 # Décrire un nœud spécifique
 kubectl describe node
-# Obtenir l'utilisation des ressources des nœuds
+# Obtenir l'utilisation des ressources du nœud
 kubectl top nodes
 ```
 
@@ -130,6 +130,21 @@ namespace
 # Obtenir les ressources dans un espace de noms spécifique
 kubectl get all -n my-namespace
 ```
+
+<BaseQuiz id="kubernetes-namespace-1" correct="B">
+  <template #question>
+    Quel est l'objectif principal des espaces de noms Kubernetes ?
+  </template>
+  
+  <BaseQuizOption value="A">Améliorer les performances du cluster</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Organiser et isoler les ressources au sein d'un cluster</BaseQuizOption>
+  <BaseQuizOption value="C">Connecter les clusters entre eux</BaseQuizOption>
+  <BaseQuizOption value="D">Stocker les images de conteneurs</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les espaces de noms fournissent un moyen de diviser les ressources du cluster entre plusieurs utilisateurs ou équipes. Ils aident à organiser les ressources et fournissent une portée pour les noms, vous permettant d'avoir des ressources portant le même nom dans différents espaces de noms.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Gestion des Pods
 
@@ -165,6 +180,21 @@ kubectl get pods --all-namespaces
 kubectl get pods --watch
 ```
 
+<BaseQuiz id="kubernetes-pods-1" correct="C">
+  <template #question>
+    Que fait `kubectl get pods --all-namespaces` ?
+  </template>
+  
+  <BaseQuizOption value="A">Liste uniquement les pods en cours d'exécution</BaseQuizOption>
+  <BaseQuizOption value="B">Liste les pods dans l'espace de noms par défaut</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Liste les pods dans tous les espaces de noms du cluster</BaseQuizOption>
+  <BaseQuizOption value="D">Supprime tous les pods</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `--all-namespaces` (ou `-A`) affiche les pods de tous les espaces de noms, pas seulement de l'espace de noms par défaut. Ceci est utile pour une visibilité à l'échelle du cluster.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Détails des Pods : `kubectl describe pod`
 
 Obtenir des informations complètes sur des pods spécifiques.
@@ -178,7 +208,7 @@ kubectl describe pod  -n
 
 ### Opérations sur les Pods : `kubectl exec` / `kubectl delete`
 
-Exécuter des commandes dans les pods et gérer leur cycle de vie.
+Exécuter des commandes dans les pods et gérer le cycle de vie des pods.
 
 ```bash
 # Obtenir les logs du pod
@@ -214,9 +244,24 @@ kubectl expose deployment nginx --port=80 --
 type=LoadBalancer
 ```
 
+<BaseQuiz id="kubernetes-deployment-1" correct="A">
+  <template #question>
+    Quel est l'objectif principal d'un Déploiement Kubernetes ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Gérer et maintenir un nombre souhaité de réplicas de pods</BaseQuizOption>
+  <BaseQuizOption value="B">Exposer les pods au trafic externe</BaseQuizOption>
+  <BaseQuizOption value="C">Stocker des données de configuration</BaseQuizOption>
+  <BaseQuizOption value="D">Gérer les nœuds du cluster</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Un Déploiement gère un ReplicaSet, qui assure qu'un nombre spécifié de réplicas de pods est en cours d'exécution. Il fournit des mises à jour déclaratives, des mises à jour progressives et des capacités de retour en arrière.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Gérer les Déploiements : `kubectl get deployments`
 
-Visualiser et contrôler l'état et la configuration des déploiements.
+Visualiser et contrôler l'état et la configuration du déploiement.
 
 ```bash
 # Lister les déploiements
@@ -234,23 +279,38 @@ kubectl delete deployment
 Ajuster le nombre de réplicas en cours d'exécution.
 
 ```bash
-# Mettre à l'échelle un déploiement
+# Mettre à l'échelle le déploiement
 kubectl scale deployment nginx --replicas=5
-# Mettre à l'échelle un ReplicaSet
+# Mettre à l'échelle le ReplicaSet
 kubectl scale rs  --replicas=3
-# Mise à l'échelle automatique d'un déploiement
+# Mise à l'échelle automatique du déploiement
 kubectl autoscale deployment nginx --min=2 --max=10 --
 cpu-percent=80
 ```
 
+<BaseQuiz id="kubernetes-scale-1" correct="B">
+  <template #question>
+    Que fait `kubectl scale deployment nginx --replicas=5` ?
+  </template>
+  
+  <BaseQuizOption value="A">Crée 5 nouveaux déploiements</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Met à l'échelle le déploiement nginx pour exécuter 5 réplicas de pods</BaseQuizOption>
+  <BaseQuizOption value="C">Supprime 5 pods du déploiement</BaseQuizOption>
+  <BaseQuizOption value="D">Met à jour l'image du déploiement</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La commande `scale` ajuste le nombre de réplicas pour un déploiement. Cette commande garantit que le déploiement nginx exécute exactement 5 réplicas de pods, en créant ou supprimant des pods si nécessaire.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Mises à Jour Progressives : `kubectl rollout`
 
-Gérer les mises à jour et les retours en arrière des déploiements.
+Gérer les mises à jour de déploiement et les retours en arrière.
 
 ```bash
-# Vérifier le statut du déploiement
+# Vérifier le statut du déploiement progressif
 kubectl rollout status deployment/nginx
-# Voir l'historique des déploiements
+# Voir l'historique des déploiements progressifs
 kubectl rollout history deployment/nginx
 # Retour en arrière vers la version précédente
 kubectl rollout undo deployment/nginx
@@ -265,7 +325,7 @@ kubectl rollout undo deployment/nginx --to-revision=2
 Rendre les applications accessibles via des services réseau.
 
 ```bash
-# Exposer un déploiement comme service ClusterIP
+# Exposer le déploiement comme service ClusterIP
 kubectl expose deployment nginx --port=80
 # Exposer comme service NodePort
 kubectl expose deployment nginx --port=80 --
@@ -273,9 +333,24 @@ type=NodePort
 # Exposer comme LoadBalancer
 kubectl expose deployment nginx --port=80 --
 type=LoadBalancer
-# Créer un service à partir d'un YAML
+# Créer un service à partir de YAML
 kubectl apply -f service.yaml
 ```
+
+<BaseQuiz id="kubernetes-service-1" correct="A">
+  <template #question>
+    Quel est le type de service par défaut lors de l'utilisation de `kubectl expose` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>
+  <BaseQuizOption value="B">NodePort</BaseQuizOption>
+  <BaseQuizOption value="C">LoadBalancer</BaseQuizOption>
+  <BaseQuizOption value="D">ExternalName</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ClusterIP est le type de service par défaut. Il expose le service sur une IP interne au cluster, le rendant accessible uniquement à l'intérieur du cluster. Les types NodePort et LoadBalancer fournissent un accès externe.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Découverte de Services : `kubectl get services`
 
@@ -288,7 +363,7 @@ kubectl get services
 kubectl get svc -o wide
 # Décrire un service spécifique
 kubectl describe service
-# Obtenir les points de terminaison du service
+# Obtenir les points d'accès du service
 kubectl get endpoints
 ```
 
@@ -312,11 +387,11 @@ kubectl port-forward pod/ 8080:80 8443:443
 Gérer l'accès externe aux services via des routes HTTP/HTTPS.
 
 ```bash
-# Lister les ressources ingress
+# Lister les ressources Ingress
 kubectl get ingress
-# Décrire l'ingress
+# Décrire l'Ingress
 kubectl describe ingress
-# Créer un ingress à partir d'un YAML
+# Créer l'Ingress à partir de YAML
 kubectl apply -f ingress.yaml
 ```
 
@@ -380,7 +455,7 @@ Visualiser et gérer les secrets en toute sécurité.
 kubectl get secrets
 # Décrire le secret (les valeurs sont masquées)
 kubectl describe secret db-secret
-# Décoder les valeurs des secrets
+# Décoder les valeurs de secret
 kubectl get secret db-secret -o
 jsonpath='{.data.password}' | base64 -d
 # Supprimer le secret
@@ -396,11 +471,11 @@ Gérer les ressources de stockage à l'échelle du cluster.
 ```bash
 # Lister les volumes persistants
 kubectl get pv
-# Décrire un volume persistant
+# Décrire le volume persistant
 kubectl describe pv
-# Créer un PV à partir d'un YAML
+# Créer un PV à partir de YAML
 kubectl apply -f persistent-volume.yaml
-# Supprimer un volume persistant
+# Supprimer le volume persistant
 kubectl delete pv
 ```
 
@@ -411,11 +486,11 @@ Demander des ressources de stockage pour les pods.
 ```bash
 # Lister les PVC
 kubectl get pvc
-# Décrire un PVC
+# Décrire le PVC
 kubectl describe pvc
-# Créer un PVC à partir d'un YAML
+# Créer un PVC à partir de YAML
 kubectl apply -f pvc.yaml
-# Supprimer un PVC
+# Supprimer le PVC
 kubectl delete pvc
 ```
 
@@ -426,7 +501,7 @@ Définir différents types de stockage avec diverses propriétés.
 ```bash
 # Lister les classes de stockage
 kubectl get storageclass
-# Décrire une classe de stockage
+# Décrire la classe de stockage
 kubectl describe storageclass
 # Définir la classe de stockage par défaut
 kubectl patch storageclass  -p '{"metadata":
@@ -470,13 +545,13 @@ by=.metadata.creationTimestamp
 Obtenir des informations détaillées sur toute ressource Kubernetes.
 
 ```bash
-# Décrire un pod
+# Décrire le pod
 kubectl describe pod
-# Décrire un déploiement
+# Décrire le déploiement
 kubectl describe deployment
-# Décrire un service
+# Décrire le service
 kubectl describe service
-# Décrire un nœud
+# Décrire le nœud
 kubectl describe node
 ```
 
@@ -491,13 +566,13 @@ kubectl top nodes
 kubectl top pods
 # Voir l'utilisation des ressources des pods dans un espace de noms
 kubectl top pods -n
-# Trier les pods par utilisation CPU
+# Trier les pods par utilisation de CPU
 kubectl top pods --sort-by=cpu
 ```
 
 ### Débogage Interactif : `kubectl exec` / `kubectl debug`
 
-Accéder aux conteneurs en cours d'exécution pour le dépannage pratique.
+Accéder aux conteneurs en cours d'exécution pour un dépannage pratique.
 
 ```bash
 # Exécuter un shell interactif
@@ -517,7 +592,7 @@ kubectl cp ./local-file :/path/to/destination
 Créer ou mettre à jour des ressources à l'aide de fichiers de configuration déclaratifs.
 
 ```bash
-# Appliquer un fichier unique
+# Appliquer un seul fichier
 kubectl apply -f deployment.yaml
 # Appliquer plusieurs fichiers
 kubectl apply -f deployment.yaml -f service.yaml
@@ -531,16 +606,15 @@ kubectl apply -f deployment.yaml --dry-run=client -o yaml
 
 ### Opérations sur les Ressources : `kubectl get` / `kubectl delete`
 
-Lister, inspecter et supprimer les ressources Kubernetes.
+Lister, inspecter et supprimer des ressources Kubernetes.
 
 ```bash
 # Obtenir toutes les ressources dans l'espace de noms
 kubectl get all
 # Obtenir les ressources avec des colonnes personnalisées
 kubectl get pods -o custom-
-columns=NAME:.metadata.name,STATUS:.status.phase,N
-ODE:.spec.nodeName
-# Obtenir les ressources en format YAML/JSON
+columns=NAME:.metadata.name,STATUS:.status.phase
+# Obtenir les ressources au format JSON/YAML
 kubectl get deployment nginx -o yaml
 kubectl get pod  -o json
 # Supprimer des ressources
@@ -553,12 +627,12 @@ kubectl delete pod,service -l app=nginx
 Modifier les ressources existantes directement.
 
 ```bash
-# Éditer une ressource interactivement
+# Éditer la ressource interactivement
 kubectl edit deployment
-# Patch de ressource avec fusion stratégique
+# Patch de la ressource avec fusion stratégique
 kubectl patch deployment nginx -p '{"spec":
 {"replicas":3}}'
-# Patch de ressource avec fusion JSON
+# Patch avec fusion JSON
 kubectl patch pod  --type='json' -p='[{"op": "replace",
 "path": "/metadata/labels/env", "value": "prod"}]'
 # Remplacer entièrement la ressource
@@ -570,7 +644,7 @@ kubectl replace -f updated-deployment.yaml
 Comparer les configurations et comprendre les schémas de ressources.
 
 ```bash
-# Montrer les différences avant l'application
+# Afficher les différences avant d'appliquer
 kubectl diff -f deployment.yaml
 # Expliquer la structure de la ressource
 kubectl explain pod.spec.containers
@@ -588,16 +662,16 @@ validate=true
 Gérer la disponibilité des nœuds pour la maintenance et les mises à jour.
 
 ```bash
-# Marquer un nœud comme non planifiable
+# Marquer le nœud comme non planifiable
 kubectl cordon
-# Marquer un nœud comme planifiable
+# Marquer le nœud comme planifiable
 kubectl uncordon
-# Vider un nœud pour maintenance
+# Vider le nœud pour maintenance
 kubectl drain  --ignore-daemonsets --delete-emptydir-
 data
-# Ajouter un taint à un nœud
+# Ajouter un "taint" au nœud
 kubectl taint nodes  key=value:NoSchedule
-# Supprimer un taint d'un nœud
+# Supprimer un "taint" du nœud
 kubectl taint nodes  key:NoSchedule-
 ```
 
@@ -606,11 +680,11 @@ kubectl taint nodes  key:NoSchedule-
 Ajouter des métadonnées aux ressources pour l'organisation et la sélection.
 
 ```bash
-# Ajouter une étiquette à une ressource
+# Ajouter une étiquette à la ressource
 kubectl label pod  environment=production
-# Supprimer une étiquette d'une ressource
+# Supprimer une étiquette de la ressource
 kubectl label pod  environment-
-# Ajouter une annotation à une ressource
+# Ajouter une annotation à la ressource
 kubectl annotate pod  description="Frontend web
 server"
 # Sélectionner des ressources par étiquette
@@ -629,7 +703,7 @@ kubectl proxy --port=8080
 kubectl auth can-i create pods
 kubectl auth can-i '*' '*' --
 as=system:serviceaccount:default:my-sa
-# Imiter un utilisateur
+# Usurper l'identité de l'utilisateur
 kubectl get pods --as=system:serviceaccount:default:my-
 sa
 # Voir les informations d'authentification de l'utilisateur
@@ -677,14 +751,14 @@ kubectl top pods --previous
 Surveiller la santé des applications et du cluster.
 
 ```bash
-# Vérifier le statut du déploiement
+# Vérifier le statut du déploiement progressif
 kubectl rollout status deployment/
 # Vérifier la préparation des pods
 kubectl get pods --field-selector=status.phase=Running
 # Surveiller les quotas de ressources
 kubectl get resourcequota
 kubectl describe resourcequota
-# Vérifier le statut des composants du cluster
+# Vérifier l'état des composants du cluster
 kubectl get componentstatuses
 ```
 
@@ -693,7 +767,7 @@ kubectl get componentstatuses
 Commandes pour aider à optimiser les performances du cluster.
 
 ```bash
-# Voir les requêtes et limites de ressources
+# Voir les demandes et limites de ressources
 kubectl describe node  | grep -A5 "Allocated resources:"
 # Vérifier les budgets de perturbation des pods
 kubectl get pdb
@@ -767,14 +841,13 @@ view --merge --flatten >
 Définir les espaces de noms et les préférences par défaut pour les opérations kubectl.
 
 ```bash
-# Définir l'espace de noms par défaut pour le contexte
-actuel
+# Définir l'espace de noms par défaut pour le contexte actuel
 kubectl config set-context --
 current --namespace=
-# Définir le format de sortie par défaut
+# Définir un format de sortie par défaut
 kubectl config set-context --
 current --output=yaml
-# Voir les détails de la configuration
+# Voir les détails de configuration
 kubectl config view -o
 jsonpath='{.users[*].name}'
 kubectl config view --raw
@@ -851,19 +924,19 @@ kubectl apply -f deployment.yaml --dry-run=client -o yaml
 # Valider la configuration
 kubectl apply -f deployment.yaml --validate=true --dry-
 run=client
-# Montrer les différences avant l'application
+# Afficher les différences avant d'appliquer
 kubectl diff -f deployment.yaml
-# Suppression forcée avec délai d'attente nul
+# Suppression forcée avec période de grâce
 kubectl delete pod  --grace-period=0 --force
 ```
 
 ## Liens Pertinents
 
-- <router-link to="/docker">Trombinoscope Docker</router-link>
-- <router-link to="/linux">Trombinoscope Linux</router-link>
-- <router-link to="/shell">Trombinoscope Shell</router-link>
-- <router-link to="/devops">Trombinoscope DevOps</router-link>
-- <router-link to="/ansible">Trombinoscope Ansible</router-link>
-- <router-link to="/git">Trombinoscope Git</router-link>
-- <router-link to="/rhel">Trombinoscope Red Hat Enterprise Linux</router-link>
-- <router-link to="/cybersecurity">Trombinoscope Cybersécurité</router-link>
+- <router-link to="/docker">Feuille de triche Docker</router-link>
+- <router-link to="/linux">Feuille de triche Linux</router-link>
+- <router-link to="/shell">Feuille de triche Shell</router-link>
+- <router-link to="/devops">Feuille de triche DevOps</router-link>
+- <router-link to="/ansible">Feuille de triche Ansible</router-link>
+- <router-link to="/git">Feuille de triche Git</router-link>
+- <router-link to="/rhel">Feuille de triche Red Hat Enterprise Linux</router-link>
+- <router-link to="/cybersecurity">Feuille de triche Cybersécurité</router-link>

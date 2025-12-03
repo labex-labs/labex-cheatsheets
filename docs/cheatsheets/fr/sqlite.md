@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo SQLite'
-description: 'Maîtrisez SQLite avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de Référence SQLite | LabEx'
+description: 'Apprenez SQLite avec cette fiche de référence complète. Référence rapide pour la syntaxe SQL SQLite, les transactions, les déclencheurs, les vues et la gestion de bases de données légères pour applications.'
 pdfUrl: '/cheatsheets/pdf/sqlite-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Feuille de triche SQLite
 <a target="_blank" href="https://labex.io/fr/learn/sqlite">Apprenez SQLite avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la gestion de bases de données SQLite grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur SQLite couvrant les opérations SQL essentielles, la manipulation de données, l'optimisation des requêtes, la conception de bases de données et l'ajustement des performances. Maîtrisez le développement de bases de données légères et la gestion efficace des données.
+Apprenez la gestion de bases de données SQLite grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours complets sur SQLite couvrant les opérations SQL essentielles, la manipulation de données, l'optimisation des requêtes, la conception de bases de données et le réglage des performances. Maîtrisez le développement de bases de données légères et la gestion efficace des données.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -51,7 +51,7 @@ Liste toutes les bases de données attachées et leurs fichiers.
 ```sql
 -- Attacher une autre base de données
 ATTACH DATABASE 'backup.db' AS backup;
--- Requêter depuis la base de données attachée
+-- Interroger la base de données attachée
 SELECT * FROM backup.users;
 -- Détacher la base de données
 DETACH DATABASE backup;
@@ -59,19 +59,19 @@ DETACH DATABASE backup;
 
 ### Quitter SQLite : `.exit` ou `.quit`
 
-Fermer l'interface en ligne de commande de SQLite.
+Fermer l'interface en ligne de commande SQLite.
 
 ```bash
 .exit
 .quit
 ```
 
-### Sauvegarde de Base de Données : `.backup`
+### Sauvegarde de la Base de Données : `.backup`
 
 Créer une sauvegarde de la base de données actuelle.
 
 ```bash
-# Sauvegarder dans un fichier
+# Sauvegarde vers un fichier
 .backup backup.db
 # Restaurer à partir de la sauvegarde
 .restore backup.db
@@ -107,6 +107,21 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="sqlite-create-table-1" correct="A">
+  <template #question>
+    Que fait `INTEGER PRIMARY KEY AUTOINCREMENT` dans SQLite ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Crée une clé primaire entière à incrémentation automatique</BaseQuizOption>
+  <BaseQuizOption value="B">Crée une clé primaire de type texte</BaseQuizOption>
+  <BaseQuizOption value="C">Crée une contrainte de clé étrangère</BaseQuizOption>
+  <BaseQuizOption value="D">Crée un index unique</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INTEGER PRIMARY KEY AUTOINCREMENT` crée une colonne entière qui s'incrémente automatiquement pour chaque nouvelle ligne et sert de clé primaire. Cela garantit que chaque ligne possède un identifiant unique.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Types de Données : `INTEGER`, `TEXT`, `REAL`, `BLOB`
 
 SQLite utilise le typage dynamique avec des classes de stockage pour un stockage de données flexible.
@@ -115,7 +130,7 @@ SQLite utilise le typage dynamique avec des classes de stockage pour un stockage
 -- Types de données courants
 CREATE TABLE products (
     id INTEGER,           -- Nombres entiers
-    name TEXT,           -- Chaînes de texte
+    name TEXT,           -- Chaînes de caractères
     price REAL,          -- Nombres à virgule flottante
     image BLOB,          -- Données binaires
     active BOOLEAN,      -- Booléen (stocké comme INTEGER)
@@ -137,14 +152,14 @@ CREATE TABLE employees (
 );
 ```
 
-## Insertion et Modification de Données
+## Insertion et Modification des Données
 
 ### Insérer des Données : `INSERT INTO`
 
 Ajouter de nouveaux enregistrements aux tables avec une ou plusieurs lignes.
 
 ```sql
--- Insérer un seul enregistrement
+-- Insérer un enregistrement unique
 INSERT INTO users (name, email, age)
 VALUES ('John Doe', 'john@email.com', 30);
 
@@ -177,6 +192,21 @@ UPDATE products SET price = price * 1.1
 WHERE category = 'Electronics';
 ```
 
+<BaseQuiz id="sqlite-update-1" correct="D">
+  <template #question>
+    Que se passe-t-il si vous oubliez la clause WHERE dans une instruction UPDATE ?
+  </template>
+  
+  <BaseQuizOption value="A">La mise à jour échoue</BaseQuizOption>
+  <BaseQuizOption value="B">Seule la première ligne est mise à jour</BaseQuizOption>
+  <BaseQuizOption value="C">Rien ne se passe</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Toutes les lignes de la table sont mises à jour</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Sans clause WHERE, l'instruction UPDATE modifiera toutes les lignes de la table. Utilisez toujours WHERE pour spécifier quelles lignes doivent être mises à jour afin d'éviter de modifier accidentellement des données non désirées.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Supprimer des Données : `DELETE FROM`
 
 Supprimer des enregistrements des tables en fonction des conditions spécifiées.
@@ -207,6 +237,21 @@ INSERT OR IGNORE INTO users (name, email)
 VALUES ('Duplicate', 'existing@email.com');
 ```
 
+<BaseQuiz id="sqlite-upsert-1" correct="A">
+  <template #question>
+    Quelle est la différence entre `INSERT OR REPLACE` et `INSERT OR IGNORE` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>REPLACE met à jour les lignes existantes, IGNORE ignore les doublons</BaseQuizOption>
+  <BaseQuizOption value="B">Il n'y a pas de différence</BaseQuizOption>
+  <BaseQuizOption value="C">REPLACE supprime la ligne, IGNORE la met à jour</BaseQuizOption>
+  <BaseQuizOption value="D">REPLACE fonctionne avec les tables, IGNORE fonctionne avec les vues</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `INSERT OR REPLACE` remplacera une ligne existante en cas de conflit (par exemple, clé primaire en double). `INSERT OR IGNORE` ignorera simplement l'insertion en cas de conflit, laissant la ligne existante inchangée.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Requêtes et Sélection de Données
 
 ### Requêtes de Base : `SELECT`
@@ -226,6 +271,21 @@ SELECT name AS full_name, age AS years_old FROM users;
 -- Sélectionner des valeurs uniques
 SELECT DISTINCT department FROM employees;
 ```
+
+<BaseQuiz id="sqlite-select-1" correct="B">
+  <template #question>
+    Que fait `SELECT DISTINCT` ?
+  </template>
+  
+  <BaseQuizOption value="A">Sélectionne toutes les lignes</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Retourne uniquement les valeurs uniques, supprimant les doublons</BaseQuizOption>
+  <BaseQuizOption value="C">Sélectionne uniquement la première ligne</BaseQuizOption>
+  <BaseQuizOption value="D">Ordonne les résultats</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SELECT DISTINCT` élimine les lignes dupliquées de l'ensemble de résultats, ne retournant que les valeurs uniques. Ceci est utile lorsque vous souhaitez voir toutes les valeurs uniques d'une colonne.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Filtrage : `WHERE`
 
@@ -284,9 +344,9 @@ SELECT MIN(age), MAX(age) FROM users;
 
 ## Requêtes Avancées
 
-### Groupement : `GROUP BY` / `HAVING`
+### Regroupement : `GROUP BY` / `HAVING`
 
-Grouper les lignes selon des critères spécifiés et filtrer les groupes pour les rapports récapitulatifs.
+Regrouper les lignes selon des critères spécifiés et filtrer les groupes pour les rapports récapitulatifs.
 
 ```sql
 -- Grouper par une seule colonne
@@ -308,7 +368,7 @@ HAVING avg_salary > 60000;
 
 ### Sous-requêtes
 
-Utiliser des requêtes imbriquées pour une logique complexe de récupération de données et conditionnelle.
+Utiliser des requêtes imbriquées pour une récupération de données complexe et une logique conditionnelle.
 
 ```sql
 -- Sous-requête dans la clause WHERE
@@ -331,7 +391,7 @@ WHERE EXISTS (
 
 ### Jointures : `INNER`, `LEFT`, `RIGHT`
 
-Combiner des données provenant de plusieurs tables en utilisant différents types de jointures pour les requêtes relationnelles.
+Combiner des données provenant de plusieurs tables en utilisant différents types de jointures pour des requêtes relationnelles.
 
 ```sql
 -- Jointure interne (Inner join)
@@ -339,7 +399,7 @@ SELECT u.name, o.amount
 FROM users u
 INNER JOIN orders o ON u.id = o.user_id;
 
--- Jointure gauche (Left join - afficher tous les utilisateurs)
+-- Jointure gauche (Left join) (afficher tous les utilisateurs)
 SELECT u.name, COUNT(o.id) as order_count
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id
@@ -396,20 +456,20 @@ CREATE INDEX idx_active_users ON users(name) WHERE active = 1;
 
 Analyser les plans d'exécution des requêtes pour identifier les goulots d'étranglement de performance.
 
-```bash
-# Analyser la performance de la requête
+```sql
+-- Analyser la performance de la requête
 EXPLAIN QUERY PLAN SELECT * FROM users WHERE email = 'test@example.com';
 
 -- Vérifier si l'index est utilisé
 EXPLAIN QUERY PLAN SELECT * FROM orders WHERE user_id = 123;
 ```
 
-### Optimisation de Base de Données : `VACUUM` / `ANALYZE`
+### Optimisation de la Base de Données : `VACUUM` / `ANALYZE`
 
 Optimiser les fichiers de base de données et mettre à jour les statistiques pour de meilleures performances.
 
-```bash
-# Reconstruire la base de données pour récupérer de l'espace
+```sql
+-- Reconstruire la base de données pour récupérer de l'espace
 VACUUM;
 
 -- Mettre à jour les statistiques des index
@@ -421,7 +481,7 @@ PRAGMA integrity_check;
 
 ### Paramètres de Performance : `PRAGMA`
 
-Configurer les paramètres de SQLite pour des performances et un comportement optimaux.
+Configurer les paramètres SQLite pour des performances et un comportement optimaux.
 
 ```sql
 -- Définir le mode journal pour de meilleures performances
@@ -441,7 +501,7 @@ PRAGMA cache_size = 10000;
 
 ### Vues : `CREATE VIEW`
 
-Créer des tables virtuelles qui représentent des requêtes stockées pour un accès réutilisable aux données.
+Créer des tables virtuelles qui représentent des requêtes stockées pour un accès aux données réutilisable.
 
 ```sql
 -- Créer une vue simple
@@ -512,7 +572,7 @@ SELECT datetime('now');
 SELECT date('now');
 SELECT time('now');
 
--- Arithmétique de date
+-- Arithmétique des dates
 SELECT date('now', '+1 day');
 SELECT datetime('now', '-1 hour');
 SELECT date('now', 'start of month');
@@ -618,7 +678,7 @@ PRAGMA journal_mode = WAL;
 -- Délai d'attente en cas d'occupation pour les verrous
 PRAGMA busy_timeout = 5000;
 
--- Vérifier les connexions actuelles à la base de données
+-- Vérifier les connexions de base de données actuelles
 .databases
 ```
 
@@ -626,7 +686,7 @@ PRAGMA busy_timeout = 5000;
 
 ### Commandes de Base de Données : `.help`
 
-Accéder à l'aide en ligne de commande de SQLite et à la documentation pour les commandes point disponibles.
+Accéder à l'aide et à la documentation de l'interface en ligne de commande SQLite pour les commandes point disponibles.
 
 ```bash
 # Afficher toutes les commandes disponibles
@@ -665,7 +725,7 @@ Examiner la structure de la base de données et les définitions de table pour l
 .schema users
 # Afficher tous les schémas
 .schema
-# Afficher les informations sur la table
+# Afficher les informations de la table
 .mode column
 .headers on
 PRAGMA table_info(users);
@@ -687,12 +747,12 @@ Contrôler la manière dont les résultats des requêtes sont affichés dans l'i
 # Définir la largeur des colonnes
 .width 10 15 20
 
-# Sauvegarder la sortie dans un fichier
+# Enregistrer la sortie dans un fichier
 .output results.txt
 SELECT * FROM users;
 .output stdout
 
-# Lire le SQL depuis un fichier
+# Lire le SQL à partir d'un fichier
 .read script.sql
 
 # Changer de fichier de base de données
@@ -749,8 +809,8 @@ Télécharger les outils SQLite et configurer l'interface en ligne de commande p
 
 ```bash
 # Télécharger depuis sqlite.org
-# Pour Windows: sqlite-tools-win32-x86-*.zip
-# Pour Linux/Mac: Utiliser le gestionnaire de paquets
+# Pour Windows : sqlite-tools-win32-x86-*.zip
+# Pour Linux/Mac : Utiliser le gestionnaire de paquets
 
 # Ubuntu/Debian
 sudo apt-get install sqlite3
@@ -810,7 +870,7 @@ $stmt = $pdo->query('SELECT * FROM users');
 
 ## Liens Pertinents
 
-- <router-link to="/database">Feuille de triche Bases de Données</router-link>
+- <router-link to="/database">Feuille de triche Base de Données</router-link>
 - <router-link to="/mysql">Feuille de triche MySQL</router-link>
 - <router-link to="/postgresql">Feuille de triche PostgreSQL</router-link>
 - <router-link to="/mongodb">Feuille de triche MongoDB</router-link>

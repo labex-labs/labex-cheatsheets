@@ -1,6 +1,6 @@
 ---
-title: 'PostgreSQL チートシート'
-description: '必須のコマンド、概念、ベストプラクティスを網羅した包括的なチートシートで PostgreSQL を学習しましょう。'
+title: 'PostgreSQL チートシート | LabEx'
+description: 'この包括的なチートシートで PostgreSQL データベース管理を習得。SQL クエリ、高度な機能、JSON サポート、全文検索、エンタープライズデータベース管理のためのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/postgresql-cheatsheet.pdf'
 ---
 
@@ -30,9 +30,9 @@ psql コマンドラインツールを使用して、ローカルまたはリモ
 psql -U ユーザー名 -d データベース名
 # リモートデータベースに接続
 psql -h ホスト名 -p 5432 -U ユーザー名 -d データベース名
-# パスワードプロンプトで接続
+# パスワード入力を促す接続
 psql -U postgres -W
-# 接続文字列を使用して接続
+# 接続文字列を使用した接続
 psql "host=localhost port=5432 dbname=mydb user=myuser"
 ```
 
@@ -41,11 +41,11 @@ psql "host=localhost port=5432 dbname=mydb user=myuser"
 CREATE DATABASE コマンドを使用して、PostgreSQL に新しいデータベースを作成します。
 
 ```sql
-# 新しいデータベースを作成
+# 新しいデータベースの作成
 CREATE DATABASE mydatabase;
-# オーナーを指定してデータベースを作成
+# オーナーを指定したデータベースの作成
 CREATE DATABASE mydatabase OWNER myuser;
-# エンコーディングを指定してデータベースを作成
+# エンコーディングを指定したデータベースの作成
 CREATE DATABASE mydatabase
   WITH ENCODING 'UTF8'
   LC_COLLATE='en_US.UTF-8'
@@ -78,7 +78,7 @@ PostgreSQL サーバー上のすべてのデータベースを一覧表示しま
 \?
 # 現在のデータベースとユーザーを表示
 \conninfo
-# システムコマンドを実行
+# システムコマンドの実行
 \! ls
 # すべてのテーブルを一覧表示
 \dt
@@ -131,18 +131,33 @@ CREATE TABLE orders (
 );
 ```
 
+<BaseQuiz id="postgresql-create-table-1" correct="A">
+  <template #question>
+    PostgreSQL の`SERIAL PRIMARY KEY`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>自動インクリメントされる整数列を作成し、主キーとして機能させる</BaseQuizOption>
+  <BaseQuizOption value="B">テキスト列を作成する</BaseQuizOption>
+  <BaseQuizOption value="C">外部キー制約を作成する</BaseQuizOption>
+  <BaseQuizOption value="D">一意なインデックスを作成する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `SERIAL` は PostgreSQL 固有のデータ型で、自動インクリメントされる整数を作成します。`PRIMARY KEY`と組み合わせることで、各行に一意の識別子を作成し、自動的にインクリメントされます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### テーブルの変更：`ALTER TABLE`
 
-既存のテーブルから列や制約を追加、変更、または削除します。
+既存のテーブルに列や制約を追加、変更、または削除します。
 
 ```sql
-# 新しい列を追加
+# 新しい列の追加
 ALTER TABLE users ADD COLUMN phone VARCHAR(15);
-# 列の型を変更
+# 列の型の変更
 ALTER TABLE users ALTER COLUMN phone TYPE VARCHAR(20);
-# 列を削除
+# 列の削除
 ALTER TABLE users DROP COLUMN phone;
-# 制約を追加
+# 制約の追加
 ALTER TABLE users ADD CONSTRAINT unique_email
     UNIQUE (email);
 ```
@@ -154,15 +169,15 @@ ALTER TABLE users ADD CONSTRAINT unique_email
 ```sql
 # テーブル全体を削除
 DROP TABLE IF EXISTS old_table;
-# 構造は保持し、すべてのデータを消去
+# 構造は保持し、すべてのデータを削除
 TRUNCATE TABLE users;
-# アイデンティティをリスタートして切り詰め
+# アイデンティティをリスタートして切り詰める
 TRUNCATE TABLE users RESTART IDENTITY;
 ```
 
 ### データ型と制約
 
-さまざまな種類のデータのための必須の PostgreSQL データ型。
+さまざまな種類のデータに対応する PostgreSQL の必須データ型。
 
 ```sql
 # 数値型
@@ -189,7 +204,7 @@ id SERIAL PRIMARY KEY
 # 外部キー
 user_id INTEGER REFERENCES users(id)
 
-# ユニーク制約
+# 一意制約
 email VARCHAR(100) UNIQUE
 
 # CHECK制約
@@ -206,7 +221,7 @@ name VARCHAR(50) NOT NULL
 ```sql
 # 基本的なインデックス
 CREATE INDEX idx_username ON users(username);
-# ユニークインデックス
+# 一意インデックス
 CREATE UNIQUE INDEX idx_unique_email
     ON users(email);
 # 複合インデックス
@@ -215,23 +230,38 @@ CREATE INDEX idx_user_date
 # 部分インデックス
 CREATE INDEX idx_active_users
     ON users(username) WHERE active = true;
-# インデックスを削除
+# インデックスの削除
 DROP INDEX IF EXISTS idx_username;
 ```
+
+<BaseQuiz id="postgresql-index-1" correct="A">
+  <template #question>
+    PostgreSQL でインデックスを作成する主な目的は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>データ検索を高速化することでクエリパフォーマンスを向上させるため</BaseQuizOption>
+  <BaseQuizOption value="B">データベースサイズを縮小するため</BaseQuizOption>
+  <BaseQuizOption value="C">データを暗号化するため</BaseQuizOption>
+  <BaseQuizOption value="D">重複エントリを防ぐため</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    インデックスは、データベースがテーブル全体をスキャンすることなく行を素早く見つけられるようにするデータ構造を作成します。これにより、特に大規模なテーブルでの SELECT クエリが大幅に高速化されます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### シーケンス：`CREATE SEQUENCE`
 
 数値を自動的に生成して一意の数値を生成します。
 
 ```sql
-# シーケンスを作成
+# シーケンスの作成
 CREATE SEQUENCE user_id_seq;
-# テーブルでシーケンスを使用
+# テーブルでのシーケンスの使用
 CREATE TABLE users (
     id INTEGER DEFAULT nextval('user_id_seq'),
     username VARCHAR(50)
 );
-# シーケンスをリセット
+# シーケンスのリセット
 ALTER SEQUENCE user_id_seq RESTART WITH 1000;
 ```
 
@@ -258,16 +288,31 @@ INSERT INTO archive_users
 SELECT * FROM users WHERE active = false;
 ```
 
+<BaseQuiz id="postgresql-insert-1" correct="C">
+  <template #question>
+    PostgreSQL の INSERT 文における `RETURNING` は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">挿入をロールバックする</BaseQuizOption>
+  <BaseQuizOption value="B">挿入を防ぐ</BaseQuizOption>
+  <BaseQuizOption value="C" correct>挿入された行データを返す</BaseQuizOption>
+  <BaseQuizOption value="D">既存の行を更新する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    PostgreSQL の `RETURNING` 句を使用すると、挿入直後に挿入された行データ（または特定の列）を取得でき、自動生成された ID やタイムスタンプを取得する場合などに便利です。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### データの更新：`UPDATE`
 
 データベーステーブル内の既存のレコードを変更します。
 
 ```sql
-# 特定のレコードを更新
+# 特定のレコードの更新
 UPDATE users
 SET email = 'newemail@example.com'
 WHERE username = 'john_doe';
-# 複数の列を更新
+# 複数列の更新
 UPDATE users
 SET email = 'new@example.com',
     updated_at = NOW()
@@ -280,12 +325,12 @@ SET total = (SELECT SUM(price) FROM order_items
 
 ### データの選択：`SELECT`
 
-データベーステーブルからデータを照会および取得します。
+データベーステーブルからデータをクエリして取得します。
 
 ```sql
 # 基本的な選択
 SELECT * FROM users;
-# 特定の列を選択
+# 特定の列の選択
 SELECT id, username, email FROM users;
 # 条件付きの選択
 SELECT * FROM users
@@ -301,7 +346,7 @@ LIMIT 10 OFFSET 20;
 データベーステーブルからレコードを削除します。
 
 ```sql
-# 特定のレコードを削除
+# 特定のレコードの削除
 DELETE FROM users
 WHERE active = false;
 # サブクエリを使用した削除
@@ -309,7 +354,7 @@ DELETE FROM orders
 WHERE user_id IN (
     SELECT id FROM users WHERE active = false
 );
-# すべてのレコードを削除
+# すべてのレコードの削除
 DELETE FROM temp_table;
 # 返り値付きの削除
 DELETE FROM users
@@ -319,20 +364,20 @@ RETURNING *;
 
 ## 高度なクエリ
 
-### ジョイン：`INNER/LEFT/RIGHT JOIN`
+### JOIN: `INNER/LEFT/RIGHT JOIN`
 
-さまざまなジョインタイプを使用して複数のテーブルからのデータを結合します。
+さまざまな結合タイプを使用して複数のテーブルからのデータを結合します。
 
 ```sql
-# 内部ジョイン
+# 内部結合
 SELECT u.username, o.total
 FROM users u
 INNER JOIN orders o ON u.id = o.user_id;
-# 左外部ジョイン
+# 左結合
 SELECT u.username, o.total
 FROM users u
 LEFT JOIN orders o ON u.id = o.user_id;
-# 複数ジョイン
+# 複数結合
 SELECT u.username, o.total, p.name
 FROM users u
 JOIN orders o ON u.id = o.user_id
@@ -366,7 +411,7 @@ GROUP BY au.username;
 SELECT status, COUNT(*) as count
 FROM orders
 GROUP BY status;
-# 複数の集計
+# 複数集計
 SELECT user_id,
        COUNT(*) as order_count,
        SUM(total) as total_spent,
@@ -378,7 +423,7 @@ HAVING COUNT(*) > 5;
 
 ### ウィンドウ関数
 
-グループ化せずに、関連する行全体で計算を実行します。
+グループ化せずに、関連する行全体にわたって計算を実行します。
 
 ```sql
 # 行番号付け
@@ -395,7 +440,7 @@ SELECT username, score,
 FROM user_scores;
 ```
 
-## データインポートとエクスポート
+## データのエクスポートとインポート
 
 ### CSV インポート：`COPY`
 
@@ -440,15 +485,15 @@ pg_dump -U ユーザー名 -h ホスト名 データベース名 > backup.sql
 pg_dump -U ユーザー名 -t テーブル名 データベース名 > table_backup.sql
 # 圧縮されたバックアップ
 pg_dump -U ユーザー名 -Fc データベース名 > backup.dump
-# バックアップからリストア
+# バックアップからのリストア
 psql -U ユーザー名 -d データベース名 < backup.sql
-# 圧縮されたバックアップをリストア
+# 圧縮されたバックアップのリストア
 pg_restore -U ユーザー名 -d データベース名 backup.dump
 ```
 
 ### JSON データ操作
 
-半構造化データのために JSON および JSONB データ型を操作します。
+半構造化データのために JSON および JSONB データ型を扱います。
 
 ```sql
 # JSONデータの挿入
@@ -477,7 +522,7 @@ CREATE ROLE readonly_user;
 # 特定の権限を持つユーザーの作成
 CREATE USER admin_user WITH
     CREATEDB CREATEROLE PASSWORD 'adminpass';
-# ユーザーにロールを付与
+# ユーザーへのロールの付与
 GRANT readonly_user TO myuser;
 ```
 
@@ -507,7 +552,7 @@ REVOKE INSERT ON users FROM myuser;
 SELECT table_name, privilege_type, grantee
 FROM information_schema.table_privileges
 WHERE table_schema = 'public';
-# 現在のユーザーを表示
+# 現在のユーザーの表示
 SELECT current_user;
 # ロールメンバーシップの表示
 SELECT r.rolname, r.rolsuper, r.rolcreaterole
@@ -521,7 +566,7 @@ FROM pg_roles r;
 ```sql
 # ユーザーパスワードの変更
 ALTER USER myuser PASSWORD 'newpassword';
-# パスワードの有効期限を設定
+# パスワードの有効期限設定
 ALTER USER myuser VALID UNTIL '2025-12-31';
 # ログインなしでユーザーを作成
 CREATE ROLE reporting_role NOLOGIN;
@@ -537,9 +582,9 @@ ALTER USER myuser WITH LOGIN;
 クエリ実行計画を分析し、パフォーマンスを最適化します。
 
 ```sql
-# クエリ実行計画を表示
+# クエリ実行計画の表示
 EXPLAIN SELECT * FROM users WHERE active = true;
-# 実際の実行統計で分析
+# 実際の実行統計を使用した分析
 EXPLAIN ANALYZE
 SELECT u.username, COUNT(o.id)
 FROM users u
@@ -555,11 +600,11 @@ SELECT * FROM large_table WHERE indexed_col = 'value';
 定期的なクリーンアップ操作を通じてデータベースパフォーマンスを維持します。
 
 ```sql
-# 基本的なバキューム
+# 基本的なVACUUM
 VACUUM users;
-# フルバキュームと分析
+# FULL VACUUMとANALYZE
 VACUUM FULL ANALYZE users;
-# 自動バキュームの状態
+# 自動VACUUMのステータス
 SELECT schemaname, tablename, last_vacuum, last_autovacuum
 FROM pg_stat_user_tables;
 # テーブルの再インデックス
@@ -580,22 +625,22 @@ SELECT pid, now() - query_start as duration, query
 FROM pg_stat_activity
 WHERE state != 'idle'
 ORDER BY duration DESC;
-# 特定のクエリをキル
+# 特定のクエリの強制終了
 SELECT pg_terminate_backend(pid) WHERE pid = 12345;
 ```
 
-### データベース統計
+### データベース統計情報
 
 データベースの使用状況とパフォーマンスメトリックに関する洞察を得ます。
 
 ```sql
-# テーブル統計
+# テーブル統計情報
 SELECT schemaname, tablename, n_tup_ins, n_tup_upd, n_tup_del
 FROM pg_stat_user_tables;
-# インデックス使用状況の統計
+# インデックス使用状況の統計情報
 SELECT schemaname, tablename, indexname, idx_tup_read, idx_tup_fetch
 FROM pg_stat_user_indexes;
-# データベースサイズ
+# データベースサイズの表示
 SELECT pg_size_pretty(pg_database_size('mydatabase'));
 ```
 
@@ -610,7 +655,7 @@ SELECT pg_size_pretty(pg_database_size('mydatabase'));
 CREATE VIEW active_users AS
 SELECT id, username, email
 FROM users WHERE active = true;
-# ジョインを持つビューの作成
+# 結合を持つビューの作成
 CREATE OR REPLACE VIEW order_summary AS
 SELECT u.username, COUNT(o.id) as total_orders,
        SUM(o.total) as total_spent
@@ -654,7 +699,7 @@ UPDATE accounts SET balance = balance + 100
 WHERE id = 2;
 # トランザクションのコミット
 COMMIT;
-# 必要に応じてロールバック
+# 必要に応じたロールバック
 ROLLBACK;
 # セーブポイント
 SAVEPOINT my_savepoint;
@@ -663,7 +708,7 @@ ROLLBACK TO my_savepoint;
 
 ### 設定とチューニング
 
-パフォーマンス向上のために PostgreSQL サーバー設定を最適化します。
+より良いパフォーマンスのために PostgreSQL サーバー設定を最適化します。
 
 ```sql
 # 現在の設定の表示
@@ -685,11 +730,11 @@ SHOW config_file;
 自動認証のためにデータベースの資格情報を安全に保存します。
 
 ```bash
-# .pgpassファイルを作成 (形式: ホスト名:ポート:データベース:ユーザー名:パスワード)
+# .pgpass ファイルの作成 (形式: ホスト名:ポート:データベース:ユーザー名:パスワード)
 echo "localhost:5432:mydatabase:myuser:mypassword" >> ~/.pgpass
-# 適切な権限を設定
+# 適切な権限の設定
 chmod 600 ~/.pgpass
-# 接続サービスファイルを使用
+# 接続サービスファイルの使用
 # ~/.pg_service.conf
 [mydb]
 host=localhost
@@ -703,7 +748,7 @@ user=myuser
 psql の起動設定と動作をカスタマイズします。
 
 ```bash
-# ~/.psqlrcファイルを作成し、カスタム設定を記述
+# ~/.psqlrc ファイルをカスタム設定で作成
 \set QUIET on
 \timing on
 \set PROMPT1 '%n@%M:%> %`date` %R%# '
@@ -717,7 +762,7 @@ psql の起動設定と動作をカスタマイズします。
 
 ### 環境変数
 
-接続を容易にするために PostgreSQL 環境変数を設定します。
+接続を容易にするために PostgreSQL 環境変数をシェルプロファイルに設定します。
 
 ```bash
 # シェルプロファイルに設定
@@ -727,7 +772,7 @@ export PGDATABASE=mydatabase
 export PGUSER=myuser
 # その後、単に接続
 psql
-# または、特定の環境を使用
+# または特定環境を使用
 PGDATABASE=testdb psql
 ```
 
@@ -746,12 +791,12 @@ PGDATABASE=testdb psql
 \di, \di+
 # 関数の⼀覧表⽰
 \df, \df+
-# シーケンスの⼀覧表⽰
+# シーケンスの一覧表示
 \ds, \ds+
 # テーブル構造の記述
 \d テーブル名
 \d+ テーブル名
-# テーブル制約の表示
+# テーブルの制約の表示
 \d+ テーブル名
 # テーブル権限の表示
 \dp テーブル名
@@ -783,7 +828,7 @@ SELECT * FROM users;
 
 ### タイミングと履歴
 
-クエリのパフォーマンスを追跡し、コマンド履歴を管理します。
+クエリパフォーマンスを追跡し、コマンド履歴を管理します。
 
 ```bash
 # タイミング表示の切り替え

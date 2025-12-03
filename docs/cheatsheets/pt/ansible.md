@@ -1,6 +1,6 @@
 ---
-title: 'Guia Rápido Ansible'
-description: 'Aprenda Ansible com nosso guia completo cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Guia Rápido Ansible | LabEx'
+description: 'Aprenda automação Ansible com este guia completo. Referência rápida para playbooks, módulos, gerenciamento de inventário, configuração e automação de infraestrutura Ansible.'
 pdfUrl: '/cheatsheets/pdf/ansible-cheatsheet.pdf'
 ---
 
@@ -93,7 +93,7 @@ Configure variáveis de ambiente e caminhos do ambiente Ansible.
 ```bash
 # Definir localização do arquivo de inventário
 export ANSIBLE_INVENTORY=/caminho/para/inventario
-# Desativar verificação de chave de host
+# Definir verificação de chave de host
 export ANSIBLE_HOST_KEY_CHECKING=False
 # Definir usuário remoto
 export ANSIBLE_REMOTE_USER=ubuntu
@@ -120,7 +120,7 @@ ansible_ssh_private_key_file=~/.ssh/id_rsa
 
 ### Formato de Inventário YAML
 
-Arquivos de inventário podem estar no formato INI ou YAML.
+Arquivos de inventário podem estar nos formatos INI ou YAML.
 
 ```yaml
 # inventory.yml
@@ -172,6 +172,21 @@ ansible all -m command -a "uptime"
 ansible all -m command -a "systemctl status nginx" --become
 ```
 
+<BaseQuiz id="ansible-command-1" correct="C">
+  <template #question>
+    O que `ansible all -m ping` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Testa a conectividade de rede usando ping ICMP</BaseQuizOption>
+  <BaseQuizOption value="B">Instala o pacote ping em todos os hosts</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Testa a conectividade do Ansible com todos os hosts no inventário</BaseQuizOption>
+  <BaseQuizOption value="D">Verifica se os hosts estão online</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O módulo `ping` no Ansible não usa ICMP. É um módulo de teste que verifica se o Ansible pode se conectar aos hosts, executar Python e retornar resultados. É usado para verificar conectividade e configuração.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Operações de Arquivo
 
 Crie diretórios, arquivos e links simbólicos nos hosts.
@@ -202,7 +217,7 @@ ansible all -m apt -a "upgrade=dist" --become
 ansible all -m apt -a "name=apache2 state=absent" --become
 ```
 
-### Gerenciamento de Serviço
+### Gerenciamento de Serviços
 
 Inicie, pare e gerencie serviços do sistema.
 
@@ -253,13 +268,28 @@ Execute playbooks com várias opções e configurações.
 ansible-playbook site.yml
 # Executar com inventário específico
 ansible-playbook -i inventory.yml site.yml
-# Execução de teste (modo check)
+# Simulação (modo de verificação)
 ansible-playbook site.yml --check
 # Executar em hosts específicos
 ansible-playbook site.yml --limit webservers
 # Executar com variáveis extras
 ansible-playbook site.yml --extra-vars "nginx_port=8080"
 ```
+
+<BaseQuiz id="ansible-playbook-1" correct="B">
+  <template #question>
+    O que `ansible-playbook site.yml --check` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Executa o playbook duas vezes</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Executa o playbook em modo de verificação (simulação) sem fazer alterações</BaseQuizOption>
+  <BaseQuizOption value="C">Verifica a sintaxe do playbook</BaseQuizOption>
+  <BaseQuizOption value="D">Executa apenas a primeira tarefa</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O flag `--check` executa o Ansible em modo de verificação (simulação), que simula o que aconteceria sem realmente fazer alterações. Isso é útil para testar playbooks antes de aplicá-los.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Opções de Tarefa e Condicionais
 
@@ -294,7 +324,7 @@ Defina handlers que são executados quando notificados por tarefas.
 
 ```yaml
 tasks:
-  - name: Atualizar config nginx
+  - name: Atualizar configuração nginx
     template:
       src: nginx.conf.j2
       dest: /etc/nginx/nginx.conf
@@ -306,6 +336,21 @@ handlers:
       name: nginx
       state: restarted
 ```
+
+<BaseQuiz id="ansible-handlers-1" correct="C">
+  <template #question>
+    Quando os handlers do Ansible são executados?
+  </template>
+  
+  <BaseQuizOption value="A">Imediatamente após serem definidos</BaseQuizOption>
+  <BaseQuizOption value="B">No início do playbook</BaseQuizOption>
+  <BaseQuizOption value="C" correct>No final do playbook, apenas se notificados por uma tarefa</BaseQuizOption>
+  <BaseQuizOption value="D">Toda vez que uma tarefa é executada</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Handlers são executados no final do playbook, e somente se forem notificados por uma tarefa que alterou algo. Isso garante que os serviços sejam reiniciados apenas quando os arquivos de configuração são realmente modificados.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Variáveis e Templates
 
@@ -349,7 +394,7 @@ server {
 
 ```yaml
 # Usando o módulo template
-- name: Implantar config nginx
+- name: Implantar configuração nginx
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/sites-available/default
@@ -408,7 +453,7 @@ ansible-galaxy init webserver
 ```
 
 ```
-# Estrutura de diretório da Função
+# Estrutura de diretório da função
 webserver/
 ├── tasks/
 │   └── main.yml
@@ -495,11 +540,11 @@ Depure e solucione problemas na execução do playbook.
     var: my_variable
 - name: Mostrar mensagem personalizada
   debug:
-    msg: 'Servidor {{ inventory_hostname }} tem IP {{ ansible_default_ipv4.address }}'
+    msg: 'O host {{ inventory_hostname }} executa IP {{ ansible_default_ipv4.address }}'
 ```
 
 ```bash
-# Execução verbosa
+# Execução detalhada (verbose)
 ansible-playbook site.yml -v
 ansible-playbook site.yml -vvv  # Verbosidade máxima
 ```
@@ -518,7 +563,7 @@ Lide com erros e falhas de forma graciosa.
     - command: /bin/false
   rescue:
     - debug:
-        msg: 'Tarefa falhou, executando resgate'
+        msg: 'A tarefa falhou, executando resgate'
   always:
     - debug:
         msg: 'Isso sempre será executado'
@@ -537,7 +582,7 @@ ansible-playbook site.yml --list-tasks
 ansible-playbook site.yml --list-hosts
 # Executar passo a passo
 ansible-playbook site.yml --step
-# Testar com modo check
+# Testar com modo de verificação
 ansible-playbook site.yml --check --diff
 ```
 
@@ -555,8 +600,8 @@ Otimize o desempenho e a execução do playbook.
       - nginx
       - mysql-server
 
-# Usar async para tarefas de longa execução
-- name: Tarefa de longa execução
+# Usar async para tarefas de longa duração
+- name: Tarefa de longa duração
   command: /usr/bin/long-task
   async: 300
   poll: 5
@@ -571,16 +616,16 @@ Proteja sua infraestrutura e operações Ansible.
 ```bash
 # Usar Ansible Vault para segredos
 ansible-vault create group_vars/all/vault.yml
-# Desativar verificação de chave de host com cautela
+# Desabilitar verificação de chave de host com cautela
 host_key_checking = False
 # Usar become apenas quando necessário
 become: yes
 become_user: root
-# Limitar escopo do playbook
+# Limitar o escopo do playbook
 ansible-playbook site.yml --limit production
 ```
 
-### Organização de Código
+### Organização do Código
 
 Estruture seus projetos Ansible de forma eficaz.
 
@@ -599,11 +644,11 @@ ansible-project/
 
 ```yaml
 # Usar nomes significativos e documentação
-- name: Nome de tarefa descritivo
+- name: Nome descritivo da tarefa
   # Adicionar comentários para lógica complexa
 ```
 
-### Controle de Versão e Teste
+### Controle de Versão e Testes
 
 Gerencie o código Ansible com controle de versão adequado.
 
@@ -648,12 +693,12 @@ Aprimore a saída e o registro com plugins de callback.
 stdout_callback = yaml
 callbacks_enabled = profile_tasks, timer
 
-# Configuração de callback personalizado
+# Configuração de callback personalizada
 [callback_profile_tasks]
 task_output_limit = 20
 ```
 
-### Filtros e Plugins de Lookup
+### Filtros e Lookups
 
 Use filtros Jinja2 e plugins de lookup para manipulação de dados.
 

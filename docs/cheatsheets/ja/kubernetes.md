@@ -1,6 +1,6 @@
 ---
-title: 'Kubernetes チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Kubernetes を習得しましょう。'
+title: 'Kubernetes チートシート | LabEx'
+description: 'この包括的なチートシートで Kubernetes オーケストレーションを学習。kubectl コマンド、Pod、デプロイメント、サービス、Ingress、クラウドネイティブコンテナ管理のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Kubernetes チートシート
 <a target="_blank" href="https://labex.io/ja/learn/kubernetes">ハンズオンラボで Kubernetes を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-LabEx では、ハンズオンラボと実世界のシナリオを通じて Kubernetes コンテナオーケストレーションを学習できます。必須の kubectl コマンド、Pod 管理、デプロイメント、サービス、ネットワーキング、クラスター管理を網羅した包括的な Kubernetes コースを提供しています。コンテナオーケストレーションとクラウドネイティブアプリケーションのデプロイを習得しましょう。
+ハンズオンラボと実世界のシナリオを通じて、Kubernetes コンテナオーケストレーションを学びましょう。LabEx は、必須の kubectl コマンド、Pod 管理、デプロイメント、サービス、ネットワーキング、クラスター管理を網羅した包括的な Kubernetes コースを提供します。コンテナオーケストレーションとクラウドネイティブアプリケーションのデプロイを習得します。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -26,7 +26,7 @@ LabEx では、ハンズオンラボと実世界のシナリオを通じて Kube
 Kubernetes コマンドラインツールをインストールします。
 
 ```bash
-# macOS (Homebrewを使用)
+# macOS (Homebrew使用)
 brew install kubectl
 # Linux (公式バイナリ)
 curl -LO "https://dl.k8s.io/release/$(curl -L -s
@@ -34,7 +34,7 @@ https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kube
 ctl"
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
-# Windows (Chocolateyを使用)
+# Windows (Chocolatey使用)
 choco install kubernetes-cli
 ```
 
@@ -67,12 +67,12 @@ kubectl config set-context --current --namespace=my-
 namespace
 ```
 
-### Minikube の設定
+### Minikube のセットアップ
 
-開発用のローカル Kubernetes クラスターを素早くセットアップします。
+開発用のローカル Kubernetes クラスターを素早く立ち上げます。
 
 ```bash
-# Minikubeを起動
+# Minikubeを開始
 minikube start
 # ステータスを確認
 minikube status
@@ -106,7 +106,7 @@ kubectl api-versions
 ```bash
 # すべてのノードを一覧表示
 kubectl get nodes
-# 詳細なノード情報を表示
+# 詳細なノード情報
 kubectl get nodes -o wide
 # 特定のノードを記述
 kubectl describe node
@@ -116,7 +116,7 @@ kubectl top nodes
 
 ### ネームスペース操作：`kubectl get namespaces`
 
-ネームスペースを使用してリソースを整理し分離します。
+ネームスペースを使用してクラスターリソースを整理および分離します。
 
 ```bash
 # すべてのネームスペースを一覧表示
@@ -130,6 +130,21 @@ namespace
 # 特定のネームスペースのリソースを取得
 kubectl get all -n my-namespace
 ```
+
+<BaseQuiz id="kubernetes-namespace-1" correct="B">
+  <template #question>
+    Kubernetes ネームスペースの主な目的は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">クラスターパフォーマンスを向上させるため</BaseQuizOption>
+  <BaseQuizOption value="B" correct>クラスター内のリソースを整理および分離するため</BaseQuizOption>
+  <BaseQuizOption value="C">クラスター同士を接続するため</BaseQuizOption>
+  <BaseQuizOption value="D">コンテナイメージを保存するため</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ネームスペースは、複数のユーザーまたはチーム間でクラスターリソースを分割する方法を提供します。リソースの整理に役立ち、名前のスコープを提供することで、異なるネームスペースで同じ名前のリソースを持つことができます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Pod の管理
 
@@ -155,15 +170,30 @@ kubectl create job hello --image=busybox:1.28 -- echo
 実行中の Pod を一覧表示し、検査します。
 
 ```bash
-# デフォルトネームスペースのすべてのPodを一覧表示
+# デフォルトネームスペース内のすべてのPodを一覧表示
 kubectl get pods
-# より詳細な情報でPodを一覧表示
+# より詳細なPodを一覧表示
 kubectl get pods -o wide
 # すべてのネームスペースのPodを一覧表示
 kubectl get pods --all-namespaces
 # Podの状態変更を監視
 kubectl get pods --watch
 ```
+
+<BaseQuiz id="kubernetes-pods-1" correct="C">
+  <template #question>
+    `kubectl get pods --all-namespaces`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">実行中の Pod のみを一覧表示する</BaseQuizOption>
+  <BaseQuizOption value="B">デフォルトネームスペース内の Pod を一覧表示する</BaseQuizOption>
+  <BaseQuizOption value="C" correct>クラスター内のすべてのネームスペースの Pod を一覧表示する</BaseQuizOption>
+  <BaseQuizOption value="D">すべての Pod を削除する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `--all-namespaces` フラグ（または `-A`）は、デフォルトネームスペースだけでなく、すべてのネームスペースの Pod を表示します。これはクラスター全体の可視化に役立ちます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Pod の詳細：`kubectl describe pod`
 
@@ -204,7 +234,7 @@ kubectl delete pod  --grace-period=0 --force
 ```bash
 # デプロイメントを作成
 kubectl create deployment nginx --image=nginx
-# レプリカを指定してデプロイメントを作成
+# レプリカ数を持つデプロイメントを作成
 kubectl create deployment webapp --image=nginx --
 replicas=3
 # YAMLファイルから作成
@@ -214,9 +244,24 @@ kubectl expose deployment nginx --port=80 --
 type=LoadBalancer
 ```
 
+<BaseQuiz id="kubernetes-deployment-1" correct="A">
+  <template #question>
+    Kubernetes デプロイメントの主な目的は何ですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>指定された数の Pod レプリカを管理および維持すること</BaseQuizOption>
+  <BaseQuizOption value="B">Pod を外部トラフィックに公開すること</BaseQuizOption>
+  <BaseQuizOption value="C">設定データを保存すること</BaseQuizOption>
+  <BaseQuizOption value="D">クラスターノードを管理すること</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    デプロイメントは ReplicaSet を管理し、指定された数の Pod レプリカが実行されていることを保証します。宣言的な更新、ローリングアップデート、ロールバック機能を提供します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### デプロイメントの管理：`kubectl get deployments`
 
-デプロイメントの状態と設定を表示および制御します。
+デプロイメントのステータスと設定を表示および制御します。
 
 ```bash
 # デプロイメントを一覧表示
@@ -231,7 +276,7 @@ kubectl delete deployment
 
 ### スケーリング：`kubectl scale`
 
-実行中のレプリカの数を調整します。
+実行中のレプリカ数を調整します。
 
 ```bash
 # デプロイメントをスケーリング
@@ -243,12 +288,27 @@ kubectl autoscale deployment nginx --min=2 --max=10 --
 cpu-percent=80
 ```
 
+<BaseQuiz id="kubernetes-scale-1" correct="B">
+  <template #question>
+    `kubectl scale deployment nginx --replicas=5`は何をしますか？
+  </template>
+  
+  <BaseQuizOption value="A">5 つの新しいデプロイメントを作成する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>nginx デプロイメントを 5 つの Pod レプリカでスケーリングする</BaseQuizOption>
+  <BaseQuizOption value="C">デプロイメントから 5 つの Pod を削除する</BaseQuizOption>
+  <BaseQuizOption value="D">デプロイメントイメージを更新する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `scale` コマンドはデプロイメントのレプリカ数を調整します。このコマンドは、nginx デプロイメントが正確に 5 つの Pod レプリカを実行するように保証し、必要に応じて Pod を作成または削除します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ローリングアップデート：`kubectl rollout`
 
 デプロイメントの更新とロールバックを管理します。
 
 ```bash
-# デプロイメントのロールアウト状況を確認
+# デプロイメントのロールアウトステータスを確認
 kubectl rollout status deployment/nginx
 # ロールアウト履歴を表示
 kubectl rollout history deployment/nginx
@@ -262,7 +322,7 @@ kubectl rollout undo deployment/nginx --to-revision=2
 
 ### サービスの公開：`kubectl expose`
 
-ネットワークサービスを介してアプリケーションにアクセスできるようにします。
+ネットワークサービスを介してアプリケーションへのアクセスを可能にします。
 
 ```bash
 # デプロイメントをClusterIPサービスとして公開
@@ -277,6 +337,21 @@ type=LoadBalancer
 kubectl apply -f service.yaml
 ```
 
+<BaseQuiz id="kubernetes-service-1" correct="A">
+  <template #question>
+    `kubectl expose`を使用した場合のデフォルトのサービスタイプは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>
+  <BaseQuizOption value="B">NodePort</BaseQuizOption>
+  <BaseQuizOption value="C">LoadBalancer</BaseQuizOption>
+  <BaseQuizOption value="D">ExternalName</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    ClusterIP がデフォルトのサービスタイプです。これはサービスをクラスター内部 IP で公開し、クラスター内からのみアクセス可能にします。NodePort および LoadBalancer タイプは外部アクセスを提供します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### サービスディスカバリ：`kubectl get services`
 
 クラスター内のサービスを一覧表示し、検査します。
@@ -284,17 +359,17 @@ kubectl apply -f service.yaml
 ```bash
 # すべてのサービスを一覧表示
 kubectl get services
-# より詳細情報でサービスを一覧表示
+# より詳細なサービスを一覧表示
 kubectl get svc -o wide
 # 特定のサービスを記述
 kubectl describe service
-# サービスのエンドポイントを取得
+# サービスのENDPOINTを取得
 kubectl get endpoints
 ```
 
 ### ポートフォワーディング：`kubectl port-forward`
 
-テストやデバッグのためにアプリケーションにローカルからアクセスします。
+テストおよびデバッグのためにローカルマシンからアプリケーションにアクセスします。
 
 ```bash
 # Podポートをローカルマシンにフォワード
@@ -307,7 +382,7 @@ kubectl port-forward deployment/ 8080:80
 kubectl port-forward pod/ 8080:80 8443:443
 ```
 
-### Ingress 管理
+### Ingress の管理
 
 HTTP/HTTPSルートを介したサービスへの外部アクセスを管理します。
 
@@ -320,9 +395,9 @@ kubectl describe ingress
 kubectl apply -f ingress.yaml
 ```
 
-## ConfigMaps と Secrets
+## ConfigMap と Secret
 
-### ConfigMaps: `kubectl create configmap`
+### ConfigMap: `kubectl create configmap`
 
 機密性のない設定データをキーと値のペアで保存します。
 
@@ -353,7 +428,7 @@ kubectl edit configmap app-config
 kubectl delete configmap app-config
 ```
 
-### Secrets: `kubectl create secret`
+### Secret: `kubectl create secret`
 
 パスワードや API キーなどの機密情報を保存および管理します。
 
@@ -371,16 +446,16 @@ docker-server=myregistry.com --docker-username=user -
 -docker-password=pass
 ```
 
-### シークレット管理
+### Secret の管理
 
 シークレットを安全に表示および管理します。
 
 ```bash
 # シークレットを一覧表示
 kubectl get secrets
-# シークレットを記述 (値は非表示)
+# シークレットを記述（値は隠されている）
 kubectl describe secret db-secret
-# シークレット値をデコード
+# シークレットの値をデコード
 kubectl get secret db-secret -o
 jsonpath='{.data.password}' | base64 -d
 # シークレットを削除
@@ -449,7 +524,7 @@ kubectl get pod  -o yaml | grep -A10 "volumes:"
 
 ### ログとイベント：`kubectl logs` / `kubectl get events`
 
-アプリケーションログとクラスターイベントを検査してデバッグします。
+デバッグのためにアプリケーションログとクラスターイベントを調べます。
 
 ```bash
 # Podのログを表示
@@ -467,7 +542,7 @@ by=.metadata.creationTimestamp
 
 ### リソースの検査：`kubectl describe`
 
-あらゆる Kubernetes リソースに関する詳細情報を取得します。
+任意の Kubernetes リソースに関する詳細情報を取得します。
 
 ```bash
 # Podを記述
@@ -480,7 +555,7 @@ kubectl describe service
 kubectl describe node
 ```
 
-### リソース使用量：`kubectl top`
+### リソース使用率：`kubectl top`
 
 クラスター全体の Pod とノードのリソース消費量を監視します。
 
@@ -525,22 +600,21 @@ kubectl apply -f deployment.yaml -f service.yaml
 kubectl apply -f ./k8s-configs/
 # URLから適用
 kubectl apply -f https://example.com/manifest.yaml
-# 適用される内容を表示 (ドライラン)
+# 適用内容を表示（ドライラン）
 kubectl apply -f deployment.yaml --dry-run=client -o yaml
 ```
 
 ### リソース操作：`kubectl get` / `kubectl delete`
 
-Kubernetes リソースを一覧表示、検査、削除します。
+Kubernetes リソースを一覧表示、検査、および削除します。
 
 ```bash
-# ネームスペース内のすべてリソースを取得
+# ネームスペース内のすべてのリソースを取得
 kubectl get all
 # カスタム列でリソースを取得
 kubectl get pods -o custom-
-columns=NAME:.metadata.name,STATUS:.status.phase,N
-ODE:.spec.nodeName
-# リソースをJSON/YAMLで取得
+columns=NAME:.metadata.name,STATUS:.status.phase
+# リソースをJSON/YAMLとして取得
 kubectl get deployment nginx -o yaml
 kubectl get pod  -o json
 # リソースを削除
@@ -601,9 +675,9 @@ kubectl taint nodes  key=value:NoSchedule
 kubectl taint nodes  key:NoSchedule-
 ```
 
-### ラベルとアノテーション：`kubectl label` / `kubectl annotate`
+### ラベル付けとアノテーション：`kubectl label` / `kubectl annotate`
 
-整理と選択のためにリソースにメタデータを追加します。
+リソースにメタデータを追加して整理し、選択できるようにします。
 
 ```bash
 # リソースにラベルを追加
@@ -623,13 +697,13 @@ kubectl get pods -l 'environment in (production,staging)'
 クラスターAPI へのアクセスと認証の管理を行います。
 
 ```bash
-# Kubernetes APIへのプロキシを起動
+# Kubernetes APIへのプロキシを開始
 kubectl proxy --port=8080
 # ユーザーがアクションを実行できるか確認
 kubectl auth can-i create pods
 kubectl auth can-i '*' '*' --
 as=system:serviceaccount:default:my-sa
-# ユーザーを偽装
+# ユーザーをなりすまし
 kubectl get pods --as=system:serviceaccount:default:my-
 sa
 # ユーザー認証情報を表示
@@ -638,7 +712,7 @@ kubectl config view --raw -o jsonpath='{.users[*].name}'
 
 ### ユーティリティコマンド
 
-Kubernetes 操作に役立つ追加コマンド。
+Kubernetes 操作に役立つ追加のコマンド。
 
 ```bash
 # 条件を待機
@@ -646,7 +720,7 @@ kubectl wait --for=condition=Ready pod/ --timeout=300s
 # テスト用に一時的なPodを実行
 kubectl run tmp-pod --rm -i --tty --image=busybox --
 /bin/sh
-# リソースYAMLを生成 (作成せずに)
+# 作成せずにリソースYAMLを生成
 kubectl create deployment nginx --image=nginx --dry-
 run=client -o yaml
 # 作成タイムスタンプでリソースをソート
@@ -657,7 +731,7 @@ kubectl get pods --sort-by=.metadata.creationTimestamp
 
 ### リソースメトリック：`kubectl top`
 
-クラスター全体のリアルタイムのリソース使用量を表示します。
+クラスター全体のリアルタイムのリソース使用状況を表示します。
 
 ```bash
 # ノードのリソース使用量
@@ -677,7 +751,7 @@ kubectl top pods --previous
 アプリケーションとクラスターのヘルスを監視します。
 
 ```bash
-# デプロイメントのロールアウト状況を確認
+# デプロイメントのロールアウトステータスを確認
 kubectl rollout status deployment/
 # Podの準備完了状態を確認
 kubectl get pods --field-selector=status.phase=Running
@@ -697,7 +771,7 @@ kubectl get componentstatuses
 kubectl describe node  | grep -A5 "Allocated resources:"
 # Pod Disruption Budgetを確認
 kubectl get pdb
-# Horizontal Pod Autoscalerを表示
+# Horizontal Pod Autoscalerを確認
 kubectl get hpa
 # ネットワークポリシーを確認
 kubectl get networkpolicy
@@ -708,14 +782,152 @@ kubectl get networkpolicy
 クラスターのバックアップと災害復旧のための必須コマンド。
 
 ```bash
-# ネームスペース内のすべてリソースをYAMLでバックアップ
+# ネームスペース内のすべてのリソースをバックアップ
 kubectl get all -o yaml -n  > backup.yaml
 # 特定のリソースをエクスポート
 kubectl get deployment  -o yaml > deployment-
 backup.yaml
-# バックアップ用のすべてリソースを一覧表示
+# バックアップ用のすべてのリソース名を一覧表示
 kubectl api-resources --verbs=list --namespaced -o name
 | xargs -n 1 kubectl get --show-kind --ignore-not-found -n
+```
+
+## 設定とコンテキスト管理
+
+### コンテキスト管理
+
+異なる Kubernetes クラスターとユーザーを切り替えます。
+
+```bash
+# 現在のコンテキストを表示
+kubectl config current-context
+# すべてのコンテキストを一覧表示
+kubectl config get-contexts
+# コンテキストを切り替え
+kubectl config use-context
+# 新しいコンテキストを作成
+kubectl config set-context dev-
+context --cluster=dev-cluster --
+user=dev-user --
+namespace=development
+```
+
+### Kubeconfig 管理
+
+複数のクラスターで kubectl が動作するように設定します。
+
+```bash
+# マージされたkubeconfigを表示
+kubectl config view
+# クラスター情報を設定
+kubectl config set-cluster  --
+server=https://cluster-api-url --
+certificate-
+authority=/path/to/ca.crt
+# ユーザー認証情報を設定
+kubectl config set-credentials  --
+client-
+certificate=/path/to/client.crt --
+client-key=/path/to/client.key
+# kubeconfigファイルをマージ
+KUBECONFIG=~/.kube/config:~/.
+kube/config2 kubectl config
+view --merge --flatten >
+~/.kube/merged-config
+```
+
+### デフォルト設定
+
+kubectl 操作のデフォルトのネームスペースと環境設定を行います。
+
+```bash
+# 現在のコンテキストのデフォルトネームスペースを設定
+kubectl config set-context --
+current --namespace=
+# デフォルトの出力形式を設定
+kubectl config set-context --
+current --output=yaml
+# 設定の詳細を表示
+kubectl config view -o
+jsonpath='{.users[*].name}'
+kubectl config view --raw
+```
+
+## ベストプラクティスとヒント
+
+### コマンド効率化
+
+日々の操作を高速化するためのショートカットとエイリアス。
+
+```bash
+# 一般的なkubectlエイリアス
+alias k=kubectl
+alias kgp='kubectl get pods'
+alias kgs='kubectl get services'
+alias kgd='kubectl get deployments'
+# リソースの短縮名を使用
+kubectl get po        # pods
+kubectl get svc       # services
+kubectl get deploy    # deployments
+kubectl get ns        # namespaces
+kubectl get no        # nodes
+# 変更を監視
+kubectl get pods --watch
+kubectl get events --watch
+```
+
+### リソース選択
+
+リソースを選択しフィルタリングするための効率的な方法。
+
+```bash
+# ラベルで選択
+kubectl get pods -l app=nginx
+kubectl get pods -l 'environment in (prod,staging)'
+kubectl get pods -l app=nginx,version!=v1.0
+# フィールドで選択
+kubectl get pods --field-selector=status.phase=Running
+kubectl get pods --field-
+selector=spec.nodeName=worker-node-1
+# セレクターの組み合わせ
+kubectl get pods -l app=nginx --field-
+selector=status.phase=Running
+```
+
+### 出力形式
+
+読みやすさや処理のためにコマンド出力をカスタマイズします。
+
+```bash
+# 異なる出力形式
+kubectl get pods -o wide
+kubectl get pods -o yaml
+kubectl get pods -o json
+kubectl get pods -o name
+# カスタム列
+kubectl get pods -o custom-
+columns=NAME:.metadata.name,STATUS:.status.phase,N
+ODE:.spec.nodeName
+# JSONPathクエリ
+kubectl get pods -o jsonpath='{.items[*].metadata.name}'
+kubectl get pods -o
+jsonpath='{.items[*].spec.containers[*].image}'
+```
+
+### 安全性と検証
+
+安全な操作と設定の検証のためのコマンド。
+
+```bash
+# 変更をプレビューするためのドライラン
+kubectl apply -f deployment.yaml --dry-run=client -o yaml
+# 設定の検証
+kubectl apply -f deployment.yaml --validate=true --dry-
+run=client
+# 適用前の差分を表示
+kubectl diff -f deployment.yaml
+# グレース期間を指定して強制削除
+kubectl delete pod  --grace-period=0 --force
 ```
 
 ## 関連リンク

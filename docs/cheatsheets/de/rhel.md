@@ -1,6 +1,6 @@
 ---
-title: 'Red Hat Enterprise Linux Spickzettel'
-description: 'Lernen Sie Red Hat Enterprise Linux mit unserem umfassenden Spickzettel, der wesentliche Befehle, Konzepte und Best Practices abdeckt.'
+title: 'Red Hat Enterprise Linux Spickzettel | LabEx'
+description: 'Lernen Sie die Administration von Red Hat Enterprise Linux (RHEL) mit diesem umfassenden Spickzettel. Schnelle Referenz für RHEL-Befehle, Systemverwaltung, SELinux, Paketverwaltung und Enterprise-Linux-Administration.'
 pdfUrl: '/cheatsheets/pdf/red-hat-linux-cheatsheet.pdf'
 ---
 
@@ -53,7 +53,7 @@ ps aux
 
 ### Speicherinformationen: `free` / `cat /proc/meminfo`
 
-Zeigt die Speichernutzung und Verfügbarkeit an.
+Zeigt die Speichernutzung und -verfügbarkeit an.
 
 ```bash
 # Speichernutzung im menschenlesbaren Format anzeigen
@@ -77,18 +77,18 @@ du -sh /var/log/*
 du -h --max-depth=1 / | sort -hr
 ```
 
-### Systemlaufzeit: `uptime` / `who`
+### System-Uptime: `uptime` / `who`
 
-Überprüft die Systemlaufzeit und die angemeldeten Benutzer.
+Überprüft die System-Uptime und die angemeldeten Benutzer.
 
 ```bash
-# Systemlaufzeit und Last anzeigen
+# System-Uptime und Last anzeigen
 uptime
 # Angemeldete Benutzer anzeigen
 who
 # Aktuellen Benutzer anzeigen
 whoami
-# Letzte Anmeldungen anzeigen
+# Letzte Logins anzeigen
 last
 ```
 
@@ -124,6 +124,21 @@ sudo rpm -i package.rpm
 sudo dnf install --enablerepo=repo-
 name package
 ```
+
+<BaseQuiz id="rhel-package-1" correct="A">
+  <template #question>
+    Was ist der Unterschied zwischen `dnf` und `yum` in RHEL?
+  </template>
+  
+  <BaseQuizOption value="A" correct>dnf ist der neuere Paketmanager für RHEL 8+, yum wird in RHEL 7 verwendet</BaseQuizOption>
+  <BaseQuizOption value="B">dnf ist für Entwicklungspakete, yum ist für Produktion</BaseQuizOption>
+  <BaseQuizOption value="C">Es gibt keinen Unterschied, sie sind dasselbe</BaseQuizOption>
+  <BaseQuizOption value="D">dnf ist veraltet, yum sollte immer verwendet werden</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    DNF (Dandified YUM) ist die nächste Generation von YUM und der Standard-Paketmanager in RHEL 8 und neuer. YUM wird weiterhin in RHEL 7 verwendet. DNF bietet bessere Leistung und Abhängigkeitsauflösung.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Paketaktualisierungen: `dnf update` / `yum update`
 
@@ -191,6 +206,21 @@ rm filename.txt
 rm -rf directory/
 ```
 
+<BaseQuiz id="rhel-file-ops-1" correct="B">
+  <template #question>
+    Was bewirkt `cp -r`?
+  </template>
+  
+  <BaseQuizOption value="A">Kopiert nur Dateien</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Kopiert Verzeichnisse rekursiv, einschließlich aller Unterverzeichnisse und Dateien</BaseQuizOption>
+  <BaseQuizOption value="C">Entfernt Dateien</BaseQuizOption>
+  <BaseQuizOption value="D">Benennt Dateien um</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-r` (rekursiv) ermöglicht es `cp`, Verzeichnisse und deren Inhalte zu kopieren, einschließlich aller Unterverzeichnisse und Dateien darin. Ohne `-r` kann `cp` keine Verzeichnisse kopieren.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Dateiinhalt: `cat` / `less` / `head` / `tail`
 
 Zeigt Dateiinhalte an und untersucht sie.
@@ -208,6 +238,21 @@ tail filename.txt
 tail -f /var/log/messages
 ```
 
+<BaseQuiz id="rhel-tail-1" correct="C">
+  <template #question>
+    Was bewirkt `tail -f /var/log/messages`?
+  </template>
+  
+  <BaseQuizOption value="A">Zeigt nur die ersten 10 Zeilen an</BaseQuizOption>
+  <BaseQuizOption value="B">Löscht die Logdatei</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Zeigt die letzten 10 Zeilen an und verfolgt neue Einträge in Echtzeit</BaseQuizOption>
+  <BaseQuizOption value="D">Archiviert die Logdatei</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Das Flag `-f` bewirkt, dass `tail` der Datei folgt und neue Logeinträge anzeigt, sobald sie geschrieben werden. Dies ist für die Echtzeit-Protokollüberwachung und Fehlerbehebung unerlässlich.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Dateiberechtigungen: `chmod` / `chown` / `chgrp`
 
 Verwaltet Dateiberechtigungen und Eigentümerschaft.
@@ -217,7 +262,7 @@ Verwaltet Dateiberechtigungen und Eigentümerschaft.
 chmod 755 script.sh
 # Dateieigentümerschaft ändern
 sudo chown user:group filename.txt
-# Gruppeneigentümerschaft ändern
+# Gruppen-Eigentümerschaft ändern
 sudo chgrp newgroup filename.txt
 # Rekursive Berechtigungsänderung
 sudo chmod -R 644 /path/to/directory/
@@ -228,9 +273,9 @@ sudo chmod -R 644 /path/to/directory/
 Sucht nach Dateien und Inhalten in Dateien.
 
 ```bash
-# Dateien nach Namen finden
+# Dateien nach Namen suchen
 find /path -name "*.txt"
-# Dateien nach Größe finden
+# Dateien nach Größe suchen
 find /path -size +100M
 # Text in Dateien suchen
 grep "pattern" filename.txt
@@ -238,7 +283,7 @@ grep "pattern" filename.txt
 grep -r "pattern" /path/to/directory/
 ```
 
-### Archiv & Komprimierung: `tar` / `gzip`
+### Archivierung & Komprimierung: `tar` / `gzip`
 
 Erstellt und extrahiert komprimierte Archive.
 
@@ -260,11 +305,11 @@ unzip archive.zip
 Verwaltet Systemdienste mit systemd.
 
 ```bash
-# Dienst starten
+# Einen Dienst starten
 sudo systemctl start service-name
-# Dienst stoppen
+# Einen Dienst stoppen
 sudo systemctl stop service-name
-# Dienst neu starten
+# Einen Dienst neu starten
 sudo systemctl restart service-name
 # Dienststatus prüfen
 systemctl status service-name
@@ -294,11 +339,11 @@ Zeigt Systemprotokolle mit journald an und analysiert sie.
 ```bash
 # Alle Protokolle anzeigen
 journalctl
-# Protokolle für spezifischen Dienst anzeigen
+# Protokolle für einen bestimmten Dienst anzeigen
 journalctl -u service-name
 # Protokolle in Echtzeit verfolgen
 journalctl -f
-# Protokolle vom letzten Boot anzeigen
+# Protokolle vom letzten Bootvorgang anzeigen
 journalctl -b
 # Protokolle nach Zeitbereich anzeigen
 journalctl --since "2024-01-01" --until "2024-01-31"
@@ -315,7 +360,7 @@ ps aux
 kill 1234
 # Prozess nach Namen beenden
 killall process-name
-# Prozess erzwingen
+# Prozess zwangsweise beenden
 kill -9 1234
 # Prozesshierarchie anzeigen
 pstree
@@ -388,7 +433,7 @@ Zeigt Netzwerkschnittstellen- und Konfigurationsdetails an.
 ip addr show
 # Routing-Tabelle anzeigen
 ip route show
-# Network Manager Verbindungen anzeigen
+# NetworkManager-Verbindungen anzeigen
 nmcli connection show
 # Gerätestatus anzeigen
 nmcli device status
@@ -450,7 +495,7 @@ Erstellt und verwaltet Festplattenpartitionen.
 ```bash
 # Festplattenpartitionen auflisten
 sudo fdisk -l
-# Interaktiver Partitionierer
+# Interaktiver Partitioneneditor
 sudo fdisk /dev/sda
 # Partitionstabelle erstellen
 sudo parted /dev/sda mklabel gpt
@@ -574,7 +619,7 @@ sudo systemctl enable dnf-automatic.timer
 iostat -x 1
 # Virtuelle Speicherstatistiken anzeigen
 vmstat 1
-# Netzwerksstatistiken anzeigen
+# Netzwerkstatistiken anzeigen
 ss -tuln
 # Festplatten-E/A anzeigen
 iotop

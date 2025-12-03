@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Nmap'
-description: 'Aprenda Nmap con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Nmap | LabEx'
+description: 'Aprenda escaneo de redes con Nmap usando esta hoja de trucos completa. Referencia rápida para escaneo de puertos, descubrimiento de redes, detección de vulnerabilidades, auditoría de seguridad y reconocimiento de red.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Nmap
 <a target="_blank" href="https://labex.io/es/learn/nmap">Aprende Nmap con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende el escaneo de redes con Nmap a través de laboratorios prácticos y escenarios del mundo real. LabEx proporciona cursos completos de Nmap que cubren el descubrimiento esencial de redes, el escaneo de puertos, la detección de servicios, la huella digital del sistema operativo y la evaluación de vulnerabilidades. Domina las técnicas de reconocimiento de redes y auditoría de seguridad.
+Aprende el escaneo de redes con Nmap a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Nmap que cubren descubrimiento de redes esencial, escaneo de puertos, detección de servicios, huella digital de SO y evaluación de vulnerabilidades. Domina las técnicas de reconocimiento de redes y auditoría de seguridad.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -73,10 +73,10 @@ man nmap
 
 ### Escaneo Simple de Host: `nmap [objetivo]`
 
-Escaneo básico de un host o dirección IP única.
+Escaneo básico de un host o dirección IP individual.
 
 ```bash
-# Escanear IP única
+# Escanear IP individual
 nmap 192.168.1.1
 # Escanear nombre de host
 nmap example.com
@@ -84,6 +84,21 @@ nmap example.com
 nmap 192.168.1.1 192.168.1.5
 192.168.1.10
 ```
+
+<BaseQuiz id="nmap-scan-1" correct="A">
+  <template #question>
+    ¿Qué hace un escaneo básico de `nmap 192.168.1.1` por defecto?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Escanea los 1000 puertos TCP más comunes</BaseQuizOption>
+  <BaseQuizOption value="B">Escanea los 65535 puertos</BaseQuizOption>
+  <BaseQuizOption value="C">Solo realiza descubrimiento de host</BaseQuizOption>
+  <BaseQuizOption value="D">Escanea solo el puerto 80</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Por defecto, Nmap escanea los 1000 puertos TCP más comunes. Para escanear todos los puertos, usa `-p-`, o especifica puertos concretos con `-p 80,443,22`.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Escaneo de Rango de Red
 
@@ -117,7 +132,7 @@ exclude.txt
 
 ### Escaneo Ping: `nmap -sn`
 
-El descubrimiento de hosts es una forma clave en que los analistas y pentesters usan Nmap. Su propósito es obtener una visión general de qué sistemas están en línea.
+El descubrimiento de hosts es una forma clave en que muchos analistas y pentesters usan Nmap. Su propósito es obtener una visión general de qué sistemas están en línea.
 
 ```bash
 # Solo escaneo ping (sin escaneo de puertos)
@@ -128,36 +143,67 @@ nmap -Pn 192.168.1.1
 nmap -PE 192.168.1.0/24
 ```
 
+<BaseQuiz id="nmap-ping-1" correct="A">
+  <template #question>
+    ¿Qué hace `nmap -sn`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Realiza solo descubrimiento de host, sin escaneo de puertos</BaseQuizOption>
+  <BaseQuizOption value="B">Escanea todos los puertos del objetivo</BaseQuizOption>
+  <BaseQuizOption value="C">Realiza un escaneo sigiloso</BaseQuizOption>
+  <BaseQuizOption value="D">Escanea solo puertos UDP</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El flag `-sn` le indica a Nmap que realice solo el descubrimiento de host (escaneo ping), sin escanear puertos. Esto es útil para identificar rápidamente qué hosts están en línea en una red.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Técnicas de Ping TCP
 
-Usar paquetes TCP para el descubrimiento de hosts.
+Usa paquetes TCP para el descubrimiento de hosts.
 
 ```bash
-# Ping SYN TCP al puerto 80
+# Ping TCP SYN al puerto 80
 nmap -PS80 192.168.1.0/24
-# Ping ACK TCP
+# Ping TCP ACK
 nmap -PA80 192.168.1.0/24
-# Ping SYN TCP a múltiples puertos
+# Ping TCP SYN a múltiples puertos
 nmap -PS22,80,443 192.168.1.0/24
 ```
 
 ### Ping UDP: `nmap -PU`
 
-Usar paquetes UDP para el descubrimiento de hosts.
+Usa paquetes UDP para el descubrimiento de hosts.
 
 ```bash
 # Ping UDP a puertos comunes
 nmap -PU53,67,68,137 192.168.1.0/24
-# Ping UDP a puertos predeterminados
+```
+
+<BaseQuiz id="nmap-udp-1" correct="B">
+  <template #question>
+    ¿Por qué podrías usar ping UDP en lugar de ping ICMP?
+  </template>
+  
+  <BaseQuizOption value="A">El ping UDP siempre es más rápido</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Algunas redes bloquean ICMP pero permiten paquetes UDP</BaseQuizOption>
+  <BaseQuizOption value="C">El ping UDP escanea puertos automáticamente</BaseQuizOption>
+  <BaseQuizOption value="D">El ping UDP solo funciona en redes locales</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El ping UDP puede ser útil cuando los firewalls bloquean ICMP. Muchas redes permiten paquetes UDP a puertos comunes (como el puerto 53 de DNS) incluso cuando ICMP está filtrado, haciendo que el ping UDP sea efectivo para el descubrimiento de hosts.
+  </BaseQuizAnswer>
+</BaseQuiz>
+# Ping UDP a puertos por defecto
 nmap -PU 192.168.1.0/24
 ```
 
 ### Ping ARP: `nmap -PR`
 
-Usar solicitudes ARP para el descubrimiento de redes locales.
+Usa solicitudes ARP para el descubrimiento de redes locales.
 
 ```bash
-# Ping ARP (predeterminado para redes locales)
+# Ping ARP (por defecto para redes locales)
 nmap -PR 192.168.1.0/24
 # Deshabilitar ping ARP
 nmap --disable-arp-ping 192.168.1.0/24
@@ -170,7 +216,7 @@ nmap --disable-arp-ping 192.168.1.0/24
 Este escaneo es más sigiloso, ya que Nmap envía un paquete RST, lo que evita múltiples solicitudes y acorta el tiempo de escaneo.
 
 ```bash
-# Escaneo predeterminado (requiere root)
+# Escaneo por defecto (requiere root)
 nmap -sS 192.168.1.1
 # Escaneo SYN a puertos específicos
 nmap -sS -p 80,443 192.168.1.1
@@ -180,7 +226,7 @@ nmap -sS -T4 192.168.1.1
 
 ### Escaneo Connect TCP: `nmap -sT`
 
-Nmap envía un paquete TCP a un puerto con el flag SYN establecido. Esto permite al usuario saber si los puertos están abiertos, cerrados o desconocidos.
+Nmap envía un paquete TCP al puerto con el flag SYN establecido. Esto permite al usuario saber si los puertos están abiertos, cerrados o desconocidos.
 
 ```bash
 # Escaneo connect TCP (no requiere root)
@@ -191,14 +237,14 @@ nmap -sT -T3 192.168.1.1
 
 ### Escaneo UDP: `nmap -sU`
 
-Escanear puertos UDP en busca de servicios.
+Escanea puertos UDP en busca de servicios.
 
 ```bash
 # Escaneo UDP (lento, requiere root)
 nmap -sU 192.168.1.1
-# Escaneo UDP a puertos comunes
+# Escaneo UDP de puertos comunes
 nmap -sU -p 53,67,68,161 192.168.1.1
-# Escaneo TCP/UDP combinado
+# Escaneo combinado TCP/UDP
 nmap -sS -sU -p T:80,443,U:53,161 192.168.1.1
 ```
 
@@ -247,10 +293,10 @@ nmap -p T:80,U:53 192.168.1.1
 
 ### Conjuntos de Puertos Comunes
 
-Escanear puertos de uso frecuente rápidamente.
+Escanear puertos usados frecuentemente rápidamente.
 
 ```bash
-# Top 1000 puertos (predeterminado)
+# Top 1000 puertos (por defecto)
 nmap 192.168.1.1
 # Top 100 puertos
 nmap --top-ports 100 192.168.1.1
@@ -258,7 +304,7 @@ nmap --top-ports 100 192.168.1.1
 nmap -F 192.168.1.1
 # Mostrar solo puertos abiertos
 nmap --open 192.168.1.1
-# Mostrar todos los estados de los puertos
+# Mostrar todos los estados de puerto
 nmap -v 192.168.1.1
 ```
 
@@ -266,7 +312,7 @@ nmap -v 192.168.1.1
 
 ### Detección de Servicio: `nmap -sV`
 
-Detectar qué servicios se están ejecutando e intentar identificar sus versiones de software y configuraciones.
+Detectar qué servicios se están ejecutando e intentar identificar su software, versiones y configuraciones.
 
 ```bash
 # Detección de versión básica
@@ -275,7 +321,7 @@ nmap -sV 192.168.1.1
 nmap -sV --version-intensity 9 192.168.1.1
 # Detección de versión ligera
 nmap -sV --version-intensity 0 192.168.1.1
-# Scripts predeterminados con detección de versión
+# Scripts por defecto con detección de versión
 nmap -sC -sV 192.168.1.1
 ```
 
@@ -292,7 +338,7 @@ nmap --script http-* 192.168.1.1
 
 ### Detección de Sistema Operativo: `nmap -O`
 
-Usar huellas digitales TCP/IP para adivinar el sistema operativo de los hosts objetivo.
+Usar huella digital TCP/IP para adivinar el sistema operativo de los hosts objetivo.
 
 ```bash
 # Detección de SO
@@ -318,7 +364,7 @@ nmap -sS -sV -O -sC 192.168.1.1
 
 ### Plantillas de Temporización: `nmap -T`
 
-Ajustar la velocidad del escaneo y el sigilo según el entorno objetivo y el riesgo de detección.
+Ajusta la velocidad del escaneo y el sigilo según tu entorno objetivo y el riesgo de detección.
 
 ```bash
 # Paranoico (muy lento, sigiloso)
@@ -327,7 +373,7 @@ nmap -T0 192.168.1.1
 nmap -T1 192.168.1.1
 # Cortés (más lento, menos ancho de banda)
 nmap -T2 192.168.1.1
-# Normal (predeterminado)
+# Normal (por defecto)
 nmap -T3 192.168.1.1
 # Agresivo (más rápido)
 nmap -T4 192.168.1.1
@@ -337,7 +383,7 @@ nmap -T5 192.168.1.1
 
 ### Opciones de Temporización Personalizadas
 
-Ajustar cómo Nmap maneja los tiempos de espera, reintentos y escaneo paralelo para optimizar el rendimiento.
+Ajusta cómo Nmap maneja los tiempos de espera, reintentos y escaneo paralelo para optimizar el rendimiento.
 
 ```bash
 # Establecer tasa mínima (paquetes por segundo)
@@ -357,7 +403,7 @@ nmap --host-timeout 5m 192.168.1.1
 Ejecutar scripts por categoría o nombre.
 
 ```bash
-# Scripts predeterminados
+# Scripts por defecto
 nmap --script default 192.168.1.1
 # Scripts de vulnerabilidad
 nmap --script vuln 192.168.1.1
@@ -465,7 +511,7 @@ nmap -oX - 192.168.1.1 | xsltproc --html -
 
 ### Fragmentación de Paquetes: `nmap -f`
 
-Evitar medidas de seguridad mediante la fragmentación de paquetes, IPs falsificadas y métodos de escaneo sigilosos.
+Evadir medidas de seguridad usando fragmentación de paquetes, IPs falsificadas y métodos de escaneo sigilosos.
 
 ```bash
 # Fragmentar paquetes
@@ -530,7 +576,7 @@ nmap --dns-servers 8.8.8.8,1.1.1.1 192.168.1.1
 
 ### Escaneo IPv6: `nmap -6`
 
-Usar estas banderas de Nmap para funcionalidad adicional como soporte IPv6.
+Usa estos flags de Nmap para funcionalidad adicional como soporte IPv6.
 
 ```bash
 # Escaneo IPv6
@@ -548,13 +594,13 @@ Controlar la interfaz de red y el enrutamiento.
 nmap -e eth0 192.168.1.1
 # Imprimir interfaz y rutas
 nmap --iflist
-# Traceroute
+# Trazado de ruta (Traceroute)
 nmap --traceroute 192.168.1.1
 ```
 
 ### Opciones Misceláneas
 
-Banderas útiles adicionales.
+Flags adicionales útiles.
 
 ```bash
 # Imprimir versión y salir
@@ -584,7 +630,7 @@ nmap -p- -A -T4 192.168.1.50
 
 ### Evaluación de Servidores Web
 
-Centrarse en servicios web y vulnerabilidades.
+Enfocarse en servicios web y vulnerabilidades.
 
 ```bash
 # Encontrar servidores web
@@ -643,11 +689,11 @@ nmap -sS -T4 --defeat-rst-ratelimit 192.168.1.0/24
 Controlar el uso de recursos para la estabilidad.
 
 ```bash
-# Limitar sondas paralelas
+# Limitar sondeos paralelos
 nmap --max-parallelism 10 192.168.1.0/24
-# Controlar retrasos del escaneo
+# Controlar retrasos de escaneo
 nmap --scan-delay 100ms 192.168.1.1
-# Establecer tiempo de espera del host
+# Tiempo de espera del host
 nmap --host-timeout 10m 192.168.1.0/24
 ```
 

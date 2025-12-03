@@ -1,11 +1,11 @@
 ---
-title: 'Folha de Cola scikit-learn'
-description: 'Aprenda scikit-learn com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola scikit-learn | LabEx'
+description: 'Aprenda machine learning com scikit-learn usando esta folha de cola abrangente. Referência rápida para algoritmos de ML, treinamento de modelos, pré-processamento, avaliação e fluxos de trabalho de aprendizado de máquina em Python.'
 pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Folha de Dicas scikit-learn
+scikit-learn Cheatsheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,7 +15,7 @@ Folha de Dicas scikit-learn
 <a target="_blank" href="https://labex.io/pt/learn/sklearn">Aprenda scikit-learn com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda aprendizado de máquina com scikit-learn através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de scikit-learn cobrindo pré-processamento de dados essencial, seleção de modelos, treinamento, avaliação e engenharia de recursos. Domine algoritmos de aprendizado de máquina e construa modelos preditivos com Python.
+Aprenda machine learning com scikit-learn através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de scikit-learn que cobrem pré-processamento de dados essencial, seleção de modelos, treinamento, avaliação e engenharia de recursos. Domine algoritmos de machine learning e construa modelos preditivos com Python.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -73,7 +73,7 @@ Carregue conjuntos de dados internos para prática.
 ```python
 from sklearn.datasets import load_iris, load_boston,
 make_classification
-# Carregar conjuntos de dados de exemplo
+# Carregar conjuntos de dados de amostra
 iris = load_iris()
 X, y = iris.data, iris.target
 # Gerar dados sintéticos
@@ -105,9 +105,24 @@ train_test_split(X_temp, y_temp,
 test_size=0.5, random_state=42)
 ```
 
+<BaseQuiz id="sklearn-split-1" correct="B">
+  <template #question>
+    Por que é importante dividir os dados em conjuntos de treinamento e teste?
+  </template>
+  
+  <BaseQuizOption value="A">Para reduzir o tamanho do conjunto de dados</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Para avaliar o desempenho do modelo em dados não vistos e prevenir o overfitting</BaseQuizOption>
+  <BaseQuizOption value="C">Para acelerar o treinamento do modelo</BaseQuizOption>
+  <BaseQuizOption value="D">Para balancear o conjunto de dados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Dividir os dados permite treinar o modelo em uma porção e testá-lo em outra. Isso ajuda a avaliar o quão bem o modelo generaliza para novos dados não vistos e previne o overfitting aos dados de treinamento.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Escalonamento de Recursos: `StandardScaler()` / `MinMaxScaler()`
 
-Normalize os recursos para escalas semelhantes.
+Normalizar recursos para escalas semelhantes.
 
 ```python
 # Padronização (média=0, dp=1)
@@ -126,9 +141,24 @@ X_test_minmax =
 minmax_scaler.transform(X_test)
 ```
 
+<BaseQuiz id="sklearn-scaling-1" correct="A">
+  <template #question>
+    Por que o escalonamento de recursos é importante em machine learning?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Garante que todos os recursos estejam em uma escala semelhante, impedindo que alguns recursos dominem</BaseQuizOption>
+  <BaseQuizOption value="B">Remove valores ausentes</BaseQuizOption>
+  <BaseQuizOption value="C">Aumenta o número de recursos</BaseQuizOption>
+  <BaseQuizOption value="D">Remove linhas duplicadas</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O escalonamento de recursos é importante porque algoritmos como SVM, KNN e redes neurais são sensíveis às escalas dos recursos. Sem escalonamento, recursos com intervalos maiores podem dominar o processo de aprendizado do modelo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Codificação: `LabelEncoder()` / `OneHotEncoder()`
 
-Converta variáveis categóricas para formato numérico.
+Converter variáveis categóricas em formato numérico.
 
 ```python
 # Codificação de rótulos para a variável alvo
@@ -137,8 +167,7 @@ LabelEncoder, OneHotEncoder
 label_encoder = LabelEncoder()
 y_encoded =
 label_encoder.fit_transform(y)
-# Codificação one-hot para recursos
-categóricos
+# Codificação one-hot para recursos categóricos
 from sklearn.preprocessing import
 OneHotEncoder
 encoder =
@@ -146,7 +175,7 @@ OneHotEncoder(sparse=False,
 drop='first')
 X_encoded =
 encoder.fit_transform(X_categorical)
-# Obter nomes de recursos
+# Obter nomes dos recursos
 feature_names =
 encoder.get_feature_names_out()
 ```
@@ -209,9 +238,24 @@ rf_clf = RandomForestClassifier(
 )
 ```
 
+<BaseQuiz id="sklearn-randomforest-1" correct="A">
+  <template #question>
+    O que `n_estimators` controla em RandomForestClassifier?
+  </template>
+  
+  <BaseQuizOption value="A" correct>O número de árvores de decisão na floresta</BaseQuizOption>
+  <BaseQuizOption value="B">A profundidade máxima de cada árvore</BaseQuizOption>
+  <BaseQuizOption value="C">O número de recursos a serem considerados</BaseQuizOption>
+  <BaseQuizOption value="D">A semente aleatória</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `n_estimators` especifica quantas árvores de decisão incluir na floresta aleatória. Mais árvores geralmente melhoram o desempenho, mas aumentam o tempo de computação. O padrão é geralmente 100.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Máquina de Vetores de Suporte: `SVC()`
 
-Classificador poderoso usando métodos de kernel.
+Classificador poderoso que usa métodos de kernel.
 
 ```python
 # Classificador SVM
@@ -362,7 +406,7 @@ cv_scores = cross_val_score(model, X, y, cv=5,
 scoring='accuracy')
 print(f"Precisão CV: {cv_scores.mean():.4f} (+/-
 {cv_scores.std() * 2:.4f})")
-# K-fold Estratificada para conjuntos de dados desbalanceados
+# K-fold Estratificado para conjuntos de dados desbalanceados
 skf = StratifiedKFold(n_splits=5, shuffle=True,
 random_state=42)
 cv_scores = cross_val_score(model, X, y, cv=skf,
@@ -373,7 +417,7 @@ scoring='f1_weighted')
 
 ### Agrupamento K-Means: `KMeans()`
 
-Particione os dados em k clusters.
+Particionar dados em k clusters.
 
 ```python
 # Agrupamento K-means
@@ -489,7 +533,7 @@ random_search.fit(X_train, y_train)
 
 ### Pipeline: `Pipeline()`
 
-Encadeie etapas de pré-processamento e modelagem.
+Encadeamento de etapas de pré-processamento e modelagem.
 
 ```python
 # Criar pipeline de pré-processamento e modelagem
@@ -500,7 +544,7 @@ pipeline = Pipeline([
 ])
 pipeline.fit(X_train, y_train)
 y_pred = pipeline.predict(X_test)
-# Pipeline com busca em grade
+# Busca em grade com pipeline
 param_grid = {
     'classifier__n_estimators': [100, 200],
     'classifier__max_depth': [3, 5, None]
@@ -545,7 +589,7 @@ voting_clf = VotingClassifier(
 )
 voting_clf.fit(X_train, y_train)
 y_pred = voting_clf.predict(X_test)
-# Classificador Bagging
+# Classificador de Bagging
 from sklearn.ensemble import BaggingClassifier
 bagging_clf = BaggingClassifier(DecisionTreeClassifier(),
 n_estimators=100, random_state=42)
@@ -572,7 +616,7 @@ train_sizes, train_scores, val_scores =
 learning_curve(gb_clf, X, y, cv=5)
 ```
 
-### Tratamento de Dados Desbalanceados: `SMOTE()` / Pesos de Classe
+### Lidar com Dados Desbalanceados: `SMOTE()` / Pesos de Classe
 
 Aborde o desequilíbrio de classes em conjuntos de dados.
 
@@ -602,19 +646,19 @@ Salvar e carregar modelos treinados.
 ```python
 # Salvar modelo
 import joblib
-joblib.dump(model, 'modelo_treinado.pkl')
+joblib.dump(model, 'trained_model.pkl')
 # Carregar modelo
-loaded_model = joblib.load('modelo_treinado.pkl')
+loaded_model = joblib.load('trained_model.pkl')
 y_pred = loaded_model.predict(X_test)
 # Salvar pipeline inteiro
-joblib.dump(pipeline, 'pipeline_pre_processamento.pkl')
+joblib.dump(pipeline, 'preprocessing_pipeline.pkl')
 loaded_pipeline =
-joblib.load('pipeline_pre_processamento.pkl')
+joblib.load('preprocessing_pipeline.pkl')
 # Alternativa usando pickle
 import pickle
-with open('modelo.pkl', 'wb') as f:
+with open('model.pkl', 'wb') as f:
     pickle.dump(model, f)
-with open('modelo.pkl', 'rb') as f:
+with open('model.pkl', 'rb') as f:
     loaded_model = pickle.load(f)
 ```
 
@@ -685,7 +729,7 @@ shap.summary_plot(shap_values, X_test)
 
 ### Comparação de Modelos
 
-Compare múltiplos algoritmos sistematicamente.
+Compare algoritmos múltiplos sistematicamente.
 
 ```python
 # Comparar múltiplos modelos
@@ -712,7 +756,7 @@ scoring='accuracy')
 
 ### Estado Aleatório e Reprodutibilidade
 
-Garanta resultados consistentes em execuções.
+Garanta resultados consistentes entre execuções.
 
 ```python
 # Definir estado aleatório para
@@ -733,7 +777,7 @@ shuffle=True, random_state=42)
 
 ### Memória e Desempenho
 
-Otimize para grandes conjuntos de dados e eficiência computacional.
+Otimizar para grandes conjuntos de dados e eficiência computacional.
 
 ```python
 # Usar n_jobs=-1 para
@@ -749,7 +793,7 @@ partial_fit quando disponível
 from sklearn.linear_model
 import SGDClassifier
 sgd = SGDClassifier()
-# Processar dados em pedaços
+# Processar dados em blocos
 for chunk in chunks:
     sgd.partial_fit(chunk_X,
 chunk_y)
@@ -778,9 +822,9 @@ feito dentro do loop CV
 
 ## Links Relevantes
 
-- <router-link to="/python">Folha de Dicas Python</router-link>
-- <router-link to="/pandas">Folha de Dicas Pandas</router-link>
-- <router-link to="/numpy">Folha de Dicas NumPy</router-link>
-- <router-link to="/matplotlib">Folha de Dicas Matplotlib</router-link>
-- <router-link to="/datascience">Folha de Dicas de Ciência de Dados</router-link>
-- <router-link to="/database">Folha de Dicas de Banco de Dados</router-link>
+- <router-link to="/python">Python Cheatsheet</router-link>
+- <router-link to="/pandas">Pandas Cheatsheet</router-link>
+- <router-link to="/numpy">NumPy Cheatsheet</router-link>
+- <router-link to="/matplotlib">Matplotlib Cheatsheet</router-link>
+- <router-link to="/datascience">Data Science Cheatsheet</router-link>
+- <router-link to="/database">Database Cheatsheet</router-link>

@@ -1,6 +1,6 @@
 ---
-title: 'HTML 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合速查表学习 HTML。'
+title: 'HTML 速查表 | LabEx'
+description: '使用这份全面的速查表学习 HTML5。前端开发人员的 HTML 标签、语义化元素、表单、可访问性和现代 Web 开发标准的快速参考。'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ HTML 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/html">通过实践实验室学习 HTML</a>
+<a target="_blank" href="https://labex.io/zh/learn/html">通过实践实验学习 HTML</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 HTML 网页结构。LabEx 提供全面的 HTML 课程，涵盖基本元素、语义化标记、表单、媒体集成和现代 HTML5 特性。掌握高效的网页结构和内容组织，以适应现代 Web 开发工作流程。
+通过实践实验和真实场景学习 HTML 网页结构。LabEx 提供全面的 HTML 课程，涵盖基本元素、语义化标记、表单、媒体集成和现代 HTML5 特性。掌握高效的网页结构和内容组织，以适应现代 Web 开发工作流程。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -31,13 +31,28 @@ HTML 速查表
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>页面标题</title>
+    <title>Page Title</title>
   </head>
   <body>
     <!-- 页面内容放在这里 -->
   </body>
 </html>
 ```
+
+<BaseQuiz id="html-doctype-1" correct="A">
+  <template #question>
+    `<!DOCTYPE html>` 的目的是什么？
+  </template>
+  
+  <BaseQuizOption value="A" correct>它声明了文档类型和 HTML 版本</BaseQuizOption>
+  <BaseQuizOption value="B">它创建了一个新的 HTML 元素</BaseQuizOption>
+  <BaseQuizOption value="C">它链接到一个外部样式表</BaseQuizOption>
+  <BaseQuizOption value="D">它设置了页面标题</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `<!DOCTYPE html>` 声明告诉浏览器文档正在使用的 HTML 版本。对于 HTML5，这个简单的声明就足够了，并且应该是每个 HTML 文档的第一行。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Head 元素：`<head>`
 
@@ -46,10 +61,10 @@ head 部分包含有关文档的元数据。
 ```html
 <!-- 字符编码 -->
 <meta charset="UTF-8" />
-<!-- 响应式设计的视口 -->
+<!-- 用于响应式设计的视口 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- 页面描述 -->
-<meta name="description" content="页面描述" />
+<meta name="description" content="Page description" />
 <!-- 链接到 CSS -->
 <link rel="stylesheet" href="styles.css" />
 <!-- 链接到 favicon -->
@@ -76,7 +91,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 <!-- 带内容的元素 -->
 <p>这是一个段落</p>
 <!-- 自闭合元素 -->
-<img src="image.jpg" alt="描述" />
+<img src="image.jpg" alt="Description" />
 <br />
 <hr />
 <!-- 带属性的元素 -->
@@ -91,7 +106,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 
 ### 标题：`h1` 到 `h6`
 
-定义内容的层级和重要性。
+定义内容层次结构和重要性。
 
 ```html
 <h1>主标题</h1>
@@ -102,13 +117,28 @@ HTML 元素由开始标签、内容和结束标签组成。
 <h6>最小标题</h6>
 ```
 
+<BaseQuiz id="html-headings-1" correct="B">
+  <template #question>
+    正确的标题层级结构是怎样的？
+  </template>
+  
+  <BaseQuizOption value="A">h1 应该在页面上多次使用</BaseQuizOption>
+  <BaseQuizOption value="B" correct>h1 应作为主标题使用一次，然后是 h2、h3 等</BaseQuizOption>
+  <BaseQuizOption value="C">所有标题的重要性都相同</BaseQuizOption>
+  <BaseQuizOption value="D">h6 是最重要的标题</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    HTML 标题应遵循逻辑层次结构：使用一个 `h1` 作为主页面标题，然后使用 `h2` 表示主要部分，`h3` 表示子部分，依此类推。这有助于可访问性和 SEO。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 段落：`p`
 
-文本内容块最常用的元素。
+最常见的文本内容块元素。
 
 ```html
-<p>这是一段文本。它可以包含多个句子，并且会自动换行。</p>
-<p>这是另一个段落。段落之间有边距分隔。</p>
+<p>这是包含文本的段落。它可以包含多个句子，并且会自动换行。</p>
+<p>这是另一个段落。段落之间有边距间隔。</p>
 ```
 
 ### 文本格式化：`<strong>`, `<em>`, `<b>`, `<i>`
@@ -123,8 +153,8 @@ HTML 元素由开始标签、内容和结束标签组成。
 <u>带下划线的文本</u>
 <mark>高亮文本</mark>
 <small>小文本</small>
-<del>删除的文本</del>
-<ins>插入的文本</ins>
+<del>已删除文本</del>
+<ins>已插入文本</ins>
 ```
 
 ### 换行和间距：`<br>`, `<hr>`, `<pre>`
@@ -151,7 +181,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 
 ### 无序列表：`<ul>`
 
-为非顺序项目创建项目符号列表。
+创建用于非顺序项目的项目符号列表。
 
 ```html
 <ul>
@@ -162,7 +192,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 <!-- 嵌套列表 -->
 <ul>
   <li>
-    主要项目
+    主项目
     <ul>
       <li>子项目 1</li>
       <li>子项目 2</li>
@@ -173,7 +203,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 
 ### 有序列表：`<ol>`
 
-为顺序项目创建编号列表。
+创建用于顺序项目的编号列表。
 
 ```html
 <ol>
@@ -216,8 +246,8 @@ HTML 元素由开始标签、内容和结束标签组成。
 
 ```html
 <!-- 基本链接 -->
-<a href="https://example.com">访问示例</a>
-<!-- 在新标签页中打开 -->
+<a href="https://example.com">访问 Example</a>
+<!-- 在新标签页中打开链接 -->
 <a href="https://example.com" target="_blank">新标签页</a>
 <!-- 电子邮件链接 -->
 <a href="mailto:email@example.com">发送邮件</a>
@@ -228,11 +258,26 @@ HTML 元素由开始标签、内容和结束标签组成。
 <h2 id="section1">第 1 节</h2>
 ```
 
+<BaseQuiz id="html-links-1" correct="B">
+  <template #question>
+    锚点标签中的 `target="_blank"` 有什么作用？
+  </template>
+  
+  <BaseQuizOption value="A">在同一窗口中打开链接</BaseQuizOption>
+  <BaseQuizOption value="B" correct>在新标签页或窗口中打开链接</BaseQuizOption>
+  <BaseQuizOption value="C">关闭当前窗口</BaseQuizOption>
+  <BaseQuizOption value="D">下载链接内容</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `target="_blank"` 属性会在新的浏览器标签页或窗口中打开链接的页面，使用户可以保持原始页面打开。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 表单和输入元素
 
 ### 基本表单结构：`<form>`
 
-收集用户输入的根基。
+用户输入收集的基础。
 
 ```html
 <form action="/submit" method="POST">
@@ -279,7 +324,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 <label for="option1">选项 1</label>
 <input type="radio" id="option2" name="choice" value="2" />
 <label for="option2">选项 2</label>
-<!-- 选择下拉菜单 -->
+<!-- 选择下拉列表 -->
 <select name="country">
   <option value="us">美国</option>
   <option value="uk">英国</option>
@@ -305,6 +350,21 @@ HTML 元素由开始标签、内容和结束标签组成。
 <input type="number" min="1" max="100" />
 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
 ```
+
+<BaseQuiz id="html-validation-1" correct="A">
+  <template #question>
+    HTML 输入中的 `required` 属性有什么作用？
+  </template>
+  
+  <BaseQuizOption value="A" correct>如果字段为空，则阻止表单提交</BaseQuizOption>
+  <BaseQuizOption value="B">使字段只读</BaseQuizOption>
+  <BaseQuizOption value="C">隐藏字段</BaseQuizOption>
+  <BaseQuizOption value="D">设置默认值</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `required` 属性使输入字段成为必填项。如果提交表单时该字段为空，浏览器将阻止提交并显示验证消息。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 媒体元素
 
@@ -375,7 +435,7 @@ HTML 元素由开始标签、内容和结束标签组成。
   height="315"
   src="https://www.youtube.com/embed/VIDEO_ID"
 ></iframe>
-<!-- 谷歌地图嵌入 -->
+<!-- Google Maps 嵌入 -->
 <iframe src="https://maps.google.com/..."></iframe>
 ```
 
@@ -389,7 +449,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 <table>
   <thead>
     <tr>
-      <th>姓名</th>
+      <th>名称</th>
       <th>年龄</th>
       <th>城市</th>
     </tr>
@@ -501,7 +561,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 <div class="container">
   <p>通用内容分组</p>
 </div>
-<!-- 带标题的图示 -->
+<!-- 带标题的图 -->
 <figure>
   <img src="chart.jpg" alt="销售图表" />
   <figcaption>2024 年第一季度销售数据</figcaption>
@@ -537,7 +597,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 
 ```html
 <!-- 图像的替代文本 -->
-<img src="photo.jpg" alt="群山上的日落" />
+<img src="photo.jpg" alt="一座山脉上的日落" />
 <!-- ARIA 标签 -->
 <button aria-label="关闭对话框">×</button>
 <div aria-hidden="true">装饰性内容</div>
@@ -552,7 +612,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 <div role="button" tabindex="0">自定义按钮</div>
 ```
 
-## HTML5 现代特性
+## HTML5 新特性
 
 ### 新的输入特性：`color`, `search`, `file`, `datalist`
 
@@ -575,7 +635,7 @@ HTML5 引入了新的输入类型和属性。
 <meter value="0.6">60%</meter>
 ```
 
-### Canvas 和 SVG: `<canvas>`, `<svg>`
+### 画布和 SVG: `<canvas>`, `<svg>`
 
 HTML5 中的图形和绘图功能。
 
@@ -604,17 +664,17 @@ HTML5 中的图形和绘图功能。
   </ul>
 </details>
 <details open>
-  <summary>默认展开</summary>
+  <summary>此项默认展开</summary>
   <p>默认可见的内容。</p>
 </details>
 ```
 
-### Dialog 元素：`<dialog>`
+### 对话框元素：`<dialog>`
 
 原生的对话框和模态功能。
 
 ```html
-<!-- Dialog 元素 -->
+<!-- 对话框元素 -->
 <dialog id="myDialog">
   <h2>对话框标题</h2>
   <p>对话框内容放在这里。</p>
@@ -674,7 +734,7 @@ HTML5 中的图形和绘图功能。
 </p>
 <!-- 使用开发者工具 -->
 <!-- 右键单击 → 检查元素 -->
-<!-- 在控制台中检查错误 -->
+<!-- 检查控制台中的错误 -->
 <!-- 使用 WAVE 或 axe 验证可访问性 -->
 ```
 
@@ -701,7 +761,7 @@ HTML5 中的图形和绘图功能。
 </div>
 ```
 
-### Web Components: `<template>`, Custom Elements
+### Web Components: `<template>`, 自定义元素
 
 可重用的自定义 HTML 元素。
 
@@ -734,14 +794,14 @@ HTML5 中的图形和绘图功能。
 function Component() { return (
 <div className="container">
   <h1>{title}</h1>
-  <p>此处是内容</p>
+  <p>Content here</p>
 </div>
 ); }
 <!-- Vue 模板 -->
 <template>
   <div class="container">
     <h1>{{ title }}</h1>
-    <p v-if="showContent">此处是内容</p>
+    <p v-if="showContent">Content here</p>
   </div>
 </template>
 ```

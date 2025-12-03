@@ -1,6 +1,6 @@
 ---
-title: 'Fiche Mémo Ansible'
-description: 'Apprenez Ansible avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo Ansible | LabEx'
+description: "Apprenez l'automatisation Ansible avec cette fiche mémo complète. Référence rapide pour les playbooks Ansible, les modules, la gestion d'inventaire, la gestion de configuration et l'automatisation d'infrastructure."
 pdfUrl: '/cheatsheets/pdf/ansible-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Feuille de triche Ansible
 <a target="_blank" href="https://labex.io/fr/learn/ansible">Apprenez Ansible avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez l'automatisation de l'infrastructure Ansible grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours Ansible complets couvrant la création de playbooks essentiels, la gestion des inventaires, l'utilisation des modules et l'organisation des rôles. Maîtrisez la gestion de configuration et l'automatisation de l'infrastructure pour les flux de travail DevOps.
+Apprenez l'automatisation de l'infrastructure avec Ansible grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur Ansible couvrant la création de playbooks essentiels, la gestion des inventaires, l'utilisation des modules et l'organisation des rôles. Maîtrisez la gestion de configuration et l'automatisation de l'infrastructure pour les flux de travail DevOps.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -88,12 +88,12 @@ ssh user@hostname
 
 ### Configuration de l'Environnement
 
-Configurer les variables d'environnement et les chemins d'accès d'Ansible.
+Configurer les variables d'environnement et les chemins d'Ansible.
 
 ```bash
 # Définir l'emplacement du fichier d'inventaire
 export ANSIBLE_INVENTORY=/chemin/vers/inventory
-# Désactiver la vérification des clés d'hôte
+# Désactiver la vérification de la clé d'hôte
 export ANSIBLE_HOST_KEY_CHECKING=False
 # Définir l'utilisateur distant
 export ANSIBLE_REMOTE_USER=ubuntu
@@ -101,12 +101,12 @@ export ANSIBLE_REMOTE_USER=ubuntu
 
 ## Gestion de l'Inventaire
 
-### Inventaire de Base: `/etc/ansible/hosts`
+### Inventaire de Base : `/etc/ansible/hosts`
 
 Les groupes d'hôtes peuvent être créés en donnant un nom de groupe entre crochets.
 
 ```ini
-# Fichier d'hôtes de base (format INI)
+# Fichier d'inventaire de base (format INI)
 [webservers]
 web1.example.com
 web2.example.com
@@ -168,9 +168,24 @@ ansible all -m ping
 ansible webservers -m ping
 # Exécuter une commande sur tous les hôtes
 ansible all -m command -a "uptime"
-# Exécuter avec des privilèges sudo
+# Exécuter avec les privilèges sudo
 ansible all -m command -a "systemctl status nginx" --become
 ```
+
+<BaseQuiz id="ansible-command-1" correct="C">
+  <template #question>
+    Que fait `ansible all -m ping` ?
+  </template>
+  
+  <BaseQuizOption value="A">Teste la connectivité réseau en utilisant ICMP ping</BaseQuizOption>
+  <BaseQuizOption value="B">Installe le paquet ping sur tous les hôtes</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Teste la connectivité Ansible à tous les hôtes de l'inventaire</BaseQuizOption>
+  <BaseQuizOption value="D">Vérifie si les hôtes sont en ligne</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le module `ping` dans Ansible n'utilise pas ICMP. C'est un module de test qui vérifie si Ansible peut se connecter aux hôtes, exécuter Python et retourner des résultats. Il est utilisé pour vérifier la connectivité et la configuration.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Opérations sur les Fichiers
 
@@ -219,13 +234,13 @@ ansible all -m service -a "name=nginx enabled=yes" --become
 
 ## Playbooks et Tâches
 
-### Structure de Playbook de Base
+### Structure de Base d'un Playbook
 
 Fichiers YAML qui définissent quelles tâches doivent être exécutées et sur quels hôtes.
 
 ```yaml
 ---
-- name: Configuration du serveur web
+- name: Configuration du serveur Web
   hosts: webservers
   become: yes
   vars:
@@ -253,13 +268,28 @@ Exécuter des playbooks avec diverses options et configurations.
 ansible-playbook site.yml
 # Exécuter avec un inventaire spécifique
 ansible-playbook -i inventory.yml site.yml
-# Exécution à blanc (mode check)
+# Exécution à blanc (mode vérification)
 ansible-playbook site.yml --check
 # Exécuter sur des hôtes spécifiques
 ansible-playbook site.yml --limit webservers
 # Exécuter avec des variables supplémentaires
 ansible-playbook site.yml --extra-vars "nginx_port=8080"
 ```
+
+<BaseQuiz id="ansible-playbook-1" correct="B">
+  <template #question>
+    Que fait `ansible-playbook site.yml --check` ?
+  </template>
+  
+  <BaseQuizOption value="A">Exécute le playbook deux fois</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Exécute le playbook en mode vérification (dry-run) sans effectuer de changements</BaseQuizOption>
+  <BaseQuizOption value="C">Vérifie la syntaxe du playbook</BaseQuizOption>
+  <BaseQuizOption value="D">Exécute uniquement la première tâche</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le drapeau `--check` exécute Ansible en mode vérification (dry-run), ce qui simule ce qui se passerait sans réellement apporter de modifications. Ceci est utile pour tester les playbooks avant de les appliquer.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Options de Tâche et Conditionnelles
 
@@ -288,7 +318,7 @@ tasks:
       msg: 'Utilisateur créé : {{ user_result.changed }}'
 ```
 
-### Gestionnaires et Notifications
+### Gestionnaires (Handlers) et Notifications
 
 Définir des gestionnaires qui s'exécutent lorsqu'ils sont notifiés par des tâches.
 
@@ -307,9 +337,24 @@ handlers:
       state: restarted
 ```
 
-## Variables et Modèles
+<BaseQuiz id="ansible-handlers-1" correct="C">
+  <template #question>
+    Quand les gestionnaires Ansible s'exécutent-ils ?
+  </template>
+  
+  <BaseQuizOption value="A">Immédiatement après leur définition</BaseQuizOption>
+  <BaseQuizOption value="B">Au début du playbook</BaseQuizOption>
+  <BaseQuizOption value="C" correct>À la fin du playbook, uniquement s'ils sont notifiés par une tâche</BaseQuizOption>
+  <BaseQuizOption value="D">Chaque fois qu'une tâche s'exécute</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Les gestionnaires s'exécutent à la fin du playbook, et seulement s'ils sont notifiés par une tâche qui a modifié quelque chose. Cela garantit que les services ne redémarrent que lorsque les fichiers de configuration sont réellement modifiés.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
-### Définition des Variables
+## Variables et Modèles (Templates)
+
+### Définition de Variables
 
 Définir des variables à différents niveaux et portées.
 
@@ -356,7 +401,7 @@ server {
   notify: recharger nginx
 ```
 
-### Faits et Informations Système
+### Faits (Facts) et Informations Système
 
 Collecter et utiliser les faits système dans les playbooks.
 
@@ -373,7 +418,7 @@ ansible all -m setup -a "filter=ansible_eth*"
   debug:
     msg: '{{ ansible_hostname }} exécute {{ ansible_distribution }}'
 
-- name: Installer un paquet basé sur l'OS
+- name: Installer le paquet basé sur l'OS
   apt:
     name: apache2
   when: ansible_os_family == "Debian"
@@ -390,7 +435,7 @@ ansible-vault create secrets.yml
 ansible-vault edit secrets.yml
 # Chiffrer un fichier existant
 ansible-vault encrypt passwords.yml
-# Exécuter le playbook avec vault
+# Exécuter un playbook avec vault
 ansible-playbook site.yml --ask-vault-pass
 # Utiliser un fichier de mot de passe vault
 ansible-playbook site.yml --vault-password-file .vault_pass
@@ -408,7 +453,7 @@ ansible-galaxy init webserver
 ```
 
 ```
-# Structure de répertoire de rôle
+# Structure du répertoire de rôle
 webserver/
 ├── tasks/
 │   └── main.yml
@@ -464,7 +509,7 @@ ansible-galaxy remove geerlingguy.nginx
 
 ### Collections
 
-Travailler avec les collections Ansible pour des fonctionnalités étendues.
+Travailler avec les Collections Ansible pour des fonctionnalités étendues.
 
 ```bash
 # Installer une collection
@@ -472,7 +517,7 @@ ansible-galaxy collection install community.general
 ```
 
 ```yaml
-# Utiliser une collection dans le playbook
+# Utiliser une collection dans un playbook
 collections:
   - community.general
 tasks:
@@ -518,13 +563,13 @@ Gérer les erreurs et les échecs avec élégance.
     - command: /bin/false
   rescue:
     - debug:
-        msg: 'La tâche a échoué, exécution de rescue'
+        msg: 'La tâche a échoué, exécution du rescue'
   always:
     - debug:
-        msg: 'Ceci s'exécute toujours'
+        msg: "Ceci s'exécute toujours"
 ```
 
-### Tests et Validation
+### Test et Validation
 
 Tester les playbooks et valider les configurations.
 
@@ -537,7 +582,7 @@ ansible-playbook site.yml --list-tasks
 ansible-playbook site.yml --list-hosts
 # Parcourir le playbook
 ansible-playbook site.yml --step
-# Tester en mode check
+# Tester en mode vérification
 ansible-playbook site.yml --check --diff
 ```
 
@@ -571,7 +616,7 @@ Sécuriser votre infrastructure et vos opérations Ansible.
 ```bash
 # Utiliser Ansible Vault pour les secrets
 ansible-vault create group_vars/all/vault.yml
-# Désactiver la vérification des clés d'hôte avec prudence
+# Désactiver la vérification de la clé d'hôte avec prudence
 host_key_checking = False
 # Utiliser become uniquement lorsque nécessaire
 become: yes
@@ -611,7 +656,7 @@ Gérer le code Ansible avec un contrôle de version approprié.
 # Utiliser Git pour le contrôle de version
 git init
 git add .
-git commit -m "Configuration Ansible initiale"
+git commit -m "Configuration initiale Ansible"
 # Tester en staging avant la production
 ansible-playbook -i staging site.yml
 # Utiliser des tags pour une exécution sélective
@@ -640,7 +685,7 @@ pipelining = True
 
 ### Plugins de Rappel (Callback Plugins)
 
-Améliorer la sortie et la journalisation avec des plugins de rappel.
+Améliorer la sortie et la journalisation avec les plugins de rappel.
 
 ```ini
 # Activer les plugins de rappel dans ansible.cfg
@@ -648,12 +693,12 @@ Améliorer la sortie et la journalisation avec des plugins de rappel.
 stdout_callback = yaml
 callbacks_enabled = profile_tasks, timer
 
-# Configuration personnalisée du rappel
+# Configuration du rappel personnalisé
 [callback_profile_tasks]
 task_output_limit = 20
 ```
 
-### Filtres et Plugins de Recherche (Lookup Plugins)
+### Filtres et Plugins de Recherche (Lookup)
 
 Utiliser les filtres Jinja2 et les plugins de recherche pour la manipulation de données.
 

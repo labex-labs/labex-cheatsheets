@@ -1,11 +1,11 @@
 ---
-title: 'Folha de Cola Pandas'
-description: 'Aprenda Pandas com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola Pandas | LabEx'
+description: 'Aprenda manipulação de dados Pandas com esta folha de cola abrangente. Referência rápida para operações de DataFrame, limpeza de dados, filtragem, agrupamento, mesclagem e análise de dados em Python.'
 pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Pandas Cheatsheet
+Folha de Dicas Pandas
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,7 +15,7 @@ Pandas Cheatsheet
 <a target="_blank" href="https://labex.io/pt/learn/pandas">Aprenda Pandas com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda manipulação de dados com Pandas através de laboratórios práticos e cenários do mundo real. LabEx oferece cursos abrangentes de Pandas cobrindo operações essenciais, limpeza de dados, análise e visualização. Aprenda a trabalhar com DataFrames, lidar com dados ausentes, realizar agregações e analisar conjuntos de dados de forma eficiente usando a poderosa biblioteca de análise de dados do Python.
+Aprenda manipulação de dados Pandas através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de Pandas cobrindo operações essenciais, limpeza de dados, análise e visualização. Aprenda a trabalhar com DataFrames, lidar com dados ausentes, realizar agregações e analisar conjuntos de dados de forma eficiente usando a poderosa biblioteca de análise de dados do Python.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -36,6 +36,21 @@ df = pd.read_csv('data.csv', sep=';')
 # Analisar datas
 df = pd.read_csv('data.csv', parse_dates=['Date'])
 ```
+
+<BaseQuiz id="pandas-read-csv-1" correct="B">
+  <template #question>
+    O que `pd.read_csv('data.csv')` retorna?
+  </template>
+  
+  <BaseQuizOption value="A">Uma lista de dicionários</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Um DataFrame pandas</BaseQuizOption>
+  <BaseQuizOption value="C">Um array NumPy</BaseQuizOption>
+  <BaseQuizOption value="D">Uma string</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pd.read_csv()` lê um arquivo CSV e retorna um DataFrame pandas, que é uma estrutura de dados bidimensional rotulada com colunas e linhas.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Ler Excel: `pd.read_excel()`
 
@@ -117,14 +132,14 @@ df.index
 
 ### Estatísticas Descritivas: `df.describe()`
 
-Gera estatísticas descritivas das colunas numéricas.
+Gera estatísticas descritivas de colunas numéricas.
 
 ```python
 # Estatísticas resumidas para colunas numéricas
 df.describe()
 # Resumo para uma coluna específica
 df['column'].describe()
-# Incluir todas as colunas (também tipo objeto)
+# Incluir todas as colunas (tipo objeto também)
 df.describe(include='all')
 ```
 
@@ -160,6 +175,21 @@ df.dropna()
 df.dropna(axis=1)
 ```
 
+<BaseQuiz id="pandas-missing-1" correct="B">
+  <template #question>
+    O que `df.dropna(axis=1)` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Remove linhas com valores ausentes</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Remove colunas com valores ausentes</BaseQuizOption>
+  <BaseQuizOption value="C">Preenche valores ausentes com 0</BaseQuizOption>
+  <BaseQuizOption value="D">Conta valores ausentes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O parâmetro `axis=1` significa "colunas", então `df.dropna(axis=1)` remove colunas que contêm quaisquer valores ausentes. Use `axis=0` (padrão) para remover linhas.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Duplicatas: `duplicated()` / `drop_duplicates()`
 
 Identifica e remove linhas duplicadas.
@@ -173,9 +203,24 @@ df.drop_duplicates()
 df.drop_duplicates(subset=['col1', 'col2'])
 ```
 
+<BaseQuiz id="pandas-duplicates-1" correct="A">
+  <template #question>
+    O que `df.drop_duplicates()` faz por padrão?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Remove linhas duplicadas, mantendo a primeira ocorrência</BaseQuizOption>
+  <BaseQuizOption value="B">Remove todas as linhas</BaseQuizOption>
+  <BaseQuizOption value="C">Mantém apenas linhas duplicadas</BaseQuizOption>
+  <BaseQuizOption value="D">Remove a primeira ocorrência de duplicatas</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Por padrão, `drop_duplicates()` mantém a primeira ocorrência de cada linha duplicada e remove as duplicatas subsequentes. Você pode usar `keep='last'` para manter a última ocorrência.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Tipos de Dados: `astype()`
 
-Altera o tipo de dado de uma coluna.
+Altera o tipo de dados de uma coluna.
 
 ```python
 # Mudar para inteiro
@@ -200,6 +245,21 @@ df.replace('old_val', 'new_val')
 # Substituir múltiplos valores
 df.replace(['A', 'B'], ['C', 'D'])
 ```
+
+<BaseQuiz id="pandas-apply-1" correct="A">
+  <template #question>
+    O que `df['col'].apply(lambda x: x*2)` faz?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Aplica uma função a cada elemento na coluna, multiplicando cada um por 2</BaseQuizOption>
+  <BaseQuizOption value="B">Multiplica a coluna inteira por 2 de uma vez</BaseQuizOption>
+  <BaseQuizOption value="C">Substitui a coluna por 2</BaseQuizOption>
+  <BaseQuizOption value="D">Conta elementos na coluna</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    O método `apply()` aplica uma função a cada elemento em uma Série. A função lambda `lambda x: x*2` multiplica cada valor por 2, retornando uma nova Série com os valores transformados.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Inspeção do DataFrame
 
@@ -269,18 +329,18 @@ Exibe o uso de memória de cada coluna ou do DataFrame inteiro.
 df.memory_usage()
 # Uso total de memória em bytes
 df.memory_usage(deep=True).sum()
-# Uso de memória detalhado na saída do info()
+# Uso de memória detalhado na saída de info()
 df.info(memory_usage='deep')
 ```
 
-### Otimizar Dtypes: `astype()`
+### Otimizar Tipos de Dados: `astype()`
 
 Reduz a memória convertendo colunas para tipos de dados menores e apropriados.
 
 ```python
-# Downcast de inteiro
+# Reduzir inteiro
 df['int_col'] = df['int_col'].astype('int16')
-# Downcast de float
+# Reduzir float
 df['float_col'] = df['float_col'].astype('float32')
 # Usar tipo categórico
 df['category_col'] = df['category_col'].astype('category')
@@ -309,11 +369,11 @@ for chunk in chunk_iterator:
 Carrega dados de um arquivo JSON ou URL.
 
 ```python
-# Ler JSON local
+# Ler de JSON local
 df = pd.read_json('data.json')
-# Ler de uma URL
+# Ler de URL
 df = pd.read_json('http://example.com/api/data')
-# Ler de uma string JSON
+# Ler de string JSON
 df = pd.read_json(json_string_data)
 ```
 
@@ -397,7 +457,7 @@ df.loc[:, 'col1']
 df.loc[0:5, ['col1', 'col2']]
 # Indexação booleana para linhas
 df.loc[df['col'] > 5]
-# Acesso escalar rápido por rótulo
+# Acesso rápido a escalar por rótulo
 df.at[0, 'col1']
 ```
 
@@ -412,7 +472,7 @@ df.iloc[0]
 df.iloc[:, 0]
 # Fatiar linhas e selecionar múltiplas colunas por posição
 df.iloc[0:5, [0, 1]]
-# Acesso escalar rápido por posição
+# Acesso rápido a escalar por posição
 df.iat[0, 0]
 ```
 
@@ -457,7 +517,7 @@ import time
 start_time = time.time()
 # Seu código Pandas aqui
 end_time = time.time()
-print(f"Execution time: {end_time - start_time} seconds")
+print(f"Tempo de execução: {end_time - start_time} segundos")
 ```
 
 ### Operações Otimizadas: `eval()` / `query()`
@@ -617,11 +677,11 @@ def custom_filter(df, threshold):
 
 ## Links Relevantes
 
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/numpy">NumPy Cheatsheet</router-link>
-- <router-link to="/matplotlib">Matplotlib Cheatsheet</router-link>
-- <router-link to="/sklearn">scikit-learn Cheatsheet</router-link>
-- <router-link to="/datascience">Data Science Cheatsheet</router-link>
-- <router-link to="/mysql">MySQL Cheatsheet</router-link>
-- <router-link to="/postgresql">PostgreSQL Cheatsheet</router-link>
-- <router-link to="/sqlite">SQLite Cheatsheet</router-link>
+- <router-link to="/python">Folha de Dicas Python</router-link>
+- <router-link to="/numpy">Folha de Dicas NumPy</router-link>
+- <router-link to="/matplotlib">Folha de Dicas Matplotlib</router-link>
+- <router-link to="/sklearn">Folha de Dicas scikit-learn</router-link>
+- <router-link to="/datascience">Folha de Dicas de Ciência de Dados</router-link>
+- <router-link to="/mysql">Folha de Dicas MySQL</router-link>
+- <router-link to="/postgresql">Folha de Dicas PostgreSQL</router-link>
+- <router-link to="/sqlite">Folha de Dicas SQLite</router-link>

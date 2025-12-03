@@ -1,6 +1,6 @@
 ---
-title: 'CSS 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的综合 CSS 速查表进行学习。'
+title: 'CSS 速查表 | LabEx'
+description: '使用这份全面的 CSS3 速查表学习。为网页开发者提供 CSS 选择器、Flexbox、Grid、动画、响应式设计和现代样式技术的快速参考。'
 pdfUrl: '/cheatsheets/pdf/css-cheatsheet.pdf'
 ---
 
@@ -19,11 +19,11 @@ CSS 速查表
 </base-disclaimer-content>
 </base-disclaimer>
 
-## CSS 语法与选择器
+## CSS 语法和选择器
 
 ### 基本语法
 
-CSS 由选择器和声明组成。选择器定位 HTML 元素，声明设置属性值。
+CSS 由选择器和声明组成。选择器针对 HTML 元素，声明设置属性值。
 
 ```css
 /* 基本语法 */
@@ -82,6 +82,21 @@ p.intro {
 }
 ```
 
+<BaseQuiz id="css-class-1" correct="B">
+  <template #question>
+    在 CSS 中，如何选择 class="highlight" 的元素？
+  </template>
+  
+  <BaseQuizOption value="A">highlight { }</BaseQuizOption>
+  <BaseQuizOption value="B" correct>.highlight { }</BaseQuizOption>
+  <BaseQuizOption value="C">#highlight { }</BaseQuizOption>
+  <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    类选择器使用点 (`.`) 作为前缀。`.highlight` 选择所有具有 `class="highlight"` 的元素。ID 选择器使用 `#`，元素选择器不使用前缀。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ID 选择器
 
 选择具有特定 ID 属性的元素。
@@ -92,7 +107,7 @@ p.intro {
   background-color: #333;
 }
 
-/* ID 在每页上应是唯一的 */
+/* ID 在页面上应是唯一的 */
 #navigation {
   position: fixed;
 }
@@ -100,7 +115,7 @@ p.intro {
 
 ### 属性选择器
 
-使用属性选择器选择具有特定属性的元素。
+使用属性选择器根据属性选择元素。
 
 ```css
 /* 具有 title 属性的元素 */
@@ -143,7 +158,7 @@ input:invalid {
   border-color: red;
 }
 
-/* 结构化伪类 */
+/* 结构伪类 */
 li:first-child {
   font-weight: bold;
 }
@@ -180,7 +195,7 @@ div {
 
 ### 内边距：`padding`
 
-内容与边框之间的空间，位于元素内部。
+内容和边框之间的空间，位于元素内部。
 
 ```css
 /* 所有边 */
@@ -200,7 +215,23 @@ div {
 }
 ```
 
-### 边框：`border`
+<BaseQuiz id="css-padding-1" correct="C">
+  <template #question>
+    `padding: 10px 20px` 设置了什么？
+  </template>
+  
+  <BaseQuizOption value="A">10px 上/下，20px 左/右</BaseQuizOption>
+  <BaseQuizOption value="B">10px 所有边</BaseQuizOption>
+  <BaseQuizOption value="C" correct>10px 上/下，20px 左/右</BaseQuizOption>
+  <BaseQuizOption value="D">10px 上，20px 下</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    当提供两个值时，第一个值应用于顶部和底部，第二个值应用于左侧和右侧。因此 `padding: 10px 20px` 意味着 10px 的垂直内边距和 20px 的水平内边距。
+  </BaseQuizAnswer>
+</BaseQuiz>
+```
+
+### 边框: `border`
 
 边框为元素提供框架，具有可自定义的大小、样式和颜色。
 
@@ -223,9 +254,9 @@ div {
 }
 ```
 
-### 外边距：`margin`
+### 外边距: `margin`
 
-位于边框外部的空间，用于元素之间的间隔。
+位于边框外部的空间，用于分隔元素。
 
 ```css
 /* 所有边 */
@@ -249,6 +280,21 @@ div {
   margin-left: -20px;
 }
 ```
+
+<BaseQuiz id="css-margin-1" correct="C">
+  <template #question>
+    `margin: 0 auto` 的作用是什么？
+  </template>
+  
+  <BaseQuizOption value="A">移除所有外边距</BaseQuizOption>
+  <BaseQuizOption value="B">在所有边上添加相等的外边距</BaseQuizOption>
+  <BaseQuizOption value="C" correct>使块级元素水平居中</BaseQuizOption>
+  <BaseQuizOption value="D">使块级元素垂直居中</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `margin: 0 auto` 将顶部和底部外边距设置为 0，将左右外边距设置为 auto，这会使块级元素在其容器内水平居中。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## 文本与排版
 
@@ -303,7 +349,7 @@ p {
   line-height: 1.6;
 }
 
-/* 字母和单词间距 */
+/* 字母间距和单词间距 */
 h1 {
   letter-spacing: 2px;
 }
@@ -341,7 +387,7 @@ h1 {
 
 ### 颜色
 
-CSS 提供了多种指定颜色值的方式，以满足各种样式需求。
+CSS 提供了几种指定颜色以满足不同样式需求的方式。
 
 ```css
 /* 颜色格式 */
@@ -351,6 +397,22 @@ p {
 div {
   background-color: #ff5733;
 }
+```
+
+<BaseQuiz id="css-colors-1" correct="D">
+  <template #question>
+    哪种 CSS 颜色格式在网页设计中最为常用？
+  </template>
+  
+  <BaseQuizOption value="A">仅 RGB</BaseQuizOption>
+  <BaseQuizOption value="B">仅命名颜色</BaseQuizOption>
+  <BaseQuizOption value="C">仅 HSL</BaseQuizOption>
+  <BaseQuizOption value="D" correct>十六进制代码 (#RRGGBB) 非常常见，以及命名颜色和 RGB</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    十六进制颜色代码 (#RRGGBB) 被广泛使用，因为它们简洁且易于从设计工具中复制。命名颜色和 RGB/rgba 也常见。选择取决于具体用例和偏好。
+  </BaseQuizAnswer>
+</BaseQuiz>
 span {
   color: rgb(255, 87, 51);
 }
@@ -358,23 +420,24 @@ section {
   background-color: rgba(255, 87, 51, 0.8);
 }
 
-/* HSL 颜色 */
+/_ HSL 颜色 _/
 header {
-  background-color: hsl(200, 100%, 50%);
+background-color: hsl(200, 100%, 50%);
 }
 
-/* CSS 变量用于颜色 */
+/_ CSS 变量用于颜色 _/
 :root {
-  --primary-color: #3498db;
+--primary-color: #3498db;
 }
 .button {
-  background-color: var(--primary-color);
+background-color: var(--primary-color);
 }
-```
+
+````
 
 ## Flexbox 布局
 
-### 弹性容器属性
+### Flex 容器属性
 
 应用于父容器的属性。
 
@@ -384,14 +447,14 @@ header {
   display: flex;
 }
 
-/* 弹性方向 */
+/* Flex 方向 */
 .container {
   flex-direction: row; /* 默认 */
   flex-direction: column;
   flex-direction: row-reverse;
 }
 
-/* 对齐内容 (主轴) */
+/* Justify content (主轴) */
 .container {
   justify-content: flex-start; /* 默认 */
   justify-content: center;
@@ -399,20 +462,20 @@ header {
   justify-content: space-around;
 }
 
-/* 对齐项目 (交叉轴) */
+/* Align items (交叉轴) */
 .container {
   align-items: stretch; /* 默认 */
   align-items: center;
   align-items: flex-start;
 }
-```
+````
 
-### 弹性项目属性
+### Flex 项目属性
 
 应用于子元素的属性。
 
 ```css
-/* 弹性增长/收缩 */
+/* Flex 增长/收缩 */
 .item {
   flex-grow: 1; /* 增长以填充空间 */
   flex-shrink: 1; /* 需要时收缩 */
@@ -462,7 +525,7 @@ header {
   row-gap: 10px;
 }
 
-/* 命名网格区域 */
+/* 命名的网格区域 */
 .grid-container {
   grid-template-areas:
     'header header header'
@@ -512,33 +575,33 @@ header {
 控制元素的定位行为。
 
 ```css
-/* Static (默认) */
+/* 静态 (默认) */
 .element {
   position: static;
 }
 
-/* Relative 定位 */
+/* 相对定位 */
 .element {
   position: relative;
   top: 20px;
   left: 10px;
 }
 
-/* Absolute 定位 */
+/* 绝对定位 */
 .element {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-/* Fixed 定位 */
+/* 固定定位 */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
 }
 
-/* Sticky 定位 */
+/* 粘性定位 */
 .sidebar {
   position: sticky;
   top: 20px;
@@ -547,7 +610,7 @@ header {
 
 ### Z-Index 与堆叠顺序
 
-使用 z-index 和堆叠上下文控制元素在 Z 轴上的层叠顺序。
+使用 z-index 和堆叠上下文控制元素相互覆盖的顺序。
 
 ```css
 /* 堆叠顺序 */
@@ -668,7 +731,7 @@ h1 {
 
 ### CSS 过渡
 
-属性值之间的平滑变化。
+属性值之间平滑的变化。
 
 ```css
 /* 基本过渡 */
@@ -750,7 +813,7 @@ h1 {
 
 ### CSS 变量
 
-定义和使用自定义属性以实现一致的主题化。
+定义和使用自定义属性以实现一致的主题。
 
 ```css
 /* 定义变量 */
@@ -781,7 +844,7 @@ h1 {
 
 ### CSS 函数
 
-CSS 拥有一系列内置函数，用于计算和动态值。
+CSS 拥有一系列用于计算和动态值的内置函数。
 
 ```css
 /* Calc 函数 */
@@ -848,7 +911,7 @@ CSS 拥有一系列内置函数，用于计算和动态值。
 .card--featured {
 }
 
-/* 组合相关样式 */
+/* 分组相关样式 */
 /* ===== 布局 ===== */
 .container {
 }
@@ -892,7 +955,7 @@ body div.container > p {
   /* 代替 left: 100px; */
 }
 
-/* 组合供应商前缀 */
+/* 分组浏览器前缀 */
 .element {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -909,7 +972,7 @@ body div.container > p {
 ```css
 /* 常见调试步骤 */
 /* 1. 右键点击 → 检查元素 */
-/* 2. 检查计算出的样式 */
+/* 2. 查看计算 (Computed) 样式 */
 /* 3. 查看被覆盖的属性 */
 /* 4. 实时测试更改 */
 /* 5. 将修改后的 CSS 复制回文件 */
@@ -933,7 +996,7 @@ body div.container > p {
 }
 
 /* Z-index 问题 */
-/* 确保 z-index 生效的元素已定位 */
+/* 确保元素已定位，以便 z-index 生效 */
 .element {
   position: relative;
   z-index: 1;
@@ -1004,7 +1067,7 @@ Web 应用程序中样式化的现代方法。
 
 ```css
 /* PostCSS 插件 */
-/* Autoprefixer - 添加供应商前缀 */
+/* Autoprefixer - 添加浏览器前缀 */
 /* PurgeCSS - 移除未使用的 CSS */
 
 /* CSS Modules */
@@ -1017,7 +1080,7 @@ Web 应用程序中样式化的现代方法。
 ```javascript
 /* 实用工具优先的 CSS (Tailwind) */
 ;<div class="flex items-center justify-center p-4 bg-blue-500">
-  <span class="text-white font-bold">Button</span>
+  <span class="text-white font-bold">按钮</span>
 </div>
 
 /* CSS-in-JS (Styled Components) */

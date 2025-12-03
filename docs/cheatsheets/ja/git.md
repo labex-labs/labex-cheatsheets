@@ -1,6 +1,6 @@
 ---
-title: 'Git チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Git を習得しましょう。'
+title: 'Git チートシート | LabEx'
+description: 'この包括的なチートシートで Git バージョン管理を習得しましょう。Git コマンド、ブランチ、マージ、リベース、GitHub ワークフロー、共同開発のためのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Git チートシート
 <a target="_blank" href="https://labex.io/ja/learn/git">ハンズオンラボで Git を学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて Git バージョン管理を学びましょう。LabEx は、必須コマンド、ブランチ戦略、コラボレーションワークフロー、高度なテクニックを網羅した包括的な Git コースを提供します。Git と GitHub を使用して、コードリポジトリの管理、競合の解決、チームとの効果的な連携方法を習得します。
+ハンズオンラボと実世界のシナリオを通じて、Git バージョン管理を学びます。LabEx は、必須コマンド、ブランチ戦略、コラボレーションワークフロー、高度なテクニックを網羅した包括的な Git コースを提供します。Git と GitHub を使用して、コードリポジトリの管理、競合の解決、チームとの効果的な作業方法を習得します。
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -30,7 +30,7 @@ Git チートシート
 git init
 # 新しいディレクトリで初期化
 git init project-name
-# ベア（裸）リポジトリを初期化（作業ディレクトリなし）
+# ベア（bare）リポジトリを初期化（作業ディレクトリなし）
 git init --bare
 # カスタムテンプレートディレクトリを使用
 git init --template=path
@@ -81,7 +81,7 @@ git config user.email "project@example.com"
 ```bash
 # リモートの追加
 git remote add origin https://github.com/user/repo.git
-# すべてのリモートとURLを一覧表示
+# URL を含むすべて のリモートを一覧表示
 git remote -v
 # リモートの詳細情報を表示
 git remote show origin
@@ -93,14 +93,14 @@ git remote remove upstream
 
 ### クレデンシャルストレージ：`git config credential`
 
-認証情報を保存し、繰り返しログインする手間を省きます。
+認証情報を保存し、繰り返しログインするのを防ぎます。
 
 ```bash
-# 15分間キャッシュ
+# 15 分間キャッシュ
 git config --global credential.helper cache
 # 永続的に保存
 git config --global credential.helper store
-# 1時間キャッシュ
+# 1 時間キャッシュ
 git config --global credential.helper 'cache --timeout=3600'
 ```
 
@@ -126,13 +126,13 @@ git status --ignored
 リポジトリの異なる状態間の変更を表示します。
 
 ```bash
-# 作業ディレクトリとステージングエリアの差分
+# 作業ディレクトリとステージングエリアの変更
 git diff
-# ステージングエリアと前回のコミットの差分
+# ステージングエリアと前回のコミットの変更
 git diff --staged
 # すべての未コミットの変更
 git diff HEAD
-# 特定のファイルの差分
+# 特定ファイルの変更
 git diff file.txt
 ```
 
@@ -143,15 +143,15 @@ git diff file.txt
 ```bash
 # 完全なコミット履歴
 git log
-# 簡潔な一行形式
+# 凝縮された一行形式
 git log --oneline
-# 最後の5件のコミットを表示
+# 最後の 5 件のコミットを表示
 git log -5
-# ブランチの視覚的なグラフ
+# 分岐のグラフを視覚化
 git log --graph --all
 ```
 
-## ファイルのステージングとコミット
+## 変更のステージングとコミット
 
 ### ファイルのステージング：`git add`
 
@@ -160,11 +160,11 @@ git log --graph --all
 ```bash
 # 特定のファイルをステージング
 git add file.txt
-# 現在のディレクトリのすべての変更をステージング
+# 現在ディレクトリ内のすべての変更をステージング
 git add .
 # すべての変更（削除を含む）をステージング
 git add -A
-# すべてのJavaScriptファイルをステージング
+# すべての JavaScript ファイルをステージング
 git add *.js
 # 対話的なステージング（パッチモード）
 git add -p
@@ -172,7 +172,7 @@ git add -p
 
 ### 変更のコミット：`git commit`
 
-ステージされた変更を説明的なメッセージとともにリポジトリに保存します。
+ステージングされた変更を説明的なメッセージとともにリポジトリに保存します。
 
 ```bash
 # メッセージ付きでコミット
@@ -185,33 +185,48 @@ git commit --amend
 git commit --no-edit --amend
 ```
 
-### ファイルのステージング解除：`git reset`
+<BaseQuiz id="git-commit-1" correct="A">
+  <template #question>
+    `git commit -m "message"` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>指定されたメッセージで新しいコミットを作成する</BaseQuizOption>
+  <BaseQuizOption value="B">作業ディレクトリ内のすべての変更をステージングする</BaseQuizOption>
+  <BaseQuizOption value="C">リモートリポジトリに変更をプッシュする</BaseQuizOption>
+  <BaseQuizOption value="D">新しいブランチを作成する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git commit -m` コマンドは、ステージングされた変更で新しいコミットを作成し、提供されたメッセージでリポジトリの履歴に保存します。リモートへのプッシュやブランチの作成は行いません。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### ファイルのアンステージ：`git reset`
 
 ステージングエリアからファイルを削除したり、コミットを取り消したりします。
 
 ```bash
-# 特定のファイルをステージング解除
+# 特定のファイルをアンステージ
 git reset file.txt
-# すべてのファイルをステージング解除
+# すべてのファイルをアンステージ
 git reset
-# 前回のコミットを取り消し、変更はステージング状態に保持
+# 前回のコミットを取り消し、変更はステージングされたままにする
 git reset --soft HEAD~1
-# 前回のコミットを取り消し、変更を破棄
+# 前回のコミットを取り消し、変更を破棄する
 git reset --hard HEAD~1
 ```
 
 ### 変更の破棄：`git checkout` / `git restore`
 
-作業ディレクトリの変更を前回のコミット状態に戻します。
+作業ディレクトリ内の変更を前回のコミット状態に戻します。
 
 ```bash
-# ファイルの変更を破棄（古い構文）
+# ファイルの変更を破棄する（古い構文）
 git checkout -- file.txt
-# ファイルの変更を破棄（新しい構文）
+# ファイルの変更を破棄する（新しい構文）
 git restore file.txt
-# ファイルのステージングを解除（新しい構文）
+# ファイルのステージングを解除する（新しい構文）
 git restore --staged file.txt
-# すべての未コミットの変更を破棄
+# すべての未コミットの変更を破棄する
 git checkout .
 ```
 
@@ -247,6 +262,21 @@ git checkout main
 git switch main
 ```
 
+<BaseQuiz id="git-branch-1" correct="B">
+  <template #question>
+    `git checkout -b feature-branch` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">feature-branch を削除する</BaseQuizOption>
+  <BaseQuizOption value="B" correct>feature-branch という名前の新しいブランチを作成し、それに切り替える</BaseQuizOption>
+  <BaseQuizOption value="C">feature-branch を現在のブランチにマージする</BaseQuizOption>
+  <BaseQuizOption value="D">feature-branch のコミット履歴を表示する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-b` フラグは新しいブランチを作成し、`checkout` はそれに切り替えます。このコマンドは両方の操作を結合します：ブランチを作成し、直ちにそれに切り替えます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### ブランチのマージ：`git merge`
 
 異なるブランチからの変更を結合します。
@@ -256,7 +286,7 @@ git switch main
 git merge feature-branch
 # フォースマージコミット
 git merge --no-ff feature-branch
-# マージ前にコミットをスクワッシュ
+# マージ前にコミットをスクワッシュする
 git merge --squash feature-branch
 ```
 
@@ -292,18 +322,33 @@ git fetch origin main
 
 ### 変更のプル：`git pull`
 
-リモートリポジトリから変更をダウンロードしてマージします。
+リモートリポジトリから変更をダウンロードし、マージします。
 
 ```bash
 # トラッキングブランチからプル
 git pull
 # 特定のリモートブランチからプル
 git pull origin main
-# マージの代わりにリベースを使用してプル
+# マージではなくリベースでプル
 git pull --rebase
 # マージコミットなしでファストフォワードのみ
 git pull --ff-only
 ```
+
+<BaseQuiz id="git-pull-1" correct="C">
+  <template #question>
+    `git fetch` と `git pull` の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはありません。同じことを行います</BaseQuizOption>
+  <BaseQuizOption value="B">git fetch は変更をプッシュし、git pull は変更をダウンロードします</BaseQuizOption>
+  <BaseQuizOption value="C" correct>git fetch はマージせずに変更をダウンロードし、git pull は変更をダウンロードしてマージします</BaseQuizOption>
+  <BaseQuizOption value="D">git fetch はローカルリポジトリで機能し、git pull はリモートリポジトリで機能します</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git fetch` はリモートリポジトリから変更をダウンロードしますが、現在のブランチにはマージしません。`git pull` は両方の操作を実行します：変更をフェッチし、次に現在のブランチにマージします。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 変更のプッシュ：`git push`
 
@@ -314,28 +359,43 @@ git pull --ff-only
 git push
 # 特定のリモートブランチにプッシュ
 git push origin main
-# プッシュとアップストリームの追跡を設定
+# プッシュしてアップストリームのトラッキングを設定
 git push -u origin feature
-# 安全な強制プッシュ
+# 安全なフォースプッシュ
 git push --force-with-lease
 ```
 
+<BaseQuiz id="git-push-1" correct="D">
+  <template #question>
+    `git push -u origin feature` は何を行いますか？
+  </template>
+  
+  <BaseQuizOption value="A">リモートから feature ブランチを削除する</BaseQuizOption>
+  <BaseQuizOption value="B">feature ブランチから変更をプルする</BaseQuizOption>
+  <BaseQuizOption value="C">feature ブランチを main にマージする</BaseQuizOption>
+  <BaseQuizOption value="D" correct>feature ブランチを origin にプッシュし、トラッキングを設定する</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `-u` フラグ（または `--set-upstream`）は、ブランチをリモートリポジトリにプッシュし、トラッキングを設定するため、将来の `git push` および `git pull` コマンドは使用するリモートブランチを認識します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### リモートブランチの追跡：`git branch --track`
 
-ローカルブランチとリモートブランチ間の追跡を設定します。
+ローカルブランチとリモートブランチ間のトラッキングを設定します。
 
 ```bash
-# 追跡を設定
+# トラッキングを設定
 git branch --set-upstream-to=origin/main main
-# リモートブランチを追跡してローカルブランチを作成
+# リモートブランチを追跡
 git checkout -b local-branch origin/remote-branch
 ```
 
-## スタッシュと一時保存
+## スタッシュと一時ストレージ
 
 ### 変更のスタッシュ：`git stash`
 
-未コミットの変更を一時的に保存し、後で再利用できるようにします。
+コミットされていない変更を一時的に保存し、後で使えるようにします。
 
 ```bash
 # 現在の変更をスタッシュ
@@ -370,7 +430,7 @@ git stash show stash@{1}
 git stash apply
 # 特定のスタッシュを適用
 git stash apply stash@{1}
-# 適用して最新のスタッシュを削除
+# 適用後に最新のスタッシュを削除
 git stash pop
 # 最新のスタッシュを削除
 git stash drop
@@ -380,14 +440,29 @@ git stash branch new-branch stash@{1}
 git stash clear
 ```
 
+<BaseQuiz id="git-stash-1" correct="B">
+  <template #question>
+    `git stash apply` と `git stash pop` の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">git stash apply はスタッシュを削除し、git stash pop は保持します</BaseQuizOption>
+  <BaseQuizOption value="B" correct>git stash apply はスタッシュを保持し、git stash pop は適用後に削除します</BaseQuizOption>
+  <BaseQuizOption value="C">git stash apply はリモートリポジトリで機能し、git stash pop はローカルで機能します</BaseQuizOption>
+  <BaseQuizOption value="D">違いはありません。同じことを行います</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `git stash apply` はスタッシュされた変更を復元しますが、スタッシュリストにはスタッシュを残します。`git stash pop` はスタッシュを適用し、その後スタッシュリストから削除します。これはスタッシュが不要になった場合に便利です。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 履歴とログの分析
 
 ### コミット履歴の表示：`git log`
 
-さまざまな書式設定オプションを使用してリポジトリの履歴を探索します。
+さまざまな書式設定オプションを使用してリポジトリの履歴を調査します。
 
 ```bash
-# 視覚的なブランチ履歴
+# 分岐の履歴を視覚化
 git log --oneline --graph --all
 # 特定の作成者によるコミット
 git log --author="John Doe"
@@ -397,14 +472,14 @@ git log --since="2 weeks ago"
 git log --grep="bug fix"
 ```
 
-### 誰が変更したか：`git blame`
+### 責務の追跡：`git blame`
 
 ファイルの各行を最後に変更した人を確認します。
 
 ```bash
 # 行ごとの作成者を表示
 git blame file.txt
-# 特定の行範囲を対象に表示
+# 特定の行範囲を責務追跡
 git blame -L 10,20 file.txt
 # blame の代替
 git annotate file.txt
@@ -419,7 +494,7 @@ git annotate file.txt
 git grep "function"
 # 行番号付きで検索
 git grep -n "TODO"
-# ステージされているファイルを検索
+# ステージングされたファイル内を検索
 git grep --cached "bug"
 ```
 
@@ -432,9 +507,9 @@ git grep --cached "bug"
 git show
 # 前回のコミットを表示
 git show HEAD~1
-# 特定のハッシュのコミットを表示
+# ハッシュで特定のコミットを表示
 git show abc123
-# ファイルの統計情報とともにコミットを表示
+# 統計情報とともにコミットを表示
 git show --stat
 ```
 
@@ -442,16 +517,16 @@ git show --stat
 
 ### コミットの取り消し：`git revert`
 
-安全に以前の変更を取り消す新しいコミットを作成します。
+安全に以前の変更を打ち消す新しいコミットを作成します。
 
 ```bash
-# 最新のコミットを取り消し
+# 最新のコミットを取り消す
 git revert HEAD
-# 特定のコミットを取り消し
+# 特定のコミットを取り消す
 git revert abc123
-# コミットの範囲を取り消し
+# コミット範囲を取り消す
 git revert HEAD~3..HEAD
-# 自動コミットなしで取り消し
+# 自動コミットなしで取り消す
 git revert --no-commit abc123
 ```
 
@@ -460,26 +535,26 @@ git revert --no-commit abc123
 ブランチポインタを移動し、必要に応じて作業ディレクトリを変更します。
 
 ```bash
-# コミットを取り消し、変更はステージング状態に保持
+# コミットを取り消し、変更はステージングされたままにする
 git reset --soft HEAD~1
-# コミットとステージングを取り消し
+# コミットとステージングを取り消す
 git reset --mixed HEAD~1
-# コミット、ステージング、作業ディレクトリを取り消し
+# コミット、ステージング、作業ディレクトリを取り消す
 git reset --hard HEAD~1
 ```
 
 ### 対話型リベース：`git rebase -i`
 
-コミットを対話的に編集、並べ替え、またはスクワッシュ（統合）します。
+コミットを対話的に編集、並べ替え、またはスクワッシュします。
 
 ```bash
-# 最後の3つのコミットを対話的にリベース
+# 最後の 3 つのコミットを対話的にリベース
 git rebase -i HEAD~3
-# 現在のブランチを main 上でリベース
+# 現在のブランチを main にリベース
 git rebase -i main
 # 競合解決後に続行
 git rebase --continue
-# リベース操作をキャンセル
+# リベース操作を中止
 git rebase --abort
 ```
 
@@ -490,7 +565,7 @@ git rebase --abort
 ```bash
 # 特定のコミットを現在のブランチに適用
 git cherry-pick abc123
-# コミットの範囲を適用
+# コミット範囲を適用
 git cherry-pick abc123..def456
 # コミットせずにチェリーピック
 git cherry-pick -n abc123
@@ -509,13 +584,13 @@ git status
 git add resolved-file.txt
 # マージを完了
 git commit
-# マージをキャンセルし、以前の状態に戻す
+# マージを中止し、以前の状態に戻す
 git merge --abort
 ```
 
 ### マージツール：`git mergetool`
 
-競合を視覚的に解決するのに役立つ外部ツールを起動します。
+視覚的な競合解決を支援するために外部ツールを起動します。
 
 ```bash
 # デフォルトのマージツールを起動
@@ -526,9 +601,9 @@ git config --global merge.tool vimdiff
 git mergetool --tool=meld
 ```
 
-### 競合マーカー: 形式の理解
+### 競合マーカー: フォーマットの理解
 
-ファイル内の Git の競合マーカーの解釈。
+ファイル内の Git の競合マーカーの形式を解釈します。
 
 ```text
 <<<<<<< HEAD
@@ -547,10 +622,10 @@ git commit
 
 ### Diff ツール：`git difftool`
 
-競合の視覚化を改善するために外部の diff ツールを使用します。
+より良い競合の視覚化のために外部の diff ツールを使用します。
 
 ```bash
-# 変更の diff ツールを起動
+# 変更のために diff ツールを起動
 git difftool
 # デフォルトの diff ツールを設定
 git config --global diff.tool vimdiff
@@ -616,14 +691,14 @@ git push origin :refs/tags/v1.0
 
 ### 設定の表示：`git config --list`
 
-現在の Git 設定を表示します。
+現在の Git 設定設定を表示します。
 
 ```bash
 # すべての設定を表示
 git config --list
 # グローバル設定のみを表示
 git config --global --list
-# リポジトリ固有の設定のみを表示
+# リポジトリ固有の設定を表示
 git config --local --list
 # 特定の設定を表示
 git config user.name
@@ -646,7 +721,7 @@ git config --global alias.ci commit
 
 ### 高度なエイリアス：複雑なコマンド
 
-複雑なコマンドの組み合わせのエイリアスを作成します。
+複雑なコマンドの組み合わせのためのエイリアスを作成します。
 
 ```bash
 git config --global alias.lg "log --oneline --graph --all"
@@ -657,7 +732,7 @@ git config --global alias.visual "!gitk"
 
 ### エディタの設定：`git config core.editor`
 
-コミットメッセージや競合解決に使用するテキストエディタを設定します。
+コミットメッセージや競合のために優先するテキストエディタを設定します。
 
 ```bash
 # VS Code
@@ -690,11 +765,11 @@ git fsck
 Git LFS を使用して大容量バイナリファイルを効率的に管理します。
 
 ```bash
-# リポジトリに LFS をインストール
+# リポジトリで LFS をインストール
 git lfs install
 # PDF ファイルを LFS で追跡
 git lfs track "*.pdf"
-# LFS によって追跡されているファイルの一覧表示
+# LFS によって追跡されているファイルを一覧表示
 git lfs ls-files
 # 既存のファイルを移行
 git lfs migrate import --include="*.zip"
@@ -702,14 +777,14 @@ git lfs migrate import --include="*.zip"
 
 ### シャロークローン：リポジトリサイズの削減
 
-履歴を制限したリポジトリをクローンし、操作を高速化します。
+より高速な操作のために履歴を制限してリポジトリをクローンします。
 
 ```bash
 # 最新のコミットのみ
 git clone --depth 1 https://github.com/user/repo.git
-# 最後の10コミット
+# 最後の 10 件のコミット
 git clone --depth 10 repo.git
-# シャロークローンをフルクローンに変換
+# シャローをフルクローンに変換
 git fetch --unshallow
 ```
 
@@ -743,7 +818,7 @@ winget install Git.Git
 
 ### ダウンロードとインストール：公式インストーラ
 
-お使いのプラットフォームの公式インストーラを使用します。
+プラットフォームに応じた公式の Git インストーラを使用します。
 
 ```bash
 # https://git-scm.com/downloads からダウンロード
@@ -755,7 +830,7 @@ which git
 
 ### 初回セットアップ：ユーザー設定
 
-コミット用に Git に ID を設定します。
+コミットのために Git に自分の ID を設定します。
 
 ```bash
 git config --global user.name "Your Full Name"
@@ -786,16 +861,16 @@ git push -u origin feature/user-auth
 
 ### Git Flow: 構造化されたブランチモデル
 
-さまざまな目的に特化したブランチを使用する体系的なアプローチ。
+さまざまな目的に特化したブランチを使用した体系的なアプローチ。
 
 ```bash
 # Git Flow を初期化
 git flow init
-# 機能を開始
+# 機能の開始
 git flow feature start new-feature
 # 機能の終了
 git flow feature finish new-feature
-# リリースブランチを開始
+# リリースブランチの開始
 git flow release start 1.0.0
 ```
 
@@ -804,7 +879,7 @@ git flow release start 1.0.0
 明確なプロジェクト履歴のために、従来のコミット形式に従います。
 
 ```bash
-# 形式: <type>(<scope>): <subject>
+# フォーマット: <type>(<scope>): <subject>
 git commit -m "feat(auth): add user login functionality"
 git commit -m "fix(api): resolve null pointer exception"
 git commit -m "docs(readme): update installation instructions"
@@ -813,7 +888,7 @@ git commit -m "refactor(utils): simplify date formatting"
 
 ### アトミックコミット：ベストプラクティス
 
-履歴を改善するために、目的に特化したコミットを作成します。
+履歴を改善するために、焦点を絞った単一目的のコミットを作成します。
 
 ```bash
 # 対話的に変更をステージング
@@ -833,7 +908,7 @@ git commit -m "Add validation to email field"
 ```bash
 # 参照ログを表示
 git reflog
-# HEAD の移動履歴を表示
+# HEAD の移動を表示
 git reflog show HEAD
 # 失われたコミットを回復
 git checkout abc123
@@ -841,14 +916,14 @@ git checkout abc123
 git branch recovery-branch abc123
 ```
 
-### リポジトリの破損：修復
+### 破損したリポジトリ：修復
 
 リポジトリの破損と整合性の問題を修正します。
 
 ```bash
 # リポジトリの整合性をチェック
 git fsck --full
-# 徹底的なクリーンアップ
+# 積極的なクリーンアップ
 git gc --aggressive --prune=now
 # 破損した場合にインデックスを再構築
 rm .git/index; git reset
@@ -863,18 +938,18 @@ rm .git/index; git reset
 git remote set-url origin https://token@github.com/user/repo.git
 # SSH キーをエージェントに追加
 ssh-add ~/.ssh/id_rsa
-# Windows の資格情報マネージャ
+# Windows の資格情報マネージャー
 git config --global credential.helper manager-core
 ```
 
 ### パフォーマンスの問題：デバッグ
 
-リポジトリのパフォーマンスの問題を特定し、解決します。
+リポジトリのパフォーマンスの問題を特定して解決します。
 
 ```bash
 # リポジトリサイズを表示
 git count-objects -vH
-# コミット総数をカウント
+# 合計コミット数をカウント
 git log --oneline | wc -l
 # ブランチ数をカウント
 git for-each-ref --format='%(refname:short)' | wc -l

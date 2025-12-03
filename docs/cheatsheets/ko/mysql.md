@@ -1,6 +1,6 @@
 ---
-title: 'MySQL 치트 시트'
-description: '필수 명령어, 개념 및 모범 사례를 다루는 포괄적인 치트 시트로 MySQL 을 학습하세요.'
+title: 'MySQL 치트 시트 | LabEx'
+description: '이 종합 치트 시트로 MySQL 데이터베이스 관리를 학습하세요. SQL 쿼리, 조인, 인덱스, 트랜잭션, 저장 프로시저 및 데이터베이스 관리를 위한 빠른 참조 자료입니다.'
 pdfUrl: '/cheatsheets/pdf/mysql-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ MySQL 치트 시트
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/mysql">핸즈온 랩으로 MySQL 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/mysql">Hands-On 실습으로 MySQL 배우기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-핸즈온 랩과 실제 시나리오를 통해 MySQL 데이터베이스 관리를 학습하세요. LabEx 는 필수 SQL 작업, 데이터베이스 관리, 성능 최적화 및 고급 쿼리 기술을 다루는 포괄적인 MySQL 과정을 제공합니다. 세계에서 가장 인기 있는 관계형 데이터베이스 시스템 중 하나를 마스터하세요.
+실습 기반 랩과 실제 시나리오를 통해 MySQL 데이터베이스 관리를 학습하세요. LabEx 는 필수 SQL 작업, 데이터베이스 관리, 성능 최적화 및 고급 쿼리 기술을 다루는 포괄적인 MySQL 과정을 제공합니다. 세계에서 가장 인기 있는 관계형 데이터베이스 시스템 중 하나를 마스터하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -32,7 +32,7 @@ mysql -u root -p
 mysql -u username -p database_name
 # 원격 서버에 연결
 mysql -h hostname -u username -p
-# 포트 지정으로 연결
+# 포트 지정하여 연결
 mysql -h hostname -P 3306 -u username -p database_name
 ```
 
@@ -51,6 +51,21 @@ USE company_db;
 DROP DATABASE old_database;
 ```
 
+<BaseQuiz id="mysql-database-1" correct="C">
+  <template #question>
+    `USE database_name`은 무엇을 수행합니까?
+  </template>
+  
+  <BaseQuizOption value="A">새 데이터베이스를 생성합니다</BaseQuizOption>
+  <BaseQuizOption value="B">데이터베이스를 삭제합니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>후속 작업을 위해 데이터베이스를 선택합니다</BaseQuizOption>
+  <BaseQuizOption value="D">데이터베이스의 모든 테이블을 표시합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `USE` 문은 데이터베이스를 선택하여 후속 SQL 문에 대해 활성 데이터베이스로 만듭니다. 이는 `mysql -u user -p database_name`으로 연결할 때 데이터베이스를 선택하는 것과 동일합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 데이터 내보내기: `mysqldump`
 
 데이터베이스 데이터를 SQL 파일로 백업합니다.
@@ -62,18 +77,18 @@ mysqldump -u username -p database_name > backup.sql
 mysqldump -u username -p database_name table_name > table_backup.sql
 # 구조만 내보내기
 mysqldump -u username -p --no-data database_name > structure.sql
-# 프로시저 및 트리거를 포함한 전체 데이터베이스 백업
+# 루틴 및 트리거를 포함한 전체 데이터베이스 백업
 mysqldump -u username -p --routines --triggers database_name > backup.sql
 ```
 
 ### 데이터 가져오기: `mysql < file.sql`
 
-SQL 파일을 MySQL 데이터베이스로 가져옵니다.
+MySQL 데이터베이스로 SQL 파일을 가져옵니다.
 
 ```bash
 # SQL 파일을 데이터베이스로 가져오기
 mysql -u username -p database_name < backup.sql
-# 데이터베이스를 지정하지 않고 가져오기 (파일에 포함된 경우)
+# (파일에 포함된 경우) 데이터베이스를 지정하지 않고 가져오기
 mysql -u username -p < full_backup.sql
 ```
 
@@ -140,7 +155,7 @@ DESCRIBE users;
 SHOW COLUMNS FROM users;
 # 모든 테이블 나열
 SHOW TABLES;
-# 테이블의 CREATE 문 표시
+# 테이블에 대한 CREATE 문 표시
 SHOW CREATE TABLE users;
 ```
 
@@ -177,6 +192,21 @@ INSERT INTO users (username, email, age) VALUES
 INSERT INTO users_backup SELECT * FROM users;
 ```
 
+<BaseQuiz id="mysql-insert-1" correct="A">
+  <template #question>
+    단일 레코드를 삽입하는 올바른 구문은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    올바른 구문은 `INSERT INTO table_name (columns) VALUES (values)`입니다. `INTO` 키워드가 필요하며 열 이름과 해당 값을 모두 지정해야 합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 데이터 업데이트: `UPDATE`
 
 테이블의 기존 레코드를 수정합니다.
@@ -209,7 +239,7 @@ JOIN inactive_accounts i ON u.id = i.user_id;
 
 ### 데이터 대체: `REPLACE` / `INSERT ... ON DUPLICATE KEY`
 
-삽입 중 중복 키 상황을 처리합니다.
+삽입 시 중복 키 상황을 처리합니다.
 
 ```sql
 # 기존 항목 대체 또는 새 항목 삽입
@@ -237,6 +267,21 @@ SELECT * FROM users WHERE age > 25;
 # 다중 조건으로 선택
 SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 ```
+
+<BaseQuiz id="mysql-select-1" correct="D">
+  <template #question>
+    `SELECT * FROM users`는 무엇을 반환합니까?
+  </template>
+  
+  <BaseQuizOption value="A">users 테이블의 첫 번째 행만</BaseQuizOption>
+  <BaseQuizOption value="B">username 열만</BaseQuizOption>
+  <BaseQuizOption value="C">테이블 구조</BaseQuizOption>
+  <BaseQuizOption value="D" correct>users 테이블의 모든 열과 모든 행</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `*` 와일드카드는 모든 열을 선택하며, WHERE 절이 없으면 모든 행을 반환합니다. 이는 모든 데이터를 보는 데 유용하지만 대규모 테이블에서는 주의해서 사용해야 합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 정렬 및 제한: `ORDER BY` / `LIMIT`
 
@@ -273,9 +318,9 @@ SELECT * FROM users WHERE email IS NOT NULL;
 데이터를 그룹화하고 집계 함수를 적용합니다.
 
 ```sql
-# 열 기준으로 그룹화
+# 열별 그룹화
 SELECT age, COUNT(*) FROM users GROUP BY age;
-# 그룹에 조건 적용
+# 그룹에 대한 조건 포함
 SELECT age, COUNT(*) as count FROM users
 GROUP BY age HAVING count > 1;
 # 다중 그룹화 열
@@ -305,6 +350,21 @@ JOIN orders o ON u.id = o.user_id
 JOIN products p ON o.product_id = p.id;
 ```
 
+<BaseQuiz id="mysql-join-1" correct="B">
+  <template #question>
+    INNER JOIN 과 LEFT JOIN 의 차이점은 무엇입니까?
+  </template>
+  
+  <BaseQuizOption value="A">차이가 없습니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>INNER JOIN 은 일치하는 행만 반환하고, LEFT JOIN 은 왼쪽 테이블의 모든 행을 반환합니다</BaseQuizOption>
+  <BaseQuizOption value="C">INNER JOIN 이 더 빠릅니다</BaseQuizOption>
+  <BaseQuizOption value="D">LEFT JOIN 은 두 테이블에서만 작동합니다</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    INNER JOIN 은 두 테이블에서 일치하는 행만 반환합니다. LEFT JOIN 은 왼쪽 테이블의 모든 행과 오른쪽 테이블의 일치하는 행을 반환하며, 일치하지 않는 오른쪽 테이블 행에 대해서는 NULL 값을 반환합니다.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 서브쿼리: `SELECT` 내의 `SELECT`
 
 복잡한 데이터 검색을 위해 중첩된 쿼리를 사용합니다.
@@ -313,7 +373,7 @@ JOIN products p ON o.product_id = p.id;
 # WHERE 절의 서브쿼리
 SELECT * FROM users
 WHERE id IN (SELECT user_id FROM orders WHERE total > 100);
-# 상관 서브쿼리
+# 상관 관계가 있는 서브쿼리
 SELECT username FROM users u1
 WHERE age > (SELECT AVG(age) FROM users u2);
 # SELECT 절의 서브쿼리
@@ -324,7 +384,7 @@ FROM users;
 
 ### 집계 함수: `COUNT` / `SUM` / `AVG`
 
-데이터에 대한 통계 및 요약을 계산합니다.
+데이터에서 통계 및 요약을 계산합니다.
 
 ```sql
 # 기본 집계
@@ -351,7 +411,7 @@ FROM users;
 SELECT username, age,
 RANK() OVER (ORDER BY age DESC) as age_rank
 FROM users;
-# 그룹별 파티션
+# 그룹별 분할
 SELECT username, department, salary,
 AVG(salary) OVER (PARTITION BY department) as dept_avg
 FROM employees;
@@ -404,7 +464,7 @@ SELECT username, email FROM users WHERE id = 1;
 SELECT * FROM logs ORDER BY created_at DESC LIMIT 1000;
 # 적절한 WHERE 조건 사용
 SELECT * FROM orders WHERE user_id = 123 AND status = 'pending';
--- 커버링 인덱스 가능한 경우 사용
+-- 커버링 인덱스 사용 시도
 ```
 
 ### 테이블 유지 관리: `OPTIMIZE` / `ANALYZE`
@@ -474,9 +534,9 @@ mysqldump -h source_host -u user -p db_name | mysql -h dest_host -u user -p db_n
 
 ## 데이터 유형 및 함수
 
-### 일반적인 데이터 유형: 숫자, 텍스트, 날짜
+### 일반 데이터 유형: 숫자, 텍스트, 날짜
 
-열에 적합한 데이터 유형을 선택합니다.
+열에 적절한 데이터 유형을 선택합니다.
 
 ```sql
 # 숫자 유형
@@ -513,7 +573,7 @@ SELECT REPLACE(phone, '-', '.') FROM users WHERE phone LIKE '___-___-____';
 
 ### 날짜 함수: `NOW()` / `DATE_ADD` / `DATEDIFF`
 
-날짜 및 시간을 효과적으로 작업합니다.
+날짜와 시간을 효과적으로 다룹니다.
 
 ```sql
 # 현재 날짜 및 시간
@@ -578,7 +638,8 @@ SELECT @@transaction_isolation;
 ```sql
 # 배타적 액세스를 위해 테이블 잠금
 LOCK TABLES users WRITE, orders READ;
-# ... 작업 수행
+# 작업 수행
+# ...
 UNLOCK TABLES;
 # 트랜잭션 내의 행 수준 잠금
 BEGIN;
@@ -695,14 +756,14 @@ sudo systemctl start mysql
 
 ### Docker: `docker run mysql`
 
-개발을 위해 Docker 컨테이너에서 MySQL 을 실행합니다.
+개발을 위해 MySQL 을 Docker 컨테이너에서 실행합니다.
 
 ```bash
 # MySQL 컨테이너 실행
 docker run --name mysql-dev -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql:8.0
 # 컨테이너화된 MySQL에 연결
 docker exec -it mysql-dev mysql -u root -p
-# 컨테이너 내에서 데이터베이스 생성
+# 컨테이너에서 데이터베이스 생성
 docker exec -it mysql-dev mysql -u root -p -e "CREATE DATABASE testdb;"
 ```
 

@@ -1,11 +1,11 @@
 ---
-title: 'Folha de Cola CSS'
-description: 'Aprenda CSS com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Referência CSS | LabEx'
+description: 'Aprenda CSS3 com esta folha de referência abrangente. Referência rápida para seletores CSS, flexbox, grid, animações, design responsivo e técnicas modernas de estilização para desenvolvedores web.'
 pdfUrl: '/cheatsheets/pdf/css-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Folha de Dicas CSS
+Folha de Dicas de CSS
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,7 +15,7 @@ Folha de Dicas CSS
 <a target="_blank" href="https://labex.io/pt/learn/css">Aprenda CSS com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda estilização web com CSS através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de CSS cobrindo propriedades essenciais, seletores, técnicas de layout, design responsivo e recursos modernos. Domine a estilização e o design de layout web eficientes para fluxos de trabalho de desenvolvimento web modernos.
+Aprenda estilização web com CSS através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de CSS cobrindo propriedades essenciais, seletores, técnicas de layout, design responsivo e recursos modernos. Domine a estilização web eficiente e o design de layout para fluxos de trabalho de desenvolvimento web modernos.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -39,22 +39,22 @@ p {
 }
 ```
 
-### Seletores de Elemento
+### Seletores de Elementos
 
-Visam elementos HTML pelo seu nome de tag.
+Visam elementos HTML pelo nome da tag.
 
 ```css
-/* Seleciona todos os parágrafos */
+/* Selecionar todos os parágrafos */
 p {
   color: blue;
 }
 
-/* Seleciona todos os cabeçalhos */
+/* Selecionar todos os cabeçalhos */
 h1 {
   font-size: 2em;
 }
 
-/* Seleciona todos os links */
+/* Selecionar todos os links */
 a {
   text-decoration: none;
 }
@@ -65,12 +65,12 @@ a {
 Visam elementos com atributos de classe específicos.
 
 ```css
-/* Seleciona elementos com class="highlight" */
+/* Selecionar elementos com class="highlight" */
 .highlight {
   background-color: yellow;
 }
 
-/* Seleciona parágrafos com class="intro" */
+/* Selecionar parágrafos com class="intro" */
 p.intro {
   font-weight: bold;
 }
@@ -82,12 +82,27 @@ p.intro {
 }
 ```
 
+<BaseQuiz id="css-class-1" correct="B">
+  <template #question>
+    Como você seleciona um elemento com class="highlight" em CSS?
+  </template>
+  
+  <BaseQuizOption value="A">highlight { }</BaseQuizOption>
+  <BaseQuizOption value="B" correct>.highlight { }</BaseQuizOption>
+  <BaseQuizOption value="C">#highlight { }</BaseQuizOption>
+  <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Seletores de classe usam um ponto (`.`) como prefixo. `.highlight` seleciona todos os elementos com `class="highlight"`. Seletores de ID usam `#`, e seletores de elemento não usam prefixo.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Seletores de ID
 
 Visam elementos com atributos de ID específicos.
 
 ```css
-/* Seleciona elemento com id="header" */
+/* Selecionar elemento com id="header" */
 #header {
   background-color: #333;
 }
@@ -159,7 +174,7 @@ li:nth-child(odd) {
 A área de conteúdo real do elemento.
 
 ```css
-/* Define dimensões */
+/* Definir dimensões */
 div {
   width: 300px;
   height: 200px;
@@ -171,7 +186,7 @@ div {
   max-width: 1200px;
 }
 
-/* Restrições mínimas/máximas */
+/* Restrições Mínimas/Máximas */
 .box {
   min-height: 100px;
   max-width: 500px;
@@ -198,6 +213,22 @@ div {
 div {
   padding: 10px 15px 20px 5px;
 }
+```
+
+<BaseQuiz id="css-padding-1" correct="C">
+  <template #question>
+    O que `padding: 10px 20px` define?
+  </template>
+  
+  <BaseQuizOption value="A">10px topo/inferior, 20px esquerda/direita</BaseQuizOption>
+  <BaseQuizOption value="B">10px em todos os lados</BaseQuizOption>
+  <BaseQuizOption value="C" correct>10px topo/inferior, 20px esquerda/direita</BaseQuizOption>
+  <BaseQuizOption value="D">10px topo, 20px inferior</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Quando dois valores são fornecidos, o primeiro aplica-se ao topo e inferior, e o segundo aplica-se à esquerda e direita. Portanto, `padding: 10px 20px` significa preenchimento vertical de 10px e preenchimento horizontal de 20px.
+  </BaseQuizAnswer>
+</BaseQuiz>
 ```
 
 ### Borda (Border): `border`
@@ -250,11 +281,26 @@ div {
 }
 ```
 
+<BaseQuiz id="css-margin-1" correct="C">
+  <template #question>
+    O que `margin: 0 auto` faz?
+  </template>
+  
+  <BaseQuizOption value="A">Remove todas as margens</BaseQuizOption>
+  <BaseQuizOption value="B">Adiciona margens iguais em todos os lados</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Centraliza um elemento de bloco horizontalmente</BaseQuizOption>
+  <BaseQuizOption value="D">Centraliza um elemento de bloco verticalmente</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `margin: 0 auto` define as margens superior e inferior como 0 e as margens esquerda/direita como auto, o que centraliza um elemento de bloco horizontalmente dentro de seu contêiner.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## Texto e Tipografia
 
 ### Propriedades de Fonte
 
-Controla a família da fonte, tamanho, peso e estilo.
+Controlam a família da fonte, tamanho, peso e estilo.
 
 ```css
 /* Família da fonte */
@@ -351,6 +397,22 @@ p {
 div {
   background-color: #ff5733;
 }
+```
+
+<BaseQuiz id="css-colors-1" correct="D">
+  <template #question>
+    Qual formato de cor CSS é mais comumente usado para design web?
+  </template>
+  
+  <BaseQuizOption value="A">Apenas RGB</BaseQuizOption>
+  <BaseQuizOption value="B">Apenas cores nomeadas</BaseQuizOption>
+  <BaseQuizOption value="C">Apenas HSL</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Códigos Hexadecimais (#RRGGBB) são muito comuns, juntamente com cores nomeadas e RGB</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Os códigos de cor Hexadecimais (#RRGGBB) são amplamente utilizados porque são concisos e fáceis de copiar de ferramentas de design. Cores nomeadas e RGB/rgba também são comuns. A escolha depende do caso de uso específico e da preferência.
+  </BaseQuizAnswer>
+</BaseQuiz>
 span {
   color: rgb(255, 87, 51);
 }
@@ -358,19 +420,20 @@ section {
   background-color: rgba(255, 87, 51, 0.8);
 }
 
-/* Cores HSL */
+/_ Cores HSL _/
 header {
-  background-color: hsl(200, 100%, 50%);
+background-color: hsl(200, 100%, 50%);
 }
 
-/* Variáveis CSS para cores */
+/_ Variáveis CSS para cores _/
 :root {
-  --primary-color: #3498db;
+--primary-color: #3498db;
 }
 .button {
-  background-color: var(--primary-color);
+background-color: var(--primary-color);
 }
-```
+
+````
 
 ## Layout Flexbox
 
@@ -384,14 +447,14 @@ Propriedades aplicadas ao contêiner pai.
   display: flex;
 }
 
-/* Direção flex */
+/* Direção flexível */
 .container {
   flex-direction: row; /* padrão */
   flex-direction: column;
   flex-direction: row-reverse;
 }
 
-/* justify-content (eixo principal) */
+/* Justificar conteúdo (eixo principal) */
 .container {
   justify-content: flex-start; /* padrão */
   justify-content: center;
@@ -399,20 +462,20 @@ Propriedades aplicadas ao contêiner pai.
   justify-content: space-around;
 }
 
-/* align-items (eixo cruzado) */
+/* Alinhar itens (eixo cruzado) */
 .container {
   align-items: stretch; /* padrão */
   align-items: center;
   align-items: flex-start;
 }
-```
+````
 
 ### Propriedades do Item Flex
 
 Propriedades aplicadas aos elementos filhos.
 
 ```css
-/* Crescimento/Encolhimento flex */
+/* Crescimento/Encolhimento flexível */
 .item {
   flex-grow: 1; /* crescer para preencher o espaço */
   flex-shrink: 1; /* encolher se necessário */
@@ -433,7 +496,7 @@ Propriedades aplicadas aos elementos filhos.
 
 /* Ordem */
 .item {
-  order: 2; /* alterar a ordem visual */
+  order: 2; /* alterar ordem visual */
 }
 ```
 
@@ -441,7 +504,7 @@ Propriedades aplicadas aos elementos filhos.
 
 ### Contêiner Grid
 
-Define a estrutura e as propriedades da grade.
+Definir estrutura e propriedades da grade.
 
 ```css
 /* Habilitar grid */
@@ -471,15 +534,15 @@ Define a estrutura e as propriedades da grade.
 }
 ```
 
-### Itens Grid
+### Itens da Grade
 
-Posiciona e dimensiona os itens da grade.
+Posicionar e dimensionar itens da grade.
 
 ```css
 /* Posicionamento da grade */
 .grid-item {
-  grid-column: 1 / 3; /* abrange as colunas 1-2 */
-  grid-row: 2 / 4; /* abrange as linhas 2-3 */
+  grid-column: 1 / 3; /* abranger colunas 1-2 */
+  grid-row: 2 / 4; /* abranger linhas 2-3 */
 }
 
 /* Abreviação */
@@ -500,8 +563,8 @@ Posiciona e dimensiona os itens da grade.
 
 /* Colocação automática */
 .grid-item {
-  grid-column: span 2; /* abrange 2 colunas */
-  grid-row: span 3; /* abrange 3 linhas */
+  grid-column: span 2; /* abranger 2 colunas */
+  grid-row: span 3; /* abranger 3 linhas */
 }
 ```
 
@@ -582,7 +645,7 @@ Controla a ordem em que os elementos se sobrepõem usando z-index e contexto de 
 
 ### Media Queries
 
-Aplica estilos com base nas características do dispositivo.
+Aplicam estilos com base nas características do dispositivo.
 
 ```css
 /* Abordagem mobile first */
@@ -590,14 +653,14 @@ Aplica estilos com base nas características do dispositivo.
   width: 100%;
 }
 
-/* Estilos de tablet */
+/* Estilos para Tablet */
 @media (min-width: 768px) {
   .container {
     width: 750px;
   }
 }
 
-/* Estilos de desktop */
+/* Estilos para Desktop */
 @media (min-width: 1024px) {
   .container {
     width: 960px;
@@ -624,10 +687,10 @@ Aplica estilos com base nas características do dispositivo.
 
 ### Unidades Responsivas
 
-Use unidades relativas para layouts flexíveis.
+Usam unidades relativas para layouts flexíveis.
 
 ```css
-/* Unidades de viewport */
+/* Unidades de Viewport */
 .hero {
   height: 100vh;
 } /* altura total da viewport */
@@ -635,7 +698,7 @@ Use unidades relativas para layouts flexíveis.
   width: 25vw;
 } /* 25% da largura da viewport */
 
-/* Unidades relativas */
+/* Unidades Relativas */
 p {
   font-size: 1.2em;
 } /* 1.2x o tamanho da fonte do pai */
@@ -643,7 +706,7 @@ h1 {
   font-size: 2rem;
 } /* 2x o tamanho da fonte raiz */
 
-/* Unidades de porcentagem */
+/* Unidades de Porcentagem */
 .container {
   width: 80%;
 }
@@ -651,7 +714,7 @@ h1 {
   width: 50%;
 }
 
-/* Grid responsivo */
+/* Grid CSS responsivo */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -701,7 +764,7 @@ Mudanças suaves entre valores de propriedade.
 
 ### Animações CSS
 
-Cria animações complexas com keyframes.
+Criam animações complexas com keyframes.
 
 ```css
 /* Definir keyframes */
@@ -746,11 +809,11 @@ Cria animações complexas com keyframes.
 }
 ```
 
-## Variáveis CSS e Funções
+## Variáveis e Funções CSS
 
 ### Variáveis CSS
 
-Define e usa propriedades personalizadas para consistência de temas.
+Definem e usam propriedades personalizadas para temas consistentes.
 
 ```css
 /* Definir variáveis */
@@ -797,13 +860,13 @@ CSS tem uma gama de funções integradas para cálculos e valores dinâmicos.
   height: clamp(200px, 50vh, 400px);
 }
 
-/* Funções de cor */
+/* Funções de Cor */
 .element {
   background-color: hsl(200, 50%, 50%);
   color: rgb(255, 87, 51);
 }
 
-/* Funções de transformação */
+/* Funções de Transformação */
 .rotate {
   transform: rotate(45deg);
 }
@@ -819,7 +882,7 @@ CSS tem uma gama de funções integradas para cálculos e valores dinâmicos.
 
 ### Organização CSS
 
-Estrutura seu CSS para manutenção.
+Estruturar seu CSS para manutenção.
 
 ```css
 /* Usar nomes de classe significativos */
@@ -864,7 +927,7 @@ Estrutura seu CSS para manutenção.
 
 ### Desempenho e Otimização
 
-Escreva CSS eficiente para melhor desempenho.
+Escrever CSS eficiente para melhor desempenho.
 
 ```css
 /* Evitar aninhamento profundo */
@@ -904,12 +967,12 @@ body div.container > p {
 
 ### Ferramentas de Desenvolvedor do Navegador
 
-Inspecione e modifique o CSS em tempo real.
+Inspecionar e modificar CSS em tempo real.
 
 ```css
 /* Passos comuns de depuração */
 /* 1. Clique com o botão direito → Inspecionar Elemento */
-/* 2. Verificar estilos Computados */
+/* 2. Verificar estilos Calculados */
 /* 3. Procurar propriedades substituídas */
 /* 4. Testar alterações em tempo real */
 /* 5. Copiar CSS modificado de volta para o seu arquivo */
@@ -917,7 +980,7 @@ Inspecione e modifique o CSS em tempo real.
 
 ### Problemas Comuns de CSS
 
-Solucione problemas frequentemente encontrados.
+Solucionar problemas frequentemente encontrados.
 
 ```css
 /* Problemas de modelo de caixa */
@@ -933,7 +996,7 @@ Solucione problemas frequentemente encontrados.
 }
 
 /* Problemas de z-index */
-/* Garantir elementos posicionados para que z-index funcione */
+/* Garantir elementos posicionados para z-index funcionar */
 .element {
   position: relative;
   z-index: 1;
@@ -942,14 +1005,14 @@ Solucione problemas frequentemente encontrados.
 
 ### Validação CSS
 
-Garanta que seu CSS siga padrões e melhores práticas.
+Garantir que seu CSS siga padrões e melhores práticas.
 
 ```css
 /* Usar validadores CSS */
 /* Validador CSS W3C */
-/* Ferramentas de compatibilidade com navegadores */
+/* Ferramentas de compatibilidade de navegador */
 
-/* Comente seu código */
+/* Comentar seu código */
 /* ===== ESTILOS DO CABEÇALHO ===== */
 .header {
 }
@@ -968,7 +1031,7 @@ Garanta que seu CSS siga padrões e melhores práticas.
 
 ### Pré-processadores CSS
 
-Estenda o CSS com variáveis, aninhamento e funções.
+Estender CSS com variáveis, aninhamento e funções.
 
 ```scss
 /* Exemplo SCSS/Sass */
@@ -1015,7 +1078,7 @@ Abordagens modernas para estilização em aplicações web.
 ```
 
 ```javascript
-/* CSS de primeira utilidade (Tailwind) */
+/* CSS utilitário-primeiro (Tailwind) */
 ;<div class="flex items-center justify-center p-4 bg-blue-500">
   <span class="text-white font-bold">Botão</span>
 </div>
@@ -1029,7 +1092,7 @@ const Button = styled.button`
 
 ## Links Relevantes
 
-- <router-link to="/html">Folha de Dicas HTML</router-link>
-- <router-link to="/javascript">Folha de Dicas JavaScript</router-link>
-- <router-link to="/react">Folha de Dicas React</router-link>
+- <router-link to="/html">Folha de Dicas de HTML</router-link>
+- <router-link to="/javascript">Folha de Dicas de JavaScript</router-link>
+- <router-link to="/react">Folha de Dicas de React</router-link>
 - <router-link to="/web-development">Folha de Dicas de Desenvolvimento Web</router-link>

@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de Java'
-description: 'Aprenda Java con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de Java | LabEx'
+description: 'Aprenda programación Java con esta hoja de trucos completa. Referencia rápida de sintaxis Java, OOP, colecciones, streams, framework Spring y elementos esenciales del desarrollo empresarial.'
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Hoja de Trucos de Java
 <a target="_blank" href="https://labex.io/es/learn/java">Aprende Java con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende programación Java a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Java que cubren sintaxis esencial, programación orientada a objetos, colecciones, manejo de excepciones y mejores prácticas. Domina los fundamentos del desarrollo en Java y construye aplicaciones robustas.
+Aprende programación Java a través de laboratorios prácticos y escenarios del mundo real. LabEx proporciona cursos completos de Java que cubren sintaxis esencial, programación orientada a objetos, colecciones, manejo de excepciones y mejores prácticas. Domina los fundamentos del desarrollo en Java y construye aplicaciones robustas.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -50,7 +50,7 @@ public class MyClass {
 
 ### Método Main: Punto de Entrada del Programa
 
-El método main es donde comienza la ejecución del programa Java.
+El método principal es donde comienza la ejecución del programa Java.
 
 ```java
 public static void main(String[] args) {
@@ -59,15 +59,30 @@ public static void main(String[] args) {
 }
 ```
 
+<BaseQuiz id="java-main-1" correct="C">
+  <template #question>
+    ¿Cuál es la firma correcta para el método main en Java?
+  </template>
+  
+  <BaseQuizOption value="A">public void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="B">static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="C" correct>public static void main(String[] args)</BaseQuizOption>
+  <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El método main debe ser `public static void main(String[] args)`. `public` permite que la JVM acceda a él, `static` significa que pertenece a la clase, `void` significa que no devuelve nada, y `String[] args` recibe argumentos de línea de comandos.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Comentarios: Documentación del Código
 
-Usa comentarios de una sola línea (`//`) y de múltiples líneas (`/* */`) para hacer el código más comprensible y mantenible.
+Usa comentarios de una sola línea (`//`) y de varias líneas (`/* */`) para hacer el código más comprensible y mantenible.
 
 ```java
 // Comentario de una sola línea
 System.out.println("Hello");
 
-/* Comentario de múltiples líneas
+/* Comentario de varias líneas
    Puede abarcar varias líneas
    Usado para explicaciones detalladas */
 ```
@@ -115,7 +130,7 @@ double precision = 3.14159; // Doble precisión
 
 // Otros tipos
 char letter = 'A';          // Carácter único
-boolean flag = true;        // verdadero o falso
+boolean flag = true;        // true o false
 ```
 
 ### Declaración e Inicialización de Variables
@@ -123,7 +138,7 @@ boolean flag = true;        // verdadero o falso
 Crear y asignar valores a variables.
 
 ```java
-// Solo declaración
+// Declaración solamente
 int age;
 String name;
 
@@ -131,16 +146,16 @@ String name;
 int age = 25;
 String name = "John";
 
-// Múltiples declaraciones
+// Declaraciones múltiples
 int x = 10, y = 20, z = 30;
 
 // Variables finales (constantes)
 final double PI = 3.14159;
 ```
 
-### Operaciones con Cadenas (Strings)
+### Operaciones con Cadenas (String)
 
-Las cadenas representan secuencias de caracteres y son inmutables, lo que significa que una vez creadas, sus valores no pueden cambiarse.
+Las cadenas representan secuencias de caracteres y son inmutables, lo que significa que una vez creados, sus valores no se pueden cambiar.
 
 ```java
 String greeting = "Hello";
@@ -155,6 +170,21 @@ int length = message.length();
 boolean isEmpty = message.isEmpty();
 String uppercase = message.toUpperCase();
 ```
+
+<BaseQuiz id="java-string-1" correct="A">
+  <template #question>
+    ¿Qué significa que las cadenas de Java sean inmutables?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Una vez creados, el valor de una cadena no se puede cambiar</BaseQuizOption>
+  <BaseQuizOption value="B">Las cadenas no se pueden crear</BaseQuizOption>
+  <BaseQuizOption value="C">Las cadenas solo pueden almacenar números</BaseQuizOption>
+  <BaseQuizOption value="D">Las cadenas se eliminan automáticamente</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La inmutabilidad significa que una vez que se crea un objeto String, su valor no se puede modificar. Operaciones como `toUpperCase()` devuelven un nuevo objeto String en lugar de modificar el original.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Sentencias de Flujo de Control
 
@@ -177,7 +207,7 @@ if (score >= 90) {
 
 ### Sentencia Switch
 
-Ramificación múltiple basada en los valores de las variables.
+Ramificación de múltiples vías basada en los valores de las variables.
 
 ```java
 int day = 3;
@@ -213,6 +243,21 @@ for (int num : numbers) {
 }
 ```
 
+<BaseQuiz id="java-for-loop-1" correct="C">
+  <template #question>
+    ¿Para qué se utiliza el bucle for mejorado (for-each)?
+  </template>
+  
+  <BaseQuizOption value="A">Iterar con una variable contadora</BaseQuizOption>
+  <BaseQuizOption value="B">Bucles infinitos</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Iterar a través de arrays y colecciones sin un índice</BaseQuizOption>
+  <BaseQuizOption value="D">Solo bucles anidados</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El bucle for mejorado (for-each) simplifica la iteración a través de arrays y colecciones al manejar automáticamente el índice, haciendo el código más legible y menos propenso a errores.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Bucles While y Do-While
 
 Repetir código mientras una condición sea verdadera.
@@ -225,13 +270,28 @@ while (i < 3) {
     i++;
 }
 
-// Bucle Do-while (se ejecuta al menos una vez)
+// Bucle Do-while (ejecuta al menos una vez)
 int j = 0;
 do {
     System.out.println("Do-while: " + j);
     j++;
 } while (j < 3);
 ```
+
+<BaseQuiz id="java-while-1" correct="B">
+  <template #question>
+    ¿Cuál es la diferencia clave entre los bucles `while` y `do-while`?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="B" correct>do-while se ejecuta al menos una vez, mientras que while puede no ejecutarse nunca</BaseQuizOption>
+  <BaseQuizOption value="C">while es más rápido</BaseQuizOption>
+  <BaseQuizOption value="D">do-while solo funciona con arrays</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El bucle `do-while` comprueba la condición después de ejecutar el cuerpo del bucle, por lo que siempre se ejecuta al menos una vez. El bucle `while` comprueba la condición primero, por lo que puede no ejecutarse si la condición es falsa inicialmente.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Programación Orientada a Objetos
 
@@ -378,7 +438,7 @@ public class MathUtils {
 }
 ```
 
-### Parámetros y Tipos de Retorno de Métodos
+### Parámetros de Método y Tipos de Retorno
 
 Pasar datos a métodos y devolver resultados.
 
@@ -506,7 +566,7 @@ for (String item : list) {
 
 ### HashMap: Pares Clave-Valor
 
-Almacena datos como pares clave-valor para una búsqueda rápida.
+Almacenar datos como pares clave-valor para una búsqueda rápida.
 
 ```java
 import java.util.HashMap;
@@ -570,7 +630,7 @@ public void processArray(String[] arr, int index) {
 }
 ```
 
-### Lanzar Excepciones Personalizadas
+### Lanzamiento de Excepciones Personalizadas
 
 Crear y lanzar tus propias excepciones.
 
@@ -650,7 +710,7 @@ public class InputExample {
 
 ### Salida de Consola: System.out
 
-Mostrar la salida a la consola en varios formatos.
+Mostrar la salida en la consola en varios formatos.
 
 ```java
 public class OutputExample {
@@ -699,7 +759,7 @@ public class FileReadExample {
 
 ### Escritura de Archivos: PrintWriter
 
-Escribir datos de texto en archivos con manejo de excepciones adecuado.
+Escribir datos de texto en archivos con manejo adecuado de excepciones.
 
 ```java
 import java.io.*;
@@ -731,7 +791,7 @@ JDK (Java Development Kit) = JRE + Herramientas de Desarrollo. Requerido para de
 
 ```bash
 # Descargar JDK desde Oracle u OpenJDK
-# Instalar JDK en tu sistema
+# Instalar JDK en su sistema
 # Establecer la variable de entorno JAVA_HOME
 export JAVA_HOME=/path/to/jdk
 export PATH=$JAVA_HOME/bin:$PATH
@@ -743,7 +803,7 @@ javac -version
 
 ### Compilar y Ejecutar Programas Java
 
-Usa `javac` para compilar código fuente Java y `java` para ejecutar el programa compilado.
+Usar `javac` para compilar código fuente Java y `java` para ejecutar el programa compilado.
 
 ```bash
 # Compilar archivo fuente Java
@@ -761,7 +821,7 @@ java -cp .:mylib.jar MyProgram
 
 ### Configuración de IDE y Desarrollo
 
-Entornos de Desarrollo Integrado populares para el desarrollo Java.
+Entornos de Desarrollo Integrados populares para el desarrollo en Java.
 
 ```bash
 # IDEs populares para Java:
@@ -837,7 +897,7 @@ public class WellOrganizedClass {
         // Implementación
     }
 
-    // Métodos auxiliares privados
+    // Métodos de ayuda privados
     private boolean isValid() {
         return value > 0;
     }
@@ -851,7 +911,7 @@ Prácticas comunes para evitar errores y mejorar la calidad del código.
 ```java
 public class BestPractices {
     public void safeDivision(int a, int b) {
-        // Comprobar la división por cero
+        // Comprobar división por cero
         if (b == 0) {
             throw new IllegalArgumentException("Cannot divide by zero");
         }

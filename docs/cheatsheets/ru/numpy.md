@@ -1,18 +1,18 @@
 ---
-title: 'Шпаргалка по NumPy'
-description: 'Изучите NumPy с нашей подробной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по NumPy | LabEx'
+description: 'Изучите численные вычисления NumPy с помощью этой исчерпывающей шпаргалки. Краткий справочник по массивам, линейной алгебре, математическим операциям, широковещанию (broadcasting) и научным вычислениям на Python.'
 pdfUrl: '/cheatsheets/pdf/numpy-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-NumPy Cheatsheet
+Шпаргалка по NumPy
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/numpy">Изучить NumPy с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/numpy">Изучите NumPy с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Изучите числовые вычисления NumPy с помощью практических лабораторий и сценариев из реального мира. LabEx предлагает комплексные курсы по NumPy, охватывающие основные операции с массивами, математические функции, линейную алгебру и оптимизацию производительности. Освойте эффективные числовые вычисления и манипуляции с массивами для рабочих процессов науки о данных.
@@ -37,6 +37,21 @@ arr = np.array([1, 2, 3], dtype=float)
 # Массив строк
 arr_str = np.array(['a', 'b', 'c'])
 ```
+
+<BaseQuiz id="numpy-array-1" correct="C">
+  <template #question>
+    What is the main advantage of NumPy arrays over Python lists?
+  </template>
+  
+  <BaseQuizOption value="A">They can store strings</BaseQuizOption>
+  <BaseQuizOption value="B">They are easier to create</BaseQuizOption>
+  <BaseQuizOption value="C" correct>They are faster and more memory-efficient for numerical operations</BaseQuizOption>
+  <BaseQuizOption value="D">They can store mixed data types</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    NumPy arrays are optimized for numerical computations, providing faster operations and more efficient memory usage compared to Python lists, especially for large datasets and mathematical operations.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Нули и единицы: `np.zeros()` / `np.ones()`
 
@@ -69,7 +84,7 @@ identity2 = np.identity(4)
 
 ```python
 # Похоже на Python range
-arr = np.arange(10)  # от 0 до 9
+arr = np.arange(10)  # От 0 до 9
 arr = np.arange(2, 10, 2)  # 2, 4, 6, 8
 # Равномерно расположенные значения
 arr = np.linspace(0, 1, 5)  # 5 значений от 0 до 1
@@ -82,22 +97,22 @@ arr = np.linspace(0, 10, 11)
 Генерация массивов со случайными значениями.
 
 ```python
-# Случайные значения между 0 и 1
+# Случайные значения от 0 до 1
 rand = np.random.random((2, 3))
 # Случайные целые числа
 rand_int = np.random.randint(0, 10, size=(3, 3))
 # Нормальное распределение
 normal = np.random.normal(0, 1, size=5)
-# Установка начального числа для воспроизводимости
+# Установка начального числа (seed) для воспроизводимости
 np.random.seed(42)
 ```
 
 ### Специальные массивы: `np.full()` / `np.empty()`
 
-Создание массивов с заданными значениями или неинициализированных.
+Создание массивов с определенными значениями или неинициализированных.
 
 ```python
-# Заполнение заданным значением
+# Заполнение определенным значением
 full_arr = np.full((2, 3), 7)
 # Пустой массив (неинициализированный)
 empty_arr = np.empty((2, 2))
@@ -109,7 +124,7 @@ like_arr = np.zeros_like(arr)
 
 ### Основные свойства: `shape` / `size` / `ndim`
 
-Получение основной информации о размерностях и размере массива.
+Получение фундаментальной информации о размерностях и размере массива.
 
 ```python
 # Размерности массива (кортеж)
@@ -135,7 +150,7 @@ arr.nbytes
 arr.flags
 # Проверка, владеет ли массив своими данными
 arr.owndata
-# Базовый объект (если массив является представлением)
+# Базовый объект (если массив является представлением/view)
 arr.base
 ```
 
@@ -187,6 +202,21 @@ mask = arr > 3
 filtered = arr[mask]
 ```
 
+<BaseQuiz id="numpy-boolean-1" correct="C">
+  <template #question>
+    What does boolean indexing `arr[arr > 5]` return?
+  </template>
+  
+  <BaseQuizOption value="A">A boolean array</BaseQuizOption>
+  <BaseQuizOption value="B">The original array</BaseQuizOption>
+  <BaseQuizOption value="C" correct>An array with only elements greater than 5</BaseQuizOption>
+  <BaseQuizOption value="D">An error</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Boolean indexing filters the array, returning only elements where the condition is true. `arr[arr > 5]` returns a new array containing only values greater than 5.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Расширенное индексирование: Fancy Indexing
 
 Использование массивов индексов для доступа к нескольким элементам.
@@ -214,7 +244,7 @@ result = np.where(arr > 5, arr, 0)  # Заменить значения >5 на 
 result = np.where(arr > 5, 'high', 'low')
 ```
 
-## Манипуляции и изменение формы массивов
+## Манипуляции и изменение формы массива
 
 ### Изменение формы: `reshape()` / `resize()` / `flatten()`
 
@@ -223,17 +253,47 @@ result = np.where(arr > 5, 'high', 'low')
 ```python
 # Изменение формы (создает представление, если возможно)
 arr.reshape(2, 3)
-arr.reshape(-1, 1)  # -1 означает вывод размера измерения
+arr.reshape(-1, 1)  # -1 означает автоматический вывод размерности
 # Изменение размера (изменяет исходный массив)
 arr.resize((2, 3))
-# Сглаживание в 1D
+# Сплющивание в 1D
 arr.flatten()  # Возвращает копию
 arr.ravel()  # Возвращает представление, если возможно
 ```
 
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    What does `-1` mean in `arr.reshape(-1, 1)`?
+  </template>
+  
+  <BaseQuizOption value="A">It creates an error</BaseQuizOption>
+  <BaseQuizOption value="B" correct>It infers the dimension automatically based on array size</BaseQuizOption>
+  <BaseQuizOption value="C">It creates a 1D array</BaseQuizOption>
+  <BaseQuizOption value="D">It reverses the array</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Using `-1` in reshape tells NumPy to automatically calculate that dimension based on the array's total size and the other specified dimensions. This is useful when you know one dimension but want NumPy to figure out the other.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+<BaseQuiz id="numpy-reshape-1" correct="B">
+  <template #question>
+    What does `-1` mean in `arr.reshape(-1, 1)`?
+  </template>
+  
+  <BaseQuizOption value="A">It creates an error</BaseQuizOption>
+  <BaseQuizOption value="B" correct>NumPy infers the dimension automatically</BaseQuizOption>
+  <BaseQuizOption value="C">It removes that dimension</BaseQuizOption>
+  <BaseQuizOption value="D">It sets the dimension to 1</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Using `-1` in reshape tells NumPy to automatically calculate that dimension based on the array's total size and the other specified dimensions. This is useful when you know one dimension but want NumPy to figure out the other.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Транспонирование: `T` / `transpose()`
 
-Обмен осей массива для операций линейной алгебры.
+Обмен осями массива для операций линейной алгебры.
 
 ```python
 # Простое транспонирование
@@ -241,18 +301,18 @@ arr2d.T
 # Транспонирование с указанием осей
 arr.transpose()
 np.transpose(arr)
-# Для более высоких измерений
+# Для более высоких размерностей
 arr3d.transpose(2, 0, 1)
 ```
 
-### Добавление/Удаление элементов
+### Добавление/удаление элементов
 
 Изменение размера массива путем добавления или удаления элементов.
 
 ```python
 # Добавить элементы
 np.append(arr, [4, 5])
-# Вставить в определенную позицию
+# Вставить на определенную позицию
 np.insert(arr, 1, 99)
 # Удалить элементы
 np.delete(arr, [1, 3])
@@ -277,9 +337,9 @@ np.dstack([arr1, arr2])  # По глубине
 
 ## Математические операции
 
-### Базовая арифметика: `+`, `-`, `*`, `/`
+### Основная арифметика: `+`, `-`, `*`, `/`
 
-Поэлементные арифметические операции с массивами.
+Поэлементные арифметические операции над массивами.
 
 ```python
 # Поэлементные операции
@@ -293,7 +353,7 @@ arr1 % 3  # Операция по модулю
 
 ### Универсальные функции (ufuncs)
 
-Применение математических функций поэлементно.
+Применение математических функций к элементам.
 
 ```python
 # Тригонометрические функции
@@ -366,7 +426,7 @@ np.linalg.matrix_power(A, 3)
 ```python
 # Собственные значения и собственные векторы
 eigenvals, eigenvecs = np.linalg.eig(A)
-# Сингулярное разложение
+# Сингулярное разложение (SVD)
 U, s, Vt = np.linalg.svd(A)
 # QR-разложение
 Q, R = np.linalg.qr(A)
@@ -396,7 +456,7 @@ np.trace(A)
 ```python
 # Решить Ax = b
 x = np.linalg.solve(A, b)
-# Решение наименьших квадратов
+# Решение методом наименьших квадратов
 x = np.linalg.lstsq(A, b, rcond=None)[0]
 ```
 
@@ -446,10 +506,10 @@ data = np.genfromtxt('data.csv', delimiter=',',
 
 ### Отображение памяти: `np.memmap()`
 
-Работа с массивами, которые слишком велики для размещения в памяти.
+Работа с массивами, слишком большими для размещения в памяти.
 
 ```python
-# Создать массив с отображением памяти
+# Создание массива с отображением памяти
 mmap_arr = np.memmap('large_array.dat', dtype='float32',
                      mode='w+', shape=(1000000,))
 # Доступ как к обычному массиву, но хранится на диске
@@ -493,7 +553,7 @@ result = vec_func(arr)
 
 ### Оптимизация памяти
 
-Техники для эффективного использования памяти с большими массивами.
+Методы для эффективного использования памяти с большими массивами.
 
 ```python
 # Использование подходящих типов данных
@@ -513,7 +573,7 @@ view.base is arr  # True для представления
 ```python
 # Используйте операции на месте, когда это возможно
 arr += 5  # Вместо arr = arr + 5
-np.add(arr, 5, out=arr)  # Явное на месте
+np.add(arr, 5, out=arr)  # Явное выполнение на месте
 # Минимизируйте создание массивов
 # Плохо: создает промежуточные массивы
 result = ((arr + 1) * 2) ** 2
@@ -552,7 +612,7 @@ np.random.shuffle(arr)
 np.random.permutation(arr)
 ```
 
-### Начальные числа и генераторы
+### Начальные числа (Seeds) и Генераторы
 
 Управление случайностью для воспроизводимых результатов.
 
@@ -579,7 +639,7 @@ np.median(arr)
 # Меры разброса
 np.std(arr)  # Стандартное отклонение
 np.var(arr)  # Дисперсия
-np.ptp(arr)  # Пик к пику (max - min)
+np.ptp(arr)  # Разница между максимумом и минимумом
 # Квантили
 np.percentile(arr, [25, 50, 75])
 np.quantile(arr, [0.25, 0.5, 0.75])
@@ -646,13 +706,13 @@ pip show numpy
 Менеджер пакетов для сред Anaconda/Miniconda.
 
 ```bash
-# Установить NumPy в текущем окружении
+# Установить NumPy в текущей среде
 conda install numpy
 # Обновить NumPy
 conda update numpy
 # Установить из conda-forge
 conda install -c conda-forge numpy
-# Создать окружение с NumPy
+# Создать среду с NumPy
 conda create -n myenv numpy
 ```
 
@@ -689,7 +749,7 @@ people['age']
 
 ### Маскированные массивы: `np.ma`
 
-Обработка массивов с отсутствующими или недопустимыми данными.
+Обработка массивов с отсутствующими или недействительными данными.
 
 ```python
 # Создать маскированный массив
@@ -707,8 +767,8 @@ filled = masked_arr.filled(0)
 ```python
 # Создать полином (коэффициенты в порядке убывания степени)
 p = np.poly1d([1, -2, 1])  # x² - 2x + 1
-# Вычислить полином
-p(5)  # Вычислить при x=5
+# Оценить полином
+p(5)  # Оценить при x=5
 # Найти корни
 np.roots([1, -2, 1])
 # Полиномиальная подгонка
@@ -730,10 +790,10 @@ reconstructed = np.fft.ifft(fft_result)
 fft2d = np.fft.fft2(image)
 ```
 
-## Соответствующие ссылки
+## Связанные ссылки
 
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/pandas">Pandas Cheatsheet</router-link>
-- <router-link to="/matplotlib">Matplotlib Cheatsheet</router-link>
-- <router-link to="/sklearn">scikit-learn Cheatsheet</router-link>
-- <router-link to="/datascience">Data Science Cheatsheet</router-link>
+- <router-link to="/python">Шпаргалка по Python</router-link>
+- <router-link to="/pandas">Шпаргалка по Pandas</router-link>
+- <router-link to="/matplotlib">Шпаргалка по Matplotlib</router-link>
+- <router-link to="/sklearn">Шпаргалка по scikit-learn</router-link>
+- <router-link to="/datascience">Шпаргалка по науке о данных</router-link>

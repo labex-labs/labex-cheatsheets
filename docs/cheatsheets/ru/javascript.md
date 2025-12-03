@@ -1,11 +1,11 @@
 ---
-title: 'Шпаргалка по JavaScript'
-description: 'Изучите JavaScript с нашей полной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по JavaScript | LabEx'
+description: 'Изучите программирование на JavaScript с помощью этой исчерпывающей шпаргалки. Быстрый справочник по синтаксису JS, ES6+, манипуляциям с DOM, async/await, Node.js и современной веб-разработке.'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-JavaScript Шпаргалка
+Шпаргалка по JavaScript
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,7 +15,7 @@ JavaScript Шпаргалка
 <a target="_blank" href="https://labex.io/ru/learn/javascript">Изучайте JavaScript с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучайте программирование на JavaScript с помощью практических лабораторий и сценариев из реального мира. LabEx предлагает комплексные курсы по JavaScript, охватывающие основной синтаксис, функции, манипуляции с DOM, асинхронное программирование и современные функции ES6+. Освойте JavaScript для эффективной веб-разработки и рабочих процессов программирования.
+Изучайте программирование на JavaScript с помощью практических лабораторий и реальных сценариев. LabEx предлагает комплексные курсы по JavaScript, охватывающие основные синтаксис, функции, манипуляции с DOM, асинхронное программирование и современные функции ES6+. Освойте JavaScript для эффективной веб-разработки и рабочих процессов программирования.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,22 +23,37 @@ JavaScript Шпаргалка
 
 ### Объявления Переменных: `let`, `const`, `var`
 
-Объявляйте переменные с различной областью видимости и изменяемостью.
+Объявляйте переменные с разной областью видимости и изменяемостью.
 
 ```javascript
-// Ограниченная областью видимости блока, изменяемая
+// Ограниченная блоком, изменяемая
 let name = 'John'
 let age = 25
 age = 26 // Можно переназначать
 
-// Ограниченная областью видимости блока, неизменяемая
+// Ограниченная блоком, неизменяемая
 const PI = 3.14159
 const user = { name: 'Alice' }
 user.age = 30 // Свойства объекта можно изменять
 
-// Ограниченная областью видимости функции (избегать в современном JS)
+// Ограниченная функцией (избегать в современном JS)
 var oldVariable = 'legacy'
 ```
+
+<BaseQuiz id="javascript-let-const-1" correct="B">
+  <template #question>
+    Какова основная разница между `let` и `const`?
+  </template>
+  
+  <BaseQuizOption value="A">let имеет область видимости функции, const имеет область видимости блока</BaseQuizOption>
+  <BaseQuizOption value="B" correct>let разрешает переназначение, const не разрешает переназначение</BaseQuizOption>
+  <BaseQuizOption value="C">const можно использовать только для чисел, let можно использовать для любого типа</BaseQuizOption>
+  <BaseQuizOption value="D">Разницы нет</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    И `let`, и `const` имеют блочную область видимости, но `let` позволяет вам переназначать переменную, в то время как `const` предотвращает переназначение. Однако свойства объектов `const` все еще могут быть изменены.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Примитивные Типы
 
@@ -58,13 +73,13 @@ let scientific = 2e5 // 200000
 let isActive = true
 let isComplete = false
 
-// Другие примитивы
+// Other primitives
 let nothing = null
 let notDefined = undefined
 let unique = Symbol('id')
 ```
 
-### Проверка Типа: `typeof`, `instanceof`
+### Проверка Типов: `typeof`, `instanceof`
 
 Определите тип переменных и значений.
 
@@ -111,7 +126,7 @@ Boolean('hello') // true
 Традиционный способ определения функций с поднятием (hoisting).
 
 ```javascript
-// Объявление функции (поднимается)
+// Объявление функции (hoisted)
 function greet(name) {
   return `Hello, ${name}!`
 }
@@ -147,6 +162,21 @@ const processData = (data) => {
 }
 ```
 
+<BaseQuiz id="javascript-arrow-1" correct="C">
+  <template #question>
+    Какая ключевая характеристика стрелочных функций?
+  </template>
+  
+  <BaseQuizOption value="A">Они поднимаются (hoisted) как объявления функций</BaseQuizOption>
+  <BaseQuizOption value="B">У них есть собственное связывание `this`</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Они наследуют `this` из окружающей области видимости</BaseQuizOption>
+  <BaseQuizOption value="D">Они не могут возвращать значения</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Стрелочные функции не имеют собственного связывания `this`. Вместо этого они наследуют `this` из лексической (окружающей) области видимости, что делает их полезными для колбэков и обработчиков событий, когда вы хотите сохранить контекст.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Функции Высшего Порядка
 
 Функции, которые принимают или возвращают другие функции.
@@ -170,7 +200,7 @@ function applyOperation(arr, operation) {
 
 ### Методы Массивов: `map()`, `filter()`, `reduce()`
 
-Функционально преобразуйте и манипулируйте массивами.
+Функциональное преобразование и манипулирование массивами.
 
 ```javascript
 const numbers = [1, 2, 3, 4, 5]
@@ -183,7 +213,7 @@ const doubled = numbers.map((x) => x * 2)
 const evens = numbers.filter((x) => x % 2 === 0)
 // [2, 4]
 
-// Свертка к единственному значению
+// Свертка до одного значения
 const sum = numbers.reduce((acc, curr) => acc + curr, 0)
 // 15
 
@@ -194,9 +224,24 @@ const result = numbers
   .reduce((a, b) => a + b, 0)
 ```
 
+<BaseQuiz id="javascript-array-1" correct="A">
+  <template #question>
+    Что возвращает `filter()`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Новый массив с элементами, прошедшими тест</BaseQuizOption>
+  <BaseQuizOption value="B">Первый элемент, прошедший тест</BaseQuizOption>
+  <BaseQuizOption value="C">Единственное значение, полученное путем свертки массива</BaseQuizOption>
+  <BaseQuizOption value="D">Исходный массив, измененный на месте</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Метод `filter()` создает новый массив, содержащий все элементы, прошедшие тест, реализованный предоставленной функцией. Он не изменяет исходный массив.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Утилиты Массивов: `find()`, `includes()`, `sort()`
 
-Поиск, проверка и организация элементов массива.
+Поиск, проверка и упорядочивание элементов массива.
 
 ```javascript
 const users = [
@@ -215,7 +260,7 @@ const user = users.find((u) => u.age > 30)
 const sorted = users.sort((a, b) => a.age - b.age)
 ```
 
-### Создание и Манипуляция Объектами
+### Создание и Манипуляции с Объектами
 
 Работа с объектами и их свойствами.
 
@@ -261,7 +306,7 @@ function displayUser({ name, age }) {
 
 ### Выбор Элементов: `querySelector()`, `getElementById()`
 
-Поиск и выбор HTML-элементов.
+Поиск и выбор элементов HTML.
 
 ```javascript
 // Выбор по ID
@@ -279,7 +324,22 @@ const listItems = document.querySelectorAll('li')
 const buttonsArray = Array.from(allButtons)
 ```
 
-### Изменение Элементов
+<BaseQuiz id="javascript-dom-1" correct="C">
+  <template #question>
+    Какова разница между `querySelector()` и `querySelectorAll()`?
+  </template>
+  
+  <BaseQuizOption value="A">Разницы нет</BaseQuizOption>
+  <BaseQuizOption value="B">querySelector быстрее</BaseQuizOption>
+  <BaseQuizOption value="C" correct>querySelector возвращает первый совпадающий элемент, querySelectorAll возвращает все совпадающие элементы</BaseQuizOption>
+  <BaseQuizOption value="D">querySelector работает с ID, querySelectorAll работает с классами</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `querySelector()` возвращает первый элемент, соответствующий CSS-селектору, в то время как `querySelectorAll()` возвращает NodeList, содержащий все совпадающие элементы. Используйте `querySelector()`, когда нужен один элемент, и `querySelectorAll()`, когда нужно несколько.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Модификация Элементов
 
 Изменение содержимого, атрибутов и стилей.
 
@@ -392,7 +452,7 @@ form.addEventListener('submit', handleSubmit)
 
 ### Делегирование Событий
 
-Эффективная обработка событий на нескольких элементах.
+Эффективная обработка событий для нескольких элементов.
 
 ```javascript
 // Делегирование событий на родительском элементе
@@ -431,7 +491,7 @@ element.addEventListener('userLogin', (e) => {
 
 ## Асинхронное Программирование
 
-### Promises: `Promise`, `then()`, `catch()`
+### Промисы: `Promise`, `then()`, `catch()`
 
 Работа с асинхронными операциями с использованием промисов.
 
@@ -478,7 +538,7 @@ getData()
   .catch((error) => console.error(error))
 ```
 
-### Fetch API: `fetch()`
+### API Fetch: `fetch()`
 
 Выполнение HTTP-запросов к серверам.
 
@@ -576,7 +636,7 @@ class Student extends Person {
   }
 }
 
-// Экспорт/импорт модуля
+// Экспорт/импорт модулей
 export const helper = () => 'helper function'
 export default Person
 
@@ -677,15 +737,15 @@ if (localStorage.getItem('username') !== null) {
 
 ### Операции с JSON
 
-Разбор и сериализация JSON-данных.
+Разбор и сериализация данных JSON.
 
 ```javascript
-// JavaScript объект в JSON-строку
+// JavaScript объект в строку JSON
 const user = { name: 'Alice', age: 25, active: true }
 const jsonString = JSON.stringify(user)
 // '{"name":"Alice","age":25,"active":true}'
 
-// JSON-строка в JavaScript объект
+// Строка JSON в объект JavaScript
 const jsonData = '{"name":"Bob","age":30}'
 const userObj = JSON.parse(jsonData)
 
@@ -707,10 +767,10 @@ const parsed = JSON.parse(jsonString, (key, value) => {
 
 ### Создание и Тестирование Шаблонов
 
-Создание шаблонов регулярных выражений и тестирование строк.
+Создание шаблонов regex и тестирование строк.
 
 ```javascript
-// Литерал регулярного выражения
+// Литерал Regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Конструктор RegExp
@@ -728,16 +788,16 @@ console.log(phoneMatch[0]); // '123-456-7890'
 const allNumbers = text.match(/\d+/g); // ['123', '456', '7890']
 ```
 
-### Методы Строк с Регулярными Выражениями
+### Методы Строк с Regex
 
-Использование регулярных выражений с методами манипуляции строками.
+Использование regex с методами манипуляции строками.
 
 ```javascript
-// Замена с помощью регулярного выражения
+// Замена с помощью regex
 const text = 'Hello World 123'
 const cleaned = text.replace(/\d+/g, '') // 'Hello World '
 
-// Разделение с помощью регулярного выражения
+// Разделение с помощью regex
 const parts = 'apple,banana;orange:grape'.split(/[,:;]/)
 // ['apple', 'banana', 'orange', 'grape']
 
@@ -810,7 +870,7 @@ npm install --save-dev jest
 ```
 
 ```bash
-# ES6 модули в браузере
+# Модули ES6 в браузере
 # Babel для поддержки старых браузеров
 npm install --save-dev @babel/core @babel/preset-env
 ```
@@ -822,7 +882,7 @@ npm install --save-dev @babel/core @babel/preset-env
 Техники для улучшения производительности JavaScript.
 
 ```javascript
-// Дебoунсинг (Debouncing) для частых событий
+// Дебаунсинг (Debouncing) для частых событий
 function debounce(func, delay) {
   let timeoutId
   return function (...args) {
@@ -831,13 +891,13 @@ function debounce(func, delay) {
   }
 }
 
-// Использование функции с дебoунсингом
+// Использование дебаунсированной функции
 const debouncedSearch = debounce(searchFunction, 300)
 input.addEventListener('input', debouncedSearch)
 
-// Эффективный запрос DOM
+// Эффективные запросы к DOM
 const elements = document.querySelectorAll('.item')
-// Кэшировать длину, чтобы избежать повторного вычисления
+// Кэшировать длину, чтобы избежать пересчета
 for (let i = 0, len = elements.length; i < len; i++) {
   // Обработать elements[i]
 }
@@ -931,4 +991,4 @@ const measurements = performance.getEntriesByType('measure')
 - <router-link to="/html">Шпаргалка по HTML</router-link>
 - <router-link to="/css">Шпаргалка по CSS</router-link>
 - <router-link to="/react">Шпаргалка по React</router-link>
-- <router-link to="/web-development">Шпаргалка по Веб-разработке</router-link>
+- <router-link to="/web-development">Шпаргалка по Веб-Разработке</router-link>

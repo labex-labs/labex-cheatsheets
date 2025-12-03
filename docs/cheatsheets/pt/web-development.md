@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Dicas de Desenvolvimento Web'
-description: 'Aprenda Desenvolvimento Web com nossa folha de dicas abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Referência de Desenvolvimento Web | LabEx'
+description: 'Aprenda desenvolvimento web com esta folha de referência abrangente. Referência rápida para HTML, CSS, JavaScript, APIs, design responsivo, otimização de desempenho e essenciais de desenvolvimento full-stack.'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Folha de Dicas de Desenvolvimento Web
 <a target="_blank" href="https://labex.io/pt/learn/web-development">Aprenda Desenvolvimento Web com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda desenvolvimento web através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de desenvolvimento web cobrindo HTML, CSS, JavaScript essenciais, manipulação de DOM e design responsivo. Domine a construção de sites interativos e responsivos para fluxos de trabalho modernos de desenvolvimento web.
+Aprenda desenvolvimento web através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de desenvolvimento web cobrindo HTML, CSS, JavaScript, manipulação de DOM e design responsivo essenciais. Domine a construção de sites interativos e responsivos para fluxos de trabalho modernos de desenvolvimento web.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -31,11 +31,11 @@ Crie a base de toda página web.
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minha Página Web</title>
+    <title>My Web Page</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Olá Mundo!</h1>
+    <h1>Hello World!</h1>
     <script src="script.js"></script>
   </body>
 </html>
@@ -43,41 +43,55 @@ Crie a base de toda página web.
 
 ### Elementos Semânticos: `<header>` / `<main>` / `<footer>`
 
-Use elementos semânticos HTML5 significativos para uma melhor estrutura.
+Use elementos semânticos HTML5 significativos para melhor estrutura.
 
 ```html
 <header>
   <nav>
     <ul>
-      <li><a href="#home">Início</a></li>
-      <li><a href="#about">Sobre</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
     </ul>
   </nav>
 </header>
 <main>
   <section>
-    <h1>Bem-vindo</h1>
-    <p>Conteúdo principal aqui</p>
+    <h1>Welcome</h1>
+    <p>Main content here</p>
   </section>
 </main>
 <footer>
-  <p>© 2024 Meu Site</p>
+  <p>© 2024 My Website</p>
 </footer>
 ```
+
+<BaseQuiz id="webdev-semantic-1" correct="B">
+  <template #question>
+    Qual é o principal benefício de usar elementos HTML semânticos como `header`, `main` e `footer`?
+  </template>
+  
+  <BaseQuizOption value="A">Eles fazem a página carregar mais rápido</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Eles melhoram a acessibilidade e o SEO ao fornecer significado à estrutura</BaseQuizOption>
+  <BaseQuizOption value="C">Eles estilam a página automaticamente</BaseQuizOption>
+  <BaseQuizOption value="D">Eles são necessários para o JavaScript funcionar</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Elementos HTML semânticos fornecem significado à estrutura do documento, tornando mais fácil para leitores de tela, mecanismos de busca e desenvolvedores entenderem a organização do conteúdo. Isso melhora a acessibilidade e o SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Elementos de Texto: `<h1>` a `<h6>` / `<p>`
 
 Estruture o conteúdo com hierarquia de títulos e parágrafos adequados.
 
 ```html
-<h1>Título Principal</h1>
-<h2>Título da Seção</h2>
-<h3>Subseção</h3>
+<h1>Main Title</h1>
+<h2>Section Heading</h2>
+<h3>Subsection</h3>
 <p>
-  Este é um parágrafo com texto <strong>em negrito</strong> e texto
-  <em>em itálico</em>.
+  This is a paragraph with <strong>bold text</strong> and <em>italic text</em>.
 </p>
-<p>Outro parágrafo com um <a href="https://example.com">link</a>.</p>
+<p>Another paragraph with a <a href="https://example.com">link</a>.</p>
 ```
 
 ### Listas: `<ul>` / `<ol>` / `<li>`
@@ -85,18 +99,18 @@ Estruture o conteúdo com hierarquia de títulos e parágrafos adequados.
 Crie listas organizadas de informações.
 
 ```html
-<!-- Lista não ordenada -->
+<!-- Unordered list -->
 <ul>
-  <li>Primeiro item</li>
-  <li>Segundo item</li>
-  <li>Terceiro item</li>
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
 </ul>
 
-<!-- Lista ordenada -->
+<!-- Ordered list -->
 <ol>
-  <li>Passo 1</li>
-  <li>Passo 2</li>
-  <li>Passo 3</li>
+  <li>Step 1</li>
+  <li>Step 2</li>
+  <li>Step 3</li>
 </ol>
 ```
 
@@ -105,16 +119,16 @@ Crie listas organizadas de informações.
 Incorpore conteúdo multimídia com atributos apropriados.
 
 ```html
-<!-- Imagem com texto alternativo -->
-<img src="image.jpg" alt="Descrição da imagem" width="300" />
+<!-- Image with alt text -->
+<img src="image.jpg" alt="Description of image" width="300" />
 
-<!-- Elemento de vídeo -->
+<!-- Video element -->
 <video controls width="400">
   <source src="video.mp4" type="video/mp4" />
-  Seu navegador não suporta vídeo.
+  Your browser doesn't support video.
 </video>
 
-<!-- Elemento de áudio -->
+<!-- Audio element -->
 <audio controls>
   <source src="audio.mp3" type="audio/mpeg" />
 </audio>
@@ -128,16 +142,16 @@ Exiba dados tabulares com a estrutura correta.
 <table>
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Idade</th>
-      <th>Cidade</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>John</td>
       <td>25</td>
-      <td>Nova York</td>
+      <td>New York</td>
     </tr>
   </tbody>
 </table>
@@ -151,13 +165,13 @@ Crie o contêiner para entradas e controles do usuário.
 
 ```html
 <form action="/submit" method="POST">
-  <label for="name">Nome:</label>
+  <label for="name">Name:</label>
   <input type="text" id="name" name="name" required />
 
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required />
 
-  <button type="submit">Enviar</button>
+  <button type="submit">Submit</button>
 </form>
 ```
 
@@ -166,9 +180,9 @@ Crie o contêiner para entradas e controles do usuário.
 Use tipos de entrada apropriados para diferentes dados.
 
 ```html
-<input type="text" placeholder="Digite seu nome" />
-<input type="email" placeholder="email@exemplo.com" />
-<input type="password" placeholder="Senha" />
+<input type="text" placeholder="Enter your name" />
+<input type="email" placeholder="email@example.com" />
+<input type="password" placeholder="Password" />
 <input type="number" min="1" max="100" />
 <input type="date" />
 <input type="checkbox" id="agree" />
@@ -182,16 +196,16 @@ Forneça várias maneiras para os usuários inserirem informações.
 
 ```html
 <select name="country" id="country">
-  <option value="">Selecione um país</option>
-  <option value="us">Estados Unidos</option>
-  <option value="ca">Canadá</option>
+  <option value="">Select a country</option>
+  <option value="us">United States</option>
+  <option value="ca">Canada</option>
 </select>
 
 <textarea
   name="message"
   rows="4"
   cols="50"
-  placeholder="Digite sua mensagem"
+  placeholder="Enter your message"
 ></textarea>
 ```
 
@@ -202,25 +216,25 @@ Forneça várias maneiras para os usuários inserirem informações.
 Mire em elementos HTML para estilização com diferentes tipos de seletores.
 
 ```css
-/* Seletor de elemento */
+/* Element selector */
 h1 {
   color: blue;
   font-size: 2rem;
 }
 
-/* Seletor de classe */
+/* Class selector */
 .highlight {
   background-color: yellow;
   padding: 10px;
 }
 
-/* Seletor de ID */
+/* ID selector */
 #header {
   background-color: navy;
   color: white;
 }
 
-/* Seletor descendente */
+/* Descendant selector */
 .container p {
   line-height: 1.6;
 }
@@ -234,18 +248,33 @@ Controle o espaçamento e o layout com o box model CSS.
 .box {
   width: 300px;
   height: 200px;
-  margin: 20px; /* Espaçamento externo */
-  padding: 15px; /* Espaçamento interno */
-  border: 2px solid black; /* Propriedades da borda */
+  margin: 20px; /* Outside spacing */
+  padding: 15px; /* Inside spacing */
+  border: 2px solid black; /* Border properties */
 }
 
-/* Propriedades abreviadas */
+/* Shorthand properties */
 .element {
-  margin: 10px 20px; /* superior/inferior esquerda/direita */
-  padding: 10px 15px 20px 25px; /* superior direita inferior esquerda */
-  border-radius: 5px; /* Cantos arredondados */
+  margin: 10px 20px; /* top/bottom left/right */
+  padding: 10px 15px 20px 25px; /* top right bottom left */
+  border-radius: 5px; /* Rounded corners */
 }
 ```
+
+<BaseQuiz id="webdev-boxmodel-1" correct="B">
+  <template #question>
+    Qual é a diferença entre `margin` e `padding` em CSS?
+  </template>
+  
+  <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Margin é o espaço fora do elemento, padding é o espaço dentro do elemento</BaseQuizOption>
+  <BaseQuizOption value="C">Margin é para espaçamento horizontal, padding é para espaçamento vertical</BaseQuizOption>
+  <BaseQuizOption value="D">Margin é para bordas, padding é para conteúdo</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Margin cria espaço fora da borda do elemento (entre elementos), enquanto padding cria espaço dentro do elemento entre o conteúdo e a borda. Ambos afetam o espaçamento, mas em áreas diferentes.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Flexbox: `display: flex`
 
@@ -254,30 +283,45 @@ Crie layouts flexíveis e responsivos facilmente.
 ```css
 .container {
   display: flex;
-  justify-content: center; /* Alinhamento horizontal */
-  align-items: center; /* Alinhamento vertical */
-  gap: 20px; /* Espaço entre itens */
+  justify-content: center; /* Horizontal alignment */
+  align-items: center; /* Vertical alignment */
+  gap: 20px; /* Space between items */
 }
 
 .flex-item {
-  flex: 1; /* Itens de largura igual */
+  flex: 1; /* Equal width items */
 }
 
-/* Direção do Flexbox */
+/* Flexbox direction */
 .column-layout {
   display: flex;
   flex-direction: column;
 }
 ```
 
-### Layout de Grade: `display: grid`
+<BaseQuiz id="webdev-flexbox-1" correct="A">
+  <template #question>
+    O que `justify-content: center` faz no Flexbox?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Centraliza os itens flex ao longo do eixo principal (horizontalmente por padrão)</BaseQuizOption>
+  <BaseQuizOption value="B">Centraliza os itens verticalmente</BaseQuizOption>
+  <BaseQuizOption value="C">Espaça os itens uniformemente</BaseQuizOption>
+  <BaseQuizOption value="D">Estica os itens para preencher o espaço</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `justify-content` controla o alinhamento ao longo do eixo principal (horizontal por padrão). `center` centraliza todos os itens flex no contêiner. Use `align-items` para controlar o alinhamento do eixo cruzado (vertical).
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Grid Layout: `display: grid`
 
 Crie layouts bidimensionais complexos.
 
 ```css
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
   grid-gap: 20px;
   grid-template-areas:
     'header header header'
@@ -303,43 +347,43 @@ Crie layouts bidimensionais complexos.
 Armazene e manipule dados com diferentes declarações de variáveis.
 
 ```javascript
-// Declarações de variáveis modernas
-let name = 'John' // Pode ser reatribuído
-const age = 25 // Não pode ser reatribuído
-const colors = ['red', 'blue'] // Array (o conteúdo pode mudar)
+// Modern variable declarations
+let name = 'John' // Can be reassigned
+const age = 25 // Cannot be reassigned
+const colors = ['red', 'blue'] // Array (contents can change)
 
-// Tipos de variáveis
+// Variable types
 let message = 'Hello World' // String
 let count = 42 // Number
 let isActive = true // Boolean
 let data = null // Null
 let user = {
-  // Objeto
+  // Object
   name: 'Alice',
   email: 'alice@example.com',
 }
 ```
 
-### Funções: `function` / Funções de Seta (Arrow Functions)
+### Funções: `function` / Arrow Functions
 
 Crie blocos de código reutilizáveis com diferentes sintaxes de função.
 
 ```javascript
-// Declaração de função
+// Function declaration
 function greet(name) {
   return `Hello, ${name}!`
 }
 
-// Função de seta (Arrow function)
+// Arrow function
 const add = (a, b) => a + b
 
-// Função de seta com bloco
+// Arrow function with block
 const calculateArea = (width, height) => {
   const area = width * height
   return area
 }
 
-// Função com parâmetros padrão
+// Function with default parameters
 function createUser(name, age = 18) {
   return { name, age }
 }
@@ -350,47 +394,47 @@ function createUser(name, age = 18) {
 Controle o fluxo do programa com instruções condicionais.
 
 ```javascript
-// Declaração if/else
+// If/else statement
 if (age >= 18) {
-  console.log('Adulto')
+  console.log('Adult')
 } else if (age >= 13) {
-  console.log('Adolescente')
+  console.log('Teenager')
 } else {
-  console.log('Criança')
+  console.log('Child')
 }
 
-// Operador ternário
-const status = age >= 18 ? 'adulto' : 'menor'
+// Ternary operator
+const status = age >= 18 ? 'adult' : 'minor'
 
-// Declaração Switch
+// Switch statement
 switch (day) {
   case 'Monday':
-    console.log('Início da semana de trabalho')
+    console.log('Start of work week')
     break
   case 'Friday':
-    console.log('Sextou!')
+    console.log('TGIF!')
     break
   default:
-    console.log('Dia normal')
+    console.log('Regular day')
 }
 ```
 
-### Loops: `for` / `while` / Métodos de Array
+### Loops: `for` / `while` / Array Methods
 
 Itere sobre dados e repita operações.
 
 ```javascript
-// Loop for
+// For loop
 for (let i = 0; i < 5; i++) {
   console.log(i)
 }
 
-// Loop for...of
+// For...of loop
 for (const item of items) {
   console.log(item)
 }
 
-// Métodos de Array
+// Array methods
 const numbers = [1, 2, 3, 4, 5]
 numbers.forEach((num) => console.log(num))
 const doubled = numbers.map((num) => num * 2)
@@ -405,16 +449,16 @@ const sum = numbers.reduce((total, num) => total + num, 0)
 Encontre e acesse elementos HTML em JavaScript.
 
 ```javascript
-// Selecionar elementos únicos
+// Select single elements
 const title = document.getElementById('title')
 const button = document.querySelector('.btn')
 const firstParagraph = document.querySelector('p')
 
-// Selecionar múltiplos elementos
+// Select multiple elements
 const allButtons = document.querySelectorAll('.btn')
 const allParagraphs = document.getElementsByTagName('p')
 
-// Verificar se o elemento existe
+// Check if element exists
 if (button) {
   button.style.color = 'blue'
 }
@@ -425,15 +469,15 @@ if (button) {
 Altere o conteúdo e os atributos dos elementos HTML.
 
 ```javascript
-// Alterar conteúdo de texto
-title.textContent = 'Novo Título'
-title.innerHTML = '<strong>Título em Negrito</strong>'
+// Change text content
+title.textContent = 'New Title'
+title.innerHTML = '<strong>Bold Title</strong>'
 
-// Modificar atributos
+// Modify attributes
 button.setAttribute('disabled', 'true')
 const src = image.getAttribute('src')
 
-// Adicionar/remover classes
+// Add/remove classes
 button.classList.add('active')
 button.classList.remove('hidden')
 button.classList.toggle('highlighted')
@@ -441,47 +485,47 @@ button.classList.toggle('highlighted')
 
 ### Manipulação de Eventos: `addEventListener`
 
-Responda a interações do usuário e eventos do navegador.
+Responda às interações do usuário e aos eventos do navegador.
 
 ```javascript
-// Evento de clique
+// Click event
 button.addEventListener('click', function () {
-  alert('Botão clicado!')
+  alert('Button clicked!')
 })
 
-// Evento de envio de formulário
+// Form submit event
 form.addEventListener('submit', function (e) {
-  e.preventDefault() // Previne o envio do formulário
+  e.preventDefault() // Prevent form submission
   const formData = new FormData(form)
   console.log(formData.get('username'))
 })
 
-// Eventos de teclado
+// Keyboard events
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Enter') {
-    console.log('Tecla Enter pressionada')
+    console.log('Enter key pressed')
   }
 })
 ```
 
 ### Criação de Elementos: `createElement` / `appendChild`
 
-Crie dinamicamente e adicione novos elementos HTML.
+Crie e adicione dinamicamente novos elementos HTML.
 
 ```javascript
-// Criar novo elemento
+// Create new element
 const newDiv = document.createElement('div')
-newDiv.textContent = 'Novo conteúdo'
+newDiv.textContent = 'New content'
 newDiv.className = 'highlight'
-// Adicionar à página
+// Add to page
 document.body.appendChild(newDiv)
 
-// Criar item de lista
+// Create list item
 const li = document.createElement('li')
-li.innerHTML = "<a href='#'>Novo Link</a>"
+li.innerHTML = "<a href='#'>New Link</a>"
 document.querySelector('ul').appendChild(li)
 
-// Remover elemento
+// Remove element
 const oldElement = document.querySelector('.remove-me')
 oldElement.remove()
 ```
@@ -497,13 +541,13 @@ Configure o viewport apropriado para design responsivo.
 ```
 
 ```css
-/* CSS para imagens responsivas */
+/* CSS for responsive images */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Contêiner responsivo */
+/* Responsive container */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -517,24 +561,24 @@ img {
 Aplique estilos diferentes com base no tamanho da tela e nas capacidades do dispositivo.
 
 ```css
-/* Abordagem Mobile first */
+/* Mobile first approach */
 .grid {
   display: grid;
-  grid-template-columns: 1fr; /* Coluna única no celular */
+  grid-template-columns: 1fr; /* Single column on mobile */
   gap: 20px;
 }
 
-/* Tablet e superior */
+/* Tablet and up */
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
   }
 }
 
-/* Desktop e superior */
+/* Desktop and up */
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
   }
 }
 ```
@@ -544,25 +588,25 @@ Aplique estilos diferentes com base no tamanho da tela e nas capacidades do disp
 Use unidades relativas para designs escaláveis e responsivos.
 
 ```css
-/* Relativo ao tamanho da fonte raiz */
+/* Relative to root font-size */
 h1 {
   font-size: 2rem;
-} /* 32px se a raiz for 16px */
+} /* 32px if root is 16px */
 
-/* Relativo ao tamanho da fonte do pai */
+/* Relative to parent font-size */
 p {
   font-size: 1.2em;
-} /* 1.2 vezes o tamanho do pai */
+} /* 1.2 times parent size */
 
-/* Baseado em porcentagem */
+/* Percentage based */
 .sidebar {
   width: 30%;
-} /* 30% da largura do pai */
+} /* 30% of parent width */
 
-/* Unidades de Viewport */
+/* Viewport units */
 .hero {
-  height: 100vh; /* Altura total do viewport */
-  width: 100vw; /* Largura total do viewport */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
 }
 ```
 
@@ -571,18 +615,18 @@ p {
 Crie tipografia fluida que escala com o tamanho da tela.
 
 ```css
-/* Tipografia fluida */
+/* Fluid typography */
 h1 {
   font-size: clamp(1.5rem, 4vw, 3rem);
-  /* Mínimo: 1.5rem, Preferido: 4vw, Máximo: 3rem */
+  /* Min: 1.5rem, Preferred: 4vw, Max: 3rem */
 }
 
-/* Espaçamento responsivo */
+/* Responsive spacing */
 .section {
   padding: clamp(2rem, 5vw, 6rem) clamp(1rem, 3vw, 3rem);
 }
 
-/* Consultas de contêiner (navegadores mais novos) */
+/* Container queries (newer browsers) */
 @container (min-width: 400px) {
   .card {
     display: flex;
@@ -597,43 +641,43 @@ h1 {
 Depure e monitore seu código com saída de console.
 
 ```javascript
-// Log básico
-console.log('Olá, mundo!')
-console.log('Dados do usuário:', userData)
+// Basic logging
+console.log('Hello, world!')
+console.log('User data:', userData)
 
-// Níveis de log diferentes
-console.info('Mensagem de informação')
-console.warn('Mensagem de aviso')
-console.error('Mensagem de erro')
+// Different log levels
+console.info('Information message')
+console.warn('Warning message')
+console.error('Error message')
 
-// Agrupamento de logs
-console.group('Detalhes do Usuário')
-console.log('Nome:', user.name)
+// Grouping logs
+console.group('User Details')
+console.log('Name:', user.name)
 console.log('Email:', user.email)
 console.groupEnd()
 ```
 
-### Técnicas de Depuração: `debugger` / Pontos de Interrupção (Breakpoints)
+### Técnicas de Depuração: `debugger` / Breakpoints
 
 Pause a execução do código para inspecionar variáveis e o estado do programa.
 
 ```javascript
 function calculateTotal(items) {
   let total = 0
-  debugger // O código pausará aqui quando as ferramentas de desenvolvedor forem abertas
+  debugger // Code will pause here when dev tools open
 
   for (let item of items) {
     total += item.price
-    console.log('Total atual:', total)
+    console.log('Current total:', total)
   }
   return total
 }
 
-// Tratamento de erros
+// Error handling
 try {
   const result = riskyFunction()
 } catch (error) {
-  console.error('Ocorreu um erro:', error.message)
+  console.error('Error occurred:', error.message)
 }
 ```
 
@@ -642,24 +686,24 @@ try {
 Use ferramentas do navegador para inspecionar HTML, depurar JavaScript e monitorar solicitações de rede.
 
 ```javascript
-// Inspecionar elementos no console
-$0 // Elemento atualmente selecionado na aba Elements
-$1 // Elemento previamente selecionado
+// Inspect elements in console
+$0 // Currently selected element in Elements tab
+$1 // Previously selected element
 
-// Consultar elementos a partir do console
-$('selector') // O mesmo que document.querySelector
-$$('selector') // O mesmo que document.querySelectorAll
+// Query elements from console
+$('selector') // Same as document.querySelector
+$$('selector') // Same as document.querySelectorAll
 
-// Monitorar funções
-monitor(functionName) // Loga quando a função é chamada
+// Monitor functions
+monitor(functionName) // Log when function is called
 
-// Tempo de desempenho
+// Performance timing
 console.time('operation')
-// ... algum código ...
+// ... some code ...
 console.timeEnd('operation')
 
-// Erros comuns e soluções
-// ReferenceError: Variável não definida
+// Common errors and solutions
+// ReferenceError: Variable not defined
 // console.log(undefinedVariable); //
 ```
 

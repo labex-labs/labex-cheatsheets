@@ -1,6 +1,6 @@
 ---
-title: 'C 言語チートシート'
-description: 'C 言語の必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで学習しましょう。'
+title: 'C 言語チートシート | LabEx'
+description: 'この包括的なチートシートで C 言語を習得。C の構文、ポインタ、メモリ管理、データ構造、システムプログラミングの要点を開発者向けに素早く参照できます。'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 
@@ -12,14 +12,14 @@ C 言語チートシート
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/c">ハンズオンラボで C 言語プログラミングを学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/c">ハンズオンラボで C プログラミングを学ぶ</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて C 言語プログラミングを学びましょう。LabEx は、必須の構文、メモリ管理、ポインタ、データ構造、高度なテクニックを網羅した包括的な C コースを提供します。C 言語の強力な機能を習得し、効率的なシステムレベルのアプリケーションを構築し、低レベルのプログラミング概念を理解してください。
+ハンズオンラボと実世界のシナリオを通じて C プログラミングを学びましょう。LabEx は、必須の構文、メモリ管理、ポインタ、データ構造、高度なテクニックを網羅した包括的な C コースを提供します。C の強力な機能を習得し、効率的なシステムレベルのアプリケーションを構築し、低レベルのプログラミング概念を理解してください。
 </base-disclaimer-content>
 </base-disclaimer>
 
-## 基本的な構文と構造
+## 基本構文と構造
 
 ### Hello World プログラム
 
@@ -66,7 +66,7 @@ int main() {
 
 ```c
 int main() {
-    // プログラムコードをここに記述
+    // プログラムコードをここに
     return 0;  // 成功
 }
 int main(int argc, char *argv[]) {
@@ -76,9 +76,24 @@ int main(int argc, char *argv[]) {
 }
 ```
 
+<BaseQuiz id="c-main-1" correct="C">
+  <template #question>
+    main 関数内の`return 0`は何を示しますか？
+  </template>
+  
+  <BaseQuizOption value="A">プログラムは失敗した</BaseQuizOption>
+  <BaseQuizOption value="B">プログラムはまだ実行中である</BaseQuizOption>
+  <BaseQuizOption value="C" correct>プログラムは正常に実行された</BaseQuizOption>
+  <BaseQuizOption value="D">プログラムは値を返さなかった</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C では、main 関数からの`return 0`はプログラムが正常に実行されたことを示します。ゼロ以外の戻り値は通常、エラーまたは異常終了を示します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 基本的な出力
 
-テキストと変数をコンソールに表示する。
+コンソールへのテキストと変数の表示。
 
 ```c
 printf("Hello\n");
@@ -89,7 +104,7 @@ printf("Name: %s, Age: %d\n", name, age);
 
 ### 基本的な入力
 
-コンソールからユーザー入力を読み取る。
+コンソールからのユーザー入力の読み取り。
 
 ```c
 int age;
@@ -137,6 +152,21 @@ int len = strlen(name);
 int size = sizeof(buffer);
 ```
 
+<BaseQuiz id="c-arrays-1" correct="C">
+  <template #question>
+    C では文字列は何として表現されますか？
+  </template>
+  
+  <BaseQuizOption value="A">特別な文字列型として</BaseQuizOption>
+  <BaseQuizOption value="B">整数として</BaseQuizOption>
+  <BaseQuizOption value="C" correct>文字の配列として</BaseQuizOption>
+  <BaseQuizOption value="D">ポインタのみとして</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C では、文字列は文字の配列（`char`）として表現されます。文字列はヌル文字（`\0`）で終端され、これが文字列の終わりを示します。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 定数と修飾子
 
 不変の値とストレージ修飾子。
@@ -150,9 +180,9 @@ const double PI = 3.14159;
 #define TRUE 1
 #define FALSE 0
 // ストレージ修飾子
-static int count = 0;     // static 変数
+static int count = 0;     // 静的変数
 extern int global_var;    // 外部変数
-register int fast_var;    // register ヒント
+register int fast_var;    // レジスタヒント
 ```
 
 ## 制御フロー構造
@@ -208,6 +238,21 @@ for (int i = 0; i < 3; i++) {
 }
 ```
 
+<BaseQuiz id="c-for-loop-1" correct="A">
+  <template #question>
+    `sizeof(numbers) / sizeof(numbers[0])`は何を計算しますか？
+  </template>
+  
+  <BaseQuizOption value="A" correct>配列の要素数</BaseQuizOption>
+  <BaseQuizOption value="B">配列の総メモリサイズ</BaseQuizOption>
+  <BaseQuizOption value="C">最後の要素のインデックス</BaseQuizOption>
+  <BaseQuizOption value="D">1 つの要素のサイズ</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    この式は、配列の総サイズを 1 つの要素のサイズで割ることにより、配列の長さを計算します。これは、配列が長さを格納しないため、C で一般的なイディオムです。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### While ループ
 
 条件ベースの反復処理。
@@ -229,7 +274,7 @@ do {
 
 ### ループ制御
 
-Break と continue ステートメント。
+`break`と`continue`ステートメント。
 
 ```c
 for (int i = 0; i < 10; i++) {
@@ -252,7 +297,7 @@ for (int i = 0; i < 3; i++) {
 
 ## 関数
 
-### 関数の宣言と定義
+### 関数宣言と定義
 
 再利用可能なコードブロックの作成。
 
@@ -294,7 +339,7 @@ void doubleValues(int arr[], int size) {
 
 ### 再帰関数
 
-自己を呼び出す関数。
+自分自身を呼び出す関数。
 
 ```c
 // 階乗の計算
@@ -332,7 +377,7 @@ result = operations[0](10, 5);
 
 ### ポインタの基本
 
-メモリのアドレスを宣言し、使用してアクセスする。
+メモリのアドレスを参照し、アクセスするためのポインタの宣言と使用。
 
 ```c
 int x = 10;
@@ -341,7 +386,7 @@ printf("Value of x: %d\n", x);
 printf("Address of x: %p\n", &x);
 printf("Value of ptr: %p\n", ptr);
 printf("Value pointed by ptr: %d\n", *ptr);
-// ポインタ経由で値を変更
+// ポインタ経由での値の変更
 *ptr = 20;
 printf("New value of x: %d\n", x);
 // NULL ポインタ
@@ -355,11 +400,11 @@ int *null_ptr = NULL;
 ```c
 int arr[5] = {1, 2, 3, 4, 5};
 int *p = arr;  // 最初の要素を指す
-// 配列表記とポインタ算術
+// 配列表記 vs ポインタ演算
 printf("%d\n", arr[2]);   // 配列表記
-printf("%d\n", *(p + 2)); // ポインタ算術
+printf("%d\n", *(p + 2)); // ポインタ演算
 printf("%d\n", p[2]);     // 配列としてのポインタ
-// ポインタを使用して反復処理
+// ポインタを使用した反復処理
 for (int i = 0; i < 5; i++) {
     printf("%d ", *(p + i));
 }
@@ -371,7 +416,7 @@ for (int i = 0; i < 5; i++) {
 
 ```c
 #include <stdlib.h>
-// 単一整数のメモリ割り当て
+// 単一の整数のためのメモリ割り当て
 int *ptr = (int*)malloc(sizeof(int));
 if (ptr != NULL) {
     *ptr = 42;
@@ -410,7 +455,7 @@ free(str3);
 
 ### 構造体の定義
 
-複数のフィールドを持つカスタムデータ型を定義する。
+複数のフィールドを持つカスタムデータ型の定義。
 
 ```c
 // 構造体の定義
@@ -418,7 +463,7 @@ struct Rectangle {
     double width;
     double height;
 };
-// typedef 付き構造体
+// typedef 付きの構造体
 typedef struct {
     char name[50];
     int age;
@@ -432,7 +477,7 @@ printf("Area: %.2f\n", rect1.width * rect1.height);
 printf("Student: %s, Age: %d\n", student1.name, student1.age);
 ```
 
-### ネストされた構造体
+### 構造体のネスト
 
 他の構造体を含む構造体。
 
@@ -458,7 +503,7 @@ printf("Born: %d/%d/%d\n",
 
 ### 構造体へのポインタ
 
-構造体へのポインタを使用して構造体にアクセスし、変更する。
+構造体へのポインタを使用してアクセスおよび変更する。
 
 ```c
 Student *student_ptr = &student1;
@@ -505,7 +550,7 @@ printf("Today is day %d\n", today);
 
 ### ファイル読み取り
 
-テキストファイルからデータを読み取る。
+テキストファイルからのデータ読み取り。
 
 ```c
 #include <stdio.h>
@@ -558,7 +603,7 @@ fclose(file);
 
 ### ファイル書き込み
 
-テキストファイルにデータを書き込む。
+テキストファイルへのデータ書き込み。
 
 ```c
 // ファイルへの書き込み
@@ -585,7 +630,7 @@ fclose(numfile);
 
 ### バイナリファイル操作
 
-バイナリデータを効率的に読み書きする。
+バイナリデータの効率的な読み書き。
 
 ```c
 // バイナリデータの書き込み
@@ -634,7 +679,7 @@ if (result == 0) {
 
 ### 文字列検索
 
-文字列内から部分文字列や文字を検索する。
+文字列内での部分文字列や文字の検索。
 
 ```c
 char text[] = "The quick brown fox";
@@ -647,7 +692,7 @@ if (ptr != NULL) {
 // 最後の出現を見つける
 ptr = strrchr(text, 'o');
 printf("Last 'o' at position: %ld\n", ptr - text);
-// 部分文字列を検索
+// 部分文字列を見つける
 ptr = strstr(text, "brown");
 if (ptr != NULL) {
     printf("Found 'brown' at: %s\n", ptr);
@@ -669,7 +714,7 @@ double float_num = atof(float_str);
 printf("Integer: %d\n", num);
 printf("Long: %ld\n", long_num);
 printf("Double: %.2f\n", float_num);
-// 数値から文字列への変換（sprintf を使用）
+// 数値から文字列へ (sprintf を使用)
 char buffer[50];
 sprintf(buffer, "%d", 42);
 sprintf(buffer, "%.2f", 3.14159);
@@ -681,7 +726,7 @@ printf("String: %s\n", buffer);
 手動での文字列操作テクニック。
 
 ```c
-// 文字列内の文字数をカウント
+// 文字列内の文字をカウント
 int countChar(char *str, char target) {
     int count = 0;
     while (*str) {
@@ -690,7 +735,7 @@ int countChar(char *str, char target) {
     }
     return count;
 }
-// インプレースで文字列を反転
+// 文字列をインプレースで反転
 void reverseString(char *str) {
     int len = strlen(str);
     for (int i = 0; i < len/2; i++) {
@@ -716,9 +761,9 @@ gcc -g -o program main.c
 gcc -O2 -o program main.c
 # 複数のソースファイル
 gcc -o program main.c utils.c math.c
-# 追加ディレクトリのインクルード
+# 追加のディレクトリを含める
 gcc -I/usr/local/include -o program main.c
-# ライブラリのリンク
+# ライブラリをリンク
 gcc -o program main.c -lm -lpthread
 ```
 
@@ -741,7 +786,7 @@ gcc -Wall -Wextra -std=c11 -o program main.c
 
 ### Makefile の基本
 
-make ユーティリティによるコンパイルの自動化。
+make ユーティリティを使用したコンパイルの自動化。
 
 ```makefile
 # シンプルなMakefile
@@ -758,9 +803,9 @@ rm -f $(TARGET)
 
 ## ベストプラクティスとヒント
 
-### 名前の規則
+### 名前付け規則
 
-一貫した命名規則によりコードの可読性が向上します。
+一貫した名前付けはコードの可読性を高めます。
 
 ```c
 // 変数と関数：snake_case
@@ -774,7 +819,7 @@ typedef struct {
     char name[50];
     int age;
 } Student;
-// グローバル変数：g_ プレフィックス
+// グローバル変数：g_ を接頭辞として付ける
 int g_total_count = 0;
 // 関数パラメータ：明確な名前
 void process_data(int *input_array, int array_size);
@@ -794,7 +839,7 @@ if (ptr == NULL) {
     printf("Memory allocation failed!\n");
     return -1;
 }
-// 割り当てられたメモリは必ず解放する
+// 割り当てられたメモリは常に解放する
 free(ptr);
 ptr = NULL;  // 意図しない再利用を防ぐ
 // 配列の境界チェック
@@ -817,15 +862,15 @@ int len = strlen(str); // 一度計算する
 for (int i = 0; i < len; i++) {
     // 文字列を処理
 }
-// 頻繁にアクセスされる変数には register を使用
+// 頻繁にアクセスされる変数には register を使用する
 register int counter;
-// サイズがわかっている場合は動的割り当てよりも配列を優先する
+// サイズが既知の場合は動的割り当てよりも配列を優先する
 int fixed_array[100];  // スタック割り当て
-// 対
+// vs
 int *dynamic_array = malloc(100 * sizeof(int));
 ```
 
-### コードの整理
+### コードの構成
 
 保守性のためにコードを構造化する。
 

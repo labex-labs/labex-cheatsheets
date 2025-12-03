@@ -1,11 +1,11 @@
 ---
-title: 'Шпаргалка по Wireshark'
-description: 'Изучите Wireshark с помощью нашей исчерпывающей шпаргалки, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Wireshark | LabEx'
+description: 'Изучите анализ сети с помощью Wireshark с этой исчерпывающей шпаргалкой. Краткий справочник по захвату пакетов, анализу сетевых протоколов, инспекции трафика, устранению неполадок и мониторингу сетевой безопасности.'
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Справочник по Wireshark
+Шпаргалка по Wireshark
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -15,7 +15,7 @@ pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 <a target="_blank" href="https://labex.io/ru/learn/wireshark">Изучите Wireshark с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите анализ сетевых пакетов с помощью Wireshark посредством практических лабораторий и сценариев из реального мира. LabEx предлагает комплексные курсы по Wireshark, охватывающие основные аспекты захвата пакетов, фильтров отображения, анализа протоколов, устранения неполадок в сети и мониторинга безопасности. Освойте методы анализа сетевого трафика и инспекции пакетов.
+Изучите анализ сетевых пакетов Wireshark с помощью практических лабораторий и сценариев реального мира. LabEx предлагает комплексные курсы по Wireshark, охватывающие основные методы захвата пакетов, фильтры отображения, анализ протоколов, устранение неполадок в сети и мониторинг безопасности. Освойте методы анализа сетевого трафика и инспекции пакетов.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -23,18 +23,33 @@ pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 
 ### Фильтрация по Хосту
 
-Захват трафика к/от определенных хостов.
+Захват трафика к определенным хостам или от них.
 
 ```bash
 # Захват трафика от/к определенному IP
 host 192.168.1.100
-# Захват трафика от определенного источника
+# Захват трафика от источника
 src host 192.168.1.100
-# Захват трафика к определенному назначению
+# Захват трафика к получателю
 dst host 192.168.1.100
 # Захват трафика из подсети
 net 192.168.1.0/24
 ```
+
+<BaseQuiz id="wireshark-filter-1" correct="A">
+  <template #question>
+    Что фильтрует `host 192.168.1.100` в Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Весь трафик к 192.168.1.100 или от него</BaseQuizOption>
+  <BaseQuizOption value="B">Только трафик от 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="C">Только трафик к 192.168.1.100</BaseQuizOption>
+  <BaseQuizOption value="D">Трафик на порту 192.168.1.100</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Фильтр `host` захватывает весь трафик, где указанный IP-адрес является либо источником, либо получателем. Используйте `src host` для фильтрации только по источнику или `dst host` для фильтрации только по получателю.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Фильтрация по Порту
 
@@ -52,6 +67,21 @@ port 53
 # Диапазон портов
 portrange 1000-2000
 ```
+
+<BaseQuiz id="wireshark-port-1" correct="D">
+  <template #question>
+    Что фильтрует `port 80` в Wireshark?
+  </template>
+  
+  <BaseQuizOption value="A">Только запросы HTTP</BaseQuizOption>
+  <BaseQuizOption value="B">Только ответы HTTP</BaseQuizOption>
+  <BaseQuizOption value="C">Только пакеты TCP</BaseQuizOption>
+  <BaseQuizOption value="D" correct>Весь трафик на порту 80 (как источник, так и получатель)</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Фильтр `port` захватывает весь трафик, где порт 80 является либо исходным, либо целевым портом. Это включает как запросы HTTP, так и ответы, а также любой другой трафик, использующий порт 80.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Фильтрация по Протоколу
 
@@ -73,7 +103,7 @@ arp
 Объединение нескольких условий для точного захвата.
 
 ```bash
-# Трафик HTTP к/от определенного хоста
+# Трафик HTTP к указанному хосту или от него
 host 192.168.1.100 and port 80
 # Трафик TCP, кроме SSH
 tcp and not port 22
@@ -82,6 +112,21 @@ host 192.168.1.100 and host 192.168.1.200
 # Трафик HTTP или HTTPS
 port 80 or port 443
 ```
+
+<BaseQuiz id="wireshark-advanced-1" correct="B">
+  <template #question>
+    Что фильтрует `tcp and not port 22`?
+  </template>
+  
+  <BaseQuizOption value="A">Только трафик SSH</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Весь трафик TCP, кроме SSH (порт 22)</BaseQuizOption>
+  <BaseQuizOption value="C">Трафик UDP на порту 22</BaseQuizOption>
+  <BaseQuizOption value="D">Весь сетевой трафик</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Этот фильтр захватывает весь трафик TCP, но исключает пакеты на порту 22 (SSH). Оператор `and not` исключает указанный порт, сохраняя весь остальной трафик TCP.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Выбор Интерфейса
 
@@ -95,11 +140,11 @@ tshark -D
 eth0
 # Интерфейс WiFi
 wlan0
-# Интерфейс Loopback
+# Петлевой интерфейс
 lo
 ```
 
-### Параметры Захвата
+### Опции Захвата
 
 Настройка параметров захвата.
 
@@ -137,7 +182,7 @@ icmp
 
 ### Фильтрация по IP-Адресу
 
-Фильтрация пакетов по IP-адресам источника и назначения.
+Фильтрация пакетов по IP-адресам источника и получателя.
 
 ```bash
 # Трафик от определенного IP
@@ -152,16 +197,16 @@ ip.src_net == 192.168.1.0/24
 not ip.addr == 192.168.1.1
 ```
 
-### Фильтрация по Порту и Протоколу
+### Фильтры Портов и Протоколов
 
-Фильтрация по определенным портам и деталям протокола.
+Фильтрация по конкретным портам и деталям протокола.
 
 ```bash
 # Трафик на определенном порту
 tcp.port == 80
 # Фильтр исходного порта
 tcp.srcport == 443
-# Фильтр порта назначения
+# Фильтр целевого порта
 tcp.dstport == 22
 # Диапазон портов
 tcp.port >= 1000 and tcp.port <=
@@ -174,33 +219,33 @@ tcp.port in {80 443 8080}
 
 ### Анализ HTTP
 
-Анализ HTTP-запросов и ответов.
+Анализ запросов и ответов HTTP.
 
 ```bash
-# HTTP GET запросы
+# Запросы GET HTTP
 http.request.method == "GET"
-# HTTP POST запросы
+# Запросы POST HTTP
 http.request.method == "POST"
-# Определенные коды состояния HTTP
+# Конкретные коды состояния HTTP
 http.response.code == 404
-# HTTP-запросы к определенному хосту
+# Запросы HTTP к определенному хосту
 http.host == "example.com"
-# HTTP-запросы, содержащие строку
+# Запросы HTTP, содержащие строку
 http contains "login"
 ```
 
 ### Анализ DNS
 
-Изучение DNS-запросов и ответов.
+Изучение запросов и ответов DNS.
 
 ```bash
-# Только DNS-запросы
+# Только запросы DNS
 dns.flags.response == 0
-# Только DNS-ответы
+# Только ответы DNS
 dns.flags.response == 1
-# DNS-запросы для определенного домена
+# Запросы DNS для определенного домена
 dns.qry.name == "example.com"
-# DNS-запросы типа A
+# Запросы DNS типа A
 dns.qry.type == 1
 # Ошибки/сбои DNS
 dns.flags.rcode != 0
@@ -211,9 +256,9 @@ dns.flags.rcode != 0
 Анализ деталей TCP-соединения.
 
 ```bash
-# TCP SYN пакеты (попытки соединения)
+# Пакеты TCP SYN (попытки соединения)
 tcp.flags.syn == 1
-# TCP RST пакеты (сброс соединения)
+# Пакеты TCP RST (сброс соединения)
 tcp.flags.reset == 1
 # Повторные передачи TCP
 tcp.analysis.retransmission
@@ -234,20 +279,20 @@ tls.handshake
 tls.handshake.certificate
 # Оповещения и ошибки TLS
 tls.alert
-# Определенная версия TLS
+# Конкретная версия TLS
 tls.handshake.version == 0x0303
-# Индикация имени сервера TLS
+# TLS Server Name Indication
 tls.handshake.extensions_server_name
 ```
 
-### Устранение Сетевых Неполадок
+### Устранение Неполадок Сети
 
 Выявление распространенных сетевых проблем.
 
 ```bash
 # Сообщения ICMP Unreachable
 icmp.type == 3
-# ARP-запросы/ответы
+# Запросы/ответы ARP
 arp.opcode == 1 or arp.opcode == 2
 # Широковещательный трафик
 eth.dst == ff:ff:ff:ff:ff:ff
@@ -289,7 +334,7 @@ tshark -r capture.pcap -q -z io,phs
 
 ### Соединения (Conversations)
 
-Анализ взаимодействия между конечными точками.
+Анализ связи между конечными точками.
 
 ```bash
 # Доступ через: Statistics > Conversations
@@ -328,7 +373,7 @@ tshark -r capture.pcap -q -z conv,tcp
 tcp.analysis.flags
 ```
 
-### Графики Потоков (Flow Graphs)
+### Графики Потока (Flow Graphs)
 
 Визуализация последовательности пакетов между конечными точками.
 
@@ -353,7 +398,7 @@ tcp.analysis.flags
 # Statistics > TCP Stream Graphs > Time Sequence
 ```
 
-## Файловые Операции и Экспорт
+## Операции с Файлами и Экспорт
 
 ### Сохранение и Загрузка Захватов
 
@@ -370,7 +415,7 @@ tcp.analysis.flags
 # File > Export Specified Packets
 ```
 
-### Параметры Экспорта
+### Опции Экспорта
 
 Экспорт определенных данных или подмножеств пакетов.
 
@@ -426,7 +471,7 @@ editcap -A "2024-01-01 10:00:00" \
 -b filesize:100 -b files:10
 # Ограничение размера захвата пакета
 -s 96  # Захват только первых 96 байт
-# Использование фильтров захвата для уменьшения данных
+# Использование фильтров захвата для уменьшения объема данных
 host 192.168.1.100 and port 80
 # Отключение разбора протоколов для скорости
 -d tcp.port==80,http
@@ -451,17 +496,17 @@ host 192.168.1.100 and port 80
 
 ### Эффективный Рабочий Процесс Анализа
 
-Лучшие практики анализа сетевого трафика.
+Лучшие практики для анализа сетевого трафика.
 
 ```bash
-# 1. Начните с фильтров захвата
+# 1. Начинайте с фильтров захвата
 # Захват только релевантного трафика
-# 2. Используйте фильтры отображения прогрессивно
+# 2. Используйте фильтры отображения последовательно
 # Начните широко, затем сужайте
 # 3. Сначала используйте статистику
 # Получите общий обзор перед детальным анализом
 # 4. Сосредоточьтесь на конкретных потоках
-# Правый клик по пакету > Follow > TCP Stream
+# Right-click packet > Follow > TCP Stream
 ```
 
 ### Автоматизация и Скриптинг
@@ -473,7 +518,7 @@ host 192.168.1.100 and port 80
 # View > Display Filter Expression
 # Использование профилей для разных сценариев
 # Edit > Configuration Profiles
-# Скрипт с tshark
+# Скрипты с tshark
 #!/bin/bash
 tshark -r $1 -q -z endpoints,tcp | \
 grep -v "Filter:" | head -20
@@ -490,7 +535,7 @@ grep -v "Filter:" | head -20
 # Запуск установщика от имени Администратора
 # Включение WinPcap/Npcap
 во время установки
-# Установка в командной строке
+# Установка через командную строку
 (chocolatey)
 choco install wireshark
 # Проверка установки
@@ -531,7 +576,7 @@ brew install wireshark
 
 ### Предпочтения Интерфейса
 
-Настройка интерфейсов захвата и параметров захвата.
+Настройка интерфейсов захвата и опций.
 
 ```bash
 # Edit > Preferences > Capture
@@ -545,21 +590,21 @@ brew install wireshark
 
 ### Настройки Протоколов
 
-Настройка анализаторов протоколов и декодирования.
+Настройка декодеров протоколов и декодирования.
 
 ```bash
 # Edit > Preferences > Protocols
-# Включение/отключение анализаторов протоколов
+# Включение/отключение декодеров протоколов
 # Назначение портов
 # Установка ключей дешифрования (TLS, WEP и т.д.)
-# Параметры сборки заново TCP
+# Опции повторной сборки TCP
 # Функциональность Decode As
 # Analyze > Decode As
 ```
 
 ### Предпочтения Отображения
 
-Настройка пользовательского интерфейса и параметров отображения.
+Настройка пользовательского интерфейса и опций отображения.
 
 ```bash
 # Edit > Preferences > Appearance
@@ -575,12 +620,12 @@ brew install wireshark
 
 ### Настройки Безопасности
 
-Настройка параметров, связанных с безопасностью, и дешифрования.
+Настройка параметров, связанных с безопасностью, и дешифрование.
 
 ```bash
 # Настройка дешифрования TLS
 # Edit > Preferences > Protocols > TLS
-# Список RSA-ключей
+# Список ключей RSA
 # Предварительно общие ключи
 # Расположение файла журнала ключей
 # Отключение потенциально опасных функций
@@ -660,11 +705,11 @@ tcp.analysis.window_full
 Выявление и устранение проблем с сетевым подключением.
 
 ```bash
-# Поиск тайм-аутов соединения
+# Поиск таймаутов соединения
 tcp.analysis.retransmission and tcp.analysis.rto
 # Выявление медленных соединений
 tcp.time_delta > 1.0
-# Поиск перегрузки сети
+# Выявление перегрузки сети
 tcp.analysis.window_full
 # Проблемы с разрешением DNS
 dns.flags.rcode != 0
@@ -684,7 +729,7 @@ tcp.flags.syn == 1 and tcp.flags.ack == 0
 # Подозрительные DNS-запросы
 dns.qry.name contains "dga" or dns.qry.name matches
 "^[a-z]{8,}\.com$"
-# HTTP POST на подозрительные URL
+# Необычные HTTP POST-запросы
 http.request.method == "POST" and http.request.uri
 contains "/upload"
 # Необычные шаблоны трафика
@@ -708,7 +753,7 @@ rtp.jitter > 30 or rtp.marker == 1
 
 ### Исследование Протоколов
 
-Глубокое изучение конкретных протоколов и их поведения.
+Глубокое изучение поведения конкретных протоколов.
 
 ```bash
 # Анализ электронной почты
@@ -717,17 +762,17 @@ tcp.port == 25 or tcp.port == 587 or tcp.port == 993
 ftp-data or ftp.request.command == "RETR"
 # Общий доступ к файлам SMB/CIFS
 smb2 or smb
-# Анализ DHCP-аренды
+# Анализ аренды DHCP
 bootp.option.dhcp == 1 or bootp.option.dhcp == 2
 ```
 
 ## Соответствующие Ссылки
 
-- <router-link to="/nmap">Справочник по Nmap</router-link>
-- <router-link to="/cybersecurity">Справочник по Кибербезопасности</router-link>
-- <router-link to="/kali">Справочник по Kali Linux</router-link>
-- <router-link to="/linux">Справочник по Linux</router-link>
-- <router-link to="/shell">Справочник по Shell</router-link>
-- <router-link to="/network">Справочник по Сети</router-link>
-- <router-link to="/devops">Справочник по DevOps</router-link>
-- <router-link to="/docker">Справочник по Docker</router-link>
+- <router-link to="/nmap">Шпаргалка по Nmap</router-link>
+- <router-link to="/cybersecurity">Шпаргалка по Кибербезопасности</router-link>
+- <router-link to="/kali">Шпаргалка по Kali Linux</router-link>
+- <router-link to="/linux">Шпаргалка по Linux</router-link>
+- <router-link to="/shell">Шпаргалка по Shell</router-link>
+- <router-link to="/network">Шпаргалка по Сети</router-link>
+- <router-link to="/devops">Шпаргалка по DevOps</router-link>
+- <router-link to="/docker">Шпаргалка по Docker</router-link>

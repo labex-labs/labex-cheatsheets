@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по HTML'
-description: 'Изучите HTML с нашей подробной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по HTML | LabEx'
+description: 'Изучите HTML5 с помощью этой исчерпывающей шпаргалки. Быстрый справочник по тегам HTML, семантическим элементам, формам, доступности и современным стандартам веб-разработки для фронтенд-разработчиков.'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/html">Изучайте HTML с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/html">Изучайте HTML с практическими лабораторными работами</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите структуру веб-страниц HTML с помощью практических лабораторий и реальных сценариев. LabEx предлагает комплексные курсы по HTML, охватывающие основные элементы, семантическую разметку, формы, интеграцию медиа и современные функции HTML5. Освойте эффективную структуру веб-страниц и организацию контента для современных рабочих процессов веб-разработки.
+Изучите структуру веб-страниц HTML с помощью практических лабораторных работ и сценариев из реального мира. LabEx предлагает комплексные курсы по HTML, охватывающие основные элементы, семантическую разметку, формы, интеграцию мультимедиа и современные функции HTML5. Освойте эффективную структуру веб-страниц и организацию контента для современных рабочих процессов веб-разработки.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -38,6 +38,21 @@ pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
   </body>
 </html>
 ```
+
+<BaseQuiz id="html-doctype-1" correct="A">
+  <template #question>
+    What is the purpose of `<!DOCTYPE html>`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>It declares the document type and HTML version</BaseQuizOption>
+  <BaseQuizOption value="B">It creates a new HTML element</BaseQuizOption>
+  <BaseQuizOption value="C">It links to an external stylesheet</BaseQuizOption>
+  <BaseQuizOption value="D">It sets the page title</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `<!DOCTYPE html>` declaration tells the browser which version of HTML the document is using. For HTML5, this simple declaration is sufficient and should be the first line of every HTML document.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Элементы Head: `<head>`
 
@@ -89,7 +104,7 @@ pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 
 ## Элементы текстового контента
 
-### Заголовки: `h1` по `h6`
+### Заголовки: `h1` до `h6`
 
 Определяют иерархию и важность разделов контента.
 
@@ -102,7 +117,22 @@ pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 <h6>Smallest Heading</h6>
 ```
 
-### Параграфы: `p`
+<BaseQuiz id="html-headings-1" correct="B">
+  <template #question>
+    What is the correct heading hierarchy?
+  </template>
+  
+  <BaseQuizOption value="A">h1 should be used multiple times on a page</BaseQuizOption>
+  <BaseQuizOption value="B" correct>h1 should be used once as the main title, followed by h2, h3, etc.</BaseQuizOption>
+  <BaseQuizOption value="C">All headings have the same importance</BaseQuizOption>
+  <BaseQuizOption value="D">h6 is the most important heading</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    HTML headings should follow a logical hierarchy: use one `h1` for the main page title, then `h2` for major sections, `h3` for subsections, and so on. This helps with accessibility and SEO.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Абзацы: `p`
 
 Наиболее распространенный элемент для блоков текстового контента.
 
@@ -132,7 +162,7 @@ pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 
 ### Разрывы строк и пробелы: `<br>`, `<hr>`, `<pre>`
 
-Управление потоком текста и пробелами внутри контента.
+Управление потоком текста и интервалами внутри контента.
 
 ```html
 <!-- Line break -->
@@ -154,7 +184,7 @@ Line 2
 
 ### Ненумерованные списки: `<ul>`
 
-Создание маркированных списков для не последовательных элементов.
+Создание списков с маркерами для не последовательных элементов.
 
 ```html
 <ul>
@@ -176,7 +206,7 @@ Line 2
 
 ### Нумерованные списки: `<ol>`
 
-Создание нумерованных списков для последовательных элементов.
+Создание пронумерованных списков для последовательных элементов.
 
 ```html
 <ol>
@@ -230,6 +260,21 @@ Line 2
 <a href="#section1">Go to Section 1</a>
 <h2 id="section1">Section 1</h2>
 ```
+
+<BaseQuiz id="html-links-1" correct="B">
+  <template #question>
+    What does `target="_blank"` do in an anchor tag?
+  </template>
+  
+  <BaseQuizOption value="A">Opens the link in the same window</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Opens the link in a new tab or window</BaseQuizOption>
+  <BaseQuizOption value="C">Closes the current window</BaseQuizOption>
+  <BaseQuizOption value="D">Downloads the link</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `target="_blank"` attribute opens the linked page in a new browser tab or window, allowing users to keep the original page open.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Формы и элементы ввода
 
@@ -297,9 +342,9 @@ Line 2
 ></textarea>
 ```
 
-### Валидация формы: `required`, `min`, `max`, `pattern`
+### Проверка формы: `required`, `min`, `max`, `pattern`
 
-Встроенные атрибуты HTML для валидации форм.
+Встроенные атрибуты проверки форм HTML.
 
 ```html
 <input type="text" required />
@@ -309,7 +354,22 @@ Line 2
 <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
 ```
 
-## Медиа элементы
+<BaseQuiz id="html-validation-1" correct="A">
+  <template #question>
+    What does the `required` attribute do in an HTML input?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Prevents form submission if the field is empty</BaseQuizOption>
+  <BaseQuizOption value="B">Makes the field read-only</BaseQuizOption>
+  <BaseQuizOption value="C">Hides the field</BaseQuizOption>
+  <BaseQuizOption value="D">Sets a default value</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    The `required` attribute makes an input field mandatory. If the field is empty when the form is submitted, the browser will prevent submission and show a validation message.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+## Мультимедиа
 
 ### Изображения: `<img>`, `<picture>`
 
@@ -349,7 +409,7 @@ Line 2
 
 ### Видео: `<video>`
 
-Встраивание видеоконтента с комплексными опциями.
+Встраивание видеоконтента с исчерпывающими опциями.
 
 ```html
 <!-- Basic video -->
@@ -412,9 +472,9 @@ Line 2
 </table>
 ```
 
-### Расширенные функции таблиц: `rowspan`, `colspan`, `<caption>`
+### Расширенные функции таблицы: `rowspan`, `colspan`, `<caption>`
 
-Улучшенная функциональность таблиц с объединением и группировкой.
+Улучшенная функциональность таблицы с объединением и группировкой.
 
 ```html
 <table>
@@ -446,11 +506,11 @@ Line 2
 </table>
 ```
 
-## Семантический HTML5
+## Семантические элементы HTML5
 
 ### Элементы структуры страницы: `<header>`, `<nav>`, `<main>`, `<footer>`
 
-Определение основных разделов макета вашей страницы.
+Определяют основные разделы макета вашей страницы.
 
 ```html
 <!-- Page header -->
@@ -616,7 +676,7 @@ HTML5 представил новые типы ввода и атрибуты.
 
 ### Элемент Диалог: `<dialog>`
 
-Встроенная функциональность диалоговых окон и модальных окон.
+Нативная функциональность диалоговых окон и модальных окон.
 
 ```html
 <!-- Dialog element -->
@@ -633,7 +693,7 @@ HTML5 представил новые типы ввода и атрибуты.
 </script>
 ```
 
-## Лучшие практики и валидация
+## Лучшие практики и проверка
 
 ### Лучшие практики HTML
 
@@ -658,7 +718,7 @@ HTML5 представил новые типы ввода и атрибуты.
 <img src="chart.png" alt="Sales increased 25% in Q4" />
 ```
 
-### Валидация и отладка HTML
+### Проверка и отладка HTML
 
 Убедитесь, что ваш HTML является допустимым и доступным.
 
@@ -685,7 +745,7 @@ HTML5 представил новые типы ввода и атрибуты.
 
 ## Шаблоны и фреймворки HTML
 
-### Шаблонизаторы: Handlebars, Mustache
+### Шаблонные движки: Handlebars, Mustache
 
 Динамическая генерация HTML с помощью языков шаблонов.
 
@@ -706,7 +766,7 @@ HTML5 представил новые типы ввода и атрибуты.
 </div>
 ```
 
-### Веб-компоненты: `<template>`, Custom Elements
+### Веб-компоненты: `<template>`, Пользовательские элементы
 
 Повторно используемые пользовательские элементы HTML.
 

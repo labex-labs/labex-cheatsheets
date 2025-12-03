@@ -1,6 +1,6 @@
 ---
-title: 'Guía Rápida de Ansible'
-description: 'Aprenda Ansible con nuestra guía completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Guía Rápida de Ansible | LabEx'
+description: 'Aprenda automatización con Ansible con esta guía completa. Referencia rápida para playbooks, módulos, inventario, gestión de configuración y automatización de infraestructura.'
 pdfUrl: '/cheatsheets/pdf/ansible-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Hoja de Trucos de Ansible
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/ansible">Aprende Ansible con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/ansible">Aprenda Ansible con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende automatización de infraestructura con Ansible a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Ansible que cubren la creación esencial de playbooks, gestión de inventario, uso de módulos y organización de roles. Domina la gestión de configuración y la automatización de infraestructura para flujos de trabajo DevOps.
+Aprenda automatización de infraestructura con Ansible a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Ansible que cubren la creación esencial de playbooks, gestión de inventario, uso de módulos y organización de roles. Domine la gestión de configuración y la automatización de infraestructura para flujos de trabajo DevOps.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -70,7 +70,7 @@ ansible-config list
 # Ver configuración efectiva
 ansible-config view
 # Archivo de configuración personalizado
-export ANSIBLE_CONFIG=/ruta/a/ansible.cfg
+export ANSIBLE_CONFIG=/path/to/ansible.cfg
 ```
 
 ### Configuración SSH: Autenticación basada en Claves
@@ -81,9 +81,9 @@ Ansible utiliza SSH para comunicarse entre nodos.
 # Generar clave SSH
 ssh-keygen -t rsa -b 4096
 # Copiar clave pública a hosts remotos
-ssh-copy-id usuario@nombre_host
+ssh-copy-id user@hostname
 # Probar conexión SSH
-ssh usuario@nombre_host
+ssh user@hostname
 ```
 
 ### Configuración del Entorno
@@ -92,8 +92,8 @@ Configurar variables de entorno y rutas del entorno Ansible.
 
 ```bash
 # Establecer ubicación del archivo de inventario
-export ANSIBLE_INVENTORY=/ruta/al/inventario
-# Desactivar verificación de claves de host
+export ANSIBLE_INVENTORY=/path/to/inventory
+# Establecer verificación de claves de host
 export ANSIBLE_HOST_KEY_CHECKING=False
 # Establecer usuario remoto
 export ANSIBLE_REMOTE_USER=ubuntu
@@ -137,7 +137,7 @@ all:
         mysql_port: 3306
 ```
 
-### Variables de Host y Grupo
+### Variables de Host y Grupos
 
 Definir variables específicas del host y configuraciones de grupo.
 
@@ -159,7 +159,7 @@ ansible-inventory --graph
 
 ### Estructura Básica del Comando
 
-Estructura básica de un comando Ansible: `ansible <hosts> -m <módulo> -a "<argumentos>"`
+Estructura básica de un comando Ansible: `ansible <hosts> -m <module> -a "<arguments>"`
 
 ```bash
 # Probar conectividad
@@ -171,6 +171,21 @@ ansible all -m command -a "uptime"
 # Ejecutar con privilegios sudo
 ansible all -m command -a "systemctl status nginx" --become
 ```
+
+<BaseQuiz id="ansible-command-1" correct="C">
+  <template #question>
+    ¿Qué hace `ansible all -m ping`?
+  </template>
+  
+  <BaseQuizOption value="A">Prueba la conectividad de red usando ping ICMP</BaseQuizOption>
+  <BaseQuizOption value="B">Instala el paquete ping en todos los hosts</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Prueba la conectividad de Ansible a todos los hosts en el inventario</BaseQuizOption>
+  <BaseQuizOption value="D">Verifica si los hosts están en línea</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    El módulo `ping` en Ansible no utiliza ICMP. Es un módulo de prueba que verifica que Ansible puede conectarse a los hosts, ejecutar Python y devolver resultados. Se utiliza para verificar la conectividad y la configuración.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Operaciones de Archivos
 
@@ -257,9 +272,24 @@ ansible-playbook -i inventory.yml site.yml
 ansible-playbook site.yml --check
 # Ejecutar en hosts específicos
 ansible-playbook site.yml --limit webservers
-# Ejecutar con variables adicionales
+# Ejecutar con variables extra
 ansible-playbook site.yml --extra-vars "nginx_port=8080"
 ```
+
+<BaseQuiz id="ansible-playbook-1" correct="B">
+  <template #question>
+    ¿Qué hace `ansible-playbook site.yml --check`?
+  </template>
+  
+  <BaseQuizOption value="A">Ejecuta el playbook dos veces</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Ejecuta el playbook en modo de verificación (simulación) sin realizar cambios</BaseQuizOption>
+  <BaseQuizOption value="C">Verifica la sintaxis del playbook</BaseQuizOption>
+  <BaseQuizOption value="D">Ejecuta solo la primera tarea</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La bandera `--check` ejecuta Ansible en modo de verificación (simulación), lo que simula lo que sucedería sin realizar cambios reales. Esto es útil para probar playbooks antes de aplicarlos.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Opciones de Tarea y Condicionales
 
@@ -290,7 +320,7 @@ tasks:
 
 ### Handlers y Notificaciones
 
-Definir handlers que se ejecutan cuando son notificados por las tareas.
+Definir _handlers_ que se ejecutan cuando son notificados por las tareas.
 
 ```yaml
 tasks:
@@ -306,6 +336,21 @@ handlers:
       name: nginx
       state: restarted
 ```
+
+<BaseQuiz id="ansible-handlers-1" correct="C">
+  <template #question>
+    ¿Cuándo se ejecutan los *handlers* de Ansible?
+  </template>
+  
+  <BaseQuizOption value="A">Inmediatamente después de ser definidos</BaseQuizOption>
+  <BaseQuizOption value="B">Al inicio del playbook</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Al final del playbook, solo si son notificados por una tarea</BaseQuizOption>
+  <BaseQuizOption value="D">Cada vez que se ejecuta una tarea</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Los *handlers* se ejecutan al final del playbook, y solo si son notificados por una tarea que ha cambiado algo. Esto asegura que los servicios solo se reinicien cuando los archivos de configuración se modifican realmente.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Variables y Plantillas
 
@@ -358,22 +403,22 @@ server {
 
 ### Facts y Información del Sistema
 
-Recopilar y usar hechos del sistema en playbooks.
+Recopilar y usar _facts_ del sistema en playbooks.
 
 ```bash
-# Recopilar hechos manualmente
+# Recopilar facts manualmente
 ansible all -m setup
-# Recopilar hechos específicos
+# Recopilar facts específicos
 ansible all -m setup -a "filter=ansible_eth*"
 ```
 
 ```yaml
-# Usar hechos en playbooks
+# Usar facts en playbooks
 - name: Mostrar información del sistema
   debug:
     msg: '{{ ansible_hostname }} ejecuta {{ ansible_distribution }}'
 
-- name: Instalar paquete basado en SO
+- name: Instalar paquete basado en el SO
   apt:
     name: apache2
   when: ansible_os_family == "Debian"
@@ -408,7 +453,7 @@ ansible-galaxy init webserver
 ```
 
 ```
-# Estructura de directorio de rol
+# Estructura de directorio del Rol
 webserver/
 ├── tasks/
 │   └── main.yml
@@ -454,7 +499,7 @@ Descargar y gestionar roles de la comunidad desde Ansible Galaxy.
 ansible-galaxy install geerlingguy.nginx
 # Instalar versión específica
 ansible-galaxy install geerlingguy.nginx,2.8.0
-# Instalar desde archivo de requisitos
+# Instalar desde archivo requirements
 ansible-galaxy install -r requirements.yml
 # Listar roles instalados
 ansible-galaxy list
@@ -495,30 +540,30 @@ Depurar y solucionar problemas en la ejecución de playbooks.
     var: my_variable
 - name: Mostrar mensaje personalizado
   debug:
-    msg: 'El servidor {{ inventory_hostname }} tiene IP {{ ansible_default_ipv4.address }}'
+    msg: 'Servidor {{ inventory_hostname }} tiene IP {{ ansible_default_ipv4.address }}'
 ```
 
 ```bash
 # Ejecución detallada (verbose)
 ansible-playbook site.yml -v
-ansible-playbook site.yml -vvv  # Máxima verbosidad
+ansible-playbook site.yml -vvv  # Verbosity máxima
 ```
 
 ### Manejo de Errores
 
-Manejar fallos de forma elegante.
+Manejar errores y fallos con elegancia.
 
 ```yaml
 - name: Tarea que podría fallar
   command: /bin/false
   ignore_errors: yes
 
-- name: Tarea con rescate
+- name: Tarea con rescue
   block:
     - command: /bin/false
   rescue:
     - debug:
-        msg: 'La tarea falló, ejecutando rescate'
+        msg: 'La tarea falló, ejecutando rescue'
   always:
     - debug:
         msg: 'Esto siempre se ejecuta'
@@ -537,13 +582,13 @@ ansible-playbook site.yml --list-tasks
 ansible-playbook site.yml --list-hosts
 # Recorrer playbook paso a paso
 ansible-playbook site.yml --step
-# Probar con modo check
+# Probar con modo de verificación
 ansible-playbook site.yml --check --diff
 ```
 
 ### Rendimiento y Optimización
 
-Optimizar el rendimiento y la ejecución de playbooks.
+Optimizar el rendimiento de la ejecución del playbook.
 
 ```yaml
 # Ejecutar tareas en paralelo
@@ -571,7 +616,7 @@ Asegurar su infraestructura y operaciones de Ansible.
 ```bash
 # Usar Ansible Vault para secretos
 ansible-vault create group_vars/all/vault.yml
-# Desactivar la verificación de claves de host con precaución
+# Deshabilitar la verificación de claves de host con cautela
 host_key_checking = False
 # Usar become solo cuando sea necesario
 become: yes
@@ -584,7 +629,7 @@ ansible-playbook site.yml --limit production
 
 Estructurar sus proyectos Ansible de manera efectiva.
 
-```bash
+```
 # Estructura de directorio recomendada
 ansible-project/
 ├── inventories/
@@ -605,7 +650,7 @@ ansible-project/
 
 ### Control de Versiones y Pruebas
 
-Gestionar el código Ansible con un control de versiones adecuado.
+Gestionar el código de Ansible con un control de versiones adecuado.
 
 ```bash
 # Usar Git para control de versiones
@@ -640,7 +685,7 @@ pipelining = True
 
 ### Plugins de Callback
 
-Mejorar la salida y el registro con plugins de callback.
+Mejorar la salida y el registro con plugins de _callback_.
 
 ```ini
 # Habilitar plugins de callback en ansible.cfg
@@ -659,14 +704,14 @@ Usar filtros Jinja2 y plugins de búsqueda para manipulación de datos.
 
 ```jinja2
 # Filtros comunes en plantillas
-{{ variable | default('valor_predeterminado') }}
+{{ variable | default('default_value') }}
 {{ list_var | length }}
 {{ string_var | upper }}
 {{ dict_var | to_nice_yaml }}
 ```
 
 ```yaml
-# Plugins de búsqueda
+# Plugins de búsqueda (lookup)
 - name: Leer contenido de archivo
   debug:
     msg: "{{ lookup('file', '/etc/hostname') }}"
@@ -681,9 +726,9 @@ Usar filtros Jinja2 y plugins de búsqueda para manipulación de datos.
 Usar inventarios dinámicos para entornos de nube y contenedores.
 
 ```bash
-# Inventario dinámico de AWS EC2
+# Inventario dinámico AWS EC2
 ansible-playbook -i ec2.py site.yml
-# Inventario dinámico de Docker
+# Inventario dinámico Docker
 ansible-playbook -i docker.yml site.yml
 # Script de inventario personalizado
 ansible-playbook -i ./dynamic_inventory.py site.yml

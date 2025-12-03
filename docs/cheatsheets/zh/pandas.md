@@ -1,6 +1,6 @@
 ---
-title: 'Pandas 速查表'
-description: '使用我们涵盖基本命令、概念和最佳实践的 Pandas 全面速查表进行学习。'
+title: 'Pandas 速查表 | LabEx'
+description: '使用此综合速查表学习 Pandas 数据操作。DataFrame 操作、数据清洗、筛选、分组、合并和 Python 数据分析的快速参考。'
 pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 ---
 
@@ -37,6 +37,21 @@ df = pd.read_csv('data.csv', sep=';')
 df = pd.read_csv('data.csv', parse_dates=['Date'])
 ```
 
+<BaseQuiz id="pandas-read-csv-1" correct="B">
+  <template #question>
+    `pd.read_csv('data.csv')` 返回什么？
+  </template>
+  
+  <BaseQuizOption value="A">字典列表</BaseQuizOption>
+  <BaseQuizOption value="B" correct>一个 pandas DataFrame</BaseQuizOption>
+  <BaseQuizOption value="C">一个 NumPy 数组</BaseQuizOption>
+  <BaseQuizOption value="D">一个字符串</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pd.read_csv()` 读取一个 CSV 文件并返回一个 pandas DataFrame，它是一个具有列和行的二维带标签的数据结构。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 读取 Excel: `pd.read_excel()`
 
 从 Excel 文件加载数据。
@@ -44,9 +59,9 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
 ```python
 # 读取第一个工作表
 df = pd.read_excel('data.xlsx')
-# 读取指定工作表
+# 读取特定工作表
 df = pd.read_excel('data.xlsx', sheet_name='Sheet2')
-# 将第 2 行设为标题行 (0 索引)
+# 将第 2 行设为标题行 (0-索引)
 df = pd.read_excel('data.xlsx', header=1)
 ```
 
@@ -124,7 +139,7 @@ df.index
 df.describe()
 # 特定列的摘要
 df['column'].describe()
-# 包含所有列 (也包括 object 类型)
+# 包含所有列 (包括 object 类型)
 df.describe(include='all')
 ```
 
@@ -160,6 +175,21 @@ df.dropna()
 df.dropna(axis=1)
 ```
 
+<BaseQuiz id="pandas-missing-1" correct="B">
+  <template #question>
+    `df.dropna(axis=1)` 执行什么操作？
+  </template>
+  
+  <BaseQuizOption value="A">删除包含缺失值的行</BaseQuizOption>
+  <BaseQuizOption value="B" correct>删除包含缺失值的列</BaseQuizOption>
+  <BaseQuizOption value="C">用 0 填充缺失值</BaseQuizOption>
+  <BaseQuizOption value="D">计算缺失值的数量</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `axis=1` 参数表示“列”，因此 `df.dropna(axis=1)` 会删除包含任何缺失值的列。使用 `axis=0` (默认值) 来删除行。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### 重复项：`duplicated()` / `drop_duplicates()`
 
 识别并删除重复的行。
@@ -172,6 +202,21 @@ df.drop_duplicates()
 # 基于特定列删除重复项
 df.drop_duplicates(subset=['col1', 'col2'])
 ```
+
+<BaseQuiz id="pandas-duplicates-1" correct="A">
+  <template #question>
+    `df.drop_duplicates()` 默认执行什么操作？
+  </template>
+  
+  <BaseQuizOption value="A" correct>删除重复行，保留第一次出现的记录</BaseQuizOption>
+  <BaseQuizOption value="B">删除所有行</BaseQuizOption>
+  <BaseQuizOption value="C">只保留重复的行</BaseQuizOption>
+  <BaseQuizOption value="D">删除重复项的第一次出现</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    默认情况下，`drop_duplicates()` 保留每个重复行第一次出现的结果，并删除后续的重复项。您可以使用 `keep='last'` 来保留最后一次出现的结果。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 数据类型：`astype()`
 
@@ -188,7 +233,7 @@ df['col'] = pd.to_datetime(df['col'])
 
 ### 应用函数：`apply()` / `map()` / `replace()`
 
-在 DataFrame/Series 上应用函数或替换值。
+在 DataFrame/Series 中应用函数或替换值。
 
 ```python
 # 对列应用 lambda 函数
@@ -201,6 +246,21 @@ df.replace('old_val', 'new_val')
 df.replace(['A', 'B'], ['C', 'D'])
 ```
 
+<BaseQuiz id="pandas-apply-1" correct="A">
+  <template #question>
+    `df['col'].apply(lambda x: x*2)` 执行什么操作？
+  </template>
+  
+  <BaseQuizOption value="A" correct>将函数应用于列中的每个元素，将每个元素乘以 2</BaseQuizOption>
+  <BaseQuizOption value="B">一次性将整个列乘以 2</BaseQuizOption>
+  <BaseQuizOption value="C">将列替换为 2</BaseQuizOption>
+  <BaseQuizOption value="D">计算列中的元素数量</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `apply()` 方法将函数应用于 Series 中的每个元素。lambda 函数 `lambda x: x*2` 将每个值乘以 2，返回一个包含转换后值的新 Series。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## DataFrame 检查
 
 ### 唯一值：`unique()` / `value_counts()`
@@ -212,7 +272,7 @@ df.replace(['A', 'B'], ['C', 'D'])
 df['col'].unique()
 # 获取唯一值的数量
 df['col'].nunique()
-# 计算每个唯一值的出现次数
+# 统计每个唯一值的出现次数
 df['col'].value_counts()
 # 唯一值的比例
 df['col'].value_counts(normalize=True)
@@ -236,7 +296,7 @@ df['col1'].corr(df['col2'])
 按类别对数据进行分组并应用聚合函数。
 
 ```python
-# 每个类别的均值
+# 每个类别的平均值
 df.groupby('category_col').mean()
 # 按多列分组
 df.groupby(['col1', 'col2']).sum()
@@ -252,7 +312,7 @@ df.groupby('category_col').agg({'num_col': ['min', 'max', 'mean']})
 df.pivot_table(values='sales', index='region', columns='product', aggfunc='sum')
 # 简单的频率表
 pd.crosstab(df['col1'], df['col2'])
-# 带行列总计
+# 带行/列总计
 pd.crosstab(df['col1'], df['col2'], margins=True)
 # 带聚合值
 pd.crosstab(df['col1'], df['col2'], values=df['value_col'], aggfunc='mean')
@@ -267,13 +327,13 @@ pd.crosstab(df['col1'], df['col2'], values=df['value_col'], aggfunc='mean')
 ```python
 # 每列的内存使用情况
 df.memory_usage()
-# 总内存使用量 (字节)
+# 总内存使用量（字节）
 df.memory_usage(deep=True).sum()
 # info() 输出中的详细内存使用情况
 df.info(memory_usage='deep')
 ```
 
-### 优化 Dtypes: `astype()`
+### 优化数据类型：`astype()`
 
 通过转换为更小、更合适的 Dtype 来减少内存占用。
 
@@ -327,25 +387,25 @@ tables = pd.read_html('http://www.w3.org/TR/html401/sgml/entities.html')
 df = tables[0]
 ```
 
-### 转 JSON: `df.to_json()`
+### 导出为 JSON: `df.to_json()`
 
 将 DataFrame 写入 JSON 格式。
 
 ```python
-# 写入 JSON 文件
+# 导出到 JSON 文件
 df.to_json('output.json', orient='records', indent=4)
-# 写入 JSON 字符串
+# 导出到 JSON 字符串
 json_str = df.to_json(orient='split')
 ```
 
-### 转 HTML: `df.to_html()`
+### 导出为 HTML: `df.to_html()`
 
 将 DataFrame 渲染为 HTML 表格。
 
 ```python
-# 写入 HTML 字符串
+# 导出到 HTML 字符串
 html_table_str = df.to_html()
-# 写入 HTML 文件
+# 导出到 HTML 文件
 df.to_html('output.html', index=False)
 ```
 
@@ -354,7 +414,7 @@ df.to_html('output.html', index=False)
 将剪贴板中的文本读入 DataFrame。
 
 ```python
-# 从网页/电子表格复制表格数据并运行
+# 复制来自网页/电子表格的表格数据并运行
 df = pd.read_clipboard()
 ```
 
@@ -362,7 +422,7 @@ df = pd.read_clipboard()
 
 ### Pickle: `df.to_pickle()` / `pd.read_pickle()`
 
-将 Pandas 对象序列化/反序列化到磁盘。
+将 Pandas 对象序列化/反序列化到/从磁盘。
 
 ```python
 # 将 DataFrame 保存为 pickle 文件
@@ -389,7 +449,7 @@ loaded_df = pd.read_hdf('my_data.h5', key='df')
 按索引/列的显式标签选择数据。
 
 ```python
-# 选择索引为 0 的行
+# 选择索引标签为 0 的行
 df.loc[0]
 # 选择 'col1' 的所有行
 df.loc[:, 'col1']
@@ -397,7 +457,7 @@ df.loc[:, 'col1']
 df.loc[0:5, ['col1', 'col2']]
 # 布尔索引选择行
 df.loc[df['col'] > 5]
-# 按标签快速访问标量值
+# 按标签快速标量访问
 df.at[0, 'col1']
 ```
 
@@ -410,9 +470,9 @@ df.at[0, 'col1']
 df.iloc[0]
 # 按位置选择第一列
 df.iloc[:, 0]
-# 切片行并按位置选择多列
+# 切片行并选择多列（按位置）
 df.iloc[0:5, [0, 1]]
-# 按位置快速访问标量值
+# 按位置快速标量访问
 df.iat[0, 0]
 ```
 
@@ -438,7 +498,7 @@ df[~df['col1'].isin([1, 2, 3])]
 df.query('col1 > 10')
 # 复杂查询
 df.query('col1 > 10 and col2 == "A"')
-# 使用 '@' 引用局部变量
+# 使用 '@' 符号使用本地变量
 df.query('col1 in @my_list')
 ```
 
@@ -449,20 +509,20 @@ df.query('col1 in @my_list')
 测量 Python/Pandas 代码的执行时间。
 
 ```python
-# 用于计时单行/单元格的 Jupyter/IPython 魔术命令
+# 用于计时一行/一个单元格的 Jupyter/IPython 魔术命令
 %%timeit
 df['col'].apply(lambda x: x*2) # 示例操作
 
 import time
 start_time = time.time()
-# 您的 Pandas 代码放在这里
+# 您的 Pandas 代码
 end_time = time.time()
 print(f"Execution time: {end_time - start_time} seconds")
 ```
 
 ### 优化操作：`eval()` / `query()`
 
-在大型 DataFrame 上利用这些方法以获得更快的性能，尤其适用于逐元素操作和过滤。
+利用这些方法对大型 DataFrame 进行更快的元素级操作和过滤。
 
 ```python
 # 比 `df['col1'] + df['col2']` 更快
@@ -473,7 +533,7 @@ df_filtered = df.query('col1 > @threshold and col2 == "value"')
 
 ### 代码分析：`cProfile` / `line_profiler`
 
-分析代码中时间花费最多的部分。
+分析代码中时间花费的位置（在 Python 函数中）。
 
 ```python
 import cProfile
@@ -516,13 +576,13 @@ conda install pandas
 conda update pandas
 # 列出已安装的 Pandas 包
 conda list pandas
-# 创建包含 Pandas 的新环境
+# 创建带 Pandas 的新环境
 conda create -n myenv pandas
 ```
 
 ### 检查版本 / 导入
 
-在脚本中验证您的 Pandas 安装并导入它。
+验证您的 Pandas 安装并在脚本中导入它。
 
 ```python
 # 标准导入别名
@@ -554,7 +614,7 @@ pd.set_option('display.float_format', '{:.2f}'.format)
 
 ### 重置选项：`pd.reset_option()`
 
-将特定选项或所有选项重置为其默认值。
+将特定选项或所有选项重置为默认值。
 
 ```python
 # 重置特定选项
@@ -578,8 +638,8 @@ print(pd.get_option('display.max_rows'))
 
 ```python
 with pd.option_context('display.max_rows', 10, 'display.max_columns', 5):
-    print(df) # DataFrame 以临时选项显示
-print(df) # 选项在块外恢复到先前设置
+    print(df) # DataFrame 使用临时选项显示
+print(df) # 选项在代码块外部恢复到先前设置
 ```
 
 ## 方法链式调用
@@ -602,7 +662,7 @@ print(df) # 选项在块外恢复到先前设置
 
 ### 使用 `.pipe()`
 
-应用将 DataFrame 作为其第一个参数的函数，从而可以在链中实现自定义步骤。
+应用将 DataFrame 作为其第一个参数的函数，从而可以在链中启用自定义步骤。
 
 ```python
 def custom_filter(df, threshold):

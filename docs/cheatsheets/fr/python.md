@@ -1,6 +1,6 @@
 ---
-title: 'Fiche de Référence Python'
-description: 'Apprenez Python avec notre aide-mémoire complet couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo Python | LabEx'
+description: 'Apprenez la programmation Python avec cette fiche mémo complète. Référence rapide pour la syntaxe Python, les structures de données, les fonctions, les classes, les bibliothèques et les meilleures pratiques pour les développeurs Python.'
 pdfUrl: '/cheatsheets/pdf/python-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Feuille de triche Python
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://pythoncheatsheet.org/" target="_blank">Visiter Python Cheatsheet</a>
+<a href="https://pythoncheatsheet.org/" target="_blank">Visiter la Feuille de triche Python</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Pour des ressources de référence Python complètes, des exemples de syntaxe et une documentation détaillée, veuillez visiter <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>. Ce site indépendant fournit des feuilles de triche Python étendues couvrant les commandes essentielles, les concepts et les meilleures pratiques pour les développeurs Python.
+Pour des matériaux de référence Python complets, des exemples de syntaxe et une documentation détaillée, veuillez visiter <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>. Ce site indépendant fournit des feuilles de triche Python étendues couvrant les commandes essentielles, les concepts et les meilleures pratiques pour les développeurs Python.
 </base-disclaimer-content>
 </base-disclaimer>
 

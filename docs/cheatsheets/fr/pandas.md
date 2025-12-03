@@ -1,21 +1,21 @@
 ---
-title: 'Fiche Mémo Pandas'
-description: 'Maîtrisez Pandas avec notre fiche mémo complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche Mémo Pandas | LabEx'
+description: "Maîtrisez la manipulation de données Pandas avec cette fiche mémo complète. Référence rapide pour les opérations DataFrame, le nettoyage de données, le filtrage, le regroupement, la fusion et l'analyse de données Python."
 pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Pandas Aide-mémoire
+Feuille de triche Pandas
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/pandas">Apprendre Pandas avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/pandas">Apprenez Pandas avec des Labs Pratiques</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la manipulation de données Pandas grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours Pandas complets couvrant les opérations essentielles, le nettoyage des données, l'analyse et la visualisation. Apprenez à travailler avec des DataFrames, à gérer les données manquantes, à effectuer des agrégations et à analyser efficacement des ensembles de données en utilisant la puissante bibliothèque d'analyse de données de Python.
+Apprenez la manipulation de données Pandas grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Pandas complets couvrant les opérations essentielles, le nettoyage des données, l'analyse et la visualisation. Apprenez à travailler avec des DataFrames, à gérer les données manquantes, à effectuer des agrégations et à analyser efficacement des ensembles de données en utilisant la puissante bibliothèque d'analyse de données de Python.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -37,6 +37,21 @@ df = pd.read_csv('data.csv', sep=';')
 df = pd.read_csv('data.csv', parse_dates=['Date'])
 ```
 
+<BaseQuiz id="pandas-read-csv-1" correct="B">
+  <template #question>
+    Que retourne `pd.read_csv('data.csv')` ?
+  </template>
+  
+  <BaseQuizOption value="A">Une liste de dictionnaires</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Un DataFrame pandas</BaseQuizOption>
+  <BaseQuizOption value="C">Un tableau NumPy</BaseQuizOption>
+  <BaseQuizOption value="D">Une chaîne de caractères</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `pd.read_csv()` lit un fichier CSV et retourne un DataFrame pandas, qui est une structure de données bidimensionnelle étiquetée avec des colonnes et des lignes.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Lire un Excel : `pd.read_excel()`
 
 Charger des données à partir d'un fichier Excel.
@@ -46,7 +61,7 @@ Charger des données à partir d'un fichier Excel.
 df = pd.read_excel('data.xlsx')
 # Lire une feuille spécifique
 df = pd.read_excel('data.xlsx', sheet_name='Sheet2')
-# Définir la ligne 2 comme en-tête (indexé à 0)
+# Définir la ligne 2 comme en-tête (indexé à partir de 0)
 df = pd.read_excel('data.xlsx', header=1)
 ```
 
@@ -77,11 +92,11 @@ df.to_csv('output.csv', header=False)
 Écrire le DataFrame dans un fichier Excel.
 
 ```python
-# Sauvegarder sur Excel
+# Sauvegarder en Excel
 df.to_excel('output.xlsx', sheet_name='Résultats')
 writer = pd.ExcelWriter('output.xlsx')
-df1.to_excel(writer, sheet_name='Sheet1')
-df2.to_excel(writer, sheet_name='Sheet2')
+df1.to_excel(writer, sheet_name='Feuille1')
+df2.to_excel(writer, sheet_name='Feuille2')
 writer.save()
 ```
 
@@ -154,11 +169,26 @@ df.isnull().sum()
 df.fillna(0)
 # Remplir avec la moyenne de la colonne
 df['col'].fillna(df['col'].mean())
-# Supprimer les lignes contenant des NaN
+# Supprimer les lignes avec n'importe quel NaN
 df.dropna()
-# Supprimer les colonnes contenant des NaN
+# Supprimer les colonnes avec n'importe quel NaN
 df.dropna(axis=1)
 ```
+
+<BaseQuiz id="pandas-missing-1" correct="B">
+  <template #question>
+    Que fait `df.dropna(axis=1)` ?
+  </template>
+  
+  <BaseQuizOption value="A">Supprime les lignes avec des valeurs manquantes</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Supprime les colonnes avec des valeurs manquantes</BaseQuizOption>
+  <BaseQuizOption value="C">Remplit les valeurs manquantes avec 0</BaseQuizOption>
+  <BaseQuizOption value="D">Compte les valeurs manquantes</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Le paramètre `axis=1` signifie "colonnes", donc `df.dropna(axis=1)` supprime les colonnes qui contiennent des valeurs manquantes. Utilisez `axis=0` (par défaut) pour supprimer les lignes.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Doublons : `duplicated()` / `drop_duplicates()`
 
@@ -169,9 +199,24 @@ Identifier et supprimer les lignes dupliquées.
 df.duplicated()
 # Supprimer toutes les lignes dupliquées
 df.drop_duplicates()
-# Supprimer basé sur des colonnes spécifiques
+# Supprimer en se basant sur des colonnes spécifiques
 df.drop_duplicates(subset=['col1', 'col2'])
 ```
+
+<BaseQuiz id="pandas-duplicates-1" correct="A">
+  <template #question>
+    Que fait `df.drop_duplicates()` par défaut ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Supprime les lignes dupliquées, en conservant la première occurrence</BaseQuizOption>
+  <BaseQuizOption value="B">Supprime toutes les lignes</BaseQuizOption>
+  <BaseQuizOption value="C">Ne conserve que les lignes dupliquées</BaseQuizOption>
+  <BaseQuizOption value="D">Supprime la première occurrence des doublons</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Par défaut, `drop_duplicates()` conserve la première occurrence de chaque ligne dupliquée et supprime les doublons suivants. Vous pouvez utiliser `keep='last'` pour conserver la dernière occurrence à la place.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Types de Données : `astype()`
 
@@ -188,7 +233,7 @@ df['col'] = pd.to_datetime(df['col'])
 
 ### Appliquer une Fonction : `apply()` / `map()` / `replace()`
 
-Appliquer des fonctions ou remplacer des valeurs dans les DataFrames/Séries.
+Appliquer des fonctions ou remplacer des valeurs dans des DataFrames/Séries.
 
 ```python
 # Appliquer une fonction lambda à une colonne
@@ -200,6 +245,21 @@ df.replace('old_val', 'new_val')
 # Remplacer plusieurs valeurs
 df.replace(['A', 'B'], ['C', 'D'])
 ```
+
+<BaseQuiz id="pandas-apply-1" correct="A">
+  <template #question>
+    Que fait `df['col'].apply(lambda x: x*2)` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Applique une fonction à chaque élément de la colonne, multipliant chacun par 2</BaseQuizOption>
+  <BaseQuizOption value="B">Multiplie la colonne entière par 2 une seule fois</BaseQuizOption>
+  <BaseQuizOption value="C">Remplace la colonne par 2</BaseQuizOption>
+  <BaseQuizOption value="D">Compte les éléments dans la colonne</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    La méthode `apply()` applique une fonction à chaque élément d'une Série. La fonction lambda `lambda x: x*2` multiplie chaque valeur par 2, retournant une nouvelle Série avec les valeurs transformées.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ## Inspection du DataFrame
 
@@ -246,11 +306,11 @@ df.groupby('category_col').agg({'num_col': ['min', 'max', 'mean']})
 
 ### Tableaux Croisés : `pd.crosstab()`
 
-Calculer une table de fréquences pour deux facteurs ou plus.
+Calculer une table de fréquences de deux facteurs ou plus.
 
 ```python
 df.pivot_table(values='sales', index='region', columns='product', aggfunc='sum')
-# Table de fréquences simple
+# Tableau de fréquences simple
 pd.crosstab(df['col1'], df['col2'])
 # Avec sommes de lignes/colonnes
 pd.crosstab(df['col1'], df['col2'], margins=True)
@@ -260,16 +320,16 @@ pd.crosstab(df['col1'], df['col2'], values=df['value_col'], aggfunc='mean')
 
 ## Gestion de la Mémoire
 
-### Utilisation Mémoire : `df.memory_usage()`
+### Utilisation de la Mémoire : `df.memory_usage()`
 
-Afficher l'utilisation mémoire de chaque colonne ou du DataFrame entier.
+Afficher l'utilisation de la mémoire de chaque colonne ou du DataFrame entier.
 
 ```python
-# Utilisation mémoire de chaque colonne
+# Utilisation de la mémoire de chaque colonne
 df.memory_usage()
-# Utilisation mémoire totale en octets
+# Utilisation totale de la mémoire en octets
 df.memory_usage(deep=True).sum()
-# Utilisation mémoire détaillée dans la sortie de info()
+# Utilisation détaillée de la mémoire dans la sortie de info()
 df.info(memory_usage='deep')
 ```
 
@@ -286,9 +346,9 @@ df['float_col'] = df['float_col'].astype('float32')
 df['category_col'] = df['category_col'].astype('category')
 ```
 
-### Traitement par Morceaux de Fichiers Volumineux : `read_csv(chunksize=...)`
+### Fichiers Volumineux : `read_csv(chunksize=...)`
 
-Traiter les fichiers volumineux par morceaux pour éviter de tout charger en mémoire simultanément.
+Traiter les fichiers volumineux par morceaux pour éviter de tout charger en mémoire à la fois.
 
 ```python
 chunk_iterator = pd.read_csv('large_data.csv', chunksize=10000)
@@ -354,7 +414,7 @@ df.to_html('output.html', index=False)
 Lire le texte du presse-papiers dans un DataFrame.
 
 ```python
-# Copier les données de tableau depuis le web/tableur et exécuter
+# Copier les données du tableau depuis le web/tableur et exécuter
 df = pd.read_clipboard()
 ```
 
@@ -362,7 +422,7 @@ df = pd.read_clipboard()
 
 ### Pickle : `df.to_pickle()` / `pd.read_pickle()`
 
-Sérialiser/désérialiser les objets Pandas vers/depuis le disque.
+Sérialiser/désérialiser des objets Pandas vers/depuis le disque.
 
 ```python
 # Sauvegarder le DataFrame comme un fichier pickle
@@ -376,7 +436,7 @@ loaded_df = pd.read_pickle('my_dataframe.pkl')
 Stocker/charger des DataFrames en utilisant le format HDF5, idéal pour les grands ensembles de données.
 
 ```python
-# Sauvegarder sur HDF5
+# Sauvegarder en HDF5
 df.to_hdf('my_data.h5', key='df', mode='w')
 # Charger depuis HDF5
 loaded_df = pd.read_hdf('my_data.h5', key='df')
@@ -418,7 +478,7 @@ df.iat[0, 0]
 
 ### Indexation Booléenne : `df[condition]`
 
-Filtrer les lignes basées sur une ou plusieurs conditions.
+Filtrer les lignes en fonction d'une ou plusieurs conditions.
 
 ```python
 # Lignes où 'col1' est supérieur à 10
@@ -462,7 +522,7 @@ print(f"Temps d'exécution : {end_time - start_time} secondes")
 
 ### Opérations Optimisées : `eval()` / `query()`
 
-Utiliser ces méthodes pour des performances plus rapides sur les grands DataFrames, en particulier pour les opérations élément par élément et le filtrage.
+Utiliser ces méthodes pour des performances plus rapides sur de grands DataFrames, en particulier pour les opérations élément par élément et le filtrage.
 
 ```python
 # Plus rapide que `df['col1'] + df['col2']`
@@ -582,9 +642,9 @@ with pd.option_context('display.max_rows', 10, 'display.max_columns', 5):
 print(df) # Les options reviennent aux paramètres précédents en dehors du bloc
 ```
 
-## Chaînage de Méthodes
+## Enchaînement de Méthodes
 
-### Chaînage des Opérations
+### Opérations en Chaîne
 
 Appliquer une séquence de transformations à un DataFrame.
 
@@ -617,11 +677,11 @@ def custom_filter(df, threshold):
 
 ## Liens Pertinents
 
-- <router-link to="/python">Aide-mémoire Python</router-link>
-- <router-link to="/numpy">Aide-mémoire NumPy</router-link>
-- <router-link to="/matplotlib">Aide-mémoire Matplotlib</router-link>
-- <router-link to="/sklearn">Aide-mémoire scikit-learn</router-link>
-- <router-link to="/datascience">Aide-mémoire Science des Données</router-link>
-- <router-link to="/mysql">Aide-mémoire MySQL</router-link>
-- <router-link to="/postgresql">Aide-mémoire PostgreSQL</router-link>
-- <router-link to="/sqlite">Aide-mémoire SQLite</router-link>
+- <router-link to="/python">Feuille de triche Python</router-link>
+- <router-link to="/numpy">Feuille de triche NumPy</router-link>
+- <router-link to="/matplotlib">Feuille de triche Matplotlib</router-link>
+- <router-link to="/sklearn">Feuille de triche scikit-learn</router-link>
+- <router-link to="/datascience">Feuille de triche Science des Données</router-link>
+- <router-link to="/mysql">Feuille de triche MySQL</router-link>
+- <router-link to="/postgresql">Feuille de triche PostgreSQL</router-link>
+- <router-link to="/sqlite">Feuille de triche SQLite</router-link>

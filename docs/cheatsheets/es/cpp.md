@@ -1,6 +1,6 @@
 ---
-title: 'Hoja de Trucos de C++'
-description: 'Aprenda C++ con nuestra hoja de trucos completa que cubre comandos esenciales, conceptos y mejores prácticas.'
+title: 'Hoja de Trucos de C++ | LabEx'
+description: 'Aprenda programación C++ con esta hoja de trucos completa. Referencia rápida de sintaxis C++, OOP, STL, plantillas, gestión de memoria y características de C++ moderno para desarrolladores de software.'
 pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 ---
 
@@ -12,10 +12,10 @@ Hoja de Trucos de C++
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/cpp">Aprende C++ con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/cpp">Aprenda C++ con Laboratorios Prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende programación C++ a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de C++ que cubren sintaxis esencial, programación orientada a objetos, contenedores STL, gestión de memoria y técnicas avanzadas. Domina las potentes características de C++ para construir aplicaciones de alto rendimiento y software de sistemas.
+Aprenda programación C++ a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de C++ que cubren sintaxis esencial, programación orientada a objetos, contenedores STL, gestión de memoria y técnicas avanzadas. Domine las potentes características de C++ para construir aplicaciones de alto rendimiento y software de sistemas.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -58,8 +58,9 @@ Comentarios de una sola línea y de múltiples líneas.
 /*
 Comentario
 de múltiples líneas
+que abarca varias líneas
 */
-// TODO: Implementar funcionalidad
+// TODO: Implementar característica
 /* FIXME: Error en esta sección */
 ```
 
@@ -78,6 +79,21 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 ```
+
+<BaseQuiz id="cpp-main-1" correct="B">
+  <template #question>
+    ¿Cuál es la diferencia entre las sentencias de salida de C y C++?
+  </template>
+  
+  <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
+  <BaseQuizOption value="B" correct>C usa printf(), C++ usa cout con el operador &lt;&lt;</BaseQuizOption>
+  <BaseQuizOption value="C">C++ no soporta salida</BaseQuizOption>
+  <BaseQuizOption value="D">C usa cout, C++ usa printf</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    C usa `printf()` de stdio.h, mientras que C++ usa `cout` de iostream con el operador de inserción de flujo `<<`. C++ también soporta printf por compatibilidad.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Salida Básica
 
@@ -125,10 +141,10 @@ bool is_valid = true;
 
 ### String y Arrays
 
-Tipos de datos de texto y colección.
+Tipos de datos para texto y colecciones.
 
 ```cpp
-// Strings
+// Cadenas (Strings)
 string name = "John Doe";
 string empty_str;
 // Arrays
@@ -136,8 +152,23 @@ int numbers[5] = {1, 2, 3, 4, 5};
 int matrix[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
 // Arrays dinámicos (vectores)
 vector<int> dynamic_array = {10, 20, 30};
-vector<string> names(5); // Tamaño 5, strings vacíos
+vector<string> names(5); // Tamaño 5, cadenas vacías
 ```
+
+<BaseQuiz id="cpp-vector-1" correct="B">
+  <template #question>
+    ¿Cuál es la principal ventaja de `vector` sobre los arrays regulares en C++?
+  </template>
+  
+  <BaseQuizOption value="A">Los vectores son más rápidos</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Los vectores pueden cambiar de tamaño dinámicamente, mientras que los arrays tienen tamaño fijo</BaseQuizOption>
+  <BaseQuizOption value="C">Los vectores usan menos memoria</BaseQuizOption>
+  <BaseQuizOption value="D">No hay ventaja</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `vector` es un array dinámico que puede crecer o encogerse en tiempo de ejecución, a diferencia de los arrays regulares cuyo tamaño se determina en tiempo de compilación. Esto hace que los vectores sean más flexibles para muchos casos de uso.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Constantes y Auto
 
@@ -206,6 +237,21 @@ for (auto& item : container) {
 }
 ```
 
+<BaseQuiz id="cpp-range-for-1" correct="B">
+  <template #question>
+    ¿Qué es un bucle for basado en rango en C++?
+  </template>
+  
+  <BaseQuizOption value="A">Un bucle que solo funciona con arrays</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Un bucle que itera sobre todos los elementos de un contenedor automáticamente</BaseQuizOption>
+  <BaseQuizOption value="C">Un bucle que se ejecuta para siempre</BaseQuizOption>
+  <BaseQuizOption value="D">Un bucle que requiere gestión manual de índices</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Los bucles for basados en rango (introducidos en C++11) iteran automáticamente sobre todos los elementos de un contenedor (como vectores, arrays, cadenas) sin necesidad de gestionar índices manualmente. La sintaxis es `for (auto item : container)`.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Bucles While
 
 Iteración basada en condiciones.
@@ -217,7 +263,7 @@ while (count < 5) {
     cout << count << endl;
     count++;
 }
-// Bucle Do-while (ejecuta al menos una vez)
+// Bucle Do-while (se ejecuta al menos una vez)
 int input;
 do {
     cout << "Introduce un número (0 para salir): ";
@@ -227,7 +273,7 @@ do {
 
 ### Control de Bucles
 
-Declaraciones break y continue.
+Sentencias break y continue.
 
 ```cpp
 for (int i = 0; i < 10; i++) {
@@ -270,7 +316,7 @@ int result = add(5, 3);
 printMessage("¡Hola, funciones!");
 ```
 
-### Sobrecarga de Funciones
+### Sobrecarga de Funciones (Overloading)
 
 Múltiples funciones con el mismo nombre.
 
@@ -288,7 +334,7 @@ int multiply(int a, int b, int c) {
 }
 ```
 
-### Parámetros Predeterminados
+### Parámetros por Defecto
 
 Proporcionar valores predeterminados para los parámetros de la función.
 
@@ -301,22 +347,22 @@ greet("Alicia");              // Usa el valor predeterminado "Hola"
 greet("Beto", "Buenos días"); // Usa el saludo personalizado
 ```
 
-### Pasar por Referencia
+### Paso por Referencia
 
 Modificar variables a través de parámetros de función.
 
 ```cpp
-// Pasar por valor (copia)
+// Paso por valor (copia)
 void changeValue(int x) {
     x = 100; // La variable original no cambia
 }
-// Pasar por referencia
+// Paso por referencia
 void changeReference(int& x) {
     x = 100; // La variable original se modifica
 }
 // Referencia constante (solo lectura, eficiente)
 void processLargeData(const vector<int>& data) {
-    // Se puede leer data pero no modificarla
+    // Se pueden leer los datos pero no modificarlos
 }
 ```
 
@@ -367,7 +413,7 @@ rect2.setDimensions(4.0, 2.0);
 // Asignación dinámica
 Rectangle* rect3 = new Rectangle(6.0, 4.0);
 cout << rect3->area() << endl;
-delete rect3; // Limpiar memoria
+delete rect3; // Liberar memoria
 ```
 
 ### Herencia
@@ -381,7 +427,7 @@ protected:
 
 public:
     Shape(string c) : color(c) {}
-    virtual double area() const = 0; // Virtual puro
+    virtual double area() const = 0; // Virtual pura
     string getColor() const { return color; }
 };
 class Circle : public Shape {
@@ -433,11 +479,11 @@ delete[] arr;
 // Comprobar fallo de asignación
 int* large_array = new(nothrow) int[1000000];
 if (large_array == nullptr) {
-    cout << "¡Asignación fallida!" << endl;
+    cout << "Fallo en la asignación!" << endl;
 }
 ```
 
-### Punteros Inteligentes (C++11+)
+### Punteros Inteligentes (Smart Pointers) (C++11+)
 
 Gestión automática de memoria con RAII.
 
@@ -471,19 +517,19 @@ int* const ptr2 = &x;    // No se puede cambiar la dirección
 const int* const ptr3 = &x; // No se puede cambiar ninguno
 ```
 
-### Pila vs Montón (Stack vs Heap)
+### Stack vs Heap
 
 Estrategias de asignación de memoria.
 
 ```cpp
-// Asignación en Pila (automática)
+// Asignación en Stack (automática)
 int stack_var = 42;
 int stack_array[100];
-// Asignación en Montón (dinámica)
+// Asignación en Heap (dinámica)
 int* heap_var = new int(42);
 int* heap_array = new int[100];
-// Objetos de pila se limpian automáticamente
-// Objetos de montón deben ser eliminados manualmente
+// Objetos de Stack se limpian automáticamente
+// Objetos de Heap deben ser eliminados manualmente
 delete heap_var;
 delete[] heap_array;
 ```
@@ -492,7 +538,7 @@ delete[] heap_array;
 
 ### Contenedores: Vector y String
 
-Arrays dinámicos y manipulación de strings.
+Arrays dinámicos y manipulación de cadenas.
 
 ```cpp
 #include <vector>
@@ -507,8 +553,8 @@ nums.erase(nums.begin()); // Eliminar el primero
 string text = "Hola";
 text += " Mundo";         // Concatenación
 text.append("!");         // Añadir al final
-cout << text.substr(0, 5) << endl; // Substring
-text.replace(6, 5, "C++"); // Reemplazar "Mundo" con "C++"
+cout << text.substr(0, 4) << endl; // Subcadena
+text.replace(5, 5, "C++"); // Reemplazar "Mundo" con "C++"
 ```
 
 ### Contenedores: Map y Set
@@ -560,8 +606,8 @@ Navegar por los contenedores de manera eficiente.
 vector<string> words = {"hola", "mundo", "cpp"};
 // Tipos de iterador
 vector<string>::iterator it;
-auto it2 = words.begin(); // C++11 auto
-// Iterar a través del contenedor
+auto it2 = words.begin(); // Auto C++11
+// Iterar sobre el contenedor
 for (it = words.begin(); it != words.end(); ++it) {
     cout << *it << " ";
 }
@@ -615,7 +661,7 @@ vector<string> fruits;
 while (getline(ss, item, ',')) {
     fruits.push_back(item);
 }
-// Convertir strings a números
+// Convertir cadenas a números
 string num_str = "123";
 int num = stoi(num_str);
 double d = stod("3.14159");
@@ -628,7 +674,7 @@ Escribir datos en archivos de texto.
 
 ```cpp
 // Escribir en archivo
-ofstream outfile("output.txt");
+ofstream outfile("salida.txt");
 if (outfile.is_open()) {
     outfile << "¡Hola, archivo!" << endl;
     outfile << "Número: " << 42 << endl;
@@ -716,7 +762,7 @@ try {
 
 ### Patrón RAII
 
-Adquisición de Recursos Es Inicialización para una gestión segura de recursos.
+Inicialización de Adquisición de Recursos para una gestión segura de recursos.
 
 ```cpp
 // RAII con punteros inteligentes
@@ -790,7 +836,7 @@ g++ -I/usr/local/include -o programa main.cpp
 g++ -o programa main.cpp -lm -lpthread
 ```
 
-### Estándares de C++ Moderno
+### Estándares Modernos de C++
 
 Compilar con versiones específicas del estándar C++.
 
@@ -862,7 +908,7 @@ auto shared = make_shared<vector<int>>(10);
 // Inicializar variables
 int count = 0;        // Bien
 int count;            // Peligroso - no inicializado
-// Los bucles basados en rango son más seguros
+// Bucles basados en rango son más seguros
 for (const auto& item : container) {
     // Procesar item de forma segura
 }

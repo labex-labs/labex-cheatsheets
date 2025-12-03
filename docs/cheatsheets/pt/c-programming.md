@@ -1,6 +1,6 @@
 ---
-title: 'Folha de Cola de Programação C'
-description: 'Aprenda Programação C com nossa folha de cola abrangente cobrindo comandos essenciais, conceitos e melhores práticas.'
+title: 'Folha de Cola de Programação C | LabEx'
+description: 'Aprenda programação C com esta folha de cola abrangente. Referência rápida para sintaxe C, ponteiros, gerenciamento de memória, estruturas de dados e conceitos essenciais de programação de sistemas para desenvolvedores.'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 
@@ -12,7 +12,7 @@ Folha de Dicas de Programação em C
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/pt/learn/c">Aprenda Programação em C com Laboratórios Práticos</a>
+<a target="_blank" href="https://labex.io/pt/learn/c">Aprenda Programação C com Laboratórios Práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Aprenda programação C através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de C que cobrem sintaxe essencial, gerenciamento de memória, ponteiros, estruturas de dados e técnicas avançadas. Domine os recursos poderosos do C para construir aplicações eficientes de nível de sistema e entender conceitos de programação de baixo nível.
@@ -21,27 +21,27 @@ Aprenda programação C através de laboratórios práticos e cenários do mundo
 
 ## Sintaxe Básica e Estrutura
 
-### Programa Olá Mundo
+### Programa Hello World
 
 Estrutura básica de um programa em C.
 
 ```c
 #include <stdio.h>
 int main() {
-    printf("Olá, Mundo!\n");
+    printf("Hello, World!\n");
     return 0;
 }
 ```
 
-### Headers e Pré-processador
+### Headers e Preprocessador
 
-Incluir bibliotecas e usar diretivas de pré-processador.
+Inclua bibliotecas e use diretivas de pré-processador.
 
 ```c
 #include <stdio.h>    // Entrada/saída padrão
 #include <stdlib.h>   // Biblioteca padrão
 #include <string.h>   // Funções de string
-#include <math.h>     // Funções matemáticas
+#include <math.h>     // Funções de matemática
 #define PI 3.14159
 #define MAX_SIZE 100
 ```
@@ -55,7 +55,7 @@ Comentários de linha única e de múltiplas linhas.
 /*
 Comentário de
 múltiplas linhas
-que se estende por várias linhas
+se estende por várias linhas
 */
 // TODO: Implementar funcionalidade
 /* FIXME: Bug nesta seção */
@@ -77,15 +77,30 @@ int main(int argc, char *argv[]) {
 }
 ```
 
+<BaseQuiz id="c-main-1" correct="C">
+  <template #question>
+    O que `return 0` na função main indica?
+  </template>
+  
+  <BaseQuizOption value="A">O programa falhou</BaseQuizOption>
+  <BaseQuizOption value="B">O programa ainda está em execução</BaseQuizOption>
+  <BaseQuizOption value="C" correct>O programa foi executado com sucesso</BaseQuizOption>
+  <BaseQuizOption value="D">O programa não retornou nenhum valor</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Em C, `return 0` da função main indica a execução bem-sucedida do programa. Valores de retorno diferentes de zero geralmente indicam erros ou término anormal.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Saída Básica
 
 Exibir texto e variáveis no console.
 
 ```c
-printf("Olá\n");
+printf("Hello\n");
 printf("Valor: %d\n", 42);
 // Múltiplos valores em uma linha
-printf("Nome: %s, Idade: %d\n", nome, idade);
+printf("Nome: %s, Idade: %d\n", name, age);
 ```
 
 ### Entrada Básica
@@ -93,12 +108,12 @@ printf("Nome: %s, Idade: %d\n", nome, idade);
 Ler a entrada do usuário no console.
 
 ```c
-int idade;
-char nome[50];
-scanf("%d", &idade);
-scanf("%s", nome);
+int age;
+char name[50];
+scanf("%d", &age);
+scanf("%s", name);
 // Ler linha inteira com espaços
-fgets(nome, sizeof(nome), stdin);
+fgets(name, sizeof(name), stdin);
 ```
 
 ## Tipos de Dados e Variáveis
@@ -109,16 +124,16 @@ Tipos de dados básicos para armazenar diferentes tipos de valores.
 
 ```c
 // Tipos inteiros
-int idade = 25;
-short num_pequeno = 100;
-long num_grande = 1000000L;
-long long num_enorme = 9223372036854775807LL;
+int age = 25;
+short small_num = 100;
+long large_num = 1000000L;
+long long huge_num = 9223372036854775807LL;
 // Tipos de ponto flutuante
-float preco = 19.99f;
-double preciso = 3.14159265359;
+float price = 19.99f;
+double precise = 3.14159265359;
 // Caractere e booleano (usando int)
-char nota = 'A';
-int is_valido = 1;  // 1 para verdadeiro, 0 para falso
+char grade = 'A';
+int is_valid = 1;  // 1 para verdadeiro, 0 para falso
 ```
 
 ### Arrays e Strings
@@ -127,16 +142,31 @@ Arrays e manipulação de strings em C.
 
 ```c
 // Arrays
-int numeros[5] = {1, 2, 3, 4, 5};
-int matriz[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
+int numbers[5] = {1, 2, 3, 4, 5};
+int matrix[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
 // Strings (arrays de caracteres)
-char nome[50] = "João Silva";
-char saudacao[] = "Olá";
+char name[50] = "John Doe";
+char greeting[] = "Hello";
 char buffer[100];  // Não inicializado
 // Comprimento e tamanho da string
-int len = strlen(nome);
-int tamanho = sizeof(buffer);
+int len = strlen(name);
+int size = sizeof(buffer);
 ```
+
+<BaseQuiz id="c-arrays-1" correct="C">
+  <template #question>
+    Como as strings são representadas em C?
+  </template>
+  
+  <BaseQuizOption value="A">Como um tipo string especial</BaseQuizOption>
+  <BaseQuizOption value="B">Como inteiros</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Como arrays de caracteres</BaseQuizOption>
+  <BaseQuizOption value="D">Apenas como ponteiros</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Em C, strings são representadas como arrays de caracteres (`char`). A string é terminada por um caractere nulo (`\0`), que marca o fim da string.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Constantes e Modificadores
 
@@ -144,16 +174,16 @@ Valores imutáveis e modificadores de armazenamento.
 
 ```c
 // Constantes
-const int MAX_TAMANHO = 100;
+const int MAX_SIZE = 100;
 const double PI = 3.14159;
 // Constantes de pré-processador
-#define TAMANHO_BUFFER 512
-#define VERDADEIRO 1
-#define FALSO 0
+#define BUFFER_SIZE 512
+#define TRUE 1
+#define FALSE 0
 // Modificadores de armazenamento
-static int contagem = 0;     // Variável estática
-extern int variavel_global;  // Variável externa
-register int variavel_rapida;    // Dica de registro
+static int count = 0;     // Variável estática
+extern int global_var;    // Variável externa
+register int fast_var;    // Dica de registrador
 ```
 
 ## Estruturas de Fluxo de Controle
@@ -163,18 +193,18 @@ register int variavel_rapida;    // Dica de registro
 Tomar decisões com base em condições.
 
 ```c
-// Declaração If-else
-if (idade >= 18) {
+// Declaração if-else
+if (age >= 18) {
     printf("Adulto\n");
-} else if (idade >= 13) {
+} else if (age >= 13) {
     printf("Adolescente\n");
 } else {
     printf("Criança\n");
 }
 // Operador ternário
-char* status = (idade >= 18) ? "Adulto" : "Menor";
-// Declaração Switch
-switch (nota) {
+char* status = (age >= 18) ? "Adulto" : "Menor";
+// Declaração switch
+switch (grade) {
     case 'A':
         printf("Excelente!\n");
         break;
@@ -196,10 +226,10 @@ for (int i = 0; i < 10; i++) {
     printf("%d ", i);
 }
 // Iteração de array
-int numeros[] = {1, 2, 3, 4, 5};
-int tamanho = sizeof(numeros) / sizeof(numeros[0]);
-for (int i = 0; i < tamanho; i++) {
-    printf("%d ", numeros[i]);
+int numbers[] = {1, 2, 3, 4, 5};
+int size = sizeof(numbers) / sizeof(numbers[0]);
+for (int i = 0; i < size; i++) {
+    printf("%d ", numbers[i]);
 }
 // Laços aninhados
 for (int i = 0; i < 3; i++) {
@@ -209,36 +239,51 @@ for (int i = 0; i < 3; i++) {
 }
 ```
 
+<BaseQuiz id="c-for-loop-1" correct="A">
+  <template #question>
+    O que `sizeof(numbers) / sizeof(numbers[0])` calcula?
+  </template>
+  
+  <BaseQuizOption value="A" correct>O número de elementos no array</BaseQuizOption>
+  <BaseQuizOption value="B">O tamanho total da memória do array</BaseQuizOption>
+  <BaseQuizOption value="C">O índice do último elemento</BaseQuizOption>
+  <BaseQuizOption value="D">O tamanho de um elemento</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Esta expressão calcula o comprimento do array dividindo o tamanho total do array pelo tamanho de um elemento. Este é um idioma C comum, pois os arrays não armazenam seu comprimento.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Laços While
 
 Iteração baseada em condição.
 
 ```c
 // Laço While
-int contagem = 0;
-while (contagem < 5) {
-    printf("%d\n", contagem);
-    contagem++;
+int count = 0;
+while (count < 5) {
+    printf("%d\n", count);
+    count++;
 }
 // Laço Do-while (executa pelo menos uma vez)
-int entrada;
+int input;
 do {
     printf("Digite um número (0 para sair): ");
-    scanf("%d", &entrada);
-} while (entrada != 0);
+    scanf("%d", &input);
+} while (input != 0);
 ```
 
 ### Controle de Laço
 
-Declarações break e continue.
+Instruções `break` e `continue`.
 
 ```c
 for (int i = 0; i < 10; i++) {
     if (i == 3) {
-        continue; // Pular iteração
+        continue; // Pula iteração
     }
     if (i == 7) {
-        break;    // Sair do laço
+        break;    // Sai do laço
     }
     printf("%d ", i);
 }
@@ -259,35 +304,35 @@ Criar blocos de código reutilizáveis.
 
 ```c
 // Declaração de função (protótipo)
-int somar(int a, int b);
-void imprimirMensagem(char* msg);
+int add(int a, int b);
+void printMessage(char* msg);
 // Definição de função
-int somar(int a, int b) {
+int add(int a, int b) {
     return a + b;
 }
-void imprimirMensagem(char* msg) {
+void printMessage(char* msg) {
     printf("%s\n", msg);
 }
 // Chamada de função
-int resultado = somar(5, 3);
-imprimirMensagem("Olá, funções!");
+int result = add(5, 3);
+printMessage("Hello, functions!");
 ```
 
-### Passando Arrays para Funções
+### Passagem de Arrays para Funções
 
 Funções que trabalham com arrays.
 
 ```c
 // Array como parâmetro (ponteiro)
-void imprimirArray(int arr[], int tamanho) {
-    for (int i = 0; i < tamanho; i++) {
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 }
 // Modificando elementos do array
-void dobrarValores(int arr[], int tamanho) {
-    for (int i = 0; i < tamanho; i++) {
+void doubleValues(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
         arr[i] *= 2;
     }
 }
@@ -299,11 +344,11 @@ Funções que chamam a si mesmas.
 
 ```c
 // Cálculo de fatorial
-int fatorial(int n) {
+int factorial(int n) {
     if (n <= 1) {
         return 1;  // Caso base
     }
-    return n * fatorial(n - 1);
+    return n * factorial(n - 1);
 }
 // Sequência de Fibonacci
 int fibonacci(int n) {
@@ -320,13 +365,13 @@ Ponteiros para funções para comportamento dinâmico.
 
 ```c
 // Declaração de ponteiro de função
-int (*operacao)(int, int);
+int (*operation)(int, int);
 // Atribuir função ao ponteiro
-operacao = somar;
-int resultado = operacao(5, 3);
+operation = add;
+int result = operation(5, 3);
 // Array de ponteiros de função
-int (*operacoes[])(int, int) = {somar, subtrair, multiplicar};
-resultado = operacoes[0](10, 5);
+int (*operations[])(int, int) = {add, subtract, multiply};
+result = operations[0](10, 5);
 ```
 
 ## Ponteiros e Gerenciamento de Memória
@@ -346,7 +391,7 @@ printf("Valor apontado por ptr: %d\n", *ptr);
 *ptr = 20;
 printf("Novo valor de x: %d\n", x);
 // Ponteiro nulo
-int *ptr_nulo = NULL;
+int *null_ptr = NULL;
 ```
 
 ### Arrays e Ponteiros
@@ -377,7 +422,7 @@ int *ptr = (int*)malloc(sizeof(int));
 if (ptr != NULL) {
     *ptr = 42;
     printf("Valor: %d\n", *ptr);
-    free(ptr);  // Sempre liberar memória alocada
+    free(ptr);  // Sempre libere a memória alocada
 }
 // Alocar array dinamicamente
 int *arr = (int*)malloc(10 * sizeof(int));
@@ -395,15 +440,15 @@ Trabalhando com strings e ponteiros de caractere.
 
 ```c
 // Literais de string e ponteiros
-char *str1 = "Olá";           // Literal de string
-char str2[] = "Mundo";          // Array de caracteres
+char *str1 = "Hello";           // Literal de string
+char str2[] = "World";          // Array de caracteres
 char *str3 = (char*)malloc(20); // String dinâmica
 // Funções de string
-strcpy(str3, "Dinâmico");
+strcpy(str3, "Dynamic");
 printf("Comprimento: %lu\n", strlen(str1));
 printf("Comparação: %d\n", strcmp(str1, str2));
 strcat(str2, "!");
-// Sempre liberar strings dinâmicas
+// Sempre libere strings dinâmicas
 free(str3);
 ```
 
@@ -415,22 +460,22 @@ Definir tipos de dados personalizados com múltiplos campos.
 
 ```c
 // Definição de estrutura
-struct Retangulo {
-    double largura;
-    double altura;
+struct Rectangle {
+    double width;
+    double height;
 };
 // Estrutura com typedef
 typedef struct {
-    char nome[50];
-    int idade;
+    char name[50];
+    int age;
     double gpa;
-} Estudante;
+} Student;
 // Criar e inicializar estruturas
-struct Retangulo rect1 = {5.0, 3.0};
-Estudante aluno1 = {"Alice", 20, 3.75};
+struct Rectangle rect1 = {5.0, 3.0};
+Student student1 = {"Alice", 20, 3.75};
 // Acessar membros da estrutura
-printf("Área: %.2f\n", rect1.largura * rect1.altura);
-printf("Estudante: %s, Idade: %d\n", aluno1.nome, aluno1.idade);
+printf("Área: %.2f\n", rect1.width * rect1.height);
+printf("Estudante: %s, Idade: %d\n", student1.name, student1.age);
 ```
 
 ### Estruturas Aninhadas
@@ -439,22 +484,22 @@ Estruturas contendo outras estruturas.
 
 ```c
 typedef struct {
-    int dia, mes, ano;
-} Data;
+    int day, month, year;
+} Date;
 typedef struct {
-    char nome[50];
-    Data data_nascimento;
-    double salario;
-} Empregado;
-Empregado emp = {
-    "João Silva",
+    char name[50];
+    Date birthdate;
+    double salary;
+} Employee;
+Employee emp = {
+    "John Smith",
     {15, 6, 1985},
     50000.0
 };
 printf("Nascido em: %d/%d/%d\n",
-       emp.data_nascimento.dia,
-       emp.data_nascimento.mes,
-       emp.data_nascimento.ano);
+       emp.birthdate.day,
+       emp.birthdate.month,
+       emp.birthdate.year);
 ```
 
 ### Ponteiros para Estruturas
@@ -462,20 +507,20 @@ printf("Nascido em: %d/%d/%d\n",
 Usar ponteiros para acessar e modificar estruturas.
 
 ```c
-Estudante *ptr_aluno = &aluno1;
-// Acessar via ponteiro (dois métodos)
-printf("Nome: %s\n", (*ptr_aluno).nome);
-printf("Idade: %d\n", ptr_aluno->idade);
-// Modificar via ponteiro
-ptr_aluno->idade = 21;
-strcpy(ptr_aluno->nome, "Alice Johnson");
+Student *student_ptr = &student1;
+// Acesso usando ponteiro (dois métodos)
+printf("Nome: %s\n", (*student_ptr).name);
+printf("Idade: %d\n", student_ptr->age);
+// Modificar através do ponteiro
+student_ptr->age = 21;
+strcpy(student_ptr->name, "Alice Johnson");
 // Alocação dinâmica de estrutura
-Estudante *novo_aluno = (Estudante*)malloc(sizeof(Estudante));
-if (novo_aluno != NULL) {
-    strcpy(novo_aluno->nome, "Bob");
-    novo_aluno->idade = 19;
-    novo_aluno->gpa = 3.2;
-    free(novo_aluno);
+Student *new_student = (Student*)malloc(sizeof(Student));
+if (new_student != NULL) {
+    strcpy(new_student->name, "Bob");
+    new_student->age = 19;
+    new_student->gpa = 3.2;
+    free(new_student);
 }
 ```
 
@@ -485,21 +530,21 @@ Métodos alternativos de organização de dados.
 
 ```c
 // Union - espaço de memória compartilhado
-union Dados {
-    int inteiro;
-    float flutuante;
-    char caractere;
+union Data {
+    int integer;
+    float floating;
+    char character;
 };
-union Dados dados;
-dados.inteiro = 42;
-printf("Inteiro: %d\n", dados.inteiro);
+union Data data;
+data.integer = 42;
+printf("Inteiro: %d\n", data.integer);
 // Enumeração
-enum DiaSemana {
-    SEGUNDA, TERCA, QUARTA,
-    QUINTA, SEXTA, SABADO, DOMINGO
+enum Weekday {
+    MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY, SUNDAY
 };
-enum DiaSemana hoje = SEXTA;
-printf("Hoje é o dia %d\n", hoje);
+enum Weekday today = FRIDAY;
+printf("Hoje é dia %d\n", today);
 ```
 
 ## Operações de Entrada/Saída de Arquivos
@@ -511,28 +556,28 @@ Ler dados de arquivos de texto.
 ```c
 #include <stdio.h>
 // Ler arquivo inteiro caractere por caractere
-FILE *arquivo = fopen("dados.txt", "r");
-if (arquivo != NULL) {
+FILE *file = fopen("data.txt", "r");
+if (file != NULL) {
     int ch;
-    while ((ch = fgetc(arquivo)) != EOF) {
+    while ((ch = fgetc(file)) != EOF) {
         putchar(ch);
     }
-    fclose(arquivo);
+    fclose(file);
 }
 // Ler linha por linha
-FILE *arquivo2 = fopen("linhas.txt", "r");
+FILE *file2 = fopen("lines.txt", "r");
 char buffer[256];
-while (fgets(buffer, sizeof(buffer), arquivo2) != NULL) {
+while (fgets(buffer, sizeof(buffer), file2) != NULL) {
     printf("Linha: %s", buffer);
 }
-fclose(arquivo2);
+fclose(file2);
 // Ler dados formatados
-FILE *numeros = fopen("numeros.txt", "r");
+FILE *numbers = fopen("numbers.txt", "r");
 int num;
-while (fscanf(numeros, "%d", &num) == 1) {
+while (fscanf(numbers, "%d", &num) == 1) {
     printf("Número: %d\n", num);
 }
-fclose(numeros);
+fclose(numbers);
 ```
 
 ### Verificação de Erros
@@ -540,48 +585,48 @@ fclose(numeros);
 Lidar com operações de arquivo com segurança.
 
 ```c
-FILE *arquivo = fopen("dados.txt", "r");
-if (arquivo == NULL) {
+FILE *file = fopen("data.txt", "r");
+if (file == NULL) {
     printf("Erro ao abrir o arquivo!\n");
-    perror("fopen");  // Imprimir mensagem de erro do sistema
+    perror("fopen");  // Imprime a mensagem de erro do sistema
     return 1;
 }
 // Verificar erros de leitura
-if (ferror(arquivo)) {
+if (ferror(file)) {
     printf("Erro ao ler o arquivo!\n");
 }
 // Verificar fim de arquivo
-if (feof(arquivo)) {
+if (feof(file)) {
     printf("Fim do arquivo alcançado\n");
 }
-fclose(arquivo);
+fclose(file);
 ```
 
-### Escrita de Arquivos
+### Escrita em Arquivos
 
 Escrever dados em arquivos de texto.
 
 ```c
 // Escrever no arquivo
-FILE *saida = fopen("saida.txt", "w");
-if (saida != NULL) {
-    fprintf(saida, "Olá, arquivo!\n");
-    fprintf(saida, "Número: %d\n", 42);
-    fclose(saida);
+FILE *outfile = fopen("output.txt", "w");
+if (outfile != NULL) {
+    fprintf(outfile, "Hello, file!\n");
+    fprintf(outfile, "Número: %d\n", 42);
+    fclose(outfile);
 }
 // Anexar a arquivo existente
-FILE *anexar = fopen("log.txt", "a");
-if (anexar != NULL) {
-    fprintf(anexar, "Nova entrada de log\n");
-    fclose(anexar);
+FILE *appendfile = fopen("log.txt", "a");
+if (appendfile != NULL) {
+    fprintf(appendfile, "Nova entrada de log\n");
+    fclose(appendfile);
 }
 // Escrever array no arquivo
-int numeros[] = {1, 2, 3, 4, 5};
-FILE *arq_nums = fopen("numeros.txt", "w");
+int numbers[] = {1, 2, 3, 4, 5};
+FILE *numfile = fopen("numbers.txt", "w");
 for (int i = 0; i < 5; i++) {
-    fprintf(arq_nums, "%d ", numeros[i]);
+    fprintf(numfile, "%d ", numbers[i]);
 }
-fclose(arq_nums);
+fclose(numfile);
 ```
 
 ### Operações de Arquivo Binário
@@ -590,19 +635,19 @@ Ler e escrever dados binários de forma eficiente.
 
 ```c
 // Escrever dados binários
-Estudante estudantes[3] = {
+Student students[3] = {
     {"Alice", 20, 3.75},
     {"Bob", 21, 3.2},
     {"Charlie", 19, 3.9}
 };
-FILE *arq_bin = fopen("estudantes.bin", "wb");
-fwrite(estudantes, sizeof(Estudante), 3, arq_bin);
-fclose(arq_bin);
+FILE *binfile = fopen("students.bin", "wb");
+fwrite(students, sizeof(Student), 3, binfile);
+fclose(binfile);
 // Ler dados binários
-Estudante estudantes_carregados[3];
-FILE *arq_leitura_bin = fopen("estudantes.bin", "rb");
-fread(estudantes_carregados, sizeof(Estudante), 3, arq_leitura_bin);
-fclose(arq_leitura_bin);
+Student loaded_students[3];
+FILE *readbin = fopen("students.bin", "rb");
+fread(loaded_students, sizeof(Student), 3, readbin);
+fclose(readbin);
 ```
 
 ## Manipulação de Strings
@@ -613,8 +658,8 @@ Operações comuns de string da biblioteca string.h.
 
 ```c
 #include <string.h>
-char str1[50] = "Olá";
-char str2[] = "Mundo";
+char str1[50] = "Hello";
+char str2[] = "World";
 char dest[100];
 // Comprimento da string
 int len = strlen(str1);
@@ -633,25 +678,25 @@ if (result == 0) {
 }
 ```
 
-### Busca de Strings
+### Pesquisa de String
 
 Encontrar substrings e caracteres dentro de strings.
 
 ```c
-char texto[] = "A raposa marrom rápida";
+char text[] = "The quick brown fox";
 char *ptr;
 // Encontrar primeira ocorrência de caractere
-ptr = strchr(texto, 'r');
+ptr = strchr(text, 'q');
 if (ptr != NULL) {
-    printf("Encontrado 'r' na posição: %ld\n", ptr - texto);
+    printf("Encontrado 'q' na posição: %ld\n", ptr - text);
 }
 // Encontrar última ocorrência
-ptr = strrchr(texto, 'o');
-printf("Último 'o' na posição: %ld\n", ptr - texto);
+ptr = strrchr(text, 'o');
+printf("Último 'o' na posição: %ld\n", ptr - text);
 // Encontrar substring
-ptr = strstr(texto, "marrom");
+ptr = strstr(text, "brown");
 if (ptr != NULL) {
-    printf("Encontrado 'marrom' em: %s\n", ptr);
+    printf("Encontrado 'brown' em: %s\n", ptr);
 }
 ```
 
@@ -662,14 +707,14 @@ Converter strings para números e vice-versa.
 ```c
 #include <stdlib.h>
 // Conversão de string para número
-char str_num[] = "12345";
-char str_float[] = "3.14159";
-int num = atoi(str_num);
-long long_num = atol(str_num);
-double float_num = atof(str_float);
+char num_str[] = "12345";
+char float_str[] = "3.14159";
+int num = atoi(num_str);
+long long_num = atol(num_str);
+double float_num = atof(float_str);
 printf("Inteiro: %d\n", num);
-printf("Long: %ld\n", long_num);
-printf("Double: %.2f\n", float_num);
+printf("Longo: %ld\n", long_num);
+printf("Duplo: %.2f\n", float_num);
 // Número para string (usando sprintf)
 char buffer[50];
 sprintf(buffer, "%d", 42);
@@ -677,22 +722,22 @@ sprintf(buffer, "%.2f", 3.14159);
 printf("String: %s\n", buffer);
 ```
 
-### Processamento Personalizado de Strings
+### Processamento Personalizado de String
 
-Técnicas manuais de manipulação de strings.
+Técnicas manuais de manipulação de string.
 
 ```c
 // Contar caracteres na string
-int contarCaractere(char *str, char alvo) {
+int countChar(char *str, char target) {
     int count = 0;
     while (*str) {
-        if (*str == alvo) count++;
+        if (*str == target) count++;
         str++;
     }
     return count;
 }
 // Inverter string no local
-void inverterString(char *str) {
+void reverseString(char *str) {
     int len = strlen(str);
     for (int i = 0; i < len/2; i++) {
         char temp = str[i];
@@ -702,7 +747,7 @@ void inverterString(char *str) {
 }
 ```
 
-## Compilação e Processo de Build
+## Processo de Compilação e Build
 
 ### Compilação GCC
 
@@ -710,17 +755,17 @@ GNU Compiler Collection para C.
 
 ```bash
 # Compilação básica
-gcc -o programa main.c
+gcc -o program main.c
 # Com informações de depuração
-gcc -g -o programa main.c
+gcc -g -o program main.c
 # Níveis de otimização
-gcc -O2 -o programa main.c
-# Múltiplos arquivos de origem
-gcc -o programa main.c utils.c math.c
+gcc -O2 -o program main.c
+# Múltiplos arquivos fonte
+gcc -o program main.c utils.c math.c
 # Incluir diretórios adicionais
-gcc -I/usr/local/include -o programa main.c
+gcc -I/usr/local/include -o program main.c
 # Ligar bibliotecas
-gcc -o programa main.c -lm -lpthread
+gcc -o program main.c -lm -lpthread
 ```
 
 ### Padrões C
@@ -729,15 +774,15 @@ Compilar com versões específicas do padrão C.
 
 ```bash
 # Padrão C90/C89 (ANSI C)
-gcc -std=c89 -o programa main.c
+gcc -std=c89 -o program main.c
 # Padrão C99
-gcc -std=c99 -o programa main.c
+gcc -std=c99 -o program main.c
 # Padrão C11 (recomendado)
-gcc -std=c11 -o programa main.c
+gcc -std=c11 -o program main.c
 # Padrão C18 (mais recente)
-gcc -std=c18 -o programa main.c
+gcc -std=c18 -o program main.c
 # Habilitar todos os avisos
-gcc -Wall -Wextra -std=c11 -o programa main.c
+gcc -Wall -Wextra -std=c11 -o program main.c
 ```
 
 ### Noções Básicas de Makefile
@@ -748,7 +793,7 @@ Automatizar a compilação com a utilidade make.
 # Makefile Simples
 CC = gcc
 CFLAGS = -std=c11 -Wall -g
-TARGET = programa
+TARGET = program
 SOURCES = main.c utils.c
 $(TARGET): $(SOURCES)
 $(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
@@ -761,24 +806,24 @@ rm -f $(TARGET)
 
 ### Convenções de Nomenclatura
 
-Nomes consistentes tornam o código mais legível.
+Nomenclatura consistente torna o código mais legível.
 
 ```c
 // Variáveis e funções: snake_case
-int contagem_estudantes;
-double calcular_media(int pontuacoes[], int tamanho);
+int student_count;
+double calculate_average(int scores[], int size);
 // Constantes: UPPER_CASE
-#define TAMANHO_MAX_BUFFER 1024
+#define MAX_BUFFER_SIZE 1024
 #define PI 3.14159
 // Estruturas: PascalCase ou snake_case
 typedef struct {
-    char nome[50];
-    int idade;
-} Estudante;
+    char name[50];
+    int age;
+} Student;
 // Variáveis globais: prefixo com g_
-int g_contagem_total = 0;
+int g_total_count = 0;
 // Parâmetros de função: nomes claros
-void processar_dados(int *array_entrada, int tamanho_array);
+void process_data(int *input_array, int array_size);
 ```
 
 ### Segurança de Memória
@@ -787,8 +832,8 @@ Prevenir bugs comuns relacionados à memória.
 
 ```c
 // Sempre inicializar variáveis
-int contagem = 0;        // Bom
-int contagem;            // Perigoso - não inicializado
+int count = 0;        // Bom
+int count;            // Perigoso - não inicializado
 // Verificar retorno de malloc
 int *ptr = malloc(sizeof(int) * 10);
 if (ptr == NULL) {
@@ -799,7 +844,7 @@ if (ptr == NULL) {
 free(ptr);
 ptr = NULL;  // Prevenir reutilização acidental
 // Verificação de limites de array
-for (int i = 0; i < tamanho_array; i++) {
+for (int i = 0; i < array_size; i++) {
     // Acesso seguro ao array
     array[i] = i;
 }
@@ -811,19 +856,19 @@ Escrever código C eficiente.
 
 ```c
 // Usar tipos de dados apropriados
-char num_pequeno = 10;   // Para valores pequenos
-int num_normal = 1000; // Para inteiros típicos
+char small_num = 10;   // Para valores pequenos
+int normal_num = 1000; // Para inteiros típicos
 // Minimizar chamadas de função em laços
 int len = strlen(str); // Calcular uma vez
 for (int i = 0; i < len; i++) {
     // Processar string
 }
 // Usar register para variáveis frequentemente acessadas
-register int contador;
+register int counter;
 // Preferir arrays a alocação dinâmica quando o tamanho é conhecido
-int array_fixo[100];  // Alocação na pilha
+int fixed_array[100];  // Alocação na pilha
 // vs
-int *array_dinamico = malloc(100 * sizeof(int));
+int *dynamic_array = malloc(100 * sizeof(int));
 ```
 
 ### Organização do Código
@@ -835,18 +880,18 @@ Estruturar o código para manutenção.
 #ifndef UTILS_H
 #define UTILS_H
 // Protótipos de função
-double calcular_area(double raio);
+double calculate_area(double radius);
 int fibonacci(int n);
 // Definições de estrutura
 typedef struct {
     int x, y;
-} Ponto;
+} Point;
 #endif // UTILS_H
 // Arquivo de implementação (utils.c)
 #include "utils.h"
 #include <math.h>
-double calcular_area(double raio) {
-    return M_PI * raio * raio;
+double calculate_area(double radius) {
+    return M_PI * radius * radius;
 }
 ```
 

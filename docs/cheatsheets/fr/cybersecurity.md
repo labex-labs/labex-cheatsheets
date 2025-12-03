@@ -1,11 +1,11 @@
 ---
-title: 'Fiche de triche en cybersécurité'
-description: 'Apprenez la cybersécurité avec notre fiche complète couvrant les commandes essentielles, les concepts et les meilleures pratiques.'
+title: 'Fiche de triche Cybersécurité | LabEx'
+description: "Apprenez la cybersécurité avec cette fiche de triche complète. Référence rapide sur les concepts de sécurité, la détection des menaces, l'évaluation des vulnérabilités, les tests d'intrusion et les meilleures pratiques de sécurité de l'information."
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Feuille de triche en Cybersécurité
+Feuille de triche en cybersécurité
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -19,9 +19,9 @@ Apprenez la cybersécurité grâce à des laboratoires pratiques et des scénari
 </base-disclaimer-content>
 </base-disclaimer>
 
-## Fondamentaux de la Sécurité des Systèmes
+## Fondamentaux de la sécurité des systèmes
 
-### Gestion des Comptes Utilisateurs
+### Gestion des comptes utilisateurs
 
 Contrôler l'accès aux systèmes et aux données.
 
@@ -38,9 +38,9 @@ id username
 cat /etc/passwd
 ```
 
-### Permissions et Sécurité des Fichiers
+### Permissions et sécurité des fichiers
 
-Configurer l'accès sécurisé aux fichiers et aux répertoires.
+Configurer un accès sécurisé aux fichiers et aux répertoires.
 
 ```bash
 # Changer les permissions de fichier (lecture, écriture, exécution)
@@ -53,7 +53,22 @@ chmod -R 755 directory/
 ls -la
 ```
 
-### Configuration de la Sécurité Réseau
+<BaseQuiz id="cybersecurity-chmod-1" correct="C">
+  <template #question>
+    Que définit `chmod 644 file.txt` pour les permissions de fichier ?
+  </template>
+  
+  <BaseQuizOption value="A">Lecture, écriture, exécution pour tous les utilisateurs</BaseQuizOption>
+  <BaseQuizOption value="B">Lecture, écriture, exécution pour le propriétaire ; lecture pour les autres</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Lecture, écriture pour le propriétaire ; lecture pour le groupe et les autres</BaseQuizOption>
+  <BaseQuizOption value="D">Lecture seule pour tous les utilisateurs</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `chmod 644` définit : propriétaire = 6 (rw-), groupe = 4 (r--), autres = 4 (r--). C'est un ensemble de permissions courant pour les fichiers qui doivent être lisibles par tous mais modifiables uniquement par le propriétaire.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Configuration de la sécurité réseau
 
 Sécuriser les connexions réseau et les services.
 
@@ -67,7 +82,22 @@ netstat -tuln
 sudo ss -tuln
 ```
 
-### Mises à Jour et Correctifs du Système
+<BaseQuiz id="cybersecurity-firewall-1" correct="B">
+  <template #question>
+    Que fait `sudo ufw allow 22/tcp` ?
+  </template>
+  
+  <BaseQuizOption value="A">Bloque le port 22</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Autorise le trafic TCP sur le port 22 (SSH)</BaseQuizOption>
+  <BaseQuizOption value="C">Active l'UDP sur le port 22</BaseQuizOption>
+  <BaseQuizOption value="D">Affiche l'état du pare-feu</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `ufw allow 22/tcp` crée une règle de pare-feu qui autorise les connexions TCP entrantes sur le port 22, qui est le port SSH par défaut. Ceci est essentiel pour l'accès distant au serveur.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### Mises à jour et correctifs du système
 
 Maintenir les systèmes à jour avec les derniers correctifs de sécurité.
 
@@ -80,7 +110,7 @@ sudo apt upgrade
 sudo apt install unattended-upgrades
 ```
 
-### Gestion des Services
+### Gestion des services
 
 Contrôler et surveiller les services système.
 
@@ -94,7 +124,7 @@ sudo systemctl status ssh
 systemctl list-units --type=service --state=running
 ```
 
-### Surveillance des Journaux (Logs)
+### Surveillance des journaux
 
 Surveiller les journaux système pour les événements de sécurité.
 
@@ -103,15 +133,30 @@ Surveiller les journaux système pour les événements de sécurité.
 sudo tail -f /var/log/auth.log
 # Vérifier les journaux système
 sudo journalctl -f
-# Rechercher les connexions échouées
+# Rechercher les échecs de connexion
 grep "Failed password" /var/log/auth.log
 ```
 
-## Sécurité des Mots de Passe et Authentification
+<BaseQuiz id="cybersecurity-logs-1" correct="A">
+  <template #question>
+    Que fait `tail -f /var/log/auth.log` ?
+  </template>
+  
+  <BaseQuizOption value="A" correct>Suit le fichier journal d'authentification en temps réel</BaseQuizOption>
+  <BaseQuizOption value="B">Affiche uniquement les tentatives de connexion échouées</BaseQuizOption>
+  <BaseQuizOption value="C">Supprime les anciennes entrées de journal</BaseQuizOption>
+  <BaseQuizOption value="D">Archive le fichier journal</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    L'option `-f` fait en sorte que `tail` suive le fichier, affichant les nouvelles entrées de journal au fur et à mesure qu'elles sont écrites. Ceci est utile pour la surveillance en temps réel des événements d'authentification et des incidents de sécurité.
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+## Sécurité des mots de passe et authentification
 
 Mettre en œuvre des mécanismes d'authentification robustes et des politiques de mots de passe.
 
-### Création de Mots de Passe Forts
+### Création de mots de passe robustes
 
 Générer et gérer des mots de passe sécurisés en suivant les meilleures pratiques.
 
@@ -125,7 +170,7 @@ openssl rand -base64 32
 # - Unique pour chaque compte
 ```
 
-### Authentification Multi-Facteurs (MFA)
+### Authentification multifacteur (MFA)
 
 Ajouter des couches d'authentification supplémentaires au-delà des mots de passe.
 
@@ -139,7 +184,7 @@ sudo nano /etc/pam.d/sshd
 # Ajouter : auth required pam_google_authenticator.so
 ```
 
-### Gestion des Mots de Passe
+### Gestion des mots de passe
 
 Utiliser des gestionnaires de mots de passe et des pratiques de stockage sécurisé.
 
@@ -153,26 +198,26 @@ sudo apt install keepassxc
 # - Sauvegarde sécurisée de la base de données des mots de passe
 ```
 
-## Sécurité et Surveillance Réseau
+## Sécurité et surveillance du réseau
 
-### Analyse de Ports et Découverte
+### Analyse de ports et découverte
 
 Identifier les ports ouverts et les services en cours d'exécution.
 
 ```bash
-# Scan de ports de base avec Nmap
+# Analyse de ports de base avec Nmap
 nmap -sT target_ip
-# Détection de la version du service
+# Détection de version de service
 nmap -sV target_ip
-# Scan complet
+# Analyse complète
 nmap -A target_ip
-# Scanner des ports spécifiques
+# Analyser des ports spécifiques
 nmap -p 22,80,443 target_ip
-# Scanner une plage d'adresses IP
+# Analyser une plage d'adresses IP
 nmap 192.168.1.1-254
 ```
 
-### Analyse du Trafic Réseau
+### Analyse du trafic réseau
 
 Surveiller et analyser les communications réseau.
 
@@ -187,7 +232,7 @@ sudo tcpdump host 192.168.1.1
 sudo tcpdump port 80
 ```
 
-### Configuration du Pare-feu
+### Configuration du pare-feu
 
 Contrôler le trafic réseau entrant et sortant.
 
@@ -202,7 +247,7 @@ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 ```
 
-### Gestion des Certificats SSL/TLS
+### Gestion des certificats SSL/TLS
 
 Mettre en œuvre des communications sécurisées avec chiffrement.
 
@@ -215,9 +260,9 @@ openssl x509 -in cert.pem -text -noout
 openssl s_client -connect example.com:443
 ```
 
-## Évaluation des Vulnérabilités
+## Évaluation des vulnérabilités
 
-### Analyse des Vulnérabilités du Système
+### Analyse des vulnérabilités du système
 
 Identifier les faiblesses de sécurité dans les systèmes et les applications.
 
@@ -233,9 +278,9 @@ sudo apt install openvas
 sudo gvm-setup
 ```
 
-### Tests de Sécurité des Applications Web
+### Tests de sécurité des applications Web
 
-Tester les applications web pour les vulnérabilités courantes.
+Tester les applications Web pour les vulnérabilités courantes.
 
 ```bash
 # Utilisation du scanner web Nikto
@@ -246,7 +291,7 @@ dirb http://target.com
 sqlmap -u "http://target.com/page.php?id=1" --dbs
 ```
 
-### Outils d'Audit de Sécurité
+### Outils d'audit de sécurité
 
 Utilitaires d'évaluation de sécurité complets.
 
@@ -262,12 +307,12 @@ sudo apt install aide
 sudo aideinit
 ```
 
-### Sécurité de la Configuration
+### Sécurité de la configuration
 
-Vérifier les configurations système et applicatives sécurisées.
+Vérifier la configuration sécurisée du système et des applications.
 
 ```bash
-# Vérification de sécurité SSH
+# Vérification de la sécurité SSH
 ssh-audit target_ip
 # Test de configuration SSL
 testssl.sh https://target.com
@@ -275,16 +320,16 @@ testssl.sh https://target.com
 ls -la /etc/shadow /etc/passwd /etc/group
 ```
 
-## Réponse aux Incidents et Criminalistique Numérique (Forensics)
+## Réponse aux incidents et criminalistique
 
-### Analyse des Journaux et Enquête
+### Analyse des journaux et enquête
 
 Analyser les journaux système pour identifier les incidents de sécurité.
 
 ```bash
 # Rechercher des activités suspectes
 grep -i "failed\|error\|denied" /var/log/auth.log
-# Compter les tentatives de connexion échouées
+# Compter les échecs de connexion
 grep "Failed password" /var/log/auth.log | wc -l
 # Trouver les adresses IP uniques dans les journaux
 awk '/Failed password/ {print $11}' /var/log/auth.log | sort | uniq -c
@@ -292,13 +337,13 @@ awk '/Failed password/ {print $11}' /var/log/auth.log | sort | uniq -c
 tail -f /var/log/syslog
 ```
 
-### Criminalistique Numérique Réseau
+### Criminalistique réseau
 
 Enquêter sur les incidents de sécurité basés sur le réseau.
 
 ```bash
 # Analyser le trafic réseau avec Wireshark
-# Installer : sudo apt install wireshark
+# Installation : sudo apt install wireshark
 # Capturer le trafic en direct
 sudo wireshark
 # Analyser les fichiers capturés
@@ -307,7 +352,7 @@ wireshark capture.pcap
 tshark -r capture.pcap -Y "http.request"
 ```
 
-### Criminalistique Numérique Système
+### Criminalistique système
 
 Préserver et analyser les preuves numériques.
 
@@ -323,7 +368,7 @@ grep -r "password" /home/user/
 find /home -mtime -7 -type f
 ```
 
-### Documentation des Incidents
+### Documentation des incidents
 
 Documenter correctement les incidents de sécurité pour analyse.
 
@@ -338,7 +383,7 @@ Documenter correctement les incidents de sécurité pour analyse.
 # 7. Planifier les procédures de récupération
 ```
 
-## Renseignements sur les Menaces (Threat Intelligence)
+## Renseignements sur les menaces
 
 Recueillir et analyser des informations sur les menaces de sécurité actuelles et émergentes.
 
@@ -358,20 +403,20 @@ sublist3r -d example.com
 # VirusTotal, URLVoid, AbuseIPDB
 ```
 
-### Outils de Chasse aux Menaces (Threat Hunting)
+### Outils de chasse aux menaces (Threat Hunting)
 
 Rechercher de manière proactive des menaces dans votre environnement.
 
 ```bash
-# Recherche d'IOC (Indicateurs de Compromission)
+# Recherche d'IOC (Indicateurs de compromission)
 grep -r "suspicious_hash" /var/log/
-# Vérifier les adresses IP malveillantes
+# Vérifier la présence d'IP malveillantes
 grep "192.168.1.100" /var/log/auth.log
 # Comparaison de hachage de fichiers
 find /tmp -type f -exec sha256sum {} \;
 ```
 
-### Flux de Menaces et Renseignements
+### Flux de menaces et renseignements
 
 Se tenir au courant des dernières informations sur les menaces.
 
@@ -385,25 +430,25 @@ Se tenir au courant des dernières informations sur les menaces.
 curl -s "https://api.threatintel.com/check?ip=1.2.3.4"
 ```
 
-### Modélisation des Menaces (Threat Modeling)
+### Modélisation des menaces
 
 Identifier et évaluer les menaces de sécurité potentielles.
 
 ```bash
 # Catégories du modèle de menace STRIDE :
-# - Usurpation d'identité (Spoofing)
-# - Altération (Tampering)
-# - Répudiation (Repudiation)
-# - Divulgation d'informations
-# - Déni de Service
-# - Élévation de privilèges
+# - Spoofing (usurpation d'identité)
+# - Tampering (altération des données)
+# - Repudiation (répudiation des actions)
+# - Information Disclosure (divulgation d'informations)
+# - Denial of Service (déni de service)
+# - Elevation of Privilege (élévation de privilèges)
 ```
 
-## Chiffrement et Protection des Données
+## Chiffrement et protection des données
 
 Mettre en œuvre un chiffrement fort pour protéger les données sensibles.
 
-### Chiffrement des Fichiers et des Disques
+### Chiffrement de fichiers et de disques
 
 Chiffrer les fichiers et les périphériques de stockage pour protéger les données au repos.
 
@@ -421,9 +466,9 @@ ssh-keygen -t rsa -b 4096
 ssh-copy-id user@server
 ```
 
-### Chiffrement Réseau
+### Chiffrement réseau
 
-Sécuriser les communications réseau avec le chiffrement.
+Sécuriser les communications réseau avec des protocoles de chiffrement.
 
 ```bash
 # Configuration VPN avec OpenVPN
@@ -431,9 +476,9 @@ sudo apt install openvpn
 sudo openvpn --config client.ovpn
 ```
 
-### Gestion des Certificats
+### Gestion des certificats
 
-Gérer les certificats numériques pour les communications sécurisées.
+Gérer les certificats numériques pour des communications sécurisées.
 
 ```bash
 # Créer une autorité de certification
@@ -446,7 +491,7 @@ openssl req -new -key server-key.pem -out server.csr
 openssl x509 -req -in server.csr -CA ca.pem -CAkey ca-key.pem -out server.pem
 ```
 
-### Prévention de la Perte de Données (DLP)
+### Prévention de la perte de données
 
 Empêcher l'exfiltration et la fuite non autorisées de données.
 
@@ -459,16 +504,16 @@ sudo auditctl -w /etc/passwd -p wa -k passwd_changes
 sudo ausearch -k passwd_changes
 ```
 
-## Automatisation et Orchestration de la Sécurité
+## Automatisation et orchestration de la sécurité
 
 Automatiser les tâches de sécurité et les procédures de réponse.
 
-### Automatisation de l'Analyse de Sécurité
+### Automatisation de l'analyse de sécurité
 
-Planifier des analyses de sécurité régulières et des évaluations.
+Planifier des analyses de sécurité et des évaluations régulières.
 
 ```bash
-# Script de scan Nmap automatisé
+# Script d'analyse Nmap automatisée
 #!/bin/bash
 DATE=$(date +%Y-%m-%d)
 nmap -sS -O 192.168.1.0/24 > /var/log/nmap-scan-$DATE.log
@@ -477,41 +522,41 @@ nmap -sS -O 192.168.1.0/24 > /var/log/nmap-scan-$DATE.log
 ```
 
 ```bash
-# Analyse de vulnérabilité automatisée
+# Analyse de vulnérabilités automatisée
 #!/bin/bash
 nikto -h $1 -o /var/log/nikto-$(date +%Y%m%d).txt
 ```
 
-### Scripts de Surveillance des Journaux
+### Scripts de surveillance des journaux
 
 Automatiser l'analyse des journaux et l'alerte.
 
 ```bash
-# Surveillance des connexions échouées
+# Surveillance des échecs de connexion
 #!/bin/bash
 FAILED_LOGINS=$(grep "Failed password" /var/log/auth.log | tail -n 100 | wc -l)
 if [ $FAILED_LOGINS -gt 10 ]; then
-    echo "Nombre élevé de connexions échouées détecté : $FAILED_LOGINS" | mail -s "Alerte Sécurité" admin@company.com
+    echo "Nombre élevé d'échecs de connexion détecté : $FAILED_LOGINS" | mail -s "Alerte de sécurité" admin@company.com
 fi
 ```
 
-### Automatisation de la Réponse aux Incidents
+### Automatisation de la réponse aux incidents
 
 Automatiser les procédures initiales de réponse aux incidents.
 
 ```bash
-# Script de réponse aux menaces automatisé
+# Script de réponse automatisée aux menaces
 #!/bin/bash
 SUSPICIOUS_IP=$1
 # Bloquer l'IP au pare-feu
 sudo ufw deny from $SUSPICIOUS_IP
 # Enregistrer l'action
-echo "$(date): IP suspecte $SUSPICIOUS_IP bloquée" >> /var/log/security-actions.log
+echo "$(date): IP suspecte bloquée $SUSPICIOUS_IP" >> /var/log/security-actions.log
 # Envoyer une alerte
 echo "IP suspecte bloquée : $SUSPICIOUS_IP" | mail -s "IP Bloquée" security@company.com
 ```
 
-### Gestion de la Configuration
+### Gestion de la configuration
 
 Maintenir des configurations système sécurisées.
 
@@ -531,11 +576,11 @@ Maintenir des configurations système sécurisées.
         state: restarted
 ```
 
-## Conformité et Gestion des Risques
+## Conformité et gestion des risques
 
-### Mise en Œuvre des Politiques de Sécurité
+### Mise en œuvre de la politique de sécurité
 
-Mettre en œuvre et maintenir des politiques et procédures de sécurité.
+Mettre en œuvre et maintenir les politiques et procédures de sécurité.
 
 ```bash
 # Application de la politique de mot de passe (PAM)
@@ -546,18 +591,18 @@ sudo nano /etc/pam.d/common-auth
 # Ajouter : auth required pam_tally2.so deny=5 unlock_time=900
 ```
 
-### Vérification de l'Audit et de la Conformité
+### Vérification de l'audit et de la conformité
 
-Vérifier la conformité avec les normes et réglementations de sécurité.
+Vérifier la conformité aux normes et réglementations de sécurité.
 
 ```bash
-# Outils de référence CIS (Center for Internet Security)
+# Outils CIS (Center for Internet Security)
 sudo apt install cis-cat-lite
 # Exécuter l'évaluation CIS
 ./CIS-CAT.sh -a -s
 ```
 
-### Outils d'Évaluation des Risques
+### Outils d'évaluation des risques
 
 Évaluer et quantifier les risques de sécurité.
 
@@ -570,7 +615,7 @@ sudo apt install cis-cat-lite
 # Score de base = Impact × Exploitabilité
 ```
 
-### Documentation et Rapports
+### Documentation et rapports
 
 Maintenir une documentation et des rapports de sécurité appropriés.
 
@@ -585,13 +630,13 @@ Maintenir une documentation et des rapports de sécurité appropriés.
 # - Plan de remédiation
 ```
 
-## Installation d'Outils de Sécurité
+## Installation d'outils de sécurité
 
-Installer et configurer des outils de cybersécurité essentiels.
+Installer et configurer les outils de cybersécurité essentiels.
 
-### Gestionnaires de Paquets
+### Gestionnaires de paquets
 
-Installer des outils à l'aide des gestionnaires de paquets système.
+Installer des outils à l'aide des gestionnaires de paquets du système.
 
 ```bash
 # Ubuntu/Debian
@@ -603,7 +648,7 @@ sudo yum install nmap wireshark tcpdump
 sudo pacman -S nmap wireshark-qt tcpdump
 ```
 
-### Distributions de Sécurité
+### Distributions de sécurité
 
 Distributions Linux spécialisées pour les professionnels de la sécurité.
 
@@ -616,7 +661,7 @@ Distributions Linux spécialisées pour les professionnels de la sécurité.
 # Télécharger depuis : https://blackarch.org/
 ```
 
-### Vérification des Outils
+### Vérification des outils
 
 Vérifier l'installation et la configuration de base des outils.
 
@@ -631,11 +676,11 @@ export PATH=$PATH:/opt/tools/bin
 echo 'export PATH=$PATH:/opt/tools/bin' >> ~/.bashrc
 ```
 
-## Meilleures Pratiques de Configuration de Sécurité
+## Meilleures pratiques de configuration de sécurité
 
 Appliquer des configurations de durcissement de la sécurité sur les systèmes et les applications.
 
-### Durcissement du Système (System Hardening)
+### Durcissement du système
 
 Sécuriser les configurations du système d'exploitation.
 
@@ -643,14 +688,14 @@ Sécuriser les configurations du système d'exploitation.
 # Désactiver les services inutiles
 sudo systemctl disable telnet
 sudo systemctl disable ftp
-# Définir des permissions de fichiers sécurisées
+# Définir des permissions de fichier sécurisées
 sudo chmod 600 /etc/ssh/sshd_config
 sudo chmod 644 /etc/passwd
-# Configurer les limites système
+# Configurer les limites du système
 echo "* hard core 0" >> /etc/security/limits.conf
 ```
 
-### Paramètres de Sécurité Réseau
+### Paramètres de sécurité réseau
 
 Mettre en œuvre des configurations réseau sécurisées.
 
@@ -663,7 +708,7 @@ echo "net.ipv4.tcp_syncookies = 1" >> /etc/sysctl.conf
 echo "net.ipv4.conf.all.accept_redirects = 0" >> /etc/sysctl.conf
 ```
 
-### Sécurité des Applications
+### Sécurité des applications
 
 Sécuriser les configurations des applications et des services.
 
@@ -677,7 +722,7 @@ add_header X-Frame-Options DENY;
 add_header X-Content-Type-Options nosniff;
 ```
 
-### Sécurité des Sauvegardes et Récupération
+### Sécurité des sauvegardes et récupération
 
 Mettre en œuvre des procédures sécurisées de sauvegarde et de reprise après sinistre.
 
@@ -691,16 +736,16 @@ tar -tzf backup.tar.gz > /dev/null && echo "Sauvegarde OK"
 find /backups -name "*.tar.gz" -exec tar -tzf {} \; > /dev/null
 ```
 
-## Techniques de Sécurité Avancées
+## Techniques de sécurité avancées
 
 Mettre en œuvre des mesures de sécurité avancées et des stratégies de défense.
 
-### Systèmes de Détection d'Intrusion
+### Systèmes de détection d'intrusion
 
 Déployer et configurer des IDS/IPS pour la détection des menaces.
 
 ```bash
-# Installer l'IDS Suricata
+# Installer Suricata IDS
 sudo apt install suricata
 # Configurer les règles
 sudo nano /etc/suricata/suricata.yaml
@@ -712,9 +757,9 @@ sudo systemctl start suricata
 tail -f /var/log/suricata/fast.log
 ```
 
-### Gestion des Informations et des Événements de Sécurité (SIEM)
+### Gestion des informations et des événements de sécurité (SIEM)
 
-Centraliser et analyser les journaux et événements de sécurité.
+Centraliser et analyser les journaux de sécurité et les événements.
 
 ```bash
 # Pile ELK (Elasticsearch, Logstash, Kibana)
@@ -724,9 +769,9 @@ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee 
 sudo apt update && sudo apt install elasticsearch
 ```
 
-## Sensibilisation et Formation à la Sécurité
+## Sensibilisation et formation à la sécurité
 
-### Défense contre l'Ingénierie Sociale
+### Défense contre l'ingénierie sociale
 
 Reconnaître et prévenir les attaques d'ingénierie sociale.
 
@@ -736,14 +781,14 @@ Reconnaître et prévenir les attaques d'ingénierie sociale.
 # - Vérifier les liens avant de cliquer (survol)
 # - Rechercher les erreurs d'orthographe/grammaire
 # - Se méfier des demandes urgentes
-# - Vérifier les demandes par un canal séparé
+# - Vérifier les demandes via un canal séparé
 # En-têtes de sécurité des e-mails à vérifier :
 # Enregistrements SPF, DKIM, DMARC
 ```
 
-### Développement d'une Culture de Sécurité
+### Développement de la culture de sécurité
 
-Construire une culture organisationnelle sensible à la sécurité.
+Construire une culture organisationnelle consciente de la sécurité.
 
 ```bash
 # Éléments du programme de sensibilisation à la sécurité :
@@ -754,11 +799,11 @@ Construire une culture organisationnelle sensible à la sécurité.
 # - Reconnaissance des bonnes pratiques de sécurité
 # Métriques à suivre :
 # - Taux d'achèvement de la formation
-# - Taux de clics des simulations de phishing
-# - Signalements d'incidents de sécurité
+# - Taux de clics lors des simulations de phishing
+# - Signalement des incidents de sécurité
 ```
 
-## Liens Pertinents
+## Liens pertinents
 
 - <router-link to="/linux">Feuille de triche Linux</router-link>
 - <router-link to="/shell">Feuille de triche Shell</router-link>

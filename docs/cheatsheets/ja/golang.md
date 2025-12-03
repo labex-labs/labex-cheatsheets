@@ -1,6 +1,6 @@
 ---
-title: 'Golang チートシート'
-description: '必須コマンド、概念、ベストプラクティスを網羅した包括的なチートシートで Golang を習得しましょう。'
+title: 'Golang チートシート | LabEx'
+description: 'この包括的なチートシートで Go 言語を習得。Go の構文、ゴルーチン、チャネル、インターフェース、エラー処理、バックエンド開発者向けの並行処理プログラミングのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 ---
 
@@ -29,7 +29,7 @@ Golang チートシート
 # https://golang.org/dl/ からダウンロード
 # Linux/macOS - /usr/local に展開
 sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz
-# ~/.bashrc または ~/.zshrc にPATHを追加
+# ~/.bashrc または ~/.zshrc に PATH を追加
 export PATH=$PATH:/usr/local/go/bin
 # インストールを確認
 go version
@@ -49,7 +49,7 @@ go env GOPATH
 
 ### Windows のインストール
 
-Windows システムへの Go のインストール。
+Windows システムに Go をインストールします。
 
 ```bash
 # https://golang.org/dl/ から .msi インストーラをダウンロード
@@ -68,7 +68,7 @@ echo %GOPATH%
 mkdir my-go-project
 cd my-go-project
 go mod init my-go-project
-# main.goを作成
+# main.go を作成
 echo 'package main
 import "fmt"
 func main() {
@@ -92,7 +92,7 @@ go env GOOS      # オペレーティングシステム
 go env GOARCH    # アーキテクチャ
 ```
 
-### IDE セットアップ：VS Code
+### IDE のセットアップ：VS Code
 
 Go 開発のために VS Code を設定します。
 
@@ -139,6 +139,21 @@ count := 42
 const Pi = 3.14159
 const Message = "Hello, Go!"
 ```
+
+<BaseQuiz id="golang-variables-1" correct="B">
+  <template #question>
+    `var name string = "Go"` と `name := "Go"` の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはありません</BaseQuizOption>
+  <BaseQuizOption value="B" correct>`:=` は型を推論する短縮宣言であり、`var` は型を明示的に宣言します</BaseQuizOption>
+  <BaseQuizOption value="C">`:=` は定数にのみ使用できます</BaseQuizOption>
+  <BaseQuizOption value="D">`var` は関数内でのみ使用できます</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `:=` 演算子は変数宣言と初期化のショートカットであり、Go が自動的に型を推論します。`var` は変数の型を明示的に宣言し、パッケージレベルまたは関数レベルで使用できます。
+  </BaseQuizAnswer>
+</BaseQuiz>
 
 ### 基本データ型
 
@@ -222,12 +237,27 @@ for i, char := range "Hello" {
 }
 ```
 
-### 制御文：`break` / `continue`
+<BaseQuiz id="golang-range-1" correct="B">
+  <template #question>
+    Go でスライスを反復処理する際、`range` は何を返しますか？
+  </template>
+  
+  <BaseQuizOption value="A">値のみ</BaseQuizOption>
+  <BaseQuizOption value="B" correct>インデックスと値の両方</BaseQuizOption>
+  <BaseQuizOption value="C">インデックスのみ</BaseQuizOption>
+  <BaseQuizOption value="D">スライスの長さ</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    スライスに対して `range`を使用すると、インデックス（位置）と、そのインデックスにある値の 2 つの値が返されます。不要な場合は、どちらの値も`_` を使用して無視できます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
+### 制御ステートメント：`break` / `continue`
 
 ループの実行フローを制御します。
 
 ```go
-// ループを抜ける
+// ループから抜ける
 for i := 0; i < 10; i++ {
     if i == 5 {
         break
@@ -243,18 +273,33 @@ for i := 0; i < 5; i++ {
 }
 ```
 
+<BaseQuiz id="golang-control-1" correct="C">
+  <template #question>
+    Go のループにおける `break`と`continue` の違いは何ですか？
+  </template>
+  
+  <BaseQuizOption value="A">違いはありません</BaseQuizOption>
+  <BaseQuizOption value="B">break は現在のイテレーションをスキップし、continue はループを終了します</BaseQuizOption>
+  <BaseQuizOption value="C" correct>break はループを完全に終了し、continue は次のイテレーションにスキップします</BaseQuizOption>
+  <BaseQuizOption value="D">両方ともループを終了します</BaseQuizOption>
+  
+  <BaseQuizAnswer>
+    `break`はループを即座に終了し、ループ後の実行を継続します。`continue` は現在のイテレーションの残りをスキップし、ループの次のイテレーションに進みます。
+  </BaseQuizAnswer>
+</BaseQuiz>
+
 ## 関数
 
-### 関数宣言：`func`
+### 関数の宣言：`func`
 
-パラメータと戻り値を持つ関数を定義します。
+パラメータと戻り値を指定して関数を定義します。
 
 ```go
 // 基本的な関数
 func greet(name string) {
     fmt.Printf("Hello, %s!\n", name)
 }
-// 戻り値を持つ関数
+// 戻り値のある関数
 func add(a, b int) int {
     return a + b
 }
@@ -267,7 +312,7 @@ func divide(a, b float64) (float64, error) {
 }
 ```
 
-### 名前付き戻り値と可変引数関数
+### 名前付き戻り値と可変長引数関数 (Variadic Functions)
 
 高度な関数機能とパターン。
 
@@ -278,7 +323,7 @@ func split(sum int) (x, y int) {
     y = sum - x
     return // ネイキッドリターン
 }
-// 可変引数関数 (Variadic function)
+// 可変長引数関数
 func sum(nums ...int) int {
     total := 0
     for _, num := range nums {
@@ -286,13 +331,13 @@ func sum(nums ...int) int {
     }
     return total
 }
-// 使用法
+// 使用例
 result := sum(1, 2, 3, 4, 5)
 ```
 
 ### 関数型とクロージャ
 
-Go における第一級オブジェクトとしての関数。
+関数は Go では第一級オブジェクトです。
 
 ```go
 // 変数としての関数
@@ -312,7 +357,7 @@ func counter() func() int {
         return count
     }
 }
-// 使用法
+// 使用例
 c := counter()
 fmt.Println(c()) // 1
 fmt.Println(c()) // 2
@@ -320,7 +365,7 @@ fmt.Println(c()) // 2
 
 ### Defer ステートメント
 
-周囲の関数が戻るまで関数の実行を遅延させます。
+関数が返されるまで関数の実行を遅延させます。
 
 ```go
 func processFile(filename string) {
@@ -328,9 +373,9 @@ func processFile(filename string) {
     if err != nil {
         log.Fatal(err)
     }
-    defer file.Close() // 関数が戻るときに実行される
+    defer file.Close() // 関数が返るときに実行される
 
-    // ファイル内容を処理
+    // ファイル内容の処理
     // file.Close() は自動的に呼び出される
 }
 ```
@@ -350,7 +395,7 @@ var slice []int
 slice = append(slice, 1, 2, 3)
 // 容量を指定してスライスを作成
 numbers := make([]int, 5, 10) // 長さ 5、容量 10
-// スライス操作
+// スライスの操作
 slice2 := slice[1:3]  // [2, 3]
 copy(slice2, slice)   // 要素をコピー
 ```
@@ -372,12 +417,12 @@ ages := map[string]int{
 // マップ操作
 ages["David"] = 40        // 追加/更新
 delete(ages, "Bob")       // 削除
-age, exists := ages["Alice"] // 存在確認
+age, exists := ages["Alice"] // 存在チェック
 ```
 
 ### 構造体 (Structs)
 
-関連するデータをカスタム型でグループ化します。
+カスタム型に関連付けられたデータをグループ化します。
 
 ```go
 // 構造体の定義
@@ -400,7 +445,7 @@ p1.Age = 31
 
 ### ポインタ
 
-変数のメモリ位置への参照。
+変数のメモリアドレスへの参照。
 
 ```go
 // ポインタ宣言
@@ -419,13 +464,13 @@ person.Age = 31  // 自動的な間接参照
 
 ### メソッド
 
-カスタム型に機能（動作）を関連付けます。
+カスタム型に機能（メソッド）を関連付けます。
 
 ```go
 type Rectangle struct {
     Width, Height float64
 }
-// レシーバを持つメソッド
+// 値レシーバを持つメソッド
 func (r Rectangle) Area() float64 {
     return r.Width * r.Height
 }
@@ -434,7 +479,7 @@ func (r *Rectangle) Scale(factor float64) {
     r.Width *= factor
     r.Height *= factor
 }
-// 使用法
+// 使用例
 rect := Rectangle{Width: 10, Height: 5}
 fmt.Println(rect.Area()) // 50
 rect.Scale(2)            // rect を変更する
@@ -463,7 +508,7 @@ func printShapeInfo(s Shape) {
 
 ### 空のインターフェースと型アサーション
 
-未知の型を持つ値の扱い。
+未知の型の値の扱い。
 
 ```go
 // 空のインターフェースはあらゆる値を保持できる
@@ -501,13 +546,13 @@ type Employee struct {
     Company   string
     Salary    float64
 }
-// 使用法
+// 使用例
 emp := Employee{
     Person:  Person{Name: "Alice", Age: 30},
     Company: "TechCorp",
     Salary:  75000,
 }
-// 埋め込みフィールドへの直接アクセス
+// 埋め込みフィールドに直接アクセス
 fmt.Println(emp.Name) // "Alice"
 ```
 
@@ -560,7 +605,7 @@ func validateAge(age int) error {
 }
 ```
 
-### エラーのラップ
+### エラーのラップ (Error Wrapping)
 
 元のエラーを保持しながら、エラーにコンテキストを追加します。
 
@@ -575,7 +620,7 @@ func processFile(filename string) error {
     }
     defer file.Close()
 
-    // ファイルを処理...
+    // ファイル処理...
     return nil
 }
 // エラーのアンラップ
@@ -588,7 +633,7 @@ if err != nil {
 }
 ```
 
-### Panic とリカバリ
+### Panic と Recovery
 
 panic と recover を使用して例外的な状況を処理します。
 
@@ -604,7 +649,7 @@ func riskyOperation() {
     // これが panic を引き起こす
     panic("something went wrong!")
 }
-// 使用法
+// 使用例
 riskyOperation() // panic 後もプログラムは続行する
 ```
 
@@ -629,7 +674,7 @@ func main() {
         fmt.Println("Anonymous goroutine")
     }()
 
-    // goroutine が終了するのを待つ
+    // goroutine が完了するのを待つ
     time.Sleep(time.Second)
 }
 ```
@@ -667,11 +712,11 @@ func worker(id int, jobs <-chan int, results chan<- int) {
 // Fan-out パターン
 jobs := make(chan int, 100)
 results := make(chan int, 100)
-// ワーカーを開始
+// ワーカーの開始
 for w := 1; w <= 3; w++ {
     go worker(w, jobs, results)
 }
-// ジョブを送信
+// ジョブの送信
 for j := 1; j <= 5; j++ {
     jobs <- j
 }
@@ -772,20 +817,20 @@ type Person struct {
     Age   int    `json:"age"`
     Email string `json:"email,omitempty"`
 }
-// マーシャル (Go から JSON へ)
+// マーシャリング (Go から JSON へ)
 person := Person{Name: "Alice", Age: 30}
 jsonData, err := json.Marshal(person)
 if err != nil {
     log.Fatal(err)
 }
-// アンマーシャル (JSON から Go へ)
+// アンマーシャリング (JSON から Go へ)
 var p Person
 err = json.Unmarshal(jsonData, &p)
 ```
 
 ### HTTP リクエスト
 
-HTTP リクエストの実行とレスポンスの処理。
+HTTP リクエストの実行と応答の処理。
 
 ```go
 import "net/http"
@@ -796,7 +841,7 @@ if err != nil {
 }
 defer resp.Body.Close()
 body, _ := ioutil.ReadAll(resp.Body)
-// JSON 付き POST リクエスト
+// JSON を伴う POST リクエスト
 jsonData := []byte(`{"name":"Alice","age":30}`)
 resp, err = http.Post("https://api.example.com/users",
                       "application/json",
@@ -807,7 +852,7 @@ resp, err = http.Post("https://api.example.com/users",
 
 ### 単体テスト：`go test`
 
-Go のテストフレームワークを使用したテストの記述と実行。
+Go のテストフレームワークを使用してテストを記述および実行します。
 
 ```go
 // math.go
@@ -831,7 +876,7 @@ func TestAdd(t *testing.T) {
 // go test -v (詳細表示)
 ```
 
-### テーブル駆動テスト
+### テーブル駆動テスト (Table-Driven Tests)
 
 複数のケースを効率的にテストします。
 
@@ -858,7 +903,7 @@ func TestAddMultiple(t *testing.T) {
 }
 ```
 
-### ベンチマーク
+### ベンチマーク (Benchmarking)
 
 関数のパフォーマンスを測定します。
 
@@ -897,7 +942,7 @@ func ExampleAdd_negative() {
 
 ### モジュール管理
 
-依存関係管理のための Go モジュールの初期化と管理。
+依存関係管理のために Go モジュールを初期化および管理します。
 
 ```bash
 # 新しいモジュールを初期化
@@ -978,7 +1023,7 @@ go build -o myapp  # カスタム名
 go install
 # コードのフォーマット
 go fmt ./...
-# 問題がないかコードを検証
+# 問題がないかコードをベッティング (vet)
 go vet ./...
 # ビルドキャッシュのクリーンアップ
 go clean -cache
