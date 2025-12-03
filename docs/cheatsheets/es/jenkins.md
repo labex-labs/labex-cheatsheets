@@ -155,7 +155,7 @@ java -jar jenkins-cli.jar -auth usuario:token build mi-trabajo -f
 
 <BaseQuiz id="jenkins-build-1" correct="B">
   <template #question>
-    ¿Qué hace la bandera `-s` en `jenkins-cli.jar build mi-trabajo -s`?
+    ¿Qué hace la bandera <code>-s</code> en <code>jenkins-cli.jar build mi-trabajo -s</code>?
   </template>
   
   <BaseQuizOption value="A">Omite la compilación</BaseQuizOption>
@@ -164,7 +164,7 @@ java -jar jenkins-cli.jar -auth usuario:token build mi-trabajo -f
   <BaseQuizOption value="D">Detiene la compilación</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La bandera `-s` hace que el comando de compilación sea síncrono, lo que significa que espera a que la compilación finalice antes de devolver el control. Sin ella, el comando se devuelve inmediatamente después de activar la compilación.
+    La bandera <code>-s</code> hace que el comando de compilación sea síncrono, lo que significa que espera a que la compilación finalice antes de devolver el control. Sin ella, el comando se devuelve inmediatamente después de activar la compilación.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -225,7 +225,7 @@ java -jar jenkins-cli.jar -auth usuario:token console mi-trabajo -f
 
 <BaseQuiz id="jenkins-console-1" correct="C">
   <template #question>
-    ¿Qué hace la bandera `-f` en `jenkins-cli.jar console mi-trabajo -f`?
+    ¿Qué hace la bandera <code>-f</code> en <code>jenkins-cli.jar console mi-trabajo -f</code>?
   </template>
   
   <BaseQuizOption value="A">Fuerza la detención de la compilación</BaseQuizOption>
@@ -234,7 +234,7 @@ java -jar jenkins-cli.jar -auth usuario:token console mi-trabajo -f
   <BaseQuizOption value="D">Formatea la salida como JSON</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La bandera `-f` sigue la salida de la consola en tiempo real, similar a `tail -f` en Linux. Esto es útil para monitorear las compilaciones mientras se ejecutan.
+    La bandera <code>-f</code> sigue la salida de la consola en tiempo real, similar a <code>tail -f</code> en Linux. Esto es útil para monitorear las compilaciones mientras se ejecutan.
   </BaseQuizAnswer>
 </BaseQuiz>
 

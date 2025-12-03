@@ -142,16 +142,16 @@ const Message = "Hello, Go!"
 
 <BaseQuiz id="golang-variables-1" correct="B">
   <template #question>
-    `var name string = "Go"`와 `name := "Go"`의 차이점은 무엇입니까?
+    <code>var name string = "Go"</code>와 <code>name := "Go"</code>의 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`:=` 는 타입을 추론하는 짧은 선언이며, `var` 는 타입을 명시적으로 선언합니다</BaseQuizOption>
-  <BaseQuizOption value="C">`:=` 는 상수에서만 사용할 수 있습니다</BaseQuizOption>
-  <BaseQuizOption value="D">`var` 는 함수 내부에서만 사용할 수 있습니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>:=</code> 는 타입을 추론하는 짧은 선언이며, <code>var</code> 는 타입을 명시적으로 선언합니다</BaseQuizOption>
+  <BaseQuizOption value="C"><code>:=</code> 는 상수에서만 사용할 수 있습니다</BaseQuizOption>
+  <BaseQuizOption value="D"><code>var</code> 는 함수 내부에서만 사용할 수 있습니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `:=` 연산자는 변수 선언 및 초기화의 약식이며 Go 가 자동으로 타입을 추론합니다. `var` 는 변수 타입을 명시적으로 선언하며 패키지 수준 또는 함수 수준에서 사용할 수 있습니다.
+    <code>:=</code> 연산자는 변수 선언 및 초기화의 약식이며 Go 가 자동으로 타입을 추론합니다. <code>var</code> 는 변수 타입을 명시적으로 선언하며 패키지 수준 또는 함수 수준에서 사용할 수 있습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ for i, char := range "Hello" {
 
 <BaseQuiz id="golang-range-1" correct="B">
   <template #question>
-    Go 에서 슬라이스를 반복할 때 `range` 는 무엇을 반환합니까?
+    Go 에서 슬라이스를 반복할 때 <code>range</code> 는 무엇을 반환합니까?
   </template>
   
   <BaseQuizOption value="A">값만</BaseQuizOption>
@@ -248,7 +248,7 @@ for i, char := range "Hello" {
   <BaseQuizOption value="D">슬라이스의 길이</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `range` 를 슬라이스와 함께 사용할 때, 인덱스 (위치) 와 해당 인덱스의 값을 반환합니다. 필요하지 않은 값은 `_` 를 사용하여 무시할 수 있습니다.
+    <code>range</code> 를 슬라이스와 함께 사용할 때, 인덱스 (위치) 와 해당 인덱스의 값을 반환합니다. 필요하지 않은 값은 <code>_</code> 를 사용하여 무시할 수 있습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -275,7 +275,7 @@ for i := 0; i < 5; i++ {
 
 <BaseQuiz id="golang-control-1" correct="C">
   <template #question>
-    Go 루프에서 `break` 와 `continue` 의 차이점은 무엇입니까?
+    Go 루프에서 <code>break</code> 와 <code>continue</code> 의 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
@@ -284,7 +284,7 @@ for i := 0; i < 5; i++ {
   <BaseQuizOption value="D">둘 다 루프를 종료합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `break` 는 루프를 즉시 종료하고 루프 다음의 실행을 계속합니다. `continue` 는 현재 반복의 나머지 부분을 건너뛰고 루프의 다음 반복으로 이동합니다.
+    <code>break</code> 는 루프를 즉시 종료하고 루프 다음의 실행을 계속합니다. <code>continue</code> 는 현재 반복의 나머지 부분을 건너뛰고 루프의 다음 반복으로 이동합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

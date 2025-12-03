@@ -67,7 +67,7 @@ Web 开发速查表
 
 <BaseQuiz id="webdev-semantic-1" correct="B">
   <template #question>
-    使用 `header`、`main` 和 `footer` 等语义化 HTML 元素的主要好处是什么？
+    使用 <code>header</code>、<code>main</code> 和 <code>footer</code> 等语义化 HTML 元素的主要好处是什么？
   </template>
   
   <BaseQuizOption value="A">它们使页面加载速度更快</BaseQuizOption>
@@ -261,7 +261,7 @@ h1 {
 
 <BaseQuiz id="webdev-boxmodel-1" correct="B">
   <template #question>
-    CSS 中的 `margin` 和 `padding` 有什么区别？
+    CSS 中的 <code>margin</code> 和 <code>padding</code> 有什么区别？
   </template>
   
   <BaseQuizOption value="A">没有区别</BaseQuizOption>
@@ -299,7 +299,7 @@ h1 {
 
 <BaseQuiz id="webdev-flexbox-1" correct="A">
   <template #question>
-    Flexbox 中的 `justify-content: center` 是做什么的？
+    Flexbox 中的 <code>justify-content: center</code> 是做什么的？
   </template>
   
   <BaseQuizOption value="A" correct>沿主轴（默认为水平方向）居中对齐 flex 项目</BaseQuizOption>
@@ -308,7 +308,7 @@ h1 {
   <BaseQuizOption value="D">拉伸项目以填充空间</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `justify-content` 控制主轴（默认为水平方向）上的对齐方式。`center` 将所有 flex 项目居中到容器中。使用 `align-items` 控制交叉轴（垂直方向）的对齐。
+    <code>justify-content</code> 控制主轴（默认为水平方向）上的对齐方式。<code>center</code> 将所有 flex 项目居中到容器中。使用 <code>align-items</code> 控制交叉轴（垂直方向）的对齐。
   </BaseQuizAnswer>
 </BaseQuiz>
 

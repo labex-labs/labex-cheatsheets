@@ -204,7 +204,7 @@ filtered = arr[mask]
 
 <BaseQuiz id="numpy-boolean-1" correct="C">
   <template #question>
-    布尔索引 `arr[arr > 5]` 返回什么？
+    布尔索引 <code>arr[arr > 5]</code> 返回什么？
   </template>
   
   <BaseQuizOption value="A">一个布尔数组</BaseQuizOption>
@@ -213,7 +213,7 @@ filtered = arr[mask]
   <BaseQuizOption value="D">一个错误</BaseQuizOption>
   
   <BaseQuizAnswer>
-    布尔索引会过滤数组，只返回条件为真的元素。`arr[arr > 5]` 返回一个包含所有大于 5 的值的新数组。
+    布尔索引会过滤数组，只返回条件为真的元素。<code>arr[arr > 5]</code> 返回一个包含所有大于 5 的值的新数组。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -263,7 +263,7 @@ arr.ravel()  # 尽可能返回视图
 
 <BaseQuiz id="numpy-reshape-1" correct="B">
   <template #question>
-    在 `arr.reshape(-1, 1)` 中，`-1` 代表什么？
+    在 <code>arr.reshape(-1, 1)</code> 中，<code>-1</code> 代表什么？
   </template>
   
   <BaseQuizOption value="A">它会产生一个错误</BaseQuizOption>
@@ -272,13 +272,13 @@ arr.ravel()  # 尽可能返回视图
   <BaseQuizOption value="D">它会反转数组</BaseQuizOption>
   
   <BaseQuizAnswer>
-    在重塑中使用 `-1` 告诉 NumPy 根据数组的总大小和其他指定的维度自动计算该维度。当你只知道一个维度而希望 NumPy 找出另一个维度时，这很有用。
+    在重塑中使用 <code>-1</code> 告诉 NumPy 根据数组的总大小和其他指定的维度自动计算该维度。当你只知道一个维度而希望 NumPy 找出另一个维度时，这很有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 
 <BaseQuiz id="numpy-reshape-1" correct="B">
   <template #question>
-    在 `arr.reshape(-1, 1)` 中，`-1` 代表什么？
+    在 <code>arr.reshape(-1, 1)</code> 中，<code>-1</code> 代表什么？
   </template>
   
   <BaseQuizOption value="A">它会产生一个错误</BaseQuizOption>
@@ -287,7 +287,7 @@ arr.ravel()  # 尽可能返回视图
   <BaseQuizOption value="D">它将维度设置为 1</BaseQuizOption>
   
   <BaseQuizAnswer>
-    在重塑中使用 `-1` 告诉 NumPy 根据数组的总大小和其他指定的维度自动计算该维度。当你只知道一个维度而希望 NumPy 找出另一个维度时，这很有用。
+    在重塑中使用 <code>-1</code> 告诉 NumPy 根据数组的总大小和其他指定的维度自动计算该维度。当你只知道一个维度而希望 NumPy 找出另一个维度时，这很有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 

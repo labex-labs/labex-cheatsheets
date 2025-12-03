@@ -50,7 +50,7 @@ db.users.insertOne({name: "John"})
 
 <BaseQuiz id="mongodb-use-1" correct="B">
   <template #question>
-    What happens when you run `use newdb` in MongoDB?
+    What happens when you run <code>use newdb</code> in MongoDB?
   </template>
   
   <BaseQuizOption value="A">It immediately creates the database</BaseQuizOption>
@@ -59,7 +59,7 @@ db.users.insertOne({name: "John"})
   <BaseQuizOption value="D">It shows all collections in the database</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `use` command switches to a database, but MongoDB doesn't create the database until you insert the first document. This is a lazy creation approach.
+    The <code>use</code> command switches to a database, but MongoDB doesn't create the database until you insert the first document. This is a lazy creation approach.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -178,7 +178,7 @@ db.users.insertOne({
 
 <BaseQuiz id="mongodb-insert-1" correct="A">
   <template #question>
-    What does `db.users.insertOne()` return?
+    What does <code>db.users.insertOne()</code> return?
   </template>
   
   <BaseQuizOption value="A" correct>An acknowledgment object with the inserted document's _id</BaseQuizOption>
@@ -187,7 +187,7 @@ db.users.insertOne({
   <BaseQuizOption value="D">The number of documents inserted</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `insertOne()` returns an acknowledgment object containing `acknowledged: true` and `insertedId` with the `_id` of the inserted document (or the custom `_id` if provided).
+    <code>insertOne()</code> returns an acknowledgment object containing <code>acknowledged: true</code> and <code>insertedId</code> with the <code>_id</code> of the inserted document (or the custom <code>_id</code> if provided).
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ db.users.find({ email: { $exists: true } })
 
 <BaseQuiz id="mongodb-query-1" correct="B">
   <template #question>
-    What does `$gt` mean in MongoDB queries?
+    What does <code>$gt</code> mean in MongoDB queries?
   </template>
   
   <BaseQuizOption value="A">Greater than or equal to</BaseQuizOption>
@@ -299,7 +299,7 @@ db.users.find({ email: { $exists: true } })
   <BaseQuizOption value="D">Get total</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `$gt` is a comparison operator that means "greater than". It's used in queries like `{ age: { $gt: 25 } }` to find documents where the age field is greater than 25.
+    <code>$gt</code> is a comparison operator that means "greater than". It's used in queries like <code>{ age: { $gt: 25 } }</code> to find documents where the age field is greater than 25.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -365,7 +365,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
 
 <BaseQuiz id="mongodb-update-1" correct="C">
   <template #question>
-    What does `$set` do in MongoDB update operations?
+    What does <code>$set</code> do in MongoDB update operations?
   </template>
   
   <BaseQuizOption value="A">Deletes a field</BaseQuizOption>
@@ -374,7 +374,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
   <BaseQuizOption value="D">Removes an element from an array</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `$set` operator sets the value of a field in a document. If the field doesn't exist, it creates it. If it exists, it updates the value.
+    The <code>$set</code> operator sets the value of a field in a document. If the field doesn't exist, it creates it. If it exists, it updates the value.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -50,7 +50,7 @@ db.users.insertOne({name: "John"})
 
 <BaseQuiz id="mongodb-use-1" correct="B">
   <template #question>
-    MongoDB 에서 `use newdb`를 실행하면 어떻게 되나요?
+    MongoDB 에서 <code>use newdb</code>를 실행하면 어떻게 되나요?
   </template>
   
   <BaseQuizOption value="A">즉시 데이터베이스를 생성합니다</BaseQuizOption>
@@ -59,7 +59,7 @@ db.users.insertOne({name: "John"})
   <BaseQuizOption value="D">데이터베이스의 모든 컬렉션을 표시합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `use` 명령어는 데이터베이스로 전환하지만, MongoDB 는 첫 번째 문서를 삽입할 때까지 데이터베이스를 생성하지 않습니다. 이는 지연 생성 접근 방식입니다.
+    <code>use</code> 명령어는 데이터베이스로 전환하지만, MongoDB 는 첫 번째 문서를 삽입할 때까지 데이터베이스를 생성하지 않습니다. 이는 지연 생성 접근 방식입니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -178,7 +178,7 @@ db.users.insertOne({
 
 <BaseQuiz id="mongodb-insert-1" correct="A">
   <template #question>
-    `db.users.insertOne()` 은 무엇을 반환하나요?
+    <code>db.users.insertOne()</code> 은 무엇을 반환하나요?
   </template>
   
   <BaseQuizOption value="A" correct>삽입된 문서의 _id 가 포함된 승인 객체</BaseQuizOption>
@@ -187,7 +187,7 @@ db.users.insertOne({
   <BaseQuizOption value="D">삽입된 문서 수</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `insertOne()` 은 `acknowledged: true`와 삽입된 문서의 `_id` 를 포함하는 `insertedId` 를 포함하는 승인 객체를 반환합니다 (사용자 지정 `_id` 가 제공된 경우 해당 `_id` 포함).
+    <code>insertOne()</code> 은 <code>acknowledged: true</code>와 삽입된 문서의 <code>_id</code> 를 포함하는 <code>insertedId</code> 를 포함하는 승인 객체를 반환합니다 (사용자 지정 <code>_id</code> 가 제공된 경우 해당 <code>_id</code> 포함).
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ db.users.find({ email: { $exists: true } })
 
 <BaseQuiz id="mongodb-query-1" correct="B">
   <template #question>
-    MongoDB 쿼리에서 `$gt` 는 무엇을 의미하나요?
+    MongoDB 쿼리에서 <code>$gt</code> 는 무엇을 의미하나요?
   </template>
   
   <BaseQuizOption value="A">크거나 같음</BaseQuizOption>
@@ -299,7 +299,7 @@ db.users.find({ email: { $exists: true } })
   <BaseQuizOption value="D">총합 구하기</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `$gt` 는 "보다 큼"을 의미하는 비교 연산자입니다. `{ age: { $gt: 25 } }`와 같은 쿼리에서 사용되어 age 필드가 25 보다 큰 문서를 찾습니다.
+    <code>$gt</code> 는 "보다 큼"을 의미하는 비교 연산자입니다. <code>{ age: { $gt: 25 } }</code>와 같은 쿼리에서 사용되어 age 필드가 25 보다 큰 문서를 찾습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -365,7 +365,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
 
 <BaseQuiz id="mongodb-update-1" correct="C">
   <template #question>
-    MongoDB 업데이트 작업에서 `$set` 은 무엇을 하나요?
+    MongoDB 업데이트 작업에서 <code>$set</code> 은 무엇을 하나요?
   </template>
   
   <BaseQuizOption value="A">필드를 삭제합니다</BaseQuizOption>
@@ -374,7 +374,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
   <BaseQuizOption value="D">배열에서 요소를 제거합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `$set` 연산자는 문서 내 필드의 값을 설정합니다. 필드가 없으면 생성하고, 존재하면 값을 업데이트합니다.
+    <code>$set</code> 연산자는 문서 내 필드의 값을 설정합니다. 필드가 없으면 생성하고, 존재하면 값을 업데이트합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

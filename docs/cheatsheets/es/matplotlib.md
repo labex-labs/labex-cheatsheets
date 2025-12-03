@@ -46,7 +46,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 
 <BaseQuiz id="matplotlib-plot-1" correct="C">
   <template #question>
-    ¿Qué hace `plt.show()` en Matplotlib?
+    ¿Qué hace <code>plt.show()</code> en Matplotlib?
   </template>
   
   <BaseQuizOption value="A">Guarda el gráfico en un archivo</BaseQuizOption>
@@ -55,7 +55,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
   <BaseQuizOption value="D">Limpia el gráfico</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `plt.show()` muestra el gráfico en una ventana interactiva. Es necesario llamar a esta función para ver la visualización. Sin ella, el gráfico no se mostrará.
+    <code>plt.show()</code> muestra el gráfico en una ventana interactiva. Es necesario llamar a esta función para ver la visualización. Sin ella, el gráfico no se mostrará.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -76,7 +76,7 @@ plt.colorbar()  # Añadir barra de color
 
 <BaseQuiz id="matplotlib-scatter-1" correct="D">
   <template #question>
-    ¿Qué controla el parámetro `alpha` en los gráficos de matplotlib?
+    ¿Qué controla el parámetro <code>alpha</code> en los gráficos de matplotlib?
   </template>
   
   <BaseQuizOption value="A">El color del gráfico</BaseQuizOption>
@@ -85,7 +85,7 @@ plt.colorbar()  # Añadir barra de color
   <BaseQuizOption value="D" correct>La transparencia/opacidad de los elementos del gráfico</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El parámetro `alpha` controla la transparencia, con valores de 0 (completamente transparente) a 1 (completamente opaco). Es útil para crear visualizaciones superpuestas donde se desea ver a través de los elementos.
+    El parámetro <code>alpha</code> controla la transparencia, con valores de 0 (completamente transparente) a 1 (completamente opaco). Es útil para crear visualizaciones superpuestas donde se desea ver a través de los elementos.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -214,16 +214,16 @@ plt.annotate('Punto Importante', xy=(2, 4), xytext=(3, 6),
 
 <BaseQuiz id="matplotlib-legend-1" correct="B">
   <template #question>
-    ¿Qué se requiere para que `plt.legend()` muestre etiquetas?
+    ¿Qué se requiere para que <code>plt.legend()</code> muestre etiquetas?
   </template>
   
   <BaseQuizOption value="A">Nada, funciona automáticamente</BaseQuizOption>
-  <BaseQuizOption value="B" correct>Cada gráfico debe tener un parámetro `label` establecido</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Cada gráfico debe tener un parámetro <code>label</code> establecido</BaseQuizOption>
   <BaseQuizOption value="C">La leyenda debe crearse antes de trazar</BaseQuizOption>
   <BaseQuizOption value="D">Las etiquetas deben establecerse manualmente en la leyenda</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Para mostrar una leyenda, debe establecer el parámetro `label` al crear cada gráfico (ej: `plt.plot(x, y, label='Conjunto de Datos 1')`). Luego, llamar a `plt.legend()` mostrará todas las etiquetas.
+    Para mostrar una leyenda, debe establecer el parámetro <code>label</code> al crear cada gráfico (ej: <code>plt.plot(x, y, label='Conjunto de Datos 1')</code>). Luego, llamar a <code>plt.legend()</code> mostrará todas las etiquetas.
   </BaseQuizAnswer>
 </BaseQuiz>
 

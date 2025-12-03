@@ -74,7 +74,7 @@ df.fillna(df.mean())  # Manejar valores faltantes
 
 <BaseQuiz id="datascience-pandas-1" correct="C">
   <template #question>
-    ¿Qué devuelve `df.head()` en Pandas?
+    ¿Qué devuelve <code>df.head()</code> en Pandas?
   </template>
   
   <BaseQuizOption value="A">Las últimas 5 filas del DataFrame</BaseQuizOption>
@@ -83,7 +83,7 @@ df.fillna(df.mean())  # Manejar valores faltantes
   <BaseQuizOption value="D">Todas las filas del DataFrame</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `df.head()` muestra las primeras 5 filas del DataFrame por defecto. Puede especificar un número diferente, como `df.head(10)` para ver las primeras 10 filas. Es útil para inspeccionar rápidamente sus datos.
+    <code>df.head()</code> muestra las primeras 5 filas del DataFrame por defecto. Puede especificar un número diferente, como <code>df.head(10)</code> para ver las primeras 10 filas. Es útil para inspeccionar rápidamente sus datos.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df_filled = pd.DataFrame(imputer.fit_transform(df))
 
 <BaseQuiz id="datascience-missing-1" correct="B">
   <template #question>
-    ¿Para qué se utiliza el relleno hacia adelante (`method='forward'`)?
+    ¿Para qué se utiliza el relleno hacia adelante (<code>method='forward'</code>)?
   </template>
   
   <BaseQuizOption value="A">Rellenar valores faltantes con la media</BaseQuizOption>

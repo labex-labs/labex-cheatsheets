@@ -109,7 +109,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="sqlite-create-table-1" correct="A">
   <template #question>
-    ¿Qué hace `INTEGER PRIMARY KEY AUTOINCREMENT` en SQLite?
+    ¿Qué hace <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> en SQLite?
   </template>
   
   <BaseQuizOption value="A" correct>Crea una clave primaria entera que se incrementa automáticamente</BaseQuizOption>
@@ -118,7 +118,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">Crea un índice único</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INTEGER PRIMARY KEY AUTOINCREMENT` crea una columna entera que se incrementa automáticamente para cada nueva fila y sirve como clave primaria. Esto asegura que cada fila tenga un identificador único.
+    <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> crea una columna entera que se incrementa automáticamente para cada nueva fila y sirve como clave primaria. Esto asegura que cada fila tenga un identificador único.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ VALUES ('Duplicate', 'existing@email.com');
 
 <BaseQuiz id="sqlite-upsert-1" correct="A">
   <template #question>
-    ¿Cuál es la diferencia entre `INSERT OR REPLACE` e `INSERT OR IGNORE`?
+    ¿Cuál es la diferencia entre <code>INSERT OR REPLACE</code> e <code>INSERT OR IGNORE</code>?
   </template>
   
   <BaseQuizOption value="A" correct>REPLACE actualiza filas existentes, IGNORE omite duplicados</BaseQuizOption>
@@ -248,7 +248,7 @@ VALUES ('Duplicate', 'existing@email.com');
   <BaseQuizOption value="D">REPLACE funciona con tablas, IGNORE funciona con vistas</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INSERT OR REPLACE` reemplazará una fila existente si hay un conflicto (ej. clave primaria duplicada). `INSERT OR IGNORE` simplemente omitirá la inserción si hay un conflicto, dejando la fila existente sin cambios.
+    <code>INSERT OR REPLACE</code> reemplazará una fila existente si hay un conflicto (ej. clave primaria duplicada). <code>INSERT OR IGNORE</code> simplemente omitirá la inserción si hay un conflicto, dejando la fila existente sin cambios.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -274,7 +274,7 @@ SELECT DISTINCT department FROM employees;
 
 <BaseQuiz id="sqlite-select-1" correct="B">
   <template #question>
-    ¿Qué hace `SELECT DISTINCT`?
+    ¿Qué hace <code>SELECT DISTINCT</code>?
   </template>
   
   <BaseQuizOption value="A">Selecciona todas las filas</BaseQuizOption>
@@ -283,7 +283,7 @@ SELECT DISTINCT department FROM employees;
   <BaseQuizOption value="D">Ordena los resultados</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SELECT DISTINCT` elimina filas duplicadas del conjunto de resultados, devolviendo solo valores únicos. Esto es útil cuando se desean ver todos los valores únicos en una columna.
+    <code>SELECT DISTINCT</code> elimina filas duplicadas del conjunto de resultados, devolviendo solo valores únicos. Esto es útil cuando se desean ver todos los valores únicos en una columna.
   </BaseQuizAnswer>
 </BaseQuiz>
 

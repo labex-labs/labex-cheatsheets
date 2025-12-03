@@ -109,7 +109,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="sqlite-create-table-1" correct="A">
   <template #question>
-    `INTEGER PRIMARY KEY AUTOINCREMENT` 在 SQLite 中做什么？
+    <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> 在 SQLite 中做什么？
   </template>
   
   <BaseQuizOption value="A" correct>创建一个自动递增的整数主键</BaseQuizOption>
@@ -118,7 +118,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">创建一个唯一索引</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INTEGER PRIMARY KEY AUTOINCREMENT` 创建一个整数列，它为新行自动递增，并作为主键。这确保了每行都有一个唯一的标识符。
+    <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> 创建一个整数列，它为新行自动递增，并作为主键。这确保了每行都有一个唯一的标识符。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ VALUES ('Duplicate', 'existing@email.com');
 
 <BaseQuiz id="sqlite-upsert-1" correct="A">
   <template #question>
-    `INSERT OR REPLACE` 和 `INSERT OR IGNORE` 有什么区别？
+    <code>INSERT OR REPLACE</code> 和 <code>INSERT OR IGNORE</code> 有什么区别？
   </template>
   
   <BaseQuizOption value="A" correct>REPLACE 更新现有行，IGNORE 跳过重复项</BaseQuizOption>
@@ -248,7 +248,7 @@ VALUES ('Duplicate', 'existing@email.com');
   <BaseQuizOption value="D">REPLACE 用于表，IGNORE 用于视图</BaseQuizOption>
   
   <BaseQuizAnswer>
-    如果存在冲突（例如主键重复），`INSERT OR REPLACE` 将替换现有行。如果存在冲突，`INSERT OR IGNORE` 将简单地跳过插入，保持现有行不变。
+    如果存在冲突（例如主键重复），<code>INSERT OR REPLACE</code> 将替换现有行。如果存在冲突，<code>INSERT OR IGNORE</code> 将简单地跳过插入，保持现有行不变。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -274,7 +274,7 @@ SELECT DISTINCT department FROM employees;
 
 <BaseQuiz id="sqlite-select-1" correct="B">
   <template #question>
-    `SELECT DISTINCT` 做什么？
+    <code>SELECT DISTINCT</code> 做什么？
   </template>
   
   <BaseQuizOption value="A">选择所有行</BaseQuizOption>
@@ -283,7 +283,7 @@ SELECT DISTINCT department FROM employees;
   <BaseQuizOption value="D">对结果进行排序</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SELECT DISTINCT` 从结果集中消除重复的行，只返回唯一值。当你想查看某一列中所有唯一值时，这很有用。
+    <code>SELECT DISTINCT</code> 从结果集中消除重复的行，只返回唯一值。当你想查看某一列中所有唯一值时，这很有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 

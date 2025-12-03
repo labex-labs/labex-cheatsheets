@@ -38,7 +38,7 @@ net 192.168.1.0/24
 
 <BaseQuiz id="wireshark-filter-1" correct="A">
   <template #question>
-    Was filtert `host 192.168.1.100` in Wireshark?
+    Was filtert <code>host 192.168.1.100</code> in Wireshark?
   </template>
   
   <BaseQuizOption value="A" correct>Jeglicher Verkehr zu oder von 192.168.1.100</BaseQuizOption>
@@ -47,7 +47,7 @@ net 192.168.1.0/24
   <BaseQuizOption value="D">Verkehr auf Port 192.168.1.100</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Der `host`-Filter erfasst jeglichen Verkehr, bei dem die angegebene IP-Adresse entweder die Quelle oder das Ziel ist. Verwenden Sie `src host` für Quelle-nur oder `dst host` für Ziel-nur Filterung.
+    Der <code>host</code>-Filter erfasst jeglichen Verkehr, bei dem die angegebene IP-Adresse entweder die Quelle oder das Ziel ist. Verwenden Sie <code>src host</code> für Quelle-nur oder <code>dst host</code> für Ziel-nur Filterung.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -70,7 +70,7 @@ portrange 1000-2000
 
 <BaseQuiz id="wireshark-port-1" correct="D">
   <template #question>
-    Was filtert `port 80` in Wireshark?
+    Was filtert <code>port 80</code> in Wireshark?
   </template>
   
   <BaseQuizOption value="A">Nur HTTP-Anfragen</BaseQuizOption>
@@ -79,7 +79,7 @@ portrange 1000-2000
   <BaseQuizOption value="D" correct>Jeglicher Verkehr auf Port 80 (sowohl Quelle als auch Ziel)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Der `port`-Filter erfasst jeglichen Verkehr, bei dem Port 80 entweder der Quell- oder Zielport ist. Dies schließt sowohl HTTP-Anfragen als auch Antworten ein, sowie jeglichen anderen Verkehr, der Port 80 verwendet.
+    Der <code>port</code>-Filter erfasst jeglichen Verkehr, bei dem Port 80 entweder der Quell- oder Zielport ist. Dies schließt sowohl HTTP-Anfragen als auch Antworten ein, sowie jeglichen anderen Verkehr, der Port 80 verwendet.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -115,7 +115,7 @@ port 80 or port 443
 
 <BaseQuiz id="wireshark-advanced-1" correct="B">
   <template #question>
-    Was filtert `tcp and not port 22` an Verkehr?
+    Was filtert <code>tcp and not port 22</code> an Verkehr?
   </template>
   
   <BaseQuizOption value="A">Nur SSH-Verkehr</BaseQuizOption>
@@ -124,7 +124,7 @@ port 80 or port 443
   <BaseQuizOption value="D">Jeglicher Netzwerkverkehr</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Dieser Filter erfasst jeglichen TCP-Verkehr, schließt jedoch Pakete auf Port 22 (SSH) aus. Der Operator `and not` schließt den angegebenen Port aus, behält aber den gesamten anderen TCP-Verkehr bei.
+    Dieser Filter erfasst jeglichen TCP-Verkehr, schließt jedoch Pakete auf Port 22 (SSH) aus. Der Operator <code>and not</code> schließt den angegebenen Port aus, behält aber den gesamten anderen TCP-Verkehr bei.
   </BaseQuizAnswer>
 </BaseQuiz>
 

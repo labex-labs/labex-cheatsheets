@@ -55,7 +55,7 @@ ls -la
 
 <BaseQuiz id="cybersecurity-chmod-1" correct="C">
   <template #question>
-    Was bewirkt `chmod 644 file.txt` für Dateiberechtigungen?
+    Was bewirkt <code>chmod 644 file.txt</code> für Dateiberechtigungen?
   </template>
   
   <BaseQuizOption value="A">Lesen, Schreiben, Ausführen für alle Benutzer</BaseQuizOption>
@@ -64,7 +64,7 @@ ls -la
   <BaseQuizOption value="D">Nur Lesen für alle Benutzer</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 644` setzt: Besitzer = 6 (rw-), Gruppe = 4 (r--), andere = 4 (r--). Dies ist eine übliche Berechtigungseinstellung für Dateien, die von allen gelesen, aber nur vom Besitzer beschrieben werden sollen.
+    <code>chmod 644</code> setzt: Besitzer = 6 (rw-), Gruppe = 4 (r--), andere = 4 (r--). Dies ist eine übliche Berechtigungseinstellung für Dateien, die von allen gelesen, aber nur vom Besitzer beschrieben werden sollen.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -84,7 +84,7 @@ sudo ss -tuln
 
 <BaseQuiz id="cybersecurity-firewall-1" correct="B">
   <template #question>
-    Was bewirkt `sudo ufw allow 22/tcp`?
+    Was bewirkt <code>sudo ufw allow 22/tcp</code>?
   </template>
   
   <BaseQuizOption value="A">Blockiert Port 22</BaseQuizOption>
@@ -93,7 +93,7 @@ sudo ss -tuln
   <BaseQuizOption value="D">Zeigt den Firewall-Status an</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ufw allow 22/tcp` erstellt eine Firewall-Regel, die eingehende TCP-Verbindungen auf Port 22, dem Standard-SSH-Port, zulässt. Dies ist für den Fernzugriff auf Server unerlässlich.
+    <code>ufw allow 22/tcp</code> erstellt eine Firewall-Regel, die eingehende TCP-Verbindungen auf Port 22, dem Standard-SSH-Port, zulässt. Dies ist für den Fernzugriff auf Server unerlässlich.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -139,7 +139,7 @@ grep "Failed password" /var/log/auth.log
 
 <BaseQuiz id="cybersecurity-logs-1" correct="A">
   <template #question>
-    Was bewirkt `tail -f /var/log/auth.log`?
+    Was bewirkt <code>tail -f /var/log/auth.log</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Verfolgt die Authentifizierungslogdatei in Echtzeit</BaseQuizOption>
@@ -148,7 +148,7 @@ grep "Failed password" /var/log/auth.log
   <BaseQuizOption value="D">Archiviert die Protokolldatei</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-f` bewirkt, dass `tail` der Datei folgt und neue Protokolleinträge anzeigt, sobald sie geschrieben werden. Dies ist nützlich für die Echtzeitüberwachung von Authentifizierungsereignissen und Sicherheitsvorfällen.
+    Das Flag <code>-f</code> bewirkt, dass <code>tail</code> der Datei folgt und neue Protokolleinträge anzeigt, sobald sie geschrieben werden. Dies ist nützlich für die Echtzeitüberwachung von Authentifizierungsereignissen und Sicherheitsvorfällen.
   </BaseQuizAnswer>
 </BaseQuiz>
 

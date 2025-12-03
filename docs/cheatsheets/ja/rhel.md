@@ -127,7 +127,7 @@ name package
 
 <BaseQuiz id="rhel-package-1" correct="A">
   <template #question>
-    RHEL における `dnf` と `yum` の違いは何ですか？
+    RHEL における <code>dnf</code> と <code>yum</code> の違いは何ですか？
   </template>
   
   <BaseQuizOption value="A" correct>dnf は RHEL 8 以降の新しいパッケージマネージャーであり、yum は RHEL 7 で使用されます</BaseQuizOption>
@@ -208,7 +208,7 @@ rm -rf directory/
 
 <BaseQuiz id="rhel-file-ops-1" correct="B">
   <template #question>
-    `cp -r` は何を行いますか？
+    <code>cp -r</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">ファイルのみをコピーします</BaseQuizOption>
@@ -217,7 +217,7 @@ rm -rf directory/
   <BaseQuizOption value="D">ファイルを名前変更します</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-r` フラグ (再帰的) は、`cp` がディレクトリとその内容（すべてのサブディレクトリとファイルを含む）をコピーできるようにします。`-r` がないと、`cp` はディレクトリをコピーできません。
+    <code>-r</code> フラグ (再帰的) は、<code>cp</code> がディレクトリとその内容（すべてのサブディレクトリとファイルを含む）をコピーできるようにします。<code>-r</code> がないと、<code>cp</code> はディレクトリをコピーできません。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ tail -f /var/log/messages
 
 <BaseQuiz id="rhel-tail-1" correct="C">
   <template #question>
-    `tail -f /var/log/messages` は何を行いますか？
+    <code>tail -f /var/log/messages</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">最初の 10 行のみを表示します</BaseQuizOption>
@@ -249,7 +249,7 @@ tail -f /var/log/messages
   <BaseQuizOption value="D">ログファイルをアーカイブします</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-f` フラグは `tail` にファイルを追跡させ、ログが書き込まれる新しいエントリを表示します。これはリアルタイムのログ監視とトラブルシューティングに不可欠です。
+    <code>-f</code> フラグは <code>tail</code> にファイルを追跡させ、ログが書き込まれる新しいエントリを表示します。これはリアルタイムのログ監視とトラブルシューティングに不可欠です。
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -133,7 +133,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="postgresql-create-table-1" correct="A">
   <template #question>
-    What does `SERIAL PRIMARY KEY` do in PostgreSQL?
+    What does <code>SERIAL PRIMARY KEY</code> do in PostgreSQL?
   </template>
   
   <BaseQuizOption value="A" correct>Creates an auto-incrementing integer column that serves as the primary key</BaseQuizOption>
@@ -142,7 +142,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">Creates a unique index</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SERIAL` is a PostgreSQL-specific data type that creates an auto-incrementing integer. Combined with `PRIMARY KEY`, it creates a unique identifier for each row that automatically increments.
+    <code>SERIAL</code> is a PostgreSQL-specific data type that creates an auto-incrementing integer. Combined with <code>PRIMARY KEY</code>, it creates a unique identifier for each row that automatically increments.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ SELECT * FROM users WHERE active = false;
 
 <BaseQuiz id="postgresql-insert-1" correct="C">
   <template #question>
-    What does `RETURNING` do in a PostgreSQL INSERT statement?
+    What does <code>RETURNING</code> do in a PostgreSQL INSERT statement?
   </template>
   
   <BaseQuizOption value="A">It rolls back the insert</BaseQuizOption>
@@ -299,7 +299,7 @@ SELECT * FROM users WHERE active = false;
   <BaseQuizOption value="D">It updates existing rows</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `RETURNING` clause in PostgreSQL allows you to retrieve the inserted row data (or specific columns) immediately after insertion, which is useful for getting auto-generated IDs or timestamps.
+    The <code>RETURNING</code> clause in PostgreSQL allows you to retrieve the inserted row data (or specific columns) immediately after insertion, which is useful for getting auto-generated IDs or timestamps.
   </BaseQuizAnswer>
 </BaseQuiz>
 

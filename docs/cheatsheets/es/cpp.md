@@ -91,7 +91,7 @@ int main(int argc, char* argv[]) {
   <BaseQuizOption value="D">C usa cout, C++ usa printf</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C usa `printf()` de stdio.h, mientras que C++ usa `cout` de iostream con el operador de inserción de flujo `<<`. C++ también soporta printf por compatibilidad.
+    C usa <code>printf()</code> de stdio.h, mientras que C++ usa <code>cout</code> de iostream con el operador de inserción de flujo <code><<</code>. C++ también soporta printf por compatibilidad.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -157,7 +157,7 @@ vector<string> names(5); // Tamaño 5, cadenas vacías
 
 <BaseQuiz id="cpp-vector-1" correct="B">
   <template #question>
-    ¿Cuál es la principal ventaja de `vector` sobre los arrays regulares en C++?
+    ¿Cuál es la principal ventaja de <code>vector</code> sobre los arrays regulares en C++?
   </template>
   
   <BaseQuizOption value="A">Los vectores son más rápidos</BaseQuizOption>
@@ -166,7 +166,7 @@ vector<string> names(5); // Tamaño 5, cadenas vacías
   <BaseQuizOption value="D">No hay ventaja</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `vector` es un array dinámico que puede crecer o encogerse en tiempo de ejecución, a diferencia de los arrays regulares cuyo tamaño se determina en tiempo de compilación. Esto hace que los vectores sean más flexibles para muchos casos de uso.
+    <code>vector</code> es un array dinámico que puede crecer o encogerse en tiempo de ejecución, a diferencia de los arrays regulares cuyo tamaño se determina en tiempo de compilación. Esto hace que los vectores sean más flexibles para muchos casos de uso.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -248,7 +248,7 @@ for (auto& item : container) {
   <BaseQuizOption value="D">Un bucle que requiere gestión manual de índices</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Los bucles for basados en rango (introducidos en C++11) iteran automáticamente sobre todos los elementos de un contenedor (como vectores, arrays, cadenas) sin necesidad de gestionar índices manualmente. La sintaxis es `for (auto item : container)`.
+    Los bucles for basados en rango (introducidos en C++11) iteran automáticamente sobre todos los elementos de un contenedor (como vectores, arrays, cadenas) sin necesidad de gestionar índices manualmente. La sintaxis es <code>for (auto item : container)</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 

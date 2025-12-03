@@ -38,7 +38,7 @@ net 192.168.1.0/24
 
 <BaseQuiz id="wireshark-filter-1" correct="A">
   <template #question>
-    Que filtre `host 192.168.1.100` dans Wireshark ?
+    Que filtre <code>host 192.168.1.100</code> dans Wireshark ?
   </template>
   
   <BaseQuizOption value="A" correct>Tout le trafic vers ou depuis 192.168.1.100</BaseQuizOption>
@@ -47,7 +47,7 @@ net 192.168.1.0/24
   <BaseQuizOption value="D">Trafic sur le port 192.168.1.100</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le filtre `host` capture tout le trafic où l'adresse IP spécifiée est soit la source, soit la destination. Utilisez `src host` pour la source uniquement ou `dst host` pour la destination uniquement.
+    Le filtre <code>host</code> capture tout le trafic où l'adresse IP spécifiée est soit la source, soit la destination. Utilisez <code>src host</code> pour la source uniquement ou <code>dst host</code> pour la destination uniquement.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -70,7 +70,7 @@ portrange 1000-2000
 
 <BaseQuiz id="wireshark-port-1" correct="D">
   <template #question>
-    Que filtre `port 80` dans Wireshark ?
+    Que filtre <code>port 80</code> dans Wireshark ?
   </template>
   
   <BaseQuizOption value="A">Seulement les requêtes HTTP</BaseQuizOption>
@@ -79,7 +79,7 @@ portrange 1000-2000
   <BaseQuizOption value="D" correct>Tout le trafic sur le port 80 (source et destination)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le filtre `port` capture tout le trafic où le port 80 est soit le port source, soit le port de destination. Cela inclut les requêtes et les réponses HTTP, ainsi que tout autre trafic utilisant le port 80.
+    Le filtre <code>port</code> capture tout le trafic où le port 80 est soit le port source, soit le port de destination. Cela inclut les requêtes et les réponses HTTP, ainsi que tout autre trafic utilisant le port 80.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -115,7 +115,7 @@ port 80 or port 443
 
 <BaseQuiz id="wireshark-advanced-1" correct="B">
   <template #question>
-    Que capture le filtre `tcp and not port 22` ?
+    Que capture le filtre <code>tcp and not port 22</code> ?
   </template>
   
   <BaseQuizOption value="A">Seulement le trafic SSH</BaseQuizOption>
@@ -124,7 +124,7 @@ port 80 or port 443
   <BaseQuizOption value="D">Tout le trafic réseau</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Ce filtre capture tout le trafic TCP mais exclut les paquets sur le port 22 (SSH). L'opérateur `and not` exclut le port spécifié tout en conservant tout autre trafic TCP.
+    Ce filtre capture tout le trafic TCP mais exclut les paquets sur le port 22 (SSH). L'opérateur <code>and not</code> exclut le port spécifié tout en conservant tout autre trafic TCP.
   </BaseQuizAnswer>
 </BaseQuiz>
 

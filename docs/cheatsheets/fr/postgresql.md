@@ -133,7 +133,7 @@ CREATE TABLE commandes (
 
 <BaseQuiz id="postgresql-create-table-1" correct="A">
   <template #question>
-    Que fait `SERIAL PRIMARY KEY` dans PostgreSQL ?
+    Que fait <code>SERIAL PRIMARY KEY</code> dans PostgreSQL ?
   </template>
   
   <BaseQuizOption value="A" correct>Crée une colonne entière auto-incrémentée qui sert de clé primaire</BaseQuizOption>
@@ -142,7 +142,7 @@ CREATE TABLE commandes (
   <BaseQuizOption value="D">Crée un index unique</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SERIAL` est un type de données spécifique à PostgreSQL qui crée un entier auto-incrémenté. Combiné avec `PRIMARY KEY`, il crée un identifiant unique pour chaque ligne qui s'incrémente automatiquement.
+    <code>SERIAL</code> est un type de données spécifique à PostgreSQL qui crée un entier auto-incrémenté. Combiné avec <code>PRIMARY KEY</code>, il crée un identifiant unique pour chaque ligne qui s'incrémente automatiquement.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ SELECT * FROM utilisateurs WHERE actif = false;
 
 <BaseQuiz id="postgresql-insert-1" correct="C">
   <template #question>
-    Que fait `RETURNING` dans une instruction INSERT de PostgreSQL ?
+    Que fait <code>RETURNING</code> dans une instruction INSERT de PostgreSQL ?
   </template>
   
   <BaseQuizOption value="A">Il annule l'insertion</BaseQuizOption>
@@ -299,7 +299,7 @@ SELECT * FROM utilisateurs WHERE actif = false;
   <BaseQuizOption value="D">Il met à jour les lignes existantes</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La clause `RETURNING` dans PostgreSQL vous permet de récupérer les données de la ligne insérée (ou des colonnes spécifiques) immédiatement après l'insertion, ce qui est utile pour obtenir des identifiants ou des horodatages générés automatiquement.
+    La clause <code>RETURNING</code> dans PostgreSQL vous permet de récupérer les données de la ligne insérée (ou des colonnes spécifiques) immédiatement après l'insertion, ce qui est utile pour obtenir des identifiants ou des horodatages générés automatiquement.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -182,7 +182,7 @@ kubectl get pods --watch
 
 <BaseQuiz id="kubernetes-pods-1" correct="C">
   <template #question>
-    Что делает команда `kubectl get pods --all-namespaces`?
+    Что делает команда <code>kubectl get pods --all-namespaces</code>?
   </template>
   
   <BaseQuizOption value="A">Выводит только запущенные поды</BaseQuizOption>
@@ -191,7 +191,7 @@ kubectl get pods --watch
   <BaseQuizOption value="D">Удаляет все поды</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `--all-namespaces` (или `-A`) показывает поды из всех пространств имен, а не только из пространства по умолчанию. Это полезно для обзора всего кластера.
+    Флаг <code>--all-namespaces</code> (или <code>-A</code>) показывает поды из всех пространств имен, а не только из пространства по умолчанию. Это полезно для обзора всего кластера.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ cpu-percent=80
 
 <BaseQuiz id="kubernetes-scale-1" correct="B">
   <template #question>
-    Что делает команда `kubectl scale deployment nginx --replicas=5`?
+    Что делает команда <code>kubectl scale deployment nginx --replicas=5</code>?
   </template>
   
   <BaseQuizOption value="A">Создает 5 новых развертываний</BaseQuizOption>
@@ -299,7 +299,7 @@ cpu-percent=80
   <BaseQuizOption value="D">Обновляет образ развертывания</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Команда `scale` изменяет количество реплик для развертывания. Эта команда гарантирует, что развертывание nginx будет запускать ровно 5 реплик пода, создавая или удаляя поды по мере необходимости.
+    Команда <code>scale</code> изменяет количество реплик для развертывания. Эта команда гарантирует, что развертывание nginx будет запускать ровно 5 реплик пода, создавая или удаляя поды по мере необходимости.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -339,7 +339,7 @@ kubectl apply -f service.yaml
 
 <BaseQuiz id="kubernetes-service-1" correct="A">
   <template #question>
-    Какой тип службы по умолчанию используется при вызове `kubectl expose`?
+    Какой тип службы по умолчанию используется при вызове <code>kubectl expose</code>?
   </template>
   
   <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>

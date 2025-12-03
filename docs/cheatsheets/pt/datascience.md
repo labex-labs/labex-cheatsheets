@@ -74,7 +74,7 @@ df.fillna(df.mean())  # Lidar com valores ausentes
 
 <BaseQuiz id="datascience-pandas-1" correct="C">
   <template #question>
-    O que `df.head()` retorna no Pandas?
+    O que <code>df.head()</code> retorna no Pandas?
   </template>
   
   <BaseQuizOption value="A">As últimas 5 linhas do DataFrame</BaseQuizOption>
@@ -83,7 +83,7 @@ df.fillna(df.mean())  # Lidar com valores ausentes
   <BaseQuizOption value="D">Todas as linhas do DataFrame</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `df.head()` exibe as primeiras 5 linhas do DataFrame por padrão. Você pode especificar um número diferente, como `df.head(10)` para ver as primeiras 10 linhas. É útil para inspecionar rapidamente seus dados.
+    <code>df.head()</code> exibe as primeiras 5 linhas do DataFrame por padrão. Você pode especificar um número diferente, como <code>df.head(10)</code> para ver as primeiras 10 linhas. É útil para inspecionar rapidamente seus dados.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df_filled = pd.DataFrame(imputer.fit_transform(df))
 
 <BaseQuiz id="datascience-missing-1" correct="B">
   <template #question>
-    Para que serve o preenchimento para frente (`method='forward'`)?
+    Para que serve o preenchimento para frente (<code>method='forward'</code>)?
   </template>
   
   <BaseQuizOption value="A">Preencher valores ausentes com a média</BaseQuizOption>

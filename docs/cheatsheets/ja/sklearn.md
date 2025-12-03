@@ -240,7 +240,7 @@ rf_clf = RandomForestClassifier(
 
 <BaseQuiz id="sklearn-randomforest-1" correct="A">
   <template #question>
-    `RandomForestClassifier`における `n_estimators` は何を制御しますか？
+    <code>RandomForestClassifier</code>における <code>n_estimators</code> は何を制御しますか？
   </template>
   
   <BaseQuizOption value="A" correct>フォレスト内の決定木の数</BaseQuizOption>
@@ -249,7 +249,7 @@ rf_clf = RandomForestClassifier(
   <BaseQuizOption value="D">ランダムシード</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `n_estimators` は、ランダムフォレストに含まれる決定木の数を指定します。木の数が多いほど、通常は性能が向上しますが、計算時間も増加します。デフォルトは通常 100 です。
+    <code>n_estimators</code> は、ランダムフォレストに含まれる決定木の数を指定します。木の数が多いほど、通常は性能が向上しますが、計算時間も増加します。デフォルトは通常 100 です。
   </BaseQuizAnswer>
 </BaseQuiz>
 

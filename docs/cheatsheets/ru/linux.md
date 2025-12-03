@@ -158,7 +158,7 @@ cd -
   <BaseQuizOption value="D">whoami</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Команда `pwd` (print working directory) отображает полный путь к каталогу, в котором вы находитесь.
+    Команда <code>pwd</code> (print working directory) отображает полный путь к каталогу, в котором вы находитесь.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -249,7 +249,7 @@ ls -l filename
 
 <BaseQuiz id="linux-chmod-1" correct="C">
   <template #question>
-    Что устанавливает `chmod 755 filename` для прав доступа?
+    Что устанавливает <code>chmod 755 filename</code> для прав доступа?
   </template>
   
   <BaseQuizOption value="A">Чтение, запись, выполнение для владельца; чтение для группы и остальных</BaseQuizOption>
@@ -258,7 +258,7 @@ ls -l filename
   <BaseQuizOption value="D">Чтение, запись для владельца; чтение для группы и остальных</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` устанавливает: владелец = 7 (rwx), группа = 5 (r-x), остальные = 5 (r-x). Это распространенный набор прав для исполняемых файлов и каталогов.
+    <code>chmod 755</code> устанавливает: владелец = 7 (rwx), группа = 5 (r-x), остальные = 5 (r-x). Это распространенный набор прав для исполняемых файлов и каталогов.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -300,7 +300,7 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    Какой сигнал отправляет команда `kill -9` процессу?
+    Какой сигнал отправляет команда <code>kill -9</code> процессу?
   </template>
   
   <BaseQuizOption value="A">SIGTERM (мягкое завершение)</BaseQuizOption>
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (принудительное завершение, нельзя игнорировать)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9` отправляет SIGKILL, который принудительно немедленно завершает процесс. Этот сигнал не может быть перехвачен или проигнорирован процессом, что полезно для завершения зависших процессов.
+    <code>kill -9</code> отправляет SIGKILL, который принудительно немедленно завершает процесс. Этот сигнал не может быть перехвачен или проигнорирован процессом, что полезно для завершения зависших процессов.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -383,7 +383,7 @@ mtr google.com
 
 <BaseQuiz id="linux-ping-1" correct="B">
   <template #question>
-    Что делает команда `ping -c 4`?
+    Что делает команда <code>ping -c 4</code>?
   </template>
   
   <BaseQuizOption value="A">Пинговать с таймаутом 4 секунды</BaseQuizOption>
@@ -392,7 +392,7 @@ mtr google.com
   <BaseQuizOption value="D">Ждать 4 секунды между пингами</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Опция `-c` указывает количество отправляемых пакетов. `ping -c 4` отправит ровно 4 пакета ICMP echo request и затем остановится, отобразив результаты.
+    Опция <code>-c</code> указывает количество отправляемых пакетов. <code>ping -c 4</code> отправит ровно 4 пакета ICMP echo request и затем остановится, отобразив результаты.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -449,7 +449,7 @@ grep -c "pattern" filename
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    Какая опция `grep` выполняет поиск без учета регистра?
+    Какая опция <code>grep</code> выполняет поиск без учета регистра?
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Опция `-i` делает grep нечувствительным к регистру, поэтому она будет соответствовать как заглавным, так и строчным буквам. Например, `grep -i "error" file.txt` найдет "Error", "ERROR" и "error".
+    Опция <code>-i</code> делает grep нечувствительным к регистру, поэтому она будет соответствовать как заглавным, так и строчным буквам. Например, <code>grep -i "error" file.txt</code> найдет "Error", "ERROR" и "error".
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -55,7 +55,7 @@ ls -la
 
 <BaseQuiz id="cybersecurity-chmod-1" correct="C">
   <template #question>
-    Что устанавливает команда `chmod 644 file.txt` для разрешений файла?
+    Что устанавливает команда <code>chmod 644 file.txt</code> для разрешений файла?
   </template>
   
   <BaseQuizOption value="A">Чтение, запись, выполнение для всех пользователей</BaseQuizOption>
@@ -64,7 +64,7 @@ ls -la
   <BaseQuizOption value="D">Только чтение для всех пользователей</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 644` устанавливает: владелец = 6 (rw-), группа = 4 (r--), остальные = 4 (r--). Это распространенный набор разрешений для файлов, которые должны быть доступны для чтения всем, но доступны для записи только владельцу.
+    <code>chmod 644</code> устанавливает: владелец = 6 (rw-), группа = 4 (r--), остальные = 4 (r--). Это распространенный набор разрешений для файлов, которые должны быть доступны для чтения всем, но доступны для записи только владельцу.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -84,7 +84,7 @@ sudo ss -tuln
 
 <BaseQuiz id="cybersecurity-firewall-1" correct="B">
   <template #question>
-    Что делает команда `sudo ufw allow 22/tcp`?
+    Что делает команда <code>sudo ufw allow 22/tcp</code>?
   </template>
   
   <BaseQuizOption value="A">Блокирует порт 22</BaseQuizOption>
@@ -93,7 +93,7 @@ sudo ss -tuln
   <BaseQuizOption value="D">Показывает статус брандмауэра</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ufw allow 22/tcp` создает правило брандмауэра, которое разрешает входящие TCP-соединения на порт 22, являющийся портом по умолчанию для SSH. Это важно для удаленного доступа к серверу.
+    <code>ufw allow 22/tcp</code> создает правило брандмауэра, которое разрешает входящие TCP-соединения на порт 22, являющийся портом по умолчанию для SSH. Это важно для удаленного доступа к серверу.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -139,7 +139,7 @@ grep "Failed password" /var/log/auth.log
 
 <BaseQuiz id="cybersecurity-logs-1" correct="A">
   <template #question>
-    Что делает команда `tail -f /var/log/auth.log`?
+    Что делает команда <code>tail -f /var/log/auth.log</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Отслеживает файл журнала аутентификации в реальном времени</BaseQuizOption>
@@ -148,7 +148,7 @@ grep "Failed password" /var/log/auth.log
   <BaseQuizOption value="D">Архивирует файл журнала</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-f` заставляет `tail` следить за файлом, отображая новые записи журнала по мере их записи. Это полезно для мониторинга событий аутентификации и инцидентов безопасности в реальном времени.
+    Флаг <code>-f</code> заставляет <code>tail</code> следить за файлом, отображая новые записи журнала по мере их записи. Это полезно для мониторинга событий аутентификации и инцидентов безопасности в реальном времени.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -96,7 +96,7 @@ env | grep TARGET
 
 <BaseQuiz id="kali-env-1" correct="C">
   <template #question>
-    What happens to environment variables set with `export`?
+    What happens to environment variables set with <code>export</code>?
   </template>
   
   <BaseQuizOption value="A">They persist across system reboots</BaseQuizOption>
@@ -105,7 +105,7 @@ env | grep TARGET
   <BaseQuizOption value="D">They are global system variables</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Environment variables set with `export` are available to the current shell session and all child processes spawned from it. They are lost when the shell session ends unless added to shell configuration files like `.bashrc`.
+    Environment variables set with <code>export</code> are available to the current shell session and all child processes spawned from it. They are lost when the shell session ends unless added to shell configuration files like <code>.bashrc</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ nmap -sS 192.168.1.1
 
 <BaseQuiz id="kali-nmap-1" correct="B">
   <template #question>
-    What does `nmap -sS` do?
+    What does <code>nmap -sS</code> do?
   </template>
   
   <BaseQuizOption value="A">Performs a UDP scan</BaseQuizOption>
@@ -165,7 +165,7 @@ nmap -sS 192.168.1.1
   <BaseQuizOption value="D">Performs OS detection</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `-sS` flag performs a SYN scan (also called half-open scan) because it never completes the TCP handshake. It sends SYN packets and analyzes responses, making it stealthier than a full TCP connect scan.
+    The <code>-sS</code> flag performs a SYN scan (also called half-open scan) because it never completes the TCP handshake. It sends SYN packets and analyzes responses, making it stealthier than a full TCP connect scan.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ nmap -O 192.168.1.1
 
 <BaseQuiz id="kali-enumeration-1" correct="A">
   <template #question>
-    What does `nmap -sV` do?
+    What does <code>nmap -sV</code> do?
   </template>
   
   <BaseQuizOption value="A" correct>Detects service versions running on open ports</BaseQuizOption>
@@ -191,7 +191,7 @@ nmap -O 192.168.1.1
   <BaseQuizOption value="D">Performs OS detection only</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `-sV` flag enables version detection, which probes open ports to determine what service and version is running. This is useful for identifying potential vulnerabilities associated with specific software versions.
+    The <code>-sV</code> flag enables version detection, which probes open ports to determine what service and version is running. This is useful for identifying potential vulnerabilities associated with specific software versions.
   </BaseQuizAnswer>
 </BaseQuiz>
 # Script scanning

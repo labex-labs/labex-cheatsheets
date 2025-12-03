@@ -38,7 +38,7 @@ net 192.168.1.0/24
 
 <BaseQuiz id="wireshark-filter-1" correct="A">
   <template #question>
-    Wireshark で`host 192.168.1.100`は何をフィルタリングしますか？
+    Wireshark で<code>host 192.168.1.100</code>は何をフィルタリングしますか？
   </template>
   
   <BaseQuizOption value="A" correct>192.168.1.100 とのすべてのトラフィック（送受信）</BaseQuizOption>
@@ -47,7 +47,7 @@ net 192.168.1.0/24
   <BaseQuizOption value="D">192.168.1.100 のポート上のトラフィック</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `host` フィルターは、指定された IP アドレスが送信元または宛先のすべてのトラフィックをキャプチャします。送信元のみの場合は`src host`、宛先のみの場合は`dst host`を使用します。
+    <code>host</code> フィルターは、指定された IP アドレスが送信元または宛先のすべてのトラフィックをキャプチャします。送信元のみの場合は<code>src host</code>、宛先のみの場合は<code>dst host</code>を使用します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -70,7 +70,7 @@ portrange 1000-2000
 
 <BaseQuiz id="wireshark-port-1" correct="D">
   <template #question>
-    Wireshark で`port 80`は何をフィルタリングしますか？
+    Wireshark で<code>port 80</code>は何をフィルタリングしますか？
   </template>
   
   <BaseQuizOption value="A">HTTP リクエストのみ</BaseQuizOption>
@@ -79,7 +79,7 @@ portrange 1000-2000
   <BaseQuizOption value="D" correct>ポート 80 上のすべてのトラフィック（送信元と宛先の両方）</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `port` フィルターは、ポート 80 が送信元ポートまたは宛先ポートのいずれかであるすべてのトラフィックをキャプチャします。これには、ポート 80 を使用する HTTP リクエストとレスポンスの両方が含まれます。
+    <code>port</code> フィルターは、ポート 80 が送信元ポートまたは宛先ポートのいずれかであるすべてのトラフィックをキャプチャします。これには、ポート 80 を使用する HTTP リクエストとレスポンスの両方が含まれます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -115,7 +115,7 @@ port 80 or port 443
 
 <BaseQuiz id="wireshark-advanced-1" correct="B">
   <template #question>
-    `tcp and not port 22`は何をキャプチャしますか？
+    <code>tcp and not port 22</code>は何をキャプチャしますか？
   </template>
   
   <BaseQuizOption value="A">SSH トラフィックのみ</BaseQuizOption>
@@ -124,7 +124,7 @@ port 80 or port 443
   <BaseQuizOption value="D">すべてのネットワークトラフィック</BaseQuizOption>
   
   <BaseQuizAnswer>
-    このフィルターは、ポート 22（SSH）を除くすべての TCP トラフィックをキャプチャします。`and not`演算子は、指定されたポートを除外しながら、他のすべての TCP トラフィックを保持します。
+    このフィルターは、ポート 22（SSH）を除くすべての TCP トラフィックをキャプチャします。<code>and not</code>演算子は、指定されたポートを除外しながら、他のすべての TCP トラフィックを保持します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

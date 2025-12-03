@@ -55,7 +55,7 @@ ls -la
 
 <BaseQuiz id="cybersecurity-chmod-1" correct="C">
   <template #question>
-    `chmod 644 file.txt` 设置的文件权限是什么？
+    <code>chmod 644 file.txt</code> 设置的文件权限是什么？
   </template>
   
   <BaseQuizOption value="A">所有用户都具有读、写、执行权限</BaseQuizOption>
@@ -64,7 +64,7 @@ ls -la
   <BaseQuizOption value="D">所有用户都只有读权限</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 644` 设置为：所有者 = 6 (rw-)，组 = 4 (r--)，其他用户 = 4 (r--)。这是一种常见的文件权限设置，文件应可被所有人读取，但只能被所有者写入。
+    <code>chmod 644</code> 设置为：所有者 = 6 (rw-)，组 = 4 (r--)，其他用户 = 4 (r--)。这是一种常见的文件权限设置，文件应可被所有人读取，但只能被所有者写入。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -84,7 +84,7 @@ sudo ss -tuln
 
 <BaseQuiz id="cybersecurity-firewall-1" correct="B">
   <template #question>
-    `sudo ufw allow 22/tcp` 的作用是什么？
+    <code>sudo ufw allow 22/tcp</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">阻止端口 22</BaseQuizOption>
@@ -93,7 +93,7 @@ sudo ss -tuln
   <BaseQuizOption value="D">显示防火墙状态</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ufw allow 22/tcp` 创建了一个防火墙规则，允许传入到端口 22（默认的 SSH 端口）的 TCP 连接。这对于远程服务器访问至关重要。
+    <code>ufw allow 22/tcp</code> 创建了一个防火墙规则，允许传入到端口 22（默认的 SSH 端口）的 TCP 连接。这对于远程服务器访问至关重要。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -139,7 +139,7 @@ grep "Failed password" /var/log/auth.log
 
 <BaseQuiz id="cybersecurity-logs-1" correct="A">
   <template #question>
-    `tail -f /var/log/auth.log` 的作用是什么？
+    <code>tail -f /var/log/auth.log</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A" correct>实时跟踪身份验证日志文件</BaseQuizOption>
@@ -148,7 +148,7 @@ grep "Failed password" /var/log/auth.log
   <BaseQuizOption value="D">归档日志文件</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-f` 标志使 `tail` 跟踪文件，在新条目写入时显示它们。这对于实时监控身份验证事件和安全事件非常有用。
+    <code>-f</code> 标志使 <code>tail</code> 跟踪文件，在新条目写入时显示它们。这对于实时监控身份验证事件和安全事件非常有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 

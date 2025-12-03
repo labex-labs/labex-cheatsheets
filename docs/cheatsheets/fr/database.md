@@ -38,7 +38,7 @@ USE company_db;
 
 <BaseQuiz id="database-create-1" correct="A">
   <template #question>
-    Que fait `CREATE DATABASE company_db` ?
+    Que fait <code>CREATE DATABASE company_db</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Crée une nouvelle base de données vide nommée company_db</BaseQuizOption>
@@ -47,7 +47,7 @@ USE company_db;
   <BaseQuizOption value="D">Sauvegarde la base de données</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `CREATE DATABASE` crée une nouvelle base de données vide. Après la création, vous devez utiliser `USE` pour la sélectionner, puis créer des tables à l'intérieur.
+    <code>CREATE DATABASE</code> crée une nouvelle base de données vide. Après la création, vous devez utiliser <code>USE</code> pour la sélectionner, puis créer des tables à l'intérieur.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -157,7 +157,7 @@ RENAME TABLE employees TO staff;
 
 <BaseQuiz id="database-alter-1" correct="C">
   <template #question>
-    Que fait `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)` ?
+    Que fait <code>ALTER TABLE employees ADD COLUMN phone VARCHAR(15)</code> ?
   </template>
   
   <BaseQuizOption value="A">Supprime la colonne phone</BaseQuizOption>
@@ -166,7 +166,7 @@ RENAME TABLE employees TO staff;
   <BaseQuizOption value="D">Renomme la table</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ALTER TABLE ... ADD COLUMN` ajoute une nouvelle colonne à une table existante. La nouvelle colonne sera ajoutée avec le type de données spécifié et sera NULL pour les lignes existantes, sauf si vous spécifiez une valeur par défaut.
+    <code>ALTER TABLE ... ADD COLUMN</code> ajoute une nouvelle colonne à une table existante. La nouvelle colonne sera ajoutée avec le type de données spécifié et sera NULL pour les lignes existantes, sauf si vous spécifiez une valeur par défaut.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -294,7 +294,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
 
 <BaseQuiz id="database-where-1" correct="C">
   <template #question>
-    Que correspond `LIKE 'John%'` dans une clause WHERE ?
+    Que correspond <code>LIKE 'John%'</code> dans une clause WHERE ?
   </template>
   
   <BaseQuizOption value="A">Correspondances exactes à "John"</BaseQuizOption>
@@ -303,7 +303,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
   <BaseQuizOption value="D">Valeurs contenant "John" n'importe où</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le caractère générique `%` en SQL correspond à toute séquence de caractères. `LIKE 'John%'` correspond à toute valeur commençant par "John", comme "John", "Johnny", "Johnson", etc.
+    Le caractère générique <code>%</code> en SQL correspond à toute séquence de caractères. <code>LIKE 'John%'</code> correspond à toute valeur commençant par "John", comme "John", "Johnny", "Johnson", etc.
   </BaseQuizAnswer>
 </BaseQuiz>
 

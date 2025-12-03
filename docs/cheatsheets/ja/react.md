@@ -254,7 +254,7 @@ function Form() {
 
 <BaseQuiz id="react-usestate-1" correct="A">
   <template #question>
-    `useState(0)` は何を返しますか？
+    <code>useState(0)</code> は何を返しますか？
   </template>
   
   <BaseQuizOption value="A" correct>状態値とそれを更新する関数の配列</BaseQuizOption>
@@ -263,7 +263,7 @@ function Form() {
   <BaseQuizOption value="D">状態を設定するだけで何も返さない</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `useState` は、現在の状態値とそれを更新する関数の 2 つの要素を持つ配列を返します。引数として初期値（0）が渡されます。
+    <code>useState</code> は、現在の状態値とそれを更新する関数の 2 つの要素を持つ配列を返します。引数として初期値（0）が渡されます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -292,7 +292,7 @@ function Timer() {
 
 <BaseQuiz id="react-useeffect-1" correct="D">
   <template #question>
-    `useEffect(() => {...}, [])`の空の依存関係配列は何を意味しますか？
+    <code>useEffect(() => {...}, [])</code>の空の依存関係配列は何を意味しますか？
   </template>
   
   <BaseQuizOption value="A">エフェクトはすべてのレンダリングで実行される</BaseQuizOption>

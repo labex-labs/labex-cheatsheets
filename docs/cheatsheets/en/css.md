@@ -93,7 +93,7 @@ p.intro {
   <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Class selectors use a dot (`.`) prefix. `.highlight` selects all elements with `class="highlight"`. ID selectors use `#`, and element selectors use no prefix.
+    Class selectors use a dot (<code>.</code>) prefix. <code>.highlight</code> selects all elements with <code>class="highlight"</code>. ID selectors use <code>#</code>, and element selectors use no prefix.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -217,7 +217,7 @@ div {
 
 <BaseQuiz id="css-padding-1" correct="C">
   <template #question>
-    What does `padding: 10px 20px` set?
+    What does <code>padding: 10px 20px</code> set?
   </template>
   
   <BaseQuizOption value="A">10px top/bottom, 20px left/right</BaseQuizOption>
@@ -226,7 +226,7 @@ div {
   <BaseQuizOption value="D">10px top, 20px bottom</BaseQuizOption>
   
   <BaseQuizAnswer>
-    When two values are provided, the first applies to top and bottom, and the second applies to left and right. So `padding: 10px 20px` means 10px vertical padding and 20px horizontal padding.
+    When two values are provided, the first applies to top and bottom, and the second applies to left and right. So <code>padding: 10px 20px</code> means 10px vertical padding and 20px horizontal padding.
   </BaseQuizAnswer>
 </BaseQuiz>
 ```
@@ -283,7 +283,7 @@ div {
 
 <BaseQuiz id="css-margin-1" correct="C">
   <template #question>
-    What does `margin: 0 auto` do?
+    What does <code>margin: 0 auto</code> do?
   </template>
   
   <BaseQuizOption value="A">Removes all margins</BaseQuizOption>
@@ -292,7 +292,7 @@ div {
   <BaseQuizOption value="D">Centers a block element vertically</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `margin: 0 auto` sets top and bottom margins to 0 and left/right margins to auto, which centers a block-level element horizontally within its container.
+    <code>margin: 0 auto</code> sets top and bottom margins to 0 and left/right margins to auto, which centers a block-level element horizontally within its container.
   </BaseQuizAnswer>
 </BaseQuiz>
 

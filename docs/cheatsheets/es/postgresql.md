@@ -133,7 +133,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="postgresql-create-table-1" correct="A">
   <template #question>
-    ¿Qué hace `SERIAL PRIMARY KEY` en PostgreSQL?
+    ¿Qué hace <code>SERIAL PRIMARY KEY</code> en PostgreSQL?
   </template>
   
   <BaseQuizOption value="A" correct>Crea una columna entera de autoincremento que sirve como clave primaria</BaseQuizOption>
@@ -142,7 +142,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">Crea un índice único</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SERIAL` es un tipo de dato específico de PostgreSQL que crea un entero de autoincremento. Combinado con `PRIMARY KEY`, crea un identificador único para cada fila que se incrementa automáticamente.
+    <code>SERIAL</code> es un tipo de dato específico de PostgreSQL que crea un entero de autoincremento. Combinado con <code>PRIMARY KEY</code>, crea un identificador único para cada fila que se incrementa automáticamente.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ SELECT * FROM users WHERE active = false;
 
 <BaseQuiz id="postgresql-insert-1" correct="C">
   <template #question>
-    ¿Qué hace `RETURNING` en una sentencia INSERT de PostgreSQL?
+    ¿Qué hace <code>RETURNING</code> en una sentencia INSERT de PostgreSQL?
   </template>
   
   <BaseQuizOption value="A">Revierte la inserción</BaseQuizOption>
@@ -299,7 +299,7 @@ SELECT * FROM users WHERE active = false;
   <BaseQuizOption value="D">Actualiza filas existentes</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La cláusula `RETURNING` en PostgreSQL permite recuperar los datos de la fila insertada (o columnas específicas) inmediatamente después de la inserción, lo cual es útil para obtener IDs autogenerados o marcas de tiempo.
+    La cláusula <code>RETURNING</code> en PostgreSQL permite recuperar los datos de la fila insertada (o columnas específicas) inmediatamente después de la inserción, lo cual es útil para obtener IDs autogenerados o marcas de tiempo.
   </BaseQuizAnswer>
 </BaseQuiz>
 

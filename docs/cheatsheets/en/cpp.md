@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
   <BaseQuizOption value="D">C uses cout, C++ uses printf</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C uses `printf()` from stdio.h, while C++ uses `cout` from iostream with the stream insertion operator `<<`. C++ also supports printf for compatibility.
+    C uses <code>printf()</code> from stdio.h, while C++ uses <code>cout</code> from iostream with the stream insertion operator <code><<</code>. C++ also supports printf for compatibility.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ vector<string> names(5); // Size 5, empty strings
 
 <BaseQuiz id="cpp-vector-1" correct="B">
   <template #question>
-    What is the main advantage of `vector` over regular arrays in C++?
+    What is the main advantage of <code>vector</code> over regular arrays in C++?
   </template>
   
   <BaseQuizOption value="A">Vectors are faster</BaseQuizOption>
@@ -165,7 +165,7 @@ vector<string> names(5); // Size 5, empty strings
   <BaseQuizOption value="D">There is no advantage</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `vector` is a dynamic array that can grow or shrink at runtime, unlike regular arrays which have a fixed size determined at compile time. This makes vectors more flexible for many use cases.
+    <code>vector</code> is a dynamic array that can grow or shrink at runtime, unlike regular arrays which have a fixed size determined at compile time. This makes vectors more flexible for many use cases.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -247,7 +247,7 @@ for (auto& item : container) {
   <BaseQuizOption value="D">A loop that requires manual index management</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Range-based for loops (introduced in C++11) automatically iterate over all elements in a container (like vectors, arrays, strings) without needing to manage indices manually. The syntax is `for (auto item : container)`.
+    Range-based for loops (introduced in C++11) automatically iterate over all elements in a container (like vectors, arrays, strings) without needing to manage indices manually. The syntax is <code>for (auto item : container)</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 

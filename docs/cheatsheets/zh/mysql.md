@@ -53,7 +53,7 @@ DROP DATABASE old_database;
 
 <BaseQuiz id="mysql-database-1" correct="C">
   <template #question>
-    `USE database_name` 的作用是什么？
+    <code>USE database_name</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">创建一个新数据库</BaseQuizOption>
@@ -62,7 +62,7 @@ DROP DATABASE old_database;
   <BaseQuizOption value="D">显示数据库中的所有表</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `USE` 语句选择一个数据库，使其成为所有后续 SQL 语句的活动数据库。这等同于使用 `mysql -u user -p database_name` 连接时选择数据库。
+    <code>USE</code> 语句选择一个数据库，使其成为所有后续 SQL 语句的活动数据库。这等同于使用 <code>mysql -u user -p database_name</code> 连接时选择数据库。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -197,13 +197,13 @@ INSERT INTO users_backup SELECT * FROM users;
     插入单条记录的正确语法是什么？
   </template>
   
-  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="A" correct><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="B"><code>INSERT table_name VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="C"><code>ADD INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="D"><code>INSERT table_name (column1, column2) = (value1, value2);</code></BaseQuizOption>
   
   <BaseQuizAnswer>
-    正确的语法是 `INSERT INTO table_name (columns) VALUES (values)`。需要 `INTO` 关键字，并且必须同时指定列名和对应的值。
+    正确的语法是 <code>INSERT INTO table_name (columns) VALUES (values)</code>。需要 <code>INTO</code> 关键字，并且必须同时指定列名和对应的值。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -270,7 +270,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 
 <BaseQuiz id="mysql-select-1" correct="D">
   <template #question>
-    `SELECT * FROM users` 返回什么？
+    <code>SELECT * FROM users</code> 返回什么？
   </template>
   
   <BaseQuizOption value="A">仅返回 users 表的第一行</BaseQuizOption>
@@ -279,7 +279,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
   <BaseQuizOption value="D" correct>users 表中的所有列和所有行</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `*` 通配符选择所有列，在没有 WHERE 子句的情况下，它返回所有行。这对于查看所有数据很有用，但在处理大表时应谨慎使用。
+    <code>*</code> 通配符选择所有列，在没有 WHERE 子句的情况下，它返回所有行。这对于查看所有数据很有用，但在处理大表时应谨慎使用。
   </BaseQuizAnswer>
 </BaseQuiz>
 

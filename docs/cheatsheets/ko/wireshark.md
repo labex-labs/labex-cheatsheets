@@ -38,7 +38,7 @@ net 192.168.1.0/24
 
 <BaseQuiz id="wireshark-filter-1" correct="A">
   <template #question>
-    Wireshark 에서 `host 192.168.1.100` 필터는 무엇을 필터링합니까?
+    Wireshark 에서 <code>host 192.168.1.100</code> 필터는 무엇을 필터링합니까?
   </template>
   
   <BaseQuizOption value="A" correct>192.168.1.100 으로 들어오거나 나가는 모든 트래픽</BaseQuizOption>
@@ -47,7 +47,7 @@ net 192.168.1.0/24
   <BaseQuizOption value="D">192.168.1.100 포트의 트래픽</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `host` 필터는 지정된 IP 주소가 소스 또는 목적지인 모든 트래픽을 캡처합니다. 소스 전용 필터링은 `src host`를, 목적지 전용 필터링은 `dst host`를 사용합니다.
+    <code>host</code> 필터는 지정된 IP 주소가 소스 또는 목적지인 모든 트래픽을 캡처합니다. 소스 전용 필터링은 <code>src host</code>를, 목적지 전용 필터링은 <code>dst host</code>를 사용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -70,7 +70,7 @@ portrange 1000-2000
 
 <BaseQuiz id="wireshark-port-1" correct="D">
   <template #question>
-    Wireshark 에서 `port 80` 필터는 무엇을 필터링합니까?
+    Wireshark 에서 <code>port 80</code> 필터는 무엇을 필터링합니까?
   </template>
   
   <BaseQuizOption value="A">HTTP 요청만</BaseQuizOption>
@@ -79,7 +79,7 @@ portrange 1000-2000
   <BaseQuizOption value="D" correct>포트 80 의 모든 트래픽 (소스 및 목적지 모두)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `port` 필터는 포트 80 이 소스 포트 또는 목적지 포트인 모든 트래픽을 캡처합니다. 이는 HTTP 요청 및 응답뿐만 아니라 포트 80 을 사용하는 모든 트래픽을 포함합니다.
+    <code>port</code> 필터는 포트 80 이 소스 포트 또는 목적지 포트인 모든 트래픽을 캡처합니다. 이는 HTTP 요청 및 응답뿐만 아니라 포트 80 을 사용하는 모든 트래픽을 포함합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -115,7 +115,7 @@ port 80 or port 443
 
 <BaseQuiz id="wireshark-advanced-1" correct="B">
   <template #question>
-    `tcp and not port 22` 필터는 무엇을 캡처합니까?
+    <code>tcp and not port 22</code> 필터는 무엇을 캡처합니까?
   </template>
   
   <BaseQuizOption value="A">SSH 트래픽만</BaseQuizOption>
@@ -124,7 +124,7 @@ port 80 or port 443
   <BaseQuizOption value="D">모든 네트워크 트래픽</BaseQuizOption>
   
   <BaseQuizAnswer>
-    이 필터는 모든 TCP 트래픽을 캡처하지만 포트 22(SSH) 는 제외합니다. `and not` 연산자는 지정된 포트를 제외하면서 나머지 모든 TCP 트래픽을 유지합니다.
+    이 필터는 모든 TCP 트래픽을 캡처하지만 포트 22(SSH) 는 제외합니다. <code>and not</code> 연산자는 지정된 포트를 제외하면서 나머지 모든 TCP 트래픽을 유지합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

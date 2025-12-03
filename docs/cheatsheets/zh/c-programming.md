@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 
 <BaseQuiz id="c-main-1" correct="C">
   <template #question>
-    在 main 函数中 `return 0` 表示什么？
+    在 main 函数中 <code>return 0</code> 表示什么？
   </template>
   
   <BaseQuizOption value="A">程序失败</BaseQuizOption>
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
   <BaseQuizOption value="D">程序未返回值</BaseQuizOption>
   
   <BaseQuizAnswer>
-    在 C 语言中，从 main 函数 `return 0` 表示程序成功执行。非零返回值通常表示错误或异常终止。
+    在 C 语言中，从 main 函数 <code>return 0</code> 表示程序成功执行。非零返回值通常表示错误或异常终止。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -163,7 +163,7 @@ int size = sizeof(buffer);
   <BaseQuizOption value="D">仅作为指针</BaseQuizOption>
   
   <BaseQuizAnswer>
-    在 C 语言中，字符串表示为字符数组 (`char`)。字符串以空字符 (`\0`) 结尾，该字符标记了字符串的末尾。
+    在 C 语言中，字符串表示为字符数组 (<code>char</code>)。字符串以空字符 (<code>\0</code>) 结尾，该字符标记了字符串的末尾。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ for (int i = 0; i < 3; i++) {
 
 <BaseQuiz id="c-for-loop-1" correct="A">
   <template #question>
-    `sizeof(numbers) / sizeof(numbers[0])` 计算的是什么？
+    <code>sizeof(numbers) / sizeof(numbers[0])</code> 计算的是什么？
   </template>
   
   <BaseQuizOption value="A" correct>数组中的元素数量</BaseQuizOption>

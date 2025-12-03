@@ -127,7 +127,7 @@ name package
 
 <BaseQuiz id="rhel-package-1" correct="A">
   <template #question>
-    ¿Cuál es la diferencia entre `dnf` y `yum` en RHEL?
+    ¿Cuál es la diferencia entre <code>dnf</code> y <code>yum</code> en RHEL?
   </template>
   
   <BaseQuizOption value="A" correct>dnf es el gestor de paquetes más nuevo para RHEL 8+, yum se usa en RHEL 7</BaseQuizOption>
@@ -208,7 +208,7 @@ rm -rf directory/
 
 <BaseQuiz id="rhel-file-ops-1" correct="B">
   <template #question>
-    ¿Qué hace `cp -r`?
+    ¿Qué hace <code>cp -r</code>?
   </template>
   
   <BaseQuizOption value="A">Copia solo archivos</BaseQuizOption>
@@ -217,7 +217,7 @@ rm -rf directory/
   <BaseQuizOption value="D">Renombra archivos</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El indicador `-r` (recursivo) permite a `cp` copiar directorios y su contenido, incluyendo todos los subdirectorios y archivos dentro de ellos. Sin `-r`, `cp` no puede copiar directorios.
+    El indicador <code>-r</code> (recursivo) permite a <code>cp</code> copiar directorios y su contenido, incluyendo todos los subdirectorios y archivos dentro de ellos. Sin <code>-r</code>, <code>cp</code> no puede copiar directorios.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ tail -f /var/log/messages
 
 <BaseQuiz id="rhel-tail-1" correct="C">
   <template #question>
-    ¿Qué hace `tail -f /var/log/messages`?
+    ¿Qué hace <code>tail -f /var/log/messages</code>?
   </template>
   
   <BaseQuizOption value="A">Muestra solo las primeras 10 líneas</BaseQuizOption>
@@ -249,7 +249,7 @@ tail -f /var/log/messages
   <BaseQuizOption value="D">Archiva el archivo de registro</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El indicador `-f` hace que `tail` siga el archivo, mostrando nuevas entradas de registro a medida que se escriben. Esto es esencial para el monitoreo de registros en tiempo real y la solución de problemas.
+    El indicador <code>-f</code> hace que <code>tail</code> siga el archivo, mostrando nuevas entradas de registro a medida que se escriben. Esto es esencial para el monitoreo de registros en tiempo real y la solución de problemas.
   </BaseQuizAnswer>
 </BaseQuiz>
 

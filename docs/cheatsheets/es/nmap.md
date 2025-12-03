@@ -87,7 +87,7 @@ nmap 192.168.1.1 192.168.1.5
 
 <BaseQuiz id="nmap-scan-1" correct="A">
   <template #question>
-    ¿Qué hace un escaneo básico de `nmap 192.168.1.1` por defecto?
+    ¿Qué hace un escaneo básico de <code>nmap 192.168.1.1</code> por defecto?
   </template>
   
   <BaseQuizOption value="A" correct>Escanea los 1000 puertos TCP más comunes</BaseQuizOption>
@@ -96,7 +96,7 @@ nmap 192.168.1.1 192.168.1.5
   <BaseQuizOption value="D">Escanea solo el puerto 80</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Por defecto, Nmap escanea los 1000 puertos TCP más comunes. Para escanear todos los puertos, usa `-p-`, o especifica puertos concretos con `-p 80,443,22`.
+    Por defecto, Nmap escanea los 1000 puertos TCP más comunes. Para escanear todos los puertos, usa <code>-p-</code>, o especifica puertos concretos con <code>-p 80,443,22</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -145,7 +145,7 @@ nmap -PE 192.168.1.0/24
 
 <BaseQuiz id="nmap-ping-1" correct="A">
   <template #question>
-    ¿Qué hace `nmap -sn`?
+    ¿Qué hace <code>nmap -sn</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Realiza solo descubrimiento de host, sin escaneo de puertos</BaseQuizOption>
@@ -154,7 +154,7 @@ nmap -PE 192.168.1.0/24
   <BaseQuizOption value="D">Escanea solo puertos UDP</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El flag `-sn` le indica a Nmap que realice solo el descubrimiento de host (escaneo ping), sin escanear puertos. Esto es útil para identificar rápidamente qué hosts están en línea en una red.
+    El flag <code>-sn</code> le indica a Nmap que realice solo el descubrimiento de host (escaneo ping), sin escanear puertos. Esto es útil para identificar rápidamente qué hosts están en línea en una red.
   </BaseQuizAnswer>
 </BaseQuiz>
 

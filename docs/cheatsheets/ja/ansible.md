@@ -174,7 +174,7 @@ ansible all -m command -a "systemctl status nginx" --become
 
 <BaseQuiz id="ansible-command-1" correct="C">
   <template #question>
-    `ansible all -m ping` は何を行いますか？
+    <code>ansible all -m ping</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">ICMP ping を使用してネットワーク接続性をテストする</BaseQuizOption>
@@ -183,7 +183,7 @@ ansible all -m command -a "systemctl status nginx" --become
   <BaseQuizOption value="D">ホストがオンラインかどうかを確認する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Ansible の `ping` モジュールは ICMP を使用しません。これは、Ansible がホストに接続し、Python を実行し、結果を返すことができることを検証するためのテストモジュールです。接続性と構成の検証に使用されます。
+    Ansible の <code>ping</code> モジュールは ICMP を使用しません。これは、Ansible がホストに接続し、Python を実行し、結果を返すことができることを検証するためのテストモジュールです。接続性と構成の検証に使用されます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -278,7 +278,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
 
 <BaseQuiz id="ansible-playbook-1" correct="B">
   <template #question>
-    `ansible-playbook site.yml --check` は何を行いますか？
+    <code>ansible-playbook site.yml --check</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">プレイブックを 2 回実行する</BaseQuizOption>
@@ -287,7 +287,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
   <BaseQuizOption value="D">最初のタスクのみを実行する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `--check` フラグは、Ansible をチェックモード (ドライラン) で実行し、実際に変更を加えることなく何が起こるかをシミュレートします。これは、適用前にプレイブックをテストするのに役立ちます。
+    <code>--check</code> フラグは、Ansible をチェックモード (ドライラン) で実行し、実際に変更を加えることなく何が起こるかをシミュレートします。これは、適用前にプレイブックをテストするのに役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 

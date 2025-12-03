@@ -84,7 +84,7 @@ SET mykey "new_value" NX
 
 <BaseQuiz id="redis-set-get-1" correct="C">
   <template #question>
-    Was bewirkt `SET mykey "value" EX 3600`?
+    Was bewirkt <code>SET mykey "value" EX 3600</code>?
   </template>
   
   <BaseQuizOption value="A">Setzt den Schlüssel mit einem 3600 Byte großen Wert</BaseQuizOption>
@@ -93,7 +93,7 @@ SET mykey "new_value" NX
   <BaseQuizOption value="D">Setzt den Schlüssel mit 3600 verschiedenen Werten</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Option `EX` legt eine Ablaufzeit in Sekunden fest. `SET mykey "value" EX 3600` speichert den Wert und löscht ihn automatisch nach 3600 Sekunden (1 Stunde).
+    Die Option <code>EX</code> legt eine Ablaufzeit in Sekunden fest. <code>SET mykey "value" EX 3600</code> speichert den Wert und löscht ihn automatisch nach 3600 Sekunden (1 Stunde).
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -129,7 +129,7 @@ INCRBYFLOAT price 0.1
 
 <BaseQuiz id="redis-incr-1" correct="A">
   <template #question>
-    Was passiert, wenn Sie `INCR` für einen Schlüssel verwenden, der nicht existiert?
+    Was passiert, wenn Sie <code>INCR</code> für einen Schlüssel verwenden, der nicht existiert?
   </template>
   
   <BaseQuizOption value="A" correct>Redis erstellt den Schlüssel mit dem Wert 1</BaseQuizOption>
@@ -138,7 +138,7 @@ INCRBYFLOAT price 0.1
   <BaseQuizOption value="D">Es passiert nichts</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Wenn ein Schlüssel nicht existiert, behandelt `INCR` ihn so, als hätte er den Wert 0, inkrementiert ihn auf 1 und erstellt den Schlüssel. Dies macht `INCR` nützlich für die Initialisierung von Zählern.
+    Wenn ein Schlüssel nicht existiert, behandelt <code>INCR</code> ihn so, als hätte er den Wert 0, inkrementiert ihn auf 1 und erstellt den Schlüssel. Dies macht <code>INCR</code> nützlich für die Initialisierung von Zählern.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -202,7 +202,7 @@ LLEN mylist
 
 <BaseQuiz id="redis-list-1" correct="B">
   <template #question>
-    Was gibt `LRANGE mylist 0 -1` zurück?
+    Was gibt <code>LRANGE mylist 0 -1</code> zurück?
   </template>
   
   <BaseQuizOption value="A">Nur das erste Element</BaseQuizOption>
@@ -211,7 +211,7 @@ LLEN mylist
   <BaseQuizOption value="D">Einen Fehler</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `LRANGE` mit `0 -1` gibt alle Elemente in der Liste zurück. Die `0` ist der Startindex und `-1` repräsentiert das letzte Element, sodass dies alles vom ersten bis zum letzten Element abruft.
+    <code>LRANGE</code> mit <code>0 -1</code> gibt alle Elemente in der Liste zurück. Die <code>0</code> ist der Startindex und <code>-1</code> repräsentiert das letzte Element, sodass dies alles vom ersten bis zum letzten Element abruft.
   </BaseQuizAnswer>
 </BaseQuiz>
 

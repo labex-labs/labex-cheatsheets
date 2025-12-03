@@ -53,7 +53,7 @@ DROP DATABASE old_database;
 
 <BaseQuiz id="mysql-database-1" correct="C">
   <template #question>
-    `USE database_name`은 무엇을 수행합니까?
+    <code>USE database_name</code>은 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">새 데이터베이스를 생성합니다</BaseQuizOption>
@@ -62,7 +62,7 @@ DROP DATABASE old_database;
   <BaseQuizOption value="D">데이터베이스의 모든 테이블을 표시합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `USE` 문은 데이터베이스를 선택하여 후속 SQL 문에 대해 활성 데이터베이스로 만듭니다. 이는 `mysql -u user -p database_name`으로 연결할 때 데이터베이스를 선택하는 것과 동일합니다.
+    <code>USE</code> 문은 데이터베이스를 선택하여 후속 SQL 문에 대해 활성 데이터베이스로 만듭니다. 이는 <code>mysql -u user -p database_name</code>으로 연결할 때 데이터베이스를 선택하는 것과 동일합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -197,13 +197,13 @@ INSERT INTO users_backup SELECT * FROM users;
     단일 레코드를 삽입하는 올바른 구문은 무엇입니까?
   </template>
   
-  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="A" correct><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="B"><code>INSERT table_name VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="C"><code>ADD INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="D"><code>INSERT table_name (column1, column2) = (value1, value2);</code></BaseQuizOption>
   
   <BaseQuizAnswer>
-    올바른 구문은 `INSERT INTO table_name (columns) VALUES (values)`입니다. `INTO` 키워드가 필요하며 열 이름과 해당 값을 모두 지정해야 합니다.
+    올바른 구문은 <code>INSERT INTO table_name (columns) VALUES (values)</code>입니다. <code>INTO</code> 키워드가 필요하며 열 이름과 해당 값을 모두 지정해야 합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -270,7 +270,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 
 <BaseQuiz id="mysql-select-1" correct="D">
   <template #question>
-    `SELECT * FROM users`는 무엇을 반환합니까?
+    <code>SELECT * FROM users</code>는 무엇을 반환합니까?
   </template>
   
   <BaseQuizOption value="A">users 테이블의 첫 번째 행만</BaseQuizOption>
@@ -279,7 +279,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
   <BaseQuizOption value="D" correct>users 테이블의 모든 열과 모든 행</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `*` 와일드카드는 모든 열을 선택하며, WHERE 절이 없으면 모든 행을 반환합니다. 이는 모든 데이터를 보는 데 유용하지만 대규모 테이블에서는 주의해서 사용해야 합니다.
+    <code>*</code> 와일드카드는 모든 열을 선택하며, WHERE 절이 없으면 모든 행을 반환합니다. 이는 모든 데이터를 보는 데 유용하지만 대규모 테이블에서는 주의해서 사용해야 합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

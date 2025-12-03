@@ -137,7 +137,7 @@ cd /pfad/zum/verzeichnis
 
 <BaseQuiz id="shell-cd-1" correct="A">
   <template #question>
-    Was bewirkt `cd ~`?
+    Was bewirkt <code>cd ~</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Wechselt in das Home-Verzeichnis</BaseQuizOption>
@@ -146,7 +146,7 @@ cd /pfad/zum/verzeichnis
   <BaseQuizOption value="D">Erstellt ein neues Verzeichnis</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Symbol `~` ist eine Abkürzung für das Home-Verzeichnis. `cd ~` navigiert zu Ihrem Home-Verzeichnis, was äquivalent zu `cd $HOME` oder `cd /home/benutzername` ist.
+    Das Symbol <code>~</code> ist eine Abkürzung für das Home-Verzeichnis. <code>cd ~</code> navigiert zu Ihrem Home-Verzeichnis, was äquivalent zu <code>cd $HOME</code> oder <code>cd /home/benutzername</code> ist.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -203,7 +203,7 @@ grep -c "muster" datei.txt
 
 <BaseQuiz id="shell-grep-1" correct="B">
   <template #question>
-    Was bewirkt `grep -r "muster" verzeichnis/`?
+    Was bewirkt <code>grep -r "muster" verzeichnis/</code>?
   </template>
   
   <BaseQuizOption value="A">Sucht nur in der aktuellen Datei</BaseQuizOption>
@@ -212,7 +212,7 @@ grep -c "muster" datei.txt
   <BaseQuizOption value="D">Löscht Dateien, die das Muster enthalten</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Option `-r` bewirkt, dass grep rekursiv alle Dateien und Unterverzeichnisse durchsucht. Dies ist nützlich, um Textmuster in einer gesamten Verzeichnisstruktur zu finden.
+    Die Option <code>-r</code> bewirkt, dass grep rekursiv alle Dateien und Unterverzeichnisse durchsucht. Dies ist nützlich, um Textmuster in einer gesamten Verzeichnisstruktur zu finden.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -281,7 +281,7 @@ chmod -R 644 verzeichnis/
 
 <BaseQuiz id="shell-chmod-1" correct="C">
   <template #question>
-    Was setzt `chmod 755 datei.txt`?
+    Was setzt <code>chmod 755 datei.txt</code>?
   </template>
   
   <BaseQuizOption value="A">Lesen, Schreiben, Ausführen für alle Benutzer</BaseQuizOption>
@@ -290,7 +290,7 @@ chmod -R 644 verzeichnis/
   <BaseQuizOption value="D">Nur Lesen für alle Benutzer</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` setzt die Berechtigungen wie folgt: Besitzer = 7 (rwx), Gruppe = 5 (r-x), andere = 5 (r-x). Dies ist eine übliche Berechtigungseinstellung für ausführbare Dateien und Verzeichnisse.
+    <code>chmod 755</code> setzt die Berechtigungen wie folgt: Besitzer = 7 (rwx), Gruppe = 5 (r-x), andere = 5 (r-x). Dies ist eine übliche Berechtigungseinstellung für ausführbare Dateien und Verzeichnisse.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -409,16 +409,16 @@ befehl > /dev/null
 
 <BaseQuiz id="shell-redirect-1" correct="B">
   <template #question>
-    Was ist der Unterschied zwischen `>` und `>>` bei der Shell-Umleitung?
+    Was ist der Unterschied zwischen <code>></code> und <code>>></code> bei der Shell-Umleitung?
   </template>
   
-  <BaseQuizOption value="A">`>` hängt an, `>>` überschreibt</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`>` überschreibt die Datei, `>>` hängt an die Datei an</BaseQuizOption>
-  <BaseQuizOption value="C">`>` leitet stdout um, `>>` leitet stderr um</BaseQuizOption>
+  <BaseQuizOption value="A"><code>></code> hängt an, <code>>></code> überschreibt</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>></code> überschreibt die Datei, <code>>></code> hängt an die Datei an</BaseQuizOption>
+  <BaseQuizOption value="C"><code>></code> leitet stdout um, <code>>></code> leitet stderr um</BaseQuizOption>
   <BaseQuizOption value="D">Es gibt keinen Unterschied</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Der Operator `>` überschreibt die Zieldatei, falls sie existiert, während `>>` die Ausgabe am Ende der Datei anhängt. Verwenden Sie `>>`, wenn Sie vorhandene Inhalte beibehalten möchten.
+    Der Operator <code>></code> überschreibt die Zieldatei, falls sie existiert, während <code>>></code> die Ausgabe am Ende der Datei anhängt. Verwenden Sie <code>>></code>, wenn Sie vorhandene Inhalte beibehalten möchten.
   </BaseQuizAnswer>
 </BaseQuiz>
 

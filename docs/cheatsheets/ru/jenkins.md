@@ -155,7 +155,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
 
 <BaseQuiz id="jenkins-build-1" correct="B">
   <template #question>
-    Что делает флаг `-s` в команде `jenkins-cli.jar build my-job -s`?
+    Что делает флаг <code>-s</code> в команде <code>jenkins-cli.jar build my-job -s</code>?
   </template>
   
   <BaseQuizOption value="A">Пропускает сборку</BaseQuizOption>
@@ -164,7 +164,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
   <BaseQuizOption value="D">Останавливает сборку</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-s` делает команду сборки синхронной, то есть она ждет завершения сборки перед возвратом. Без него команда возвращается немедленно после запуска сборки.
+    Флаг <code>-s</code> делает команду сборки синхронной, то есть она ждет завершения сборки перед возвратом. Без него команда возвращается немедленно после запуска сборки.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -225,7 +225,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
 
 <BaseQuiz id="jenkins-console-1" correct="C">
   <template #question>
-    Что делает флаг `-f` в команде `jenkins-cli.jar console my-job -f`?
+    Что делает флаг <code>-f</code> в команде <code>jenkins-cli.jar console my-job -f</code>?
   </template>
   
   <BaseQuizOption value="A">Принудительно останавливает сборку</BaseQuizOption>
@@ -234,7 +234,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
   <BaseQuizOption value="D">Форматирует вывод как JSON</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-f` отслеживает вывод консоли в реальном времени, аналогично `tail -f` в Linux. Это полезно для мониторинга сборок по мере их выполнения.
+    Флаг <code>-f</code> отслеживает вывод консоли в реальном времени, аналогично <code>tail -f</code> в Linux. Это полезно для мониторинга сборок по мере их выполнения.
   </BaseQuizAnswer>
 </BaseQuiz>
 

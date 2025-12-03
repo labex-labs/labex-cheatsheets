@@ -55,7 +55,7 @@ ls -la
 
 <BaseQuiz id="cybersecurity-chmod-1" correct="C">
   <template #question>
-    `chmod 644 file.txt` はファイルパーミッションをどのように設定しますか？
+    <code>chmod 644 file.txt</code> はファイルパーミッションをどのように設定しますか？
   </template>
   
   <BaseQuizOption value="A">全ユーザーに読み取り、書き込み、実行</BaseQuizOption>
@@ -64,7 +64,7 @@ ls -la
   <BaseQuizOption value="D">全ユーザーに読み取りのみ</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 644` は、所有者 = 6 (rw-)、グループ = 4 (r--)、その他 = 4 (r--) を設定します。これは、すべてが読み取り可能だが、所有者のみが書き込み可能であるべきファイルに対する一般的なパーミッション設定です。
+    <code>chmod 644</code> は、所有者 = 6 (rw-)、グループ = 4 (r--)、その他 = 4 (r--) を設定します。これは、すべてが読み取り可能だが、所有者のみが書き込み可能であるべきファイルに対する一般的なパーミッション設定です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -84,7 +84,7 @@ sudo ss -tuln
 
 <BaseQuiz id="cybersecurity-firewall-1" correct="B">
   <template #question>
-    `sudo ufw allow 22/tcp` は何を行いますか？
+    <code>sudo ufw allow 22/tcp</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">ポート 22 をブロックする</BaseQuizOption>
@@ -93,7 +93,7 @@ sudo ss -tuln
   <BaseQuizOption value="D">ファイアウォールのステータスを表示する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ufw allow 22/tcp` は、ポート 22 (デフォルトの SSH ポート) への着信 TCP 接続を許可するファイアウォールルールを作成します。これはリモートサーバーアクセスに不可欠です。
+    <code>ufw allow 22/tcp</code> は、ポート 22 (デフォルトの SSH ポート) への着信 TCP 接続を許可するファイアウォールルールを作成します。これはリモートサーバーアクセスに不可欠です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -139,7 +139,7 @@ grep "Failed password" /var/log/auth.log
 
 <BaseQuiz id="cybersecurity-logs-1" correct="A">
   <template #question>
-    `tail -f /var/log/auth.log` は何を行いますか？
+    <code>tail -f /var/log/auth.log</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A" correct>認証ログファイルをリアルタイムで追跡する</BaseQuizOption>
@@ -148,7 +148,7 @@ grep "Failed password" /var/log/auth.log
   <BaseQuizOption value="D">ログファイルをアーカイブする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-f` フラグにより `tail` はファイルを追跡し、新しいログエントリが書き込まれると同時に表示します。これは認証イベントやセキュリティインシデントのリアルタイム監視に役立ちます。
+    <code>-f</code> フラグにより <code>tail</code> はファイルを追跡し、新しいログエントリが書き込まれると同時に表示します。これは認証イベントやセキュリティインシデントのリアルタイム監視に役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 

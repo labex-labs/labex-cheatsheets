@@ -183,7 +183,7 @@ kubectl get pods --watch
 
 <BaseQuiz id="kubernetes-pods-1" correct="C">
   <template #question>
-    What does `kubectl get pods --all-namespaces` do?
+    What does <code>kubectl get pods --all-namespaces</code> do?
   </template>
   
   <BaseQuizOption value="A">Lists only running pods</BaseQuizOption>
@@ -192,7 +192,7 @@ kubectl get pods --watch
   <BaseQuizOption value="D">Deletes all pods</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `--all-namespaces` flag (or `-A`) shows pods from all namespaces, not just the default namespace. This is useful for cluster-wide visibility.
+    The <code>--all-namespaces</code> flag (or <code>-A</code>) shows pods from all namespaces, not just the default namespace. This is useful for cluster-wide visibility.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -291,7 +291,7 @@ cpu-percent=80
 
 <BaseQuiz id="kubernetes-scale-1" correct="B">
   <template #question>
-    What does `kubectl scale deployment nginx --replicas=5` do?
+    What does <code>kubectl scale deployment nginx --replicas=5</code> do?
   </template>
   
   <BaseQuizOption value="A">Creates 5 new deployments</BaseQuizOption>
@@ -300,7 +300,7 @@ cpu-percent=80
   <BaseQuizOption value="D">Updates the deployment image</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `scale` command adjusts the number of replicas for a deployment. This command ensures the nginx deployment runs exactly 5 pod replicas, creating or deleting pods as needed.
+    The <code>scale</code> command adjusts the number of replicas for a deployment. This command ensures the nginx deployment runs exactly 5 pod replicas, creating or deleting pods as needed.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -340,7 +340,7 @@ kubectl apply -f service.yaml
 
 <BaseQuiz id="kubernetes-service-1" correct="A">
   <template #question>
-    What is the default service type when using `kubectl expose`?
+    What is the default service type when using <code>kubectl expose</code>?
   </template>
   
   <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>

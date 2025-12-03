@@ -41,7 +41,7 @@ pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 
 <BaseQuiz id="html-doctype-1" correct="A">
   <template #question>
-    What is the purpose of `<!DOCTYPE html>`?
+    What is the purpose of <code><!DOCTYPE html></code>?
   </template>
   
   <BaseQuizOption value="A" correct>It declares the document type and HTML version</BaseQuizOption>
@@ -50,7 +50,7 @@ pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
   <BaseQuizOption value="D">It sets the page title</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `<!DOCTYPE html>` declaration tells the browser which version of HTML the document is using. For HTML5, this simple declaration is sufficient and should be the first line of every HTML document.
+    The <code><!DOCTYPE html></code> declaration tells the browser which version of HTML the document is using. For HTML5, this simple declaration is sufficient and should be the first line of every HTML document.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -128,7 +128,7 @@ pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
   <BaseQuizOption value="D">h6 is the most important heading</BaseQuizOption>
   
   <BaseQuizAnswer>
-    HTML headings should follow a logical hierarchy: use one `h1` for the main page title, then `h2` for major sections, `h3` for subsections, and so on. This helps with accessibility and SEO.
+    HTML headings should follow a logical hierarchy: use one <code>h1</code> for the main page title, then <code>h2</code> for major sections, <code>h3</code> for subsections, and so on. This helps with accessibility and SEO.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -263,7 +263,7 @@ Line 2
 
 <BaseQuiz id="html-links-1" correct="B">
   <template #question>
-    What does `target="_blank"` do in an anchor tag?
+    What does <code>target="_blank"</code> do in an anchor tag?
   </template>
   
   <BaseQuizOption value="A">Opens the link in the same window</BaseQuizOption>
@@ -272,7 +272,7 @@ Line 2
   <BaseQuizOption value="D">Downloads the link</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `target="_blank"` attribute opens the linked page in a new browser tab or window, allowing users to keep the original page open.
+    The <code>target="_blank"</code> attribute opens the linked page in a new browser tab or window, allowing users to keep the original page open.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -356,7 +356,7 @@ Line 2
 
 <BaseQuiz id="html-validation-1" correct="A">
   <template #question>
-    What does the `required` attribute do in an HTML input?
+    What does the <code>required</code> attribute do in an HTML input?
   </template>
   
   <BaseQuizOption value="A" correct>Prevents form submission if the field is empty</BaseQuizOption>
@@ -365,7 +365,7 @@ Line 2
   <BaseQuizOption value="D">Sets a default value</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `required` attribute makes an input field mandatory. If the field is empty when the form is submitted, the browser will prevent submission and show a validation message.
+    The <code>required</code> attribute makes an input field mandatory. If the field is empty when the form is submitted, the browser will prevent submission and show a validation message.
   </BaseQuizAnswer>
 </BaseQuiz>
 

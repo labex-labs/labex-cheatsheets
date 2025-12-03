@@ -46,7 +46,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 
 <BaseQuiz id="matplotlib-plot-1" correct="C">
   <template #question>
-    What does `plt.show()` do in Matplotlib?
+    What does <code>plt.show()</code> do in Matplotlib?
   </template>
   
   <BaseQuizOption value="A">Saves the plot to a file</BaseQuizOption>
@@ -55,7 +55,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
   <BaseQuizOption value="D">Clears the plot</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `plt.show()` displays the plot in an interactive window. It's necessary to call this function to see the visualization. Without it, the plot won't be displayed.
+    <code>plt.show()</code> displays the plot in an interactive window. It's necessary to call this function to see the visualization. Without it, the plot won't be displayed.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -76,7 +76,7 @@ plt.colorbar()  # Add color bar
 
 <BaseQuiz id="matplotlib-scatter-1" correct="D">
   <template #question>
-    What does the `alpha` parameter control in matplotlib plots?
+    What does the <code>alpha</code> parameter control in matplotlib plots?
   </template>
   
   <BaseQuizOption value="A">The color of the plot</BaseQuizOption>
@@ -85,7 +85,7 @@ plt.colorbar()  # Add color bar
   <BaseQuizOption value="D" correct>The transparency/opacity of the plot elements</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `alpha` parameter controls transparency, with values from 0 (completely transparent) to 1 (completely opaque). It's useful for creating overlapping visualizations where you want to see through elements.
+    The <code>alpha</code> parameter controls transparency, with values from 0 (completely transparent) to 1 (completely opaque). It's useful for creating overlapping visualizations where you want to see through elements.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -214,16 +214,16 @@ plt.annotate('Important Point', xy=(2, 4), xytext=(3, 6),
 
 <BaseQuiz id="matplotlib-legend-1" correct="B">
   <template #question>
-    What is required for `plt.legend()` to display labels?
+    What is required for <code>plt.legend()</code> to display labels?
   </template>
   
   <BaseQuizOption value="A">Nothing, it works automatically</BaseQuizOption>
-  <BaseQuizOption value="B" correct>Each plot must have a `label` parameter set</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Each plot must have a <code>label</code> parameter set</BaseQuizOption>
   <BaseQuizOption value="C">The legend must be created before plotting</BaseQuizOption>
   <BaseQuizOption value="D">Labels must be set manually in the legend</BaseQuizOption>
   
   <BaseQuizAnswer>
-    To display a legend, you need to set the `label` parameter when creating each plot (e.g., `plt.plot(x, y, label='Dataset 1')`). Then calling `plt.legend()` will display all the labels.
+    To display a legend, you need to set the <code>label</code> parameter when creating each plot (e.g., <code>plt.plot(x, y, label='Dataset 1')</code>). Then calling <code>plt.legend()</code> will display all the labels.
   </BaseQuizAnswer>
 </BaseQuiz>
 

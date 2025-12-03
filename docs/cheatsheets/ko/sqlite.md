@@ -109,7 +109,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="sqlite-create-table-1" correct="A">
   <template #question>
-    SQLite 에서 `INTEGER PRIMARY KEY AUTOINCREMENT`는 무엇을 수행합니까?
+    SQLite 에서 <code>INTEGER PRIMARY KEY AUTOINCREMENT</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A" correct>자동 증가하는 정수 기본 키를 생성합니다</BaseQuizOption>
@@ -118,7 +118,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">고유 인덱스를 생성합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INTEGER PRIMARY KEY AUTOINCREMENT`는 새 행마다 자동으로 증가하며 기본 키 역할을 하는 정수 열을 생성합니다. 이는 각 행에 고유 식별자가 있음을 보장합니다.
+    <code>INTEGER PRIMARY KEY AUTOINCREMENT</code>는 새 행마다 자동으로 증가하며 기본 키 역할을 하는 정수 열을 생성합니다. 이는 각 행에 고유 식별자가 있음을 보장합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ VALUES ('Duplicate', 'existing@email.com');
 
 <BaseQuiz id="sqlite-upsert-1" correct="A">
   <template #question>
-    `INSERT OR REPLACE`와 `INSERT OR IGNORE`의 차이점은 무엇입니까?
+    <code>INSERT OR REPLACE</code>와 <code>INSERT OR IGNORE</code>의 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A" correct>REPLACE 는 기존 행을 업데이트하고, IGNORE 는 중복을 건너뜁니다</BaseQuizOption>
@@ -248,7 +248,7 @@ VALUES ('Duplicate', 'existing@email.com');
   <BaseQuizOption value="D">REPLACE 는 테이블에 대해 작동하고, IGNORE 는 뷰에 대해 작동합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INSERT OR REPLACE`는 충돌 (예: 중복 기본 키) 이 있는 경우 기존 행을 대체합니다. `INSERT OR IGNORE`는 충돌이 발생하면 삽입을 건너뛰고 기존 행을 변경하지 않습니다.
+    <code>INSERT OR REPLACE</code>는 충돌 (예: 중복 기본 키) 이 있는 경우 기존 행을 대체합니다. <code>INSERT OR IGNORE</code>는 충돌이 발생하면 삽입을 건너뛰고 기존 행을 변경하지 않습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -274,7 +274,7 @@ SELECT DISTINCT department FROM employees;
 
 <BaseQuiz id="sqlite-select-1" correct="B">
   <template #question>
-    `SELECT DISTINCT`는 무엇을 합니까?
+    <code>SELECT DISTINCT</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">모든 행을 선택합니다</BaseQuizOption>
@@ -283,7 +283,7 @@ SELECT DISTINCT department FROM employees;
   <BaseQuizOption value="D">결과를 정렬합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SELECT DISTINCT`는 결과 집합에서 중복 행을 제거하여 고유한 값만 반환합니다. 이는 열에서 모든 고유 값을 보려고 할 때 유용합니다.
+    <code>SELECT DISTINCT</code>는 결과 집합에서 중복 행을 제거하여 고유한 값만 반환합니다. 이는 열에서 모든 고유 값을 보려고 할 때 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

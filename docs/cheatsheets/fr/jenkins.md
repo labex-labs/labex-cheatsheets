@@ -155,7 +155,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
 
 <BaseQuiz id="jenkins-build-1" correct="B">
   <template #question>
-    Que fait le drapeau `-s` dans `jenkins-cli.jar build my-job -s` ?
+    Que fait le drapeau <code>-s</code> dans <code>jenkins-cli.jar build my-job -s</code> ?
   </template>
   
   <BaseQuizOption value="A">Ignore le build</BaseQuizOption>
@@ -164,7 +164,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
   <BaseQuizOption value="D">Arrête le build</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `-s` rend la commande de build synchrone, ce qui signifie qu'elle attend que le build se termine avant de retourner. Sans lui, la commande retourne immédiatement après avoir déclenché le build.
+    Le drapeau <code>-s</code> rend la commande de build synchrone, ce qui signifie qu'elle attend que le build se termine avant de retourner. Sans lui, la commande retourne immédiatement après avoir déclenché le build.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -225,7 +225,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
 
 <BaseQuiz id="jenkins-console-1" correct="C">
   <template #question>
-    Que fait le drapeau `-f` dans `jenkins-cli.jar console my-job -f` ?
+    Que fait le drapeau <code>-f</code> dans <code>jenkins-cli.jar console my-job -f</code> ?
   </template>
   
   <BaseQuizOption value="A">Force l'arrêt du build</BaseQuizOption>
@@ -234,7 +234,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
   <BaseQuizOption value="D">Formate la sortie en JSON</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `-f` suit la sortie console en temps réel, similaire à `tail -f` sous Linux. Ceci est utile pour surveiller les builds pendant leur exécution.
+    Le drapeau <code>-f</code> suit la sortie console en temps réel, similaire à <code>tail -f</code> sous Linux. Ceci est utile pour surveiller les builds pendant leur exécution.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -96,7 +96,7 @@ env | grep TARGET
 
 <BaseQuiz id="kali-env-1" correct="C">
   <template #question>
-    O que acontece com as variáveis de ambiente definidas com `export`?
+    O que acontece com as variáveis de ambiente definidas com <code>export</code>?
   </template>
   
   <BaseQuizOption value="A">Elas persistem após reinicializações do sistema</BaseQuizOption>
@@ -105,7 +105,7 @@ env | grep TARGET
   <BaseQuizOption value="D">Elas são variáveis globais do sistema</BaseQuizOption>
   
   <BaseQuizAnswer>
-    As variáveis de ambiente definidas com `export` estão disponíveis para a sessão de shell atual e todos os processos filhos gerados a partir dela. Elas são perdidas quando a sessão do shell termina, a menos que sejam adicionadas a arquivos de configuração do shell como `.bashrc`.
+    As variáveis de ambiente definidas com <code>export</code> estão disponíveis para a sessão de shell atual e todos os processos filhos gerados a partir dela. Elas são perdidas quando a sessão do shell termina, a menos que sejam adicionadas a arquivos de configuração do shell como <code>.bashrc</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ nmap -sS 192.168.1.1
 
 <BaseQuiz id="kali-nmap-1" correct="B">
   <template #question>
-    O que o `nmap -sS` faz?
+    O que o <code>nmap -sS</code> faz?
   </template>
   
   <BaseQuizOption value="A">Realiza uma varredura UDP</BaseQuizOption>
@@ -165,7 +165,7 @@ nmap -sS 192.168.1.1
   <BaseQuizOption value="D">Realiza detecção de SO</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O sinalizador `-sS` realiza uma varredura SYN (também chamada de varredura meio aberta) porque nunca completa o handshake TCP. Ele envia pacotes SYN e analisa as respostas, tornando-o mais furtivo do que uma varredura de conexão TCP completa.
+    O sinalizador <code>-sS</code> realiza uma varredura SYN (também chamada de varredura meio aberta) porque nunca completa o handshake TCP. Ele envia pacotes SYN e analisa as respostas, tornando-o mais furtivo do que uma varredura de conexão TCP completa.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ nmap -O 192.168.1.1
 
 <BaseQuiz id="kali-enumeration-1" correct="A">
   <template #question>
-    O que o `nmap -sV` faz?
+    O que o <code>nmap -sV</code> faz?
   </template>
   
   <BaseQuizOption value="A" correct>Detecta as versões de serviço em execução nas portas abertas</BaseQuizOption>
@@ -191,7 +191,7 @@ nmap -O 192.168.1.1
   <BaseQuizOption value="D">Realiza apenas detecção de SO</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O sinalizador `-sV` habilita a detecção de versão, que sonda portas abertas para determinar qual serviço e versão estão em execução. Isso é útil para identificar vulnerabilidades potenciais associadas a versões específicas de software.
+    O sinalizador <code>-sV</code> habilita a detecção de versão, que sonda portas abertas para determinar qual serviço e versão estão em execução. Isso é útil para identificar vulnerabilidades potenciais associadas a versões específicas de software.
   </BaseQuizAnswer>
 </BaseQuiz>
 # Varredura de scripts

@@ -142,16 +142,16 @@ const Message = "Hello, Go!"
 
 <BaseQuiz id="golang-variables-1" correct="B">
   <template #question>
-    What is the difference between `var name string = "Go"` and `name := "Go"`?
+    What is the difference between <code>var name string = "Go"</code> and <code>name := "Go"</code>?
   </template>
   
   <BaseQuizOption value="A">There is no difference</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`:=` is short declaration that infers the type, `var` explicitly declares the type</BaseQuizOption>
-  <BaseQuizOption value="C">`:=` can only be used for constants</BaseQuizOption>
-  <BaseQuizOption value="D">`var` can only be used inside functions</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>:=</code> is short declaration that infers the type, <code>var</code> explicitly declares the type</BaseQuizOption>
+  <BaseQuizOption value="C"><code>:=</code> can only be used for constants</BaseQuizOption>
+  <BaseQuizOption value="D"><code>var</code> can only be used inside functions</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `:=` operator is shorthand for variable declaration and initialization, and Go infers the type automatically. `var` explicitly declares the variable type and can be used at package level or function level.
+    The <code>:=</code> operator is shorthand for variable declaration and initialization, and Go infers the type automatically. <code>var</code> explicitly declares the variable type and can be used at package level or function level.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ for i, char := range "Hello" {
 
 <BaseQuiz id="golang-range-1" correct="B">
   <template #question>
-    What does `range` return when iterating over a slice in Go?
+    What does <code>range</code> return when iterating over a slice in Go?
   </template>
   
   <BaseQuizOption value="A">Only the value</BaseQuizOption>
@@ -248,7 +248,7 @@ for i, char := range "Hello" {
   <BaseQuizOption value="D">The length of the slice</BaseQuizOption>
   
   <BaseQuizAnswer>
-    When using `range` with a slice, it returns two values: the index (position) and the value at that index. You can use `_` to ignore either value if you don't need it.
+    When using <code>range</code> with a slice, it returns two values: the index (position) and the value at that index. You can use <code>_</code> to ignore either value if you don't need it.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -275,7 +275,7 @@ for i := 0; i < 5; i++ {
 
 <BaseQuiz id="golang-control-1" correct="C">
   <template #question>
-    What is the difference between `break` and `continue` in Go loops?
+    What is the difference between <code>break</code> and <code>continue</code> in Go loops?
   </template>
   
   <BaseQuizOption value="A">There is no difference</BaseQuizOption>
@@ -284,7 +284,7 @@ for i := 0; i < 5; i++ {
   <BaseQuizOption value="D">Both exit the loop</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `break` immediately exits the loop and continues execution after the loop. `continue` skips the rest of the current iteration and moves to the next iteration of the loop.
+    <code>break</code> immediately exits the loop and continues execution after the loop. <code>continue</code> skips the rest of the current iteration and moves to the next iteration of the loop.
   </BaseQuizAnswer>
 </BaseQuiz>
 

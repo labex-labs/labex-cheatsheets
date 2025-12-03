@@ -121,7 +121,7 @@ docker run --rm hello-world
 
 <BaseQuiz id="docker-run-1" correct="C">
   <template #question>
-    Что делает `docker run -d`?
+    Что делает <code>docker run -d</code>?
   </template>
   
   <BaseQuizOption value="A">Запускает контейнер в режиме отладки</BaseQuizOption>
@@ -130,7 +130,7 @@ docker run --rm hello-world
   <BaseQuizOption value="D">Запускает контейнер с настройками по умолчанию</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-d` запускает контейнер в фоновом режиме, что означает, что он работает в фоновом режиме и немедленно возвращает управление терминалу. Это полезно для долго работающих служб.
+    Флаг <code>-d</code> запускает контейнер в фоновом режиме, что означает, что он работает в фоновом режиме и немедленно возвращает управление терминалу. Это полезно для долго работающих служб.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -232,7 +232,7 @@ docker build --no-cache -t myapp .
 
 <BaseQuiz id="docker-build-1" correct="A">
   <template #question>
-    Что делает `docker build -t myapp:latest .`?
+    Что делает <code>docker build -t myapp:latest .</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Собирает образ Docker с тегом "myapp:latest" из текущей директории</BaseQuizOption>
@@ -241,7 +241,7 @@ docker build --no-cache -t myapp .
   <BaseQuizOption value="D">Удаляет образ "myapp:latest"</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-t` помечает образ именем "myapp:latest", а `.` указывает на контекст сборки (текущая директория). Эта команда собирает новый образ из Dockerfile в текущей директории.
+    Флаг <code>-t</code> помечает образ именем "myapp:latest", а <code>.</code> указывает на контекст сборки (текущая директория). Эта команда собирает новый образ из Dockerfile в текущей директории.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -316,7 +316,7 @@ EXPOSE 8000
 
 <BaseQuiz id="dockerfile-1" correct="B">
   <template #question>
-    Каково назначение инструкции `FROM` в Dockerfile?
+    Каково назначение инструкции <code>FROM</code> в Dockerfile?
   </template>
   
   <BaseQuizOption value="A">Она копирует файлы с хоста в контейнер</BaseQuizOption>
@@ -325,7 +325,7 @@ EXPOSE 8000
   <BaseQuizOption value="D">Она определяет команду, которая будет выполняться при запуске контейнера</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Инструкция `FROM` должна быть первой инструкцией, не являющейся комментарием, в Dockerfile. Она указывает базовый образ, на котором будет построен ваш образ, предоставляя основу для вашего контейнера.
+    Инструкция <code>FROM</code> должна быть первой инструкцией, не являющейся комментарием, в Dockerfile. Она указывает базовый образ, на котором будет построен ваш образ, предоставляя основу для вашего контейнера.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -372,7 +372,7 @@ docker-compose down -v
 
 <BaseQuiz id="docker-compose-1" correct="D">
   <template #question>
-    Что делает `docker-compose up -d`?
+    Что делает <code>docker-compose up -d</code>?
   </template>
   
   <BaseQuizOption value="A">Останавливает все запущенные контейнеры</BaseQuizOption>
@@ -381,7 +381,7 @@ docker-compose down -v
   <BaseQuizOption value="D" correct>Запускает все службы, определенные в docker-compose.yml, в фоновом режиме</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-d` запускает контейнеры в фоновом режиме. `docker-compose up` считывает файл docker-compose.yml и запускает все определенные службы, что упрощает управление многоконтейнерными приложениями.
+    Флаг <code>-d</code> запускает контейнеры в фоновом режиме. <code>docker-compose up</code> считывает файл docker-compose.yml и запускает все определенные службы, что упрощает управление многоконтейнерными приложениями.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -461,7 +461,7 @@ docker run -p 8080:80 nginx
 
 <BaseQuiz id="docker-port-1" correct="A">
   <template #question>
-    В команде `docker run -p 8080:80 nginx`, что означают номера портов?
+    В команде <code>docker run -p 8080:80 nginx</code>, что означают номера портов?
   </template>
   
   <BaseQuizOption value="A" correct>8080 — это порт хоста, 80 — это порт контейнера</BaseQuizOption>
@@ -470,7 +470,7 @@ docker run -p 8080:80 nginx
   <BaseQuizOption value="D">Оба порта — порты хоста</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Формат: `-p host_port:container_port`. Порт 8080 на вашей хост-машине сопоставлен порту 80 внутри контейнера, что позволяет вам получить доступ к веб-серверу nginx, работающему в контейнере, через localhost:8080.
+    Формат: <code>-p host_port:container_port</code>. Порт 8080 на вашей хост-машине сопоставлен порту 80 внутри контейнера, что позволяет вам получить доступ к веб-серверу nginx, работающему в контейнере, через localhost:8080.
   </BaseQuizAnswer>
 </BaseQuiz>
 

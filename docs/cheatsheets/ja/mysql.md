@@ -53,7 +53,7 @@ DROP DATABASE old_database;
 
 <BaseQuiz id="mysql-database-1" correct="C">
   <template #question>
-    `USE database_name`は何をしますか？
+    <code>USE database_name</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A">新しいデータベースを作成する</BaseQuizOption>
@@ -62,7 +62,7 @@ DROP DATABASE old_database;
   <BaseQuizOption value="D">データベース内のすべてのテーブルを表示する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `USE` ステートメントはデータベースを選択し、後続のすべての SQL ステートメントのアクティブなデータベースにします。これは、`mysql -u user -p database_name`で接続する際にデータベースを選択するのと同じです。
+    <code>USE</code> ステートメントはデータベースを選択し、後続のすべての SQL ステートメントのアクティブなデータベースにします。これは、<code>mysql -u user -p database_name</code>で接続する際にデータベースを選択するのと同じです。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -197,13 +197,13 @@ INSERT INTO users_backup SELECT * FROM users;
     単一レコードを挿入する正しい構文は何ですか？
   </template>
   
-  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="A" correct><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="B"><code>INSERT table_name VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="C"><code>ADD INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="D"><code>INSERT table_name (column1, column2) = (value1, value2);</code></BaseQuizOption>
   
   <BaseQuizAnswer>
-    正しい構文は`INSERT INTO table_name (columns) VALUES (values)`です。`INTO` キーワードが必要であり、列名と対応する値の両方を指定する必要があります。
+    正しい構文は<code>INSERT INTO table_name (columns) VALUES (values)</code>です。<code>INTO</code> キーワードが必要であり、列名と対応する値の両方を指定する必要があります。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -270,7 +270,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 
 <BaseQuiz id="mysql-select-1" correct="D">
   <template #question>
-    `SELECT * FROM users`は何を返しますか？
+    <code>SELECT * FROM users</code>は何を返しますか？
   </template>
   
   <BaseQuizOption value="A">users テーブルの最初の行のみ</BaseQuizOption>
@@ -279,7 +279,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
   <BaseQuizOption value="D" correct>users テーブルのすべての列とすべての行</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `*` ワイルドカードはすべての列を選択し、WHERE 句がない場合、すべての行を返します。これはすべてのデータを表示するのに役立ちますが、大きなテーブルでは注意が必要です。
+    <code>*</code> ワイルドカードはすべての列を選択し、WHERE 句がない場合、すべての行を返します。これはすべてのデータを表示するのに役立ちますが、大きなテーブルでは注意が必要です。
   </BaseQuizAnswer>
 </BaseQuiz>
 

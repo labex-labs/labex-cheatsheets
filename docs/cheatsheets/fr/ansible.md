@@ -174,7 +174,7 @@ ansible all -m command -a "systemctl status nginx" --become
 
 <BaseQuiz id="ansible-command-1" correct="C">
   <template #question>
-    Que fait `ansible all -m ping` ?
+    Que fait <code>ansible all -m ping</code> ?
   </template>
   
   <BaseQuizOption value="A">Teste la connectivité réseau en utilisant ICMP ping</BaseQuizOption>
@@ -183,7 +183,7 @@ ansible all -m command -a "systemctl status nginx" --become
   <BaseQuizOption value="D">Vérifie si les hôtes sont en ligne</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le module `ping` dans Ansible n'utilise pas ICMP. C'est un module de test qui vérifie si Ansible peut se connecter aux hôtes, exécuter Python et retourner des résultats. Il est utilisé pour vérifier la connectivité et la configuration.
+    Le module <code>ping</code> dans Ansible n'utilise pas ICMP. C'est un module de test qui vérifie si Ansible peut se connecter aux hôtes, exécuter Python et retourner des résultats. Il est utilisé pour vérifier la connectivité et la configuration.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -278,7 +278,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
 
 <BaseQuiz id="ansible-playbook-1" correct="B">
   <template #question>
-    Que fait `ansible-playbook site.yml --check` ?
+    Que fait <code>ansible-playbook site.yml --check</code> ?
   </template>
   
   <BaseQuizOption value="A">Exécute le playbook deux fois</BaseQuizOption>
@@ -287,7 +287,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
   <BaseQuizOption value="D">Exécute uniquement la première tâche</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `--check` exécute Ansible en mode vérification (dry-run), ce qui simule ce qui se passerait sans réellement apporter de modifications. Ceci est utile pour tester les playbooks avant de les appliquer.
+    Le drapeau <code>--check</code> exécute Ansible en mode vérification (dry-run), ce qui simule ce qui se passerait sans réellement apporter de modifications. Ceci est utile pour tester les playbooks avant de les appliquer.
   </BaseQuizAnswer>
 </BaseQuiz>
 

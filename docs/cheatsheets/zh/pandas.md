@@ -39,7 +39,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
 
 <BaseQuiz id="pandas-read-csv-1" correct="B">
   <template #question>
-    `pd.read_csv('data.csv')` 返回什么？
+    <code>pd.read_csv('data.csv')</code> 返回什么？
   </template>
   
   <BaseQuizOption value="A">字典列表</BaseQuizOption>
@@ -48,7 +48,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
   <BaseQuizOption value="D">一个字符串</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pd.read_csv()` 读取一个 CSV 文件并返回一个 pandas DataFrame，它是一个具有列和行的二维带标签的数据结构。
+    <code>pd.read_csv()</code> 读取一个 CSV 文件并返回一个 pandas DataFrame，它是一个具有列和行的二维带标签的数据结构。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df.dropna(axis=1)
 
 <BaseQuiz id="pandas-missing-1" correct="B">
   <template #question>
-    `df.dropna(axis=1)` 执行什么操作？
+    <code>df.dropna(axis=1)</code> 执行什么操作？
   </template>
   
   <BaseQuizOption value="A">删除包含缺失值的行</BaseQuizOption>
@@ -186,7 +186,7 @@ df.dropna(axis=1)
   <BaseQuizOption value="D">计算缺失值的数量</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `axis=1` 参数表示“列”，因此 `df.dropna(axis=1)` 会删除包含任何缺失值的列。使用 `axis=0` (默认值) 来删除行。
+    <code>axis=1</code> 参数表示“列”，因此 <code>df.dropna(axis=1)</code> 会删除包含任何缺失值的列。使用 <code>axis=0</code> (默认值) 来删除行。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -205,7 +205,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
 
 <BaseQuiz id="pandas-duplicates-1" correct="A">
   <template #question>
-    `df.drop_duplicates()` 默认执行什么操作？
+    <code>df.drop_duplicates()</code> 默认执行什么操作？
   </template>
   
   <BaseQuizOption value="A" correct>删除重复行，保留第一次出现的记录</BaseQuizOption>
@@ -214,7 +214,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
   <BaseQuizOption value="D">删除重复项的第一次出现</BaseQuizOption>
   
   <BaseQuizAnswer>
-    默认情况下，`drop_duplicates()` 保留每个重复行第一次出现的结果，并删除后续的重复项。您可以使用 `keep='last'` 来保留最后一次出现的结果。
+    默认情况下，<code>drop_duplicates()</code> 保留每个重复行第一次出现的结果，并删除后续的重复项。您可以使用 <code>keep='last'</code> 来保留最后一次出现的结果。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -248,7 +248,7 @@ df.replace(['A', 'B'], ['C', 'D'])
 
 <BaseQuiz id="pandas-apply-1" correct="A">
   <template #question>
-    `df['col'].apply(lambda x: x*2)` 执行什么操作？
+    <code>df['col'].apply(lambda x: x*2)</code> 执行什么操作？
   </template>
   
   <BaseQuizOption value="A" correct>将函数应用于列中的每个元素，将每个元素乘以 2</BaseQuizOption>
@@ -257,7 +257,7 @@ df.replace(['A', 'B'], ['C', 'D'])
   <BaseQuizOption value="D">计算列中的元素数量</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `apply()` 方法将函数应用于 Series 中的每个元素。lambda 函数 `lambda x: x*2` 将每个值乘以 2，返回一个包含转换后值的新 Series。
+    <code>apply()</code> 方法将函数应用于 Series 中的每个元素。lambda 函数 <code>lambda x: x*2</code> 将每个值乘以 2，返回一个包含转换后值的新 Series。
   </BaseQuizAnswer>
 </BaseQuiz>
 

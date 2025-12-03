@@ -137,7 +137,7 @@ cd /chemin/vers/repertoire
 
 <BaseQuiz id="shell-cd-1" correct="A">
   <template #question>
-    Que fait `cd ~` ?
+    Que fait <code>cd ~</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Change pour le répertoire personnel</BaseQuizOption>
@@ -146,7 +146,7 @@ cd /chemin/vers/repertoire
   <BaseQuizOption value="D">Crée un nouveau répertoire</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le symbole `~` est un raccourci pour le répertoire personnel. `cd ~` navigue vers votre répertoire personnel, ce qui est équivalent à `cd $HOME` ou `cd /home/nom_utilisateur`.
+    Le symbole <code>~</code> est un raccourci pour le répertoire personnel. <code>cd ~</code> navigue vers votre répertoire personnel, ce qui est équivalent à <code>cd $HOME</code> ou <code>cd /home/nom_utilisateur</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -203,7 +203,7 @@ grep -c "motif" fichier.txt
 
 <BaseQuiz id="shell-grep-1" correct="B">
   <template #question>
-    Que fait `grep -r "motif" repertoire/` ?
+    Que fait <code>grep -r "motif" repertoire/</code> ?
   </template>
   
   <BaseQuizOption value="A">Recherche uniquement dans le fichier courant</BaseQuizOption>
@@ -212,7 +212,7 @@ grep -c "motif" fichier.txt
   <BaseQuizOption value="D">Supprime les fichiers contenant le motif</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `-r` fait que grep recherche récursivement dans tous les fichiers et sous-répertoires. Ceci est utile pour trouver des motifs de texte dans l'ensemble de l'arborescence d'un répertoire.
+    Le drapeau <code>-r</code> fait que grep recherche récursivement dans tous les fichiers et sous-répertoires. Ceci est utile pour trouver des motifs de texte dans l'ensemble de l'arborescence d'un répertoire.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -281,7 +281,7 @@ chmod -R 644 repertoire/
 
 <BaseQuiz id="shell-chmod-1" correct="C">
   <template #question>
-    Que définit `chmod 755 fichier.txt` ?
+    Que définit <code>chmod 755 fichier.txt</code> ?
   </template>
   
   <BaseQuizOption value="A">Lecture, écriture, exécution pour tous les utilisateurs</BaseQuizOption>
@@ -290,7 +290,7 @@ chmod -R 644 repertoire/
   <BaseQuizOption value="D">Lecture seule pour tous les utilisateurs</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` définit les permissions comme suit : propriétaire = 7 (rwx), groupe = 5 (r-x), autres = 5 (r-x). C'est un ensemble de permissions courant pour les fichiers exécutables et les répertoires.
+    <code>chmod 755</code> définit les permissions comme suit : propriétaire = 7 (rwx), groupe = 5 (r-x), autres = 5 (r-x). C'est un ensemble de permissions courant pour les fichiers exécutables et les répertoires.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -409,16 +409,16 @@ commande > /dev/null
 
 <BaseQuiz id="shell-redirect-1" correct="B">
   <template #question>
-    Quelle est la différence entre `>` et `>>` dans la redirection shell ?
+    Quelle est la différence entre <code>></code> et <code>>></code> dans la redirection shell ?
   </template>
   
-  <BaseQuizOption value="A">`>` ajoute, `>>` écrase</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`>` écrase le fichier, `>>` ajoute au fichier</BaseQuizOption>
-  <BaseQuizOption value="C">`>` redirige stdout, `>>` redirige stderr</BaseQuizOption>
+  <BaseQuizOption value="A"><code>></code> ajoute, <code>>></code> écrase</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>></code> écrase le fichier, <code>>></code> ajoute au fichier</BaseQuizOption>
+  <BaseQuizOption value="C"><code>></code> redirige stdout, <code>>></code> redirige stderr</BaseQuizOption>
   <BaseQuizOption value="D">Il n'y a pas de différence</BaseQuizOption>
   
   <BaseQuizAnswer>
-    L'opérateur `>` écrase le fichier cible s'il existe, tandis que `>>` ajoute la sortie à la fin du fichier. Utilisez `>>` lorsque vous souhaitez conserver le contenu existant.
+    L'opérateur <code>></code> écrase le fichier cible s'il existe, tandis que <code>>></code> ajoute la sortie à la fin du fichier. Utilisez <code>>></code> lorsque vous souhaitez conserver le contenu existant.
   </BaseQuizAnswer>
 </BaseQuiz>
 

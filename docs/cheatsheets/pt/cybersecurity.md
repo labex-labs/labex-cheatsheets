@@ -55,7 +55,7 @@ ls -la
 
 <BaseQuiz id="cybersecurity-chmod-1" correct="C">
   <template #question>
-    O que `chmod 644 file.txt` define para as permissões do arquivo?
+    O que <code>chmod 644 file.txt</code> define para as permissões do arquivo?
   </template>
   
   <BaseQuizOption value="A">Leitura, escrita, execução para todos os usuários</BaseQuizOption>
@@ -64,7 +64,7 @@ ls -la
   <BaseQuizOption value="D">Apenas leitura para todos os usuários</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 644` define: proprietário = 6 (rw-), grupo = 4 (r--), outros = 4 (r--). Este é um conjunto de permissões comum para arquivos que devem ser legíveis por todos, mas graváveis apenas pelo proprietário.
+    <code>chmod 644</code> define: proprietário = 6 (rw-), grupo = 4 (r--), outros = 4 (r--). Este é um conjunto de permissões comum para arquivos que devem ser legíveis por todos, mas graváveis apenas pelo proprietário.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -84,7 +84,7 @@ sudo ss -tuln
 
 <BaseQuiz id="cybersecurity-firewall-1" correct="B">
   <template #question>
-    O que `sudo ufw allow 22/tcp` faz?
+    O que <code>sudo ufw allow 22/tcp</code> faz?
   </template>
   
   <BaseQuizOption value="A">Bloqueia a porta 22</BaseQuizOption>
@@ -93,7 +93,7 @@ sudo ss -tuln
   <BaseQuizOption value="D">Mostra o status do firewall</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ufw allow 22/tcp` cria uma regra de firewall que permite conexões TCP de entrada na porta 22, que é a porta padrão do SSH. Isso é essencial para o acesso remoto ao servidor.
+    <code>ufw allow 22/tcp</code> cria uma regra de firewall que permite conexões TCP de entrada na porta 22, que é a porta padrão do SSH. Isso é essencial para o acesso remoto ao servidor.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -139,7 +139,7 @@ grep "Failed password" /var/log/auth.log
 
 <BaseQuiz id="cybersecurity-logs-1" correct="A">
   <template #question>
-    O que `tail -f /var/log/auth.log` faz?
+    O que <code>tail -f /var/log/auth.log</code> faz?
   </template>
   
   <BaseQuizOption value="A" correct>Segue o arquivo de log de autenticação em tempo real</BaseQuizOption>
@@ -148,7 +148,7 @@ grep "Failed password" /var/log/auth.log
   <BaseQuizOption value="D">Arquiva o arquivo de log</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O flag `-f` faz com que o `tail` siga o arquivo, exibindo novas entradas de log à medida que são escritas. Isso é útil para monitoramento em tempo real de eventos de autenticação e incidentes de segurança.
+    O flag <code>-f</code> faz com que o <code>tail</code> siga o arquivo, exibindo novas entradas de log à medida que são escritas. Isso é útil para monitoramento em tempo real de eventos de autenticação e incidentes de segurança.
   </BaseQuizAnswer>
 </BaseQuiz>
 

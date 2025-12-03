@@ -38,7 +38,7 @@ USE company_db;
 
 <BaseQuiz id="database-create-1" correct="A">
   <template #question>
-    `CREATE DATABASE company_db`は何をしますか？
+    <code>CREATE DATABASE company_db</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>company_db という名前の新しい空のデータベースを作成する</BaseQuizOption>
@@ -47,7 +47,7 @@ USE company_db;
   <BaseQuizOption value="D">データベースをバックアップする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `CREATE DATABASE`は新しい空のデータベースを作成します。作成後、`USE` を使用して選択し、その中にテーブルを作成する必要があります。
+    <code>CREATE DATABASE</code>は新しい空のデータベースを作成します。作成後、<code>USE</code> を使用して選択し、その中にテーブルを作成する必要があります。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -157,7 +157,7 @@ RENAME TABLE employees TO staff;
 
 <BaseQuiz id="database-alter-1" correct="C">
   <template #question>
-    `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)`は何をしますか？
+    <code>ALTER TABLE employees ADD COLUMN phone VARCHAR(15)</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A">phone 列を削除する</BaseQuizOption>
@@ -166,7 +166,7 @@ RENAME TABLE employees TO staff;
   <BaseQuizOption value="D">テーブルの名前を変更する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ALTER TABLE ... ADD COLUMN`は既存のテーブルに新しい列を追加します。デフォルト値を指定しない限り、既存の行に対して新しい列は NULL になります。
+    <code>ALTER TABLE ... ADD COLUMN</code>は既存のテーブルに新しい列を追加します。デフォルト値を指定しない限り、既存の行に対して新しい列は NULL になります。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -294,7 +294,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
 
 <BaseQuiz id="database-where-1" correct="C">
   <template #question>
-    WHERE 句で`LIKE 'John%'`は何に一致しますか？
+    WHERE 句で<code>LIKE 'John%'</code>は何に一致しますか？
   </template>
   
   <BaseQuizOption value="A">"John"との完全一致のみ</BaseQuizOption>
@@ -303,7 +303,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
   <BaseQuizOption value="D">どこかに"John"を含む値</BaseQuizOption>
   
   <BaseQuizAnswer>
-    SQL の `%` ワイルドカードは任意の文字列に一致します。`LIKE 'John%'`は、「John」、「Johnny」、「Johnson」など、「John」で始まる任意の値に一致します。
+    SQL の <code>%</code> ワイルドカードは任意の文字列に一致します。<code>LIKE 'John%'</code>は、「John」、「Johnny」、「Johnson」など、「John」で始まる任意の値に一致します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -39,7 +39,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
 
 <BaseQuiz id="pandas-read-csv-1" correct="B">
   <template #question>
-    Что возвращает `pd.read_csv('data.csv')`?
+    Что возвращает <code>pd.read_csv('data.csv')</code>?
   </template>
   
   <BaseQuizOption value="A">Список словарей</BaseQuizOption>
@@ -48,7 +48,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
   <BaseQuizOption value="D">Строку</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pd.read_csv()` считывает CSV-файл и возвращает pandas DataFrame, который представляет собой двумерную маркированную структуру данных со столбцами и строками.
+    <code>pd.read_csv()</code> считывает CSV-файл и возвращает pandas DataFrame, который представляет собой двумерную маркированную структуру данных со столбцами и строками.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df.dropna(axis=1)
 
 <BaseQuiz id="pandas-missing-1" correct="B">
   <template #question>
-    Что делает `df.dropna(axis=1)`?
+    Что делает <code>df.dropna(axis=1)</code>?
   </template>
   
   <BaseQuizOption value="A">Удаляет строки с отсутствующими значениями</BaseQuizOption>
@@ -186,7 +186,7 @@ df.dropna(axis=1)
   <BaseQuizOption value="D">Считает отсутствующие значения</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Параметр `axis=1` означает "столбцы", поэтому `df.dropna(axis=1)` удаляет столбцы, содержащие какие-либо отсутствующие значения. Используйте `axis=0` (по умолчанию) для удаления строк.
+    Параметр <code>axis=1</code> означает "столбцы", поэтому <code>df.dropna(axis=1)</code> удаляет столбцы, содержащие какие-либо отсутствующие значения. Используйте <code>axis=0</code> (по умолчанию) для удаления строк.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -205,7 +205,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
 
 <BaseQuiz id="pandas-duplicates-1" correct="A">
   <template #question>
-    Что делает `df.drop_duplicates()` по умолчанию?
+    Что делает <code>df.drop_duplicates()</code> по умолчанию?
   </template>
   
   <BaseQuizOption value="A" correct>Удаляет дублирующиеся строки, сохраняя первое вхождение</BaseQuizOption>
@@ -214,7 +214,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
   <BaseQuizOption value="D">Удаляет первое вхождение дубликатов</BaseQuizOption>
   
   <BaseQuizAnswer>
-    По умолчанию `drop_duplicates()` сохраняет первое вхождение каждой дублирующейся строки и удаляет последующие дубликаты. Вы можете использовать `keep='last'`, чтобы вместо этого сохранить последнее вхождение.
+    По умолчанию <code>drop_duplicates()</code> сохраняет первое вхождение каждой дублирующейся строки и удаляет последующие дубликаты. Вы можете использовать <code>keep='last'</code>, чтобы вместо этого сохранить последнее вхождение.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -248,7 +248,7 @@ df.replace(['A', 'B'], ['C', 'D'])
 
 <BaseQuiz id="pandas-apply-1" correct="A">
   <template #question>
-    Что делает `df['col'].apply(lambda x: x*2)`?
+    Что делает <code>df['col'].apply(lambda x: x*2)</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Применяет функцию к каждому элементу в столбце, умножая каждый на 2</BaseQuizOption>
@@ -257,7 +257,7 @@ df.replace(['A', 'B'], ['C', 'D'])
   <BaseQuizOption value="D">Считает элементы в столбце</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Метод `apply()` применяет функцию к каждому элементу в Series. Лямбда-функция `lambda x: x*2` умножает каждое значение на 2, возвращая новый Series с преобразованными значениями.
+    Метод <code>apply()</code> применяет функцию к каждому элементу в Series. Лямбда-функция <code>lambda x: x*2</code> умножает каждое значение на 2, возвращая новый Series с преобразованными значениями.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 
 <BaseQuiz id="c-main-1" correct="C">
   <template #question>
-    Что означает `return 0` в функции main?
+    Что означает <code>return 0</code> в функции main?
   </template>
   
   <BaseQuizOption value="A">Программа завершилась с ошибкой</BaseQuizOption>
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
   <BaseQuizOption value="D">Программа не вернула никакого значения</BaseQuizOption>
   
   <BaseQuizAnswer>
-    В C возврат `return 0` из функции main указывает на успешное выполнение программы. Ненулевые возвращаемые значения обычно указывают на ошибки или ненормальное завершение.
+    В C возврат <code>return 0</code> из функции main указывает на успешное выполнение программы. Ненулевые возвращаемые значения обычно указывают на ошибки или ненормальное завершение.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -163,7 +163,7 @@ int size = sizeof(buffer);
   <BaseQuizOption value="D">Только как указатели</BaseQuizOption>
   
   <BaseQuizAnswer>
-    В C строки представляются как массивы символов (`char`). Строка завершается нулевым символом (`\0`), который отмечает конец строки.
+    В C строки представляются как массивы символов (<code>char</code>). Строка завершается нулевым символом (<code>\0</code>), который отмечает конец строки.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ for (int i = 0; i < 3; i++) {
 
 <BaseQuiz id="c-for-loop-1" correct="A">
   <template #question>
-    Что вычисляет `sizeof(numbers) / sizeof(numbers[0])`?
+    Что вычисляет <code>sizeof(numbers) / sizeof(numbers[0])</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Количество элементов в массиве</BaseQuizOption>

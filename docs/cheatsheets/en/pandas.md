@@ -39,7 +39,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
 
 <BaseQuiz id="pandas-read-csv-1" correct="B">
   <template #question>
-    What does `pd.read_csv('data.csv')` return?
+    What does <code>pd.read_csv('data.csv')</code> return?
   </template>
   
   <BaseQuizOption value="A">A list of dictionaries</BaseQuizOption>
@@ -48,7 +48,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
   <BaseQuizOption value="D">A string</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pd.read_csv()` reads a CSV file and returns a pandas DataFrame, which is a two-dimensional labeled data structure with columns and rows.
+    <code>pd.read_csv()</code> reads a CSV file and returns a pandas DataFrame, which is a two-dimensional labeled data structure with columns and rows.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df.dropna(axis=1)
 
 <BaseQuiz id="pandas-missing-1" correct="B">
   <template #question>
-    What does `df.dropna(axis=1)` do?
+    What does <code>df.dropna(axis=1)</code> do?
   </template>
   
   <BaseQuizOption value="A">Drops rows with missing values</BaseQuizOption>
@@ -186,7 +186,7 @@ df.dropna(axis=1)
   <BaseQuizOption value="D">Counts missing values</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `axis=1` parameter means "columns", so `df.dropna(axis=1)` removes columns that contain any missing values. Use `axis=0` (default) to drop rows.
+    The <code>axis=1</code> parameter means "columns", so <code>df.dropna(axis=1)</code> removes columns that contain any missing values. Use <code>axis=0</code> (default) to drop rows.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -205,7 +205,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
 
 <BaseQuiz id="pandas-duplicates-1" correct="A">
   <template #question>
-    What does `df.drop_duplicates()` do by default?
+    What does <code>df.drop_duplicates()</code> do by default?
   </template>
   
   <BaseQuizOption value="A" correct>Removes duplicate rows, keeping the first occurrence</BaseQuizOption>
@@ -214,7 +214,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
   <BaseQuizOption value="D">Removes the first occurrence of duplicates</BaseQuizOption>
   
   <BaseQuizAnswer>
-    By default, `drop_duplicates()` keeps the first occurrence of each duplicate row and removes subsequent duplicates. You can use `keep='last'` to keep the last occurrence instead.
+    By default, <code>drop_duplicates()</code> keeps the first occurrence of each duplicate row and removes subsequent duplicates. You can use <code>keep='last'</code> to keep the last occurrence instead.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -248,7 +248,7 @@ df.replace(['A', 'B'], ['C', 'D'])
 
 <BaseQuiz id="pandas-apply-1" correct="A">
   <template #question>
-    What does `df['col'].apply(lambda x: x*2)` do?
+    What does <code>df['col'].apply(lambda x: x*2)</code> do?
   </template>
   
   <BaseQuizOption value="A" correct>Applies a function to each element in the column, multiplying each by 2</BaseQuizOption>
@@ -257,7 +257,7 @@ df.replace(['A', 'B'], ['C', 'D'])
   <BaseQuizOption value="D">Counts elements in the column</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `apply()` method applies a function to each element in a Series. The lambda function `lambda x: x*2` multiplies each value by 2, returning a new Series with the transformed values.
+    The <code>apply()</code> method applies a function to each element in a Series. The lambda function <code>lambda x: x*2</code> multiplies each value by 2, returning a new Series with the transformed values.
   </BaseQuizAnswer>
 </BaseQuiz>
 

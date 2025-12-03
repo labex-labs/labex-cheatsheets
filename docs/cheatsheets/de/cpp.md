@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
   <BaseQuizOption value="D">C verwendet cout, C++ verwendet printf</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C verwendet `printf()` aus stdio.h, während C++ `cout` aus iostream mit dem Stream-Einfügeoperator `<<` verwendet. C++ unterstützt auch printf zur Kompatibilität.
+    C verwendet <code>printf()</code> aus stdio.h, während C++ <code>cout</code> aus iostream mit dem Stream-Einfügeoperator <code><<</code> verwendet. C++ unterstützt auch printf zur Kompatibilität.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ vector<string> names(5); // Größe 5, leere Strings
 
 <BaseQuiz id="cpp-vector-1" correct="B">
   <template #question>
-    Was ist der Hauptvorteil von `vector` gegenüber normalen Arrays in C++?
+    Was ist der Hauptvorteil von <code>vector</code> gegenüber normalen Arrays in C++?
   </template>
   
   <BaseQuizOption value="A">Vektoren sind schneller</BaseQuizOption>
@@ -165,7 +165,7 @@ vector<string> names(5); // Größe 5, leere Strings
   <BaseQuizOption value="D">Es gibt keinen Vorteil</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `vector` ist ein dynamisches Array, das zur Laufzeit wachsen oder schrumpfen kann, im Gegensatz zu normalen Arrays, deren Größe zur Kompilierzeit festgelegt wird. Dies macht Vektoren für viele Anwendungsfälle flexibler.
+    <code>vector</code> ist ein dynamisches Array, das zur Laufzeit wachsen oder schrumpfen kann, im Gegensatz zu normalen Arrays, deren Größe zur Kompilierzeit festgelegt wird. Dies macht Vektoren für viele Anwendungsfälle flexibler.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -247,7 +247,7 @@ for (auto& item : container) {
   <BaseQuizOption value="D">Eine Schleife, die eine manuelle Indexverwaltung erfordert</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Bereichsbasierte for-Schleifen (eingeführt in C++11) iterieren automatisch über alle Elemente in einem Container (wie Vektoren, Arrays, Strings), ohne dass die Indizes manuell verwaltet werden müssen. Die Syntax lautet `for (auto item : container)`.
+    Bereichsbasierte for-Schleifen (eingeführt in C++11) iterieren automatisch über alle Elemente in einem Container (wie Vektoren, Arrays, Strings), ohne dass die Indizes manuell verwaltet werden müssen. Die Syntax lautet <code>for (auto item : container)</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -174,7 +174,7 @@ ansible all -m command -a "systemctl status nginx" --become
 
 <BaseQuiz id="ansible-command-1" correct="C">
   <template #question>
-    `ansible all -m ping` 执行什么操作？
+    <code>ansible all -m ping</code> 执行什么操作？
   </template>
   
   <BaseQuizOption value="A">使用 ICMP ping 测试网络连通性</BaseQuizOption>
@@ -183,7 +183,7 @@ ansible all -m command -a "systemctl status nginx" --become
   <BaseQuizOption value="D">检查主机是否在线</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Ansible 中的 `ping` 模块不使用 ICMP。它是一个测试模块，用于验证 Ansible 是否可以连接到主机、执行 Python 代码并返回结果。它用于验证连通性和配置。
+    Ansible 中的 <code>ping</code> 模块不使用 ICMP。它是一个测试模块，用于验证 Ansible 是否可以连接到主机、执行 Python 代码并返回结果。它用于验证连通性和配置。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -278,7 +278,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
 
 <BaseQuiz id="ansible-playbook-1" correct="B">
   <template #question>
-    `ansible-playbook site.yml --check` 执行什么操作？
+    <code>ansible-playbook site.yml --check</code> 执行什么操作？
   </template>
   
   <BaseQuizOption value="A">运行两次 Playbook</BaseQuizOption>
@@ -287,7 +287,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
   <BaseQuizOption value="D">只运行第一个任务</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `--check` 标志以检查模式（演练）运行 Ansible，模拟将要发生的情况，但实际上不进行任何更改。这在应用 Playbook 之前测试它们很有用。
+    <code>--check</code> 标志以检查模式（演练）运行 Ansible，模拟将要发生的情况，但实际上不进行任何更改。这在应用 Playbook 之前测试它们很有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 

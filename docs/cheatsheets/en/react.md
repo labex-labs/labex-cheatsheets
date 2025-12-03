@@ -254,7 +254,7 @@ function Form() {
 
 <BaseQuiz id="react-usestate-1" correct="A">
   <template #question>
-    What does `useState(0)` return?
+    What does <code>useState(0)</code> return?
   </template>
   
   <BaseQuizOption value="A" correct>An array with the state value and a function to update it</BaseQuizOption>
@@ -263,7 +263,7 @@ function Form() {
   <BaseQuizOption value="D">Nothing, it just sets the state</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `useState` returns an array with two elements: the current state value and a function to update it. The initial value (0) is passed as an argument.
+    <code>useState</code> returns an array with two elements: the current state value and a function to update it. The initial value (0) is passed as an argument.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -292,7 +292,7 @@ function Timer() {
 
 <BaseQuiz id="react-useeffect-1" correct="D">
   <template #question>
-    What does the empty dependency array `[]` in `useEffect(() => {...}, [])` mean?
+    What does the empty dependency array <code>[]</code> in <code>useEffect(() => {...}, [])</code> mean?
   </template>
   
   <BaseQuizOption value="A">The effect runs on every render</BaseQuizOption>

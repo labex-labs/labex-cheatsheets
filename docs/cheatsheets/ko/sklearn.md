@@ -240,7 +240,7 @@ rf_clf = RandomForestClassifier(
 
 <BaseQuiz id="sklearn-randomforest-1" correct="A">
   <template #question>
-    RandomForestClassifier 에서 `n_estimators` 는 무엇을 제어합니까?
+    RandomForestClassifier 에서 <code>n_estimators</code> 는 무엇을 제어합니까?
   </template>
   
   <BaseQuizOption value="A" correct>포레스트 내의 결정 트리 개수</BaseQuizOption>
@@ -249,7 +249,7 @@ rf_clf = RandomForestClassifier(
   <BaseQuizOption value="D">랜덤 시드</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `n_estimators` 는 랜덤 포레스트에 포함할 결정 트리의 수를 지정합니다. 트리가 많을수록 일반적으로 성능은 향상되지만 계산 시간은 증가합니다. 기본값은 보통 100 입니다.
+    <code>n_estimators</code> 는 랜덤 포레스트에 포함할 결정 트리의 수를 지정합니다. 트리가 많을수록 일반적으로 성능은 향상되지만 계산 시간은 증가합니다. 기본값은 보통 100 입니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 
 <BaseQuiz id="c-main-1" correct="C">
   <template #question>
-    Was signalisiert `return 0` in der main-Funktion?
+    Was signalisiert <code>return 0</code> in der main-Funktion?
   </template>
   
   <BaseQuizOption value="A">Das Programm ist fehlgeschlagen</BaseQuizOption>
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
   <BaseQuizOption value="D">Das Programm gab keinen Wert zurück</BaseQuizOption>
   
   <BaseQuizAnswer>
-    In C signalisiert `return 0` von der main-Funktion eine erfolgreiche Programmausführung. Rückgabewerte ungleich Null deuten typischerweise auf Fehler oder eine abnormale Beendigung hin.
+    In C signalisiert <code>return 0</code> von der main-Funktion eine erfolgreiche Programmausführung. Rückgabewerte ungleich Null deuten typischerweise auf Fehler oder eine abnormale Beendigung hin.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -163,7 +163,7 @@ int size = sizeof(buffer);
   <BaseQuizOption value="D">Nur als Zeiger</BaseQuizOption>
   
   <BaseQuizAnswer>
-    In C werden Strings als Zeichen-Arrays (`char`) dargestellt. Der String wird durch ein Nullzeichen (`\0`) terminiert, das das Ende des Strings markiert.
+    In C werden Strings als Zeichen-Arrays (<code>char</code>) dargestellt. Der String wird durch ein Nullzeichen (<code>\0</code>) terminiert, das das Ende des Strings markiert.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ for (int i = 0; i < 3; i++) {
 
 <BaseQuiz id="c-for-loop-1" correct="A">
   <template #question>
-    Was berechnet `sizeof(numbers) / sizeof(numbers[0])`?
+    Was berechnet <code>sizeof(numbers) / sizeof(numbers[0])</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Die Anzahl der Elemente im Array</BaseQuizOption>

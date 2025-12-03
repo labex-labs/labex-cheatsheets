@@ -204,7 +204,7 @@ filtered = arr[mask]
 
 <BaseQuiz id="numpy-boolean-1" correct="C">
   <template #question>
-    ブールインデックス指定 `arr[arr > 5]` は何を返しますか？
+    ブールインデックス指定 <code>arr[arr > 5]</code> は何を返しますか？
   </template>
   
   <BaseQuizOption value="A">ブール配列</BaseQuizOption>
@@ -213,7 +213,7 @@ filtered = arr[mask]
   <BaseQuizOption value="D">エラー</BaseQuizOption>
   
   <BaseQuizAnswer>
-    ブールインデックス指定は配列をフィルタリングし、条件が真である要素のみを返します。`arr[arr > 5]` は 5 より大きい値のみを含む新しい配列を返します。
+    ブールインデックス指定は配列をフィルタリングし、条件が真である要素のみを返します。<code>arr[arr > 5]</code> は 5 より大きい値のみを含む新しい配列を返します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -263,7 +263,7 @@ arr.ravel()  # 可能な場合はビューを返す
 
 <BaseQuiz id="numpy-reshape-1" correct="B">
   <template #question>
-    `arr.reshape(-1, 1)` における `-1` は何を意味しますか？
+    <code>arr.reshape(-1, 1)</code> における <code>-1</code> は何を意味しますか？
   </template>
   
   <BaseQuizOption value="A">エラーを作成する</BaseQuizOption>
@@ -272,13 +272,13 @@ arr.ravel()  # 可能な場合はビューを返す
   <BaseQuizOption value="D">配列を反転する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    リシェイプで `-1` を使用すると、NumPy に配列の総サイズと指定された他の次元に基づいてその次元を自動的に計算するように指示します。これは、1 つの次元はわかっているが、もう一方の次元を NumPy に計算させたい場合に便利です。
+    リシェイプで <code>-1</code> を使用すると、NumPy に配列の総サイズと指定された他の次元に基づいてその次元を自動的に計算するように指示します。これは、1 つの次元はわかっているが、もう一方の次元を NumPy に計算させたい場合に便利です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
 <BaseQuiz id="numpy-reshape-1" correct="B">
   <template #question>
-    `arr.reshape(-1, 1)` における `-1` は何を意味しますか？
+    <code>arr.reshape(-1, 1)</code> における <code>-1</code> は何を意味しますか？
   </template>
   
   <BaseQuizOption value="A">エラーを作成する</BaseQuizOption>
@@ -287,7 +287,7 @@ arr.ravel()  # 可能な場合はビューを返す
   <BaseQuizOption value="D">次元を 1 に設定する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    リシェイプで `-1` を使用すると、NumPy に配列の総サイズと指定された他の次元に基づいてその次元を自動的に計算するように指示します。これは、1 つの次元はわかっているが、もう一方の次元を NumPy に計算させたい場合に便利です。
+    リシェイプで <code>-1</code> を使用すると、NumPy に配列の総サイズと指定された他の次元に基づいてその次元を自動的に計算するように指示します。これは、1 つの次元はわかっているが、もう一方の次元を NumPy に計算させたい場合に便利です。
   </BaseQuizAnswer>
 </BaseQuiz>
 

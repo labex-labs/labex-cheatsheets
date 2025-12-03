@@ -174,7 +174,7 @@ ansible all -m command -a "systemctl status nginx" --become
 
 <BaseQuiz id="ansible-command-1" correct="C">
   <template #question>
-    Что делает команда `ansible all -m ping`?
+    Что делает команда <code>ansible all -m ping</code>?
   </template>
   
   <BaseQuizOption value="A">Проверяет сетевое подключение с помощью ICMP ping</BaseQuizOption>
@@ -183,7 +183,7 @@ ansible all -m command -a "systemctl status nginx" --become
   <BaseQuizOption value="D">Проверяет, находятся ли хосты в сети</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Модуль `ping` в Ansible не использует ICMP. Это тестовый модуль, который проверяет, может ли Ansible подключаться к хостам, выполнять Python и возвращать результаты. Он используется для проверки подключения и конфигурации.
+    Модуль <code>ping</code> в Ansible не использует ICMP. Это тестовый модуль, который проверяет, может ли Ansible подключаться к хостам, выполнять Python и возвращать результаты. Он используется для проверки подключения и конфигурации.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -278,7 +278,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
 
 <BaseQuiz id="ansible-playbook-1" correct="B">
   <template #question>
-    Что делает команда `ansible-playbook site.yml --check`?
+    Что делает команда <code>ansible-playbook site.yml --check</code>?
   </template>
   
   <BaseQuizOption value="A">Запускает плейбук дважды</BaseQuizOption>
@@ -287,7 +287,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
   <BaseQuizOption value="D">Запускает только первую задачу</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `--check` запускает Ansible в режиме проверки (сухой запуск), который имитирует то, что произойдет, не внося фактических изменений. Это полезно для тестирования плейбуков перед их применением.
+    Флаг <code>--check</code> запускает Ansible в режиме проверки (сухой запуск), который имитирует то, что произойдет, не внося фактических изменений. Это полезно для тестирования плейбуков перед их применением.
   </BaseQuizAnswer>
 </BaseQuiz>
 

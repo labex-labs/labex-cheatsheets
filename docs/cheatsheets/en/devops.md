@@ -42,7 +42,7 @@ terraform validate
 
 <BaseQuiz id="devops-terraform-1" correct="B">
   <template #question>
-    What does `terraform plan` do?
+    What does <code>terraform plan</code> do?
   </template>
   
   <BaseQuizOption value="A">Applies infrastructure changes immediately</BaseQuizOption>
@@ -51,7 +51,7 @@ terraform validate
   <BaseQuizOption value="D">Initializes Terraform</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `terraform plan` creates an execution plan showing what Terraform will do when you run `terraform apply`. It's a dry-run that helps you review changes before applying them.
+    <code>terraform plan</code> creates an execution plan showing what Terraform will do when you run <code>terraform apply</code>. It's a dry-run that helps you review changes before applying them.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -121,7 +121,7 @@ kubectl delete -f deployment.yml
 
 <BaseQuiz id="devops-k8s-1" correct="A">
   <template #question>
-    What does `kubectl apply -f deployment.yml` do?
+    What does <code>kubectl apply -f deployment.yml</code> do?
   </template>
   
   <BaseQuizOption value="A" correct>Creates or updates resources defined in the YAML file</BaseQuizOption>
@@ -130,7 +130,7 @@ kubectl delete -f deployment.yml
   <BaseQuizOption value="D">Shows what would be created without applying</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kubectl apply` is a declarative command that creates resources if they don't exist or updates them if they do. It's idempotent, meaning you can run it multiple times safely.
+    <code>kubectl apply</code> is a declarative command that creates resources if they don't exist or updates them if they do. It's idempotent, meaning you can run it multiple times safely.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -243,7 +243,7 @@ git pull origin main
 
 <BaseQuiz id="devops-git-1" correct="D">
   <template #question>
-    What is the difference between `git pull` and `git fetch`?
+    What is the difference between <code>git pull</code> and <code>git fetch</code>?
   </template>
   
   <BaseQuizOption value="A">There is no difference</BaseQuizOption>
@@ -252,7 +252,7 @@ git pull origin main
   <BaseQuizOption value="D" correct>git fetch downloads changes without merging, git pull downloads and merges changes</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch` downloads changes from the remote repository but doesn't merge them into your current branch. `git pull` performs both operations: it fetches and then merges the changes.
+    <code>git fetch</code> downloads changes from the remote repository but doesn't merge them into your current branch. <code>git pull</code> performs both operations: it fetches and then merges the changes.
   </BaseQuizAnswer>
 </BaseQuiz>
 

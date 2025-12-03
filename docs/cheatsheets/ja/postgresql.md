@@ -133,7 +133,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="postgresql-create-table-1" correct="A">
   <template #question>
-    PostgreSQL の`SERIAL PRIMARY KEY`は何をしますか？
+    PostgreSQL の<code>SERIAL PRIMARY KEY</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>自動インクリメントされる整数列を作成し、主キーとして機能させる</BaseQuizOption>
@@ -142,7 +142,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">一意なインデックスを作成する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SERIAL` は PostgreSQL 固有のデータ型で、自動インクリメントされる整数を作成します。`PRIMARY KEY`と組み合わせることで、各行に一意の識別子を作成し、自動的にインクリメントされます。
+    <code>SERIAL</code> は PostgreSQL 固有のデータ型で、自動インクリメントされる整数を作成します。<code>PRIMARY KEY</code>と組み合わせることで、各行に一意の識別子を作成し、自動的にインクリメントされます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ SELECT * FROM users WHERE active = false;
 
 <BaseQuiz id="postgresql-insert-1" correct="C">
   <template #question>
-    PostgreSQL の INSERT 文における `RETURNING` は何をしますか？
+    PostgreSQL の INSERT 文における <code>RETURNING</code> は何をしますか？
   </template>
   
   <BaseQuizOption value="A">挿入をロールバックする</BaseQuizOption>
@@ -299,7 +299,7 @@ SELECT * FROM users WHERE active = false;
   <BaseQuizOption value="D">既存の行を更新する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    PostgreSQL の `RETURNING` 句を使用すると、挿入直後に挿入された行データ（または特定の列）を取得でき、自動生成された ID やタイムスタンプを取得する場合などに便利です。
+    PostgreSQL の <code>RETURNING</code> 句を使用すると、挿入直後に挿入された行データ（または特定の列）を取得でき、自動生成された ID やタイムスタンプを取得する場合などに便利です。
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -84,7 +84,7 @@ SET mykey "new_value" NX
 
 <BaseQuiz id="redis-set-get-1" correct="C">
   <template #question>
-    Что делает команда `SET mykey "value" EX 3600`?
+    Что делает команда <code>SET mykey "value" EX 3600</code>?
   </template>
   
   <BaseQuizOption value="A">Устанавливает ключ со значением в 3600 байт</BaseQuizOption>
@@ -93,7 +93,7 @@ SET mykey "new_value" NX
   <BaseQuizOption value="D">Устанавливает ключ с 3600 различными значениями</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Опция `EX` устанавливает время истечения срока действия в секундах. `SET mykey "value" EX 3600` сохраняет значение и автоматически удаляет его через 3600 секунд (1 час).
+    Опция <code>EX</code> устанавливает время истечения срока действия в секундах. <code>SET mykey "value" EX 3600</code> сохраняет значение и автоматически удаляет его через 3600 секунд (1 час).
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -129,7 +129,7 @@ INCRBYFLOAT price 0.1
 
 <BaseQuiz id="redis-incr-1" correct="A">
   <template #question>
-    Что произойдет, если использовать `INCR` для ключа, которого не существует?
+    Что произойдет, если использовать <code>INCR</code> для ключа, которого не существует?
   </template>
   
   <BaseQuizOption value="A" correct>Redis создает ключ со значением 1</BaseQuizOption>
@@ -138,7 +138,7 @@ INCRBYFLOAT price 0.1
   <BaseQuizOption value="D">Ничего не происходит</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Если ключ не существует, `INCR` рассматривает его так, как будто у него значение 0, увеличивает его до 1 и создает ключ. Это делает `INCR` полезным для инициализации счетчиков.
+    Если ключ не существует, <code>INCR</code> рассматривает его так, как будто у него значение 0, увеличивает его до 1 и создает ключ. Это делает <code>INCR</code> полезным для инициализации счетчиков.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -202,7 +202,7 @@ LLEN mylist
 
 <BaseQuiz id="redis-list-1" correct="B">
   <template #question>
-    Что возвращает команда `LRANGE mylist 0 -1`?
+    Что возвращает команда <code>LRANGE mylist 0 -1</code>?
   </template>
   
   <BaseQuizOption value="A">Только первый элемент</BaseQuizOption>
@@ -211,7 +211,7 @@ LLEN mylist
   <BaseQuizOption value="D">Ошибка</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `LRANGE` с `0 -1` возвращает все элементы в списке. `0` — это начальный индекс, а `-1` представляет последний элемент, поэтому это извлекает все от первого до последнего элемента.
+    <code>LRANGE</code> с <code>0 -1</code> возвращает все элементы в списке. <code>0</code> — это начальный индекс, а <code>-1</code> представляет последний элемент, поэтому это извлекает все от первого до последнего элемента.
   </BaseQuizAnswer>
 </BaseQuiz>
 

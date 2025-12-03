@@ -46,7 +46,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 
 <BaseQuiz id="matplotlib-plot-1" correct="C">
   <template #question>
-    Matplotlib 에서 `plt.show()` 는 무엇을 하나요?
+    Matplotlib 에서 <code>plt.show()</code> 는 무엇을 하나요?
   </template>
   
   <BaseQuizOption value="A">플롯을 파일에 저장합니다</BaseQuizOption>
@@ -55,7 +55,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
   <BaseQuizOption value="D">플롯을 지웁니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `plt.show()` 는 시각화 창에 플롯을 표시합니다. 시각화를 보려면 이 함수를 호출해야 합니다. 이 함수 없이는 플롯이 표시되지 않습니다.
+    <code>plt.show()</code> 는 시각화 창에 플롯을 표시합니다. 시각화를 보려면 이 함수를 호출해야 합니다. 이 함수 없이는 플롯이 표시되지 않습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -76,7 +76,7 @@ plt.colorbar()  # 색상 막대 추가
 
 <BaseQuiz id="matplotlib-scatter-1" correct="D">
   <template #question>
-    Matplotlib 플롯에서 `alpha` 매개변수는 무엇을 제어하나요?
+    Matplotlib 플롯에서 <code>alpha</code> 매개변수는 무엇을 제어하나요?
   </template>
   
   <BaseQuizOption value="A">플롯의 색상</BaseQuizOption>
@@ -85,7 +85,7 @@ plt.colorbar()  # 색상 막대 추가
   <BaseQuizOption value="D" correct>플롯 요소의 투명도/불투명도</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `alpha` 매개변수는 투명도를 제어하며, 값은 0(완전히 투명) 에서 1(완전히 불투명) 사이입니다. 겹치는 시각화를 만들 때 요소를 통과하여 볼 수 있도록 하는 데 유용합니다.
+    <code>alpha</code> 매개변수는 투명도를 제어하며, 값은 0(완전히 투명) 에서 1(완전히 불투명) 사이입니다. 겹치는 시각화를 만들 때 요소를 통과하여 볼 수 있도록 하는 데 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -214,16 +214,16 @@ plt.annotate('중요 지점', xy=(2, 4), xytext=(3, 6),
 
 <BaseQuiz id="matplotlib-legend-1" correct="B">
   <template #question>
-    `plt.legend()` 가 레이블을 표시하려면 무엇이 필요한가요?
+    <code>plt.legend()</code> 가 레이블을 표시하려면 무엇이 필요한가요?
   </template>
   
   <BaseQuizOption value="A">아무것도 필요하지 않으며 자동으로 작동합니다</BaseQuizOption>
-  <BaseQuizOption value="B" correct>각 플롯에 `label` 매개변수가 설정되어야 합니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct>각 플롯에 <code>label</code> 매개변수가 설정되어야 합니다</BaseQuizOption>
   <BaseQuizOption value="C">범례는 플롯 생성 전에 생성되어야 합니다</BaseQuizOption>
   <BaseQuizOption value="D">레이블은 범례에서 수동으로 설정되어야 합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    범례를 표시하려면 각 플롯을 생성할 때 `label` 매개변수를 설정해야 합니다 (예: `plt.plot(x, y, label='데이터셋 1')`). 그런 다음 `plt.legend()` 를 호출하면 모든 레이블이 표시됩니다.
+    범례를 표시하려면 각 플롯을 생성할 때 <code>label</code> 매개변수를 설정해야 합니다 (예: <code>plt.plot(x, y, label='데이터셋 1')</code>). 그런 다음 <code>plt.legend()</code> 를 호출하면 모든 레이블이 표시됩니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

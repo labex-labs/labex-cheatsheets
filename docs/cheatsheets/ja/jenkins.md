@@ -155,7 +155,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
 
 <BaseQuiz id="jenkins-build-1" correct="B">
   <template #question>
-    `jenkins-cli.jar build my-job -s` の `-s` フラグは何をしますか？
+    <code>jenkins-cli.jar build my-job -s</code> の <code>-s</code> フラグは何をしますか？
   </template>
   
   <BaseQuizOption value="A">ビルドをスキップする</BaseQuizOption>
@@ -164,7 +164,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
   <BaseQuizOption value="D">ビルドを停止する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-s` フラグはビルドコマンドを同期的にし、ビルドが完了するまで待機します。このフラグがない場合、コマンドはビルドをトリガーした直後に返されます。
+    <code>-s</code> フラグはビルドコマンドを同期的にし、ビルドが完了するまで待機します。このフラグがない場合、コマンドはビルドをトリガーした直後に返されます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -225,7 +225,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
 
 <BaseQuiz id="jenkins-console-1" correct="C">
   <template #question>
-    `jenkins-cli.jar console my-job -f` の `-f` フラグは何をしますか？
+    <code>jenkins-cli.jar console my-job -f</code> の <code>-f</code> フラグは何をしますか？
   </template>
   
   <BaseQuizOption value="A">ビルドの停止を強制する</BaseQuizOption>
@@ -234,7 +234,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
   <BaseQuizOption value="D">出力を JSON 形式でフォーマットする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-f` フラグは、Linux の `tail -f` と同様に、コンソール出力をリアルタイムで追跡します。これはビルドの実行中に監視するのに役立ちます。
+    <code>-f</code> フラグは、Linux の <code>tail -f</code> と同様に、コンソール出力をリアルタイムで追跡します。これはビルドの実行中に監視するのに役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 

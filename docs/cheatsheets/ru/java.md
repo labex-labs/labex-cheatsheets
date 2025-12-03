@@ -70,7 +70,7 @@ public static void main(String[] args) {
   <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Метод main должен быть `public static void main(String[] args)`. `public` позволяет JVM получить к нему доступ, `static` означает, что он принадлежит классу, `void` означает, что он ничего не возвращает, а `String[] args` принимает аргументы командной строки.
+    Метод main должен быть <code>public static void main(String[] args)</code>. <code>public</code> позволяет JVM получить к нему доступ, <code>static</code> означает, что он принадлежит классу, <code>void</code> означает, что он ничего не возвращает, а <code>String[] args</code> принимает аргументы командной строки.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ String uppercase = message.toUpperCase();
   <BaseQuizOption value="D">Строки удаляются автоматически</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Неизменяемость означает, что после создания объекта String его значение не может быть изменено. Операции вроде `toUpperCase()` возвращают новый объект String, а не изменяют исходный.
+    Неизменяемость означает, что после создания объекта String его значение не может быть изменено. Операции вроде <code>toUpperCase()</code> возвращают новый объект String, а не изменяют исходный.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -280,7 +280,7 @@ do {
 
 <BaseQuiz id="java-while-1" correct="B">
   <template #question>
-    Каково ключевое различие между циклами `while` и `do-while`?
+    Каково ключевое различие между циклами <code>while</code> и <code>do-while</code>?
   </template>
   
   <BaseQuizOption value="A">Различий нет</BaseQuizOption>
@@ -289,7 +289,7 @@ do {
   <BaseQuizOption value="D">do-while работает только с массивами</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Цикл `do-while` проверяет условие после выполнения тела цикла, поэтому он всегда выполняется как минимум один раз. Цикл `while` проверяет условие сначала, поэтому он может не выполниться, если условие изначально ложно.
+    Цикл <code>do-while</code> проверяет условие после выполнения тела цикла, поэтому он всегда выполняется как минимум один раз. Цикл <code>while</code> проверяет условие сначала, поэтому он может не выполниться, если условие изначально ложно.
   </BaseQuizAnswer>
 </BaseQuiz>
 

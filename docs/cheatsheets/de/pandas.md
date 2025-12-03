@@ -39,7 +39,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
 
 <BaseQuiz id="pandas-read-csv-1" correct="B">
   <template #question>
-    Was gibt `pd.read_csv('data.csv')` zurück?
+    Was gibt <code>pd.read_csv('data.csv')</code> zurück?
   </template>
   
   <BaseQuizOption value="A">Eine Liste von Dictionaries</BaseQuizOption>
@@ -48,7 +48,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
   <BaseQuizOption value="D">Ein String</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pd.read_csv()` liest eine CSV-Datei und gibt ein pandas DataFrame zurück, eine zweidimensionale, beschriftete Datenstruktur mit Spalten und Zeilen.
+    <code>pd.read_csv()</code> liest eine CSV-Datei und gibt ein pandas DataFrame zurück, eine zweidimensionale, beschriftete Datenstruktur mit Spalten und Zeilen.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df.dropna(axis=1)
 
 <BaseQuiz id="pandas-missing-1" correct="B">
   <template #question>
-    Was bewirkt `df.dropna(axis=1)`?
+    Was bewirkt <code>df.dropna(axis=1)</code>?
   </template>
   
   <BaseQuizOption value="A">Entfernt Zeilen mit fehlenden Werten</BaseQuizOption>
@@ -186,7 +186,7 @@ df.dropna(axis=1)
   <BaseQuizOption value="D">Zählt fehlende Werte</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Der Parameter `axis=1` bedeutet "Spalten", daher entfernt `df.dropna(axis=1)` Spalten, die fehlende Werte enthalten. Verwenden Sie `axis=0` (Standard), um Zeilen zu entfernen.
+    Der Parameter <code>axis=1</code> bedeutet "Spalten", daher entfernt <code>df.dropna(axis=1)</code> Spalten, die fehlende Werte enthalten. Verwenden Sie <code>axis=0</code> (Standard), um Zeilen zu entfernen.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -205,7 +205,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
 
 <BaseQuiz id="pandas-duplicates-1" correct="A">
   <template #question>
-    Was bewirkt `df.drop_duplicates()` standardmäßig?
+    Was bewirkt <code>df.drop_duplicates()</code> standardmäßig?
   </template>
   
   <BaseQuizOption value="A" correct>Entfernt doppelte Zeilen und behält das erste Vorkommen bei</BaseQuizOption>
@@ -214,7 +214,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
   <BaseQuizOption value="D">Entfernt das erste Vorkommen von Duplikaten</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Standardmäßig behält `drop_duplicates()` das erste Vorkommen jeder doppelten Zeile bei und entfernt nachfolgende Duplikate. Sie können `keep='last'` verwenden, um stattdessen das letzte Vorkommen beizubehalten.
+    Standardmäßig behält <code>drop_duplicates()</code> das erste Vorkommen jeder doppelten Zeile bei und entfernt nachfolgende Duplikate. Sie können <code>keep='last'</code> verwenden, um stattdessen das letzte Vorkommen beizubehalten.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -248,7 +248,7 @@ df.replace(['A', 'B'], ['C', 'D'])
 
 <BaseQuiz id="pandas-apply-1" correct="A">
   <template #question>
-    Was bewirkt `df['col'].apply(lambda x: x*2)`?
+    Was bewirkt <code>df['col'].apply(lambda x: x*2)</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Wendet eine Funktion auf jedes Element in der Spalte an und multipliziert jedes mit 2</BaseQuizOption>
@@ -257,7 +257,7 @@ df.replace(['A', 'B'], ['C', 'D'])
   <BaseQuizOption value="D">Zählt Elemente in der Spalte</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Methode `apply()` wendet eine Funktion auf jedes Element in einer Serie an. Die Lambda-Funktion `lambda x: x*2` multipliziert jeden Wert mit 2 und gibt eine neue Serie mit den transformierten Werten zurück.
+    Die Methode <code>apply()</code> wendet eine Funktion auf jedes Element in einer Serie an. Die Lambda-Funktion <code>lambda x: x*2</code> multipliziert jeden Wert mit 2 und gibt eine neue Serie mit den transformierten Werten zurück.
   </BaseQuizAnswer>
 </BaseQuiz>
 

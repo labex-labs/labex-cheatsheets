@@ -55,7 +55,7 @@ ls -la
 
 <BaseQuiz id="cybersecurity-chmod-1" correct="C">
   <template #question>
-    Que définit `chmod 644 file.txt` pour les permissions de fichier ?
+    Que définit <code>chmod 644 file.txt</code> pour les permissions de fichier ?
   </template>
   
   <BaseQuizOption value="A">Lecture, écriture, exécution pour tous les utilisateurs</BaseQuizOption>
@@ -64,7 +64,7 @@ ls -la
   <BaseQuizOption value="D">Lecture seule pour tous les utilisateurs</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 644` définit : propriétaire = 6 (rw-), groupe = 4 (r--), autres = 4 (r--). C'est un ensemble de permissions courant pour les fichiers qui doivent être lisibles par tous mais modifiables uniquement par le propriétaire.
+    <code>chmod 644</code> définit : propriétaire = 6 (rw-), groupe = 4 (r--), autres = 4 (r--). C'est un ensemble de permissions courant pour les fichiers qui doivent être lisibles par tous mais modifiables uniquement par le propriétaire.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -84,7 +84,7 @@ sudo ss -tuln
 
 <BaseQuiz id="cybersecurity-firewall-1" correct="B">
   <template #question>
-    Que fait `sudo ufw allow 22/tcp` ?
+    Que fait <code>sudo ufw allow 22/tcp</code> ?
   </template>
   
   <BaseQuizOption value="A">Bloque le port 22</BaseQuizOption>
@@ -93,7 +93,7 @@ sudo ss -tuln
   <BaseQuizOption value="D">Affiche l'état du pare-feu</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ufw allow 22/tcp` crée une règle de pare-feu qui autorise les connexions TCP entrantes sur le port 22, qui est le port SSH par défaut. Ceci est essentiel pour l'accès distant au serveur.
+    <code>ufw allow 22/tcp</code> crée une règle de pare-feu qui autorise les connexions TCP entrantes sur le port 22, qui est le port SSH par défaut. Ceci est essentiel pour l'accès distant au serveur.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -139,7 +139,7 @@ grep "Failed password" /var/log/auth.log
 
 <BaseQuiz id="cybersecurity-logs-1" correct="A">
   <template #question>
-    Que fait `tail -f /var/log/auth.log` ?
+    Que fait <code>tail -f /var/log/auth.log</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Suit le fichier journal d'authentification en temps réel</BaseQuizOption>
@@ -148,7 +148,7 @@ grep "Failed password" /var/log/auth.log
   <BaseQuizOption value="D">Archive le fichier journal</BaseQuizOption>
   
   <BaseQuizAnswer>
-    L'option `-f` fait en sorte que `tail` suive le fichier, affichant les nouvelles entrées de journal au fur et à mesure qu'elles sont écrites. Ceci est utile pour la surveillance en temps réel des événements d'authentification et des incidents de sécurité.
+    L'option <code>-f</code> fait en sorte que <code>tail</code> suive le fichier, affichant les nouvelles entrées de journal au fur et à mesure qu'elles sont écrites. Ceci est utile pour la surveillance en temps réel des événements d'authentification et des incidents de sécurité.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
   <BaseQuizOption value="D">C 는 cout 을 사용하고, C++ 는 printf 를 사용합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C 는 stdio.h 에서 `printf()`를 사용하는 반면, C++ 는 iostream 에서 스트림 삽입 연산자 `<<`와 함께 `cout`을 사용합니다. C++ 는 호환성을 위해 printf 도 지원합니다.
+    C 는 stdio.h 에서 <code>printf()</code>를 사용하는 반면, C++ 는 iostream 에서 스트림 삽입 연산자 <code><<</code>와 함께 <code>cout</code>을 사용합니다. C++ 는 호환성을 위해 printf 도 지원합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ vector<string> names(5); // 크기 5, 빈 문자열
 
 <BaseQuiz id="cpp-vector-1" correct="B">
   <template #question>
-    일반 배열에 비해 `vector` 의 주요 장점은 무엇입니까?
+    일반 배열에 비해 <code>vector</code> 의 주요 장점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">벡터가 더 빠릅니다</BaseQuizOption>
@@ -165,7 +165,7 @@ vector<string> names(5); // 크기 5, 빈 문자열
   <BaseQuizOption value="D">장점이 없습니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `vector` 는 런타임에 크기가 늘어나거나 줄어들 수 있는 동적 배열인 반면, 일반 배열은 컴파일 시간에 크기가 고정됩니다. 이로 인해 벡터는 많은 사용 사례에서 더 유연합니다.
+    <code>vector</code> 는 런타임에 크기가 늘어나거나 줄어들 수 있는 동적 배열인 반면, 일반 배열은 컴파일 시간에 크기가 고정됩니다. 이로 인해 벡터는 많은 사용 사례에서 더 유연합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -247,7 +247,7 @@ for (auto& item : container) {
   <BaseQuizOption value="D">수동 인덱스 관리가 필요한 루프입니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    범위 기반 for 루프 (C++11 에서 도입) 는 인덱스를 수동으로 관리할 필요 없이 컨테이너 (벡터, 배열, 문자열 등) 의 모든 요소를 자동으로 반복합니다. 구문은 `for (auto item : container)`입니다.
+    범위 기반 for 루프 (C++11 에서 도입) 는 인덱스를 수동으로 관리할 필요 없이 컨테이너 (벡터, 배열, 문자열 등) 의 모든 요소를 자동으로 반복합니다. 구문은 <code>for (auto item : container)</code>입니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

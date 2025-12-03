@@ -109,7 +109,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="sqlite-create-table-1" correct="A">
   <template #question>
-    SQLite で`INTEGER PRIMARY KEY AUTOINCREMENT`は何をしますか？
+    SQLite で<code>INTEGER PRIMARY KEY AUTOINCREMENT</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>自動インクリメントされる整数主キーを作成する</BaseQuizOption>
@@ -118,7 +118,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">一意なインデックスを作成する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INTEGER PRIMARY KEY AUTOINCREMENT`は、新しい行ごとに自動的にインクリメントされ、主キーとして機能する整数列を作成します。これにより、各行に一意の識別子が保証されます。
+    <code>INTEGER PRIMARY KEY AUTOINCREMENT</code>は、新しい行ごとに自動的にインクリメントされ、主キーとして機能する整数列を作成します。これにより、各行に一意の識別子が保証されます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ VALUES ('Duplicate', 'existing@email.com');
 
 <BaseQuiz id="sqlite-upsert-1" correct="A">
   <template #question>
-    `INSERT OR REPLACE`と`INSERT OR IGNORE`の違いは何ですか？
+    <code>INSERT OR REPLACE</code>と<code>INSERT OR IGNORE</code>の違いは何ですか？
   </template>
   
   <BaseQuizOption value="A" correct>REPLACE は既存の行を更新し、IGNORE は重複をスキップする</BaseQuizOption>
@@ -248,7 +248,7 @@ VALUES ('Duplicate', 'existing@email.com');
   <BaseQuizOption value="D">REPLACE はテーブルで機能し、IGNORE はビューで機能する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INSERT OR REPLACE`は、競合（例：重複する主キー）がある場合に既存の行を置き換えます。`INSERT OR IGNORE`は、競合がある場合に挿入を単にスキップし、既存の行は変更されません。
+    <code>INSERT OR REPLACE</code>は、競合（例：重複する主キー）がある場合に既存の行を置き換えます。<code>INSERT OR IGNORE</code>は、競合がある場合に挿入を単にスキップし、既存の行は変更されません。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -274,7 +274,7 @@ SELECT DISTINCT department FROM employees;
 
 <BaseQuiz id="sqlite-select-1" correct="B">
   <template #question>
-    `SELECT DISTINCT`は何をしますか？
+    <code>SELECT DISTINCT</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A">すべての行を選択する</BaseQuizOption>
@@ -283,7 +283,7 @@ SELECT DISTINCT department FROM employees;
   <BaseQuizOption value="D">結果を並べ替える</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SELECT DISTINCT`は、結果セットから重複する行を排除し、一意の値のみを返します。これは、列内のすべての一意の値を確認したい場合に役立ちます。
+    <code>SELECT DISTINCT</code>は、結果セットから重複する行を排除し、一意の値のみを返します。これは、列内のすべての一意の値を確認したい場合に役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -38,7 +38,7 @@ USE company_db;
 
 <BaseQuiz id="database-create-1" correct="A">
   <template #question>
-    What does `CREATE DATABASE company_db` do?
+    What does <code>CREATE DATABASE company_db</code> do?
   </template>
   
   <BaseQuizOption value="A" correct>Creates a new empty database named company_db</BaseQuizOption>
@@ -47,7 +47,7 @@ USE company_db;
   <BaseQuizOption value="D">Backs up the database</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `CREATE DATABASE` creates a new, empty database. After creation, you need to use `USE` to select it and then create tables within it.
+    <code>CREATE DATABASE</code> creates a new, empty database. After creation, you need to use <code>USE</code> to select it and then create tables within it.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -157,7 +157,7 @@ RENAME TABLE employees TO staff;
 
 <BaseQuiz id="database-alter-1" correct="C">
   <template #question>
-    What does `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)` do?
+    What does <code>ALTER TABLE employees ADD COLUMN phone VARCHAR(15)</code> do?
   </template>
   
   <BaseQuizOption value="A">Deletes the phone column</BaseQuizOption>
@@ -166,7 +166,7 @@ RENAME TABLE employees TO staff;
   <BaseQuizOption value="D">Renames the table</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ALTER TABLE ... ADD COLUMN` adds a new column to an existing table. The new column will be added with the specified data type and will be NULL for existing rows unless you specify a default value.
+    <code>ALTER TABLE ... ADD COLUMN</code> adds a new column to an existing table. The new column will be added with the specified data type and will be NULL for existing rows unless you specify a default value.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -294,7 +294,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
 
 <BaseQuiz id="database-where-1" correct="C">
   <template #question>
-    What does `LIKE 'John%'` match in a WHERE clause?
+    What does <code>LIKE 'John%'</code> match in a WHERE clause?
   </template>
   
   <BaseQuizOption value="A">Only exact matches to "John"</BaseQuizOption>
@@ -303,7 +303,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
   <BaseQuizOption value="D">Values containing "John" anywhere</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `%` wildcard in SQL matches any sequence of characters. `LIKE 'John%'` matches any value that starts with "John", such as "John", "Johnny", "Johnson", etc.
+    The <code>%</code> wildcard in SQL matches any sequence of characters. <code>LIKE 'John%'</code> matches any value that starts with "John", such as "John", "Johnny", "Johnson", etc.
   </BaseQuizAnswer>
 </BaseQuiz>
 

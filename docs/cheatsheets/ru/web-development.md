@@ -67,7 +67,7 @@ pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 
 <BaseQuiz id="webdev-semantic-1" correct="B">
   <template #question>
-    Каково основное преимущество использования семантических элементов HTML, таких как `header`, `main` и `footer`?
+    Каково основное преимущество использования семантических элементов HTML, таких как <code>header</code>, <code>main</code> и <code>footer</code>?
   </template>
   
   <BaseQuizOption value="A">Они заставляют страницу загружаться быстрее</BaseQuizOption>
@@ -263,7 +263,7 @@ h1 {
 
 <BaseQuiz id="webdev-boxmodel-1" correct="B">
   <template #question>
-    В чем разница между `margin` и `padding` в CSS?
+    В чем разница между <code>margin</code> и <code>padding</code> в CSS?
   </template>
   
   <BaseQuizOption value="A">Разницы нет</BaseQuizOption>
@@ -301,7 +301,7 @@ h1 {
 
 <BaseQuiz id="webdev-flexbox-1" correct="A">
   <template #question>
-    Что делает `justify-content: center` во Flexbox?
+    Что делает <code>justify-content: center</code> во Flexbox?
   </template>
   
   <BaseQuizOption value="A" correct>Центрирует flex-элементы вдоль главной оси (по умолчанию по горизонтали)</BaseQuizOption>
@@ -310,7 +310,7 @@ h1 {
   <BaseQuizOption value="D">Растягивает элементы, чтобы заполнить пространство</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `justify-content` управляет выравниванием вдоль главной оси (по умолчанию горизонтальной). `center` центрирует все flex-элементы в контейнере. Используйте `align-items` для управления выравниванием по поперечной оси (вертикальной).
+    <code>justify-content</code> управляет выравниванием вдоль главной оси (по умолчанию горизонтальной). <code>center</code> центрирует все flex-элементы в контейнере. Используйте <code>align-items</code> для управления выравниванием по поперечной оси (вертикальной).
   </BaseQuizAnswer>
 </BaseQuiz>
 

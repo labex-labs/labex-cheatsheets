@@ -51,16 +51,16 @@ hydra -l admin -p password123 192.168.1.100 ftp
 
 <BaseQuiz id="hydra-syntax-1" correct="B">
   <template #question>
-    Hydra 에서 `-l` 과 `-L` 의 차이점은 무엇입니까?
+    Hydra 에서 <code>-l</code> 과 <code>-L</code> 의 차이점은 무엇입니까?
   </template>
   
-  <BaseQuizOption value="A">`-l` 은 암호용이고, `-L` 은 사용자 이름용입니다</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`-l` 은 단일 사용자 이름을 지정하고, `-L` 은 사용자 이름 목록 파일을 지정합니다</BaseQuizOption>
+  <BaseQuizOption value="A"><code>-l</code> 은 암호용이고, <code>-L</code> 은 사용자 이름용입니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>-l</code> 은 단일 사용자 이름을 지정하고, <code>-L</code> 은 사용자 이름 목록 파일을 지정합니다</BaseQuizOption>
   <BaseQuizOption value="C">차이점이 없습니다</BaseQuizOption>
-  <BaseQuizOption value="D">`-l` 은 소문자이고, `-L` 은 대문자입니다</BaseQuizOption>
+  <BaseQuizOption value="D"><code>-l</code> 은 소문자이고, <code>-L</code> 은 대문자입니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-l` 옵션은 단일 사용자 이름에 사용되며, `-L` 은 사용자 이름 목록이 포함된 파일을 지정하는 데 사용됩니다. 마찬가지로 `-p` 는 단일 암호에 사용되고 `-P` 는 암호 목록 파일에 사용됩니다.
+    <code>-l</code> 옵션은 단일 사용자 이름에 사용되며, <code>-L</code> 은 사용자 이름 목록이 포함된 파일을 지정하는 데 사용됩니다. 마찬가지로 <code>-p</code> 는 단일 암호에 사용되고 <code>-P</code> 는 암호 목록 파일에 사용됩니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -95,7 +95,7 @@ hydra -l admin -P passwords.txt target.com ssh -V
 
 <BaseQuiz id="hydra-output-1" correct="A">
   <template #question>
-    `hydra -V`는 무엇을 합니까?
+    <code>hydra -V</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A" correct>자세한 진행 상황을 보여주는 자세한 출력을 활성화합니다</BaseQuizOption>
@@ -104,7 +104,7 @@ hydra -l admin -P passwords.txt target.com ssh -V
   <BaseQuizOption value="D">자세한 모드로만 실행됩니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-V` 플래그는 자세한 모드를 활성화하여 각 로그인 시도를 포함한 상세 출력을 표시하므로 암호 공격 중 진행 상황을 모니터링하고 문제를 디버깅하기가 더 쉽습니다.
+    <code>-V</code> 플래그는 자세한 모드를 활성화하여 각 로그인 시도를 포함한 상세 출력을 표시하므로 암호 공격 중 진행 상황을 모니터링하고 문제를 디버깅하기가 더 쉽습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -127,7 +127,7 @@ hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 
 <BaseQuiz id="hydra-ssh-1" correct="C">
   <template #question>
-    Hydra 에서 `-s` 플래그는 무엇을 합니까?
+    Hydra 에서 <code>-s</code> 플래그는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">서비스 유형을 설정합니다</BaseQuizOption>
@@ -136,7 +136,7 @@ hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
   <BaseQuizOption value="D">스레드 수를 설정합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-s` 플래그는 서비스가 표준 포트 22 가 아닌 다른 포트에서 실행될 때 사용자 지정 포트 번호를 지정합니다. 예를 들어, `-s 2222`는 포트 2222 의 SSH 를 대상으로 합니다.
+    <code>-s</code> 플래그는 서비스가 표준 포트 22 가 아닌 다른 포트에서 실행될 때 사용자 지정 포트 번호를 지정합니다. 예를 들어, <code>-s 2222</code>는 포트 2222 의 SSH 를 대상으로 합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

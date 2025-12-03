@@ -50,7 +50,7 @@ db.users.insertOne({name: "John"})
 
 <BaseQuiz id="mongodb-use-1" correct="B">
   <template #question>
-    Was passiert, wenn Sie in MongoDB `use newdb` ausführen?
+    Was passiert, wenn Sie in MongoDB <code>use newdb</code> ausführen?
   </template>
   
   <BaseQuizOption value="A">Es erstellt die Datenbank sofort</BaseQuizOption>
@@ -59,7 +59,7 @@ db.users.insertOne({name: "John"})
   <BaseQuizOption value="D">Es zeigt alle Collections in der Datenbank an</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Der Befehl `use` wechselt zu einer Datenbank, aber MongoDB erstellt die Datenbank erst, wenn das erste Dokument eingefügt wird. Dies ist ein Ansatz der "faulen" Erstellung.
+    Der Befehl <code>use</code> wechselt zu einer Datenbank, aber MongoDB erstellt die Datenbank erst, wenn das erste Dokument eingefügt wird. Dies ist ein Ansatz der "faulen" Erstellung.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -178,7 +178,7 @@ db.users.insertOne({
 
 <BaseQuiz id="mongodb-insert-1" correct="A">
   <template #question>
-    Was gibt `db.users.insertOne()` zurück?
+    Was gibt <code>db.users.insertOne()</code> zurück?
   </template>
   
   <BaseQuizOption value="A" correct>Ein Bestätigungsobjekt mit der _id des eingefügten Dokuments</BaseQuizOption>
@@ -187,7 +187,7 @@ db.users.insertOne({
   <BaseQuizOption value="D">Die Anzahl der eingefügten Dokumente</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `insertOne()` gibt ein Bestätigungsobjekt zurück, das `acknowledged: true` und `insertedId` mit der `_id` des eingefügten Dokuments enthält (oder die benutzerdefinierte `_id`, falls angegeben).
+    <code>insertOne()</code> gibt ein Bestätigungsobjekt zurück, das <code>acknowledged: true</code> und <code>insertedId</code> mit der <code>_id</code> des eingefügten Dokuments enthält (oder die benutzerdefinierte <code>_id</code>, falls angegeben).
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ db.users.find({ email: { $exists: true } })
 
 <BaseQuiz id="mongodb-query-1" correct="B">
   <template #question>
-    Was bedeutet `$gt` in MongoDB-Abfragen?
+    Was bedeutet <code>$gt</code> in MongoDB-Abfragen?
   </template>
   
   <BaseQuizOption value="A">Größer oder gleich</BaseQuizOption>
@@ -299,7 +299,7 @@ db.users.find({ email: { $exists: true } })
   <BaseQuizOption value="D">Gesamtmenge abrufen</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `$gt` ist ein Vergleichsoperator, der "größer als" bedeutet. Er wird in Abfragen wie `{ age: { $gt: 25 } }` verwendet, um Dokumente zu finden, bei denen das Feld `age` größer als 25 ist.
+    <code>$gt</code> ist ein Vergleichsoperator, der "größer als" bedeutet. Er wird in Abfragen wie <code>{ age: { $gt: 25 } }</code> verwendet, um Dokumente zu finden, bei denen das Feld <code>age</code> größer als 25 ist.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -365,7 +365,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
 
 <BaseQuiz id="mongodb-update-1" correct="C">
   <template #question>
-    Was bewirkt `$set` bei MongoDB-Update-Operationen?
+    Was bewirkt <code>$set</code> bei MongoDB-Update-Operationen?
   </template>
   
   <BaseQuizOption value="A">Löscht ein Feld</BaseQuizOption>
@@ -374,7 +374,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
   <BaseQuizOption value="D">Entfernt ein Element aus einem Array</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Der `$set`-Operator setzt den Wert eines Feldes in einem Dokument. Wenn das Feld nicht existiert, wird es erstellt. Wenn es existiert, wird der Wert aktualisiert.
+    Der <code>$set</code>-Operator setzt den Wert eines Feldes in einem Dokument. Wenn das Feld nicht existiert, wird es erstellt. Wenn es existiert, wird der Wert aktualisiert.
   </BaseQuizAnswer>
 </BaseQuiz>
 

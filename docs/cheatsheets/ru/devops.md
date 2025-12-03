@@ -42,7 +42,7 @@ terraform validate
 
 <BaseQuiz id="devops-terraform-1" correct="B">
   <template #question>
-    Что делает команда `terraform plan`?
+    Что делает команда <code>terraform plan</code>?
   </template>
   
   <BaseQuizOption value="A">Немедленно применяет изменения инфраструктуры</BaseQuizOption>
@@ -51,7 +51,7 @@ terraform validate
   <BaseQuizOption value="D">Инициализирует Terraform</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `terraform plan` создает план выполнения, показывающий, что Terraform сделает при запуске `terraform apply`. Это пробный запуск, который помогает просмотреть изменения перед их применением.
+    <code>terraform plan</code> создает план выполнения, показывающий, что Terraform сделает при запуске <code>terraform apply</code>. Это пробный запуск, который помогает просмотреть изменения перед их применением.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -121,7 +121,7 @@ kubectl delete -f deployment.yml
 
 <BaseQuiz id="devops-k8s-1" correct="A">
   <template #question>
-    Что делает команда `kubectl apply -f deployment.yml`?
+    Что делает команда <code>kubectl apply -f deployment.yml</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Создает или обновляет ресурсы, определенные в YAML-файле</BaseQuizOption>
@@ -130,7 +130,7 @@ kubectl delete -f deployment.yml
   <BaseQuizOption value="D">Показывает, что будет создано, без применения</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kubectl apply` — это декларативная команда, которая создает ресурсы, если они не существуют, или обновляет их, если существуют. Она идемпотентна, то есть ее можно безопасно запускать несколько раз.
+    <code>kubectl apply</code> — это декларативная команда, которая создает ресурсы, если они не существуют, или обновляет их, если существуют. Она идемпотентна, то есть ее можно безопасно запускать несколько раз.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -243,7 +243,7 @@ git pull origin main
 
 <BaseQuiz id="devops-git-1" correct="D">
   <template #question>
-    В чем разница между `git pull` и `git fetch`?
+    В чем разница между <code>git pull</code> и <code>git fetch</code>?
   </template>
   
   <BaseQuizOption value="A">Разницы нет</BaseQuizOption>
@@ -252,7 +252,7 @@ git pull origin main
   <BaseQuizOption value="D" correct>git fetch загружает изменения без слияния, git pull загружает и сливает изменения</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch` загружает изменения из удаленного репозитория, но не сливает их в вашу текущую ветку. `git pull` выполняет обе операции: он получает, а затем сливает изменения.
+    <code>git fetch</code> загружает изменения из удаленного репозитория, но не сливает их в вашу текущую ветку. <code>git pull</code> выполняет обе операции: он получает, а затем сливает изменения.
   </BaseQuizAnswer>
 </BaseQuiz>
 

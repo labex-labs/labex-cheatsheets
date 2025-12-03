@@ -41,7 +41,7 @@ Chaque document HTML commence par une déclaration de type de document et suit u
 
 <BaseQuiz id="html-doctype-1" correct="A">
   <template #question>
-    Quel est le but de `<!DOCTYPE html>` ?
+    Quel est le but de <code><!DOCTYPE html></code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Il déclare le type de document et la version HTML</BaseQuizOption>
@@ -50,7 +50,7 @@ Chaque document HTML commence par une déclaration de type de document et suit u
   <BaseQuizOption value="D">Il définit le titre de la page</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La déclaration `<!DOCTYPE html>` indique au navigateur quelle version de HTML le document utilise. Pour HTML5, cette déclaration simple est suffisante et doit être la première ligne de chaque document HTML.
+    La déclaration <code><!DOCTYPE html></code> indique au navigateur quelle version de HTML le document utilise. Pour HTML5, cette déclaration simple est suffisante et doit être la première ligne de chaque document HTML.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -128,7 +128,7 @@ Définissent la hiérarchie et l'importance des sections de contenu.
   <BaseQuizOption value="D">h6 est le titre le plus important</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Les titres HTML doivent suivre une hiérarchie logique : utilisez un seul `h1` pour le titre principal de la page, puis `h2` pour les sections majeures, `h3` pour les sous-sections, et ainsi de suite. Ceci est utile pour l'accessibilité et le SEO.
+    Les titres HTML doivent suivre une hiérarchie logique : utilisez un seul <code>h1</code> pour le titre principal de la page, puis <code>h2</code> pour les sections majeures, <code>h3</code> pour les sous-sections, et ainsi de suite. Ceci est utile pour l'accessibilité et le SEO.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -266,7 +266,7 @@ Crée des hyperliens et des structures de navigation.
 
 <BaseQuiz id="html-links-1" correct="B">
   <template #question>
-    Que fait `target="_blank"` dans une balise ancre ?
+    Que fait <code>target="_blank"</code> dans une balise ancre ?
   </template>
   
   <BaseQuizOption value="A">Ouvre le lien dans la même fenêtre</BaseQuizOption>
@@ -275,7 +275,7 @@ Crée des hyperliens et des structures de navigation.
   <BaseQuizOption value="D">Télécharge le lien</BaseQuizOption>
   
   <BaseQuizAnswer>
-    L'attribut `target="_blank"` ouvre la page liée dans un nouvel onglet ou une nouvelle fenêtre du navigateur, permettant aux utilisateurs de garder la page originale ouverte.
+    L'attribut <code>target="_blank"</code> ouvre la page liée dans un nouvel onglet ou une nouvelle fenêtre du navigateur, permettant aux utilisateurs de garder la page originale ouverte.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -359,7 +359,7 @@ Attributs de validation de formulaire HTML intégrés.
 
 <BaseQuiz id="html-validation-1" correct="A">
   <template #question>
-    Que fait l'attribut `required` dans une entrée HTML ?
+    Que fait l'attribut <code>required</code> dans une entrée HTML ?
   </template>
   
   <BaseQuizOption value="A" correct>Empêche la soumission du formulaire si le champ est vide</BaseQuizOption>
@@ -368,7 +368,7 @@ Attributs de validation de formulaire HTML intégrés.
   <BaseQuizOption value="D">Définit une valeur par défaut</BaseQuizOption>
   
   <BaseQuizAnswer>
-    L'attribut `required` rend un champ d'entrée obligatoire. Si le champ est vide lors de la soumission du formulaire, le navigateur empêchera la soumission et affichera un message de validation.
+    L'attribut <code>required</code> rend un champ d'entrée obligatoire. Si le champ est vide lors de la soumission du formulaire, le navigateur empêchera la soumission et affichera un message de validation.
   </BaseQuizAnswer>
 </BaseQuiz>
 

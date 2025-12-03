@@ -182,7 +182,7 @@ kubectl get pods --watch
 
 <BaseQuiz id="kubernetes-pods-1" correct="C">
   <template #question>
-    ¿Qué hace `kubectl get pods --all-namespaces`?
+    ¿Qué hace <code>kubectl get pods --all-namespaces</code>?
   </template>
   
   <BaseQuizOption value="A">Lista solo pods en ejecución</BaseQuizOption>
@@ -191,7 +191,7 @@ kubectl get pods --watch
   <BaseQuizOption value="D">Elimina todos los pods</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El flag `--all-namespaces` (o `-A`) muestra pods de todos los namespaces, no solo del namespace por defecto. Esto es útil para la visibilidad a nivel de clúster.
+    El flag <code>--all-namespaces</code> (o <code>-A</code>) muestra pods de todos los namespaces, no solo del namespace por defecto. Esto es útil para la visibilidad a nivel de clúster.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ cpu-percent=80
 
 <BaseQuiz id="kubernetes-scale-1" correct="B">
   <template #question>
-    ¿Qué hace `kubectl scale deployment nginx --replicas=5`?
+    ¿Qué hace <code>kubectl scale deployment nginx --replicas=5</code>?
   </template>
   
   <BaseQuizOption value="A">Crea 5 nuevos deployments</BaseQuizOption>
@@ -299,7 +299,7 @@ cpu-percent=80
   <BaseQuizOption value="D">Actualiza la imagen del deployment</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El comando `scale` ajusta el número de réplicas para un deployment. Este comando asegura que el deployment nginx ejecute exactamente 5 réplicas de pods, creando o eliminando pods según sea necesario.
+    El comando <code>scale</code> ajusta el número de réplicas para un deployment. Este comando asegura que el deployment nginx ejecute exactamente 5 réplicas de pods, creando o eliminando pods según sea necesario.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -339,7 +339,7 @@ kubectl apply -f service.yaml
 
 <BaseQuiz id="kubernetes-service-1" correct="A">
   <template #question>
-    ¿Cuál es el tipo de servicio por defecto al usar `kubectl expose`?
+    ¿Cuál es el tipo de servicio por defecto al usar <code>kubectl expose</code>?
   </template>
   
   <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>

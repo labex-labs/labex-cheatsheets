@@ -158,7 +158,7 @@ cd -
   <BaseQuizOption value="D">whoami</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pwd` コマンド（print working directory）は、現在いるディレクトリの完全なパスを表示します。
+    <code>pwd</code> コマンド（print working directory）は、現在いるディレクトリの完全なパスを表示します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -249,7 +249,7 @@ ls -l filename
 
 <BaseQuiz id="linux-chmod-1" correct="C">
   <template #question>
-    `chmod 755 filename` は権限をどのように設定しますか？
+    <code>chmod 755 filename</code> は権限をどのように設定しますか？
   </template>
   
   <BaseQuizOption value="A">所有者には読み取り、書き込み、実行。グループとその他には読み取り</BaseQuizOption>
@@ -258,7 +258,7 @@ ls -l filename
   <BaseQuizOption value="D">所有者には読み取り、書き込み。グループとその他には読み取り</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` は以下を設定します：所有者 = 7 (rwx)、グループ = 5 (r-x)、その他 = 5 (r-x)。これは実行可能ファイルやディレクトリの一般的な権限設定です。
+    <code>chmod 755</code> は以下を設定します：所有者 = 7 (rwx)、グループ = 5 (r-x)、その他 = 5 (r-x)。これは実行可能ファイルやディレクトリの一般的な権限設定です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -300,7 +300,7 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    `kill -9` はプロセスにどのシグナルを送信しますか？
+    <code>kill -9</code> はプロセスにどのシグナルを送信しますか？
   </template>
   
   <BaseQuizOption value="A">SIGTERM (優雅な終了)</BaseQuizOption>
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (強制終了、無視不可)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9` は SIGKILL を送信し、プロセスを即座に強制終了させます。このシグナルはプロセスによって捕捉または無視されることはなく、応答しないプロセスを終了させるのに役立ちます。
+    <code>kill -9</code> は SIGKILL を送信し、プロセスを即座に強制終了させます。このシグナルはプロセスによって捕捉または無視されることはなく、応答しないプロセスを終了させるのに役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -383,7 +383,7 @@ mtr google.com
 
 <BaseQuiz id="linux-ping-1" correct="B">
   <template #question>
-    `ping -c 4` コマンドは何をしますか？
+    <code>ping -c 4</code> コマンドは何をしますか？
   </template>
   
   <BaseQuizOption value="A">4 秒間タイムアウトで ping を実行</BaseQuizOption>
@@ -392,7 +392,7 @@ mtr google.com
   <BaseQuizOption value="D">ping の間隔を 4 秒空ける</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-c` オプションは送信するパケット数を指定します。`ping -c 4`は正確に 4 つの ICMP エコーリクエストパケットを送信し、その後停止して結果を表示します。
+    <code>-c</code> オプションは送信するパケット数を指定します。<code>ping -c 4</code>は正確に 4 つの ICMP エコーリクエストパケットを送信し、その後停止して結果を表示します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -449,7 +449,7 @@ grep -c "pattern" filename
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    大文字と小文字を区別しない検索を行う `grep` オプションはどれですか？
+    大文字と小文字を区別しない検索を行う <code>grep</code> オプションはどれですか？
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-i` オプションは grep を大文字と小文字を区別しないようにするため、大文字と小文字の両方に一致します。例：`grep -i "error" file.txt` は "Error", "ERROR", "error" のすべてに一致します。
+    <code>-i</code> オプションは grep を大文字と小文字を区別しないようにするため、大文字と小文字の両方に一致します。例：<code>grep -i "error" file.txt</code> は "Error", "ERROR", "error" のすべてに一致します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

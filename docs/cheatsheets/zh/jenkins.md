@@ -155,7 +155,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
 
 <BaseQuiz id="jenkins-build-1" correct="B">
   <template #question>
-    `jenkins-cli.jar build my-job -s` 中的 `-s` 标志是做什么的？
+    <code>jenkins-cli.jar build my-job -s</code> 中的 <code>-s</code> 标志是做什么的？
   </template>
   
   <BaseQuizOption value="A">跳过构建</BaseQuizOption>
@@ -164,7 +164,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
   <BaseQuizOption value="D">停止构建</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-s` 标志使构建命令同步，意味着它在返回之前会等待构建完成。如果没有此标志，命令在触发构建后会立即返回。
+    <code>-s</code> 标志使构建命令同步，意味着它在返回之前会等待构建完成。如果没有此标志，命令在触发构建后会立即返回。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -225,7 +225,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
 
 <BaseQuiz id="jenkins-console-1" correct="C">
   <template #question>
-    `jenkins-cli.jar console my-job -f` 中的 `-f` 标志是做什么的？
+    <code>jenkins-cli.jar console my-job -f</code> 中的 <code>-f</code> 标志是做什么的？
   </template>
   
   <BaseQuizOption value="A">强制停止构建</BaseQuizOption>
@@ -234,7 +234,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
   <BaseQuizOption value="D">将输出格式化为 JSON</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-f` 标志实时跟踪控制台输出，类似于 Linux 中的 `tail -f`。这对于在构建执行时进行监控非常有用。
+    <code>-f</code> 标志实时跟踪控制台输出，类似于 Linux 中的 <code>tail -f</code>。这对于在构建执行时进行监控非常有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 

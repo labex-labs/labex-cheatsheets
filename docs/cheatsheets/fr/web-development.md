@@ -67,7 +67,7 @@ Utilisez des éléments sémantiques HTML5 significatifs pour une meilleure stru
 
 <BaseQuiz id="webdev-semantic-1" correct="B">
   <template #question>
-    Quel est l'avantage principal d'utiliser des éléments HTML sémantiques tels que `header`, `main` et `footer` ?
+    Quel est l'avantage principal d'utiliser des éléments HTML sémantiques tels que <code>header</code>, <code>main</code> et <code>footer</code> ?
   </template>
   
   <BaseQuizOption value="A">Ils rendent le chargement de la page plus rapide</BaseQuizOption>
@@ -263,7 +263,7 @@ Contrôlez l'espacement et la mise en page avec le modèle de boîte CSS.
 
 <BaseQuiz id="webdev-boxmodel-1" correct="B">
   <template #question>
-    Quelle est la différence entre `margin` et `padding` en CSS ?
+    Quelle est la différence entre <code>margin</code> et <code>padding</code> en CSS ?
   </template>
   
   <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
@@ -301,7 +301,7 @@ Créez des mises en page flexibles et réactives facilement.
 
 <BaseQuiz id="webdev-flexbox-1" correct="A">
   <template #question>
-    Que fait `justify-content: center` en Flexbox ?
+    Que fait <code>justify-content: center</code> en Flexbox ?
   </template>
   
   <BaseQuizOption value="A" correct>Centre les éléments flex le long de l'axe principal (horizontal par défaut)</BaseQuizOption>
@@ -310,7 +310,7 @@ Créez des mises en page flexibles et réactives facilement.
   <BaseQuizOption value="D">Étire les éléments pour remplir l'espace</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `justify-content` contrôle l'alignement le long de l'axe principal (horizontal par défaut). `center` centre tous les éléments flex dans le conteneur. Utilisez `align-items` pour contrôler l'alignement sur l'axe transversal (vertical).
+    <code>justify-content</code> contrôle l'alignement le long de l'axe principal (horizontal par défaut). <code>center</code> centre tous les éléments flex dans le conteneur. Utilisez <code>align-items</code> pour contrôler l'alignement sur l'axe transversal (vertical).
   </BaseQuizAnswer>
 </BaseQuiz>
 

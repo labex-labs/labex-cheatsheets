@@ -41,7 +41,7 @@ Cada documento HTML comienza con una declaración de tipo de documento y sigue u
 
 <BaseQuiz id="html-doctype-1" correct="A">
   <template #question>
-    ¿Cuál es el propósito de `<!DOCTYPE html>`?
+    ¿Cuál es el propósito de <code><!DOCTYPE html></code>?
   </template>
   
   <BaseQuizOption value="A" correct>Declara el tipo de documento y la versión de HTML</BaseQuizOption>
@@ -50,7 +50,7 @@ Cada documento HTML comienza con una declaración de tipo de documento y sigue u
   <BaseQuizOption value="D">Establece el título de la página</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La declaración `<!DOCTYPE html>` le dice al navegador qué versión de HTML está utilizando el documento. Para HTML5, esta simple declaración es suficiente y debe ser la primera línea de cada documento HTML.
+    La declaración <code><!DOCTYPE html></code> le dice al navegador qué versión de HTML está utilizando el documento. Para HTML5, esta simple declaración es suficiente y debe ser la primera línea de cada documento HTML.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -128,7 +128,7 @@ Definen la jerarquía e importancia de las secciones de contenido.
   <BaseQuizOption value="D">h6 es el encabezado más importante</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Los encabezados HTML deben seguir una jerarquía lógica: usa un `h1` para el título principal de la página, luego `h2` para las secciones principales, `h3` para las subsecciones, y así sucesivamente. Esto ayuda con la accesibilidad y el SEO.
+    Los encabezados HTML deben seguir una jerarquía lógica: usa un <code>h1</code> para el título principal de la página, luego <code>h2</code> para las secciones principales, <code>h3</code> para las subsecciones, y así sucesivamente. Esto ayuda con la accesibilidad y el SEO.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -263,7 +263,7 @@ Crea hipervínculos y estructuras de navegación.
 
 <BaseQuiz id="html-links-1" correct="B">
   <template #question>
-    ¿Qué hace `target="_blank"` en una etiqueta de anclaje?
+    ¿Qué hace <code>target="_blank"</code> en una etiqueta de anclaje?
   </template>
   
   <BaseQuizOption value="A">Abre el enlace en la misma ventana</BaseQuizOption>
@@ -272,7 +272,7 @@ Crea hipervínculos y estructuras de navegación.
   <BaseQuizOption value="D">Descarga el enlace</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El atributo `target="_blank"` abre la página enlazada en una nueva pestaña o ventana del navegador, permitiendo a los usuarios mantener abierta la página original.
+    El atributo <code>target="_blank"</code> abre la página enlazada en una nueva pestaña o ventana del navegador, permitiendo a los usuarios mantener abierta la página original.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -356,7 +356,7 @@ Atributos de validación de formularios integrados en HTML.
 
 <BaseQuiz id="html-validation-1" correct="A">
   <template #question>
-    ¿Qué hace el atributo `required` en una entrada HTML?
+    ¿Qué hace el atributo <code>required</code> en una entrada HTML?
   </template>
   
   <BaseQuizOption value="A" correct>Evita el envío del formulario si el campo está vacío</BaseQuizOption>
@@ -365,7 +365,7 @@ Atributos de validación de formularios integrados en HTML.
   <BaseQuizOption value="D">Establece un valor predeterminado</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El atributo `required` hace que un campo de entrada sea obligatorio. Si el campo está vacío al enviar el formulario, el navegador evitará el envío y mostrará un mensaje de validación.
+    El atributo <code>required</code> hace que un campo de entrada sea obligatorio. Si el campo está vacío al enviar el formulario, el navegador evitará el envío y mostrará un mensaje de validación.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -127,7 +127,7 @@ name package
 
 <BaseQuiz id="rhel-package-1" correct="A">
   <template #question>
-    Quelle est la différence entre `dnf` et `yum` dans RHEL ?
+    Quelle est la différence entre <code>dnf</code> et <code>yum</code> dans RHEL ?
   </template>
   
   <BaseQuizOption value="A" correct>dnf est le gestionnaire de paquets plus récent pour RHEL 8+, yum est utilisé dans RHEL 7</BaseQuizOption>
@@ -208,7 +208,7 @@ rm -rf directory/
 
 <BaseQuiz id="rhel-file-ops-1" correct="B">
   <template #question>
-    Que fait `cp -r` ?
+    Que fait <code>cp -r</code> ?
   </template>
   
   <BaseQuizOption value="A">Copie uniquement les fichiers</BaseQuizOption>
@@ -217,7 +217,7 @@ rm -rf directory/
   <BaseQuizOption value="D">Renomme les fichiers</BaseQuizOption>
   
   <BaseQuizAnswer>
-    L'option `-r` (récursif) permet à `cp` de copier les répertoires et leur contenu, y compris tous les sous-répertoires et fichiers qu'ils contiennent. Sans `-r`, `cp` ne peut pas copier les répertoires.
+    L'option <code>-r</code> (récursif) permet à <code>cp</code> de copier les répertoires et leur contenu, y compris tous les sous-répertoires et fichiers qu'ils contiennent. Sans <code>-r</code>, <code>cp</code> ne peut pas copier les répertoires.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ tail -f /var/log/messages
 
 <BaseQuiz id="rhel-tail-1" correct="C">
   <template #question>
-    Que fait `tail -f /var/log/messages` ?
+    Que fait <code>tail -f /var/log/messages</code> ?
   </template>
   
   <BaseQuizOption value="A">Affiche uniquement les 10 premières lignes</BaseQuizOption>
@@ -249,7 +249,7 @@ tail -f /var/log/messages
   <BaseQuizOption value="D">Archive le fichier journal</BaseQuizOption>
   
   <BaseQuizAnswer>
-    L'option `-f` (follow) fait suivre le fichier à `tail`, affichant les nouvelles entrées de journal au fur et à mesure qu'elles sont écrites. Ceci est essentiel pour la surveillance des journaux en temps réel et le dépannage.
+    L'option <code>-f</code> (follow) fait suivre le fichier à <code>tail</code>, affichant les nouvelles entrées de journal au fur et à mesure qu'elles sont écrites. Ceci est essentiel pour la surveillance des journaux en temps réel et le dépannage.
   </BaseQuizAnswer>
 </BaseQuiz>
 

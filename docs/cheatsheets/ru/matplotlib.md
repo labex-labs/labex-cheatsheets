@@ -46,7 +46,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 
 <BaseQuiz id="matplotlib-plot-1" correct="C">
   <template #question>
-    Что делает `plt.show()` в Matplotlib?
+    Что делает <code>plt.show()</code> в Matplotlib?
   </template>
   
   <BaseQuizOption value="A">Сохраняет график в файл</BaseQuizOption>
@@ -55,7 +55,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
   <BaseQuizOption value="D">Очищает график</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `plt.show()` отображает график в интерактивном окне. Необходимо вызвать эту функцию, чтобы увидеть визуализацию. Без нее график не будет отображен.
+    <code>plt.show()</code> отображает график в интерактивном окне. Необходимо вызвать эту функцию, чтобы увидеть визуализацию. Без нее график не будет отображен.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -76,7 +76,7 @@ plt.colorbar()  # Добавить цветовую шкалу
 
 <BaseQuiz id="matplotlib-scatter-1" correct="D">
   <template #question>
-    Что контролирует параметр `alpha` в графиках matplotlib?
+    Что контролирует параметр <code>alpha</code> в графиках matplotlib?
   </template>
   
   <BaseQuizOption value="A">Цвет графика</BaseQuizOption>
@@ -85,7 +85,7 @@ plt.colorbar()  # Добавить цветовую шкалу
   <BaseQuizOption value="D" correct>Прозрачность/непрозрачность элементов графика</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Параметр `alpha` контролирует прозрачность, со значениями от 0 (полностью прозрачный) до 1 (полностью непрозрачный). Он полезен для создания перекрывающихся визуализаций, где вы хотите видеть сквозь элементы.
+    Параметр <code>alpha</code> контролирует прозрачность, со значениями от 0 (полностью прозрачный) до 1 (полностью непрозрачный). Он полезен для создания перекрывающихся визуализаций, где вы хотите видеть сквозь элементы.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -214,16 +214,16 @@ plt.annotate('Важная точка', xy=(2, 4), xytext=(3, 6),
 
 <BaseQuiz id="matplotlib-legend-1" correct="B">
   <template #question>
-    Что требуется для отображения меток с помощью `plt.legend()`?
+    Что требуется для отображения меток с помощью <code>plt.legend()</code>?
   </template>
   
   <BaseQuizOption value="A">Ничего, она работает автоматически</BaseQuizOption>
-  <BaseQuizOption value="B" correct>Каждому графику должен быть задан параметр `label`</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Каждому графику должен быть задан параметр <code>label</code></BaseQuizOption>
   <BaseQuizOption value="C">Легенда должна быть создана до построения графика</BaseQuizOption>
   <BaseQuizOption value="D">Метки должны быть заданы вручную в легенде</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Чтобы отобразить легенду, необходимо установить параметр `label` при создании каждого графика (например, `plt.plot(x, y, label='Набор данных 1')`). Затем вызов `plt.legend()` отобразит все метки.
+    Чтобы отобразить легенду, необходимо установить параметр <code>label</code> при создании каждого графика (например, <code>plt.plot(x, y, label='Набор данных 1')</code>). Затем вызов <code>plt.legend()</code> отобразит все метки.
   </BaseQuizAnswer>
 </BaseQuiz>
 

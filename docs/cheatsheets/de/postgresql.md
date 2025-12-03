@@ -133,7 +133,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="postgresql-create-table-1" correct="A">
   <template #question>
-    Was bewirkt `SERIAL PRIMARY KEY` in PostgreSQL?
+    Was bewirkt <code>SERIAL PRIMARY KEY</code> in PostgreSQL?
   </template>
   
   <BaseQuizOption value="A" correct>Erstellt eine automatisch inkrementierende Ganzzahlspalte, die als Primärschlüssel dient</BaseQuizOption>
@@ -142,7 +142,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">Erstellt einen eindeutigen Index</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SERIAL` ist ein PostgreSQL-spezifischer Datentyp, der eine automatisch inkrementierende Ganzzahl erzeugt. In Kombination mit `PRIMARY KEY` wird ein eindeutiger Bezeichner für jede Zeile erstellt, der automatisch hochgezählt wird.
+    <code>SERIAL</code> ist ein PostgreSQL-spezifischer Datentyp, der eine automatisch inkrementierende Ganzzahl erzeugt. In Kombination mit <code>PRIMARY KEY</code> wird ein eindeutiger Bezeichner für jede Zeile erstellt, der automatisch hochgezählt wird.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ SELECT * FROM users WHERE active = false;
 
 <BaseQuiz id="postgresql-insert-1" correct="C">
   <template #question>
-    Was bewirkt `RETURNING` in einer PostgreSQL INSERT-Anweisung?
+    Was bewirkt <code>RETURNING</code> in einer PostgreSQL INSERT-Anweisung?
   </template>
   
   <BaseQuizOption value="A">Es macht den Einfügevorgang rückgängig</BaseQuizOption>
@@ -299,7 +299,7 @@ SELECT * FROM users WHERE active = false;
   <BaseQuizOption value="D">Es aktualisiert vorhandene Zeilen</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Klausel `RETURNING` in PostgreSQL ermöglicht es Ihnen, die eingefügten Zeilendaten (oder bestimmte Spalten) unmittelbar nach dem Einfügen abzurufen, was nützlich ist, um automatisch generierte IDs oder Zeitstempel zu erhalten.
+    Die Klausel <code>RETURNING</code> in PostgreSQL ermöglicht es Ihnen, die eingefügten Zeilendaten (oder bestimmte Spalten) unmittelbar nach dem Einfügen abzurufen, was nützlich ist, um automatisch generierte IDs oder Zeitstempel zu erhalten.
   </BaseQuizAnswer>
 </BaseQuiz>
 

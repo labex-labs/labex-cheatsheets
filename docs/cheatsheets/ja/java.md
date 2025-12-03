@@ -70,7 +70,7 @@ public static void main(String[] args) {
   <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    main メソッドは `public static void main(String[] args)` である必要があります。`public` は JVM がアクセスできるようにし、`static` はクラスに属することを意味し、`void` は何も返さないことを意味し、`String[] args` はコマンドライン引数を受け取ります。
+    main メソッドは <code>public static void main(String[] args)</code> である必要があります。<code>public</code> は JVM がアクセスできるようにし、<code>static</code> はクラスに属することを意味し、<code>void</code> は何も返さないことを意味し、<code>String[] args</code> はコマンドライン引数を受け取ります。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ String uppercase = message.toUpperCase();
   <BaseQuizOption value="D">文字列は自動的に削除される</BaseQuizOption>
   
   <BaseQuizAnswer>
-    不変性とは、一度 String オブジェクトが作成されると、その値を変更できないことを意味します。`toUpperCase()` のような操作は、元のオブジェクトを変更するのではなく、新しい String オブジェクトを返します。
+    不変性とは、一度 String オブジェクトが作成されると、その値を変更できないことを意味します。<code>toUpperCase()</code> のような操作は、元のオブジェクトを変更するのではなく、新しい String オブジェクトを返します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -280,7 +280,7 @@ do {
 
 <BaseQuiz id="java-while-1" correct="B">
   <template #question>
-    `while` ループと `do-while` ループの主な違いは何ですか？
+    <code>while</code> ループと <code>do-while</code> ループの主な違いは何ですか？
   </template>
   
   <BaseQuizOption value="A">違いはない</BaseQuizOption>
@@ -289,7 +289,7 @@ do {
   <BaseQuizOption value="D">do-while は配列でのみ機能する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `do-while` ループはループ本体の実行後に条件をチェックするため、常に少なくとも 1 回実行されます。`while` ループは最初に条件をチェックするため、条件が最初に偽であれば実行されません。
+    <code>do-while</code> ループはループ本体の実行後に条件をチェックするため、常に少なくとも 1 回実行されます。<code>while</code> ループは最初に条件をチェックするため、条件が最初に偽であれば実行されません。
   </BaseQuizAnswer>
 </BaseQuiz>
 

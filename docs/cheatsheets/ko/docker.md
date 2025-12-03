@@ -119,7 +119,7 @@ docker run --rm hello-world
 
 <BaseQuiz id="docker-run-1" correct="C">
   <template #question>
-    `docker run -d`는 무엇을 수행합니까?
+    <code>docker run -d</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">컨테이너를 디버그 모드로 실행합니다</BaseQuizOption>
@@ -128,7 +128,7 @@ docker run --rm hello-world
   <BaseQuizOption value="D">기본 설정으로 컨테이너를 실행합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-d` 플래그는 컨테이너를 분리 모드로 실행하여 백그라운드에서 실행하고 즉시 터미널 제어권을 반환합니다. 이는 장기 실행 서비스에 유용합니다.
+    <code>-d</code> 플래그는 컨테이너를 분리 모드로 실행하여 백그라운드에서 실행하고 즉시 터미널 제어권을 반환합니다. 이는 장기 실행 서비스에 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -229,7 +229,7 @@ docker build --no-cache -t myapp .
 
 <BaseQuiz id="docker-build-1" correct="A">
   <template #question>
-    `docker build -t myapp:latest .`는 무엇을 수행합니까?
+    <code>docker build -t myapp:latest .</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A" correct>현재 디렉토리에서 "myapp:latest" 태그로 Docker 이미지를 빌드합니다</BaseQuizOption>
@@ -238,7 +238,7 @@ docker build --no-cache -t myapp .
   <BaseQuizOption value="D">"myapp:latest" 이미지를 삭제합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-t` 플래그는 이미지를 "myapp:latest"로 태그 지정하며, `.` 은 빌드 컨텍스트 (현재 디렉토리) 를 지정합니다. 이 명령어는 현재 디렉토리의 Dockerfile 로부터 새 이미지를 빌드합니다.
+    <code>-t</code> 플래그는 이미지를 "myapp:latest"로 태그 지정하며, <code>.</code> 은 빌드 컨텍스트 (현재 디렉토리) 를 지정합니다. 이 명령어는 현재 디렉토리의 Dockerfile 로부터 새 이미지를 빌드합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -313,7 +313,7 @@ EXPOSE 8000
 
 <BaseQuiz id="dockerfile-1" correct="B">
   <template #question>
-    Dockerfile 에서 `FROM` 명령어의 목적은 무엇입니까?
+    Dockerfile 에서 <code>FROM</code> 명령어의 목적은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">호스트에서 컨테이너로 파일을 복사합니다</BaseQuizOption>
@@ -322,7 +322,7 @@ EXPOSE 8000
   <BaseQuizOption value="D">컨테이너 시작 시 실행될 명령어를 정의합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `FROM` 명령어는 Dockerfile 의 첫 번째 주석이 아닌 명령어여야 합니다. 이는 이미지 빌드의 기반이 될 베이스 이미지를 지정하여 컨테이너의 토대를 제공합니다.
+    <code>FROM</code> 명령어는 Dockerfile 의 첫 번째 주석이 아닌 명령어여야 합니다. 이는 이미지 빌드의 기반이 될 베이스 이미지를 지정하여 컨테이너의 토대를 제공합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -368,7 +368,7 @@ docker-compose down -v
 
 <BaseQuiz id="docker-compose-1" correct="D">
   <template #question>
-    `docker-compose up -d`는 무엇을 수행합니까?
+    <code>docker-compose up -d</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">실행 중인 모든 컨테이너를 중지합니다</BaseQuizOption>
@@ -377,7 +377,7 @@ docker-compose down -v
   <BaseQuizOption value="D" correct>docker-compose.yml 에 정의된 모든 서비스를 분리 모드 (detached mode) 로 시작합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-d` 플래그는 컨테이너를 분리 모드 (백그라운드) 로 실행합니다. `docker-compose up`은 docker-compose.yml 파일을 읽고 정의된 모든 서비스를 시작하여 다중 컨테이너 애플리케이션 관리를 용이하게 합니다.
+    <code>-d</code> 플래그는 컨테이너를 분리 모드 (백그라운드) 로 실행합니다. <code>docker-compose up</code>은 docker-compose.yml 파일을 읽고 정의된 모든 서비스를 시작하여 다중 컨테이너 애플리케이션 관리를 용이하게 합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -457,7 +457,7 @@ docker run -p 8080:80 nginx
 
 <BaseQuiz id="docker-port-1" correct="A">
   <template #question>
-    `docker run -p 8080:80 nginx`에서 포트 번호는 무엇을 의미합니까?
+    <code>docker run -p 8080:80 nginx</code>에서 포트 번호는 무엇을 의미합니까?
   </template>
   
   <BaseQuizOption value="A" correct>8080 은 호스트 포트, 80 은 컨테이너 포트입니다</BaseQuizOption>
@@ -466,7 +466,7 @@ docker run -p 8080:80 nginx
   <BaseQuizOption value="D">두 포트 모두 호스트 포트입니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    형식은 `-p host_port:container_port`입니다. 호스트 머신의 8080 포트가 컨테이너 내부의 80 포트에 매핑되어, localhost:8080 을 통해 컨테이너에서 실행 중인 nginx 웹 서버에 액세스할 수 있습니다.
+    형식은 <code>-p host_port:container_port</code>입니다. 호스트 머신의 8080 포트가 컨테이너 내부의 80 포트에 매핑되어, localhost:8080 을 통해 컨테이너에서 실행 중인 nginx 웹 서버에 액세스할 수 있습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -137,7 +137,7 @@ cd /path/to/directory
 
 <BaseQuiz id="shell-cd-1" correct="A">
   <template #question>
-    O que `cd ~` faz?
+    O que <code>cd ~</code> faz?
   </template>
   
   <BaseQuizOption value="A" correct>Muda para o diretório home</BaseQuizOption>
@@ -146,7 +146,7 @@ cd /path/to/directory
   <BaseQuizOption value="D">Cria um novo diretório</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O símbolo `~` é um atalho para o diretório home. `cd ~` navega para o seu diretório home, o que é equivalente a `cd $HOME` ou `cd /home/username`.
+    O símbolo <code>~</code> é um atalho para o diretório home. <code>cd ~</code> navega para o seu diretório home, o que é equivalente a <code>cd $HOME</code> ou <code>cd /home/username</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -203,7 +203,7 @@ grep -c "pattern" file.txt
 
 <BaseQuiz id="shell-grep-1" correct="B">
   <template #question>
-    O que `grep -r "pattern" directory/` faz?
+    O que <code>grep -r "pattern" directory/</code> faz?
   </template>
   
   <BaseQuizOption value="A">Pesquisa apenas no arquivo atual</BaseQuizOption>
@@ -212,7 +212,7 @@ grep -c "pattern" file.txt
   <BaseQuizOption value="D">Exclui arquivos que contêm o padrão</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O sinalizador `-r` faz com que o grep pesquise recursivamente em todos os arquivos e subdiretórios. Isso é útil para encontrar padrões de texto em toda a árvore de diretórios.
+    O sinalizador <code>-r</code> faz com que o grep pesquise recursivamente em todos os arquivos e subdiretórios. Isso é útil para encontrar padrões de texto em toda a árvore de diretórios.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -281,7 +281,7 @@ chmod -R 644 directory/
 
 <BaseQuiz id="shell-chmod-1" correct="C">
   <template #question>
-    O que `chmod 755 file.txt` define?
+    O que <code>chmod 755 file.txt</code> define?
   </template>
   
   <BaseQuizOption value="A">Leitura, escrita, execução para todos os usuários</BaseQuizOption>
@@ -290,7 +290,7 @@ chmod -R 644 directory/
   <BaseQuizOption value="D">Apenas leitura para todos os usuários</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` define as permissões como: proprietário = 7 (rwx), grupo = 5 (r-x), outros = 5 (r-x). Esta é uma configuração de permissão comum para arquivos e diretórios executáveis.
+    <code>chmod 755</code> define as permissões como: proprietário = 7 (rwx), grupo = 5 (r-x), outros = 5 (r-x). Esta é uma configuração de permissão comum para arquivos e diretórios executáveis.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -409,16 +409,16 @@ command > /dev/null
 
 <BaseQuiz id="shell-redirect-1" correct="B">
   <template #question>
-    Qual é a diferença entre `>` e `>>` no redirecionamento shell?
+    Qual é a diferença entre <code>></code> e <code>>></code> no redirecionamento shell?
   </template>
   
-  <BaseQuizOption value="A">`>` anexa, `>>` sobrescreve</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`>` sobrescreve o arquivo, `>>` anexa ao arquivo</BaseQuizOption>
-  <BaseQuizOption value="C">`>` redireciona stdout, `>>` redireciona stderr</BaseQuizOption>
+  <BaseQuizOption value="A"><code>></code> anexa, <code>>></code> sobrescreve</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>></code> sobrescreve o arquivo, <code>>></code> anexa ao arquivo</BaseQuizOption>
+  <BaseQuizOption value="C"><code>></code> redireciona stdout, <code>>></code> redireciona stderr</BaseQuizOption>
   <BaseQuizOption value="D">Não há diferença</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O operador `>` sobrescreve o arquivo de destino se ele existir, enquanto `>>` anexa a saída ao final do arquivo. Use `>>` quando quiser preservar o conteúdo existente.
+    O operador <code>></code> sobrescreve o arquivo de destino se ele existir, enquanto <code>>></code> anexa a saída ao final do arquivo. Use <code>>></code> quando quiser preservar o conteúdo existente.
   </BaseQuizAnswer>
 </BaseQuiz>
 

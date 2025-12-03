@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 
 <BaseQuiz id="c-main-1" correct="C">
   <template #question>
-    main 関数内の`return 0`は何を示しますか？
+    main 関数内の<code>return 0</code>は何を示しますか？
   </template>
   
   <BaseQuizOption value="A">プログラムは失敗した</BaseQuizOption>
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
   <BaseQuizOption value="D">プログラムは値を返さなかった</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C では、main 関数からの`return 0`はプログラムが正常に実行されたことを示します。ゼロ以外の戻り値は通常、エラーまたは異常終了を示します。
+    C では、main 関数からの<code>return 0</code>はプログラムが正常に実行されたことを示します。ゼロ以外の戻り値は通常、エラーまたは異常終了を示します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -163,7 +163,7 @@ int size = sizeof(buffer);
   <BaseQuizOption value="D">ポインタのみとして</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C では、文字列は文字の配列（`char`）として表現されます。文字列はヌル文字（`\0`）で終端され、これが文字列の終わりを示します。
+    C では、文字列は文字の配列（<code>char</code>）として表現されます。文字列はヌル文字（<code>\0</code>）で終端され、これが文字列の終わりを示します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ for (int i = 0; i < 3; i++) {
 
 <BaseQuiz id="c-for-loop-1" correct="A">
   <template #question>
-    `sizeof(numbers) / sizeof(numbers[0])`は何を計算しますか？
+    <code>sizeof(numbers) / sizeof(numbers[0])</code>は何を計算しますか？
   </template>
   
   <BaseQuizOption value="A" correct>配列の要素数</BaseQuizOption>

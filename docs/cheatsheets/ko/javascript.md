@@ -42,7 +42,7 @@ var oldVariable = 'legacy'
 
 <BaseQuiz id="javascript-let-const-1" correct="B">
   <template #question>
-    `let` 과 `const` 의 주요 차이점은 무엇입니까?
+    <code>let</code> 과 <code>const</code> 의 주요 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">let 은 함수 범위이고, const 는 블록 범위입니다</BaseQuizOption>
@@ -51,7 +51,7 @@ var oldVariable = 'legacy'
   <BaseQuizOption value="D">차이점이 없습니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `let` 과 `const` 는 모두 블록 범위이지만, `let` 은 변수 재할당을 허용하는 반면 `const` 는 재할당을 방지합니다. 하지만 `const` 객체의 속성은 여전히 수정될 수 있습니다.
+    <code>let</code> 과 <code>const</code> 는 모두 블록 범위이지만, <code>let</code> 은 변수 재할당을 허용하는 반면 <code>const</code> 는 재할당을 방지합니다. 하지만 <code>const</code> 객체의 속성은 여전히 수정될 수 있습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -168,12 +168,12 @@ const processData = (data) => {
   </template>
   
   <BaseQuizOption value="A">함수 선언처럼 호이스팅됩니다</BaseQuizOption>
-  <BaseQuizOption value="B">자체적인 `this` 바인딩을 가집니다</BaseQuizOption>
-  <BaseQuizOption value="C" correct>자신을 둘러싼 범위로부터 `this` 를 상속받습니다</BaseQuizOption>
+  <BaseQuizOption value="B">자체적인 <code>this</code> 바인딩을 가집니다</BaseQuizOption>
+  <BaseQuizOption value="C" correct>자신을 둘러싼 범위로부터 <code>this</code> 를 상속받습니다</BaseQuizOption>
   <BaseQuizOption value="D">값을 반환할 수 없습니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    화살표 함수는 자체적인 `this` 바인딩을 가지지 않습니다. 대신, 렉시컬 (둘러싼) 범위로부터 `this` 를 상속받으므로 콜백 및 이벤트 핸들러에서 컨텍스트를 유지하고 싶을 때 유용합니다.
+    화살표 함수는 자체적인 <code>this</code> 바인딩을 가지지 않습니다. 대신, 렉시컬 (둘러싼) 범위로부터 <code>this</code> 를 상속받으므로 콜백 및 이벤트 핸들러에서 컨텍스트를 유지하고 싶을 때 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -226,7 +226,7 @@ const result = numbers
 
 <BaseQuiz id="javascript-array-1" correct="A">
   <template #question>
-    `filter()` 는 무엇을 반환합니까?
+    <code>filter()</code> 는 무엇을 반환합니까?
   </template>
   
   <BaseQuizOption value="A" correct>테스트를 통과하는 요소들로 이루어진 새 배열</BaseQuizOption>
@@ -235,7 +235,7 @@ const result = numbers
   <BaseQuizOption value="D">제자리에서 수정된 원본 배열</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `filter()` 메서드는 제공된 함수로 구현된 테스트를 통과하는 모든 요소를 포함하는 새 배열을 생성합니다. 원본 배열은 수정하지 않습니다.
+    <code>filter()</code> 메서드는 제공된 함수로 구현된 테스트를 통과하는 모든 요소를 포함하는 새 배열을 생성합니다. 원본 배열은 수정하지 않습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ const buttonsArray = Array.from(allButtons)
 
 <BaseQuiz id="javascript-dom-1" correct="C">
   <template #question>
-    `querySelector()` 와 `querySelectorAll()` 의 차이점은 무엇입니까?
+    <code>querySelector()</code> 와 <code>querySelectorAll()</code> 의 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
@@ -335,7 +335,7 @@ const buttonsArray = Array.from(allButtons)
   <BaseQuizOption value="D">querySelector 는 ID 에 사용되고, querySelectorAll 은 클래스에 사용됩니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `querySelector()` 는 CSS 선택자와 일치하는 첫 번째 요소를 반환하는 반면, `querySelectorAll()` 는 일치하는 모든 요소를 포함하는 NodeList 를 반환합니다. 하나의 요소가 필요할 때는 `querySelector()` 를, 여러 요소가 필요할 때는 `querySelectorAll()` 를 사용합니다.
+    <code>querySelector()</code> 는 CSS 선택자와 일치하는 첫 번째 요소를 반환하는 반면, <code>querySelectorAll()</code> 는 일치하는 모든 요소를 포함하는 NodeList 를 반환합니다. 하나의 요소가 필요할 때는 <code>querySelector()</code> 를, 여러 요소가 필요할 때는 <code>querySelectorAll()</code> 를 사용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

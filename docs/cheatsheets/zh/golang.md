@@ -142,16 +142,16 @@ const Message = "Hello, Go!"
 
 <BaseQuiz id="golang-variables-1" correct="B">
   <template #question>
-    `var name string = "Go"` 和 `name := "Go"` 有什么区别？
+    <code>var name string = "Go"</code> 和 <code>name := "Go"</code> 有什么区别？
   </template>
   
   <BaseQuizOption value="A">没有区别</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`:=` 是推断类型的简短声明，`var` 显式声明类型</BaseQuizOption>
-  <BaseQuizOption value="C">`:=` 只能用于常量</BaseQuizOption>
-  <BaseQuizOption value="D">`var` 只能在函数内部使用</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>:=</code> 是推断类型的简短声明，<code>var</code> 显式声明类型</BaseQuizOption>
+  <BaseQuizOption value="C"><code>:=</code> 只能用于常量</BaseQuizOption>
+  <BaseQuizOption value="D"><code>var</code> 只能在函数内部使用</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `:=` 运算符是变量声明和初始化的简写形式，Go 会自动推断类型。`var` 显式声明变量类型，可用于包级别或函数级别。
+    <code>:=</code> 运算符是变量声明和初始化的简写形式，Go 会自动推断类型。<code>var</code> 显式声明变量类型，可用于包级别或函数级别。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ for i, char := range "Hello" {
 
 <BaseQuiz id="golang-range-1" correct="B">
   <template #question>
-    在 Go 中迭代切片时，`range` 返回什么？
+    在 Go 中迭代切片时，<code>range</code> 返回什么？
   </template>
   
   <BaseQuizOption value="A">仅值</BaseQuizOption>
@@ -248,7 +248,7 @@ for i, char := range "Hello" {
   <BaseQuizOption value="D">切片的长度</BaseQuizOption>
   
   <BaseQuizAnswer>
-    当使用 `range` 遍历切片时，它返回两个值：索引（位置）和该索引处的值。如果不需要其中一个值，可以使用 `_` 忽略它。
+    当使用 <code>range</code> 遍历切片时，它返回两个值：索引（位置）和该索引处的值。如果不需要其中一个值，可以使用 <code>_</code> 忽略它。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -275,7 +275,7 @@ for i := 0; i < 5; i++ {
 
 <BaseQuiz id="golang-control-1" correct="C">
   <template #question>
-    Go 循环中的 `break` 和 `continue` 有什么区别？
+    Go 循环中的 <code>break</code> 和 <code>continue</code> 有什么区别？
   </template>
   
   <BaseQuizOption value="A">没有区别</BaseQuizOption>
@@ -284,7 +284,7 @@ for i := 0; i < 5; i++ {
   <BaseQuizOption value="D">两者都退出循环</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `break` 立即退出循环，并在循环后继续执行。`continue` 跳过当前迭代的其余部分，进入循环的下一次迭代。
+    <code>break</code> 立即退出循环，并在循环后继续执行。<code>continue</code> 跳过当前迭代的其余部分，进入循环的下一次迭代。
   </BaseQuizAnswer>
 </BaseQuiz>
 

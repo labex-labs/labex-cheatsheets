@@ -42,7 +42,7 @@ terraform validate
 
 <BaseQuiz id="devops-terraform-1" correct="B">
   <template #question>
-    Que fait `terraform plan` ?
+    Que fait <code>terraform plan</code> ?
   </template>
   
   <BaseQuizOption value="A">Applique les changements d'infrastructure immédiatement</BaseQuizOption>
@@ -51,7 +51,7 @@ terraform validate
   <BaseQuizOption value="D">Initialise Terraform</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `terraform plan` crée un plan d'exécution montrant ce que Terraform fera lorsque vous exécutez `terraform apply`. C'est un essai à blanc qui vous aide à examiner les changements avant de les appliquer.
+    <code>terraform plan</code> crée un plan d'exécution montrant ce que Terraform fera lorsque vous exécutez <code>terraform apply</code>. C'est un essai à blanc qui vous aide à examiner les changements avant de les appliquer.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -121,7 +121,7 @@ kubectl delete -f deployment.yml
 
 <BaseQuiz id="devops-k8s-1" correct="A">
   <template #question>
-    Que fait `kubectl apply -f deployment.yml` ?
+    Que fait <code>kubectl apply -f deployment.yml</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Crée ou met à jour les ressources définies dans le fichier YAML</BaseQuizOption>
@@ -130,7 +130,7 @@ kubectl delete -f deployment.yml
   <BaseQuizOption value="D">Montre ce qui serait créé sans appliquer</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kubectl apply` est une commande déclarative qui crée des ressources si elles n'existent pas ou les met à jour si elles existent. Elle est idempotente, ce qui signifie que vous pouvez l'exécuter plusieurs fois en toute sécurité.
+    <code>kubectl apply</code> est une commande déclarative qui crée des ressources si elles n'existent pas ou les met à jour si elles existent. Elle est idempotente, ce qui signifie que vous pouvez l'exécuter plusieurs fois en toute sécurité.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -243,7 +243,7 @@ git pull origin main
 
 <BaseQuiz id="devops-git-1" correct="D">
   <template #question>
-    Quelle est la différence entre `git pull` et `git fetch` ?
+    Quelle est la différence entre <code>git pull</code> et <code>git fetch</code> ?
   </template>
   
   <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
@@ -252,7 +252,7 @@ git pull origin main
   <BaseQuizOption value="D" correct>git fetch télécharge les changements sans fusionner, git pull télécharge et fusionne les changements</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch` télécharge les changements depuis le dépôt distant mais ne les fusionne pas dans votre branche actuelle. `git pull` effectue les deux opérations : il récupère puis fusionne les changements.
+    <code>git fetch</code> télécharge les changements depuis le dépôt distant mais ne les fusionne pas dans votre branche actuelle. <code>git pull</code> effectue les deux opérations : il récupère puis fusionne les changements.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -93,7 +93,7 @@ p.intro {
   <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
   
   <BaseQuizAnswer>
-    类选择器使用点 (`.`) 作为前缀。`.highlight` 选择所有具有 `class="highlight"` 的元素。ID 选择器使用 `#`，元素选择器不使用前缀。
+    类选择器使用点 (<code>.</code>) 作为前缀。<code>.highlight</code> 选择所有具有 <code>class="highlight"</code> 的元素。ID 选择器使用 <code>#</code>，元素选择器不使用前缀。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -217,7 +217,7 @@ div {
 
 <BaseQuiz id="css-padding-1" correct="C">
   <template #question>
-    `padding: 10px 20px` 设置了什么？
+    <code>padding: 10px 20px</code> 设置了什么？
   </template>
   
   <BaseQuizOption value="A">10px 上/下，20px 左/右</BaseQuizOption>
@@ -226,7 +226,7 @@ div {
   <BaseQuizOption value="D">10px 上，20px 下</BaseQuizOption>
   
   <BaseQuizAnswer>
-    当提供两个值时，第一个值应用于顶部和底部，第二个值应用于左侧和右侧。因此 `padding: 10px 20px` 意味着 10px 的垂直内边距和 20px 的水平内边距。
+    当提供两个值时，第一个值应用于顶部和底部，第二个值应用于左侧和右侧。因此 <code>padding: 10px 20px</code> 意味着 10px 的垂直内边距和 20px 的水平内边距。
   </BaseQuizAnswer>
 </BaseQuiz>
 ```
@@ -283,7 +283,7 @@ div {
 
 <BaseQuiz id="css-margin-1" correct="C">
   <template #question>
-    `margin: 0 auto` 的作用是什么？
+    <code>margin: 0 auto</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">移除所有外边距</BaseQuizOption>
@@ -292,7 +292,7 @@ div {
   <BaseQuizOption value="D">使块级元素垂直居中</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `margin: 0 auto` 将顶部和底部外边距设置为 0，将左右外边距设置为 auto，这会使块级元素在其容器内水平居中。
+    <code>margin: 0 auto</code> 将顶部和底部外边距设置为 0，将左右外边距设置为 auto，这会使块级元素在其容器内水平居中。
   </BaseQuizAnswer>
 </BaseQuiz>
 

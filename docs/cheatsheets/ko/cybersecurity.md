@@ -55,7 +55,7 @@ ls -la
 
 <BaseQuiz id="cybersecurity-chmod-1" correct="C">
   <template #question>
-    `chmod 644 file.txt`는 파일 권한을 어떻게 설정합니까?
+    <code>chmod 644 file.txt</code>는 파일 권한을 어떻게 설정합니까?
   </template>
   
   <BaseQuizOption value="A">모든 사용자에게 읽기, 쓰기, 실행</BaseQuizOption>
@@ -64,7 +64,7 @@ ls -la
   <BaseQuizOption value="D">모든 사용자에게 읽기 전용</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 644`는 다음과 같이 설정합니다: 소유자 = 6 (rw-), 그룹 = 4 (r--), 다른 사용자 = 4 (r--). 이는 모든 사람이 읽을 수 있지만 소유자만 쓸 수 있는 일반적인 파일 권한 설정입니다.
+    <code>chmod 644</code>는 다음과 같이 설정합니다: 소유자 = 6 (rw-), 그룹 = 4 (r--), 다른 사용자 = 4 (r--). 이는 모든 사람이 읽을 수 있지만 소유자만 쓸 수 있는 일반적인 파일 권한 설정입니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -84,7 +84,7 @@ sudo ss -tuln
 
 <BaseQuiz id="cybersecurity-firewall-1" correct="B">
   <template #question>
-    `sudo ufw allow 22/tcp`는 무엇을 합니까?
+    <code>sudo ufw allow 22/tcp</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">포트 22 를 차단합니다</BaseQuizOption>
@@ -93,7 +93,7 @@ sudo ss -tuln
   <BaseQuizOption value="D">방화벽 상태를 표시합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ufw allow 22/tcp`는 포트 22(기본 SSH 포트) 로 들어오는 TCP 연결을 허용하는 방화벽 규칙을 생성합니다. 이는 원격 서버 접근에 필수적입니다.
+    <code>ufw allow 22/tcp</code>는 포트 22(기본 SSH 포트) 로 들어오는 TCP 연결을 허용하는 방화벽 규칙을 생성합니다. 이는 원격 서버 접근에 필수적입니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -139,7 +139,7 @@ grep "Failed password" /var/log/auth.log
 
 <BaseQuiz id="cybersecurity-logs-1" correct="A">
   <template #question>
-    `tail -f /var/log/auth.log`는 무엇을 합니까?
+    <code>tail -f /var/log/auth.log</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A" correct>인증 로그 파일을 실시간으로 추적합니다</BaseQuizOption>
@@ -148,7 +148,7 @@ grep "Failed password" /var/log/auth.log
   <BaseQuizOption value="D">로그 파일을 아카이브합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-f` 플래그는 `tail` 이 파일을 추적하여 새로운 로그 항목이 기록될 때 실시간으로 표시하도록 합니다. 이는 인증 이벤트 및 보안 사고의 실시간 모니터링에 유용합니다.
+    <code>-f</code> 플래그는 <code>tail</code> 이 파일을 추적하여 새로운 로그 항목이 기록될 때 실시간으로 표시하도록 합니다. 이는 인증 이벤트 및 보안 사고의 실시간 모니터링에 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

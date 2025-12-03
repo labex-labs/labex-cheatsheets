@@ -187,7 +187,7 @@ git commit --no-edit --amend
 
 <BaseQuiz id="git-commit-1" correct="A">
   <template #question>
-    `git commit -m "message"` 的作用是什么？
+    <code>git commit -m "message"</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A" correct>使用指定的消息创建一个新提交</BaseQuizOption>
@@ -196,7 +196,7 @@ git commit --no-edit --amend
   <BaseQuizOption value="D">创建一个新分支</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git commit -m` 命令会创建一个包含暂存更改的新提交，并使用提供的消息将其保存到仓库历史记录中。它不会推送到远程或创建分支。
+    <code>git commit -m</code> 命令会创建一个包含暂存更改的新提交，并使用提供的消息将其保存到仓库历史记录中。它不会推送到远程或创建分支。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -264,7 +264,7 @@ git switch main
 
 <BaseQuiz id="git-branch-1" correct="B">
   <template #question>
-    `git checkout -b feature-branch` 的作用是什么？
+    <code>git checkout -b feature-branch</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">删除名为 feature-branch 的分支</BaseQuizOption>
@@ -273,7 +273,7 @@ git switch main
   <BaseQuizOption value="D">显示 feature-branch 的提交历史</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-b` 标志创建新分支，`checkout` 切换到它。此命令结合了两个操作：创建分支并立即切换到它。
+    <code>-b</code> 标志创建新分支，<code>checkout</code> 切换到它。此命令结合了两个操作：创建分支并立即切换到它。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -337,7 +337,7 @@ git pull --ff-only
 
 <BaseQuiz id="git-pull-1" correct="C">
   <template #question>
-    `git fetch` 和 `git pull` 有什么区别？
+    <code>git fetch</code> 和 <code>git pull</code> 有什么区别？
   </template>
   
   <BaseQuizOption value="A">它们之间没有区别；它们做同样的事情</BaseQuizOption>
@@ -346,7 +346,7 @@ git pull --ff-only
   <BaseQuizOption value="D">git fetch 用于本地仓库，git pull 用于远程仓库</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch` 从远程仓库下载更改，但不会合并到你当前的分支中。`git pull` 执行两个操作：它获取更改，然后将它们合并到你当前的分支中。
+    <code>git fetch</code> 从远程仓库下载更改，但不会合并到你当前的分支中。<code>git pull</code> 执行两个操作：它获取更改，然后将它们合并到你当前的分支中。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -367,7 +367,7 @@ git push --force-with-lease
 
 <BaseQuiz id="git-push-1" correct="D">
   <template #question>
-    `git push -u origin feature` 的作用是什么？
+    <code>git push -u origin feature</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">从远程删除 feature 分支</BaseQuizOption>
@@ -376,7 +376,7 @@ git push --force-with-lease
   <BaseQuizOption value="D" correct>将 feature 分支推送到 origin 并设置跟踪</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-u` 标志（或 `--set-upstream`）会将分支推送到远程仓库，并设置跟踪，以便将来执行 `git push` 和 `git pull` 命令时知道应使用哪个远程分支。
+    <code>-u</code> 标志（或 <code>--set-upstream</code>）会将分支推送到远程仓库，并设置跟踪，以便将来执行 <code>git push</code> 和 <code>git pull</code> 命令时知道应使用哪个远程分支。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -442,7 +442,7 @@ git stash clear
 
 <BaseQuiz id="git-stash-1" correct="B">
   <template #question>
-    `git stash apply` 和 `git stash pop` 有什么区别？
+    <code>git stash apply</code> 和 <code>git stash pop</code> 有什么区别？
   </template>
   
   <BaseQuizOption value="A">git stash apply 会移除暂存项，git stash pop 会保留它</BaseQuizOption>
@@ -451,7 +451,7 @@ git stash clear
   <BaseQuizOption value="D">它们之间没有区别；它们做同样的事情</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git stash apply` 恢复暂存的更改，但会保留暂存项在列表中。`git stash pop` 应用暂存项，然后将其从暂存列表中删除，这在你不再需要该暂存项时很有用。
+    <code>git stash apply</code> 恢复暂存的更改，但会保留暂存项在列表中。<code>git stash pop</code> 应用暂存项，然后将其从暂存列表中删除，这在你不再需要该暂存项时很有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 

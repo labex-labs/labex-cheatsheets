@@ -240,7 +240,7 @@ rf_clf = RandomForestClassifier(
 
 <BaseQuiz id="sklearn-randomforest-1" correct="A">
   <template #question>
-    O que `n_estimators` controla em RandomForestClassifier?
+    O que <code>n_estimators</code> controla em RandomForestClassifier?
   </template>
   
   <BaseQuizOption value="A" correct>O número de árvores de decisão na floresta</BaseQuizOption>
@@ -249,7 +249,7 @@ rf_clf = RandomForestClassifier(
   <BaseQuizOption value="D">A semente aleatória</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `n_estimators` especifica quantas árvores de decisão incluir na floresta aleatória. Mais árvores geralmente melhoram o desempenho, mas aumentam o tempo de computação. O padrão é geralmente 100.
+    <code>n_estimators</code> especifica quantas árvores de decisão incluir na floresta aleatória. Mais árvores geralmente melhoram o desempenho, mas aumentam o tempo de computação. O padrão é geralmente 100.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -74,7 +74,7 @@ df.fillna(df.mean())  # Обработка пропущенных значени
 
 <BaseQuiz id="datascience-pandas-1" correct="C">
   <template #question>
-    Что возвращает `df.head()` в Pandas?
+    Что возвращает <code>df.head()</code> в Pandas?
   </template>
   
   <BaseQuizOption value="A">Последние 5 строк DataFrame</BaseQuizOption>
@@ -83,7 +83,7 @@ df.fillna(df.mean())  # Обработка пропущенных значени
   <BaseQuizOption value="D">Все строки DataFrame</BaseQuizOption>
   
   <BaseQuizAnswer>
-    По умолчанию `df.head()` отображает первые 5 строк DataFrame. Вы можете указать другое число, например `df.head(10)`, чтобы увидеть первые 10 строк. Это полезно для быстрого осмотра ваших данных.
+    По умолчанию <code>df.head()</code> отображает первые 5 строк DataFrame. Вы можете указать другое число, например <code>df.head(10)</code>, чтобы увидеть первые 10 строк. Это полезно для быстрого осмотра ваших данных.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df_filled = pd.DataFrame(imputer.fit_transform(df))
 
 <BaseQuiz id="datascience-missing-1" correct="B">
   <template #question>
-    Для чего используется прямое заполнение (`method='forward'`)?
+    Для чего используется прямое заполнение (<code>method='forward'</code>)?
   </template>
   
   <BaseQuizOption value="A">Заполнение пропущенных значений средним</BaseQuizOption>

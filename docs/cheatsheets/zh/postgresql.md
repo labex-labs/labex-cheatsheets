@@ -133,7 +133,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="postgresql-create-table-1" correct="A">
   <template #question>
-    PostgreSQL 中的 `SERIAL PRIMARY KEY` 是做什么的？
+    PostgreSQL 中的 <code>SERIAL PRIMARY KEY</code> 是做什么的？
   </template>
   
   <BaseQuizOption value="A" correct>创建一个自增整数列作为主键</BaseQuizOption>
@@ -142,7 +142,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">创建一个唯一索引</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SERIAL` 是 PostgreSQL 特有的数据类型，它创建一个自增整数。与 `PRIMARY KEY` 结合使用时，它会为每一行创建一个自动递增的唯一标识符。
+    <code>SERIAL</code> 是 PostgreSQL 特有的数据类型，它创建一个自增整数。与 <code>PRIMARY KEY</code> 结合使用时，它会为每一行创建一个自动递增的唯一标识符。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ SELECT * FROM users WHERE active = false;
 
 <BaseQuiz id="postgresql-insert-1" correct="C">
   <template #question>
-    PostgreSQL 的 `RETURNING` 子句有什么作用？
+    PostgreSQL 的 <code>RETURNING</code> 子句有什么作用？
   </template>
   
   <BaseQuizOption value="A">回滚插入操作</BaseQuizOption>
@@ -299,7 +299,7 @@ SELECT * FROM users WHERE active = false;
   <BaseQuizOption value="D">更新现有行</BaseQuizOption>
   
   <BaseQuizAnswer>
-    PostgreSQL 中的 `RETURNING` 子句允许您在插入后立即检索被插入的行数据（或特定列），这对于获取自动生成的 ID 或时间戳非常有用。
+    PostgreSQL 中的 <code>RETURNING</code> 子句允许您在插入后立即检索被插入的行数据（或特定列），这对于获取自动生成的 ID 或时间戳非常有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 

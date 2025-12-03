@@ -187,7 +187,7 @@ git commit --no-edit --amend
 
 <BaseQuiz id="git-commit-1" correct="A">
   <template #question>
-    `git commit -m "message"` は何を行いますか？
+    <code>git commit -m "message"</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A" correct>指定されたメッセージで新しいコミットを作成する</BaseQuizOption>
@@ -196,7 +196,7 @@ git commit --no-edit --amend
   <BaseQuizOption value="D">新しいブランチを作成する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git commit -m` コマンドは、ステージングされた変更で新しいコミットを作成し、提供されたメッセージでリポジトリの履歴に保存します。リモートへのプッシュやブランチの作成は行いません。
+    <code>git commit -m</code> コマンドは、ステージングされた変更で新しいコミットを作成し、提供されたメッセージでリポジトリの履歴に保存します。リモートへのプッシュやブランチの作成は行いません。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -264,7 +264,7 @@ git switch main
 
 <BaseQuiz id="git-branch-1" correct="B">
   <template #question>
-    `git checkout -b feature-branch` は何を行いますか？
+    <code>git checkout -b feature-branch</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">feature-branch を削除する</BaseQuizOption>
@@ -273,7 +273,7 @@ git switch main
   <BaseQuizOption value="D">feature-branch のコミット履歴を表示する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-b` フラグは新しいブランチを作成し、`checkout` はそれに切り替えます。このコマンドは両方の操作を結合します：ブランチを作成し、直ちにそれに切り替えます。
+    <code>-b</code> フラグは新しいブランチを作成し、<code>checkout</code> はそれに切り替えます。このコマンドは両方の操作を結合します：ブランチを作成し、直ちにそれに切り替えます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -337,7 +337,7 @@ git pull --ff-only
 
 <BaseQuiz id="git-pull-1" correct="C">
   <template #question>
-    `git fetch` と `git pull` の違いは何ですか？
+    <code>git fetch</code> と <code>git pull</code> の違いは何ですか？
   </template>
   
   <BaseQuizOption value="A">違いはありません。同じことを行います</BaseQuizOption>
@@ -346,7 +346,7 @@ git pull --ff-only
   <BaseQuizOption value="D">git fetch はローカルリポジトリで機能し、git pull はリモートリポジトリで機能します</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch` はリモートリポジトリから変更をダウンロードしますが、現在のブランチにはマージしません。`git pull` は両方の操作を実行します：変更をフェッチし、次に現在のブランチにマージします。
+    <code>git fetch</code> はリモートリポジトリから変更をダウンロードしますが、現在のブランチにはマージしません。<code>git pull</code> は両方の操作を実行します：変更をフェッチし、次に現在のブランチにマージします。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -367,7 +367,7 @@ git push --force-with-lease
 
 <BaseQuiz id="git-push-1" correct="D">
   <template #question>
-    `git push -u origin feature` は何を行いますか？
+    <code>git push -u origin feature</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">リモートから feature ブランチを削除する</BaseQuizOption>
@@ -376,7 +376,7 @@ git push --force-with-lease
   <BaseQuizOption value="D" correct>feature ブランチを origin にプッシュし、トラッキングを設定する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-u` フラグ（または `--set-upstream`）は、ブランチをリモートリポジトリにプッシュし、トラッキングを設定するため、将来の `git push` および `git pull` コマンドは使用するリモートブランチを認識します。
+    <code>-u</code> フラグ（または <code>--set-upstream</code>）は、ブランチをリモートリポジトリにプッシュし、トラッキングを設定するため、将来の <code>git push</code> および <code>git pull</code> コマンドは使用するリモートブランチを認識します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -442,7 +442,7 @@ git stash clear
 
 <BaseQuiz id="git-stash-1" correct="B">
   <template #question>
-    `git stash apply` と `git stash pop` の違いは何ですか？
+    <code>git stash apply</code> と <code>git stash pop</code> の違いは何ですか？
   </template>
   
   <BaseQuizOption value="A">git stash apply はスタッシュを削除し、git stash pop は保持します</BaseQuizOption>
@@ -451,7 +451,7 @@ git stash clear
   <BaseQuizOption value="D">違いはありません。同じことを行います</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git stash apply` はスタッシュされた変更を復元しますが、スタッシュリストにはスタッシュを残します。`git stash pop` はスタッシュを適用し、その後スタッシュリストから削除します。これはスタッシュが不要になった場合に便利です。
+    <code>git stash apply</code> はスタッシュされた変更を復元しますが、スタッシュリストにはスタッシュを残します。<code>git stash pop</code> はスタッシュを適用し、その後スタッシュリストから削除します。これはスタッシュが不要になった場合に便利です。
   </BaseQuizAnswer>
 </BaseQuiz>
 

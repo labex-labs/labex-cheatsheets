@@ -42,7 +42,7 @@ var oldVariable = 'legacy'
 
 <BaseQuiz id="javascript-let-const-1" correct="B">
   <template #question>
-    Quelle est la principale différence entre `let` et `const` ?
+    Quelle est la principale différence entre <code>let</code> et <code>const</code> ?
   </template>
   
   <BaseQuizOption value="A">let a une portée de fonction, const a une portée de bloc</BaseQuizOption>
@@ -51,7 +51,7 @@ var oldVariable = 'legacy'
   <BaseQuizOption value="D">Il n'y a aucune différence</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `let` et `const` ont tous deux une portée de bloc, mais `let` vous permet de réassigner la variable, tandis que `const` empêche la réassignation. Cependant, les propriétés des objets `const` peuvent toujours être modifiées.
+    <code>let</code> et <code>const</code> ont tous deux une portée de bloc, mais <code>let</code> vous permet de réassigner la variable, tandis que <code>const</code> empêche la réassignation. Cependant, les propriétés des objets <code>const</code> peuvent toujours être modifiées.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -168,12 +168,12 @@ const processData = (data) => {
   </template>
   
   <BaseQuizOption value="A">Elles sont hoistées comme les déclarations de fonction</BaseQuizOption>
-  <BaseQuizOption value="B">Elles ont leur propre liaison `this`</BaseQuizOption>
-  <BaseQuizOption value="C" correct>Elles héritent de `this` de la portée englobante</BaseQuizOption>
+  <BaseQuizOption value="B">Elles ont leur propre liaison <code>this</code></BaseQuizOption>
+  <BaseQuizOption value="C" correct>Elles héritent de <code>this</code> de la portée englobante</BaseQuizOption>
   <BaseQuizOption value="D">Elles ne peuvent pas retourner de valeurs</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Les fonctions fléchées n'ont pas leur propre liaison `this`. Au lieu de cela, elles héritent de `this` de la portée lexicale (englobante), ce qui les rend utiles pour les rappels (*callbacks*) et les gestionnaires d'événements où vous souhaitez préserver le contexte.
+    Les fonctions fléchées n'ont pas leur propre liaison <code>this</code>. Au lieu de cela, elles héritent de <code>this</code> de la portée lexicale (englobante), ce qui les rend utiles pour les rappels (*callbacks*) et les gestionnaires d'événements où vous souhaitez préserver le contexte.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -226,7 +226,7 @@ const result = numbers
 
 <BaseQuiz id="javascript-array-1" correct="A">
   <template #question>
-    Que retourne `filter()` ?
+    Que retourne <code>filter()</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Un nouveau tableau avec les éléments qui passent le test</BaseQuizOption>
@@ -235,7 +235,7 @@ const result = numbers
   <BaseQuizOption value="D">Le tableau original modifié sur place</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La méthode `filter()` crée un nouveau tableau contenant tous les éléments qui passent le test implémenté par la fonction fournie. Elle ne modifie pas le tableau original.
+    La méthode <code>filter()</code> crée un nouveau tableau contenant tous les éléments qui passent le test implémenté par la fonction fournie. Elle ne modifie pas le tableau original.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ const buttonsArray = Array.from(allButtons)
 
 <BaseQuiz id="javascript-dom-1" correct="C">
   <template #question>
-    Quelle est la différence entre `querySelector()` et `querySelectorAll()` ?
+    Quelle est la différence entre <code>querySelector()</code> et <code>querySelectorAll()</code> ?
   </template>
   
   <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
@@ -335,7 +335,7 @@ const buttonsArray = Array.from(allButtons)
   <BaseQuizOption value="D">querySelector fonctionne avec les IDs, querySelectorAll fonctionne avec les classes</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `querySelector()` retourne le premier élément qui correspond au sélecteur CSS, tandis que `querySelectorAll()` retourne une `NodeList` contenant tous les éléments correspondants. Utilisez `querySelector()` lorsque vous avez besoin d'un seul élément, et `querySelectorAll()` lorsque vous en avez besoin de plusieurs.
+    <code>querySelector()</code> retourne le premier élément qui correspond au sélecteur CSS, tandis que <code>querySelectorAll()</code> retourne une <code>NodeList</code> contenant tous les éléments correspondants. Utilisez <code>querySelector()</code> lorsque vous avez besoin d'un seul élément, et <code>querySelectorAll()</code> lorsque vous en avez besoin de plusieurs.
   </BaseQuizAnswer>
 </BaseQuiz>
 

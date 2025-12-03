@@ -46,7 +46,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 
 <BaseQuiz id="matplotlib-plot-1" correct="C">
   <template #question>
-    Que fait `plt.show()` dans Matplotlib ?
+    Que fait <code>plt.show()</code> dans Matplotlib ?
   </template>
   
   <BaseQuizOption value="A">Sauvegarde le graphique dans un fichier</BaseQuizOption>
@@ -55,7 +55,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
   <BaseQuizOption value="D">Efface le graphique</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `plt.show()` affiche le graphique dans une fenêtre interactive. Il est nécessaire d'appeler cette fonction pour voir la visualisation. Sans elle, le graphique ne sera pas affiché.
+    <code>plt.show()</code> affiche le graphique dans une fenêtre interactive. Il est nécessaire d'appeler cette fonction pour voir la visualisation. Sans elle, le graphique ne sera pas affiché.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -76,7 +76,7 @@ plt.colorbar()  # Ajoute une barre de couleur
 
 <BaseQuiz id="matplotlib-scatter-1" correct="D">
   <template #question>
-    Que contrôle le paramètre `alpha` dans les graphiques matplotlib ?
+    Que contrôle le paramètre <code>alpha</code> dans les graphiques matplotlib ?
   </template>
   
   <BaseQuizOption value="A">La couleur du graphique</BaseQuizOption>
@@ -85,7 +85,7 @@ plt.colorbar()  # Ajoute une barre de couleur
   <BaseQuizOption value="D" correct>La transparence/opacité des éléments du graphique</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le paramètre `alpha` contrôle la transparence, avec des valeurs allant de 0 (complètement transparent) à 1 (complètement opaque). Il est utile pour créer des visualisations superposées où l'on souhaite voir à travers les éléments.
+    Le paramètre <code>alpha</code> contrôle la transparence, avec des valeurs allant de 0 (complètement transparent) à 1 (complètement opaque). Il est utile pour créer des visualisations superposées où l'on souhaite voir à travers les éléments.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -214,16 +214,16 @@ plt.annotate('Point Important', xy=(2, 4), xytext=(3, 6),
 
 <BaseQuiz id="matplotlib-legend-1" correct="B">
   <template #question>
-    Qu'est-ce qui est requis pour que `plt.legend()` affiche des étiquettes ?
+    Qu'est-ce qui est requis pour que <code>plt.legend()</code> affiche des étiquettes ?
   </template>
   
   <BaseQuizOption value="A">Rien, cela fonctionne automatiquement</BaseQuizOption>
-  <BaseQuizOption value="B" correct>Chaque tracé doit avoir un paramètre `label` défini</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Chaque tracé doit avoir un paramètre <code>label</code> défini</BaseQuizOption>
   <BaseQuizOption value="C">La légende doit être créée avant le traçage</BaseQuizOption>
   <BaseQuizOption value="D">Les étiquettes doivent être définies manuellement dans la légende</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Pour afficher une légende, vous devez définir le paramètre `label` lors de la création de chaque tracé (par exemple, `plt.plot(x, y, label='Ensemble de données 1')`). Ensuite, appeler `plt.legend()` affichera toutes les étiquettes.
+    Pour afficher une légende, vous devez définir le paramètre <code>label</code> lors de la création de chaque tracé (par exemple, <code>plt.plot(x, y, label='Ensemble de données 1')</code>). Ensuite, appeler <code>plt.legend()</code> affichera toutes les étiquettes.
   </BaseQuizAnswer>
 </BaseQuiz>
 

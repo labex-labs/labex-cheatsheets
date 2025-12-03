@@ -204,7 +204,7 @@ filtered = arr[mask]
 
 <BaseQuiz id="numpy-boolean-1" correct="C">
   <template #question>
-    불리언 인덱싱 `arr[arr > 5]`는 무엇을 반환합니까?
+    불리언 인덱싱 <code>arr[arr > 5]</code>는 무엇을 반환합니까?
   </template>
   
   <BaseQuizOption value="A">불리언 배열</BaseQuizOption>
@@ -213,7 +213,7 @@ filtered = arr[mask]
   <BaseQuizOption value="D">오류</BaseQuizOption>
   
   <BaseQuizAnswer>
-    불리언 인덱싱은 조건을 필터링하여 조건이 참인 요소만 반환합니다. `arr[arr > 5]`는 5 보다 큰 값만 포함하는 새 배열을 반환합니다.
+    불리언 인덱싱은 조건을 필터링하여 조건이 참인 요소만 반환합니다. <code>arr[arr > 5]</code>는 5 보다 큰 값만 포함하는 새 배열을 반환합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -263,7 +263,7 @@ arr.ravel()  # 가능하면 뷰 반환
 
 <BaseQuiz id="numpy-reshape-1" correct="B">
   <template #question>
-    `arr.reshape(-1, 1)`에서 `-1` 은 무엇을 의미합니까?
+    <code>arr.reshape(-1, 1)</code>에서 <code>-1</code> 은 무엇을 의미합니까?
   </template>
   
   <BaseQuizOption value="A">오류를 생성한다</BaseQuizOption>
@@ -272,13 +272,13 @@ arr.ravel()  # 가능하면 뷰 반환
   <BaseQuizOption value="D">배열을 역순으로 만든다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    재구성에서 `-1` 을 사용하면 NumPy 에게 배열의 총 크기와 지정된 다른 차원을 기반으로 해당 차원을 자동으로 계산하도록 지시합니다. 이는 하나의 차원은 알지만 다른 차원은 NumPy 가 알아내도록 할 때 유용합니다.
+    재구성에서 <code>-1</code> 을 사용하면 NumPy 에게 배열의 총 크기와 지정된 다른 차원을 기반으로 해당 차원을 자동으로 계산하도록 지시합니다. 이는 하나의 차원은 알지만 다른 차원은 NumPy 가 알아내도록 할 때 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
 <BaseQuiz id="numpy-reshape-1" correct="B">
   <template #question>
-    `arr.reshape(-1, 1)`에서 `-1` 은 무엇을 의미합니까?
+    <code>arr.reshape(-1, 1)</code>에서 <code>-1</code> 은 무엇을 의미합니까?
   </template>
   
   <BaseQuizOption value="A">오류를 생성한다</BaseQuizOption>
@@ -287,7 +287,7 @@ arr.ravel()  # 가능하면 뷰 반환
   <BaseQuizOption value="D">차원을 1 로 설정한다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    재구성에서 `-1` 을 사용하면 NumPy 에게 배열의 총 크기와 지정된 다른 차원을 기반으로 해당 차원을 자동으로 계산하도록 지시합니다. 이는 하나의 차원은 알지만 다른 차원은 NumPy 가 알아내도록 할 때 유용합니다.
+    재구성에서 <code>-1</code> 을 사용하면 NumPy 에게 배열의 총 크기와 지정된 다른 차원을 기반으로 해당 차원을 자동으로 계산하도록 지시합니다. 이는 하나의 차원은 알지만 다른 차원은 NumPy 가 알아내도록 할 때 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
   <BaseQuizOption value="D">C utilise cout, C++ utilise printf</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C utilise `printf()` de stdio.h, tandis que C++ utilise `cout` de iostream avec l'opérateur d'insertion de flux `<<`. C++ supporte également printf pour la compatibilité.
+    C utilise <code>printf()</code> de stdio.h, tandis que C++ utilise <code>cout</code> de iostream avec l'opérateur d'insertion de flux <code><<</code>. C++ supporte également printf pour la compatibilité.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ vector<string> names(5); // Taille 5, chaînes vides
 
 <BaseQuiz id="cpp-vector-1" correct="B">
   <template #question>
-    Quel est l'avantage principal de `vector` par rapport aux tableaux réguliers en C++ ?
+    Quel est l'avantage principal de <code>vector</code> par rapport aux tableaux réguliers en C++ ?
   </template>
   
   <BaseQuizOption value="A">Les vecteurs sont plus rapides</BaseQuizOption>
@@ -165,7 +165,7 @@ vector<string> names(5); // Taille 5, chaînes vides
   <BaseQuizOption value="D">Il n'y a pas d'avantage</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `vector` est un tableau dynamique qui peut croître ou rétrécir à l'exécution, contrairement aux tableaux réguliers dont la taille est fixée à la compilation. Cela rend les vecteurs plus flexibles pour de nombreux cas d'utilisation.
+    <code>vector</code> est un tableau dynamique qui peut croître ou rétrécir à l'exécution, contrairement aux tableaux réguliers dont la taille est fixée à la compilation. Cela rend les vecteurs plus flexibles pour de nombreux cas d'utilisation.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -247,7 +247,7 @@ for (auto& item : container) {
   <BaseQuizOption value="D">Une boucle qui nécessite une gestion manuelle des indices</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Les boucles for basées sur la plage (introduites en C++11) itèrent automatiquement sur tous les éléments d'un conteneur (comme les vecteurs, les tableaux, les chaînes) sans avoir besoin de gérer manuellement les indices. La syntaxe est `for (auto item : container)`.
+    Les boucles for basées sur la plage (introduites en C++11) itèrent automatiquement sur tous les éléments d'un conteneur (comme les vecteurs, les tableaux, les chaînes) sans avoir besoin de gérer manuellement les indices. La syntaxe est <code>for (auto item : container)</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -84,7 +84,7 @@ SET mykey "new_value" NX
 
 <BaseQuiz id="redis-set-get-1" correct="C">
   <template #question>
-    What does `SET mykey "value" EX 3600` do?
+    What does <code>SET mykey "value" EX 3600</code> do?
   </template>
   
   <BaseQuizOption value="A">Sets the key with a 3600-byte value</BaseQuizOption>
@@ -93,7 +93,7 @@ SET mykey "new_value" NX
   <BaseQuizOption value="D">Sets the key with 3600 different values</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `EX` option sets an expiration time in seconds. `SET mykey "value" EX 3600` stores the value and automatically deletes it after 3600 seconds (1 hour).
+    The <code>EX</code> option sets an expiration time in seconds. <code>SET mykey "value" EX 3600</code> stores the value and automatically deletes it after 3600 seconds (1 hour).
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -129,7 +129,7 @@ INCRBYFLOAT price 0.1
 
 <BaseQuiz id="redis-incr-1" correct="A">
   <template #question>
-    What happens if you use `INCR` on a key that doesn't exist?
+    What happens if you use <code>INCR</code> on a key that doesn't exist?
   </template>
   
   <BaseQuizOption value="A" correct>Redis creates the key with value 1</BaseQuizOption>
@@ -138,7 +138,7 @@ INCRBYFLOAT price 0.1
   <BaseQuizOption value="D">Nothing happens</BaseQuizOption>
   
   <BaseQuizAnswer>
-    If a key doesn't exist, `INCR` treats it as if it had a value of 0, increments it to 1, and creates the key. This makes `INCR` useful for initializing counters.
+    If a key doesn't exist, <code>INCR</code> treats it as if it had a value of 0, increments it to 1, and creates the key. This makes <code>INCR</code> useful for initializing counters.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -202,7 +202,7 @@ LLEN mylist
 
 <BaseQuiz id="redis-list-1" correct="B">
   <template #question>
-    What does `LRANGE mylist 0 -1` return?
+    What does <code>LRANGE mylist 0 -1</code> return?
   </template>
   
   <BaseQuizOption value="A">Only the first element</BaseQuizOption>
@@ -211,7 +211,7 @@ LLEN mylist
   <BaseQuizOption value="D">An error</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `LRANGE` with `0 -1` returns all elements in the list. The `0` is the start index and `-1` represents the last element, so this retrieves everything from the first to the last element.
+    <code>LRANGE</code> with <code>0 -1</code> returns all elements in the list. The <code>0</code> is the start index and <code>-1</code> represents the last element, so this retrieves everything from the first to the last element.
   </BaseQuizAnswer>
 </BaseQuiz>
 

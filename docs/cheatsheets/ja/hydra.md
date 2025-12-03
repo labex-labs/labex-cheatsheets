@@ -51,16 +51,16 @@ hydra -l admin -p password123 192.168.1.100 ftp
 
 <BaseQuiz id="hydra-syntax-1" correct="B">
   <template #question>
-    Hydra の `-l`と`-L` の違いは何ですか？
+    Hydra の <code>-l</code>と<code>-L</code> の違いは何ですか？
   </template>
   
-  <BaseQuizOption value="A">`-l`はパスワード用、`-L` はユーザー名用です</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`-l`は単一のユーザー名を指定し、`-L` はユーザー名のリストファイル指定です</BaseQuizOption>
+  <BaseQuizOption value="A"><code>-l</code>はパスワード用、<code>-L</code> はユーザー名用です</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>-l</code>は単一のユーザー名を指定し、<code>-L</code> はユーザー名のリストファイル指定です</BaseQuizOption>
   <BaseQuizOption value="C">違いはありません</BaseQuizOption>
-  <BaseQuizOption value="D">`-l`は小文字、`-L` は大文字です</BaseQuizOption>
+  <BaseQuizOption value="D"><code>-l</code>は小文字、<code>-L</code> は大文字です</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-l`オプションは単一のユーザー名に使用され、`-L`はユーザー名のリストを含むファイルに使用されます。同様に、`-p`は単一のパスワード、`-P` はパスワードリストファイルに使用されます。
+    <code>-l</code>オプションは単一のユーザー名に使用され、<code>-L</code>はユーザー名のリストを含むファイルに使用されます。同様に、<code>-p</code>は単一のパスワード、<code>-P</code> はパスワードリストファイルに使用されます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -95,7 +95,7 @@ hydra -l admin -P passwords.txt target.com ssh -V
 
 <BaseQuiz id="hydra-output-1" correct="A">
   <template #question>
-    `hydra -V`は何をしますか？
+    <code>hydra -V</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>詳細な進捗を表示する詳細出力を有効にします</BaseQuizOption>
@@ -104,7 +104,7 @@ hydra -l admin -P passwords.txt target.com ssh -V
   <BaseQuizOption value="D">詳細モードでのみ実行します</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-V` フラグは詳細モードを有効にし、各ログイン試行を含む詳細な出力を表示するため、パスワード攻撃中の進捗監視やデバッグが容易になります。
+    <code>-V</code> フラグは詳細モードを有効にし、各ログイン試行を含む詳細な出力を表示するため、パスワード攻撃中の進捗監視やデバッグが容易になります。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -127,7 +127,7 @@ hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 
 <BaseQuiz id="hydra-ssh-1" correct="C">
   <template #question>
-    Hydra の `-s` フラグは何をしますか？
+    Hydra の <code>-s</code> フラグは何をしますか？
   </template>
   
   <BaseQuizOption value="A">サービスタイプを設定します</BaseQuizOption>
@@ -136,7 +136,7 @@ hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
   <BaseQuizOption value="D">スレッド数を設定します</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-s` フラグは、サービスが標準ポート以外で実行されている場合にカスタムポート番号を指定します。例えば、`-s 2222`はデフォルトのポート 22 ではなくポート 2222 の SSH をターゲットにします。
+    <code>-s</code> フラグは、サービスが標準ポート以外で実行されている場合にカスタムポート番号を指定します。例えば、<code>-s 2222</code>はデフォルトのポート 22 ではなくポート 2222 の SSH をターゲットにします。
   </BaseQuizAnswer>
 </BaseQuiz>
 

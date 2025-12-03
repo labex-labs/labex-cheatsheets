@@ -182,7 +182,7 @@ kubectl get pods --watch
 
 <BaseQuiz id="kubernetes-pods-1" correct="C">
   <template #question>
-    Was bewirkt `kubectl get pods --all-namespaces`?
+    Was bewirkt <code>kubectl get pods --all-namespaces</code>?
   </template>
   
   <BaseQuizOption value="A">Listet nur laufende Pods auf</BaseQuizOption>
@@ -191,7 +191,7 @@ kubectl get pods --watch
   <BaseQuizOption value="D">Löscht alle Pods</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `--all-namespaces` (oder `-A`) zeigt Pods aus allen Namespaces an, nicht nur aus dem Standard-Namespace. Dies ist nützlich für die clusterweite Sichtbarkeit.
+    Das Flag <code>--all-namespaces</code> (oder <code>-A</code>) zeigt Pods aus allen Namespaces an, nicht nur aus dem Standard-Namespace. Dies ist nützlich für die clusterweite Sichtbarkeit.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ cpu-percent=80
 
 <BaseQuiz id="kubernetes-scale-1" correct="B">
   <template #question>
-    Was bewirkt `kubectl scale deployment nginx --replicas=5`?
+    Was bewirkt <code>kubectl scale deployment nginx --replicas=5</code>?
   </template>
   
   <BaseQuizOption value="A">Erstellt 5 neue Deployments</BaseQuizOption>
@@ -299,7 +299,7 @@ cpu-percent=80
   <BaseQuizOption value="D">Aktualisiert das Deployment-Image</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Der Befehl `scale` passt die Anzahl der Replikate für ein Deployment an. Dieser Befehl stellt sicher, dass das nginx Deployment genau 5 Pod-Replikate ausführt, indem bei Bedarf Pods erstellt oder gelöscht werden.
+    Der Befehl <code>scale</code> passt die Anzahl der Replikate für ein Deployment an. Dieser Befehl stellt sicher, dass das nginx Deployment genau 5 Pod-Replikate ausführt, indem bei Bedarf Pods erstellt oder gelöscht werden.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -339,7 +339,7 @@ kubectl apply -f service.yaml
 
 <BaseQuiz id="kubernetes-service-1" correct="A">
   <template #question>
-    Welcher Servicetyp ist standardmäßig bei Verwendung von `kubectl expose`?
+    Welcher Servicetyp ist standardmäßig bei Verwendung von <code>kubectl expose</code>?
   </template>
   
   <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>

@@ -67,7 +67,7 @@ Use elementos semânticos HTML5 significativos para melhor estrutura.
 
 <BaseQuiz id="webdev-semantic-1" correct="B">
   <template #question>
-    Qual é o principal benefício de usar elementos HTML semânticos como `header`, `main` e `footer`?
+    Qual é o principal benefício de usar elementos HTML semânticos como <code>header</code>, <code>main</code> e <code>footer</code>?
   </template>
   
   <BaseQuizOption value="A">Eles fazem a página carregar mais rápido</BaseQuizOption>
@@ -263,7 +263,7 @@ Controle o espaçamento e o layout com o box model CSS.
 
 <BaseQuiz id="webdev-boxmodel-1" correct="B">
   <template #question>
-    Qual é a diferença entre `margin` e `padding` em CSS?
+    Qual é a diferença entre <code>margin</code> e <code>padding</code> em CSS?
   </template>
   
   <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
@@ -301,7 +301,7 @@ Crie layouts flexíveis e responsivos facilmente.
 
 <BaseQuiz id="webdev-flexbox-1" correct="A">
   <template #question>
-    O que `justify-content: center` faz no Flexbox?
+    O que <code>justify-content: center</code> faz no Flexbox?
   </template>
   
   <BaseQuizOption value="A" correct>Centraliza os itens flex ao longo do eixo principal (horizontalmente por padrão)</BaseQuizOption>
@@ -310,7 +310,7 @@ Crie layouts flexíveis e responsivos facilmente.
   <BaseQuizOption value="D">Estica os itens para preencher o espaço</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `justify-content` controla o alinhamento ao longo do eixo principal (horizontal por padrão). `center` centraliza todos os itens flex no contêiner. Use `align-items` para controlar o alinhamento do eixo cruzado (vertical).
+    <code>justify-content</code> controla o alinhamento ao longo do eixo principal (horizontal por padrão). <code>center</code> centraliza todos os itens flex no contêiner. Use <code>align-items</code> para controlar o alinhamento do eixo cruzado (vertical).
   </BaseQuizAnswer>
 </BaseQuiz>
 

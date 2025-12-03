@@ -133,7 +133,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="postgresql-create-table-1" correct="A">
   <template #question>
-    O que `SERIAL PRIMARY KEY` faz no PostgreSQL?
+    O que <code>SERIAL PRIMARY KEY</code> faz no PostgreSQL?
   </template>
   
   <BaseQuizOption value="A" correct>Cria uma coluna de inteiro auto-incrementável que serve como chave primária</BaseQuizOption>
@@ -142,7 +142,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">Cria um índice exclusivo</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SERIAL` é um tipo de dado específico do PostgreSQL que cria um inteiro auto-incrementável. Combinado com `PRIMARY KEY`, ele cria um identificador exclusivo para cada linha que se incrementa automaticamente.
+    <code>SERIAL</code> é um tipo de dado específico do PostgreSQL que cria um inteiro auto-incrementável. Combinado com <code>PRIMARY KEY</code>, ele cria um identificador exclusivo para cada linha que se incrementa automaticamente.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ SELECT * FROM users WHERE active = false;
 
 <BaseQuiz id="postgresql-insert-1" correct="C">
   <template #question>
-    O que `RETURNING` faz em uma instrução INSERT do PostgreSQL?
+    O que <code>RETURNING</code> faz em uma instrução INSERT do PostgreSQL?
   </template>
   
   <BaseQuizOption value="A">Ele reverte a inserção</BaseQuizOption>
@@ -299,7 +299,7 @@ SELECT * FROM users WHERE active = false;
   <BaseQuizOption value="D">Ele atualiza linhas existentes</BaseQuizOption>
   
   <BaseQuizAnswer>
-    A cláusula `RETURNING` no PostgreSQL permite que você recupere os dados da linha inserida (ou colunas específicas) imediatamente após a inserção, o que é útil para obter IDs gerados automaticamente ou carimbos de data/hora.
+    A cláusula <code>RETURNING</code> no PostgreSQL permite que você recupere os dados da linha inserida (ou colunas específicas) imediatamente após a inserção, o que é útil para obter IDs gerados automaticamente ou carimbos de data/hora.
   </BaseQuizAnswer>
 </BaseQuiz>
 

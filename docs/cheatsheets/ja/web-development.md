@@ -67,7 +67,7 @@ Web 開発チートシート
 
 <BaseQuiz id="webdev-semantic-1" correct="B">
   <template #question>
-    `header`、`main`、`footer` のようなセマンティック HTML 要素を使用する主な利点は何ですか？
+    <code>header</code>、<code>main</code>、<code>footer</code> のようなセマンティック HTML 要素を使用する主な利点は何ですか？
   </template>
   
   <BaseQuizOption value="A">ページがより速くロードされる</BaseQuizOption>
@@ -263,7 +263,7 @@ CSS ボックスモデルを使用して、間隔とレイアウトを制御し�
 
 <BaseQuiz id="webdev-boxmodel-1" correct="B">
   <template #question>
-    CSS の `margin`と`padding` の違いは何ですか？
+    CSS の <code>margin</code>と<code>padding</code> の違いは何ですか？
   </template>
   
   <BaseQuizOption value="A">違いはありません</BaseQuizOption>
@@ -301,7 +301,7 @@ CSS ボックスモデルを使用して、間隔とレイアウトを制御し�
 
 <BaseQuiz id="webdev-flexbox-1" correct="A">
   <template #question>
-    Flexbox で`justify-content: center`は何をしますか？
+    Flexbox で<code>justify-content: center</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>フレックスアイテムを主軸に沿って中央揃えにします（デフォルトでは水平方向）</BaseQuizOption>
@@ -310,7 +310,7 @@ CSS ボックスモデルを使用して、間隔とレイアウトを制御し�
   <BaseQuizOption value="D">アイテムをストレッチしてスペースを埋めます</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `justify-content`は主軸（デフォルトでは水平方向）に沿った配置を制御します。`center`はすべてのフレックスアイテムをコンテナ内で中央に配置します。交差軸（垂直方向）の配置を制御するには `align-items` を使用します。
+    <code>justify-content</code>は主軸（デフォルトでは水平方向）に沿った配置を制御します。<code>center</code>はすべてのフレックスアイテムをコンテナ内で中央に配置します。交差軸（垂直方向）の配置を制御するには <code>align-items</code> を使用します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -187,7 +187,7 @@ git commit --no-edit --amend
 
 <BaseQuiz id="git-commit-1" correct="A">
   <template #question>
-    `git commit -m "message"`는 무엇을 수행합니까?
+    <code>git commit -m "message"</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A" correct>지정된 메시지로 새 커밋을 생성합니다</BaseQuizOption>
@@ -196,7 +196,7 @@ git commit --no-edit --amend
   <BaseQuizOption value="D">새 브랜치를 생성합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git commit -m` 명령어는 스테이징된 변경 사항으로 새 커밋을 생성하고 제공된 메시지와 함께 저장소 기록에 저장합니다. 원격에 푸시하거나 브랜치를 생성하지는 않습니다.
+    <code>git commit -m</code> 명령어는 스테이징된 변경 사항으로 새 커밋을 생성하고 제공된 메시지와 함께 저장소 기록에 저장합니다. 원격에 푸시하거나 브랜치를 생성하지는 않습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -264,7 +264,7 @@ git switch main
 
 <BaseQuiz id="git-branch-1" correct="B">
   <template #question>
-    `git checkout -b feature-branch`는 무엇을 수행합니까?
+    <code>git checkout -b feature-branch</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">feature-branch 를 삭제합니다</BaseQuizOption>
@@ -273,7 +273,7 @@ git switch main
   <BaseQuizOption value="D">feature-branch 의 커밋 기록을 표시합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-b` 플래그는 새 브랜치를 생성하고, `checkout` 은 해당 브랜치로 전환합니다. 이 명령어는 두 작업을 결합합니다: 브랜치 생성 및 즉시 전환.
+    <code>-b</code> 플래그는 새 브랜치를 생성하고, <code>checkout</code> 은 해당 브랜치로 전환합니다. 이 명령어는 두 작업을 결합합니다: 브랜치 생성 및 즉시 전환.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -337,7 +337,7 @@ git pull --ff-only
 
 <BaseQuiz id="git-pull-1" correct="C">
   <template #question>
-    `git fetch`와 `git pull`의 차이점은 무엇입니까?
+    <code>git fetch</code>와 <code>git pull</code>의 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">차이점이 없습니다. 둘 다 동일한 작업을 수행합니다</BaseQuizOption>
@@ -346,7 +346,7 @@ git pull --ff-only
   <BaseQuizOption value="D">git fetch 는 로컬 저장소에서 작동하고, git pull 은 원격 저장소에서 작동합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch`는 원격 저장소에서 변경 사항을 다운로드하지만 현재 브랜치에 병합하지는 않습니다. `git pull`은 두 작업을 모두 수행합니다: 변경 사항을 가져온 다음 현재 브랜치에 병합합니다.
+    <code>git fetch</code>는 원격 저장소에서 변경 사항을 다운로드하지만 현재 브랜치에 병합하지는 않습니다. <code>git pull</code>은 두 작업을 모두 수행합니다: 변경 사항을 가져온 다음 현재 브랜치에 병합합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -367,7 +367,7 @@ git push --force-with-lease
 
 <BaseQuiz id="git-push-1" correct="D">
   <template #question>
-    `git push -u origin feature`는 무엇을 수행합니까?
+    <code>git push -u origin feature</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">원격에서 feature 브랜치를 삭제합니다</BaseQuizOption>
@@ -376,7 +376,7 @@ git push --force-with-lease
   <BaseQuizOption value="D" correct>feature 브랜치를 origin 으로 푸시하고 추적을 설정합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-u` 플래그 (또는 `--set-upstream`) 는 브랜치를 원격 저장소로 푸시하고 추적을 설정하여 향후 `git push` 및 `git pull` 명령어가 사용할 원격 브랜치를 알 수 있게 합니다.
+    <code>-u</code> 플래그 (또는 <code>--set-upstream</code>) 는 브랜치를 원격 저장소로 푸시하고 추적을 설정하여 향후 <code>git push</code> 및 <code>git pull</code> 명령어가 사용할 원격 브랜치를 알 수 있게 합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -442,7 +442,7 @@ git stash clear
 
 <BaseQuiz id="git-stash-1" correct="B">
   <template #question>
-    `git stash apply`와 `git stash pop`의 차이점은 무엇입니까?
+    <code>git stash apply</code>와 <code>git stash pop</code>의 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">git stash apply 는 스테이시를 제거하고, git stash pop 은 유지합니다</BaseQuizOption>
@@ -451,7 +451,7 @@ git stash clear
   <BaseQuizOption value="D">차이점이 없습니다. 둘 다 동일한 작업을 수행합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git stash apply`는 스테이시를 스테이시 목록에 유지하면서 저장된 변경 사항을 복원합니다. `git stash pop`은 스테이시를 적용한 다음 스테이시 목록에서 제거하므로 더 이상 스테이시가 필요하지 않을 때 유용합니다.
+    <code>git stash apply</code>는 스테이시를 스테이시 목록에 유지하면서 저장된 변경 사항을 복원합니다. <code>git stash pop</code>은 스테이시를 적용한 다음 스테이시 목록에서 제거하므로 더 이상 스테이시가 필요하지 않을 때 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

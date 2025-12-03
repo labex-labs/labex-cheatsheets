@@ -187,7 +187,7 @@ git commit --no-edit --amend
 
 <BaseQuiz id="git-commit-1" correct="A">
   <template #question>
-    O que `git commit -m "message"` faz?
+    O que <code>git commit -m "message"</code> faz?
   </template>
   
   <BaseQuizOption value="A" correct>Cria um novo commit com a mensagem especificada</BaseQuizOption>
@@ -196,7 +196,7 @@ git commit --no-edit --amend
   <BaseQuizOption value="D">Cria uma nova branch</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O comando `git commit -m` cria um novo commit com as alterações preparadas e as salva no histórico do repositório com a mensagem fornecida. Ele não envia para o remoto nem cria branches.
+    O comando <code>git commit -m</code> cria um novo commit com as alterações preparadas e as salva no histórico do repositório com a mensagem fornecida. Ele não envia para o remoto nem cria branches.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -264,7 +264,7 @@ git switch main
 
 <BaseQuiz id="git-branch-1" correct="B">
   <template #question>
-    O que `git checkout -b feature-branch` faz?
+    O que <code>git checkout -b feature-branch</code> faz?
   </template>
   
   <BaseQuizOption value="A">Deleta a branch feature-branch</BaseQuizOption>
@@ -273,7 +273,7 @@ git switch main
   <BaseQuizOption value="D">Mostra o histórico de commits da feature-branch</BaseQuizOption>
   
   <BaseQuizAnswer>
-    A flag `-b` cria uma nova branch, e `checkout` muda para ela. Este comando combina ambas as operações: criar a branch e imediatamente mudar para ela.
+    A flag <code>-b</code> cria uma nova branch, e <code>checkout</code> muda para ela. Este comando combina ambas as operações: criar a branch e imediatamente mudar para ela.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -337,7 +337,7 @@ git pull --ff-only
 
 <BaseQuiz id="git-pull-1" correct="C">
   <template #question>
-    Qual é a diferença entre `git fetch` e `git pull`?
+    Qual é a diferença entre <code>git fetch</code> e <code>git pull</code>?
   </template>
   
   <BaseQuizOption value="A">Não há diferença; eles fazem a mesma coisa</BaseQuizOption>
@@ -346,7 +346,7 @@ git pull --ff-only
   <BaseQuizOption value="D">git fetch funciona com repositórios locais, git pull funciona com repositórios remotos</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch` baixa alterações do repositório remoto, mas não as mescla na sua branch atual. `git pull` executa ambas as operações: ele busca as alterações e depois as mescla na sua branch atual.
+    <code>git fetch</code> baixa alterações do repositório remoto, mas não as mescla na sua branch atual. <code>git pull</code> executa ambas as operações: ele busca as alterações e depois as mescla na sua branch atual.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -367,7 +367,7 @@ git push --force-with-lease
 
 <BaseQuiz id="git-push-1" correct="D">
   <template #question>
-    O que `git push -u origin feature` faz?
+    O que <code>git push -u origin feature</code> faz?
   </template>
   
   <BaseQuizOption value="A">Deleta a branch feature do remoto</BaseQuizOption>
@@ -376,7 +376,7 @@ git push --force-with-lease
   <BaseQuizOption value="D" correct>Envia a branch feature para origin e configura o rastreamento</BaseQuizOption>
   
   <BaseQuizAnswer>
-    A flag `-u` (ou `--set-upstream`) envia a branch para o repositório remoto e configura o rastreamento, para que comandos futuros de `git push` e `git pull` saibam qual branch remota usar.
+    A flag <code>-u</code> (ou <code>--set-upstream</code>) envia a branch para o repositório remoto e configura o rastreamento, para que comandos futuros de <code>git push</code> e <code>git pull</code> saibam qual branch remota usar.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -442,7 +442,7 @@ git stash clear
 
 <BaseQuiz id="git-stash-1" correct="B">
   <template #question>
-    Qual é a diferença entre `git stash apply` e `git stash pop`?
+    Qual é a diferença entre <code>git stash apply</code> e <code>git stash pop</code>?
   </template>
   
   <BaseQuizOption value="A">git stash apply remove o stash, git stash pop o mantém</BaseQuizOption>
@@ -451,7 +451,7 @@ git stash clear
   <BaseQuizOption value="D">Não há diferença; eles fazem a mesma coisa</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git stash apply` restaura as alterações salvas, mas mantém o stash na lista de stashes. `git stash pop` aplica o stash e depois o remove da lista de stashes, o que é útil quando você não precisa mais do stash.
+    <code>git stash apply</code> restaura as alterações salvas, mas mantém o stash na lista de stashes. <code>git stash pop</code> aplica o stash e depois o remove da lista de stashes, o que é útil quando você não precisa mais do stash.
   </BaseQuizAnswer>
 </BaseQuiz>
 

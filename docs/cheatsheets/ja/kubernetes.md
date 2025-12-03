@@ -182,7 +182,7 @@ kubectl get pods --watch
 
 <BaseQuiz id="kubernetes-pods-1" correct="C">
   <template #question>
-    `kubectl get pods --all-namespaces`は何をしますか？
+    <code>kubectl get pods --all-namespaces</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A">実行中の Pod のみを一覧表示する</BaseQuizOption>
@@ -191,7 +191,7 @@ kubectl get pods --watch
   <BaseQuizOption value="D">すべての Pod を削除する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `--all-namespaces` フラグ（または `-A`）は、デフォルトネームスペースだけでなく、すべてのネームスペースの Pod を表示します。これはクラスター全体の可視化に役立ちます。
+    <code>--all-namespaces</code> フラグ（または <code>-A</code>）は、デフォルトネームスペースだけでなく、すべてのネームスペースの Pod を表示します。これはクラスター全体の可視化に役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ cpu-percent=80
 
 <BaseQuiz id="kubernetes-scale-1" correct="B">
   <template #question>
-    `kubectl scale deployment nginx --replicas=5`は何をしますか？
+    <code>kubectl scale deployment nginx --replicas=5</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A">5 つの新しいデプロイメントを作成する</BaseQuizOption>
@@ -299,7 +299,7 @@ cpu-percent=80
   <BaseQuizOption value="D">デプロイメントイメージを更新する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `scale` コマンドはデプロイメントのレプリカ数を調整します。このコマンドは、nginx デプロイメントが正確に 5 つの Pod レプリカを実行するように保証し、必要に応じて Pod を作成または削除します。
+    <code>scale</code> コマンドはデプロイメントのレプリカ数を調整します。このコマンドは、nginx デプロイメントが正確に 5 つの Pod レプリカを実行するように保証し、必要に応じて Pod を作成または削除します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -339,7 +339,7 @@ kubectl apply -f service.yaml
 
 <BaseQuiz id="kubernetes-service-1" correct="A">
   <template #question>
-    `kubectl expose`を使用した場合のデフォルトのサービスタイプは何ですか？
+    <code>kubectl expose</code>を使用した場合のデフォルトのサービスタイプは何ですか？
   </template>
   
   <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>

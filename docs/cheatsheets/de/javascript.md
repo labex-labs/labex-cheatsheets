@@ -42,7 +42,7 @@ var oldVariable = 'legacy'
 
 <BaseQuiz id="javascript-let-const-1" correct="B">
   <template #question>
-    Was ist der Hauptunterschied zwischen `let` und `const`?
+    Was ist der Hauptunterschied zwischen <code>let</code> und <code>const</code>?
   </template>
   
   <BaseQuizOption value="A">let ist funktions-scoped, const ist block-scoped</BaseQuizOption>
@@ -51,7 +51,7 @@ var oldVariable = 'legacy'
   <BaseQuizOption value="D">Es gibt keinen Unterschied</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Sowohl `let` als auch `const` sind block-scoped, aber `let` erlaubt es Ihnen, die Variable neu zuzuweisen, während `const` die Neuzuweisung verhindert. Objekte, die mit `const` deklariert wurden, können jedoch immer noch ihre Eigenschaften ändern.
+    Sowohl <code>let</code> als auch <code>const</code> sind block-scoped, aber <code>let</code> erlaubt es Ihnen, die Variable neu zuzuweisen, während <code>const</code> die Neuzuweisung verhindert. Objekte, die mit <code>const</code> deklariert wurden, können jedoch immer noch ihre Eigenschaften ändern.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -168,12 +168,12 @@ const processData = (data) => {
   </template>
   
   <BaseQuizOption value="A">Sie werden wie Funktionsdeklarationen gehoisted</BaseQuizOption>
-  <BaseQuizOption value="B">Sie haben ihre eigene `this`-Bindung</BaseQuizOption>
-  <BaseQuizOption value="C" correct>Sie erben `this` aus dem umgebenden Gültigkeitsbereich</BaseQuizOption>
+  <BaseQuizOption value="B">Sie haben ihre eigene <code>this</code>-Bindung</BaseQuizOption>
+  <BaseQuizOption value="C" correct>Sie erben <code>this</code> aus dem umgebenden Gültigkeitsbereich</BaseQuizOption>
   <BaseQuizOption value="D">Sie können keine Werte zurückgeben</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Pfeilfunktionen haben keine eigene `this`-Bindung. Stattdessen erben sie `this` aus dem lexikalischen (umgebenden) Gültigkeitsbereich, was sie nützlich für Callbacks und Event-Handler macht, bei denen der Kontext beibehalten werden soll.
+    Pfeilfunktionen haben keine eigene <code>this</code>-Bindung. Stattdessen erben sie <code>this</code> aus dem lexikalischen (umgebenden) Gültigkeitsbereich, was sie nützlich für Callbacks und Event-Handler macht, bei denen der Kontext beibehalten werden soll.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -226,7 +226,7 @@ const result = numbers
 
 <BaseQuiz id="javascript-array-1" correct="A">
   <template #question>
-    Was gibt `filter()` zurück?
+    Was gibt <code>filter()</code> zurück?
   </template>
   
   <BaseQuizOption value="A" correct>Ein neues Array mit Elementen, die den Test bestehen</BaseQuizOption>
@@ -235,7 +235,7 @@ const result = numbers
   <BaseQuizOption value="D">Das ursprüngliche Array, das an Ort und Stelle geändert wurde</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Methode `filter()` erstellt ein neues Array, das alle Elemente enthält, die den durch die bereitgestellte Funktion implementierten Test bestehen. Sie modifiziert nicht das ursprüngliche Array.
+    Die Methode <code>filter()</code> erstellt ein neues Array, das alle Elemente enthält, die den durch die bereitgestellte Funktion implementierten Test bestehen. Sie modifiziert nicht das ursprüngliche Array.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ const buttonsArray = Array.from(allButtons)
 
 <BaseQuiz id="javascript-dom-1" correct="C">
   <template #question>
-    Was ist der Unterschied zwischen `querySelector()` und `querySelectorAll()`?
+    Was ist der Unterschied zwischen <code>querySelector()</code> und <code>querySelectorAll()</code>?
   </template>
   
   <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
@@ -335,7 +335,7 @@ const buttonsArray = Array.from(allButtons)
   <BaseQuizOption value="D">querySelector funktioniert mit IDs, querySelectorAll funktioniert mit Klassen</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `querySelector()` gibt das erste Element zurück, das mit dem CSS-Selektor übereinstimmt, während `querySelectorAll()` eine NodeList zurückgibt, die alle übereinstimmenden Elemente enthält. Verwenden Sie `querySelector()`, wenn Sie ein Element benötigen, und `querySelectorAll()`, wenn Sie mehrere benötigen.
+    <code>querySelector()</code> gibt das erste Element zurück, das mit dem CSS-Selektor übereinstimmt, während <code>querySelectorAll()</code> eine NodeList zurückgibt, die alle übereinstimmenden Elemente enthält. Verwenden Sie <code>querySelector()</code>, wenn Sie ein Element benötigen, und <code>querySelectorAll()</code>, wenn Sie mehrere benötigen.
   </BaseQuizAnswer>
 </BaseQuiz>
 

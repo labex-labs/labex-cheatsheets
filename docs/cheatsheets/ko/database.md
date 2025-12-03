@@ -38,7 +38,7 @@ USE company_db;
 
 <BaseQuiz id="database-create-1" correct="A">
   <template #question>
-    `CREATE DATABASE company_db`는 무엇을 수행합니까?
+    <code>CREATE DATABASE company_db</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A" correct>company_db 라는 새 비어 있는 데이터베이스를 생성합니다</BaseQuizOption>
@@ -47,7 +47,7 @@ USE company_db;
   <BaseQuizOption value="D">데이터베이스를 백업합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `CREATE DATABASE`는 새롭고 비어 있는 데이터베이스를 생성합니다. 생성 후에는 `USE` 를 사용하여 선택하고 테이블을 생성해야 합니다.
+    <code>CREATE DATABASE</code>는 새롭고 비어 있는 데이터베이스를 생성합니다. 생성 후에는 <code>USE</code> 를 사용하여 선택하고 테이블을 생성해야 합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -157,7 +157,7 @@ RENAME TABLE employees TO staff;
 
 <BaseQuiz id="database-alter-1" correct="C">
   <template #question>
-    `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)`는 무엇을 수행합니까?
+    <code>ALTER TABLE employees ADD COLUMN phone VARCHAR(15)</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">phone 열을 삭제합니다</BaseQuizOption>
@@ -166,7 +166,7 @@ RENAME TABLE employees TO staff;
   <BaseQuizOption value="D">테이블 이름을 변경합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ALTER TABLE ... ADD COLUMN`은 기존 테이블에 새 열을 추가합니다. 기본값을 지정하지 않으면 새 열은 기존 행에 대해 NULL 이 됩니다.
+    <code>ALTER TABLE ... ADD COLUMN</code>은 기존 테이블에 새 열을 추가합니다. 기본값을 지정하지 않으면 새 열은 기존 행에 대해 NULL 이 됩니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -294,7 +294,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
 
 <BaseQuiz id="database-where-1" correct="C">
   <template #question>
-    WHERE 절에서 `LIKE 'John%'`는 무엇과 일치합니까?
+    WHERE 절에서 <code>LIKE 'John%'</code>는 무엇과 일치합니까?
   </template>
   
   <BaseQuizOption value="A">"John"과 정확히 일치하는 값</BaseQuizOption>
@@ -303,7 +303,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
   <BaseQuizOption value="D">어디에든 "John"을 포함하는 값</BaseQuizOption>
   
   <BaseQuizAnswer>
-    SQL 에서 `%` 와일드카드는 모든 문자 시퀀스와 일치합니다. `LIKE 'John%'`는 "John", "Johnny", "Johnson" 등 "John"으로 시작하는 모든 값과 일치합니다.
+    SQL 에서 <code>%</code> 와일드카드는 모든 문자 시퀀스와 일치합니다. <code>LIKE 'John%'</code>는 "John", "Johnny", "Johnson" 등 "John"으로 시작하는 모든 값과 일치합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -84,7 +84,7 @@ SET mykey "new_value" NX
 
 <BaseQuiz id="redis-set-get-1" correct="C">
   <template #question>
-    `SET mykey "value" EX 3600` 执行什么操作？
+    <code>SET mykey "value" EX 3600</code> 执行什么操作？
   </template>
   
   <BaseQuizOption value="A">以 3600 字节的值设置键</BaseQuizOption>
@@ -93,7 +93,7 @@ SET mykey "new_value" NX
   <BaseQuizOption value="D">用 3600 个不同的值设置键</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `EX` 选项以秒为单位设置过期时间。`SET mykey "value" EX 3600` 存储该值并在 3600 秒（1 小时）后自动删除它。
+    <code>EX</code> 选项以秒为单位设置过期时间。<code>SET mykey "value" EX 3600</code> 存储该值并在 3600 秒（1 小时）后自动删除它。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -129,7 +129,7 @@ INCRBYFLOAT price 0.1
 
 <BaseQuiz id="redis-incr-1" correct="A">
   <template #question>
-    如果对一个不存在的键使用 `INCR` 会发生什么？
+    如果对一个不存在的键使用 <code>INCR</code> 会发生什么？
   </template>
   
   <BaseQuizOption value="A" correct>Redis 创建该键，值为 1</BaseQuizOption>
@@ -138,7 +138,7 @@ INCRBYFLOAT price 0.1
   <BaseQuizOption value="D">什么也不发生</BaseQuizOption>
   
   <BaseQuizAnswer>
-    如果键不存在，`INCR` 会将其视为值为 0，递增到 1，并创建该键。这使得 `INCR` 对初始化计数器非常有用。
+    如果键不存在，<code>INCR</code> 会将其视为值为 0，递增到 1，并创建该键。这使得 <code>INCR</code> 对初始化计数器非常有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -202,7 +202,7 @@ LLEN mylist
 
 <BaseQuiz id="redis-list-1" correct="B">
   <template #question>
-    `LRANGE mylist 0 -1` 返回什么？
+    <code>LRANGE mylist 0 -1</code> 返回什么？
   </template>
   
   <BaseQuizOption value="A">仅第一个元素</BaseQuizOption>
@@ -211,7 +211,7 @@ LLEN mylist
   <BaseQuizOption value="D">一个错误</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `LRANGE` 使用 `0 -1` 返回列表中的所有元素。`0` 是起始索引，`-1` 代表最后一个元素，因此检索从第一个到最后一个的所有内容。
+    <code>LRANGE</code> 使用 <code>0 -1</code> 返回列表中的所有元素。<code>0</code> 是起始索引，<code>-1</code> 代表最后一个元素，因此检索从第一个到最后一个的所有内容。
   </BaseQuizAnswer>
 </BaseQuiz>
 

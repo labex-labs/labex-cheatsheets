@@ -158,7 +158,7 @@ cd -
   <BaseQuizOption value="D">whoami</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Der Befehl `pwd` (print working directory) zeigt den vollständigen Pfad des aktuellen Verzeichnisses an, in dem Sie sich befinden.
+    Der Befehl <code>pwd</code> (print working directory) zeigt den vollständigen Pfad des aktuellen Verzeichnisses an, in dem Sie sich befinden.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -249,7 +249,7 @@ ls -l filename
 
 <BaseQuiz id="linux-chmod-1" correct="C">
   <template #question>
-    Was bewirkt `chmod 755 filename` für Berechtigungen?
+    Was bewirkt <code>chmod 755 filename</code> für Berechtigungen?
   </template>
   
   <BaseQuizOption value="A">Lesen, Schreiben, Ausführen für den Besitzer; Lesen für Gruppe und andere</BaseQuizOption>
@@ -258,7 +258,7 @@ ls -l filename
   <BaseQuizOption value="D">Lesen, Schreiben für den Besitzer; Lesen für Gruppe und andere</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` setzt: Besitzer = 7 (rwx), Gruppe = 5 (r-x), andere = 5 (r-x). Dies ist eine übliche Berechtigungseinstellung für ausführbare Dateien und Verzeichnisse.
+    <code>chmod 755</code> setzt: Besitzer = 7 (rwx), Gruppe = 5 (r-x), andere = 5 (r-x). Dies ist eine übliche Berechtigungseinstellung für ausführbare Dateien und Verzeichnisse.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -300,7 +300,7 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    Welches Signal sendet `kill -9` an einen Prozess?
+    Welches Signal sendet <code>kill -9</code> an einen Prozess?
   </template>
   
   <BaseQuizOption value="A">SIGTERM (sanftes Beenden)</BaseQuizOption>
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (erzwungenes Beenden, kann nicht ignoriert werden)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9` sendet SIGKILL, das einen Prozess sofort und zwangsweise beendet. Dieses Signal kann vom Prozess nicht abgefangen oder ignoriert werden, was es nützlich für das Beenden nicht reagierender Prozesse macht.
+    <code>kill -9</code> sendet SIGKILL, das einen Prozess sofort und zwangsweise beendet. Dieses Signal kann vom Prozess nicht abgefangen oder ignoriert werden, was es nützlich für das Beenden nicht reagierender Prozesse macht.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -383,7 +383,7 @@ mtr google.com
 
 <BaseQuiz id="linux-ping-1" correct="B">
   <template #question>
-    Was bewirkt der Befehl `ping -c 4`?
+    Was bewirkt der Befehl <code>ping -c 4</code>?
   </template>
   
   <BaseQuizOption value="A">Ping mit 4 Sekunden Timeout</BaseQuizOption>
@@ -392,7 +392,7 @@ mtr google.com
   <BaseQuizOption value="D">Wartet 4 Sekunden zwischen den Pings</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Option `-c` gibt die Anzahl der zu sendenden Pakete an. `ping -c 4` sendet genau 4 ICMP-Echo-Anforderungspakete und stoppt dann, um die Ergebnisse anzuzeigen.
+    Die Option <code>-c</code> gibt die Anzahl der zu sendenden Pakete an. <code>ping -c 4</code> sendet genau 4 ICMP-Echo-Anforderungspakete und stoppt dann, um die Ergebnisse anzuzeigen.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -449,7 +449,7 @@ grep -c "pattern" filename
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    Welche `grep`-Option führt eine Suche durch, die die Groß-/Kleinschreibung ignoriert?
+    Welche <code>grep</code>-Option führt eine Suche durch, die die Groß-/Kleinschreibung ignoriert?
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Option `-i` macht grep unabhängig von Groß- und Kleinschreibung, sodass sowohl Groß- als auch Kleinbuchstaben gefunden werden. Zum Beispiel findet `grep -i "error" file.txt` sowohl "Error", "ERROR" als auch "error".
+    Die Option <code>-i</code> macht grep unabhängig von Groß- und Kleinschreibung, sodass sowohl Groß- als auch Kleinbuchstaben gefunden werden. Zum Beispiel findet <code>grep -i "error" file.txt</code> sowohl "Error", "ERROR" als auch "error".
   </BaseQuizAnswer>
 </BaseQuiz>
 

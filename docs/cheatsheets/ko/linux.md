@@ -158,7 +158,7 @@ cd -
   <BaseQuizOption value="D">whoami</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pwd` 명령어 (print working directory) 는 현재 위치한 디렉토리의 전체 경로를 표시합니다.
+    <code>pwd</code> 명령어 (print working directory) 는 현재 위치한 디렉토리의 전체 경로를 표시합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -249,7 +249,7 @@ ls -l filename
 
 <BaseQuiz id="linux-chmod-1" correct="C">
   <template #question>
-    `chmod 755 filename`은 권한을 어떻게 설정합니까?
+    <code>chmod 755 filename</code>은 권한을 어떻게 설정합니까?
   </template>
   
   <BaseQuizOption value="A">소유자에게 읽기, 쓰기, 실행; 그룹 및 다른 사용자에게 읽기</BaseQuizOption>
@@ -258,7 +258,7 @@ ls -l filename
   <BaseQuizOption value="D">소유자에게 읽기, 쓰기; 그룹 및 다른 사용자에게 읽기</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755`는 다음과 같이 설정합니다: 소유자 = 7 (rwx), 그룹 = 5 (r-x), 다른 사용자 = 5 (r-x). 이는 실행 가능한 파일 및 디렉토리에 대한 일반적인 권한 설정입니다.
+    <code>chmod 755</code>는 다음과 같이 설정합니다: 소유자 = 7 (rwx), 그룹 = 5 (r-x), 다른 사용자 = 5 (r-x). 이는 실행 가능한 파일 및 디렉토리에 대한 일반적인 권한 설정입니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -300,7 +300,7 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    `kill -9`는 프로세스에 어떤 시그널을 보냅니까?
+    <code>kill -9</code>는 프로세스에 어떤 시그널을 보냅니까?
   </template>
   
   <BaseQuizOption value="A">SIGTERM (정상 종료)</BaseQuizOption>
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (강제 종료, 무시 불가)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9`는 SIGKILL 을 보내 프로세스를 즉시 강제 종료합니다. 이 시그널은 프로세스에 의해 캡처되거나 무시될 수 없으므로 응답하지 않는 프로세스를 종료하는 데 유용합니다.
+    <code>kill -9</code>는 SIGKILL 을 보내 프로세스를 즉시 강제 종료합니다. 이 시그널은 프로세스에 의해 캡처되거나 무시될 수 없으므로 응답하지 않는 프로세스를 종료하는 데 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -383,7 +383,7 @@ mtr google.com
 
 <BaseQuiz id="linux-ping-1" correct="B">
   <template #question>
-    `ping -c 4` 명령어는 무엇을 합니까?
+    <code>ping -c 4</code> 명령어는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">4 초 타임아웃으로 핑</BaseQuizOption>
@@ -392,7 +392,7 @@ mtr google.com
   <BaseQuizOption value="D">핑 사이에 4 초 대기</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-c` 옵션은 보낼 패킷 수를 지정합니다. `ping -c 4`는 정확히 4 개의 ICMP 에코 요청 패킷을 보내고 결과를 표시한 후 중지합니다.
+    <code>-c</code> 옵션은 보낼 패킷 수를 지정합니다. <code>ping -c 4</code>는 정확히 4 개의 ICMP 에코 요청 패킷을 보내고 결과를 표시한 후 중지합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -449,7 +449,7 @@ grep -c "pattern" filename
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    대소문자를 구분하지 않는 검색을 수행하는 `grep` 옵션은 무엇입니까?
+    대소문자를 구분하지 않는 검색을 수행하는 <code>grep</code> 옵션은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-i` 옵션은 grep 을 대소문자 구분 없이 만들어 "Error", "ERROR", "error" 모두 일치시킵니다.
+    <code>-i</code> 옵션은 grep 을 대소문자 구분 없이 만들어 "Error", "ERROR", "error" 모두 일치시킵니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -93,7 +93,7 @@ p.intro {
   <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
   
   <BaseQuizAnswer>
-    クラスセレクタはドット（.）プレフィックスを使用します。`.highlight`は `class="highlight"`を持つすべての要素を選択します。ID セレクタは`#` を、要素セレクタはプレフィックスを使用しません。
+    クラスセレクタはドット（.）プレフィックスを使用します。<code>.highlight</code>は <code>class="highlight"</code>を持つすべての要素を選択します。ID セレクタは<code>#</code> を、要素セレクタはプレフィックスを使用しません。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -217,7 +217,7 @@ div {
 
 <BaseQuiz id="css-padding-1" correct="C">
   <template #question>
-    `padding: 10px 20px`は何を設定しますか？
+    <code>padding: 10px 20px</code>は何を設定しますか？
   </template>
   
   <BaseQuizOption value="A">上下 10px、左右 20px</BaseQuizOption>
@@ -226,7 +226,7 @@ div {
   <BaseQuizOption value="D">上 10px、下 20px</BaseQuizOption>
   
   <BaseQuizAnswer>
-    2 つの値が指定されている場合、最初の値は上下に、2 番目の値は左右に適用されます。したがって、`padding: 10px 20px`は垂直方向のパディングが 10px、水平方向のパディングが 20px であることを意味します。
+    2 つの値が指定されている場合、最初の値は上下に、2 番目の値は左右に適用されます。したがって、<code>padding: 10px 20px</code>は垂直方向のパディングが 10px、水平方向のパディングが 20px であることを意味します。
   </BaseQuizAnswer>
 </BaseQuiz>
 ```
@@ -283,7 +283,7 @@ div {
 
 <BaseQuiz id="css-margin-1" correct="C">
   <template #question>
-    `margin: 0 auto`は何を行いますか？
+    <code>margin: 0 auto</code>は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">すべてマージンを削除する</BaseQuizOption>
@@ -292,7 +292,7 @@ div {
   <BaseQuizOption value="D">ブロック要素を垂直方向の中央に配置する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `margin: 0 auto`は上下のマージンを0に設定し、左右のマージンをautoに設定することで、ブロックレベル要素をコンテナ内で水平方向に中央揃えにします。
+    <code>margin: 0 auto</code>は上下のマージンを0に設定し、左右のマージンをautoに設定することで、ブロックレベル要素をコンテナ内で水平方向に中央揃えにします。
   </BaseQuizAnswer>
 </BaseQuiz>
 

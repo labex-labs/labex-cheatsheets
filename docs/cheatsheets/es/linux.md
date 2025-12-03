@@ -158,7 +158,7 @@ cd -
   <BaseQuizOption value="D">whoami</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El comando `pwd` (print working directory) muestra la ruta completa del directorio actual en el que se encuentra.
+    El comando <code>pwd</code> (print working directory) muestra la ruta completa del directorio actual en el que se encuentra.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -249,7 +249,7 @@ ls -l filename
 
 <BaseQuiz id="linux-chmod-1" correct="C">
   <template #question>
-    ¿Qué establece `chmod 755 filename` para los permisos?
+    ¿Qué establece <code>chmod 755 filename</code> para los permisos?
   </template>
   
   <BaseQuizOption value="A">Lectura, escritura, ejecución para el propietario; lectura para grupo y otros</BaseQuizOption>
@@ -258,7 +258,7 @@ ls -l filename
   <BaseQuizOption value="D">Lectura, escritura para el propietario; lectura para grupo y otros</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` establece: propietario = 7 (rwx), grupo = 5 (r-x), otros = 5 (r-x). Este es un conjunto de permisos común para archivos ejecutables y directorios.
+    <code>chmod 755</code> establece: propietario = 7 (rwx), grupo = 5 (r-x), otros = 5 (r-x). Este es un conjunto de permisos común para archivos ejecutables y directorios.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -300,7 +300,7 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    ¿Qué señal envía el comando `kill -9` a un proceso?
+    ¿Qué señal envía el comando <code>kill -9</code> a un proceso?
   </template>
   
   <BaseQuizOption value="A">SIGTERM (terminar elegantemente)</BaseQuizOption>
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (matar forzosamente, no se puede ignorar)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9` envía SIGKILL, que termina forzosamente un proceso inmediatamente. Esta señal no puede ser capturada o ignorada por el proceso, lo que la hace útil para matar procesos que no responden.
+    <code>kill -9</code> envía SIGKILL, que termina forzosamente un proceso inmediatamente. Esta señal no puede ser capturada o ignorada por el proceso, lo que la hace útil para matar procesos que no responden.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -383,7 +383,7 @@ mtr google.com
 
 <BaseQuiz id="linux-ping-1" correct="B">
   <template #question>
-    ¿Qué hace el comando `ping -c 4`?
+    ¿Qué hace el comando <code>ping -c 4</code>?
   </template>
   
   <BaseQuizOption value="A">Hacer ping con un tiempo de espera de 4 segundos</BaseQuizOption>
@@ -392,7 +392,7 @@ mtr google.com
   <BaseQuizOption value="D">Esperar 4 segundos entre pings</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La opción `-c` especifica el número de paquetes a enviar. `ping -c 4` enviará exactamente 4 paquetes de solicitud de eco ICMP y luego se detendrá, mostrando los resultados.
+    La opción <code>-c</code> especifica el número de paquetes a enviar. <code>ping -c 4</code> enviará exactamente 4 paquetes de solicitud de eco ICMP y luego se detendrá, mostrando los resultados.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -449,7 +449,7 @@ grep -c "pattern" filename
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    ¿Qué opción de `grep` realiza una búsqueda insensible a mayúsculas y minúsculas?
+    ¿Qué opción de <code>grep</code> realiza una búsqueda insensible a mayúsculas y minúsculas?
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La opción `-i` hace que grep no distinga entre mayúsculas y minúsculas, por lo que coincidirá con "Error", "ERROR" y "error".
+    La opción <code>-i</code> hace que grep no distinga entre mayúsculas y minúsculas, por lo que coincidirá con "Error", "ERROR" y "error".
   </BaseQuizAnswer>
 </BaseQuiz>
 

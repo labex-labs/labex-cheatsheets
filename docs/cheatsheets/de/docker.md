@@ -121,7 +121,7 @@ docker run --rm hello-world
 
 <BaseQuiz id="docker-run-1" correct="C">
   <template #question>
-    Was bewirkt `docker run -d`?
+    Was bewirkt <code>docker run -d</code>?
   </template>
   
   <BaseQuizOption value="A">Führt den Container im Debug-Modus aus</BaseQuizOption>
@@ -130,7 +130,7 @@ docker run --rm hello-world
   <BaseQuizOption value="D">Führt den Container mit Standardeinstellungen aus</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-d` führt den Container im getrennten Modus aus, d.h. er läuft im Hintergrund und gibt die Kontrolle sofort an das Terminal zurück. Dies ist nützlich für langlebige Dienste.
+    Das Flag <code>-d</code> führt den Container im getrennten Modus aus, d.h. er läuft im Hintergrund und gibt die Kontrolle sofort an das Terminal zurück. Dies ist nützlich für langlebige Dienste.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -231,7 +231,7 @@ docker build --no-cache -t myapp .
 
 <BaseQuiz id="docker-build-1" correct="A">
   <template #question>
-    Was bewirkt `docker build -t myapp:latest .`?
+    Was bewirkt <code>docker build -t myapp:latest .</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Baut ein Docker-Image mit dem Tag "myapp:latest" aus dem aktuellen Verzeichnis</BaseQuizOption>
@@ -240,7 +240,7 @@ docker build --no-cache -t myapp .
   <BaseQuizOption value="D">Löscht das Image "myapp:latest"</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-t` taggt das Image mit dem Namen "myapp:latest", und der Punkt (`.`) gibt den Build-Kontext (aktuelles Verzeichnis) an. Dieser Befehl baut ein neues Image aus einer Dockerfile im aktuellen Verzeichnis.
+    Das Flag <code>-t</code> taggt das Image mit dem Namen "myapp:latest", und der Punkt (<code>.</code>) gibt den Build-Kontext (aktuelles Verzeichnis) an. Dieser Befehl baut ein neues Image aus einer Dockerfile im aktuellen Verzeichnis.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -315,7 +315,7 @@ EXPOSE 8000
 
 <BaseQuiz id="dockerfile-1" correct="B">
   <template #question>
-    Was ist der Zweck der `FROM`-Anweisung in einer Dockerfile?
+    Was ist der Zweck der <code>FROM</code>-Anweisung in einer Dockerfile?
   </template>
   
   <BaseQuizOption value="A">Kopiert Dateien vom Host in den Container</BaseQuizOption>
@@ -324,7 +324,7 @@ EXPOSE 8000
   <BaseQuizOption value="D">Definiert den Befehl, der beim Start des Containers ausgeführt wird</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die `FROM`-Anweisung muss die erste Nicht-Kommentar-Anweisung in einer Dockerfile sein. Sie gibt das Basis-Image an, auf dem Ihr Image aufgebaut wird, und bildet die Grundlage für Ihren Container.
+    Die <code>FROM</code>-Anweisung muss die erste Nicht-Kommentar-Anweisung in einer Dockerfile sein. Sie gibt das Basis-Image an, auf dem Ihr Image aufgebaut wird, und bildet die Grundlage für Ihren Container.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -370,7 +370,7 @@ docker-compose down -v
 
 <BaseQuiz id="docker-compose-1" correct="D">
   <template #question>
-    Was bewirkt `docker-compose up -d`?
+    Was bewirkt <code>docker-compose up -d</code>?
   </template>
   
   <BaseQuizOption value="A">Stoppt alle laufenden Container</BaseQuizOption>
@@ -379,7 +379,7 @@ docker-compose down -v
   <BaseQuizOption value="D" correct>Startet alle in docker-compose.yml definierten Dienste im getrennten Modus</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-d` führt Container im getrennten Modus (Hintergrund) aus. `docker-compose up` liest die docker-compose.yml-Datei und startet alle definierten Dienste, was die Verwaltung von Multi-Container-Anwendungen vereinfacht.
+    Das Flag <code>-d</code> führt Container im getrennten Modus (Hintergrund) aus. <code>docker-compose up</code> liest die docker-compose.yml-Datei und startet alle definierten Dienste, was die Verwaltung von Multi-Container-Anwendungen vereinfacht.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -459,7 +459,7 @@ docker run -p 8080:80 nginx
 
 <BaseQuiz id="docker-port-1" correct="A">
   <template #question>
-    In `docker run -p 8080:80 nginx`, was bedeuten die Portnummern?
+    In <code>docker run -p 8080:80 nginx</code>, was bedeuten die Portnummern?
   </template>
   
   <BaseQuizOption value="A" correct>8080 ist der Host-Port, 80 ist der Container-Port</BaseQuizOption>
@@ -468,7 +468,7 @@ docker run -p 8080:80 nginx
   <BaseQuizOption value="D">Beide Ports sind Host-Ports</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Format ist `-p host_port:container_port`. Port 8080 auf Ihrem Host-System wird auf Port 80 im Container abgebildet, sodass Sie über localhost:8080 auf den Nginx-Webserver im Container zugreifen können.
+    Das Format ist <code>-p host_port:container_port</code>. Port 8080 auf Ihrem Host-System wird auf Port 80 im Container abgebildet, sodass Sie über localhost:8080 auf den Nginx-Webserver im Container zugreifen können.
   </BaseQuizAnswer>
 </BaseQuiz>
 

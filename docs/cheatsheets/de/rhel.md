@@ -127,7 +127,7 @@ name package
 
 <BaseQuiz id="rhel-package-1" correct="A">
   <template #question>
-    Was ist der Unterschied zwischen `dnf` und `yum` in RHEL?
+    Was ist der Unterschied zwischen <code>dnf</code> und <code>yum</code> in RHEL?
   </template>
   
   <BaseQuizOption value="A" correct>dnf ist der neuere Paketmanager für RHEL 8+, yum wird in RHEL 7 verwendet</BaseQuizOption>
@@ -208,7 +208,7 @@ rm -rf directory/
 
 <BaseQuiz id="rhel-file-ops-1" correct="B">
   <template #question>
-    Was bewirkt `cp -r`?
+    Was bewirkt <code>cp -r</code>?
   </template>
   
   <BaseQuizOption value="A">Kopiert nur Dateien</BaseQuizOption>
@@ -217,7 +217,7 @@ rm -rf directory/
   <BaseQuizOption value="D">Benennt Dateien um</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-r` (rekursiv) ermöglicht es `cp`, Verzeichnisse und deren Inhalte zu kopieren, einschließlich aller Unterverzeichnisse und Dateien darin. Ohne `-r` kann `cp` keine Verzeichnisse kopieren.
+    Das Flag <code>-r</code> (rekursiv) ermöglicht es <code>cp</code>, Verzeichnisse und deren Inhalte zu kopieren, einschließlich aller Unterverzeichnisse und Dateien darin. Ohne <code>-r</code> kann <code>cp</code> keine Verzeichnisse kopieren.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ tail -f /var/log/messages
 
 <BaseQuiz id="rhel-tail-1" correct="C">
   <template #question>
-    Was bewirkt `tail -f /var/log/messages`?
+    Was bewirkt <code>tail -f /var/log/messages</code>?
   </template>
   
   <BaseQuizOption value="A">Zeigt nur die ersten 10 Zeilen an</BaseQuizOption>
@@ -249,7 +249,7 @@ tail -f /var/log/messages
   <BaseQuizOption value="D">Archiviert die Logdatei</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-f` bewirkt, dass `tail` der Datei folgt und neue Logeinträge anzeigt, sobald sie geschrieben werden. Dies ist für die Echtzeit-Protokollüberwachung und Fehlerbehebung unerlässlich.
+    Das Flag <code>-f</code> bewirkt, dass <code>tail</code> der Datei folgt und neue Logeinträge anzeigt, sobald sie geschrieben werden. Dies ist für die Echtzeit-Protokollüberwachung und Fehlerbehebung unerlässlich.
   </BaseQuizAnswer>
 </BaseQuiz>
 

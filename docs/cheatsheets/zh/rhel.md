@@ -127,7 +127,7 @@ name package
 
 <BaseQuiz id="rhel-package-1" correct="A">
   <template #question>
-    `dnf` 和 `yum` 在 RHEL 中有什么区别？
+    <code>dnf</code> 和 <code>yum</code> 在 RHEL 中有什么区别？
   </template>
   
   <BaseQuizOption value="A" correct>dnf 是 RHEL 8+ 的较新包管理器，yum 用于 RHEL 7</BaseQuizOption>
@@ -208,7 +208,7 @@ rm -rf directory/
 
 <BaseQuiz id="rhel-file-ops-1" correct="B">
   <template #question>
-    `cp -r` 的作用是什么？
+    <code>cp -r</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">仅复制文件</BaseQuizOption>
@@ -217,7 +217,7 @@ rm -rf directory/
   <BaseQuizOption value="D">重命名文件</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-r` 标志（递归）允许 `cp` 复制目录及其内容，包括其中所有的子目录和文件。没有 `-r`，`cp` 无法复制目录。
+    <code>-r</code> 标志（递归）允许 <code>cp</code> 复制目录及其内容，包括其中所有的子目录和文件。没有 <code>-r</code>，<code>cp</code> 无法复制目录。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ tail -f /var/log/messages
 
 <BaseQuiz id="rhel-tail-1" correct="C">
   <template #question>
-    `tail -f /var/log/messages` 的作用是什么？
+    <code>tail -f /var/log/messages</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">仅显示前 10 行</BaseQuizOption>
@@ -249,7 +249,7 @@ tail -f /var/log/messages
   <BaseQuizOption value="D">归档日志文件</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-f` 标志使 `tail` 跟踪文件，在写入新日志条目时显示它们。这对于实时日志监控和故障排除至关重要。
+    <code>-f</code> 标志使 <code>tail</code> 跟踪文件，在写入新日志条目时显示它们。这对于实时日志监控和故障排除至关重要。
   </BaseQuizAnswer>
 </BaseQuiz>
 

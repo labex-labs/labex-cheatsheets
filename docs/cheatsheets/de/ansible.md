@@ -174,7 +174,7 @@ ansible all -m command -a "systemctl status nginx" --become
 
 <BaseQuiz id="ansible-command-1" correct="C">
   <template #question>
-    Was bewirkt `ansible all -m ping`?
+    Was bewirkt <code>ansible all -m ping</code>?
   </template>
   
   <BaseQuizOption value="A">Testet die Netzwerkverbindung mittels ICMP ping</BaseQuizOption>
@@ -183,7 +183,7 @@ ansible all -m command -a "systemctl status nginx" --become
   <BaseQuizOption value="D">Prüft, ob Hosts online sind</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das `ping`-Modul in Ansible verwendet kein ICMP. Es ist ein Testmodul, das überprüft, ob Ansible eine Verbindung zu Hosts herstellen, Python ausführen und Ergebnisse zurückgeben kann. Es wird zur Überprüfung der Konnektivität und Konfiguration verwendet.
+    Das <code>ping</code>-Modul in Ansible verwendet kein ICMP. Es ist ein Testmodul, das überprüft, ob Ansible eine Verbindung zu Hosts herstellen, Python ausführen und Ergebnisse zurückgeben kann. Es wird zur Überprüfung der Konnektivität und Konfiguration verwendet.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -278,7 +278,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
 
 <BaseQuiz id="ansible-playbook-1" correct="B">
   <template #question>
-    Was bewirkt `ansible-playbook site.yml --check`?
+    Was bewirkt <code>ansible-playbook site.yml --check</code>?
   </template>
   
   <BaseQuizOption value="A">Führt das Playbook zweimal aus</BaseQuizOption>
@@ -287,7 +287,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
   <BaseQuizOption value="D">Führt nur die erste Aufgabe aus</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Option `--check` führt Ansible im Prüfmodus (Trockenlauf) aus, was simuliert, was passieren würde, ohne tatsächlich Änderungen vorzunehmen. Dies ist nützlich, um Playbooks vor der Anwendung zu testen.
+    Die Option <code>--check</code> führt Ansible im Prüfmodus (Trockenlauf) aus, was simuliert, was passieren würde, ohne tatsächlich Änderungen vorzunehmen. Dies ist nützlich, um Playbooks vor der Anwendung zu testen.
   </BaseQuizAnswer>
 </BaseQuiz>
 

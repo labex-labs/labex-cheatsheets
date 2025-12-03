@@ -182,7 +182,7 @@ kubectl get pods --watch
 
 <BaseQuiz id="kubernetes-pods-1" correct="C">
   <template #question>
-    `kubectl get pods --all-namespaces`는 무엇을 합니까?
+    <code>kubectl get pods --all-namespaces</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">실행 중인 파드만 나열</BaseQuizOption>
@@ -191,7 +191,7 @@ kubectl get pods --watch
   <BaseQuizOption value="D">모든 파드 삭제</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `--all-namespaces` 플래그 (또는 `-A`) 는 기본 네임스페이스뿐만 아니라 모든 네임스페이스의 파드를 표시합니다. 이는 클러스터 전체 가시성에 유용합니다.
+    <code>--all-namespaces</code> 플래그 (또는 <code>-A</code>) 는 기본 네임스페이스뿐만 아니라 모든 네임스페이스의 파드를 표시합니다. 이는 클러스터 전체 가시성에 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ cpu-percent=80
 
 <BaseQuiz id="kubernetes-scale-1" correct="B">
   <template #question>
-    `kubectl scale deployment nginx --replicas=5`는 무엇을 합니까?
+    <code>kubectl scale deployment nginx --replicas=5</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">새 배포 5 개 생성</BaseQuizOption>
@@ -299,7 +299,7 @@ cpu-percent=80
   <BaseQuizOption value="D">배포 이미지 업데이트</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `scale` 명령어는 배포의 복제본 수를 조정합니다. 이 명령어는 필요에 따라 파드를 생성하거나 삭제하여 nginx 배포가 정확히 5 개의 파드 복제본을 실행하도록 보장합니다.
+    <code>scale</code> 명령어는 배포의 복제본 수를 조정합니다. 이 명령어는 필요에 따라 파드를 생성하거나 삭제하여 nginx 배포가 정확히 5 개의 파드 복제본을 실행하도록 보장합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -339,7 +339,7 @@ kubectl apply -f service.yaml
 
 <BaseQuiz id="kubernetes-service-1" correct="A">
   <template #question>
-    `kubectl expose`를 사용할 때 기본 서비스 유형은 무엇입니까?
+    <code>kubectl expose</code>를 사용할 때 기본 서비스 유형은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>

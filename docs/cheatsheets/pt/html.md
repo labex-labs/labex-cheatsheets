@@ -41,7 +41,7 @@ Todo documento HTML começa com uma declaração de tipo de documento e segue um
 
 <BaseQuiz id="html-doctype-1" correct="A">
   <template #question>
-    Qual é o propósito de `<!DOCTYPE html>`?
+    Qual é o propósito de <code><!DOCTYPE html></code>?
   </template>
   
   <BaseQuizOption value="A" correct>Ele declara o tipo de documento e a versão HTML</BaseQuizOption>
@@ -50,7 +50,7 @@ Todo documento HTML começa com uma declaração de tipo de documento e segue um
   <BaseQuizOption value="D">Ele define o título da página</BaseQuizOption>
   
   <BaseQuizAnswer>
-    A declaração `<!DOCTYPE html>` informa ao navegador qual versão do HTML o documento está usando. Para HTML5, esta declaração simples é suficiente e deve ser a primeira linha de todo documento HTML.
+    A declaração <code><!DOCTYPE html></code> informa ao navegador qual versão do HTML o documento está usando. Para HTML5, esta declaração simples é suficiente e deve ser a primeira linha de todo documento HTML.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -128,7 +128,7 @@ Definem a hierarquia e a importância das seções de conteúdo.
   <BaseQuizOption value="D">h6 é o título mais importante</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Os títulos HTML devem seguir uma hierarquia lógica: use um `h1` para o título principal da página, depois `h2` para seções principais, `h3` para subseções e assim por diante. Isso ajuda na acessibilidade e SEO.
+    Os títulos HTML devem seguir uma hierarquia lógica: use um <code>h1</code> para o título principal da página, depois <code>h2</code> para seções principais, <code>h3</code> para subseções e assim por diante. Isso ajuda na acessibilidade e SEO.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -263,7 +263,7 @@ Cria hiperlinks e estruturas de navegação.
 
 <BaseQuiz id="html-links-1" correct="B">
   <template #question>
-    O que `target="_blank"` faz em uma tag de âncora?
+    O que <code>target="_blank"</code> faz em uma tag de âncora?
   </template>
   
   <BaseQuizOption value="A">Abre o link na mesma janela</BaseQuizOption>
@@ -272,7 +272,7 @@ Cria hiperlinks e estruturas de navegação.
   <BaseQuizOption value="D">Baixa o link</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O atributo `target="_blank"` abre a página vinculada em uma nova aba ou janela do navegador, permitindo que os usuários mantenham a página original aberta.
+    O atributo <code>target="_blank"</code> abre a página vinculada em uma nova aba ou janela do navegador, permitindo que os usuários mantenham a página original aberta.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -356,7 +356,7 @@ Atributos de validação de formulário HTML integrados.
 
 <BaseQuiz id="html-validation-1" correct="A">
   <template #question>
-    O que o atributo `required` faz em uma entrada HTML?
+    O que o atributo <code>required</code> faz em uma entrada HTML?
   </template>
   
   <BaseQuizOption value="A" correct>Impede o envio do formulário se o campo estiver vazio</BaseQuizOption>
@@ -365,7 +365,7 @@ Atributos de validação de formulário HTML integrados.
   <BaseQuizOption value="D">Define um valor padrão</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O atributo `required` torna um campo de entrada obrigatório. Se o campo estiver vazio ao enviar o formulário, o navegador impedirá o envio e exibirá uma mensagem de validação.
+    O atributo <code>required</code> torna um campo de entrada obrigatório. Se o campo estiver vazio ao enviar o formulário, o navegador impedirá o envio e exibirá uma mensagem de validação.
   </BaseQuizAnswer>
 </BaseQuiz>
 

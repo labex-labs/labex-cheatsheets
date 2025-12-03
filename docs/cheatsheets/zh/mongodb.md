@@ -50,7 +50,7 @@ db.users.insertOne({name: "John"})
 
 <BaseQuiz id="mongodb-use-1" correct="B">
   <template #question>
-    在 MongoDB 中运行 `use newdb` 会发生什么？
+    在 MongoDB 中运行 <code>use newdb</code> 会发生什么？
   </template>
   
   <BaseQuizOption value="A">它会立即创建数据库</BaseQuizOption>
@@ -59,7 +59,7 @@ db.users.insertOne({name: "John"})
   <BaseQuizOption value="D">它会显示数据库中的所有集合</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `use` 命令会切换到数据库，但 MongoDB 在你插入第一个文档之前不会创建该数据库。这是一种惰性创建方法。
+    <code>use</code> 命令会切换到数据库，但 MongoDB 在你插入第一个文档之前不会创建该数据库。这是一种惰性创建方法。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -178,7 +178,7 @@ db.users.insertOne({
 
 <BaseQuiz id="mongodb-insert-1" correct="A">
   <template #question>
-    `db.users.insertOne()` 返回什么？
+    <code>db.users.insertOne()</code> 返回什么？
   </template>
   
   <BaseQuizOption value="A" correct>包含被插入文档 _id 的确认对象</BaseQuizOption>
@@ -187,7 +187,7 @@ db.users.insertOne({
   <BaseQuizOption value="D">插入的文档数量</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `insertOne()` 返回一个包含 `acknowledged: true` 和 `insertedId`（包含被插入文档的 `_id`，如果提供了自定义 `_id` 则为自定义 `_id`）的确认对象。
+    <code>insertOne()</code> 返回一个包含 <code>acknowledged: true</code> 和 <code>insertedId</code>（包含被插入文档的 <code>_id</code>，如果提供了自定义 <code>_id</code> 则为自定义 <code>_id</code>）的确认对象。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ db.users.find({ email: { $exists: true } })
 
 <BaseQuiz id="mongodb-query-1" correct="B">
   <template #question>
-    MongoDB 查询中的 `$gt` 是什么意思？
+    MongoDB 查询中的 <code>$gt</code> 是什么意思？
   </template>
   
   <BaseQuizOption value="A">大于或等于</BaseQuizOption>
@@ -299,7 +299,7 @@ db.users.find({ email: { $exists: true } })
   <BaseQuizOption value="D">获取总数</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `$gt` 是一个比较操作符，表示“大于”。它用于 `{ age: { $gt: 25 } }` 这样的查询中，以查找 age 字段大于 25 的文档。
+    <code>$gt</code> 是一个比较操作符，表示“大于”。它用于 <code>{ age: { $gt: 25 } }</code> 这样的查询中，以查找 age 字段大于 25 的文档。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -365,7 +365,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
 
 <BaseQuiz id="mongodb-update-1" correct="C">
   <template #question>
-    MongoDB 更新操作中的 `$set` 执行什么操作？
+    MongoDB 更新操作中的 <code>$set</code> 执行什么操作？
   </template>
   
   <BaseQuizOption value="A">删除一个字段</BaseQuizOption>
@@ -374,7 +374,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
   <BaseQuizOption value="D">从数组中移除一个元素</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `$set` 操作符用于设置文档中某个字段的值。如果该字段不存在，则创建它。如果存在，则更新其值。
+    <code>$set</code> 操作符用于设置文档中某个字段的值。如果该字段不存在，则创建它。如果存在，则更新其值。
   </BaseQuizAnswer>
 </BaseQuiz>
 

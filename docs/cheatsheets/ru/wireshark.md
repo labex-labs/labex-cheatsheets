@@ -38,7 +38,7 @@ net 192.168.1.0/24
 
 <BaseQuiz id="wireshark-filter-1" correct="A">
   <template #question>
-    Что фильтрует `host 192.168.1.100` в Wireshark?
+    Что фильтрует <code>host 192.168.1.100</code> в Wireshark?
   </template>
   
   <BaseQuizOption value="A" correct>Весь трафик к 192.168.1.100 или от него</BaseQuizOption>
@@ -47,7 +47,7 @@ net 192.168.1.0/24
   <BaseQuizOption value="D">Трафик на порту 192.168.1.100</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Фильтр `host` захватывает весь трафик, где указанный IP-адрес является либо источником, либо получателем. Используйте `src host` для фильтрации только по источнику или `dst host` для фильтрации только по получателю.
+    Фильтр <code>host</code> захватывает весь трафик, где указанный IP-адрес является либо источником, либо получателем. Используйте <code>src host</code> для фильтрации только по источнику или <code>dst host</code> для фильтрации только по получателю.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -70,7 +70,7 @@ portrange 1000-2000
 
 <BaseQuiz id="wireshark-port-1" correct="D">
   <template #question>
-    Что фильтрует `port 80` в Wireshark?
+    Что фильтрует <code>port 80</code> в Wireshark?
   </template>
   
   <BaseQuizOption value="A">Только запросы HTTP</BaseQuizOption>
@@ -79,7 +79,7 @@ portrange 1000-2000
   <BaseQuizOption value="D" correct>Весь трафик на порту 80 (как источник, так и получатель)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Фильтр `port` захватывает весь трафик, где порт 80 является либо исходным, либо целевым портом. Это включает как запросы HTTP, так и ответы, а также любой другой трафик, использующий порт 80.
+    Фильтр <code>port</code> захватывает весь трафик, где порт 80 является либо исходным, либо целевым портом. Это включает как запросы HTTP, так и ответы, а также любой другой трафик, использующий порт 80.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -115,7 +115,7 @@ port 80 or port 443
 
 <BaseQuiz id="wireshark-advanced-1" correct="B">
   <template #question>
-    Что фильтрует `tcp and not port 22`?
+    Что фильтрует <code>tcp and not port 22</code>?
   </template>
   
   <BaseQuizOption value="A">Только трафик SSH</BaseQuizOption>
@@ -124,7 +124,7 @@ port 80 or port 443
   <BaseQuizOption value="D">Весь сетевой трафик</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Этот фильтр захватывает весь трафик TCP, но исключает пакеты на порту 22 (SSH). Оператор `and not` исключает указанный порт, сохраняя весь остальной трафик TCP.
+    Этот фильтр захватывает весь трафик TCP, но исключает пакеты на порту 22 (SSH). Оператор <code>and not</code> исключает указанный порт, сохраняя весь остальной трафик TCP.
   </BaseQuizAnswer>
 </BaseQuiz>
 

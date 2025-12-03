@@ -73,7 +73,7 @@ df.fillna(df.mean())  # 누락된 값 처리
 
 <BaseQuiz id="datascience-pandas-1" correct="C">
   <template #question>
-    Pandas 에서 `df.head()` 는 무엇을 반환합니까?
+    Pandas 에서 <code>df.head()</code> 는 무엇을 반환합니까?
   </template>
   
   <BaseQuizOption value="A">DataFrame 의 마지막 5 개 행</BaseQuizOption>
@@ -82,7 +82,7 @@ df.fillna(df.mean())  # 누락된 값 처리
   <BaseQuizOption value="D">DataFrame 의 모든 행</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `df.head()` 는 기본적으로 DataFrame 의 처음 5 개 행을 표시합니다. 처음 10 개 행을 보려면 `df.head(10)` 과 같이 다른 숫자를 지정할 수 있습니다. 데이터를 빠르게 검사하는 데 유용합니다.
+    <code>df.head()</code> 는 기본적으로 DataFrame 의 처음 5 개 행을 표시합니다. 처음 10 개 행을 보려면 <code>df.head(10)</code> 과 같이 다른 숫자를 지정할 수 있습니다. 데이터를 빠르게 검사하는 데 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -175,7 +175,7 @@ df_filled = pd.DataFrame(imputer.fit_transform(df))
 
 <BaseQuiz id="datascience-missing-1" correct="B">
   <template #question>
-    `method='forward'` 를 사용한 순방향 채우기는 무엇에 사용됩니까?
+    <code>method='forward'</code> 를 사용한 순방향 채우기는 무엇에 사용됩니까?
   </template>
   
   <BaseQuizOption value="A">누락된 값을 평균으로 채우기</BaseQuizOption>

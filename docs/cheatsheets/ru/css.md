@@ -93,7 +93,7 @@ p.intro {
   <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Селекторы классов используют точку (`.`) в качестве префикса. `.highlight` выбирает все элементы с `class="highlight"`. Селекторы ID используют `#`, а селекторы элементов не используют префикс.
+    Селекторы классов используют точку (<code>.</code>) в качестве префикса. <code>.highlight</code> выбирает все элементы с <code>class="highlight"</code>. Селекторы ID используют <code>#</code>, а селекторы элементов не используют префикс.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -217,7 +217,7 @@ div {
 
 <BaseQuiz id="css-padding-1" correct="C">
   <template #question>
-    Что устанавливает `padding: 10px 20px`?
+    Что устанавливает <code>padding: 10px 20px</code>?
   </template>
   
   <BaseQuizOption value="A">10px сверху/снизу, 20px слева/справа</BaseQuizOption>
@@ -226,7 +226,7 @@ div {
   <BaseQuizOption value="D">10px сверху, 20px снизу</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Когда указаны два значения, первое применяется к верху и низу, а второе — к левой и правой сторонам. Таким образом, `padding: 10px 20px` означает 10px вертикального отступа и 20px горизонтального отступа.
+    Когда указаны два значения, первое применяется к верху и низу, а второе — к левой и правой сторонам. Таким образом, <code>padding: 10px 20px</code> означает 10px вертикального отступа и 20px горизонтального отступа.
   </BaseQuizAnswer>
 </BaseQuiz>
 ```
@@ -283,7 +283,7 @@ div {
 
 <BaseQuiz id="css-margin-1" correct="C">
   <template #question>
-    Что делает `margin: 0 auto`?
+    Что делает <code>margin: 0 auto</code>?
   </template>
   
   <BaseQuizOption value="A">Удаляет все отступы</BaseQuizOption>
@@ -292,7 +292,7 @@ div {
   <BaseQuizOption value="D">Центрирует блочный элемент по вертикали</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `margin: 0 auto` устанавливает верхний и нижний отступы равными 0, а левый/правый отступы — auto, что центрирует блочный элемент по горизонтали внутри его контейнера.
+    <code>margin: 0 auto</code> устанавливает верхний и нижний отступы равными 0, а левый/правый отступы — auto, что центрирует блочный элемент по горизонтали внутри его контейнера.
   </BaseQuizAnswer>
 </BaseQuiz>
 

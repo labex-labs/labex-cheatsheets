@@ -87,7 +87,7 @@ nmap 192.168.1.1 192.168.1.5
 
 <BaseQuiz id="nmap-scan-1" correct="A">
   <template #question>
-    Que fait un balayage de base `nmap 192.168.1.1` par défaut ?
+    Que fait un balayage de base <code>nmap 192.168.1.1</code> par défaut ?
   </template>
   
   <BaseQuizOption value="A" correct>Balaye les 1000 ports TCP les plus courants</BaseQuizOption>
@@ -96,7 +96,7 @@ nmap 192.168.1.1 192.168.1.5
   <BaseQuizOption value="D">Ne balaye que le port 80</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Par défaut, Nmap balaye les 1000 ports TCP les plus courants. Pour balayer tous les ports, utilisez `-p-`, ou spécifiez des ports spécifiques avec `-p 80,443,22`.
+    Par défaut, Nmap balaye les 1000 ports TCP les plus courants. Pour balayer tous les ports, utilisez <code>-p-</code>, ou spécifiez des ports spécifiques avec <code>-p 80,443,22</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -145,7 +145,7 @@ nmap -PE 192.168.1.0/24
 
 <BaseQuiz id="nmap-ping-1" correct="A">
   <template #question>
-    Que fait `nmap -sn` ?
+    Que fait <code>nmap -sn</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Effectue uniquement la découverte d'hôtes, sans balayage de ports</BaseQuizOption>
@@ -154,7 +154,7 @@ nmap -PE 192.168.1.0/24
   <BaseQuizOption value="D">Ne balaye que les ports UDP</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `-sn` indique à Nmap d'effectuer uniquement la découverte d'hôtes (balayage ping), sans balayer les ports. Ceci est utile pour identifier rapidement quels hôtes sont en ligne sur un réseau.
+    Le drapeau <code>-sn</code> indique à Nmap d'effectuer uniquement la découverte d'hôtes (balayage ping), sans balayer les ports. Ceci est utile pour identifier rapidement quels hôtes sont en ligne sur un réseau.
   </BaseQuizAnswer>
 </BaseQuiz>
 

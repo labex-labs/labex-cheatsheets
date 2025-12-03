@@ -109,7 +109,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="sqlite-create-table-1" correct="A">
   <template #question>
-    What does `INTEGER PRIMARY KEY AUTOINCREMENT` do in SQLite?
+    What does <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> do in SQLite?
   </template>
   
   <BaseQuizOption value="A" correct>Creates an auto-incrementing integer primary key</BaseQuizOption>
@@ -118,7 +118,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">Creates a unique index</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INTEGER PRIMARY KEY AUTOINCREMENT` creates an integer column that automatically increments for each new row and serves as the primary key. This ensures each row has a unique identifier.
+    <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> creates an integer column that automatically increments for each new row and serves as the primary key. This ensures each row has a unique identifier.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ VALUES ('Duplicate', 'existing@email.com');
 
 <BaseQuiz id="sqlite-upsert-1" correct="A">
   <template #question>
-    What is the difference between `INSERT OR REPLACE` and `INSERT OR IGNORE`?
+    What is the difference between <code>INSERT OR REPLACE</code> and <code>INSERT OR IGNORE</code>?
   </template>
   
   <BaseQuizOption value="A" correct>REPLACE updates existing rows, IGNORE skips duplicates</BaseQuizOption>
@@ -248,7 +248,7 @@ VALUES ('Duplicate', 'existing@email.com');
   <BaseQuizOption value="D">REPLACE works with tables, IGNORE works with views</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INSERT OR REPLACE` will replace an existing row if there's a conflict (e.g., duplicate primary key). `INSERT OR IGNORE` will simply skip the insert if there's a conflict, leaving the existing row unchanged.
+    <code>INSERT OR REPLACE</code> will replace an existing row if there's a conflict (e.g., duplicate primary key). <code>INSERT OR IGNORE</code> will simply skip the insert if there's a conflict, leaving the existing row unchanged.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -274,7 +274,7 @@ SELECT DISTINCT department FROM employees;
 
 <BaseQuiz id="sqlite-select-1" correct="B">
   <template #question>
-    What does `SELECT DISTINCT` do?
+    What does <code>SELECT DISTINCT</code> do?
   </template>
   
   <BaseQuizOption value="A">Selects all rows</BaseQuizOption>
@@ -283,7 +283,7 @@ SELECT DISTINCT department FROM employees;
   <BaseQuizOption value="D">Orders the results</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SELECT DISTINCT` eliminates duplicate rows from the result set, returning only unique values. This is useful when you want to see all unique values in a column.
+    <code>SELECT DISTINCT</code> eliminates duplicate rows from the result set, returning only unique values. This is useful when you want to see all unique values in a column.
   </BaseQuizAnswer>
 </BaseQuiz>
 

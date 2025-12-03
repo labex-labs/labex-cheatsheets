@@ -137,7 +137,7 @@ cd /path/to/directory
 
 <BaseQuiz id="shell-cd-1" correct="A">
   <template #question>
-    `cd ~` は何を行いますか？
+    <code>cd ~</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A" correct>ホームディレクトリに変更する</BaseQuizOption>
@@ -146,7 +146,7 @@ cd /path/to/directory
   <BaseQuizOption value="D">新しいディレクトリを作成する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `~` 記号はホームディレクトリのショートカットです。`cd ~` はホームディレクトリに移動し、`cd $HOME` または `cd /home/username` と同等です。
+    <code>~</code> 記号はホームディレクトリのショートカットです。<code>cd ~</code> はホームディレクトリに移動し、<code>cd $HOME</code> または <code>cd /home/username</code> と同等です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -203,7 +203,7 @@ grep -c "pattern" file.txt
 
 <BaseQuiz id="shell-grep-1" correct="B">
   <template #question>
-    `grep -r "pattern" directory/` は何を行いますか？
+    <code>grep -r "pattern" directory/</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">現在のファイルのみを検索する</BaseQuizOption>
@@ -212,7 +212,7 @@ grep -c "pattern" file.txt
   <BaseQuizOption value="D">パターンを含むファイルを削除する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-r` フラグにより、grep はすべてのファイルとサブディレクトリを再帰的に検索します。これはディレクトリツリー全体でテキストパターンを見つけるのに役立ちます。
+    <code>-r</code> フラグにより、grep はすべてのファイルとサブディレクトリを再帰的に検索します。これはディレクトリツリー全体でテキストパターンを見つけるのに役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -281,7 +281,7 @@ chmod -R 644 directory/
 
 <BaseQuiz id="shell-chmod-1" correct="C">
   <template #question>
-    `chmod 755 file.txt` は何をセットしますか？
+    <code>chmod 755 file.txt</code> は何をセットしますか？
   </template>
   
   <BaseQuizOption value="A">すべてのユーザーに読み取り、書き込み、実行</BaseQuizOption>
@@ -290,7 +290,7 @@ chmod -R 644 directory/
   <BaseQuizOption value="D">すべてのユーザーに読み取りのみ</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` は権限を次のように設定します：オーナー = 7 (rwx)、グループ = 5 (r-x)、その他 = 5 (r-x)。これは実行可能ファイルやディレクトリの一般的な権限設定です。
+    <code>chmod 755</code> は権限を次のように設定します：オーナー = 7 (rwx)、グループ = 5 (r-x)、その他 = 5 (r-x)。これは実行可能ファイルやディレクトリの一般的な権限設定です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -409,16 +409,16 @@ command > /dev/null
 
 <BaseQuiz id="shell-redirect-1" correct="B">
   <template #question>
-    シェルリダイレクトにおける `>` と `>>` の違いは何ですか？
+    シェルリダイレクトにおける <code>></code> と <code>>></code> の違いは何ですか？
   </template>
   
-  <BaseQuizOption value="A">`>` は追加し、`>>` は上書きする</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`>` はファイルを上書きし、`>>` はファイルに追加する</BaseQuizOption>
-  <BaseQuizOption value="C">`>` は stdout をリダイレクトし、`>>` は stderr をリダイレクトする</BaseQuizOption>
+  <BaseQuizOption value="A"><code>></code> は追加し、<code>>></code> は上書きする</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>></code> はファイルを上書きし、<code>>></code> はファイルに追加する</BaseQuizOption>
+  <BaseQuizOption value="C"><code>></code> は stdout をリダイレクトし、<code>>></code> は stderr をリダイレクトする</BaseQuizOption>
   <BaseQuizOption value="D">違いはない</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `>` 演算子は、ファイルが存在する場合にターゲットファイルを上書きしますが、`>>` は出力の末尾に追記します。既存のコンテンツを保持したい場合は `>>` を使用します。
+    <code>></code> 演算子は、ファイルが存在する場合にターゲットファイルを上書きしますが、<code>>></code> は出力の末尾に追記します。既存のコンテンツを保持したい場合は <code>>></code> を使用します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

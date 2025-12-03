@@ -39,7 +39,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
 
 <BaseQuiz id="pandas-read-csv-1" correct="B">
   <template #question>
-    `pd.read_csv('data.csv')` 는 무엇을 반환합니까?
+    <code>pd.read_csv('data.csv')</code> 는 무엇을 반환합니까?
   </template>
   
   <BaseQuizOption value="A">딕셔너리 리스트</BaseQuizOption>
@@ -48,7 +48,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
   <BaseQuizOption value="D">문자열</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pd.read_csv()` 는 CSV 파일을 읽어 열과 행을 가진 2 차원 레이블 데이터 구조인 pandas DataFrame 을 반환합니다.
+    <code>pd.read_csv()</code> 는 CSV 파일을 읽어 열과 행을 가진 2 차원 레이블 데이터 구조인 pandas DataFrame 을 반환합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df.dropna(axis=1)
 
 <BaseQuiz id="pandas-missing-1" correct="B">
   <template #question>
-    `df.dropna(axis=1)` 는 무엇을 합니까?
+    <code>df.dropna(axis=1)</code> 는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">누락된 값이 있는 행을 삭제합니다</BaseQuizOption>
@@ -186,7 +186,7 @@ df.dropna(axis=1)
   <BaseQuizOption value="D">누락된 값을 계산합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `axis=1` 매개변수는 "열"을 의미하므로 `df.dropna(axis=1)` 은 누락된 값이 포함된 열을 제거합니다. 행을 삭제하려면 `axis=0`(기본값) 을 사용합니다.
+    <code>axis=1</code> 매개변수는 "열"을 의미하므로 <code>df.dropna(axis=1)</code> 은 누락된 값이 포함된 열을 제거합니다. 행을 삭제하려면 <code>axis=0</code>(기본값) 을 사용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -205,7 +205,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
 
 <BaseQuiz id="pandas-duplicates-1" correct="A">
   <template #question>
-    `df.drop_duplicates()` 는 기본적으로 무엇을 합니까?
+    <code>df.drop_duplicates()</code> 는 기본적으로 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A" correct>중복된 행을 제거하고 첫 번째 발생 항목을 유지합니다</BaseQuizOption>
@@ -214,7 +214,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
   <BaseQuizOption value="D">중복의 첫 번째 발생 항목을 제거합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    기본적으로 `drop_duplicates()` 는 각 중복 행의 첫 번째 발생 항목을 유지하고 후속 중복 항목을 제거합니다. 대신 마지막 발생 항목을 유지하려면 `keep='last'` 를 사용할 수 있습니다.
+    기본적으로 <code>drop_duplicates()</code> 는 각 중복 행의 첫 번째 발생 항목을 유지하고 후속 중복 항목을 제거합니다. 대신 마지막 발생 항목을 유지하려면 <code>keep='last'</code> 를 사용할 수 있습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -248,7 +248,7 @@ df.replace(['A', 'B'], ['C', 'D'])
 
 <BaseQuiz id="pandas-apply-1" correct="A">
   <template #question>
-    `df['col'].apply(lambda x: x*2)`는 무엇을 합니까?
+    <code>df['col'].apply(lambda x: x*2)</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A" correct>각 요소에 함수를 적용하여 각 값을 2 배로 만듭니다</BaseQuizOption>
@@ -257,7 +257,7 @@ df.replace(['A', 'B'], ['C', 'D'])
   <BaseQuizOption value="D">열의 요소를 계산합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `apply()` 메서드는 Series 의 각 요소에 함수를 적용합니다. 람다 함수 `lambda x: x*2`는 각 값을 2 배로 곱하여 변환된 값을 가진 새 Series 를 반환합니다.
+    <code>apply()</code> 메서드는 Series 의 각 요소에 함수를 적용합니다. 람다 함수 <code>lambda x: x*2</code>는 각 값을 2 배로 곱하여 변환된 값을 가진 새 Series 를 반환합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

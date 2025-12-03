@@ -70,7 +70,7 @@ public static void main(String[] args) {
   <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    main 方法必须是 `public static void main(String[] args)`。`public` 允许 JVM 访问它，`static` 表示它属于类，`void` 表示它不返回任何内容，`String[] args` 接收命令行参数。
+    main 方法必须是 <code>public static void main(String[] args)</code>。<code>public</code> 允许 JVM 访问它，<code>static</code> 表示它属于类，<code>void</code> 表示它不返回任何内容，<code>String[] args</code> 接收命令行参数。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ String uppercase = message.toUpperCase();
   <BaseQuizOption value="D">字符串会自动删除</BaseQuizOption>
   
   <BaseQuizAnswer>
-    不可变性意味着一旦创建了 String 对象，其值就不能被修改。像 `toUpperCase()` 这样的操作会返回一个新的 String 对象，而不是修改原始对象。
+    不可变性意味着一旦创建了 String 对象，其值就不能被修改。像 <code>toUpperCase()</code> 这样的操作会返回一个新的 String 对象，而不是修改原始对象。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -280,7 +280,7 @@ do {
 
 <BaseQuiz id="java-while-1" correct="B">
   <template #question>
-    `while` 和 `do-while` 循环之间的主要区别是什么？
+    <code>while</code> 和 <code>do-while</code> 循环之间的主要区别是什么？
   </template>
   
   <BaseQuizOption value="A">没有区别</BaseQuizOption>
@@ -289,7 +289,7 @@ do {
   <BaseQuizOption value="D">do-while 只适用于数组</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `do-while` 循环在执行循环体后检查条件，因此至少会运行一次。`while` 循环首先检查条件，如果条件一开始就为 false，则可能不会执行。
+    <code>do-while</code> 循环在执行循环体后检查条件，因此至少会运行一次。<code>while</code> 循环首先检查条件，如果条件一开始就为 false，则可能不会执行。
   </BaseQuizAnswer>
 </BaseQuiz>
 

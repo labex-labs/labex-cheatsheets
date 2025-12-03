@@ -67,7 +67,7 @@ pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 
 <BaseQuiz id="webdev-semantic-1" correct="B">
   <template #question>
-    `header`, `main`, `footer` 와 같은 시맨틱 HTML 요소를 사용하는 주요 이점은 무엇입니까?
+    <code>header</code>, <code>main</code>, <code>footer</code> 와 같은 시맨틱 HTML 요소를 사용하는 주요 이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">페이지 로딩 속도를 높여줍니다</BaseQuizOption>
@@ -263,7 +263,7 @@ CSS 박스 모델을 사용하여 간격과 레이아웃을 제어합니다.
 
 <BaseQuiz id="webdev-boxmodel-1" correct="B">
   <template #question>
-    CSS 에서 `margin` 과 `padding` 의 차이점은 무엇입니까?
+    CSS 에서 <code>margin</code> 과 <code>padding</code> 의 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
@@ -301,7 +301,7 @@ CSS 박스 모델을 사용하여 간격과 레이아웃을 제어합니다.
 
 <BaseQuiz id="webdev-flexbox-1" correct="A">
   <template #question>
-    Flexbox 에서 `justify-content: center`는 어떤 역할을 합니까?
+    Flexbox 에서 <code>justify-content: center</code>는 어떤 역할을 합니까?
   </template>
   
   <BaseQuizOption value="A" correct>주축 (기본적으로 수평) 을 따라 플렉스 항목을 중앙에 배치합니다</BaseQuizOption>
@@ -310,7 +310,7 @@ CSS 박스 모델을 사용하여 간격과 레이아웃을 제어합니다.
   <BaseQuizOption value="D">항목을 늘려 공간을 채웁니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `justify-content` 는 주축 (기본적으로 수평) 을 따라 정렬을 제어합니다. `center` 는 컨테이너 내의 모든 플렉스 항목을 중앙에 배치합니다. 교차축 (수직) 정렬을 제어하려면 `align-items` 를 사용합니다.
+    <code>justify-content</code> 는 주축 (기본적으로 수평) 을 따라 정렬을 제어합니다. <code>center</code> 는 컨테이너 내의 모든 플렉스 항목을 중앙에 배치합니다. 교차축 (수직) 정렬을 제어하려면 <code>align-items</code> 를 사용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

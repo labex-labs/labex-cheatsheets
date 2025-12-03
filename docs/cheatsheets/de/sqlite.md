@@ -109,7 +109,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="sqlite-create-table-1" correct="A">
   <template #question>
-    Was bewirkt `INTEGER PRIMARY KEY AUTOINCREMENT` in SQLite?
+    Was bewirkt <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> in SQLite?
   </template>
   
   <BaseQuizOption value="A" correct>Erstellt einen automatisch inkrementierenden Integer-Primärschlüssel</BaseQuizOption>
@@ -118,7 +118,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">Erstellt einen eindeutigen Index</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INTEGER PRIMARY KEY AUTOINCREMENT` erstellt eine Integer-Spalte, die für jede neue Zeile automatisch hochgezählt wird und als Primärschlüssel dient. Dies stellt sicher, dass jede Zeile eine eindeutige Kennung hat.
+    <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> erstellt eine Integer-Spalte, die für jede neue Zeile automatisch hochgezählt wird und als Primärschlüssel dient. Dies stellt sicher, dass jede Zeile eine eindeutige Kennung hat.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ VALUES ('Duplicate', 'existing@email.com');
 
 <BaseQuiz id="sqlite-upsert-1" correct="A">
   <template #question>
-    Was ist der Unterschied zwischen `INSERT OR REPLACE` und `INSERT OR IGNORE`?
+    Was ist der Unterschied zwischen <code>INSERT OR REPLACE</code> und <code>INSERT OR IGNORE</code>?
   </template>
   
   <BaseQuizOption value="A" correct>REPLACE aktualisiert bestehende Zeilen, IGNORE überspringt Duplikate</BaseQuizOption>
@@ -248,7 +248,7 @@ VALUES ('Duplicate', 'existing@email.com');
   <BaseQuizOption value="D">REPLACE funktioniert mit Tabellen, IGNORE funktioniert mit Views</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INSERT OR REPLACE` ersetzt eine bestehende Zeile, wenn ein Konflikt vorliegt (z. B. doppelter Primärschlüssel). `INSERT OR IGNORE` überspringt das Einfügen einfach, wenn ein Konflikt vorliegt, und lässt die bestehende Zeile unverändert.
+    <code>INSERT OR REPLACE</code> ersetzt eine bestehende Zeile, wenn ein Konflikt vorliegt (z. B. doppelter Primärschlüssel). <code>INSERT OR IGNORE</code> überspringt das Einfügen einfach, wenn ein Konflikt vorliegt, und lässt die bestehende Zeile unverändert.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -274,7 +274,7 @@ SELECT DISTINCT department FROM employees;
 
 <BaseQuiz id="sqlite-select-1" correct="B">
   <template #question>
-    Was bewirkt `SELECT DISTINCT`?
+    Was bewirkt <code>SELECT DISTINCT</code>?
   </template>
   
   <BaseQuizOption value="A">Wählt alle Zeilen aus</BaseQuizOption>
@@ -283,7 +283,7 @@ SELECT DISTINCT department FROM employees;
   <BaseQuizOption value="D">Sortiert die Ergebnisse</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SELECT DISTINCT` eliminiert doppelte Zeilen aus dem Ergebnis-Set und gibt nur eindeutige Werte zurück. Dies ist nützlich, wenn Sie alle eindeutigen Werte in einer Spalte sehen möchten.
+    <code>SELECT DISTINCT</code> eliminiert doppelte Zeilen aus dem Ergebnis-Set und gibt nur eindeutige Werte zurück. Dies ist nützlich, wenn Sie alle eindeutigen Werte in einer Spalte sehen möchten.
   </BaseQuizAnswer>
 </BaseQuiz>
 

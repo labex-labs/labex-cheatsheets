@@ -70,7 +70,7 @@ public static void main(String[] args) {
   <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La méthode main doit être `public static void main(String[] args)`. `public` permet à la JVM d'y accéder, `static` signifie qu'elle appartient à la classe, `void` signifie qu'elle ne retourne rien, et `String[] args` reçoit les arguments de la ligne de commande.
+    La méthode main doit être <code>public static void main(String[] args)</code>. <code>public</code> permet à la JVM d'y accéder, <code>static</code> signifie qu'elle appartient à la classe, <code>void</code> signifie qu'elle ne retourne rien, et <code>String[] args</code> reçoit les arguments de la ligne de commande.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ String uppercase = message.toUpperCase();
   <BaseQuizOption value="D">Les chaînes sont automatiquement supprimées</BaseQuizOption>
   
   <BaseQuizAnswer>
-    L'immuabilité signifie qu'une fois qu'un objet String est créé, sa valeur ne peut pas être modifiée. Les opérations comme `toUpperCase()` retournent un nouvel objet String plutôt que de modifier l'original.
+    L'immuabilité signifie qu'une fois qu'un objet String est créé, sa valeur ne peut pas être modifiée. Les opérations comme <code>toUpperCase()</code> retournent un nouvel objet String plutôt que de modifier l'original.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -280,7 +280,7 @@ do {
 
 <BaseQuiz id="java-while-1" correct="B">
   <template #question>
-    Quelle est la différence clé entre les boucles `while` et `do-while` ?
+    Quelle est la différence clé entre les boucles <code>while</code> et <code>do-while</code> ?
   </template>
   
   <BaseQuizOption value="A">Il n'y a pas de différence</BaseQuizOption>
@@ -289,7 +289,7 @@ do {
   <BaseQuizOption value="D">do-while ne fonctionne qu'avec les tableaux</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La boucle `do-while` vérifie la condition après avoir exécuté le corps de la boucle, elle s'exécute donc toujours au moins une fois. La boucle `while` vérifie la condition en premier, elle peut donc ne pas s'exécuter si la condition est fausse initialement.
+    La boucle <code>do-while</code> vérifie la condition après avoir exécuté le corps de la boucle, elle s'exécute donc toujours au moins une fois. La boucle <code>while</code> vérifie la condition en premier, elle peut donc ne pas s'exécuter si la condition est fausse initialement.
   </BaseQuizAnswer>
 </BaseQuiz>
 

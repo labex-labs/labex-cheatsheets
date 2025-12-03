@@ -127,7 +127,7 @@ name package
 
 <BaseQuiz id="rhel-package-1" correct="A">
   <template #question>
-    В чем разница между `dnf` и `yum` в RHEL?
+    В чем разница между <code>dnf</code> и <code>yum</code> в RHEL?
   </template>
   
   <BaseQuizOption value="A" correct>dnf — это более новый менеджер пакетов для RHEL 8+, yum используется в RHEL 7</BaseQuizOption>
@@ -208,7 +208,7 @@ rm -rf directory/
 
 <BaseQuiz id="rhel-file-ops-1" correct="B">
   <template #question>
-    Что делает `cp -r`?
+    Что делает <code>cp -r</code>?
   </template>
   
   <BaseQuizOption value="A">Копирует только файлы</BaseQuizOption>
@@ -217,7 +217,7 @@ rm -rf directory/
   <BaseQuizOption value="D">Переименовывает файлы</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-r` (рекурсивный) позволяет `cp` копировать каталоги и их содержимое, включая все подкаталоги и файлы внутри них. Без `-r` команда `cp` не может копировать каталоги.
+    Флаг <code>-r</code> (рекурсивный) позволяет <code>cp</code> копировать каталоги и их содержимое, включая все подкаталоги и файлы внутри них. Без <code>-r</code> команда <code>cp</code> не может копировать каталоги.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ tail -f /var/log/messages
 
 <BaseQuiz id="rhel-tail-1" correct="C">
   <template #question>
-    Что делает `tail -f /var/log/messages`?
+    Что делает <code>tail -f /var/log/messages</code>?
   </template>
   
   <BaseQuizOption value="A">Показывает только первые 10 строк</BaseQuizOption>
@@ -249,7 +249,7 @@ tail -f /var/log/messages
   <BaseQuizOption value="D">Архивирует файл журнала</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-f` заставляет `tail` следить за файлом, отображая новые записи журнала по мере их записи. Это важно для мониторинга журналов в реальном времени и устранения неполадок.
+    Флаг <code>-f</code> заставляет <code>tail</code> следить за файлом, отображая новые записи журнала по мере их записи. Это важно для мониторинга журналов в реальном времени и устранения неполадок.
   </BaseQuizAnswer>
 </BaseQuiz>
 

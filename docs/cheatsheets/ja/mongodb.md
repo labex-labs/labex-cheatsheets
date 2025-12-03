@@ -50,7 +50,7 @@ db.users.insertOne({name: "John"})
 
 <BaseQuiz id="mongodb-use-1" correct="B">
   <template #question>
-    MongoDB で`use newdb`を実行するとどうなりますか？
+    MongoDB で<code>use newdb</code>を実行するとどうなりますか？
   </template>
   
   <BaseQuizOption value="A">データベースがすぐに作成される</BaseQuizOption>
@@ -59,7 +59,7 @@ db.users.insertOne({name: "John"})
   <BaseQuizOption value="D">データベース内のすべてのコレクションが表示される</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `use` コマンドはデータベースに切り替えますが、MongoDB は最初のドキュメントを挿入するまでデータベースを作成しません。これは遅延作成アプローチです。
+    <code>use</code> コマンドはデータベースに切り替えますが、MongoDB は最初のドキュメントを挿入するまでデータベースを作成しません。これは遅延作成アプローチです。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -178,7 +178,7 @@ db.users.insertOne({
 
 <BaseQuiz id="mongodb-insert-1" correct="A">
   <template #question>
-    `db.users.insertOne()` は何を返しますか？
+    <code>db.users.insertOne()</code> は何を返しますか？
   </template>
   
   <BaseQuizOption value="A" correct>挿入されたドキュメントの_id を含む確認オブジェクト</BaseQuizOption>
@@ -187,7 +187,7 @@ db.users.insertOne({
   <BaseQuizOption value="D">挿入されたドキュメント数</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `insertOne()` は、`acknowledged: true`と、挿入されたドキュメントの `_id`（または提供されたカスタム`_id`）を含む`insertedId` を含む確認オブジェクトを返します。
+    <code>insertOne()</code> は、<code>acknowledged: true</code>と、挿入されたドキュメントの <code>_id</code>（または提供されたカスタム<code>_id</code>）を含む<code>insertedId</code> を含む確認オブジェクトを返します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ db.users.find({ email: { $exists: true } })
 
 <BaseQuiz id="mongodb-query-1" correct="B">
   <template #question>
-    MongoDB クエリにおける `$gt` は何を意味しますか？
+    MongoDB クエリにおける <code>$gt</code> は何を意味しますか？
   </template>
   
   <BaseQuizOption value="A">以上</BaseQuizOption>
@@ -299,7 +299,7 @@ db.users.find({ email: { $exists: true } })
   <BaseQuizOption value="D">合計を取得</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `$gt` は「より大きい」を意味する比較演算子です。`{ age: { $gt: 25 } }`のようなクエリで使用され、age フィールドが 25 より大きいドキュメントを検索します。
+    <code>$gt</code> は「より大きい」を意味する比較演算子です。<code>{ age: { $gt: 25 } }</code>のようなクエリで使用され、age フィールドが 25 より大きいドキュメントを検索します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -365,7 +365,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
 
 <BaseQuiz id="mongodb-update-1" correct="C">
   <template #question>
-    MongoDB の更新操作における `$set` は何をしますか？
+    MongoDB の更新操作における <code>$set</code> は何をしますか？
   </template>
   
   <BaseQuizOption value="A">フィールドを削除する</BaseQuizOption>
@@ -374,7 +374,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
   <BaseQuizOption value="D">配列から要素を削除する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `$set` 演算子は、ドキュメント内のフィールドの値を設定します。フィールドが存在しない場合は作成され、存在する場合は値を更新します。
+    <code>$set</code> 演算子は、ドキュメント内のフィールドの値を設定します。フィールドが存在しない場合は作成され、存在する場合は値を更新します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

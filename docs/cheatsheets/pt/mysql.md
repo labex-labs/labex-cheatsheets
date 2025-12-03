@@ -53,7 +53,7 @@ DROP DATABASE old_database;
 
 <BaseQuiz id="mysql-database-1" correct="C">
   <template #question>
-    O que `USE nome_do_banco_de_dados` faz?
+    O que <code>USE nome_do_banco_de_dados</code> faz?
   </template>
   
   <BaseQuizOption value="A">Cria um novo banco de dados</BaseQuizOption>
@@ -62,7 +62,7 @@ DROP DATABASE old_database;
   <BaseQuizOption value="D">Mostra todas as tabelas no banco de dados</BaseQuizOption>
   
   <BaseQuizAnswer>
-    A instrução `USE` seleciona um banco de dados, tornando-o o banco de dados ativo para todas as instruções SQL subsequentes. Isso é equivalente a selecionar um banco de dados ao conectar com `mysql -u user -p database_name`.
+    A instrução <code>USE</code> seleciona um banco de dados, tornando-o o banco de dados ativo para todas as instruções SQL subsequentes. Isso é equivalente a selecionar um banco de dados ao conectar com <code>mysql -u user -p database_name</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -197,13 +197,13 @@ INSERT INTO users_backup SELECT * FROM users;
     Qual é a sintaxe correta para inserir um único registro?
   </template>
   
-  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="A" correct><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="B"><code>INSERT table_name VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="C"><code>ADD INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="D"><code>INSERT table_name (column1, column2) = (value1, value2);</code></BaseQuizOption>
   
   <BaseQuizAnswer>
-    A sintaxe correta é `INSERT INTO nome_da_tabela (colunas) VALUES (valores)`. A palavra-chave `INTO` é necessária, e você deve especificar tanto os nomes das colunas quanto os valores correspondentes.
+    A sintaxe correta é <code>INSERT INTO nome_da_tabela (colunas) VALUES (valores)</code>. A palavra-chave <code>INTO</code> é necessária, e você deve especificar tanto os nomes das colunas quanto os valores correspondentes.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -270,7 +270,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 
 <BaseQuiz id="mysql-select-1" correct="D">
   <template #question>
-    O que `SELECT * FROM users` retorna?
+    O que <code>SELECT * FROM users</code> retorna?
   </template>
   
   <BaseQuizOption value="A">Apenas a primeira linha da tabela users</BaseQuizOption>
@@ -279,7 +279,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
   <BaseQuizOption value="D" correct>Todas as colunas e todas as linhas da tabela users</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O curinga `*` seleciona todas as colunas e, sem uma cláusula WHERE, retorna todas as linhas. Isso é útil para visualizar todos os dados, mas deve ser usado com cuidado em tabelas grandes.
+    O curinga <code>*</code> seleciona todas as colunas e, sem uma cláusula WHERE, retorna todas as linhas. Isso é útil para visualizar todos os dados, mas deve ser usado com cuidado em tabelas grandes.
   </BaseQuizAnswer>
 </BaseQuiz>
 

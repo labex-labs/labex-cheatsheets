@@ -137,7 +137,7 @@ cd /path/to/directory
 
 <BaseQuiz id="shell-cd-1" correct="A">
   <template #question>
-    `cd ~`는 무엇을 합니까?
+    <code>cd ~</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A" correct>홈 디렉토리로 변경</BaseQuizOption>
@@ -146,7 +146,7 @@ cd /path/to/directory
   <BaseQuizOption value="D">새 디렉토리 생성</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `~` 기호는 홈 디렉토리에 대한 바로 가기입니다. `cd ~`는 홈 디렉토리로 이동하며, 이는 `cd $HOME` 또는 `cd /home/username`과 동일합니다.
+    <code>~</code> 기호는 홈 디렉토리에 대한 바로 가기입니다. <code>cd ~</code>는 홈 디렉토리로 이동하며, 이는 <code>cd $HOME</code> 또는 <code>cd /home/username</code>과 동일합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -203,7 +203,7 @@ grep -c "pattern" file.txt
 
 <BaseQuiz id="shell-grep-1" correct="B">
   <template #question>
-    `grep -r "pattern" directory/`는 무엇을 합니까?
+    <code>grep -r "pattern" directory/</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">현재 파일에서만 검색</BaseQuizOption>
@@ -212,7 +212,7 @@ grep -c "pattern" file.txt
   <BaseQuizOption value="D">패턴을 포함하는 파일 삭제</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-r` 플래그는 grep 이 모든 파일과 하위 디렉토리를 재귀적으로 검색하도록 합니다. 이는 전체 디렉토리 트리에 걸쳐 텍스트 패턴을 찾을 때 유용합니다.
+    <code>-r</code> 플래그는 grep 이 모든 파일과 하위 디렉토리를 재귀적으로 검색하도록 합니다. 이는 전체 디렉토리 트리에 걸쳐 텍스트 패턴을 찾을 때 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -281,7 +281,7 @@ chmod -R 644 directory/
 
 <BaseQuiz id="shell-chmod-1" correct="C">
   <template #question>
-    `chmod 755 file.txt`는 무엇을 설정합니까?
+    <code>chmod 755 file.txt</code>는 무엇을 설정합니까?
   </template>
   
   <BaseQuizOption value="A">모든 사용자에게 읽기, 쓰기, 실행</BaseQuizOption>
@@ -290,7 +290,7 @@ chmod -R 644 directory/
   <BaseQuizOption value="D">모든 사용자에게 읽기만 허용</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755`는 권한을 다음과 같이 설정합니다: 소유자 = 7 (rwx), 그룹 = 5 (r-x), 다른 사용자 = 5 (r-x). 이는 실행 가능한 파일 및 디렉토리에 대한 일반적인 권한 설정입니다.
+    <code>chmod 755</code>는 권한을 다음과 같이 설정합니다: 소유자 = 7 (rwx), 그룹 = 5 (r-x), 다른 사용자 = 5 (r-x). 이는 실행 가능한 파일 및 디렉토리에 대한 일반적인 권한 설정입니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -409,16 +409,16 @@ command > /dev/null
 
 <BaseQuiz id="shell-redirect-1" correct="B">
   <template #question>
-    쉘 리디렉션에서 `>`와 `>>`의 차이점은 무엇입니까?
+    쉘 리디렉션에서 <code>></code>와 <code>>></code>의 차이점은 무엇입니까?
   </template>
   
-  <BaseQuizOption value="A">`>`는 추가하고, `>>`는 덮어씁니다</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`>`는 파일을 덮어쓰고, `>>`는 파일에 추가합니다</BaseQuizOption>
-  <BaseQuizOption value="C">`>`는 stdout 을 리디렉션하고, `>>`는 stderr 을 리디렉션합니다</BaseQuizOption>
+  <BaseQuizOption value="A"><code>></code>는 추가하고, <code>>></code>는 덮어씁니다</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>></code>는 파일을 덮어쓰고, <code>>></code>는 파일에 추가합니다</BaseQuizOption>
+  <BaseQuizOption value="C"><code>></code>는 stdout 을 리디렉션하고, <code>>></code>는 stderr 을 리디렉션합니다</BaseQuizOption>
   <BaseQuizOption value="D">차이점이 없습니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `>` 연산자는 대상 파일이 존재하면 덮어쓰고, `>>`는 출력의 끝에 추가합니다. 기존 내용을 보존하려면 `>>`를 사용하세요.
+    <code>></code> 연산자는 대상 파일이 존재하면 덮어쓰고, <code>>></code>는 출력의 끝에 추가합니다. 기존 내용을 보존하려면 <code>>></code>를 사용하세요.
   </BaseQuizAnswer>
 </BaseQuiz>
 

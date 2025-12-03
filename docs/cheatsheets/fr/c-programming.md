@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
 
 <BaseQuiz id="c-main-1" correct="C">
   <template #question>
-    Que signifie `return 0` dans la fonction main ?
+    Que signifie <code>return 0</code> dans la fonction main ?
   </template>
   
   <BaseQuizOption value="A">Le programme a échoué</BaseQuizOption>
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
   <BaseQuizOption value="D">Le programme n'a retourné aucune valeur</BaseQuizOption>
   
   <BaseQuizAnswer>
-    En C, `return 0` depuis la fonction main indique une exécution réussie du programme. Les valeurs de retour non nulles indiquent généralement des erreurs ou une terminaison anormale.
+    En C, <code>return 0</code> depuis la fonction main indique une exécution réussie du programme. Les valeurs de retour non nulles indiquent généralement des erreurs ou une terminaison anormale.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -164,7 +164,7 @@ int size = sizeof(buffer);
   <BaseQuizOption value="D">Uniquement comme des pointeurs</BaseQuizOption>
   
   <BaseQuizAnswer>
-    En C, les chaînes sont représentées comme des tableaux de caractères (`char`). La chaîne est terminée par un caractère nul (`\0`), qui marque la fin de la chaîne.
+    En C, les chaînes sont représentées comme des tableaux de caractères (<code>char</code>). La chaîne est terminée par un caractère nul (<code>\0</code>), qui marque la fin de la chaîne.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -241,7 +241,7 @@ for (int i = 0; i < 3; i++) {
 
 <BaseQuiz id="c-for-loop-1" correct="A">
   <template #question>
-    Que calcule `sizeof(numbers) / sizeof(numbers[0])` ?
+    Que calcule <code>sizeof(numbers) / sizeof(numbers[0])</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Le nombre d'éléments dans le tableau</BaseQuizOption>

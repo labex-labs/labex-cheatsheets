@@ -38,7 +38,7 @@ USE company_db;
 
 <BaseQuiz id="database-create-1" correct="A">
   <template #question>
-    ¿Qué hace `CREATE DATABASE company_db`?
+    ¿Qué hace <code>CREATE DATABASE company_db</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Crea una nueva base de datos vacía llamada company_db</BaseQuizOption>
@@ -47,7 +47,7 @@ USE company_db;
   <BaseQuizOption value="D">Realiza una copia de seguridad de la base de datos</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `CREATE DATABASE` crea una nueva base de datos vacía. Después de la creación, debe usar `USE` para seleccionarla y luego crear tablas dentro de ella.
+    <code>CREATE DATABASE</code> crea una nueva base de datos vacía. Después de la creación, debe usar <code>USE</code> para seleccionarla y luego crear tablas dentro de ella.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -157,7 +157,7 @@ RENAME TABLE employees TO staff;
 
 <BaseQuiz id="database-alter-1" correct="C">
   <template #question>
-    ¿Qué hace `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)`?
+    ¿Qué hace <code>ALTER TABLE employees ADD COLUMN phone VARCHAR(15)</code>?
   </template>
   
   <BaseQuizOption value="A">Elimina la columna phone</BaseQuizOption>
@@ -166,7 +166,7 @@ RENAME TABLE employees TO staff;
   <BaseQuizOption value="D">Renombra la tabla</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ALTER TABLE ... ADD COLUMN` añade una nueva columna a una tabla existente. La nueva columna se añadirá con el tipo de dato especificado y será NULL para las filas existentes a menos que especifique un valor predeterminado.
+    <code>ALTER TABLE ... ADD COLUMN</code> añade una nueva columna a una tabla existente. La nueva columna se añadirá con el tipo de dato especificado y será NULL para las filas existentes a menos que especifique un valor predeterminado.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -294,7 +294,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
 
 <BaseQuiz id="database-where-1" correct="C">
   <template #question>
-    ¿Qué coincide `LIKE 'John%'` en una cláusula WHERE?
+    ¿Qué coincide <code>LIKE 'John%'</code> en una cláusula WHERE?
   </template>
   
   <BaseQuizOption value="A">Solo coincidencias exactas con "John"</BaseQuizOption>
@@ -303,7 +303,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
   <BaseQuizOption value="D">Valores que contienen "John" en cualquier lugar</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El comodín `%` en SQL coincide con cualquier secuencia de caracteres. `LIKE 'John%'` coincide con cualquier valor que comience con "John", como "John", "Johnny", "Johnson", etc.
+    El comodín <code>%</code> en SQL coincide con cualquier secuencia de caracteres. <code>LIKE 'John%'</code> coincide con cualquier valor que comience con "John", como "John", "Johnny", "Johnson", etc.
   </BaseQuizAnswer>
 </BaseQuiz>
 

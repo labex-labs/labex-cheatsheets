@@ -51,16 +51,16 @@ hydra -l admin -p passwort123 192.168.1.100 ftp
 
 <BaseQuiz id="hydra-syntax-1" correct="B">
   <template #question>
-    Was ist der Unterschied zwischen `-l` und `-L` in Hydra?
+    Was ist der Unterschied zwischen <code>-l</code> und <code>-L</code> in Hydra?
   </template>
   
-  <BaseQuizOption value="A">`-l` ist für Passwörter, `-L` ist für Benutzernamen</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`-l` gibt einen einzelnen Benutzernamen an, `-L` gibt eine Datei mit einer Liste von Benutzernamen an</BaseQuizOption>
+  <BaseQuizOption value="A"><code>-l</code> ist für Passwörter, <code>-L</code> ist für Benutzernamen</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>-l</code> gibt einen einzelnen Benutzernamen an, <code>-L</code> gibt eine Datei mit einer Liste von Benutzernamen an</BaseQuizOption>
   <BaseQuizOption value="C">Es gibt keinen Unterschied</BaseQuizOption>
-  <BaseQuizOption value="D">`-l` ist Kleinbuchstabe, `-L` ist Großbuchstabe</BaseQuizOption>
+  <BaseQuizOption value="D"><code>-l</code> ist Kleinbuchstabe, <code>-L</code> ist Großbuchstabe</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Option `-l` wird für einen einzelnen Benutzernamen verwendet, während `-L` für eine Datei verwendet wird, die eine Liste von Benutzernamen enthält. In ähnlicher Weise wird `-p` für ein einzelnes Passwort und `-P` für eine Passwortlistendatei verwendet.
+    Die Option <code>-l</code> wird für einen einzelnen Benutzernamen verwendet, während <code>-L</code> für eine Datei verwendet wird, die eine Liste von Benutzernamen enthält. In ähnlicher Weise wird <code>-p</code> für ein einzelnes Passwort und <code>-P</code> für eine Passwortlistendatei verwendet.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -95,7 +95,7 @@ hydra -l admin -P passwoerter.txt ziel.com ssh -V
 
 <BaseQuiz id="hydra-output-1" correct="A">
   <template #question>
-    Was bewirkt `hydra -V`?
+    Was bewirkt <code>hydra -V</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Aktiviert eine ausführliche Ausgabe, die detaillierte Fortschritte zeigt</BaseQuizOption>
@@ -104,7 +104,7 @@ hydra -l admin -P passwoerter.txt ziel.com ssh -V
   <BaseQuizOption value="D">Läuft nur im ausführlichen Modus</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-V` aktiviert den ausführlichen Modus, der detaillierte Ausgaben einschließlich jedes Anmeldeversuchs anzeigt, was die Überwachung des Fortschritts und das Debuggen von Problemen während Passwortangriffen erleichtert.
+    Das Flag <code>-V</code> aktiviert den ausführlichen Modus, der detaillierte Ausgaben einschließlich jedes Anmeldeversuchs anzeigt, was die Überwachung des Fortschritts und das Debuggen von Problemen während Passwortangriffen erleichtert.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -127,7 +127,7 @@ hydra -l root -P passwoerter.txt -t 6 ssh://192.168.1.100
 
 <BaseQuiz id="hydra-ssh-1" correct="C">
   <template #question>
-    Was bewirkt das Flag `-s` in Hydra?
+    Was bewirkt das Flag <code>-s</code> in Hydra?
   </template>
   
   <BaseQuizOption value="A">Legt den Diensttyp fest</BaseQuizOption>
@@ -136,7 +136,7 @@ hydra -l root -P passwoerter.txt -t 6 ssh://192.168.1.100
   <BaseQuizOption value="D">Legt die Anzahl der Threads fest</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-s` gibt eine benutzerdefinierte Portnummer an, wenn der Dienst auf einem Nicht-Standard-Port läuft. Zum Beispiel zielt `-s 2222` auf SSH auf Port 2222 anstelle des Standardports 22.
+    Das Flag <code>-s</code> gibt eine benutzerdefinierte Portnummer an, wenn der Dienst auf einem Nicht-Standard-Port läuft. Zum Beispiel zielt <code>-s 2222</code> auf SSH auf Port 2222 anstelle des Standardports 22.
   </BaseQuizAnswer>
 </BaseQuiz>
 

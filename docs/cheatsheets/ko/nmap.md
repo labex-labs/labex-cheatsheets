@@ -87,7 +87,7 @@ nmap 192.168.1.1 192.168.1.5
 
 <BaseQuiz id="nmap-scan-1" correct="A">
   <template #question>
-    기본 `nmap 192.168.1.1` 스캔은 기본적으로 무엇을 수행합니까?
+    기본 <code>nmap 192.168.1.1</code> 스캔은 기본적으로 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A" correct>가장 일반적인 1000 개 TCP 포트를 스캔합니다</BaseQuizOption>
@@ -96,7 +96,7 @@ nmap 192.168.1.1 192.168.1.5
   <BaseQuizOption value="D">포트 80 만 스캔합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    기본적으로 Nmap 은 가장 일반적인 1000 개 TCP 포트를 스캔합니다. 모든 포트를 스캔하려면 `-p-` 를 사용하거나 `-p 80,443,22`로 특정 포트를 지정합니다.
+    기본적으로 Nmap 은 가장 일반적인 1000 개 TCP 포트를 스캔합니다. 모든 포트를 스캔하려면 <code>-p-</code> 를 사용하거나 <code>-p 80,443,22</code>로 특정 포트를 지정합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -145,7 +145,7 @@ nmap -PE 192.168.1.0/24
 
 <BaseQuiz id="nmap-ping-1" correct="A">
   <template #question>
-    `nmap -sn`은 무엇을 합니까?
+    <code>nmap -sn</code>은 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A" correct>포트 스캔 없이 호스트 검색만 수행합니다</BaseQuizOption>
@@ -154,7 +154,7 @@ nmap -PE 192.168.1.0/24
   <BaseQuizOption value="D">UDP 포트만 스캔합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-sn` 플래그는 Nmap 에게 포트 스캔 없이 호스트 검색 (핑 스캔) 만 수행하도록 지시합니다. 이는 네트워크에서 어떤 호스트가 온라인 상태인지 빠르게 식별하는 데 유용합니다.
+    <code>-sn</code> 플래그는 Nmap 에게 포트 스캔 없이 호스트 검색 (핑 스캔) 만 수행하도록 지시합니다. 이는 네트워크에서 어떤 호스트가 온라인 상태인지 빠르게 식별하는 데 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

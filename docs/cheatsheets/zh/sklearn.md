@@ -240,7 +240,7 @@ rf_clf = RandomForestClassifier(
 
 <BaseQuiz id="sklearn-randomforest-1" correct="A">
   <template #question>
-    `RandomForestClassifier` 中的 `n_estimators` 控制什么？
+    <code>RandomForestClassifier</code> 中的 <code>n_estimators</code> 控制什么？
   </template>
   
   <BaseQuizOption value="A" correct>森林中决策树的数量</BaseQuizOption>
@@ -249,7 +249,7 @@ rf_clf = RandomForestClassifier(
   <BaseQuizOption value="D">随机种子</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `n_estimators` 指定随机森林中包含多少棵决策树。更多的树通常会提高性能，但会增加计算时间。默认值通常是 100。
+    <code>n_estimators</code> 指定随机森林中包含多少棵决策树。更多的树通常会提高性能，但会增加计算时间。默认值通常是 100。
   </BaseQuizAnswer>
 </BaseQuiz>
 

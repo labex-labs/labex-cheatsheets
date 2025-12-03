@@ -42,7 +42,7 @@ terraform validate
 
 <BaseQuiz id="devops-terraform-1" correct="B">
   <template #question>
-    `terraform plan`은 무엇을 수행합니까?
+    <code>terraform plan</code>은 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">즉시 인프라 변경 사항을 적용합니다</BaseQuizOption>
@@ -51,7 +51,7 @@ terraform validate
   <BaseQuizOption value="D">Terraform 을 초기화합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `terraform plan`은 `terraform apply`를 실행할 때 Terraform 이 수행할 작업을 보여주는 실행 계획을 생성합니다. 이는 적용 전에 변경 사항을 검토하는 데 도움이 되는 드라이런입니다.
+    <code>terraform plan</code>은 <code>terraform apply</code>를 실행할 때 Terraform 이 수행할 작업을 보여주는 실행 계획을 생성합니다. 이는 적용 전에 변경 사항을 검토하는 데 도움이 되는 드라이런입니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -121,7 +121,7 @@ kubectl delete -f deployment.yml
 
 <BaseQuiz id="devops-k8s-1" correct="A">
   <template #question>
-    `kubectl apply -f deployment.yml`은 무엇을 수행합니까?
+    <code>kubectl apply -f deployment.yml</code>은 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A" correct>YAML 파일에 정의된 리소스를 생성하거나 업데이트합니다</BaseQuizOption>
@@ -130,7 +130,7 @@ kubectl delete -f deployment.yml
   <BaseQuizOption value="D">적용하지 않고 생성될 내용을 보여줍니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kubectl apply`는 존재하지 않으면 리소스를 생성하고 존재하면 업데이트하는 선언적 명령입니다. 여러 번 안전하게 실행할 수 있는 멱등성을 가집니다.
+    <code>kubectl apply</code>는 존재하지 않으면 리소스를 생성하고 존재하면 업데이트하는 선언적 명령입니다. 여러 번 안전하게 실행할 수 있는 멱등성을 가집니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -243,7 +243,7 @@ git pull origin main
 
 <BaseQuiz id="devops-git-1" correct="D">
   <template #question>
-    `git pull`과 `git fetch`의 차이점은 무엇입니까?
+    <code>git pull</code>과 <code>git fetch</code>의 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
@@ -252,7 +252,7 @@ git pull origin main
   <BaseQuizOption value="D" correct>git fetch 는 병합 없이 변경 사항을 다운로드하고, git pull 은 변경 사항을 다운로드하고 병합합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch`는 원격 리포지토리에서 변경 사항을 다운로드하지만 현재 브랜치에 병합하지는 않습니다. `git pull`은 두 작업을 모두 수행합니다. 즉, 변경 사항을 가져온 다음 병합합니다.
+    <code>git fetch</code>는 원격 리포지토리에서 변경 사항을 다운로드하지만 현재 브랜치에 병합하지는 않습니다. <code>git pull</code>은 두 작업을 모두 수행합니다. 즉, 변경 사항을 가져온 다음 병합합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -42,7 +42,7 @@ var oldVariable = 'legacy'
 
 <BaseQuiz id="javascript-let-const-1" correct="B">
   <template #question>
-    `let` 和 `const` 的主要区别是什么？
+    <code>let</code> 和 <code>const</code> 的主要区别是什么？
   </template>
   
   <BaseQuizOption value="A">let 是函数作用域，const 是块级作用域</BaseQuizOption>
@@ -51,7 +51,7 @@ var oldVariable = 'legacy'
   <BaseQuizOption value="D">没有区别</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `let` 和 `const` 都是块级作用域，但 `let` 允许你重新给变量赋值，而 `const` 禁止重新赋值。然而，`const` 对象仍然可以修改其属性。
+    <code>let</code> 和 <code>const</code> 都是块级作用域，但 <code>let</code> 允许你重新给变量赋值，而 <code>const</code> 禁止重新赋值。然而，<code>const</code> 对象仍然可以修改其属性。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -168,12 +168,12 @@ const processData = (data) => {
   </template>
   
   <BaseQuizOption value="A">它们像函数声明一样被提升</BaseQuizOption>
-  <BaseQuizOption value="B">它们有自己的 `this` 绑定</BaseQuizOption>
-  <BaseQuizOption value="C" correct>它们从封闭作用域继承 `this`</BaseQuizOption>
+  <BaseQuizOption value="B">它们有自己的 <code>this</code> 绑定</BaseQuizOption>
+  <BaseQuizOption value="C" correct>它们从封闭作用域继承 <code>this</code></BaseQuizOption>
   <BaseQuizOption value="D">它们不能返回值</BaseQuizOption>
   
   <BaseQuizAnswer>
-    箭头函数没有自己的 `this` 绑定。相反，它们从词法（封闭）作用域继承 `this`，这使得它们在回调和事件处理程序中非常有用，因为可以保留上下文。
+    箭头函数没有自己的 <code>this</code> 绑定。相反，它们从词法（封闭）作用域继承 <code>this</code>，这使得它们在回调和事件处理程序中非常有用，因为可以保留上下文。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -226,7 +226,7 @@ const result = numbers
 
 <BaseQuiz id="javascript-array-1" correct="A">
   <template #question>
-    `filter()` 返回什么？
+    <code>filter()</code> 返回什么？
   </template>
   
   <BaseQuizOption value="A" correct>一个包含通过测试元素的新数组</BaseQuizOption>
@@ -235,7 +235,7 @@ const result = numbers
   <BaseQuizOption value="D">原地修改的原始数组</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `filter()` 方法创建一个新数组，其中包含通过所提供的函数实现的测试的所有元素。它不会修改原始数组。
+    <code>filter()</code> 方法创建一个新数组，其中包含通过所提供的函数实现的测试的所有元素。它不会修改原始数组。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ const buttonsArray = Array.from(allButtons)
 
 <BaseQuiz id="javascript-dom-1" correct="C">
   <template #question>
-    `querySelector()` 和 `querySelectorAll()` 有什么区别？
+    <code>querySelector()</code> 和 <code>querySelectorAll()</code> 有什么区别？
   </template>
   
   <BaseQuizOption value="A">没有区别</BaseQuizOption>
@@ -335,7 +335,7 @@ const buttonsArray = Array.from(allButtons)
   <BaseQuizOption value="D">querySelector 用于 ID，querySelectorAll 用于类</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `querySelector()` 返回匹配 CSS 选择器的第一个元素，而 `querySelectorAll()` 返回一个包含所有匹配元素的 NodeList。当你需要一个元素时使用 `querySelector()`，需要多个元素时使用 `querySelectorAll()`。
+    <code>querySelector()</code> 返回匹配 CSS 选择器的第一个元素，而 <code>querySelectorAll()</code> 返回一个包含所有匹配元素的 NodeList。当你需要一个元素时使用 <code>querySelector()</code>，需要多个元素时使用 <code>querySelectorAll()</code>。
   </BaseQuizAnswer>
 </BaseQuiz>
 

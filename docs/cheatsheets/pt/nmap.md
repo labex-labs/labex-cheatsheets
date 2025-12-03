@@ -87,7 +87,7 @@ nmap 192.168.1.1 192.168.1.5
 
 <BaseQuiz id="nmap-scan-1" correct="A">
   <template #question>
-    O que uma varredura básica `nmap 192.168.1.1` faz por padrão?
+    O que uma varredura básica <code>nmap 192.168.1.1</code> faz por padrão?
   </template>
   
   <BaseQuizOption value="A" correct>Varre as 1000 portas TCP mais comuns</BaseQuizOption>
@@ -96,7 +96,7 @@ nmap 192.168.1.1 192.168.1.5
   <BaseQuizOption value="D">Varre apenas a porta 80</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Por padrão, o Nmap varre as 1000 portas TCP mais comuns. Para varrer todas as portas, use `-p-`, ou especifique portas específicas com `-p 80,443,22`.
+    Por padrão, o Nmap varre as 1000 portas TCP mais comuns. Para varrer todas as portas, use <code>-p-</code>, ou especifique portas específicas com <code>-p 80,443,22</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -145,7 +145,7 @@ nmap -PE 192.168.1.0/24
 
 <BaseQuiz id="nmap-ping-1" correct="A">
   <template #question>
-    O que `nmap -sn` faz?
+    O que <code>nmap -sn</code> faz?
   </template>
   
   <BaseQuizOption value="A" correct>Realiza apenas a descoberta de host, sem varredura de porta</BaseQuizOption>
@@ -154,7 +154,7 @@ nmap -PE 192.168.1.0/24
   <BaseQuizOption value="D">Varre apenas portas UDP</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O flag `-sn` diz ao Nmap para realizar apenas a descoberta de host (varredura ping), sem varrer portas. Isso é útil para identificar rapidamente quais hosts estão online em uma rede.
+    O flag <code>-sn</code> diz ao Nmap para realizar apenas a descoberta de host (varredura ping), sem varrer portas. Isso é útil para identificar rapidamente quais hosts estão online em uma rede.
   </BaseQuizAnswer>
 </BaseQuiz>
 

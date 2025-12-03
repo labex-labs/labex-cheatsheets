@@ -46,7 +46,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 
 <BaseQuiz id="matplotlib-plot-1" correct="C">
   <template #question>
-    Was bewirkt `plt.show()` in Matplotlib?
+    Was bewirkt <code>plt.show()</code> in Matplotlib?
   </template>
   
   <BaseQuizOption value="A">Speichert das Diagramm in einer Datei</BaseQuizOption>
@@ -55,7 +55,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
   <BaseQuizOption value="D">Löscht das Diagramm</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `plt.show()` zeigt das Diagramm in einem interaktiven Fenster an. Diese Funktion muss aufgerufen werden, um die Visualisierung zu sehen. Ohne sie wird das Diagramm nicht angezeigt.
+    <code>plt.show()</code> zeigt das Diagramm in einem interaktiven Fenster an. Diese Funktion muss aufgerufen werden, um die Visualisierung zu sehen. Ohne sie wird das Diagramm nicht angezeigt.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -76,7 +76,7 @@ plt.colorbar()  # Farbleiste hinzufügen
 
 <BaseQuiz id="matplotlib-scatter-1" correct="D">
   <template #question>
-    Was steuert der Parameter `alpha` in Matplotlib-Diagrammen?
+    Was steuert der Parameter <code>alpha</code> in Matplotlib-Diagrammen?
   </template>
   
   <BaseQuizOption value="A">Die Farbe des Diagramms</BaseQuizOption>
@@ -85,7 +85,7 @@ plt.colorbar()  # Farbleiste hinzufügen
   <BaseQuizOption value="D" correct>Die Transparenz/Opazität der Diagrammelemente</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Der Parameter `alpha` steuert die Transparenz mit Werten von 0 (vollständig transparent) bis 1 (vollständig opak). Er ist nützlich für die Erstellung überlappender Visualisierungen, bei denen man durch Elemente hindurchsehen möchte.
+    Der Parameter <code>alpha</code> steuert die Transparenz mit Werten von 0 (vollständig transparent) bis 1 (vollständig opak). Er ist nützlich für die Erstellung überlappender Visualisierungen, bei denen man durch Elemente hindurchsehen möchte.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -214,16 +214,16 @@ plt.annotate('Wichtiger Punkt', xy=(2, 4), xytext=(3, 6),
 
 <BaseQuiz id="matplotlib-legend-1" correct="B">
   <template #question>
-    Was ist für `plt.legend()` erforderlich, um Beschriftungen anzuzeigen?
+    Was ist für <code>plt.legend()</code> erforderlich, um Beschriftungen anzuzeigen?
   </template>
   
   <BaseQuizOption value="A">Nichts, es funktioniert automatisch</BaseQuizOption>
-  <BaseQuizOption value="B" correct>Jedes Diagramm muss einen `label`-Parameter gesetzt haben</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Jedes Diagramm muss einen <code>label</code>-Parameter gesetzt haben</BaseQuizOption>
   <BaseQuizOption value="C">Die Legende muss vor dem Plotten erstellt werden</BaseQuizOption>
   <BaseQuizOption value="D">Beschriftungen müssen manuell in der Legende festgelegt werden</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Um eine Legende anzuzeigen, müssen Sie den Parameter `label` beim Erstellen jedes Diagramms festlegen (z. B. `plt.plot(x, y, label='Datensatz 1')`). Dann zeigt ein Aufruf von `plt.legend()` alle Beschriftungen an.
+    Um eine Legende anzuzeigen, müssen Sie den Parameter <code>label</code> beim Erstellen jedes Diagramms festlegen (z. B. <code>plt.plot(x, y, label='Datensatz 1')</code>). Dann zeigt ein Aufruf von <code>plt.legend()</code> alle Beschriftungen an.
   </BaseQuizAnswer>
 </BaseQuiz>
 

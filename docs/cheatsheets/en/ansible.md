@@ -174,7 +174,7 @@ ansible all -m command -a "systemctl status nginx" --become
 
 <BaseQuiz id="ansible-command-1" correct="C">
   <template #question>
-    What does `ansible all -m ping` do?
+    What does <code>ansible all -m ping</code> do?
   </template>
   
   <BaseQuizOption value="A">Tests network connectivity using ICMP ping</BaseQuizOption>
@@ -183,7 +183,7 @@ ansible all -m command -a "systemctl status nginx" --become
   <BaseQuizOption value="D">Checks if hosts are online</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `ping` module in Ansible doesn't use ICMP. It's a test module that verifies Ansible can connect to hosts, execute Python, and return results. It's used to verify connectivity and configuration.
+    The <code>ping</code> module in Ansible doesn't use ICMP. It's a test module that verifies Ansible can connect to hosts, execute Python, and return results. It's used to verify connectivity and configuration.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -278,7 +278,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
 
 <BaseQuiz id="ansible-playbook-1" correct="B">
   <template #question>
-    What does `ansible-playbook site.yml --check` do?
+    What does <code>ansible-playbook site.yml --check</code> do?
   </template>
   
   <BaseQuizOption value="A">Runs the playbook twice</BaseQuizOption>
@@ -287,7 +287,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
   <BaseQuizOption value="D">Runs only the first task</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `--check` flag runs Ansible in check mode (dry-run), which simulates what would happen without actually making changes. This is useful for testing playbooks before applying them.
+    The <code>--check</code> flag runs Ansible in check mode (dry-run), which simulates what would happen without actually making changes. This is useful for testing playbooks before applying them.
   </BaseQuizAnswer>
 </BaseQuiz>
 

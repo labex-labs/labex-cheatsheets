@@ -96,7 +96,7 @@ env | grep TARGET
 
 <BaseQuiz id="kali-env-1" correct="C">
   <template #question>
-    Que se passe-t-il avec les variables d'environnement définies avec `export` ?
+    Que se passe-t-il avec les variables d'environnement définies avec <code>export</code> ?
   </template>
   
   <BaseQuizOption value="A">Elles persistent après les redémarrages du système</BaseQuizOption>
@@ -105,7 +105,7 @@ env | grep TARGET
   <BaseQuizOption value="D">Ce sont des variables système globales</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Les variables d'environnement définies avec `export` sont disponibles pour la session shell actuelle et tous les processus enfants qui en sont issus. Elles sont perdues lorsque la session shell se termine, sauf si elles sont ajoutées aux fichiers de configuration du shell comme `.bashrc`.
+    Les variables d'environnement définies avec <code>export</code> sont disponibles pour la session shell actuelle et tous les processus enfants qui en sont issus. Elles sont perdues lorsque la session shell se termine, sauf si elles sont ajoutées aux fichiers de configuration du shell comme <code>.bashrc</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ nmap -sS 192.168.1.1
 
 <BaseQuiz id="kali-nmap-1" correct="B">
   <template #question>
-    Que fait `nmap -sS` ?
+    Que fait <code>nmap -sS</code> ?
   </template>
   
   <BaseQuizOption value="A">Effectue un balayage UDP</BaseQuizOption>
@@ -165,7 +165,7 @@ nmap -sS 192.168.1.1
   <BaseQuizOption value="D">Effectue la détection du système d'exploitation</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `-sS` effectue un balayage SYN (également appelé balayage demi-ouvert) car il ne complète jamais la poignée de main TCP. Il envoie des paquets SYN et analyse les réponses, ce qui le rend plus furtif qu'un balayage de connexion TCP complet.
+    Le drapeau <code>-sS</code> effectue un balayage SYN (également appelé balayage demi-ouvert) car il ne complète jamais la poignée de main TCP. Il envoie des paquets SYN et analyse les réponses, ce qui le rend plus furtif qu'un balayage de connexion TCP complet.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ nmap -O 192.168.1.1
 
 <BaseQuiz id="kali-enumeration-1" correct="A">
   <template #question>
-    Que fait `nmap -sV` ?
+    Que fait <code>nmap -sV</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Détecte les versions de services s'exécutant sur les ports ouverts</BaseQuizOption>
@@ -191,7 +191,7 @@ nmap -O 192.168.1.1
   <BaseQuizOption value="D">Effectue uniquement la détection du système d'exploitation</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `-sV` active la détection de version, qui sonde les ports ouverts pour déterminer quel service et quelle version sont en cours d'exécution. Ceci est utile pour identifier les vulnérabilités potentielles associées à des versions logicielles spécifiques.
+    Le drapeau <code>-sV</code> active la détection de version, qui sonde les ports ouverts pour déterminer quel service et quelle version sont en cours d'exécution. Ceci est utile pour identifier les vulnérabilités potentielles associées à des versions logicielles spécifiques.
   </BaseQuizAnswer>
 </BaseQuiz>
 # Balayage de scripts

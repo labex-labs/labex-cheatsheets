@@ -84,7 +84,7 @@ SET mykey "new_value" NX
 
 <BaseQuiz id="redis-set-get-1" correct="C">
   <template #question>
-    ¿Qué hace `SET mykey "value" EX 3600`?
+    ¿Qué hace <code>SET mykey "value" EX 3600</code>?
   </template>
   
   <BaseQuizOption value="A">Establece la clave con un valor de 3600 bytes</BaseQuizOption>
@@ -93,7 +93,7 @@ SET mykey "new_value" NX
   <BaseQuizOption value="D">Establece la clave con 3600 valores diferentes</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La opción `EX` establece un tiempo de expiración en segundos. `SET mykey "value" EX 3600` almacena el valor y lo elimina automáticamente después de 3600 segundos (1 hora).
+    La opción <code>EX</code> establece un tiempo de expiración en segundos. <code>SET mykey "value" EX 3600</code> almacena el valor y lo elimina automáticamente después de 3600 segundos (1 hora).
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -129,7 +129,7 @@ INCRBYFLOAT price 0.1
 
 <BaseQuiz id="redis-incr-1" correct="A">
   <template #question>
-    ¿Qué sucede si usa `INCR` en una clave que no existe?
+    ¿Qué sucede si usa <code>INCR</code> en una clave que no existe?
   </template>
   
   <BaseQuizOption value="A" correct>Redis crea la clave con valor 1</BaseQuizOption>
@@ -138,7 +138,7 @@ INCRBYFLOAT price 0.1
   <BaseQuizOption value="D">No sucede nada</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Si una clave no existe, `INCR` la trata como si tuviera un valor de 0, la incrementa a 1 y crea la clave. Esto hace que `INCR` sea útil para inicializar contadores.
+    Si una clave no existe, <code>INCR</code> la trata como si tuviera un valor de 0, la incrementa a 1 y crea la clave. Esto hace que <code>INCR</code> sea útil para inicializar contadores.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -202,7 +202,7 @@ LLEN mylist
 
 <BaseQuiz id="redis-list-1" correct="B">
   <template #question>
-    ¿Qué devuelve `LRANGE mylist 0 -1`?
+    ¿Qué devuelve <code>LRANGE mylist 0 -1</code>?
   </template>
   
   <BaseQuizOption value="A">Solo el primer elemento</BaseQuizOption>
@@ -211,7 +211,7 @@ LLEN mylist
   <BaseQuizOption value="D">Un error</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `LRANGE` con `0 -1` devuelve todos los elementos de la lista. El `0` es el índice de inicio y `-1` representa el último elemento, por lo que recupera todo desde el primero hasta el último elemento.
+    <code>LRANGE</code> con <code>0 -1</code> devuelve todos los elementos de la lista. El <code>0</code> es el índice de inicio y <code>-1</code> representa el último elemento, por lo que recupera todo desde el primero hasta el último elemento.
   </BaseQuizAnswer>
 </BaseQuiz>
 

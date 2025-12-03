@@ -53,7 +53,7 @@ DROP DATABASE alte_datenbank;
 
 <BaseQuiz id="mysql-database-1" correct="C">
   <template #question>
-    Was bewirkt `USE datenbankname`?
+    Was bewirkt <code>USE datenbankname</code>?
   </template>
   
   <BaseQuizOption value="A">Erstellt eine neue Datenbank</BaseQuizOption>
@@ -62,7 +62,7 @@ DROP DATABASE alte_datenbank;
   <BaseQuizOption value="D">Zeigt alle Tabellen in der Datenbank an</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die `USE`-Anweisung wählt eine Datenbank aus und macht sie zur aktiven Datenbank für alle nachfolgenden SQL-Anweisungen. Dies entspricht der Auswahl einer Datenbank bei der Verbindung mit `mysql -u benutzer -p datenbankname`.
+    Die <code>USE</code>-Anweisung wählt eine Datenbank aus und macht sie zur aktiven Datenbank für alle nachfolgenden SQL-Anweisungen. Dies entspricht der Auswahl einer Datenbank bei der Verbindung mit <code>mysql -u benutzer -p datenbankname</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -197,13 +197,13 @@ INSERT INTO benutzer_backup SELECT * FROM benutzer;
     Wie lautet die korrekte Syntax zum Einfügen eines einzelnen Datensatzes?
   </template>
   
-  <BaseQuizOption value="A" correct>`INSERT INTO tabellenname (spalte1, spalte2) VALUES (wert1, wert2);`</BaseQuizOption>
-  <BaseQuizOption value="B">`INSERT tabellenname VALUES (wert1, wert2);`</BaseQuizOption>
-  <BaseQuizOption value="C">`ADD INTO tabellenname (spalte1, spalte2) VALUES (wert1, wert2);`</BaseQuizOption>
-  <BaseQuizOption value="D">`INSERT tabellenname (spalte1, spalte2) = (wert1, wert2);`</BaseQuizOption>
+  <BaseQuizOption value="A" correct><code>INSERT INTO tabellenname (spalte1, spalte2) VALUES (wert1, wert2);</code></BaseQuizOption>
+  <BaseQuizOption value="B"><code>INSERT tabellenname VALUES (wert1, wert2);</code></BaseQuizOption>
+  <BaseQuizOption value="C"><code>ADD INTO tabellenname (spalte1, spalte2) VALUES (wert1, wert2);</code></BaseQuizOption>
+  <BaseQuizOption value="D"><code>INSERT tabellenname (spalte1, spalte2) = (wert1, wert2);</code></BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die korrekte Syntax lautet `INSERT INTO tabellenname (spalten) VALUES (werte)`. Das Schlüsselwort `INTO` ist erforderlich, und Sie müssen sowohl die Spaltennamen als auch die entsprechenden Werte angeben.
+    Die korrekte Syntax lautet <code>INSERT INTO tabellenname (spalten) VALUES (werte)</code>. Das Schlüsselwort <code>INTO</code> ist erforderlich, und Sie müssen sowohl die Spaltennamen als auch die entsprechenden Werte angeben.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -270,7 +270,7 @@ SELECT * FROM benutzer WHERE alter > 20 AND email LIKE '%gmail.com';
 
 <BaseQuiz id="mysql-select-1" correct="D">
   <template #question>
-    Was gibt `SELECT * FROM benutzer` zurück?
+    Was gibt <code>SELECT * FROM benutzer</code> zurück?
   </template>
   
   <BaseQuizOption value="A">Nur die erste Zeile aus der Benutzer-Tabelle</BaseQuizOption>
@@ -279,7 +279,7 @@ SELECT * FROM benutzer WHERE alter > 20 AND email LIKE '%gmail.com';
   <BaseQuizOption value="D" correct>Alle Spalten und alle Zeilen aus der Benutzer-Tabelle</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das `*`-Wildcard wählt alle Spalten aus, und ohne eine WHERE-Klausel werden alle Zeilen zurückgegeben. Dies ist nützlich, um alle Daten anzuzeigen, sollte aber bei großen Tabellen mit Vorsicht verwendet werden.
+    Das <code>*</code>-Wildcard wählt alle Spalten aus, und ohne eine WHERE-Klausel werden alle Zeilen zurückgegeben. Dies ist nützlich, um alle Daten anzuzeigen, sollte aber bei großen Tabellen mit Vorsicht verwendet werden.
   </BaseQuizAnswer>
 </BaseQuiz>
 

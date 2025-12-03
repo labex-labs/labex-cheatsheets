@@ -155,7 +155,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
 
 <BaseQuiz id="jenkins-build-1" correct="B">
   <template #question>
-    `jenkins-cli.jar build my-job -s`에서 `-s` 플래그는 무엇을 수행합니까?
+    <code>jenkins-cli.jar build my-job -s</code>에서 <code>-s</code> 플래그는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">빌드를 건너뜁니다</BaseQuizOption>
@@ -164,7 +164,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
   <BaseQuizOption value="D">빌드를 중지합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-s` 플래그는 빌드 명령을 동기식으로 만들어 빌드가 완료될 때까지 기다린 후 반환합니다. 이 플래그가 없으면 명령은 빌드를 트리거한 직후에 반환됩니다.
+    <code>-s</code> 플래그는 빌드 명령을 동기식으로 만들어 빌드가 완료될 때까지 기다린 후 반환합니다. 이 플래그가 없으면 명령은 빌드를 트리거한 직후에 반환됩니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -225,7 +225,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
 
 <BaseQuiz id="jenkins-console-1" correct="C">
   <template #question>
-    `jenkins-cli.jar console my-job -f`에서 `-f` 플래그는 무엇을 수행합니까?
+    <code>jenkins-cli.jar console my-job -f</code>에서 <code>-f</code> 플래그는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">빌드를 강제로 중지합니다</BaseQuizOption>
@@ -234,7 +234,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
   <BaseQuizOption value="D">출력을 JSON 형식으로 지정합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-f` 플래그는 Linux 의 `tail -f`와 유사하게 콘솔 출력을 실시간으로 팔로우합니다. 이는 빌드가 실행되는 동안 모니터링하는 데 유용합니다.
+    <code>-f</code> 플래그는 Linux 의 <code>tail -f</code>와 유사하게 콘솔 출력을 실시간으로 팔로우합니다. 이는 빌드가 실행되는 동안 모니터링하는 데 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

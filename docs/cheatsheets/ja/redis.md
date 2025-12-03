@@ -84,7 +84,7 @@ SET mykey "new_value" NX
 
 <BaseQuiz id="redis-set-get-1" correct="C">
   <template #question>
-    `SET mykey "value" EX 3600`は何をしますか？
+    <code>SET mykey "value" EX 3600</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A">3600 バイトの値でキーを設定します</BaseQuizOption>
@@ -93,7 +93,7 @@ SET mykey "new_value" NX
   <BaseQuizOption value="D">3600 個の異なる値でキーを設定します</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `EX` オプションは秒単位で有効期限を設定します。`SET mykey "value" EX 3600`は値を保存し、3600 秒（1 時間）後に自動的に削除します。
+    <code>EX</code> オプションは秒単位で有効期限を設定します。<code>SET mykey "value" EX 3600</code>は値を保存し、3600 秒（1 時間）後に自動的に削除します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -129,7 +129,7 @@ INCRBYFLOAT price 0.1
 
 <BaseQuiz id="redis-incr-1" correct="A">
   <template #question>
-    存在しないキーに対して `INCR` を使用するとどうなりますか？
+    存在しないキーに対して <code>INCR</code> を使用するとどうなりますか？
   </template>
   
   <BaseQuizOption value="A" correct>Redis はキーを作成し、値を 1 にします</BaseQuizOption>
@@ -138,7 +138,7 @@ INCRBYFLOAT price 0.1
   <BaseQuizOption value="D">何も起こりません</BaseQuizOption>
   
   <BaseQuizAnswer>
-    キーが存在しない場合、`INCR`はそれを値が 0 であったかのように扱い、1 にインクリメントしてキーを作成します。これにより、`INCR` はカウンターの初期化に役立ちます。
+    キーが存在しない場合、<code>INCR</code>はそれを値が 0 であったかのように扱い、1 にインクリメントしてキーを作成します。これにより、<code>INCR</code> はカウンターの初期化に役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -202,7 +202,7 @@ LLEN mylist
 
 <BaseQuiz id="redis-list-1" correct="B">
   <template #question>
-    `LRANGE mylist 0 -1`は何を返しますか？
+    <code>LRANGE mylist 0 -1</code>は何を返しますか？
   </template>
   
   <BaseQuizOption value="A">最初の要素のみ</BaseQuizOption>
@@ -211,7 +211,7 @@ LLEN mylist
   <BaseQuizOption value="D">エラー</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `0 -1`を指定した `LRANGE`はリスト内のすべての要素を返します。`0`は開始インデックス、`-1` は最後の要素を表すため、最初から最後まで全てを取得します。
+    <code>0 -1</code>を指定した <code>LRANGE</code>はリスト内のすべての要素を返します。<code>0</code>は開始インデックス、<code>-1</code> は最後の要素を表すため、最初から最後まで全てを取得します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

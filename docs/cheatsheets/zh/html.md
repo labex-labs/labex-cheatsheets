@@ -41,7 +41,7 @@ HTML 速查表
 
 <BaseQuiz id="html-doctype-1" correct="A">
   <template #question>
-    `<!DOCTYPE html>` 的目的是什么？
+    <code><!DOCTYPE html></code> 的目的是什么？
   </template>
   
   <BaseQuizOption value="A" correct>它声明了文档类型和 HTML 版本</BaseQuizOption>
@@ -50,7 +50,7 @@ HTML 速查表
   <BaseQuizOption value="D">它设置了页面标题</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `<!DOCTYPE html>` 声明告诉浏览器文档正在使用的 HTML 版本。对于 HTML5，这个简单的声明就足够了，并且应该是每个 HTML 文档的第一行。
+    <code><!DOCTYPE html></code> 声明告诉浏览器文档正在使用的 HTML 版本。对于 HTML5，这个简单的声明就足够了，并且应该是每个 HTML 文档的第一行。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -128,7 +128,7 @@ HTML 元素由开始标签、内容和结束标签组成。
   <BaseQuizOption value="D">h6 是最重要的标题</BaseQuizOption>
   
   <BaseQuizAnswer>
-    HTML 标题应遵循逻辑层次结构：使用一个 `h1` 作为主页面标题，然后使用 `h2` 表示主要部分，`h3` 表示子部分，依此类推。这有助于可访问性和 SEO。
+    HTML 标题应遵循逻辑层次结构：使用一个 <code>h1</code> 作为主页面标题，然后使用 <code>h2</code> 表示主要部分，<code>h3</code> 表示子部分，依此类推。这有助于可访问性和 SEO。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -260,7 +260,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 
 <BaseQuiz id="html-links-1" correct="B">
   <template #question>
-    锚点标签中的 `target="_blank"` 有什么作用？
+    锚点标签中的 <code>target="_blank"</code> 有什么作用？
   </template>
   
   <BaseQuizOption value="A">在同一窗口中打开链接</BaseQuizOption>
@@ -269,7 +269,7 @@ HTML 元素由开始标签、内容和结束标签组成。
   <BaseQuizOption value="D">下载链接内容</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `target="_blank"` 属性会在新的浏览器标签页或窗口中打开链接的页面，使用户可以保持原始页面打开。
+    <code>target="_blank"</code> 属性会在新的浏览器标签页或窗口中打开链接的页面，使用户可以保持原始页面打开。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -353,7 +353,7 @@ HTML 元素由开始标签、内容和结束标签组成。
 
 <BaseQuiz id="html-validation-1" correct="A">
   <template #question>
-    HTML 输入中的 `required` 属性有什么作用？
+    HTML 输入中的 <code>required</code> 属性有什么作用？
   </template>
   
   <BaseQuizOption value="A" correct>如果字段为空，则阻止表单提交</BaseQuizOption>
@@ -362,7 +362,7 @@ HTML 元素由开始标签、内容和结束标签组成。
   <BaseQuizOption value="D">设置默认值</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `required` 属性使输入字段成为必填项。如果提交表单时该字段为空，浏览器将阻止提交并显示验证消息。
+    <code>required</code> 属性使输入字段成为必填项。如果提交表单时该字段为空，浏览器将阻止提交并显示验证消息。
   </BaseQuizAnswer>
 </BaseQuiz>
 

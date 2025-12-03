@@ -74,7 +74,7 @@ df.fillna(df.mean())  # 处理缺失值
 
 <BaseQuiz id="datascience-pandas-1" correct="C">
   <template #question>
-    Pandas 中的 `df.head()` 返回什么？
+    Pandas 中的 <code>df.head()</code> 返回什么？
   </template>
   
   <BaseQuizOption value="A">DataFrame 的最后 5 行</BaseQuizOption>
@@ -83,7 +83,7 @@ df.fillna(df.mean())  # 处理缺失值
   <BaseQuizOption value="D">DataFrame 的所有行</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `df.head()` 默认显示 DataFrame 的前 5 行。您可以指定不同的数字，例如 `df.head(10)` 查看前 10 行。它对于快速检查数据很有用。
+    <code>df.head()</code> 默认显示 DataFrame 的前 5 行。您可以指定不同的数字，例如 <code>df.head(10)</code> 查看前 10 行。它对于快速检查数据很有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df_filled = pd.DataFrame(imputer.fit_transform(df))
 
 <BaseQuiz id="datascience-missing-1" correct="B">
   <template #question>
-    前向填充（`method='forward'`）用于什么？
+    前向填充（<code>method='forward'</code>）用于什么？
   </template>
   
   <BaseQuizOption value="A">用均值填充缺失值</BaseQuizOption>

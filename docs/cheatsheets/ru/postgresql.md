@@ -133,7 +133,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="postgresql-create-table-1" correct="A">
   <template #question>
-    Что делает `SERIAL PRIMARY KEY` в PostgreSQL?
+    Что делает <code>SERIAL PRIMARY KEY</code> в PostgreSQL?
   </template>
   
   <BaseQuizOption value="A" correct>Создает автоинкрементруемый целочисленный столбец, который служит первичным ключом</BaseQuizOption>
@@ -142,7 +142,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">Создает уникальный индекс</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SERIAL` — это специфичный для PostgreSQL тип данных, который создает автоматически увеличивающееся целое число. В сочетании с `PRIMARY KEY` он создает уникальный идентификатор для каждой строки, который автоматически увеличивается.
+    <code>SERIAL</code> — это специфичный для PostgreSQL тип данных, который создает автоматически увеличивающееся целое число. В сочетании с <code>PRIMARY KEY</code> он создает уникальный идентификатор для каждой строки, который автоматически увеличивается.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ SELECT * FROM users WHERE active = false;
 
 <BaseQuiz id="postgresql-insert-1" correct="C">
   <template #question>
-    Что делает `RETURNING` в операторе INSERT PostgreSQL?
+    Что делает <code>RETURNING</code> в операторе INSERT PostgreSQL?
   </template>
   
   <BaseQuizOption value="A">Откатывает вставку</BaseQuizOption>
@@ -299,7 +299,7 @@ SELECT * FROM users WHERE active = false;
   <BaseQuizOption value="D">Обновляет существующие строки</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Предложение `RETURNING` в PostgreSQL позволяет извлечь данные вставленной строки (или конкретные столбцы) сразу после вставки, что полезно для получения автоматически сгенерированных идентификаторов или временных меток.
+    Предложение <code>RETURNING</code> в PostgreSQL позволяет извлечь данные вставленной строки (или конкретные столбцы) сразу после вставки, что полезно для получения автоматически сгенерированных идентификаторов или временных меток.
   </BaseQuizAnswer>
 </BaseQuiz>
 

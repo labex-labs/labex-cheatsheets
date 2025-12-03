@@ -87,7 +87,7 @@ nmap 192.168.1.1 192.168.1.5
 
 <BaseQuiz id="nmap-scan-1" correct="A">
   <template #question>
-    基本的な `nmap 192.168.1.1` スキャンはデフォルトで何を行いますか？
+    基本的な <code>nmap 192.168.1.1</code> スキャンはデフォルトで何を行いますか？
   </template>
   
   <BaseQuizOption value="A" correct>最も一般的な 1000 の TCP ポートをスキャンする</BaseQuizOption>
@@ -96,7 +96,7 @@ nmap 192.168.1.1 192.168.1.5
   <BaseQuizOption value="D">ポート 80 のみをスキャンする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    デフォルトでは、Nmap は最も一般的な 1000 の TCP ポートをスキャンします。全ポートをスキャンするには `-p-` を使用するか、`-p 80,443,22` で特定のポートを指定します。
+    デフォルトでは、Nmap は最も一般的な 1000 の TCP ポートをスキャンします。全ポートをスキャンするには <code>-p-</code> を使用するか、<code>-p 80,443,22</code> で特定のポートを指定します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -145,7 +145,7 @@ nmap -PE 192.168.1.0/24
 
 <BaseQuiz id="nmap-ping-1" correct="A">
   <template #question>
-    `nmap -sn` は何を行いますか？
+    <code>nmap -sn</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A" correct>ポートスキャンを行わず、ホストディスカバリのみを実行する</BaseQuizOption>
@@ -154,7 +154,7 @@ nmap -PE 192.168.1.0/24
   <BaseQuizOption value="D">UDP ポートのみをスキャンする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-sn` フラグは、Nmap にホストディスカバリ（ping スキャン）のみを実行し、ポートスキャンは行わないように指示します。これは、ネットワーク上でどのホストがオンラインであるかを素早く特定するのに役立ちます。
+    <code>-sn</code> フラグは、Nmap にホストディスカバリ（ping スキャン）のみを実行し、ポートスキャンは行わないように指示します。これは、ネットワーク上でどのホストがオンラインであるかを素早く特定するのに役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 

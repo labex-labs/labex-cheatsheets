@@ -137,7 +137,7 @@ cd /path/to/directory
 
 <BaseQuiz id="shell-cd-1" correct="A">
   <template #question>
-    `cd ~` 的作用是什么？
+    <code>cd ~</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A" correct>更改到主目录</BaseQuizOption>
@@ -146,7 +146,7 @@ cd /path/to/directory
   <BaseQuizOption value="D">创建一个新目录</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `~` 符号是主目录的快捷方式。`cd ~` 导航到你的主目录，等同于 `cd $HOME` 或 `cd /home/username`。
+    <code>~</code> 符号是主目录的快捷方式。<code>cd ~</code> 导航到你的主目录，等同于 <code>cd $HOME</code> 或 <code>cd /home/username</code>。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -203,7 +203,7 @@ grep -c "pattern" file.txt
 
 <BaseQuiz id="shell-grep-1" correct="B">
   <template #question>
-    `grep -r "pattern" directory/` 的作用是什么？
+    <code>grep -r "pattern" directory/</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">只在当前文件中搜索</BaseQuizOption>
@@ -212,7 +212,7 @@ grep -c "pattern" file.txt
   <BaseQuizOption value="D">删除包含该模式的文件</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-r` 标志使 grep 递归搜索所有文件和子目录。这在跨整个目录树查找文本模式时非常有用。
+    <code>-r</code> 标志使 grep 递归搜索所有文件和子目录。这在跨整个目录树查找文本模式时非常有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -281,7 +281,7 @@ chmod -R 644 directory/
 
 <BaseQuiz id="shell-chmod-1" correct="C">
   <template #question>
-    `chmod 755 file.txt` 设置了什么权限？
+    <code>chmod 755 file.txt</code> 设置了什么权限？
   </template>
   
   <BaseQuizOption value="A">所有用户都具有读、写、执行权限</BaseQuizOption>
@@ -290,7 +290,7 @@ chmod -R 644 directory/
   <BaseQuizOption value="D">所有用户都只有读取权限</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` 设置的权限是：所有者 = 7 (rwx)，组 = 5 (r-x)，其他用户 = 5 (r-x)。这是可执行文件和目录的常见权限设置。
+    <code>chmod 755</code> 设置的权限是：所有者 = 7 (rwx)，组 = 5 (r-x)，其他用户 = 5 (r-x)。这是可执行文件和目录的常见权限设置。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -409,16 +409,16 @@ command > /dev/null
 
 <BaseQuiz id="shell-redirect-1" correct="B">
   <template #question>
-    Shell 重定向中的 `>` 和 `>>` 有什么区别？
+    Shell 重定向中的 <code>></code> 和 <code>>></code> 有什么区别？
   </template>
   
-  <BaseQuizOption value="A">`>` 追加，`>>` 覆盖</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`>` 覆盖文件，`>>` 追加到文件</BaseQuizOption>
-  <BaseQuizOption value="C">`>` 重定向 stdout，`>>` 重定向 stderr</BaseQuizOption>
+  <BaseQuizOption value="A"><code>></code> 追加，<code>>></code> 覆盖</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>></code> 覆盖文件，<code>>></code> 追加到文件</BaseQuizOption>
+  <BaseQuizOption value="C"><code>></code> 重定向 stdout，<code>>></code> 重定向 stderr</BaseQuizOption>
   <BaseQuizOption value="D">没有区别</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `>` 运算符如果目标文件存在则会覆盖它，而 `>>` 会将输出追加到文件末尾。当你希望保留现有内容时，应使用 `>>`。
+    <code>></code> 运算符如果目标文件存在则会覆盖它，而 <code>>></code> 会将输出追加到文件末尾。当你希望保留现有内容时，应使用 <code>>></code>。
   </BaseQuizAnswer>
 </BaseQuiz>
 

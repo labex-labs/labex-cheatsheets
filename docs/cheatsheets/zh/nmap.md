@@ -87,7 +87,7 @@ nmap 192.168.1.1 192.168.1.5
 
 <BaseQuiz id="nmap-scan-1" correct="A">
   <template #question>
-    默认情况下，`nmap 192.168.1.1` 扫描执行什么操作？
+    默认情况下，<code>nmap 192.168.1.1</code> 扫描执行什么操作？
   </template>
   
   <BaseQuizOption value="A" correct>扫描最常见的 1000 个 TCP 端口</BaseQuizOption>
@@ -96,7 +96,7 @@ nmap 192.168.1.1 192.168.1.5
   <BaseQuizOption value="D">仅扫描端口 80</BaseQuizOption>
   
   <BaseQuizAnswer>
-    默认情况下，Nmap 扫描最常见的 1000 个 TCP 端口。要扫描所有端口，请使用 `-p-`，或使用 `-p 80,443,22` 指定特定端口。
+    默认情况下，Nmap 扫描最常见的 1000 个 TCP 端口。要扫描所有端口，请使用 <code>-p-</code>，或使用 <code>-p 80,443,22</code> 指定特定端口。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -145,7 +145,7 @@ nmap -PE 192.168.1.0/24
 
 <BaseQuiz id="nmap-ping-1" correct="A">
   <template #question>
-    `nmap -sn` 执行什么操作？
+    <code>nmap -sn</code> 执行什么操作？
   </template>
   
   <BaseQuizOption value="A" correct>仅执行主机发现，不进行端口扫描</BaseQuizOption>
@@ -154,7 +154,7 @@ nmap -PE 192.168.1.0/24
   <BaseQuizOption value="D">仅扫描 UDP 端口</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-sn` 标志告诉 Nmap 只执行主机发现（Ping 扫描），而不扫描端口。这对于快速识别网络上有哪些主机在线很有用。
+    <code>-sn</code> 标志告诉 Nmap 只执行主机发现（Ping 扫描），而不扫描端口。这对于快速识别网络上有哪些主机在线很有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 

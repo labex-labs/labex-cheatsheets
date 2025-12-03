@@ -42,7 +42,7 @@ var oldVariable = 'legacy'
 
 <BaseQuiz id="javascript-let-const-1" correct="B">
   <template #question>
-    Qual é a principal diferença entre `let` e `const`?
+    Qual é a principal diferença entre <code>let</code> e <code>const</code>?
   </template>
   
   <BaseQuizOption value="A">let tem escopo de função, const tem escopo de bloco</BaseQuizOption>
@@ -51,7 +51,7 @@ var oldVariable = 'legacy'
   <BaseQuizOption value="D">Não há diferença</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Tanto `let` quanto `const` têm escopo de bloco, mas `let` permite que você reatribua a variável, enquanto `const` impede a reatribuição. No entanto, as propriedades de objetos `const` ainda podem ser modificadas.
+    Tanto <code>let</code> quanto <code>const</code> têm escopo de bloco, mas <code>let</code> permite que você reatribua a variável, enquanto <code>const</code> impede a reatribuição. No entanto, as propriedades de objetos <code>const</code> ainda podem ser modificadas.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -168,12 +168,12 @@ const processData = (data) => {
   </template>
   
   <BaseQuizOption value="A">Elas são içadas (hoisted) como declarações de função</BaseQuizOption>
-  <BaseQuizOption value="B">Elas têm sua própria ligação `this`</BaseQuizOption>
-  <BaseQuizOption value="C" correct>Elas herdam `this` do escopo envolvente</BaseQuizOption>
+  <BaseQuizOption value="B">Elas têm sua própria ligação <code>this</code></BaseQuizOption>
+  <BaseQuizOption value="C" correct>Elas herdam <code>this</code> do escopo envolvente</BaseQuizOption>
   <BaseQuizOption value="D">Elas não podem retornar valores</BaseQuizOption>
   
   <BaseQuizAnswer>
-    As funções de seta não têm sua própria ligação `this`. Em vez disso, elas herdam `this` do escopo léxico (envolvente), o que as torna úteis para callbacks e manipuladores de eventos onde você deseja preservar o contexto.
+    As funções de seta não têm sua própria ligação <code>this</code>. Em vez disso, elas herdam <code>this</code> do escopo léxico (envolvente), o que as torna úteis para callbacks e manipuladores de eventos onde você deseja preservar o contexto.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -226,7 +226,7 @@ const result = numbers
 
 <BaseQuiz id="javascript-array-1" correct="A">
   <template #question>
-    O que `filter()` retorna?
+    O que <code>filter()</code> retorna?
   </template>
   
   <BaseQuizOption value="A" correct>Um novo array com os elementos que passam no teste</BaseQuizOption>
@@ -235,7 +235,7 @@ const result = numbers
   <BaseQuizOption value="D">O array original modificado no local</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O método `filter()` cria um novo array contendo todos os elementos que passam no teste implementado pela função fornecida. Ele não modifica o array original.
+    O método <code>filter()</code> cria um novo array contendo todos os elementos que passam no teste implementado pela função fornecida. Ele não modifica o array original.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ const buttonsArray = Array.from(allButtons)
 
 <BaseQuiz id="javascript-dom-1" correct="C">
   <template #question>
-    Qual é a diferença entre `querySelector()` e `querySelectorAll()`?
+    Qual é a diferença entre <code>querySelector()</code> e <code>querySelectorAll()</code>?
   </template>
   
   <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
@@ -335,7 +335,7 @@ const buttonsArray = Array.from(allButtons)
   <BaseQuizOption value="D">querySelector funciona com IDs, querySelectorAll funciona com classes</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `querySelector()` retorna o primeiro elemento que corresponde ao seletor CSS, enquanto `querySelectorAll()` retorna uma NodeList contendo todos os elementos correspondentes. Use `querySelector()` quando precisar de um elemento, e `querySelectorAll()` quando precisar de vários.
+    <code>querySelector()</code> retorna o primeiro elemento que corresponde ao seletor CSS, enquanto <code>querySelectorAll()</code> retorna uma NodeList contendo todos os elementos correspondentes. Use <code>querySelector()</code> quando precisar de um elemento, e <code>querySelectorAll()</code> quando precisar de vários.
   </BaseQuizAnswer>
 </BaseQuiz>
 

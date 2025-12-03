@@ -51,16 +51,16 @@ hydra -l admin -p password123 192.168.1.100 ftp
 
 <BaseQuiz id="hydra-syntax-1" correct="B">
   <template #question>
-    Hydra 中的 `-l` 和 `-L` 有什么区别？
+    Hydra 中的 <code>-l</code> 和 <code>-L</code> 有什么区别？
   </template>
   
-  <BaseQuizOption value="A">`-l` 用于密码，`-L` 用于用户名</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`-l` 指定单个用户名，`-L` 指定用户名列表文件</BaseQuizOption>
+  <BaseQuizOption value="A"><code>-l</code> 用于密码，<code>-L</code> 用于用户名</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>-l</code> 指定单个用户名，<code>-L</code> 指定用户名列表文件</BaseQuizOption>
   <BaseQuizOption value="C">没有区别</BaseQuizOption>
-  <BaseQuizOption value="D">`-l` 是小写，`-L` 是大写</BaseQuizOption>
+  <BaseQuizOption value="D"><code>-l</code> 是小写，<code>-L</code> 是大写</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-l` 选项用于单个用户名，而 `-L` 用于包含用户名列表的文件。类似地，`-p` 用于单个密码，`-P` 用于密码列表文件。
+    <code>-l</code> 选项用于单个用户名，而 <code>-L</code> 用于包含用户名列表的文件。类似地，<code>-p</code> 用于单个密码，<code>-P</code> 用于密码列表文件。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -95,7 +95,7 @@ hydra -l admin -P passwords.txt target.com ssh -V
 
 <BaseQuiz id="hydra-output-1" correct="A">
   <template #question>
-    `hydra -V` 的作用是什么？
+    <code>hydra -V</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A" correct>启用详细输出，显示详细进度</BaseQuizOption>
@@ -104,7 +104,7 @@ hydra -l admin -P passwords.txt target.com ssh -V
   <BaseQuizOption value="D">仅以详细模式运行</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-V` 标志启用详细模式，它会显示详细的输出，包括每次登录尝试，使在密码攻击期间更容易监控进度和调试问题。
+    <code>-V</code> 标志启用详细模式，它会显示详细的输出，包括每次登录尝试，使在密码攻击期间更容易监控进度和调试问题。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -127,7 +127,7 @@ hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 
 <BaseQuiz id="hydra-ssh-1" correct="C">
   <template #question>
-    Hydra 中的 `-s` 标志的作用是什么？
+    Hydra 中的 <code>-s</code> 标志的作用是什么？
   </template>
   
   <BaseQuizOption value="A">设置服务类型</BaseQuizOption>
@@ -136,7 +136,7 @@ hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
   <BaseQuizOption value="D">设置线程数</BaseQuizOption>
   
   <BaseQuizAnswer>
-    当服务运行在非标准端口上时，`-s` 标志用于指定自定义端口号。例如，`-s 2222` 针对端口 2222 上的 SSH，而不是默认端口 22。
+    当服务运行在非标准端口上时，<code>-s</code> 标志用于指定自定义端口号。例如，<code>-s 2222</code> 针对端口 2222 上的 SSH，而不是默认端口 22。
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -73,7 +73,7 @@ df.fillna(df.mean())  # 欠損値の処理
 
 <BaseQuiz id="datascience-pandas-1" correct="C">
   <template #question>
-    Pandas で `df.head()` は何を返しますか？
+    Pandas で <code>df.head()</code> は何を返しますか？
   </template>
   
   <BaseQuizOption value="A">DataFrame の最後の 5 行</BaseQuizOption>
@@ -82,7 +82,7 @@ df.fillna(df.mean())  # 欠損値の処理
   <BaseQuizOption value="D">DataFrame のすべての行</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `df.head()`はデフォルトで DataFrame の最初の 5 行を表示します。`df.head(10)` のように異なる数値を指定して最初の 10 行を表示することもできます。データを素早く確認するのに役立ちます。
+    <code>df.head()</code>はデフォルトで DataFrame の最初の 5 行を表示します。<code>df.head(10)</code> のように異なる数値を指定して最初の 10 行を表示することもできます。データを素早く確認するのに役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -175,7 +175,7 @@ df_filled = pd.DataFrame(imputer.fit_transform(df))
 
 <BaseQuiz id="datascience-missing-1" correct="B">
   <template #question>
-    `method='forward'` による前方補完は何に使用されますか？
+    <code>method='forward'</code> による前方補完は何に使用されますか？
   </template>
   
   <BaseQuizOption value="A">欠損値を平均値で埋める</BaseQuizOption>

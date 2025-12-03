@@ -42,7 +42,7 @@ var oldVariable = 'legacy'
 
 <BaseQuiz id="javascript-let-const-1" correct="B">
   <template #question>
-    `let`と `const` の主な違いは何ですか？
+    <code>let</code>と <code>const</code> の主な違いは何ですか？
   </template>
   
   <BaseQuizOption value="A">let は関数スコープ、const はブロック スコープである</BaseQuizOption>
@@ -51,7 +51,7 @@ var oldVariable = 'legacy'
   <BaseQuizOption value="D">違いはない</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `let`も `const` もブロック スコープですが、`let`は変数の再代入を許可し、`const`は再代入を防ぎます。ただし、`const` オブジェクトのプロパティは変更可能です。
+    <code>let</code>も <code>const</code> もブロック スコープですが、<code>let</code>は変数の再代入を許可し、<code>const</code>は再代入を防ぎます。ただし、<code>const</code> オブジェクトのプロパティは変更可能です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -168,12 +168,12 @@ const processData = (data) => {
   </template>
   
   <BaseQuizOption value="A">関数宣言のように巻き上げられる</BaseQuizOption>
-  <BaseQuizOption value="B">独自の `this` バインディングを持つ</BaseQuizOption>
-  <BaseQuizOption value="C" correct>囲むスコープから `this` を継承する</BaseQuizOption>
+  <BaseQuizOption value="B">独自の <code>this</code> バインディングを持つ</BaseQuizOption>
+  <BaseQuizOption value="C" correct>囲むスコープから <code>this</code> を継承する</BaseQuizOption>
   <BaseQuizOption value="D">値を返すことができない</BaseQuizOption>
   
   <BaseQuizAnswer>
-    アロー関数は独自の `this`バインディングを持ちません。代わりに、レキシカル（囲む）スコープから`this` を継承するため、コンテキストを保持したいコールバックやイベントハンドラで役立ちます。
+    アロー関数は独自の <code>this</code>バインディングを持ちません。代わりに、レキシカル（囲む）スコープから<code>this</code> を継承するため、コンテキストを保持したいコールバックやイベントハンドラで役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -226,7 +226,7 @@ const result = numbers
 
 <BaseQuiz id="javascript-array-1" correct="A">
   <template #question>
-    `filter()` は何を返しますか？
+    <code>filter()</code> は何を返しますか？
   </template>
   
   <BaseQuizOption value="A" correct>テストに合格した要素を持つ新しい配列</BaseQuizOption>
@@ -235,7 +235,7 @@ const result = numbers
   <BaseQuizOption value="D">インプレースで変更された元の配列</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `filter()` メソッドは、提供された関数によって実装されたテストに合格したすべての要素を含む新しい配列を作成します。元の配列は変更されません。
+    <code>filter()</code> メソッドは、提供された関数によって実装されたテストに合格したすべての要素を含む新しい配列を作成します。元の配列は変更されません。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ const buttonsArray = Array.from(allButtons)
 
 <BaseQuiz id="javascript-dom-1" correct="C">
   <template #question>
-    `querySelector()`と `querySelectorAll()` の違いは何ですか？
+    <code>querySelector()</code>と <code>querySelectorAll()</code> の違いは何ですか？
   </template>
   
   <BaseQuizOption value="A">違いはない</BaseQuizOption>
@@ -335,7 +335,7 @@ const buttonsArray = Array.from(allButtons)
   <BaseQuizOption value="D">querySelector は ID に使用され、querySelectorAll はクラスに使用される</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `querySelector()`は CSS セレクタに一致する最初の要素を返し、`querySelectorAll()`は一致するすべての要素を含む NodeList を返します。1 つの要素が必要な場合は `querySelector()`を、複数の要素が必要な場合は`querySelectorAll()` を使用します。
+    <code>querySelector()</code>は CSS セレクタに一致する最初の要素を返し、<code>querySelectorAll()</code>は一致するすべての要素を含む NodeList を返します。1 つの要素が必要な場合は <code>querySelector()</code>を、複数の要素が必要な場合は<code>querySelectorAll()</code> を使用します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

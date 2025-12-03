@@ -137,7 +137,7 @@ cd /path/to/directory
 
 <BaseQuiz id="shell-cd-1" correct="A">
   <template #question>
-    Что делает `cd ~`?
+    Что делает <code>cd ~</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Переходит в домашний каталог</BaseQuizOption>
@@ -146,7 +146,7 @@ cd /path/to/directory
   <BaseQuizOption value="D">Создает новый каталог</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Символ `~` является сокращением для домашнего каталога. `cd ~` переходит в ваш домашний каталог, что эквивалентно `cd $HOME` или `cd /home/username`.
+    Символ <code>~</code> является сокращением для домашнего каталога. <code>cd ~</code> переходит в ваш домашний каталог, что эквивалентно <code>cd $HOME</code> или <code>cd /home/username</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -203,7 +203,7 @@ grep -c "pattern" file.txt
 
 <BaseQuiz id="shell-grep-1" correct="B">
   <template #question>
-    Что делает `grep -r "pattern" directory/`?
+    Что делает <code>grep -r "pattern" directory/</code>?
   </template>
   
   <BaseQuizOption value="A">Ищет только в текущем файле</BaseQuizOption>
@@ -212,7 +212,7 @@ grep -c "pattern" file.txt
   <BaseQuizOption value="D">Удаляет файлы, содержащие шаблон</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-r` заставляет grep рекурсивно искать во всех файлах и подкаталогах. Это полезно для поиска текстовых шаблонов по всему дереву каталогов.
+    Флаг <code>-r</code> заставляет grep рекурсивно искать во всех файлах и подкаталогах. Это полезно для поиска текстовых шаблонов по всему дереву каталогов.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -281,7 +281,7 @@ chmod -R 644 directory/
 
 <BaseQuiz id="shell-chmod-1" correct="C">
   <template #question>
-    Что устанавливает `chmod 755 file.txt`?
+    Что устанавливает <code>chmod 755 file.txt</code>?
   </template>
   
   <BaseQuizOption value="A">Чтение, запись, выполнение для всех пользователей</BaseQuizOption>
@@ -290,7 +290,7 @@ chmod -R 644 directory/
   <BaseQuizOption value="D">Только чтение для всех пользователей</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` устанавливает разрешения как: владелец = 7 (rwx), группа = 5 (r-x), остальные = 5 (r-x). Это распространенный набор разрешений для исполняемых файлов и каталогов.
+    <code>chmod 755</code> устанавливает разрешения как: владелец = 7 (rwx), группа = 5 (r-x), остальные = 5 (r-x). Это распространенный набор разрешений для исполняемых файлов и каталогов.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -409,16 +409,16 @@ command > /dev/null
 
 <BaseQuiz id="shell-redirect-1" correct="B">
   <template #question>
-    В чем разница между `>` и `>>` при перенаправлении в оболочке?
+    В чем разница между <code>></code> и <code>>></code> при перенаправлении в оболочке?
   </template>
   
-  <BaseQuizOption value="A">`>` добавляет, `>>` перезаписывает</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`>` перезаписывает файл, `>>` добавляет в файл</BaseQuizOption>
-  <BaseQuizOption value="C">`>` перенаправляет stdout, `>>` перенаправляет stderr</BaseQuizOption>
+  <BaseQuizOption value="A"><code>></code> добавляет, <code>>></code> перезаписывает</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>></code> перезаписывает файл, <code>>></code> добавляет в файл</BaseQuizOption>
+  <BaseQuizOption value="C"><code>></code> перенаправляет stdout, <code>>></code> перенаправляет stderr</BaseQuizOption>
   <BaseQuizOption value="D">Разницы нет</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Оператор `>` перезаписывает целевой файл, если он существует, в то время как `>>` добавляет вывод в конец файла. Используйте `>>`, если хотите сохранить существующее содержимое.
+    Оператор <code>></code> перезаписывает целевой файл, если он существует, в то время как <code>>></code> добавляет вывод в конец файла. Используйте <code>>></code>, если хотите сохранить существующее содержимое.
   </BaseQuizAnswer>
 </BaseQuiz>
 

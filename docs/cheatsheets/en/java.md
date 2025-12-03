@@ -70,7 +70,7 @@ public static void main(String[] args) {
   <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The main method must be `public static void main(String[] args)`. `public` allows JVM to access it, `static` means it belongs to the class, `void` means it returns nothing, and `String[] args` receives command-line arguments.
+    The main method must be <code>public static void main(String[] args)</code>. <code>public</code> allows JVM to access it, <code>static</code> means it belongs to the class, <code>void</code> means it returns nothing, and <code>String[] args</code> receives command-line arguments.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ String uppercase = message.toUpperCase();
   <BaseQuizOption value="D">Strings are automatically deleted</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Immutability means that once a String object is created, its value cannot be modified. Operations like `toUpperCase()` return a new String object rather than modifying the original.
+    Immutability means that once a String object is created, its value cannot be modified. Operations like <code>toUpperCase()</code> return a new String object rather than modifying the original.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -280,7 +280,7 @@ do {
 
 <BaseQuiz id="java-while-1" correct="B">
   <template #question>
-    What is the key difference between `while` and `do-while` loops?
+    What is the key difference between <code>while</code> and <code>do-while</code> loops?
   </template>
   
   <BaseQuizOption value="A">There is no difference</BaseQuizOption>
@@ -289,7 +289,7 @@ do {
   <BaseQuizOption value="D">do-while only works with arrays</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `do-while` loop checks the condition after executing the loop body, so it always runs at least once. The `while` loop checks the condition first, so it may not execute if the condition is false initially.
+    The <code>do-while</code> loop checks the condition after executing the loop body, so it always runs at least once. The <code>while</code> loop checks the condition first, so it may not execute if the condition is false initially.
   </BaseQuizAnswer>
 </BaseQuiz>
 

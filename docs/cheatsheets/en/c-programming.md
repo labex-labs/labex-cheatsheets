@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 
 <BaseQuiz id="c-main-1" correct="C">
   <template #question>
-    What does `return 0` in the main function indicate?
+    What does <code>return 0</code> in the main function indicate?
   </template>
   
   <BaseQuizOption value="A">The program failed</BaseQuizOption>
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
   <BaseQuizOption value="D">The program returned no value</BaseQuizOption>
   
   <BaseQuizAnswer>
-    In C, `return 0` from the main function indicates successful program execution. Non-zero return values typically indicate errors or abnormal termination.
+    In C, <code>return 0</code> from the main function indicates successful program execution. Non-zero return values typically indicate errors or abnormal termination.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -163,7 +163,7 @@ int size = sizeof(buffer);
   <BaseQuizOption value="D">As pointers only</BaseQuizOption>
   
   <BaseQuizAnswer>
-    In C, strings are represented as arrays of characters (`char`). The string is terminated by a null character (`\0`), which marks the end of the string.
+    In C, strings are represented as arrays of characters (<code>char</code>). The string is terminated by a null character (<code>\0</code>), which marks the end of the string.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ for (int i = 0; i < 3; i++) {
 
 <BaseQuiz id="c-for-loop-1" correct="A">
   <template #question>
-    What does `sizeof(numbers) / sizeof(numbers[0])` calculate?
+    What does <code>sizeof(numbers) / sizeof(numbers[0])</code> calculate?
   </template>
   
   <BaseQuizOption value="A" correct>The number of elements in the array</BaseQuizOption>

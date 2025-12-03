@@ -96,7 +96,7 @@ env | grep TARGET
 
 <BaseQuiz id="kali-env-1" correct="C">
   <template #question>
-    使用 `export` 设置的环境变量会发生什么？
+    使用 <code>export</code> 设置的环境变量会发生什么？
   </template>
   
   <BaseQuizOption value="A">它们在系统重启后仍然存在</BaseQuizOption>
@@ -105,7 +105,7 @@ env | grep TARGET
   <BaseQuizOption value="D">它们是全局系统变量</BaseQuizOption>
   
   <BaseQuizAnswer>
-    使用 `export` 设置的环境变量对当前 shell 会话及其启动的所有子进程都可用。除非添加到 `.bashrc` 等 shell 配置文件中，否则在 shell 会话结束时会丢失。
+    使用 <code>export</code> 设置的环境变量对当前 shell 会话及其启动的所有子进程都可用。除非添加到 <code>.bashrc</code> 等 shell 配置文件中，否则在 shell 会话结束时会丢失。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ nmap -sS 192.168.1.1
 
 <BaseQuiz id="kali-nmap-1" correct="B">
   <template #question>
-    `nmap -sS` 执行什么操作？
+    <code>nmap -sS</code> 执行什么操作？
   </template>
   
   <BaseQuizOption value="A">执行 UDP 扫描</BaseQuizOption>
@@ -165,7 +165,7 @@ nmap -sS 192.168.1.1
   <BaseQuizOption value="D">执行操作系统检测</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-sS` 标志执行 SYN 扫描（也称为半开扫描），因为它从不完成 TCP 三次握手。它发送 SYN 数据包并分析响应，使其比完整的 TCP 连接扫描更隐蔽。
+    <code>-sS</code> 标志执行 SYN 扫描（也称为半开扫描），因为它从不完成 TCP 三次握手。它发送 SYN 数据包并分析响应，使其比完整的 TCP 连接扫描更隐蔽。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ nmap -O 192.168.1.1
 
 <BaseQuiz id="kali-enumeration-1" correct="A">
   <template #question>
-    `nmap -sV` 执行什么操作？
+    <code>nmap -sV</code> 执行什么操作？
   </template>
   
   <BaseQuizOption value="A" correct>检测开放端口上运行的服务版本</BaseQuizOption>
@@ -191,7 +191,7 @@ nmap -O 192.168.1.1
   <BaseQuizOption value="D">仅执行操作系统检测</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-sV` 标志启用版本检测，它会探测开放端口以确定运行的服务和版本。这对于识别与特定软件版本相关的潜在漏洞非常有用。
+    <code>-sV</code> 标志启用版本检测，它会探测开放端口以确定运行的服务和版本。这对于识别与特定软件版本相关的潜在漏洞非常有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 # 脚本扫描

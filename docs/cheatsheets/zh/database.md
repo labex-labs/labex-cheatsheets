@@ -38,7 +38,7 @@ USE company_db;
 
 <BaseQuiz id="database-create-1" correct="A">
   <template #question>
-    `CREATE DATABASE company_db` 的作用是什么？
+    <code>CREATE DATABASE company_db</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A" correct>创建一个名为 company_db 的新的空数据库</BaseQuizOption>
@@ -47,7 +47,7 @@ USE company_db;
   <BaseQuizOption value="D">备份数据库</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `CREATE DATABASE` 创建一个新的空数据库。创建后，您需要使用 `USE` 来选择它，然后才能在其中创建表。
+    <code>CREATE DATABASE</code> 创建一个新的空数据库。创建后，您需要使用 <code>USE</code> 来选择它，然后才能在其中创建表。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -157,7 +157,7 @@ RENAME TABLE employees TO staff;
 
 <BaseQuiz id="database-alter-1" correct="C">
   <template #question>
-    `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)` 的作用是什么？
+    <code>ALTER TABLE employees ADD COLUMN phone VARCHAR(15)</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">删除 phone 列</BaseQuizOption>
@@ -166,7 +166,7 @@ RENAME TABLE employees TO staff;
   <BaseQuizOption value="D">重命名表</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ALTER TABLE ... ADD COLUMN` 向现有表中添加一个新列。对于现有行，新列将添加并默认为 NULL，除非您指定了默认值。
+    <code>ALTER TABLE ... ADD COLUMN</code> 向现有表中添加一个新列。对于现有行，新列将添加并默认为 NULL，除非您指定了默认值。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -294,7 +294,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
 
 <BaseQuiz id="database-where-1" correct="C">
   <template #question>
-    在 WHERE 子句中，`LIKE 'John%'` 匹配什么？
+    在 WHERE 子句中，<code>LIKE 'John%'</code> 匹配什么？
   </template>
   
   <BaseQuizOption value="A">仅精确匹配 "John"</BaseQuizOption>
@@ -303,7 +303,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
   <BaseQuizOption value="D">包含 "John" 任意位置的值</BaseQuizOption>
   
   <BaseQuizAnswer>
-    SQL 中的 `%` 通配符匹配任意字符序列。`LIKE 'John%'` 匹配任何以 "John" 开头的值，例如 "John"、"Johnny"、"Johnson" 等。
+    SQL 中的 <code>%</code> 通配符匹配任意字符序列。<code>LIKE 'John%'</code> 匹配任何以 "John" 开头的值，例如 "John"、"Johnny"、"Johnson" 等。
   </BaseQuizAnswer>
 </BaseQuiz>
 

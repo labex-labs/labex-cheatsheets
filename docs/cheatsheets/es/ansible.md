@@ -174,7 +174,7 @@ ansible all -m command -a "systemctl status nginx" --become
 
 <BaseQuiz id="ansible-command-1" correct="C">
   <template #question>
-    ¿Qué hace `ansible all -m ping`?
+    ¿Qué hace <code>ansible all -m ping</code>?
   </template>
   
   <BaseQuizOption value="A">Prueba la conectividad de red usando ping ICMP</BaseQuizOption>
@@ -183,7 +183,7 @@ ansible all -m command -a "systemctl status nginx" --become
   <BaseQuizOption value="D">Verifica si los hosts están en línea</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El módulo `ping` en Ansible no utiliza ICMP. Es un módulo de prueba que verifica que Ansible puede conectarse a los hosts, ejecutar Python y devolver resultados. Se utiliza para verificar la conectividad y la configuración.
+    El módulo <code>ping</code> en Ansible no utiliza ICMP. Es un módulo de prueba que verifica que Ansible puede conectarse a los hosts, ejecutar Python y devolver resultados. Se utiliza para verificar la conectividad y la configuración.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -278,7 +278,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
 
 <BaseQuiz id="ansible-playbook-1" correct="B">
   <template #question>
-    ¿Qué hace `ansible-playbook site.yml --check`?
+    ¿Qué hace <code>ansible-playbook site.yml --check</code>?
   </template>
   
   <BaseQuizOption value="A">Ejecuta el playbook dos veces</BaseQuizOption>
@@ -287,7 +287,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
   <BaseQuizOption value="D">Ejecuta solo la primera tarea</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La bandera `--check` ejecuta Ansible en modo de verificación (simulación), lo que simula lo que sucedería sin realizar cambios reales. Esto es útil para probar playbooks antes de aplicarlos.
+    La bandera <code>--check</code> ejecuta Ansible en modo de verificación (simulación), lo que simula lo que sucedería sin realizar cambios reales. Esto es útil para probar playbooks antes de aplicarlos.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -53,7 +53,7 @@ DROP DATABASE old_database;
 
 <BaseQuiz id="mysql-database-1" correct="C">
   <template #question>
-    Что делает команда `USE database_name`?
+    Что делает команда <code>USE database_name</code>?
   </template>
   
   <BaseQuizOption value="A">Создает новую базу данных</BaseQuizOption>
@@ -62,7 +62,7 @@ DROP DATABASE old_database;
   <BaseQuizOption value="D">Показывает все таблицы в базе данных</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Команда `USE` выбирает базу данных, делая ее активной для всех последующих SQL-операторов. Это эквивалентно выбору базы данных при подключении с помощью `mysql -u user -p database_name`.
+    Команда <code>USE</code> выбирает базу данных, делая ее активной для всех последующих SQL-операторов. Это эквивалентно выбору базы данных при подключении с помощью <code>mysql -u user -p database_name</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -197,13 +197,13 @@ INSERT INTO users_backup SELECT * FROM users;
     Какой синтаксис правильный для вставки одной записи?
   </template>
   
-  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="A" correct><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="B"><code>INSERT table_name VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="C"><code>ADD INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="D"><code>INSERT table_name (column1, column2) = (value1, value2);</code></BaseQuizOption>
   
   <BaseQuizAnswer>
-    Правильный синтаксис: `INSERT INTO table_name (columns) VALUES (values)`. Ключевое слово `INTO` является обязательным, и необходимо указать как имена столбцов, так и соответствующие им значения.
+    Правильный синтаксис: <code>INSERT INTO table_name (columns) VALUES (values)</code>. Ключевое слово <code>INTO</code> является обязательным, и необходимо указать как имена столбцов, так и соответствующие им значения.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -270,7 +270,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 
 <BaseQuiz id="mysql-select-1" correct="D">
   <template #question>
-    Что возвращает `SELECT * FROM users`?
+    Что возвращает <code>SELECT * FROM users</code>?
   </template>
   
   <BaseQuizOption value="A">Только первую строку из таблицы users</BaseQuizOption>
@@ -279,7 +279,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
   <BaseQuizOption value="D" correct>Все столбцы и все строки из таблицы users</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Символ `*` выбирает все столбцы, а без условия WHERE возвращаются все строки. Это полезно для просмотра всех данных, но следует использовать с осторожностью для больших таблиц.
+    Символ <code>*</code> выбирает все столбцы, а без условия WHERE возвращаются все строки. Это полезно для просмотра всех данных, но следует использовать с осторожностью для больших таблиц.
   </BaseQuizAnswer>
 </BaseQuiz>
 

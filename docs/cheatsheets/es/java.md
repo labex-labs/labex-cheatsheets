@@ -70,7 +70,7 @@ public static void main(String[] args) {
   <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El método main debe ser `public static void main(String[] args)`. `public` permite que la JVM acceda a él, `static` significa que pertenece a la clase, `void` significa que no devuelve nada, y `String[] args` recibe argumentos de línea de comandos.
+    El método main debe ser <code>public static void main(String[] args)</code>. <code>public</code> permite que la JVM acceda a él, <code>static</code> significa que pertenece a la clase, <code>void</code> significa que no devuelve nada, y <code>String[] args</code> recibe argumentos de línea de comandos.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ String uppercase = message.toUpperCase();
   <BaseQuizOption value="D">Las cadenas se eliminan automáticamente</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La inmutabilidad significa que una vez que se crea un objeto String, su valor no se puede modificar. Operaciones como `toUpperCase()` devuelven un nuevo objeto String en lugar de modificar el original.
+    La inmutabilidad significa que una vez que se crea un objeto String, su valor no se puede modificar. Operaciones como <code>toUpperCase()</code> devuelven un nuevo objeto String en lugar de modificar el original.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -280,7 +280,7 @@ do {
 
 <BaseQuiz id="java-while-1" correct="B">
   <template #question>
-    ¿Cuál es la diferencia clave entre los bucles `while` y `do-while`?
+    ¿Cuál es la diferencia clave entre los bucles <code>while</code> y <code>do-while</code>?
   </template>
   
   <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
@@ -289,7 +289,7 @@ do {
   <BaseQuizOption value="D">do-while solo funciona con arrays</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El bucle `do-while` comprueba la condición después de ejecutar el cuerpo del bucle, por lo que siempre se ejecuta al menos una vez. El bucle `while` comprueba la condición primero, por lo que puede no ejecutarse si la condición es falsa inicialmente.
+    El bucle <code>do-while</code> comprueba la condición después de ejecutar el cuerpo del bucle, por lo que siempre se ejecuta al menos una vez. El bucle <code>while</code> comprueba la condición primero, por lo que puede no ejecutarse si la condición es falsa inicialmente.
   </BaseQuizAnswer>
 </BaseQuiz>
 

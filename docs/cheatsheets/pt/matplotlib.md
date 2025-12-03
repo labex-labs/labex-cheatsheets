@@ -46,7 +46,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 
 <BaseQuiz id="matplotlib-plot-1" correct="C">
   <template #question>
-    O que faz `plt.show()` em Matplotlib?
+    O que faz <code>plt.show()</code> em Matplotlib?
   </template>
   
   <BaseQuizOption value="A">Salva o gráfico em um arquivo</BaseQuizOption>
@@ -55,7 +55,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
   <BaseQuizOption value="D">Limpa o gráfico</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `plt.show()` exibe o gráfico em uma janela interativa. É necessário chamar esta função para ver a visualização. Sem ela, o gráfico não será exibido.
+    <code>plt.show()</code> exibe o gráfico em uma janela interativa. É necessário chamar esta função para ver a visualização. Sem ela, o gráfico não será exibido.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -76,7 +76,7 @@ plt.colorbar()  # Adiciona barra de cores
 
 <BaseQuiz id="matplotlib-scatter-1" correct="D">
   <template #question>
-    O que o parâmetro `alpha` controla em gráficos matplotlib?
+    O que o parâmetro <code>alpha</code> controla em gráficos matplotlib?
   </template>
   
   <BaseQuizOption value="A">A cor do gráfico</BaseQuizOption>
@@ -85,7 +85,7 @@ plt.colorbar()  # Adiciona barra de cores
   <BaseQuizOption value="D" correct>A transparência/opacidade dos elementos do gráfico</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O parâmetro `alpha` controla a transparência, com valores de 0 (completamente transparente) a 1 (completamente opaco). É útil para criar visualizações sobrepostas onde se deseja ver através dos elementos.
+    O parâmetro <code>alpha</code> controla a transparência, com valores de 0 (completamente transparente) a 1 (completamente opaco). É útil para criar visualizações sobrepostas onde se deseja ver através dos elementos.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -214,16 +214,16 @@ plt.annotate('Ponto Importante', xy=(2, 4), xytext=(3, 6),
 
 <BaseQuiz id="matplotlib-legend-1" correct="B">
   <template #question>
-    O que é necessário para que `plt.legend()` exiba rótulos?
+    O que é necessário para que <code>plt.legend()</code> exiba rótulos?
   </template>
   
   <BaseQuizOption value="A">Nada, funciona automaticamente</BaseQuizOption>
-  <BaseQuizOption value="B" correct>Cada plotagem deve ter um parâmetro `label` definido</BaseQuizOption>
+  <BaseQuizOption value="B" correct>Cada plotagem deve ter um parâmetro <code>label</code> definido</BaseQuizOption>
   <BaseQuizOption value="C">A legenda deve ser criada antes da plotagem</BaseQuizOption>
   <BaseQuizOption value="D">Os rótulos devem ser definidos manualmente na legenda</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Para exibir uma legenda, você precisa definir o parâmetro `label` ao criar cada plotagem (ex: `plt.plot(x, y, label='Conjunto de Dados 1')`). Em seguida, chamar `plt.legend()` exibirá todos os rótulos.
+    Para exibir uma legenda, você precisa definir o parâmetro <code>label</code> ao criar cada plotagem (ex: <code>plt.plot(x, y, label='Conjunto de Dados 1')</code>). Em seguida, chamar <code>plt.legend()</code> exibirá todos os rótulos.
   </BaseQuizAnswer>
 </BaseQuiz>
 

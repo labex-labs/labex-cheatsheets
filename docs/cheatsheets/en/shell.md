@@ -137,7 +137,7 @@ cd /path/to/directory
 
 <BaseQuiz id="shell-cd-1" correct="A">
   <template #question>
-    What does `cd ~` do?
+    What does <code>cd ~</code> do?
   </template>
   
   <BaseQuizOption value="A" correct>Changes to the home directory</BaseQuizOption>
@@ -146,7 +146,7 @@ cd /path/to/directory
   <BaseQuizOption value="D">Creates a new directory</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `~` symbol is a shortcut for the home directory. `cd ~` navigates to your home directory, which is equivalent to `cd $HOME` or `cd /home/username`.
+    The <code>~</code> symbol is a shortcut for the home directory. <code>cd ~</code> navigates to your home directory, which is equivalent to <code>cd $HOME</code> or <code>cd /home/username</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -203,7 +203,7 @@ grep -c "pattern" file.txt
 
 <BaseQuiz id="shell-grep-1" correct="B">
   <template #question>
-    What does `grep -r "pattern" directory/` do?
+    What does <code>grep -r "pattern" directory/</code> do?
   </template>
   
   <BaseQuizOption value="A">Searches only in the current file</BaseQuizOption>
@@ -212,7 +212,7 @@ grep -c "pattern" file.txt
   <BaseQuizOption value="D">Deletes files containing the pattern</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `-r` flag makes grep search recursively through all files and subdirectories. This is useful for finding text patterns across an entire directory tree.
+    The <code>-r</code> flag makes grep search recursively through all files and subdirectories. This is useful for finding text patterns across an entire directory tree.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -281,7 +281,7 @@ chmod -R 644 directory/
 
 <BaseQuiz id="shell-chmod-1" correct="C">
   <template #question>
-    What does `chmod 755 file.txt` set?
+    What does <code>chmod 755 file.txt</code> set?
   </template>
   
   <BaseQuizOption value="A">Read, write, execute for all users</BaseQuizOption>
@@ -290,7 +290,7 @@ chmod -R 644 directory/
   <BaseQuizOption value="D">Read only for all users</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` sets permissions as: owner = 7 (rwx), group = 5 (r-x), others = 5 (r-x). This is a common permission set for executable files and directories.
+    <code>chmod 755</code> sets permissions as: owner = 7 (rwx), group = 5 (r-x), others = 5 (r-x). This is a common permission set for executable files and directories.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -409,16 +409,16 @@ command > /dev/null
 
 <BaseQuiz id="shell-redirect-1" correct="B">
   <template #question>
-    What is the difference between `>` and `>>` in shell redirection?
+    What is the difference between <code>></code> and <code>>></code> in shell redirection?
   </template>
   
-  <BaseQuizOption value="A">`>` appends, `>>` overwrites</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`>` overwrites the file, `>>` appends to the file</BaseQuizOption>
-  <BaseQuizOption value="C">`>` redirects stdout, `>>` redirects stderr</BaseQuizOption>
+  <BaseQuizOption value="A"><code>></code> appends, <code>>></code> overwrites</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>></code> overwrites the file, <code>>></code> appends to the file</BaseQuizOption>
+  <BaseQuizOption value="C"><code>></code> redirects stdout, <code>>></code> redirects stderr</BaseQuizOption>
   <BaseQuizOption value="D">There is no difference</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `>` operator overwrites the target file if it exists, while `>>` appends output to the end of the file. Use `>>` when you want to preserve existing content.
+    The <code>></code> operator overwrites the target file if it exists, while <code>>></code> appends output to the end of the file. Use <code>>></code> when you want to preserve existing content.
   </BaseQuizAnswer>
 </BaseQuiz>
 

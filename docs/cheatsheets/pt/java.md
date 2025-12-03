@@ -70,7 +70,7 @@ public static void main(String[] args) {
   <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O método main deve ser `public static void main(String[] args)`. `public` permite que a JVM o acesse, `static` significa que pertence à classe, `void` significa que não retorna nada, e `String[] args` recebe argumentos de linha de comando.
+    O método main deve ser <code>public static void main(String[] args)</code>. <code>public</code> permite que a JVM o acesse, <code>static</code> significa que pertence à classe, <code>void</code> significa que não retorna nada, e <code>String[] args</code> recebe argumentos de linha de comando.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ String uppercase = message.toUpperCase();
   <BaseQuizOption value="D">Strings são excluídas automaticamente</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Imutabilidade significa que, uma vez que um objeto String é criado, seu valor não pode ser modificado. Operações como `toUpperCase()` retornam um novo objeto String em vez de modificar o original.
+    Imutabilidade significa que, uma vez que um objeto String é criado, seu valor não pode ser modificado. Operações como <code>toUpperCase()</code> retornam um novo objeto String em vez de modificar o original.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -280,7 +280,7 @@ do {
 
 <BaseQuiz id="java-while-1" correct="B">
   <template #question>
-    Qual é a principal diferença entre os loops `while` e `do-while`?
+    Qual é a principal diferença entre os loops <code>while</code> e <code>do-while</code>?
   </template>
   
   <BaseQuizOption value="A">Não há diferença</BaseQuizOption>
@@ -289,7 +289,7 @@ do {
   <BaseQuizOption value="D">do-while só funciona com arrays</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O loop `do-while` verifica a condição após executar o corpo do loop, portanto, ele sempre é executado pelo menos uma vez. O loop `while` verifica a condição primeiro, então pode não ser executado se a condição for falsa inicialmente.
+    O loop <code>do-while</code> verifica a condição após executar o corpo do loop, portanto, ele sempre é executado pelo menos uma vez. O loop <code>while</code> verifica a condição primeiro, então pode não ser executado se a condição for falsa inicialmente.
   </BaseQuizAnswer>
 </BaseQuiz>
 

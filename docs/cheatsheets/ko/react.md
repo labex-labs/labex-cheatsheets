@@ -254,7 +254,7 @@ function Form() {
 
 <BaseQuiz id="react-usestate-1" correct="A">
   <template #question>
-    `useState(0)` 은 무엇을 반환합니까?
+    <code>useState(0)</code> 은 무엇을 반환합니까?
   </template>
   
   <BaseQuizOption value="A" correct>상태 값과 이를 업데이트하는 함수가 포함된 배열</BaseQuizOption>
@@ -263,7 +263,7 @@ function Form() {
   <BaseQuizOption value="D">상태를 설정하기만 하고 아무것도 반환하지 않음</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `useState` 는 두 가지 요소 (현재 상태 값과 이를 업데이트하는 함수) 를 포함하는 배열을 반환합니다. 초기값 (0) 은 인수로 전달됩니다.
+    <code>useState</code> 는 두 가지 요소 (현재 상태 값과 이를 업데이트하는 함수) 를 포함하는 배열을 반환합니다. 초기값 (0) 은 인수로 전달됩니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -292,7 +292,7 @@ function Timer() {
 
 <BaseQuiz id="react-useeffect-1" correct="D">
   <template #question>
-    `useEffect(() => {...}, [])`에서 빈 의존성 배열 `[]`은 무엇을 의미합니까?
+    <code>useEffect(() => {...}, [])</code>에서 빈 의존성 배열 <code>[]</code>은 무엇을 의미합니까?
   </template>
   
   <BaseQuizOption value="A">효과가 렌더링될 때마다 실행됨</BaseQuizOption>

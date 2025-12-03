@@ -87,7 +87,7 @@ nmap 192.168.1.1 192.168.1.5
 
 <BaseQuiz id="nmap-scan-1" correct="A">
   <template #question>
-    Was bewirkt ein einfacher `nmap 192.168.1.1` Scan standardmäßig?
+    Was bewirkt ein einfacher <code>nmap 192.168.1.1</code> Scan standardmäßig?
   </template>
   
   <BaseQuizOption value="A" correct>Scannt die 1000 häufigsten TCP-Ports</BaseQuizOption>
@@ -96,7 +96,7 @@ nmap 192.168.1.1 192.168.1.5
   <BaseQuizOption value="D">Scannt nur Port 80</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Standardmäßig scannt Nmap die 1000 häufigsten TCP-Ports. Um alle Ports zu scannen, verwenden Sie `-p-` oder geben Sie spezifische Ports mit `-p 80,443,22` an.
+    Standardmäßig scannt Nmap die 1000 häufigsten TCP-Ports. Um alle Ports zu scannen, verwenden Sie <code>-p-</code> oder geben Sie spezifische Ports mit <code>-p 80,443,22</code> an.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -145,7 +145,7 @@ nmap -PE 192.168.1.0/24
 
 <BaseQuiz id="nmap-ping-1" correct="A">
   <template #question>
-    Was bewirkt `nmap -sn`?
+    Was bewirkt <code>nmap -sn</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Führt nur Host-Discovery ohne Port-Scanning durch</BaseQuizOption>
@@ -154,7 +154,7 @@ nmap -PE 192.168.1.0/24
   <BaseQuizOption value="D">Scannt nur UDP-Ports</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-sn` weist Nmap an, nur die Host-Discovery (Ping-Scan) durchzuführen, ohne Ports zu scannen. Dies ist nützlich, um schnell zu identifizieren, welche Hosts in einem Netzwerk online sind.
+    Das Flag <code>-sn</code> weist Nmap an, nur die Host-Discovery (Ping-Scan) durchzuführen, ohne Ports zu scannen. Dies ist nützlich, um schnell zu identifizieren, welche Hosts in einem Netzwerk online sind.
   </BaseQuizAnswer>
 </BaseQuiz>
 

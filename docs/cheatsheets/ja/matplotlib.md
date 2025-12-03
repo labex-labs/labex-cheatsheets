@@ -46,7 +46,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 
 <BaseQuiz id="matplotlib-plot-1" correct="C">
   <template #question>
-    Matplotlib における `plt.show()` の役割は何ですか？
+    Matplotlib における <code>plt.show()</code> の役割は何ですか？
   </template>
   
   <BaseQuizOption value="A">プロットをファイルに保存する</BaseQuizOption>
@@ -55,7 +55,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
   <BaseQuizOption value="D">プロットをクリアする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `plt.show()` はプロットをインタラクティブなウィンドウに表示します。視覚化を見るためにはこの関数を呼び出す必要があります。これがないと、プロットは表示されません。
+    <code>plt.show()</code> はプロットをインタラクティブなウィンドウに表示します。視覚化を見るためにはこの関数を呼び出す必要があります。これがないと、プロットは表示されません。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -76,7 +76,7 @@ plt.colorbar()  # カラーバーを追加
 
 <BaseQuiz id="matplotlib-scatter-1" correct="D">
   <template #question>
-    matplotlib プロットにおける `alpha` パラメータは何を制御しますか？
+    matplotlib プロットにおける <code>alpha</code> パラメータは何を制御しますか？
   </template>
   
   <BaseQuizOption value="A">プロットの色</BaseQuizOption>
@@ -85,7 +85,7 @@ plt.colorbar()  # カラーバーを追加
   <BaseQuizOption value="D" correct>プロット要素の透明度/不透明度</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `alpha` パラメータは透明度を制御し、値は 0（完全な透明）から 1（完全な不透明）までです。重なり合う視覚化を作成し、要素を通して見たい場合に便利です。
+    <code>alpha</code> パラメータは透明度を制御し、値は 0（完全な透明）から 1（完全な不透明）までです。重なり合う視覚化を作成し、要素を通して見たい場合に便利です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -214,16 +214,16 @@ plt.annotate('重要な点', xy=(2, 4), xytext=(3, 6),
 
 <BaseQuiz id="matplotlib-legend-1" correct="B">
   <template #question>
-    `plt.legend()` がラベルを表示するために必要なものは何ですか？
+    <code>plt.legend()</code> がラベルを表示するために必要なものは何ですか？
   </template>
   
   <BaseQuizOption value="A">何もしない、自動的に機能する</BaseQuizOption>
-  <BaseQuizOption value="B" correct>各プロットに `label` パラメータを設定する必要がある</BaseQuizOption>
+  <BaseQuizOption value="B" correct>各プロットに <code>label</code> パラメータを設定する必要がある</BaseQuizOption>
   <BaseQuizOption value="C">プロットを作成する前に凡例を作成する必要がある</BaseQuizOption>
   <BaseQuizOption value="D">凡例内でラベルを手動で設定する必要がある</BaseQuizOption>
   
   <BaseQuizAnswer>
-    凡例を表示するには、各プロットを作成する際に `label` パラメータを設定する必要があります（例：`plt.plot(x, y, label='Dataset 1')`）。その後、`plt.legend()` を呼び出すと、すべてのラベルが表示されます。
+    凡例を表示するには、各プロットを作成する際に <code>label</code> パラメータを設定する必要があります（例：<code>plt.plot(x, y, label='Dataset 1')</code>）。その後、<code>plt.legend()</code> を呼び出すと、すべてのラベルが表示されます。
   </BaseQuizAnswer>
 </BaseQuiz>
 

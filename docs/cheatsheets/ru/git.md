@@ -187,7 +187,7 @@ git commit --no-edit --amend
 
 <BaseQuiz id="git-commit-1" correct="A">
   <template #question>
-    Что делает `git commit -m "message"`?
+    Что делает <code>git commit -m "message"</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Создает новый коммит с указанным сообщением</BaseQuizOption>
@@ -196,7 +196,7 @@ git commit --no-edit --amend
   <BaseQuizOption value="D">Создает новую ветку</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Команда `git commit -m` создает новый коммит с проиндексированными изменениями и сохраняет их в истории репозитория с предоставленным сообщением. Она не отправляет изменения в удаленный репозиторий и не создает ветки.
+    Команда <code>git commit -m</code> создает новый коммит с проиндексированными изменениями и сохраняет их в истории репозитория с предоставленным сообщением. Она не отправляет изменения в удаленный репозиторий и не создает ветки.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -264,7 +264,7 @@ git switch main
 
 <BaseQuiz id="git-branch-1" correct="B">
   <template #question>
-    Что делает `git checkout -b feature-branch`?
+    Что делает <code>git checkout -b feature-branch</code>?
   </template>
   
   <BaseQuizOption value="A">Удаляет ветку feature-branch</BaseQuizOption>
@@ -273,7 +273,7 @@ git switch main
   <BaseQuizOption value="D">Показывает историю коммитов feature-branch</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-b` создает новую ветку, а `checkout` переключается на нее. Эта команда объединяет обе операции: создание ветки и немедленное переключение на нее.
+    Флаг <code>-b</code> создает новую ветку, а <code>checkout</code> переключается на нее. Эта команда объединяет обе операции: создание ветки и немедленное переключение на нее.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -337,7 +337,7 @@ git pull --ff-only
 
 <BaseQuiz id="git-pull-1" correct="C">
   <template #question>
-    В чем разница между `git fetch` и `git pull`?
+    В чем разница между <code>git fetch</code> и <code>git pull</code>?
   </template>
   
   <BaseQuizOption value="A">Разницы нет; они делают одно и то же</BaseQuizOption>
@@ -346,7 +346,7 @@ git pull --ff-only
   <BaseQuizOption value="D">git fetch работает с локальными репозиториями, git pull работает с удаленными</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch` загружает изменения из удаленного репозитория, но не объединяет их с вашей текущей веткой. `git pull` выполняет обе операции: он получает изменения, а затем объединяет их с вашей текущей веткой.
+    <code>git fetch</code> загружает изменения из удаленного репозитория, но не объединяет их с вашей текущей веткой. <code>git pull</code> выполняет обе операции: он получает изменения, а затем объединяет их с вашей текущей веткой.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -367,7 +367,7 @@ git push --force-with-lease
 
 <BaseQuiz id="git-push-1" correct="D">
   <template #question>
-    Что делает `git push -u origin feature`?
+    Что делает <code>git push -u origin feature</code>?
   </template>
   
   <BaseQuizOption value="A">Удаляет ветку feature из удаленного репозитория</BaseQuizOption>
@@ -376,7 +376,7 @@ git push --force-with-lease
   <BaseQuizOption value="D" correct>Отправляет ветку feature в origin и настраивает отслеживание</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-u` (или `--set-upstream`) отправляет ветку в удаленный репозиторий и настраивает отслеживание, чтобы будущие команды `git push` и `git pull` знали, какую удаленную ветку использовать.
+    Флаг <code>-u</code> (или <code>--set-upstream</code>) отправляет ветку в удаленный репозиторий и настраивает отслеживание, чтобы будущие команды <code>git push</code> и <code>git pull</code> знали, какую удаленную ветку использовать.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -442,7 +442,7 @@ git stash clear
 
 <BaseQuiz id="git-stash-1" correct="B">
   <template #question>
-    В чем разница между `git stash apply` и `git stash pop`?
+    В чем разница между <code>git stash apply</code> и <code>git stash pop</code>?
   </template>
   
   <BaseQuizOption value="A">git stash apply удаляет стейш, git stash pop оставляет его</BaseQuizOption>
@@ -451,7 +451,7 @@ git stash clear
   <BaseQuizOption value="D">Разницы нет; они делают одно и то же</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git stash apply` восстанавливает стейшированные изменения, но оставляет стейш в списке. `git stash pop` применяет стейш, а затем удаляет его из списка стейшей, что полезно, когда стейш больше не нужен.
+    <code>git stash apply</code> восстанавливает стейшированные изменения, но оставляет стейш в списке. <code>git stash pop</code> применяет стейш, а затем удаляет его из списка стейшей, что полезно, когда стейш больше не нужен.
   </BaseQuizAnswer>
 </BaseQuiz>
 

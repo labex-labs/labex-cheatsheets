@@ -67,7 +67,7 @@ Verwenden Sie aussagekräftige HTML5-Semantikelemente für eine bessere Struktur
 
 <BaseQuiz id="webdev-semantic-1" correct="B">
   <template #question>
-    Was ist der Hauptvorteil der Verwendung semantischer HTML-Elemente wie `header`, `main` und `footer`?
+    Was ist der Hauptvorteil der Verwendung semantischer HTML-Elemente wie <code>header</code>, <code>main</code> und <code>footer</code>?
   </template>
   
   <BaseQuizOption value="A">Sie lassen die Seite schneller laden</BaseQuizOption>
@@ -263,7 +263,7 @@ Steuern Sie Abstände und Layout mit dem CSS-Box-Modell.
 
 <BaseQuiz id="webdev-boxmodel-1" correct="B">
   <template #question>
-    Was ist der Unterschied zwischen `margin` und `padding` in CSS?
+    Was ist der Unterschied zwischen <code>margin</code> und <code>padding</code> in CSS?
   </template>
   
   <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
@@ -301,7 +301,7 @@ Erstellen Sie einfach flexible und reaktionsschnelle Layouts.
 
 <BaseQuiz id="webdev-flexbox-1" correct="A">
   <template #question>
-    Was bewirkt `justify-content: center` in Flexbox?
+    Was bewirkt <code>justify-content: center</code> in Flexbox?
   </template>
   
   <BaseQuizOption value="A" correct>Zentriert Flex-Elemente entlang der Hauptachse (standardmäßig horizontal)</BaseQuizOption>
@@ -310,7 +310,7 @@ Erstellen Sie einfach flexible und reaktionsschnelle Layouts.
   <BaseQuizOption value="D">Dehnt Elemente aus, um Platz auszufüllen</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `justify-content` steuert die Ausrichtung entlang der Hauptachse (standardmäßig horizontal). `center` zentriert alle Flex-Elemente im Container. Verwenden Sie `align-items`, um die Ausrichtung der Querachse (vertikal) zu steuern.
+    <code>justify-content</code> steuert die Ausrichtung entlang der Hauptachse (standardmäßig horizontal). <code>center</code> zentriert alle Flex-Elemente im Container. Verwenden Sie <code>align-items</code>, um die Ausrichtung der Querachse (vertikal) zu steuern.
   </BaseQuizAnswer>
 </BaseQuiz>
 

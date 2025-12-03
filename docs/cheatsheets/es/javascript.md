@@ -42,7 +42,7 @@ var oldVariable = 'legacy'
 
 <BaseQuiz id="javascript-let-const-1" correct="B">
   <template #question>
-    ¿Cuál es la diferencia principal entre `let` y `const`?
+    ¿Cuál es la diferencia principal entre <code>let</code> y <code>const</code>?
   </template>
   
   <BaseQuizOption value="A">let tiene alcance de función, const tiene alcance de bloque</BaseQuizOption>
@@ -51,7 +51,7 @@ var oldVariable = 'legacy'
   <BaseQuizOption value="D">No hay diferencia</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Tanto `let` como `const` tienen alcance de bloque, pero `let` te permite reasignar la variable, mientras que `const` previene la reasignación. Sin embargo, las propiedades de los objetos `const` aún pueden modificarse.
+    Tanto <code>let</code> como <code>const</code> tienen alcance de bloque, pero <code>let</code> te permite reasignar la variable, mientras que <code>const</code> previene la reasignación. Sin embargo, las propiedades de los objetos <code>const</code> aún pueden modificarse.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -168,12 +168,12 @@ const processData = (data) => {
   </template>
   
   <BaseQuizOption value="A">Se elevan (hoisted) como declaraciones de función</BaseQuizOption>
-  <BaseQuizOption value="B">Tienen su propia vinculación de `this`</BaseQuizOption>
-  <BaseQuizOption value="C" correct>Heredan `this` del ámbito circundante</BaseQuizOption>
+  <BaseQuizOption value="B">Tienen su propia vinculación de <code>this</code></BaseQuizOption>
+  <BaseQuizOption value="C" correct>Heredan <code>this</code> del ámbito circundante</BaseQuizOption>
   <BaseQuizOption value="D">No pueden devolver valores</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Las funciones de flecha no tienen su propia vinculación de `this`. En su lugar, heredan `this` del ámbito léxico (circundante), lo que las hace útiles para callbacks y manejadores de eventos donde se desea preservar el contexto.
+    Las funciones de flecha no tienen su propia vinculación de <code>this</code>. En su lugar, heredan <code>this</code> del ámbito léxico (circundante), lo que las hace útiles para callbacks y manejadores de eventos donde se desea preservar el contexto.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -226,7 +226,7 @@ const result = numbers
 
 <BaseQuiz id="javascript-array-1" correct="A">
   <template #question>
-    ¿Qué devuelve `filter()`?
+    ¿Qué devuelve <code>filter()</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Un nuevo array con los elementos que pasan la prueba</BaseQuizOption>
@@ -235,7 +235,7 @@ const result = numbers
   <BaseQuizOption value="D">El array original modificado en su lugar</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El método `filter()` crea un nuevo array que contiene todos los elementos que pasan la prueba implementada por la función proporcionada. No modifica el array original.
+    El método <code>filter()</code> crea un nuevo array que contiene todos los elementos que pasan la prueba implementada por la función proporcionada. No modifica el array original.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ const buttonsArray = Array.from(allButtons)
 
 <BaseQuiz id="javascript-dom-1" correct="C">
   <template #question>
-    ¿Cuál es la diferencia entre `querySelector()` y `querySelectorAll()`?
+    ¿Cuál es la diferencia entre <code>querySelector()</code> y <code>querySelectorAll()</code>?
   </template>
   
   <BaseQuizOption value="A">No hay diferencia</BaseQuizOption>
@@ -335,7 +335,7 @@ const buttonsArray = Array.from(allButtons)
   <BaseQuizOption value="D">querySelector funciona con IDs, querySelectorAll funciona con clases</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `querySelector()` devuelve el primer elemento que coincide con el selector CSS, mientras que `querySelectorAll()` devuelve una NodeList que contiene todos los elementos coincidentes. Usa `querySelector()` cuando necesites un elemento, y `querySelectorAll()` cuando necesites varios.
+    <code>querySelector()</code> devuelve el primer elemento que coincide con el selector CSS, mientras que <code>querySelectorAll()</code> devuelve una NodeList que contiene todos los elementos coincidentes. Usa <code>querySelector()</code> cuando necesites un elemento, y <code>querySelectorAll()</code> cuando necesites varios.
   </BaseQuizAnswer>
 </BaseQuiz>
 

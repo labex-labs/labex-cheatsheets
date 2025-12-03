@@ -38,7 +38,7 @@ net 192.168.1.0/24
 
 <BaseQuiz id="wireshark-filter-1" correct="A">
   <template #question>
-    ¿Qué filtra `host 192.168.1.100` en Wireshark?
+    ¿Qué filtra <code>host 192.168.1.100</code> en Wireshark?
   </template>
   
   <BaseQuizOption value="A" correct>Todo el tráfico hacia o desde 192.168.1.100</BaseQuizOption>
@@ -47,7 +47,7 @@ net 192.168.1.0/24
   <BaseQuizOption value="D">Tráfico en el puerto 192.168.1.100</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El filtro `host` captura todo el tráfico donde la dirección IP especificada es la fuente o el destino. Use `src host` para solo fuente o `dst host` para solo destino.
+    El filtro <code>host</code> captura todo el tráfico donde la dirección IP especificada es la fuente o el destino. Use <code>src host</code> para solo fuente o <code>dst host</code> para solo destino.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -70,7 +70,7 @@ portrange 1000-2000
 
 <BaseQuiz id="wireshark-port-1" correct="D">
   <template #question>
-    ¿Qué filtra `port 80` en Wireshark?
+    ¿Qué filtra <code>port 80</code> en Wireshark?
   </template>
   
   <BaseQuizOption value="A">Solo solicitudes HTTP</BaseQuizOption>
@@ -79,7 +79,7 @@ portrange 1000-2000
   <BaseQuizOption value="D" correct>Todo el tráfico en el puerto 80 (tanto fuente como destino)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El filtro `port` captura todo el tráfico donde el puerto 80 es el puerto de origen o destino. Esto incluye tanto las solicitudes como las respuestas HTTP, así como cualquier otro tráfico que utilice el puerto 80.
+    El filtro <code>port</code> captura todo el tráfico donde el puerto 80 es el puerto de origen o destino. Esto incluye tanto las solicitudes como las respuestas HTTP, así como cualquier otro tráfico que utilice el puerto 80.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -115,7 +115,7 @@ port 80 or port 443
 
 <BaseQuiz id="wireshark-advanced-1" correct="B">
   <template #question>
-    ¿Qué captura `tcp and not port 22`?
+    ¿Qué captura <code>tcp and not port 22</code>?
   </template>
   
   <BaseQuizOption value="A">Solo tráfico SSH</BaseQuizOption>
@@ -124,7 +124,7 @@ port 80 or port 443
   <BaseQuizOption value="D">Todo el tráfico de red</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Este filtro captura todo el tráfico TCP pero excluye los paquetes en el puerto 22 (SSH). El operador `and not` excluye el puerto especificado mientras mantiene todo el demás tráfico TCP.
+    Este filtro captura todo el tráfico TCP pero excluye los paquetes en el puerto 22 (SSH). El operador <code>and not</code> excluye el puerto especificado mientras mantiene todo el demás tráfico TCP.
   </BaseQuizAnswer>
 </BaseQuiz>
 

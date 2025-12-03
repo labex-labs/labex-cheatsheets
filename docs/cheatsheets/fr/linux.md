@@ -158,7 +158,7 @@ cd -
   <BaseQuizOption value="D">whoami</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La commande `pwd` (print working directory) affiche le chemin complet du répertoire courant dans lequel vous vous trouvez.
+    La commande <code>pwd</code> (print working directory) affiche le chemin complet du répertoire courant dans lequel vous vous trouvez.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -249,7 +249,7 @@ ls -l nom_fichier
 
 <BaseQuiz id="linux-chmod-1" correct="C">
   <template #question>
-    Que définit `chmod 755 nom_fichier` comme permissions ?
+    Que définit <code>chmod 755 nom_fichier</code> comme permissions ?
   </template>
   
   <BaseQuizOption value="A">Lecture, écriture, exécution pour le propriétaire ; lecture pour le groupe et les autres</BaseQuizOption>
@@ -258,7 +258,7 @@ ls -l nom_fichier
   <BaseQuizOption value="D">Lecture, écriture pour le propriétaire ; lecture pour le groupe et les autres</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` définit : propriétaire = 7 (rwx), groupe = 5 (r-x), autres = 5 (r-x). C'est un ensemble de permissions courant pour les fichiers exécutables et les répertoires.
+    <code>chmod 755</code> définit : propriétaire = 7 (rwx), groupe = 5 (r-x), autres = 5 (r-x). C'est un ensemble de permissions courant pour les fichiers exécutables et les répertoires.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -300,7 +300,7 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    Quel signal `kill -9` envoie-t-il à un processus ?
+    Quel signal <code>kill -9</code> envoie-t-il à un processus ?
   </template>
   
   <BaseQuizOption value="A">SIGTERM (terminer gracieusement)</BaseQuizOption>
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (tuer de force, ne peut être ignoré)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9` envoie SIGKILL, qui termine un processus de force immédiatement. Ce signal ne peut être intercepté ou ignoré par le processus, ce qui le rend utile pour tuer les processus qui ne répondent pas.
+    <code>kill -9</code> envoie SIGKILL, qui termine un processus de force immédiatement. Ce signal ne peut être intercepté ou ignoré par le processus, ce qui le rend utile pour tuer les processus qui ne répondent pas.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -383,7 +383,7 @@ mtr google.com
 
 <BaseQuiz id="linux-ping-1" correct="B">
   <template #question>
-    Que fait la commande `ping -c 4` ?
+    Que fait la commande <code>ping -c 4</code> ?
   </template>
   
   <BaseQuizOption value="A">Ping avec un délai d'attente de 4 secondes</BaseQuizOption>
@@ -392,7 +392,7 @@ mtr google.com
   <BaseQuizOption value="D">Attend 4 secondes entre les pings</BaseQuizOption>
   
   <BaseQuizAnswer>
-    L'option `-c` spécifie le nombre de paquets à envoyer. `ping -c 4` enverra exactement 4 paquets de requête ICMP et s'arrêtera ensuite, affichant les résultats.
+    L'option <code>-c</code> spécifie le nombre de paquets à envoyer. <code>ping -c 4</code> enverra exactement 4 paquets de requête ICMP et s'arrêtera ensuite, affichant les résultats.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -449,7 +449,7 @@ grep -c "motif" nom_fichier
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    Quelle option `grep` effectue une recherche insensible à la casse ?
+    Quelle option <code>grep</code> effectue une recherche insensible à la casse ?
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,7 +458,7 @@ grep -c "motif" nom_fichier
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    L'option `-i` rend grep insensible à la casse, il correspondra donc aux lettres majuscules et minuscules. Par exemple, `grep -i "erreur" fichier.txt` correspondra à "Erreur", "ERREUR" et "erreur".
+    L'option <code>-i</code> rend grep insensible à la casse, il correspondra donc aux lettres majuscules et minuscules. Par exemple, <code>grep -i "erreur" fichier.txt</code> correspondra à "Erreur", "ERREUR" et "erreur".
   </BaseQuizAnswer>
 </BaseQuiz>
 

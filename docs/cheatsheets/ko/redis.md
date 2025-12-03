@@ -84,7 +84,7 @@ SET mykey "new_value" NX
 
 <BaseQuiz id="redis-set-get-1" correct="C">
   <template #question>
-    `SET mykey "value" EX 3600`은 무엇을 수행합니까?
+    <code>SET mykey "value" EX 3600</code>은 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">3600 바이트 값으로 키를 설정합니다</BaseQuizOption>
@@ -93,7 +93,7 @@ SET mykey "new_value" NX
   <BaseQuizOption value="D">3600 개의 다른 값으로 키를 설정합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `EX` 옵션은 만료 시간을 초 단위로 설정합니다. `SET mykey "value" EX 3600`은 값을 저장하고 3600 초 (1 시간) 후에 자동으로 삭제합니다.
+    <code>EX</code> 옵션은 만료 시간을 초 단위로 설정합니다. <code>SET mykey "value" EX 3600</code>은 값을 저장하고 3600 초 (1 시간) 후에 자동으로 삭제합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -129,7 +129,7 @@ INCRBYFLOAT price 0.1
 
 <BaseQuiz id="redis-incr-1" correct="A">
   <template #question>
-    존재하지 않는 키에 `INCR` 을 사용하면 어떻게 됩니까?
+    존재하지 않는 키에 <code>INCR</code> 을 사용하면 어떻게 됩니까?
   </template>
   
   <BaseQuizOption value="A" correct>Redis 는 키를 값 1 로 생성합니다</BaseQuizOption>
@@ -138,7 +138,7 @@ INCRBYFLOAT price 0.1
   <BaseQuizOption value="D">아무 일도 일어나지 않습니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    키가 존재하지 않으면 `INCR` 은 해당 키의 값이 0 이라고 간주하고 1 로 증가시킨 후 키를 생성합니다. 이로 인해 `INCR` 은 카운터를 초기화하는 데 유용합니다.
+    키가 존재하지 않으면 <code>INCR</code> 은 해당 키의 값이 0 이라고 간주하고 1 로 증가시킨 후 키를 생성합니다. 이로 인해 <code>INCR</code> 은 카운터를 초기화하는 데 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -202,7 +202,7 @@ LLEN mylist
 
 <BaseQuiz id="redis-list-1" correct="B">
   <template #question>
-    `LRANGE mylist 0 -1`은 무엇을 반환합니까?
+    <code>LRANGE mylist 0 -1</code>은 무엇을 반환합니까?
   </template>
   
   <BaseQuizOption value="A">첫 번째 요소만</BaseQuizOption>
@@ -211,7 +211,7 @@ LLEN mylist
   <BaseQuizOption value="D">오류</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `0 -1`을 사용한 `LRANGE` 는 리스트의 모든 요소를 반환합니다. `0` 은 시작 인덱스이고 `-1` 은 마지막 요소를 나타내므로 첫 번째 요소부터 마지막 요소까지 모두 검색합니다.
+    <code>0 -1</code>을 사용한 <code>LRANGE</code> 는 리스트의 모든 요소를 반환합니다. <code>0</code> 은 시작 인덱스이고 <code>-1</code> 은 마지막 요소를 나타내므로 첫 번째 요소부터 마지막 요소까지 모두 검색합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -254,7 +254,7 @@ function Form() {
 
 <BaseQuiz id="react-usestate-1" correct="A">
   <template #question>
-    Que retourne `useState(0)` ?
+    Que retourne <code>useState(0)</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Un tableau avec la valeur d'état et une fonction pour la mettre à jour</BaseQuizOption>
@@ -263,7 +263,7 @@ function Form() {
   <BaseQuizOption value="D">Rien, cela définit juste l'état</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `useState` retourne un tableau contenant deux éléments : la valeur d'état actuelle et une fonction pour la mettre à jour. La valeur initiale (0) est passée comme argument.
+    <code>useState</code> retourne un tableau contenant deux éléments : la valeur d'état actuelle et une fonction pour la mettre à jour. La valeur initiale (0) est passée comme argument.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -292,7 +292,7 @@ function Timer() {
 
 <BaseQuiz id="react-useeffect-1" correct="D">
   <template #question>
-    Que signifie le tableau de dépendances vide `[]` dans `useEffect(() => {...}, [])` ?
+    Que signifie le tableau de dépendances vide <code>[]</code> dans <code>useEffect(() => {...}, [])</code> ?
   </template>
   
   <BaseQuizOption value="A">L'effet s'exécute à chaque rendu</BaseQuizOption>

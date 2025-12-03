@@ -70,7 +70,7 @@ public static void main(String[] args) {
   <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Main-Methode muss `public static void main(String[] args)` sein. `public` erlaubt der JVM den Zugriff, `static` bedeutet, dass sie zur Klasse gehört, `void` bedeutet, dass sie nichts zurückgibt, und `String[] args` empfängt Kommandozeilenargumente.
+    Die Main-Methode muss <code>public static void main(String[] args)</code> sein. <code>public</code> erlaubt der JVM den Zugriff, <code>static</code> bedeutet, dass sie zur Klasse gehört, <code>void</code> bedeutet, dass sie nichts zurückgibt, und <code>String[] args</code> empfängt Kommandozeilenargumente.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ String uppercase = message.toUpperCase();
   <BaseQuizOption value="D">Strings werden automatisch gelöscht</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Unveränderlichkeit bedeutet, dass der Wert eines String-Objekts nach seiner Erstellung nicht mehr geändert werden kann. Operationen wie `toUpperCase()` geben ein neues String-Objekt zurück, anstatt das ursprüngliche zu modifizieren.
+    Unveränderlichkeit bedeutet, dass der Wert eines String-Objekts nach seiner Erstellung nicht mehr geändert werden kann. Operationen wie <code>toUpperCase()</code> geben ein neues String-Objekt zurück, anstatt das ursprüngliche zu modifizieren.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -280,7 +280,7 @@ do {
 
 <BaseQuiz id="java-while-1" correct="B">
   <template #question>
-    Was ist der Hauptunterschied zwischen `while`- und `do-while`-Schleifen?
+    Was ist der Hauptunterschied zwischen <code>while</code>- und <code>do-while</code>-Schleifen?
   </template>
   
   <BaseQuizOption value="A">Es gibt keinen Unterschied</BaseQuizOption>
@@ -289,7 +289,7 @@ do {
   <BaseQuizOption value="D">do-while funktioniert nur mit Arrays</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die `do-while`-Schleife prüft die Bedingung nach der Ausführung des Schleifenkörpers, läuft also immer mindestens einmal. Die `while`-Schleife prüft die Bedingung zuerst, sodass sie nicht ausgeführt wird, wenn die Bedingung anfänglich falsch ist.
+    Die <code>do-while</code>-Schleife prüft die Bedingung nach der Ausführung des Schleifenkörpers, läuft also immer mindestens einmal. Die <code>while</code>-Schleife prüft die Bedingung zuerst, sodass sie nicht ausgeführt wird, wenn die Bedingung anfänglich falsch ist.
   </BaseQuizAnswer>
 </BaseQuiz>
 

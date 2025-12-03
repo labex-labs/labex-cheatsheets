@@ -51,16 +51,16 @@ hydra -l admin -p password123 192.168.1.100 ftp
 
 <BaseQuiz id="hydra-syntax-1" correct="B">
   <template #question>
-    В чем разница между `-l` и `-L` в Hydra?
+    В чем разница между <code>-l</code> и <code>-L</code> в Hydra?
   </template>
   
-  <BaseQuizOption value="A">`-l` для паролей, `-L` для имен пользователей</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`-l` указывает одно имя пользователя, `-L` указывает файл со списком имен пользователей</BaseQuizOption>
+  <BaseQuizOption value="A"><code>-l</code> для паролей, <code>-L</code> для имен пользователей</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>-l</code> указывает одно имя пользователя, <code>-L</code> указывает файл со списком имен пользователей</BaseQuizOption>
   <BaseQuizOption value="C">Разницы нет</BaseQuizOption>
-  <BaseQuizOption value="D">`-l` в нижнем регистре, `-L` в верхнем регистре</BaseQuizOption>
+  <BaseQuizOption value="D"><code>-l</code> в нижнем регистре, <code>-L</code> в верхнем регистре</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Опция `-l` используется для одного имени пользователя, в то время как `-L` используется для файла, содержащего список имен пользователей. Аналогично, `-p` для одного пароля и `-P` для файла со списком паролей.
+    Опция <code>-l</code> используется для одного имени пользователя, в то время как <code>-L</code> используется для файла, содержащего список имен пользователей. Аналогично, <code>-p</code> для одного пароля и <code>-P</code> для файла со списком паролей.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -95,7 +95,7 @@ hydra -l admin -P passwords.txt target.com ssh -V
 
 <BaseQuiz id="hydra-output-1" correct="A">
   <template #question>
-    Что делает команда `hydra -V`?
+    Что делает команда <code>hydra -V</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Включает подробный вывод, показывающий детальный прогресс</BaseQuizOption>
@@ -104,7 +104,7 @@ hydra -l admin -P passwords.txt target.com ssh -V
   <BaseQuizOption value="D">Работает только в подробном режиме</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-V` включает подробный режим, который показывает детальный вывод, включая каждую попытку входа, что упрощает мониторинг прогресса и отладку проблем во время атак по подбору паролей.
+    Флаг <code>-V</code> включает подробный режим, который показывает детальный вывод, включая каждую попытку входа, что упрощает мониторинг прогресса и отладку проблем во время атак по подбору паролей.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -127,7 +127,7 @@ hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
 
 <BaseQuiz id="hydra-ssh-1" correct="C">
   <template #question>
-    Что делает флаг `-s` в Hydra?
+    Что делает флаг <code>-s</code> в Hydra?
   </template>
   
   <BaseQuizOption value="A">Устанавливает тип сервиса</BaseQuizOption>
@@ -136,7 +136,7 @@ hydra -l root -P passwords.txt -t 6 ssh://192.168.1.100
   <BaseQuizOption value="D">Устанавливает количество потоков</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Флаг `-s` указывает пользовательский номер порта, когда сервис работает на нестандартном порту. Например, `-s 2222` нацелен на SSH на порту 2222 вместо порта по умолчанию 22.
+    Флаг <code>-s</code> указывает пользовательский номер порта, когда сервис работает на нестандартном порту. Например, <code>-s 2222</code> нацелен на SSH на порту 2222 вместо порта по умолчанию 22.
   </BaseQuizAnswer>
 </BaseQuiz>
 

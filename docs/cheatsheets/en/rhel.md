@@ -127,7 +127,7 @@ name package
 
 <BaseQuiz id="rhel-package-1" correct="A">
   <template #question>
-    What is the difference between `dnf` and `yum` in RHEL?
+    What is the difference between <code>dnf</code> and <code>yum</code> in RHEL?
   </template>
   
   <BaseQuizOption value="A" correct>dnf is the newer package manager for RHEL 8+, yum is used in RHEL 7</BaseQuizOption>
@@ -208,7 +208,7 @@ rm -rf directory/
 
 <BaseQuiz id="rhel-file-ops-1" correct="B">
   <template #question>
-    What does `cp -r` do?
+    What does <code>cp -r</code> do?
   </template>
   
   <BaseQuizOption value="A">Copies files only</BaseQuizOption>
@@ -217,7 +217,7 @@ rm -rf directory/
   <BaseQuizOption value="D">Renames files</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `-r` flag (recursive) allows `cp` to copy directories and their contents, including all subdirectories and files within them. Without `-r`, `cp` cannot copy directories.
+    The <code>-r</code> flag (recursive) allows <code>cp</code> to copy directories and their contents, including all subdirectories and files within them. Without <code>-r</code>, <code>cp</code> cannot copy directories.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ tail -f /var/log/messages
 
 <BaseQuiz id="rhel-tail-1" correct="C">
   <template #question>
-    What does `tail -f /var/log/messages` do?
+    What does <code>tail -f /var/log/messages</code> do?
   </template>
   
   <BaseQuizOption value="A">Shows only the first 10 lines</BaseQuizOption>
@@ -249,7 +249,7 @@ tail -f /var/log/messages
   <BaseQuizOption value="D">Archives the log file</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `-f` flag makes `tail` follow the file, displaying new log entries as they are written. This is essential for real-time log monitoring and troubleshooting.
+    The <code>-f</code> flag makes <code>tail</code> follow the file, displaying new log entries as they are written. This is essential for real-time log monitoring and troubleshooting.
   </BaseQuizAnswer>
 </BaseQuiz>
 

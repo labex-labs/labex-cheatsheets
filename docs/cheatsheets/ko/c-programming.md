@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 
 <BaseQuiz id="c-main-1" correct="C">
   <template #question>
-    main 함수에서 `return 0`은 무엇을 나타냅니까?
+    main 함수에서 <code>return 0</code>은 무엇을 나타냅니까?
   </template>
   
   <BaseQuizOption value="A">프로그램이 실패함</BaseQuizOption>
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
   <BaseQuizOption value="D">프로그램이 값을 반환하지 않음</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C 에서 main 함수에서 `return 0`은 프로그램이 성공적으로 실행되었음을 나타냅니다. 0 이 아닌 반환 값은 일반적으로 오류 또는 비정상적인 종료를 나타냅니다.
+    C 에서 main 함수에서 <code>return 0</code>은 프로그램이 성공적으로 실행되었음을 나타냅니다. 0 이 아닌 반환 값은 일반적으로 오류 또는 비정상적인 종료를 나타냅니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -163,7 +163,7 @@ int size = sizeof(buffer);
   <BaseQuizOption value="D">포인터로만</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C 에서 문자열은 문자 배열 (`char`) 로 표현됩니다. 문자열은 널 문자 (`\0`) 로 끝나며, 이는 문자열의 끝을 표시합니다.
+    C 에서 문자열은 문자 배열 (<code>char</code>) 로 표현됩니다. 문자열은 널 문자 (<code>\0</code>) 로 끝나며, 이는 문자열의 끝을 표시합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ for (int i = 0; i < 3; i++) {
 
 <BaseQuiz id="c-for-loop-1" correct="A">
   <template #question>
-    `sizeof(numbers) / sizeof(numbers[0])`은 무엇을 계산합니까?
+    <code>sizeof(numbers) / sizeof(numbers[0])</code>은 무엇을 계산합니까?
   </template>
   
   <BaseQuizOption value="A" correct>배열의 요소 개수</BaseQuizOption>

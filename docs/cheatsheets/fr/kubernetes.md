@@ -182,7 +182,7 @@ kubectl get pods --watch
 
 <BaseQuiz id="kubernetes-pods-1" correct="C">
   <template #question>
-    Que fait `kubectl get pods --all-namespaces` ?
+    Que fait <code>kubectl get pods --all-namespaces</code> ?
   </template>
   
   <BaseQuizOption value="A">Liste uniquement les pods en cours d'exécution</BaseQuizOption>
@@ -191,7 +191,7 @@ kubectl get pods --watch
   <BaseQuizOption value="D">Supprime tous les pods</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `--all-namespaces` (ou `-A`) affiche les pods de tous les espaces de noms, pas seulement de l'espace de noms par défaut. Ceci est utile pour une visibilité à l'échelle du cluster.
+    Le drapeau <code>--all-namespaces</code> (ou <code>-A</code>) affiche les pods de tous les espaces de noms, pas seulement de l'espace de noms par défaut. Ceci est utile pour une visibilité à l'échelle du cluster.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ cpu-percent=80
 
 <BaseQuiz id="kubernetes-scale-1" correct="B">
   <template #question>
-    Que fait `kubectl scale deployment nginx --replicas=5` ?
+    Que fait <code>kubectl scale deployment nginx --replicas=5</code> ?
   </template>
   
   <BaseQuizOption value="A">Crée 5 nouveaux déploiements</BaseQuizOption>
@@ -299,7 +299,7 @@ cpu-percent=80
   <BaseQuizOption value="D">Met à jour l'image du déploiement</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La commande `scale` ajuste le nombre de réplicas pour un déploiement. Cette commande garantit que le déploiement nginx exécute exactement 5 réplicas de pods, en créant ou supprimant des pods si nécessaire.
+    La commande <code>scale</code> ajuste le nombre de réplicas pour un déploiement. Cette commande garantit que le déploiement nginx exécute exactement 5 réplicas de pods, en créant ou supprimant des pods si nécessaire.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -339,7 +339,7 @@ kubectl apply -f service.yaml
 
 <BaseQuiz id="kubernetes-service-1" correct="A">
   <template #question>
-    Quel est le type de service par défaut lors de l'utilisation de `kubectl expose` ?
+    Quel est le type de service par défaut lors de l'utilisation de <code>kubectl expose</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>

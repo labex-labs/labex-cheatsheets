@@ -109,7 +109,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="sqlite-create-table-1" correct="A">
   <template #question>
-    Что делает `INTEGER PRIMARY KEY AUTOINCREMENT` в SQLite?
+    Что делает <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> в SQLite?
   </template>
   
   <BaseQuizOption value="A" correct>Создает целочисленный первичный ключ с автоматической нумерацией</BaseQuizOption>
@@ -118,7 +118,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">Создает уникальный индекс</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INTEGER PRIMARY KEY AUTOINCREMENT` создает целочисленный столбец, который автоматически увеличивается для каждой новой строки и служит первичным ключом. Это гарантирует, что каждая строка имеет уникальный идентификатор.
+    <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> создает целочисленный столбец, который автоматически увеличивается для каждой новой строки и служит первичным ключом. Это гарантирует, что каждая строка имеет уникальный идентификатор.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ VALUES ('Duplicate', 'existing@email.com');
 
 <BaseQuiz id="sqlite-upsert-1" correct="A">
   <template #question>
-    В чем разница между `INSERT OR REPLACE` и `INSERT OR IGNORE`?
+    В чем разница между <code>INSERT OR REPLACE</code> и <code>INSERT OR IGNORE</code>?
   </template>
   
   <BaseQuizOption value="A" correct>REPLACE обновляет существующие строки, IGNORE пропускает дубликаты</BaseQuizOption>
@@ -248,7 +248,7 @@ VALUES ('Duplicate', 'existing@email.com');
   <BaseQuizOption value="D">REPLACE работает с таблицами, IGNORE работает с представлениями</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `INSERT OR REPLACE` заменит существующую строку, если возникнет конфликт (например, дубликат первичного ключа). `INSERT OR IGNORE` просто пропустит вставку, если возникнет конфликт, оставив существующую строку без изменений.
+    <code>INSERT OR REPLACE</code> заменит существующую строку, если возникнет конфликт (например, дубликат первичного ключа). <code>INSERT OR IGNORE</code> просто пропустит вставку, если возникнет конфликт, оставив существующую строку без изменений.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -274,7 +274,7 @@ SELECT DISTINCT department FROM employees;
 
 <BaseQuiz id="sqlite-select-1" correct="B">
   <template #question>
-    Что делает `SELECT DISTINCT`?
+    Что делает <code>SELECT DISTINCT</code>?
   </template>
   
   <BaseQuizOption value="A">Выбирает все строки</BaseQuizOption>
@@ -283,7 +283,7 @@ SELECT DISTINCT department FROM employees;
   <BaseQuizOption value="D">Сортирует результаты</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SELECT DISTINCT` устраняет дублирующиеся строки из результирующего набора, возвращая только уникальные значения. Это полезно, когда вы хотите увидеть все уникальные значения в столбце.
+    <code>SELECT DISTINCT</code> устраняет дублирующиеся строки из результирующего набора, возвращая только уникальные значения. Это полезно, когда вы хотите увидеть все уникальные значения в столбце.
   </BaseQuizAnswer>
 </BaseQuiz>
 

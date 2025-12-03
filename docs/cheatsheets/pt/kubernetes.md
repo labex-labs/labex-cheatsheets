@@ -182,7 +182,7 @@ kubectl get pods --watch
 
 <BaseQuiz id="kubernetes-pods-1" correct="C">
   <template #question>
-    O que `kubectl get pods --all-namespaces` faz?
+    O que <code>kubectl get pods --all-namespaces</code> faz?
   </template>
   
   <BaseQuizOption value="A">Lista apenas pods em execução</BaseQuizOption>
@@ -191,7 +191,7 @@ kubectl get pods --watch
   <BaseQuizOption value="D">Exclui todos os pods</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O flag `--all-namespaces` (ou `-A`) mostra pods de todos os namespaces, não apenas do namespace padrão. Isso é útil para visibilidade em todo o cluster.
+    O flag <code>--all-namespaces</code> (ou <code>-A</code>) mostra pods de todos os namespaces, não apenas do namespace padrão. Isso é útil para visibilidade em todo o cluster.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ cpu-percent=80
 
 <BaseQuiz id="kubernetes-scale-1" correct="B">
   <template #question>
-    O que `kubectl scale deployment nginx --replicas=5` faz?
+    O que <code>kubectl scale deployment nginx --replicas=5</code> faz?
   </template>
   
   <BaseQuizOption value="A">Cria 5 novos deployments</BaseQuizOption>
@@ -299,7 +299,7 @@ cpu-percent=80
   <BaseQuizOption value="D">Atualiza a imagem do deployment</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O comando `scale` ajusta o número de réplicas para um deployment. Este comando garante que o deployment nginx execute exatamente 5 réplicas de pod, criando ou excluindo pods conforme necessário.
+    O comando <code>scale</code> ajusta o número de réplicas para um deployment. Este comando garante que o deployment nginx execute exatamente 5 réplicas de pod, criando ou excluindo pods conforme necessário.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -339,7 +339,7 @@ kubectl apply -f service.yaml
 
 <BaseQuiz id="kubernetes-service-1" correct="A">
   <template #question>
-    Qual é o tipo de serviço padrão ao usar `kubectl expose`?
+    Qual é o tipo de serviço padrão ao usar <code>kubectl expose</code>?
   </template>
   
   <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>

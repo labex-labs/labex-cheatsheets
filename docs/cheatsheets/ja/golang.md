@@ -142,16 +142,16 @@ const Message = "Hello, Go!"
 
 <BaseQuiz id="golang-variables-1" correct="B">
   <template #question>
-    `var name string = "Go"` と `name := "Go"` の違いは何ですか？
+    <code>var name string = "Go"</code> と <code>name := "Go"</code> の違いは何ですか？
   </template>
   
   <BaseQuizOption value="A">違いはありません</BaseQuizOption>
-  <BaseQuizOption value="B" correct>`:=` は型を推論する短縮宣言であり、`var` は型を明示的に宣言します</BaseQuizOption>
-  <BaseQuizOption value="C">`:=` は定数にのみ使用できます</BaseQuizOption>
-  <BaseQuizOption value="D">`var` は関数内でのみ使用できます</BaseQuizOption>
+  <BaseQuizOption value="B" correct><code>:=</code> は型を推論する短縮宣言であり、<code>var</code> は型を明示的に宣言します</BaseQuizOption>
+  <BaseQuizOption value="C"><code>:=</code> は定数にのみ使用できます</BaseQuizOption>
+  <BaseQuizOption value="D"><code>var</code> は関数内でのみ使用できます</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `:=` 演算子は変数宣言と初期化のショートカットであり、Go が自動的に型を推論します。`var` は変数の型を明示的に宣言し、パッケージレベルまたは関数レベルで使用できます。
+    <code>:=</code> 演算子は変数宣言と初期化のショートカットであり、Go が自動的に型を推論します。<code>var</code> は変数の型を明示的に宣言し、パッケージレベルまたは関数レベルで使用できます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -239,7 +239,7 @@ for i, char := range "Hello" {
 
 <BaseQuiz id="golang-range-1" correct="B">
   <template #question>
-    Go でスライスを反復処理する際、`range` は何を返しますか？
+    Go でスライスを反復処理する際、<code>range</code> は何を返しますか？
   </template>
   
   <BaseQuizOption value="A">値のみ</BaseQuizOption>
@@ -248,7 +248,7 @@ for i, char := range "Hello" {
   <BaseQuizOption value="D">スライスの長さ</BaseQuizOption>
   
   <BaseQuizAnswer>
-    スライスに対して `range`を使用すると、インデックス（位置）と、そのインデックスにある値の 2 つの値が返されます。不要な場合は、どちらの値も`_` を使用して無視できます。
+    スライスに対して <code>range</code>を使用すると、インデックス（位置）と、そのインデックスにある値の 2 つの値が返されます。不要な場合は、どちらの値も<code>_</code> を使用して無視できます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -275,7 +275,7 @@ for i := 0; i < 5; i++ {
 
 <BaseQuiz id="golang-control-1" correct="C">
   <template #question>
-    Go のループにおける `break`と`continue` の違いは何ですか？
+    Go のループにおける <code>break</code>と<code>continue</code> の違いは何ですか？
   </template>
   
   <BaseQuizOption value="A">違いはありません</BaseQuizOption>
@@ -284,7 +284,7 @@ for i := 0; i < 5; i++ {
   <BaseQuizOption value="D">両方ともループを終了します</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `break`はループを即座に終了し、ループ後の実行を継続します。`continue` は現在のイテレーションの残りをスキップし、ループの次のイテレーションに進みます。
+    <code>break</code>はループを即座に終了し、ループ後の実行を継続します。<code>continue</code> は現在のイテレーションの残りをスキップし、ループの次のイテレーションに進みます。
   </BaseQuizAnswer>
 </BaseQuiz>
 

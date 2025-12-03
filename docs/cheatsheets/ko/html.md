@@ -41,7 +41,7 @@ HTML 치트 시트
 
 <BaseQuiz id="html-doctype-1" correct="A">
   <template #question>
-    `<!DOCTYPE html>`의 목적은 무엇입니까?
+    <code><!DOCTYPE html></code>의 목적은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A" correct>문서 유형과 HTML 버전을 선언합니다</BaseQuizOption>
@@ -50,7 +50,7 @@ HTML 치트 시트
   <BaseQuizOption value="D">페이지 제목을 설정합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `<!DOCTYPE html>` 선언은 브라우저에 문서가 사용하는 HTML 버전을 알려줍니다. HTML5 의 경우, 이 간단한 선언만으로 충분하며 모든 HTML 문서의 첫 번째 줄에 있어야 합니다.
+    <code><!DOCTYPE html></code> 선언은 브라우저에 문서가 사용하는 HTML 버전을 알려줍니다. HTML5 의 경우, 이 간단한 선언만으로 충분하며 모든 HTML 문서의 첫 번째 줄에 있어야 합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -128,7 +128,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
   <BaseQuizOption value="D">h6 이 가장 중요한 제목입니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    HTML 제목은 논리적인 계층 구조를 따라야 합니다. 주요 페이지 제목에는 `h1` 을 한 번 사용하고, 주요 섹션에는 `h2` 를, 하위 섹션에는 `h3` 을 사용하는 식으로 진행해야 합니다. 이는 접근성과 SEO 에 도움이 됩니다.
+    HTML 제목은 논리적인 계층 구조를 따라야 합니다. 주요 페이지 제목에는 <code>h1</code> 을 한 번 사용하고, 주요 섹션에는 <code>h2</code> 를, 하위 섹션에는 <code>h3</code> 을 사용하는 식으로 진행해야 합니다. 이는 접근성과 SEO 에 도움이 됩니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -262,7 +262,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 
 <BaseQuiz id="html-links-1" correct="B">
   <template #question>
-    앵커 태그에서 `target="_blank"` 는 무엇을 합니까?
+    앵커 태그에서 <code>target="_blank"</code> 는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">현재 창에서 링크를 엽니다</BaseQuizOption>
@@ -271,7 +271,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
   <BaseQuizOption value="D">링크를 다운로드합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `target="_blank"` 속성은 연결된 페이지를 새 브라우저 탭이나 창에서 열어 사용자가 원래 페이지를 열어 둘 수 있도록 합니다.
+    <code>target="_blank"</code> 속성은 연결된 페이지를 새 브라우저 탭이나 창에서 열어 사용자가 원래 페이지를 열어 둘 수 있도록 합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -355,7 +355,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
 
 <BaseQuiz id="html-validation-1" correct="A">
   <template #question>
-    HTML 입력에서 `required` 속성은 무엇을 합니까?
+    HTML 입력에서 <code>required</code> 속성은 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A" correct>필드가 비어 있으면 폼 제출을 방지합니다</BaseQuizOption>
@@ -364,7 +364,7 @@ HTML 요소는 시작 태그, 콘텐츠 및 닫는 태그로 구성됩니다.
   <BaseQuizOption value="D">기본값을 설정합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `required` 속성은 입력 필드를 필수 항목으로 만듭니다. 폼 제출 시 필드가 비어 있으면 브라우저는 제출을 방지하고 유효성 검사 메시지를 표시합니다.
+    <code>required</code> 속성은 입력 필드를 필수 항목으로 만듭니다. 폼 제출 시 필드가 비어 있으면 브라우저는 제출을 방지하고 유효성 검사 메시지를 표시합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

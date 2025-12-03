@@ -93,7 +93,7 @@ p.intro {
   <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Klassen-Selektoren verwenden einen Punkt (`.`) als Präfix. `.highlight` wählt alle Elemente mit `class="highlight"` aus. ID-Selektoren verwenden `#`, und Element-Selektoren verwenden kein Präfix.
+    Klassen-Selektoren verwenden einen Punkt (<code>.</code>) als Präfix. <code>.highlight</code> wählt alle Elemente mit <code>class="highlight"</code> aus. ID-Selektoren verwenden <code>#</code>, und Element-Selektoren verwenden kein Präfix.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -217,7 +217,7 @@ div {
 
 <BaseQuiz id="css-padding-1" correct="C">
   <template #question>
-    Was bewirkt `padding: 10px 20px`?
+    Was bewirkt <code>padding: 10px 20px</code>?
   </template>
   
   <BaseQuizOption value="A">10px oben/unten, 20px links/rechts</BaseQuizOption>
@@ -226,7 +226,7 @@ div {
   <BaseQuizOption value="D">10px oben, 20px unten</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Wenn zwei Werte angegeben werden, gilt der erste für oben und unten, und der zweite für links und rechts. Also bedeutet `padding: 10px 20px` 10px vertikales Padding und 20px horizontales Padding.
+    Wenn zwei Werte angegeben werden, gilt der erste für oben und unten, und der zweite für links und rechts. Also bedeutet <code>padding: 10px 20px</code> 10px vertikales Padding und 20px horizontales Padding.
   </BaseQuizAnswer>
 </BaseQuiz>
 ```
@@ -283,7 +283,7 @@ div {
 
 <BaseQuiz id="css-margin-1" correct="C">
   <template #question>
-    Was bewirkt `margin: 0 auto`?
+    Was bewirkt <code>margin: 0 auto</code>?
   </template>
   
   <BaseQuizOption value="A">Entfernt alle Margins</BaseQuizOption>
@@ -292,7 +292,7 @@ div {
   <BaseQuizOption value="D">Zentriert ein Blockelement vertikal</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `margin: 0 auto` setzt obere und untere Margins auf 0 und linke/rechte Margins auf auto, was ein Block-Level-Element horizontal innerhalb seines Containers zentriert.
+    <code>margin: 0 auto</code> setzt obere und untere Margins auf 0 und linke/rechte Margins auf auto, was ein Block-Level-Element horizontal innerhalb seines Containers zentriert.
   </BaseQuizAnswer>
 </BaseQuiz>
 

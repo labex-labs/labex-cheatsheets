@@ -38,7 +38,7 @@ net 192.168.1.0/24
 
 <BaseQuiz id="wireshark-filter-1" correct="A">
   <template #question>
-    Wireshark 中的 `host 192.168.1.100` 过滤器捕获什么？
+    Wireshark 中的 <code>host 192.168.1.100</code> 过滤器捕获什么？
   </template>
   
   <BaseQuizOption value="A" correct>所有到或来自 192.168.1.100 的流量</BaseQuizOption>
@@ -47,7 +47,7 @@ net 192.168.1.0/24
   <BaseQuizOption value="D">192.168.1.100 端口上的流量</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `host` 过滤器捕获指定 IP 地址作为源或目的地的所有流量。使用 `src host` 进行仅源过滤或 `dst host` 进行仅目的过滤。
+    <code>host</code> 过滤器捕获指定 IP 地址作为源或目的地的所有流量。使用 <code>src host</code> 进行仅源过滤或 <code>dst host</code> 进行仅目的过滤。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -70,7 +70,7 @@ portrange 1000-2000
 
 <BaseQuiz id="wireshark-port-1" correct="D">
   <template #question>
-    Wireshark 中的 `port 80` 过滤器捕获什么？
+    Wireshark 中的 <code>port 80</code> 过滤器捕获什么？
   </template>
   
   <BaseQuizOption value="A">仅 HTTP 请求</BaseQuizOption>
@@ -79,7 +79,7 @@ portrange 1000-2000
   <BaseQuizOption value="D" correct>端口 80 上的所有流量（源和目的）</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `port` 过滤器捕获端口 80 作为源端口或目的端口的所有流量。这包括 HTTP 请求和响应，以及使用端口 80 的任何其他流量。
+    <code>port</code> 过滤器捕获端口 80 作为源端口或目的端口的所有流量。这包括 HTTP 请求和响应，以及使用端口 80 的任何其他流量。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -115,7 +115,7 @@ port 80 or port 443
 
 <BaseQuiz id="wireshark-advanced-1" correct="B">
   <template #question>
-    `tcp and not port 22` 过滤器捕获什么？
+    <code>tcp and not port 22</code> 过滤器捕获什么？
   </template>
   
   <BaseQuizOption value="A">仅 SSH 流量</BaseQuizOption>
@@ -124,7 +124,7 @@ port 80 or port 443
   <BaseQuizOption value="D">所有网络流量</BaseQuizOption>
   
   <BaseQuizAnswer>
-    此过滤器捕获所有 TCP 流量，但排除了端口 22 (SSH) 上的数据包。`and not` 运算符在保留所有其他 TCP 流量的同时排除了指定的端口。
+    此过滤器捕获所有 TCP 流量，但排除了端口 22 (SSH) 上的数据包。<code>and not</code> 运算符在保留所有其他 TCP 流量的同时排除了指定的端口。
   </BaseQuizAnswer>
 </BaseQuiz>
 

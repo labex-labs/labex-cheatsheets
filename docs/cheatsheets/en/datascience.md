@@ -74,7 +74,7 @@ df.fillna(df.mean())  # Handle missing values
 
 <BaseQuiz id="datascience-pandas-1" correct="C">
   <template #question>
-    What does `df.head()` return in Pandas?
+    What does <code>df.head()</code> return in Pandas?
   </template>
   
   <BaseQuizOption value="A">The last 5 rows of the DataFrame</BaseQuizOption>
@@ -83,7 +83,7 @@ df.fillna(df.mean())  # Handle missing values
   <BaseQuizOption value="D">All rows of the DataFrame</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `df.head()` displays the first 5 rows of the DataFrame by default. You can specify a different number, like `df.head(10)` to see the first 10 rows. It's useful for quickly inspecting your data.
+    <code>df.head()</code> displays the first 5 rows of the DataFrame by default. You can specify a different number, like <code>df.head(10)</code> to see the first 10 rows. It's useful for quickly inspecting your data.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df_filled = pd.DataFrame(imputer.fit_transform(df))
 
 <BaseQuiz id="datascience-missing-1" correct="B">
   <template #question>
-    What is forward fill (`method='forward'`) used for?
+    What is forward fill (<code>method='forward'</code>) used for?
   </template>
   
   <BaseQuizOption value="A">Filling missing values with the mean</BaseQuizOption>

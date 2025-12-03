@@ -42,7 +42,7 @@ terraform validate
 
 <BaseQuiz id="devops-terraform-1" correct="B">
   <template #question>
-    `terraform plan`は何をしますか？
+    <code>terraform plan</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A">インフラストラクチャの変更を即座に適用する</BaseQuizOption>
@@ -51,7 +51,7 @@ terraform validate
   <BaseQuizOption value="D">Terraform を初期化する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `terraform plan`は、`terraform apply`を実行したときに Terraform が何を行うかを示す実行計画を作成します。これは、適用前に変更を確認するのに役立つドライランです。
+    <code>terraform plan</code>は、<code>terraform apply</code>を実行したときに Terraform が何を行うかを示す実行計画を作成します。これは、適用前に変更を確認するのに役立つドライランです。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -121,7 +121,7 @@ kubectl delete -f deployment.yml
 
 <BaseQuiz id="devops-k8s-1" correct="A">
   <template #question>
-    `kubectl apply -f deployment.yml`は何をしますか？
+    <code>kubectl apply -f deployment.yml</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>YAML ファイルで定義されたリソースを作成または更新する</BaseQuizOption>
@@ -130,7 +130,7 @@ kubectl delete -f deployment.yml
   <BaseQuizOption value="D">適用せずに作成されるものを表示する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kubectl apply`は、存在しない場合はリソースを作成し、存在する場合は更新する宣言的なコマンドです。べき等性があるため、安全に複数回実行できます。
+    <code>kubectl apply</code>は、存在しない場合はリソースを作成し、存在する場合は更新する宣言的なコマンドです。べき等性があるため、安全に複数回実行できます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -243,7 +243,7 @@ git pull origin main
 
 <BaseQuiz id="devops-git-1" correct="D">
   <template #question>
-    `git pull`と`git fetch`の違いは何ですか？
+    <code>git pull</code>と<code>git fetch</code>の違いは何ですか？
   </template>
   
   <BaseQuizOption value="A">違いはない</BaseQuizOption>
@@ -252,7 +252,7 @@ git pull origin main
   <BaseQuizOption value="D" correct>git fetch はマージせずに変更をダウンロードし、git pull は変更をダウンロードしてマージする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch`はリモートリポジトリから変更をダウンロードしますが、現在のブランチにはマージしません。`git pull`は両方の操作を実行します：フェッチしてから変更をマージします。
+    <code>git fetch</code>はリモートリポジトリから変更をダウンロードしますが、現在のブランチにはマージしません。<code>git pull</code>は両方の操作を実行します：フェッチしてから変更をマージします。
   </BaseQuizAnswer>
 </BaseQuiz>
 

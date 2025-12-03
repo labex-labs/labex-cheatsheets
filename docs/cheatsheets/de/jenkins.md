@@ -155,7 +155,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
 
 <BaseQuiz id="jenkins-build-1" correct="B">
   <template #question>
-    Was bewirkt das Flag `-s` in `jenkins-cli.jar build my-job -s`?
+    Was bewirkt das Flag <code>-s</code> in <code>jenkins-cli.jar build my-job -s</code>?
   </template>
   
   <BaseQuizOption value="A">Überspringt den Build</BaseQuizOption>
@@ -164,7 +164,7 @@ java -jar jenkins-cli.jar -auth user:token build my-job -f
   <BaseQuizOption value="D">Stoppt den Build</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-s` macht den Build-Befehl synchron, d.h. er wartet, bis der Build abgeschlossen ist, bevor er zurückkehrt. Ohne dieses Flag gibt der Befehl sofort nach dem Auslösen des Builds zurück.
+    Das Flag <code>-s</code> macht den Build-Befehl synchron, d.h. er wartet, bis der Build abgeschlossen ist, bevor er zurückkehrt. Ohne dieses Flag gibt der Befehl sofort nach dem Auslösen des Builds zurück.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -225,7 +225,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
 
 <BaseQuiz id="jenkins-console-1" correct="C">
   <template #question>
-    Was bewirkt das Flag `-f` in `jenkins-cli.jar console my-job -f`?
+    Was bewirkt das Flag <code>-f</code> in <code>jenkins-cli.jar console my-job -f</code>?
   </template>
   
   <BaseQuizOption value="A">Erzwingt das Stoppen des Builds</BaseQuizOption>
@@ -234,7 +234,7 @@ java -jar jenkins-cli.jar -auth user:token console my-job -f
   <BaseQuizOption value="D">Formatiert die Ausgabe als JSON</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-f` verfolgt die Konsolenausgabe in Echtzeit, ähnlich wie `tail -f` unter Linux. Dies ist nützlich, um Builds während ihrer Ausführung zu überwachen.
+    Das Flag <code>-f</code> verfolgt die Konsolenausgabe in Echtzeit, ähnlich wie <code>tail -f</code> unter Linux. Dies ist nützlich, um Builds während ihrer Ausführung zu überwachen.
   </BaseQuizAnswer>
 </BaseQuiz>
 

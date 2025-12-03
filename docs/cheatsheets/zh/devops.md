@@ -42,7 +42,7 @@ terraform validate
 
 <BaseQuiz id="devops-terraform-1" correct="B">
   <template #question>
-    `terraform plan` 的作用是什么？
+    <code>terraform plan</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">立即应用基础设施变更</BaseQuizOption>
@@ -51,7 +51,7 @@ terraform validate
   <BaseQuizOption value="D">初始化 Terraform</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `terraform plan` 创建一个执行计划，显示运行 `terraform apply` 时 Terraform 将要执行的操作。这是一个预演，可帮助您在应用之前审查变更。
+    <code>terraform plan</code> 创建一个执行计划，显示运行 <code>terraform apply</code> 时 Terraform 将要执行的操作。这是一个预演，可帮助您在应用之前审查变更。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -121,7 +121,7 @@ kubectl delete -f deployment.yml
 
 <BaseQuiz id="devops-k8s-1" correct="A">
   <template #question>
-    `kubectl apply -f deployment.yml` 的作用是什么？
+    <code>kubectl apply -f deployment.yml</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A" correct>创建或更新 YAML 文件中定义的资源</BaseQuizOption>
@@ -130,7 +130,7 @@ kubectl delete -f deployment.yml
   <BaseQuizOption value="D">显示将要创建的内容，但不应用</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kubectl apply` 是一个声明式命令，如果资源不存在则创建它们，如果存在则更新它们。它是幂等的，意味着可以安全地多次运行。
+    <code>kubectl apply</code> 是一个声明式命令，如果资源不存在则创建它们，如果存在则更新它们。它是幂等的，意味着可以安全地多次运行。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -243,7 +243,7 @@ git pull origin main
 
 <BaseQuiz id="devops-git-1" correct="D">
   <template #question>
-    `git pull` 和 `git fetch` 有什么区别？
+    <code>git pull</code> 和 <code>git fetch</code> 有什么区别？
   </template>
   
   <BaseQuizOption value="A">没有区别</BaseQuizOption>
@@ -252,7 +252,7 @@ git pull origin main
   <BaseQuizOption value="D" correct>git fetch 下载变更但不合并，git pull 下载并合并变更</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch` 从远程仓库下载变更，但不会将它们合并到您当前的分支中。`git pull` 执行这两个操作：它会获取并随后合并变更。
+    <code>git fetch</code> 从远程仓库下载变更，但不会将它们合并到您当前的分支中。<code>git pull</code> 执行这两个操作：它会获取并随后合并变更。
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -73,7 +73,7 @@ df.fillna(df.mean())  # Fehlende Werte behandeln
 
 <BaseQuiz id="datascience-pandas-1" correct="C">
   <template #question>
-    Was gibt `df.head()` in Pandas zurück?
+    Was gibt <code>df.head()</code> in Pandas zurück?
   </template>
   
   <BaseQuizOption value="A">Die letzten 5 Zeilen des DataFrames</BaseQuizOption>
@@ -82,7 +82,7 @@ df.fillna(df.mean())  # Fehlende Werte behandeln
   <BaseQuizOption value="D">Alle Zeilen des DataFrames</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `df.head()` zeigt standardmäßig die ersten 5 Zeilen des DataFrames an. Sie können eine andere Zahl angeben, z. B. `df.head(10)`, um die ersten 10 Zeilen anzuzeigen. Es ist nützlich, um schnell einen Blick auf Ihre Daten zu werfen.
+    <code>df.head()</code> zeigt standardmäßig die ersten 5 Zeilen des DataFrames an. Sie können eine andere Zahl angeben, z. B. <code>df.head(10)</code>, um die ersten 10 Zeilen anzuzeigen. Es ist nützlich, um schnell einen Blick auf Ihre Daten zu werfen.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -175,7 +175,7 @@ df_filled = pd.DataFrame(imputer.fit_transform(df))
 
 <BaseQuiz id="datascience-missing-1" correct="B">
   <template #question>
-    Wofür wird das Vorwärtsauffüllen (`method='forward'`) verwendet?
+    Wofür wird das Vorwärtsauffüllen (<code>method='forward'</code>) verwendet?
   </template>
   
   <BaseQuizOption value="A">Zum Auffüllen fehlender Werte mit dem Mittelwert</BaseQuizOption>

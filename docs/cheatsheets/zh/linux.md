@@ -158,7 +158,7 @@ cd -
   <BaseQuizOption value="D">whoami</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pwd` 命令（print working directory）显示您当前所在目录的完整路径。
+    <code>pwd</code> 命令（print working directory）显示您当前所在目录的完整路径。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -249,7 +249,7 @@ ls -l filename
 
 <BaseQuiz id="linux-chmod-1" correct="C">
   <template #question>
-    `chmod 755 filename` 设置的权限是什么？
+    <code>chmod 755 filename</code> 设置的权限是什么？
   </template>
   
   <BaseQuizOption value="A">所有者读、写、执行；组和其他人读</BaseQuizOption>
@@ -258,7 +258,7 @@ ls -l filename
   <BaseQuizOption value="D">所有者读、写；组和其他人读</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` 设置为：所有者 = 7 (rwx)，组 = 5 (r-x)，其他人 = 5 (r-x)。这是可执行文件和目录的常见权限设置。
+    <code>chmod 755</code> 设置为：所有者 = 7 (rwx)，组 = 5 (r-x)，其他人 = 5 (r-x)。这是可执行文件和目录的常见权限设置。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -300,7 +300,7 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    `kill -9` 向进程发送什么信号？
+    <code>kill -9</code> 向进程发送什么信号？
   </template>
   
   <BaseQuizOption value="A">SIGTERM (优雅终止)</BaseQuizOption>
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (强制终止，不可忽略)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9` 发送 SIGKILL 信号，它会立即强制终止进程。该信号不能被进程捕获或忽略，因此可用于终止无响应的进程。
+    <code>kill -9</code> 发送 SIGKILL 信号，它会立即强制终止进程。该信号不能被进程捕获或忽略，因此可用于终止无响应的进程。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -383,7 +383,7 @@ mtr google.com
 
 <BaseQuiz id="linux-ping-1" correct="B">
   <template #question>
-    `ping -c 4` 命令的作用是什么？
+    <code>ping -c 4</code> 命令的作用是什么？
   </template>
   
   <BaseQuizOption value="A">以 4 秒为间隔 Ping</BaseQuizOption>
@@ -392,7 +392,7 @@ mtr google.com
   <BaseQuizOption value="D">在每次 Ping 之间等待 4 秒</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-c` 选项指定要发送的数据包数量。`ping -c 4` 将发送 4 个 ICMP 回显请求数据包，然后停止并显示结果。
+    <code>-c</code> 选项指定要发送的数据包数量。<code>ping -c 4</code> 将发送 4 个 ICMP 回显请求数据包，然后停止并显示结果。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -449,7 +449,7 @@ grep -c "pattern" filename
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    哪个 `grep` 选项执行不区分大小写的搜索？
+    哪个 <code>grep</code> 选项执行不区分大小写的搜索？
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-i` 选项使 grep 不区分大小写，因此它会匹配大写和小写字母。例如，`grep -i "error" file.txt` 会匹配 "Error", "ERROR" 和 "error"。
+    <code>-i</code> 选项使 grep 不区分大小写，因此它会匹配大写和小写字母。例如，<code>grep -i "error" file.txt</code> 会匹配 "Error", "ERROR" 和 "error"。
   </BaseQuizAnswer>
 </BaseQuiz>
 

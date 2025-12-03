@@ -67,7 +67,7 @@ Use meaningful HTML5 semantic elements for better structure.
 
 <BaseQuiz id="webdev-semantic-1" correct="B">
   <template #question>
-    What is the main benefit of using semantic HTML elements like `header`, `main`, and `footer`?
+    What is the main benefit of using semantic HTML elements like <code>header</code>, <code>main</code>, and <code>footer</code>?
   </template>
   
   <BaseQuizOption value="A">They make the page load faster</BaseQuizOption>
@@ -263,7 +263,7 @@ Control spacing and layout with the CSS box model.
 
 <BaseQuiz id="webdev-boxmodel-1" correct="B">
   <template #question>
-    What is the difference between `margin` and `padding` in CSS?
+    What is the difference between <code>margin</code> and <code>padding</code> in CSS?
   </template>
   
   <BaseQuizOption value="A">There is no difference</BaseQuizOption>
@@ -301,7 +301,7 @@ Create flexible and responsive layouts easily.
 
 <BaseQuiz id="webdev-flexbox-1" correct="A">
   <template #question>
-    What does `justify-content: center` do in Flexbox?
+    What does <code>justify-content: center</code> do in Flexbox?
   </template>
   
   <BaseQuizOption value="A" correct>Centers flex items along the main axis (horizontally by default)</BaseQuizOption>
@@ -310,7 +310,7 @@ Create flexible and responsive layouts easily.
   <BaseQuizOption value="D">Stretches items to fill space</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `justify-content` controls alignment along the main axis (horizontal by default). `center` centers all flex items in the container. Use `align-items` to control cross-axis (vertical) alignment.
+    <code>justify-content</code> controls alignment along the main axis (horizontal by default). <code>center</code> centers all flex items in the container. Use <code>align-items</code> to control cross-axis (vertical) alignment.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -204,7 +204,7 @@ filtered = arr[mask]
 
 <BaseQuiz id="numpy-boolean-1" correct="C">
   <template #question>
-    What does boolean indexing `arr[arr > 5]` return?
+    What does boolean indexing <code>arr[arr > 5]</code> return?
   </template>
   
   <BaseQuizOption value="A">A boolean array</BaseQuizOption>
@@ -213,7 +213,7 @@ filtered = arr[mask]
   <BaseQuizOption value="D">An error</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Boolean indexing filters the array, returning only elements where the condition is true. `arr[arr > 5]` returns a new array containing only values greater than 5.
+    Boolean indexing filters the array, returning only elements where the condition is true. <code>arr[arr > 5]</code> returns a new array containing only values greater than 5.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -263,7 +263,7 @@ arr.ravel()  # Возвращает представление, если воз�
 
 <BaseQuiz id="numpy-reshape-1" correct="B">
   <template #question>
-    What does `-1` mean in `arr.reshape(-1, 1)`?
+    What does <code>-1</code> mean in <code>arr.reshape(-1, 1)</code>?
   </template>
   
   <BaseQuizOption value="A">It creates an error</BaseQuizOption>
@@ -272,13 +272,13 @@ arr.ravel()  # Возвращает представление, если воз�
   <BaseQuizOption value="D">It reverses the array</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Using `-1` in reshape tells NumPy to automatically calculate that dimension based on the array's total size and the other specified dimensions. This is useful when you know one dimension but want NumPy to figure out the other.
+    Using <code>-1</code> in reshape tells NumPy to automatically calculate that dimension based on the array's total size and the other specified dimensions. This is useful when you know one dimension but want NumPy to figure out the other.
   </BaseQuizAnswer>
 </BaseQuiz>
 
 <BaseQuiz id="numpy-reshape-1" correct="B">
   <template #question>
-    What does `-1` mean in `arr.reshape(-1, 1)`?
+    What does <code>-1</code> mean in <code>arr.reshape(-1, 1)</code>?
   </template>
   
   <BaseQuizOption value="A">It creates an error</BaseQuizOption>
@@ -287,7 +287,7 @@ arr.ravel()  # Возвращает представление, если воз�
   <BaseQuizOption value="D">It sets the dimension to 1</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Using `-1` in reshape tells NumPy to automatically calculate that dimension based on the array's total size and the other specified dimensions. This is useful when you know one dimension but want NumPy to figure out the other.
+    Using <code>-1</code> in reshape tells NumPy to automatically calculate that dimension based on the array's total size and the other specified dimensions. This is useful when you know one dimension but want NumPy to figure out the other.
   </BaseQuizAnswer>
 </BaseQuiz>
 

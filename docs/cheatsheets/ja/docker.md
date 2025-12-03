@@ -121,7 +121,7 @@ docker run --rm hello-world
 
 <BaseQuiz id="docker-run-1" correct="C">
   <template #question>
-    `docker run -d`は何をしますか？
+    <code>docker run -d</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A">コンテナをデバッグモードで実行する</BaseQuizOption>
@@ -130,7 +130,7 @@ docker run --rm hello-world
   <BaseQuizOption value="D">デフォルト設定でコンテナを実行する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-d` フラグはコンテナをデタッチモードで実行し、すぐにターミナル制御を返します。これは長時間実行されるサービスに便利です。
+    <code>-d</code> フラグはコンテナをデタッチモードで実行し、すぐにターミナル制御を返します。これは長時間実行されるサービスに便利です。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -231,7 +231,7 @@ docker build --no-cache -t myapp .
 
 <BaseQuiz id="docker-build-1" correct="A">
   <template #question>
-    `docker build -t myapp:latest .`は何をしますか？
+    <code>docker build -t myapp:latest .</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>カレントディレクトリから「myapp:latest」というタグの Docker イメージをビルドする</BaseQuizOption>
@@ -240,7 +240,7 @@ docker build --no-cache -t myapp .
   <BaseQuizOption value="D">「myapp:latest」イメージを削除する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-t`フラグはイメージに「myapp:latest」というタグを付け、`.` はビルドコンテキスト（カレントディレクトリ）を指定します。このコマンドはカレントディレクトリの Dockerfile から新しいイメージをビルドします。
+    <code>-t</code>フラグはイメージに「myapp:latest」というタグを付け、<code>.</code> はビルドコンテキスト（カレントディレクトリ）を指定します。このコマンドはカレントディレクトリの Dockerfile から新しいイメージをビルドします。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -315,7 +315,7 @@ EXPOSE 8000
 
 <BaseQuiz id="dockerfile-1" correct="B">
   <template #question>
-    Dockerfile における `FROM` 命令の目的は何ですか？
+    Dockerfile における <code>FROM</code> 命令の目的は何ですか？
   </template>
   
   <BaseQuizOption value="A">ホストからコンテナへファイルをコピーする</BaseQuizOption>
@@ -324,7 +324,7 @@ EXPOSE 8000
   <BaseQuizOption value="D">コンテナ起動時に実行されるコマンドを定義する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `FROM` 命令は Dockerfile の最初のコメント以外の命令でなければなりません。これは、イメージがビルドされる基盤となるベースイメージを指定し、コンテナの土台を提供します。
+    <code>FROM</code> 命令は Dockerfile の最初のコメント以外の命令でなければなりません。これは、イメージがビルドされる基盤となるベースイメージを指定し、コンテナの土台を提供します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -370,7 +370,7 @@ docker-compose down -v
 
 <BaseQuiz id="docker-compose-1" correct="D">
   <template #question>
-    `docker-compose up -d`は何をしますか？
+    <code>docker-compose up -d</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A">すべての実行中コンテナを停止する</BaseQuizOption>
@@ -379,7 +379,7 @@ docker-compose down -v
   <BaseQuizOption value="D" correct>docker-compose.yml で定義されたすべてのサービスをデタッチモード（バックグラウンド）で起動する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-d` フラグはコンテナをデタッチモード（バックグラウンド）で実行します。`docker-compose up`は docker-compose.yml ファイルを読み取り、定義されたすべてのサービスを起動するため、マルチコンテナアプリケーションの管理が容易になります。
+    <code>-d</code> フラグはコンテナをデタッチモード（バックグラウンド）で実行します。<code>docker-compose up</code>は docker-compose.yml ファイルを読み取り、定義されたすべてのサービスを起動するため、マルチコンテナアプリケーションの管理が容易になります。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -459,7 +459,7 @@ docker run -p 8080:80 nginx
 
 <BaseQuiz id="docker-port-1" correct="A">
   <template #question>
-    `docker run -p 8080:80 nginx`において、ポート番号は何を意味しますか？
+    <code>docker run -p 8080:80 nginx</code>において、ポート番号は何を意味しますか？
   </template>
   
   <BaseQuizOption value="A" correct>8080 はホストポート、80 はコンテナポート</BaseQuizOption>
@@ -468,7 +468,7 @@ docker run -p 8080:80 nginx
   <BaseQuizOption value="D">両方のポートがホストポートである</BaseQuizOption>
   
   <BaseQuizAnswer>
-    形式は`-p host_port:container_port`です。ホストマシンのポート 8080 がコンテナ内のポート 80 にマッピングされ、コンテナ内で実行されている nginx ウェブサーバーに localhost:8080 経由でアクセスできるようになります。
+    形式は<code>-p host_port:container_port</code>です。ホストマシンのポート 8080 がコンテナ内のポート 80 にマッピングされ、コンテナ内で実行されている nginx ウェブサーバーに localhost:8080 経由でアクセスできるようになります。
   </BaseQuizAnswer>
 </BaseQuiz>
 

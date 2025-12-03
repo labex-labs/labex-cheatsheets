@@ -182,7 +182,7 @@ kubectl get pods --watch
 
 <BaseQuiz id="kubernetes-pods-1" correct="C">
   <template #question>
-    `kubectl get pods --all-namespaces` 的作用是什么？
+    <code>kubectl get pods --all-namespaces</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">仅列出正在运行的 Pod</BaseQuizOption>
@@ -191,7 +191,7 @@ kubectl get pods --watch
   <BaseQuizOption value="D">删除所有 Pod</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `--all-namespaces` 标志 (或 `-A`) 会显示所有命名空间中的 Pod，而不仅仅是默认命名空间。这对于集群范围的可见性非常有用。
+    <code>--all-namespaces</code> 标志 (或 <code>-A</code>) 会显示所有命名空间中的 Pod，而不仅仅是默认命名空间。这对于集群范围的可见性非常有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ cpu-percent=80
 
 <BaseQuiz id="kubernetes-scale-1" correct="B">
   <template #question>
-    `kubectl scale deployment nginx --replicas=5` 会执行什么操作？
+    <code>kubectl scale deployment nginx --replicas=5</code> 会执行什么操作？
   </template>
   
   <BaseQuizOption value="A">创建 5 个新的 Deployment</BaseQuizOption>
@@ -299,7 +299,7 @@ cpu-percent=80
   <BaseQuizOption value="D">更新 Deployment 镜像</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `scale` 命令用于调整 Deployment 的副本数量。此命令确保 nginx Deployment 运行正好 5 个 Pod 副本，根据需要创建或删除 Pod。
+    <code>scale</code> 命令用于调整 Deployment 的副本数量。此命令确保 nginx Deployment 运行正好 5 个 Pod 副本，根据需要创建或删除 Pod。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -339,7 +339,7 @@ kubectl apply -f service.yaml
 
 <BaseQuiz id="kubernetes-service-1" correct="A">
   <template #question>
-    使用 `kubectl expose` 时的默认 Service 类型是什么？
+    使用 <code>kubectl expose</code> 时的默认 Service 类型是什么？
   </template>
   
   <BaseQuizOption value="A" correct>ClusterIP</BaseQuizOption>

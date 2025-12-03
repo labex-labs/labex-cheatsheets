@@ -93,7 +93,7 @@ p.intro {
   <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Seletores de classe usam um ponto (`.`) como prefixo. `.highlight` seleciona todos os elementos com `class="highlight"`. Seletores de ID usam `#`, e seletores de elemento não usam prefixo.
+    Seletores de classe usam um ponto (<code>.</code>) como prefixo. <code>.highlight</code> seleciona todos os elementos com <code>class="highlight"</code>. Seletores de ID usam <code>#</code>, e seletores de elemento não usam prefixo.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -217,7 +217,7 @@ div {
 
 <BaseQuiz id="css-padding-1" correct="C">
   <template #question>
-    O que `padding: 10px 20px` define?
+    O que <code>padding: 10px 20px</code> define?
   </template>
   
   <BaseQuizOption value="A">10px topo/inferior, 20px esquerda/direita</BaseQuizOption>
@@ -226,7 +226,7 @@ div {
   <BaseQuizOption value="D">10px topo, 20px inferior</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Quando dois valores são fornecidos, o primeiro aplica-se ao topo e inferior, e o segundo aplica-se à esquerda e direita. Portanto, `padding: 10px 20px` significa preenchimento vertical de 10px e preenchimento horizontal de 20px.
+    Quando dois valores são fornecidos, o primeiro aplica-se ao topo e inferior, e o segundo aplica-se à esquerda e direita. Portanto, <code>padding: 10px 20px</code> significa preenchimento vertical de 10px e preenchimento horizontal de 20px.
   </BaseQuizAnswer>
 </BaseQuiz>
 ```
@@ -283,7 +283,7 @@ div {
 
 <BaseQuiz id="css-margin-1" correct="C">
   <template #question>
-    O que `margin: 0 auto` faz?
+    O que <code>margin: 0 auto</code> faz?
   </template>
   
   <BaseQuizOption value="A">Remove todas as margens</BaseQuizOption>
@@ -292,7 +292,7 @@ div {
   <BaseQuizOption value="D">Centraliza um elemento de bloco verticalmente</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `margin: 0 auto` define as margens superior e inferior como 0 e as margens esquerda/direita como auto, o que centraliza um elemento de bloco horizontalmente dentro de seu contêiner.
+    <code>margin: 0 auto</code> define as margens superior e inferior como 0 e as margens esquerda/direita como auto, o que centraliza um elemento de bloco horizontalmente dentro de seu contêiner.
   </BaseQuizAnswer>
 </BaseQuiz>
 

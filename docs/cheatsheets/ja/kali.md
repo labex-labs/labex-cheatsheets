@@ -96,7 +96,7 @@ env | grep TARGET
 
 <BaseQuiz id="kali-env-1" correct="C">
   <template #question>
-    `export` を使用して設定された環境変数はどうなりますか？
+    <code>export</code> を使用して設定された環境変数はどうなりますか？
   </template>
   
   <BaseQuizOption value="A">システム再起動後も永続化する</BaseQuizOption>
@@ -105,7 +105,7 @@ env | grep TARGET
   <BaseQuizOption value="D">グローバルなシステム変数である</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `export` で設定された環境変数は、現在のシェルセッションとそのセッションから起動されたすべての子プロセスで利用可能になります。シェルセッションが終了すると失われますが、`.bashrc` などのシェル設定ファイルに追加すれば永続化できます。
+    <code>export</code> で設定された環境変数は、現在のシェルセッションとそのセッションから起動されたすべての子プロセスで利用可能になります。シェルセッションが終了すると失われますが、<code>.bashrc</code> などのシェル設定ファイルに追加すれば永続化できます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ nmap -sS 192.168.1.1
 
 <BaseQuiz id="kali-nmap-1" correct="B">
   <template #question>
-    `nmap -sS` は何を行いますか？
+    <code>nmap -sS</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A">UDP スキャンを実行する</BaseQuizOption>
@@ -165,7 +165,7 @@ nmap -sS 192.168.1.1
   <BaseQuizOption value="D">OS 検出を実行する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-sS` フラグは、TCP ハンドシェイクを完了しないため、SYN スキャン（半開スキャンとも呼ばれる）を実行します。SYN パケットを送信し応答を分析することで、完全な TCP 接続スキャンよりもステルス性が高くなります。
+    <code>-sS</code> フラグは、TCP ハンドシェイクを完了しないため、SYN スキャン（半開スキャンとも呼ばれる）を実行します。SYN パケットを送信し応答を分析することで、完全な TCP 接続スキャンよりもステルス性が高くなります。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ nmap -O 192.168.1.1
 
 <BaseQuiz id="kali-enumeration-1" correct="A">
   <template #question>
-    `nmap -sV` は何を行いますか？
+    <code>nmap -sV</code> は何を行いますか？
   </template>
   
   <BaseQuizOption value="A" correct>開いているポートで実行されているサービスバージョンを検出する</BaseQuizOption>
@@ -191,7 +191,7 @@ nmap -O 192.168.1.1
   <BaseQuizOption value="D">OS 検出のみを実行する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-sV` フラグはバージョン検出を有効にし、開いているポートをプローブして実行されているサービスとバージョンを特定します。これは特定のソフトウェアバージョンに関連する潜在的な脆弱性を特定するのに役立ちます。
+    <code>-sV</code> フラグはバージョン検出を有効にし、開いているポートをプローブして実行されているサービスとバージョンを特定します。これは特定のソフトウェアバージョンに関連する潜在的な脆弱性を特定するのに役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 # スクリプトスキャン

@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
   <BaseQuizOption value="D">C は cout を使用し、C++ は printf を使用します</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C は stdio.h から`printf()`を使用するのに対し、C++ は iostream から`cout`とストリーム挿入演算子`<<`を使用します。C++ は互換性のために printf もサポートしています。
+    C は stdio.h から<code>printf()</code>を使用するのに対し、C++ は iostream から<code>cout</code>とストリーム挿入演算子<code><<</code>を使用します。C++ は互換性のために printf もサポートしています。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ vector<string> names(5); // サイズ 5、空の文字列
 
 <BaseQuiz id="cpp-vector-1" correct="B">
   <template #question>
-    通常の配列と比較した場合、`vector` の主な利点は何ですか？
+    通常の配列と比較した場合、<code>vector</code> の主な利点は何ですか？
   </template>
   
   <BaseQuizOption value="A">ベクターの方が高速</BaseQuizOption>
@@ -165,7 +165,7 @@ vector<string> names(5); // サイズ 5、空の文字列
   <BaseQuizOption value="D">利点はありません</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `vector` は実行時に増減できる動的配列であり、コンパイル時にサイズが決定される通常の配列とは異なります。これにより、多くのユースケースでベクターはより柔軟になります。
+    <code>vector</code> は実行時に増減できる動的配列であり、コンパイル時にサイズが決定される通常の配列とは異なります。これにより、多くのユースケースでベクターはより柔軟になります。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -247,7 +247,7 @@ for (auto& item : container) {
   <BaseQuizOption value="D">手動でのインデックス管理が必要なループ</BaseQuizOption>
   
   <BaseQuizAnswer>
-    範囲ベース for ループ（C++11 で導入）は、コンテナ（vector、配列、文字列など）内のすべての要素を、インデックスを手動で管理することなく自動的に反復処理します。構文は`for (auto item : container)`です。
+    範囲ベース for ループ（C++11 で導入）は、コンテナ（vector、配列、文字列など）内のすべての要素を、インデックスを手動で管理することなく自動的に反復処理します。構文は<code>for (auto item : container)</code>です。
   </BaseQuizAnswer>
 </BaseQuiz>
 

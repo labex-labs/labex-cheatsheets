@@ -96,7 +96,7 @@ env | grep TARGET
 
 <BaseQuiz id="kali-env-1" correct="C">
   <template #question>
-    `export` 로 설정된 환경 변수는 어떻게 되나요?
+    <code>export</code> 로 설정된 환경 변수는 어떻게 되나요?
   </template>
   
   <BaseQuizOption value="A">시스템 재부팅 후에도 유지됩니다</BaseQuizOption>
@@ -105,7 +105,7 @@ env | grep TARGET
   <BaseQuizOption value="D">전역 시스템 변수입니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `export` 로 설정된 환경 변수는 현재 셸 세션과 그로부터 생성된 모든 자식 프로세스에서 사용할 수 있습니다. 셸 구성 파일 (.bashrc 등) 에 추가되지 않는 한 셸 세션이 종료되면 사라집니다.
+    <code>export</code> 로 설정된 환경 변수는 현재 셸 세션과 그로부터 생성된 모든 자식 프로세스에서 사용할 수 있습니다. 셸 구성 파일 (.bashrc 등) 에 추가되지 않는 한 셸 세션이 종료되면 사라집니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ nmap -sS 192.168.1.1
 
 <BaseQuiz id="kali-nmap-1" correct="B">
   <template #question>
-    `nmap -sS`는 무엇을 수행합니까?
+    <code>nmap -sS</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">UDP 스캔을 수행합니다</BaseQuizOption>
@@ -165,7 +165,7 @@ nmap -sS 192.168.1.1
   <BaseQuizOption value="D">OS 탐지를 수행합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-sS` 플래그는 TCP 핸드셰이크를 완료하지 않기 때문에 SYN 스캔 (반 개방 스캔이라고도 함) 을 수행합니다. SYN 패킷을 보내고 응답을 분석하여 완전한 TCP 연결 스캔보다 은밀합니다.
+    <code>-sS</code> 플래그는 TCP 핸드셰이크를 완료하지 않기 때문에 SYN 스캔 (반 개방 스캔이라고도 함) 을 수행합니다. SYN 패킷을 보내고 응답을 분석하여 완전한 TCP 연결 스캔보다 은밀합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ nmap -O 192.168.1.1
 
 <BaseQuiz id="kali-enumeration-1" correct="A">
   <template #question>
-    `nmap -sV`는 무엇을 수행합니까?
+    <code>nmap -sV</code>는 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A" correct>열린 포트에서 실행 중인 서비스 버전을 탐지합니다</BaseQuizOption>
@@ -191,7 +191,7 @@ nmap -O 192.168.1.1
   <BaseQuizOption value="D">OS 탐지만 수행합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-sV` 플래그는 버전 탐지를 활성화하여 열린 포트를 프로빙하여 어떤 서비스와 버전이 실행 중인지 확인합니다. 이는 특정 소프트웨어 버전과 관련된 잠재적 취약점을 식별하는 데 유용합니다.
+    <code>-sV</code> 플래그는 버전 탐지를 활성화하여 열린 포트를 프로빙하여 어떤 서비스와 버전이 실행 중인지 확인합니다. 이는 특정 소프트웨어 버전과 관련된 잠재적 취약점을 식별하는 데 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 # 스크립트 스캐닝

@@ -53,7 +53,7 @@ DROP DATABASE old_database;
 
 <BaseQuiz id="mysql-database-1" correct="C">
   <template #question>
-    What does `USE database_name` do?
+    What does <code>USE database_name</code> do?
   </template>
   
   <BaseQuizOption value="A">Creates a new database</BaseQuizOption>
@@ -62,7 +62,7 @@ DROP DATABASE old_database;
   <BaseQuizOption value="D">Shows all tables in the database</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `USE` statement selects a database, making it the active database for all subsequent SQL statements. This is equivalent to selecting a database when connecting with `mysql -u user -p database_name`.
+    The <code>USE</code> statement selects a database, making it the active database for all subsequent SQL statements. This is equivalent to selecting a database when connecting with <code>mysql -u user -p database_name</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -197,13 +197,13 @@ INSERT INTO users_backup SELECT * FROM users;
     What is the correct syntax for inserting a single record?
   </template>
   
-  <BaseQuizOption value="A" correct>`INSERT INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="B">`INSERT table_name VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="C">`ADD INTO table_name (column1, column2) VALUES (value1, value2);`</BaseQuizOption>
-  <BaseQuizOption value="D">`INSERT table_name (column1, column2) = (value1, value2);`</BaseQuizOption>
+  <BaseQuizOption value="A" correct><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="B"><code>INSERT table_name VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="C"><code>ADD INTO table_name (column1, column2) VALUES (value1, value2);</code></BaseQuizOption>
+  <BaseQuizOption value="D"><code>INSERT table_name (column1, column2) = (value1, value2);</code></BaseQuizOption>
   
   <BaseQuizAnswer>
-    The correct syntax is `INSERT INTO table_name (columns) VALUES (values)`. The `INTO` keyword is required, and you must specify both the column names and corresponding values.
+    The correct syntax is <code>INSERT INTO table_name (columns) VALUES (values)</code>. The <code>INTO</code> keyword is required, and you must specify both the column names and corresponding values.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -270,7 +270,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
 
 <BaseQuiz id="mysql-select-1" correct="D">
   <template #question>
-    What does `SELECT * FROM users` return?
+    What does <code>SELECT * FROM users</code> return?
   </template>
   
   <BaseQuizOption value="A">Only the first row from the users table</BaseQuizOption>
@@ -279,7 +279,7 @@ SELECT * FROM users WHERE age > 20 AND email LIKE '%gmail.com';
   <BaseQuizOption value="D" correct>All columns and all rows from the users table</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `*` wildcard selects all columns, and without a WHERE clause, it returns all rows. This is useful for viewing all data but should be used carefully with large tables.
+    The <code>*</code> wildcard selects all columns, and without a WHERE clause, it returns all rows. This is useful for viewing all data but should be used carefully with large tables.
   </BaseQuizAnswer>
 </BaseQuiz>
 

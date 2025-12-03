@@ -187,7 +187,7 @@ git commit --no-edit --amend
 
 <BaseQuiz id="git-commit-1" correct="A">
   <template #question>
-    Que fait `git commit -m "message"` ?
+    Que fait <code>git commit -m "message"</code> ?
   </template>
   
   <BaseQuizOption value="A" correct>Crée un nouveau commit avec le message spécifié</BaseQuizOption>
@@ -196,7 +196,7 @@ git commit --no-edit --amend
   <BaseQuizOption value="D">Crée une nouvelle branche</BaseQuizOption>
   
   <BaseQuizAnswer>
-    La commande `git commit -m` crée un nouveau commit avec les changements mis en staging et les sauvegarde dans l'historique du dépôt avec le message fourni. Elle ne pousse pas vers le distant et ne crée pas de branches.
+    La commande <code>git commit -m</code> crée un nouveau commit avec les changements mis en staging et les sauvegarde dans l'historique du dépôt avec le message fourni. Elle ne pousse pas vers le distant et ne crée pas de branches.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -264,7 +264,7 @@ git switch main
 
 <BaseQuiz id="git-branch-1" correct="B">
   <template #question>
-    Que fait `git checkout -b feature-branch` ?
+    Que fait <code>git checkout -b feature-branch</code> ?
   </template>
   
   <BaseQuizOption value="A">Supprime la branche feature-branch</BaseQuizOption>
@@ -273,7 +273,7 @@ git switch main
   <BaseQuizOption value="D">Affiche l'historique des commits de feature-branch</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `-b` crée une nouvelle branche, et `checkout` bascule dessus. Cette commande combine les deux opérations : créer la branche et basculer immédiatement dessus.
+    Le drapeau <code>-b</code> crée une nouvelle branche, et <code>checkout</code> bascule dessus. Cette commande combine les deux opérations : créer la branche et basculer immédiatement dessus.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -337,7 +337,7 @@ git pull --ff-only
 
 <BaseQuiz id="git-pull-1" correct="C">
   <template #question>
-    Quelle est la différence entre `git fetch` et `git pull` ?
+    Quelle est la différence entre <code>git fetch</code> et <code>git pull</code> ?
   </template>
   
   <BaseQuizOption value="A">Il n'y a pas de différence ; ils font la même chose</BaseQuizOption>
@@ -346,7 +346,7 @@ git pull --ff-only
   <BaseQuizOption value="D">git fetch fonctionne avec les dépôts locaux, git pull fonctionne avec les dépôts distants</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git fetch` télécharge les changements depuis le dépôt distant mais ne les fusionne pas dans votre branche courante. `git pull` effectue les deux opérations : il récupère les changements puis les fusionne dans votre branche courante.
+    <code>git fetch</code> télécharge les changements depuis le dépôt distant mais ne les fusionne pas dans votre branche courante. <code>git pull</code> effectue les deux opérations : il récupère les changements puis les fusionne dans votre branche courante.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -367,7 +367,7 @@ git push --force-with-lease
 
 <BaseQuiz id="git-push-1" correct="D">
   <template #question>
-    Que fait `git push -u origin feature` ?
+    Que fait <code>git push -u origin feature</code> ?
   </template>
   
   <BaseQuizOption value="A">Supprime la branche feature du distant</BaseQuizOption>
@@ -376,7 +376,7 @@ git push --force-with-lease
   <BaseQuizOption value="D" correct>Pousse la branche feature vers origin et configure le suivi</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Le drapeau `-u` (ou `--set-upstream`) pousse la branche vers le dépôt distant et configure le suivi, afin que les futures commandes `git push` et `git pull` sachent quelle branche distante utiliser.
+    Le drapeau <code>-u</code> (ou <code>--set-upstream</code>) pousse la branche vers le dépôt distant et configure le suivi, afin que les futures commandes <code>git push</code> et <code>git pull</code> sachent quelle branche distante utiliser.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -442,7 +442,7 @@ git stash clear
 
 <BaseQuiz id="git-stash-1" correct="B">
   <template #question>
-    Quelle est la différence entre `git stash apply` et `git stash pop` ?
+    Quelle est la différence entre <code>git stash apply</code> et <code>git stash pop</code> ?
   </template>
   
   <BaseQuizOption value="A">git stash apply supprime le stash, git stash pop le conserve</BaseQuizOption>
@@ -451,7 +451,7 @@ git stash clear
   <BaseQuizOption value="D">Il n'y a pas de différence ; ils font la même chose</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `git stash apply` restaure les changements stashés mais conserve le stash dans la liste. `git stash pop` applique le stash puis le supprime de la liste des stashes, ce qui est utile lorsque vous n'avez plus besoin du stash.
+    <code>git stash apply</code> restaure les changements stashés mais conserve le stash dans la liste. <code>git stash pop</code> applique le stash puis le supprime de la liste des stashes, ce qui est utile lorsque vous n'avez plus besoin du stash.
   </BaseQuizAnswer>
 </BaseQuiz>
 

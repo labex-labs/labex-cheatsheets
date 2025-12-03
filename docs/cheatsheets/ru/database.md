@@ -38,7 +38,7 @@ USE company_db;
 
 <BaseQuiz id="database-create-1" correct="A">
   <template #question>
-    Что делает команда `CREATE DATABASE company_db`?
+    Что делает команда <code>CREATE DATABASE company_db</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Создает новую пустую базу данных с именем company_db</BaseQuizOption>
@@ -47,7 +47,7 @@ USE company_db;
   <BaseQuizOption value="D">Создает резервную копию базы данных</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `CREATE DATABASE` создает новую пустую базу данных. После создания необходимо использовать `USE` для ее выбора, а затем создавать в ней таблицы.
+    <code>CREATE DATABASE</code> создает новую пустую базу данных. После создания необходимо использовать <code>USE</code> для ее выбора, а затем создавать в ней таблицы.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -157,7 +157,7 @@ RENAME TABLE employees TO staff;
 
 <BaseQuiz id="database-alter-1" correct="C">
   <template #question>
-    Что делает команда `ALTER TABLE employees ADD COLUMN phone VARCHAR(15)`?
+    Что делает команда <code>ALTER TABLE employees ADD COLUMN phone VARCHAR(15)</code>?
   </template>
   
   <BaseQuizOption value="A">Удаляет столбец phone</BaseQuizOption>
@@ -166,7 +166,7 @@ RENAME TABLE employees TO staff;
   <BaseQuizOption value="D">Переименовывает таблицу</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `ALTER TABLE ... ADD COLUMN` добавляет новый столбец в существующую таблицу. Новый столбец будет добавлен с указанным типом данных и будет иметь значение NULL для существующих строк, если не указано значение по умолчанию.
+    <code>ALTER TABLE ... ADD COLUMN</code> добавляет новый столбец в существующую таблицу. Новый столбец будет добавлен с указанным типом данных и будет иметь значение NULL для существующих строк, если не указано значение по умолчанию.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -294,7 +294,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
 
 <BaseQuiz id="database-where-1" correct="C">
   <template #question>
-    Что соответствует `LIKE 'John%'` в предложении WHERE?
+    Что соответствует <code>LIKE 'John%'</code> в предложении WHERE?
   </template>
   
   <BaseQuizOption value="A">Только точные совпадения с "John"</BaseQuizOption>
@@ -303,7 +303,7 @@ SELECT * FROM employees WHERE name LIKE 'John%';
   <BaseQuizOption value="D">Значения, содержащие "John" где-либо</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Символ подстановки `%` в SQL соответствует любой последовательности символов. `LIKE 'John%'` соответствует любому значению, начинающемуся с "John", например, "John", "Johnny", "Johnson" и т. д.
+    Символ подстановки <code>%</code> в SQL соответствует любой последовательности символов. <code>LIKE 'John%'</code> соответствует любому значению, начинающемуся с "John", например, "John", "Johnny", "Johnson" и т. д.
   </BaseQuizAnswer>
 </BaseQuiz>
 

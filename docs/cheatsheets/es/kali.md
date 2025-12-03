@@ -96,7 +96,7 @@ env | grep TARGET
 
 <BaseQuiz id="kali-env-1" correct="C">
   <template #question>
-    ¿Qué sucede con las variables de entorno establecidas con `export`?
+    ¿Qué sucede con las variables de entorno establecidas con <code>export</code>?
   </template>
   
   <BaseQuizOption value="A">Persisten a través de reinicios del sistema</BaseQuizOption>
@@ -105,7 +105,7 @@ env | grep TARGET
   <BaseQuizOption value="D">Son variables globales del sistema</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Las variables de entorno establecidas con `export` están disponibles para la sesión de shell actual y todos los procesos hijos generados a partir de ella. Se pierden cuando finaliza la sesión del shell a menos que se añadan a archivos de configuración del shell como `.bashrc`.
+    Las variables de entorno establecidas con <code>export</code> están disponibles para la sesión de shell actual y todos los procesos hijos generados a partir de ella. Se pierden cuando finaliza la sesión del shell a menos que se añadan a archivos de configuración del shell como <code>.bashrc</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ nmap -sS 192.168.1.1
 
 <BaseQuiz id="kali-nmap-1" correct="B">
   <template #question>
-    ¿Qué hace `nmap -sS`?
+    ¿Qué hace <code>nmap -sS</code>?
   </template>
   
   <BaseQuizOption value="A">Realiza un escaneo UDP</BaseQuizOption>
@@ -165,7 +165,7 @@ nmap -sS 192.168.1.1
   <BaseQuizOption value="D">Realiza detección de SO</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El indicador `-sS` realiza un escaneo SYN (también llamado escaneo medio abierto) porque nunca completa el handshake TCP. Envía paquetes SYN y analiza las respuestas, haciéndolo más sigiloso que un escaneo de conexión TCP completo.
+    El indicador <code>-sS</code> realiza un escaneo SYN (también llamado escaneo medio abierto) porque nunca completa el handshake TCP. Envía paquetes SYN y analiza las respuestas, haciéndolo más sigiloso que un escaneo de conexión TCP completo.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ nmap -O 192.168.1.1
 
 <BaseQuiz id="kali-enumeration-1" correct="A">
   <template #question>
-    ¿Qué hace `nmap -sV`?
+    ¿Qué hace <code>nmap -sV</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Detecta versiones de servicios en puertos abiertos</BaseQuizOption>
@@ -191,7 +191,7 @@ nmap -O 192.168.1.1
   <BaseQuizOption value="D">Realiza solo detección de SO</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El indicador `-sV` habilita la detección de versiones, que sondea los puertos abiertos para determinar qué servicio y versión se están ejecutando. Esto es útil para identificar vulnerabilidades potenciales asociadas con versiones de software específicas.
+    El indicador <code>-sV</code> habilita la detección de versiones, que sondea los puertos abiertos para determinar qué servicio y versión se están ejecutando. Esto es útil para identificar vulnerabilidades potenciales asociadas con versiones de software específicas.
   </BaseQuizAnswer>
 </BaseQuiz>
 # Escaneo con scripts

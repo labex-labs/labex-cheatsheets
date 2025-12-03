@@ -50,7 +50,7 @@ db.users.insertOne({name: "John"})
 
 <BaseQuiz id="mongodb-use-1" correct="B">
   <template #question>
-    ¿Qué sucede cuando ejecutas `use newdb` en MongoDB?
+    ¿Qué sucede cuando ejecutas <code>use newdb</code> en MongoDB?
   </template>
   
   <BaseQuizOption value="A">Crea la base de datos inmediatamente</BaseQuizOption>
@@ -59,7 +59,7 @@ db.users.insertOne({name: "John"})
   <BaseQuizOption value="D">Muestra todas las colecciones en la base de datos</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El comando `use` cambia a una base de datos, pero MongoDB no la crea hasta que insertas el primer documento. Este es un enfoque de creación perezosa.
+    El comando <code>use</code> cambia a una base de datos, pero MongoDB no la crea hasta que insertas el primer documento. Este es un enfoque de creación perezosa.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -178,7 +178,7 @@ db.users.insertOne({
 
 <BaseQuiz id="mongodb-insert-1" correct="A">
   <template #question>
-    ¿Qué devuelve `db.users.insertOne()`?
+    ¿Qué devuelve <code>db.users.insertOne()</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Un objeto de acuse de recibo con el _id del documento insertado</BaseQuizOption>
@@ -187,7 +187,7 @@ db.users.insertOne({
   <BaseQuizOption value="D">El número de documentos insertados</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `insertOne()` devuelve un objeto de acuse de recibo que contiene `acknowledged: true` y `insertedId` con el `_id` del documento insertado (o el `_id` personalizado si se proporcionó).
+    <code>insertOne()</code> devuelve un objeto de acuse de recibo que contiene <code>acknowledged: true</code> y <code>insertedId</code> con el <code>_id</code> del documento insertado (o el <code>_id</code> personalizado si se proporcionó).
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ db.users.find({ email: { $exists: true } })
 
 <BaseQuiz id="mongodb-query-1" correct="B">
   <template #question>
-    ¿Qué significa `$gt` en las consultas de MongoDB?
+    ¿Qué significa <code>$gt</code> en las consultas de MongoDB?
   </template>
   
   <BaseQuizOption value="A">Mayor o igual que</BaseQuizOption>
@@ -299,7 +299,7 @@ db.users.find({ email: { $exists: true } })
   <BaseQuizOption value="D">Obtener total</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `$gt` es un operador de comparación que significa "mayor que". Se utiliza en consultas como `{ age: { $gt: 25 } }` para encontrar documentos donde el campo edad es mayor que 25.
+    <code>$gt</code> es un operador de comparación que significa "mayor que". Se utiliza en consultas como <code>{ age: { $gt: 25 } }</code> para encontrar documentos donde el campo edad es mayor que 25.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -365,7 +365,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
 
 <BaseQuiz id="mongodb-update-1" correct="C">
   <template #question>
-    ¿Qué hace `$set` en las operaciones de actualización de MongoDB?
+    ¿Qué hace <code>$set</code> en las operaciones de actualización de MongoDB?
   </template>
   
   <BaseQuizOption value="A">Elimina un campo</BaseQuizOption>
@@ -374,7 +374,7 @@ db.users.updateOne({ name: 'John' }, { $push: { hobbies: 'gaming' } })
   <BaseQuizOption value="D">Elimina un elemento de un array</BaseQuizOption>
   
   <BaseQuizAnswer>
-    El operador `$set` establece el valor de un campo en un documento. Si el campo no existe, lo crea. Si existe, actualiza el valor.
+    El operador <code>$set</code> establece el valor de un campo en un documento. Si el campo no existe, lo crea. Si existe, actualiza el valor.
   </BaseQuizAnswer>
 </BaseQuiz>
 

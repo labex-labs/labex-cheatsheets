@@ -133,7 +133,7 @@ CREATE TABLE orders (
 
 <BaseQuiz id="postgresql-create-table-1" correct="A">
   <template #question>
-    PostgreSQL 에서 `SERIAL PRIMARY KEY`는 어떤 역할을 하나요?
+    PostgreSQL 에서 <code>SERIAL PRIMARY KEY</code>는 어떤 역할을 하나요?
   </template>
   
   <BaseQuizOption value="A" correct>자동 증가하는 정수 열을 생성하고 기본 키 역할을 수행합니다</BaseQuizOption>
@@ -142,7 +142,7 @@ CREATE TABLE orders (
   <BaseQuizOption value="D">고유 인덱스를 생성합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `SERIAL` 은 PostgreSQL 고유의 데이터 유형으로 자동 증가하는 정수를 생성합니다. `PRIMARY KEY`와 결합되어 각 행에 대해 자동으로 증가하는 고유 식별자를 생성합니다.
+    <code>SERIAL</code> 은 PostgreSQL 고유의 데이터 유형으로 자동 증가하는 정수를 생성합니다. <code>PRIMARY KEY</code>와 결합되어 각 행에 대해 자동으로 증가하는 고유 식별자를 생성합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -290,7 +290,7 @@ SELECT * FROM users WHERE active = false;
 
 <BaseQuiz id="postgresql-insert-1" correct="C">
   <template #question>
-    PostgreSQL 의 INSERT 문에서 `RETURNING` 은 무엇을 하나요?
+    PostgreSQL 의 INSERT 문에서 <code>RETURNING</code> 은 무엇을 하나요?
   </template>
   
   <BaseQuizOption value="A">삽입을 롤백합니다</BaseQuizOption>
@@ -299,7 +299,7 @@ SELECT * FROM users WHERE active = false;
   <BaseQuizOption value="D">기존 행을 업데이트합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    PostgreSQL 의 `RETURNING` 절은 삽입 후 즉시 삽입된 행 데이터 (또는 특정 열) 를 검색할 수 있게 해주며, 자동 생성된 ID 나 타임스탬프를 얻을 때 유용합니다.
+    PostgreSQL 의 <code>RETURNING</code> 절은 삽입 후 즉시 삽입된 행 데이터 (또는 특정 열) 를 검색할 수 있게 해주며, 자동 생성된 ID 나 타임스탬프를 얻을 때 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

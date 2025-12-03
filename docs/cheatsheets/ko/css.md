@@ -93,7 +93,7 @@ p.intro {
   <BaseQuizOption value="D">class="highlight" { }</BaseQuizOption>
   
   <BaseQuizAnswer>
-    클래스 선택자는 점 (`.`) 접두사를 사용합니다. `.highlight` 는 `class="highlight"` 를 가진 모든 요소를 선택합니다. ID 선택자는 `#` 을 사용하고, 요소 선택자는 접두사를 사용하지 않습니다.
+    클래스 선택자는 점 (<code>.</code>) 접두사를 사용합니다. <code>.highlight</code> 는 <code>class="highlight"</code> 를 가진 모든 요소를 선택합니다. ID 선택자는 <code>#</code> 을 사용하고, 요소 선택자는 접두사를 사용하지 않습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -217,7 +217,7 @@ div {
 
 <BaseQuiz id="css-padding-1" correct="C">
   <template #question>
-    `padding: 10px 20px`는 무엇을 설정합니까?
+    <code>padding: 10px 20px</code>는 무엇을 설정합니까?
   </template>
   
   <BaseQuizOption value="A">10px 위/아래, 20px 왼쪽/오른쪽</BaseQuizOption>
@@ -226,7 +226,7 @@ div {
   <BaseQuizOption value="D">10px 위, 20px 아래</BaseQuizOption>
   
   <BaseQuizAnswer>
-    두 개의 값이 제공되면 첫 번째 값은 위쪽과 아래쪽에 적용되고 두 번째 값은 왼쪽과 오른쪽에 적용됩니다. 따라서 `padding: 10px 20px`는 10px 의 수직 패딩과 20px 의 수평 패딩을 의미합니다.
+    두 개의 값이 제공되면 첫 번째 값은 위쪽과 아래쪽에 적용되고 두 번째 값은 왼쪽과 오른쪽에 적용됩니다. 따라서 <code>padding: 10px 20px</code>는 10px 의 수직 패딩과 20px 의 수평 패딩을 의미합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 ```
@@ -283,7 +283,7 @@ div {
 
 <BaseQuiz id="css-margin-1" correct="C">
   <template #question>
-    `margin: 0 auto`는 무엇을 합니까?
+    <code>margin: 0 auto</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">모든 마진 제거</BaseQuizOption>
@@ -292,7 +292,7 @@ div {
   <BaseQuizOption value="D">블록 요소를 수직으로 가운데 정렬</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `margin: 0 auto`는 위쪽과 아래쪽 마진을 0으로 설정하고 왼쪽/오른쪽 마진을 auto로 설정하여 블록 레벨 요소를 컨테이너 내에서 수평으로 가운데 정렬합니다.
+    <code>margin: 0 auto</code>는 위쪽과 아래쪽 마진을 0으로 설정하고 왼쪽/오른쪽 마진을 auto로 설정하여 블록 레벨 요소를 컨테이너 내에서 수평으로 가운데 정렬합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

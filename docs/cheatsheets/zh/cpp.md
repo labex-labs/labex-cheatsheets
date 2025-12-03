@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
   <BaseQuizOption value="D">C 使用 cout，C++ 使用 printf</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C 使用 stdio.h 中的 `printf()`，而 C++ 使用 iostream 中的 `cout` 和流插入运算符 `<<`。C++ 也支持 `printf` 以保持兼容性。
+    C 使用 stdio.h 中的 <code>printf()</code>，而 C++ 使用 iostream 中的 <code>cout</code> 和流插入运算符 <code><<</code>。C++ 也支持 <code>printf</code> 以保持兼容性。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ vector<string> names(5); // 大小为 5，空字符串
 
 <BaseQuiz id="cpp-vector-1" correct="B">
   <template #question>
-    `vector` 相较于普通数组在 C++ 中的主要优势是什么？
+    <code>vector</code> 相较于普通数组在 C++ 中的主要优势是什么？
   </template>
   
   <BaseQuizOption value="A">Vector 速度更快</BaseQuizOption>
@@ -165,7 +165,7 @@ vector<string> names(5); // 大小为 5，空字符串
   <BaseQuizOption value="D">没有优势</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `vector` 是一个动态数组，可以在运行时增长或收缩，与在编译时确定固定大小的常规数组不同。这使得 vector 在许多用例中更具灵活性。
+    <code>vector</code> 是一个动态数组，可以在运行时增长或收缩，与在编译时确定固定大小的常规数组不同。这使得 vector 在许多用例中更具灵活性。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -247,7 +247,7 @@ for (auto& item : container) {
   <BaseQuizOption value="D">需要手动管理索引的循环</BaseQuizOption>
   
   <BaseQuizAnswer>
-    基于范围的 for 循环（C++11 引入）会自动遍历容器（如 vector、数组、字符串）中的所有元素，而无需手动管理索引。语法是 `for (auto item : container)`。
+    基于范围的 for 循环（C++11 引入）会自动遍历容器（如 vector、数组、字符串）中的所有元素，而无需手动管理索引。语法是 <code>for (auto item : container)</code>。
   </BaseQuizAnswer>
 </BaseQuiz>
 

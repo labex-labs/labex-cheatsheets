@@ -127,7 +127,7 @@ name package
 
 <BaseQuiz id="rhel-package-1" correct="A">
   <template #question>
-    RHEL 에서 `dnf` 와 `yum` 의 차이점은 무엇입니까?
+    RHEL 에서 <code>dnf</code> 와 <code>yum</code> 의 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A" correct>dnf 는 RHEL 8 이상을 위한 최신 패키지 관리자이며, yum 은 RHEL 7 에서 사용됩니다</BaseQuizOption>
@@ -208,7 +208,7 @@ rm -rf directory/
 
 <BaseQuiz id="rhel-file-ops-1" correct="B">
   <template #question>
-    `cp -r`는 무엇을 합니까?
+    <code>cp -r</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">파일만 복사합니다</BaseQuizOption>
@@ -217,7 +217,7 @@ rm -rf directory/
   <BaseQuizOption value="D">파일 이름을 변경합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-r` 플래그 (재귀) 는 `cp` 가 디렉터리와 그 내용을, 포함된 모든 하위 디렉터리와 파일을 복사할 수 있도록 허용합니다. `-r` 이 없으면 `cp` 는 디렉터리를 복사할 수 없습니다.
+    <code>-r</code> 플래그 (재귀) 는 <code>cp</code> 가 디렉터리와 그 내용을, 포함된 모든 하위 디렉터리와 파일을 복사할 수 있도록 허용합니다. <code>-r</code> 이 없으면 <code>cp</code> 는 디렉터리를 복사할 수 없습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ tail -f /var/log/messages
 
 <BaseQuiz id="rhel-tail-1" correct="C">
   <template #question>
-    `tail -f /var/log/messages`는 무엇을 합니까?
+    <code>tail -f /var/log/messages</code>는 무엇을 합니까?
   </template>
   
   <BaseQuizOption value="A">처음 10 줄만 표시합니다</BaseQuizOption>
@@ -249,7 +249,7 @@ tail -f /var/log/messages
   <BaseQuizOption value="D">로그 파일을 보관합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-f` 플래그는 `tail` 이 파일을 추적하여 새 로그 항목이 기록될 때 실시간으로 표시하도록 합니다. 이는 실시간 로그 모니터링 및 문제 해결에 필수적입니다.
+    <code>-f</code> 플래그는 <code>tail</code> 이 파일을 추적하여 새 로그 항목이 기록될 때 실시간으로 표시하도록 합니다. 이는 실시간 로그 모니터링 및 문제 해결에 필수적입니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

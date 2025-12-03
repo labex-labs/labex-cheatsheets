@@ -42,7 +42,7 @@ var oldVariable = 'legacy'
 
 <BaseQuiz id="javascript-let-const-1" correct="B">
   <template #question>
-    Какова основная разница между `let` и `const`?
+    Какова основная разница между <code>let</code> и <code>const</code>?
   </template>
   
   <BaseQuizOption value="A">let имеет область видимости функции, const имеет область видимости блока</BaseQuizOption>
@@ -51,7 +51,7 @@ var oldVariable = 'legacy'
   <BaseQuizOption value="D">Разницы нет</BaseQuizOption>
   
   <BaseQuizAnswer>
-    И `let`, и `const` имеют блочную область видимости, но `let` позволяет вам переназначать переменную, в то время как `const` предотвращает переназначение. Однако свойства объектов `const` все еще могут быть изменены.
+    И <code>let</code>, и <code>const</code> имеют блочную область видимости, но <code>let</code> позволяет вам переназначать переменную, в то время как <code>const</code> предотвращает переназначение. Однако свойства объектов <code>const</code> все еще могут быть изменены.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -168,12 +168,12 @@ const processData = (data) => {
   </template>
   
   <BaseQuizOption value="A">Они поднимаются (hoisted) как объявления функций</BaseQuizOption>
-  <BaseQuizOption value="B">У них есть собственное связывание `this`</BaseQuizOption>
-  <BaseQuizOption value="C" correct>Они наследуют `this` из окружающей области видимости</BaseQuizOption>
+  <BaseQuizOption value="B">У них есть собственное связывание <code>this</code></BaseQuizOption>
+  <BaseQuizOption value="C" correct>Они наследуют <code>this</code> из окружающей области видимости</BaseQuizOption>
   <BaseQuizOption value="D">Они не могут возвращать значения</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Стрелочные функции не имеют собственного связывания `this`. Вместо этого они наследуют `this` из лексической (окружающей) области видимости, что делает их полезными для колбэков и обработчиков событий, когда вы хотите сохранить контекст.
+    Стрелочные функции не имеют собственного связывания <code>this</code>. Вместо этого они наследуют <code>this</code> из лексической (окружающей) области видимости, что делает их полезными для колбэков и обработчиков событий, когда вы хотите сохранить контекст.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -226,7 +226,7 @@ const result = numbers
 
 <BaseQuiz id="javascript-array-1" correct="A">
   <template #question>
-    Что возвращает `filter()`?
+    Что возвращает <code>filter()</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Новый массив с элементами, прошедшими тест</BaseQuizOption>
@@ -235,7 +235,7 @@ const result = numbers
   <BaseQuizOption value="D">Исходный массив, измененный на месте</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Метод `filter()` создает новый массив, содержащий все элементы, прошедшие тест, реализованный предоставленной функцией. Он не изменяет исходный массив.
+    Метод <code>filter()</code> создает новый массив, содержащий все элементы, прошедшие тест, реализованный предоставленной функцией. Он не изменяет исходный массив.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ const buttonsArray = Array.from(allButtons)
 
 <BaseQuiz id="javascript-dom-1" correct="C">
   <template #question>
-    Какова разница между `querySelector()` и `querySelectorAll()`?
+    Какова разница между <code>querySelector()</code> и <code>querySelectorAll()</code>?
   </template>
   
   <BaseQuizOption value="A">Разницы нет</BaseQuizOption>
@@ -335,7 +335,7 @@ const buttonsArray = Array.from(allButtons)
   <BaseQuizOption value="D">querySelector работает с ID, querySelectorAll работает с классами</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `querySelector()` возвращает первый элемент, соответствующий CSS-селектору, в то время как `querySelectorAll()` возвращает NodeList, содержащий все совпадающие элементы. Используйте `querySelector()`, когда нужен один элемент, и `querySelectorAll()`, когда нужно несколько.
+    <code>querySelector()</code> возвращает первый элемент, соответствующий CSS-селектору, в то время как <code>querySelectorAll()</code> возвращает NodeList, содержащий все совпадающие элементы. Используйте <code>querySelector()</code>, когда нужен один элемент, и <code>querySelectorAll()</code>, когда нужно несколько.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -41,7 +41,7 @@ Jedes HTML-Dokument beginnt mit einer Dokumenttypdeklaration und folgt einer Sta
 
 <BaseQuiz id="html-doctype-1" correct="A">
   <template #question>
-    Was ist der Zweck von `<!DOCTYPE html>`?
+    Was ist der Zweck von <code><!DOCTYPE html></code>?
   </template>
   
   <BaseQuizOption value="A" correct>Es deklariert den Dokumenttyp und die HTML-Version</BaseQuizOption>
@@ -50,7 +50,7 @@ Jedes HTML-Dokument beginnt mit einer Dokumenttypdeklaration und folgt einer Sta
   <BaseQuizOption value="D">Es legt den Seitentitel fest</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Die Deklaration `<!DOCTYPE html>` teilt dem Browser mit, welche HTML-Version das Dokument verwendet. Für HTML5 ist diese einfache Deklaration ausreichend und sollte die erste Zeile jedes HTML-Dokuments sein.
+    Die Deklaration <code><!DOCTYPE html></code> teilt dem Browser mit, welche HTML-Version das Dokument verwendet. Für HTML5 ist diese einfache Deklaration ausreichend und sollte die erste Zeile jedes HTML-Dokuments sein.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -128,7 +128,7 @@ Definieren die Hierarchie und Wichtigkeit von Inhaltsabschnitten.
   <BaseQuizOption value="D">h6 ist die wichtigste Überschrift</BaseQuizOption>
   
   <BaseQuizAnswer>
-    HTML-Überschriften sollten einer logischen Hierarchie folgen: Verwenden Sie ein `h1` für den Hauptseitentitel, dann `h2` für Hauptabschnitte, `h3` für Unterabschnitte usw. Dies hilft bei der Barrierefreiheit und SEO.
+    HTML-Überschriften sollten einer logischen Hierarchie folgen: Verwenden Sie ein <code>h1</code> für den Hauptseitentitel, dann <code>h2</code> für Hauptabschnitte, <code>h3</code> für Unterabschnitte usw. Dies hilft bei der Barrierefreiheit und SEO.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -263,7 +263,7 @@ Erstellen Sie Hyperlinks und Navigationsstrukturen.
 
 <BaseQuiz id="html-links-1" correct="B">
   <template #question>
-    Was bewirkt `target="_blank"` in einem Anker-Tag?
+    Was bewirkt <code>target="_blank"</code> in einem Anker-Tag?
   </template>
   
   <BaseQuizOption value="A">Öffnet den Link im selben Fenster</BaseQuizOption>
@@ -272,7 +272,7 @@ Erstellen Sie Hyperlinks und Navigationsstrukturen.
   <BaseQuizOption value="D">Lädt den Link herunter</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Attribut `target="_blank"` öffnet die verlinkte Seite in einem neuen Browser-Tab oder -Fenster, sodass der Benutzer die ursprüngliche Seite geöffnet lassen kann.
+    Das Attribut <code>target="_blank"</code> öffnet die verlinkte Seite in einem neuen Browser-Tab oder -Fenster, sodass der Benutzer die ursprüngliche Seite geöffnet lassen kann.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -356,7 +356,7 @@ Integrierte HTML-Formularvalidierungsattribute.
 
 <BaseQuiz id="html-validation-1" correct="A">
   <template #question>
-    Was bewirkt das Attribut `required` in einem HTML-Input?
+    Was bewirkt das Attribut <code>required</code> in einem HTML-Input?
   </template>
   
   <BaseQuizOption value="A" correct>Verhindert das Absenden des Formulars, wenn das Feld leer ist</BaseQuizOption>
@@ -365,7 +365,7 @@ Integrierte HTML-Formularvalidierungsattribute.
   <BaseQuizOption value="D">Setzt einen Standardwert</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Attribut `required` macht ein Eingabefeld obligatorisch. Wenn das Feld beim Absenden des Formulars leer ist, verhindert der Browser das Absenden und zeigt eine Validierungsnachricht an.
+    Das Attribut <code>required</code> macht ein Eingabefeld obligatorisch. Wenn das Feld beim Absenden des Formulars leer ist, verhindert der Browser das Absenden und zeigt eine Validierungsnachricht an.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -42,7 +42,7 @@ var oldVariable = 'legacy'
 
 <BaseQuiz id="javascript-let-const-1" correct="B">
   <template #question>
-    What is the main difference between `let` and `const`?
+    What is the main difference between <code>let</code> and <code>const</code>?
   </template>
   
   <BaseQuizOption value="A">let is function-scoped, const is block-scoped</BaseQuizOption>
@@ -51,7 +51,7 @@ var oldVariable = 'legacy'
   <BaseQuizOption value="D">There is no difference</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Both `let` and `const` are block-scoped, but `let` allows you to reassign the variable, while `const` prevents reassignment. However, `const` objects can still have their properties modified.
+    Both <code>let</code> and <code>const</code> are block-scoped, but <code>let</code> allows you to reassign the variable, while <code>const</code> prevents reassignment. However, <code>const</code> objects can still have their properties modified.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -168,12 +168,12 @@ const processData = (data) => {
   </template>
   
   <BaseQuizOption value="A">They are hoisted like function declarations</BaseQuizOption>
-  <BaseQuizOption value="B">They have their own `this` binding</BaseQuizOption>
-  <BaseQuizOption value="C" correct>They inherit `this` from the enclosing scope</BaseQuizOption>
+  <BaseQuizOption value="B">They have their own <code>this</code> binding</BaseQuizOption>
+  <BaseQuizOption value="C" correct>They inherit <code>this</code> from the enclosing scope</BaseQuizOption>
   <BaseQuizOption value="D">They cannot return values</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Arrow functions do not have their own `this` binding. Instead, they inherit `this` from the lexical (enclosing) scope, which makes them useful for callbacks and event handlers where you want to preserve the context.
+    Arrow functions do not have their own <code>this</code> binding. Instead, they inherit <code>this</code> from the lexical (enclosing) scope, which makes them useful for callbacks and event handlers where you want to preserve the context.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -226,7 +226,7 @@ const result = numbers
 
 <BaseQuiz id="javascript-array-1" correct="A">
   <template #question>
-    What does `filter()` return?
+    What does <code>filter()</code> return?
   </template>
   
   <BaseQuizOption value="A" correct>A new array with elements that pass the test</BaseQuizOption>
@@ -235,7 +235,7 @@ const result = numbers
   <BaseQuizOption value="D">The original array modified in place</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `filter()` method creates a new array containing all elements that pass the test implemented by the provided function. It does not modify the original array.
+    The <code>filter()</code> method creates a new array containing all elements that pass the test implemented by the provided function. It does not modify the original array.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -326,7 +326,7 @@ const buttonsArray = Array.from(allButtons)
 
 <BaseQuiz id="javascript-dom-1" correct="C">
   <template #question>
-    What is the difference between `querySelector()` and `querySelectorAll()`?
+    What is the difference between <code>querySelector()</code> and <code>querySelectorAll()</code>?
   </template>
   
   <BaseQuizOption value="A">There is no difference</BaseQuizOption>
@@ -335,7 +335,7 @@ const buttonsArray = Array.from(allButtons)
   <BaseQuizOption value="D">querySelector works with IDs, querySelectorAll works with classes</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `querySelector()` returns the first element that matches the CSS selector, while `querySelectorAll()` returns a NodeList containing all matching elements. Use `querySelector()` when you need one element, and `querySelectorAll()` when you need multiple.
+    <code>querySelector()</code> returns the first element that matches the CSS selector, while <code>querySelectorAll()</code> returns a NodeList containing all matching elements. Use <code>querySelector()</code> when you need one element, and <code>querySelectorAll()</code> when you need multiple.
   </BaseQuizAnswer>
 </BaseQuiz>
 

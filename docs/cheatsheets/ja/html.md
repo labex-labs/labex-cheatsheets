@@ -41,7 +41,7 @@ HTML チートシート
 
 <BaseQuiz id="html-doctype-1" correct="A">
   <template #question>
-    `<!DOCTYPE html>`の目的は何ですか？
+    <code><!DOCTYPE html></code>の目的は何ですか？
   </template>
   
   <BaseQuizOption value="A" correct>ドキュメントタイプと HTML バージョンを宣言する</BaseQuizOption>
@@ -50,7 +50,7 @@ HTML チートシート
   <BaseQuizOption value="D">ページのタイトルを設定する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `<!DOCTYPE html>`宣言は、ブラウザにドキュメントが使用している HTML のバージョンを伝えます。HTML5 の場合、この単純な宣言で十分であり、すべての HTML ドキュメントの最初の行である必要があります。
+    <code><!DOCTYPE html></code>宣言は、ブラウザにドキュメントが使用している HTML のバージョンを伝えます。HTML5 の場合、この単純な宣言で十分であり、すべての HTML ドキュメントの最初の行である必要があります。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -128,7 +128,7 @@ HTML 要素は、開始タグ、コンテンツ、終了タグで構成されま
   <BaseQuizOption value="D">h6 が最も重要な見出しである</BaseQuizOption>
   
   <BaseQuizAnswer>
-    HTML の見出しは論理的な階層に従うべきです。メインページタイトルには `h1`を一度使用し、主要セクションには`h2`、サブセクションには`h3` を使用するなど、順序立てて使用します。これはアクセシビリティと SEO に役立ちます。
+    HTML の見出しは論理的な階層に従うべきです。メインページタイトルには <code>h1</code>を一度使用し、主要セクションには<code>h2</code>、サブセクションには<code>h3</code> を使用するなど、順序立てて使用します。これはアクセシビリティと SEO に役立ちます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -262,7 +262,7 @@ Line 2
 
 <BaseQuiz id="html-links-1" correct="B">
   <template #question>
-    アンカータグの `target="_blank"` は何をしますか？
+    アンカータグの <code>target="_blank"</code> は何をしますか？
   </template>
   
   <BaseQuizOption value="A">同じウィンドウでリンクを開く</BaseQuizOption>
@@ -271,7 +271,7 @@ Line 2
   <BaseQuizOption value="D">リンクをダウンロードする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `target="_blank"` 属性は、リンクされたページを新しいブラウザタブまたはウィンドウで開きます。これにより、ユーザーは元のページを開いたままにできます。
+    <code>target="_blank"</code> 属性は、リンクされたページを新しいブラウザタブまたはウィンドウで開きます。これにより、ユーザーは元のページを開いたままにできます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -355,7 +355,7 @@ Line 2
 
 <BaseQuiz id="html-validation-1" correct="A">
   <template #question>
-    HTML 入力の `required` 属性は何をしますか？
+    HTML 入力の <code>required</code> 属性は何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>フィールドが空の場合、フォームの送信を防ぐ</BaseQuizOption>
@@ -364,7 +364,7 @@ Line 2
   <BaseQuizOption value="D">デフォルト値を設定する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `required` 属性は入力フィールドを必須にします。フォーム送信時にフィールドが空の場合、ブラウザは送信を防止し、検証メッセージを表示します。
+    <code>required</code> 属性は入力フィールドを必須にします。フォーム送信時にフィールドが空の場合、ブラウザは送信を防止し、検証メッセージを表示します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

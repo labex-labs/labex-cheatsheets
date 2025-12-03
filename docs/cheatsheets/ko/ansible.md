@@ -174,7 +174,7 @@ ansible all -m command -a "systemctl status nginx" --become
 
 <BaseQuiz id="ansible-command-1" correct="C">
   <template #question>
-    `ansible all -m ping`은 무엇을 수행합니까?
+    <code>ansible all -m ping</code>은 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">ICMP ping 을 사용하여 네트워크 연결 테스트</BaseQuizOption>
@@ -183,7 +183,7 @@ ansible all -m command -a "systemctl status nginx" --become
   <BaseQuizOption value="D">호스트가 온라인인지 확인</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Ansible 의 `ping` 모듈은 ICMP 를 사용하지 않습니다. Ansible 이 호스트에 연결하고, Python 을 실행하며, 결과를 반환할 수 있는지 확인하는 테스트 모듈입니다. 연결 및 구성을 확인하는 데 사용됩니다.
+    Ansible 의 <code>ping</code> 모듈은 ICMP 를 사용하지 않습니다. Ansible 이 호스트에 연결하고, Python 을 실행하며, 결과를 반환할 수 있는지 확인하는 테스트 모듈입니다. 연결 및 구성을 확인하는 데 사용됩니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -278,7 +278,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
 
 <BaseQuiz id="ansible-playbook-1" correct="B">
   <template #question>
-    `ansible-playbook site.yml --check`은 무엇을 수행합니까?
+    <code>ansible-playbook site.yml --check</code>은 무엇을 수행합니까?
   </template>
   
   <BaseQuizOption value="A">플레이북을 두 번 실행</BaseQuizOption>
@@ -287,7 +287,7 @@ ansible-playbook site.yml --extra-vars "nginx_port=8080"
   <BaseQuizOption value="D">첫 번째 작업만 실행</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `--check` 플래그는 Ansible 을 체크 모드 (드라이 - 런) 로 실행하여 실제로 변경 사항을 적용하지 않고 발생할 수 있는 작업을 시뮬레이션합니다. 이는 플레이북을 적용하기 전에 테스트하는 데 유용합니다.
+    <code>--check</code> 플래그는 Ansible 을 체크 모드 (드라이 - 런) 로 실행하여 실제로 변경 사항을 적용하지 않고 발생할 수 있는 작업을 시뮬레이션합니다. 이는 플레이북을 적용하기 전에 테스트하는 데 유용합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -127,7 +127,7 @@ name package
 
 <BaseQuiz id="rhel-package-1" correct="A">
   <template #question>
-    Qual é a diferença entre `dnf` e `yum` no RHEL?
+    Qual é a diferença entre <code>dnf</code> e <code>yum</code> no RHEL?
   </template>
   
   <BaseQuizOption value="A" correct>dnf é o gerenciador de pacotes mais novo para RHEL 8+, yum é usado no RHEL 7</BaseQuizOption>
@@ -208,7 +208,7 @@ rm -rf directory/
 
 <BaseQuiz id="rhel-file-ops-1" correct="B">
   <template #question>
-    O que `cp -r` faz?
+    O que <code>cp -r</code> faz?
   </template>
   
   <BaseQuizOption value="A">Copia apenas arquivos</BaseQuizOption>
@@ -217,7 +217,7 @@ rm -rf directory/
   <BaseQuizOption value="D">Renomeia arquivos</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O flag `-r` (recursivo) permite que `cp` copie diretórios e seu conteúdo, incluindo todos os subdiretórios e arquivos dentro deles. Sem `-r`, `cp` não pode copiar diretórios.
+    O flag <code>-r</code> (recursivo) permite que <code>cp</code> copie diretórios e seu conteúdo, incluindo todos os subdiretórios e arquivos dentro deles. Sem <code>-r</code>, <code>cp</code> não pode copiar diretórios.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -240,7 +240,7 @@ tail -f /var/log/messages
 
 <BaseQuiz id="rhel-tail-1" correct="C">
   <template #question>
-    O que `tail -f /var/log/messages` faz?
+    O que <code>tail -f /var/log/messages</code> faz?
   </template>
   
   <BaseQuizOption value="A">Mostra apenas as primeiras 10 linhas</BaseQuizOption>
@@ -249,7 +249,7 @@ tail -f /var/log/messages
   <BaseQuizOption value="D">Arquiva o arquivo de log</BaseQuizOption>
   
   <BaseQuizAnswer>
-    O flag `-f` faz com que `tail` siga o arquivo, exibindo novas entradas de log à medida que são escritas. Isso é essencial para monitoramento de logs em tempo real e solução de problemas.
+    O flag <code>-f</code> faz com que <code>tail</code> siga o arquivo, exibindo novas entradas de log à medida que são escritas. Isso é essencial para monitoramento de logs em tempo real e solução de problemas.
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -121,7 +121,7 @@ docker run --rm hello-world
 
 <BaseQuiz id="docker-run-1" correct="C">
   <template #question>
-    `docker run -d` 的作用是什么？
+    <code>docker run -d</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">以调试模式运行容器</BaseQuizOption>
@@ -130,7 +130,7 @@ docker run --rm hello-world
   <BaseQuizOption value="D">以默认设置运行容器</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-d` 标志以分离模式运行容器，意味着它在后台运行并立即将控制权返回给终端。这对于长期运行的服务很有用。
+    <code>-d</code> 标志以分离模式运行容器，意味着它在后台运行并立即将控制权返回给终端。这对于长期运行的服务很有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -232,7 +232,7 @@ docker build --no-cache -t myapp .
 
 <BaseQuiz id="docker-build-1" correct="A">
   <template #question>
-    `docker build -t myapp:latest .` 的作用是什么？
+    <code>docker build -t myapp:latest .</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A" correct>从当前目录构建一个标记为 "myapp:latest" 的 Docker 镜像</BaseQuizOption>
@@ -241,7 +241,7 @@ docker build --no-cache -t myapp .
   <BaseQuizOption value="D">删除 "myapp:latest" 镜像</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-t` 标志将镜像标记为 "myapp:latest"，而 `.` 指定了构建上下文（当前目录）。此命令从当前目录中的 Dockerfile 构建一个新镜像。
+    <code>-t</code> 标志将镜像标记为 "myapp:latest"，而 <code>.</code> 指定了构建上下文（当前目录）。此命令从当前目录中的 Dockerfile 构建一个新镜像。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -316,7 +316,7 @@ EXPOSE 8000
 
 <BaseQuiz id="dockerfile-1" correct="B">
   <template #question>
-    Dockerfile 中 `FROM` 指令的目的是什么？
+    Dockerfile 中 <code>FROM</code> 指令的目的是什么？
   </template>
   
   <BaseQuizOption value="A">它将文件从宿主机复制到容器</BaseQuizOption>
@@ -325,7 +325,7 @@ EXPOSE 8000
   <BaseQuizOption value="D">它定义了容器启动时运行的命令</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `FROM` 指令必须是 Dockerfile 中第一个非注释指令。它指定了你的镜像将构建在其之上的基础镜像，为容器提供了基础。
+    <code>FROM</code> 指令必须是 Dockerfile 中第一个非注释指令。它指定了你的镜像将构建在其之上的基础镜像，为容器提供了基础。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -372,7 +372,7 @@ docker-compose down -v
 
 <BaseQuiz id="docker-compose-1" correct="D">
   <template #question>
-    `docker-compose up -d` 的作用是什么？
+    <code>docker-compose up -d</code> 的作用是什么？
   </template>
   
   <BaseQuizOption value="A">停止所有正在运行的容器</BaseQuizOption>
@@ -381,7 +381,7 @@ docker-compose down -v
   <BaseQuizOption value="D" correct>以分离模式（后台）启动 docker-compose.yml 中定义的所有服务</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `-d` 标志以分离模式（后台）运行容器。`docker-compose up` 读取 docker-compose.yml 文件并启动所有定义的服务，便于管理多容器应用程序。
+    <code>-d</code> 标志以分离模式（后台）运行容器。<code>docker-compose up</code> 读取 docker-compose.yml 文件并启动所有定义的服务，便于管理多容器应用程序。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -461,7 +461,7 @@ docker run -p 8080:80 nginx
 
 <BaseQuiz id="docker-port-1" correct="A">
   <template #question>
-    在 `docker run -p 8080:80 nginx` 中，端口号的含义是什么？
+    在 <code>docker run -p 8080:80 nginx</code> 中，端口号的含义是什么？
   </template>
   
   <BaseQuizOption value="A" correct>8080 是宿主机端口，80 是容器端口</BaseQuizOption>
@@ -470,7 +470,7 @@ docker run -p 8080:80 nginx
   <BaseQuizOption value="D">两个端口都是宿主机端口</BaseQuizOption>
   
   <BaseQuizAnswer>
-    格式是 `-p host_port:container_port`。宿主机上的 8080 端口映射到容器内的 80 端口，允许你通过 localhost:8080 访问容器中运行的 nginx Web 服务器。
+    格式是 <code>-p host_port:container_port</code>。宿主机上的 8080 端口映射到容器内的 80 端口，允许你通过 localhost:8080 访问容器中运行的 nginx Web 服务器。
   </BaseQuizAnswer>
 </BaseQuiz>
 

@@ -70,7 +70,7 @@ public static void main(String[] args) {
   <BaseQuizOption value="D">public static int main(String[] args)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    메인 메서드는 `public static void main(String[] args)`여야 합니다. `public` 은 JVM 이 접근할 수 있게 하고, `static` 은 클래스에 속함을 의미하며, `void` 는 반환 값이 없음을 의미하고, `String[] args`는 명령줄 인수를 받습니다.
+    메인 메서드는 <code>public static void main(String[] args)</code>여야 합니다. <code>public</code> 은 JVM 이 접근할 수 있게 하고, <code>static</code> 은 클래스에 속함을 의미하며, <code>void</code> 는 반환 값이 없음을 의미하고, <code>String[] args</code>는 명령줄 인수를 받습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ String uppercase = message.toUpperCase();
   <BaseQuizOption value="D">문자열은 자동으로 삭제됩니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    불변성은 String 객체가 생성되면 그 값을 수정할 수 없음을 의미합니다. `toUpperCase()` 와 같은 연산은 원본을 수정하는 대신 새 String 객체를 반환합니다.
+    불변성은 String 객체가 생성되면 그 값을 수정할 수 없음을 의미합니다. <code>toUpperCase()</code> 와 같은 연산은 원본을 수정하는 대신 새 String 객체를 반환합니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -280,7 +280,7 @@ do {
 
 <BaseQuiz id="java-while-1" correct="B">
   <template #question>
-    `while` 루프와 `do-while` 루프의 주요 차이점은 무엇입니까?
+    <code>while</code> 루프와 <code>do-while</code> 루프의 주요 차이점은 무엇입니까?
   </template>
   
   <BaseQuizOption value="A">차이점이 없습니다</BaseQuizOption>
@@ -289,7 +289,7 @@ do {
   <BaseQuizOption value="D">do-while 은 배열에서만 작동합니다</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `do-while` 루프는 루프 본문을 실행한 후 조건을 확인하므로 항상 최소 한 번 실행됩니다. `while` 루프는 조건을 먼저 확인하므로 조건이 처음부터 거짓이면 실행되지 않을 수 있습니다.
+    <code>do-while</code> 루프는 루프 본문을 실행한 후 조건을 확인하므로 항상 최소 한 번 실행됩니다. <code>while</code> 루프는 조건을 먼저 확인하므로 조건이 처음부터 거짓이면 실행되지 않을 수 있습니다.
   </BaseQuizAnswer>
 </BaseQuiz>
 

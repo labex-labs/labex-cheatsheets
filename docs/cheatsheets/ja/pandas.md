@@ -39,7 +39,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
 
 <BaseQuiz id="pandas-read-csv-1" correct="B">
   <template #question>
-    `pd.read_csv('data.csv')` は何を返しますか？
+    <code>pd.read_csv('data.csv')</code> は何を返しますか？
   </template>
   
   <BaseQuizOption value="A">辞書のリスト</BaseQuizOption>
@@ -48,7 +48,7 @@ df = pd.read_csv('data.csv', parse_dates=['Date'])
   <BaseQuizOption value="D">文字列</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `pd.read_csv()` は CSV ファイルを読み込み、行と列を持つ 2 次元のラベル付きデータ構造である pandas DataFrame を返します。
+    <code>pd.read_csv()</code> は CSV ファイルを読み込み、行と列を持つ 2 次元のラベル付きデータ構造である pandas DataFrame を返します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -177,7 +177,7 @@ df.dropna(axis=1)
 
 <BaseQuiz id="pandas-missing-1" correct="B">
   <template #question>
-    `df.dropna(axis=1)` は何をしますか？
+    <code>df.dropna(axis=1)</code> は何をしますか？
   </template>
   
   <BaseQuizOption value="A">欠損値を含む行を削除する</BaseQuizOption>
@@ -186,7 +186,7 @@ df.dropna(axis=1)
   <BaseQuizOption value="D">欠損値をカウントする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `axis=1`パラメータは「列」を意味するため、`df.dropna(axis=1)` は欠損値を含む列を削除します。行を削除するには `axis=0`（デフォルト）を使用します。
+    <code>axis=1</code>パラメータは「列」を意味するため、<code>df.dropna(axis=1)</code> は欠損値を含む列を削除します。行を削除するには <code>axis=0</code>（デフォルト）を使用します。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -205,7 +205,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
 
 <BaseQuiz id="pandas-duplicates-1" correct="A">
   <template #question>
-    `df.drop_duplicates()` はデフォルトで何をしますか？
+    <code>df.drop_duplicates()</code> はデフォルトで何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>重複する行を削除し、最初に出現したものを保持する</BaseQuizOption>
@@ -214,7 +214,7 @@ df.drop_duplicates(subset=['col1', 'col2'])
   <BaseQuizOption value="D">重複の最初に出現したものを削除する</BaseQuizOption>
   
   <BaseQuizAnswer>
-    デフォルトでは、`drop_duplicates()`は重複する各行の最初の出現を保持し、それ以降の重複を削除します。`keep='last'` を使用して最後の出現を保持することもできます。
+    デフォルトでは、<code>drop_duplicates()</code>は重複する各行の最初の出現を保持し、それ以降の重複を削除します。<code>keep='last'</code> を使用して最後の出現を保持することもできます。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -248,7 +248,7 @@ df.replace(['A', 'B'], ['C', 'D'])
 
 <BaseQuiz id="pandas-apply-1" correct="A">
   <template #question>
-    `df['col'].apply(lambda x: x*2)`は何をしますか？
+    <code>df['col'].apply(lambda x: x*2)</code>は何をしますか？
   </template>
   
   <BaseQuizOption value="A" correct>列の各要素に関数を適用し、それぞれを 2 倍にする</BaseQuizOption>
@@ -257,7 +257,7 @@ df.replace(['A', 'B'], ['C', 'D'])
   <BaseQuizOption value="D">列の要素をカウントする</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `apply()` メソッドは、Series の各要素に関数を適用します。ラムダ関数`lambda x: x*2`は各値を 2 倍にし、変換された値を持つ新しい Series を返します。
+    <code>apply()</code> メソッドは、Series の各要素に関数を適用します。ラムダ関数<code>lambda x: x*2</code>は各値を 2 倍にし、変換された値を持つ新しい Series を返します。
   </BaseQuizAnswer>
 </BaseQuiz>
 

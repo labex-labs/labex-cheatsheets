@@ -91,7 +91,7 @@ int main(int argc, char* argv[]) {
   <BaseQuizOption value="D">C usa cout, C++ usa printf</BaseQuizOption>
   
   <BaseQuizAnswer>
-    C usa `printf()` de stdio.h, enquanto C++ usa `cout` de iostream com o operador de inserção de fluxo `<<`. C++ também suporta printf para compatibilidade.
+    C usa <code>printf()</code> de stdio.h, enquanto C++ usa <code>cout</code> de iostream com o operador de inserção de fluxo <code><<</code>. C++ também suporta printf para compatibilidade.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -157,7 +157,7 @@ vector<string> names(5); // Tamanho 5, strings vazias
 
 <BaseQuiz id="cpp-vector-1" correct="B">
   <template #question>
-    Qual é a principal vantagem do `vector` sobre arrays regulares em C++?
+    Qual é a principal vantagem do <code>vector</code> sobre arrays regulares em C++?
   </template>
   
   <BaseQuizOption value="A">Vectors são mais rápidos</BaseQuizOption>
@@ -166,7 +166,7 @@ vector<string> names(5); // Tamanho 5, strings vazias
   <BaseQuizOption value="D">Não há vantagem</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `vector` é um array dinâmico que pode crescer ou encolher em tempo de execução, ao contrário dos arrays regulares cujo tamanho fixo é determinado em tempo de compilação. Isso torna os vetores mais flexíveis para muitos casos de uso.
+    <code>vector</code> é um array dinâmico que pode crescer ou encolher em tempo de execução, ao contrário dos arrays regulares cujo tamanho fixo é determinado em tempo de compilação. Isso torna os vetores mais flexíveis para muitos casos de uso.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -248,7 +248,7 @@ for (auto& item : container) {
   <BaseQuizOption value="D">Um loop que requer gerenciamento manual de índice</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Loops for baseados em intervalo (introduzidos no C++11) iteram automaticamente sobre todos os elementos em um contêiner (como vetores, arrays, strings) sem a necessidade de gerenciar índices manualmente. A sintaxe é `for (auto item : container)`.
+    Loops for baseados em intervalo (introduzidos no C++11) iteram automaticamente sobre todos os elementos em um contêiner (como vetores, arrays, strings) sem a necessidade de gerenciar índices manualmente. A sintaxe é <code>for (auto item : container)</code>.
   </BaseQuizAnswer>
 </BaseQuiz>
 

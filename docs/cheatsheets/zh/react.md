@@ -254,7 +254,7 @@ function Form() {
 
 <BaseQuiz id="react-usestate-1" correct="A">
   <template #question>
-    `useState(0)` 返回什么？
+    <code>useState(0)</code> 返回什么？
   </template>
   
   <BaseQuizOption value="A" correct>一个包含状态值和更新函数的数组</BaseQuizOption>
@@ -263,7 +263,7 @@ function Form() {
   <BaseQuizOption value="D">什么都不返回，它只设置状态</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `useState` 返回一个包含两个元素的数组：当前状态值和一个更新它的函数。初始值 (0) 作为参数传入。
+    <code>useState</code> 返回一个包含两个元素的数组：当前状态值和一个更新它的函数。初始值 (0) 作为参数传入。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -292,7 +292,7 @@ function Timer() {
 
 <BaseQuiz id="react-useeffect-1" correct="D">
   <template #question>
-    `useEffect(() => {...}, [])` 中的空依赖数组 `[]` 是什么意思？
+    <code>useEffect(() => {...}, [])</code> 中的空依赖数组 <code>[]</code> 是什么意思？
   </template>
   
   <BaseQuizOption value="A">效果在每次渲染时运行</BaseQuizOption>

@@ -158,7 +158,7 @@ cd -
   <BaseQuizOption value="D">whoami</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `pwd` command (print working directory) displays the full path of the current directory you are in.
+    The <code>pwd</code> command (print working directory) displays the full path of the current directory you are in.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -249,7 +249,7 @@ ls -l filename
 
 <BaseQuiz id="linux-chmod-1" correct="C">
   <template #question>
-    What does `chmod 755 filename` set for permissions?
+    What does <code>chmod 755 filename</code> set for permissions?
   </template>
   
   <BaseQuizOption value="A">Read, write, execute for owner; read for group and others</BaseQuizOption>
@@ -258,7 +258,7 @@ ls -l filename
   <BaseQuizOption value="D">Read, write for owner; read for group and others</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `chmod 755` sets: owner = 7 (rwx), group = 5 (r-x), others = 5 (r-x). This is a common permission set for executable files and directories.
+    <code>chmod 755</code> sets: owner = 7 (rwx), group = 5 (r-x), others = 5 (r-x). This is a common permission set for executable files and directories.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -300,7 +300,7 @@ kill -HUP 1234
 
 <BaseQuiz id="linux-kill-1" correct="D">
   <template #question>
-    What signal does `kill -9` send to a process?
+    What signal does <code>kill -9</code> send to a process?
   </template>
   
   <BaseQuizOption value="A">SIGTERM (terminate gracefully)</BaseQuizOption>
@@ -309,7 +309,7 @@ kill -HUP 1234
   <BaseQuizOption value="D" correct>SIGKILL (force kill, cannot be ignored)</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `kill -9` sends SIGKILL, which forcefully terminates a process immediately. This signal cannot be caught or ignored by the process, making it useful for killing unresponsive processes.
+    <code>kill -9</code> sends SIGKILL, which forcefully terminates a process immediately. This signal cannot be caught or ignored by the process, making it useful for killing unresponsive processes.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -383,7 +383,7 @@ mtr google.com
 
 <BaseQuiz id="linux-ping-1" correct="B">
   <template #question>
-    What does the `ping -c 4` command do?
+    What does the <code>ping -c 4</code> command do?
   </template>
   
   <BaseQuizOption value="A">Ping with 4-second timeout</BaseQuizOption>
@@ -392,7 +392,7 @@ mtr google.com
   <BaseQuizOption value="D">Wait 4 seconds between pings</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `-c` option specifies the count of packets to send. `ping -c 4` will send exactly 4 ICMP echo request packets and then stop, displaying the results.
+    The <code>-c</code> option specifies the count of packets to send. <code>ping -c 4</code> will send exactly 4 ICMP echo request packets and then stop, displaying the results.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -449,7 +449,7 @@ grep -c "pattern" filename
 
 <BaseQuiz id="linux-grep-1" correct="A">
   <template #question>
-    Which `grep` option performs a case-insensitive search?
+    Which <code>grep</code> option performs a case-insensitive search?
   </template>
   
   <BaseQuizOption value="A" correct>-i</BaseQuizOption>
@@ -458,7 +458,7 @@ grep -c "pattern" filename
   <BaseQuizOption value="D">-r</BaseQuizOption>
   
   <BaseQuizAnswer>
-    The `-i` option makes grep case-insensitive, so it will match both uppercase and lowercase letters. For example, `grep -i "error" file.txt` will match "Error", "ERROR", and "error".
+    The <code>-i</code> option makes grep case-insensitive, so it will match both uppercase and lowercase letters. For example, <code>grep -i "error" file.txt</code> will match "Error", "ERROR", and "error".
   </BaseQuizAnswer>
 </BaseQuiz>
 

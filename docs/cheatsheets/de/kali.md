@@ -96,7 +96,7 @@ env | grep TARGET
 
 <BaseQuiz id="kali-env-1" correct="C">
   <template #question>
-    Was passiert mit Umgebungsvariablen, die mit `export` gesetzt werden?
+    Was passiert mit Umgebungsvariablen, die mit <code>export</code> gesetzt werden?
   </template>
   
   <BaseQuizOption value="A">Sie bleiben über Systemneustarts hinaus bestehen</BaseQuizOption>
@@ -105,7 +105,7 @@ env | grep TARGET
   <BaseQuizOption value="D">Sie sind globale Systemvariablen</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Umgebungsvariablen, die mit `export` gesetzt werden, sind für die aktuelle Shell-Sitzung und alle daraus erzeugten Kindprozesse verfügbar. Sie gehen verloren, wenn die Shell-Sitzung beendet wird, es sei denn, sie werden in Shell-Konfigurationsdateien wie `.bashrc` hinzugefügt.
+    Umgebungsvariablen, die mit <code>export</code> gesetzt werden, sind für die aktuelle Shell-Sitzung und alle daraus erzeugten Kindprozesse verfügbar. Sie gehen verloren, wenn die Shell-Sitzung beendet wird, es sei denn, sie werden in Shell-Konfigurationsdateien wie <code>.bashrc</code> hinzugefügt.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -156,7 +156,7 @@ nmap -sS 192.168.1.1
 
 <BaseQuiz id="kali-nmap-1" correct="B">
   <template #question>
-    Was bewirkt `nmap -sS`?
+    Was bewirkt <code>nmap -sS</code>?
   </template>
   
   <BaseQuizOption value="A">Führt einen UDP-Scan durch</BaseQuizOption>
@@ -165,7 +165,7 @@ nmap -sS 192.168.1.1
   <BaseQuizOption value="D">Führt eine Betriebssystemerkennung durch</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-sS` führt einen SYN-Scan durch (auch Halb-offener Scan genannt), da es den TCP-Handshake niemals abschließt. Es sendet SYN-Pakete und analysiert Antworten, was es heimlicher macht als einen vollständigen TCP-Connect-Scan.
+    Das Flag <code>-sS</code> führt einen SYN-Scan durch (auch Halb-offener Scan genannt), da es den TCP-Handshake niemals abschließt. Es sendet SYN-Pakete und analysiert Antworten, was es heimlicher macht als einen vollständigen TCP-Connect-Scan.
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -182,7 +182,7 @@ nmap -O 192.168.1.1
 
 <BaseQuiz id="kali-enumeration-1" correct="A">
   <template #question>
-    Was bewirkt `nmap -sV`?
+    Was bewirkt <code>nmap -sV</code>?
   </template>
   
   <BaseQuizOption value="A" correct>Erkennt laufende Dienstversionen auf offenen Ports</BaseQuizOption>
@@ -191,7 +191,7 @@ nmap -O 192.168.1.1
   <BaseQuizOption value="D">Führt nur die Betriebssystemerkennung durch</BaseQuizOption>
   
   <BaseQuizAnswer>
-    Das Flag `-sV` aktiviert die Versionserkennung, die offene Ports abfragt, um festzustellen, welcher Dienst und welche Version läuft. Dies ist nützlich, um potenzielle Schwachstellen zu identifizieren, die mit bestimmten Softwareversionen verbunden sind.
+    Das Flag <code>-sV</code> aktiviert die Versionserkennung, die offene Ports abfragt, um festzustellen, welcher Dienst und welche Version läuft. Dies ist nützlich, um potenzielle Schwachstellen zu identifizieren, die mit bestimmten Softwareversionen verbunden sind.
   </BaseQuizAnswer>
 </BaseQuiz>
 # Skript-Scanning

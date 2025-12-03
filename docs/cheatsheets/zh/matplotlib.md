@@ -46,7 +46,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
 
 <BaseQuiz id="matplotlib-plot-1" correct="C">
   <template #question>
-    `plt.show()` 在 Matplotlib 中做什么？
+    <code>plt.show()</code> 在 Matplotlib 中做什么？
   </template>
   
   <BaseQuizOption value="A">将图表保存到文件</BaseQuizOption>
@@ -55,7 +55,7 @@ plt.plot(x, y, 'r--', linewidth=2, marker='o')
   <BaseQuizOption value="D">清除图表</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `plt.show()` 在交互式窗口中显示图表。调用此函数才能看到可视化效果。没有它，图表将不会显示。
+    <code>plt.show()</code> 在交互式窗口中显示图表。调用此函数才能看到可视化效果。没有它，图表将不会显示。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -76,7 +76,7 @@ plt.colorbar()  # 添加颜色条
 
 <BaseQuiz id="matplotlib-scatter-1" correct="D">
   <template #question>
-    Matplotlib 图表中的 `alpha` 参数控制什么？
+    Matplotlib 图表中的 <code>alpha</code> 参数控制什么？
   </template>
   
   <BaseQuizOption value="A">图表的颜色</BaseQuizOption>
@@ -85,7 +85,7 @@ plt.colorbar()  # 添加颜色条
   <BaseQuizOption value="D" correct>图表元素的透明度/不透明度</BaseQuizOption>
   
   <BaseQuizAnswer>
-    `alpha` 参数控制透明度，取值范围从 0（完全透明）到 1（完全不透明）。当需要看到重叠的可视化元素时，它非常有用。
+    <code>alpha</code> 参数控制透明度，取值范围从 0（完全透明）到 1（完全不透明）。当需要看到重叠的可视化元素时，它非常有用。
   </BaseQuizAnswer>
 </BaseQuiz>
 
@@ -214,16 +214,16 @@ plt.annotate('重要点', xy=(2, 4), xytext=(3, 6),
 
 <BaseQuiz id="matplotlib-legend-1" correct="B">
   <template #question>
-    `plt.legend()` 需要什么才能显示标签？
+    <code>plt.legend()</code> 需要什么才能显示标签？
   </template>
   
   <BaseQuizOption value="A">不需要，它会自动工作</BaseQuizOption>
-  <BaseQuizOption value="B" correct>每个图表都必须设置 `label` 参数</BaseQuizOption>
+  <BaseQuizOption value="B" correct>每个图表都必须设置 <code>label</code> 参数</BaseQuizOption>
   <BaseQuizOption value="C">必须先创建图例，然后才能绘图</BaseQuizOption>
   <BaseQuizOption value="D">必须在图例中手动设置标签</BaseQuizOption>
   
   <BaseQuizAnswer>
-    要显示图例，您需要在创建每个图表时设置 `label` 参数（例如 `plt.plot(x, y, label='数据集 1')`）。然后调用 `plt.legend()` 就会显示所有标签。
+    要显示图例，您需要在创建每个图表时设置 <code>label</code> 参数（例如 <code>plt.plot(x, y, label='数据集 1')</code>）。然后调用 <code>plt.legend()</code> 就会显示所有标签。
   </BaseQuizAnswer>
 </BaseQuiz>
 
