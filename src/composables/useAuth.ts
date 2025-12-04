@@ -54,11 +54,13 @@ export function useAuth() {
     }
   }
 
-  const login = (redirectPath?: string) => {
+  const login = () => {
     if (typeof window !== 'undefined') {
-      const currentPath = redirectPath || window.location.pathname
-      const encodedPath = encodeURIComponent(currentPath)
-      window.open(`https://labex.io/register?rd=${encodedPath}`, '_blank')
+      const currentPath = window.location.pathname
+      // Ensure we have a valid path to redirect back to
+      const redirectPath = currentPath && currentPath !== '/' ? currentPath : '/cheatsheets/'
+      const rd = encodeURIComponent(redirectPath)
+      window.open(`https://labex.io/register?rd=${rd}`, '_blank')
     }
   }
 
