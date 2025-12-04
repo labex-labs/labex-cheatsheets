@@ -26,7 +26,10 @@ export function useAuth() {
 
     isLoading.value = true
     try {
-      const response = await fetch('https://labex.io/api/v2/users/me', {
+      const basePath = import.meta.env.BASE_URL || '/cheatsheets/'
+      const apiPath = basePath.endsWith('/') ? `${basePath}api/user/me` : `${basePath}/api/user/me`
+
+      const response = await fetch(apiPath, {
         method: 'GET',
         credentials: 'include',
         headers: {

@@ -38,9 +38,9 @@ export default {
   async fetch(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace; ASSETS?: { fetch: (_req: Request) => Promise<Response> } }): Promise<Response> {
     const url = new URL(request.url)
 
-    // Handle quiz API routes
-    if (url.pathname.startsWith('/cheatsheets/api/quiz/')) {
-      return handleQuizAPI(request, env)
+    // Handle API routes
+    if (url.pathname.startsWith('/cheatsheets/api/')) {
+      return handleAPI(request, env)
     }
 
     // For all other requests, let Cloudflare handle static assets
@@ -54,7 +54,7 @@ export default {
   },
 }
 
-async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<Response> {
+async function handleAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<Response> {
   const url = new URL(request.url)
 
   // Handle CORS preflight
@@ -65,6 +65,7 @@ async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: 
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Credentials': 'true',
       },
     })
   }
@@ -84,6 +85,11 @@ async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: 
     return handleGetUserStatus(request, env)
   }
 
+  // Handle GET /cheatsheets/api/user/me
+  if (url.pathname === '/cheatsheets/api/user/me' && request.method === 'GET') {
+    return handleUserMe(request, env)
+  }
+
   return new Response(
     JSON.stringify({ error: 'Not found' }),
     {
@@ -93,11 +99,31 @@ async function handleQuizAPI(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: 
   )
 }
 
-async function getUserFromCookies(request: Request): Promise<UserInfo | null> {
+async function getUserFromCookies(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<UserInfo | null> {
   try {
     const cookies = request.headers.get('Cookie')
     if (!cookies) {
       return null
+    }
+
+    // Hash the cookies to use as a cache key
+    const encoder = new TextEncoder()
+    const data = encoder.encode(cookies)
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data)
+    const hashArray = Array.from(new Uint8Array(hashBuffer))
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
+
+    // Key format: labexcheatsheets:session:${hashHex}
+    const cacheKey = `labexcheatsheets:session:${hashHex}`
+
+    // Try to get from KV first
+    const cachedUser = await env.PYTHONCHEATSHEET_QUIZ_KV.get(cacheKey)
+    if (cachedUser) {
+      try {
+        return JSON.parse(cachedUser) as UserInfo
+      } catch (e) {
+        console.error('Error parsing cached user:', e)
+      }
     }
 
     const response = await fetch('https://labex.io/api/v2/users/me', {
@@ -111,7 +137,15 @@ async function getUserFromCookies(request: Request): Promise<UserInfo | null> {
 
     if (response.ok) {
       const userData = await response.json() as UserData
-      return userData.user || null
+      const user = userData.user || null
+
+      if (user) {
+        // Cache the user info in KV with a 10-minute expiration
+        // We only cache if we got a valid user
+        await env.PYTHONCHEATSHEET_QUIZ_KV.put(cacheKey, JSON.stringify(user), { expirationTtl: 600 })
+      }
+
+      return user
     }
     return null
   } catch (error) {
@@ -122,7 +156,7 @@ async function getUserFromCookies(request: Request): Promise<UserInfo | null> {
 
 async function handleRecordQuiz(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<Response> {
   try {
-    const user = await getUserFromCookies(request)
+    const user = await getUserFromCookies(request, env)
     if (!user || !user.id) {
       return new Response(
         JSON.stringify({ error: 'Authentication required' }),
@@ -262,7 +296,7 @@ async function handleGetStats(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV:
 
 async function handleGetUserStatus(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<Response> {
   try {
-    const user = await getUserFromCookies(request)
+    const user = await getUserFromCookies(request, env)
     if (!user || !user.id) {
       return new Response(
         JSON.stringify({ error: 'Authentication required' }),
@@ -313,7 +347,7 @@ async function handleGetUserStatus(request: Request, env: { PYTHONCHEATSHEET_QUI
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type',
-          'Cache-Control': 'no-store, no-cache, must-revalidate',
+          'Cache-Control': 'private, no-cache, must-revalidate',
         },
       }
     )
@@ -333,3 +367,47 @@ async function handleGetUserStatus(request: Request, env: { PYTHONCHEATSHEET_QUI
   }
 }
 
+async function handleUserMe(request: Request, env: { PYTHONCHEATSHEET_QUIZ_KV: KVNamespace }): Promise<Response> {
+  try {
+    const user = await getUserFromCookies(request, env)
+
+    if (!user) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized' }),
+        {
+          status: 401,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': 'true',
+          },
+        }
+      )
+    }
+
+    return new Response(
+      JSON.stringify({ user }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+        },
+      }
+    )
+  } catch (error) {
+    console.error('Error in handleUserMe:', error)
+    return new Response(
+      JSON.stringify({ error: 'Internal server error' }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
+        },
+      }
+    )
+  }
+}
