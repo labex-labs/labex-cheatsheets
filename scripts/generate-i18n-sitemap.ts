@@ -44,17 +44,25 @@ function extractLocaleAndBasePath(routePath: string): { locale: string; basePath
     return { locale: 'en', basePath: '/' }
   }
 
-  const firstSegment = segments[0]
+  // If the first segment is 'cheatsheets', skip it for locale and basePath extraction
+  const firstIsCheatsheets = segments[0] === 'cheatsheets'
+  const relevantSegments = firstIsCheatsheets ? segments.slice(1) : segments
+
+  if (relevantSegments.length === 0) {
+    return { locale: 'en', basePath: '/' }
+  }
+
+  const firstSegment = relevantSegments[0]
 
   if (SUPPORTED_LOCALES.includes(firstSegment) && firstSegment !== 'en') {
-    if (segments.length === 1) {
+    if (relevantSegments.length === 1) {
       return { locale: firstSegment, basePath: '/' }
     }
-    const basePath = '/' + segments.slice(1).join('/')
+    const basePath = '/' + relevantSegments.slice(1).join('/')
     return { locale: firstSegment, basePath }
   }
 
-  return { locale: 'en', basePath: routePath }
+  return { locale: 'en', basePath: '/' + relevantSegments.join('/') }
 }
 
 function groupRoutesByBasePath(routes: RouteInfo[]): Map<string, RouteInfo[]> {

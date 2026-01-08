@@ -130,8 +130,7 @@ export default defineConfig(({ mode }) => {
       async onFinished() {
         const baseUrl = process.env.VITE_BASE_URL || 'labex.io'
         const hostname = baseUrl.startsWith('http') ? baseUrl : `https://${baseUrl}`
-        // Append /cheatsheets to hostname for sitemap generation
-        const sitemapHostname = hostname.endsWith('/') ? `${hostname}cheatsheets` : `${hostname}/cheatsheets`
+        const sitemapHostname = hostname.endsWith('/') ? hostname.slice(0, -1) : hostname
         await generateI18nSitemap(sitemapHostname, 'dist/cheatsheets')
       },
     },
