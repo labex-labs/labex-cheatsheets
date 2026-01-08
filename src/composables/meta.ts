@@ -24,7 +24,14 @@ export function useMeta() {
 
   // Helper function to generate page title from route path
   const getPageTitleFromPath = (path: string): string => {
-    const segments = path.split('/').filter(Boolean)
+    // Remove base_path if it exists at the start of the path
+    const normalizedBasePath = base_path.endsWith('/') ? base_path.slice(0, -1) : base_path
+    let relativePath = path
+    if (normalizedBasePath && path.startsWith(normalizedBasePath)) {
+      relativePath = path.slice(normalizedBasePath.length)
+    }
+
+    const segments = relativePath.split('/').filter(Boolean)
     if (segments.length === 0) return ''
 
     // Remove locale prefix if present
@@ -75,23 +82,28 @@ export function useMeta() {
 
   const description = computed(() => pageDescription.value)
   const cardImage = computed(() => {
-    const basePath = base_path.endsWith('/') ? base_path.slice(0, -1) : base_path
-    return `https://${base_url}${basePath}/screenshots/labex-cheatsheets.png`
+    return `https://${base_url}${base_path.endsWith('/') ? base_path.slice(0, -1) : base_path}/screenshots/labex-cheatsheets.png`
   })
   const themeColor = computed(() => (isDark.value ? '#1f2937' : '#ffffff'))
   const url = computed(() => {
-    const basePath = base_path.endsWith('/') ? base_path.slice(0, -1) : base_path
-    return `https://${base_url}${basePath}${route.path}`
+    return `https://${base_url}${route.path}`
   })
 
   // Get base path (remove locale prefix)
   const getBasePath = (path: string): string => {
-    const segments = path.split('/').filter(Boolean)
+    // Remove base_path if it exists at the start of the path
+    const normalizedBasePath = base_path.endsWith('/') ? base_path.slice(0, -1) : base_path
+    let relativePath = path
+    if (normalizedBasePath && path.startsWith(normalizedBasePath)) {
+      relativePath = path.slice(normalizedBasePath.length)
+    }
+
+    const segments = relativePath.split('/').filter(Boolean)
     if (segments.length > 0 && SUPPORTED_LOCALES.includes(segments[0] as typeof SUPPORTED_LOCALES[number])) {
       segments.shift()
       return segments.length > 0 ? '/' + segments.join('/') : '/'
     }
-    return path
+    return relativePath
   }
 
   // Generate breadcrumb list for structured data
@@ -103,7 +115,7 @@ export function useMeta() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: `https://${base_url}${base_path.endsWith('/') ? base_path.slice(0, -1) : base_path}/`,
+        item: `https://${base_url}${base_path}`,
       },
     ]
 
@@ -142,7 +154,7 @@ export function useMeta() {
       isPartOf: {
         '@type': 'WebSite',
         name: 'LabEx Cheatsheets',
-        url: `https://${base_url}${basePathPrefix}/`,
+        url: `https://${base_url}${base_path}`,
       },
       publisher: {
         '@type': 'Organization',
@@ -171,7 +183,7 @@ export function useMeta() {
           url: 'https://labex.io',
           logo: {
             '@type': 'ImageObject',
-            url: `https://${base_url}${basePathPrefix}/android-chrome-192x192.png`,
+            url: `https://${base_url}${base_path.endsWith('/') ? base_path.slice(0, -1) : base_path}/android-chrome-192x192.png`,
           },
         },
         mainEntityOfPage: {
@@ -197,10 +209,9 @@ export function useMeta() {
     const links = []
 
     // Generate hreflang link for each supported locale
-    const basePathPrefix = base_path.endsWith('/') ? base_path.slice(0, -1) : base_path
     for (const locale of SUPPORTED_LOCALES) {
       const localePath = locale === 'en' ? basePath : `/${locale}${basePath}`
-      const localeUrl = `https://${base_url}${basePathPrefix}${localePath}`
+      const localeUrl = `https://${base_url}${localePath}`
       links.push({
         rel: 'alternate',
         hreflang: locale,
@@ -210,7 +221,7 @@ export function useMeta() {
 
     // Add x-default (points to default language version)
     const defaultPath = basePath
-    const defaultUrl = `https://${base_url}${basePathPrefix}${defaultPath}`
+    const defaultUrl = `https://${base_url}${defaultPath}`
     links.push({
       rel: 'alternate',
       hreflang: 'x-default',
