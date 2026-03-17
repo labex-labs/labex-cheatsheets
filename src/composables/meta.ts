@@ -12,14 +12,63 @@ export function useMeta() {
   const route = useRoute()
   const { t, currentLocale } = useI18n()
   const { frontmatter: runtimeFrontmatter } = useFrontmatter()
-  const base_url = import.meta.env.VITE_BASE_URL || 'labex.io'
+  const configuredBaseUrl = import.meta.env.VITE_BASE_URL || 'labex.io'
   const base_path = import.meta.env.BASE_URL || '/cheatsheets/'
+  const normalizedBaseUrl = configuredBaseUrl.startsWith('http')
+    ? configuredBaseUrl
+    : `https://${configuredBaseUrl}`
+  const siteUrl = new URL(normalizedBaseUrl)
+  const siteOrigin = siteUrl.origin
+  const appBasePath = base_path.endsWith('/') ? base_path.slice(0, -1) : base_path
+  const configuredPathPrefix = siteUrl.pathname === '/' ? '' : siteUrl.pathname.replace(/\/$/, '')
+  const fullBasePath = configuredPathPrefix.endsWith(appBasePath)
+    ? configuredPathPrefix
+    : `${configuredPathPrefix}${appBasePath}`
+
+  const joinSiteUrl = (path: string): string => {
+    if (path === '/' || path === '') {
+      return `${siteOrigin}${fullBasePath}/`
+    }
+
+    return `${siteOrigin}${fullBasePath}${path.startsWith('/') ? path : `/${path}`}`
+  }
+
+  const getBasePath = (path: string): string => {
+    const normalizedBasePath = base_path.endsWith('/') ? base_path.slice(0, -1) : base_path
+    let relativePath = path
+    if (normalizedBasePath && path.startsWith(normalizedBasePath)) {
+      relativePath = path.slice(normalizedBasePath.length)
+    }
+
+    const segments = relativePath.split('/').filter(Boolean)
+    if (segments.length > 0 && SUPPORTED_LOCALES.includes(segments[0] as typeof SUPPORTED_LOCALES[number])) {
+      segments.shift()
+      return segments.length > 0 ? '/' + segments.join('/') : '/'
+    }
+    return relativePath || '/'
+  }
+
+  const buildLocalizedPath = (locale: typeof SUPPORTED_LOCALES[number], path: string): string => {
+    if (locale === 'en') {
+      return path === '' ? '/' : path
+    }
+
+    if (path === '/' || path === '') {
+      return `/${locale}`
+    }
+
+    return `/${locale}${path}`
+  }
 
   // Get frontmatter from multiple sources (priority: runtime > route.meta > empty)
   // Note: unplugin-vue-markdown may expose frontmatter via route.meta.frontmatter
   // Runtime frontmatter is set by markdown components via useFrontmatter composable
   const frontmatter = computed<Frontmatter>(() => {
-    return runtimeFrontmatter.value || (route.meta?.frontmatter as Frontmatter) || {}
+    const routeFrontmatter = (route.meta?.frontmatter as Frontmatter) || {}
+    return {
+      ...routeFrontmatter,
+      ...runtimeFrontmatter.value,
+    }
   })
 
   // Helper function to generate page title from route path
@@ -71,6 +120,11 @@ export function useMeta() {
       return frontmatter.value.description
     }
 
+    const basePath = getBasePath(route.path)
+    if (basePath === '/' || basePath === '') {
+      return t('home.description')
+    }
+
     // Generate a basic description from title if available
     const inferredTitle = getPageTitleFromPath(route.path)
     if (inferredTitle) {
@@ -82,29 +136,12 @@ export function useMeta() {
 
   const description = computed(() => pageDescription.value)
   const cardImage = computed(() => {
-    return `https://${base_url}${base_path.endsWith('/') ? base_path.slice(0, -1) : base_path}/screenshots/labex-cheatsheets.png`
+    return joinSiteUrl('/screenshots/labex-cheatsheets.png')
   })
   const themeColor = computed(() => (isDark.value ? '#1f2937' : '#ffffff'))
   const url = computed(() => {
-    return `https://${base_url}${route.path}`
+    return joinSiteUrl(route.path)
   })
-
-  // Get base path (remove locale prefix)
-  const getBasePath = (path: string): string => {
-    // Remove base_path if it exists at the start of the path
-    const normalizedBasePath = base_path.endsWith('/') ? base_path.slice(0, -1) : base_path
-    let relativePath = path
-    if (normalizedBasePath && path.startsWith(normalizedBasePath)) {
-      relativePath = path.slice(normalizedBasePath.length)
-    }
-
-    const segments = relativePath.split('/').filter(Boolean)
-    if (segments.length > 0 && SUPPORTED_LOCALES.includes(segments[0] as typeof SUPPORTED_LOCALES[number])) {
-      segments.shift()
-      return segments.length > 0 ? '/' + segments.join('/') : '/'
-    }
-    return relativePath
-  }
 
   // Generate breadcrumb list for structured data
   const generateBreadcrumbList = computed(() => {
@@ -115,7 +152,7 @@ export function useMeta() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: `https://${base_url}${base_path}`,
+        item: joinSiteUrl('/'),
       },
     ]
 
@@ -126,7 +163,7 @@ export function useMeta() {
         '@type': 'ListItem',
         position: index + 2,
         name: segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
-        item: `https://${base_url}${base_path.endsWith('/') ? base_path.slice(0, -1) : base_path}${currentPath}`,
+        item: joinSiteUrl(currentPath),
       })
     })
 
@@ -141,7 +178,6 @@ export function useMeta() {
   const generateStructuredData = computed(() => {
     const basePath = getBasePath(route.path)
     const isHomePage = basePath === '/' || basePath === ''
-    const basePathPrefix = base_path.endsWith('/') ? base_path.slice(0, -1) : base_path
 
     // WebPage schema for all pages
     const webPageSchema = {
@@ -154,7 +190,7 @@ export function useMeta() {
       isPartOf: {
         '@type': 'WebSite',
         name: 'LabEx Cheatsheets',
-        url: `https://${base_url}${base_path}`,
+        url: joinSiteUrl('/'),
       },
       publisher: {
         '@type': 'Organization',
@@ -183,7 +219,7 @@ export function useMeta() {
           url: 'https://labex.io',
           logo: {
             '@type': 'ImageObject',
-            url: `https://${base_url}${base_path.endsWith('/') ? base_path.slice(0, -1) : base_path}/android-chrome-192x192.png`,
+            url: joinSiteUrl('/android-chrome-192x192.png'),
           },
         },
         mainEntityOfPage: {
@@ -210,8 +246,8 @@ export function useMeta() {
 
     // Generate hreflang link for each supported locale
     for (const locale of SUPPORTED_LOCALES) {
-      const localePath = locale === 'en' ? basePath : `/${locale}${basePath}`
-      const localeUrl = `https://${base_url}${localePath}`
+      const localePath = buildLocalizedPath(locale, basePath)
+      const localeUrl = joinSiteUrl(localePath)
       links.push({
         rel: 'alternate',
         hreflang: locale,
@@ -221,7 +257,7 @@ export function useMeta() {
 
     // Add x-default (points to default language version)
     const defaultPath = basePath
-    const defaultUrl = `https://${base_url}${defaultPath}`
+    const defaultUrl = joinSiteUrl(defaultPath)
     links.push({
       rel: 'alternate',
       hreflang: 'x-default',

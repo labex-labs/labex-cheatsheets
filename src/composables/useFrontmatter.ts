@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { computed, inject, provide, ref, type InjectionKey, type Ref } from 'vue'
 
 interface Frontmatter {
   title?: string
@@ -8,17 +8,17 @@ interface Frontmatter {
   pdfUrl?: string
 }
 
-const currentFrontmatter = ref<Frontmatter>({})
+const frontmatterKey: InjectionKey<Ref<Frontmatter>> = Symbol('frontmatter')
 
-export function useFrontmatter() {
+function createFrontmatterApi(state: Ref<Frontmatter>) {
   const setFrontmatter = (frontmatter: Frontmatter) => {
-    currentFrontmatter.value = frontmatter
+    state.value = frontmatter
   }
 
-  const getFrontmatter = computed(() => currentFrontmatter.value)
+  const getFrontmatter = computed(() => state.value)
 
   const clearFrontmatter = () => {
-    currentFrontmatter.value = {}
+    state.value = {}
   }
 
   return {
@@ -28,3 +28,13 @@ export function useFrontmatter() {
   }
 }
 
+export function provideFrontmatter() {
+  const state = ref<Frontmatter>({})
+  provide(frontmatterKey, state)
+  return createFrontmatterApi(state)
+}
+
+export function useFrontmatter() {
+  const state = inject(frontmatterKey, ref<Frontmatter>({}))
+  return createFrontmatterApi(state)
+}

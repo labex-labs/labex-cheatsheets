@@ -1,11 +1,11 @@
 <script setup>
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { useFrontmatter } from './composables/useFrontmatter'
+import { provideFrontmatter } from './composables/useFrontmatter'
 
 const route = useRoute()
+const { clearFrontmatter } = provideFrontmatter()
 const { meta } = useMeta()
-const { clearFrontmatter } = useFrontmatter()
 
 useHead(meta)
 useScrollBehavior()
