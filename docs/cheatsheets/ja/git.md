@@ -1,21 +1,21 @@
 ---
-title: 'Git チートシート | LabEx'
-description: 'この包括的なチートシートで Git バージョン管理を習得しましょう。Git コマンド、ブランチ、マージ、リベース、GitHub ワークフロー、共同開発のためのクイックリファレンス。'
+title: 'Git コマンドチートシート | LabEx'
+description: 'バージョン管理向けの Git コマンドチートシート。git init、clone、add、commit、branch、merge、rebase、remote、stash、log、reset、GitHub ワークフローのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Git チートシート
+Git コマンドチートシート
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/git">ハンズオンラボで Git を学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/git">ハンズオンラボで Git コマンドを練習</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、Git バージョン管理を学びます。LabEx は、必須コマンド、ブランチ戦略、コラボレーションワークフロー、高度なテクニックを網羅した包括的な Git コースを提供します。Git と GitHub を使用して、コードリポジトリの管理、競合の解決、チームとの効果的な作業方法を習得します。
+この Git コマンドチートシートを、日常的なバージョン管理作業のクイックリファレンスとして使用してください。リポジトリ設定、ステージング、コミット、ブランチ、マージ、リベース、リモート、stash、履歴確認、取り消しコマンド、GitHub 共同作業ワークフローを扱います。
 </base-disclaimer-content>
 </base-disclaimer>
 

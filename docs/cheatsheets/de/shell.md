@@ -1,21 +1,21 @@
 ---
-title: 'Shell Spickzettel | LabEx'
-description: 'Lernen Sie Shell-Skripterstellung mit diesem umfassenden Spickzettel. Schnelle Referenz für Bash-Befehle, Shell-Skripte, Automatisierung, Befehlszeilen-Tools und Linux/Unix-Systemadministration.'
+title: 'Bash Befehle Spickzettel | LabEx'
+description: 'Bash Befehle Spickzettel für Linux- und Unix-Shells. Schnelle Referenz für Dateibefehle, Navigation, Berechtigungen, Textverarbeitung, Pipes, Umleitung, Prozesse, Verlauf und Skripting.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Shell Spickzettel
+Bash Befehle Spickzettel
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/shell">Shell mit Hands-on-Labs lernen</a>
+<a target="_blank" href="https://labex.io/de/learn/shell">Bash-Befehle mit praktischen Labs üben</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Shell-Skripterstellung und Befehlszeilenoperationen durch praktische Labs und reale Szenarien. LabEx bietet umfassende Shell-Kurse, die wesentliche Bash-Befehle, Dateioperationen, Textverarbeitung, Prozessverwaltung und Automatisierung abdecken. Meistern Sie die Effizienz der Befehlszeile und Techniken des Shell-Skriptings.
+Nutzen Sie diesen Bash Befehle Spickzettel als schnelle Shell-Referenz: Dateien und Verzeichnisse, Navigation, Berechtigungen, Suche, Textverarbeitung, Pipes, Umleitung, Prozessverwaltung, Verlauf, Aliase, Variablen, Schleifen, Funktionen und Automatisierung.
 </base-disclaimer-content>
 </base-disclaimer>
 

@@ -1,21 +1,21 @@
 ---
-title: 'Kubernetes Spickzettel | LabEx'
-description: 'Lernen Sie Kubernetes-Orchestrierung mit diesem umfassenden Spickzettel. Schnelle Referenz für kubectl-Befehle, Pods, Deployments, Services, Ingress und Cloud-Native-Containerverwaltung.'
+title: 'Kubernetes Befehle Spickzettel | LabEx'
+description: 'Kubernetes Befehle Spickzettel für kubectl. Schnelle Referenz für Pods, Deployments, Services, Ingress, Config Maps, Secrets, Logs, exec, Skalierung, Rollout und Troubleshooting.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kubernetes Spickzettel
+Kubernetes Befehle Spickzettel
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/kubernetes">Lernen Sie Kubernetes mit Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/kubernetes">Kubernetes-Befehle mit praktischen Labs üben</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Kubernetes Container-Orchestrierung durch praktische Labs und reale Szenarien. LabEx bietet umfassende Kubernetes-Kurse, die wesentliche kubectl-Befehle, Pod-Verwaltung, Deployments, Services, Networking und Cluster-Administration abdecken. Meistern Sie Container-Orchestrierung und Cloud-Native-Anwendungsbereitstellung.
+Nutzen Sie diesen Kubernetes Befehle Spickzettel als schnelle Referenz für kubectl-Workflows: Clusterzugriff, Pods, Deployments, Services, Ingress, Namespaces, Config Maps, Secrets, Logs, exec, Skalierung, Rollouts, Ressourcenprüfung und Troubleshooting.
 </base-disclaimer-content>
 </base-disclaimer>
 

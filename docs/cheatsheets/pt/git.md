@@ -1,21 +1,21 @@
 ---
-title: 'Folha de Cola Git | LabEx'
-description: 'Aprenda controle de versão Git com esta folha de cola abrangente. Referência rápida para comandos Git, ramificação, mesclagem, rebase, fluxos de trabalho do GitHub e desenvolvimento colaborativo.'
+title: 'Folha de consulta de comandos Git | LabEx'
+description: 'Folha de consulta de comandos Git para controle de versão. Referência rápida para git init, clone, add, commit, branch, merge, rebase, remote, stash, log, reset e fluxos GitHub.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Git Cheatsheet
+Folha de consulta de comandos Git
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/pt/learn/git">Aprenda Git com Laboratórios Práticos</a>
+<a target="_blank" href="https://labex.io/pt/learn/git">Pratique comandos Git com laboratórios práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda controle de versão Git através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de Git cobrindo comandos essenciais, estratégias de ramificação, fluxos de trabalho de colaboração e técnicas avançadas. Aprenda a gerenciar repositórios de código, resolver conflitos e trabalhar efetivamente com equipes usando Git e GitHub.
+Use esta folha de consulta de comandos Git como referência rápida para tarefas diárias de controle de versão. Ela cobre configuração de repositório, staging, commits, branches, merges, rebases, remotes, stashes, histórico, comandos de desfazer e colaboração no GitHub.
 </base-disclaimer-content>
 </base-disclaimer>
 

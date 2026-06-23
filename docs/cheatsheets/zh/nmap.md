@@ -1,21 +1,21 @@
 ---
-title: 'Nmap 速查表 | LabEx'
-description: '使用此综合速查表学习 Nmap 网络扫描。端口扫描、网络发现、漏洞检测、安全审计和网络侦察的快速参考。'
+title: 'Nmap 命令速查表 | LabEx'
+description: 'Nmap 命令速查表，面向网络扫描。快速参考主机发现、端口扫描、服务检测、操作系统检测、NSE 脚本、输出格式和安全审计。'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Nmap 速查表
+Nmap 命令速查表
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/nmap">通过动手实验学习 Nmap</a>
+<a target="_blank" href="https://labex.io/zh/learn/nmap">通过动手实验练习 Nmap 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过动手实验和真实场景学习 Nmap 网络扫描。LabEx 提供全面的 Nmap 课程，涵盖基本的网络发现、端口扫描、服务检测、操作系统指纹识别和漏洞评估。掌握网络侦察和安全审计技术。
+将此 Nmap 命令速查表作为网络发现、TCP 和 UDP 端口扫描、服务/版本检测、操作系统指纹识别、时间控制、NSE 脚本、漏洞检查、输出格式和实用安全审计流程的快速参考。
 </base-disclaimer-content>
 </base-disclaimer>
 

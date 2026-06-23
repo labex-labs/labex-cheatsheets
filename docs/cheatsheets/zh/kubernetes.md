@@ -1,21 +1,21 @@
 ---
-title: 'Kubernetes 速查表 | LabEx'
-description: '使用此综合速查表学习 Kubernetes 编排。kubectl 命令、Pod、部署、服务、Ingress 和云原生容器管理的快速参考。'
+title: 'Kubernetes 命令速查表 | LabEx'
+description: 'Kubernetes 命令速查表，面向 kubectl。快速参考 Pod、Deployment、Service、Ingress、ConfigMap、Secret、日志、exec、扩缩容、rollout 和故障排查。'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kubernetes 速查表
+Kubernetes 命令速查表
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/kubernetes">使用实战实验学习 Kubernetes</a>
+<a target="_blank" href="https://labex.io/zh/learn/kubernetes">通过动手实验练习 Kubernetes 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实战实验和真实场景学习 Kubernetes 容器编排。LabEx 提供全面的 Kubernetes 课程，涵盖基本的 kubectl 命令、Pod 管理、部署、服务、网络和集群管理。掌握容器编排和云原生应用部署。
+将此 Kubernetes 命令速查表作为 kubectl 工作流的快速参考：集群访问、Pod、Deployment、Service、Ingress、命名空间、ConfigMap、Secret、日志、exec、扩缩容、发布、资源检查和故障排查。
 </base-disclaimer-content>
 </base-disclaimer>
 

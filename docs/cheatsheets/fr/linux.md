@@ -1,21 +1,21 @@
 ---
-title: 'Fiche Mémo Linux | LabEx'
-description: "Apprenez l'administration Linux avec cette fiche mémo complète. Référence rapide des commandes Linux, gestion des fichiers, administration système, réseau et scripts shell."
+title: 'Aide-mémoire des commandes Ubuntu | LabEx'
+description: 'Aide-mémoire des commandes Ubuntu pour l’administration Linux. Référence rapide pour informations système, fichiers, permissions, apt, services, utilisateurs, réseau, disques, processus, logs et mises à jour de sécurité.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Feuille de triche Linux
+Aide-mémoire des commandes Ubuntu
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Visiter Commandes Linux</a>
+<a target="_blank" href="https://linux-commands.labex.io/">Explorer plus de commandes Ubuntu et Linux</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Pour obtenir des matériaux de référence complets sur les commandes Linux, des exemples de syntaxe et une documentation détaillée, veuillez visiter <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Ce site indépendant fournit des fiches de triche Linux complètes couvrant les commandes essentielles, les concepts et les meilleures pratiques pour les administrateurs et les développeurs Linux.
+Utilisez cet aide-mémoire des commandes Ubuntu comme référence pratique d’administration Linux. Il couvre informations système, fichiers, permissions, utilisateurs, paquets apt, services systemd, processus, réseau, stockage, logs, bases du pare-feu et mises à jour de sécurité.
 </base-disclaimer-content>
 </base-disclaimer>
 

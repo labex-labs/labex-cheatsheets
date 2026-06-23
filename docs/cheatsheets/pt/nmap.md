@@ -1,21 +1,21 @@
 ---
-title: 'Guia Rápido Nmap | LabEx'
-description: 'Aprenda a varredura de rede Nmap com este guia completo. Referência rápida para varredura de portas, descoberta de rede, detecção de vulnerabilidades, auditoria de segurança e reconhecimento de rede.'
+title: 'Folha de consulta de comandos Nmap | LabEx'
+description: 'Folha de consulta de comandos Nmap para varredura de rede. Referência rápida para descoberta de hosts, varreduras de portas, detecção de serviços, detecção de SO, scripts NSE, formatos de saída e auditoria de segurança.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Folha de Dicas Nmap
+Folha de consulta de comandos Nmap
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/pt/learn/nmap">Aprenda Nmap com Laboratórios Práticos</a>
+<a target="_blank" href="https://labex.io/pt/learn/nmap">Pratique comandos Nmap com laboratórios práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda a varredura de rede Nmap através de laboratórios práticos e cenários do mundo real. O LabEx fornece cursos abrangentes de Nmap que cobrem descoberta essencial de rede, varredura de portas, detecção de serviços, impressão digital de SO e avaliação de vulnerabilidades. Domine técnicas de reconhecimento de rede e auditoria de segurança.
+Use esta folha de consulta de comandos Nmap como referência rápida para descoberta de rede, varreduras TCP e UDP, detecção de serviço/versão, fingerprinting de SO, controles de tempo, scripts NSE, verificações de vulnerabilidade, formatos de saída e auditorias práticas.
 </base-disclaimer-content>
 </base-disclaimer>
 

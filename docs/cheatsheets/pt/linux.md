@@ -1,21 +1,21 @@
 ---
-title: 'Folha de Cola Linux | LabEx'
-description: 'Aprenda administração Linux com esta folha de cola abrangente. Referência rápida para comandos Linux, gerenciamento de arquivos, administração de sistema, rede e scripting shell.'
+title: 'Folha de consulta de comandos Ubuntu | LabEx'
+description: 'Folha de consulta de comandos Ubuntu para administração Linux. Referência rápida para informações do sistema, arquivos, permissões, apt, serviços, usuários, rede, discos, processos, logs e atualizações de segurança.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Folha de Dicas Linux
+Folha de consulta de comandos Ubuntu
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Visite Comandos Linux</a>
+<a target="_blank" href="https://linux-commands.labex.io/">Explore mais comandos Ubuntu e Linux</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Para materiais de referência abrangentes de comandos Linux, exemplos de sintaxe e documentação detalhada, visite <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Este site independente fornece extensas folhas de dicas Linux cobrindo comandos essenciais, conceitos e melhores práticas para administradores e desenvolvedores Linux.
+Use esta folha de consulta de comandos Ubuntu como referência prática de administração Linux. Ela cobre informações do sistema, arquivos, permissões, usuários, pacotes apt, serviços systemd, processos, rede, armazenamento, logs, conceitos básicos de firewall e atualizações de segurança.
 </base-disclaimer-content>
 </base-disclaimer>
 

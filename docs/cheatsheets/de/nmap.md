@@ -1,21 +1,21 @@
 ---
-title: 'Nmap Spickzettel | LabEx'
-description: 'Lernen Sie Nmap-Netzwerk-Scanning mit diesem umfassenden Spickzettel. Schnelle Referenz für Port-Scanning, Netzwerkerkennung, Schwachstellenerkennung, Sicherheitsaudits und Netzwerkerkundung.'
+title: 'Nmap Befehle Spickzettel | LabEx'
+description: 'Nmap Befehle Spickzettel für Netzwerk-Scanning. Schnelle Referenz für Host-Erkennung, Port-Scans, Service-Erkennung, OS-Erkennung, NSE-Skripte, Ausgabeformate und Sicherheitsaudits.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Nmap Spickzettel
+Nmap Befehle Spickzettel
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/nmap">Lernen Sie Nmap mit praktischen Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/nmap">Nmap-Befehle mit praktischen Labs üben</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Nmap Network Scanning durch praktische Labs und reale Szenarien. LabEx bietet umfassende Nmap-Kurse, die wesentliche Netzwerkentdeckung, Port-Scanning, Dienst-Erkennung, OS-Fingerprinting und Schwachstellenanalyse abdecken. Meistern Sie Techniken zur Netzwerkerkundung und Sicherheitsprüfung.
+Nutzen Sie diesen Nmap Befehle Spickzettel als schnelle Referenz für Netzwerkerkennung, TCP- und UDP-Port-Scans, Service-/Versionserkennung, OS-Fingerprinting, Timing-Steuerung, NSE-Skripte, Schwachstellenprüfungen, Ausgabeformate und praktische Sicherheitsaudits.
 </base-disclaimer-content>
 </base-disclaimer>
 

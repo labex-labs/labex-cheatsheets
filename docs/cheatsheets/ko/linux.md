@@ -1,21 +1,21 @@
 ---
-title: '리눅스 치트 시트 | LabEx'
-description: '포괄적인 치트 시트로 리눅스 관리를 배우세요. 리눅스 명령어, 파일 관리, 시스템 관리, 네트워킹 및 셸 스크립팅을 위한 빠른 참조 가이드입니다.'
+title: 'Ubuntu 명령어 치트 시트 | LabEx'
+description: 'Linux 관리를 위한 Ubuntu 명령어 치트 시트입니다. 시스템 정보, 파일, 권한, apt, 서비스, 사용자, 네트워킹, 디스크, 프로세스, 로그 및 보안 업데이트를 빠르게 참고하세요.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Linux 치트 시트
+Ubuntu 명령어 치트 시트
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Linux 명령어 방문</a>
+<a target="_blank" href="https://linux-commands.labex.io/">더 많은 Ubuntu 및 Linux 명령어 살펴보기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-포괄적인 Linux 명령어 참조 자료, 구문 예제 및 상세 문서를 보려면 <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>를 방문하십시오. 이 독립 사이트는 Linux 관리자 및 개발자를 위한 필수 명령어, 개념 및 모범 사례를 다루는 광범위한 Linux 치트 시트를 제공합니다.
+이 Ubuntu 명령어 치트 시트를 실용적인 Linux 관리 참고 자료로 활용하세요. 시스템 정보, 파일, 권한, 사용자, apt 패키지, systemd 서비스, 프로세스, 네트워크, 스토리지, 로그, 방화벽 기본 사항 및 Ubuntu와 호환 Linux 환경의 보안 업데이트를 다룹니다.
 </base-disclaimer-content>
 </base-disclaimer>
 

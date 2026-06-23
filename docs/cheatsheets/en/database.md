@@ -1,21 +1,21 @@
 ---
-title: 'Database Cheatsheet | LabEx'
-description: 'Learn database management with this comprehensive cheatsheet. Quick reference for SQL queries, database design, normalization, indexing, transactions, and relational database administration.'
+title: 'SQL Commands Cheat Sheet | LabEx'
+description: 'SQL commands cheat sheet for database work. Quick reference for CREATE, SELECT, INSERT, UPDATE, DELETE, JOIN, GROUP BY, indexes, transactions, users, backups, and SQL best practices.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Database Cheatsheet
+SQL Commands Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/learn/database">Learn Database with Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/learn/database">Practice SQL Commands with Hands-On Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Learn database management and SQL through hands-on labs and real-world scenarios. LabEx provides comprehensive database courses covering essential SQL commands, data manipulation, query optimization, database design, and administration. Master relational databases, NoSQL systems, and database security best practices.
+Use this SQL commands cheat sheet as a practical reference for database creation, table design, data queries, joins, aggregations, indexes, transactions, user permissions, backups, and query optimization across relational database systems.
 </base-disclaimer-content>
 </base-disclaimer>
 

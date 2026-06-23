@@ -1,21 +1,21 @@
 ---
-title: 'Nmap チートシート | LabEx'
-description: 'この包括的なチートシートで Nmap ネットワークスキャンを学ぶ。ポートスキャン、ネットワーク検出、脆弱性検出、セキュリティ監査、ネットワーク偵察のためのクイックリファレンス。'
+title: 'Nmap コマンドチートシート | LabEx'
+description: 'ネットワークスキャン向けの Nmap コマンドチートシート。ホスト検出、ポートスキャン、サービス検出、OS 検出、NSE スクリプト、出力形式、セキュリティ監査のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Nmap チートシート
+Nmap コマンドチートシート
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/nmap">ハンズオンラボで Nmap を学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/nmap">ハンズオンラボで Nmap コマンドを練習</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、Nmap ネットワークスキャンを学びましょう。LabEx は、必須のネットワークディスカバリ、ポートスキャン、サービス検出、OS フィンガープリンティング、脆弱性評価を網羅した包括的な Nmap コースを提供します。ネットワーク偵察とセキュリティ監査の技術を習得してください。
+この Nmap コマンドチートシートを、ネットワーク検出、TCP/UDP ポートスキャン、サービス/バージョン検出、OS フィンガープリント、タイミング制御、NSE スクリプト、脆弱性チェック、出力形式、実践的なセキュリティ監査のクイックリファレンスとして使用してください。
 </base-disclaimer-content>
 </base-disclaimer>
 

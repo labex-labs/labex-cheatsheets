@@ -1,21 +1,21 @@
 ---
-title: 'Datenbank Spickzettel | LabEx'
-description: 'Lernen Sie Datenbankmanagement mit diesem umfassenden Spickzettel. Schnelle Referenz für SQL-Abfragen, Datenbankdesign, Normalisierung, Indizierung, Transaktionen und relationale Datenbankadministration.'
+title: 'SQL Befehle Spickzettel | LabEx'
+description: 'SQL Befehle Spickzettel für Datenbankarbeit. Schnelle Referenz für CREATE, SELECT, INSERT, UPDATE, DELETE, JOIN, GROUP BY, Indizes, Transaktionen, Benutzer, Backups und SQL Best Practices.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Datenbank Spickzettel
+SQL Befehle Spickzettel
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/database">Lernen Sie Datenbankmanagement mit Hands-On-Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/database">SQL-Befehle mit praktischen Labs üben</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Erlernen Sie Datenbankmanagement und SQL durch praktische Übungen und reale Szenarien. LabEx bietet umfassende Datenbankkurse, die wesentliche SQL-Befehle, Datenmanipulation, Abfrageoptimierung, Datenbankdesign und -administration abdecken. Meistern Sie relationale Datenbanken, NoSQL-Systeme und Best Practices für die Datenbank-Sicherheit.
+Nutzen Sie diesen SQL Befehle Spickzettel als praktische Referenz für Datenbankerstellung, Tabellendesign, Abfragen, Joins, Aggregationen, Indizes, Transaktionen, Benutzerrechte, Backups und Abfrageoptimierung in relationalen Datenbanksystemen.
 </base-disclaimer-content>
 </base-disclaimer>
 

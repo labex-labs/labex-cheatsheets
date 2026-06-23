@@ -82,6 +82,11 @@ export const useNavigationStore = defineStore('navigation', {
         updated: false,
       },
       {
+        name: 'Vim',
+        path: '/vim',
+        updated: false,
+      },
+      {
         name: 'Nmap',
         path: '/nmap',
         updated: false,

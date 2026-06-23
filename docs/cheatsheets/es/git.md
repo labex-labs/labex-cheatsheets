@@ -1,21 +1,21 @@
 ---
-title: 'Hoja de Trucos de Git | LabEx'
-description: 'Aprenda control de versiones Git con esta hoja de trucos completa. Referencia rápida de comandos Git, ramificación, fusión, rebase, flujos de trabajo de GitHub y desarrollo colaborativo.'
+title: 'Hoja de trucos de comandos Git | LabEx'
+description: 'Hoja de trucos de comandos Git para control de versiones. Referencia rápida para git init, clone, add, commit, branch, merge, rebase, remote, stash, log, reset y flujos de trabajo de GitHub.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Hoja de Trucos de Git
+Hoja de trucos de comandos Git
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/git">Aprende Git con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/git">Practica comandos Git con laboratorios prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende el control de versiones Git a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Git que cubren comandos esenciales, estrategias de ramificación, flujos de trabajo de colaboración y técnicas avanzadas. Aprende a gestionar repositorios de código, resolver conflictos y trabajar eficazmente con equipos utilizando Git y GitHub.
+Use esta hoja de trucos de comandos Git como referencia rápida para tareas diarias de control de versiones. Cubre configuración de repositorios, staging, commits, ramas, merges, rebases, remotos, stashes, historial, comandos para deshacer y flujos de colaboración en GitHub.
 </base-disclaimer-content>
 </base-disclaimer>
 

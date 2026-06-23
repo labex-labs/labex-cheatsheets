@@ -1,21 +1,21 @@
 ---
-title: 'Lista de Comandos de Kubernetes | LabEx'
-description: 'Aprenda orquestación con Kubernetes con esta hoja de trucos completa. Referencia rápida para comandos kubectl, pods, despliegues, servicios, ingress y gestión de contenedores nativos de la nube.'
+title: 'Hoja de trucos de comandos Kubernetes | LabEx'
+description: 'Hoja de trucos de comandos Kubernetes para kubectl. Referencia rápida para pods, deployments, services, ingress, config maps, secrets, logs, exec, escalado, rollout y solución de problemas.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kubernetes Cheatsheet
+Hoja de trucos de comandos Kubernetes
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/kubernetes">Aprender Kubernetes con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/kubernetes">Practica comandos Kubernetes con laboratorios prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda orquestación de contenedores con Kubernetes a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Kubernetes que cubren comandos esenciales de kubectl, gestión de pods, implementaciones (deployments), servicios, redes y administración de clústeres. Domine la orquestación de contenedores y el despliegue de aplicaciones nativas de la nube.
+Use esta hoja de trucos de comandos Kubernetes como referencia rápida para flujos de kubectl: acceso al clúster, pods, deployments, services, ingress, namespaces, config maps, secrets, logs, exec, escalado, rollouts, inspección de recursos y troubleshooting.
 </base-disclaimer-content>
 </base-disclaimer>
 

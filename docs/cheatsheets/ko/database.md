@@ -1,21 +1,21 @@
 ---
-title: '데이터베이스 치트 시트 | LabEx'
-description: '이 포괄적인 치트 시트로 데이터베이스 관리를 학습하세요. SQL 쿼리, 데이터베이스 설계, 정규화, 인덱싱, 트랜잭션 및 관계형 데이터베이스 관리를 위한 빠른 참조 자료입니다.'
+title: 'SQL 명령어 치트 시트 | LabEx'
+description: '데이터베이스 작업을 위한 SQL 명령어 치트 시트입니다. CREATE, SELECT, INSERT, UPDATE, DELETE, JOIN, GROUP BY, 인덱스, 트랜잭션, 사용자, 백업 및 SQL 모범 사례를 빠르게 참고하세요.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-데이터베이스 치트 시트
+SQL 명령어 치트 시트
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/database">실습 랩을 통해 데이터베이스 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/database">실습으로 SQL 명령어 연습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 데이터베이스 관리 및 SQL 을 학습하세요. LabEx 는 필수 SQL 명령어, 데이터 조작, 쿼리 최적화, 데이터베이스 설계 및 관리를 다루는 포괄적인 데이터베이스 과정을 제공합니다. 관계형 데이터베이스, NoSQL 시스템 및 데이터베이스 보안 모범 사례를 숙달하세요.
+이 SQL 명령어 치트 시트를 데이터베이스 생성, 테이블 설계, 데이터 쿼리, 조인, 집계, 인덱스, 트랜잭션, 사용자 권한, 백업 및 관계형 데이터베이스의 쿼리 최적화를 위한 실용적인 참고 자료로 활용하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 

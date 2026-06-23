@@ -1,21 +1,21 @@
 ---
-title: 'Docker Cheatsheet | LabEx'
-description: 'Learn Docker containerization with this comprehensive cheatsheet. Quick reference for Docker commands, images, containers, Dockerfile, Docker Compose, and container orchestration.'
+title: 'Docker Commands Cheat Sheet | LabEx'
+description: 'Docker commands cheat sheet for containers and images. Quick reference for docker run, ps, exec, logs, build, pull, push, volumes, networks, Dockerfile, and Docker Compose.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Docker Cheatsheet
+Docker Commands Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/learn/docker">Learn Docker with Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/learn/docker">Practice Docker Commands with Hands-On Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Learn Docker containerization through hands-on labs and real-world scenarios. LabEx provides comprehensive Docker courses covering essential container management, image building, Docker Compose, networking, volumes, and deployment. Master container orchestration and modern application deployment techniques.
+Use this Docker commands cheat sheet as a fast reference for installing Docker, running containers, managing images, reading logs, executing commands, building Dockerfiles, configuring volumes and networks, using Docker Compose, and cleaning up local resources.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -811,11 +811,11 @@ CMD ["node", "server.js"]
 
 ## Relevant Links
 
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Commands Cheat Sheet</router-link>
+- <router-link to="/linux">Ubuntu Commands Cheat Sheet</router-link>
+- <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
 - <router-link to="/devops">DevOps Cheatsheet</router-link>
 - <router-link to="/ansible">Ansible Cheatsheet</router-link>
-- <router-link to="/git">Git Cheatsheet</router-link>
+- <router-link to="/git">Git Commands Cheat Sheet</router-link>
 - <router-link to="/rhel">Red Hat Enterprise Linux Cheatsheet</router-link>
 - <router-link to="/python">Python Cheatsheet</router-link>

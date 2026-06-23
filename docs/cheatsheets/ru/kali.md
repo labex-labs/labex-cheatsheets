@@ -1,21 +1,21 @@
 ---
-title: 'Шпаргалка по Kali Linux | LabEx'
-description: 'Изучите тестирование на проникновение с Kali Linux с помощью этой исчерпывающей шпаргалки. Краткий справочник по инструментам безопасности, этичному хакингу, сканированию уязвимостей, эксплуатации и тестированию кибербезопасности.'
+title: 'Шпаргалка по командам Kali | LabEx'
+description: 'Шпаргалка по командам Kali для тестирования на проникновение. Быстрый справочник по apt, сети, Nmap, Metasploit, SQLmap, Hydra, John, веб-тестам, wireless-инструментам и forensic-командам.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Шпаргалка по Kali Linux
+Шпаргалка по командам Kali
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/kali">Изучите Kali Linux с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/kali">Практикуйте команды Kali в лабораториях</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите тестирование на проникновение с помощью Kali Linux через практические лаборатории и сценарии реального мира. LabEx предлагает комплексные курсы по Kali Linux, охватывающие основные команды, сетевое сканирование, оценку уязвимостей, атаки на пароли, тестирование веб-приложений и цифровую криминалистику. Освойте методы этичного хакинга и инструменты аудита безопасности.
+Используйте эту шпаргалку по командам Kali как быстрый справочник по workflow тестирования на проникновение. Она охватывает настройку системы, сетевое сканирование, enumeration, оценку уязвимостей, Metasploit, SQLmap, атаки на пароли, веб-тесты, wireless-инструменты, форензику, отчёты и ответственную безопасность.
 </base-disclaimer-content>
 </base-disclaimer>
 

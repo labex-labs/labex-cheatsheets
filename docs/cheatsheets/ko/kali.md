@@ -1,21 +1,21 @@
 ---
-title: 'Kali Linux 치트 시트 | LabEx'
-description: '이 종합 치트 시트로 Kali Linux 침투 테스트를 배우세요. 보안 도구, 윤리적 해킹, 취약점 스캔, 익스플로잇 및 사이버 보안 테스트를 위한 빠른 참조 자료입니다.'
+title: 'Kali 명령어 치트 시트 | LabEx'
+description: '침투 테스트를 위한 Kali 명령어 치트 시트입니다. apt, 네트워킹, Nmap, Metasploit, SQLmap, Hydra, John, 웹 테스트, 무선 도구 및 포렌식 명령을 빠르게 참고하세요.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kali Linux 치트 시트
+Kali 명령어 치트 시트
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/kali">핸즈온 실습으로 Kali Linux 배우기</a>
+<a target="_blank" href="https://labex.io/ko/learn/kali">실습으로 Kali 명령어 연습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-핸즈온 실습과 실제 시나리오를 통해 Kali Linux 침투 테스트를 학습하세요. LabEx 는 필수 명령어, 네트워크 스캐닝, 취약점 평가, 암호 공격, 웹 애플리케이션 테스트 및 디지털 포렌스를 다루는 포괄적인 Kali Linux 과정을 제공합니다. 윤리적 해킹 기술과 보안 감사 도구를 마스터하세요.
+이 Kali 명령어 치트 시트를 침투 테스트 워크플로우의 빠른 참고 자료로 활용하세요. 시스템 설정, 네트워크 스캔, 열거, 취약점 평가, Metasploit, SQLmap, 비밀번호 공격, 웹 테스트, 무선 도구, 포렌식, 보고 및 책임 있는 보안 감사를 다룹니다.
 </base-disclaimer-content>
 </base-disclaimer>
 

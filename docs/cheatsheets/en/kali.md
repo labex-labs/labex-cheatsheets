@@ -1,21 +1,21 @@
 ---
-title: 'Kali Linux Cheatsheet | LabEx'
-description: 'Learn Kali Linux penetration testing with this comprehensive cheatsheet. Quick reference for security tools, ethical hacking, vulnerability scanning, exploitation, and cybersecurity testing.'
+title: 'Kali Commands Cheat Sheet | LabEx'
+description: 'Kali commands cheat sheet for penetration testing. Quick reference for apt, networking, Nmap, Metasploit, SQLmap, Hydra, John, web testing, wireless tools, and forensic commands.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kali Linux Cheatsheet
+Kali Commands Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/learn/kali">Learn Kali Linux with Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/learn/kali">Practice Kali Commands with Hands-On Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Learn Kali Linux penetration testing through hands-on labs and real-world scenarios. LabEx provides comprehensive Kali Linux courses covering essential commands, network scanning, vulnerability assessment, password attacks, web application testing, and digital forensics. Master ethical hacking techniques and security auditing tools.
+Use this Kali commands cheat sheet as a quick reference for penetration testing workflows. It covers system setup, network scanning, enumeration, vulnerability assessment, Metasploit, SQLmap, password attacks, web testing, wireless tools, forensics, reporting, and responsible security auditing.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -797,11 +797,11 @@ tmux attach -t pentest
 
 ## Relevant Links
 
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
+- <router-link to="/linux">Ubuntu Commands Cheat Sheet</router-link>
+- <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
 - <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>
-- <router-link to="/nmap">Nmap Cheatsheet</router-link>
+- <router-link to="/nmap">Nmap Commands Cheat Sheet</router-link>
 - <router-link to="/wireshark">Wireshark Cheatsheet</router-link>
 - <router-link to="/hydra">Hydra Cheatsheet</router-link>
 - <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
+- <router-link to="/docker">Docker Commands Cheat Sheet</router-link>

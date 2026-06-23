@@ -1,21 +1,21 @@
 ---
-title: '도커 치트 시트 | LabEx'
-description: '포괄적인 치트 시트로 도커 컨테이너화를 학습하세요. 도커 명령어, 이미지, 컨테이너, Dockerfile, Docker Compose 및 컨테이너 오케스트레이션에 대한 빠른 참조.'
+title: 'Docker 명령어 치트 시트 | LabEx'
+description: '컨테이너와 이미지를 위한 Docker 명령어 치트 시트입니다. docker run, ps, exec, logs, build, pull, push, 볼륨, 네트워크, Dockerfile 및 Docker Compose를 빠르게 참고하세요.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Docker 치트 시트
+Docker 명령어 치트 시트
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/docker">Hands-On Labs 로 Docker 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/docker">실습으로 Docker 명령어 연습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Hands-On 랩 및 실제 시나리오를 통해 Docker 컨테이너화를 학습하십시오. LabEx 는 필수 컨테이너 관리, 이미지 빌드, Docker Compose, 네트워킹, 볼륨 및 배포를 다루는 포괄적인 Docker 과정을 제공합니다. 컨테이너 오케스트레이션 및 최신 애플리케이션 배포 기술을 마스터하십시오.
+이 Docker 명령어 치트 시트를 Docker 설치, 컨테이너 실행, 이미지 관리, 로그 확인, 명령 실행, Dockerfile 작성, 볼륨과 네트워크 설정, Docker Compose 사용 및 로컬 리소스 정리를 위한 빠른 참고 자료로 활용하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 

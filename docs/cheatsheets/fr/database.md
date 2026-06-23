@@ -1,21 +1,21 @@
 ---
-title: 'Fiche Mémo Base de Données | LabEx'
-description: "Apprenez la gestion de bases de données avec cette fiche mémo complète. Référence rapide pour les requêtes SQL, la conception de bases de données, la normalisation, l'indexation, les transactions et l'administration des bases de données relationnelles."
+title: 'Aide-mémoire des commandes SQL | LabEx'
+description: 'Aide-mémoire des commandes SQL pour le travail en base de données. Référence rapide pour CREATE, SELECT, INSERT, UPDATE, DELETE, JOIN, GROUP BY, index, transactions, utilisateurs, sauvegardes et bonnes pratiques SQL.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Feuille de triche sur les bases de données
+Aide-mémoire des commandes SQL
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/database">Apprenez les bases de données avec des laboratoires pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/database">Pratiquer les commandes SQL avec des labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la gestion des bases de données et SQL grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur les bases de données couvrant les commandes SQL essentielles, la manipulation des données, l'optimisation des requêtes, la conception et l'administration des bases de données. Maîtrisez les bases de données relationnelles, les systèmes NoSQL et les meilleures pratiques de sécurité des bases de données.
+Utilisez cet aide-mémoire des commandes SQL comme référence pratique pour créer des bases, concevoir des tables, interroger les données, faire des jointures, agréger, gérer les index, transactions, permissions, sauvegardes et optimiser les requêtes.
 </base-disclaimer-content>
 </base-disclaimer>
 

@@ -1,21 +1,21 @@
 ---
-title: 'Linux Spickzettel | LabEx'
-description: 'Lernen Sie Linux-Administration mit diesem umfassenden Spickzettel. Schnelle Referenz für Linux-Befehle, Dateiverwaltung, Systemadministration, Netzwerk und Shell-Skripte.'
+title: 'Ubuntu Befehle Spickzettel | LabEx'
+description: 'Ubuntu Befehle Spickzettel für Linux-Administration. Schnelle Referenz für Systeminformationen, Dateien, Berechtigungen, apt, Dienste, Benutzer, Netzwerk, Datenträger, Prozesse, Logs und Sicherheitsupdates.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Linux Spickzettel
+Ubuntu Befehle Spickzettel
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Besuchen Sie Linux Commands</a>
+<a target="_blank" href="https://linux-commands.labex.io/">Weitere Ubuntu- und Linux-Befehle erkunden</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Für umfassende Nachschlagewerke zu Linux-Befehlen, Syntaxbeispielen und detaillierten Dokumentationen besuchen Sie bitte <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Diese unabhängige Seite bietet umfangreiche Linux-Spickzettel, die wesentliche Befehle, Konzepte und Best Practices für Linux-Administratoren und Entwickler abdecken.
+Nutzen Sie diesen Ubuntu Befehle Spickzettel als praktische Referenz für Linux-Administration. Er behandelt Systeminformationen, Dateien, Berechtigungen, Benutzer, apt-Pakete, systemd-Dienste, Prozesse, Netzwerk, Speicher, Logs, Firewall-Grundlagen und Sicherheitsupdates.
 </base-disclaimer-content>
 </base-disclaimer>
 

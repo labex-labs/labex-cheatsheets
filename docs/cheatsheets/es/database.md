@@ -1,21 +1,21 @@
 ---
-title: 'Hoja de Trucos de Bases de Datos | LabEx'
-description: 'Aprenda gestión de bases de datos con esta hoja de trucos completa. Referencia rápida para consultas SQL, diseño de bases de datos, normalización, indexación, transacciones y administración de bases de datos relacionales.'
+title: 'Hoja de trucos de comandos SQL | LabEx'
+description: 'Hoja de trucos de comandos SQL para trabajo con bases de datos. Referencia rápida para CREATE, SELECT, INSERT, UPDATE, DELETE, JOIN, GROUP BY, índices, transacciones, usuarios, copias de seguridad y buenas prácticas SQL.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Hoja de Trucos de Bases de Datos
+Hoja de trucos de comandos SQL
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/database">Aprenda Bases de Datos con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/database">Practica comandos SQL con laboratorios prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda gestión de bases de datos y SQL a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de bases de datos que cubren comandos SQL esenciales, manipulación de datos, optimización de consultas, diseño de bases de datos y mejores prácticas de administración. Domine las bases de datos relacionales, los sistemas NoSQL y las mejores prácticas de seguridad de bases de datos.
+Use esta hoja de trucos de comandos SQL como referencia práctica para creación de bases de datos, diseño de tablas, consultas, joins, agregaciones, índices, transacciones, permisos de usuario, copias de seguridad y optimización de consultas en sistemas relacionales.
 </base-disclaimer-content>
 </base-disclaimer>
 

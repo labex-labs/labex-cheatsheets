@@ -1,21 +1,21 @@
 ---
-title: 'Hoja de Trucos de Linux | LabEx'
-description: 'Aprenda administración de Linux con esta hoja de trucos completa. Referencia rápida para comandos de Linux, gestión de archivos, administración de sistemas, redes y scripting de shell.'
+title: 'Hoja de trucos de comandos Ubuntu | LabEx'
+description: 'Hoja de trucos de comandos Ubuntu para administración Linux. Referencia rápida de información del sistema, archivos, permisos, apt, servicios, usuarios, redes, discos, procesos, logs y actualizaciones de seguridad.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Hoja de Trucos de Linux
+Hoja de trucos de comandos Ubuntu
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Visitar Comandos de Linux</a>
+<a target="_blank" href="https://linux-commands.labex.io/">Explora más comandos Ubuntu y Linux</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Para materiales de referencia completos de comandos de Linux, ejemplos de sintaxis y documentación detallada, por favor visite <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Este sitio independiente proporciona hojas de trucos extensas de Linux que cubren comandos esenciales, conceptos y mejores prácticas para administradores y desarrolladores de Linux.
+Use esta hoja de trucos de comandos Ubuntu como referencia práctica de administración Linux. Cubre información del sistema, archivos, permisos, usuarios, paquetes apt, servicios systemd, procesos, redes, almacenamiento, logs, conceptos básicos de firewall y actualizaciones de seguridad.
 </base-disclaimer-content>
 </base-disclaimer>
 

@@ -1,21 +1,21 @@
 ---
-title: 'Folha de Cola Shell | LabEx'
-description: 'Aprenda scripting shell com esta folha de cola abrangente. Referência rápida para comandos bash, scripting shell, automação, ferramentas de linha de comando e administração de sistemas Linux/Unix.'
+title: 'Folha de consulta de comandos Bash | LabEx'
+description: 'Folha de consulta de comandos Bash para shells Linux e Unix. Referência rápida para arquivos, navegação, permissões, processamento de texto, pipes, redirecionamento, processos, histórico e scripts.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Folha de Dicas Shell
+Folha de consulta de comandos Bash
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/pt/learn/shell">Aprenda Shell com Laboratórios Práticos</a>
+<a target="_blank" href="https://labex.io/pt/learn/shell">Pratique comandos Bash com laboratórios práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda scripting Shell e operações de linha de comando através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de Shell cobrindo comandos Bash essenciais, operações de arquivo, processamento de texto, gerenciamento de processos e automação. Domine a eficiência da linha de comando e as técnicas de scripting shell.
+Use esta folha de consulta de comandos Bash como referência rápida para shell: arquivos e diretórios, navegação, permissões, busca, processamento de texto, pipes, redirecionamento, processos, histórico, aliases, variáveis, loops, funções e automação.
 </base-disclaimer-content>
 </base-disclaimer>
 

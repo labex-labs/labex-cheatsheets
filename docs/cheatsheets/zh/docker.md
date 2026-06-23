@@ -1,21 +1,21 @@
 ---
-title: 'Docker 速查表 | LabEx'
-description: '使用本综合速查表学习 Docker 容器化技术。快速参考 Docker 命令、镜像、容器、Dockerfile、Docker Compose 和容器编排。'
+title: 'Docker 命令速查表 | LabEx'
+description: 'Docker 命令速查表，覆盖容器和镜像操作。快速参考 docker run、ps、exec、logs、build、pull、push、卷、网络、Dockerfile 和 Docker Compose。'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Docker 速查表
+Docker 命令速查表
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/docker">通过实践实验室学习 Docker</a>
+<a target="_blank" href="https://labex.io/zh/learn/docker">通过动手实验练习 Docker 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 Docker 容器化。LabEx 提供全面的 Docker 课程，涵盖基本的容器管理、镜像构建、Docker Compose、网络、卷和部署。掌握容器编排和现代应用程序部署技术。
+将此 Docker 命令速查表作为安装 Docker、运行容器、管理镜像、查看日志、执行命令、编写 Dockerfile、配置卷和网络、使用 Docker Compose 以及清理本地资源的快速参考。
 </base-disclaimer-content>
 </base-disclaimer>
 

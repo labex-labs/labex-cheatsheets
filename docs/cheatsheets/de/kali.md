@@ -1,21 +1,21 @@
 ---
-title: 'Kali Linux Spickzettel | LabEx'
-description: 'Lernen Sie Kali Linux Penetration Testing mit diesem umfassenden Spickzettel. Schnelle Referenz für Sicherheitstools, Ethical Hacking, Schwachstellen-Scanning, Exploitation und Cybersicherheitstests.'
+title: 'Kali Befehle Spickzettel | LabEx'
+description: 'Kali Befehle Spickzettel für Penetrationstests. Schnelle Referenz für apt, Netzwerk, Nmap, Metasploit, SQLmap, Hydra, John, Webtests, Wireless-Tools und Forensik-Befehle.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kali Linux Spickzettel
+Kali Befehle Spickzettel
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/kali">Lernen Sie Kali Linux mit praktischen Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/kali">Kali-Befehle mit praktischen Labs üben</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Kali Linux Penetration Testing durch praktische Labs und reale Szenarien. LabEx bietet umfassende Kali Linux Kurse, die wesentliche Befehle, Netzwerksuche, Schwachstellenbewertung, Passwortangriffe, Webanwendungstests und digitale Forensik abdecken. Meistern Sie ethische Hacking-Techniken und Sicherheitsauditing-Tools.
+Nutzen Sie diesen Kali Befehle Spickzettel als schnelle Referenz für Penetrationstest-Workflows. Er behandelt Systemsetup, Netzwerk-Scanning, Enumeration, Schwachstellenbewertung, Metasploit, SQLmap, Passwortangriffe, Webtests, Wireless-Tools, Forensik, Reporting und verantwortungsvolle Sicherheitsaudits.
 </base-disclaimer-content>
 </base-disclaimer>
 

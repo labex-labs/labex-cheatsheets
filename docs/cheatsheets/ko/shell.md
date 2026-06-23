@@ -1,21 +1,21 @@
 ---
-title: '쉘 치트 시트 | LabEx'
-description: '포괄적인 치트 시트로 쉘 스크립팅을 배우세요. Bash 명령어, 쉘 스크립팅, 자동화, 명령줄 도구 및 Linux/Unix 시스템 관리를 위한 빠른 참조 가이드입니다.'
+title: 'Bash 명령어 치트 시트 | LabEx'
+description: 'Linux 및 Unix 셸을 위한 Bash 명령어 치트 시트입니다. 파일 명령, 탐색, 권한, 텍스트 처리, 파이프, 리다이렉션, 프로세스, 히스토리 및 스크립팅을 빠르게 참고하세요.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Shell 치트 시트
+Bash 명령어 치트 시트
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/shell">실습 랩을 통해 쉘 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/shell">실습으로 Bash 명령어 연습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 랩과 실제 시나리오를 통해 쉘 스크립팅 및 명령줄 작업을 학습하세요. LabEx 는 필수 Bash 명령어, 파일 작업, 텍스트 처리, 프로세스 관리 및 자동화를 다루는 포괄적인 쉘 과정을 제공합니다. 명령줄 효율성과 쉘 스크립팅 기술을 마스터하세요.
+이 Bash 명령어 치트 시트를 셸 작업의 빠른 참고 자료로 활용하세요. 파일과 디렉터리, 경로 탐색, 권한, 검색, 텍스트 처리, 파이프, 리다이렉션, 프로세스 관리, 히스토리, 별칭, 변수, 반복문, 함수 및 자동화 스크립트를 다룹니다.
 </base-disclaimer-content>
 </base-disclaimer>
 

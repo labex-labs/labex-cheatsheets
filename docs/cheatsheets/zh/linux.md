@@ -1,21 +1,21 @@
 ---
-title: 'Linux 速查表 | LabEx'
-description: '使用本综合速查表学习 Linux 管理。快速参考 Linux 命令、文件管理、系统管理、网络和 Shell 脚本。'
+title: 'Ubuntu 命令速查表 | LabEx'
+description: 'Ubuntu 命令速查表，面向 Linux 管理。快速参考系统信息、文件、权限、apt、服务、用户、网络、磁盘、进程、日志和安全更新。'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Linux 速查表
+Ubuntu 命令速查表
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">访问 Linux 命令</a>
+<a target="_blank" href="https://linux-commands.labex.io/">探索更多 Ubuntu 和 Linux 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-有关全面的 Linux 命令参考材料、语法示例和详细文档，请访问 <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>。该独立网站提供了广泛的 Linux 速查表，涵盖了 Linux 管理员和开发人员的基本命令、概念和最佳实践。
+将此 Ubuntu 命令速查表作为实用的 Linux 管理参考。内容涵盖系统信息、文件、权限、用户、apt 软件包、systemd 服务、进程、网络、存储、日志、防火墙基础和 Ubuntu 及兼容 Linux 环境中的安全更新。
 </base-disclaimer-content>
 </base-disclaimer>
 

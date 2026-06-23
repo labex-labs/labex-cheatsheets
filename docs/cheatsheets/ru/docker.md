@@ -1,21 +1,21 @@
 ---
-title: 'Шпаргалка по Docker | LabEx'
-description: 'Изучите контейнеризацию Docker с помощью этой исчерпывающей шпаргалки. Быстрый справочник по командам Docker, образам, контейнерам, Dockerfile, Docker Compose и оркестрации контейнеров.'
+title: 'Шпаргалка по командам Docker | LabEx'
+description: 'Шпаргалка по командам Docker для контейнеров и образов. Быстрый справочник по docker run, ps, exec, logs, build, pull, push, томам, сетям, Dockerfile и Docker Compose.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Docker Шпаргалка
+Шпаргалка по командам Docker
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/docker">Изучите Docker с практическими лабораторными работами</a>
+<a target="_blank" href="https://labex.io/ru/learn/docker">Практикуйте команды Docker в лабораториях</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите контейнеризацию Docker с помощью практических лабораторных работ и сценариев реального мира. LabEx предлагает комплексные курсы по Docker, охватывающие управление контейнерами, сборку образов, Docker Compose, сетевое взаимодействие, тома и развертывание. Освойте оркестрацию контейнеров и современные методы развертывания приложений.
+Используйте эту шпаргалку по командам Docker как быстрый справочник по установке Docker, запуску контейнеров, управлению образами, чтению логов, выполнению команд, сборке Dockerfile, настройке томов и сетей, Docker Compose и очистке локальных ресурсов.
 </base-disclaimer-content>
 </base-disclaimer>
 

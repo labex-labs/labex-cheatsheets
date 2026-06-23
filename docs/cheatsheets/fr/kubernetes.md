@@ -1,21 +1,21 @@
 ---
-title: 'Mémento Kubernetes | LabEx'
-description: "Apprenez l'orchestration Kubernetes avec ce mémento complet. Référence rapide pour les commandes kubectl, les pods, les déploiements, les services, l'ingress et la gestion des conteneurs cloud-natifs."
+title: 'Aide-mémoire des commandes Kubernetes | LabEx'
+description: 'Aide-mémoire des commandes Kubernetes pour kubectl. Référence rapide pour pods, deployments, services, ingress, config maps, secrets, logs, exec, scaling, rollout et dépannage.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Feuille de triche Kubernetes
+Aide-mémoire des commandes Kubernetes
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/kubernetes">Apprenez Kubernetes avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/kubernetes">Pratiquer les commandes Kubernetes avec des labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez l'orchestration de conteneurs Kubernetes grâce à des laboratoires pratiques et des scénarios du monde réel. LabEx propose des cours Kubernetes complets couvrant les commandes kubectl essentielles, la gestion des pods, les déploiements, les services, le réseau et l'administration de cluster. Maîtrisez l'orchestration de conteneurs et le déploiement d'applications cloud-natives.
+Utilisez cet aide-mémoire des commandes Kubernetes comme référence rapide pour les workflows kubectl : accès cluster, pods, deployments, services, ingress, namespaces, config maps, secrets, logs, exec, scaling, rollouts, inspection des ressources et dépannage.
 </base-disclaimer-content>
 </base-disclaimer>
 

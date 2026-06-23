@@ -1,21 +1,21 @@
 ---
-title: 'Шпаргалка по Git | LabEx'
-description: 'Изучите систему контроля версий Git с помощью этой исчерпывающей шпаргалки. Быстрый справочник по командам Git, ветвлению, слиянию, перебазированию, рабочим процессам GitHub и совместной разработке.'
+title: 'Шпаргалка по командам Git | LabEx'
+description: 'Шпаргалка по командам Git для контроля версий. Быстрый справочник по git init, clone, add, commit, branch, merge, rebase, remote, stash, log, reset и рабочим процессам GitHub.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Git Справочник
+Шпаргалка по командам Git
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/git">Изучите Git с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/git">Практикуйте команды Git в лабораториях</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите систему контроля версий Git с помощью практических лабораторных работ и сценариев из реального мира. LabEx предлагает комплексные курсы по Git, охватывающие основные команды, стратегии ветвления, рабочие процессы совместной работы и продвинутые методы. Научитесь управлять репозиториями кода, разрешать конфликты и эффективно работать с командами, используя Git и GitHub.
+Используйте эту шпаргалку по командам Git как быстрый справочник для ежедневного контроля версий. Она охватывает настройку репозитория, staging, коммиты, ветки, слияния, rebase, remotes, stash, просмотр истории, команды отмены и совместную работу в GitHub.
 </base-disclaimer-content>
 </base-disclaimer>
 

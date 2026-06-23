@@ -1,21 +1,21 @@
 ---
-title: 'Kubernetes チートシート | LabEx'
-description: 'この包括的なチートシートで Kubernetes オーケストレーションを学習。kubectl コマンド、Pod、デプロイメント、サービス、Ingress、クラウドネイティブコンテナ管理のクイックリファレンス。'
+title: 'Kubernetes コマンドチートシート | LabEx'
+description: 'kubectl 向けの Kubernetes コマンドチートシート。Pod、Deployment、Service、Ingress、ConfigMap、Secret、ログ、exec、スケーリング、rollout、トラブルシューティングのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kubernetes チートシート
+Kubernetes コマンドチートシート
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/kubernetes">ハンズオンラボで Kubernetes を学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/kubernetes">ハンズオンラボで Kubernetes コマンドを練習</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、Kubernetes コンテナオーケストレーションを学びましょう。LabEx は、必須の kubectl コマンド、Pod 管理、デプロイメント、サービス、ネットワーキング、クラスター管理を網羅した包括的な Kubernetes コースを提供します。コンテナオーケストレーションとクラウドネイティブアプリケーションのデプロイを習得します。
+この Kubernetes コマンドチートシートを、kubectl ワークフローのクイックリファレンスとして使用してください。クラスタアクセス、Pod、Deployment、Service、Ingress、Namespace、ConfigMap、Secret、ログ、exec、スケーリング、ロールアウト、リソース確認、トラブルシューティングを扱います。
 </base-disclaimer-content>
 </base-disclaimer>
 

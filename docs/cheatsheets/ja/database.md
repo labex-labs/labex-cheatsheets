@@ -1,21 +1,21 @@
 ---
-title: 'データベースチートシート | LabEx'
-description: 'この包括的なチートシートでデータベース管理を学習。SQL クエリ、データベース設計、正規化、インデックス、トランザクション、リレーショナルデータベース管理のクイックリファレンス。'
+title: 'SQL コマンドチートシート | LabEx'
+description: 'データベース作業向けの SQL コマンドチートシート。CREATE、SELECT、INSERT、UPDATE、DELETE、JOIN、GROUP BY、インデックス、トランザクション、ユーザー、バックアップ、SQL ベストプラクティスのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-データベース チートシート
+SQL コマンドチートシート
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/database">ハンズオンラボでデータベースを学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/database">ハンズオンラボで SQL コマンドを練習</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、データベース管理と SQL を学びましょう。LabEx は、必須の SQL コマンド、データ操作、クエリ最適化、データベース設計、管理を網羅した包括的なデータベースコースを提供します。リレーショナルデータベース、NoSQL システム、データベースセキュリティのベストプラクティスを習得します。
+この SQL コマンドチートシートを、データベース作成、テーブル設計、データクエリ、結合、集計、インデックス、トランザクション、ユーザー権限、バックアップ、リレーショナルデータベースのクエリ最適化の実用リファレンスとして使用してください。
 </base-disclaimer-content>
 </base-disclaimer>
 

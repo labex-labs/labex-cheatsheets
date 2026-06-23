@@ -1,21 +1,21 @@
 ---
-title: 'Hoja de Trucos de Nmap | LabEx'
-description: 'Aprenda escaneo de redes con Nmap usando esta hoja de trucos completa. Referencia rápida para escaneo de puertos, descubrimiento de redes, detección de vulnerabilidades, auditoría de seguridad y reconocimiento de red.'
+title: 'Hoja de trucos de comandos Nmap | LabEx'
+description: 'Hoja de trucos de comandos Nmap para escaneo de redes. Referencia rápida de descubrimiento de hosts, escaneos de puertos, detección de servicios, detección de SO, scripts NSE, formatos de salida y auditoría de seguridad.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Hoja de Trucos de Nmap
+Hoja de trucos de comandos Nmap
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/nmap">Aprende Nmap con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/nmap">Practica comandos Nmap con laboratorios prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende el escaneo de redes con Nmap a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Nmap que cubren descubrimiento de redes esencial, escaneo de puertos, detección de servicios, huella digital de SO y evaluación de vulnerabilidades. Domina las técnicas de reconocimiento de redes y auditoría de seguridad.
+Use esta hoja de trucos de comandos Nmap como referencia rápida para descubrimiento de red, escaneos TCP y UDP, detección de servicios/versiones, fingerprinting de SO, controles de tiempo, scripts NSE, comprobaciones de vulnerabilidades, formatos de salida y flujos de auditoría.
 </base-disclaimer-content>
 </base-disclaimer>
 

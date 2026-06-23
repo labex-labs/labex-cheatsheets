@@ -1,21 +1,21 @@
 ---
-title: 'Kali Linux 速查表 | LabEx'
-description: '使用此综合速查表学习 Kali Linux 渗透测试。快速参考安全工具、道德黑客、漏洞扫描、利用和网络安全测试。'
+title: 'Kali 命令速查表 | LabEx'
+description: 'Kali 命令速查表，面向渗透测试。快速参考 apt、网络、Nmap、Metasploit、SQLmap、Hydra、John、Web 测试、无线工具和取证命令。'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kali Linux 速查表
+Kali 命令速查表
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/kali">通过实战实验室学习 Kali Linux</a>
+<a target="_blank" href="https://labex.io/zh/learn/kali">通过动手实验练习 Kali 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实战实验室和真实场景学习 Kali Linux 渗透测试。LabEx 提供全面的 Kali Linux 课程，涵盖基本命令、网络扫描、漏洞评估、密码攻击、Web 应用程序测试和数字取证。掌握道德黑客技术和安全审计工具。
+将此 Kali 命令速查表作为渗透测试流程的快速参考。内容涵盖系统设置、网络扫描、枚举、漏洞评估、Metasploit、SQLmap、密码攻击、Web 测试、无线工具、取证、报告和负责任的安全审计。
 </base-disclaimer-content>
 </base-disclaimer>
 

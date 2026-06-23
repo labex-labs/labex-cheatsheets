@@ -1,21 +1,21 @@
 ---
-title: 'Cheatsheet Kali Linux | LabEx'
-description: 'Aprenda testes de penetração com Kali Linux com este cheatsheet abrangente. Referência rápida para ferramentas de segurança, hacking ético, varredura de vulnerabilidades, exploração e testes de cibersegurança.'
+title: 'Folha de consulta de comandos Kali | LabEx'
+description: 'Folha de consulta de comandos Kali para testes de penetração. Referência rápida para apt, rede, Nmap, Metasploit, SQLmap, Hydra, John, testes web, ferramentas wireless e comandos forenses.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Folha de Dicas do Kali Linux
+Folha de consulta de comandos Kali
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/pt/learn/kali">Aprenda Kali Linux com Laboratórios Práticos</a>
+<a target="_blank" href="https://labex.io/pt/learn/kali">Pratique comandos Kali com laboratórios práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda testes de penetração com Kali Linux através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de Kali Linux cobrindo comandos essenciais, varredura de rede, avaliação de vulnerabilidades, ataques de senha, testes de aplicações web e forense digital. Domine técnicas de hacking ético e ferramentas de auditoria de segurança.
+Use esta folha de consulta de comandos Kali como referência rápida para fluxos de teste de penetração. Ela cobre configuração do sistema, varredura de rede, enumeração, avaliação de vulnerabilidades, Metasploit, SQLmap, ataques de senha, testes web, ferramentas wireless, forense, relatórios e auditoria responsável.
 </base-disclaimer-content>
 </base-disclaimer>
 

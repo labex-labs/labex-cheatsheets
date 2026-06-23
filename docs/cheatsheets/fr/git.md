@@ -1,21 +1,21 @@
 ---
-title: 'Fiche Mémo Git | LabEx'
-description: 'Apprenez le contrôle de version Git avec cette fiche mémo complète. Référence rapide des commandes Git, du branching, du merging, du rebasing, des workflows GitHub et du développement collaboratif.'
+title: 'Aide-mémoire des commandes Git | LabEx'
+description: 'Aide-mémoire des commandes Git pour le contrôle de version. Référence rapide pour git init, clone, add, commit, branch, merge, rebase, remote, stash, log, reset et les workflows GitHub.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Trombinoscope Git
+Aide-mémoire des commandes Git
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/git">Apprendre Git avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/git">Pratiquer les commandes Git avec des labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez le contrôle de version Git grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Git complets couvrant les commandes essentielles, les stratégies de branchement, les flux de travail de collaboration et les techniques avancées. Apprenez à gérer les dépôts de code, à résoudre les conflits et à travailler efficacement avec des équipes en utilisant Git et GitHub.
+Utilisez cet aide-mémoire des commandes Git comme référence rapide pour les tâches courantes de contrôle de version. Il couvre la configuration de dépôt, le staging, les commits, les branches, les merges, les rebases, les remotes, les stashes, l’historique, les commandes d’annulation et les workflows GitHub.
 </base-disclaimer-content>
 </base-disclaimer>
 

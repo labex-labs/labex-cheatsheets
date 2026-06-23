@@ -1,21 +1,21 @@
 ---
-title: 'Linux Cheatsheet | LabEx'
-description: 'Learn Linux administration with this comprehensive cheatsheet. Quick reference for Linux commands, file management, system administration, networking, and shell scripting.'
+title: 'Ubuntu Commands Cheat Sheet | LabEx'
+description: 'Ubuntu commands cheat sheet for Linux administration. Quick reference for system info, files, permissions, apt, services, users, networking, disks, processes, logs, and security updates.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Linux Cheatsheet
+Ubuntu Commands Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Visit Linux Commands</a>
+<a href="https://linux-commands.labex.io/" target="_blank">Explore More Ubuntu and Linux Commands</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-For comprehensive Linux command reference materials, syntax examples, and detailed documentation, please visit <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. This independent site provides extensive Linux cheatsheets covering essential commands, concepts, and best practices for Linux administrators and developers.
+Use this Ubuntu commands cheat sheet as a practical Linux administration reference. It covers system information, files, permissions, users, apt packages, systemd services, processes, networking, storage, logs, firewall basics, and security updates for Ubuntu and compatible Linux environments.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -1040,11 +1040,12 @@ lsof
 
 ## Relevant Links
 
-- <router-link to="/shell">Shell Cheatsheet</router-link>
+- <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
 - <router-link to="/rhel">Red Hat Enterprise Linux Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
-- <router-link to="/git">Git Cheatsheet</router-link>
+- <router-link to="/vim">Vim Commands Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Commands Cheat Sheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Commands Cheat Sheet</router-link>
+- <router-link to="/git">Git Commands Cheat Sheet</router-link>
 - <router-link to="/ansible">Ansible Cheatsheet</router-link>
 - <router-link to="/devops">DevOps Cheatsheet</router-link>
 - <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>

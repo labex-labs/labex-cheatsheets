@@ -1,21 +1,21 @@
 ---
-title: 'Git 치트 시트 | LabEx'
-description: '포괄적인 치트 시트로 Git 버전 관리를 배우세요. Git 명령어, 브랜칭, 병합, 리베이스, GitHub 워크플로우 및 협업 개발을 위한 빠른 참조 가이드입니다.'
+title: 'Git 명령어 치트 시트 | LabEx'
+description: '버전 관리를 위한 Git 명령어 치트 시트입니다. git init, clone, add, commit, branch, merge, rebase, remote, stash, log, reset 및 GitHub 워크플로우를 빠르게 참고하세요.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Git 치트 시트
+Git 명령어 치트 시트
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/git">Hands-On 실습으로 Git 배우기</a>
+<a target="_blank" href="https://labex.io/ko/learn/git">실습으로 Git 명령어 연습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 및 실제 시나리오를 통해 Git 버전 관리를 학습하세요. LabEx 는 필수 명령어, 브랜칭 전략, 협업 워크플로우 및 고급 기술을 다루는 포괄적인 Git 강좌를 제공합니다. Git 과 GitHub 를 사용하여 코드 저장소를 관리하고, 충돌을 해결하며, 팀과 효과적으로 협업하는 방법을 배우세요.
+이 Git 명령어 치트 시트를 일상적인 버전 관리 작업의 빠른 참고 자료로 활용하세요. 저장소 설정, 스테이징, 커밋, 브랜치, 병합, 리베이스, 원격 저장소, stash, 기록 확인, 되돌리기 명령 및 GitHub 협업 워크플로우를 다룹니다.
 </base-disclaimer-content>
 </base-disclaimer>
 

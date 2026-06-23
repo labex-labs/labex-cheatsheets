@@ -1,21 +1,21 @@
 ---
-title: 'Fiche Mémo Shell | LabEx'
-description: "Apprenez le scripting shell avec cette fiche mémo complète. Référence rapide pour les commandes bash, le scripting shell, l'automatisation, les outils en ligne de commande et l'administration système Linux/Unix."
+title: 'Aide-mémoire des commandes Bash | LabEx'
+description: 'Aide-mémoire des commandes Bash pour les shells Linux et Unix. Référence rapide pour fichiers, navigation, permissions, traitement de texte, pipes, redirection, processus, historique et scripts.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Feuille de triche Shell
+Aide-mémoire des commandes Bash
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/shell">Apprenez le Shell avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/shell">Pratiquer les commandes Bash avec des labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez le scripting Shell et les opérations en ligne de commande grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Shell complets couvrant les commandes Bash essentielles, les opérations sur fichiers, le traitement de texte, la gestion des processus et l'automatisation. Maîtrisez l'efficacité de la ligne de commande et les techniques de scripting shell.
+Utilisez cet aide-mémoire des commandes Bash comme référence rapide pour le shell : fichiers et dossiers, navigation, permissions, recherche, traitement de texte, pipes, redirection, processus, historique, alias, variables, boucles, fonctions et automatisation.
 </base-disclaimer-content>
 </base-disclaimer>
 

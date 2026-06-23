@@ -1,21 +1,21 @@
 ---
-title: 'Nmap Aide-Mémoire | LabEx'
-description: "Apprenez le scan réseau Nmap avec cet aide-mémoire complet. Référence rapide pour le balayage de ports, la découverte de réseau, la détection de vulnérabilités, l'audit de sécurité et la reconnaissance réseau."
+title: 'Aide-mémoire des commandes Nmap | LabEx'
+description: 'Aide-mémoire des commandes Nmap pour le scan réseau. Référence rapide pour découverte d’hôtes, scans de ports, détection de services, détection OS, scripts NSE, formats de sortie et audit de sécurité.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Nmap Aide-mémoire
+Aide-mémoire des commandes Nmap
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/nmap">Apprenez Nmap avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/nmap">Pratiquer les commandes Nmap avec des labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la numérisation de réseau Nmap grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Nmap complets couvrant la découverte de réseau essentielle, la numérisation de ports, la détection de services, l'empreinte du système d'exploitation (OS fingerprinting) et l'évaluation des vulnérabilités. Maîtrisez les techniques de reconnaissance de réseau et d'audit de sécurité.
+Utilisez cet aide-mémoire des commandes Nmap comme référence rapide pour la découverte réseau, les scans TCP et UDP, la détection service/version, l’empreinte OS, les réglages de temporisation, scripts NSE, contrôles de vulnérabilités, sorties et audits pratiques.
 </base-disclaimer-content>
 </base-disclaimer>
 

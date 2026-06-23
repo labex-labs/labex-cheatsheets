@@ -1,21 +1,21 @@
 ---
-title: 'Docker チートシート | LabEx'
-description: 'この包括的なチートシートで Docker コンテナ化を学ぶ。Docker コマンド、イメージ、コンテナ、Dockerfile、Docker Compose、コンテナオーケストレーションのクイックリファレンス。'
+title: 'Docker コマンドチートシート | LabEx'
+description: 'コンテナとイメージ向けの Docker コマンドチートシート。docker run、ps、exec、logs、build、pull、push、ボリューム、ネットワーク、Dockerfile、Docker Compose のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Docker チートシート
+Docker コマンドチートシート
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/docker">ハンズオンラボで Docker を学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/docker">ハンズオンラボで Docker コマンドを練習</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと現実世界のシナリオを通じて Docker コンテナ化を学びます。LabEx は、必須のコンテナ管理、イメージビルド、Docker Compose、ネットワーキング、ボリューム、デプロイメントを網羅した包括的な Docker コースを提供します。コンテナオーケストレーションと最新のアプリケーションデプロイメント技術を習得しましょう。
+この Docker コマンドチートシートを、Docker のインストール、コンテナ実行、イメージ管理、ログ確認、コマンド実行、Dockerfile 作成、ボリュームとネットワーク設定、Docker Compose 利用、ローカルリソース整理のクイックリファレンスとして使用してください。
 </base-disclaimer-content>
 </base-disclaimer>
 

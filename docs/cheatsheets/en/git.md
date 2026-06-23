@@ -1,21 +1,21 @@
 ---
-title: 'Git Cheatsheet | LabEx'
-description: 'Learn Git version control with this comprehensive cheatsheet. Quick reference for Git commands, branching, merging, rebasing, GitHub workflows, and collaborative development.'
+title: 'Git Commands Cheat Sheet | LabEx'
+description: 'Git commands cheat sheet for version control. Quick reference for git init, clone, add, commit, branch, merge, rebase, remote, stash, log, reset, and GitHub workflows.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Git Cheatsheet
+Git Commands Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/learn/git">Learn Git with Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/learn/git">Practice Git Commands with Hands-On Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Learn Git version control through hands-on labs and real-world scenarios. LabEx provides comprehensive Git courses covering essential commands, branching strategies, collaboration workflows, and advanced techniques. Learn to manage code repositories, resolve conflicts, and work effectively with teams using Git and GitHub.
+Use this Git commands cheat sheet as a quick reference for everyday version control tasks. It covers repository setup, staging, commits, branches, merges, rebases, remotes, stashes, history inspection, undo commands, and GitHub collaboration workflows.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -957,11 +957,12 @@ git for-each-ref --format='%(refname:short)' | wc -l
 
 ## Relevant Links
 
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
+- <router-link to="/linux">Ubuntu Commands Cheat Sheet</router-link>
+- <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
+- <router-link to="/vim">Vim Commands Cheat Sheet</router-link>
 - <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
+- <router-link to="/docker">Docker Commands Cheat Sheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Commands Cheat Sheet</router-link>
 - <router-link to="/ansible">Ansible Cheatsheet</router-link>
 - <router-link to="/python">Python Cheatsheet</router-link>
 - <router-link to="/javascript">JavaScript Cheatsheet</router-link>

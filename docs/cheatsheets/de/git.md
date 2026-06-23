@@ -1,21 +1,21 @@
 ---
-title: 'Git Spickzettel | LabEx'
-description: 'Git-Versionskontrolle mit diesem umfassenden Spickzettel lernen. Schnelle Referenz für Git-Befehle, Branching, Merging, Rebasing, GitHub-Workflows und kollaborative Entwicklung.'
+title: 'Git Befehle Spickzettel | LabEx'
+description: 'Git Befehle Spickzettel für Versionskontrolle. Schnelle Referenz für git init, clone, add, commit, branch, merge, rebase, remote, stash, log, reset und GitHub-Workflows.'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Git Spickzettel
+Git Befehle Spickzettel
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/git">Git mit praktischen Übungen lernen</a>
+<a target="_blank" href="https://labex.io/de/learn/git">Git-Befehle mit praktischen Labs üben</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie die Git-Versionskontrolle durch praktische Übungen und reale Szenarien. LabEx bietet umfassende Git-Kurse, die wesentliche Befehle, Branching-Strategien, Kollaborations-Workflows und fortgeschrittene Techniken abdecken. Lernen Sie, Code-Repositories zu verwalten, Konflikte zu lösen und effektiv mit Teams mithilfe von Git und GitHub zusammenzuarbeiten.
+Nutzen Sie diesen Git Befehle Spickzettel als schnelle Referenz für tägliche Versionskontrolle. Er behandelt Repository-Setup, Staging, Commits, Branches, Merges, Rebases, Remotes, Stashes, Historie, Undo-Befehle und GitHub-Kollaboration.
 </base-disclaimer-content>
 </base-disclaimer>
 

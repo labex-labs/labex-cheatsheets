@@ -1,21 +1,21 @@
 ---
-title: 'Nmap Cheatsheet | LabEx'
-description: 'Learn Nmap network scanning with this comprehensive cheatsheet. Quick reference for port scanning, network discovery, vulnerability detection, security auditing, and network reconnaissance.'
+title: 'Nmap Commands Cheat Sheet | LabEx'
+description: 'Nmap commands cheat sheet for network scanning. Quick reference for host discovery, port scans, service detection, OS detection, NSE scripts, output formats, and security auditing.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Nmap Cheatsheet
+Nmap Commands Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/learn/nmap">Learn Nmap with Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/learn/nmap">Practice Nmap Commands with Hands-On Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Learn Nmap network scanning through hands-on labs and real-world scenarios. LabEx provides comprehensive Nmap courses covering essential network discovery, port scanning, service detection, OS fingerprinting, and vulnerability assessment. Master network reconnaissance and security auditing techniques.
+Use this Nmap commands cheat sheet as a quick reference for network discovery, TCP and UDP port scans, service/version detection, OS fingerprinting, timing controls, NSE scripts, vulnerability checks, output formats, and practical security auditing workflows.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -700,10 +700,10 @@ nmap --host-timeout 10m 192.168.1.0/24
 ## Relevant Links
 
 - <router-link to="/wireshark">Wireshark Cheatsheet</router-link>
-- <router-link to="/kali">Kali Linux Cheatsheet</router-link>
+- <router-link to="/kali">Kali Commands Cheat Sheet</router-link>
 - <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
+- <router-link to="/linux">Ubuntu Commands Cheat Sheet</router-link>
+- <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
 - <router-link to="/network">Network Cheatsheet</router-link>
 - <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
+- <router-link to="/docker">Docker Commands Cheat Sheet</router-link>

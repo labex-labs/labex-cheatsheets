@@ -1,21 +1,21 @@
 ---
-title: 'Kali Linux チートシート | LabEx'
-description: 'この包括的なチートシートで Kali Linux のペネトレーションテストを学ぶ。セキュリティツール、倫理的ハッキング、脆弱性スキャン、エクスプロイト、サイバーセキュリティテストのクイックリファレンス。'
+title: 'Kali コマンドチートシート | LabEx'
+description: 'ペネトレーションテスト向けの Kali コマンドチートシート。apt、ネットワーク、Nmap、Metasploit、SQLmap、Hydra、John、Web テスト、無線ツール、フォレンジックコマンドのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kali Linux チートシート
+Kali コマンドチートシート
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/kali">ハンズオンラボで Kali Linux を学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/kali">ハンズオンラボで Kali コマンドを練習</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて Kali Linux ペネトレーションテストを学びます。LabEx は、必須コマンド、ネットワークスキャン、脆弱性評価、パスワード攻撃、Web アプリケーションテスト、デジタルフォレンジックを網羅した包括的な Kali Linux コースを提供します。倫理的ハッキング技術とセキュリティ監査ツールを習得しましょう。
+この Kali コマンドチートシートを、ペネトレーションテストワークフローのクイックリファレンスとして使用してください。システム設定、ネットワークスキャン、列挙、脆弱性評価、Metasploit、SQLmap、パスワード攻撃、Web テスト、無線ツール、フォレンジック、レポート、責任あるセキュリティ監査を扱います。
 </base-disclaimer-content>
 </base-disclaimer>
 

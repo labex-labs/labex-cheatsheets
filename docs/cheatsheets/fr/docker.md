@@ -1,21 +1,21 @@
 ---
-title: 'Cheat Sheet Docker | LabEx'
-description: "Apprenez la conteneurisation Docker avec ce mémo complet. Référence rapide pour les commandes Docker, les images, les conteneurs, le Dockerfile, Docker Compose et l'orchestration de conteneurs."
+title: 'Aide-mémoire des commandes Docker | LabEx'
+description: 'Aide-mémoire des commandes Docker pour conteneurs et images. Référence rapide pour docker run, ps, exec, logs, build, pull, push, volumes, réseaux, Dockerfile et Docker Compose.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Feuille de triche Docker
+Aide-mémoire des commandes Docker
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/docker">Apprenez Docker avec des Labs Pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/docker">Pratiquer les commandes Docker avec des labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez la conteneurisation Docker grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours Docker complets couvrant la gestion essentielle des conteneurs, la construction d'images, Docker Compose, le réseau, les volumes et le déploiement. Maîtrisez l'orchestration de conteneurs et les techniques de déploiement d'applications modernes.
+Utilisez cet aide-mémoire des commandes Docker comme référence rapide pour installer Docker, exécuter des conteneurs, gérer les images, lire les logs, exécuter des commandes, créer des Dockerfiles, configurer volumes et réseaux, utiliser Docker Compose et nettoyer les ressources locales.
 </base-disclaimer-content>
 </base-disclaimer>
 

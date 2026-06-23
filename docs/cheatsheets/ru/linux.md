@@ -1,21 +1,21 @@
 ---
-title: 'Шпаргалка по Linux | LabEx'
-description: 'Изучите администрирование Linux с помощью этой комплексной шпаргалки. Быстрый справочник по командам Linux, управлению файлами, системному администрированию, сетям и написанию сценариев оболочки.'
+title: 'Шпаргалка по командам Ubuntu | LabEx'
+description: 'Шпаргалка по командам Ubuntu для администрирования Linux. Быстрый справочник по информации о системе, файлам, правам, apt, службам, пользователям, сети, дискам, процессам, логам и обновлениям безопасности.'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Шпаргалка по Linux
+Шпаргалка по командам Ubuntu
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Посетите Linux Commands</a>
+<a target="_blank" href="https://linux-commands.labex.io/">Изучите больше команд Ubuntu и Linux</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Для получения исчерпывающих справочных материалов по командам Linux, примеров синтаксиса и подробной документации, пожалуйста, посетите <a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>. Этот независимый сайт предоставляет обширные шпаргалки по Linux, охватывающие основные команды, концепции и лучшие практики для администраторов и разработчиков Linux.
+Используйте эту шпаргалку по командам Ubuntu как практический справочник по администрированию Linux. Она охватывает сведения о системе, файлы, права, пользователей, пакеты apt, службы systemd, процессы, сеть, хранилище, логи, основы firewall и обновления безопасности.
 </base-disclaimer-content>
 </base-disclaimer>
 

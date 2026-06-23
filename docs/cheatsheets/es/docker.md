@@ -1,21 +1,21 @@
 ---
-title: 'Hoja de Trucos de Docker | LabEx'
-description: 'Aprenda la contenerización con Docker con esta hoja de trucos completa. Referencia rápida para comandos de Docker, imágenes, contenedores, Dockerfile, Docker Compose y orquestación de contenedores.'
+title: 'Hoja de trucos de comandos Docker | LabEx'
+description: 'Hoja de trucos de comandos Docker para contenedores e imágenes. Referencia rápida para docker run, ps, exec, logs, build, pull, push, volúmenes, redes, Dockerfile y Docker Compose.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Hoja de Trucos de Docker
+Hoja de trucos de comandos Docker
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/docker">Aprende Docker con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/docker">Practica comandos Docker con laboratorios prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende la contenerización con Docker a través de laboratorios prácticos y escenarios del mundo real. LabEx proporciona cursos completos de Docker que cubren la gestión esencial de contenedores, la construcción de imágenes, Docker Compose, redes, volúmenes y despliegue. Domina la orquestación de contenedores y las técnicas modernas de despliegue de aplicaciones.
+Use esta hoja de trucos de comandos Docker como referencia rápida para instalar Docker, ejecutar contenedores, gestionar imágenes, leer logs, ejecutar comandos, crear Dockerfiles, configurar volúmenes y redes, usar Docker Compose y limpiar recursos locales.
 </base-disclaimer-content>
 </base-disclaimer>
 

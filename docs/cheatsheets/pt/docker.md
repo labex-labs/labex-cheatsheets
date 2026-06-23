@@ -1,21 +1,21 @@
 ---
-title: 'Guia Rápido Docker | LabEx'
-description: 'Aprenda conteinerização Docker com este guia rápido abrangente. Referência rápida para comandos Docker, imagens, contêineres, Dockerfile, Docker Compose e orquestração de contêineres.'
+title: 'Folha de consulta de comandos Docker | LabEx'
+description: 'Folha de consulta de comandos Docker para contêineres e imagens. Referência rápida para docker run, ps, exec, logs, build, pull, push, volumes, redes, Dockerfile e Docker Compose.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Docker Cheatsheet
+Folha de consulta de comandos Docker
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/pt/learn/docker">Aprenda Docker com Laboratórios Práticos</a>
+<a target="_blank" href="https://labex.io/pt/learn/docker">Pratique comandos Docker com laboratórios práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda a conteinerização Docker através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de Docker cobrindo gerenciamento essencial de contêineres, construção de imagens, Docker Compose, rede, volumes e implantação. Domine a orquestração de contêineres e técnicas modernas de implantação de aplicações.
+Use esta folha de consulta de comandos Docker como referência rápida para instalar Docker, executar contêineres, gerenciar imagens, ler logs, executar comandos, criar Dockerfiles, configurar volumes e redes, usar Docker Compose e limpar recursos locais.
 </base-disclaimer-content>
 </base-disclaimer>
 

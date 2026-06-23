@@ -1,21 +1,21 @@
 ---
-title: 'Folha de Cola de Base de Dados | LabEx'
-description: 'Aprenda gestão de bases de dados com esta folha de cola abrangente. Referência rápida para consultas SQL, design de base de dados, normalização, indexação, transações e administração de bases de dados relacionais.'
+title: 'Folha de consulta de comandos SQL | LabEx'
+description: 'Folha de consulta de comandos SQL para bancos de dados. Referência rápida para CREATE, SELECT, INSERT, UPDATE, DELETE, JOIN, GROUP BY, índices, transações, usuários, backups e boas práticas SQL.'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Folha de Dicas de Banco de Dados
+Folha de consulta de comandos SQL
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/pt/learn/database">Aprenda Banco de Dados com Laboratórios Práticos</a>
+<a target="_blank" href="https://labex.io/pt/learn/database">Pratique comandos SQL com laboratórios práticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda gerenciamento de banco de dados e SQL através de laboratórios práticos e cenários do mundo real. O LabEx oferece cursos abrangentes de banco de dados cobrindo comandos SQL essenciais, manipulação de dados, otimização de consultas, design de banco de dados e melhores práticas de administração. Domine bancos de dados relacionais, sistemas NoSQL e melhores práticas de segurança de banco de dados.
+Use esta folha de consulta de comandos SQL como referência prática para criação de bancos de dados, design de tabelas, consultas, joins, agregações, índices, transações, permissões, backups e otimização de consultas em bancos relacionais.
 </base-disclaimer-content>
 </base-disclaimer>
 

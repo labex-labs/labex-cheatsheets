@@ -1,21 +1,21 @@
 ---
-title: 'シェルチートシート | LabEx'
-description: 'この包括的なチートシートでシェルスクリプトを習得しましょう。Bash コマンド、シェルスクリプト、自動化、コマンドラインツール、Linux/Unix システム管理のクイックリファレンス。'
+title: 'Bash コマンドチートシート | LabEx'
+description: 'Linux と Unix シェル向けの Bash コマンドチートシート。ファイル操作、移動、権限、テキスト処理、パイプ、リダイレクト、プロセス、履歴、スクリプトのクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Shell チートシート
+Bash コマンドチートシート
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ja/learn/shell">ハンズオンラボで Shell を学ぶ</a>
+<a target="_blank" href="https://labex.io/ja/learn/shell">ハンズオンラボで Bash コマンドを練習</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-ハンズオンラボと実世界のシナリオを通じて、シェルスクリプトとコマンドライン操作を学びましょう。LabEx は、必須の Bash コマンド、ファイル操作、テキスト処理、プロセス管理、自動化を網羅した包括的な Shell コースを提供します。コマンドラインの効率性とシェルスクリプト技術を習得してください。
+この Bash コマンドチートシートを、シェル作業のクイックリファレンスとして使用してください。ファイルとディレクトリ、移動、権限、検索、テキスト処理、パイプ、リダイレクト、プロセス管理、履歴、エイリアス、変数、ループ、関数、自動化スクリプトを扱います。
 </base-disclaimer-content>
 </base-disclaimer>
 

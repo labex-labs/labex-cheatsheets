@@ -1,21 +1,21 @@
 ---
-title: 'Shell 备忘单 | LabEx'
-description: '使用此综合备忘单学习 Shell 脚本。Bash 命令、Shell 脚本、自动化、命令行工具和 Linux/Unix 系统管理的快速参考。'
+title: 'Bash 命令速查表 | LabEx'
+description: 'Bash 命令速查表，适用于 Linux 和 Unix Shell。快速参考文件命令、导航、权限、文本处理、管道、重定向、进程、历史记录和脚本编写。'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Shell 速查表
+Bash 命令速查表
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/shell">通过动手实验学习 Shell</a>
+<a target="_blank" href="https://labex.io/zh/learn/shell">通过动手实验练习 Bash 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过动手实验和真实场景学习 Shell 脚本和命令行操作。LabEx 提供全面的 Shell 课程，涵盖基本的 Bash 命令、文件操作、文本处理、进程管理和自动化。掌握命令行效率和 Shell 脚本技术。
+将此 Bash 命令速查表作为 Shell 工作的快速参考：文件和目录、路径导航、权限、搜索、文本处理、管道、重定向、进程管理、历史记录、别名、变量、循环、函数和自动化脚本。
 </base-disclaimer-content>
 </base-disclaimer>
 

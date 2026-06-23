@@ -1,21 +1,21 @@
 ---
-title: 'Git 速查表 | LabEx'
-description: '使用此综合速查表学习 Git 版本控制。Git 命令、分支、合并、变基、GitHub 工作流和协作开发的快速参考。'
+title: 'Git 命令速查表 | LabEx'
+description: 'Git 命令速查表，覆盖版本控制常用操作。快速参考 git init、clone、add、commit、branch、merge、rebase、remote、stash、log、reset 和 GitHub 工作流。'
 pdfUrl: '/cheatsheets/pdf/git-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Git 速查表
+Git 命令速查表
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/git">通过实践实验室学习 Git</a>
+<a target="_blank" href="https://labex.io/zh/learn/git">通过动手实验练习 Git 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习 Git 版本控制。LabEx 提供全面的 Git 课程，涵盖基本命令、分支策略、协作工作流程和高级技术。学习如何使用 Git 和 GitHub 管理代码仓库、解决冲突以及与团队有效协作。
+将此 Git 命令速查表作为日常版本控制任务的快速参考。内容涵盖仓库初始化、暂存、提交、分支、合并、变基、远程仓库、stash、历史查看、撤销命令和 GitHub 协作工作流。
 </base-disclaimer-content>
 </base-disclaimer>
 

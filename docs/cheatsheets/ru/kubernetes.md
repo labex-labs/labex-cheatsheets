@@ -1,21 +1,21 @@
 ---
-title: 'Шпаргалка по Kubernetes | LabEx'
-description: 'Изучите оркестрацию Kubernetes с помощью этой исчерпывающей шпаргалки. Краткий справочник по командам kubectl, подам, развертываниям, сервисам, ingress и управлению облачными контейнерами.'
+title: 'Шпаргалка по командам Kubernetes | LabEx'
+description: 'Шпаргалка по командам Kubernetes для kubectl. Быстрый справочник по pods, deployments, services, ingress, config maps, secrets, logs, exec, scaling, rollout и troubleshooting.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Справочник по Kubernetes
+Шпаргалка по командам Kubernetes
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/kubernetes">Изучите Kubernetes с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/kubernetes">Практикуйте команды Kubernetes в лабораториях</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите оркестрацию контейнеров Kubernetes с помощью практических лабораторий и сценариев реального мира. LabEx предлагает комплексные курсы по Kubernetes, охватывающие основные команды kubectl, управление подами (pod), развертываниями (deployment), службами (service), сетевое взаимодействие и администрирование кластера. Освойте оркестрацию контейнеров и развертывание облачных нативных приложений.
+Используйте эту шпаргалку по командам Kubernetes как быстрый справочник по kubectl workflow: доступ к кластеру, pods, deployments, services, ingress, namespaces, config maps, secrets, logs, exec, scaling, rollouts, просмотр ресурсов и troubleshooting.
 </base-disclaimer-content>
 </base-disclaimer>
 

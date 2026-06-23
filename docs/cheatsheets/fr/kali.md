@@ -1,21 +1,21 @@
 ---
-title: 'Fiche Mémo Kali Linux | LabEx'
-description: "Apprenez les tests d'intrusion Kali Linux avec cette fiche mémo complète. Référence rapide pour les outils de sécurité, le hacking éthique, l'analyse de vulnérabilités, l'exploitation et les tests de cybersécurité."
+title: 'Aide-mémoire des commandes Kali | LabEx'
+description: 'Aide-mémoire des commandes Kali pour les tests d’intrusion. Référence rapide pour apt, réseau, Nmap, Metasploit, SQLmap, Hydra, John, tests web, outils sans fil et commandes forensiques.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Feuille de triche Kali Linux
+Aide-mémoire des commandes Kali
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/fr/learn/kali">Apprenez Kali Linux avec des laboratoires pratiques</a>
+<a target="_blank" href="https://labex.io/fr/learn/kali">Pratiquer les commandes Kali avec des labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Apprenez les tests d'intrusion Kali Linux grâce à des laboratoires pratiques et des scénarios réels. LabEx propose des cours complets sur Kali Linux couvrant les commandes essentielles, la numérisation de réseau, l'évaluation des vulnérabilités, les attaques par mot de passe, les tests d'applications Web et la criminalistique numérique. Maîtrisez les techniques de piratage éthique et les outils d'audit de sécurité.
+Utilisez cet aide-mémoire des commandes Kali comme référence rapide pour les workflows de test d’intrusion. Il couvre configuration système, scan réseau, énumération, évaluation de vulnérabilités, Metasploit, SQLmap, attaques de mots de passe, tests web, outils sans fil, forensique, rapports et audit responsable.
 </base-disclaimer-content>
 </base-disclaimer>
 

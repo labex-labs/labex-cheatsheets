@@ -1,21 +1,21 @@
 ---
-title: 'Шпаргалка по Shell | LabEx'
-description: 'Изучите shell-скриптинг с помощью этой исчерпывающей шпаргалки. Быстрый справочник по командам bash, shell-скриптам, автоматизации, инструментам командной строки и администрированию систем Linux/Unix.'
+title: 'Шпаргалка по командам Bash | LabEx'
+description: 'Шпаргалка по командам Bash для Linux и Unix shell. Быстрый справочник по файлам, навигации, правам, обработке текста, каналам, перенаправлению, процессам, истории и скриптам.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Шпаргалка по Shell
+Шпаргалка по командам Bash
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ru/learn/shell">Изучите Shell с практическими лабораториями</a>
+<a target="_blank" href="https://labex.io/ru/learn/shell">Практикуйте команды Bash в лабораториях</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Изучите написание сценариев Shell и операции командной строки с помощью практических лабораторий и сценариев реального мира. LabEx предлагает комплексные курсы по Shell, охватывающие основные команды Bash, файловые операции, обработку текста, управление процессами и автоматизацию. Освойте эффективность командной строки и методы написания сценариев Shell.
+Используйте эту шпаргалку по командам Bash как быстрый справочник по shell: файлы и каталоги, навигация, права, поиск, обработка текста, pipes, перенаправление, процессы, история, алиасы, переменные, циклы, функции и автоматизация.
 </base-disclaimer-content>
 </base-disclaimer>
 

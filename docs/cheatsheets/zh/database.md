@@ -1,21 +1,21 @@
 ---
-title: '数据库速查表 | LabEx'
-description: '使用本综合速查表学习数据库管理。快速参考 SQL 查询、数据库设计、规范化、索引、事务和关系数据库管理。'
+title: 'SQL 命令速查表 | LabEx'
+description: 'SQL 命令速查表，面向数据库操作。快速参考 CREATE、SELECT、INSERT、UPDATE、DELETE、JOIN、GROUP BY、索引、事务、用户、备份和 SQL 最佳实践。'
 pdfUrl: '/cheatsheets/pdf/database-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-数据库速查表
+SQL 命令速查表
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/zh/learn/database">通过实践实验室学习数据库</a>
+<a target="_blank" href="https://labex.io/zh/learn/database">通过动手实验练习 SQL 命令</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-通过实践实验室和真实场景学习数据库管理和 SQL。LabEx 提供全面的数据库课程，涵盖基本的 SQL 命令、数据操作、查询优化、数据库设计和管理。掌握关系数据库、NoSQL 系统和数据库安全最佳实践。
+将此 SQL 命令速查表作为数据库创建、表设计、数据查询、连接、聚合、索引、事务、用户权限、备份和查询优化的实用参考，适用于关系型数据库系统。
 </base-disclaimer-content>
 </base-disclaimer>
 

@@ -1,21 +1,21 @@
 ---
-title: 'Linux チートシート | LabEx'
-description: 'この包括的なチートシートで Linux 管理を学ぶ。Linux コマンド、ファイル管理、システム管理、ネットワーキング、シェルスクリプトのクイックリファレンス。'
+title: 'Ubuntu コマンドチートシート | LabEx'
+description: 'Linux 管理向けの Ubuntu コマンドチートシート。システム情報、ファイル、権限、apt、サービス、ユーザー、ネットワーク、ディスク、プロセス、ログ、セキュリティ更新のクイックリファレンス。'
 pdfUrl: '/cheatsheets/pdf/linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Linux チートシート
+Ubuntu コマンドチートシート
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://linux-commands.labex.io/" target="_blank">Linux コマンドにアクセス</a>
+<a target="_blank" href="https://linux-commands.labex.io/">Ubuntu と Linux コマンドをさらに探す</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-包括的な Linux コマンドリファレンス資料、構文例、および詳細なドキュメントについては、<a href="https://linux-commands.labex.io/" target="_blank">linux-commands.labex.io</a>をご覧ください。この独立したサイトでは、Linux 管理者および開発者向けの必須コマンド、概念、ベストプラクティスを網羅した広範な Linux チートシートを提供しています。
+この Ubuntu コマンドチートシートを、実用的な Linux 管理リファレンスとして使用してください。システム情報、ファイル、権限、ユーザー、apt パッケージ、systemd サービス、プロセス、ネットワーク、ストレージ、ログ、ファイアウォール基礎、Ubuntu と互換 Linux 環境のセキュリティ更新を扱います。
 </base-disclaimer-content>
 </base-disclaimer>
 

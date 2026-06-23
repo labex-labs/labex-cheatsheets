@@ -1,21 +1,21 @@
 ---
-title: 'Hoja de Trucos de Shell | LabEx'
-description: 'Aprenda scripting de shell con esta hoja de trucos completa. Referencia rápida para comandos bash, scripting de shell, automatización, herramientas de línea de comandos y administración de sistemas Linux/Unix.'
+title: 'Hoja de trucos de comandos Bash | LabEx'
+description: 'Hoja de trucos de comandos Bash para shells Linux y Unix. Referencia rápida de comandos de archivos, navegación, permisos, procesamiento de texto, pipes, redirección, procesos, historial y scripting.'
 pdfUrl: '/cheatsheets/pdf/shell-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Hoja de Trucos de Shell
+Hoja de trucos de comandos Bash
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/shell">Aprende Shell con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/shell">Practica comandos Bash con laboratorios prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprende scripting de Shell y operaciones de línea de comandos a través de laboratorios prácticos y escenarios del mundo real. LabEx proporciona cursos completos de Shell que cubren comandos esenciales de Bash, operaciones de archivos, procesamiento de texto, gestión de procesos y automatización. Domina la eficiencia de la línea de comandos y las técnicas de scripting de shell.
+Use esta hoja de trucos de comandos Bash como referencia rápida para trabajo en shell: archivos y directorios, navegación, permisos, búsqueda, procesamiento de texto, pipes, redirección, gestión de procesos, historial, alias, variables, bucles, funciones y automatización.
 </base-disclaimer-content>
 </base-disclaimer>
 

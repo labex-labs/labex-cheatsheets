@@ -1,21 +1,21 @@
 ---
-title: '쿠버네티스 치트 시트 | LabEx'
-description: '이 포괄적인 치트 시트로 쿠버네티스 오케스트레이션을 학습하세요. kubectl 명령어, 파드, 배포, 서비스, 인그레스 및 클라우드 네이티브 컨테이너 관리를 위한 빠른 참조 자료입니다.'
+title: 'Kubernetes 명령어 치트 시트 | LabEx'
+description: 'kubectl을 위한 Kubernetes 명령어 치트 시트입니다. Pod, Deployment, Service, Ingress, ConfigMap, Secret, 로그, exec, 스케일링, rollout 및 문제 해결을 빠르게 참고하세요.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kubernetes 치트 시트
+Kubernetes 명령어 치트 시트
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/kubernetes">Hands-On Labs 로 Kubernetes 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/kubernetes">실습으로 Kubernetes 명령어 연습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-핸즈온 랩과 실제 시나리오를 통해 Kubernetes 컨테이너 오케스트레이션을 학습하세요. LabEx 는 필수적인 kubectl 명령어, 파드 관리, 배포, 서비스, 네트워킹 및 클러스터 관리를 다루는 포괄적인 Kubernetes 과정을 제공합니다. 컨테이너 오케스트레이션 및 클라우드 네이티브 애플리케이션 배포를 마스터하세요.
+이 Kubernetes 명령어 치트 시트를 kubectl 워크플로우의 빠른 참고 자료로 활용하세요. 클러스터 접근, Pod, Deployment, Service, Ingress, 네임스페이스, ConfigMap, Secret, 로그, exec, 스케일링, 롤아웃, 리소스 검사 및 문제 해결을 다룹니다.
 </base-disclaimer-content>
 </base-disclaimer>
 

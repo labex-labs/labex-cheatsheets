@@ -1,21 +1,21 @@
 ---
-title: 'Kubernetes Cheatsheet | LabEx'
-description: 'Learn Kubernetes orchestration with this comprehensive cheatsheet. Quick reference for kubectl commands, pods, deployments, services, ingress, and cloud-native container management.'
+title: 'Kubernetes Commands Cheat Sheet | LabEx'
+description: 'Kubernetes commands cheat sheet for kubectl. Quick reference for pods, deployments, services, ingress, config maps, secrets, logs, exec, scaling, rollout, and troubleshooting.'
 pdfUrl: '/cheatsheets/pdf/kubernetes-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Kubernetes Cheatsheet
+Kubernetes Commands Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/learn/kubernetes">Learn Kubernetes with Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/learn/kubernetes">Practice Kubernetes Commands with Hands-On Labs</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Learn Kubernetes container orchestration through hands-on labs and real-world scenarios. LabEx provides comprehensive Kubernetes courses covering essential kubectl commands, pod management, deployments, services, networking, and cluster administration. Master container orchestration and cloud-native application deployment.
+Use this Kubernetes commands cheat sheet as a quick reference for kubectl workflows: cluster access, pods, deployments, services, ingress, namespaces, config maps, secrets, logs, exec, scaling, rollouts, resource inspection, and troubleshooting.
 </base-disclaimer-content>
 </base-disclaimer>
 
@@ -935,11 +935,11 @@ kubectl delete pod  --grace-period=0 --force
 
 ## Relevant Links
 
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
+- <router-link to="/docker">Docker Commands Cheat Sheet</router-link>
+- <router-link to="/linux">Ubuntu Commands Cheat Sheet</router-link>
+- <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
 - <router-link to="/devops">DevOps Cheatsheet</router-link>
 - <router-link to="/ansible">Ansible Cheatsheet</router-link>
-- <router-link to="/git">Git Cheatsheet</router-link>
+- <router-link to="/git">Git Commands Cheat Sheet</router-link>
 - <router-link to="/rhel">Red Hat Enterprise Linux Cheatsheet</router-link>
 - <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>

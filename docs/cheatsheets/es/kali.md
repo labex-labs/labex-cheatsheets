@@ -1,21 +1,21 @@
 ---
-title: 'Hoja de Trucos de Kali Linux | LabEx'
-description: 'Aprenda pruebas de penetración con Kali Linux con esta hoja de trucos completa. Referencia rápida para herramientas de seguridad, hacking ético, escaneo de vulnerabilidades, explotación y pruebas de ciberseguridad.'
+title: 'Hoja de trucos de comandos Kali | LabEx'
+description: 'Hoja de trucos de comandos Kali para pruebas de penetración. Referencia rápida para apt, redes, Nmap, Metasploit, SQLmap, Hydra, John, pruebas web, herramientas inalámbricas y comandos forenses.'
 pdfUrl: '/cheatsheets/pdf/kali-linux-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Hoja de Trucos de Kali Linux
+Hoja de trucos de comandos Kali
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/es/learn/kali">Aprenda Kali Linux con Laboratorios Prácticos</a>
+<a target="_blank" href="https://labex.io/es/learn/kali">Practica comandos Kali con laboratorios prácticos</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Aprenda pruebas de penetración con Kali Linux a través de laboratorios prácticos y escenarios del mundo real. LabEx ofrece cursos completos de Kali Linux que cubren comandos esenciales, escaneo de redes, evaluación de vulnerabilidades, ataques de contraseñas, pruebas de aplicaciones web y forense digital. Domine las técnicas de hacking ético y las herramientas de auditoría de seguridad.
+Use esta hoja de trucos de comandos Kali como referencia rápida para flujos de pruebas de penetración. Cubre configuración del sistema, escaneo de red, enumeración, evaluación de vulnerabilidades, Metasploit, SQLmap, ataques de contraseñas, pruebas web, herramientas inalámbricas, forense, informes y auditoría responsable.
 </base-disclaimer-content>
 </base-disclaimer>
 

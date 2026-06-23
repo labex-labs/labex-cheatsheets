@@ -1,21 +1,21 @@
 ---
-title: 'Docker Spickzettel | LabEx'
-description: 'Lernen Sie Docker-Containerisierung mit diesem umfassenden Spickzettel. Schnelle Referenz für Docker-Befehle, Images, Container, Dockerfile, Docker Compose und Container-Orchestrierung.'
+title: 'Docker Befehle Spickzettel | LabEx'
+description: 'Docker Befehle Spickzettel für Container und Images. Schnelle Referenz für docker run, ps, exec, logs, build, pull, push, Volumes, Netzwerke, Dockerfile und Docker Compose.'
 pdfUrl: '/cheatsheets/pdf/docker-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Docker Spickzettel
+Docker Befehle Spickzettel
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/de/learn/docker">Lernen Sie Docker mit Hands-On Labs</a>
+<a target="_blank" href="https://labex.io/de/learn/docker">Docker-Befehle mit praktischen Labs üben</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-Lernen Sie Docker-Containerisierung durch praktische Labs und reale Szenarien. LabEx bietet umfassende Docker-Kurse, die wesentliche Containerverwaltung, Image-Erstellung, Docker Compose, Networking, Volumes und Deployment abdecken. Meistern Sie Container-Orchestrierung und moderne Anwendungseinsatztechniken.
+Nutzen Sie diesen Docker Befehle Spickzettel als schnelle Referenz für Docker-Installation, Container ausführen, Images verwalten, Logs lesen, Befehle ausführen, Dockerfiles bauen, Volumes und Netzwerke konfigurieren, Docker Compose verwenden und lokale Ressourcen bereinigen.
 </base-disclaimer-content>
 </base-disclaimer>
 

@@ -1,21 +1,21 @@
 ---
-title: 'Nmap 치트 시트 | LabEx'
-description: '이 포괄적인 치트 시트로 Nmap 네트워크 스캐닝을 배우세요. 포트 스캐닝, 네트워크 검색, 취약점 탐지, 보안 감사 및 네트워크 정찰을 위한 빠른 참조 자료입니다.'
+title: 'Nmap 명령어 치트 시트 | LabEx'
+description: '네트워크 스캔을 위한 Nmap 명령어 치트 시트입니다. 호스트 발견, 포트 스캔, 서비스 탐지, OS 탐지, NSE 스크립트, 출력 형식 및 보안 감사를 빠르게 참고하세요.'
 pdfUrl: '/cheatsheets/pdf/nmap-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Nmap 치트 시트
+Nmap 명령어 치트 시트
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a target="_blank" href="https://labex.io/ko/learn/nmap">Hands-On Labs 로 Nmap 학습하기</a>
+<a target="_blank" href="https://labex.io/ko/learn/nmap">실습으로 Nmap 명령어 연습하기</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-실습 기반 랩과 실제 시나리오를 통해 Nmap 네트워크 스캐닝을 학습하세요. LabEx 는 필수적인 네트워크 검색, 포트 스캐닝, 서비스 감지, OS 핑거프린팅 및 취약점 평가를 다루는 포괄적인 Nmap 과정을 제공합니다. 네트워크 정찰 및 보안 감사 기술을 마스터하세요.
+이 Nmap 명령어 치트 시트를 네트워크 발견, TCP 및 UDP 포트 스캔, 서비스/버전 탐지, OS 핑거프린팅, 타이밍 제어, NSE 스크립트, 취약점 점검, 출력 형식 및 실무 보안 감사 워크플로우의 빠른 참고 자료로 활용하세요.
 </base-disclaimer-content>
 </base-disclaimer>
 
