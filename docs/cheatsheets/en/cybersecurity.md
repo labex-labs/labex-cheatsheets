@@ -1,6 +1,6 @@
 ---
 title: 'Cybersecurity Cheat Sheet | LabEx'
-description: 'Learn cybersecurity with this comprehensive cheatsheet. Quick reference for security concepts, threat detection, vulnerability assessment, penetration testing, and information security best practices.'
+description: 'Learn cybersecurity with this comprehensive cheat sheet. Quick reference for security concepts, threat detection, vulnerability assessment, penetration testing, and information security best practices.'
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 

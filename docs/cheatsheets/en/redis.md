@@ -1,6 +1,6 @@
 ---
 title: 'Redis Cheat Sheet | LabEx'
-description: 'Learn Redis in-memory data store with this comprehensive cheatsheet. Quick reference for Redis commands, data structures, caching, pub/sub, persistence, and high-performance caching solutions.'
+description: 'Learn Redis in-memory data store with this comprehensive cheat sheet. Quick reference for Redis commands, data structures, caching, pub/sub, persistence, and high-performance caching solutions.'
 pdfUrl: '/cheatsheets/pdf/redis-cheatsheet.pdf'
 ---
 

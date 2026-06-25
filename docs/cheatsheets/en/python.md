@@ -1,6 +1,6 @@
 ---
 title: 'Python Cheat Sheet | LabEx'
-description: 'Learn Python programming with this comprehensive cheatsheet. Quick reference for Python syntax, data structures, functions, classes, libraries, and best practices for Python developers.'
+description: 'Learn Python programming with this comprehensive cheat sheet. Quick reference for Python syntax, data structures, functions, classes, libraries, and best practices for Python developers.'
 pdfUrl: '/cheatsheets/pdf/python-cheatsheet.pdf'
 ---
 
@@ -15,7 +15,7 @@ Python Cheat Sheet
 <a href="https://pythoncheatsheet.org/" target="_blank">Visit Python Cheat Sheet</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
-For comprehensive Python reference materials, syntax examples, and detailed documentation, please visit <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>. This independent site provides extensive Python cheatsheets covering essential commands, concepts, and best practices for Python developers.
+For comprehensive Python reference materials, syntax examples, and detailed documentation, please visit <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>. This independent site provides extensive Python cheat sheets covering essential commands, concepts, and best practices for Python developers.
 </base-disclaimer-content>
 </base-disclaimer>
 

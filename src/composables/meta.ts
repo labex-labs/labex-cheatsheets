@@ -96,7 +96,7 @@ export function useMeta() {
     return lastSegment
       .split('-')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ') + ' Cheatsheet'
+      .join(' ') + ' Cheat Sheet'
   }
 
   // Generate page-specific title: use frontmatter title if available, otherwise infer from path
@@ -128,7 +128,7 @@ export function useMeta() {
     // Generate a basic description from title if available
     const inferredTitle = getPageTitleFromPath(route.path)
     if (inferredTitle) {
-      return `Learn ${inferredTitle.replace(' Cheatsheet', '')} with our comprehensive cheatsheet covering essential commands, concepts, and best practices.`
+      return `Learn ${inferredTitle.replace(' Cheat Sheet', '')} with our comprehensive cheat sheet covering essential commands, concepts, and best practices.`
     }
 
     return t('meta.description')
@@ -189,7 +189,7 @@ export function useMeta() {
       inLanguage: currentLocale.value,
       isPartOf: {
         '@type': 'WebSite',
-        name: 'LabEx Cheatsheets',
+        name: 'LabEx Cheat Sheets',
         url: joinSiteUrl('/'),
       },
       publisher: {
@@ -285,7 +285,7 @@ export function useMeta() {
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' },
       { property: 'og:image:alt', content: pageTitle.value },
-      { property: 'og:site_name', content: 'LabEx Cheatsheets' },
+      { property: 'og:site_name', content: 'LabEx Cheat Sheets' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: pageTitle.value },
       { name: 'twitter:description', content: pageDescription.value },

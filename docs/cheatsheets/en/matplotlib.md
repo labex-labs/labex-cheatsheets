@@ -1,6 +1,6 @@
 ---
 title: 'Matplotlib Cheat Sheet | LabEx'
-description: 'Learn Matplotlib data visualization with this comprehensive cheatsheet. Quick reference for plotting, charts, graphs, subplots, customization, and Python data visualization.'
+description: 'Learn Matplotlib data visualization with this comprehensive cheat sheet. Quick reference for plotting, charts, graphs, subplots, customization, and Python data visualization.'
 pdfUrl: '/cheatsheets/pdf/matplotlib-cheatsheet.pdf'
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Wireshark Cheat Sheet | LabEx'
-description: 'Learn Wireshark network analysis with this comprehensive cheatsheet. Quick reference for packet capture, network protocol analysis, traffic inspection, troubleshooting, and network security monitoring.'
+description: 'Learn Wireshark network analysis with this comprehensive cheat sheet. Quick reference for packet capture, network protocol analysis, traffic inspection, troubleshooting, and network security monitoring.'
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'React Cheat Sheet | LabEx'
-description: 'Learn React development with this comprehensive cheatsheet. Quick reference for React hooks, components, JSX, state management, props, and modern frontend development patterns.'
+description: 'Learn React development with this comprehensive cheat sheet. Quick reference for React hooks, components, JSX, state management, props, and modern frontend development patterns.'
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 

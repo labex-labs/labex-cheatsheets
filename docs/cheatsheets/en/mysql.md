@@ -1,6 +1,6 @@
 ---
 title: 'MySQL Cheat Sheet | LabEx'
-description: 'Learn MySQL database management with this comprehensive cheatsheet. Quick reference for SQL queries, joins, indexes, transactions, stored procedures, and database administration.'
+description: 'Learn MySQL database management with this comprehensive cheat sheet. Quick reference for SQL queries, joins, indexes, transactions, stored procedures, and database administration.'
 pdfUrl: '/cheatsheets/pdf/mysql-cheatsheet.pdf'
 ---
 

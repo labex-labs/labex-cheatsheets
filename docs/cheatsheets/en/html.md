@@ -1,6 +1,6 @@
 ---
 title: 'HTML Cheat Sheet | LabEx'
-description: 'Learn HTML5 with this comprehensive cheatsheet. Quick reference for HTML tags, semantic elements, forms, accessibility, and modern web development standards for frontend developers.'
+description: 'Learn HTML5 with this comprehensive cheat sheet. Quick reference for HTML tags, semantic elements, forms, accessibility, and modern web development standards for frontend developers.'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 

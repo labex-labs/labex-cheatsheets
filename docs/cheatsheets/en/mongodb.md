@@ -1,6 +1,6 @@
 ---
 title: 'MongoDB Cheat Sheet | LabEx'
-description: 'Learn MongoDB NoSQL database with this comprehensive cheatsheet. Quick reference for MongoDB queries, aggregation, indexing, sharding, replication, and document database management.'
+description: 'Learn MongoDB NoSQL database with this comprehensive cheat sheet. Quick reference for MongoDB queries, aggregation, indexing, sharding, replication, and document database management.'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 

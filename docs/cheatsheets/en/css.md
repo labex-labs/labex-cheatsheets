@@ -1,6 +1,6 @@
 ---
 title: 'CSS Cheat Sheet | LabEx'
-description: 'Learn CSS3 with this comprehensive cheatsheet. Quick reference for CSS selectors, flexbox, grid, animations, responsive design, and modern styling techniques for web developers.'
+description: 'Learn CSS3 with this comprehensive cheat sheet. Quick reference for CSS selectors, flexbox, grid, animations, responsive design, and modern styling techniques for web developers.'
 pdfUrl: '/cheatsheets/pdf/css-cheatsheet.pdf'
 ---
 

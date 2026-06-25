@@ -1,6 +1,6 @@
 ---
 title: 'SQLite Cheat Sheet | LabEx'
-description: 'Learn SQLite database with this comprehensive cheatsheet. Quick reference for SQLite SQL syntax, transactions, triggers, views, and lightweight database management for applications.'
+description: 'Learn SQLite database with this comprehensive cheat sheet. Quick reference for SQLite SQL syntax, transactions, triggers, views, and lightweight database management for applications.'
 pdfUrl: '/cheatsheets/pdf/sqlite-cheatsheet.pdf'
 ---
 

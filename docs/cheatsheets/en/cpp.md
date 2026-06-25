@@ -1,6 +1,6 @@
 ---
 title: 'C++ Cheat Sheet | LabEx'
-description: 'Learn C++ programming with this comprehensive cheatsheet. Quick reference for C++ syntax, OOP, STL, templates, memory management, and modern C++ features for software developers.'
+description: 'Learn C++ programming with this comprehensive cheat sheet. Quick reference for C++ syntax, OOP, STL, templates, memory management, and modern C++ features for software developers.'
 pdfUrl: '/cheatsheets/pdf/cpp-cheatsheet.pdf'
 ---
 

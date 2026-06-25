@@ -9,15 +9,15 @@
           ✨
           <!-- <img
             src="https://www.javascriptcheatsheet.org/icons/javascript_logo.png"
-            alt="javascript cheatsheet"
+            alt="javascript cheat sheet"
             class="h-4 w-4 rounded-sm mr-1.5"
           /> -->
           Read Online
           <span class="mx-1.5">·</span>
-          JavaScript Cheatsheet
+          JavaScript Cheat Sheet
         </span>
         <span class="hidden md:block xl:hidden">
-          ✨ Javascript Cheatsheet
+          ✨ JavaScript Cheat Sheet
         </span>
         <span class="md:hidden xl:hidden"> ✨ JVS </span>
       </slot>

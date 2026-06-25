@@ -1,6 +1,6 @@
 ---
 title: 'CompTIA Cheat Sheet | LabEx'
-description: 'Learn CompTIA IT certifications with this comprehensive cheatsheet. Quick reference for CompTIA A+, Network+, Security+, Linux+, and IT fundamentals for certification exam preparation.'
+description: 'Learn CompTIA IT certifications with this comprehensive cheat sheet. Quick reference for CompTIA A+, Network+, Security+, Linux+, and IT fundamentals for certification exam preparation.'
 pdfUrl: '/cheatsheets/pdf/comptia-cheatsheet.pdf'
 ---
 

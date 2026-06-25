@@ -1,12 +1,12 @@
 {
   "sidebar": {
     "introduction": "Introduction",
-    "cheatsheet": "Cheatsheet",
+    "cheatsheet": "Cheat Sheet",
     "gettingStarted": "Getting Started"
   },
   "navbar": {
-    "repositoryLink": "python cheatsheet repository",
-    "cheatsheets": "Cheatsheets",
+    "repositoryLink": "python cheat sheet repository",
+    "cheatsheets": "Cheat Sheets",
     "login": "Login"
   },
   "mobile": {
@@ -40,8 +40,8 @@
     "goBackHome": "Go back home"
   },
   "home": {
-    "title": "LabEx Cheatsheets",
-    "description": "LabEx Cheatsheets provides comprehensive technical reference guides covering Linux, DevOps, Cybersecurity, Database, Data Science, Docker, Kubernetes, Python, Git, Java, Go, C++, and many more technologies. Download PDF versions for offline access.",
+    "title": "LabEx Cheat Sheets",
+    "description": "LabEx Cheat Sheets provides comprehensive technical reference guides covering Linux, DevOps, Cybersecurity, Database, Data Science, Docker, Kubernetes, Python, Git, Java, Go, C++, and many more technologies. Download PDF versions for offline access.",
     "cardLinks": {
       "linux": "Linux",
       "linuxDesc": "Comprehensive Linux command reference and system administration guide.",
@@ -102,8 +102,8 @@
     "refresh": "Refresh"
   },
   "meta": {
-    "title": "LabEx Cheatsheets",
+    "title": "LabEx Cheat Sheets",
     "description": "Technical reference guides for Linux, DevOps, Cybersecurity, Database, Data Science, Docker, Kubernetes, Python, Git, Java, Go, C++. Download PDF for offline access.",
-    "keywords": "labex cheatsheets, technical cheatsheets, linux cheatsheet, devops cheatsheet, cybersecurity cheatsheet, database cheatsheet, docker cheatsheet, kubernetes cheatsheet, python cheatsheet, git cheatsheet, programming reference"
+    "keywords": "labex cheat sheets, technical cheat sheets, linux cheat sheet, devops cheat sheet, cybersecurity cheat sheet, database cheat sheet, docker cheat sheet, kubernetes cheat sheet, python cheat sheet, git cheat sheet, programming reference"
   }
 }

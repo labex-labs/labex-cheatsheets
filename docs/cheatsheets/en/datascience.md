@@ -1,6 +1,6 @@
 ---
 title: 'Data Science Cheat Sheet | LabEx'
-description: 'Learn data science with this comprehensive cheatsheet. Quick reference for data analysis, machine learning, statistics, visualization, Python libraries, and data science workflows.'
+description: 'Learn data science with this comprehensive cheat sheet. Quick reference for data analysis, machine learning, statistics, visualization, Python libraries, and data science workflows.'
 pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 ---
 
