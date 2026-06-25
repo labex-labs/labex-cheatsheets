@@ -799,9 +799,9 @@ tmux attach -t pentest
 
 - <router-link to="/linux">Ubuntu Commands Cheat Sheet</router-link>
 - <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
-- <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>
+- <router-link to="/cybersecurity">Cybersecurity Cheat Sheet</router-link>
 - <router-link to="/nmap">Nmap Commands Cheat Sheet</router-link>
-- <router-link to="/wireshark">Wireshark Cheatsheet</router-link>
-- <router-link to="/hydra">Hydra Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/wireshark">Wireshark Cheat Sheet</router-link>
+- <router-link to="/hydra">Hydra Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
 - <router-link to="/docker">Docker Commands Cheat Sheet</router-link>

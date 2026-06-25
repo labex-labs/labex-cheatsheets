@@ -1,11 +1,11 @@
 ---
-title: 'CSS Cheatsheet | LabEx'
+title: 'CSS Cheat Sheet | LabEx'
 description: 'Learn CSS3 with this comprehensive cheatsheet. Quick reference for CSS selectors, flexbox, grid, animations, responsive design, and modern styling techniques for web developers.'
 pdfUrl: '/cheatsheets/pdf/css-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-CSS Cheatsheet
+CSS Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -1092,7 +1092,7 @@ const Button = styled.button`
 
 ## Relevant Links
 
-- <router-link to="/html">HTML Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/react">React Cheatsheet</router-link>
-- <router-link to="/web-development">Web Development Cheatsheet</router-link>
+- <router-link to="/html">HTML Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/react">React Cheat Sheet</router-link>
+- <router-link to="/web-development">Web Development Cheat Sheet</router-link>

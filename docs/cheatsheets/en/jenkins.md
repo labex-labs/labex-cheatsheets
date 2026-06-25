@@ -1,11 +1,11 @@
 ---
-title: 'Jenkins Cheatsheet | LabEx'
+title: 'Jenkins Cheat Sheet | LabEx'
 description: 'Learn Jenkins CI/CD with this comprehensive cheatsheet. Quick reference for Jenkins pipelines, jobs, plugins, automation, continuous integration, and DevOps workflows.'
 pdfUrl: '/cheatsheets/pdf/jenkins-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Jenkins Cheatsheet
+Jenkins Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -708,10 +708,10 @@ Optimize Jenkins for better performance and scalability.
 
 ## Relevant Links
 
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
-- <router-link to="/ansible">Ansible Cheatsheet</router-link>
-- <router-link to="/git">Git Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Cheat Sheet</router-link>
+- <router-link to="/ansible">Ansible Cheat Sheet</router-link>
+- <router-link to="/git">Git Cheat Sheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>

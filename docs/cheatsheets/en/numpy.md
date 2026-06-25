@@ -1,11 +1,11 @@
 ---
-title: 'NumPy Cheatsheet | LabEx'
+title: 'NumPy Cheat Sheet | LabEx'
 description: 'Learn NumPy numerical computing with this comprehensive cheatsheet. Quick reference for arrays, linear algebra, mathematical operations, broadcasting, and Python scientific computing.'
 pdfUrl: '/cheatsheets/pdf/numpy-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-NumPy Cheatsheet
+NumPy Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -792,8 +792,8 @@ fft2d = np.fft.fft2(image)
 
 ## Relevant Links
 
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/pandas">Pandas Cheatsheet</router-link>
-- <router-link to="/matplotlib">Matplotlib Cheatsheet</router-link>
-- <router-link to="/sklearn">scikit-learn Cheatsheet</router-link>
-- <router-link to="/datascience">Data Science Cheatsheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/pandas">Pandas Cheat Sheet</router-link>
+- <router-link to="/matplotlib">Matplotlib Cheat Sheet</router-link>
+- <router-link to="/sklearn">scikit-learn Cheat Sheet</router-link>
+- <router-link to="/datascience">Data Science Cheat Sheet</router-link>

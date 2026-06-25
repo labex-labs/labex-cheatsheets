@@ -12,7 +12,7 @@ Folha de Dicas Python
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://pythoncheatsheet.org/" target="_blank">Visite Python Cheatsheet</a>
+<a href="https://pythoncheatsheet.org/" target="_blank">Visite Python Cheat Sheet</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Para materiais de referência abrangentes em Python, exemplos de sintaxe e documentação detalhada, visite <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>. Este site independente fornece extensas folhas de dicas Python cobrindo comandos essenciais, conceitos e melhores práticas para desenvolvedores Python.

@@ -1,11 +1,11 @@
 ---
-title: 'Ansible Cheatsheet | LabEx'
+title: 'Ansible Cheat Sheet | LabEx'
 description: 'Learn Ansible automation with this comprehensive cheatsheet. Quick reference for Ansible playbooks, modules, inventory management, configuration management, and infrastructure automation.'
 pdfUrl: '/cheatsheets/pdf/ansible-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Ansible Cheatsheet
+Ansible Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -736,9 +736,9 @@ ansible-playbook -i ./dynamic_inventory.py site.yml
 
 ## Relevant Links
 
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
-- <router-link to="/python">Python Cheatsheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Cheat Sheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>

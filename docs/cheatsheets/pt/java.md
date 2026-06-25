@@ -1,11 +1,11 @@
 ---
-title: 'Cheatsheet Java | LabEx'
+title: 'Cheat Sheet Java | LabEx'
 description: 'Aprenda programação Java com este cheatsheet abrangente. Referência rápida para sintaxe Java, OOP, coleções, streams, framework Spring e essenciais de desenvolvimento empresarial.'
 pdfUrl: '/cheatsheets/pdf/java-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Java Cheatsheet
+Java Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -983,11 +983,11 @@ public class ResourceManagement {
 
 ## Links Relevantes
 
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/cpp">C++ Cheatsheet</router-link>
-- <router-link to="/golang">Go Cheatsheet</router-link>
-- <router-link to="/web-development">Web Development Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/cpp">C++ Cheat Sheet</router-link>
+- <router-link to="/golang">Go Cheat Sheet</router-link>
+- <router-link to="/web-development">Web Development Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Cheat Sheet</router-link>

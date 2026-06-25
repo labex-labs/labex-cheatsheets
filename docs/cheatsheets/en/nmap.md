@@ -699,11 +699,11 @@ nmap --host-timeout 10m 192.168.1.0/24
 
 ## Relevant Links
 
-- <router-link to="/wireshark">Wireshark Cheatsheet</router-link>
+- <router-link to="/wireshark">Wireshark Cheat Sheet</router-link>
 - <router-link to="/kali">Kali Commands Cheat Sheet</router-link>
-- <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>
+- <router-link to="/cybersecurity">Cybersecurity Cheat Sheet</router-link>
 - <router-link to="/linux">Ubuntu Commands Cheat Sheet</router-link>
 - <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
-- <router-link to="/network">Network Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/network">Network Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
 - <router-link to="/docker">Docker Commands Cheat Sheet</router-link>

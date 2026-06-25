@@ -12,7 +12,7 @@ pdfUrl: '/cheatsheets/pdf/python-cheatsheet.pdf'
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://pythoncheatsheet.org/" target="_blank">Посетить Python Cheatsheet</a>
+<a href="https://pythoncheatsheet.org/" target="_blank">Посетить Python Cheat Sheet</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Для получения исчерпывающих справочных материалов по Python, примеров синтаксиса и подробной документации посетите <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>. Этот независимый сайт предоставляет обширные шпаргалки по Python, охватывающие основные команды, концепции и лучшие практики для разработчиков Python.

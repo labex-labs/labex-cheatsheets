@@ -1,11 +1,11 @@
 ---
-title: 'Redis Cheatsheet | LabEx'
+title: 'Redis Cheat Sheet | LabEx'
 description: 'Learn Redis in-memory data store with this comprehensive cheatsheet. Quick reference for Redis commands, data structures, caching, pub/sub, persistence, and high-performance caching solutions.'
 pdfUrl: '/cheatsheets/pdf/redis-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Redis Cheatsheet
+Redis Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -766,11 +766,11 @@ Optimize Redis for better performance.
 
 ## Relevant Links
 
-- <router-link to="/database">Database Cheatsheet</router-link>
-- <router-link to="/mysql">MySQL Cheatsheet</router-link>
-- <router-link to="/postgresql">PostgreSQL Cheatsheet</router-link>
-- <router-link to="/mongodb">MongoDB Cheatsheet</router-link>
-- <router-link to="/sqlite">SQLite Cheatsheet</router-link>
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/database">Database Cheat Sheet</router-link>
+- <router-link to="/mysql">MySQL Cheat Sheet</router-link>
+- <router-link to="/postgresql">PostgreSQL Cheat Sheet</router-link>
+- <router-link to="/mongodb">MongoDB Cheat Sheet</router-link>
+- <router-link to="/sqlite">SQLite Cheat Sheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>

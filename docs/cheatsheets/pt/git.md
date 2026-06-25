@@ -957,11 +957,11 @@ git for-each-ref --format='%(refname:short)' | wc -l
 
 ## Links Relevantes
 
-- <router-link to="/linux">Cheatsheet de Linux</router-link>
-- <router-link to="/shell">Cheatsheet de Shell</router-link>
-- <router-link to="/devops">Cheatsheet de DevOps</router-link>
-- <router-link to="/docker">Cheatsheet de Docker</router-link>
-- <router-link to="/kubernetes">Cheatsheet de Kubernetes</router-link>
-- <router-link to="/ansible">Cheatsheet de Ansible</router-link>
-- <router-link to="/python">Cheatsheet de Python</router-link>
-- <router-link to="/javascript">Cheatsheet de JavaScript</router-link>
+- <router-link to="/linux">Cheat Sheet de Linux</router-link>
+- <router-link to="/shell">Cheat Sheet de Shell</router-link>
+- <router-link to="/devops">Cheat Sheet de DevOps</router-link>
+- <router-link to="/docker">Cheat Sheet de Docker</router-link>
+- <router-link to="/kubernetes">Cheat Sheet de Kubernetes</router-link>
+- <router-link to="/ansible">Cheat Sheet de Ansible</router-link>
+- <router-link to="/python">Cheat Sheet de Python</router-link>
+- <router-link to="/javascript">Cheat Sheet de JavaScript</router-link>

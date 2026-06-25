@@ -1,11 +1,11 @@
 ---
-title: 'Cybersecurity Cheatsheet | LabEx'
+title: 'Cybersecurity Cheat Sheet | LabEx'
 description: 'Learn cybersecurity with this comprehensive cheatsheet. Quick reference for security concepts, threat detection, vulnerability assessment, penetration testing, and information security best practices.'
 pdfUrl: '/cheatsheets/pdf/cybersecurity-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Cybersecurity Cheatsheet
+Cybersecurity Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -805,11 +805,11 @@ Build a security-aware organizational culture.
 
 ## Relevant Links
 
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/kali">Kali Linux Cheatsheet</router-link>
-- <router-link to="/nmap">Nmap Cheatsheet</router-link>
-- <router-link to="/wireshark">Wireshark Cheatsheet</router-link>
-- <router-link to="/hydra">Hydra Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/git">Git Cheatsheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>
+- <router-link to="/kali">Kali Linux Cheat Sheet</router-link>
+- <router-link to="/nmap">Nmap Cheat Sheet</router-link>
+- <router-link to="/wireshark">Wireshark Cheat Sheet</router-link>
+- <router-link to="/hydra">Hydra Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/git">Git Cheat Sheet</router-link>

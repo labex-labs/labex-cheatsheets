@@ -1,11 +1,11 @@
 ---
-title: 'SQLite Cheatsheet | LabEx'
+title: 'SQLite Cheat Sheet | LabEx'
 description: 'Learn SQLite database with this comprehensive cheatsheet. Quick reference for SQLite SQL syntax, transactions, triggers, views, and lightweight database management for applications.'
 pdfUrl: '/cheatsheets/pdf/sqlite-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-SQLite Cheatsheet
+SQLite Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -870,11 +870,11 @@ $stmt = $pdo->query('SELECT * FROM users');
 
 ## Relevant Links
 
-- <router-link to="/database">Database Cheatsheet</router-link>
-- <router-link to="/mysql">MySQL Cheatsheet</router-link>
-- <router-link to="/postgresql">PostgreSQL Cheatsheet</router-link>
-- <router-link to="/mongodb">MongoDB Cheatsheet</router-link>
-- <router-link to="/redis">Redis Cheatsheet</router-link>
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/database">Database Cheat Sheet</router-link>
+- <router-link to="/mysql">MySQL Cheat Sheet</router-link>
+- <router-link to="/postgresql">PostgreSQL Cheat Sheet</router-link>
+- <router-link to="/mongodb">MongoDB Cheat Sheet</router-link>
+- <router-link to="/redis">Redis Cheat Sheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>

@@ -1,11 +1,11 @@
 ---
-title: 'HTML Cheatsheet | LabEx'
+title: 'HTML Cheat Sheet | LabEx'
 description: 'Learn HTML5 with this comprehensive cheatsheet. Quick reference for HTML tags, semantic elements, forms, accessibility, and modern web development standards for frontend developers.'
 pdfUrl: '/cheatsheets/pdf/html-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-HTML Cheatsheet
+HTML Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -813,11 +813,11 @@ function Component() { return (
 
 ## Relevant Links
 
-- <router-link to="/css">CSS Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/web-development">Web Development Cheatsheet</router-link>
-- <router-link to="/react">React Cheatsheet</router-link>
-- <router-link to="/git">Git Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
+- <router-link to="/css">CSS Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/web-development">Web Development Cheat Sheet</router-link>
+- <router-link to="/react">React Cheat Sheet</router-link>
+- <router-link to="/git">Git Cheat Sheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>

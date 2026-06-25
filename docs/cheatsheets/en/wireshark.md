@@ -1,11 +1,11 @@
 ---
-title: 'Wireshark Cheatsheet | LabEx'
+title: 'Wireshark Cheat Sheet | LabEx'
 description: 'Learn Wireshark network analysis with this comprehensive cheatsheet. Quick reference for packet capture, network protocol analysis, traffic inspection, troubleshooting, and network security monitoring.'
 pdfUrl: '/cheatsheets/pdf/wireshark-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Wireshark Cheatsheet
+Wireshark Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -767,11 +767,11 @@ bootp.option.dhcp == 1 or bootp.option.dhcp == 2
 
 ## Relevant Links
 
-- <router-link to="/nmap">Nmap Cheatsheet</router-link>
-- <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>
-- <router-link to="/kali">Kali Linux Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/network">Network Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
+- <router-link to="/nmap">Nmap Cheat Sheet</router-link>
+- <router-link to="/cybersecurity">Cybersecurity Cheat Sheet</router-link>
+- <router-link to="/kali">Kali Linux Cheat Sheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>
+- <router-link to="/network">Network Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>

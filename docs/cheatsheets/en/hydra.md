@@ -1,11 +1,11 @@
 ---
-title: 'Hydra Cheatsheet | LabEx'
+title: 'Hydra Cheat Sheet | LabEx'
 description: 'Learn Hydra password cracking with this comprehensive cheatsheet. Quick reference for brute-force attacks, password auditing, security testing, authentication protocols, and penetration testing tools.'
 pdfUrl: '/cheatsheets/pdf/hydra-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Hydra Cheatsheet
+Hydra Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -527,11 +527,11 @@ nice -n 19 hydra -l admin -P passwords.txt target.com ssh
 
 ## Relevant Links
 
-- <router-link to="/kali">Kali Linux Cheatsheet</router-link>
-- <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>
-- <router-link to="/nmap">Nmap Cheatsheet</router-link>
-- <router-link to="/wireshark">Wireshark Cheatsheet</router-link>
-- <router-link to="/comptia">CompTIA Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/kali">Kali Linux Cheat Sheet</router-link>
+- <router-link to="/cybersecurity">Cybersecurity Cheat Sheet</router-link>
+- <router-link to="/nmap">Nmap Cheat Sheet</router-link>
+- <router-link to="/wireshark">Wireshark Cheat Sheet</router-link>
+- <router-link to="/comptia">CompTIA Cheat Sheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>

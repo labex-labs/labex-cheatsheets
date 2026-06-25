@@ -1,11 +1,11 @@
 ---
-title: 'JavaScript Cheatsheet | LabEx'
+title: 'JavaScript Cheat Sheet | LabEx'
 description: 'Learn JavaScript programming with this comprehensive cheatsheet. Quick reference for JS syntax, ES6+, DOM manipulation, async/await, Node.js, and modern web development.'
 pdfUrl: '/cheatsheets/pdf/javascript-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-JavaScript Cheatsheet
+JavaScript Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -988,7 +988,7 @@ const measurements = performance.getEntriesByType('measure')
 
 ## Relevant Links
 
-- <router-link to="/html">HTML Cheatsheet</router-link>
-- <router-link to="/css">CSS Cheatsheet</router-link>
-- <router-link to="/react">React Cheatsheet</router-link>
-- <router-link to="/web-development">Web Development Cheatsheet</router-link>
+- <router-link to="/html">HTML Cheat Sheet</router-link>
+- <router-link to="/css">CSS Cheat Sheet</router-link>
+- <router-link to="/react">React Cheat Sheet</router-link>
+- <router-link to="/web-development">Web Development Cheat Sheet</router-link>

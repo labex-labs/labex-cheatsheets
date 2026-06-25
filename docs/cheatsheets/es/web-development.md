@@ -713,7 +713,7 @@ Comprenda los errores comunes de JavaScript y cómo solucionarlos.
 
 ## Enlaces Relevantes
 
-- <router-link to="/html">HTML Cheatsheet</router-link>
-- <router-link to="/css">CSS Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/react">React Cheatsheet</router-link>
+- <router-link to="/html">HTML Cheat Sheet</router-link>
+- <router-link to="/css">CSS Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/react">React Cheat Sheet</router-link>

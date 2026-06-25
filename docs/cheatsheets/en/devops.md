@@ -1,11 +1,11 @@
 ---
-title: 'DevOps Cheatsheet | LabEx'
+title: 'DevOps Cheat Sheet | LabEx'
 description: 'Learn DevOps practices with this comprehensive cheatsheet. Quick reference for CI/CD, automation, infrastructure as code, monitoring, containerization, and modern software delivery workflows.'
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-DevOps Cheatsheet
+DevOps Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -812,11 +812,11 @@ curl -H "Content-Type: application/json" \
 
 ## Relevant Links
 
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/git">Git Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
-- <router-link to="/ansible">Ansible Cheatsheet</router-link>
-- <router-link to="/jenkins">Jenkins Cheatsheet</router-link>
-- <router-link to="/python">Python Cheatsheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>
+- <router-link to="/git">Git Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Cheat Sheet</router-link>
+- <router-link to="/ansible">Ansible Cheat Sheet</router-link>
+- <router-link to="/jenkins">Jenkins Cheat Sheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>

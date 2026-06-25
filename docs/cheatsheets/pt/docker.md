@@ -812,11 +812,11 @@ CMD ["node", "server.js"]
 
 ## Links Relevantes
 
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/ansible">Ansible Cheatsheet</router-link>
-- <router-link to="/git">Git Cheatsheet</router-link>
-- <router-link to="/rhel">Red Hat Enterprise Linux Cheatsheet</router-link>
-- <router-link to="/python">Python Cheatsheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Cheat Sheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/ansible">Ansible Cheat Sheet</router-link>
+- <router-link to="/git">Git Cheat Sheet</router-link>
+- <router-link to="/rhel">Red Hat Enterprise Linux Cheat Sheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>

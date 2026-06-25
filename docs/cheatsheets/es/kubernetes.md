@@ -932,11 +932,11 @@ kubectl delete pod  --grace-period=0 --force
 
 ## Enlaces Relevantes
 
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/ansible">Ansible Cheatsheet</router-link>
-- <router-link to="/git">Git Cheatsheet</router-link>
-- <router-link to="/rhel">Red Hat Enterprise Linux Cheatsheet</router-link>
-- <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/ansible">Ansible Cheat Sheet</router-link>
+- <router-link to="/git">Git Cheat Sheet</router-link>
+- <router-link to="/rhel">Red Hat Enterprise Linux Cheat Sheet</router-link>
+- <router-link to="/cybersecurity">Cybersecurity Cheat Sheet</router-link>

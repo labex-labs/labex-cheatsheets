@@ -1,11 +1,11 @@
 ---
-title: 'PostgreSQL Cheatsheet | LabEx'
+title: 'PostgreSQL Cheat Sheet | LabEx'
 description: 'Learn PostgreSQL database management with this comprehensive cheatsheet. Quick reference for SQL queries, advanced features, JSON support, full-text search, and enterprise database administration.'
 pdfUrl: '/cheatsheets/pdf/postgresql-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-PostgreSQL Cheatsheet
+PostgreSQL Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -846,11 +846,11 @@ Track query performance and manage command history.
 
 ## Relevant Links
 
-- <router-link to="/database">Database Cheatsheet</router-link>
-- <router-link to="/mysql">MySQL Cheatsheet</router-link>
-- <router-link to="/sqlite">SQLite Cheatsheet</router-link>
-- <router-link to="/mongodb">MongoDB Cheatsheet</router-link>
-- <router-link to="/redis">Redis Cheatsheet</router-link>
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/database">Database Cheat Sheet</router-link>
+- <router-link to="/mysql">MySQL Cheat Sheet</router-link>
+- <router-link to="/sqlite">SQLite Cheat Sheet</router-link>
+- <router-link to="/mongodb">MongoDB Cheat Sheet</router-link>
+- <router-link to="/redis">Redis Cheat Sheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>

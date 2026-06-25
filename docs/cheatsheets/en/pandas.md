@@ -1,11 +1,11 @@
 ---
-title: 'Pandas Cheatsheet | LabEx'
+title: 'Pandas Cheat Sheet | LabEx'
 description: 'Learn Pandas data manipulation with this comprehensive cheatsheet. Quick reference for DataFrame operations, data cleaning, filtering, grouping, merging, and Python data analysis.'
 pdfUrl: '/cheatsheets/pdf/pandas-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Pandas Cheatsheet
+Pandas Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -677,11 +677,11 @@ def custom_filter(df, threshold):
 
 ## Relevant Links
 
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/numpy">NumPy Cheatsheet</router-link>
-- <router-link to="/matplotlib">Matplotlib Cheatsheet</router-link>
-- <router-link to="/sklearn">scikit-learn Cheatsheet</router-link>
-- <router-link to="/datascience">Data Science Cheatsheet</router-link>
-- <router-link to="/mysql">MySQL Cheatsheet</router-link>
-- <router-link to="/postgresql">PostgreSQL Cheatsheet</router-link>
-- <router-link to="/sqlite">SQLite Cheatsheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/numpy">NumPy Cheat Sheet</router-link>
+- <router-link to="/matplotlib">Matplotlib Cheat Sheet</router-link>
+- <router-link to="/sklearn">scikit-learn Cheat Sheet</router-link>
+- <router-link to="/datascience">Data Science Cheat Sheet</router-link>
+- <router-link to="/mysql">MySQL Cheat Sheet</router-link>
+- <router-link to="/postgresql">PostgreSQL Cheat Sheet</router-link>
+- <router-link to="/sqlite">SQLite Cheat Sheet</router-link>

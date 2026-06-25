@@ -1,5 +1,5 @@
 ---
-title: 'Cheatsheet DevOps | LabEx'
+title: 'Cheat Sheet DevOps | LabEx'
 description: "Apprenez les pratiques DevOps avec cette antisèche complète. Référence rapide pour l'intégration continue/déploiement continu (CI/CD), l'automatisation, l'infrastructure as code, la surveillance et la conteneurisation."
 pdfUrl: '/cheatsheets/pdf/devops-cheatsheet.pdf'
 ---

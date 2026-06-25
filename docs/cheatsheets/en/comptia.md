@@ -1,11 +1,11 @@
 ---
-title: 'CompTIA Cheatsheet | LabEx'
+title: 'CompTIA Cheat Sheet | LabEx'
 description: 'Learn CompTIA IT certifications with this comprehensive cheatsheet. Quick reference for CompTIA A+, Network+, Security+, Linux+, and IT fundamentals for certification exam preparation.'
 pdfUrl: '/cheatsheets/pdf/comptia-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-CompTIA Cheatsheet
+CompTIA Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -837,11 +837,11 @@ Value and recognition of CompTIA certifications.
 
 ## Relevant Links
 
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>
-- <router-link to="/network">Network Cheatsheet</router-link>
-- <router-link to="/rhel">Red Hat Enterprise Linux Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
-- <router-link to="/ansible">Ansible Cheatsheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/cybersecurity">Cybersecurity Cheat Sheet</router-link>
+- <router-link to="/network">Network Cheat Sheet</router-link>
+- <router-link to="/rhel">Red Hat Enterprise Linux Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Cheat Sheet</router-link>
+- <router-link to="/ansible">Ansible Cheat Sheet</router-link>

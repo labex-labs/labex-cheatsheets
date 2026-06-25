@@ -5,7 +5,7 @@ pdfUrl: '/cheatsheets/pdf/sklearn-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Cheatsheet scikit-learn
+Cheat Sheet scikit-learn
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -822,9 +822,9 @@ dans la boucle CV
 
 ## Liens Pertinents
 
-- <router-link to="/python">Cheatsheet Python</router-link>
-- <router-link to="/pandas">Cheatsheet Pandas</router-link>
-- <router-link to="/numpy">Cheatsheet NumPy</router-link>
-- <router-link to="/matplotlib">Cheatsheet Matplotlib</router-link>
-- <router-link to="/datascience">Cheatsheet Science des Données</router-link>
-- <router-link to="/database">Cheatsheet Base de Données</router-link>
+- <router-link to="/python">Cheat Sheet Python</router-link>
+- <router-link to="/pandas">Cheat Sheet Pandas</router-link>
+- <router-link to="/numpy">Cheat Sheet NumPy</router-link>
+- <router-link to="/matplotlib">Cheat Sheet Matplotlib</router-link>
+- <router-link to="/datascience">Cheat Sheet Science des Données</router-link>
+- <router-link to="/database">Cheat Sheet Base de Données</router-link>

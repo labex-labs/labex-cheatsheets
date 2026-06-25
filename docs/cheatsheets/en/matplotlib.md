@@ -1,11 +1,11 @@
 ---
-title: 'Matplotlib Cheatsheet | LabEx'
+title: 'Matplotlib Cheat Sheet | LabEx'
 description: 'Learn Matplotlib data visualization with this comprehensive cheatsheet. Quick reference for plotting, charts, graphs, subplots, customization, and Python data visualization.'
 pdfUrl: '/cheatsheets/pdf/matplotlib-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Matplotlib Cheatsheet
+Matplotlib Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -830,8 +830,8 @@ import matplotlib.pyplot as plt
 
 ## Relevant Links
 
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/numpy">NumPy Cheatsheet</router-link>
-- <router-link to="/pandas">Pandas Cheatsheet</router-link>
-- <router-link to="/sklearn">scikit-learn Cheatsheet</router-link>
-- <router-link to="/datascience">Data Science Cheatsheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/numpy">NumPy Cheat Sheet</router-link>
+- <router-link to="/pandas">Pandas Cheat Sheet</router-link>
+- <router-link to="/sklearn">scikit-learn Cheat Sheet</router-link>
+- <router-link to="/datascience">Data Science Cheat Sheet</router-link>

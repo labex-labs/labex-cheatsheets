@@ -348,4 +348,4 @@ Open and reload your Vim config.
 - <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
 - <router-link to="/linux">Ubuntu Commands Cheat Sheet</router-link>
 - <router-link to="/git">Git Commands Cheat Sheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>

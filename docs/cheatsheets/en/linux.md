@@ -1041,11 +1041,11 @@ lsof
 ## Relevant Links
 
 - <router-link to="/shell">Bash Commands Cheat Sheet</router-link>
-- <router-link to="/rhel">Red Hat Enterprise Linux Cheatsheet</router-link>
+- <router-link to="/rhel">Red Hat Enterprise Linux Cheat Sheet</router-link>
 - <router-link to="/vim">Vim Commands Cheat Sheet</router-link>
 - <router-link to="/docker">Docker Commands Cheat Sheet</router-link>
 - <router-link to="/kubernetes">Kubernetes Commands Cheat Sheet</router-link>
 - <router-link to="/git">Git Commands Cheat Sheet</router-link>
-- <router-link to="/ansible">Ansible Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/cybersecurity">Cybersecurity Cheatsheet</router-link>
+- <router-link to="/ansible">Ansible Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/cybersecurity">Cybersecurity Cheat Sheet</router-link>

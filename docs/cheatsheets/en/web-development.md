@@ -1,11 +1,11 @@
 ---
-title: 'Web Development Cheatsheet | LabEx'
+title: 'Web Development Cheat Sheet | LabEx'
 description: 'Learn web development with this comprehensive cheatsheet. Quick reference for HTML, CSS, JavaScript, APIs, responsive design, performance optimization, and full-stack development essentials.'
 pdfUrl: '/cheatsheets/pdf/web-development-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Web Development Cheatsheet
+Web Development Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -713,7 +713,7 @@ Understand common JavaScript errors and how to fix them.
 
 ## Relevant Links
 
-- <router-link to="/html">HTML Cheatsheet</router-link>
-- <router-link to="/css">CSS Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/react">React Cheatsheet</router-link>
+- <router-link to="/html">HTML Cheat Sheet</router-link>
+- <router-link to="/css">CSS Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/react">React Cheat Sheet</router-link>

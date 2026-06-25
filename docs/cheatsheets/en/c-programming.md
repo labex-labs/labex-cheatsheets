@@ -1,11 +1,11 @@
 ---
-title: 'C Programming Cheatsheet | LabEx'
+title: 'C Programming Cheat Sheet | LabEx'
 description: 'Learn C programming with this comprehensive cheatsheet. Quick reference for C syntax, pointers, memory management, data structures, and system programming essentials for developers.'
 pdfUrl: '/cheatsheets/pdf/c-programming-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-C Programming Cheatsheet
+C Programming Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -896,11 +896,11 @@ double calculate_area(double radius) {
 
 ## Relevant Links
 
-- <router-link to="/cpp">C++ Cheatsheet</router-link>
-- <router-link to="/java">Java Cheatsheet</router-link>
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/golang">Golang Cheatsheet</router-link>
-- <router-link to="/linux">Linux Cheatsheet</router-link>
-- <router-link to="/shell">Shell Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/cpp">C++ Cheat Sheet</router-link>
+- <router-link to="/java">Java Cheat Sheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/golang">Golang Cheat Sheet</router-link>
+- <router-link to="/linux">Linux Cheat Sheet</router-link>
+- <router-link to="/shell">Shell Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>

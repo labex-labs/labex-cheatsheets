@@ -12,7 +12,7 @@ Hoja de Trucos de Python
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://pythoncheatsheet.org/" target="_blank">Visitar Python Cheatsheet</a>
+<a href="https://pythoncheatsheet.org/" target="_blank">Visitar Python Cheat Sheet</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Para materiales de referencia completos de Python, ejemplos de sintaxis y documentación detallada, por favor visite <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>. Este sitio independiente proporciona hojas de trucos de Python extensas que cubren comandos esenciales, conceptos y mejores prácticas para desarrolladores de Python.

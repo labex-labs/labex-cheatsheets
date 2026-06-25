@@ -1,5 +1,5 @@
 ---
-title: 'Cheatsheet Golang | LabEx'
+title: 'Cheat Sheet Golang | LabEx'
 description: 'Aprenda programação Go com este cheatsheet abrangente. Referência rápida para sintaxe Go, goroutines, canais, interfaces, tratamento de erros e programação concorrente para desenvolvedores backend.'
 pdfUrl: '/cheatsheets/pdf/golang-cheatsheet.pdf'
 ---

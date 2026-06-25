@@ -12,7 +12,7 @@ Python Spickzettel
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://pythoncheatsheet.org/" target="_blank">Besuchen Sie Python Cheatsheet</a>
+<a href="https://pythoncheatsheet.org/" target="_blank">Besuchen Sie Python Cheat Sheet</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 Für umfassende Python-Referenzmaterialien, Syntaxbeispiele und detaillierte Dokumentationen besuchen Sie bitte <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>. Diese unabhängige Seite bietet umfangreiche Python-Spickzettel, die wesentliche Befehle, Konzepte und Best Practices für Python-Entwickler abdecken.

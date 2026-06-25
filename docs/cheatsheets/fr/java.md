@@ -983,11 +983,11 @@ public class ResourceManagement {
 
 ## Liens Pertinents
 
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/cpp">C++ Cheatsheet</router-link>
-- <router-link to="/golang">Go Cheatsheet</router-link>
-- <router-link to="/web-development">Web Development Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/kubernetes">Kubernetes Cheatsheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/cpp">C++ Cheat Sheet</router-link>
+- <router-link to="/golang">Go Cheat Sheet</router-link>
+- <router-link to="/web-development">Web Development Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>
+- <router-link to="/kubernetes">Kubernetes Cheat Sheet</router-link>

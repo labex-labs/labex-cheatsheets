@@ -1,11 +1,11 @@
 ---
-title: 'React Cheatsheet | LabEx'
+title: 'React Cheat Sheet | LabEx'
 description: 'Learn React development with this comprehensive cheatsheet. Quick reference for React hooks, components, JSX, state management, props, and modern frontend development patterns.'
 pdfUrl: '/cheatsheets/pdf/react-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-React Cheatsheet
+React Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -1116,7 +1116,7 @@ function Card({ header, children, footer, variant = 'default' }) {
 
 ## Relevant Links
 
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/html">HTML Cheatsheet</router-link>
-- <router-link to="/css">CSS Cheatsheet</router-link>
-- <router-link to="/web-development">Web Development Cheatsheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/html">HTML Cheat Sheet</router-link>
+- <router-link to="/css">CSS Cheat Sheet</router-link>
+- <router-link to="/web-development">Web Development Cheat Sheet</router-link>

@@ -1,11 +1,11 @@
 ---
-title: 'Data Science Cheatsheet | LabEx'
+title: 'Data Science Cheat Sheet | LabEx'
 description: 'Learn data science with this comprehensive cheatsheet. Quick reference for data analysis, machine learning, statistics, visualization, Python libraries, and data science workflows.'
 pdfUrl: '/cheatsheets/pdf/data-science-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Data Science Cheatsheet
+Data Science Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -708,11 +708,11 @@ def data_quality_report(df):
 
 ## Relevant Links
 
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/pandas">Pandas Cheatsheet</router-link>
-- <router-link to="/numpy">NumPy Cheatsheet</router-link>
-- <router-link to="/matplotlib">Matplotlib Cheatsheet</router-link>
-- <router-link to="/sklearn">Scikit-learn Cheatsheet</router-link>
-- <router-link to="/database">Database Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/pandas">Pandas Cheat Sheet</router-link>
+- <router-link to="/numpy">NumPy Cheat Sheet</router-link>
+- <router-link to="/matplotlib">Matplotlib Cheat Sheet</router-link>
+- <router-link to="/sklearn">Scikit-learn Cheat Sheet</router-link>
+- <router-link to="/database">Database Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>

@@ -1,11 +1,11 @@
 ---
-title: 'MongoDB Cheatsheet | LabEx'
+title: 'MongoDB Cheat Sheet | LabEx'
 description: 'Learn MongoDB NoSQL database with this comprehensive cheatsheet. Quick reference for MongoDB queries, aggregation, indexing, sharding, replication, and document database management.'
 pdfUrl: '/cheatsheets/pdf/mongodb-cheatsheet.pdf'
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-MongoDB Cheatsheet
+MongoDB Cheat Sheet
 </base-title>
 
 <base-pdf-url :url="frontmatter.pdfUrl" />
@@ -899,12 +899,12 @@ const changeStream = db.users.watch(pipeline)
 
 ## Relevant Links
 
-- <router-link to="/database">Database Cheatsheet</router-link>
-- <router-link to="/mysql">MySQL Cheatsheet</router-link>
-- <router-link to="/postgresql">PostgreSQL Cheatsheet</router-link>
-- <router-link to="/redis">Redis Cheatsheet</router-link>
-- <router-link to="/sqlite">SQLite Cheatsheet</router-link>
-- <router-link to="/python">Python Cheatsheet</router-link>
-- <router-link to="/javascript">JavaScript Cheatsheet</router-link>
-- <router-link to="/docker">Docker Cheatsheet</router-link>
-- <router-link to="/devops">DevOps Cheatsheet</router-link>
+- <router-link to="/database">Database Cheat Sheet</router-link>
+- <router-link to="/mysql">MySQL Cheat Sheet</router-link>
+- <router-link to="/postgresql">PostgreSQL Cheat Sheet</router-link>
+- <router-link to="/redis">Redis Cheat Sheet</router-link>
+- <router-link to="/sqlite">SQLite Cheat Sheet</router-link>
+- <router-link to="/python">Python Cheat Sheet</router-link>
+- <router-link to="/javascript">JavaScript Cheat Sheet</router-link>
+- <router-link to="/docker">Docker Cheat Sheet</router-link>
+- <router-link to="/devops">DevOps Cheat Sheet</router-link>

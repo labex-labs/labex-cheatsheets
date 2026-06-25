@@ -12,7 +12,7 @@ Python 速查表
 
 <base-disclaimer>
 <base-disclaimer-title>
-<a href="https://pythoncheatsheet.org/" target="_blank">访问 Python Cheatsheet</a>
+<a href="https://pythoncheatsheet.org/" target="_blank">访问 Python Cheat Sheet</a>
 </base-disclaimer-title>
 <base-disclaimer-content>
 有关全面的 Python 参考资料、语法示例和详细文档，请访问 <a href="https://pythoncheatsheet.org/" target="_blank">pythoncheatsheet.org</a>。该独立网站提供广泛的 Python 速查表，涵盖 Python 开发人员的基本命令、概念和最佳实践。
